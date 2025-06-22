@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Essential Radio Player</title>
   <style>
     body {
@@ -27,17 +26,14 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #now-playing {
+    #now-playing, #next, #recent {
       margin-top: 15px;
       font-size: 16px;
     }
     #artwork {
-      margin-top: 20px;
-      width: 150px;
-      height: 150px;
-      border-radius: 8px;
-      object-fit: cover;
-      display: none;
+      margin-top: 15px;
+      max-width: 200px;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -49,13 +45,16 @@
     </audio>
     <button id="play-toggle">▶️ Play</button>
     <div id="now-playing">Loading current track...</div>
-    <img id="artwork" src="" alt="Artwork">
+    <img id="artwork" src="" alt="Artwork" style="display:none;" />
+    <div id="next">Next: Loading...</div>
+    <div id="recent">Recently Played: Loading...</div>
   </div>
-
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
     const nowPlaying = document.getElementById('now-playing');
+    const next = document.getElementById('next');
+    const recent = document.getElementById('recent');
     const artwork = document.getElementById('artwork');
     let isPlaying = false;
 
@@ -71,16 +70,18 @@
       }
     });
 
-    async function fetchMetadata() {
+    function decodeHtmlEntities(str) {
+      const txt = document.createElement('textarea');
+      txt.innerHTML = str;
+      return txt.value;
+    }
+
+    async function fetchNowPlaying() {
       try {
         const res = await fetch('/api/metadata');
         const data = await res.json();
-
-        if (data.nowPlaying) {
-          nowPlaying.textContent = `Now Playing: ${data.nowPlaying}`;
-        } else {
-          nowPlaying.textContent = 'Unknown Track';
-        }
+        const current = data.nowPlaying || "Unknown Track";
+        nowPlaying.textContent = `Now Playing: ${decodeHtmlEntities(current)}`;
 
         if (data.artworkUrl) {
           artwork.src = data.artworkUrl;
@@ -88,15 +89,21 @@
         } else {
           artwork.style.display = 'none';
         }
+
+        next.textContent = data.nextToPlay ? `Next: ${decodeHtmlEntities(data.nextToPlay)}` : "Next: Unknown";
+        recent.textContent = data.recentlyPlayed && data.recentlyPlayed.length
+          ? `Recently Played: ${decodeHtmlEntities(data.recentlyPlayed[0])}`
+          : "Recently Played: Unknown";
       } catch (err) {
-        nowPlaying.textContent = 'Unable to fetch metadata';
-        artwork.style.display = 'none';
-        console.error('Fetch error:', err);
+        nowPlaying.textContent = "Unable to fetch metadata";
+        next.textContent = "Next: Error";
+        recent.textContent = "Recently Played: Error";
+        console.error("Fetch error:", err);
       }
     }
 
-    fetchMetadata();
-    setInterval(fetchMetadata, 15000);
+    setInterval(fetchNowPlaying, 15000);
+    fetchNowPlaying();
   </script>
 </body>
 </html>
