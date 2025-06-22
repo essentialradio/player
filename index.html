@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Essential Radio Player</title>
-  <style>
+<meta charset="utf-8"/>
+<title>Essential Radio Player</title>
+<style>
     body {
       background: #00818a;
       color: white;
@@ -38,54 +39,37 @@
   </style>
 </head>
 <body>
-  <div id="player-box">
-    <h2>Essential Radio</h2>
-    <audio id="stream" preload="none">
-      <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
-    </audio>
-    <button id="play-toggle">▶️ Play</button>
-    <br><br>
-    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" />
-    <div id="now-playing">Loading current track...</div>
-  </div>
-
-  <script>
-    const audio = document.getElementById('stream');
-    const playBtn = document.getElementById('play-toggle');
-    const nowPlaying = document.getElementById('now-playing');
-    const volumeSlider = document.getElementById('volume-slider');
-    let isPlaying = false;
-
-    playBtn.addEventListener('click', () => {
-      if (!isPlaying) {
-        audio.play().catch(err => console.error("Play failed:", err));
-        playBtn.textContent = '⏸ Pause';
-        isPlaying = true;
-      } else {
-        audio.pause();
-        playBtn.textContent = '▶️ Play';
-        isPlaying = false;
-      }
-    });
-
-    volumeSlider.addEventListener('input', () => {
-      audio.volume = volumeSlider.value;
-    });
-
+<div id="player-box"><img id="artwork" src="" style="width: 300px; border-radius: 10px; margin-bottom: 10px; display: none;"/>
+<h2>Essential Radio</h2>
+<audio id="stream" preload="none">
+<source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg"/>
+</audio>
+<button id="play-toggle">▶️ Play</button>
+<br/><br/>
+<input id="volume-slider" max="1" min="0" step="0.01" type="range" value="1"/>
+<div id="now-playing">Loading current track...</div>
+</div>
+<script>
     async function fetchNowPlaying() {
       try {
         const res = await fetch('/api/metadata');
         const data = await res.json();
-        const track = data.nowPlaying || "Unknown track";
+        const track = data.nowPlaying || "Unknown Track";
+        const artwork = data.artwork;
+
         nowPlaying.textContent = `Now Playing: ${track}`;
+        if (artwork) {
+          const img = document.getElementById("artwork");
+          img.src = artwork;
+          img.style.display = 'block';
+        }
       } catch (err) {
         nowPlaying.textContent = "Unable to fetch metadata";
         console.error("Fetch error:", err);
       }
     }
-
     setInterval(fetchNowPlaying, 15000);
     fetchNowPlaying();
-  </script>
+    </script>
 </body>
 </html>
