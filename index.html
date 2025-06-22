@@ -152,7 +152,12 @@
         const res = await fetch('/api/metadata');
         const data = await res.json();
 
-        nowPlaying.textContent = "Now Playing: " + (data.nowPlaying || "Unknown Track");
+        const decodeHtml = str => {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = str;
+      return txt.value;
+    };
+    nowPlaying.textContent = "Now Playing: " + decodeHtml(data.nowPlaying || "Unknown Track");
         nextTrack.textContent = "Next: " + (data.nextToPlay || "Loading...");
         recentTracks.textContent = "Recently Played: " + (data.recentlyPlayed?.join(', ') || "Loading...");
 
