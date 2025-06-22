@@ -91,6 +91,8 @@
 
     playBtn.addEventListener('click', () => {
       if (!isPlaying) {
+        audio.pause();
+        audio.load(); // Reload stream to jump to current live position
         audio.play().catch(err => console.error("Play failed:", err));
         playBtn.textContent = '⏸ Pause';
         isPlaying = true;
