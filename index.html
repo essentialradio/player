@@ -4,32 +4,10 @@
   <meta charset="UTF-8">
   <title>Essential Radio Player</title>
   <style>
-    body {
-      background: #00818a;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    #player-box {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
-    }
-    button {
-      background: #d93f54;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #now-playing {
-      margin-top: 15px;
-      font-size: 16px;
-    }
+    body { background: #00818a; color: white; font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    #player-box { background: #111; padding: 20px; border-radius: 10px; display: inline-block; }
+    button { background: #d93f54; color: white; border: none; padding: 10px 20px; font-size: 18px; border-radius: 5px; cursor: pointer; }
+    #now-playing { margin-top: 15px; font-size: 16px; }
   </style>
 </head>
 <body>
@@ -61,15 +39,9 @@
 
     async function fetchNowPlaying() {
       try {
-        const res = await fetch("https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html");
-        const text = await res.text();
-        const parts = text.split(',');
-        const track = parts.findLast(p => isNaN(p) && !p.includes('<') && p.trim().length > 1);
-        if (track) {
-          nowPlaying.textContent = `Now Playing: ${track.trim()}`;
-        } else {
-          nowPlaying.textContent = "Unknown track";
-        }
+        const res = await fetch('/api/metadata');
+        const data = await res.json();
+        nowPlaying.textContent = `Now Playing: ${data.nowPlaying}`;
       } catch (err) {
         nowPlaying.textContent = "Unable to fetch metadata";
         console.error("Fetch error:", err);
