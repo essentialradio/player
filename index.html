@@ -202,6 +202,26 @@ async function fetchRecentTracks() {
 }
 
 
+    
+async function fetchRecentFromGitHub() {
+  try {
+    const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json');
+    const data = await res.json();
+
+    const list = document.getElementById('recent-list');
+    const items = data
+      .filter(item => item.Artist && item.Title)
+      .slice(-5)
+      .reverse()
+      .map(item => `<li>${item.Artist} – ${item.Title}</li>`);
+
+    list.innerHTML = items.join('');
+  } catch (e) {
+    console.error("Recent fetch failed:", e);
+  }
+}
+
+
     async function fetchNowPlaying() {
       try {
         const res = await fetch('/api/metadata');
@@ -227,9 +247,9 @@ async function fetchRecentTracks() {
     }
 
     setInterval(fetchNowPlaying, 15000);
-    setInterval(fetchRecentTracks, 15000);
+    setInterval(fetchRecentFromGitHub, 15000);
     fetchNowPlaying();
-    fetchRecentTracks();
+    fetchRecentFromGitHub();
   </script>
 </body>
 </html>
