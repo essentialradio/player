@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Essential Radio Player</title>
   <style>
     body {
@@ -26,9 +27,17 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #now-playing, #recently-played, #up-next {
+    #now-playing {
       margin-top: 15px;
       font-size: 16px;
+    }
+    #artwork {
+      margin-top: 20px;
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+      object-fit: cover;
+      display: none;
     }
   </style>
 </head>
@@ -40,15 +49,14 @@
     </audio>
     <button id="play-toggle">▶️ Play</button>
     <div id="now-playing">Loading current track...</div>
-    <div id="up-next">Next: Loading...</div>
-    <div id="recently-played">Recently Played: Loading...</div>
+    <img id="artwork" src="" alt="Artwork">
   </div>
+
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
     const nowPlaying = document.getElementById('now-playing');
-    const upNext = document.getElementById('up-next');
-    const recentlyPlayed = document.getElementById('recently-played');
+    const artwork = document.getElementById('artwork');
     let isPlaying = false;
 
     playBtn.addEventListener('click', () => {
@@ -65,26 +73,30 @@
 
     async function fetchMetadata() {
       try {
-        const [metaRes, streamRes] = await Promise.all([
-          fetch('/api/playout'),
-          fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html')
-        ]);
-        const meta = await metaRes.json();
-        const text = await streamRes.text();
-        const parts = text.split(',');
-        const streamTitle = parts.findLast(p => isNaN(p) && !p.includes('<') && p.trim().length > 1);
-        nowPlaying.textContent = streamTitle ? `Now Playing: ${streamTitle.trim()}` : "Now Playing: Unknown";
+        const res = await fetch('/api/metadata');
+        const data = await res.json();
 
-        upNext.textContent = meta.nextToPlay ? `Next: ${meta.nextToPlay}` : "";
-        recentlyPlayed.textContent = "Recently Played: " + (meta.recentlyPlayed.map(p => p.title).join(", ") || "N/A");
+        if (data.nowPlaying) {
+          nowPlaying.textContent = `Now Playing: ${data.nowPlaying}`;
+        } else {
+          nowPlaying.textContent = 'Unknown Track';
+        }
+
+        if (data.artworkUrl) {
+          artwork.src = data.artworkUrl;
+          artwork.style.display = 'block';
+        } else {
+          artwork.style.display = 'none';
+        }
       } catch (err) {
-        nowPlaying.textContent = "Unable to fetch metadata";
-        console.error("Metadata fetch error:", err);
+        nowPlaying.textContent = 'Unable to fetch metadata';
+        artwork.style.display = 'none';
+        console.error('Fetch error:', err);
       }
     }
 
-    setInterval(fetchMetadata, 15000);
     fetchMetadata();
+    setInterval(fetchMetadata, 15000);
   </script>
 </body>
 </html>
