@@ -1,70 +1,99 @@
-import fs from 'fs';
-import path from 'path';
-import fetch from 'node-fetch';
-import { getCloseMatches } from 'string-similarity';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Essential Radio Player</title>
+  <style>
+    body {
+      background: #00818a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #player-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    button {
+      background: #d93f54;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #now-playing, #next-track, #recently-played {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    #artwork {
+      margin-top: 20px;
+      border-radius: 8px;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div id="player-box">
+    <h2>Essential Radio</h2>
+    <audio id="stream" preload="none">
+      <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
+    </audio>
+    <button id="play-toggle">▶️ Play</button>
+    <div id="now-playing">Loading current track...</div>
+    <img id="artwork" src="" alt="Artwork" style="display: none;">
+    <div id="next-track">Next: Loading...</div>
+    <div id="recently-played">Recently Played: Loading...</div>
+  </div>
+  <script>
+    const audio = document.getElementById('stream');
+    const playBtn = document.getElementById('play-toggle');
+    const nowPlaying = document.getElementById('now-playing');
+    const artworkImg = document.getElementById('artwork');
+    const nextTrack = document.getElementById('next-track');
+    const recentlyPlayed = document.getElementById('recently-played');
+    let isPlaying = false;
 
-const playoutPath = path.join(process.cwd(), 'playout_log_rolling.json');
-
-export async function GET() {
-  try {
-    const raw = fs.readFileSync(playoutPath, 'utf8');
-    const data = JSON.parse(raw);
-
-    const entries = Array.isArray(data) ? data : [];
-    const now = Date.now();
-
-    const recent = entries.filter(e => now - new Date(e.startTime).getTime() < 45 * 60 * 1000);
-    const nowPlayingEntry = recent.find(e => e.isCurrent || e.hasPlayed);
-    const nextEntry = entries.find(e => !e.hasPlayed && !e.isCurrent);
-
-    const trackTitle = nowPlayingEntry?.title || 'Unknown Track';
-    const artist = trackTitle.split(' - ')[0]?.trim();
-    const title = trackTitle.split(' - ')[1]?.trim();
-
-    const artwork = await getArtwork(artist, title);
-
-    return Response.json({
-      nowPlaying: trackTitle,
-      recentlyPlayed: recent.map(e => e.title),
-      nextToPlay: nextEntry?.title || null,
-      artwork
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play().catch(err => console.error("Play failed:", err));
+        playBtn.textContent = '⏸ Pause';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️ Play';
+        isPlaying = false;
+      }
     });
-  } catch (error) {
-    console.error('Metadata fetch failed:', error);
-    return Response.json({
-      nowPlaying: 'Unknown Track',
-      recentlyPlayed: [],
-      nextToPlay: null,
-      artwork: null,
-      error: 'Failed to load playout data'
-    });
-  }
-}
 
-async function getArtwork(artist, title) {
-  const query = encodeURIComponent(`${artist} ${title}`);
+    async function fetchMetadata() {
+      try {
+        const res = await fetch('/api/metadata');
+        const data = await res.json();
+        nowPlaying.innerHTML = `Now Playing: ${data.nowPlaying || 'Unknown Track'}`;
+        nextTrack.innerHTML = `Next: ${data.nextToPlay || 'Unknown'}`;
+        recentlyPlayed.innerHTML = `Recently Played: ${data.recentlyPlayed?.slice(1, 4).join(', ') || 'None'}`;
+        if (data.artwork) {
+          artworkImg.src = data.artwork;
+          artworkImg.style.display = 'block';
+        } else {
+          artworkImg.style.display = 'none';
+        }
+      } catch (err) {
+        nowPlaying.textContent = "Unable to fetch metadata";
+        nextTrack.textContent = "Next: Unknown";
+        recentlyPlayed.textContent = "Recently Played: Unknown";
+        artworkImg.style.display = 'none';
+        console.error("Metadata fetch error:", err);
+      }
+    }
 
-  // iTunes
-  try {
-    const iTunesRes = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
-    const iTunesJson = await iTunesRes.json();
-    if (iTunesJson.results?.length) return iTunesJson.results[0].artworkUrl100.replace('100x100', '300x300');
-  } catch (e) {}
-
-  // Deezer
-  try {
-    const deezerRes = await fetch(`https://api.deezer.com/search?q=${query}`);
-    const deezerJson = await deezerRes.json();
-    if (deezerJson.data?.length) return deezerJson.data[0].album.cover_medium;
-  } catch (e) {}
-
-  // Last.fm (requires demo key or your own API key)
-  try {
-    const lastfmRes = await fetch(`https://ws.audioscrobbler.com/2.0/?method=track.search&track=${encodeURIComponent(title)}&artist=${encodeURIComponent(artist)}&api_key=demo&format=json`);
-    const lastfmJson = await lastfmRes.json();
-    const match = lastfmJson.results?.trackmatches?.track?.[0];
-    if (match?.image?.length) return match.image.pop()['#text'];
-  } catch (e) {}
-
-  return null;
-}
+    setInterval(fetchMetadata, 15000);
+    fetchMetadata();
+  </script>
+</body>
+</html>
