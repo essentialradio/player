@@ -1,118 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Essential Radio Player</title>
-  <style>
-    body {
-      background: #00818a;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    #player-box {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
-    }
-    button {
-      background: #d93f54;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #now-playing, #next-track, #recent-tracks {
-      margin-top: 15px;
-      font-size: 16px;
-    }
-    #artwork {
-      margin-top: 20px;
-      border-radius: 8px;
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-    }
-  </style>
-</head>
-<body>
-  <div id="player-box">
-    <h2>Essential Radio</h2>
-    <audio id="stream" preload="none">
-      <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
-    </audio>
-    <button id="play-toggle">▶️ Play</button>
-    <div id="now-playing">Loading current track...</div>
-    <div id="next-track">Next: Loading...</div>
-    <div id="recent-tracks">Recently Played: Loading...</div>
-    <img id="artwork" src="" alt="Artwork" />
-  </div>
+import fs from 'fs';
+import path from 'path';
+import fetch from 'node-fetch';
+import { getCloseMatches } from 'string-similarity';
 
-  <script>
-    const audio = document.getElementById('stream');
-    const playBtn = document.getElementById('play-toggle');
-    const nowPlaying = document.getElementById('now-playing');
-    const nextTrack = document.getElementById('next-track');
-    const recentTracks = document.getElementById('recent-tracks');
-    const artworkImg = document.getElementById('artwork');
-    let isPlaying = false;
+const playoutPath = path.join(process.cwd(), 'playout_log_rolling.json');
 
-    playBtn.addEventListener('click', () => {
-      if (!isPlaying) {
-        audio.play().catch(err => console.error("Play failed:", err));
-        playBtn.textContent = '⏸ Pause';
-        isPlaying = true;
-      } else {
-        audio.pause();
-        playBtn.textContent = '▶️ Play';
-        isPlaying = false;
-      }
+export async function GET() {
+  try {
+    const raw = fs.readFileSync(playoutPath, 'utf8');
+    const data = JSON.parse(raw);
+
+    const entries = Array.isArray(data) ? data : [];
+    const now = Date.now();
+
+    const recent = entries.filter(e => now - new Date(e.startTime).getTime() < 45 * 60 * 1000);
+    const nowPlayingEntry = recent.find(e => e.isCurrent || e.hasPlayed);
+    const nextEntry = entries.find(e => !e.hasPlayed && !e.isCurrent);
+
+    const trackTitle = nowPlayingEntry?.title || 'Unknown Track';
+    const artist = trackTitle.split(' - ')[0]?.trim();
+    const title = trackTitle.split(' - ')[1]?.trim();
+
+    const artwork = await getArtwork(artist, title);
+
+    return Response.json({
+      nowPlaying: trackTitle,
+      recentlyPlayed: recent.map(e => e.title),
+      nextToPlay: nextEntry?.title || null,
+      artwork
     });
+  } catch (error) {
+    console.error('Metadata fetch failed:', error);
+    return Response.json({
+      nowPlaying: 'Unknown Track',
+      recentlyPlayed: [],
+      nextToPlay: null,
+      artwork: null,
+      error: 'Failed to load playout data'
+    });
+  }
+}
 
-    async function fetchArtwork(trackName) {
-      if (!trackName) {
-        artworkImg.src = '';
-        return;
-      }
-      const encoded = encodeURIComponent(trackName);
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encoded}&limit=1`);
-        const data = await res.json();
-        if (data.results && data.results.length > 0) {
-          artworkImg.src = data.results[0].artworkUrl100.replace('100x100', '300x300');
-        } else {
-          artworkImg.src = '';
-        }
-      } catch {
-        artworkImg.src = '';
-      }
-    }
+async function getArtwork(artist, title) {
+  const query = encodeURIComponent(`${artist} ${title}`);
 
-    async function fetchNowPlaying() {
-      try {
-        const res = await fetch('/api/metadata');
-        const data = await res.json();
+  // iTunes
+  try {
+    const iTunesRes = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+    const iTunesJson = await iTunesRes.json();
+    if (iTunesJson.results?.length) return iTunesJson.results[0].artworkUrl100.replace('100x100', '300x300');
+  } catch (e) {}
 
-        nowPlaying.textContent = "Now Playing: " + (data.nowPlaying || "Unknown Track");
-        nextTrack.textContent = "Next: " + (data.nextToPlay || "Loading...");
-        recentTracks.textContent = "Recently Played: " + (data.recentlyPlayed?.join(', ') || "Loading...");
+  // Deezer
+  try {
+    const deezerRes = await fetch(`https://api.deezer.com/search?q=${query}`);
+    const deezerJson = await deezerRes.json();
+    if (deezerJson.data?.length) return deezerJson.data[0].album.cover_medium;
+  } catch (e) {}
 
-        fetchArtwork(data.nowPlaying);
-      } catch (err) {
-        nowPlaying.textContent = "Unable to fetch metadata";
-        nextTrack.textContent = "Next: -";
-        recentTracks.textContent = "Recently Played: -";
-        artworkImg.src = '';
-        console.error("Fetch error:", err);
-      }
-    }
+  // Last.fm (requires demo key or your own API key)
+  try {
+    const lastfmRes = await fetch(`https://ws.audioscrobbler.com/2.0/?method=track.search&track=${encodeURIComponent(title)}&artist=${encodeURIComponent(artist)}&api_key=demo&format=json`);
+    const lastfmJson = await lastfmRes.json();
+    const match = lastfmJson.results?.trackmatches?.track?.[0];
+    if (match?.image?.length) return match.image.pop()['#text'];
+  } catch (e) {}
 
-    setInterval(fetchNowPlaying, 15000);
-    fetchNowPlaying();
-  </script>
-</body>
-</html>
+  return null;
+}
