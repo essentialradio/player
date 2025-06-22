@@ -25,6 +25,22 @@
       font-size: 18px;
       border-radius: 5px;
       cursor: pointer;
+      margin-top: 10px;
+    }
+    #volume-container {
+      margin-top: 15px;
+    }
+    #volume-slider {
+      width: 200px;
+      vertical-align: middle;
+    }
+    #volume-display {
+      display: inline-block;
+      width: 40px;
+      text-align: left;
+      margin-left: 10px;
+      font-size: 14px;
+      color: #ccc;
     }
     #now-playing, #next-track, #recent-tracks {
       margin-top: 15px;
@@ -46,6 +62,14 @@
       <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
     </audio>
     <button id="play-toggle">▶️ Play</button>
+
+    <div id="volume-container">
+      <label for="volume-slider">Volume:</label>
+      <input type="range" id="volume-slider" min="0" max="100" value="100">
+      <span id="volume-display">100%</span>
+      <button id="mute-toggle">🔊</button>
+    </div>
+
     <div id="now-playing">Loading current track...</div>
     <div id="next-track">Next: Loading...</div>
     <div id="recent-tracks">Recently Played: Loading...</div>
@@ -55,11 +79,15 @@
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
+    const muteBtn = document.getElementById('mute-toggle');
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeDisplay = document.getElementById('volume-display');
     const nowPlaying = document.getElementById('now-playing');
     const nextTrack = document.getElementById('next-track');
     const recentTracks = document.getElementById('recent-tracks');
     const artworkImg = document.getElementById('artwork');
     let isPlaying = false;
+    let lastVolume = 1;
 
     playBtn.addEventListener('click', () => {
       if (!isPlaying) {
@@ -70,6 +98,33 @@
         audio.pause();
         playBtn.textContent = '▶️ Play';
         isPlaying = false;
+      }
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      const vol = volumeSlider.value / 100;
+      audio.volume = vol;
+      volumeDisplay.textContent = `${volumeSlider.value}%`;
+
+      if (vol === 0) {
+        muteBtn.textContent = '🔇';
+      } else {
+        muteBtn.textContent = '🔊';
+      }
+    });
+
+    muteBtn.addEventListener('click', () => {
+      if (audio.volume > 0) {
+        lastVolume = audio.volume;
+        audio.volume = 0;
+        volumeSlider.value = 0;
+        volumeDisplay.textContent = '0%';
+        muteBtn.textContent = '🔇';
+      } else {
+        audio.volume = lastVolume;
+        volumeSlider.value = lastVolume * 100;
+        volumeDisplay.textContent = `${Math.round(lastVolume * 100)}%`;
+        muteBtn.textContent = '🔊';
       }
     });
 
