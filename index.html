@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Essential Radio Player</title>
+  <style>
+    body {
+      background: #00818a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #player-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    button {
+      background: #d93f54;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #now-playing, #recently-played, #up-next {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="player-box">
+    <h2>Essential Radio</h2>
+    <audio id="stream" preload="none">
+      <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
+    </audio>
+    <button id="play-toggle">▶️ Play</button>
+    <div id="now-playing">Loading current track...</div>
+    <div id="up-next">Next: Loading...</div>
+    <div id="recently-played">Recently Played: Loading...</div>
+  </div>
+  <script>
+    const audio = document.getElementById('stream');
+    const playBtn = document.getElementById('play-toggle');
+    const nowPlaying = document.getElementById('now-playing');
+    const upNext = document.getElementById('up-next');
+    const recentlyPlayed = document.getElementById('recently-played');
+    let isPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play().catch(err => console.error("Play failed:", err));
+        playBtn.textContent = '⏸ Pause';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️ Play';
+        isPlaying = false;
+      }
+    });
+
+    async function fetchMetadata() {
+      try {
+        const [metaRes, streamRes] = await Promise.all([
+          fetch('/api/playout'),
+          fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html')
+        ]);
+        const meta = await metaRes.json();
+        const text = await streamRes.text();
+        const parts = text.split(',');
+        const streamTitle = parts.findLast(p => isNaN(p) && !p.includes('<') && p.trim().length > 1);
+        nowPlaying.textContent = streamTitle ? `Now Playing: ${streamTitle.trim()}` : "Now Playing: Unknown";
+
+        upNext.textContent = meta.nextToPlay ? `Next: ${meta.nextToPlay}` : "";
+        recentlyPlayed.textContent = "Recently Played: " + (meta.recentlyPlayed.map(p => p.title).join(", ") || "N/A");
+      } catch (err) {
+        nowPlaying.textContent = "Unable to fetch metadata";
+        console.error("Metadata fetch error:", err);
+      }
+    }
+
+    setInterval(fetchMetadata, 15000);
+    fetchMetadata();
+  </script>
+</body>
+</html>
