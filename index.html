@@ -26,7 +26,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #now-playing, #recently-played, #up-next {
+    #now-playing {
       margin-top: 15px;
       font-size: 16px;
     }
@@ -40,15 +40,11 @@
     </audio>
     <button id="play-toggle">▶️ Play</button>
     <div id="now-playing">Loading current track...</div>
-    <div id="up-next">Next: Loading...</div>
-    <div id="recently-played">Recently Played: Loading...</div>
   </div>
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
     const nowPlaying = document.getElementById('now-playing');
-    const upNext = document.getElementById('up-next');
-    const recentlyPlayed = document.getElementById('recently-played');
     let isPlaying = false;
 
     playBtn.addEventListener('click', () => {
@@ -63,28 +59,25 @@
       }
     });
 
-    async function fetchMetadata() {
+    async function fetchNowPlaying() {
       try {
-        const [metaRes, streamRes] = await Promise.all([
-          fetch('/api/playout'),
-          fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html')
-        ]);
-        const meta = await metaRes.json();
-        const text = await streamRes.text();
+        const res = await fetch("https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html");
+        const text = await res.text();
         const parts = text.split(',');
-        const streamTitle = parts.findLast(p => isNaN(p) && !p.includes('<') && p.trim().length > 1);
-        nowPlaying.textContent = streamTitle ? `Now Playing: ${streamTitle.trim()}` : "Now Playing: Unknown";
-
-        upNext.textContent = meta.nextToPlay ? `Next: ${meta.nextToPlay}` : "";
-        recentlyPlayed.textContent = "Recently Played: " + (meta.recentlyPlayed.map(p => p.title).join(", ") || "N/A");
+        const track = parts.findLast(p => isNaN(p) && !p.includes('<') && p.trim().length > 1);
+        if (track) {
+          nowPlaying.textContent = `Now Playing: ${track.trim()}`;
+        } else {
+          nowPlaying.textContent = "Unknown track";
+        }
       } catch (err) {
         nowPlaying.textContent = "Unable to fetch metadata";
-        console.error("Metadata fetch error:", err);
+        console.error("Fetch error:", err);
       }
     }
 
-    setInterval(fetchMetadata, 15000);
-    fetchMetadata();
+    setInterval(fetchNowPlaying, 15000);
+    fetchNowPlaying();
   </script>
 </body>
 </html>
