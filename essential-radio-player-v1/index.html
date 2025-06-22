@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Essential Radio Player</title>
+  <style>
+    body {
+      background: #00818a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #player-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    button {
+      background: #d93f54;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #now-playing {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="player-box">
+    <h2>Essential Radio</h2>
+    <audio id="stream" preload="none">
+      <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
+    </audio>
+    <button id="play-toggle">▶️ Play</button>
+    <div id="now-playing">Loading current track...</div>
+  </div>
+  <script>
+    const audio = document.getElementById('stream');
+    const playBtn = document.getElementById('play-toggle');
+    const nowPlaying = document.getElementById('now-playing');
+    let isPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play().catch(err => console.error("Play failed:", err));
+        playBtn.textContent = '⏸ Pause';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️ Play';
+        isPlaying = false;
+      }
+    });
+
+    async function fetchNowPlaying() {
+      try {
+        const res = await fetch('/api/metadata');
+        const data = await res.json();
+        nowPlaying.textContent = `Now Playing: ${data.nowPlaying}`;
+      } catch (err) {
+        nowPlaying.textContent = "Unable to fetch metadata";
+        console.error("Fetch error:", err);
+      }
+    }
+
+    setInterval(fetchNowPlaying, 15000);
+    fetchNowPlaying();
+  </script>
+</body>
+</html>
