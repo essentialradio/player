@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Essential Radio Player</title>
-<style>
+  <meta charset="UTF-8" />
+  <title>Essential Radio Player</title>
+  <style>
     body {
       background: #00818a;
       color: white;
@@ -28,48 +26,93 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #now-playing {
+    #now-playing, #next-track, #recent-tracks {
       margin-top: 15px;
       font-size: 16px;
     }
-    #volume-slider {
-      width: 200px;
-      margin-top: 15px;
+    #artwork {
+      margin-top: 20px;
+      border-radius: 8px;
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
     }
   </style>
 </head>
 <body>
-<div id="player-box"><img id="artwork" src="" style="width: 300px; border-radius: 10px; margin-bottom: 10px; display: none;"/>
-<h2>Essential Radio</h2>
-<audio id="stream" preload="none">
-<source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg"/>
-</audio>
-<button id="play-toggle">▶️ Play</button>
-<br/><br/>
-<input id="volume-slider" max="1" min="0" step="0.01" type="range" value="1"/>
-<div id="now-playing">Loading current track...</div>
-</div>
-<script>
+  <div id="player-box">
+    <h2>Essential Radio</h2>
+    <audio id="stream" preload="none">
+      <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
+    </audio>
+    <button id="play-toggle">▶️ Play</button>
+    <div id="now-playing">Loading current track...</div>
+    <div id="next-track">Next: Loading...</div>
+    <div id="recent-tracks">Recently Played: Loading...</div>
+    <img id="artwork" src="" alt="Artwork" />
+  </div>
+
+  <script>
+    const audio = document.getElementById('stream');
+    const playBtn = document.getElementById('play-toggle');
+    const nowPlaying = document.getElementById('now-playing');
+    const nextTrack = document.getElementById('next-track');
+    const recentTracks = document.getElementById('recent-tracks');
+    const artworkImg = document.getElementById('artwork');
+    let isPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play().catch(err => console.error("Play failed:", err));
+        playBtn.textContent = '⏸ Pause';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️ Play';
+        isPlaying = false;
+      }
+    });
+
+    async function fetchArtwork(trackName) {
+      if (!trackName) {
+        artworkImg.src = '';
+        return;
+      }
+      const encoded = encodeURIComponent(trackName);
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?term=${encoded}&limit=1`);
+        const data = await res.json();
+        if (data.results && data.results.length > 0) {
+          artworkImg.src = data.results[0].artworkUrl100.replace('100x100', '300x300');
+        } else {
+          artworkImg.src = '';
+        }
+      } catch {
+        artworkImg.src = '';
+      }
+    }
+
     async function fetchNowPlaying() {
       try {
         const res = await fetch('/api/metadata');
         const data = await res.json();
-        const track = data.nowPlaying || "Unknown Track";
-        const artwork = data.artwork;
 
-        nowPlaying.textContent = `Now Playing: ${track}`;
-        if (artwork) {
-          const img = document.getElementById("artwork");
-          img.src = artwork;
-          img.style.display = 'block';
-        }
+        nowPlaying.textContent = "Now Playing: " + (data.nowPlaying || "Unknown Track");
+        nextTrack.textContent = "Next: " + (data.nextToPlay || "Loading...");
+        recentTracks.textContent = "Recently Played: " + (data.recentlyPlayed?.join(', ') || "Loading...");
+
+        fetchArtwork(data.nowPlaying);
       } catch (err) {
         nowPlaying.textContent = "Unable to fetch metadata";
+        nextTrack.textContent = "Next: -";
+        recentTracks.textContent = "Recently Played: -";
+        artworkImg.src = '';
         console.error("Fetch error:", err);
       }
     }
+
     setInterval(fetchNowPlaying, 15000);
     fetchNowPlaying();
-    </script>
+  </script>
 </body>
 </html>
