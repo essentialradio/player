@@ -26,14 +26,16 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #now-playing, #next-track, #recently-played {
+    #now-playing, #next-track, #recent-tracks {
       margin-top: 15px;
       font-size: 16px;
     }
     #artwork {
       margin-top: 20px;
       border-radius: 8px;
-      max-width: 300px;
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -45,17 +47,18 @@
     </audio>
     <button id="play-toggle">▶️ Play</button>
     <div id="now-playing">Loading current track...</div>
-    <img id="artwork" src="" alt="Artwork" style="display: none;">
     <div id="next-track">Next: Loading...</div>
-    <div id="recently-played">Recently Played: Loading...</div>
+    <div id="recent-tracks">Recently Played: Loading...</div>
+    <img id="artwork" src="" alt="Artwork" />
   </div>
+
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
     const nowPlaying = document.getElementById('now-playing');
-    const artworkImg = document.getElementById('artwork');
     const nextTrack = document.getElementById('next-track');
-    const recentlyPlayed = document.getElementById('recently-played');
+    const recentTracks = document.getElementById('recent-tracks');
+    const artworkImg = document.getElementById('artwork');
     let isPlaying = false;
 
     playBtn.addEventListener('click', () => {
@@ -70,30 +73,46 @@
       }
     });
 
-    async function fetchMetadata() {
+    async function fetchArtwork(trackName) {
+      if (!trackName) {
+        artworkImg.src = '';
+        return;
+      }
+      const encoded = encodeURIComponent(trackName);
       try {
-        const res = await fetch('/api/metadata');
+        const res = await fetch(`https://itunes.apple.com/search?term=${encoded}&limit=1`);
         const data = await res.json();
-        nowPlaying.innerHTML = `Now Playing: ${data.nowPlaying || 'Unknown Track'}`;
-        nextTrack.innerHTML = `Next: ${data.nextToPlay || 'Unknown'}`;
-        recentlyPlayed.innerHTML = `Recently Played: ${data.recentlyPlayed?.slice(1, 4).join(', ') || 'None'}`;
-        if (data.artwork) {
-          artworkImg.src = data.artwork;
-          artworkImg.style.display = 'block';
+        if (data.results && data.results.length > 0) {
+          artworkImg.src = data.results[0].artworkUrl100.replace('100x100', '300x300');
         } else {
-          artworkImg.style.display = 'none';
+          artworkImg.src = '';
         }
-      } catch (err) {
-        nowPlaying.textContent = "Unable to fetch metadata";
-        nextTrack.textContent = "Next: Unknown";
-        recentlyPlayed.textContent = "Recently Played: Unknown";
-        artworkImg.style.display = 'none';
-        console.error("Metadata fetch error:", err);
+      } catch {
+        artworkImg.src = '';
       }
     }
 
-    setInterval(fetchMetadata, 15000);
-    fetchMetadata();
+    async function fetchNowPlaying() {
+      try {
+        const res = await fetch('/api/metadata');
+        const data = await res.json();
+
+        nowPlaying.textContent = "Now Playing: " + (data.nowPlaying || "Unknown Track");
+        nextTrack.textContent = "Next: " + (data.nextToPlay || "Loading...");
+        recentTracks.textContent = "Recently Played: " + (data.recentlyPlayed?.join(', ') || "Loading...");
+
+        fetchArtwork(data.nowPlaying);
+      } catch (err) {
+        nowPlaying.textContent = "Unable to fetch metadata";
+        nextTrack.textContent = "Next: -";
+        recentTracks.textContent = "Recently Played: -";
+        artworkImg.src = '';
+        console.error("Fetch error:", err);
+      }
+    }
+
+    setInterval(fetchNowPlaying, 15000);
+    fetchNowPlaying();
   </script>
 </body>
 </html>
