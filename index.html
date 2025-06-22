@@ -72,10 +72,8 @@
 
     <div id="now-playing">Loading current track...</div>
     <div id="next-track">Next: Loading...</div>
-    
-<div id="recent-tracks">Recently Played:</div>
+    <div id="recent-tracks">Recently Played:</div>
 <ul id="recent-list"></ul>
-
     <img id="artwork" src="" alt="Artwork" />
   </div>
 
@@ -177,21 +175,20 @@
     
 async function fetchRecentTracks() {
   try {
-    const res = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html');
+    const res = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/played.html');
     const html = await res.text();
 
-    const table = document.createElement('table');
-    table.innerHTML = html;
-
-    const rows = Array.from(table.querySelectorAll('tr'));
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const rows = Array.from(doc.querySelectorAll('tr'));
     const recent = [];
 
     for (let row of rows) {
-      const cols = row.querySelectorAll('td');
-      if (cols.length >= 2) {
-        const artist = cols[1].textContent.trim();
-        if (artist && !recent.includes(artist)) {
-          recent.push(artist);
+      const cells = row.querySelectorAll('td');
+      if (cells.length >= 2) {
+        const title = cells[1].textContent.trim();
+        if (title && !recent.includes(title)) {
+          recent.push(title);
         }
       }
       if (recent.length === 5) break;
