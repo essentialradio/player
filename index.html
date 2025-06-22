@@ -1,77 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Essential Radio Player</title>
-  <style>
-    body {
-      background: #00818a;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    #player-box {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
-    }
-    button {
-      background: #d93f54;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #now-playing {
-      margin-top: 15px;
-      font-size: 16px;
-    }
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2022.7">
+  <style type="text/css">
+    body {background-color: #0e6f77}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 18.0px 'Apple Color Emoji'; font-kerning: none}
   </style>
 </head>
 <body>
-  <div id="player-box">
-    <h2>Essential Radio</h2>
-    <audio id="stream" preload="none">
-      <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
-    </audio>
-    <button id="play-toggle">▶️ Play</button>
-    <div id="now-playing">Loading current track...</div>
-  </div>
-  <script>
-    const audio = document.getElementById('stream');
-    const playBtn = document.getElementById('play-toggle');
-    const nowPlaying = document.getElementById('now-playing');
-    let isPlaying = false;
-
-    playBtn.addEventListener('click', () => {
-      if (!isPlaying) {
-        audio.play().catch(err => console.error("Play failed:", err));
-        playBtn.textContent = '⏸ Pause';
-        isPlaying = true;
-      } else {
-        audio.pause();
-        playBtn.textContent = '▶️ Play';
-        isPlaying = false;
-      }
-    });
-
-    async function fetchNowPlaying() {
-      try {
-        const res = await fetch('/api/metadata');
-        const data = await res.json();
-        nowPlaying.textContent = `Now Playing: ${data.nowPlaying}`;
-      } catch (err) {
-        nowPlaying.textContent = "Unable to fetch metadata";
-        console.error("Fetch error:", err);
-      }
-    }
-
-    setInterval(fetchNowPlaying, 15000);
-    fetchNowPlaying();
-  </script>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b>&lt;!DOCTYPE html&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b>&lt;html lang="en"&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b>&lt;head&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;title&gt;Essential Radio Player&lt;/title&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;style&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>body {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>background: #00818a;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>color: white;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>text-align: center;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>padding: 50px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>#player-box {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>background: #111;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>padding: 20px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>border-radius: 10px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>display: inline-block;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>button {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>background: #d93f54;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>color: white;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>border: none;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>padding: 10px 20px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>font-size: 18px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>border-radius: 5px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>cursor: pointer;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>#now-playing {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>margin-top: 15px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>font-size: 16px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>#artwork {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>margin-top: 15px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>border-radius: 10px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>width: 150px;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/style&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b>&lt;/head&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b>&lt;body&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;div id="player-box"&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;h2&gt;Essential Radio&lt;/h2&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;audio id="stream" preload="none"&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg"&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/audio&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;button id="play-toggle"&gt;</b></span><span class="s2">▶️</span><span class="s1"><b> Play&lt;/button&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div id="now-playing"&gt;Loading current track...&lt;/div&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;!-- Artwork will be inserted here --&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/div&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e; min-height: 21.0px"><span class="s1"><b></b></span><br></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;script&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>const audio = document.getElementById('stream');</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>const playBtn = document.getElementById('play-toggle');</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>const nowPlaying = document.getElementById('now-playing');</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>let isPlaying = false;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e; min-height: 21.0px"><span class="s1"><b></b></span><br></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>playBtn.addEventListener('click', () =&gt; {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>if (!isPlaying) {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>audio.play().catch(err =&gt; console.error("Play failed:", err));</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>playBtn.textContent = '</b></span><span class="s2">⏸</span><span class="s1"><b> Pause';</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>isPlaying = true;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>} else {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>audio.pause();</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>playBtn.textContent = '</b></span><span class="s2">▶️</span><span class="s1"><b> Play';</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>isPlaying = false;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>});</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e; min-height: 21.0px"><span class="s1"><b></b></span><br></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>async function fetchNowPlaying() {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>try {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>const res = await fetch('/api/metadata');</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>const data = await res.json();</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e; min-height: 21.0px"><span class="s1"><b></b></span><br></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>nowPlaying.textContent = `Now Playing: ${data.nowPlaying || "Unknown Track"}`;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e; min-height: 21.0px"><span class="s1"><b></b></span><br></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>// Show artwork if present</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>let artBox = document.getElementById('artwork');</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>if (data.artwork) {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">          </span>if (!artBox) {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">            </span>artBox = document.createElement('img');</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">            </span>artBox.id = 'artwork';</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">            </span>document.getElementById('player-box').appendChild(artBox);</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">          </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">          </span>artBox.src = data.artwork;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">          </span>artBox.alt = "Artwork";</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>} else if (artBox) {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">          </span>artBox.remove();</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>} catch (err) {</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>nowPlaying.textContent = "Unable to fetch metadata";</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">        </span>console.error("Fetch error:", err);</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">      </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e; min-height: 21.0px"><span class="s1"><b></b></span><br></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>setInterval(fetchNowPlaying, 15000);</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">    </span>fetchNowPlaying();</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/script&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b>&lt;/body&gt;</b></span></h2>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0e0e0e"><span class="s1"><b>&lt;/html&gt;</b></span></h2>
 </body>
 </html>
