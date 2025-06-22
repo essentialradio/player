@@ -72,7 +72,10 @@
 
     <div id="now-playing">Loading current track...</div>
     <div id="next-track">Next: Loading...</div>
-    <div id="recent-tracks">Recently Played: Loading...</div>
+    
+<div id="recent-tracks">Recently Played:</div>
+<ul id="recent-list"></ul>
+
     <img id="artwork" src="" alt="Artwork" />
   </div>
 
@@ -171,6 +174,37 @@
   }
 }
 
+    
+async function fetchRecentTracks() {
+  try {
+    const res = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html');
+    const html = await res.text();
+
+    const table = document.createElement('table');
+    table.innerHTML = html;
+
+    const rows = Array.from(table.querySelectorAll('tr'));
+    const recent = [];
+
+    for (let row of rows) {
+      const cols = row.querySelectorAll('td');
+      if (cols.length >= 2) {
+        const artist = cols[1].textContent.trim();
+        if (artist && !recent.includes(artist)) {
+          recent.push(artist);
+        }
+      }
+      if (recent.length === 5) break;
+    }
+
+    const list = document.getElementById('recent-list');
+    list.innerHTML = recent.map(track => `<li>${track}</li>`).join('');
+  } catch (e) {
+    console.error('Error fetching recent tracks:', e);
+  }
+}
+
+
     async function fetchNowPlaying() {
       try {
         const res = await fetch('/api/metadata');
@@ -196,7 +230,9 @@
     }
 
     setInterval(fetchNowPlaying, 15000);
+    setInterval(fetchRecentTracks, 15000);
     fetchNowPlaying();
+    fetchRecentTracks();
   </script>
 </body>
 </html>
