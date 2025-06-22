@@ -131,48 +131,45 @@
     });
 
     async function fetchArtwork(trackName) {
-      if (!trackName) {
-        artworkImg.src = '';
-        return;
-      }
+  if (!trackName) {
+    artworkImg.src = '';
+    return;
+  }
 
-      const safeName = trackName
-        .replace(/\s*\(.*?\)/g, '')         
-        .replace(/[^a-zA-Z0-9\s-]/g, '')     
-        .trim()
-        .replace(/\s+/g, '_');              
+  const safeName = trackName
+    .replace(/\s*\(.*?\)/g, '')
+    .replace(/[^a-zA-Z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '_');
 
-      const [artist, title] = safeName.split('_-_');
-      const base = `${artist}_${title}`;
-      const subfolder = artist?.[0]?.toLowerCase() || 'a';
-      const autoPostUrl = `https://cdn.autopo.st/images/coverart/${subfolder}/${base}.jpg`;
+  const [artist, title] = safeName.split('_-_');
+  const base = `${artist}_${title}`;
+  const subfolder = artist?.[0]?.toLowerCase() || 'a';
+  const autoPostUrl = `https://cdn.autopo.st/images/coverart/${subfolder}/${base}.jpg`;
 
-      try {
-        const res = await fetch(autoPostUrl, { method: 'HEAD' });
-        if (res.ok) {
-          artworkImg.src = autoPostUrl;
-          return;
-        }
-      } catch (e) {
-        // proceed to fallback
-      }
-      if (!trackName) {
-        artworkImg.src = '';
-        return;
-      }
-      const encoded = encodeURIComponent(trackName);
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encoded}&limit=1`);
-        const data = await res.json();
-        if (data.results && data.results.length > 0) {
-          artworkImg.src = data.results[0].artworkUrl100.replace('100x100', '300x300');
-        } else {
-          artworkImg.src = '';
-        }
-      } catch {
-        artworkImg.src = '';
-      }
+  try {
+    const res = await fetch(autoPostUrl, { method: 'HEAD' });
+    if (res.ok) {
+      artworkImg.src = autoPostUrl;
+      return;
     }
+  } catch (e) {
+    // proceed to fallback
+  }
+
+  const encoded = encodeURIComponent(trackName);
+  try {
+    const res = await fetch(`https://itunes.apple.com/search?term=${encoded}&limit=1`);
+    const data = await res.json();
+    if (data.results && data.results.length > 0) {
+      artworkImg.src = data.results[0].artworkUrl100.replace('100x100', '300x300');
+    } else {
+      artworkImg.src = '';
+    }
+  } catch {
+    artworkImg.src = '';
+  }
+}
 
     async function fetchNowPlaying() {
       try {
