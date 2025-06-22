@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Essential Radio Player</title>
   <style>
     body {
@@ -26,16 +27,13 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #now-playing, #next-track, #recent-tracks {
+    #now-playing {
       margin-top: 15px;
       font-size: 16px;
     }
-    #artwork {
-      margin-top: 20px;
-      border-radius: 8px;
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
+    #volume-slider {
+      width: 200px;
+      margin-top: 15px;
     }
   </style>
 </head>
@@ -46,19 +44,16 @@
       <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg">
     </audio>
     <button id="play-toggle">▶️ Play</button>
+    <br><br>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" />
     <div id="now-playing">Loading current track...</div>
-    <div id="next-track">Next: Loading...</div>
-    <div id="recent-tracks">Recently Played: Loading...</div>
-    <img id="artwork" src="" alt="Artwork" />
   </div>
 
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
     const nowPlaying = document.getElementById('now-playing');
-    const nextTrack = document.getElementById('next-track');
-    const recentTracks = document.getElementById('recent-tracks');
-    const artworkImg = document.getElementById('artwork');
+    const volumeSlider = document.getElementById('volume-slider');
     let isPlaying = false;
 
     playBtn.addEventListener('click', () => {
@@ -73,40 +68,18 @@
       }
     });
 
-    async function fetchArtwork(trackName) {
-      if (!trackName) {
-        artworkImg.src = '';
-        return;
-      }
-      const encoded = encodeURIComponent(trackName);
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encoded}&limit=1`);
-        const data = await res.json();
-        if (data.results && data.results.length > 0) {
-          artworkImg.src = data.results[0].artworkUrl100.replace('100x100', '300x300');
-        } else {
-          artworkImg.src = '';
-        }
-      } catch {
-        artworkImg.src = '';
-      }
-    }
+    volumeSlider.addEventListener('input', () => {
+      audio.volume = volumeSlider.value;
+    });
 
     async function fetchNowPlaying() {
       try {
         const res = await fetch('/api/metadata');
         const data = await res.json();
-
-        nowPlaying.textContent = "Now Playing: " + (data.nowPlaying || "Unknown Track");
-        nextTrack.textContent = "Next: " + (data.nextToPlay || "Loading...");
-        recentTracks.textContent = "Recently Played: " + (data.recentlyPlayed?.join(', ') || "Loading...");
-
-        fetchArtwork(data.nowPlaying);
+        const track = data.nowPlaying || "Unknown track";
+        nowPlaying.textContent = `Now Playing: ${track}`;
       } catch (err) {
         nowPlaying.textContent = "Unable to fetch metadata";
-        nextTrack.textContent = "Next: -";
-        recentTracks.textContent = "Recently Played: -";
-        artworkImg.src = '';
         console.error("Fetch error:", err);
       }
     }
