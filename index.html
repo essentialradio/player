@@ -4,10 +4,32 @@
   <meta charset="UTF-8">
   <title>Essential Radio Player</title>
   <style>
-    body { background: #00818a; color: white; font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-    #player-box { background: #111; padding: 20px; border-radius: 10px; display: inline-block; }
-    button { background: #d93f54; color: white; border: none; padding: 10px 20px; font-size: 18px; border-radius: 5px; cursor: pointer; }
-    #now-playing { margin-top: 15px; font-size: 16px; }
+    body {
+      background: #00818a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #player-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    button {
+      background: #d93f54;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #now-playing {
+      margin-top: 15px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
@@ -18,6 +40,7 @@
     </audio>
     <button id="play-toggle">▶️ Play</button>
     <div id="now-playing">Loading current track...</div>
+    <div id="artwork-container" style="margin-top:15px;"><img id="artwork" src="" alt="" style="max-width:200px; border-radius:10px; display:none;"></div>
   </div>
   <script>
     const audio = document.getElementById('stream');
