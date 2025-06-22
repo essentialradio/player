@@ -136,6 +136,57 @@
     return;
   }
 
+  // Normalize the track name
+  const normalize = str => str
+    .replace(/’/g, "'")
+    .replace(/&/g, 'and')
+    .replace(/\s*\(.*?\)/g, '')
+    .replace(/[^a-zA-Z0-9\s'-]/g, '')
+    .trim()
+    .toLowerCase()
+    .replace(/[\s']+/g, '_');
+
+  const raw = trackName.replace(/\s*\(.*?\)/g, '');
+  const parts = raw.split(' - ');
+  if (parts.length < 2) {
+    return fetchFallback(trackName); // Not in expected format
+  }
+
+  const [artistRaw, titleRaw] = parts;
+  const artist = normalize(artistRaw);
+  const title = normalize(titleRaw);
+  const base = `${artist}_-_` + title;
+  const subfolder = artist[0] || 'a';
+  const autoPostUrl = `https://cdn.autopo.st/images/coverart/${subfolder}/${base}.jpg`;
+
+  try {
+    const res = await fetch(autoPostUrl, { method: 'HEAD' });
+    if (res.ok) {
+      artworkImg.src = autoPostUrl;
+      return;
+    }
+  } catch (e) {
+    // continue to fallback
+  }
+
+  return fetchFallback(trackName);
+
+  async function fetchFallback(originalName) {
+    const encoded = encodeURIComponent(originalName);
+    try {
+      const res = await fetch(`https://itunes.apple.com/search?term=${encoded}&limit=1`);
+      const data = await res.json();
+      if (data.results && data.results.length > 0) {
+        artworkImg.src = data.results[0].artworkUrl100.replace('100x100', '300x300');
+      } else {
+        artworkImg.src = '';
+      }
+    } catch {
+      artworkImg.src = '';
+    }
+  }
+}
+
   const safeName = trackName
     .replace(/\s*\(.*?\)/g, '')
     .replace(/[^a-zA-Z0-9\s-]/g, '')
