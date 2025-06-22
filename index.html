@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #now-playing, #next, #recent {
+    #now-playing {
       margin-top: 15px;
       font-size: 16px;
     }
@@ -34,6 +35,7 @@
       margin-top: 15px;
       max-width: 200px;
       border-radius: 10px;
+      display: none;
     }
   </style>
 </head>
@@ -45,17 +47,13 @@
     </audio>
     <button id="play-toggle">▶️ Play</button>
     <div id="now-playing">Loading current track...</div>
-    <img id="artwork" src="" alt="Artwork" style="display:none;" />
-    <div id="next">Next: Loading...</div>
-    <div id="recent">Recently Played: Loading...</div>
+    <img id="artwork" src="" alt="Artwork">
   </div>
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
     const nowPlaying = document.getElementById('now-playing');
-    const next = document.getElementById('next');
-    const recent = document.getElementById('recent');
-    const artwork = document.getElementById('artwork');
+    const artworkImg = document.getElementById('artwork');
     let isPlaying = false;
 
     playBtn.addEventListener('click', () => {
@@ -70,34 +68,20 @@
       }
     });
 
-    function decodeHtmlEntities(str) {
-      const txt = document.createElement('textarea');
-      txt.innerHTML = str;
-      return txt.value;
-    }
-
     async function fetchNowPlaying() {
       try {
         const res = await fetch('/api/metadata');
         const data = await res.json();
-        const current = data.nowPlaying || "Unknown Track";
-        nowPlaying.textContent = `Now Playing: ${decodeHtmlEntities(current)}`;
-
-        if (data.artworkUrl) {
-          artwork.src = data.artworkUrl;
-          artwork.style.display = 'block';
+        nowPlaying.textContent = `Now Playing: ${data.nowPlaying || "Unknown Track"}`;
+        if (data.artwork) {
+          artworkImg.src = data.artwork;
+          artworkImg.style.display = 'block';
         } else {
-          artwork.style.display = 'none';
+          artworkImg.style.display = 'none';
         }
-
-        next.textContent = data.nextToPlay ? `Next: ${decodeHtmlEntities(data.nextToPlay)}` : "Next: Unknown";
-        recent.textContent = data.recentlyPlayed && data.recentlyPlayed.length
-          ? `Recently Played: ${decodeHtmlEntities(data.recentlyPlayed[0])}`
-          : "Recently Played: Unknown";
       } catch (err) {
         nowPlaying.textContent = "Unable to fetch metadata";
-        next.textContent = "Next: Error";
-        recent.textContent = "Recently Played: Error";
+        artworkImg.style.display = 'none';
         console.error("Fetch error:", err);
       }
     }
