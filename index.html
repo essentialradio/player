@@ -272,207 +272,231 @@
     </div>
   </div>
 
-  <script>
-    // Schedule & “On Air Now” logic
-    async function fetchSchedule() {
-      try {
-        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return await res.json();
-      } catch (e) {
-        console.error("Schedule fetch error:", e);
-        return null;
-      }
+  <!-- Schedule & “On Air Now” logic -->
+<script>
+  async function fetchSchedule() {
+    try {
+      const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (e) {
+      console.error("Schedule fetch error:", e);
+      return null;
     }
-
-    function getCurrentShow(schedule) {
-      const now = new Date();
-      const day = now.toLocaleString("en-GB", { weekday: "long" });
-      const shows = schedule[day];
-      if (!shows) return "No schedule available";
-
-      const nowMins = now.getHours() * 60 + now.getMinutes();
-      for (const show of shows) {
-        const [sh, sm] = show.start.split(":").map(Number);
-        const [eh, em] = show.end.split(":").map(Number);
-        let start = sh * 60 + sm;
-        let end = eh * 60 + em;
-        if (end === 0 && start > 0) end = 1440;
-        if (nowMins >= start && nowMins < end) return show.title;
-      }
-      return "Off Air";
-    }
-
-    async function updateOnAirNow() {
-      const schedule = await fetchSchedule();
-      document.getElementById("currentShow").textContent =
-        schedule ? getCurrentShow(schedule) : "Schedule unavailable";
-    }
-
-    updateOnAirNow();
-    setInterval(updateOnAirNow, 60000);
-  </script>
-
-  <script>
-    // Now Playing & Recently Played logic
-    const audio = document.getElementById('stream');
-    const playBtn = document.getElementById('play-toggle');
-    const muteBtn = document.getElementById('mute-toggle');
-    const volumeSlider = document.getElementById('volume-slider');
-    const volumeDisplay = document.getElementById('volume-display');
-    const nowPlaying = document.getElementById('now-playing');
-    const artworkImg = document.getElementById('artwork');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('loaded');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    let isPlaying = false, lastVolume = 1;
-
-    playBtn.addEventListener('click', () => {
-      if (!isPlaying) {
-        audio.load(); audio.play().catch(() => {});
-        playBtn.textContent = '⏸ Pause'; isPlaying = true;
-      } else {
-        audio.pause(); playBtn.textContent = '▶️ Play Essential Radio'; isPlaying = false;
-      }
-    });
-
-    volumeSlider.addEventListener('input', () => {
-      const vol = volumeSlider.value / 100;
-      audio.volume = vol;
-      volumeDisplay.textContent = `${volumeSlider.value}%`;
-      muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
-    });
-
-    muteBtn.addEventListener('click', () => {
-      if (audio.volume > 0) {
-        lastVolume = audio.volume;
-        audio.volume = 0; volumeSlider.value = 0; volumeDisplay.textContent = '0%';
-        muteBtn.textContent = '🔇';
-      } else {
-        audio.volume = lastVolume;
-        volumeSlider.value = lastVolume * 100;
-        volumeDisplay.textContent = `${Math.round(lastVolume * 100)}%`;
-        muteBtn.textContent = lastVolume < 0.5 ? '🔈' : '🔊';
-      }
-    });
-
-    async function fetchNowPlaying() {
-      try {
-        const res = await fetch('/api/metadata');
-        const data = await res.json();
-        const decode = str => { const t= document.createElement('textarea'); t.innerHTML=str; return t.value; };
-        const raw = decode(data.nowPlaying||'').trim();
-        let [artist, title] = ['', ''];
-        const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-        if (sep) [artist, title] = raw.split(sep);
-        if (sep) {
-          nowPlaying.innerHTML = `
-            <span style="color:#fed351;">Now Playing:</span>
-            <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-            <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-            <span style="color:white;">by ${artist}</span>`;
-          fetchArtwork(`${artist} - ${title}`);
-        } else {
-          nowPlaying.innerHTML = `
-            <span style="color:#fed351;">Now Playing:</span>
-            <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-            <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
-            <span style="color:white;">on Essential Radio</span>`;
-          artworkImg.src = 'Essential Radio Logo.png';
-          artworkImg.classList.add('loaded','fallback');
-        }
-      } catch {
-        nowPlaying.textContent = 'Error loading track';
-        artworkImg.src = 'Essential Radio Logo.png';
-        artworkImg.classList.add('loaded','fallback');
-      }
-    }
-
-async function fetchRecentFromGitHub() {
-  try {
-    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-    // Append timestamp and disable cache
-    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-
-    // Grab the last 5 valid plays
-    const recentItems = data
-      .filter(item => item.Artist && item.Title)
-      .slice(-5)
-      .reverse();
-
-    // Build list entries
-    const entries = await Promise.all(recentItems.map(async item => {
-      const time = item['Scheduled Time'] || item.time || '';
-      const name = `${item.Artist} – ${item.Title}`;
-      const artSrc = (await getTrackArtwork(name)) || 'Essential Radio Logo.png';
-      return `
-        <li>
-          <span class="time">${time}</span>
-          <img src="${artSrc}"
-               alt="Cover for ${name}"
-               loading="lazy" />
-          <span class="info">${name}</span>
-        </li>`;
-    }));
-
-    // Render into the UL
-    const list = document.getElementById('recent-list');
-    list.innerHTML = entries.join('');
-    document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
-  } catch (e) {
-    console.error('Recent fetch failed:', e);
   }
-}
 
+  function getCurrentShow(schedule) {
+    const now = new Date();
+    const day = now.toLocaleString("en-GB", { weekday: "long" });
+    const shows = schedule && schedule[day];
+    if (!shows) return "No schedule available";
 
-    async function fetchArtwork(track) {
-      artworkImg.classList.remove('loaded','fallback');
-      artworkImg.src = 'Essential Radio Logo.png';
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(track)}&limit=1`);
-        const js = await res.json();
-        if (js.results[0]?.artworkUrl100) {
-          const url = js.results[0].artworkUrl100.replace('100x100','300x300');
-          artworkImg.onload = ()=>artworkImg.classList.add('loaded');
-          artworkImg.onerror = ()=>{ artworkImg.src='Essential Radio Logo.png'; artworkImg.onload=()=>artworkImg.classList.add('loaded','fallback'); };
-          artworkImg.src = url; return;
-        }
-      } catch {}
-      const safe = track.replace(/\s*\(.*?\)/g,'').replace(/[^a-zA-Z0-9\s-]/g,'').trim().replace(/\s+/g,'_');
-      const [a,t] = safe.split('_-_');
-      const url = `https://cdn.autopo.st/images/coverart/${a?.[0]?.toLowerCase()||'a'}/${a}_${t}.jpg`;
-      try {
-        const r = await fetch(url,{method:'HEAD'});
-        if (r.ok) {
-          artworkImg.onload = ()=>artworkImg.classList.add('loaded');
-          artworkImg.onerror = ()=>{ artworkImg.src='Essential Radio Logo.png'; artworkImg.onload=()=>artworkImg.classList.add('loaded','fallback'); };
-          artworkImg.src = url; return;
-        }
-      } catch{}
-      artworkImg.onload = ()=>artworkImg.classList.add('loaded','fallback');
+    const nowMins = now.getHours() * 60 + now.getMinutes();
+    for (const show of shows) {
+      const [sh, sm] = show.start.split(":").map(Number);
+      const [eh, em] = show.end.split(":").map(Number);
+      let start = sh * 60 + sm;
+      let end = eh * 60 + em;
+      if (end === 0 && start > 0) end = 1440;
+      if (nowMins >= start && nowMins < end) {
+        return show.title;
+      }
     }
+    return "Off Air";
+  }
 
-    async function getTrackArtwork(q) {
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&limit=1`);
-        const d = await res.json();
-        if (d.results[0]?.artworkUrl100) return d.results[0].artworkUrl100.replace('100x100','300x300');
-      } catch{}
-      return '';
+  async function updateOnAirNow() {
+    const schedule = await fetchSchedule();
+    document.getElementById("currentShow").textContent =
+      schedule ? getCurrentShow(schedule) : "Schedule unavailable";
+  }
+
+  updateOnAirNow();
+  setInterval(updateOnAirNow, 60000);
+</script>
+
+<!-- Now Playing & Recently Played logic -->
+<script>
+  const audio = document.getElementById('stream');
+  const playBtn = document.getElementById('play-toggle');
+  const muteBtn = document.getElementById('mute-toggle');
+  const volumeSlider = document.getElementById('volume-slider');
+  const volumeDisplay = document.getElementById('volume-display');
+  const nowPlaying = document.getElementById('now-playing');
+  const artworkImg = document.getElementById('artwork');
+  const observer = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('loaded');
+        observer.unobserve(e.target);
+      }
     }
+  }, { threshold: 0.1 });
 
-    setInterval(fetchNowPlaying,15000);
-    setInterval(fetchRecentFromGitHub,15000);
-    fetchNowPlaying();
-    fetchRecentFromGitHub();
-  </script>
+  let isPlaying = false, lastVolume = 1;
+
+  playBtn.addEventListener('click', () => {
+    if (!isPlaying) {
+      audio.load();
+      audio.play().catch(() => {});
+      playBtn.textContent = '⏸ Pause';
+      isPlaying = true;
+    } else {
+      audio.pause();
+      playBtn.textContent = '▶️ Play Essential Radio';
+      isPlaying = false;
+    }
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    const vol = volumeSlider.value / 100;
+    audio.volume = vol;
+    volumeDisplay.textContent = `${volumeSlider.value}%`;
+    muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
+  });
+
+  muteBtn.addEventListener('click', () => {
+    if (audio.volume > 0) {
+      lastVolume = audio.volume;
+      audio.volume = 0;
+      volumeSlider.value = 0;
+      volumeDisplay.textContent = '0%';
+      muteBtn.textContent = '🔇';
+    } else {
+      audio.volume = lastVolume;
+      volumeSlider.value = lastVolume * 100;
+      volumeDisplay.textContent = `${Math.round(lastVolume * 100)}%`;
+      muteBtn.textContent = lastVolume < 0.5 ? '🔈' : '🔊';
+    }
+  });
+
+  async function fetchNowPlaying() {
+    try {
+      const res = await fetch('/api/metadata');
+      const data = await res.json();
+      const decode = str => { const t = document.createElement('textarea'); t.innerHTML = str; return t.value; };
+      const raw = decode(data.nowPlaying || '').trim();
+      let artist = '', title = '';
+      const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
+      if (sep) [artist, title] = raw.split(sep);
+
+      if (sep) {
+        nowPlaying.innerHTML = `
+          <span style="color:#fed351;">Now Playing:</span>
+          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+          <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
+          <span style="color:white;">by ${artist}</span>`;
+        fetchArtwork(`${artist} - ${title}`);
+      } else {
+        nowPlaying.innerHTML = `
+          <span style="color:#fed351;">Now Playing:</span>
+          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+          <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
+          <span style="color:white;">on Essential Radio</span>`;
+        applyFallbackImmediate();
+      }
+    } catch {
+      nowPlaying.textContent = 'Error loading track';
+      applyFallbackImmediate();
+    }
+  }
+
+  async function fetchRecentFromGitHub() {
+    try {
+      const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+      const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      const recentItems = data
+        .filter(item => item.Artist && item.Title)
+        .slice(-5)
+        .reverse();
+
+      const entries = await Promise.all(recentItems.map(async item => {
+        const time = item['Scheduled Time'] || item.time || '';
+        const name = `${item.Artist} – ${item.Title}`;
+        const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+        return `
+          <li>
+            <span class="time">${time}</span>
+            <img src="${art}"
+                 alt="Cover for ${name}"
+                 loading="lazy" />
+            <span class="info">${name}</span>
+          </li>`;
+      }));
+
+      const list = document.getElementById('recent-list');
+      list.innerHTML = entries.join('');
+      document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+    } catch (e) {
+      console.error('Recent fetch failed:', e);
+    }
+  }
+
+  async function fetchArtwork(trackName) {
+    // reset to logo and remove classes
+    artworkImg.src = 'Essential Radio Logo.png';
+    artworkImg.classList.remove('loaded', 'fallback');
+
+    // try iTunes
+    try {
+      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
+      const js = await res.json();
+      if (js.results[0]?.artworkUrl100) {
+        const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
+        artworkImg.onload = () => artworkImg.classList.add('loaded');
+        artworkImg.onerror = applyFallbackImmediate;
+        artworkImg.src = url;
+        return;
+      }
+    } catch {}
+
+    // try Autopo.st
+    const safe = trackName
+      .replace(/\s*\(.*?\)/g, '')
+      .replace(/[^a-zA-Z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '_');
+    const [artist, title] = safe.split('_-_');
+    const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
+    try {
+      const head = await fetch(autoUrl, { method: 'HEAD' });
+      if (head.ok) {
+        artworkImg.onload = () => artworkImg.classList.add('loaded');
+        artworkImg.onerror = applyFallbackImmediate;
+        artworkImg.src = autoUrl;
+        return;
+      }
+    } catch {}
+
+    // fallback
+    applyFallbackImmediate();
+  }
+
+  function applyFallbackImmediate() {
+    artworkImg.src = 'Essential Radio Logo.png';
+    artworkImg.classList.remove('loaded');
+    artworkImg.classList.add('fallback');
+  }
+
+  async function getTrackArtwork(query) {
+    try {
+      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
+      const d = await res.json();
+      if (d.results[0]?.artworkUrl100) {
+        return d.results[0].artworkUrl100.replace('100x100', '300x300');
+      }
+    } catch {}
+    return '';
+  }
+
+  // kick off
+  fetchNowPlaying();
+  fetchRecentFromGitHub();
+  setInterval(fetchNowPlaying, 15000);
+  setInterval(fetchRecentFromGitHub, 15000);
+</script>
 </body>
 </html>
