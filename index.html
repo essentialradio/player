@@ -221,7 +221,7 @@
 
         if (separator) {
           [artist, title] = raw.split(separator);
-          nowPlaying.innerHTML = `<span style="color: #fed351;">Now Playing:</span><br /><span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br /><span style="color: white;">by ${artist}</span>`;
+          nowPlayingDiv.innerHTML = `<span style="color: #fed351;">Now Playing:</span><br /><span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br /><span style="color: white;">by ${artist}</span>`;
           fetchArtwork(`${artist} - ${title}`);
         } else {
           nowPlaying.innerHTML = `<span style="color: #fed351;">Now Playing:</span><br /><span style="color: white;">More music soon on Essential Radio</span>`;
@@ -294,7 +294,7 @@
     const muteBtn = document.getElementById('mute-toggle');
     const volumeSlider = document.getElementById('volume-slider');
     const volumeDisplay = document.getElementById('volume-display');
-    const nowPlaying = document.getElementById('now-playing');
+    const nowPlayingDiv = document.getElementById('now-playing');
     const artworkImg = document.getElementById('artwork');
     let isPlaying = false;
     let lastVolume = 1;
