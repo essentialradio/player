@@ -129,17 +129,23 @@
     }
     /* Artwork */
     #artwork {
-      margin-top: 25px;
-      border-radius: 8px;
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      border: 2px solid #fed351;
-      box-shadow: 0 0 15px #fed351aa;
-      user-select: none;
-      opacity: 0;
-      transition: opacity 0.4s ease-in-out;
-    }
+  margin-top: 25px;
+  border-radius: 8px;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border: 2px solid #fed351;
+  box-shadow: 0 0 15px #fed351aa;
+  user-select: none;
+  opacity: 0;
+  filter: blur(10px) brightness(0.8);
+  transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
+}
+#artwork.loaded {
+  opacity: 1;
+  filter: blur(0) brightness(1);
+}
+
     #artwork.loaded {
       opacity: 1;
     }
