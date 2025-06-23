@@ -440,7 +440,11 @@
     };
 
     function getCurrentShow() {
-      const now = new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+      const now = new Date();
+      const offset = now.getTimezoneOffset();
+      const ukTime = new Date(now.getTime() + (offset + 60) * 60000);
+      const currentDay = ukTime.toLocaleDateString('en-GB', { weekday: 'long' });
+      const currentTime = ukTime.getHours() * 100 + ukTime.getMinutes();
       const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
       const currentTime = now.getHours() * 100 + now.getMinutes();
       const dailySchedule = weeklySchedule[currentDay] || [];
