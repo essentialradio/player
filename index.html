@@ -347,53 +347,54 @@
     }
 
     async function fetchNowPlaying() {
-      try {
-        const res = await fetch('/api/metadata');
-        const data = await res.json();
-        const decodeHtml = str => {
-          const txt = document.createElement("textarea");
-          txt.innerHTML = str;
-          return txt.value;
-        };
-        nowPlaying.innerHTML = `
-  <span style="color: #fed351;">Now Playing:</span>
-  <span class="live-indicator"><span class="dot"></span>LIVE</span><br />
-  <span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br />
-  <span style="color: white;">by ${artist}</span>`;
+  try {
+    const res = await fetch('/api/metadata');
+    const data = await res.json();
 
-        const raw = decodeHtml(data.nowPlaying || "").trim();
-        let artist = '', title = '';
-        let separator = raw.includes(" – ") ? " – " : raw.includes(" - ") ? " - " : null;
+    const decodeHtml = str => {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = str;
+      return txt.value;
+    };
 
-        if (separator) {
-          [artist, title] = raw.split(separator);
-        } else {
-          nowPlaying.innerHTML = `
-  <span style="color: #fed351;">Now Playing:</span>
-  <span class="live-indicator"><span class="dot"></span>LIVE</span><br />
-  <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
-  <span style="color: white;">on Essential Radio</span>`;
-          artworkImg.src = 'Essential Radio Logo.png';
-          artworkImg.classList.add('loaded', 'fallback');
-          return;
-        }
+    const raw = decodeHtml(data.nowPlaying || "").trim();
+    let artist = '', title = '';
+    let separator = raw.includes(" – ") ? " – " : raw.includes(" - ") ? " - " : null;
 
-        nowPlaying.innerHTML = `
-          <span style="color: #fed351;">Now Playing:</span><br />
-          <span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br />
-          <span style="color: white;">by ${artist}</span>`;
+    if (separator) {
+      [artist, title] = raw.split(separator);
 
-        fetchArtwork(`${artist} - ${title}`);
-      } catch (err) {
-        nowPlaying.innerHTML = `
-          <span style="color: #fed351;">Now Playing:</span><br />
-          <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
-          <span style="color: white;">on Essential Radio</span>`;
-        artworkImg.src = 'Essential Radio Logo.png';
-        artworkImg.classList.add('loaded', 'fallback');
-        console.error("Fetch error:", err);
-      }
+      nowPlaying.innerHTML = `
+        <span style="color: #fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br />
+        <span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br />
+        <span style="color: white;">by ${artist}</span>`;
+
+      fetchArtwork(`${artist} - ${title}`);
+    } else {
+      nowPlaying.innerHTML = `
+        <span style="color: #fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br />
+        <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
+        <span style="color: white;">on Essential Radio</span>`;
+      
+      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.classList.add('loaded', 'fallback');
     }
+
+  } catch (err) {
+    nowPlaying.innerHTML = `
+      <span style="color: #fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br />
+      <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
+      <span style="color: white;">on Essential Radio</span>`;
+    
+    artworkImg.src = 'Essential Radio Logo.png';
+    artworkImg.classList.add('loaded', 'fallback');
+    console.error("Fetch error:", err);
+  }
+}
+
 
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
