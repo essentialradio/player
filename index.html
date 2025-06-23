@@ -339,8 +339,7 @@
     setInterval(fetchRecentFromGitHub, 15000);
     fetchNowPlaying();
     fetchRecentFromGitHub();
-    updateCurrentShow();
-    setInterval(updateCurrentShow, 60000);
+    
 
     const weeklySchedule = {
       "Monday": [
@@ -469,6 +468,8 @@
       if (showTitleEl) showTitleEl.textContent = title;
       if (showPresenterEl) showPresenterEl.textContent = presenter ? `with ${presenter}` : "";
     }
+  updateCurrentShow();
+    setInterval(updateCurrentShow, 60000);
   </script>
 </body>
 </html>
