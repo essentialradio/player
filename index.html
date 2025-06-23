@@ -145,6 +145,12 @@
   opacity: 1;
   filter: blur(0) brightness(1);
 }
+#artwork.fallback {
+  filter: blur(5px) brightness(0.8);
+  opacity: 0.7;
+  box-shadow: 0 0 10px rgba(254, 211, 81, 0.4);
+}
+
 
     #artwork.loaded {
       opacity: 1;
@@ -285,7 +291,10 @@ ul#recent-list li:hover {
           artworkImg.onload = () => artworkImg.classList.add('loaded');
           artworkImg.onerror = () => {
             artworkImg.src = 'Essential Radio Logo.png';
-            artworkImg.classList.add('loaded');
+artworkImg.onload = () => {
+  artworkImg.classList.add.remove('loaded', 'fallback');
+};
+
           };
           artworkImg.src = url;
           return;
@@ -338,7 +347,8 @@ ul#recent-list li:hover {
           const fullName = `${item.Artist} – ${item.Title}`;
           const artwork = await getTrackArtwork(`${item.Artist} - ${item.Title}`);
           const artSrc = artwork || 'Essential Radio Logo.png';
-          return `<li><span class="time">${time}</span><img src="${artSrc}" alt="art"/><span class="info">${fullName}</span></li>`;
+          return `<li><span class="time">${time}</span><img src="${artSrc}" alt="art" loading="lazy"/><span class="info">${fullName}</span></li>`;
+
         }));
         list.innerHTML = entries.join('');
       } catch (e) {
@@ -355,6 +365,11 @@ ul#recent-list li:hover {
           txt.innerHTML = str;
           return txt.value;
         };
+	nowPlaying.innerHTML = `
+  <span style="color: #fed351;">Now Playing</span>
+  <span class="refresh-indicator"></span>
+`;
+
         const raw = decodeHtml(data.nowPlaying || "").trim();
         console.log("NOW PLAYING RAW METADATA:", raw);
 
@@ -442,6 +457,19 @@ artworkImg.classList.add('loaded');
     setInterval(fetchRecentFromGitHub, 15000);
     fetchNowPlaying();
     fetchRecentFromGitHub();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('loaded');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('#recent-list img').forEach(img => {
+  observer.observe(img);
+});
+
   </script>
 </body>
 </html>
