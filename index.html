@@ -250,14 +250,15 @@
 
 <script>
   async function fetchSchedule() {
-    try {
-      const res = await fetch("schedule.json");
-      return await res.json();
-    } catch (e) {
-      console.error("Schedule fetch error:", e);
-      return null;
-    }
+  try {
+    const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+    return await res.json();
+  } catch (e) {
+    console.error("Schedule fetch error:", e);
+    return null;
   }
+}
+
 
   function getCurrentShow(schedule) {
     const now = new Date();
