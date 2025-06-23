@@ -231,6 +231,66 @@
     }
   </style>
 </head>
+<div id="onAirNow" style="
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+">
+  <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
+  <span id="currentShow" style="font-weight: 600;">Loading...</span>
+</div>
+
+<script>
+  async function fetchSchedule() {
+    try {
+      const res = await fetch("schedule.json");
+      return await res.json();
+    } catch (e) {
+      console.error("Schedule fetch error:", e);
+      return null;
+    }
+  }
+
+  function getCurrentShow(schedule) {
+    const now = new Date();
+    const day = now.toLocaleDateString("en-GB", { weekday: "long" });
+    const time = now.toTimeString().slice(0, 5);
+
+    const shows = schedule[day];
+    if (!shows) return "No schedule available";
+
+    for (let i = 0; i < shows.length; i++) {
+      const current = shows[i];
+      const next = shows[i + 1] || { time: "23:59" };
+
+      if (time >= current.time && time < next.time) {
+        return current.title;
+      }
+    }
+
+    return "Off Air";
+  }
+
+  async function updateOnAirNow() {
+    const schedule = await fetchSchedule();
+    if (schedule) {
+      const showName = getCurrentShow(schedule);
+      document.getElementById("currentShow").textContent = showName;
+    }
+  }
+
+  updateOnAirNow();
+  setInterval(updateOnAirNow, 60000); // refresh every minute
+</script>
+
 <body>
   <div class="strip-container">
     <div class="left-panel">
