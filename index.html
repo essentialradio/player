@@ -249,9 +249,10 @@
 </div>
 
 <script>
-  async function fetchSchedule() {
+async function fetchSchedule() {
   try {
     const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
   } catch (e) {
     console.error("Schedule fetch error:", e);
@@ -260,7 +261,8 @@
 }
 
 
-  function getCurrentShow(schedule) {
+
+function getCurrentShow(schedule) {
   const now = new Date();
   const day = now.toLocaleDateString("en-GB", { weekday: "long" });
 
@@ -280,6 +282,10 @@
       return shows[i].title;
     }
   }
+
+  return "Off Air";
+}
+
 
   return "Off Air";
 }
