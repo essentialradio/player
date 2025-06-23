@@ -271,20 +271,20 @@ function getCurrentShow(schedule) {
 
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
-  for (let i = 0; i < shows.length; i++) {
-    const [h, m] = shows[i].time.split(":").map(Number);
-    const start = h * 60 + m;
-
-    const [nh, nm] = (shows[i + 1]?.time || "24:00").split(":").map(Number);
-    const end = nh * 60 + nm;
+  for (const show of shows) {
+    const [sh, sm] = show.start.split(":").map(Number);
+    const [eh, em] = show.end.split(":").map(Number);
+    const start = sh * 60 + sm;
+    const end = eh * 60 + em;
 
     if (nowMinutes >= start && nowMinutes < end) {
-      return shows[i].title;
+      return show.title;
     }
   }
 
   return "Off Air";
 }
+
 
 
 
