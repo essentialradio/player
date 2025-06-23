@@ -343,10 +343,12 @@
           [artist, title] = raw.split(separator);
         } else {
           nowPlaying.innerHTML = `
-            <span style="color: #fed351;">Now Playing:</span> 
-            <span style="color: white;">More music soon on Essential Radio</span>`;
-          artworkImg.src = 'Essential Radio Logo.png';
-          artworkImg.classList.add('loaded');
+  <span style="color: #fed351;">Now Playing:</span><br />
+  <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
+  <span style="color: white;">on Essential Radio</span>`;
+artworkImg.src = 'Essential Radio Logo.png';
+artworkImg.classList.add('loaded');
+
           return;
         }
 
@@ -357,11 +359,13 @@
 
         fetchArtwork(`${artist} - ${title}`);
       } catch (err) {
-        nowPlaying.innerHTML = `
-          <span style="color: #fed351;">Now Playing:</span> 
-          <span style="color: #ccc;">Unable to fetch metadata</span>`;
-        artworkImg.src = 'Essential Radio Logo.png';
-        artworkImg.classList.add('loaded');
+nowPlaying.innerHTML = `
+  <span style="color: #fed351;">Now Playing:</span><br />
+  <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
+  <span style="color: white;">on Essential Radio</span>`;
+artworkImg.src = 'Essential Radio Logo.png';
+artworkImg.classList.add('loaded');
+
         console.error("Fetch error:", err);
       }
     }
