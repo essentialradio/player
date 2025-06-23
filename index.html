@@ -263,7 +263,7 @@ async function fetchSchedule() {
 
 
 function getCurrentShow(schedule) {
-  const now = new Date();
+  const now = new Date(new Date().toLocaleString("en-GB", { timeZone: "Europe/London" }));
   const day = now.toLocaleDateString("en-GB", { weekday: "long" });
 
   const shows = schedule[day];
@@ -284,6 +284,7 @@ function getCurrentShow(schedule) {
 
   return "Off Air";
 }
+
 
 
 
