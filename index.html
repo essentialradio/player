@@ -277,18 +277,23 @@ function getCurrentShow(schedule) {
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
   for (const show of shows) {
-    const [sh, sm] = show.start.split(":").map(Number);
-    const [eh, em] = show.end.split(":").map(Number);
-    const start = sh * 60 + sm;
-    const end = eh * 60 + em;
+  const [sh, sm] = show.start.split(":").map(Number);
+  const [eh, em] = show.end.split(":").map(Number);
+  const start = sh * 60 + sm;
+  let end = eh * 60 + em;
 
-    if (nowMinutes >= start && nowMinutes < end) {
-      return show.title;
-    }
+  // Treat 00:00 as 1440 (end of day) for matching logic
+  if (end === 0 && start > 0) {
+    end = 1440;
   }
 
-  return "Off Air";
+  console.log(`Checking "${show.title}": ${start}–${end} vs now ${nowMinutes}`);
+
+  if (nowMinutes >= start && nowMinutes < end) {
+    return show.title;
+  }
 }
+
 
 
 
