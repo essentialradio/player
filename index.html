@@ -341,6 +341,134 @@
     fetchRecentFromGitHub();
     updateCurrentShow();
     setInterval(updateCurrentShow, 60000);
+
+    const weeklySchedule = {
+      "Monday": [
+        { time: "00:00", title: "Soul Vaults with David Southway" },
+        { time: "02:00", title: "Essential Nights" },
+        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
+        { time: "11:00", title: "Coffee Break Classics" },
+        { time: "12:00", title: "Feelgood Lunch" },
+        { time: "14:00", title: "Essential Afternoons" },
+        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
+        { time: "18:00", title: "Essential Hits" },
+        { time: "19:00", title: "The 70s at 7" },
+        { time: "20:00", title: "The 80s at 8" },
+        { time: "21:00", title: "The 90s at 9" },
+        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
+        { time: "23:59", title: "Essential Nights" }
+      ],
+      "Tuesday": [
+        { time: "00:00", title: "Essential Nights" },
+        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
+        { time: "11:00", title: "Coffee Break Classics" },
+        { time: "12:00", title: "Feelgood Lunch with Bex McNamee" },
+        { time: "14:00", title: "Essential Afternoons" },
+        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
+        { time: "18:00", title: "Essential Hits" },
+        { time: "19:00", title: "The 70s at 7" },
+        { time: "20:00", title: "The 80s at 8" },
+        { time: "21:00", title: "The 90s at 9" },
+        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
+        { time: "23:59", title: "Essential Nights" }
+      ],
+      "Wednesday": [
+        { time: "00:00", title: "Essential Nights" },
+        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
+        { time: "11:00", title: "Coffee Break Classics" },
+        { time: "12:00", title: "Feelgood Lunch" },
+        { time: "14:00", title: "The Midweek Mash-up with Bex McNamee" },
+        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
+        { time: "18:00", title: "Essential Hits" },
+        { time: "19:00", title: "The 70s at 7" },
+        { time: "20:00", title: "The 80s at 8" },
+        { time: "21:00", title: "The 90s at 9" },
+        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
+        { time: "23:59", title: "Essential Nights" }
+      ],
+      "Thursday": [
+        { time: "00:00", title: "Essential Nights" },
+        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
+        { time: "11:00", title: "Coffee Break Classics" },
+        { time: "12:00", title: "Feelgood Lunch" },
+        { time: "14:00", title: "Essential Afternoons" },
+        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
+        { time: "18:00", title: "Essential Hits" },
+        { time: "19:00", title: "The 70s at 7" },
+        { time: "20:00", title: "The 80s at 8" },
+        { time: "21:00", title: "The 90s at 9" },
+        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
+        { time: "23:59", title: "Essential Nights" }
+      ],
+      "Friday": [
+        { time: "00:00", title: "Essential Nights" },
+        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
+        { time: "11:00", title: "Coffee Break Classics" },
+        { time: "12:00", title: "Feelgood Lunch with Faith Montgomery" },
+        { time: "15:00", title: "The Week in Holyrood with Charles Fletcher" },
+        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
+        { time: "18:00", title: "Essential Hits" },
+        { time: "19:00", title: "Ready for the Weekend with Lee Everest" },
+        { time: "20:00", title: "Essential Party" },
+        { time: "23:00", title: "Club Classics with Ronny Costello" }
+      ],
+      "Saturday": [
+        { time: "00:00", title: "Around the World with Davy Sims" },
+        { time: "02:00", title: "Essential Nights" },
+        { time: "07:00", title: "Essential Breakfast" },
+        { time: "10:00", title: "Essential Weekend" },
+        { time: "13:00", title: "The Saturday Music Marathon with Big Tommy" },
+        { time: "17:00", title: "The Jan Cave 70s Jukebox Years" },
+        { time: "18:00", title: "The LGBTQ Music Chart with Tim Graham" },
+        { time: "19:00", title: "Grooveline with Stephen Howie" },
+        { time: "21:00", title: "Big Fat Party Anthems with Tommy Martin" },
+        { time: "23:59", title: "Essential Nights" }
+      ],
+      "Sunday": [
+        { time: "00:00", title: "Hi-NRG with Bill Grainger" },
+        { time: "02:00", title: "Essential Nights" },
+        { time: "06:00", title: "Essential Breakfast" },
+        { time: "08:30", title: "The Dr Hilary Show" },
+        { time: "09:00", title: "The Week in Holyrood with Charles Fletcher" },
+        { time: "10:00", title: "Essential Classic Hits" },
+        { time: "12:00", title: "Feelgood Lunch" },
+        { time: "14:00", title: "Airplay 40 with Spencer James" },
+        { time: "17:00", title: "Retro Charts with Brian Woolfson" },
+        { time: "19:00", title: "The Mr Rocks Show with Kevin McCallum" },
+        { time: "21:00", title: "The Pluggin' Baby Radio Show with Emma Scott" },
+        { time: "23:00", title: "The Country Mile with Dave Watkins" }
+      ]
+    };
+
+    function getCurrentShow() {
+      const now = new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+      const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
+      const currentTime = now.getHours() * 100 + now.getMinutes();
+      const dailySchedule = weeklySchedule[currentDay] || [];
+      let currentShowTitle = "Loading show...";
+      let currentPresenter = "";
+
+      for (let i = 0; i < dailySchedule.length; i++) {
+        const showStart = parseInt(dailySchedule[i].time.replace(':', ''), 10);
+        const nextStart = i + 1 < dailySchedule.length ? parseInt(dailySchedule[i + 1].time.replace(':', ''), 10) : 2400;
+        if (currentTime >= showStart && currentTime < nextStart) {
+          const [title, presenter] = dailySchedule[i].title.split(" with ");
+          currentShowTitle = title;
+          currentPresenter = presenter || "";
+          break;
+        }
+      }
+
+      return { title: currentShowTitle, presenter: currentPresenter };
+    }
+
+    function updateCurrentShow() {
+      const { title, presenter } = getCurrentShow();
+      const showTitleEl = document.getElementById('showTitle');
+      const showPresenterEl = document.getElementById('showPresenter');
+      if (showTitleEl) showTitleEl.textContent = title;
+      if (showPresenterEl) showPresenterEl.textContent = presenter ? `with ${presenter}` : "";
+    }
   </script>
 </body>
 </html>
