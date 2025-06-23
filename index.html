@@ -221,6 +221,25 @@
       0%, 100% { opacity: 0.2; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.4); }
     }
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  color: #ff4d4d;
+  font-size: 0.95em;
+  margin-left: 10px;
+  user-select: none;
+}
+
+.live-indicator .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff4d4d;
+  animation: pulse 1.2s infinite;
+}
+
   </style>
 </head>
 <body>
@@ -337,9 +356,11 @@
           return txt.value;
         };
         nowPlaying.innerHTML = `
-          <span style="color: #fed351;">Now Playing</span>
-          <span class="refresh-indicator"></span>
-        `;
+  <span style="color: #fed351;">Now Playing:</span>
+  <span class="live-indicator"><span class="dot"></span>LIVE</span><br />
+  <span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br />
+  <span style="color: white;">by ${artist}</span>`;
+
         const raw = decodeHtml(data.nowPlaying || "").trim();
         let artist = '', title = '';
         let separator = raw.includes(" – ") ? " – " : raw.includes(" - ") ? " - " : null;
@@ -348,9 +369,10 @@
           [artist, title] = raw.split(separator);
         } else {
           nowPlaying.innerHTML = `
-            <span style="color: #fed351;">Now Playing:</span><br />
-            <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
-            <span style="color: white;">on Essential Radio</span>`;
+  <span style="color: #fed351;">Now Playing:</span>
+  <span class="live-indicator"><span class="dot"></span>LIVE</span><br />
+  <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
+  <span style="color: white;">on Essential Radio</span>`;
           artworkImg.src = 'Essential Radio Logo.png';
           artworkImg.classList.add('loaded', 'fallback');
           return;
