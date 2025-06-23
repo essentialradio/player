@@ -6,6 +6,7 @@
   <title>Essential Radio Player</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    /* Body and background */
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
@@ -17,60 +18,172 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+    /* Container */
     .strip-container {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
       width: 100%;
       max-width: 1100px;
+      min-height: 280px;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-      background-color: #111;
+      background-color: #111; /* fallback for dark container */
     }
-    .left-panel, .right-panel {
-      flex: 1 1 100%;
+    /* Left and right panels */
+    .left-panel,
+    .right-panel {
+      width: 50%;
       padding: 20px 30px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    @media (min-width: 768px) {
-      .left-panel, .right-panel {
-        flex: 1 1 50%;
-      }
-      .left-panel {
-        border-right: 1px solid #333;
-      }
-      .right-panel {
-        border-left: 1px solid #333;
-      }
-    }
     .left-panel {
       background: #111;
       align-items: center;
       text-align: center;
+      border-right: 1px solid #333;
     }
     .right-panel {
       background: #222;
       overflow-y: auto;
+      border-left: 1px solid #333;
     }
-    #show-box {
-      margin-bottom: 20px;
-      background: #1a1a1a;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 12px #fed35180;
+    /* Player box */
+    #player-box {
+      max-width: 420px;
+      width: 100%;
     }
-    #showTitle {
-      font-size: 18px;
+    /* Buttons */
+    button {
+      background-color: #fed351;
+      color: #111;
+      border-radius: 8px;
+      padding: 12px 24px;
       font-weight: 600;
-      color: #fed351;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
     }
-    #showPresenter {
+    button:hover,
+    button:focus {
+      background-color: #e5c73f;
+      box-shadow: 0 0 10px #fed351cc;
+      outline: none;
+    }
+    /* Mute button smaller and aligned */
+    #mute-toggle {
       font-size: 16px;
+      padding: 6px 12px;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+    /* Volume controls container */
+    #volume-container {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    #volume-container label {
+      font-size: 16px;
+      margin: 0;
+      user-select: none;
+    }
+    #volume-slider {
+      width: 180px;
+      cursor: pointer;
+    }
+    #volume-display {
+      font-size: 16px;
+      color: #ccc;
+      min-width: 40px;
+      text-align: left;
+      user-select: none;
+    }
+    /* Now Playing card */
+    #now-playing-card {
+      margin-top: 25px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 131, 138, 0.7);
+      max-width: 420px;
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.7;
       color: white;
+    }
+    #now-playing > span:first-child {
+      color: #fed351;
+      font-weight: 600;
+      user-select: none;
+    }
+    #now-playing > span:last-child {
+      color: white;
+    }
+    /* Artwork */
+    #artwork {
+      margin-top: 25px;
+      border-radius: 8px;
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      box-shadow: 0 0 15px #fed351aa;
+      user-select: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    #artwork.loaded {
+      opacity: 1;
+    }
+    /* Recently Played */
+    .recent-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #fed351;
+      user-select: none;
+    }
+    ul#recent-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul#recent-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #444;
+    }
+    ul#recent-list img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid #fed351;
+      user-select: none;
+    }
+    ul#recent-list span.time {
+      color: #fed351;
+      font-weight: 600;
+      width: 50px;
+      text-align: right;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    ul#recent-list span.info {
+      flex: 1;
+      color: white;
+      font-size: 16px;
+      user-select: none;
     }
   </style>
 </head>
@@ -95,152 +208,178 @@
       </div>
     </div>
     <div class="right-panel">
-      <div id="show-box">
-        <div id="showTitle">Loading show…</div>
-        <div id="showPresenter"></div>
-      </div>
       <div class="recent-title">Recently Played</div>
       <ul id="recent-list"></ul>
     </div>
   </div>
 
   <script>
-    const weeklySchedule = {
-    "Monday": [
-        { time: "00:00", title: "Soul Vaults with David Southway" },
-        { time: "02:00", title: "Essential Nights" },
-        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
-        { time: "11:00", title: "Coffee Break Classics" },
-        { time: "12:00", title: "Feelgood Lunch" },
-        { time: "14:00", title: "Essential Afternoons" },
-        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
-        { time: "18:00", title: "Essential Hits" },
-        { time: "19:00", title: "The 70s at 7" },
-        { time: "20:00", title: "The 80s at 8" },
-        { time: "21:00", title: "The 90s at 9" },
-        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
-        { time: "23:59", title: "Essential Nights" }
-    ],
-    "Tuesday": [
-        { time: "00:00", title: "Essential Nights" },
-        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
-        { time: "11:00", title: "Coffee Break Classics" },
-        { time: "12:00", title: "Feelgood Lunch with Bex McNamee" },
-        { time: "14:00", title: "Essential Afternoons" },
-        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
-        { time: "18:00", title: "Essential Hits" },
-        { time: "19:00", title: "The 70s at 7" },
-        { time: "20:00", title: "The 80s at 8" },
-        { time: "21:00", title: "The 90s at 9" },
-        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
-        { time: "23:59", title: "Essential Nights" }
-    ],
-    "Wednesday": [
-        { time: "00:00", title: "Essential Nights" },
-        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
-        { time: "11:00", title: "Coffee Break Classics" },
-        { time: "12:00", title: "Feelgood Lunch" },
-        { time: "14:00", title: "The Midweek Mash-up with Bex McNamee" },
-        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
-        { time: "18:00", title: "Essential Hits" },
-        { time: "19:00", title: "The 70s at 7" },
-        { time: "20:00", title: "The 80s at 8" },
-        { time: "21:00", title: "The 90s at 9" },
-        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
-        { time: "23:59", title: "Essential Nights" }
-    ],
-    "Thursday": [
-        { time: "00:00", title: "Essential Nights" },
-        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
-        { time: "11:00", title: "Coffee Break Classics" },
-        { time: "12:00", title: "Feelgood Lunch" },
-        { time: "14:00", title: "Essential Afternoons" },
-        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
-        { time: "18:00", title: "Essential Hits" },
-        { time: "19:00", title: "The 70s at 7" },
-        { time: "20:00", title: "The 80s at 8" },
-        { time: "21:00", title: "The 90s at 9" },
-        { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
-        { time: "23:59", title: "Essential Nights" }
-    ],
-    "Friday": [
-        { time: "00:00", title: "Essential Nights" },
-        { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
-        { time: "11:00", title: "Coffee Break Classics" },
-        { time: "12:00", title: "Feelgood Lunch with Faith Montgomery" },
-        { time: "15:00", title: "The Week in Holyrood with Charles Fletcher" },
-        { time: "16:00", title: "Essential Hometime with Scott O'Hare" },
-        { time: "18:00", title: "Essential Hits" },
-        { time: "19:00", title: "Ready for the Weekend with Lee Everest" },
-        { time: "20:00", title: "Essential Party" },
-        { time: "23:00", title: "Club Classics with Ronny Costello" }
-    ],
-    "Saturday": [
-        { time: "00:00", title: "Around the World with Davy Sims" },
-        { time: "02:00", title: "Essential Nights" },
-        { time: "07:00", title: "Essential Breakfast" },
-        { time: "10:00", title: "Essential Weekend" },
-        { time: "13:00", title: "The Saturday Music Marathon with Big Tommy" },
-        { time: "17:00", title: "The Jan Cave 70s Jukebox Years" },
-        { time: "18:00", title: "The LGBTQ Music Chart with Tim Graham" },
-        { time: "19:00", title: "Grooveline with Stephen Howie" },
-        { time: "21:00", title: "Big Fat Party Anthems with Tommy Martin" },
-        { time: "23:59", title: "Essential Nights" }
-    ],
-    "Sunday": [
-        { time: "00:00", title: "Hi-NRG with Bill Grainger" },
-        { time: "02:00", title: "Essential Nights" },
-        { time: "06:00", title: "Essential Breakfast" },
-        { time: "08:30", title: "The Dr Hilary Show" },
-        { time: "09:00", title: "The Week in Holyrood with Charles Fletcher" },
-        { time: "10:00", title: "Essential Classic Hits" },
-        { time: "12:00", title: "Feelgood Lunch" },
-        { time: "14:00", title: "Airplay 40 with Spencer James" },
-        { time: "17:00", title: "Retro Charts with Brian Woolfson" },
-        { time: "19:00", title: "The Mr Rocks Show with Kevin McCallum" },
-        { time: "21:00", title: "The Pluggin' Baby Radio Show with Emma Scott" },
-        { time: "23:00", title: "The Country Mile with Dave Watkins" }
-    ]
-};
-
-    function getCurrentShow() {
-      const now = new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
-      const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
-      const currentTime = now.getHours() * 100 + now.getMinutes();
-      const dailySchedule = weeklySchedule[currentDay] || [];
-      let currentShowTitle = "Loading show...";
-      let currentPresenter = "";
-
-      for (let i = 0; i < dailySchedule.length; i++) {
-        const showStartTime = parseInt(dailySchedule[i].time.replace(':', ''), 10);
-        const nextShowStartTime = i + 1 < dailySchedule.length ? parseInt(dailySchedule[i + 1].time.replace(':', ''), 10) : 2400;
-        if (currentTime >= showStartTime && currentTime < nextShowStartTime) {
-          const [title, presenter] = dailySchedule[i].title.split(" with ");
-          currentShowTitle = title || dailySchedule[i].title;
-          currentPresenter = presenter || "";
-          break;
+    async function fetchArtwork(trackName) {
+      artworkImg.classList.remove('loaded');
+      artworkImg.src = 'Essential Radio Logo.png'; // fallback default
+      trackName = trackName.replace(/–/g, '-');
+      if (!trackName) return;
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
+        const data = await res.json();
+        if (data.results?.[0]?.artworkUrl100) {
+          const url = data.results[0].artworkUrl100.replace('100x100', '300x300');
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = () => {
+            artworkImg.src = 'Essential Radio Logo.png';
+            artworkImg.classList.add('loaded');
+          };
+          artworkImg.src = url;
+          return;
         }
+      } catch {}
+      // fallback to autopo.st
+      const safeName = trackName.replace(/\s*\(.*?\)/g, '').replace(/[^a-zA-Z0-9\s-]/g, '').trim().replace(/\s+/g, '_');
+      const [artist, title] = safeName.split('_-_');
+      const base = `${artist}_${title}`;
+      const subfolder = artist?.[0]?.toLowerCase() || 'a';
+      const autoPostUrl = `https://cdn.autopo.st/images/coverart/${subfolder}/${base}.jpg`;
+      try {
+        const res = await fetch(autoPostUrl, { method: 'HEAD' });
+        if (res.ok) {
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = () => {
+            artworkImg.src = 'Essential Radio Logo.png';
+            artworkImg.classList.add('loaded');
+          };
+          artworkImg.src = autoPostUrl;
+        } else {
+          artworkImg.src = 'Essential Radio Logo.png';
+          artworkImg.classList.add('loaded');
+        }
+      } catch {
+        artworkImg.src = 'Essential Radio Logo.png';
+        artworkImg.classList.add('loaded');
       }
-
-      if (currentTime < parseInt(dailySchedule[0].time.replace(':', ''), 10) && dailySchedule.length > 0) {
-        const [title, presenter] = dailySchedule[dailySchedule.length - 1].title.split(" with ");
-        currentShowTitle = title || dailySchedule[dailySchedule.length - 1].title;
-        currentPresenter = presenter || "";
-      }
-
-      return { title: currentShowTitle, presenter: currentPresenter };
     }
 
-    function updateCurrentShow() {
-      const { title, presenter } = getCurrentShow();
-      const showTitleElement = document.getElementById('showTitle');
-      const showPresenterElement = document.getElementById('showPresenter');
-      showTitleElement.textContent = title;
-      showPresenterElement.textContent = presenter ? `with ${presenter}` : "";
+    async function getTrackArtwork(query) {
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
+        const data = await res.json();
+        if (data.results?.[0]?.artworkUrl100) {
+          return data.results[0].artworkUrl100.replace('100x100', '300x300');
+        }
+      } catch {}
+      return '';
     }
 
-    updateCurrentShow();
-    setInterval(updateCurrentShow, 60000);
+    async function fetchRecentFromGitHub() {
+      try {
+        const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json');
+        const data = await res.json();
+        const list = document.getElementById('recent-list');
+        const recentItems = data.filter(item => item.Artist && item.Title).slice(-5).reverse();
+        const entries = await Promise.all(recentItems.map(async item => {
+          const time = item['Scheduled Time'] || item['time'] || '';
+          const fullName = `${item.Artist} – ${item.Title}`;
+          const artwork = await getTrackArtwork(`${item.Artist} - ${item.Title}`);
+          const artSrc = artwork || 'Essential Radio Logo.png';
+          return `<li><span class="time">${time}</span><img src="${artSrc}" alt="art"/><span class="info">${fullName}</span></li>`;
+        }));
+        list.innerHTML = entries.join('');
+      } catch (e) {
+        console.error("Recent fetch failed:", e);
+      }
+    }
+
+    async function fetchNowPlaying() {
+      try {
+        const res = await fetch('/api/metadata');
+        const data = await res.json();
+        const decodeHtml = str => {
+          const txt = document.createElement("textarea");
+          txt.innerHTML = str;
+          return txt.value;
+        };
+        const raw = decodeHtml(data.nowPlaying || "").trim();
+        console.log("NOW PLAYING RAW METADATA:", raw);
+
+        let artist = '', title = '';
+        let separator = raw.includes(" – ") ? " – " : raw.includes(" - ") ? " - " : null;
+
+        if (separator) {
+          [artist, title] = raw.split(separator);
+        } else {
+          nowPlaying.innerHTML = `
+            <span style="color: #fed351;">Now Playing:</span> 
+            <span style="color: white;">More music soon on Essential Radio</span>`;
+          artworkImg.src = 'Essential Radio Logo.png';
+          artworkImg.classList.add('loaded');
+          return;
+        }
+
+        nowPlaying.innerHTML = `
+  <span style="color: #fed351;">Now Playing:</span><br />
+  <span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br />
+  <span style="color: white;">by ${artist}</span>`;
+
+        fetchArtwork(`${artist} - ${title}`);
+      } catch (err) {
+        nowPlaying.innerHTML = `
+          <span style="color: #fed351;">Now Playing:</span> 
+          <span style="color: #ccc;">Unable to fetch metadata</span>`;
+        artworkImg.src = 'Essential Radio Logo.png';
+        artworkImg.classList.add('loaded');
+        console.error("Fetch error:", err);
+      }
+    }
+
+    const audio = document.getElementById('stream');
+    const playBtn = document.getElementById('play-toggle');
+    const muteBtn = document.getElementById('mute-toggle');
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeDisplay = document.getElementById('volume-display');
+    const nowPlaying = document.getElementById('now-playing');
+    const artworkImg = document.getElementById('artwork');
+    let isPlaying = false;
+    let lastVolume = 1;
+
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.pause();
+        audio.load();
+        audio.play().catch((err) => console.error('Play failed:', err));
+        playBtn.textContent = '⏸ Pause';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️ Play Essential Radio';
+        isPlaying = false;
+      }
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      const vol = volumeSlider.value / 100;
+      audio.volume = vol;
+      volumeDisplay.textContent = `${volumeSlider.value}%`;
+      muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
+    });
+
+    muteBtn.addEventListener('click', () => {
+      if (audio.volume > 0) {
+        lastVolume = audio.volume;
+        audio.volume = 0;
+        volumeSlider.value = 0;
+        volumeDisplay.textContent = '0%';
+        muteBtn.textContent = '🔇';
+      } else {
+        audio.volume = lastVolume;
+        volumeSlider.value = lastVolume * 100;
+        volumeDisplay.textContent = `${Math.round(lastVolume * 100)}%`;
+        muteBtn.textContent = lastVolume < 0.5 ? '🔈' : '🔊';
+      }
+    });
+
+    setInterval(fetchNowPlaying, 15000);
+    setInterval(fetchRecentFromGitHub, 15000);
+    fetchNowPlaying();
+    fetchRecentFromGitHub();
   </script>
 </body>
 </html>
