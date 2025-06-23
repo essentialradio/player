@@ -6,19 +6,17 @@
   <title>Essential Radio Player</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Body and background */
     body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 80px 30px 30px; /* 80px top padding */
-  background: linear-gradient(135deg, #00818a, #7e1974);
-  color: white;
-  display: flex;
-  justify-content: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-    /* Container */
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 80px 30px 30px;
+      background: linear-gradient(135deg, #00818a, #7e1974);
+      color: white;
+      display: flex;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     .strip-container {
       display: flex;
       flex-direction: row;
@@ -28,9 +26,8 @@
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-      background-color: #111; /* fallback for dark container */
+      background-color: #111;
     }
-    /* Left and right panels */
     .left-panel,
     .right-panel {
       width: 50%;
@@ -51,12 +48,10 @@
       overflow-y: auto;
       border-left: 1px solid #333;
     }
-    /* Player box */
     #player-box {
       max-width: 420px;
       width: 100%;
     }
-    /* Buttons */
     button {
       background-color: #fed351;
       color: #111;
@@ -75,14 +70,12 @@
       box-shadow: 0 0 10px #fed351cc;
       outline: none;
     }
-    /* Mute button smaller and aligned */
     #mute-toggle {
       font-size: 16px;
       padding: 6px 12px;
       vertical-align: middle;
       margin-left: 10px;
     }
-    /* Volume controls container */
     #volume-container {
       margin-top: 15px;
       display: flex;
@@ -106,7 +99,6 @@
       text-align: left;
       user-select: none;
     }
-    /* Now Playing card */
     #now-playing-card {
       margin-top: 25px;
       background: #1a1a1a;
@@ -127,35 +119,28 @@
     #now-playing > span:last-child {
       color: white;
     }
-    /* Artwork */
     #artwork {
-  margin-top: 25px;
-  border-radius: 8px;
-  width: 280px;
-  height: 280px;
-  object-fit: cover;
-  border: 2px solid #fed351;
-  box-shadow: 0 0 15px #fed351aa;
-  user-select: none;
-  opacity: 0;
-  filter: blur(10px) brightness(0.8);
-  transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
-}
-#artwork.loaded {
-  opacity: 1;
-  filter: blur(0) brightness(1);
-}
-#artwork.fallback {
-  filter: blur(5px) brightness(0.8);
-  opacity: 0.7;
-  box-shadow: 0 0 10px rgba(254, 211, 81, 0.4);
-}
-
-
+      margin-top: 25px;
+      border-radius: 8px;
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      box-shadow: 0 0 15px #fed351aa;
+      user-select: none;
+      opacity: 0;
+      filter: blur(10px) brightness(0.8);
+      transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
+    }
     #artwork.loaded {
       opacity: 1;
+      filter: blur(0) brightness(1);
     }
-    /* Recently Played */
+    #artwork.fallback {
+      filter: blur(5px) brightness(0.8);
+      opacity: 0.7;
+      box-shadow: 0 0 10px rgba(254, 211, 81, 0.4);
+    }
     .recent-title {
       font-size: 20px;
       font-weight: 600;
@@ -168,28 +153,31 @@
       padding: 0;
       margin: 0;
     }
-   ul#recent-list li {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid #444;
-  transition: background 0.2s ease;
-}
-ul#recent-list li:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
+    ul#recent-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #444;
+      transition: background 0.2s ease;
+    }
+    ul#recent-list li:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
     ul#recent-list img {
-  width: 50px;
-  height: 50px;
-  border-radius: 6px;
-  object-fit: cover;
-  border: 1px solid #fed351;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  user-select: none;
-}
-
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid #fed351;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      user-select: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    ul#recent-list img.loaded {
+      opacity: 1;
+    }
     ul#recent-list span.time {
       color: #fed351;
       font-weight: 600;
@@ -204,51 +192,35 @@ ul#recent-list li:hover {
       font-size: 16px;
       user-select: none;
     }
-@media (max-width: 768px) {
-  .strip-container {
-    flex-direction: column;
-  }
-  .left-panel,
-  .right-panel {
-    width: 100%;
-    padding: 20px;
-  }
-  #artwork {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-  }
-}@media (max-width: 768px) {
-  .strip-container {
-    flex-direction: column;
-  }
-  .left-panel,
-  .right-panel {
-    width: 100%;
-    padding: 20px;
-  }
-  #artwork {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-  }
-}
-.refresh-indicator {
-  display: inline-block;
-  margin-left: 8px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #fed351;
-  animation: pulse 1.2s infinite;
-  vertical-align: middle;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.4); }
-}
-
+    @media (max-width: 768px) {
+      .strip-container {
+        flex-direction: column;
+      }
+      .left-panel,
+      .right-panel {
+        width: 100%;
+        padding: 20px;
+      }
+      #artwork {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+      }
+    }
+    .refresh-indicator {
+      display: inline-block;
+      margin-left: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fed351;
+      animation: pulse 1.2s infinite;
+      vertical-align: middle;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
   </style>
 </head>
 <body>
@@ -279,8 +251,8 @@ ul#recent-list li:hover {
 
   <script>
     async function fetchArtwork(trackName) {
-      artworkImg.classList.remove('loaded');
-      artworkImg.src = 'Essential Radio Logo.png'; // fallback default
+      artworkImg.classList.remove('loaded', 'fallback');
+      artworkImg.src = 'Essential Radio Logo.png';
       trackName = trackName.replace(/–/g, '-');
       if (!trackName) return;
       try {
@@ -291,16 +263,13 @@ ul#recent-list li:hover {
           artworkImg.onload = () => artworkImg.classList.add('loaded');
           artworkImg.onerror = () => {
             artworkImg.src = 'Essential Radio Logo.png';
-artworkImg.onload = () => {
-  artworkImg.classList.add.remove('loaded', 'fallback');
-};
-
+            artworkImg.onload = () => artworkImg.classList.add('loaded', 'fallback');
           };
           artworkImg.src = url;
           return;
         }
       } catch {}
-      // fallback to autopo.st
+
       const safeName = trackName.replace(/\s*\(.*?\)/g, '').replace(/[^a-zA-Z0-9\s-]/g, '').trim().replace(/\s+/g, '_');
       const [artist, title] = safeName.split('_-_');
       const base = `${artist}_${title}`;
@@ -312,16 +281,16 @@ artworkImg.onload = () => {
           artworkImg.onload = () => artworkImg.classList.add('loaded');
           artworkImg.onerror = () => {
             artworkImg.src = 'Essential Radio Logo.png';
-            artworkImg.classList.add('loaded');
+            artworkImg.onload = () => artworkImg.classList.add('loaded', 'fallback');
           };
           artworkImg.src = autoPostUrl;
         } else {
           artworkImg.src = 'Essential Radio Logo.png';
-          artworkImg.classList.add('loaded');
+          artworkImg.onload = () => artworkImg.classList.add('loaded', 'fallback');
         }
       } catch {
         artworkImg.src = 'Essential Radio Logo.png';
-        artworkImg.classList.add('loaded');
+        artworkImg.onload = () => artworkImg.classList.add('loaded', 'fallback');
       }
     }
 
@@ -348,9 +317,11 @@ artworkImg.onload = () => {
           const artwork = await getTrackArtwork(`${item.Artist} - ${item.Title}`);
           const artSrc = artwork || 'Essential Radio Logo.png';
           return `<li><span class="time">${time}</span><img src="${artSrc}" alt="art" loading="lazy"/><span class="info">${fullName}</span></li>`;
-
         }));
         list.innerHTML = entries.join('');
+        document.querySelectorAll('#recent-list img').forEach(img => {
+          observer.observe(img);
+        });
       } catch (e) {
         console.error("Recent fetch failed:", e);
       }
@@ -365,14 +336,11 @@ artworkImg.onload = () => {
           txt.innerHTML = str;
           return txt.value;
         };
-	nowPlaying.innerHTML = `
-  <span style="color: #fed351;">Now Playing</span>
-  <span class="refresh-indicator"></span>
-`;
-
+        nowPlaying.innerHTML = `
+          <span style="color: #fed351;">Now Playing</span>
+          <span class="refresh-indicator"></span>
+        `;
         const raw = decodeHtml(data.nowPlaying || "").trim();
-        console.log("NOW PLAYING RAW METADATA:", raw);
-
         let artist = '', title = '';
         let separator = raw.includes(" – ") ? " – " : raw.includes(" - ") ? " - " : null;
 
@@ -380,29 +348,27 @@ artworkImg.onload = () => {
           [artist, title] = raw.split(separator);
         } else {
           nowPlaying.innerHTML = `
-  <span style="color: #fed351;">Now Playing:</span><br />
-  <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
-  <span style="color: white;">on Essential Radio</span>`;
-artworkImg.src = 'Essential Radio Logo.png';
-artworkImg.classList.add('loaded');
-
+            <span style="color: #fed351;">Now Playing:</span><br />
+            <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
+            <span style="color: white;">on Essential Radio</span>`;
+          artworkImg.src = 'Essential Radio Logo.png';
+          artworkImg.classList.add('loaded', 'fallback');
           return;
         }
 
         nowPlaying.innerHTML = `
-  <span style="color: #fed351;">Now Playing:</span><br />
-  <span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br />
-  <span style="color: white;">by ${artist}</span>`;
+          <span style="color: #fed351;">Now Playing:</span><br />
+          <span style="color: white; font-weight: 600; font-size: 1.2em;">${title}</span><br />
+          <span style="color: white;">by ${artist}</span>`;
 
         fetchArtwork(`${artist} - ${title}`);
       } catch (err) {
-nowPlaying.innerHTML = `
-  <span style="color: #fed351;">Now Playing:</span><br />
-  <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
-  <span style="color: white;">on Essential Radio</span>`;
-artworkImg.src = 'Essential Radio Logo.png';
-artworkImg.classList.add('loaded');
-
+        nowPlaying.innerHTML = `
+          <span style="color: #fed351;">Now Playing:</span><br />
+          <span style="color: white; font-weight: 600; font-size: 1.2em;">More music soon</span><br />
+          <span style="color: white;">on Essential Radio</span>`;
+        artworkImg.src = 'Essential Radio Logo.png';
+        artworkImg.classList.add('loaded', 'fallback');
         console.error("Fetch error:", err);
       }
     }
@@ -457,19 +423,15 @@ artworkImg.classList.add('loaded');
     setInterval(fetchRecentFromGitHub, 15000);
     fetchNowPlaying();
     fetchRecentFromGitHub();
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('loaded');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
 
-document.querySelectorAll('#recent-list img').forEach(img => {
-  observer.observe(img);
-});
-
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('loaded');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
   </script>
 </body>
 </html>
