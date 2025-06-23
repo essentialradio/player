@@ -249,6 +249,7 @@
 </div>
 
 <script>
+<script>
 async function fetchSchedule() {
   try {
     const res = await fetch("https://essentialradio.github.io/player/schedule.json");
@@ -260,15 +261,11 @@ async function fetchSchedule() {
   }
 }
 
-
-
 function getCurrentShow(schedule) {
   const now = new Date();
-
-  // Force English day with proper capitalisation
   const day = now.toLocaleString("en-GB", { weekday: "long" });
-
   const shows = schedule[day];
+
   if (!shows) {
     console.warn("No shows found for", day);
     return "No schedule available";
@@ -277,39 +274,37 @@ function getCurrentShow(schedule) {
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
   for (const show of shows) {
-  const [sh, sm] = show.start.split(":").map(Number);
-  const [eh, em] = show.end.split(":").map(Number);
-  const start = sh * 60 + sm;
-  let end = eh * 60 + em;
+    const [sh, sm] = show.start.split(":").map(Number);
+    const [eh, em] = show.end.split(":").map(Number);
+    const start = sh * 60 + sm;
+    let end = eh * 60 + em;
 
-  // Treat 00:00 as 1440 (end of day) for matching logic
-  if (end === 0 && start > 0) {
-    end = 1440;
-  }
+    if (end === 0 && start > 0) end = 1440;
 
-  console.log(`Checking "${show.title}": ${start}–${end} vs now ${nowMinutes}`);
+    console.log(`Checking "${show.title}": ${start}–${end} vs now ${nowMinutes}`);
 
-  if (nowMinutes >= start && nowMinutes < end) {
-    return show.title;
-  }
-}
-
-
-
-
-
-
-  async function updateOnAirNow() {
-    const schedule = await fetchSchedule();
-    if (schedule) {
-      const showName = getCurrentShow(schedule);
-      document.getElementById("currentShow").textContent = showName;
+    if (nowMinutes >= start && nowMinutes < end) {
+      return show.title;
     }
   }
 
-  updateOnAirNow();
-  setInterval(updateOnAirNow, 60000); // refresh every minute
+  return "Off Air";
+}
+
+async function updateOnAirNow() {
+  const schedule = await fetchSchedule();
+  if (schedule) {
+    const showName = getCurrentShow(schedule);
+    document.getElementById("currentShow").textContent = showName;
+  } else {
+    document.getElementById("currentShow").textContent = "Schedule unavailable";
+  }
+}
+
+updateOnAirNow();
+setInterval(updateOnAirNow, 60000);
 </script>
+
 
 <body>
   <div class="strip-container">
