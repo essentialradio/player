@@ -441,7 +441,7 @@
 
     function getCurrentShow() {
       const now = new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
-      const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
+      const currentDay = now.toLocaleString('en-GB', { weekday: 'long' });
       const currentTime = now.getHours() * 100 + now.getMinutes();
       const dailySchedule = weeklySchedule[currentDay] || [];
       let currentShowTitle = "Loading show...";
