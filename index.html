@@ -261,24 +261,29 @@
 
 
   function getCurrentShow(schedule) {
-    const now = new Date();
-    const day = now.toLocaleDateString("en-GB", { weekday: "long" });
-    const time = now.toTimeString().slice(0, 5);
+  const now = new Date();
+  const day = now.toLocaleDateString("en-GB", { weekday: "long" });
 
-    const shows = schedule[day];
-    if (!shows) return "No schedule available";
+  const shows = schedule[day];
+  if (!shows) return "No schedule available";
 
-    for (let i = 0; i < shows.length; i++) {
-      const current = shows[i];
-      const next = shows[i + 1] || { time: "23:59" };
+  const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
-      if (time >= current.time && time < next.time) {
-        return current.title;
-      }
+  for (let i = 0; i < shows.length; i++) {
+    const [h, m] = shows[i].time.split(":").map(Number);
+    const start = h * 60 + m;
+
+    const [nh, nm] = (shows[i + 1]?.time || "24:00").split(":").map(Number);
+    const end = nh * 60 + nm;
+
+    if (nowMinutes >= start && nowMinutes < end) {
+      return shows[i].title;
     }
-
-    return "Off Air";
   }
+
+  return "Off Air";
+}
+
 
   async function updateOnAirNow() {
     const schedule = await fetchSchedule();
