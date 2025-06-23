@@ -2,48 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Essential Radio Player</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 30px;
       background: linear-gradient(135deg, #00818a, #7e1974);
       color: white;
-      margin: 0;
-      padding: 20px;
+      display: flex;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .now-showing-box {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 15px;
+    .strip-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      background-color: #111;
+    }
+    .left-panel, .right-panel {
+      flex: 1 1 100%;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (min-width: 768px) {
+      .left-panel, .right-panel {
+        flex: 1 1 50%;
+      }
+      .left-panel {
+        border-right: 1px solid #333;
+      }
+      .right-panel {
+        border-left: 1px solid #333;
+      }
+    }
+    .left-panel {
+      background: #111;
+      align-items: center;
+      text-align: center;
+    }
+    .right-panel {
+      background: #222;
+      overflow-y: auto;
+    }
+    #show-box {
       margin-bottom: 20px;
+      background: #1a1a1a;
+      padding: 15px;
       border-radius: 10px;
+      box-shadow: 0 0 12px #fed35180;
     }
-    .now-showing-box div {
-      font-size: 1.2em;
+    #showTitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fed351;
     }
-    ul#recent-list {
-      list-style: none;
-      padding: 0;
-    }
-    ul#recent-list li {
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    #showPresenter {
+      font-size: 16px;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <div class="now-showing-box">
-    <div id="showTitle">Loading show...</div>
-    <div id="showPresenter"></div>
+  <div class="strip-container">
+    <div class="left-panel">
+      <div id="player-box">
+        <audio id="stream" preload="none">
+          <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
+        </audio>
+        <button id="play-toggle">▶️ Play Essential Radio</button>
+        <div id="volume-container">
+          <label for="volume-slider">Volume:</label>
+          <input type="range" id="volume-slider" min="0" max="100" value="100" />
+          <span id="volume-display">100%</span>
+          <button id="mute-toggle">🔊</button>
+        </div>
+        <div id="now-playing-card">
+          <div id="now-playing">Loading current track…</div>
+        </div>
+        <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
+      </div>
+    </div>
+    <div class="right-panel">
+      <div id="show-box">
+        <div id="showTitle">Loading show…</div>
+        <div id="showPresenter"></div>
+      </div>
+      <div class="recent-title">Recently Played</div>
+      <ul id="recent-list"></ul>
+    </div>
   </div>
-
-  <h2>Recently Played</h2>
-  <ul id="recent-list"></ul>
 
   <script>
     const weeklySchedule = {
-      "Monday": [
+    "Monday": [
         { time: "00:00", title: "Soul Vaults with David Southway" },
         { time: "02:00", title: "Essential Nights" },
         { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
@@ -57,8 +120,8 @@
         { time: "21:00", title: "The 90s at 9" },
         { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
         { time: "23:59", title: "Essential Nights" }
-      ],
-      "Tuesday": [
+    ],
+    "Tuesday": [
         { time: "00:00", title: "Essential Nights" },
         { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
         { time: "11:00", title: "Coffee Break Classics" },
@@ -71,8 +134,8 @@
         { time: "21:00", title: "The 90s at 9" },
         { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
         { time: "23:59", title: "Essential Nights" }
-      ],
-      "Wednesday": [
+    ],
+    "Wednesday": [
         { time: "00:00", title: "Essential Nights" },
         { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
         { time: "11:00", title: "Coffee Break Classics" },
@@ -85,8 +148,8 @@
         { time: "21:00", title: "The 90s at 9" },
         { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
         { time: "23:59", title: "Essential Nights" }
-      ],
-      "Thursday": [
+    ],
+    "Thursday": [
         { time: "00:00", title: "Essential Nights" },
         { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
         { time: "11:00", title: "Coffee Break Classics" },
@@ -99,8 +162,8 @@
         { time: "21:00", title: "The 90s at 9" },
         { time: "22:00", title: "The Chill Out Zone with DJ Lazy B" },
         { time: "23:59", title: "Essential Nights" }
-      ],
-      "Friday": [
+    ],
+    "Friday": [
         { time: "00:00", title: "Essential Nights" },
         { time: "07:00", title: "Essential Breakfast with Paul Woodland" },
         { time: "11:00", title: "Coffee Break Classics" },
@@ -111,8 +174,8 @@
         { time: "19:00", title: "Ready for the Weekend with Lee Everest" },
         { time: "20:00", title: "Essential Party" },
         { time: "23:00", title: "Club Classics with Ronny Costello" }
-      ],
-      "Saturday": [
+    ],
+    "Saturday": [
         { time: "00:00", title: "Around the World with Davy Sims" },
         { time: "02:00", title: "Essential Nights" },
         { time: "07:00", title: "Essential Breakfast" },
@@ -123,8 +186,8 @@
         { time: "19:00", title: "Grooveline with Stephen Howie" },
         { time: "21:00", title: "Big Fat Party Anthems with Tommy Martin" },
         { time: "23:59", title: "Essential Nights" }
-      ],
-      "Sunday": [
+    ],
+    "Sunday": [
         { time: "00:00", title: "Hi-NRG with Bill Grainger" },
         { time: "02:00", title: "Essential Nights" },
         { time: "06:00", title: "Essential Breakfast" },
@@ -137,24 +200,20 @@
         { time: "19:00", title: "The Mr Rocks Show with Kevin McCallum" },
         { time: "21:00", title: "The Pluggin' Baby Radio Show with Emma Scott" },
         { time: "23:00", title: "The Country Mile with Dave Watkins" }
-      ]
-    };
+    ]
+};
 
     function getCurrentShow() {
-      const now = new Date();
-      const ukTime = new Date(now.toLocaleString('en-GB', { timeZone: 'Europe/London' }));
-      const currentDay = ukTime.toLocaleDateString('en-GB', { weekday: 'long' });
-      const currentTime = ukTime.getHours() * 100 + ukTime.getMinutes();
+      const now = new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+      const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
+      const currentTime = now.getHours() * 100 + now.getMinutes();
       const dailySchedule = weeklySchedule[currentDay] || [];
-
       let currentShowTitle = "Loading show...";
       let currentPresenter = "";
 
       for (let i = 0; i < dailySchedule.length; i++) {
         const showStartTime = parseInt(dailySchedule[i].time.replace(':', ''), 10);
-        const nextShowStartTime = i + 1 < dailySchedule.length
-          ? parseInt(dailySchedule[i + 1].time.replace(':', ''), 10)
-          : 2400;
+        const nextShowStartTime = i + 1 < dailySchedule.length ? parseInt(dailySchedule[i + 1].time.replace(':', ''), 10) : 2400;
         if (currentTime >= showStartTime && currentTime < nextShowStartTime) {
           const [title, presenter] = dailySchedule[i].title.split(" with ");
           currentShowTitle = title || dailySchedule[i].title;
@@ -163,36 +222,25 @@
         }
       }
 
+      if (currentTime < parseInt(dailySchedule[0].time.replace(':', ''), 10) && dailySchedule.length > 0) {
+        const [title, presenter] = dailySchedule[dailySchedule.length - 1].title.split(" with ");
+        currentShowTitle = title || dailySchedule[dailySchedule.length - 1].title;
+        currentPresenter = presenter || "";
+      }
+
       return { title: currentShowTitle, presenter: currentPresenter };
     }
 
     function updateCurrentShow() {
       const { title, presenter } = getCurrentShow();
-      document.getElementById('showTitle').textContent = title;
-      document.getElementById('showPresenter').textContent = presenter ? `with ${presenter}` : "";
-    }
-
-    function fetchRecentFromGitHub() {
-      fetch('recent.json')
-        .then(response => response.json())
-        .then(data => {
-          const list = document.getElementById('recent-list');
-          list.innerHTML = '';
-          data.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = `${item.time} — ${item.artist} – ${item.title}`;
-            list.appendChild(li);
-          });
-        })
-        .catch(error => {
-          console.error('Error loading recent.json:', error);
-        });
+      const showTitleElement = document.getElementById('showTitle');
+      const showPresenterElement = document.getElementById('showPresenter');
+      showTitleElement.textContent = title;
+      showPresenterElement.textContent = presenter ? `with ${presenter}` : "";
     }
 
     updateCurrentShow();
-    fetchRecentFromGitHub();
     setInterval(updateCurrentShow, 60000);
-    setInterval(fetchRecentFromGitHub, 30000);
   </script>
 </body>
 </html>
