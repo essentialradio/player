@@ -394,21 +394,44 @@
       }
     }
 
-    async function fetchRecentFromGitHub() {
-      try {
-        const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json');
-        const data = await res.json();
-        const list = document.getElementById('recent-list');
-        const items = data.filter(i=>i.Artist&&i.Title).slice(-5).reverse();
-        list.innerHTML = await Promise.all(items.map(async i=>{
-          const time = i['Scheduled Time']||i.time||'';
-          const name = `${i.Artist} – ${i.Title}`;
-          const art = await getTrackArtwork(`${i.Artist} - ${i.Title}`) || 'Essential Radio Logo.png';
-          return `<li><span class="time">${time}</span><img src="${art}" alt="Cover for ${name}" loading="lazy"/><span class="info">${name}</span></li>`;
-        })).then(arr=>arr.join(''));
-        document.querySelectorAll('#recent-list img').forEach(img=>observer.observe(img));
-      } catch {}
-    }
+async function fetchRecentFromGitHub() {
+  try {
+    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+    // Append timestamp and disable cache
+    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    // Grab the last 5 valid plays
+    const recentItems = data
+      .filter(item => item.Artist && item.Title)
+      .slice(-5)
+      .reverse();
+
+    // Build list entries
+    const entries = await Promise.all(recentItems.map(async item => {
+      const time = item['Scheduled Time'] || item.time || '';
+      const name = `${item.Artist} – ${item.Title}`;
+      const artSrc = (await getTrackArtwork(name)) || 'Essential Radio Logo.png';
+      return `
+        <li>
+          <span class="time">${time}</span>
+          <img src="${artSrc}"
+               alt="Cover for ${name}"
+               loading="lazy" />
+          <span class="info">${name}</span>
+        </li>`;
+    }));
+
+    // Render into the UL
+    const list = document.getElementById('recent-list');
+    list.innerHTML = entries.join('');
+    document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+  } catch (e) {
+    console.error('Recent fetch failed:', e);
+  }
+}
+
 
     async function fetchArtwork(track) {
       artworkImg.classList.remove('loaded','fallback');
