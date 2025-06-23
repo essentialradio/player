@@ -263,11 +263,16 @@ async function fetchSchedule() {
 
 
 function getCurrentShow(schedule) {
-  const now = new Date(new Date().toLocaleString("en-GB", { timeZone: "Europe/London" }));
-  const day = now.toLocaleDateString("en-GB", { weekday: "long" });
-  const shows = schedule[day] || schedule[day.charAt(0).toUpperCase() + day.slice(1)];
+  const now = new Date();
 
-  if (!shows) return "No schedule available";
+  // Force English day with proper capitalisation
+  const day = now.toLocaleString("en-GB", { weekday: "long" });
+
+  const shows = schedule[day];
+  if (!shows) {
+    console.warn("No shows found for", day);
+    return "No schedule available";
+  }
 
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
