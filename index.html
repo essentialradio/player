@@ -265,8 +265,8 @@ async function fetchSchedule() {
 function getCurrentShow(schedule) {
   const now = new Date(new Date().toLocaleString("en-GB", { timeZone: "Europe/London" }));
   const day = now.toLocaleDateString("en-GB", { weekday: "long" });
+  const shows = schedule[day] || schedule[day.charAt(0).toUpperCase() + day.slice(1)];
 
-  const shows = schedule[day];
   if (!shows) return "No schedule available";
 
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
