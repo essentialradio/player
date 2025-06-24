@@ -400,39 +400,54 @@
     }
   }
 
-  async function fetchRecentFromGitHub() {
-    try {
-      const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-      const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
+ async function fetchRecentFromGitHub() {
+  try {
+    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
 
-      const recentItems = data
-        .filter(item => item.Artist && item.Title)
-        .slice(-5)
-        .reverse();
+    const recentItems = data
+      .filter(item => item.Artist && item.Title)
+      .slice(-5)
+      .reverse();
 
-      const entries = await Promise.all(recentItems.map(async item => {
-        const time = item['Scheduled Time'] || item.time || '';
-        const name = `${item.Artist} – ${item.Title}`;
-        const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
-        return `
-          <li>
-            <span class="time">${time}</span>
-            <img src="${art}"
-                 alt="Cover for ${name}"
-                 loading="lazy" />
-            <span class="info">${name}</span>
-          </li>`;
-      }));
+    const entries = await Promise.all(recentItems.map(async item => {
+      const time = item['Scheduled Time'] || item.time || '';
+      const name = `${item.Artist} – ${item.Title}`;
+      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+      return `
+        <li>
+          <span class="time">${time}</span>
+          <img src="${art}"
+               alt="Cover for ${name}"
+               loading="lazy" />
+          <span class="info">${name}</span>
+        </li>`;
+    }));
 
-      const list = document.getElementById('recent-list');
-      list.innerHTML = entries.join('');
-      document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
-    } catch (e) {
-      console.error('Recent fetch failed:', e);
+    const list = document.getElementById('recent-list');
+    list.innerHTML = entries.join('');
+
+    // Observe each new image and trigger a resize once it finishes loading
+    document.querySelectorAll('#recent-list img').forEach(img => {
+      img.addEventListener('load', () => {
+        if (window.parentIFrame && typeof window.parentIFrame.size === 'function') {
+          window.parentIFrame.size();
+        }
+      });
+    });
+
+    // And trigger one resize immediately in case nothing loads asynchronously
+    if (window.parentIFrame && typeof window.parentIFrame.size === 'function') {
+      window.parentIFrame.size();
     }
+
+  } catch (e) {
+    console.error('Recent fetch failed:', e);
   }
+}
+
 
   async function fetchArtwork(trackName) {
     // reset to logo and remove classes
