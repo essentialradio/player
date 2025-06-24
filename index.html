@@ -64,7 +64,7 @@
       opacity: 0.95;
       z-index: 10;
     }
-    
+
     .logo img {
       width: 100%;
       height: auto;
@@ -219,6 +219,17 @@
       user-select: none;
     }
 
+    .refresh-indicator {
+      display: inline-block;
+      margin-left: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fed351;
+      animation: pulse 1.2s infinite;
+      vertical-align: middle;
+    }
+
     .live-indicator {
       display: inline-flex;
       align-items: center;
@@ -255,33 +266,52 @@
     <div class="logo">
       <img src="ERLogo2.png" alt="Essential Radio Logo" />
     </div>
+
     <div class="left-panel">
       <div id="onAirNow">
-        <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
+        <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br />
         <span id="currentShow" style="font-weight: 600;">Loading...</span>
       </div>
+
       <div id="player-box">
         <audio id="stream" preload="none">
-          <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
+          <source
+            src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream"
+            type="audio/mpeg"
+          />
         </audio>
+
         <button id="play-toggle">▶️ Play Essential Radio</button>
+
         <div id="volume-container">
           <label for="volume-slider">Volume:</label>
-          <input type="range" id="volume-slider" min="0" max="100" value="100" />
+          <input
+            type="range"
+            id="volume-slider"
+            min="0"
+            max="100"
+            value="100" />
           <span id="volume-display">100%</span>
           <button id="mute-toggle">🔊</button>
         </div>
+
         <div id="now-playing-card">
           <div id="now-playing">Loading current track…</div>
         </div>
-        <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" />
+
+        <img
+          id="artwork"
+          src="Essential Radio Logo.png"
+          alt="Artwork" />
       </div>
     </div>
+
     <div class="right-panel">
       <div class="recent-title">Recently Played</div>
       <ul id="recent-list"></ul>
     </div>
   </div>
+
   <script>
 <body>
   <div class="strip-container">
