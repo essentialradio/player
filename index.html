@@ -237,24 +237,21 @@
   </style>
 </head>
 <body>
-  <div id="onAirNow" style="
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    z-index: 1000;">
-    <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
-    <span id="currentShow" style="font-weight: 600;">Loading...</span>
-  </div>
-
   <div class="strip-container">
     <div class="left-panel">
+	<div id="onAirNow" style="
+  background: #1a1a1a;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);">
+  <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
+  <span id="currentShow" style="font-weight: 600;">Loading...</span>
+</div>
       <div id="player-box">
         <audio id="stream" preload="none">
           <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
