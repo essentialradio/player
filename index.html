@@ -497,27 +497,5 @@
   setInterval(fetchNowPlaying, 15000);
   setInterval(fetchRecentFromGitHub, 15000);
 </script>
-<script>
-  function reportHeight() {
-    // send the full document height to the parent
-    window.parent.postMessage(
-      document.documentElement.scrollHeight,
-      'https://essential.radio'  // or '*' if you don’t have a fixed domain yet
-    );
-  }
-
-  // report once on load…
-  window.addEventListener('load', reportHeight);
-
-  // …and again every time your “Recently Played” list changes:
-  const originalFetch = fetchRecentFromGitHub;
-  fetchRecentFromGitHub = async function() {
-    await originalFetch();
-    reportHeight();
-  };
-</script>
-</body>
-</html>
-
 </body>
 </html>
