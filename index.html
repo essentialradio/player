@@ -237,23 +237,25 @@
   </style>
 </head>
 <body>
-  <div id="onAirNow" style="
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fed351;
-  color: #111;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.3);
-  user-select: none;
-">
-  <span>🎙 ON AIR NOW:</span>
-  <span id="currentShow" style="font-weight: 700;">Loading…</span>
-</div>
+  <div class="strip-container">
+    <div class="left-panel">
+      <div id="onAirNow" style="
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fed351;
+        color: #111;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        box-shadow: 0 0 6px rgba(0,0,0,0.3);
+        user-select: none;
+        ">
+        <span>🎙 ON AIR NOW:</span>
+        <span id="currentShow" style="font-weight: 700;">Loading…</span>
+      </div>
 
       <div id="player-box">
         <audio id="stream" preload="none">
@@ -272,11 +274,13 @@
         <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
       </div>
     </div>
+
     <div class="right-panel">
       <div class="recent-title">Recently Played</div>
       <ul id="recent-list"></ul>
     </div>
   </div>
+
 
   <!-- Schedule & “On Air Now” logic -->
 <script>
