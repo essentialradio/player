@@ -37,11 +37,14 @@
       justify-content: center;
     }
     .left-panel {
-      background: #111;
-      align-items: center;
-      text-align: center;
-      border-right: 1px solid #333;
-    }
+  background: #111;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid #333;
+  justify-content: flex-start; /* ⬅ pushes content to top */
+  padding-top: 30px; /* ⬅ optional: space from very top */
+}
+
     .right-panel {
       background: #222;
       overflow-y: auto;
