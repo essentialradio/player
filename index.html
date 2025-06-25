@@ -197,6 +197,31 @@
       animation: pulse 1.2s infinite;
       vertical-align: middle;
     }
+/* Let the main wrapper act as the positioning anchor */
+.strip-container {
+  position: relative;   /* NEW */
+}
+
+/* Over-hanging logo */
+.logo-overhang {
+  position: absolute;
+  top: -45px;           /* how far it “hangs” above the box */
+  left: -45px;          /* how far it “hangs” left of the box */
+  width: 120px;         /* tweak to taste */
+  pointer-events: none; /* keeps clicks on the player */
+  user-select: none;
+  opacity: 0.9;         /* subtle transparency so it blends in */
+}
+
+/* Optional: resize logo on phones */
+@media (max-width: 768px) {
+  .logo-overhang {
+    top: -30px;
+    left: -30px;
+    width: 90px;
+  }
+}
+
     .live-indicator {
       display: inline-flex;
       align-items: center;
@@ -235,6 +260,10 @@
   </style>
 </head>
 <body>
+
+  <img src="ERLogo2.jpg" alt="Essential Radio Logo"
+       class="logo-overhang" />
+
   <div class="strip-container">
     <div class="left-panel">
       <div id="onAirNow" style="
