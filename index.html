@@ -618,7 +618,31 @@ if (window.innerWidth <= 768) {
   showSpan.innerHTML = formatShowTitleMobileOnly(rawTitle);
 </script>
 </body>
+<script>
+  function formatShowTitleMobileOnly(title) {
+    if (window.innerWidth <= 600) {
+      const match = title.match(/(.*)\s+with\s+(.*)/i);
+      if (match) {
+        return `${match[1]}<br>with ${match[2]}`;
+      }
+    }
+    return title;
+  }
 
+  const showSpan = document.getElementById("currentShow");
+
+  // MutationObserver ensures that when the schedule updates, we reformat it
+  const observer = new MutationObserver(() => {
+    const raw = showSpan?.textContent || "";
+    showSpan.innerHTML = formatShowTitleMobileOnly(raw);
+  });
+
+  if (showSpan) {
+    observer.observe(showSpan, { childList: true });
+    // initial format
+    showSpan.innerHTML = formatShowTitleMobileOnly(showSpan.textContent);
+  }
+</script>
 </body>
 </html>
-
+//
