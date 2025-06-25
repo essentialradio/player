@@ -51,13 +51,6 @@
       border-left: 1px solid #333;
     }
     
-
-try {
-  const saved = localStorage.getItem('artworkCache');
-  if (saved) artworkCache = JSON.parse(saved);
-} catch (e) {
-  console.warn('Could not load cached artwork:', e);
-}
     #player-box {
       max-width: 420px;
       width: 100%;
@@ -208,10 +201,6 @@ try {
       padding: 0;
       margin: 0;
     }
-setTimeout(() => {
-  document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
-}, 100); // small delay to ensure layout
-
     ul#recent-list li {
       display: flex;
       align-items: center;
@@ -458,13 +447,17 @@ setTimeout(() => {
 <script>
   let artworkCache = {};
 
-  // Load artwork cache from localStorage
-  try {
-    const saved = localStorage.getItem('artworkCache');
-    if (saved) artworkCache = JSON.parse(saved);
-  } catch (e) {
-    console.warn('Could not load cached artwork:', e);
-  }
+try {
+  const saved = localStorage.getItem('artworkCache');
+  if (saved) artworkCache = JSON.parse(saved);
+} catch (e) {
+  console.warn('Could not load cached artwork:', e);
+}
+
+setTimeout(() => {
+  document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+}, 100);
+
 async function getTrackArtwork(query) {
   // Try in-memory or localStorage cache first
   if (artworkCache[query] !== undefined) {
@@ -770,15 +763,5 @@ async function fetchRecentFromGitHub() {
     showSpan.innerHTML = formatShowTitleMobileOnly(showSpan.textContent);
   }
 </script>
-
-<script>
-  let artworkCache = {};
-
-  // Apply lazy loading visuals after a short delay
-  setTimeout(() => {
-    document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
-  }, 100);
-</script>
-
 </body>
 </html>
