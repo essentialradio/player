@@ -255,13 +255,13 @@
   justify-content: center;
 }
 
-/* Desktop (default): larger overhang */
+/* Desktop (default): moderately larger logo */
 .logo-overhang {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(-40%, -40%);
-  width: 300px; /* increased from 200px */
+  transform: translate(-30%, -30%);
+  width: 220px;
   z-index: 2;
   opacity: 0.97;
   pointer-events: none;
@@ -269,14 +269,15 @@
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
 }
 
-/* Tablet: slightly smaller than desktop but larger than mobile */
+/* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
   .logo-overhang {
-    width: 250px;
+    width: 180px;
+    transform: translate(-30%, -30%);
   }
 }
 
-/* Mobile: existing style */
+/* Mobile */
 @media (max-width: 768px) {
   .logo-overhang {
     position: absolute;
@@ -286,6 +287,7 @@
     transform: none;
   }
 }
+
 
     .live-indicator {
       display: inline-flex;
