@@ -279,7 +279,11 @@
 }
 
 /* Default (desktop) */
-.logo-overhang {
+/* .logo-overhang removed */ {
+  width: 140px;
+  top: 20px;
+  left: 20px;
+  transform: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -294,7 +298,11 @@
 
 /* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .logo-overhang {
+  /* .logo-overhang removed */ {
+  width: 140px;
+  top: 20px;
+  left: 20px;
+  transform: none;
     width: 170px;
     transform: translate(-30%, -30%);
   }
@@ -302,7 +310,11 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .logo-overhang {
+  /* .logo-overhang removed */ {
+  width: 140px;
+  top: 20px;
+  left: 20px;
+  transform: none;
     width: 120px;
     transform: (-25%, -25%);
     top: 2px;
@@ -418,11 +430,10 @@
   <div class="widget-wrapper">
   <!-- Player container with floating logo -->
   <div class="player-wrapper">
-    <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
-
     <div class="strip-container">
       <!-- existing player layout -->
       <div class="left-panel">
+        <img src="ERLogo2.png" alt="Essential Radio Logo" style="width: 120px; margin-bottom: 10px;" />
         <div id="onAirNow" style="
           text-align: right;">
           <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
