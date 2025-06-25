@@ -104,12 +104,16 @@
     }
 /* Base style for desktop: center ON AIR NOW block */
 #onAirNow {
-  text-align: center;
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;           /* Desktop default */
+  padding-right: 0;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   button#play-toggle {
     font-size: 16px;
     padding: 12px 16px;
@@ -303,7 +307,6 @@
 }
     }
 
-@media (max-width: 600px) {
   .logo-overhang {
     position: absolute;
     top: 4px;
@@ -358,7 +361,7 @@
     margin-top: 8px;
     margin-bottom: 8px;
   }
-}
+
 
 
 
