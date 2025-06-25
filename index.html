@@ -306,15 +306,21 @@
 @media (max-width: 600px) {
   .logo-overhang {
     position: absolute;
-    top: 4px;         /* Move logo higher */
+    top: 4px;
     left: 10px;
     width: 120px;
     transform: none;
   }
 
   #onAirNow {
+    margin-top: 0;
+    margin-bottom: 10px;
     text-align: right;
-    padding-right: 8px; /* pushes content further right */
+    padding-right: 16px; /* More rightward push */
+  }
+
+  #onAirNow br {
+    display: none;
   }
 
   #onAirNow span {
@@ -323,32 +329,28 @@
   }
 
   .show-title {
-    display: block;
     font-weight: 600;
   }
 
   .show-presenter {
-    display: block;
     font-weight: 400;
-  }
-  #onAirNow br {
-    display: inline;
-  }
-
- 
-
-  #player-box {
-    margin-top: -4px;
+    font-size: 0.95em;
+    opacity: 0.9;
   }
 
   .left-panel {
     padding-top: 4px;
   }
 
+  #player-box {
+    margin-top: -4px;
+  }
+
   #nowPlaying {
     margin-bottom: 8px;
   }
 }
+
 
 
   </style>
