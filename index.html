@@ -203,24 +203,29 @@
   z-index: 1;
 }
 
-/* Over-hanging logo */
+/* ===== Over-hang logo tweaks ===== */
 .logo-overhang {
   position: absolute;
-  top: -0px;           /* how far it “hangs” above the box */
-  left: -10px;          /* how far it “hangs” left of the box */
-  width: 120px;         /* tweak to taste */
-  pointer-events: none; /* keeps clicks on the player */
+  top: -40px;
+  left: -40px;
+  width: 95px;                 /* desktop */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.35));
+  outline: 2px solid #fed351;
+  outline-offset: -2px;
+  transition: transform .25s ease, opacity .25s ease;
   user-select: none;
-  opacity: 0.9;         /* subtle transparency so it blends in */
-  z-index: 2;
+  pointer-events: none;
 }
 
-/* Optional: resize logo on phones */
-@media (max-width: 768px) {
-  .logo-overhang {
+.logo-overhang:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+@media (max-width: 768px){
+  .logo-overhang{
+    width: 75px;               /* mobile */
     top: -30px;
     left: -30px;
-    width: 90px;
   }
 }
 
