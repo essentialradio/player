@@ -203,31 +203,33 @@
   z-index: 1;
 }
 
-/* ===== Over-hang logo tweaks ===== */
+.player-wrapper {
+  position: relative;
+  padding-top: 60px; /* space for logo overhang */
+  display: flex;
+  justify-content: center;
+}
+
 .logo-overhang {
   position: absolute;
-  top: -40px;
-  left: -40px;
-  width: 95px;                 /* desktop */
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,.35));
-  outline: 2px solid #fed351;
-  outline-offset: -2px;
-  transition: transform .25s ease, opacity .25s ease;
-  user-select: none;
+  top: 0;
+  left: 0;
+  transform: translate(-40px, -40px);
+  width: 100px;
+  z-index: 2;
+  opacity: 0.95;
   pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.35));
 }
 
-.logo-overhang:hover {
-  transform: translateY(-2px) scale(1.02);
-}
-
-@media (max-width: 768px){
-  .logo-overhang{
-    width: 75px;               /* mobile */
-    top: -30px;
-    left: -30px;
+@media (max-width: 768px) {
+  .logo-overhang {
+    transform: translate(-30px, -30px);
+    width: 75px;
   }
 }
+
 
     .live-indicator {
       display: inline-flex;
@@ -270,51 +272,56 @@
 
  
 
-  <div class="strip-container">
- <img src="ERLogo2.png" alt="Essential Radio Logo"
-       class="logo-overhang" />
-    <div class="left-panel">
-      <div id="onAirNow" style="
-  background: rgba(0, 0, 0, 0.7);
-  padding: 16px 20px;
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  color: white;
-  margin-bottom: 30px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  width: 100%;
-  max-width: 420px;
-  text-align: center;
-">
-  <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
-  <span id="currentShow" style="font-weight: 600;">Loading...</span>
-</div>
+  <body>
+  <!-- Player container with floating logo -->
+  <div class="player-wrapper">
+    <img src="36cc6429-e53f-48fb-b103-d979786652b5.png" alt="Essential Radio Logo" class="logo-overhang" />
 
+    <div class="strip-container">
+      <!-- existing player layout -->
+      <div class="left-panel">
+        <div id="onAirNow" style="
+          background: rgba(0, 0, 0, 0.7);
+          padding: 16px 20px;
+          border-radius: 12px;
+          font-family: 'Inter', sans-serif;
+          font-size: 16px;
+          color: white;
+          margin-bottom: 30px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.3);
+          width: 100%;
+          max-width: 420px;
+          text-align: center;">
+          <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
+          <span id="currentShow" style="font-weight: 600;">Loading...</span>
+        </div>
 
-      <div id="player-box">
-        <audio id="stream" preload="none">
-          <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
-        </audio>
-        <button id="play-toggle">▶️ Play Essential Radio</button>
-        <div id="volume-container">
-          <label for="volume-slider">Volume:</label>
-          <input type="range" id="volume-slider" min="0" max="100" value="100" />
-          <span id="volume-display">100%</span>
-          <button id="mute-toggle">🔊</button>
+        <div id="player-box">
+          <audio id="stream" preload="none">
+            <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
+          </audio>
+          <button id="play-toggle">▶️ Play Essential Radio</button>
+          <div id="volume-container">
+            <label for="volume-slider">Volume:</label>
+            <input type="range" id="volume-slider" min="0" max="100" value="100" />
+            <span id="volume-display">100%</span>
+            <button id="mute-toggle">🔊</button>
+          </div>
+          <div id="now-playing-card">
+            <div id="now-playing">Loading current track…</div>
+          </div>
+          <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
         </div>
-        <div id="now-playing-card">
-          <div id="now-playing">Loading current track…</div>
-        </div>
-        <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
       </div>
-    </div>
 
-    <div class="right-panel">
-      <div class="recent-title">Recently Played</div>
-      <ul id="recent-list"></ul>
-    </div>
-  </div>
+      <div class="right-panel">
+        <div class="recent-title">Recently Played</div>
+        <ul id="recent-list"></ul>
+      </div>
+    </div> <!-- end .strip-container -->
+  </div> <!-- end .player-wrapper -->
+</body>
+
 
 
   <!-- Schedule & “On Air Now” logic -->
