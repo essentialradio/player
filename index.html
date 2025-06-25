@@ -523,44 +523,53 @@ async function fetchRecentFromGitHub() {
 
 
   async function fetchArtwork(trackName) {
-    // reset to logo and remove classes
-    artworkImg.src = 'Essential Radio Logo.png';
-    artworkImg.classList.remove('loaded', 'fallback');
+  // reset to logo and remove classes
+  artworkImg.src = 'Essential Radio Logo.png';
+  artworkImg.classList.remove('loaded', 'fallback');
 
-    // try iTunes
-    try {
-      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
-      const js = await res.json();
-      if (js.results[0]?.artworkUrl100) {
-        const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
-        artworkImg.onload = () => artworkImg.classList.add('loaded');
-        artworkImg.onerror = applyFallbackImmediate;
-        artworkImg.src = url;
-        return;
-      }
-    } catch {}
-
-    // try Autopo.st
-    const safe = trackName
-      .replace(/\s*\(.*?\)/g, '')
-      .replace(/[^a-zA-Z0-9\s-]/g, '')
-      .trim()
-      .replace(/\s+/g, '_');
-    const [artist, title] = safe.split('_-_');
-    const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
-    try {
-      const head = await fetch(autoUrl, { method: 'HEAD' });
-      if (head.ok) {
-        artworkImg.onload = () => artworkImg.classList.add('loaded');
-        artworkImg.onerror = applyFallbackImmediate;
-        artworkImg.src = autoUrl;
-        return;
-      }
-    } catch {}
-
-    // fallback
-    applyFallbackImmediate();
+  // try iTunes
+  try {
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
+    const js = await res.json();
+    if (js.results[0]?.artworkUrl100) {
+      const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
+      artworkImg.onload = () => artworkImg.classList.add('loaded');
+      artworkImg.onerror = applyFallbackImmediate;
+      artworkImg.src = url;
+      return;
+    }
+  } catch (e) {
+    console.warn('iTunes fetch failed in fetchArtwork():', e);
   }
+
+  // fallback logic: safely extract artist and title
+  let artist = 'unknown', title = 'unknown';
+  const sepIndex = trackName.indexOf(' - ');
+  if (sepIndex !== -1) {
+    artist = trackName.substring(0, sepIndex).trim().replace(/\s+/g, '_');
+    title = trackName.substring(sepIndex + 3).trim().replace(/\s+/g, '_');
+  } else {
+    title = trackName.trim().replace(/\s+/g, '_');
+  }
+
+  const autoUrl = `https://cdn.autopo.st/images/coverart/${artist[0]?.toLowerCase() || 'u'}/${artist}_${title}.jpg`;
+
+  try {
+    const head = await fetch(autoUrl, { method: 'HEAD' });
+    if (head.ok) {
+      artworkImg.onload = () => artworkImg.classList.add('loaded');
+      artworkImg.onerror = applyFallbackImmediate;
+      artworkImg.src = autoUrl;
+      return;
+    }
+  } catch (e) {
+    console.warn('Autopo.st HEAD request failed in fetchArtwork():', e);
+  }
+
+  console.warn(`No artwork found for: "${trackName}"`);
+  applyFallbackImmediate();
+}
+
 
   function applyFallbackImmediate() {
     artworkImg.src = 'Essential Radio Logo.png';
