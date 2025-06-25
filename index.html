@@ -305,29 +305,32 @@
     }
 
 @media (max-width: 600px) {
-  #player-box {
-    margin-top: 0px;
-    margin-bottom: 15px;
-  }
-
-  .left-panel {
-    padding-top: 0px;
+  .logo-overhang {
+    width: 120px;
+    top: 6px;                 /* slightly higher */
+    left: 12px;
+    transform: translate(-20%, -25%);
   }
 
   #onAirNow {
-    margin-top: 0px; /* Slight upward shift */
+    margin-left: 10px;       /* nudge to the right */
+    margin-top: 0;
     margin-bottom: 6px;
+    text-align: left;        /* keeps the text alignment clean */
+    width: fit-content;
+  }
+
+  #player-box {
+    margin-top: 0px;         /* reduce top spacing */
+    margin-bottom: 15px;     /* keep consistent spacing below */
+  }
+
+  .left-panel {
+    padding-top: 0px;        /* pulls whole panel up */
   }
 
   #nowPlaying {
     margin-bottom: 8px;
-  }
-
-  .logo-overhang {
-    width: 120px;
-    top: 6px;
-    left: 12px;
-    transform: translate(-20%, -25%);
   }
 }
 
