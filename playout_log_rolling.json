@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:03",
-    "Displayed Time": "",
-    "Artist": "Dua Lipa",
-    "Title": "Houdini",
-    "Duration (s)": 175,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:06",
-    "Displayed Time": "",
-    "Artist": "Maroon 5",
-    "Title": "This Love",
-    "Duration (s)": 189,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:09",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:12",
-    "Displayed Time": "",
-    "Artist": "Pink",
-    "Title": "What About Us",
-    "Duration (s)": 225,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:16",
-    "Displayed Time": "",
-    "Artist": "Sophie Ellis-Bextor",
-    "Title": "Taste",
-    "Duration (s)": 164,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:24",
-    "Displayed Time": "",
-    "Artist": "Culture Beat",
-    "Title": "Mr Vain",
-    "Duration (s)": 245,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:28",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 156,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:31",
-    "Displayed Time": "",
-    "Artist": "A-Ha",
-    "Title": "The Sun Always Shines on TV",
-    "Duration (s)": 264,
-    "Full Duration (s)": 284,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:35",
-    "Displayed Time": "",
-    "Artist": "Ariana Grande",
-    "Title": "We Can't Be Friends (Wait For Your Love)",
-    "Duration (s)": 215,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:39",
-    "Displayed Time": "",
-    "Artist": "Joe Jonas",
-    "Title": "Heart By Heart",
-    "Duration (s)": 178,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:42",
-    "Displayed Time": "",
-    "Artist": "Katy Perry ft Juicy J",
-    "Title": "Dark Horse",
-    "Duration (s)": 205,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:49",
-    "Displayed Time": "",
-    "Artist": "Disturbed",
-    "Title": "The Sound of Silence",
-    "Duration (s)": 237,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:53",
-    "Displayed Time": "",
-    "Artist": "The Eagles",
-    "Title": "Take It Easy",
-    "Duration (s)": 205,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T08:00:00Z",
-    "Scheduled Time": "09:57",
-    "Displayed Time": "",
-    "Artist": "Cast",
-    "Title": "Walkaway",
-    "Duration (s)": 202,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-10T09:00:00Z",
     "Scheduled Time": "10:03",
     "Displayed Time": "",
@@ -44702,5 +44548,16 @@
     "Full Duration (s)": 174,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-06-25T20:00:00Z",
+    "Scheduled Time": "21:01",
+    "Displayed Time": "",
+    "Artist": "Duran Duran",
+    "Title": "Ordinary World",
+    "Duration (s)": 271,
+    "Full Duration (s)": 278,
+    "Duration (mins)": 5,
+    "Full Duration (mins)": 5
   }
 ]
