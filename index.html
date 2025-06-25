@@ -102,6 +102,16 @@
       text-align: left;
       user-select: none;
     }
+@media (max-width: 768px) {
+  #volume-slider,
+  #mute-toggle,
+  #volume-display {
+    pointer-events: none;
+    opacity: 0.3;
+    filter: grayscale(100%);
+  }
+}
+
     #now-playing-card {
       margin-top: 25px;
       background: #1a1a1a;
@@ -214,7 +224,7 @@
   top: 0;
   left: 0;
   transform: translate(-40%, -40%);
-  width: 150px;
+  width: 200px;
   z-index: 2;
   opacity: 0.97;
   pointer-events: none;
@@ -308,9 +318,6 @@
             <span id="volume-display">100%</span>
             <button id="mute-toggle">🔊</button>
           </div>
-	  <small style="font-size: 12px; color: #aaa; margin-top: 6px; display: block;">
-  	   (Use your device buttons to change volume on mobile)
-	  </small>
 
           <div id="now-playing-card">
             <div id="now-playing">Loading current track…</div>
@@ -378,6 +385,11 @@
   const playBtn = document.getElementById('play-toggle');
   const muteBtn = document.getElementById('mute-toggle');
   const volumeSlider = document.getElementById('volume-slider');
+if (window.innerWidth <= 768) {
+  volumeSlider.disabled = true;
+  muteBtn.disabled = true;
+}
+
   const volumeDisplay = document.getElementById('volume-display');
   const nowPlaying = document.getElementById('now-playing');
   const artworkImg = document.getElementById('artwork');
