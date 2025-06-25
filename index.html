@@ -9,7 +9,7 @@
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 80px 30px 30px;
+      padding: 50px 30px 30px;
       background: linear-gradient(135deg, #00818a, #7e1974);
       color: white;
       display: flex;
@@ -246,9 +246,8 @@
 
 .logo-overhang {
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-40%, -40%);
+  top: 20px;        /* ⬅ down a bit */
+  left: 20px;       /* ⬅ more to the right */
   width: 200px;
   z-index: 2;
   opacity: 0.97;
@@ -257,13 +256,14 @@
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
 }
 
-
 @media (max-width: 768px) {
   .logo-overhang {
     width: 90px;
-    transform: translate(-35%, -35%);
+    top: 10px;      /* ⬅ adjusted for mobile */
+    left: 10px;
   }
 }
+
 
 
 
