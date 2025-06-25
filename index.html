@@ -307,6 +307,10 @@
             <span id="volume-display">100%</span>
             <button id="mute-toggle">🔊</button>
           </div>
+	  <small style="font-size: 12px; color: #aaa; margin-top: 6px; display: block;">
+  	   (Use your device buttons to change volume on mobile)
+	  </small>
+
           <div id="now-playing-card">
             <div id="now-playing">Loading current track…</div>
           </div>
@@ -408,19 +412,17 @@
   });
 
   muteBtn.addEventListener('click', () => {
-    if (audio.volume > 0) {
-      lastVolume = audio.volume;
-      audio.volume = 0;
-      volumeSlider.value = 0;
-      volumeDisplay.textContent = '0%';
-      muteBtn.textContent = '🔇';
-    } else {
-      audio.volume = lastVolume;
-      volumeSlider.value = lastVolume * 100;
-      volumeDisplay.textContent = `${Math.round(lastVolume * 100)}%`;
-      muteBtn.textContent = lastVolume < 0.5 ? '🔈' : '🔊';
-    }
-  });
+  if (!audio.muted) {
+    audio.muted = true;
+    muteBtn.textContent = '🔇';
+    volumeDisplay.textContent = 'Muted';
+  } else {
+    audio.muted = false;
+    muteBtn.textContent = audio.volume < 0.5 ? '🔈' : '🔊';
+    volumeDisplay.textContent = `${volumeSlider.value}%`;
+  }
+});
+
 
   async function fetchNowPlaying() {
     try {
