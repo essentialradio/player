@@ -254,20 +254,39 @@
   display: flex;
   justify-content: center;
 }
-@media (max-width: 768px) {
+
+/* Desktop (default): larger overhang */
 .logo-overhang {
   position: absolute;
   top: 0;
   left: 0;
   transform: translate(-40%, -40%);
-  width: 200px;
+  width: 300px; /* increased from 200px */
   z-index: 2;
   opacity: 0.97;
   pointer-events: none;
   user-select: none;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
 }
-)
+
+/* Tablet: slightly smaller than desktop but larger than mobile */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo-overhang {
+    width: 250px;
+  }
+}
+
+/* Mobile: existing style */
+@media (max-width: 768px) {
+  .logo-overhang {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    width: 100px;
+    transform: none;
+  }
+}
+
     .live-indicator {
       display: inline-flex;
       align-items: center;
@@ -307,13 +326,6 @@
 }
     }
 
-  .logo-overhang {
-    position: absolute;
-    top: 4px;
-    left: 10px;
-    width: 100px;
-    transform: none;
-  }
 
   #onAirNow {
     margin-top: 10px;
