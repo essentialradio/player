@@ -295,24 +295,38 @@
 
 @media (max-width: 600px) {
   .logo-overhang {
+    position: absolute;
+    top: 4px;         /* Move logo higher */
+    left: 10px;
     width: 120px;
-    top: 6px;
-    left: 12px;
-    transform: none
+    transform: none;
   }
 
   #onAirNow {
-    margin-left: auto;
-    margin-right: 0;
     margin-top: 0;
-    margin-bottom: 6px;
-    text-align: right;
-    width: 90%;
-    max-width: 360px;
+    margin-bottom: 10px;
+    text-align: right;     /* Align ON AIR box right */
+  }
+
+  .show-title {
+    display: block;
+    font-weight: 600;
+  }
+
+  .show-presenter {
+    display: block;
+    font-weight: 400;
+  }
+  #onAirNow br {
+    display: inline;
+  }
+
+  #onAirNow span {
+    display: block;        /* Force presenter name to appear below */
   }
 
   #player-box {
-    margin-top: -14px;
+    margin-top: -4px;
   }
 
   .left-panel {
@@ -405,9 +419,19 @@
 
   async function updateOnAirNow() {
     const schedule = await fetchSchedule();
-    document.getElementById("currentShow").textContent =
-      schedule ? getCurrentShow(schedule) : "Schedule unavailable";
-  }
+    const currentShowElement = document.getElementById("currentShow");
+const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
+
+if (fullShow.includes(" with ")) {
+  const [title, presenter] = fullShow.split(" with ");
+  currentShowElement.innerHTML = `
+    <span class="show-title">${title.trim()}</span>
+    <span class="show-presenter">with ${presenter.trim()}</span>
+  `;
+} else {
+  currentShowElement.textContent = fullShow;
+}
+
 
   updateOnAirNow();
   setInterval(updateOnAirNow, 60000);
@@ -645,4 +669,3 @@ if (window.innerWidth <= 768) {
 </script>
 </body>
 </html>
-//
