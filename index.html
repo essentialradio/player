@@ -437,27 +437,6 @@
   setInterval(updateOnAirNow, 60_000);
 </script>
 
-
-  async function updateOnAirNow() {
-    const schedule = await fetchSchedule();
-    const currentShowElement = document.getElementById("currentShow");
-const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
-
-if (fullShow.includes(" with ")) {
-  const [title, presenter] = fullShow.split(" with ");
-  currentShowElement.innerHTML = `
-    <span class="show-title">${title.trim()}</span>
-    <span class="show-presenter">with ${presenter.trim()}</span>
-  `;
-} else {
-  currentShowElement.textContent = fullShow;
-}
-
-
-  updateOnAirNow();
-  setInterval(updateOnAirNow, 60000);
-</script>
-
 <!-- Now Playing & Recently Played logic -->
 <script>
   const audio = document.getElementById('stream');
