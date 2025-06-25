@@ -255,7 +255,7 @@
   justify-content: center;
 }
 
-/* Desktop (default): moderately larger logo */
+/* Default (desktop) */
 .logo-overhang {
   position: absolute;
   top: 0;
@@ -272,7 +272,7 @@
 /* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
   .logo-overhang {
-    width: 180px;
+    width: 170px;
     transform: translate(-30%, -30%);
   }
 }
@@ -280,13 +280,13 @@
 /* Mobile */
 @media (max-width: 768px) {
   .logo-overhang {
-    position: absolute;
-    top: 4px;
-    left: 10px;
-    width: 100px;
-    transform: none;
+    width: 120px;
+    transform: translate(-30%, -30%);
+    top: 0;
+    left: 0;
   }
 }
+
 
 
     .live-indicator {
