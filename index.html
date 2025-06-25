@@ -647,15 +647,16 @@ if (window.innerWidth <= 768) {
     artworkImg.classList.add('fallback');
   }
 
-  let artworkCache = {};
-
-try {
-  const saved = localStorage.getItem('artworkCache');
-  if (saved) artworkCache = JSON.parse(saved);
-} catch (e) {
-  console.warn('Could not load cached artwork:', e);
-}
-
+  async function getTrackArtwork(query) {
+    try {
+      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
+      const d = await res.json();
+      if (d.results[0]?.artworkUrl100) {
+        return d.results[0].artworkUrl100.replace('100x100', '300x300');
+      }
+    } catch {}
+    return '';
+  }
 
   // kick off
   fetchNowPlaying();
