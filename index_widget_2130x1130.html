@@ -7,9 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
-  width: 2130px;
-  height: 1130px;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
+  background: linear-gradient(135deg, #00818a, #7e1974);
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 50px 30px 30px;
@@ -20,10 +21,15 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    .strip-container {
+    .widget-wrapper {
   width: 2130px;
   height: 1130px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.strip-container {
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -250,10 +256,15 @@
       vertical-align: middle;
     }
 /* Let the main wrapper act as the positioning anchor */
-.strip-container {
+.widget-wrapper {
   width: 2130px;
   height: 1130px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.strip-container {
   position: relative;   /* NEW */
   z-index: 1;
 }
@@ -320,10 +331,15 @@
       50% { opacity: 1; transform: scale(1.4); }
     }
     @media (max-width: 768px) {
-      .strip-container {
+      .widget-wrapper {
   width: 2130px;
   height: 1130px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.strip-container {
         flex-direction: column;
       }
       .left-panel, .right-panel {
@@ -395,6 +411,7 @@
   </style>
 </head>
 <body>
+  <div class="widget-wrapper">
   <!-- Player container with floating logo -->
   <div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
@@ -433,6 +450,7 @@
       </div>
     </div> <!-- end .strip-container -->
   </div> <!-- end .player-wrapper -->
+  </div> <!-- end .widget-wrapper -->
 </body>
 
 
