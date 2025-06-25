@@ -102,15 +102,6 @@
       text-align: left;
       user-select: none;
     }
-@media (max-width: 768px) {
-  #volume-slider,
-  #mute-toggle,
-  #volume-display {
-    pointer-events: none;
-    opacity: 0.3;
-    filter: grayscale(100%);
-  }
-}
 @media (max-width: 600px) {
   button#play-toggle {
     font-size: 16px;
@@ -118,19 +109,12 @@
     width: 100%;
     margin-top: 10px;
   }
-@media (max-width: 600px) {
+
   #volume-container {
-    display: none;
+    display: none !important;
   }
 }
 
-  #volume-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 12px;
-    gap: 6px;
-  }
 
   #volume-slider {
     width: 100%;
