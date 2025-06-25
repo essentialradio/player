@@ -102,6 +102,13 @@
       text-align: left;
       user-select: none;
     }
+/* Base style for desktop: center ON AIR NOW block */
+#onAirNow {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 600px) {
   button#play-toggle {
     font-size: 16px;
@@ -303,9 +310,13 @@
   }
 
   #onAirNow {
-    margin-top: 0;
-    margin-bottom: 10px;
-    text-align: right;     /* Align ON AIR box right */
+    text-align: right;
+    padding-right: 8px; /* pushes content further right */
+  }
+
+  #onAirNow span {
+    display: block;
+    line-height: 1.2;
   }
 
   .show-title {
@@ -321,9 +332,7 @@
     display: inline;
   }
 
-  #onAirNow span {
-    display: block;        /* Force presenter name to appear below */
-  }
+ 
 
   #player-box {
     margin-top: -4px;
