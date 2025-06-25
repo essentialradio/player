@@ -295,10 +295,10 @@
 
 @media (max-width: 600px) {
   .logo-overhang {
-    width: 90px;
-    top: 0px;
-    left: 6px;
-    transform: translate(-15%, -25%);
+    width: 120px;
+    top: 6px;
+    left: 12px;
+    transform: none
   }
 
   #onAirNow {
@@ -599,6 +599,26 @@ if (window.innerWidth <= 768) {
   setInterval(fetchNowPlaying, 15000);
   setInterval(fetchRecentFromGitHub, 15000);
 </script>
+
+<!-- Your player content -->
+
+<script>
+  function formatShowTitleMobileOnly(title) {
+    if (window.innerWidth <= 600) {
+      const match = title.match(/(.*)\s+with\s+(.*)/i);
+      if (match) {
+        return `${match[1]}<br>with ${match[2]}`;
+      }
+    }
+    return title;
+  }
+
+  const showSpan = document.getElementById("currentShow");
+  const rawTitle = showSpan?.textContent || "";
+  showSpan.innerHTML = formatShowTitleMobileOnly(rawTitle);
+</script>
+</body>
+
 </body>
 </html>
 
