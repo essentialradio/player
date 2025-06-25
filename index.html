@@ -205,22 +205,20 @@
 
 .player-wrapper {
   position: relative;
-  padding-top: 60px; /* space for logo overhang */
   display: flex;
   justify-content: center;
 }
 
 .logo-overhang {
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-45px, -45px);
+  top: -35px;
+  left: -35px;
   width: 150px;
   z-index: 2;
-  opacity: 0.95;
+  opacity: 0.97;
   pointer-events: none;
   user-select: none;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,.35));
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
 }
 
 @media (max-width: 768px) {
