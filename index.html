@@ -304,11 +304,12 @@
 
 
 async function getTrackArtwork(query) {
-  // Try in-memory or localStorage cache first
+  // Try cache first
   if (artworkCache[query] !== undefined) {
     return artworkCache[query];
   }
 
+  // Try iTunes API
   try {
     const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
     const d = await res.json();
@@ -318,16 +319,22 @@ async function getTrackArtwork(query) {
       localStorage.setItem('artworkCache', JSON.stringify(artworkCache));
       return url;
     }
-  } catch {}
+  } catch (e) {
+    console.warn('iTunes artwork fetch failed:', e);
+  }
 
-  // Try Autopo.st fallback
-  const safe = query
-    .replace(/\s*\(.*?\)/g, '')
-    .replace(/[^a-zA-Z0-9\s-]/g, '')
-    .trim()
-    .replace(/\s+/g, '_');
-  const [artist, title] = safe.split('_-_');
-  const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase() || 'a'}/${artist}_${title}.jpg`;
+  // Format fallback artist and title safely
+  let artist = 'unknown', title = 'unknown';
+  const sepIndex = query.indexOf(' - ');
+  if (sepIndex !== -1) {
+    artist = query.substring(0, sepIndex).trim().replace(/\s+/g, '_');
+    title = query.substring(sepIndex + 3).trim().replace(/\s+/g, '_');
+  } else {
+    // fallback to entire string as title
+    title = query.trim().replace(/\s+/g, '_');
+  }
+
+  const autoUrl = `https://cdn.autopo.st/images/coverart/${artist[0]?.toLowerCase() || 'u'}/${artist}_${title}.jpg`;
 
   try {
     const head = await fetch(autoUrl, { method: 'HEAD' });
@@ -336,12 +343,17 @@ async function getTrackArtwork(query) {
       localStorage.setItem('artworkCache', JSON.stringify(artworkCache));
       return autoUrl;
     }
-  } catch {}
+  } catch (e) {
+    console.warn('Autopo.st HEAD request failed:', e);
+  }
 
-  // Final fallback
+  // Final fallback to empty
+  console.warn(`No artwork found for: "${query}"`);
   artworkCache[query] = '';
   localStorage.setItem('artworkCache', JSON.stringify(artworkCache));
   return '';
+}
+
 }
 
   function getCurrentShow(schedule) {
