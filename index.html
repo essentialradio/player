@@ -419,6 +419,27 @@
 
   async function updateOnAirNow() {
     const schedule = await fetchSchedule();
+    const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
+    const el = document.getElementById("currentShow");
+
+    if (fullShow.includes(" with ")) {
+      const [title, presenter] = fullShow.split(" with ");
+      el.innerHTML = `
+        <span class="show-title">${title.trim()}</span>
+        <span class="show-presenter">with ${presenter.trim()}</span>`;
+    } else {
+      el.textContent = fullShow;
+    }
+  }
+
+  // **Invoke once immediately**, then every minute thereafter**
+  updateOnAirNow();
+  setInterval(updateOnAirNow, 60_000);
+</script>
+
+
+  async function updateOnAirNow() {
+    const schedule = await fetchSchedule();
     const currentShowElement = document.getElementById("currentShow");
 const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
 
