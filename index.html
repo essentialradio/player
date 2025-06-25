@@ -209,6 +209,10 @@ try {
       padding: 0;
       margin: 0;
     }
+setTimeout(() => {
+  document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+}, 100); // small delay to ensure layout
+
     ul#recent-list li {
       display: flex;
       align-items: center;
