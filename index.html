@@ -27,6 +27,8 @@
       overflow: hidden;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
       background-color: #111;
+      position: relative;
+      z-index: 1;
     }
     .left-panel, .right-panel {
       width: 50%;
@@ -37,20 +39,18 @@
       justify-content: center;
     }
     .left-panel {
-  background: #111;
-  align-items: center;
-  text-align: center;
-  border-right: 1px solid #333;
-  justify-content: flex-start; /* ⬅ pushes content to top */
-  padding-top: 30px; /* ⬅ optional: space from very top */
-}
-
+      background: #111;
+      align-items: center;
+      text-align: center;
+      border-right: 1px solid #333;
+      justify-content: flex-start;
+      padding-top: 30px;
+    }
     .right-panel {
       background: #222;
       overflow-y: auto;
       border-left: 1px solid #333;
     }
-    
     #player-box {
       max-width: 420px;
       width: 100%;
@@ -102,59 +102,27 @@
       text-align: left;
       user-select: none;
     }
-/* Base style for desktop: center ON AIR NOW block */
-#onAirNow {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center;           /* Desktop default */
-  padding-right: 0;
-  max-width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 768px) {
-  button#play-toggle {
-    font-size: 16px;
-    padding: 12px 16px;
-    width: 100%;
-    margin-top: 10px;
-  }
-#artwork {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  #play-toggle {
-    margin-top: 10px;
-  }
-  #volume-container {
-    display: none !important;
-  }
-}
-
-
-  #volume-slider {
-    width: 100%;
-  }
-
-  #volume-display,
-  #mute-toggle {
-    align-self: flex-end;
-  }
-
-  #nowPlaying {
-    margin-top: 18px;
-  }
-
-  .artwork-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-}
-
-
+    #onAirNow {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: right;
+      padding-right: 16px;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: 0;
+    }
+    #onAirNow span {
+      display: block;
+      line-height: 1.2;
+    }
+    .show-title {
+      font-weight: 600;
+    }
+    .show-presenter {
+      font-weight: 400;
+      font-size: 0.95em;
+      opacity: 0.9;
+    }
     #now-playing-card {
       margin-top: 25px;
       background: #1a1a1a;
@@ -240,82 +208,17 @@
       font-size: 16px;
       user-select: none;
     }
-    .refresh-indicator {
-      display: inline-block;
-      margin-left: 8px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fed351;
-      animation: pulse 1.2s infinite;
-      vertical-align: middle;
-    }
-/* Let the main wrapper act as the positioning anchor */
-.strip-container {
-  position: relative;   /* NEW */
-  z-index: 1;
-}
-
-.player-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-/* Default (desktop) */
-.logo-overhang {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-30%, -30%);
-  width: 220px;
-  z-index: 2;
-  opacity: 0.97;
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
-}
-
-/* Tablet */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .logo-overhang {
-    width: 170px;
-    transform: translate(-30%, -30%);
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .logo-overhang {
-    width: 120px;
-    transform: translate(-25%, -25%);
-    top: 2px;
-    left: 20px;
-  }
-}
-
-
-
-    .live-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: bold;
-      color: #ff4d4d;
-      font-size: 0.95em;
-      margin-left: 10px;
+    .logo-overhang {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-30%, -30%);
+      width: 220px;
+      z-index: 2;
+      opacity: 0.97;
+      pointer-events: none;
       user-select: none;
-    }
-    .live-indicator .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ff4d4d;
-      animation: pulse 1.2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.4); }
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
     }
     @media (max-width: 768px) {
       .strip-container {
@@ -325,84 +228,27 @@
         width: 100%;
         padding: 20px;
       }
-      #artwork {
-        width: 100%;
-        max-width: 280px;
-        height: auto;
+      #volume-container {
+        display: none !important;
       }
-#onAirNow {
-  text-align: center;
-}
+      .logo-overhang {
+        width: 120px;
+        transform: translate(-25%, -25%);
+        top: 2px;
+        left: 20px;
+      }
     }
-
-
-  #onAirNow {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    padding-right: 16px;
-    max-width: 95%;
-    margin-left: auto;
-    margin-right: 0;
-  }
-
-
-  #onAirNow br {
-    display: none;
-  }
-
-#play-toggle {
-    margin-bottom: 12px;
-  }
-
-  #onAirNow span {
-    display: block;
-    line-height: 1.2;
-  }
-
-  .show-title {
-    font-weight: 600;
-  }
-
-  .show-presenter {
-    font-weight: 400;
-    font-size: 0.95em;
-    opacity: 0.9;
-  }
-
-  .left-panel {
-    padding-top: 4px;
-  }
-
-  #player-box {
-    margin-top: -4px;
-  }
-
-  #nowPlaying {
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-
-
-
-
-
   </style>
 </head>
 <body>
-  <!-- Player container with floating logo -->
   <div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
-
     <div class="strip-container">
-      <!-- existing player layout -->
       <div class="left-panel">
-        <div id="onAirNow" style="
-          text-align: right;">
+        <div id="onAirNow">
           <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
           <span id="currentShow" style="font-weight: 600;">Loading...</span>
         </div>
-
         <div id="player-box">
           <audio id="stream" preload="none">
             <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
@@ -414,49 +260,48 @@
             <span id="volume-display">100%</span>
             <button id="mute-toggle">🔊</button>
           </div>
-
           <div id="now-playing-card">
             <div id="now-playing">Loading current track…</div>
           </div>
-          <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
+          <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" />
         </div>
       </div>
-
       <div class="right-panel">
         <div class="recent-title">Recently Played</div>
         <ul id="recent-list"></ul>
       </div>
-    </div> <!-- end .strip-container -->
-  </div> <!-- end .player-wrapper -->
+    </div>
+  </div>
 
-
-
-  <!-- Schedule & “On Air Now” logic -->
-<script>
-  async function fetchSchedule() {
+  <!-- JavaScript section -->
+  <script>
+    let artworkCache = {};
     try {
-      const res = await fetch("https://essentialradio.github.io/player/schedule.json");
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
+      const saved = localStorage.getItem('artworkCache');
+      if (saved) artworkCache = JSON.parse(saved);
     } catch (e) {
-      console.error("Schedule fetch error:", e);
-      return null;
+      console.warn('Could not load cached artwork:', e);
     }
-  }
 
-<script>
-  let artworkCache = {};
+    const observer = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('loaded');
+          observer.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.1 });
 
-try {
-  const saved = localStorage.getItem('artworkCache');
-  if (saved) artworkCache = JSON.parse(saved);
-} catch (e) {
-  console.warn('Could not load cached artwork:', e);
-}
+    setTimeout(() => {
+      document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+    }, 100);
 
-setTimeout(() => {
-  document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
-}, 100);
+    // [Rest of your JavaScript: schedule fetching, now playing, recent played, player control]
+    // Paste your existing script content from previous version here, below this block
+  </script>
+</body>
+</html>
+
 
 async function getTrackArtwork(query) {
   // Try in-memory or localStorage cache first
