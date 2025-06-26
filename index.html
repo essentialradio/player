@@ -535,7 +535,8 @@ if (window.innerWidth <= 768) {
   }
 });
 
-let currentTrackID = null;  // Used to exclude from recent
+let currentTrackID = null;
+let songHasEnded = false;
 
 async function fetchNowPlaying() {
   try {
@@ -553,10 +554,12 @@ async function fetchNowPlaying() {
     const endTime = new Date(scheduledTime.getTime() + durationSeconds * 1000);
     const now = new Date();
 
-    const songStillPlaying = now < endTime;
     const artist = lastItem.Artist;
     const title = lastItem.Title;
-    currentTrackID = `${artist} – ${title}`; // Set for exclusion from recent
+    currentTrackID = `${artist} – ${title}`;
+
+    const songStillPlaying = now < endTime;
+    songHasEnded = !songStillPlaying;
 
     if (songStillPlaying) {
       nowPlaying.innerHTML = `
@@ -582,8 +585,10 @@ async function fetchNowPlaying() {
       <span style="color:white;">on Essential Radio</span>`;
     applyFallbackImmediate();
     currentTrackID = null;
+    songHasEnded = false;
   }
 }
+
 
 
 
@@ -597,7 +602,7 @@ async function fetchNowPlaying() {
     const recentItems = data
       .filter(item => {
         const name = `${item.Artist} – ${item.Title}`;
-        return item.Artist && item.Title && name !== currentTrackID;
+        return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
       })
       .slice(-5)
       .reverse();
@@ -623,6 +628,7 @@ async function fetchNowPlaying() {
     console.error('Recent fetch failed:', e);
   }
 }
+
 
 
   async function fetchArtwork(trackName) {
