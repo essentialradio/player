@@ -17,6 +17,18 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
+.pulsing-label {
+  color: #ff4d4d;
+  font-weight: 700;
+  animation: pulseText 1.2s infinite;
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
     .strip-container {
       display: flex;
       flex-direction: row;
