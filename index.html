@@ -564,8 +564,19 @@ async function fetchNowPlaying() {
     const endTime = new Date(scheduledTime.getTime() + durationSeconds * 1000);
     const now = new Date();
 
-    const artist = lastItem.Artist;
-    const title = lastItem.Title;
+    let artist = '', title = '';
+const rawNowPlaying = `${lastItem.Artist} – ${lastItem.Title}`;
+const sep = rawNowPlaying.includes(' – ') ? ' – ' : rawNowPlaying.includes(' - ') ? ' - ' : null;
+
+if (sep) {
+  const [a, ...t] = rawNowPlaying.split(sep);
+  artist = a.trim();
+  title = t.join(sep).trim();
+} else {
+  artist = lastItem.Artist;
+  title = lastItem.Title;
+}
+
     currentTrackID = `${artist} – ${title}`;
 
     const songStillPlaying = now < endTime;
