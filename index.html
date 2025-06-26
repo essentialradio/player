@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio</title>
+  <title>Essential Radio Player</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -17,18 +17,6 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-
-.pulsing-label {
-  color: #ff4d4d;
-  font-weight: 700;
-  animation: pulseText 1.2s infinite;
-}
-
-@keyframes pulseText {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
     .strip-container {
       display: flex;
       flex-direction: row;
@@ -404,8 +392,8 @@
       <div class="left-panel">
         <div id="onAirNow" style="
           text-align: right;">
-          <span class="pulsing-label">ON AIR NOW</span>
-	  <span id="currentShow" style="font-weight: 600;">Loading...</span>
+          <span style="color: #fed351; font-weight: 700;">ON AIR NOW:</span><br>
+          <span id="currentShow" style="font-weight: 600;">Loading...</span>
         </div>
 
         <div id="player-box">
@@ -547,7 +535,7 @@ if (window.innerWidth <= 768) {
   }
 });
 
-llet currentTrackID = null;
+let currentTrackID = null;
 let songHasEnded = false;
 
 async function fetchNowPlaying() {
@@ -566,23 +554,14 @@ async function fetchNowPlaying() {
     const endTime = new Date(scheduledTime.getTime() + durationSeconds * 1000);
     const now = new Date();
 
-    const rawNowPlaying = `${lastItem.Artist} – ${lastItem.Title}`;
-    currentTrackID = rawNowPlaying;
-    songHasEnded = now >= endTime;
+    const artist = lastItem.Artist;
+    const title = lastItem.Title;
+    currentTrackID = `${artist} – ${title}`;
 
-    if (!songHasEnded) {
-      // Safely separate artist and title even if there are extra dashes
-      let artist = '', title = '';
-      const sep = rawNowPlaying.includes(' – ') ? ' – ' : rawNowPlaying.includes(' - ') ? ' - ' : null;
-      if (sep) {
-        const [a, ...t] = rawNowPlaying.split(sep);
-        artist = a.trim();
-        title = t.join(sep).trim();
-      } else {
-        artist = lastItem.Artist;
-        title = lastItem.Title;
-      }
+    const songStillPlaying = now < endTime;
+    songHasEnded = !songStillPlaying;
 
+    if (songStillPlaying) {
       nowPlaying.innerHTML = `
         <span style="color:#fed351;">Now Playing:</span>
         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
@@ -609,8 +588,6 @@ async function fetchNowPlaying() {
     songHasEnded = false;
   }
 }
-
-
 
 
 
