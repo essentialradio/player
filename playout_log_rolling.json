@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "",
-    "Artist": "Ash",
-    "Title": "Girl From Mars",
-    "Duration (s)": 197,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "",
-    "Artist": "Dolly Parton",
-    "Title": "9 To 5",
-    "Duration (s)": 148,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:07",
-    "Displayed Time": "",
-    "Artist": "Paolo Nutini",
-    "Title": "Last Request",
-    "Duration (s)": 208,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:11",
-    "Displayed Time": "",
-    "Artist": "All 4 One",
-    "Title": "I Swear",
-    "Duration (s)": 208,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:14",
-    "Displayed Time": "",
-    "Artist": "The Fray",
-    "Title": "How to Save a Life",
-    "Duration (s)": 230,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:23",
-    "Displayed Time": "",
-    "Artist": "Shania Twain",
-    "Title": "Forever And For Always",
-    "Duration (s)": 231,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:27",
-    "Displayed Time": "",
-    "Artist": "John Waite",
-    "Title": "Missing You",
-    "Duration (s)": 196,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:30",
-    "Displayed Time": "",
-    "Artist": "Supergrass",
-    "Title": "Alright",
-    "Duration (s)": 167,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:33",
-    "Displayed Time": "",
-    "Artist": "JLS",
-    "Title": "Beat Again",
-    "Duration (s)": 187,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:39",
-    "Displayed Time": "",
-    "Artist": "Basement Jaxx",
-    "Title": "Oh My Gosh",
-    "Duration (s)": 197,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:43",
-    "Displayed Time": "",
-    "Artist": "The Doobie Brothers",
-    "Title": "What a Fool Believes",
-    "Duration (s)": 201,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:46",
-    "Displayed Time": "",
-    "Artist": "Boyz II Men",
-    "Title": "End of the Road",
-    "Duration (s)": 207,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:50",
-    "Displayed Time": "",
-    "Artist": "Jason Mraz",
-    "Title": "I'm Yours",
-    "Duration (s)": 203,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-10T10:00:00Z",
-    "Scheduled Time": "11:53",
-    "Displayed Time": "",
-    "Artist": "Manic Street Preachers",
-    "Title": "Everything Must Go",
-    "Duration (s)": 204,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-10T11:00:00Z",
     "Scheduled Time": "12:02",
     "Displayed Time": "",
@@ -44700,6 +44546,17 @@
     "Title": "Something Just Like This",
     "Duration (s)": 234,
     "Full Duration (s)": 248,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-06-26T00:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "",
+    "Artist": "Cian Ducrot",
+    "Title": "Heaven",
+    "Duration (s)": 228,
+    "Full Duration (s)": 233,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
