@@ -556,25 +556,18 @@ async function fetchNowPlaying() {
     const lastItem = [...data].reverse().find(item => item.Artist && item.Title && item['Scheduled Time']);
     if (!lastItem) throw new Error("No recent song entry");
 
-    // Parse hour base (e.g. "2025-06-27T00:00:00Z")
-    const baseDate = new Date(lastItem.Hour);
     const [sh, sm] = lastItem['Scheduled Time'].split(':').map(Number);
-
-    // Set correct scheduled time using Hour field
-    let scheduledTime = new Date(baseDate);
+    const scheduledTime = new Date();
     scheduledTime.setHours(sh, sm, 0, 0);
 
-    const now = new Date();
     const durationSeconds = Number(lastItem["Full Duration (s)"] || lastItem["Duration (s)"] || 0);
     const endTime = new Date(scheduledTime.getTime() + durationSeconds * 1000);
+    const now = new Date();
 
-    const rawNowPlaying = `${lastItem.Artist} – ${lastItem.Title}`;
-    currentTrackID = rawNowPlaying;
-    songHasEnded = now >= endTime;
-
-    // Clean and split artist/title safely
     let artist = '', title = '';
+    const rawNowPlaying = `${lastItem.Artist} – ${lastItem.Title}`;
     const sep = rawNowPlaying.includes(' – ') ? ' – ' : rawNowPlaying.includes(' - ') ? ' - ' : null;
+
     if (sep) {
       const [a, ...t] = rawNowPlaying.split(sep);
       artist = a.trim();
@@ -584,28 +577,41 @@ async function fetchNowPlaying() {
       title = lastItem.Title;
     }
 
-    // Shorter title for mobile viewports
-    const titleText = window.innerWidth < 500
-      ? (!songHasEnded ? `${artist} – ${title}` : `More music soon`)
-      : (!songHasEnded ? `Essential Radio: ${artist} – ${title}` : `Essential Radio: More music soon`);
-    document.title = titleText;
+    currentTrackID = `${artist} – ${title}`;
 
-    // Now Playing display logic
-    document.getElementById('now-playing').innerHTML = !songHasEnded
-      ? `<span style="color:#fed351;">Now Playing:</span>
-         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-         <span style="color:white;">by ${artist}</span>`
-      : `<span style="color:#fed351;">Now Playing:</span>
-         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-         <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
-         <span style="color:white;">on Essential Radio</span>`;
+    const songStillPlaying = now < endTime;
+    songHasEnded = !songStillPlaying;
 
+    if (songStillPlaying) {
+      nowPlaying.innerHTML = `
+        <span style="color:#fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
+        <span style="color:white;">by ${artist}</span>`;
+      document.title = `Essential Radio: ${artist} – ${title}`;
+      fetchArtwork(`${artist} - ${title}`);
+    } else {
+      nowPlaying.innerHTML = `
+        <span style="color:#fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
+        <span style="color:white;">on Essential Radio</span>`;
+      document.title = `Essential Radio: More music soon`;
+      applyFallbackImmediate();
+    }
   } catch (e) {
     console.error('Now playing error:', e);
+    nowPlaying.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
+      <span style="color:white;">on Essential Radio</span>`;
+    document.title = `Essential Radio: More music soon`;
+    applyFallbackImmediate();
+    currentTrackID = null;
+    songHasEnded = false;
   }
 }
-
 
 
 
