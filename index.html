@@ -545,6 +545,42 @@ if (window.innerWidth <= 768) {
   }
 });
 
+async function fetchDurationAndStartTime(artist, title) {
+  try {
+    const logUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+    const res = await fetch(`${logUrl}?_=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    const match = data.reverse().find(item =>
+      item.Artist?.toLowerCase() === artist.toLowerCase() &&
+      item.Title?.toLowerCase() === title.toLowerCase()
+    );
+
+    if (match && match["Scheduled Time"] && match["Duration (s)"] && match["Hour"]) {
+      const hourDate = new Date(match["Hour"]);
+      const [sh, sm] = match["Scheduled Time"].split(":").map(Number);
+
+      const start = new Date(
+        hourDate.getFullYear(),
+        hourDate.getMonth(),
+        hourDate.getDate(),
+        sh,
+        sm,
+        0
+      );
+
+      return {
+        duration: parseInt(match["Duration (s)"], 10),
+        startTime: start
+      };
+    }
+  } catch (e) {
+    console.warn("Duration/start time fetch failed:", e);
+  }
+  return null;
+}
+
 let currentTrackID = null;
 let songHasEnded = false;
 
@@ -585,19 +621,38 @@ async function fetchNowPlaying() {
       <span style="color:white;">by ${artist}</span>`;
     document.title = `Essential Radio: ${artist} – ${title}`;
     fetchArtwork(`${artist} - ${title}`);
+
+    // Get duration & scheduled start time from playout log
+    const trackInfo = await fetchDurationAndStartTime(artist, title);
+    if (trackInfo) {
+      const { duration, startTime } = trackInfo;
+      const endTime = new Date(startTime.getTime() + duration * 1000);
+      const now = new Date();
+      const timeRemaining = endTime - now;
+
+      if (trackEndTimeout) clearTimeout(trackEndTimeout);
+
+      if (timeRemaining <= 0) {
+        showMoreMusicSoon();
+        songHasEnded = true;
+        currentTrackID = null;
+      } else {
+        trackEndTimeout = setTimeout(() => {
+          showMoreMusicSoon();
+          songHasEnded = true;
+          currentTrackID = null;
+        }, timeRemaining);
+      }
+    }
+
   } catch (e) {
     console.error('Now playing error:', e);
-    nowPlaying.innerHTML = `
-      <span style="color:#fed351;">Now Playing:</span>
-      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-      <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
-      <span style="color:white;">on Essential Radio</span>`;
-    document.title = `Essential Radio: More music soon`;
-    applyFallbackImmediate();
+    showMoreMusicSoon();
     currentTrackID = null;
     songHasEnded = false;
   }
 }
+
 
 
 
