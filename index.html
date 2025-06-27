@@ -550,7 +550,7 @@ let songHasEnded = false;
 
 async function fetchNowPlaying() {
   try {
-    const res = await fetch('/api/metadata', { cache: 'no-store' });
+    const res = await fetch('https://player-green.vercel.app/api/metadata', { cache: 'no-store' });
     const data = await res.json();
 
     const decode = str => {
