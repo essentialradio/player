@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:01",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 173,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:05",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris ft Rihanna",
-    "Title": "This Is What You Came For",
-    "Duration (s)": 216,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:09",
-    "Displayed Time": "",
-    "Artist": "Sophie Ellis-Bextor",
-    "Title": "Taste",
-    "Duration (s)": 168,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:11",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Please Please Please",
-    "Duration (s)": 179,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:18",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Stargazing",
-    "Duration (s)": 166,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:21",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 159,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:23",
-    "Displayed Time": "",
-    "Artist": "Sleep Token",
-    "Title": "Damocles",
-    "Duration (s)": 253,
-    "Full Duration (s)": 265,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:28",
-    "Displayed Time": "",
-    "Artist": "Dua Lipa",
-    "Title": "Don't Start Now",
-    "Duration (s)": 177,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:34",
-    "Displayed Time": "",
-    "Artist": "Post Malone & Morgan Wallen",
-    "Title": "I Had Some Help",
-    "Duration (s)": 173,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:38",
-    "Displayed Time": "",
-    "Artist": "Counting Crows",
-    "Title": "Mr Jones",
-    "Duration (s)": 263,
-    "Full Duration (s)": 271,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:43",
-    "Displayed Time": "",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 184,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:46",
-    "Displayed Time": "",
-    "Artist": "Olly Murs",
-    "Title": "Wrapped Up",
-    "Duration (s)": 173,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:49",
-    "Displayed Time": "",
-    "Artist": "Heavy D & The Boyz",
-    "Title": "Now That We Found Love",
-    "Duration (s)": 254,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T11:00:00Z",
-    "Scheduled Time": "12:53",
-    "Displayed Time": "",
-    "Artist": "Dido",
-    "Title": "White Flag",
-    "Duration (s)": 213,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-12T12:00:00Z",
     "Scheduled Time": "13:03",
     "Displayed Time": "",
@@ -44303,6 +44149,17 @@
     "Artist": "Davy Sims",
     "Title": "Around the World - Part 1",
     "Duration (s)": 3587,
+    "Full Duration (s)": 3590,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-06-28T00:00:00Z",
+    "Scheduled Time": "01:00",
+    "Displayed Time": "",
+    "Artist": "Davy Sims",
+    "Title": "Around the World - Part 2",
+    "Duration (s)": 3588,
     "Full Duration (s)": 3590,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
