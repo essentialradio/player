@@ -581,6 +581,16 @@ async function fetchDurationAndStartTime(artist, title) {
   return null;
 }
 
+function showMoreMusicSoon() {
+  nowPlaying.innerHTML = `
+    <span style="color:#fed351;">Now Playing:</span>
+    <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+    <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
+    <span style="color:white;">on Essential Radio</span>`;
+  document.title = `Essential Radio: More music soon`;
+  applyFallbackImmediate();
+}
+
 let currentTrackID = null;
 let songHasEnded = false;
 
@@ -602,18 +612,14 @@ async function fetchNowPlaying() {
     if (sep) {
       [artist, title] = raw.split(sep).map(s => s.trim());
     } else {
-      nowPlaying.innerHTML = `
-        <span style="color:#fed351;">Now Playing:</span>
-        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-        <span style="color:white;font-weight:600;font-size:1.2em;">Unknown Track</span><br/>
-        <span style="color:white;">on Essential Radio</span>`;
-      applyFallbackImmediate();
+      showMoreMusicSoon();
       return;
     }
 
     currentTrackID = `${artist} – ${title}`;
     songHasEnded = false;
 
+    // Display current track
     nowPlaying.innerHTML = `
       <span style="color:#fed351;">Now Playing:</span>
       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
@@ -622,31 +628,45 @@ async function fetchNowPlaying() {
     document.title = `Essential Radio: ${artist} – ${title}`;
     fetchArtwork(`${artist} - ${title}`);
 
-    // Get duration & scheduled start time from playout log
-    const trackInfo = await fetchDurationAndStartTime(artist, title);
-    if (trackInfo) {
-      const { duration, startTime } = trackInfo;
-      const endTime = new Date(startTime.getTime() + duration * 1000);
-      const now = new Date();
-      const timeRemaining = endTime - now;
+    // Fetch timing info from latestTrack.json
+    const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+    const latest = await latestRes.json();
 
-      if (trackEndTimeout) clearTimeout(trackEndTimeout);
+    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+      console.warn("latestTrack.json missing fields");
+      return;
+    }
 
-      if (timeRemaining <= 0) {
+    if (
+      latest.artist.toLowerCase() !== artist.toLowerCase() ||
+      latest.title.toLowerCase() !== title.toLowerCase()
+    ) {
+      console.log("latestTrack.json does not match metadata track");
+      return;
+    }
+
+    const startTime = new Date(latest.startTime);
+    const durationMs = latest.duration * 1000;
+    const endTime = new Date(startTime.getTime() + durationMs);
+    const now = new Date();
+    const timeRemaining = endTime - now;
+
+    if (trackEndTimeout) clearTimeout(trackEndTimeout);
+
+    if (timeRemaining <= 0) {
+      showMoreMusicSoon();
+      songHasEnded = true;
+      currentTrackID = null;
+    } else {
+      trackEndTimeout = setTimeout(() => {
         showMoreMusicSoon();
         songHasEnded = true;
         currentTrackID = null;
-      } else {
-        trackEndTimeout = setTimeout(() => {
-          showMoreMusicSoon();
-          songHasEnded = true;
-          currentTrackID = null;
-        }, timeRemaining);
-      }
+      }, timeRemaining);
     }
 
   } catch (e) {
-    console.error('Now playing error:', e);
+    console.error("Now playing error:", e);
     showMoreMusicSoon();
     currentTrackID = null;
     songHasEnded = false;
