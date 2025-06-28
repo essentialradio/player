@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:10",
-    "Displayed Time": "",
-    "Artist": "Supertramp",
-    "Title": "Breakfast in America",
-    "Duration (s)": 150,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:12",
-    "Displayed Time": "",
-    "Artist": "KC & The Sunshine Band",
-    "Title": "That's The Way (I Like It)",
-    "Duration (s)": 169,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:15",
-    "Displayed Time": "",
-    "Artist": "Simon & Garfunkel",
-    "Title": "The Boxer",
-    "Duration (s)": 277,
-    "Full Duration (s)": 307,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:20",
-    "Displayed Time": "",
-    "Artist": "The Commodores",
-    "Title": "Easy",
-    "Duration (s)": 227,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:24",
-    "Displayed Time": "",
-    "Artist": "Roxy Music",
-    "Title": "Dance Away",
-    "Duration (s)": 208,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:30",
-    "Displayed Time": "",
-    "Artist": "ABBA (ESC",
-    "Title": "1974 - Sweden - GF-1st) - Waterloo",
-    "Duration (s)": 147,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:33",
-    "Displayed Time": "",
-    "Artist": "Mud",
-    "Title": "Tiger Feet",
-    "Duration (s)": 218,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:37",
-    "Displayed Time": "",
-    "Artist": "Daniel Boone",
-    "Title": "Beautiful Sunday",
-    "Duration (s)": 162,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:40",
-    "Displayed Time": "",
-    "Artist": "Al Green",
-    "Title": "Tired of Being Alone",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:44",
-    "Displayed Time": "",
-    "Artist": "James Taylor",
-    "Title": "You've Got a Friend",
-    "Duration (s)": 255,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:49",
-    "Displayed Time": "",
-    "Artist": "Tavares",
-    "Title": "Heaven Must Be Missing an Angel",
-    "Duration (s)": 199,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:52",
-    "Displayed Time": "",
-    "Artist": "Buzzcocks",
-    "Title": "Ever Fallen in Love (With Someone You Shouldn't've?)",
-    "Duration (s)": 152,
-    "Full Duration (s)": 158,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-12T18:00:00Z",
-    "Scheduled Time": "19:55",
-    "Displayed Time": "",
-    "Artist": "Pink Floyd",
-    "Title": "Another Brick in the Wall",
-    "Duration (s)": 176,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-06-12T19:00:00Z",
     "Scheduled Time": "20:01",
     "Displayed Time": "",
@@ -44139,6 +43996,17 @@
     "Title": "You and Me Song",
     "Duration (s)": 160,
     "Full Duration (s)": 171,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-06-28T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "",
+    "Artist": "Tom Grennan",
+    "Title": "Full Attention",
+    "Duration (s)": 177,
+    "Full Duration (s)": 184,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
