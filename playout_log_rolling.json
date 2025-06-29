@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-13T14:00:00Z",
-    "Scheduled Time": "15:01",
-    "Displayed Time": "",
-    "Artist": "Caledonia Media",
-    "Title": "The Week in Holyrood with Charles Fletcher",
-    "Duration (s)": 3401,
-    "Full Duration (s)": 3420,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-06-13T15:00:00Z",
     "Scheduled Time": "16:01",
     "Displayed Time": "",
@@ -43326,6 +43315,17 @@
     "Duration (s)": 206,
     "Full Duration (s)": 216,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-06-29T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "",
+    "Artist": "James Bay",
+    "Title": "Hold Back the River",
+    "Duration (s)": 218,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
