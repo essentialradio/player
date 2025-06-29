@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-06-13T18:00:00Z",
-    "Scheduled Time": "19:01",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1205,
-    "Full Duration (s)": 1206,
-    "Duration (mins)": 20,
-    "Full Duration (mins)": 20
-  },
-  {
-    "Hour": "2025-06-13T18:00:00Z",
-    "Scheduled Time": "19:21",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1086,
-    "Full Duration (s)": 1087,
-    "Duration (mins)": 18,
-    "Full Duration (mins)": 18
-  },
-  {
-    "Hour": "2025-06-13T18:00:00Z",
-    "Scheduled Time": "19:45",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1189,
-    "Full Duration (s)": 1192,
-    "Duration (mins)": 20,
-    "Full Duration (mins)": 20
-  },
-  {
     "Hour": "2025-06-13T19:00:00Z",
     "Scheduled Time": "20:01",
     "Displayed Time": "",
@@ -43182,6 +43149,61 @@
     "Title": "Walk Like a Panther",
     "Duration (s)": 246,
     "Full Duration (s)": 258,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-06-29T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Azizam",
+    "Duration (s)": 158,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-06-29T11:00:00Z",
+    "Scheduled Time": "12:04",
+    "Displayed Time": "",
+    "Artist": "Louis Armstrong",
+    "Title": "What a Wonderful World",
+    "Duration (s)": 129,
+    "Full Duration (s)": 137,
+    "Duration (mins)": 2,
+    "Full Duration (mins)": 2
+  },
+  {
+    "Hour": "2025-06-29T11:00:00Z",
+    "Scheduled Time": "12:07",
+    "Displayed Time": "",
+    "Artist": "Miley Cyrus",
+    "Title": "Easy Lover",
+    "Duration (s)": 182,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-06-29T11:00:00Z",
+    "Scheduled Time": "12:10",
+    "Displayed Time": "",
+    "Artist": "Calvin Harris & Rag'N'Bone Man",
+    "Title": "Lovers In A Past Life",
+    "Duration (s)": 153,
+    "Full Duration (s)": 161,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-06-29T11:00:00Z",
+    "Scheduled Time": "12:16",
+    "Displayed Time": "",
+    "Artist": "Shanice",
+    "Title": "I Love Your Smile (Driza Bone Remix)",
+    "Duration (s)": 221,
+    "Full Duration (s)": 231,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
