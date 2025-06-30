@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Essential Radio – Schedule</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #00818a, #7e1974);
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .logo {
+      max-width: 200px;
+      margin: 0 auto 20px;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 32px;
+    }
+
+    .day-selector {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    select {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      background: #fed351;
+      color: #111;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .schedule-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .day-card {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      width: 100%;
+      max-width: 550px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .day-card h2 {
+      font-size: 22px;
+      margin: 0 0 20px;
+      color: #fed351;
+      text-align: center;
+    }
+
+    .show-entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .show-entry img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      flex-shrink: 0;
+    }
+
+    .show-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .show-info time {
+      font-weight: 600;
+      color: #fed351;
+      font-size: 14px;
+    }
+
+    .show-info a {
+      color: white;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 2px;
+    }
+
+    .show-info a:hover {
+      text-decoration: underline;
+      color: #ffd866;
+    }
+
+    .show-details {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo" />
+  <h1>Essential Radio – Schedule</h1>
+
+  <div class="day-selector">
+    <label for="daySelect">Choose a day: </label>
+    <select id="daySelect"></select>
+  </div>
+
+  <div class="schedule-container">
+    <div class="day-card" id="daySchedule">
+      <h2>Loading…</h2>
+    </div>
+  </div>
+
+  <footer>Essential Radio &copy; 2025</footer>
+
+  <script>
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const todayIndex = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1;
+
+    const scheduleContainer = document.getElementById("daySchedule");
+    const daySelect = document.getElementById("daySelect");
+
+    daysOfWeek.forEach((day, idx) => {
+      const opt = document.createElement("option");
+      opt.value = day;
+      opt.textContent = day;
+      if (idx === todayIndex) opt.selected = true;
+      daySelect.appendChild(opt);
+    });
+
+    async function fetchSchedule() {
+      try {
+        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (e) {
+        scheduleContainer.innerHTML = `<h2>Schedule Unavailable</h2>`;
+        console.error("Schedule fetch failed:", e);
+        return null;
+      }
+    }
+
+    function renderDaySchedule(day, shows) {
+      scheduleContainer.innerHTML = `<h2>${day}</h2>`;
+      if (!shows || shows.length === 0) {
+        scheduleContainer.innerHTML += `<p>No shows scheduled for this day.</p>`;
+        return;
+      }
+
+      shows.forEach(show => {
+        const presenter = show.presenter || {};
+        const presenterImg = presenter.photo || "images/presenters/default.jpg";
+        const presenterName = presenter.name || "Unknown";
+        const presenterLink = presenter.bio || "#";
+        const description = show.info || "";
+
+        const entry = document.createElement("div");
+        entry.className = "show-entry";
+        entry.innerHTML = `
+          <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
+          <div class="show-info">
+            <time>${show.start}–${show.end}</time>
+            <a href="${presenterLink}" target="_blank" rel="noopener">${show.title}</a>
+            <div class="show-details">${description}</div>
+          </div>`;
+        scheduleContainer.appendChild(entry);
+      });
+    }
+
+    let fullSchedule = null;
+
+    daySelect.addEventListener("change", () => {
+      const selectedDay = daySelect.value;
+      if (fullSchedule && fullSchedule[selectedDay]) {
+        renderDaySchedule(selectedDay, fullSchedule[selectedDay]);
+      }
+    });
+
+    fetchSchedule().then(data => {
+      if (data) {
+        fullSchedule = data;
+        const todayName = daysOfWeek[todayIndex];
+        renderDaySchedule(todayName, data[todayName]);
+      }
+    });
+  </script>
+</body>
+</html>
