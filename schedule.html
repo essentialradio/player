@@ -55,7 +55,7 @@
       border-radius: 12px;
       padding: 20px;
       width: 100%;
-      max-width: 550px;
+      max-width: 900px;
       box-shadow: 0 0 20px rgba(0,0,0,0.3);
     }
 
@@ -64,6 +64,17 @@
       margin: 0 0 20px;
       color: #fed351;
       text-align: center;
+    }
+
+    .split-columns {
+      display: flex;
+      gap: 24px;
+    }
+
+    .column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .show-entry {
@@ -118,6 +129,12 @@
       font-size: 14px;
       opacity: 0.8;
     }
+
+    @media (max-width: 768px) {
+      .split-columns {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
@@ -165,29 +182,38 @@
     }
 
     function renderDaySchedule(day, shows) {
-      scheduleContainer.innerHTML = `<h2>${day}</h2>`;
-      if (!shows || shows.length === 0) {
-        scheduleContainer.innerHTML += `<p>No shows scheduled for this day.</p>`;
-        return;
-      }
+      scheduleContainer.innerHTML = `
+        <h2>${day}</h2>
+        <div class="split-columns">
+          <div class="column left-column" id="leftCol"></div>
+          <div class="column right-column" id="rightCol"></div>
+        </div>
+      `;
 
-      shows.forEach(show => {
-        const presenter = show.presenter || {};
-        const presenterImg = presenter.photo || "images/presenters/default.jpg";
-        const presenterName = presenter.name || "Unknown";
-        const presenterLink = presenter.bio || "#";
-        const description = show.info || "";
+      const mid = Math.ceil(shows.length / 2);
+      const leftShows = shows.slice(0, mid);
+      const rightShows = shows.slice(mid);
 
-        const entry = document.createElement("div");
-        entry.className = "show-entry";
-        entry.innerHTML = `
-          <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
-          <div class="show-info">
-            <time>${show.start}–${show.end}</time>
-            <a href="${presenterLink}" target="_blank" rel="noopener">${show.title}</a>
-            <div class="show-details">${description}</div>
-          </div>`;
-        scheduleContainer.appendChild(entry);
+      [leftShows, rightShows].forEach((group, i) => {
+        const col = document.getElementById(i === 0 ? "leftCol" : "rightCol");
+        group.forEach(show => {
+          const presenter = show.presenter || {};
+          const presenterImg = presenter.photo || "images/presenters/default.jpg";
+          const presenterName = presenter.name || "Unknown";
+          const presenterLink = presenter.bio || "#";
+          const description = show.info || "";
+
+          const entry = document.createElement("div");
+          entry.className = "show-entry";
+          entry.innerHTML = `
+            <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
+            <div class="show-info">
+              <time>${show.start}–${show.end}</time>
+              <a href="${presenterLink}" target="_blank" rel="noopener">${show.title}</a>
+              <div class="show-details">${description}</div>
+            </div>`;
+          col.appendChild(entry);
+        });
       });
     }
 
