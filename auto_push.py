@@ -1,12 +1,13 @@
 import shutil
 import subprocess
 import os
+import time
 from datetime import datetime
 
 # Paths
-SOURCE_FILE = r"C:\ProgramData\PlayIt Live\Travel\playout_log_rolling.json"
+SOURCE_DIR = r"C:\ProgramData\PlayIt Live\Travel"
 REPO_DIR = r"C:\Users\Administrator\Dropbox\player"
-DEST_FILE = os.path.join(REPO_DIR, "playout_log_rolling.json")
+FILES_TO_COPY = ["playout_log_rolling.json", "latestTrack.json"]
 
 def run_git_command(*args):
     result = subprocess.run(["git"] + list(args), cwd=REPO_DIR, capture_output=True, text=True)
@@ -16,23 +17,29 @@ def run_git_command(*args):
 
 def auto_push():
     try:
-        # ✅ Copy the updated file into the repo
-        shutil.copy2(SOURCE_FILE, DEST_FILE)
-        # Touch the file to refresh timestamp
-        os.utime(DEST_FILE, None)
+        changes_detected = False
 
-        print(f"[INFO] Copied JSON from source to repo")
+        # ✅ Copy each file and check for changes
+        for filename in FILES_TO_COPY:
+            src = os.path.join(SOURCE_DIR, filename)
+            dest = os.path.join(REPO_DIR, filename)
 
-        # ✅ Only commit if file changed
+            shutil.copy2(src, dest)
+            os.utime(dest, None)  # Update timestamp
+
+            print(f"[INFO] Copied {filename} to repo")
+
+        # Check git status
         status = run_git_command("status", "--porcelain")
-        if "playout_log_rolling.json" not in status:
-            print("[INFO] No changes detected, skipping commit.")
+        if not any(f in status for f in FILES_TO_COPY):
+            print("[INFO] No changes detected in tracked files, skipping commit.")
             return
 
-        # ✅ Git operations
-        run_git_command("add", "playout_log_rolling.json")
+        # Git operations
+        for filename in FILES_TO_COPY:
+            run_git_command("add", filename)
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        run_git_command("commit", "-m", f"Auto-update playout_log_rolling.json at {timestamp}")
+        run_git_command("commit", "-m", f"Auto-update files at {timestamp}")
         run_git_command("push", "--force")
         print(f"[SUCCESS] Pushed update at {timestamp}")
 
@@ -40,4 +47,6 @@ def auto_push():
         print(f"[FAILED] {e}")
 
 if __name__ == "__main__":
-    auto_push()
+    while True:
+        auto_push()
+        time.sleep(15)

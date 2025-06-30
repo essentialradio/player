@@ -210,7 +210,7 @@
       gap: 14px;
       padding: 14px 0;
       border-bottom: 1px solid #444;
-      transition: background 0.2s ease;
+      transition: background 0.3s ease, opacity 0.4s ease;
     }
     ul#recent-list li:hover {
       background: rgba(255, 255, 255, 0.05);
@@ -693,23 +693,38 @@ async function fetchNowPlaying() {
       .slice(-5)
       .reverse();
 
-    const entries = await Promise.all(recentItems.map(async item => {
+    const list = document.getElementById('recent-list');
+    const existingItems = Array.from(list.children);
+
+    for (let i = 0; i < recentItems.length; i++) {
+      const item = recentItems[i];
       const time = item['Scheduled Time'] || item.time || '';
       const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
-      return `
-        <li>
+      const artwork = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+
+      const li = existingItems[i] || document.createElement('li');
+      const oldKey = li.dataset.key;
+      const newKey = `${time}|${name}`;
+
+      if (oldKey !== newKey) {
+        li.dataset.key = newKey;
+        li.innerHTML = `
           <span class="time">${time}</span>
-          <img src="${art}"
+          <img src="${artwork}"
                alt="Cover for ${name}"
                loading="lazy" />
-          <span class="info">${name}</span>
-        </li>`;
-    }));
+          <span class="info">${name}</span>`;
+        observer.observe(li.querySelector('img'));
+      }
 
-    const list = document.getElementById('recent-list');
-    list.innerHTML = entries.join('');
-    document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+      if (!existingItems[i]) list.appendChild(li);
+    }
+
+    // Remove extra list items if any
+    while (list.children.length > recentItems.length) {
+      list.removeChild(list.lastChild);
+    }
+
   } catch (e) {
     console.error('Recent fetch failed:', e);
   }
