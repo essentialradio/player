@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-14T18:00:00Z",
-    "Scheduled Time": "19:02",
-    "Displayed Time": "",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3479,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-06-14T19:00:00Z",
     "Scheduled Time": "20:00",
     "Displayed Time": "",
@@ -42524,5 +42513,16 @@
     "Full Duration (s)": 167,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-06-30T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "",
+    "Artist": "Elvis vs JXL",
+    "Title": "A Little Less Conversation",
+    "Duration (s)": 210,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
