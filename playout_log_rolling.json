@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-06-14T17:00:00Z",
-    "Scheduled Time": "18:03",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1358,
-    "Full Duration (s)": 1361,
-    "Duration (mins)": 23,
-    "Full Duration (mins)": 23
-  },
-  {
-    "Hour": "2025-06-14T17:00:00Z",
-    "Scheduled Time": "18:26",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 924,
-    "Full Duration (s)": 929,
-    "Duration (mins)": 15,
-    "Full Duration (mins)": 15
-  },
-  {
-    "Hour": "2025-06-14T17:00:00Z",
-    "Scheduled Time": "18:44",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1035,
-    "Full Duration (s)": 1037,
-    "Duration (mins)": 17,
-    "Full Duration (mins)": 17
-  },
-  {
     "Hour": "2025-06-14T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "",
@@ -42424,6 +42391,17 @@
     "Duration (s)": 178,
     "Full Duration (s)": 215,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-06-30T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "",
+    "Artist": "Calum Scott",
+    "Title": "Dancing on My Own (Tiesto Remix)",
+    "Duration (s)": 219,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
