@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-14T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3455,
-    "Full Duration (s)": 3458,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-06-14T17:00:00Z",
     "Scheduled Time": "18:03",
     "Displayed Time": "",
@@ -42315,5 +42304,16 @@
     "Full Duration (s)": 149,
     "Duration (mins)": 2,
     "Full Duration (mins)": 2
+  },
+  {
+    "Hour": "2025-06-30T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "",
+    "Artist": "Enrique Iglesias",
+    "Title": "Escape",
+    "Duration (s)": 206,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
