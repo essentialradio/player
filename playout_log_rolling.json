@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-15T15:00:00Z",
-    "Scheduled Time": "16:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3590,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-15T18:00:00Z",
     "Scheduled Time": "19:00",
     "Displayed Time": "",
@@ -43437,5 +43426,16 @@
     "Full Duration (s)": 249,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-01T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
