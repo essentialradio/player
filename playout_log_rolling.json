@@ -1,192 +1,5 @@
 [
   {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:03",
-    "Displayed Time": "",
-    "Artist": "Foo Fighters",
-    "Title": "Learn to Fly",
-    "Duration (s)": 232,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:07",
-    "Displayed Time": "",
-    "Artist": "Phil Collins",
-    "Title": "Against All Odds (Take a Look at Me Now)",
-    "Duration (s)": 199,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:11",
-    "Displayed Time": "",
-    "Artist": "Gladys Knight & The Pips",
-    "Title": "Baby Don't Change Your Mind",
-    "Duration (s)": 179,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:14",
-    "Displayed Time": "",
-    "Artist": "Shania Twain",
-    "Title": "Thank You Baby!",
-    "Duration (s)": 239,
-    "Full Duration (s)": 241,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:18",
-    "Displayed Time": "",
-    "Artist": "En Vogue",
-    "Title": "Free Your Mind",
-    "Duration (s)": 244,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:22",
-    "Displayed Time": "",
-    "Artist": "Pet Shop Boys",
-    "Title": "Left to My Own Devices",
-    "Duration (s)": 283,
-    "Full Duration (s)": 288,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:27",
-    "Displayed Time": "",
-    "Artist": "Rubettes",
-    "Title": "Sugar Baby Love",
-    "Duration (s)": 202,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:30",
-    "Displayed Time": "",
-    "Artist": "Scouting for Girls",
-    "Title": "Famous",
-    "Duration (s)": 152,
-    "Full Duration (s)": 156,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:33",
-    "Displayed Time": "",
-    "Artist": "Chumbawamba",
-    "Title": "Tubthumping",
-    "Duration (s)": 201,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:37",
-    "Displayed Time": "",
-    "Artist": "Suzanne Vega",
-    "Title": "Luka",
-    "Duration (s)": 223,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:40",
-    "Displayed Time": "",
-    "Artist": "Barry White",
-    "Title": "Let the Music Play",
-    "Duration (s)": 197,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:44",
-    "Displayed Time": "",
-    "Artist": "The Kooks",
-    "Title": "Naive",
-    "Duration (s)": 201,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:47",
-    "Displayed Time": "",
-    "Artist": "Third Eye Blind",
-    "Title": "Semi-Charmed Life",
-    "Duration (s)": 217,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:51",
-    "Displayed Time": "",
-    "Artist": "Frankie Goes to Hollywood",
-    "Title": "Welcome to the Pleasuredome",
-    "Duration (s)": 248,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:55",
-    "Displayed Time": "",
-    "Artist": "The Kinks",
-    "Title": "Lola",
-    "Duration (s)": 244,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "12:59",
-    "Displayed Time": "",
-    "Artist": "Lucie Silvas",
-    "Title": "Breathe In",
-    "Duration (s)": 216,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T11:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "",
-    "Artist": "The Chemical Brothers",
-    "Title": "Hey Boy Hey Girl",
-    "Duration (s)": 212,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-15T12:00:00Z",
     "Scheduled Time": "13:07",
     "Displayed Time": "",
@@ -43226,6 +43039,17 @@
     "Title": "One Last Time",
     "Duration (s)": 193,
     "Full Duration (s)": 197,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-01T03:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
