@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Essential Radio Player</title>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -297,6 +300,29 @@
   }
 }
 
+ul#recent-list img {
+  width: 40px;
+  height: 40px;
+}
+
+ul#recent-list span.info {
+  font-size: 14px;
+}
+
+ul#recent-list span.time {
+  font-size: 13px;
+  width: 40px;
+}
+
+.recent-title {
+  font-size: 18px;
+}
+
+ul#recent-list li {
+  gap: 10px;
+  padding: 10px 0;
+}
+
 
 
     .live-indicator {
@@ -489,61 +515,52 @@
 </script>
 
 <!-- Now Playing & Recently Played logic -->
-<script>
-  const audio = document.getElementById('stream');
-  const playBtn = document.getElementById('play-toggle');
-  const muteBtn = document.getElementById('mute-toggle');
-  const volumeSlider = document.getElementById('volume-slider');
-if (window.innerWidth <= 768) {
-  volumeSlider.disabled = true;
-  muteBtn.disabled = true;
-}
+<script type="module">
+    const audio = new Audio();
+    audio.preload = "none";
+    audio.id = "stream";
+    audio.type = "audio/mpeg";
+    let isPlaying = false;
 
-  const volumeDisplay = document.getElementById('volume-display');
-  const nowPlaying = document.getElementById('now-playing');
-  const artworkImg = document.getElementById('artwork');
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        e.target.classList.add('loaded');
-        observer.unobserve(e.target);
+    const playBtn = document.getElementById("play-toggle");
+    const volumeSlider = document.getElementById("volume-slider");
+    const volumeDisplay = document.getElementById("volume-display");
+    const muteBtn = document.getElementById("mute-toggle");
+
+    document.getElementById("player-box").prepend(audio);
+
+    playBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        if (!audio.src)
+          audio.src = "https://streaming06.liveboxstream.uk/proxy/ayrshire/stream";
+        audio.play().catch(() => {});
+        playBtn.textContent = "⏸ Pause";
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶️ Play Essential Radio";
+        isPlaying = false;
       }
-    }
-  }, { threshold: 0.1 });
+    });
 
-  let isPlaying = false, lastVolume = 1;
+    volumeSlider.addEventListener("input", () => {
+      const vol = volumeSlider.value / 100;
+      audio.volume = vol;
+      volumeDisplay.textContent = `${volumeSlider.value}%`;
+      muteBtn.textContent = vol === 0 ? "🔇" : vol < 0.5 ? "🔈" : "🔊";
+    });
 
-  playBtn.addEventListener('click', () => {
-    if (!isPlaying) {
-      audio.load();
-      audio.play().catch(() => {});
-      playBtn.textContent = '⏸ Pause';
-      isPlaying = true;
-    } else {
-      audio.pause();
-      playBtn.textContent = '▶️ Play Essential Radio';
-      isPlaying = false;
-    }
-  });
-
-  volumeSlider.addEventListener('input', () => {
-    const vol = volumeSlider.value / 100;
-    audio.volume = vol;
-    volumeDisplay.textContent = `${volumeSlider.value}%`;
-    muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
-  });
-
-  muteBtn.addEventListener('click', () => {
-  if (!audio.muted) {
-    audio.muted = true;
-    muteBtn.textContent = '🔇';
-    volumeDisplay.textContent = 'Muted';
-  } else {
-    audio.muted = false;
-    muteBtn.textContent = audio.volume < 0.5 ? '🔈' : '🔊';
-    volumeDisplay.textContent = `${volumeSlider.value}%`;
-  }
-});
+    muteBtn.addEventListener("click", () => {
+      if (!audio.muted) {
+        audio.muted = true;
+        muteBtn.textContent = "🔇";
+        volumeDisplay.textContent = "Muted";
+      } else {
+        audio.muted = false;
+        muteBtn.textContent = audio.volume < 0.5 ? "🔈" : "🔊";
+        volumeDisplay.textContent = `${volumeSlider.value}%`;
+      }
+    });
 
 async function fetchDurationAndStartTime(artist, title) {
   try {
