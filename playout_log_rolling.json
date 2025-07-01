@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-06-15T13:00:00Z",
-    "Scheduled Time": "14:01",
-    "Displayed Time": "",
-    "Artist": "Essential Radio",
-    "Title": "Airplay 40 Intro",
-    "Duration (s)": 24,
-    "Full Duration (s)": 28,
-    "Duration (mins)": 0,
-    "Full Duration (mins)": 0
-  },
-  {
-    "Hour": "2025-06-15T13:00:00Z",
-    "Scheduled Time": "14:02",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3572,
-    "Full Duration (s)": 3574,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-15T14:00:00Z",
     "Scheduled Time": "15:01",
     "Displayed Time": "",
@@ -43194,6 +43172,17 @@
     "Duration (s)": 220,
     "Full Duration (s)": 230,
     "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-01T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "",
+    "Artist": "Sam Smith",
+    "Title": "Diamonds",
+    "Duration (s)": 207,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
 ]
