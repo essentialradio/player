@@ -492,52 +492,61 @@
 </script>
 
 <!-- Now Playing & Recently Played logic -->
-<script type="module">
-    const audio = new Audio();
-    audio.preload = "none";
-    audio.id = "stream";
-    audio.type = "audio/mpeg";
-    let isPlaying = false;
+<script>
+  const audio = document.getElementById('stream');
+  const playBtn = document.getElementById('play-toggle');
+  const muteBtn = document.getElementById('mute-toggle');
+  const volumeSlider = document.getElementById('volume-slider');
+if (window.innerWidth <= 768) {
+  volumeSlider.disabled = true;
+  muteBtn.disabled = true;
+}
 
-    const playBtn = document.getElementById("play-toggle");
-    const volumeSlider = document.getElementById("volume-slider");
-    const volumeDisplay = document.getElementById("volume-display");
-    const muteBtn = document.getElementById("mute-toggle");
-
-    document.getElementById("player-box").prepend(audio);
-
-    playBtn.addEventListener("click", () => {
-      if (!isPlaying) {
-        if (!audio.src)
-          audio.src = "https://streaming06.liveboxstream.uk/proxy/ayrshire/stream";
-        audio.play().catch(() => {});
-        playBtn.textContent = "⏸ Pause";
-        isPlaying = true;
-      } else {
-        audio.pause();
-        playBtn.textContent = "▶️ Play Essential Radio";
-        isPlaying = false;
+  const volumeDisplay = document.getElementById('volume-display');
+  const nowPlaying = document.getElementById('now-playing');
+  const artworkImg = document.getElementById('artwork');
+  const observer = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('loaded');
+        observer.unobserve(e.target);
       }
-    });
+    }
+  }, { threshold: 0.1 });
 
-    volumeSlider.addEventListener("input", () => {
-      const vol = volumeSlider.value / 100;
-      audio.volume = vol;
-      volumeDisplay.textContent = `${volumeSlider.value}%`;
-      muteBtn.textContent = vol === 0 ? "🔇" : vol < 0.5 ? "🔈" : "🔊";
-    });
+  let isPlaying = false, lastVolume = 1;
 
-    muteBtn.addEventListener("click", () => {
-      if (!audio.muted) {
-        audio.muted = true;
-        muteBtn.textContent = "🔇";
-        volumeDisplay.textContent = "Muted";
-      } else {
-        audio.muted = false;
-        muteBtn.textContent = audio.volume < 0.5 ? "🔈" : "🔊";
-        volumeDisplay.textContent = `${volumeSlider.value}%`;
-      }
-    });
+  playBtn.addEventListener('click', () => {
+    if (!isPlaying) {
+      audio.load();
+      audio.play().catch(() => {});
+      playBtn.textContent = '⏸ Pause';
+      isPlaying = true;
+    } else {
+      audio.pause();
+      playBtn.textContent = '▶️ Play Essential Radio';
+      isPlaying = false;
+    }
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    const vol = volumeSlider.value / 100;
+    audio.volume = vol;
+    volumeDisplay.textContent = `${volumeSlider.value}%`;
+    muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
+  });
+
+  muteBtn.addEventListener('click', () => {
+  if (!audio.muted) {
+    audio.muted = true;
+    muteBtn.textContent = '🔇';
+    volumeDisplay.textContent = 'Muted';
+  } else {
+    audio.muted = false;
+    muteBtn.textContent = audio.volume < 0.5 ? '🔈' : '🔊';
+    volumeDisplay.textContent = `${volumeSlider.value}%`;
+  }
+});
 
 async function fetchDurationAndStartTime(artist, title) {
   try {
