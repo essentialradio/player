@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-16T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3403,
-    "Full Duration (s)": 3411,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-06-16T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44227,6 +44216,17 @@
     "Title": "Let Me Love You",
     "Duration (s)": 200,
     "Full Duration (s)": 203,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-01T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "",
+    "Artist": "Switch Disco ft Ella Henderson",
+    "Title": "REACT",
+    "Duration (s)": 198,
+    "Full Duration (s)": 201,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
