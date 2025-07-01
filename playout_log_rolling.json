@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:01",
-    "Displayed Time": "",
-    "Artist": "Bonnie Tyler",
-    "Title": "Holding Out for a Hero",
-    "Duration (s)": 248,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:05",
-    "Displayed Time": "",
-    "Artist": "Chic",
-    "Title": "Everybody Dance",
-    "Duration (s)": 194,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:09",
-    "Displayed Time": "",
-    "Artist": "CeCe Peniston",
-    "Title": "Finally",
-    "Duration (s)": 231,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:12",
-    "Displayed Time": "",
-    "Artist": "The Rolling Stones",
-    "Title": "Jumpin' Jack Flash",
-    "Duration (s)": 205,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:20",
-    "Displayed Time": "",
-    "Artist": "Black",
-    "Title": "Wonderful Life",
-    "Duration (s)": 275,
-    "Full Duration (s)": 287,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:24",
-    "Displayed Time": "",
-    "Artist": "Lonnie Gordon",
-    "Title": "Happenin' All Over Again",
-    "Duration (s)": 183,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:27",
-    "Displayed Time": "",
-    "Artist": "Duran Duran",
-    "Title": "New Moon On Monday",
-    "Duration (s)": 235,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:33",
-    "Displayed Time": "",
-    "Artist": "Paul McCartney & Wings",
-    "Title": "Silly Love Songs",
-    "Duration (s)": 254,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:37",
-    "Displayed Time": "",
-    "Artist": "Spandau Ballet",
-    "Title": "Gold",
-    "Duration (s)": 215,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:44",
-    "Displayed Time": "",
-    "Artist": "Big Country",
-    "Title": "In a Big Country",
-    "Duration (s)": 215,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:48",
-    "Displayed Time": "",
-    "Artist": "World Party",
-    "Title": "Message in the Box",
-    "Duration (s)": 248,
-    "Full Duration (s)": 259,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:52",
-    "Displayed Time": "",
-    "Artist": "Booker T & The MGs",
-    "Title": "Green Onions",
-    "Duration (s)": 161,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T09:00:00Z",
-    "Scheduled Time": "10:55",
-    "Displayed Time": "",
-    "Artist": "Milli Vanilli",
-    "Title": "Girl You Know It's True",
-    "Duration (s)": 240,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-15T10:00:00Z",
     "Scheduled Time": "11:01",
     "Displayed Time": "",
@@ -43206,5 +43063,16 @@
     "Full Duration (s)": 248,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-01T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 182,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
