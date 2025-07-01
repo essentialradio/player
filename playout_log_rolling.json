@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "",
-    "Artist": "Bob Marley & The Wailers",
-    "Title": "Jamming",
-    "Duration (s)": 202,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "",
-    "Artist": "Billy Joel",
-    "Title": "We Didn't Start the Fire",
-    "Duration (s)": 253,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:09",
-    "Displayed Time": "",
-    "Artist": "Shed Seven",
-    "Title": "Chasing Rainbows",
-    "Duration (s)": 256,
-    "Full Duration (s)": 260,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:13",
-    "Displayed Time": "",
-    "Artist": "The Lovin' Spoonful",
-    "Title": "Summer in the City",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:19",
-    "Displayed Time": "",
-    "Artist": "Bryan Adams",
-    "Title": "Summer of '69",
-    "Duration (s)": 198,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:23",
-    "Displayed Time": "",
-    "Artist": "N-Trance",
-    "Title": "Set You Free",
-    "Duration (s)": 243,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:27",
-    "Displayed Time": "",
-    "Artist": "Dr Hook",
-    "Title": "When You're in Love With a Beautiful Woman",
-    "Duration (s)": 159,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:31",
-    "Displayed Time": "",
-    "Artist": "Go West",
-    "Title": "Call Me",
-    "Duration (s)": 234,
-    "Full Duration (s)": 253,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:35",
-    "Displayed Time": "",
-    "Artist": "Yvonne Elliman",
-    "Title": "If I Can't Have You",
-    "Duration (s)": 166,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:37",
-    "Displayed Time": "",
-    "Artist": "Dusty Springfield",
-    "Title": "I Just Don't Know What To Do With Myself",
-    "Duration (s)": 168,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:45",
-    "Displayed Time": "",
-    "Artist": "Del Amitri",
-    "Title": "Always the Last to Know",
-    "Duration (s)": 239,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:49",
-    "Displayed Time": "",
-    "Artist": "Madness",
-    "Title": "It Must Be Love",
-    "Duration (s)": 187,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:53",
-    "Displayed Time": "",
-    "Artist": "The O'Jays",
-    "Title": "Backstabbers",
-    "Duration (s)": 170,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-15T10:00:00Z",
-    "Scheduled Time": "11:55",
-    "Displayed Time": "",
-    "Artist": "Diana Ross",
-    "Title": "I'm Coming Out",
-    "Duration (s)": 222,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-15T11:00:00Z",
     "Scheduled Time": "12:03",
     "Displayed Time": "",
@@ -43228,5 +43074,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-01T02:00:00Z",
+    "Scheduled Time": "03:02",
+    "Displayed Time": "",
+    "Artist": "Kelly Clarkson",
+    "Title": "Heartbeat Song",
+    "Duration (s)": 196,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
