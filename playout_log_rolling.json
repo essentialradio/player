@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-15T22:00:00Z",
-    "Scheduled Time": "23:00",
-    "Displayed Time": "",
-    "Artist": "Dave Watkins",
-    "Title": "The Country Mile",
-    "Duration (s)": 3599,
-    "Full Duration (s)": 3601,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-15T23:00:00Z",
     "Scheduled Time": "00:02",
     "Displayed Time": "",
@@ -43954,5 +43943,16 @@
     "Full Duration (s)": 296,
     "Duration (mins)": 5,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-07-01T11:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 178,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
