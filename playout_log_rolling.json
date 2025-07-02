@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:01",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 160,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:05",
-    "Displayed Time": "",
-    "Artist": "Nico & Vinz",
-    "Title": "Am I Wrong",
-    "Duration (s)": 226,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:08",
-    "Displayed Time": "",
-    "Artist": "Nathan Evans",
-    "Title": "Highland Girl",
-    "Duration (s)": 169,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:11",
-    "Displayed Time": "",
-    "Artist": "Blur",
-    "Title": "Parklife",
-    "Duration (s)": 176,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:14",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:22",
-    "Displayed Time": "",
-    "Artist": "Freya Ridings",
-    "Title": "Lost Without You",
-    "Duration (s)": 167,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:25",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 215,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:28",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 172,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:32",
-    "Displayed Time": "",
-    "Artist": "James",
-    "Title": "Sit Down",
-    "Duration (s)": 228,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:36",
-    "Displayed Time": "",
-    "Artist": "Franz Ferdinand",
-    "Title": "Take Me Out",
-    "Duration (s)": 195,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:42",
-    "Displayed Time": "",
-    "Artist": "Sophie Ellis-Bextor",
-    "Title": "Taste",
-    "Duration (s)": 164,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:45",
-    "Displayed Time": "",
-    "Artist": "Gloria Estefan & Miami Sound Machine",
-    "Title": "1,2,3",
-    "Duration (s)": 197,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:48",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Espresso",
-    "Duration (s)": 166,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:51",
-    "Displayed Time": "",
-    "Artist": "Sybil",
-    "Title": "When I'm Good and Ready",
-    "Duration (s)": 195,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-16T13:00:00Z",
-    "Scheduled Time": "14:54",
-    "Displayed Time": "",
-    "Artist": "Jubel ft Neimy",
-    "Title": "Dancing in the Moonlight",
-    "Duration (s)": 153,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-06-16T14:00:00Z",
     "Scheduled Time": "15:01",
     "Displayed Time": "",
@@ -44392,6 +44227,17 @@
     "Title": "Ghost of You",
     "Duration (s)": 152,
     "Full Duration (s)": 158,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-02T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
