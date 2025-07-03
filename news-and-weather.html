@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>News & Weather – Essential Radio</title>
+  <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -42,6 +43,7 @@
     }
     .content-card ul {
       padding-left: 20px;
+      list-style: square;
     }
     .content-card li {
       margin-bottom: 10px;
@@ -59,33 +61,41 @@
       font-size: 14px;
       opacity: 0.8;
     }
+    @media (max-width: 600px) {
+      .content-card {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="header">
+  <header class="header">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo" />
     <h1>News & Weather</h1>
-  </div>
+  </header>
 
-  <div class="content-card">
-    <h2>Latest Headlines</h2>
+  <section class="content-card">
+    <h2>📰 Latest Headlines</h2>
     <ul id="news-list"><li>Loading news...</li></ul>
-  </div>
+  </section>
 
-  <div class="content-card">
-    <h2>Weather Update</h2>
+  <section class="content-card">
+    <h2>🌤️ Weather Update</h2>
     <p id="weather-update">Loading forecast...</p>
-  </div>
+  </section>
 
   <footer>Essential Radio &copy; 2025</footer>
 
   <script>
-    // Load live news via AllOrigins proxy
-    fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3'))
-      .then(response => response.json())
-      .then(data => {
+    // NEWS FROM proxy.php
+    fetch('proxy.php')
+      .then(response => response.text())
+      .then(str => {
         const parser = new DOMParser();
-        const xml = parser.parseFromString(data.contents, "text/xml");
+        const xml = parser.parseFromString(str, "text/xml");
         const items = xml.querySelectorAll("item");
         const newsList = document.getElementById("news-list");
         newsList.innerHTML = "";
@@ -98,17 +108,17 @@
         }
       })
       .catch(error => {
-        document.getElementById("news-list").innerHTML = "<li>Failed to load news.</li>";
+        document.getElementById("news-list").innerHTML = "<li>⚠️ Could not load news.</li>";
       });
 
-    // Load weather from weather.txt (copied version of your weather_script.txt)
+    // WEATHER FROM weather.txt
     fetch('weather.txt')
       .then(response => response.text())
       .then(text => {
         document.getElementById("weather-update").textContent = text;
       })
       .catch(error => {
-        document.getElementById("weather-update").textContent = "Could not load weather data.";
+        document.getElementById("weather-update").textContent = "⚠️ Could not load weather data.";
       });
   </script>
 </body>
