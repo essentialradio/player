@@ -80,8 +80,8 @@
   <footer>Essential Radio &copy; 2025</footer>
 
   <script>
-    // Fetch and show latest Radio News Hub headlines
-    fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('http://www.radionewshub.co.uk/sitemaps/news.php?feed=H2lujdhEZ3'))
+    // Load live news via AllOrigins proxy
+    fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3'))
       .then(response => response.json())
       .then(data => {
         const parser = new DOMParser();
@@ -101,19 +101,11 @@
         document.getElementById("news-list").innerHTML = "<li>Failed to load news.</li>";
       });
 
-    // Fetch and extract latest weather forecast from weather_script.log
-    fetch('weather_script.log')
+    // Load weather from weather.txt (copied version of your weather_script.txt)
+    fetch('weather.txt')
       .then(response => response.text())
-      .then(log => {
-        const lines = log.split('\n').reverse(); // Start from the end
-        for (let line of lines) {
-          if (line.includes("Weather text:")) {
-            const forecast = line.split("Weather text:")[1].trim();
-            document.getElementById("weather-update").textContent = forecast;
-            return;
-          }
-        }
-        document.getElementById("weather-update").textContent = "Weather forecast unavailable.";
+      .then(text => {
+        document.getElementById("weather-update").textContent = text;
       })
       .catch(error => {
         document.getElementById("weather-update").textContent = "Could not load weather data.";
