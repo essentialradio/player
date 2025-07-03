@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "",
-    "Artist": "The Verve",
-    "Title": "Bitter Sweet Symphony",
-    "Duration (s)": 263,
-    "Full Duration (s)": 276,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:06",
-    "Displayed Time": "",
-    "Artist": "All Saints",
-    "Title": "Under the Bridge",
-    "Duration (s)": 292,
-    "Full Duration (s)": 299,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:11",
-    "Displayed Time": "",
-    "Artist": "MC Sar & The Real McCoy",
-    "Title": "Another Night",
-    "Duration (s)": 228,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:15",
-    "Displayed Time": "",
-    "Artist": "Ned's Atomic Dustbin",
-    "Title": "Happy",
-    "Duration (s)": 215,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:22",
-    "Displayed Time": "",
-    "Artist": "Manic Street Preachers",
-    "Title": "A Design for Life",
-    "Duration (s)": 249,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:26",
-    "Displayed Time": "",
-    "Artist": "Natalie Imbruglia",
-    "Title": "Big Mistake",
-    "Duration (s)": 256,
-    "Full Duration (s)": 277,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:31",
-    "Displayed Time": "",
-    "Artist": "New Kids on the Block",
-    "Title": "Hangin' Tough",
-    "Duration (s)": 211,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:34",
-    "Displayed Time": "",
-    "Artist": "Metallica",
-    "Title": "Nothing Else Matters",
-    "Duration (s)": 284,
-    "Full Duration (s)": 303,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:39",
-    "Displayed Time": "",
-    "Artist": "The Stone Roses",
-    "Title": "Fools Gold",
-    "Duration (s)": 242,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:47",
-    "Displayed Time": "",
-    "Artist": "Will Smith",
-    "Title": "Miami",
-    "Duration (s)": 194,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:51",
-    "Displayed Time": "",
-    "Artist": "Gin Blossoms",
-    "Title": "Follow You Down",
-    "Duration (s)": 253,
-    "Full Duration (s)": 270,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-17T20:00:00Z",
-    "Scheduled Time": "21:55",
-    "Displayed Time": "",
-    "Artist": "Leann Rimes",
-    "Title": "How Do I Live",
-    "Duration (s)": 230,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-17T23:00:00Z",
     "Scheduled Time": "00:02",
     "Displayed Time": "",
@@ -44317,5 +44185,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-03T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Azizam",
+    "Duration (s)": 158,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
