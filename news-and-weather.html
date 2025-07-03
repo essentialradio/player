@@ -41,20 +41,6 @@
       color: #00e0ff;
       margin-top: 0;
     }
-    .content-card ul {
-      padding-left: 20px;
-      list-style: square;
-    }
-    .content-card li {
-      margin-bottom: 10px;
-    }
-    .content-card a {
-      color: #00e0ff;
-      text-decoration: none;
-    }
-    .content-card a:hover {
-      text-decoration: underline;
-    }
     footer {
       margin-top: 60px;
       text-align: center;
@@ -79,47 +65,18 @@
 
   <section class="content-card">
     <h2>📰 Latest Headlines</h2>
-    <ul id="news-list"><li>Loading news...</li></ul>
+    <!-- Elfsight RSS Feed | News Feed from RNH -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-9b4542e0-7fb9-4bfb-a258-38a84ee937a7" data-elfsight-app-lazy></div>
   </section>
 
   <section class="content-card">
     <h2>🌤️ Weather Update</h2>
-    <p id="weather-update">Loading forecast...</p>
+    <!-- Elfsight Weather | Weather -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-1e12a376-8035-49cc-b0b2-31b65495aa2e" data-elfsight-app-lazy></div>
   </section>
 
   <footer>Essential Radio &copy; 2025</footer>
-
-  <script>
-    // NEWS FROM proxy.php
-    fetch('proxy.php')
-      .then(response => response.text())
-      .then(str => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(str, "text/xml");
-        const items = xml.querySelectorAll("item");
-        const newsList = document.getElementById("news-list");
-        newsList.innerHTML = "";
-        for (let i = 0; i < Math.min(5, items.length); i++) {
-          const title = items[i].querySelector("title").textContent;
-          const link = items[i].querySelector("link").textContent;
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
-          newsList.appendChild(li);
-        }
-      })
-      .catch(error => {
-        document.getElementById("news-list").innerHTML = "<li>⚠️ Could not load news.</li>";
-      });
-
-    // WEATHER FROM weather.txt
-    fetch('weather.txt')
-      .then(response => response.text())
-      .then(text => {
-        document.getElementById("weather-update").textContent = text;
-      })
-      .catch(error => {
-        document.getElementById("weather-update").textContent = "⚠️ Could not load weather data.";
-      });
-  </script>
 </body>
 </html>
