@@ -479,8 +479,7 @@
 <!-- Ayrshire Weather Highlight -->
 <div id="weather-widget" style="position: absolute; top: 20px; right: 20px; z-index: 3; background: rgba(0,0,0,0.6); padding: 10px 14px; border-radius: 10px; font-size: 15px; color: white; display: flex; align-items: center; gap: 8px;">
   <img id="weather-icon" src="" alt="Weather" width="40" height="40" style="vertical-align: middle;" />
-  <div id="weather-text">Loading weather…</div>
-</div>
+  <div><strong style="color:#fed351;">Ayrshire Weather</strong><br><span id="weather-text">Loading weather…</span></div>
 
 <script>
   async function fetchWeather() {
@@ -862,110 +861,6 @@ async function getTrackArtwork(query) {
 
 <!-- Your player content -->
 
-<script>
-  function formatShowTitleMobileOnly(title) {
-    if (window.innerWidth <= 600) {
-      const match = title.match(/(.*)\s+with\s+(.*)/i);
-      if (match) {
-        return `${match[1]}<br>with ${match[2]}`;
-      }
-    }
-    return title;
-  }
-
-  const showSpan = document.getElementById("currentShow");
-  const rawTitle = showSpan?.textContent || "";
-  showSpan.innerHTML = formatShowTitleMobileOnly(rawTitle);
-</script>
-
-<!-- Ayrshire Weather Highlight -->
-<div id="weather-widget" style="position: absolute; top: 20px; right: 20px; z-index: 3; background: rgba(0,0,0,0.6); padding: 10px 14px; border-radius: 10px; font-size: 15px; color: white; display: flex; align-items: center; gap: 8px;">
-  <img id="weather-icon" src="" alt="Weather" width="40" height="40" style="vertical-align: middle;" />
-  <div id="weather-text">Loading weather…</div>
-</div>
-
-<script>
-  async function fetchWeather() {
-    const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Kilmarnock,GB&units=metric&appid=${API_KEY}`;
-
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      const iconCode = data.weather[0].icon;
-      const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-      const temp = Math.round(data.main.temp);
-      const desc = data.weather[0].description;
-
-      document.getElementById("weather-icon").src = iconUrl;
-      document.getElementById("weather-icon").alt = desc;
-      document.getElementById("weather-text").innerText = `${desc.charAt(0).toUpperCase() + desc.slice(1)}, ${temp}°C`;
-    } catch (e) {
-      document.getElementById("weather-text").innerText = "Weather unavailable";
-    }
-  }
-
-  fetchWeather();
-  setInterval(fetchWeather, 15 * 60 * 1000); // refresh every 15 mins
-</script>
-
 </body>
-<script>
-  function formatShowTitleMobileOnly(title) {
-    if (window.innerWidth <= 600) {
-      const match = title.match(/(.*)\s+with\s+(.*)/i);
-      if (match) {
-        return `${match[1]}<br>with ${match[2]}`;
-      }
-    }
-    return title;
-  }
-
-  const showSpan = document.getElementById("currentShow");
-
-  // MutationObserver ensures that when the schedule updates, we reformat it
-  const observer = new MutationObserver(() => {
-    const raw = showSpan?.textContent || "";
-    showSpan.innerHTML = formatShowTitleMobileOnly(raw);
-  });
-
-  if (showSpan) {
-    observer.observe(showSpan, { childList: true });
-    // initial format
-    showSpan.innerHTML = formatShowTitleMobileOnly(showSpan.textContent);
-  }
-</script>
-
-<!-- Ayrshire Weather Highlight -->
-<div id="weather-widget" style="position: absolute; top: 20px; right: 20px; z-index: 3; background: rgba(0,0,0,0.6); padding: 10px 14px; border-radius: 10px; font-size: 15px; color: white; display: flex; align-items: center; gap: 8px;">
-  <img id="weather-icon" src="" alt="Weather" width="40" height="40" style="vertical-align: middle;" />
-  <div id="weather-text">Loading weather…</div>
-</div>
-
-<script>
-  async function fetchWeather() {
-    const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Kilmarnock,GB&units=metric&appid=${API_KEY}`;
-
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      const iconCode = data.weather[0].icon;
-      const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-      const temp = Math.round(data.main.temp);
-      const desc = data.weather[0].description;
-
-      document.getElementById("weather-icon").src = iconUrl;
-      document.getElementById("weather-icon").alt = desc;
-      document.getElementById("weather-text").innerText = `${desc.charAt(0).toUpperCase() + desc.slice(1)}, ${temp}°C`;
-    } catch (e) {
-      document.getElementById("weather-text").innerText = "Weather unavailable";
-    }
-  }
-
-  fetchWeather();
-  setInterval(fetchWeather, 15 * 60 * 1000); // refresh every 15 mins
-</script>
-
 </body>
 </html>
