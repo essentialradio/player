@@ -20,6 +20,14 @@
       justify-content: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+    }
+    .player-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .strip-container {
       display: flex;
@@ -54,7 +62,6 @@
       background: #222;
       overflow-y: auto;
       border-left: 1px solid #333;
-      /* Make room for weather widget at top */
       justify-content: flex-start;
     }
     #player-box {
@@ -259,6 +266,14 @@
         transform: translate(-30%, -30%);
       }
     }
+    @media (max-width: 768px) {
+      .logo-overhang {
+        width: 120px;
+        transform: (-25%, -25%);
+        top: 2px;
+        left: 20px;
+      }
+    }
     .live-indicator {
       display: inline-flex;
       align-items: center;
@@ -279,6 +294,101 @@
     @keyframes pulse {
       0%, 100% { opacity: 0.2; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.4); }
+    }
+    @media (max-width: 768px) {
+      .strip-container {
+        flex-direction: column;
+        min-height: 0;
+      }
+      .left-panel, .right-panel {
+        width: 100%;
+        padding: 18px 10px;
+        min-height: unset;
+      }
+      .left-panel {
+        border-right: none;
+        border-bottom: 1px solid #222;
+        padding-top: 18px;
+        align-items: stretch;
+      }
+      .right-panel {
+        border-left: none;
+        padding-top: 14px;
+      }
+      #artwork {
+        width: 100%;
+        max-width: 320px;
+        min-width: 150px;
+        height: auto;
+        margin: 0 auto 20px;
+        display: block;
+      }
+      #player-box,
+      #now-playing-card {
+        max-width: 99vw;
+        margin: 0 auto;
+      }
+      #onAirNow {
+        text-align: center;
+      }
+    }
+    #onAirNow {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      padding-right: 16px;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: 0;
+    }
+    #onAirNow br {
+      display: none;
+    }
+    #play-toggle {
+      margin-bottom: 12px;
+    }
+    #onAirNow span {
+      display: block;
+      line-height: 1.2;
+    }
+    .show-title {
+      font-weight: 600;
+    }
+    .show-presenter {
+      font-weight: 400;
+      font-size: 0.95em;
+      opacity: 0.9;
+    }
+    .left-panel {
+      padding-top: 4px;
+    }
+    #player-box {
+      margin-top: -4px;
+    }
+    #nowPlaying {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+    @media (max-width: 768px) {
+      .recent-title {
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+      ul#recent-list li {
+        gap: 10px;
+        padding: 10px 0;
+      }
+      ul#recent-list img {
+        width: 38px;
+        height: 38px;
+      }
+      ul#recent-list span.info {
+        font-size: 12px;
+      }
+      ul#recent-list span.time {
+        font-size: 12px;
+        width: 40px;
+      }
     }
     /* Weather Widget - now styled as a static block in the sidebar */
     #weather-widget {
@@ -347,169 +457,6 @@
       color: #181818;
       border: 2.5px solid #5ceafc;
     }
-    @media (max-width: 768px) {
-      body {
-        padding: 10px 0 75px;
-        min-width: 100vw;
-        box-sizing: border-box;
-        display: block;
-      }
-      .strip-container {
-        flex-direction: column;
-        min-height: unset;
-        border-radius: 0;
-        box-shadow: none;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .left-panel, .right-panel {
-        width: 100vw;
-        padding: 0 0 0 0;
-        border: none;
-        background: none;
-      }
-      .left-panel {
-        align-items: stretch;
-        padding: 0;
-        margin-bottom: 12px;
-      }
-      .right-panel {
-        padding: 0 10px;
-        margin: 0;
-      }
-      #onAirNow {
-        font-size: 1.02em;
-        text-align: left;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 15px 14px 6px 14px;
-      }
-      .logo-overhang {
-        position: static;
-        width: 80px;
-        display: block;
-        margin: 12px auto 0 auto;
-        filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
-        left: unset; top: unset; transform: none;
-      }
-      #player-box {
-        margin: 0 auto;
-        width: 96vw;
-        max-width: 410px;
-        padding: 0 0 8px 0;
-      }
-      #now-playing-card {
-        padding: 15px 12px;
-        font-size: 1.11em;
-        line-height: 1.4;
-        margin: 14px auto 0 auto;
-        border-radius: 9px;
-        min-height: 110px;
-      }
-      #artwork {
-        width: 86vw;
-        max-width: 340px;
-        height: auto;
-        margin: 16px auto 0 auto;
-        display: block;
-      }
-      button#play-toggle {
-        font-size: 1.08em;
-        padding: 15px 0;
-        width: 100%;
-        margin-top: 10px;
-        margin-bottom: 8px;
-        border-radius: 12px;
-      }
-      #volume-container {
-        display: none !important;
-      }
-      .recent-title {
-        font-size: 1em;
-        margin: 18px 0 6px 0;
-        padding: 0 8px;
-        color: #fed351;
-        text-align: left;
-      }
-      ul#recent-list {
-        padding: 0 0 0 0;
-        margin: 0 0 10px 0;
-        border-radius: 9px;
-        background: rgba(0,0,0,0.13);
-      }
-      ul#recent-list li {
-        gap: 10px;
-        padding: 10px 6px;
-        border-bottom: 1px solid #333;
-        font-size: 0.97em;
-      }
-      ul#recent-list img {
-        width: 34px; height: 34px;
-      }
-      ul#recent-list span.info,
-      ul#recent-list span.time {
-        font-size: 0.98em;
-      }
-      #weather-widget {
-        width: 100vw;
-        margin: 0 0 9px 0;
-        border-radius: 0;
-        font-size: 1.06em;
-        box-shadow: none;
-        padding: 10px 10px;
-        background: rgba(24,24,24,0.95);
-        border-bottom: 1px solid #fed35188;
-        justify-content: flex-start;
-      }
-      #weather-widget img { width: 28px; height: 28px; }
-      /* Bottom nav for menu */
-      .essential-menu-float {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: unset;
-        width: 100vw;
-        margin: 0 !important;
-        border-radius: 0;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 0;
-        justify-content: space-around;
-        align-items: center;
-        box-shadow: 0 -2px 18px #000c;
-        background: rgba(24,24,24,0.97);
-        z-index: 1111;
-        padding: 0;
-        min-height: 60px;
-        height: 60px;
-      }
-      .menu-btn {
-        font-size: 0.93em;
-        min-width: 10vw;
-        padding: 0;
-        margin: 0;
-        border-radius: 0;
-        height: 60px;
-        background: none;
-        box-shadow: none;
-        color: #fed351;
-        background: transparent;
-        border: none;
-        flex: 1 1 0px;
-        text-align: center;
-        line-height: 60px;
-        transition: background 0.11s;
-      }
-      .menu-btn:active, .menu-btn:focus {
-        background: #fed35118;
-        color: #fff;
-      }
-      .news-btn, .travel-btn {
-        border: none !important;
-        background: transparent !important;
-      }
-    }
     @media (max-width: 1050px) {
       .essential-menu-float {
         right: 6px;
@@ -519,7 +466,101 @@
       }
     }
     @media (max-width: 800px) {
-      /* This block is now covered by the max-width: 768px rules above, but left for any future extra tweaks */
+      .essential-menu-float {
+        position: static;
+        width: 100%;
+        margin: 0 auto 10px;
+        border-radius: 8px;
+        box-shadow: none;
+        background: rgba(24, 24, 24, 0.93);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        gap: 7px;
+        padding: 6px 0 4px 0;
+        scrollbar-width: thin;
+        scrollbar-color: #ffd84a #191919;
+      }
+      .menu-btn {
+        min-width: 120px;
+        padding: 10px 12px;
+        font-size: 0.97rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    /* Extra Mobile Fine-tuning */
+    @media (max-width: 600px) {
+      body {
+        padding: 14px 3px 10px;
+        min-height: 100vh;
+      }
+      .logo-overhang {
+        width: 75px;
+        left: 6px;
+        top: 5px;
+        transform: translateY(-25%);
+      }
+      .player-wrapper {
+        padding: 0;
+      }
+      .strip-container {
+        box-shadow: 0 0 11px rgba(0,0,0,0.28);
+        min-width: 0;
+        width: 99vw;
+        border-radius: 8px;
+      }
+      .left-panel, .right-panel {
+        padding: 10px 4vw;
+      }
+      #player-box,
+      #now-playing-card,
+      #artwork {
+        max-width: 98vw;
+      }
+      #now-playing-card {
+        padding: 12px;
+        font-size: 1em;
+      }
+      button, #mute-toggle {
+        font-size: 1em;
+        padding: 9px 11px;
+      }
+      .recent-title {
+        font-size: 1.04em;
+        margin-bottom: 8px;
+      }
+      ul#recent-list img {
+        width: 32px;
+        height: 32px;
+      }
+      ul#recent-list span.info {
+        font-size: 11px;
+      }
+      ul#recent-list span.time {
+        font-size: 10px;
+        width: 34px;
+      }
+      #weather-widget {
+        font-size: 14px;
+        gap: 4px;
+        padding: 6px 6px 6px 6px;
+      }
+      #weather-widget img {
+        width: 22px;
+        height: 22px;
+      }
+      .essential-menu-float {
+        padding: 2.5vw 0 3vw 0;
+        gap: 5px;
+      }
+      .menu-btn {
+        min-width: 93px;
+        font-size: 0.97em;
+        padding: 7px 6px;
+      }
     }
   </style>
 </head>
