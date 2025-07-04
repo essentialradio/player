@@ -294,12 +294,17 @@
       }
     }
     @media (max-width: 800px) {
-      .logo-overhang {
-        width: 80px;
-        left: 12px;
-        top: 6px;
-        transform: translateY(-22%);
-      }
+  .logo-overhang {
+    top: 52px !important; /* below weather/menu */
+    left: 4px !important;
+    width: 54px !important;
+    z-index: 3;
+    transform: none !important;
+    opacity: 0.97;
+    pointer-events: none;
+  }
+}
+
     }
     @media (max-width: 600px) {
       .logo-overhang {
