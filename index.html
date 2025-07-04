@@ -372,36 +372,45 @@
         width: 40px;
       }
     }
-    @media (max-width: 600px) {
-      #weather-widget {
-        top: auto;
-        bottom: 20px;
-        right: 10px;
-        font-size: 13px;
-        padding: 8px 12px;
-      }
-      #weather-widget img {
-        width: 32px;
-        height: 32px;
-      }
+
+    /* --- Weather Widget: fixed left on desktop, static on mobile --- */
+    #weather-widget {
+      position: fixed;
+      top: 70px;
+      left: 30px;
+      background: rgba(0,0,0,0.55);
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      z-index: 120;
+      opacity: 0.92;
+    }
+    #weather-widget img {
+      width: 32px;
+      height: 32px;
     }
 
     /* --- Floating Side Menu Styles --- */
     .essential-menu-float {
       position: fixed;
       top: 70px;
-      right: 40px;
+      right: 18px;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      z-index: 1000;
-      background: rgba(24, 24, 24, 0.85);
-      padding: 20px 18px;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      z-index: 110;
+      background: rgba(24, 24, 24, 0.88);
+      padding: 17px 14px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.17);
       backdrop-filter: blur(2px);
     }
-    .essential-menu-float .menu-btn {
+    .menu-btn {
       display: block;
       min-width: 150px;
       padding: 12px 22px;
@@ -420,36 +429,58 @@
       cursor: pointer;
       margin-bottom: 3px;
     }
-    .essential-menu-float .menu-btn:hover,
-    .essential-menu-float .menu-btn:focus {
+    .menu-btn:hover,
+    .menu-btn:focus {
       filter: brightness(0.97) drop-shadow(0 0 7px #ffe87c);
       transform: scale(1.04);
     }
-    .essential-menu-float .news-btn {
+    .news-btn {
       background: #FFE96B;
       color: #181818;
       border: 2.5px solid #fdb731;
     }
-    .essential-menu-float .travel-btn {
+    .travel-btn {
       background: #FEE275;
       color: #181818;
       border: 2.5px solid #5ceafc;
     }
-    @media (max-width: 800px) {
+    @media (max-width: 1050px) {
+      #weather-widget {
+        top: 10px;
+        left: 10px;
+        font-size: 14px;
+        padding: 6px 10px;
+        border-radius: 8px;
+      }
       .essential-menu-float {
-        position: static !important;
+        right: 6px;
+        top: 60px;
+        padding: 12px 7px;
+        border-radius: 12px;
+      }
+    }
+    @media (max-width: 800px) {
+      #weather-widget,
+      .essential-menu-float {
+        position: static;
         width: 100%;
-        margin: 0 auto 16px;
+        margin: 0 auto 10px;
+        border-radius: 8px;
+        box-shadow: none;
+        background: rgba(24, 24, 24, 0.93);
+      }
+      #weather-widget {
+        justify-content: center;
+        padding: 6px 0;
+      }
+      .essential-menu-float {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        background: rgba(24, 24, 24, 0.92);
-        box-shadow: 0 2px 16px rgba(0,0,0,0.10);
-        top: unset;
-        right: unset;
-        padding: 8px 4px;
+        gap: 8px;
+        padding: 10px 0 0 0;
       }
-      .essential-menu-float .menu-btn {
+      .menu-btn {
         margin: 3px 6px;
         min-width: 85px;
         padding: 8px 4px;
@@ -459,9 +490,15 @@
   </style>
 </head>
 <body>
-  <!-- Player container with floating logo -->
   <div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
+
+    <!-- Weather Widget (fixed left on desktop, stacks on mobile) -->
+    <div id="weather-widget">
+      <img id="weather-icon" src="" alt="Weather" width="32" height="32" />
+      <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
+    </div>
+
     <div class="strip-container">
       <div class="left-panel">
         <div id="onAirNow" style="text-align: right;">
@@ -492,7 +529,7 @@
     </div>
   </div>
 
-  <!-- Floating Essential Radio Menu OUTSIDE the player layout! -->
+  <!-- Floating Essential Radio Menu -->
   <nav class="essential-menu-float">
     <a href="https://www.essential.radio/?name=About%20Us" class="menu-btn">About Us</a>
     <a href="https://www.essential.radio/?name=Schedule" class="menu-btn">Schedule</a>
@@ -504,12 +541,6 @@
     <a href="https://www.essential.radio/?name=News" class="menu-btn news-btn">News</a>
     <a href="https://www.essential.radio/?name=Travel" class="menu-btn travel-btn">Travel</a>
   </nav>
-
-  <!-- Ayrshire Weather Highlight -->
-  <div id="weather-widget" style="position: absolute; top: 20px; right: 20px; z-index: 3; background: rgba(0,0,0,0.6); padding: 10px 14px; border-radius: 10px; font-size: 15px; color: white; display: flex; align-items: center; gap: 8px;">
-    <img id="weather-icon" src="" alt="Weather" width="40" height="40" style="vertical-align: middle;" />
-    <div><strong style="color:#fed351;">Ayrshire Weather</strong><br><span id="weather-text">Loading weather…</span></div>
-  </div>
 
   <!-- Weather Script -->
   <script>
