@@ -159,15 +159,17 @@
       line-height: 1.25;
     }
     .show-presenter {
-      font-weight: 400 !important;
-      font-size: 0.93em !important;
-      color: #fed351 !important;
-      display: block;
-      margin-top: 1px;
-      text-align: right;
-      opacity: 0.82;
-      letter-spacing: 0.01em;
-    }
+  font-style: italic;
+  font-weight: 400 !important;
+  font-size: 0.93em !important;
+  color: #fff !important;
+  display: block;
+  margin-top: 1px;
+  text-align: right;
+  opacity: 0.93;
+  letter-spacing: 0.01em;
+}
+
     #nowPlaying {
       margin-top: 18px;
     }
@@ -266,24 +268,22 @@
       animation: pulse 1.2s infinite;
       vertical-align: middle;
     }
-    /* LOGO: Fix for desktop */
     .logo-overhang {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-15%, -28%);
-  width: 180px;
-  z-index: 3;
-  opacity: 0.97;
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
-  transition: width 0.2s, transform 0.2s;
-}
-
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-15%, -28%);
+      width: 230px;
+      z-index: 3;
+      opacity: 0.97;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+      transition: width 0.2s, transform 0.2s;
+    }
     @media (max-width: 1100px) {
       .logo-overhang {
-        width: 150px;
+        width: 175px;
         transform: translate(-12%, -22%);
       }
     }
@@ -520,6 +520,30 @@
       .weather-widget-desktop {
         display: none !important;
       }
+    }
+    /* PulsiNG DOT for LIVE */
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+      color: #ff4d4d;
+      font-size: 0.95em;
+      margin-left: 10px;
+      user-select: none;
+    }
+    .live-indicator .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff4d4d;
+      animation: pulse 1.2s infinite;
+      margin-right: 6px;
+      display: inline-block;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
     }
   </style>
 </head>
