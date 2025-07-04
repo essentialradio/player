@@ -54,8 +54,6 @@
       background: #222;
       overflow-y: auto;
       border-left: 1px solid #333;
-      /* Make room for weather widget at top */
-      justify-content: flex-start;
     }
     #player-box {
       max-width: 420px;
@@ -374,24 +372,40 @@
         width: 40px;
       }
     }
-    /* Weather Widget - now styled as a static block in the sidebar */
+
+    /* --- Weather Widget: fixed left on desktop, static on mobile --- */
     #weather-widget {
-      margin-bottom: 18px;
-      background: rgba(0,0,0,0.21);
+      position: fixed;
+      top: 70px;
+      left: 30px;
+      background: rgba(0,0,0,0.55);
       padding: 7px 14px;
       border-radius: 10px;
       font-size: 15px;
       color: #fff;
       display: flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      opacity: 0.97;
+      gap: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      z-index: 120;
+      opacity: 0;
+      animation: fadein 1s 0.5s forwards;
     }
     #weather-widget img {
       width: 32px;
       height: 32px;
+      margin-right: 2px;
+      margin-top: 2px;
+      align-self: flex-start;
     }
+    #weather-widget strong {
+      color: #fed351;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1em;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+    }
+
     /* --- Floating Side Menu Styles --- */
     .essential-menu-float {
       position: fixed;
@@ -406,6 +420,8 @@
       border-radius: 15px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.17);
       backdrop-filter: blur(2px);
+      opacity: 0;
+      animation: fadein 1.2s 0.5s forwards;
     }
     .menu-btn {
       display: block;
@@ -422,14 +438,15 @@
       text-decoration: none;
       text-align: left;
       letter-spacing: 0.01em;
-      transition: filter 0.13s, transform 0.11s;
+      transition: filter 0.13s, transform 0.11s, box-shadow 0.2s;
       cursor: pointer;
       margin-bottom: 3px;
     }
     .menu-btn:hover,
     .menu-btn:focus {
-      filter: brightness(0.97) drop-shadow(0 0 7px #ffe87c);
-      transform: scale(1.04);
+      filter: brightness(1.1) drop-shadow(0 0 10px #ffe87c);
+      box-shadow: 0 0 12px #fed351b0, 0 8px 30px rgba(0,0,0,0.08);
+      transform: scale(1.045);
     }
     .news-btn {
       background: #FFE96B;
@@ -442,6 +459,13 @@
       border: 2.5px solid #5ceafc;
     }
     @media (max-width: 1050px) {
+      #weather-widget {
+        top: 10px;
+        left: 10px;
+        font-size: 14px;
+        padding: 6px 10px;
+        border-radius: 8px;
+      }
       .essential-menu-float {
         right: 6px;
         top: 60px;
@@ -450,6 +474,7 @@
       }
     }
     @media (max-width: 800px) {
+      #weather-widget,
       .essential-menu-float {
         position: static;
         width: 100%;
@@ -457,6 +482,14 @@
         border-radius: 8px;
         box-shadow: none;
         background: rgba(24, 24, 24, 0.93);
+        opacity: 1 !important;
+        animation: none !important;
+      }
+      #weather-widget {
+        justify-content: center;
+        padding: 6px 0;
+      }
+      .essential-menu-float {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
@@ -470,11 +503,23 @@
         font-size: 0.93rem;
       }
     }
+    @keyframes fadein {
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
   <div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
+
+    <!-- Weather Widget (fixed left on desktop, stacks on mobile) -->
+    <div id="weather-widget">
+      <img id="weather-icon" src="" alt="Weather" width="32" height="32" />
+      <div>
+        <strong>Ayrshire Weather</strong><br>
+        <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
+      </div>
+    </div>
 
     <div class="strip-container">
       <div class="left-panel">
@@ -500,14 +545,6 @@
         </div>
       </div>
       <div class="right-panel">
-        <!-- Weather Widget now above Recently Played -->
-        <div id="weather-widget">
-          <img id="weather-icon" src="" alt="Weather" width="32" height="32" />
-          <div>
-            <strong style="color:#fed351;">Ayrshire Weather</strong><br>
-            <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
-          </div>
-        </div>
         <div class="recent-title">Recently Played</div>
         <ul id="recent-list"></ul>
       </div>
