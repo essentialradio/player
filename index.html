@@ -21,6 +21,7 @@
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      transition: padding-top 0.2s;
     }
     .player-wrapper {
       width: 100%;
@@ -159,17 +160,16 @@
       line-height: 1.25;
     }
     .show-presenter {
-  font-style: italic;
-  font-weight: 400 !important;
-  font-size: 0.93em !important;
-  color: #fff !important;
-  display: block;
-  margin-top: 1px;
-  text-align: right;
-  opacity: 0.93;
-  letter-spacing: 0.01em;
-}
-
+      font-style: italic;
+      font-weight: 400 !important;
+      font-size: 0.93em !important;
+      color: #fff !important;
+      display: block;
+      margin-top: 1px;
+      text-align: right;
+      opacity: 0.93;
+      letter-spacing: 0.01em;
+    }
     #nowPlaying {
       margin-top: 18px;
     }
@@ -188,8 +188,8 @@
     #artwork {
       margin-top: 25px;
       border-radius: 8px;
-      width: 280px;
-      height: 280px;
+      width: 230px;
+      height: 230px;
       object-fit: cover;
       border: 2px solid #fed351;
       box-shadow: 0 0 15px #fed351aa;
@@ -272,7 +272,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      transform: translate(-15%, -28%);
+      transform: translate(-12%, -25%);
       width: 230px;
       z-index: 3;
       opacity: 0.97;
@@ -284,13 +284,13 @@
     @media (max-width: 1100px) {
       .logo-overhang {
         width: 175px;
-        transform: translate(-12%, -22%);
+        transform: translate(-10%, -20%);
       }
     }
     @media (max-width: 900px) {
       .logo-overhang {
-        width: 110px;
-        transform: translate(-10%, -15%);
+        width: 120px;
+        transform: translate(-7%, -11%);
       }
     }
     @media (max-width: 800px) {
@@ -300,101 +300,6 @@
         top: 6px;
         transform: translateY(-22%);
       }
-      @media (max-width: 800px) {
-  .essential-menu-float {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    margin: 0;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 20px #0002;
-    background: rgba(24, 24, 24, 0.98);
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    justify-content: flex-start;
-    gap: 5px;
-    padding: 0 3px 0 3px;
-    height: 44px;
-    min-height: 0;
-    max-height: 44px;
-    z-index: 120;
-    align-items: center;
-    scrollbar-width: thin;
-    scrollbar-color: #ffd84a #191919;
-  }
-  .menu-btn {
-    min-width: 95px;
-    font-size: 0.98em;
-    padding: 7px 9px 6px 9px;
-    margin: 0;
-    height: 34px;
-    border-radius: 7px !important;
-    box-shadow: none;
-    flex-shrink: 0;
-    white-space: nowrap;
-    line-height: 1;
-  }
-  body {
-    padding-top: 54px !important;
-  }
-}
-      .weather-mobile-top {
-        display: block;
-        margin: 10px auto 14px auto;
-        max-width: 440px;
-      }
-      .right-panel .weather-mobile-top,
-      .weather-widget-desktop {
-        display: none !important;
-      }
-      .weather-mobile-top #weather-widget {
-        margin: 0 auto;
-      }
-      .left-panel {
-        align-items: flex-end;
-        padding-right: 6vw;
-        padding-left: 2vw;
-        border-right: none;
-        border-bottom: 1px solid #222;
-        padding-top: 18px;
-      }
-      .strip-container {
-        flex-direction: column;
-        min-height: 0;
-      }
-      .left-panel, .right-panel {
-        width: 100%;
-        padding: 18px 10px;
-        min-height: unset;
-      }
-      .right-panel {
-        border-left: none;
-        padding-top: 14px;
-        display: block;
-      }
-      #artwork {
-        width: 100%;
-        max-width: 320px;
-        min-width: 150px;
-        height: auto;
-        margin: 0 auto 20px;
-        display: block;
-      }
-      #player-box,
-      #now-playing-card {
-        max-width: 99vw;
-        margin: 0 auto;
-      }
-      #onAirNow {
-        text-align: right;
-      }
-      #volume-container {
-        display: none !important;
-      }
     }
     @media (max-width: 600px) {
       .logo-overhang {
@@ -403,59 +308,13 @@
         top: 5px;
         transform: translateY(-25%);
       }
-      .player-wrapper {
-        padding: 0;
-      }
-      .strip-container {
-        box-shadow: 0 0 11px rgba(0,0,0,0.28);
-        min-width: 0;
-        width: 99vw;
-        border-radius: 8px;
-      }
-      .left-panel, .right-panel {
-        padding: 10px 4vw;
-      }
-      #player-box,
-      #now-playing-card,
       #artwork {
-        max-width: 98vw;
-      }
-      #now-playing-card {
-        padding: 12px;
-        font-size: 1em;
-      }
-      button, #mute-toggle {
-        font-size: 1em;
-        padding: 9px 11px;
-      }
-      .recent-title {
-        font-size: 1.04em;
-        margin-bottom: 8px;
-      }
-      ul#recent-list img {
-        width: 32px;
-        height: 32px;
-      }
-      ul#recent-list span.info {
-        font-size: 11px;
-      }
-      ul#recent-list span.time {
-        font-size: 10px;
-        width: 34px;
-      }
-      #weather-widget {
-        font-size: 14px;
-        gap: 4px;
-        padding: 6px 6px 6px 6px;
-      }
-      #weather-widget img {
-        width: 22px;
-        height: 22px;
-      }
-    }
-    @media (max-width: 900px) {
-      #volume-container {
-        display: none !important;
+        width: 100%;
+        max-width: 320px;
+        min-width: 150px;
+        height: auto;
+        margin: 0 auto 20px;
+        display: block;
       }
     }
     /* Weather Widget */
@@ -483,12 +342,13 @@
       display: flex;
       flex-direction: column;
       gap: 13px;
-      z-index: 110;
+      z-index: 120;
       background: rgba(24, 24, 24, 0.88);
       padding: 10px 9px;
       border-radius: 15px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.17);
       backdrop-filter: blur(2px);
+      transition: none;
     }
     .menu-btn {
       display: block;
@@ -528,8 +388,105 @@
       display: block;
     }
     @media (max-width: 800px) {
+      .essential-menu-float {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        margin: 0;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 4px 20px #0002;
+        background: rgba(24, 24, 24, 0.98);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: flex-start;
+        gap: 5px;
+        padding: 0 3px 0 3px;
+        height: 44px;
+        min-height: 0;
+        max-height: 44px;
+        z-index: 120;
+        align-items: center;
+        scrollbar-width: thin;
+        scrollbar-color: #ffd84a #191919;
+        transition: none;
+      }
+      .menu-btn {
+        min-width: 95px;
+        font-size: 0.98em;
+        padding: 7px 9px 6px 9px;
+        margin: 0;
+        height: 34px;
+        border-radius: 7px !important;
+        box-shadow: none;
+        flex-shrink: 0;
+        white-space: nowrap;
+        line-height: 1;
+      }
+      body {
+        padding-top: 54px !important; /* Leaves space for fixed menu */
+      }
+      .player-wrapper {
+        margin-top: 0 !important;
+      }
+      .weather-mobile-top {
+        display: block;
+        margin: 10px auto 14px auto;
+        max-width: 440px;
+      }
+      .right-panel .weather-mobile-top,
       .weather-widget-desktop {
         display: none !important;
+      }
+      .weather-mobile-top #weather-widget {
+        margin: 0 auto;
+      }
+      .left-panel {
+        align-items: flex-end;
+        padding-right: 6vw;
+        padding-left: 2vw;
+        border-right: none;
+        border-bottom: 1px solid #222;
+        padding-top: 18px;
+      }
+      .strip-container {
+        flex-direction: column;
+        min-height: 0;
+      }
+      .left-panel, .right-panel {
+        width: 100%;
+        padding: 18px 10px;
+        min-height: unset;
+      }
+      .right-panel {
+        border-left: none;
+        padding-top: 14px;
+        display: block;
+      }
+      #onAirNow {
+        text-align: right;
+      }
+      #volume-container {
+        display: none !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .logo-overhang {
+        width: 60px;
+        left: 4px;
+        top: 5px;
+        transform: translateY(-25%);
+      }
+      #artwork {
+        width: 100%;
+        max-width: 320px;
+        min-width: 150px;
+        height: auto;
+        margin: 0 auto 20px;
+        display: block;
       }
     }
     /* PulsiNG DOT for LIVE */
@@ -555,6 +512,14 @@
     @keyframes pulse {
       0%, 100% { opacity: 0.2; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.4); }
+    }
+    .weather-widget-desktop {
+      display: block;
+    }
+    @media (max-width: 800px) {
+      .weather-widget-desktop {
+        display: none !important;
+      }
     }
   </style>
 </head>
