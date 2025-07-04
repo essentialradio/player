@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Essential Radio Player</title>
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
-  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
   <style>
+    html, body {
+      height: 100%;
+      width: 100vw;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
@@ -18,8 +22,8 @@
       color: white;
       display: flex;
       justify-content: center;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
     .player-wrapper {
       position: relative;
@@ -29,6 +33,101 @@
       width: 100%;
       min-height: 100vh;
       flex-direction: column;
+      box-sizing: border-box;
+    }
+    .logo-overhang {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-30%, -30%);
+      width: 220px;
+      z-index: 2;
+      opacity: 0.97;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+    }
+    #weather-widget {
+      position: fixed;
+      top: 70px;
+      left: 30px;
+      background: rgba(0,0,0,0.55);
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      z-index: 120;
+      opacity: 0;
+      animation: fadein 1s 0.5s forwards;
+    }
+    #weather-widget img {
+      width: 32px;
+      height: 32px;
+      margin-right: 2px;
+      margin-top: 2px;
+      align-self: flex-start;
+    }
+    #weather-widget strong {
+      color: #fed351;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1em;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+    }
+    .essential-menu-float {
+      position: fixed;
+      top: 70px;
+      right: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 110;
+      background: rgba(24, 24, 24, 0.88);
+      padding: 17px 14px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.17);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      animation: fadein 1.2s 0.5s forwards;
+    }
+    .menu-btn {
+      display: block;
+      min-width: 150px;
+      padding: 12px 22px;
+      background: #FFD84A;
+      color: #181818;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+      border: none;
+      border-radius: 11px;
+      box-shadow: 0 2px 0 0 #A09C55, 0 6px 20px rgba(0,0,0,0.09);
+      text-decoration: none;
+      text-align: left;
+      letter-spacing: 0.01em;
+      transition: filter 0.13s, transform 0.11s, box-shadow 0.2s;
+      cursor: pointer;
+      margin-bottom: 3px;
+    }
+    .menu-btn:hover,
+    .menu-btn:focus {
+      filter: brightness(1.1) drop-shadow(0 0 10px #ffe87c);
+      box-shadow: 0 0 12px #fed351b0, 0 8px 30px rgba(0,0,0,0.08);
+      transform: scale(1.045);
+    }
+    .news-btn {
+      background: #FFE96B;
+      color: #181818;
+      border: 2.5px solid #fdb731;
+    }
+    .travel-btn {
+      background: #FEE275;
+      color: #181818;
+      border: 2.5px solid #5ceafc;
     }
     .strip-container {
       display: flex;
@@ -133,31 +232,8 @@
       0%, 100% { opacity: 0.6; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.1); }
     }
-    @media (max-width: 768px) {
-      button#play-toggle {
-        font-size: 16px;
-        padding: 12px 16px;
-        width: 100%;
-        margin-top: 10px;
-      }
-      #volume-container {
-        display: none !important;
-      }
-    }
-    #volume-slider {
-      width: 100%;
-    }
-    #volume-display,
-    #mute-toggle {
-      align-self: flex-end;
-    }
     #nowPlaying {
       margin-top: 18px;
-    }
-    .artwork-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
     }
     #now-playing-card {
       margin-top: 25px;
@@ -244,277 +320,137 @@
       font-size: 16px;
       user-select: none;
     }
-    .refresh-indicator {
-      display: inline-block;
-      margin-left: 8px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fed351;
-      animation: pulse 1.2s infinite;
-      vertical-align: middle;
-    }
-    .logo-overhang {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(-30%, -30%);
-      width: 220px;
-      z-index: 2;
-      opacity: 0.97;
-      pointer-events: none;
-      user-select: none;
-      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
-    }
-    .live-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: bold;
-      color: #ff4d4d;
-      font-size: 0.95em;
-      margin-left: 10px;
-      user-select: none;
-    }
-    .live-indicator .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ff4d4d;
-      animation: pulse 1.2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.4); }
-    }
-    #onAirNow {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      text-align: center;
-      padding-right: 16px;
-      max-width: 95%;
-      margin-left: auto;
-      margin-right: 0;
-    }
-    #onAirNow br {
-      display: none;
-    }
-    #play-toggle {
-      margin-bottom: 12px;
-    }
-    #onAirNow span {
-      display: block;
-      line-height: 1.2;
-    }
-    .show-title {
-      font-weight: 600;
-    }
-    .show-presenter {
-      font-weight: 400;
-      font-size: 0.95em;
-      opacity: 0.9;
-    }
-    .left-panel {
-      padding-top: 4px;
-    }
-    #player-box {
-      margin-top: -4px;
-    }
-    #nowPlaying {
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }
-
-    /* --- Weather Widget: fixed left on desktop, static on mobile --- */
-    #weather-widget {
-      position: fixed;
-      top: 70px;
-      left: 30px;
-      background: rgba(0,0,0,0.55);
-      padding: 7px 14px;
-      border-radius: 10px;
-      font-size: 15px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
-      z-index: 120;
-      opacity: 0;
-      animation: fadein 1s 0.5s forwards;
-    }
-    #weather-widget img {
-      width: 32px;
-      height: 32px;
-      margin-right: 2px;
-      margin-top: 2px;
-      align-self: flex-start;
-    }
-    #weather-widget strong {
-      color: #fed351;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1em;
-      font-weight: bold;
-      letter-spacing: 0.01em;
-    }
-
-    /* --- Floating Side Menu Styles --- */
-    .essential-menu-float {
-      position: fixed;
-      top: 70px;
-      right: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 110;
-      background: rgba(24, 24, 24, 0.88);
-      padding: 17px 14px;
-      border-radius: 15px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.17);
-      backdrop-filter: blur(2px);
-      opacity: 0;
-      animation: fadein 1.2s 0.5s forwards;
-    }
-    .menu-btn {
-      display: block;
-      min-width: 150px;
-      padding: 12px 22px;
-      background: #FFD84A;
-      color: #181818;
-      font-family: 'Montserrat', 'Arial', sans-serif;
-      font-weight: 700;
-      font-size: 1.08rem;
-      border: none;
-      border-radius: 11px;
-      box-shadow: 0 2px 0 0 #A09C55, 0 6px 20px rgba(0,0,0,0.09);
-      text-decoration: none;
-      text-align: left;
-      letter-spacing: 0.01em;
-      transition: filter 0.13s, transform 0.11s, box-shadow 0.2s;
-      cursor: pointer;
-      margin-bottom: 3px;
-    }
-    .menu-btn:hover,
-    .menu-btn:focus {
-      filter: brightness(1.1) drop-shadow(0 0 10px #ffe87c);
-      box-shadow: 0 0 12px #fed351b0, 0 8px 30px rgba(0,0,0,0.08);
-      transform: scale(1.045);
-    }
-    .news-btn {
-      background: #FFE96B;
-      color: #181818;
-      border: 2.5px solid #fdb731;
-    }
-    .travel-btn {
-      background: #FEE275;
-      color: #181818;
-      border: 2.5px solid #5ceafc;
-    }
-
     /* --- MOBILE & TABLET ADJUSTMENTS --- */
     @media (max-width: 800px) {
+      html, body {
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow-x: hidden !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        box-sizing: border-box;
+      }
       body {
-        padding: 10px 2vw 24px 2vw;
+        padding: 6px 0 12px 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
       }
       .player-wrapper {
-        flex-direction: column;
-        align-items: center;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
-      .strip-container {
-        flex-direction: column;
-        width: 100%;
-        max-width: 98vw;
-        border-radius: 10px;
-        min-width: 0;
-      }
-      .left-panel, .right-panel {
-        width: 100%;
-        padding: 14px 8px;
-        min-width: 0;
-      }
-      #player-box {
-        max-width: 100%;
-        width: 100%;
-      }
-      #artwork {
-        width: 92vw;
-        max-width: 330px;
-        height: auto;
-        margin-top: 18px;
-        margin-bottom: 0;
-      }
-      #now-playing-card {
-        max-width: 100%;
-        padding: 12px 6px;
-        font-size: 15px;
-      }
-      .recent-title {
-        margin-top: 18px;
-        margin-bottom: 8px;
-        font-size: 17px;
-      }
-      ul#recent-list li {
-        gap: 6px;
-        padding: 8px 0;
-        font-size: 14px;
-      }
-      ul#recent-list img {
-        width: 30px;
-        height: 30px;
-      }
-      ul#recent-list span.info {
-        font-size: 13px;
-      }
-      ul#recent-list span.time {
-        font-size: 12px;
-        width: 34px;
-      }
-      #weather-widget,
-      .essential-menu-float {
+      .logo-overhang {
+        width: 42vw;
+        max-width: 130px;
+        left: 8px;
+        top: 8px;
+        margin: 0 0 2vw 0;
         position: static;
-        width: 100%;
-        margin: 0 0 8px 0;
+      }
+      #weather-widget {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: static !important;
+        margin: 0;
         border-radius: 7px;
         box-shadow: none;
         background: rgba(24,24,24,0.95);
+        font-size: 15px;
+        padding: 6px 0;
+        justify-content: center;
+        gap: 7px;
+        display: flex;
         opacity: 1 !important;
         animation: none !important;
       }
-      #weather-widget {
-        justify-content: center;
-        padding: 6px 0;
-        font-size: 14px;
-        gap: 7px;
-      }
-      #weather-widget img {
-        width: 26px;
-        height: 26px;
-      }
-      .logo-overhang {
-        width: 90vw;
-        max-width: 180px;
-        left: 8px;
-        top: 8px;
-        transform: none;
-        position: static;
-        margin-bottom: 3vw;
-        z-index: 2;
-      }
       .essential-menu-float {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 7px;
-        padding: 8px 0 0 0;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: static !important;
+        margin: 0 0 5px 0;
+        padding: 6px 0 2px 0;
+        border-radius: 7px;
+        box-shadow: none;
+        background: rgba(24,24,24,0.97);
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        gap: 4px !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        opacity: 1 !important;
+        animation: none !important;
+        z-index: 300;
       }
       .menu-btn {
-        margin: 2px 3px;
-        min-width: 85px;
+        min-width: 110px;
+        max-width: 150px;
         padding: 8px 2px;
-        font-size: 0.93rem;
+        font-size: 0.92rem;
+        margin: 2px 2px;
+        white-space: nowrap;
+        flex: 0 0 auto;
+      }
+      .strip-container {
+        flex-direction: column !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+        border-radius: 10px;
+        box-sizing: border-box;
+        overflow: visible;
+      }
+      .left-panel, .right-panel {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+        padding: 10px 4vw;
+      }
+      #player-box {
+        max-width: 100vw !important;
+        width: 100vw !important;
+      }
+      #now-playing-card {
+        max-width: 98vw !important;
+        padding: 10px 1vw;
+        font-size: 15px;
+      }
+      #artwork {
+        width: 94vw;
+        max-width: 320px;
+        height: auto;
+        margin-top: 14px;
+        margin-bottom: 0;
+        border-width: 1.5px;
+      }
+      .recent-title {
+        margin-top: 14px;
+        margin-bottom: 6px;
+        font-size: 16px;
+        padding-left: 3vw;
+      }
+      ul#recent-list li {
+        gap: 5px;
+        padding: 7px 0;
+        font-size: 14px;
+      }
+      ul#recent-list img {
+        width: 28px;
+        height: 28px;
+      }
+      ul#recent-list span.info {
+        font-size: 12px;
+      }
+      ul#recent-list span.time {
+        font-size: 11px;
+        width: 30px;
       }
     }
-
     @keyframes fadein {
       to { opacity: 1; }
     }
@@ -524,7 +460,6 @@
   <div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
 
-    <!-- Weather Widget -->
     <div id="weather-widget">
       <img id="weather-icon" src="" alt="Weather" width="32" height="32" />
       <div>
@@ -532,6 +467,18 @@
         <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
       </div>
     </div>
+
+    <nav class="essential-menu-float">
+      <a href="https://www.essential.radio/?name=About%20Us" class="menu-btn">About Us</a>
+      <a href="https://www.essential.radio/?name=Schedule" class="menu-btn">Schedule</a>
+      <a href="https://www.essential.radio/?name=Listen%20Again" class="menu-btn">Listen Again</a>
+      <a href="https://www.essential.radio/?name=Playlist" class="menu-btn">Playlist</a>
+      <a href="https://www.essential.radio/?name=Song%20Search" class="menu-btn">Song Search</a>
+      <a href="https://www.essential.radio/?name=Requests" class="menu-btn">Requests</a>
+      <a href="https://www.essential.radio/?name=Contact%20Us" class="menu-btn">Contact Us</a>
+      <a href="https://www.essential.radio/?name=News" class="menu-btn news-btn">News</a>
+      <a href="https://www.essential.radio/?name=Travel" class="menu-btn travel-btn">Travel</a>
+    </nav>
 
     <div class="strip-container">
       <div class="left-panel">
@@ -563,20 +510,7 @@
     </div>
   </div>
 
-  <!-- Floating Essential Radio Menu -->
-  <nav class="essential-menu-float">
-    <a href="https://www.essential.radio/?name=About%20Us" class="menu-btn">About Us</a>
-    <a href="https://www.essential.radio/?name=Schedule" class="menu-btn">Schedule</a>
-    <a href="https://www.essential.radio/?name=Listen%20Again" class="menu-btn">Listen Again</a>
-    <a href="https://www.essential.radio/?name=Playlist" class="menu-btn">Playlist</a>
-    <a href="https://www.essential.radio/?name=Song%20Search" class="menu-btn">Song Search</a>
-    <a href="https://www.essential.radio/?name=Requests" class="menu-btn">Requests</a>
-    <a href="https://www.essential.radio/?name=Contact%20Us" class="menu-btn">Contact Us</a>
-    <a href="https://www.essential.radio/?name=News" class="menu-btn news-btn">News</a>
-    <a href="https://www.essential.radio/?name=Travel" class="menu-btn travel-btn">Travel</a>
-  </nav>
-
-  <!-- Weather Script -->
+  <!-- WEATHER -->
   <script>
     async function fetchWeather() {
       const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
@@ -596,10 +530,10 @@
       }
     }
     fetchWeather();
-    setInterval(fetchWeather, 15 * 60 * 1000); // refresh every 15 mins
+    setInterval(fetchWeather, 15 * 60 * 1000);
   </script>
 
-  <!-- Schedule & “On Air Now” logic -->
+  <!-- SCHEDULE -->
   <script>
     async function fetchSchedule() {
       try {
@@ -607,7 +541,6 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
-        console.error("Schedule fetch error:", e);
         return null;
       }
     }
@@ -643,10 +576,10 @@
       }
     }
     updateOnAirNow();
-    setInterval(updateOnAirNow, 60_000);
+    setInterval(updateOnAirNow, 60000);
   </script>
 
-  <!-- Now Playing & Recently Played logic -->
+  <!-- PLAYER & ARTWORK & RECENT LOGIC -->
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
@@ -741,14 +674,12 @@
         const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
         const latest = await latestRes.json();
         if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
-          console.warn("latestTrack.json missing fields");
           return;
         }
         if (
           latest.artist.toLowerCase() !== artist.toLowerCase() ||
           latest.title.toLowerCase() !== title.toLowerCase()
         ) {
-          console.log("latestTrack.json does not match metadata track");
           return;
         }
         const startTime = new Date(latest.startTime);
@@ -769,7 +700,6 @@
           }, timeRemaining);
         }
       } catch (e) {
-        console.error("Now playing error:", e);
         showMoreMusicSoon();
         currentTrackID = null;
         songHasEnded = false;
@@ -804,9 +734,7 @@
         const list = document.getElementById('recent-list');
         list.innerHTML = entries.join('');
         document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
-      } catch (e) {
-        console.error('Recent fetch failed:', e);
-      }
+      } catch (e) {}
     }
     async function fetchArtwork(trackName) {
       artworkImg.src = 'Essential Radio Logo.png';
