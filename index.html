@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Player</title>
+  <!-- Security & referrer policy meta tags -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+  <title>Essential Radio Player</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
   <style>
@@ -46,37 +49,6 @@
       pointer-events: none;
       user-select: none;
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
-    }
-    #weather-widget {
-      position: fixed;
-      top: 70px;
-      left: 30px;
-      background: rgba(0,0,0,0.55);
-      padding: 7px 14px;
-      border-radius: 10px;
-      font-size: 15px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
-      z-index: 120;
-      opacity: 0;
-      animation: fadein 1s 0.5s forwards;
-    }
-    #weather-widget img {
-      width: 32px;
-      height: 32px;
-      margin-right: 2px;
-      margin-top: 2px;
-      align-self: flex-start;
-    }
-    #weather-widget strong {
-      color: #fed351;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1em;
-      font-weight: bold;
-      letter-spacing: 0.01em;
     }
     .essential-menu-float {
       position: fixed;
@@ -320,6 +292,35 @@
       font-size: 16px;
       user-select: none;
     }
+    /* WEATHER WIDGET (PANEL STYLE, NOT FIXED) */
+    #weather-widget {
+      background: rgba(0,0,0,0.21);
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      margin-bottom: 20px;
+      width: auto;
+      max-width: 100%;
+      position: static;
+      opacity: 1;
+      animation: none;
+    }
+    #weather-widget img {
+      width: 36px;
+      height: 36px;
+    }
+    #weather-widget strong {
+      color: #fed351;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1em;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+    }
     /* --- MOBILE & TABLET ADJUSTMENTS --- */
     @media (max-width: 800px) {
       html, body {
@@ -349,22 +350,6 @@
         top: 8px;
         margin: 0 0 2vw 0;
         position: static;
-      }
-      #weather-widget {
-        width: 100vw !important;
-        max-width: 100vw !important;
-        position: static !important;
-        margin: 0;
-        border-radius: 7px;
-        box-shadow: none;
-        background: rgba(24,24,24,0.95);
-        font-size: 15px;
-        padding: 6px 0;
-        justify-content: center;
-        gap: 7px;
-        display: flex;
-        opacity: 1 !important;
-        animation: none !important;
       }
       .essential-menu-float {
         width: 100vw !important;
@@ -450,6 +435,15 @@
         font-size: 11px;
         width: 30px;
       }
+      #weather-widget {
+        font-size: 15px;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      #weather-widget img {
+        width: 28px;
+        height: 28px;
+      }
     }
     @keyframes fadein {
       to { opacity: 1; }
@@ -459,14 +453,6 @@
 <body>
   <div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
-
-    <div id="weather-widget">
-      <img id="weather-icon" src="" alt="Weather" width="32" height="32" />
-      <div>
-        <strong>Ayrshire Weather</strong><br>
-        <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
-      </div>
-    </div>
 
     <nav class="essential-menu-float">
       <a href="https://www.essential.radio/?name=About%20Us" class="menu-btn">About Us</a>
@@ -504,6 +490,13 @@
         </div>
       </div>
       <div class="right-panel">
+        <div id="weather-widget">
+          <img id="weather-icon" src="" alt="Weather" width="36" height="36" />
+          <div>
+            <strong>Ayrshire Weather</strong><br>
+            <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
+          </div>
+        </div>
         <div class="recent-title">Recently Played</div>
         <ul id="recent-list"></ul>
       </div>
