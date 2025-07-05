@@ -34,16 +34,15 @@
       filter: drop-shadow(0 1px 8px #fed35177);
     }
     .playlist-image {
-      max-width: 97vw;
-      width: 850px;
-      border-radius: 20px;
-      box-shadow: 0 6px 36px #0008, 0 2px 12px #fed35155;
-      background: #181828;
-      margin-bottom: 54px;
-      display: block;
-      border: 2px solid #ffd84a44;
-      transition: box-shadow 0.2s;
-    }
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 24px auto;
+  border-radius: 13px;
+  box-shadow: 0 2px 16px #0005;
+  object-fit: contain; /* This prevents cropping! */
+}
+
     @media (max-width: 900px) {
       .playlist-header { font-size: 1.4rem; }
       .playlist-image { width: 99vw; max-width: 99vw; }
