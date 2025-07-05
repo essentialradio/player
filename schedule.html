@@ -113,14 +113,27 @@
       font-size: 14px;
     }
 
-    .show-info a {
-      color: white;
-      font-weight: 500;
-      text-decoration: none;
+    .show-title-presenter {
       margin-top: 2px;
+      margin-bottom: 2px;
     }
-
-    .show-info a:hover {
+    .show-title-presenter .show-title {
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      font-size: 1.04em;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    .show-title-presenter .show-presenter {
+      font-size: 0.96em;
+      color: #fed351;
+      font-style: italic;
+      text-decoration: none;
+      line-height: 1.2;
+      display: inline-block;
+    }
+    .show-title-presenter .show-presenter:hover {
       text-decoration: underline;
       color: #ffd866;
     }
@@ -220,9 +233,22 @@
         group.forEach(show => {
           const presenter = show.presenter || {};
           const presenterImg = presenter.photo || "images/presenters/default.jpg";
-          const presenterName = presenter.name || "Unknown";
+          const presenterName = presenter.name || "";
           const presenterLink = presenter.bio || "#";
           const description = show.info || "";
+
+          // Logic for splitting at 'with'
+          let mainTitle = show.title || '';
+          let presenterLine = "";
+          if (mainTitle && mainTitle.toLowerCase().includes(" with ")) {
+            const idx = mainTitle.toLowerCase().indexOf(" with ");
+            const showTitlePart = mainTitle.slice(0, idx);
+            const withPart = mainTitle.slice(idx); // includes 'with'
+            mainTitle = showTitlePart.trim();
+            presenterLine = `<span class="show-presenter">${withPart.trim()}</span>`;
+          } else if (presenterName) {
+            presenterLine = `<a href="${presenterLink}" target="_blank" rel="noopener" class="show-presenter">${presenterName}</a>`;
+          }
 
           const entry = document.createElement("div");
           entry.className = "show-entry";
@@ -230,7 +256,10 @@
             <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
             <div class="show-info">
               <time>${show.start}–${show.end}</time>
-              <a href="${presenterLink}" target="_blank" rel="noopener">${show.title}</a>
+              <div class="show-title-presenter">
+                <span class="show-title">${mainTitle}</span>
+                ${presenterLine}
+              </div>
               <div class="show-details">${description}</div>
             </div>`;
           col.appendChild(entry);
