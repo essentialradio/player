@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Essential Radio Playlist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #00818a, #7e1974);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .playlist-header {
+      margin-top: 52px;
+      margin-bottom: 28px;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #FFD84A;
+      letter-spacing: 1.2px;
+      text-align: center;
+      text-shadow: 0 2px 18px #0008, 0 1px 0 #fff2;
+      filter: drop-shadow(0 1px 8px #fed35177);
+    }
+    .playlist-image {
+      max-width: 97vw;
+      width: 850px;
+      border-radius: 20px;
+      box-shadow: 0 6px 36px #0008, 0 2px 12px #fed35155;
+      background: #181828;
+      margin-bottom: 54px;
+      display: block;
+      border: 2px solid #ffd84a44;
+      transition: box-shadow 0.2s;
+    }
+    @media (max-width: 900px) {
+      .playlist-header { font-size: 1.4rem; }
+      .playlist-image { width: 99vw; max-width: 99vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="playlist-header">Essential Radio Playlist</div>
+  <img src="ERPlaylist.png" alt="Essential Radio Playlist" class="playlist-image" />
+</body>
+</html>
