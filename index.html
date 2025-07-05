@@ -4,21 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Essential Radio Player</title>
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
-  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 50px 30px 30px;
+      padding: 50px 0 0 0;
       background: linear-gradient(135deg, #00818a, #7e1974);
       color: white;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      box-sizing: border-box;
+    }
+    .player-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      position: relative;
+      min-height: 640px;
     }
     .strip-container {
       display: flex;
@@ -30,6 +37,8 @@
       overflow: hidden;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
       background-color: #111;
+      position: relative;
+      z-index: 1;
     }
     .left-panel, .right-panel {
       width: 50%;
@@ -37,823 +46,868 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
     .left-panel {
-  background: #111;
-  align-items: center;
-  text-align: center;
-  border-right: 1px solid #333;
-  justify-content: flex-start; /* ⬅ pushes content to top */
-  padding-top: 30px; /* ⬅ optional: space from very top */
-}
-
+      background: #111;
+      align-items: flex-end;
+      border-right: 1px solid #333;
+      padding-top: 30px;
+      padding-right: 34px;
+      position: relative;
+    }
     .right-panel {
       background: #222;
       overflow-y: auto;
+      overflow-x: hidden;
       border-left: 1px solid #333;
+      position: relative;
+      min-height: 400px;
+      align-items: flex-start;
     }
-    
-    #player-box {
-      max-width: 420px;
+    .logo-overhang {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-15%, -28%);
+      width: 230px;
+      z-index: 3;
+      opacity: 0.97;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+      transition: width 0.2s, transform 0.2s;
+    }
+    /* ON AIR NOW: Capital, bold, red, dot */
+    .onairnow-label {
+      color: #ff3434;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 1.14em;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .onairnow-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #ff3434;
+      margin-right: 3px;
+      animation: pulseLive 1.1s infinite;
+      box-shadow: 0 0 6px #ff3434cc;
+      display: inline-block;
+    }
+    @keyframes pulseLive {
+      0%,100% { box-shadow: 0 0 0 0 #ff343455; opacity: 0.7;}
+      40% { box-shadow: 0 0 8px 4px #ff3434aa; opacity: 1;}
+      60% { opacity: 0.85;}
+    }
+    #on-air-now {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      background: #181828;
+      border-radius: 10px;
+      padding: 12px 18px 13px 13px;
+      box-shadow: 0 0 13px #fed35117;
+      min-width: 280px;
+      max-width: 100%;
+      text-align: right;
+    }
+    .on-air-label-row {
       width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 3px;
     }
-    button {
-      background-color: #fed351;
-      color: #111;
-      border-radius: 8px;
-      padding: 12px 24px;
+    #on-air-now .show-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      min-width: 0;
+      width: auto;
+    }
+    #on-air-show-main {
       font-weight: 600;
-      font-size: 18px;
+      font-size: 1.09em;
+      color: #fff;
+      margin-bottom: 1px;
+      word-break: break-word;
+      max-width: 260px;
+    }
+    #on-air-show-sub {
+      font-style: italic;
+      font-size: 1em;
+      color: #fed351;
+      line-height: 1.18;
+      margin-top: 1px;
+      word-break: break-word;
+      max-width: 260px;
+      display: block;
+    }
+    .spa-main-content {
+      min-height: 120px;
+      margin-top: 18px;
+      color: #fff;
+      animation: fadeIn 0.5s;
+      width: 100%;
+      max-width: 650px;
+      align-self: flex-start;
+      background: none;
+      box-shadow: none;
+    }
+    .weather-dropdown-row {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    #weather-widget {
+      background: rgba(0,0,0,0.21);
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      opacity: 0.97;
+      min-width: 0;
+    }
+    #weather-widget img {
+      width: 32px;
+      height: 32px;
+    }
+    .spa-dropdown {
+      position: relative;
+      display: inline-block;
+      z-index: 10;
+    }
+    .spa-dropbtn {
+      background: #FFD84A;
+      color: #181818;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 32px 10px 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 0 0 #A09C55, 0 6px 20px rgba(0,0,0,0.09);
+      margin-left: 14px;
+      position: relative;
+      min-width: 92px;
+      transition: filter 0.15s;
+    }
+    .spa-dropbtn:after {
+      content: "▼";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-55%);
+      font-size: 0.98em;
+      color: #181818;
+      pointer-events: none;
+    }
+    .spa-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      min-width: 120px;
+      background: #fffbe8;
+      color: #181818;
+      border-radius: 10px;
+      box-shadow: 0 3px 22px #0003, 0 2px 8px #ffd84a66;
+      padding: 0;
+      z-index: 101;
+      overflow: hidden;
+    }
+    .spa-dropdown-content a {
+      color: #181818;
+      padding: 11px 18px;
+      text-decoration: none;
+      display: block;
+      font-weight: 700;
+      font-size: 1.01em;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      background: none;
+      border: none;
+      border-bottom: 1px solid #ffe37b;
+      transition: background 0.11s, color 0.13s;
+      cursor: pointer;
+    }
+    .spa-dropdown-content a:last-child {
+      border-bottom: none;
+    }
+    .spa-dropdown-content a:hover,
+    .spa-dropdown-content a.active {
+      background: #FFD84A;
+      color: #111;
+    }
+    .spa-dropdown:hover .spa-dropdown-content,
+    .spa-dropdown:focus-within .spa-dropdown-content {
+      display: block;
+    }
+    .now-playing-widget {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #181828;
+      border-radius: 11px;
+      box-shadow: 0 0 13px #ffd84a22;
+      padding: 14px 13px;
+      margin-bottom: 21px;
+      border: 1.6px solid #ffd84a44;
+      width: 100%;
+      max-width: 480px;
+      min-width: 0;
+      position: relative;
+    }
+    .big-play-btn-col {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      min-width: 52px;
+      margin-right: 7px;
+      flex-shrink: 0;
+    }
+    .big-play-btn {
+      background: transparent;
       border: none;
       cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-    }
-    button:hover,
-    button:focus {
-      background-color: #e5c73f;
-      box-shadow: 0 0 10px #fed351cc;
+      padding: 0;
       outline: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      transition: filter 0.14s;
+      width: 42px;
     }
-    #mute-toggle {
-      font-size: 16px;
-      padding: 6px 12px;
-      vertical-align: middle;
-      margin-left: 10px;
+    .big-play-btn .triangle, .big-play-btn .pausebars {
+      display: block;
+      margin-bottom: 2px;
     }
-    #volume-container {
-      margin-top: 15px;
+    .big-play-btn .triangle {
+      width: 32px; height: 32px;
+      fill: #FFD84A;
+      filter: drop-shadow(0 0 7px #FFD84A77);
+      transition: filter 0.18s;
+    }
+    .big-play-btn .pausebars {
+      width: 32px; height: 32px;
+    }
+    .big-play-btn:active .triangle,
+    .big-play-btn:hover .triangle,
+    .big-play-btn:focus .triangle,
+    .big-play-btn:active .pausebars,
+    .big-play-btn:hover .pausebars,
+    .big-play-btn:focus .pausebars {
+      filter: drop-shadow(0 0 14px #FFD84A);
+    }
+    .play-label {
+      margin-top: 2px;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      font-size: 0.93em;
+      letter-spacing: 0.01em;
+      color: #FFD84A;
+      font-weight: 700;
+      text-shadow: 0 1px 3px #0009;
+      text-align: center;
+      user-select: none;
+      line-height: 1.1;
+      margin-bottom: 0;
+    }
+    .big-play-btn.playing .play-label { color: #FFD84A; }
+    .now-playing-art.right {
+      margin-left: 14px;
+      margin-top: 13px; /* aligns top with menu row */
+      order: 99;
+      width: 120px; height: 120px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #101018;
+      border: 2.5px solid #fed351;
+      box-shadow: 0 0 8px #fed35177;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
     }
-    #volume-container label {
-      font-size: 16px;
-      margin: 0;
+    .now-playing-details {
+      flex: 1 1 0%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .nowplaying-label-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 3px;
+      min-width: 0;
+    }
+    .nowplaying-live-dot {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #ff3434;
+      margin-right: 6px;
+      animation: pulseLive 1.2s infinite;
+      vertical-align: -2px;
+      box-shadow: 0 0 8px #ffd84a;
+    }
+    .nowplaying-live-label {
+      font-weight: 700;
+      color: #ffd84a;
+      background: #221818;
+      border-radius: 5px;
+      font-size: 1.03em;
+      padding: 3px 11px 3px 8px;
+      letter-spacing: 0.07em;
+      margin-right: 0;
+      box-shadow: 0 0 8px #ffd84a22;
+      display: flex;
+      align-items: center;
+      gap: 4px;
       user-select: none;
     }
-    #volume-slider {
+    .nowplaying-title, .nowplaying-artist {
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .nowplaying-title {
+      font-size: 1.13em;
+      font-weight: bold;
+      color: #ffd84a;
+      margin-bottom: 1.5px;
+      line-height: 1.2;
+    }
+    .nowplaying-artist {
+      font-size: 1.07em;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 0.5px;
+    }
+    .nowplaying-time {
+      font-size: 0.97em;
+      color: #fed351bb;
+    }
+    .audio-controls-inline {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 10px;
+      margin-bottom: 2px;
+    }
+    .audio-controls-inline input[type=range] {
       width: 180px;
-      cursor: pointer;
+      accent-color: #fed351;
+      height: 2.5px;
+      margin: 0 2px;
     }
-    #volume-display {
-      font-size: 16px;
-      color: #ccc;
-      min-width: 40px;
-      text-align: left;
-      user-select: none;
-    }
-/* Base style for desktop: center ON AIR NOW block */
-#onAirNow {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center;           /* Desktop default */
-  padding-right: 0;
-  max-width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.pulsing-label {
-  color: #ff4d4d;
-  font-weight: 700;
-  animation: pulseText 5s infinite;
-}
-
-@keyframes pulseText {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-@media (max-width: 768px) {
-  button#play-toggle {
-    font-size: 16px;
-    padding: 12px 16px;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  #volume-container {
-    display: none !important;
-  }
-}
-
-
-  #volume-slider {
-    width: 100%;
-  }
-
-  #volume-display,
-  #mute-toggle {
-    align-self: flex-end;
-  }
-
-  #nowPlaying {
-    margin-top: 18px;
-  }
-
-  .artwork-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-}
-
-
-    #now-playing-card {
-      margin-top: 25px;
-      background: #1a1a1a;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0, 131, 138, 0.7);
-      max-width: 420px;
-      text-align: left;
-      font-size: 17px;
-      line-height: 1.7;
-      color: white;
-    }
-    #artwork {
-      margin-top: 25px;
-      border-radius: 8px;
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      border: 2px solid #fed351;
-      box-shadow: 0 0 15px #fed351aa;
-      user-select: none;
-      opacity: 0;
-      filter: blur(10px) brightness(0.8);
-      transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
-    }
-    #artwork.loaded {
-      opacity: 1;
-      filter: blur(0) brightness(1);
-    }
-    #artwork.fallback {
-      filter: blur(5px) brightness(0.8);
-      opacity: 0.7;
-      box-shadow: 0 0 10px rgba(254, 211, 81, 0.4);
+    .audio-controls-inline span {
+      font-size: 12px;
+      min-width: 25px;
+      color: #ffd84a;
+      text-shadow: 0 1px 2px #1117;
     }
     .recent-title {
       font-size: 20px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       color: #fed351;
       user-select: none;
     }
     ul#recent-list {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 0 0 8px 0;
+      width: 100%;
+      box-sizing: border-box;
+      background: transparent;
+      overflow-x: hidden;
+    }
+    ul#recent-list::-webkit-scrollbar {
+      display: none;
     }
     ul#recent-list li {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 14px 0;
+      padding: 9px 0;
       border-bottom: 1px solid #444;
       transition: background 0.2s ease;
-    }
-    ul#recent-list li:hover {
-      background: rgba(255, 255, 255, 0.05);
+      box-sizing: border-box;
+      min-width: 0;
+      width: 100%;
+      overflow: hidden;
     }
     ul#recent-list img {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       border-radius: 6px;
       object-fit: cover;
       border: 1px solid #fed351;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
       user-select: none;
-      opacity: 0;
-      transition: opacity 0.4s ease-in-out;
-    }
-    ul#recent-list img.loaded {
       opacity: 1;
+      background: #13131a;
+      flex-shrink: 0;
     }
     ul#recent-list span.time {
       color: #fed351;
       font-weight: 600;
-      width: 50px;
+      width: 46px;
       text-align: right;
       flex-shrink: 0;
       user-select: none;
+      font-size: 12px;
     }
     ul#recent-list span.info {
-      flex: 1;
+      flex: 1 1 0;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       user-select: none;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      min-width: 0;
+      max-width: 100%;
     }
-    .refresh-indicator {
-      display: inline-block;
-      margin-left: 8px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fed351;
-      animation: pulse 1.2s infinite;
-      vertical-align: middle;
-    }
-/* Let the main wrapper act as the positioning anchor */
-.strip-container {
-  position: relative;   /* NEW */
-  z-index: 1;
-}
-
-.player-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-/* Default (desktop) */
-.logo-overhang {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-30%, -30%);
-  width: 220px;
-  z-index: 2;
-  opacity: 0.97;
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
-}
-
-/* Tablet */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .logo-overhang {
-    width: 170px;
-    transform: translate(-30%, -30%);
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .logo-overhang {
-    width: 120px;
-    transform: (-25%, -25%);
-    top: 2px;
-    left: 20px;
-  }
-}
-
-
-
-    .live-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: bold;
-      color: #ff4d4d;
-      font-size: 0.95em;
-      margin-left: 10px;
-      user-select: none;
-    }
-    .live-indicator .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ff4d4d;
-      animation: pulse 1.2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.4); }
-    }
-    @media (max-width: 768px) {
+    @media (max-width: 800px) {
+      body { padding-top: 55px !important; }
       .strip-container {
         flex-direction: column;
+        width: 99vw;
+        box-shadow: 0 0 12px rgba(0,0,0,0.19);
+        border-radius: 10px;
+        min-width: 0;
+        margin: 0 auto;
+        min-height: unset;
       }
       .left-panel, .right-panel {
-        width: 100%;
-        padding: 20px;
+        width: 100% !important;
+        padding: 12px 3vw !important;
+        min-height: unset;
+        align-items: flex-start !important;
+        text-align: left !important;
       }
-      #artwork {
-        width: 100%;
-        max-width: 280px;
-        height: auto;
+      .left-panel {
+        border-right: none !important;
+        border-bottom: 1px solid #191919 !important;
+        padding-bottom: 10px !important;
       }
-#onAirNow {
-  text-align: center;
-}
+      .right-panel {
+        border-left: none !important;
+        border-top: none !important;
+        padding-top: 8px !important;
+        margin-top: 0 !important;
+        display: block !important;
+      }
+      .weather-dropdown-row { flex-direction: column; align-items: flex-start; gap: 9px; }
+      .now-playing-widget { flex-direction: column; align-items: stretch; gap: 12px; max-width: 99vw; padding: 12px 3vw; }
+      .big-play-btn-col, .now-playing-art.right {
+        margin: 0 auto 0 auto !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .big-play-btn {
+        width: 48px;
+      }
+      .big-play-btn .triangle, .big-play-btn .pausebars { width: 40px; height: 40px; }
+      .now-playing-art.right {
+        width: 32vw !important;
+        height: 32vw !important;
+        min-width: 68px; min-height: 68px; max-width: 120px; max-height: 120px;
+        margin-top: 18px !important;
+      }
+      #on-air-now { align-items: flex-end !important; }
+      #on-air-now .show-wrap { align-items: flex-end !important; }
     }
-
-
-  #onAirNow {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    padding-right: 16px;
-    max-width: 95%;
-    margin-left: auto;
-    margin-right: 0;
-  }
-
-
-  #onAirNow br {
-    display: none;
-  }
-
-#play-toggle {
-    margin-bottom: 12px;
-  }
-
-  #onAirNow span {
-    display: block;
-    line-height: 1.2;
-  }
-
-  .show-title {
-    font-weight: 600;
-  }
-
-  .show-presenter {
-    font-weight: 400;
-    font-size: 0.95em;
-    opacity: 0.9;
-  }
-
-  .left-panel {
-    padding-top: 4px;
-  }
-
-  #player-box {
-    margin-top: -4px;
-  }
-
-  #nowPlaying {
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-
-
-
-
-@media (max-width: 768px) {
-  .recent-title {
-    font-size: 16px;
-    margin-bottom: 14px;
-  }
-
-  ul#recent-list li {
-    gap: 10px;
-    padding: 10px 0;
-  }
-
-  ul#recent-list img {
-    width: 38px;
-    height: 38px;
-  }
-
-  ul#recent-list span.info {
-    font-size: 12px;
-  }
-
-  ul#recent-list span.time {
-    font-size: 12px;
-    width: 40px;
-  }
-}
-
   </style>
 </head>
 <body>
-  <!-- Player container with floating logo -->
   <div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
-
     <div class="strip-container">
-      <!-- existing player layout -->
       <div class="left-panel">
-        <div id="onAirNow" style="
-          text-align: right;">
-          <span class="pulsing-label">ON AIR NOW</span>
-          <span id="currentShow" style="font-weight: 600;">Loading...</span>
-        </div>
-
-        <div id="player-box">
-          <audio id="stream" preload="none">
-            <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
-          </audio>
-          <button id="play-toggle">▶️ Play Essential Radio</button>
-          <div id="volume-container">
-            <label for="volume-slider">Volume:</label>
-            <input type="range" id="volume-slider" min="0" max="100" value="100" />
-            <span id="volume-display">100%</span>
-            <button id="mute-toggle">🔊</button>
+        <div id="on-air-now">
+          <div class="on-air-label-row">
+            <span class="label onairnow-label">
+              <span class="onairnow-dot"></span> ON AIR NOW
+            </span>
           </div>
-
-          <div id="now-playing-card">
-            <div id="now-playing">Loading current track…</div>
+          <div class="show-wrap">
+            <span class="show-main" id="on-air-show-main">Loading…</span>
+            <span class="show-sub" id="on-air-show-sub"></span>
           </div>
-          <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
         </div>
+        <div class="spa-main-content" id="spa-main-content"></div>
       </div>
-
       <div class="right-panel">
+        <div class="weather-dropdown-row">
+          <div id="weather-widget">
+            <img id="weather-icon" src="" alt="Weather" width="32" height="32" />
+            <div>
+              <strong style="color:#fed351;">Ayrshire Weather</strong><br>
+              <span id="weather-text" style="vertical-align: middle;">Loading…</span>
+            </div>
+          </div>
+          <div class="spa-dropdown" tabindex="0">
+            <button class="spa-dropbtn" id="spaDropdownBtn">Home</button>
+            <div class="spa-dropdown-content" id="spaDropdownContent">
+              <a href="#home" data-page="home">Home</a>
+              <a href="#schedule" data-page="schedule">Schedule</a>
+              <a href="#playlist" data-page="playlist">Playlist</a>
+            </div>
+          </div>
+        </div>
+        <div id="now-playing-widget" class="now-playing-widget" style="display:none;">
+          <div class="big-play-btn-col">
+            <button id="bigPlayBtn" class="big-play-btn paused" aria-label="Play or Pause">
+              <svg class="triangle" viewBox="0 0 80 80"><polygon points="14,10 66,40 14,70" /></svg>
+              <span class="play-label">PLAY</span>
+            </button>
+          </div>
+          <div class="now-playing-details">
+            <div class="nowplaying-label-row">
+              <span style="font-weight:700;color:#fff;font-size:1.09em;">Now Playing</span>
+              <span class="nowplaying-live-label"><span class="nowplaying-live-dot"></span>LIVE</span>
+            </div>
+            <div class="nowplaying-title" id="nowplaying-title">Loading…</div>
+            <div class="nowplaying-artist" id="nowplaying-artist"></div>
+            <div class="nowplaying-time" id="nowplaying-time"></div>
+            <div class="audio-controls-inline" style="margin-top:10px;">
+              <input id="volumeSlider" type="range" min="0" max="100" value="100" />
+              <span id="volumeVal">100%</span>
+              <audio id="audioPlayer" preload="none">
+                <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
+              </audio>
+            </div>
+          </div>
+          <img id="now-playing-art" class="now-playing-art right" src="Essential Radio Logo.png" alt="Now Playing Artwork"/>
+        </div>
         <div class="recent-title">Recently Played</div>
         <ul id="recent-list"></ul>
       </div>
-    </div> <!-- end .strip-container -->
-  </div> <!-- end .player-wrapper -->
-</body>
-
-
-
-  <!-- Schedule & “On Air Now” logic -->
-<script>
-  async function fetchSchedule() {
-    try {
-      const res = await fetch("https://essentialradio.github.io/player/schedule.json");
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch (e) {
-      console.error("Schedule fetch error:", e);
-      return null;
-    }
-  }
-
-  function getCurrentShow(schedule) {
-    const now = new Date();
-    const day = now.toLocaleString("en-GB", { weekday: "long" });
-    const shows = schedule && schedule[day];
-    if (!shows) return "No schedule available";
-
-    const nowMins = now.getHours() * 60 + now.getMinutes();
-    for (const show of shows) {
-      const [sh, sm] = show.start.split(":").map(Number);
-      const [eh, em] = show.end.split(":").map(Number);
-      let start = sh * 60 + sm;
-      let end = eh * 60 + em;
-      if (end === 0 && start > 0) end = 1440;
-      if (nowMins >= start && nowMins < end) {
-        return show.title;
+    </div>
+  </div>
+  <script>
+    // WEATHER
+    async function fetchWeather() {
+      const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=Kilmarnock,GB&units=metric&appid=${API_KEY}`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const iconCode = data.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        const temp = Math.round(data.main.temp);
+        const desc = data.weather[0].description;
+        document.getElementById("weather-icon").src = iconUrl;
+        document.getElementById("weather-icon").alt = desc;
+        document.getElementById("weather-text").innerText = `${desc.charAt(0).toUpperCase() + desc.slice(1)}, ${temp}°C`;
+      } catch (e) {
+        document.getElementById("weather-text").innerText = "Weather unavailable";
       }
     }
-    return "Off Air";
-  }
+    fetchWeather();
+    setInterval(fetchWeather, 15 * 60 * 1000);
 
-  async function updateOnAirNow() {
-    const schedule = await fetchSchedule();
-    const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
-    const el = document.getElementById("currentShow");
+    // ON AIR NOW (JSON SCHEDULE)
+    async function getCurrentShowFromSchedule() {
+      let schedule;
+      try {
+        const res = await fetch('https://essentialradio.github.io/player/schedule.json?_=' + Date.now());
+        schedule = await res.json();
+      } catch (e) {
+        return { main: "Schedule unavailable", sub: "" };
+      }
+      const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const now = new Date();
+      const todayKey = dayNames[now.getDay()];
+      const todaySchedule = schedule[todayKey];
 
-    if (fullShow.includes(" with ")) {
-      const [title, presenter] = fullShow.split(" with ");
-      el.innerHTML = `
-        <span class="show-title">${title.trim()}</span>
-        <span class="show-presenter">with ${presenter.trim()}</span>`;
-    } else {
-      el.textContent = fullShow;
+      if (!todaySchedule) return { main: "No schedule", sub: "" };
+
+      // Get current time as minutes since midnight
+      const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+      // Find current slot
+      let showTitle = "No Show";
+      for (const slot of todaySchedule) {
+        const [sh, sm] = slot.start.split(":").map(Number);
+        const [eh, em] = slot.end.split(":").map(Number);
+        let start = sh * 60 + sm;
+        let end = eh * 60 + em;
+        // For slots ending at 00:00 or 23:59, handle wrapping
+        if (end <= start) end += 24 * 60;
+        let t = nowMinutes;
+        if (end > 24 * 60 && nowMinutes < start) t += 24 * 60;
+        if (t >= start && t < end) {
+          showTitle = slot.title;
+          break;
+        }
+      }
+
+      // Split title for "with"/"–"/"-" host name
+      let main = showTitle, sub = "";
+      let match = showTitle.match(/^(.*?)(?:\s*(?:with|w\/|–|-)\s+(.+))$/i);
+      if (match) {
+        main = match[1].trim();
+        sub = match[2].trim();
+      }
+      return { main, sub: sub ? `with ${sub}` : "" };
     }
-  }
 
-  // **Invoke once immediately**, then every minute thereafter**
-  updateOnAirNow();
-  setInterval(updateOnAirNow, 60_000);
-</script>
+    async function updateOnAirNow() {
+      const showObj = await getCurrentShowFromSchedule();
+      document.getElementById('on-air-show-main').textContent = showObj.main;
+      document.getElementById('on-air-show-sub').textContent = showObj.sub;
+    }
+    updateOnAirNow();
+    setInterval(updateOnAirNow, 60 * 1000);
 
-<!-- Now Playing & Recently Played logic -->
-<script>
-  const audio = document.getElementById('stream');
-  const playBtn = document.getElementById('play-toggle');
-  const muteBtn = document.getElementById('mute-toggle');
-  const volumeSlider = document.getElementById('volume-slider');
-if (window.innerWidth <= 768) {
-  volumeSlider.disabled = true;
-  muteBtn.disabled = true;
-}
-
-  const volumeDisplay = document.getElementById('volume-display');
-  const nowPlaying = document.getElementById('now-playing');
-  const artworkImg = document.getElementById('artwork');
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        e.target.classList.add('loaded');
-        observer.unobserve(e.target);
+    // AUDIO PLAYER (PLAY/PAUSE with TEXT)
+    const audio = document.getElementById('audioPlayer');
+    const bigPlayBtn = document.getElementById('bigPlayBtn');
+    const volSlider = document.getElementById('volumeSlider');
+    const volVal = document.getElementById('volumeVal');
+    const playLabel = bigPlayBtn.querySelector('.play-label');
+    let isPlaying = false;
+    function setPlayButtonState(playing) {
+      bigPlayBtn.classList.toggle('paused', !playing);
+      bigPlayBtn.classList.toggle('playing', !!playing);
+      // SVG: triangle (play), two bars (pause)
+      const svg = bigPlayBtn.querySelector('svg');
+      if (!playing) {
+        svg.innerHTML = `<polygon points="14,10 66,40 14,70" />`;
+        playLabel.textContent = 'PLAY';
+      } else {
+        svg.innerHTML = `<rect x="20" y="15" width="12" height="50" rx="7" fill="#FFD84A"/><rect x="48" y="15" width="12" height="50" rx="7" fill="#FFD84A"/>`;
+        playLabel.textContent = 'PAUSE';
       }
     }
-  }, { threshold: 0.1 });
-
-  let isPlaying = false, lastVolume = 1;
-
-  playBtn.addEventListener('click', () => {
-    if (!isPlaying) {
-      audio.load();
-      audio.play().catch(() => {});
-      playBtn.textContent = '⏸ Pause';
-      isPlaying = true;
-    } else {
-      audio.pause();
-      playBtn.textContent = '▶️ Play Essential Radio';
+    bigPlayBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play();
+        setPlayButtonState(true);
+        isPlaying = true;
+      } else {
+        audio.pause();
+        setPlayButtonState(false);
+        isPlaying = false;
+      }
+    });
+    volSlider.addEventListener('input', () => {
+      audio.volume = volSlider.value / 100;
+      volVal.textContent = volSlider.value + '%';
+    });
+    audio.addEventListener('pause', () => {
+      setPlayButtonState(false);
       isPlaying = false;
+    });
+    audio.addEventListener('play', () => {
+      setPlayButtonState(true);
+      isPlaying = true;
+    });
+    setPlayButtonState(false);
+
+    // NOW PLAYING WIDGET WITH GAP LOGIC
+    const NP_WIDGET = document.getElementById('now-playing-widget');
+    const NP_ART = document.getElementById('now-playing-art');
+    const NP_TITLE = document.getElementById('nowplaying-title');
+    const NP_ARTIST = document.getElementById('nowplaying-artist');
+    const NP_TIME = document.getElementById('nowplaying-time');
+    const RECENT_LIST = document.getElementById('recent-list');
+    let lastNowPlaying = '';
+    let artworkCache = {};
+
+    async function getArtwork(trackName) {
+      if (artworkCache[trackName]) return artworkCache[trackName];
+      try {
+        const url = `https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`;
+        const res = await fetch(url);
+        const js = await res.json();
+        if (js.results && js.results[0] && js.results[0].artworkUrl100) {
+          const imgUrl = js.results[0].artworkUrl100.replace('100x100', '300x300');
+          artworkCache[trackName] = imgUrl;
+          return imgUrl;
+        }
+      } catch {}
+      return 'Essential Radio Logo.png';
     }
-  });
 
-  volumeSlider.addEventListener('input', () => {
-    const vol = volumeSlider.value / 100;
-    audio.volume = vol;
-    volumeDisplay.textContent = `${volumeSlider.value}%`;
-    muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
-  });
-
-  muteBtn.addEventListener('click', () => {
-  if (!audio.muted) {
-    audio.muted = true;
-    muteBtn.textContent = '🔇';
-    volumeDisplay.textContent = 'Muted';
-  } else {
-    audio.muted = false;
-    muteBtn.textContent = audio.volume < 0.5 ? '🔈' : '🔊';
-    volumeDisplay.textContent = `${volumeSlider.value}%`;
-  }
-});
-
-async function fetchDurationAndStartTime(artist, title) {
-  try {
-    const logUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-    const res = await fetch(`${logUrl}?_=${Date.now()}`, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-
-    const match = data.reverse().find(item =>
-      item.Artist?.toLowerCase() === artist.toLowerCase() &&
-      item.Title?.toLowerCase() === title.toLowerCase()
-    );
-
-    if (match && match["Scheduled Time"] && match["Duration (s)"] && match["Hour"]) {
-      const hourDate = new Date(match["Hour"]);
-      const [sh, sm] = match["Scheduled Time"].split(":").map(Number);
-
-      const start = new Date(
-        hourDate.getFullYear(),
-        hourDate.getMonth(),
-        hourDate.getDate(),
-        sh,
-        sm,
-        0
-      );
-
-      return {
-        duration: parseInt(match["Duration (s)"], 10),
-        startTime: start
-      };
+    async function fetchNowPlayingWithGap() {
+      NP_WIDGET.style.display = '';
+      try {
+        const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+        const latestTrack = await latestRes.json();
+        const metaRes = await fetch('https://player-green.vercel.app/api/metadata', { cache: 'no-store' });
+        const meta = await metaRes.json();
+        const decode = str => {
+          const t = document.createElement('textarea');
+          t.innerHTML = str;
+          return t.value;
+        };
+        let raw = decode(meta.nowPlaying || '').trim();
+        let artist = '', title = '';
+        const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
+        if (sep) {
+          [artist, title] = raw.split(sep).map(s => s.trim());
+        }
+        let npStart = latestTrack.startTime ? new Date(latestTrack.startTime) : null;
+        let npDur = Number(latestTrack.duration) || 0;
+        let now = new Date();
+        let songStillPlaying = false;
+        if (npStart && npDur) {
+          let diff = (now - npStart) / 1000;
+          songStillPlaying = diff >= 0 && diff < npDur + 8;
+        }
+        if (artist && title && songStillPlaying) {
+          NP_TITLE.textContent = title;
+          NP_ARTIST.textContent = "by " + artist;
+          let playtime = npStart ? npStart.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+          NP_TIME.textContent = playtime ? `Started at ${playtime}` : '';
+          const art = await getArtwork(`${artist} - ${title}`);
+          NP_ART.src = art || 'Essential Radio Logo.png';
+          NP_ART.alt = `${artist} – ${title}`;
+          lastNowPlaying = `${artist} – ${title}`;
+        } else {
+          NP_TITLE.textContent = "More Music Now";
+          NP_ARTIST.textContent = "on Essential Radio";
+          NP_TIME.textContent = "";
+          NP_ART.src = 'Essential Radio Logo.png';
+          NP_ART.alt = "Essential Radio";
+          lastNowPlaying = '';
+        }
+      } catch (e) {
+        NP_WIDGET.style.display = '';
+        NP_TITLE.textContent = "More Music Now";
+        NP_ARTIST.textContent = "on Essential Radio";
+        NP_TIME.textContent = "";
+        NP_ART.src = 'Essential Radio Logo.png';
+        NP_ART.alt = "Essential Radio";
+        lastNowPlaying = '';
+      }
     }
-  } catch (e) {
-    console.warn("Duration/start time fetch failed:", e);
-  }
-  return null;
-}
 
-function showMoreMusicSoon() {
-  nowPlaying.innerHTML = `
-    <span style="color:#fed351;">Now Playing:</span>
-    <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-    <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
-    <span style="color:white;">on Essential Radio</span>`;
-  document.title = `Essential Radio: More music soon`;
-  applyFallbackImmediate();
-}
+    async function fetchRecent() {
+      try {
+        const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now());
+        if (!res.ok) throw new Error('Failed');
+        const data = await res.json();
+        const recent = [];
+        const seen = new Set([lastNowPlaying]);
+        for (const entry of data.reverse()) {
+          const track = `${entry.Artist} – ${entry.Title}`;
+          if (!seen.has(track)) {
+            seen.add(track);
+            recent.push(entry);
+          }
+          if (recent.length >= 5) break;
+        }
+        const items = await Promise.all(recent.map(async entry => {
+          const name = `${entry.Artist} – ${entry.Title}`;
+          let time = entry['Scheduled Time'] || entry['Time'] || "";
+          if (time.length >= 16) time = time.slice(11, 16);
+          const art = await getArtwork(name);
+          return `
+            <li>
+              <span class="time">${time}</span>
+              <img src="${art || 'Essential Radio Logo.png'}" alt="Artwork" />
+              <span class="info">${name}</span>
+            </li>`;
+        }));
+        RECENT_LIST.innerHTML = items.join('');
+      } catch (e) {
+        RECENT_LIST.innerHTML = `<li><span class="info">Unable to load recent tracks.</span></li>`;
+      }
+    }
+    async function updateRadioInfo() {
+      await fetchNowPlayingWithGap();
+      await fetchRecent();
+    }
+    updateRadioInfo();
+    setInterval(updateRadioInfo, 15000);
 
-let currentTrackID = null;
-let songHasEnded = false;
-
-async function fetchNowPlaying() {
-  try {
-    const res = await fetch('https://player-green.vercel.app/api/metadata', { cache: 'no-store' });
-    const data = await res.json();
-
-    const decode = str => {
-      const t = document.createElement('textarea');
-      t.innerHTML = str;
-      return t.value;
+    // SPA NAVIGATION LOGIC FOR DROPDOWN
+    const pageMap = {
+      home: 'home.html',
+      schedule: 'schedule.html',
+      playlist: 'playlist.html'
     };
-
-    const raw = decode(data.nowPlaying || '').trim();
-    let artist = '', title = '';
-    const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-
-    if (sep) {
-      [artist, title] = raw.split(sep).map(s => s.trim());
-    } else {
-      showMoreMusicSoon();
-      return;
+    function setActiveDropdown(link) {
+      document.querySelectorAll('.spa-dropdown-content a').forEach(l => l.classList.remove('active'));
+      if (link) link.classList.add('active');
     }
-
-    currentTrackID = `${artist} – ${title}`;
-    songHasEnded = false;
-
-    // Display current track
-    nowPlaying.innerHTML = `
-      <span style="color:#fed351;">Now Playing:</span>
-      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-      <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-      <span style="color:white;">by ${artist}</span>`;
-    document.title = `Essential Radio: ${artist} – ${title}`;
-    fetchArtwork(`${artist} - ${title}`);
-
-    // Fetch timing info from latestTrack.json
-    const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
-    const latest = await latestRes.json();
-
-    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
-      console.warn("latestTrack.json missing fields");
-      return;
-    }
-
-    if (
-      latest.artist.toLowerCase() !== artist.toLowerCase() ||
-      latest.title.toLowerCase() !== title.toLowerCase()
-    ) {
-      console.log("latestTrack.json does not match metadata track");
-      return;
-    }
-
-    const startTime = new Date(latest.startTime);
-    const durationMs = latest.duration * 1000;
-    const endTime = new Date(startTime.getTime() + durationMs);
-    const now = new Date();
-    const timeRemaining = endTime - now;
-
-    if (trackEndTimeout) clearTimeout(trackEndTimeout);
-
-    if (timeRemaining <= 0) {
-      showMoreMusicSoon();
-      songHasEnded = true;
-      currentTrackID = null;
-    } else {
-      trackEndTimeout = setTimeout(() => {
-        showMoreMusicSoon();
-        songHasEnded = true;
-        currentTrackID = null;
-      }, timeRemaining);
-    }
-
-  } catch (e) {
-    console.error("Now playing error:", e);
-    showMoreMusicSoon();
-    currentTrackID = null;
-    songHasEnded = false;
-  }
-}
-
-
-
-
-
-
- async function fetchRecentFromGitHub() {
-  try {
-    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-
-    const recentItems = data
-      .filter(item => {
-        const name = `${item.Artist} – ${item.Title}`;
-        return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
-      })
-      .slice(-5)
-      .reverse();
-
-    const entries = await Promise.all(recentItems.map(async item => {
-      const time = item['Scheduled Time'] || item.time || '';
-      const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
-      return `
-        <li>
-          <span class="time">${time}</span>
-          <img src="${art}"
-               alt="Cover for ${name}"
-               loading="lazy" />
-          <span class="info">${name}</span>
-        </li>`;
-    }));
-
-    const list = document.getElementById('recent-list');
-    list.innerHTML = entries.join('');
-    document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
-  } catch (e) {
-    console.error('Recent fetch failed:', e);
-  }
-}
-
-
-
-  async function fetchArtwork(trackName) {
-    // reset to logo and remove classes
-    artworkImg.src = 'Essential Radio Logo.png';
-    artworkImg.classList.remove('loaded', 'fallback');
-
-    // try iTunes
-    try {
-      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
-      const js = await res.json();
-      if (js.results[0]?.artworkUrl100) {
-        const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
-        artworkImg.onload = () => artworkImg.classList.add('loaded');
-        artworkImg.onerror = applyFallbackImmediate;
-        artworkCache[trackName] = url;
-        artworkImg.src = url;
-        return;
+    async function showPage(pageId) {
+      const main = document.getElementById('spa-main-content');
+      let file = pageMap[pageId] || pageMap['home'];
+      try {
+        const res = await fetch(file + '?_=' + Date.now());
+        if (!res.ok) throw new Error(res.status);
+        main.innerHTML = await res.text();
+      } catch (e) {
+        main.innerHTML = `<div style="padding:2em;color:#ffd84a;">Sorry, this page could not be loaded.</div>`;
       }
-    } catch {}
-
-    // try Autopo.st
-    const safe = trackName
-      .replace(/\s*\(.*?\)/g, '')
-      .replace(/[^a-zA-Z0-9\s-]/g, '')
-      .trim()
-      .replace(/\s+/g, '_');
-    const [artist, title] = safe.split('_-_');
-    const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
-    try {
-      const head = await fetch(autoUrl, { method: 'HEAD' });
-      if (head.ok) {
-        artworkImg.onload = () => artworkImg.classList.add('loaded');
-        artworkImg.onerror = applyFallbackImmediate;
-        artworkImg.src = autoUrl;
-        return;
-      }
-    } catch {}
-
-    // fallback
-    applyFallbackImmediate();
-  }
-
-  function applyFallbackImmediate() {
-    artworkImg.src = 'Essential Radio Logo.png';
-    artworkImg.classList.remove('loaded');
-    artworkImg.classList.add('fallback');
-  }
-
-  const artworkCache = {};
-async function getTrackArtwork(query) {
-  if (artworkCache[query]) return artworkCache[query];
-    try {
-      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
-      const d = await res.json();
-      if (d.results[0]?.artworkUrl100) {
-        return d.results[0].artworkUrl100.replace('100x100', '300x300');
-      }
-    } catch {}
-    return '';
-  }
-
-  // kick off
-  fetchNowPlaying();
-  fetchRecentFromGitHub();
-  setInterval(fetchNowPlaying, 15000);
-  setInterval(fetchRecentFromGitHub, 15000);
-</script>
-
-<!-- Your player content -->
-
-<script>
-  function formatShowTitleMobileOnly(title) {
-    if (window.innerWidth <= 600) {
-      const match = title.match(/(.*)\s+with\s+(.*)/i);
-      if (match) {
-        return `${match[1]}<br>with ${match[2]}`;
-      }
+      // Set dropdown label
+      const btn = document.getElementById('spaDropdownBtn');
+      const mapNames = {home: 'Home', schedule: 'Schedule', playlist: 'Playlist'};
+      btn.textContent = mapNames[pageId] || 'Menu';
+      // Set active
+      setActiveDropdown(document.querySelector(`.spa-dropdown-content a[data-page="${pageId}"]`));
     }
-    return title;
-  }
-
-  const showSpan = document.getElementById("currentShow");
-  const rawTitle = showSpan?.textContent || "";
-  showSpan.innerHTML = formatShowTitleMobileOnly(rawTitle);
-</script>
-</body>
-<script>
-  function formatShowTitleMobileOnly(title) {
-    if (window.innerWidth <= 600) {
-      const match = title.match(/(.*)\s+with\s+(.*)/i);
-      if (match) {
-        return `${match[1]}<br>with ${match[2]}`;
-      }
+    function handleRoute() {
+      let hash = location.hash.replace('#', '') || 'home';
+      showPage(hash);
     }
-    return title;
-  }
-
-  const showSpan = document.getElementById("currentShow");
-
-  // MutationObserver ensures that when the schedule updates, we reformat it
-  const observer = new MutationObserver(() => {
-    const raw = showSpan?.textContent || "";
-    showSpan.innerHTML = formatShowTitleMobileOnly(raw);
-  });
-
-  if (showSpan) {
-    observer.observe(showSpan, { childList: true });
-    // initial format
-    showSpan.innerHTML = formatShowTitleMobileOnly(showSpan.textContent);
-  }
-</script>
+    document.querySelectorAll('.spa-dropdown-content a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const page = this.getAttribute('data-page');
+        window.location.hash = page;
+        document.getElementById('spaDropdownContent').style.display = 'none';
+      });
+    });
+    window.addEventListener('hashchange', handleRoute);
+    window.addEventListener('DOMContentLoaded', handleRoute);
+    // Close dropdown if click outside
+    document.addEventListener('click', function(event) {
+      const drop = document.querySelector('.spa-dropdown');
+      if (!drop.contains(event.target)) {
+        document.getElementById('spaDropdownContent').style.display = 'none';
+      }
+    });
+    // Open/close dropdown on button click
+    document.getElementById('spaDropdownBtn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const dropdown = document.getElementById('spaDropdownContent');
+      dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    });
+    // Keyboard accessibility
+    document.querySelector('.spa-dropdown').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const dropdown = document.getElementById('spaDropdownContent');
+        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+      } else if (e.key === 'Escape') {
+        document.getElementById('spaDropdownContent').style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
