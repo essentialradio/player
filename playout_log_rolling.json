@@ -1,71 +1,5 @@
 [
   {
-    "Hour": "2025-06-21T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 2",
-    "Duration (s)": 2595,
-    "Full Duration (s)": 2595,
-    "Duration (mins)": 43,
-    "Full Duration (mins)": 43
-  },
-  {
-    "Hour": "2025-06-21T00:00:00Z",
-    "Scheduled Time": "01:44",
-    "Displayed Time": "",
-    "Artist": "Basement Jaxx",
-    "Title": "Red Alert",
-    "Duration (s)": 212,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T00:00:00Z",
-    "Scheduled Time": "01:48",
-    "Displayed Time": "",
-    "Artist": "The Smiths",
-    "Title": "Panic",
-    "Duration (s)": 128,
-    "Full Duration (s)": 134,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-06-21T00:00:00Z",
-    "Scheduled Time": "01:50",
-    "Displayed Time": "",
-    "Artist": "Edwin Starr",
-    "Title": "H.A.P.P.Y. Radio",
-    "Duration (s)": 187,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-21T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "",
-    "Artist": "Faith Hill",
-    "Title": "The Way You Love Me",
-    "Duration (s)": 169,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-21T00:00:00Z",
-    "Scheduled Time": "01:56",
-    "Displayed Time": "",
-    "Artist": "Len",
-    "Title": "Steal My Sunshine",
-    "Duration (s)": 203,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-21T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "",
@@ -43305,5 +43239,16 @@
     "Full Duration (s)": 3481,
     "Duration (mins)": 58,
     "Full Duration (mins)": 58
+  },
+  {
+    "Hour": "2025-07-06T15:00:00Z",
+    "Scheduled Time": "16:01",
+    "Displayed Time": "",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3591,
+    "Full Duration (s)": 3591,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
