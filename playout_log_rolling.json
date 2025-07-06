@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:05",
-    "Displayed Time": "",
-    "Artist": "Becky Hill ft Topic",
-    "Title": "My Heart Goes (La Di Da)",
-    "Duration (s)": 143,
-    "Full Duration (s)": 149,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:07",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "Style",
-    "Duration (s)": 216,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:11",
-    "Displayed Time": "",
-    "Artist": "Mariah Carey",
-    "Title": "Hero",
-    "Duration (s)": 245,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:15",
-    "Displayed Time": "",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 179,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:22",
-    "Displayed Time": "",
-    "Artist": "The Script",
-    "Title": "For the First Time",
-    "Duration (s)": 237,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:26",
-    "Displayed Time": "",
-    "Artist": "Hozier",
-    "Title": "Too Sweet",
-    "Duration (s)": 239,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:30",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:33",
-    "Displayed Time": "",
-    "Artist": "Ash",
-    "Title": "Girl From Mars",
-    "Duration (s)": 191,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:36",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Yellow",
-    "Duration (s)": 255,
-    "Full Duration (s)": 269,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:44",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:47",
-    "Displayed Time": "",
-    "Artist": "Nena",
-    "Title": "99 Red Balloons",
-    "Duration (s)": 219,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:51",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Bad Habits",
-    "Duration (s)": 217,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-21T05:00:00Z",
-    "Scheduled Time": "06:54",
-    "Displayed Time": "",
-    "Artist": "The Corrs",
-    "Title": "Runaway",
-    "Duration (s)": 228,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-21T06:00:00Z",
     "Scheduled Time": "07:01",
     "Displayed Time": "",
@@ -42667,5 +42513,16 @@
     "Full Duration (s)": 3602,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-07-06T23:00:00Z",
+    "Scheduled Time": "00:02",
+    "Displayed Time": "",
+    "Artist": "David Southway",
+    "Title": "Soul Vaults",
+    "Duration (s)": 3402,
+    "Full Duration (s)": 3404,
+    "Duration (mins)": 57,
+    "Full Duration (mins)": 57
   }
 ]
