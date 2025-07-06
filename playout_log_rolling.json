@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-06-20T18:00:00Z",
-    "Scheduled Time": "19:01",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1205,
-    "Full Duration (s)": 1206,
-    "Duration (mins)": 20,
-    "Full Duration (mins)": 20
-  },
-  {
-    "Hour": "2025-06-20T18:00:00Z",
-    "Scheduled Time": "19:21",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1086,
-    "Full Duration (s)": 1087,
-    "Duration (mins)": 18,
-    "Full Duration (mins)": 18
-  },
-  {
-    "Hour": "2025-06-20T18:00:00Z",
-    "Scheduled Time": "19:45",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1189,
-    "Full Duration (s)": 1192,
-    "Duration (mins)": 20,
-    "Full Duration (mins)": 20
-  },
-  {
     "Hour": "2025-06-20T19:00:00Z",
     "Scheduled Time": "20:02",
     "Displayed Time": "",
@@ -43193,6 +43160,17 @@
     "Title": "Hold Me In Your Arms",
     "Duration (s)": 247,
     "Full Duration (s)": 264,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-06T09:00:00Z",
+    "Scheduled Time": "10:01",
+    "Displayed Time": "",
+    "Artist": "Prince",
+    "Title": "When Doves Cry",
+    "Duration (s)": 218,
+    "Full Duration (s)": 229,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
