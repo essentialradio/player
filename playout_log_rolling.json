@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-20T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 1",
-    "Duration (s)": 3588,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-21T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -43305,5 +43294,16 @@
     "Full Duration (s)": 3551,
     "Duration (mins)": 59,
     "Full Duration (mins)": 59
+  },
+  {
+    "Hour": "2025-07-06T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3481,
+    "Full Duration (s)": 3481,
+    "Duration (mins)": 58,
+    "Full Duration (mins)": 58
   }
 ]
