@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Essential Radio – Now Playing Widget</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #00818a, #7e1974);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .widget-container {
+      background: #181921;
+      border-radius: 20px;
+      box-shadow: 0 4px 32px #1117;
+      width: 330px;
+      max-width: 96vw;
+      padding: 26px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 440px;
+    }
+    .logo {
+      width: 90px;
+      margin-bottom: 10px;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0.97;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+    }
+    .onair {
+      color: #fed351;
+      font-weight: bold;
+      letter-spacing: 0.07em;
+      font-size: 1em;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    .current-show {
+      color: #fff;
+      font-size: 1.08em;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .nowplaying-label {
+      color: #fed351;
+      font-size: 1em;
+      margin-top: 5px;
+      margin-bottom: 3px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .nowplaying-title {
+      font-size: 1.13em;
+      font-weight: bold;
+      margin-bottom: 2px;
+      color: #fff;
+      text-align: center;
+    }
+    .nowplaying-artist {
+      font-size: 1em;
+      color: #ccc;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    .nowplaying-artist a {
+      color: #fed351;
+      text-decoration: underline;
+      transition: color 0.15s;
+    }
+    .nowplaying-artist a:hover,
+    .nowplaying-artist a:focus {
+      color: #ffe67c;
+      text-decoration: underline;
+    }
+    .artwork {
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      margin: 8px 0 12px 0;
+      background: #222;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      box-shadow: 0 2px 8px #fed35155;
+      transition: filter 0.2s, opacity 0.2s;
+      opacity: 0;
+      filter: blur(7px) brightness(0.8);
+    }
+    .artwork.loaded { opacity: 1; filter: none; }
+    .audio-controls {
+      margin: 7px 0 18px 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .audio-btn {
+      background: #fed351;
+      border: none;
+      color: #222;
+      font-size: 1.15em;
+      border-radius: 7px;
+      padding: 5px 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.16s;
+    }
+    .audio-btn:active,
+    .audio-btn:focus { background: #ffe67c; }
+    .vol-slider {
+      width: 74px;
+      accent-color: #fed351;
+    }
+    .recent-title {
+      color: #fed351;
+      font-size: 1em;
+      font-weight: 600;
+      margin: 8px 0 0 0;
+      align-self: flex-start;
+    }
+    .recent-list {
+      list-style: none;
+      padding: 0;
+      margin: 7px 0 0 0;
+      width: 100%;
+      max-width: 99vw;
+    }
+    .recent-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 0;
+      border-bottom: 1px solid #28293c;
+      font-size: 0.98em;
+    }
+    .recent-art {
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      object-fit: cover;
+      background: #222;
+      border: 1px solid #fed351;
+      opacity: 0;
+      transition: opacity 0.22s;
+    }
+    .recent-art.loaded { opacity: 1; }
+    .recent-track-info {
+      flex: 1;
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .recent-time {
+      color: #fed351;
+      font-size: 0.93em;
+      font-weight: 600;
+      flex-shrink: 0;
+      width: 40px;
+      text-align: right;
+    }
+    @media (max-width: 400px) {
+      .widget-container { width: 99vw; padding: 12px 2vw; }
+      .logo { width: 64px; }
+      .artwork { width: 65px; height: 65px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget-container">
+    <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
+    <div class="onair">ON AIR NOW</div>
+    <div class="current-show" id="currentShow">Loading…</div>
+    <div class="nowplaying-label">Now Playing:</div>
+    <div class="nowplaying-title" id="np-title">Loading…</div>
+    <div class="nowplaying-artist" id="np-artist"></div>
+    <img class="artwork" id="np-artwork" src="Essential Radio Logo.png" alt="Artwork" />
+    <div class="audio-controls">
+      <button class="audio-btn" id="play-btn">▶️</button>
+      <input type="range" min="0" max="100" value="100" class="vol-slider" id="vol-slider" />
+      <button class="audio-btn" id="mute-btn">🔊</button>
+    </div>
+    <div class="recent-title">Recently Played</div>
+    <ul class="recent-list" id="recent-list"></ul>
+  </div>
+<script>
+const PLAYOUT_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+const LATEST_URL = 'https://essentialradio.github.io/player/latestTrack.json';
+const SCHEDULE_URL = 'https://essentialradio.github.io/player/schedule.json';
+const STREAM_URL = 'https://streaming06.liveboxstream.uk/proxy/ayrshire/stream';
+
+// --- AUDIO PLAYER ---
+const audio = new Audio(STREAM_URL);
+audio.preload = "none";
+let isPlaying = false, lastVol = 1;
+const playBtn = document.getElementById("play-btn");
+const muteBtn = document.getElementById("mute-btn");
+const volSlider = document.getElementById("vol-slider");
+
+playBtn.addEventListener('click', () => {
+  if (!isPlaying) {
+    audio.play().catch(()=>{});
+    playBtn.textContent = "⏸";
+    isPlaying = true;
+  } else {
+    audio.pause();
+    playBtn.textContent = "▶️";
+    isPlaying = false;
+  }
+});
+audio.addEventListener('play', () => { playBtn.textContent = "⏸"; isPlaying = true; });
+audio.addEventListener('pause', () => { playBtn.textContent = "▶️"; isPlaying = false; });
+volSlider.addEventListener('input', () => {
+  const v = volSlider.value/100;
+  audio.volume = v;
+  lastVol = v;
+  muteBtn.textContent = v === 0 ? '🔇' : v < 0.5 ? '🔈' : '🔊';
+});
+muteBtn.addEventListener('click', () => {
+  if (!audio.muted && audio.volume > 0) {
+    audio.muted = true; muteBtn.textContent = '🔇';
+  } else {
+    audio.muted = false; audio.volume = lastVol || 1; muteBtn.textContent = (lastVol === 0 ? '🔇' : lastVol < 0.5 ? '🔈' : '🔊');
+  }
+});
+audio.volume = 1;
+
+// --- UK TIME (handles BST/GMT) ---
+function getUKTime() {
+  // UTC time
+  const nowUTC = new Date(Date.now() + (new Date().getTimezoneOffset() * 60000));
+  // BST: last Sunday in March to last Sunday in October
+  const year = nowUTC.getUTCFullYear();
+  const startBST = new Date(Date.UTC(year, 2, 31 - new Date(Date.UTC(year, 2, 31)).getUTCDay(), 1));
+  const endBST = new Date(Date.UTC(year, 9, 31 - new Date(Date.UTC(year, 9, 31)).getUTCDay(), 1));
+  const isBST = nowUTC >= startBST && nowUTC < endBST;
+  return new Date(nowUTC.getTime() + (isBST ? 60 : 0) * 60000);
+}
+
+// --- NOW PLAYING & ARTWORK ---
+const npTitle = document.getElementById('np-title');
+const npArtist = document.getElementById('np-artist');
+const npArt = document.getElementById('np-artwork');
+
+async function updateNowPlaying() {
+  try {
+    const res = await fetch(LATEST_URL+'?_='+(Date.now()), {cache:'no-store'});
+    const data = await res.json();
+
+    // Fallback to default if nothing recent or recognisable
+    let showDefault = false;
+    // 1. If missing title or artist
+    if (!data.title || !data.artist) showDefault = true;
+
+    // 2. If metadata is stale (older than 10 mins)
+    if (data.startTime) {
+      const played = new Date(data.startTime);
+      const now = new Date();
+      const diffMins = (now - played) / 60000;
+      if (diffMins > 10) showDefault = true;
+    }
+
+    // 3. If title contains things like "off air", "automation", or any other trigger
+    if (data.title && /off[\s\-]?air|automation|default|playlist|hold|music/i.test(data.title)) {
+      showDefault = true;
+    }
+
+    if (showDefault) {
+      npTitle.textContent = "Essential Music for Ayrshire College";
+      npArtist.innerHTML = 'Check out our website, <a href="https://www.essential.radio/" target="_blank">essential.radio</a>';
+      npArt.src = "Essential Radio Logo.png";
+      npArt.classList.add('loaded');
+      return;
+    }
+
+    // Normal display
+    npTitle.textContent = data.title;
+    npArtist.textContent = "by " + data.artist;
+    let img = "Essential Radio Logo.png";
+    if (data.artwork) img = data.artwork;
+    npArt.classList.remove('loaded');
+    npArt.src = img;
+    npArt.onload = () => npArt.classList.add('loaded');
+    npArt.onerror = () => { npArt.src = "Essential Radio Logo.png"; npArt.classList.add('loaded'); }
+  } catch {
+    npTitle.textContent = "Essential Music for Ayrshire College";
+    npArtist.innerHTML = 'Check out our website, <a href="https://www.essential.radio/" target="_blank">essential.radio</a>';
+    npArt.src = "Essential Radio Logo.png";
+    npArt.classList.add('loaded');
+  }
+}
+setInterval(updateNowPlaying, 15_000);
+updateNowPlaying();
+
+// --- ON AIR NOW ---
+const currentShow = document.getElementById("currentShow");
+async function updateCurrentShow() {
+  try {
+    const res = await fetch(SCHEDULE_URL+'?_='+(Date.now()), {cache:'no-store'});
+    const schedule = await res.json();
+    const now = getUKTime();
+    const day = now.toLocaleString("en-GB",{weekday:"long"});
+    const shows = schedule && schedule[day];
+    let out = "Off Air";
+    if (shows) {
+      const nowMins = now.getHours()*60 + now.getMinutes();
+      for (const show of shows) {
+        const [sh,sm] = show.start.split(":").map(Number);
+        const [eh,em] = show.end.split(":").map(Number);
+        let start = sh*60 + sm;
+        let end = eh*60 + em;
+        if (end===0 && start>0) end = 1440;
+        if (nowMins >= start && nowMins < end) {
+          out = show.title || "On Air";
+        }
+      }
+    }
+    currentShow.textContent = out;
+  } catch {
+    currentShow.textContent = "Schedule unavailable";
+  }
+}
+setInterval(updateCurrentShow, 60_000);
+updateCurrentShow();
+
+// --- RECENTLY PLAYED ---
+const recentList = document.getElementById("recent-list");
+function decode(s){ const t = document.createElement('textarea'); t.innerHTML=s; return t.value; }
+async function updateRecent() {
+  try {
+    const res = await fetch(PLAYOUT_URL+'?_='+(Date.now()), {cache:'no-store'});
+    const data = await res.json();
+    recentList.innerHTML = '';
+    let count = 0;
+    for (let i = data.length - 1; i >= 0 && count < 5; i--) {
+      const item = data[i];
+      if (!item.Artist || !item.Title) continue;
+      let art = "Essential Radio Logo.png";
+      if (item.Artwork) art = item.Artwork;
+      const li = document.createElement('li');
+      li.className = "recent-item";
+      const img = document.createElement('img');
+      img.src = art;
+      img.className = "recent-art";
+      img.alt = "Artwork";
+      img.onload = ()=>img.classList.add('loaded');
+      img.onerror = ()=>{img.src="Essential Radio Logo.png"; img.classList.add('loaded');}
+      const info = document.createElement('div');
+      info.className = "recent-track-info";
+      info.textContent = decode(item.Artist) + " – " + decode(item.Title);
+      const time = document.createElement('span');
+      time.className = "recent-time";
+      time.textContent = item["Displayed Time"]?.slice(0,5) || "";
+      li.appendChild(img);
+      li.appendChild(info);
+      li.appendChild(time);
+      recentList.appendChild(li);
+      count++;
+    }
+  } catch {
+    recentList.innerHTML = '<li style="color:#fed351;text-align:center;">Unable to load recent tracks</li>';
+  }
+}
+setInterval(updateRecent, 18_000);
+updateRecent();
+</script>
+</body>
+</html>
