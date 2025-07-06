@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "",
-    "Artist": "Michael Buble",
-    "Title": "Home",
-    "Duration (s)": 215,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "",
-    "Artist": "Katrina & The Waves",
-    "Title": "Walking on Sunshine",
-    "Duration (s)": 225,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:09",
-    "Displayed Time": "",
-    "Artist": "The Zutons",
-    "Title": "Valerie",
-    "Duration (s)": 224,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:13",
-    "Displayed Time": "",
-    "Artist": "The Beach Boys",
-    "Title": "Surfin' U.S.A.",
-    "Duration (s)": 141,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:15",
-    "Displayed Time": "",
-    "Artist": "Dawn Penn",
-    "Title": "You Don't Love Me (No, No, No)",
-    "Duration (s)": 188,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:23",
-    "Displayed Time": "",
-    "Artist": "Kaoma",
-    "Title": "Lambada",
-    "Duration (s)": 196,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:27",
-    "Displayed Time": "",
-    "Artist": "One Direction",
-    "Title": "What Makes You Beautiful",
-    "Duration (s)": 196,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:30",
-    "Displayed Time": "",
-    "Artist": "The Mavericks",
-    "Title": "Dance the Night Away",
-    "Duration (s)": 254,
-    "Full Duration (s)": 262,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:34",
-    "Displayed Time": "",
-    "Artist": "Martha & The Muffins",
-    "Title": "Echo Beach",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:41",
-    "Displayed Time": "",
-    "Artist": "The Kinks",
-    "Title": "Sunny Afternoon",
-    "Duration (s)": 206,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:45",
-    "Displayed Time": "",
-    "Artist": "York",
-    "Title": "O.T.B. (On the Beach)",
-    "Duration (s)": 192,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:48",
-    "Displayed Time": "",
-    "Artist": "Bob Marley & The Wailers",
-    "Title": "One Love / People Get Ready",
-    "Duration (s)": 158,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:50",
-    "Displayed Time": "",
-    "Artist": "George Ezra",
-    "Title": "Shotgun",
-    "Duration (s)": 194,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T10:00:00Z",
-    "Scheduled Time": "11:54",
-    "Displayed Time": "",
-    "Artist": "The Isley Brothers",
-    "Title": "Summer Breeze, Part 1",
-    "Duration (s)": 179,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-06-20T11:00:00Z",
     "Scheduled Time": "12:01",
     "Displayed Time": "",
@@ -43107,5 +42953,16 @@
     "Full Duration (s)": 202,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-06T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Bruno Mars",
+    "Title": "Marry You",
+    "Duration (s)": 225,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
