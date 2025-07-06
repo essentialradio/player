@@ -10,7 +10,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     /* --- NAVBAR & MODALS ONLY --- */
-    .navbar {
+    @media (max-width: 750px) {
+  .navbar { display: none !important; }
+  #burgerMenuBtn { display: block !important; }
+  #burgerDropdown { display: flex; }
+}
+@media (min-width: 751px) {
+  #burgerMenuBtn, #burgerDropdown { display: none !important; }
+}
+.menu-link {
+  display: block;
+  background: #fed351;
+  color: #191c29;
+  font-size: 1.28em;
+  font-weight: 600;
+  border-radius: 11px;
+  padding: 14px 0;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 0;
+  box-shadow: 0 2px 10px #0001;
+  transition: background 0.2s, color 0.2s;
+}
+.menu-link:active, .menu-link:hover {
+  background: #ffe67c;
+  color: #191c29;
+}
+.navbar {
       position: fixed;
       top: 0; left: 0;
       width: 100vw;
@@ -529,6 +555,39 @@
   </style>
 </head>
 <body>
+<!-- BURGER MENU (mobile only) -->
+<div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;position:fixed;top:16px;right:22px;z-index:2001;background:#fed351;padding:11px 18px;border-radius:11px;box-shadow:0 2px 8px #0002;font-size:2.1em;cursor:pointer;">
+  ☰
+</div>
+
+<!-- MOBILE DROPDOWN MENU -->
+<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:center;">
+  <div style="width:92vw;max-width:430px;margin:70px auto 0 auto;display:flex;flex-direction:column;gap:18px;">
+    <a href="#" onclick="openModal('aboutModal');closeBurgerMenu();return false;" class="menu-link">About Us</a>
+    <a href="#" onclick="openModal('scheduleModal');closeBurgerMenu();return false;" class="menu-link">Schedule</a>
+    <a href="#" onclick="openModal('playlistModal');closeBurgerMenu();return false;" class="menu-link">Playlist</a>
+    <a href="#" onclick="openModal('listenModal');closeBurgerMenu();return false;" class="menu-link">Listen Again</a>
+    <a href="#" onclick="openModal('searchModal');closeBurgerMenu();return false;" class="menu-link">Song Search</a>
+    <a href="#" onclick="openModal('requestsModal');closeBurgerMenu();return false;" class="menu-link">Requests</a>
+    <a href="#" onclick="openModal('contactModal');closeBurgerMenu();return false;" class="menu-link">Contact Us</a>
+    <a href="#" onclick="openModal('newsModal');closeBurgerMenu();return false;" class="menu-link">News</a>
+    <a href="#" onclick="openModal('travelModal');closeBurgerMenu();return false;" class="menu-link">Travel</a>
+  </div>
+</div>
+
+<!-- DESKTOP NAVIGATION -->
+<nav class="navbar" role="navigation">
+  <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
+  <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
+  <a href="#" onclick="openModal('playlistModal');return false;">Playlist</a>
+  <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
+  <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
+  <a href="#" onclick="openModal('requestsModal');return false;">Requests</a>
+  <a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
+  <a href="#" onclick="openModal('newsModal');return false;">News</a>
+  <a href="#" onclick="openModal('travelModal');return false;">Travel</a>
+</nav>
+
   <!-- NAVIGATION MENU -->
   <nav class="navbar" role="navigation">
     <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
@@ -1595,6 +1654,40 @@ function updateLiveClock() {
     }
     updateLiveClock();
     setInterval(updateLiveClock, 1000);
+
+function toggleBurgerMenu() {
+  var menu = document.getElementById('burgerDropdown');
+  if (menu.style.display === 'flex') {
+    menu.style.display = 'none';
+    document.body.style.overflow = '';
+  } else {
+    menu.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeBurgerMenu() {
+  var menu = document.getElementById('burgerDropdown');
+  menu.style.display = 'none';
+  document.body.style.overflow = '';
+}
+// Close when clicking outside the menu panel
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('burgerDropdown');
+  var btn = document.getElementById('burgerMenuBtn');
+  if (
+    window.innerWidth <= 750 &&
+    menu.style.display === 'flex' &&
+    !menu.contains(e.target) &&
+    !btn.contains(e.target)
+  ) {
+    closeBurgerMenu();
+  }
+});
+// Optional: ESC key closes burger menu
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeBurgerMenu();
+});
+
 </script>
 
 </html>
