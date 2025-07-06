@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:02",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "Cruel Summer",
-    "Duration (s)": 175,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:05",
-    "Displayed Time": "",
-    "Artist": "Snow Patrol",
-    "Title": "Chasing Cars",
-    "Duration (s)": 245,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:11",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:14",
-    "Displayed Time": "",
-    "Artist": "Mike Posner",
-    "Title": "Cooler Than Me",
-    "Duration (s)": 209,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:17",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris",
-    "Title": "Smoke the Pain Away",
-    "Duration (s)": 158,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:26",
-    "Displayed Time": "",
-    "Artist": "Nirvana",
-    "Title": "Smells Like Teen Spirit",
-    "Duration (s)": 270,
-    "Full Duration (s)": 271,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:31",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:33",
-    "Displayed Time": "",
-    "Artist": "Duran Duran",
-    "Title": "Girls On Film",
-    "Duration (s)": 201,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:37",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Before You Go",
-    "Duration (s)": 209,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:41",
-    "Displayed Time": "",
-    "Artist": "Miley Cyrus",
-    "Title": "Easy Lover",
-    "Duration (s)": 185,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:44",
-    "Displayed Time": "",
-    "Artist": "Jack Harlow",
-    "Title": "Lovin On Me",
-    "Duration (s)": 137,
-    "Full Duration (s)": 138,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:51",
-    "Displayed Time": "",
-    "Artist": "Stereophonics",
-    "Title": "Maybe Tomorrow",
-    "Duration (s)": 228,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T08:00:00Z",
-    "Scheduled Time": "09:56",
-    "Displayed Time": "",
-    "Artist": "Earth, Wind & Fire with the Emotions",
-    "Title": "Boogie Wonderland",
-    "Duration (s)": 209,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-20T09:00:00Z",
     "Scheduled Time": "10:02",
     "Displayed Time": "",
@@ -43228,5 +43085,16 @@
     "Full Duration (s)": 10800,
     "Duration (mins)": 180,
     "Full Duration (mins)": 180
+  },
+  {
+    "Hour": "2025-07-05T23:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "",
+    "Artist": "Bill Grainger",
+    "Title": "Fire Island Hi-NRG",
+    "Duration (s)": 3588,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
