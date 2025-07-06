@@ -13,17 +13,14 @@
     @media (max-width: 750px) {
   .navbar { display: none !important; }
   #burgerMenuBtn { display: block !important; }
-  #burgerDropdown { display: flex; }
+   { display: flex; }
 }
 @media (min-width: 751px) {
   #burgerMenuBtn, #burgerDropdown { display: none !important; }
 }
 .menu-link {
-  display: block;
-  background: #fed351;
-  color: #191c29;
   font-size: 1.07em;
-  font-weight: 600;
+  padding: 10px 0;
   border-radius: 8px;
   padding: 10px 0;
   text-align: center;
@@ -545,14 +542,12 @@
     }
     /* Playlist Modal Styling */
     .playlist-image {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto 24px auto;
-      border-radius: 13px;
-      box-shadow: 0 2px 16px #0005;
-      object-fit: contain;
-    }
+  width: 100%;
+  max-width: 600px; /* or 650px */
+  border-radius: 18px;
+  display: block;
+  margin: 0 auto 18px auto;
+}
   </style>
 </head>
 <body>
@@ -562,8 +557,8 @@
 </div>
 
 <!-- MOBILE DROPDOWN MENU -->
-<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:center;">
-  <div style="width:92vw;max-width:430px;margin:22px auto 0 auto;display:flex;flex-direction:column;gap:10px;">
+<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
+  <div style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
   <a href="#" onclick="openModal('aboutModal');closeBurgerMenu();return false;" class="menu-link">About Us</a>
   <a href="#" onclick="openModal('scheduleModal');closeBurgerMenu();return false;" class="menu-link">Schedule</a>
   <a href="#" onclick="openModal('playlistModal');closeBurgerMenu();return false;" class="menu-link">Playlist</a>
