@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:02",
-    "Displayed Time": "",
-    "Artist": "Ne-Yo",
-    "Title": "Beautiful Monster",
-    "Duration (s)": 245,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:06",
-    "Displayed Time": "",
-    "Artist": "Joel Corry & Tom Grennan",
-    "Title": "Lionheart (Fearless)",
-    "Duration (s)": 184,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:10",
-    "Displayed Time": "",
-    "Artist": "Joe Jonas",
-    "Title": "Heart By Heart",
-    "Duration (s)": 183,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:14",
-    "Displayed Time": "",
-    "Artist": "Savage Garden",
-    "Title": "Truly Madly Deeply",
-    "Duration (s)": 264,
-    "Full Duration (s)": 277,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:24",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 173,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:27",
-    "Displayed Time": "",
-    "Artist": "Luke Combs",
-    "Title": "Ain't No Love In Oklahoma",
-    "Duration (s)": 203,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:30",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Beautiful Things",
-    "Duration (s)": 175,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:33",
-    "Displayed Time": "",
-    "Artist": "Fine Young Cannibals",
-    "Title": "She Drives Me Crazy",
-    "Duration (s)": 207,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:37",
-    "Displayed Time": "",
-    "Artist": "Pink",
-    "Title": "All Out Of Fight",
-    "Duration (s)": 207,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:40",
-    "Displayed Time": "",
-    "Artist": "Lionel Richie & Diana Ross",
-    "Title": "Endless Love",
-    "Duration (s)": 248,
-    "Full Duration (s)": 266,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:48",
-    "Displayed Time": "",
-    "Artist": "Tom Walker",
-    "Title": "Just You and I",
-    "Duration (s)": 170,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-20T09:00:00Z",
-    "Scheduled Time": "10:52",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 207,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-06-20T10:00:00Z",
     "Scheduled Time": "11:01",
     "Displayed Time": "",
@@ -43096,5 +42964,16 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-07-06T00:00:00Z",
+    "Scheduled Time": "01:02",
+    "Displayed Time": "",
+    "Artist": "Tom Grennan",
+    "Title": "Full Attention",
+    "Duration (s)": 177,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
