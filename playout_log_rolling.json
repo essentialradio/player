@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-20T22:00:00Z",
-    "Scheduled Time": "23:02",
-    "Displayed Time": "",
-    "Artist": "with Ronny Costello",
-    "Title": "Club Classics Radio Show <14 - 19.06.25>",
-    "Duration (s)": 3511,
-    "Full Duration (s)": 3517,
-    "Duration (mins)": 59,
-    "Full Duration (mins)": 59
-  },
-  {
     "Hour": "2025-06-20T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "",
@@ -43294,5 +43283,16 @@
     "Full Duration (s)": 235,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-06T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "",
+    "Artist": "Essential Radio",
+    "Title": "Airplay 40 Intro",
+    "Duration (s)": 24,
+    "Full Duration (s)": 28,
+    "Duration (mins)": 0,
+    "Full Duration (mins)": 0
   }
 ]
