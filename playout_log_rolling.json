@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:01",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "American Town",
-    "Duration (s)": 196,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:05",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 158,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:08",
-    "Displayed Time": "",
-    "Artist": "Jay Sean",
-    "Title": "Down",
-    "Duration (s)": 188,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:11",
-    "Displayed Time": "",
-    "Artist": "Tyla",
-    "Title": "Push 2 Start",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:14",
-    "Displayed Time": "",
-    "Artist": "Pulp",
-    "Title": "Disco 2000",
-    "Duration (s)": 280,
-    "Full Duration (s)": 290,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:23",
-    "Displayed Time": "",
-    "Artist": "Sia",
-    "Title": "Chandelier",
-    "Duration (s)": 208,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:27",
-    "Displayed Time": "",
-    "Artist": "Perrie",
-    "Title": "You Go Your Way",
-    "Duration (s)": 201,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:30",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 162,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:33",
-    "Displayed Time": "",
-    "Artist": "AC/DC",
-    "Title": "You Shook Me All Night Long",
-    "Duration (s)": 206,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:40",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Beautiful Things",
-    "Duration (s)": 173,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:43",
-    "Displayed Time": "",
-    "Artist": "Agnes",
-    "Title": "Release Me",
-    "Duration (s)": 181,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:46",
-    "Displayed Time": "",
-    "Artist": "Black Country, New Road",
-    "Title": "Besties",
-    "Duration (s)": 208,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:49",
-    "Displayed Time": "",
-    "Artist": "Aztec Camera",
-    "Title": "Somewhere in My Heart",
-    "Duration (s)": 224,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-22T06:00:00Z",
-    "Scheduled Time": "07:53",
-    "Displayed Time": "",
-    "Artist": "Scouting for Girls",
-    "Title": "I Wish I Was James Bond",
-    "Duration (s)": 185,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-06-22T07:00:00Z",
     "Scheduled Time": "08:01",
     "Displayed Time": "",
@@ -43096,5 +42942,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-07T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "",
+    "Artist": "The Real Thing",
+    "Title": "You to Me Are Everything",
+    "Duration (s)": 183,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
