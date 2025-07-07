@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-21T19:00:00Z",
-    "Scheduled Time": "20:00",
-    "Displayed Time": "",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3478,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-06-21T20:00:00Z",
     "Scheduled Time": "21:00",
     "Displayed Time": "",
@@ -42720,6 +42709,17 @@
     "Title": "Heart By Heart",
     "Duration (s)": 183,
     "Full Duration (s)": 191,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-07T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "",
+    "Artist": "Emeli Sande",
+    "Title": "Next to Me",
+    "Duration (s)": 192,
+    "Full Duration (s)": 195,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
