@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio – Now Playing Widget</title>
+  <title>Essential Radio Widget</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -12,370 +12,292 @@
       color: #fff;
       margin: 0;
       padding: 0;
-      min-width: 0;
-      min-height: 0;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
     }
     .widget-container {
-      background: #181921;
-      border-radius: 20px;
-      box-shadow: 0 4px 32px #1117;
-      width: 330px;
-      max-width: 96vw;
-      padding: 26px 20px 20px 20px;
+      background: #191c29;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px #0006;
+      width: 100%;
+      max-width: 350px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 440px;
     }
     .logo {
-      width: 90px;
-      margin-bottom: 10px;
-      user-select: none;
-      pointer-events: none;
-      opacity: 0.97;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+      width: 78px;
+      margin-bottom: 14px;
+      border-radius: 13px;
+      box-shadow: 0 0 9px #fed35166;
+      background: #fed351;
+      object-fit: contain;
     }
-    .onair {
+    .on-air-now {
       color: #fed351;
-      font-weight: bold;
-      letter-spacing: 0.07em;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       font-size: 1em;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
       text-align: center;
     }
-    .current-show {
-      color: #fff;
-      font-size: 1.08em;
-      margin-bottom: 10px;
+    #currentShow {
+      font-size: 1.06em;
       font-weight: 600;
       text-align: center;
+      margin-bottom: 12px;
     }
-    .nowplaying-label {
-      color: #fed351;
+    #currentShow .show-presenter {
+      font-weight: 400;
+      font-size: 0.94em;
+      font-style: italic;
+      display: block;
+      opacity: 0.9;
+    }
+    .audio-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      width: 100%;
+      justify-content: center;
+    }
+    #play-toggle, #mute-toggle {
+      background: #fed351;
+      color: #111;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 16px;
       font-size: 1em;
-      margin-top: 5px;
-      margin-bottom: 3px;
-      font-weight: 500;
-      text-align: center;
-    }
-    .nowplaying-title {
-      font-size: 1.13em;
       font-weight: bold;
-      margin-bottom: 2px;
-      color: #fff;
-      text-align: center;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .nowplaying-artist {
-      font-size: 1em;
-      color: #ccc;
-      text-align: center;
-      margin-bottom: 5px;
+    #play-toggle:hover, #mute-toggle:hover {
+      background: #ffe67c;
     }
-    .nowplaying-artist a {
-      color: #fed351;
-      text-decoration: underline;
-      transition: color 0.15s;
+    #volume-slider {
+      width: 68px;
     }
-    .nowplaying-artist a:hover,
-    .nowplaying-artist a:focus {
-      color: #ffe67c;
-      text-decoration: underline;
+    .now-playing-box {
+      background: #24243e;
+      border-radius: 11px;
+      width: 100%;
+      padding: 12px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 13px;
     }
-    .artwork {
-      width: 90px;
-      height: 90px;
-      border-radius: 10px;
-      margin: 8px 0 12px 0;
+    #artwork {
+      width: 78px;
+      height: 78px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 2px solid #fed351;
       background: #222;
       object-fit: cover;
-      border: 2px solid #fed351;
-      box-shadow: 0 2px 8px #fed35155;
-      transition: filter 0.2s, opacity 0.2s;
-      opacity: 0;
-      filter: blur(7px) brightness(0.8);
     }
-    .artwork.loaded { opacity: 1; filter: none; }
-    .audio-controls {
-      margin: 7px 0 18px 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+    #now-playing {
+      font-size: 1.06em;
+      font-weight: 600;
+      color: #fed351;
+      text-align: center;
     }
-    .audio-btn {
-      background: #fed351;
-      border: none;
-      color: #222;
-      font-size: 1.15em;
-      border-radius: 7px;
-      padding: 5px 13px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.16s;
-    }
-    .audio-btn:active,
-    .audio-btn:focus { background: #ffe67c; }
-    .vol-slider {
-      width: 74px;
-      accent-color: #fed351;
+    #now-playing-artist {
+      font-size: 1em;
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+      margin-top: 2px;
     }
     .recent-title {
-      color: #fed351;
       font-size: 1em;
       font-weight: 600;
-      margin: 8px 0 0 0;
-      align-self: flex-start;
+      margin: 8px 0 3px 0;
+      color: #fed351;
+      text-align: center;
     }
-    .recent-list {
+    ul#recent-list {
       list-style: none;
+      margin: 0;
       padding: 0;
-      margin: 7px 0 0 0;
       width: 100%;
-      max-width: 99vw;
+      max-height: 100px;
+      overflow-y: auto;
     }
-    .recent-item {
+    ul#recent-list li {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 7px;
       padding: 5px 0;
-      border-bottom: 1px solid #28293c;
-      font-size: 0.98em;
+      border-bottom: 1px solid #2d2d45;
+      font-size: 0.96em;
     }
-    .recent-art {
-      width: 30px;
-      height: 30px;
-      border-radius: 5px;
+    ul#recent-list img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
       object-fit: cover;
-      background: #222;
       border: 1px solid #fed351;
-      opacity: 0;
-      transition: opacity 0.22s;
+      background: #222;
     }
-    .recent-art.loaded { opacity: 1; }
-    .recent-track-info {
-      flex: 1;
+    ul#recent-list span.info {
       color: #fff;
+      flex: 1;
       overflow: hidden;
-      white-space: nowrap;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    .recent-time {
+    ul#recent-list span.time {
       color: #fed351;
-      font-size: 0.93em;
-      font-weight: 600;
-      flex-shrink: 0;
-      width: 40px;
+      font-size: 0.89em;
+      width: 34px;
       text-align: right;
     }
-    @media (max-width: 400px) {
-      .widget-container { width: 99vw; padding: 12px 2vw; }
-      .logo { width: 64px; }
-      .artwork { width: 65px; height: 65px; }
+    @media (max-width: 420px) {
+      .widget-container { max-width: 94vw; padding: 10px 8px; }
+      #artwork { width: 58px; height: 58px; }
+      ul#recent-list img { width: 24px; height: 24px; }
+      #volume-slider, #mute-toggle { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="widget-container">
     <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
-    <div class="onair">ON AIR NOW</div>
-    <div class="current-show" id="currentShow">Loading…</div>
-    <div class="nowplaying-label">Now Playing:</div>
-    <div class="nowplaying-title" id="np-title">Loading…</div>
-    <div class="nowplaying-artist" id="np-artist"></div>
-    <img class="artwork" id="np-artwork" src="Essential Radio Logo.png" alt="Artwork" />
+    <div class="on-air-now">ON AIR NOW</div>
+    <div id="currentShow">Loading…</div>
     <div class="audio-controls">
-      <button class="audio-btn" id="play-btn">▶️</button>
-      <input type="range" min="0" max="100" value="100" class="vol-slider" id="vol-slider" />
-      <button class="audio-btn" id="mute-btn">🔊</button>
+      <button id="play-toggle">▶️</button>
+      <input id="volume-slider" type="range" min="0" max="100" value="80" />
+      <button id="mute-toggle">🔊</button>
+    </div>
+    <div class="now-playing-box">
+      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" />
+      <div id="now-playing">Loading…</div>
+      <div id="now-playing-artist"></div>
     </div>
     <div class="recent-title">Recently Played</div>
-    <ul class="recent-list" id="recent-list"></ul>
+    <ul id="recent-list"></ul>
   </div>
-<script>
-const PLAYOUT_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-const LATEST_URL = 'https://essentialradio.github.io/player/latestTrack.json';
-const SCHEDULE_URL = 'https://essentialradio.github.io/player/schedule.json';
-const STREAM_URL = 'https://streaming06.liveboxstream.uk/proxy/ayrshire/stream';
 
-// --- AUDIO PLAYER ---
-const audio = new Audio(STREAM_URL);
-audio.preload = "none";
-let isPlaying = false, lastVol = 1;
-const playBtn = document.getElementById("play-btn");
-const muteBtn = document.getElementById("mute-btn");
-const volSlider = document.getElementById("vol-slider");
+  <script>
+    const audio = new Audio("https://streaming06.liveboxstream.uk/proxy/ayrshire/stream");
+    audio.volume = 0.8;
+    let isPlaying = false;
+    let lastVolume = 0.8;
+    const playBtn = document.getElementById('play-toggle');
+    const muteBtn = document.getElementById('mute-toggle');
+    const volumeSlider = document.getElementById('volume-slider');
 
-playBtn.addEventListener('click', () => {
-  if (!isPlaying) {
-    audio.play().catch(()=>{});
-    playBtn.textContent = "⏸";
-    isPlaying = true;
-  } else {
-    audio.pause();
-    playBtn.textContent = "▶️";
-    isPlaying = false;
-  }
-});
-audio.addEventListener('play', () => { playBtn.textContent = "⏸"; isPlaying = true; });
-audio.addEventListener('pause', () => { playBtn.textContent = "▶️"; isPlaying = false; });
-volSlider.addEventListener('input', () => {
-  const v = volSlider.value/100;
-  audio.volume = v;
-  lastVol = v;
-  muteBtn.textContent = v === 0 ? '🔇' : v < 0.5 ? '🔈' : '🔊';
-});
-muteBtn.addEventListener('click', () => {
-  if (!audio.muted && audio.volume > 0) {
-    audio.muted = true; muteBtn.textContent = '🔇';
-  } else {
-    audio.muted = false; audio.volume = lastVol || 1; muteBtn.textContent = (lastVol === 0 ? '🔇' : lastVol < 0.5 ? '🔈' : '🔊');
-  }
-});
-audio.volume = 1;
+    playBtn.onclick = () => {
+      if (!isPlaying) {
+        audio.play();
+        playBtn.textContent = '⏸';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️';
+        isPlaying = false;
+      }
+    };
 
-// --- UK TIME (handles BST/GMT) ---
-function getUKTime() {
-  // UTC time
-  const nowUTC = new Date(Date.now() + (new Date().getTimezoneOffset() * 60000));
-  // BST: last Sunday in March to last Sunday in October
-  const year = nowUTC.getUTCFullYear();
-  const startBST = new Date(Date.UTC(year, 2, 31 - new Date(Date.UTC(year, 2, 31)).getUTCDay(), 1));
-  const endBST = new Date(Date.UTC(year, 9, 31 - new Date(Date.UTC(year, 9, 31)).getUTCDay(), 1));
-  const isBST = nowUTC >= startBST && nowUTC < endBST;
-  return new Date(nowUTC.getTime() + (isBST ? 60 : 0) * 60000);
-}
+    volumeSlider.oninput = function() {
+      audio.volume = this.value / 100;
+      lastVolume = audio.volume;
+      muteBtn.textContent = audio.volume === 0 ? '🔇' : audio.volume < 0.5 ? '🔈' : '🔊';
+    };
 
-// --- NOW PLAYING & ARTWORK ---
-const npTitle = document.getElementById('np-title');
-const npArtist = document.getElementById('np-artist');
-const npArt = document.getElementById('np-artwork');
+    muteBtn.onclick = function() {
+      if (!audio.muted && audio.volume > 0) {
+        audio.muted = true;
+        muteBtn.textContent = '🔇';
+        volumeSlider.value = 0;
+      } else {
+        audio.muted = false;
+        muteBtn.textContent = lastVolume < 0.5 ? '🔈' : '🔊';
+        volumeSlider.value = lastVolume * 100;
+      }
+    };
 
-async function updateNowPlaying() {
-  try {
-    const res = await fetch(LATEST_URL+'?_='+(Date.now()), {cache:'no-store'});
-    const data = await res.json();
-
-    // Fallback to default if nothing recent or recognisable
-    let showDefault = false;
-    // 1. If missing title or artist
-    if (!data.title || !data.artist) showDefault = true;
-
-    // 2. If metadata is stale (older than 10 mins)
-    if (data.startTime) {
-      const played = new Date(data.startTime);
-      const now = new Date();
-      const diffMins = (now - played) / 60000;
-      if (diffMins > 10) showDefault = true;
-    }
-
-    // 3. If title contains things like "off air", "automation", or any other trigger
-    if (data.title && /off[\s\-]?air|automation|default|playlist|hold|music/i.test(data.title)) {
-      showDefault = true;
-    }
-
-    if (showDefault) {
-      npTitle.textContent = "Essential Music for Ayrshire College";
-      npArtist.innerHTML = 'Check out our website, <a href="https://www.essential.radio/" target="_blank">essential.radio</a>';
-      npArt.src = "Essential Radio Logo.png";
-      npArt.classList.add('loaded');
-      return;
-    }
-
-    // Normal display
-    npTitle.textContent = data.title;
-    npArtist.textContent = "by " + data.artist;
-    let img = "Essential Radio Logo.png";
-    if (data.artwork) img = data.artwork;
-    npArt.classList.remove('loaded');
-    npArt.src = img;
-    npArt.onload = () => npArt.classList.add('loaded');
-    npArt.onerror = () => { npArt.src = "Essential Radio Logo.png"; npArt.classList.add('loaded'); }
-  } catch {
-    npTitle.textContent = "Essential Music for Ayrshire College";
-    npArtist.innerHTML = 'Check out our website, <a href="https://www.essential.radio/" target="_blank">essential.radio</a>';
-    npArt.src = "Essential Radio Logo.png";
-    npArt.classList.add('loaded');
-  }
-}
-setInterval(updateNowPlaying, 15_000);
-updateNowPlaying();
-
-// --- ON AIR NOW ---
-const currentShow = document.getElementById("currentShow");
-async function updateCurrentShow() {
-  try {
-    const res = await fetch(SCHEDULE_URL+'?_='+(Date.now()), {cache:'no-store'});
-    const schedule = await res.json();
-    const now = getUKTime();
-    const day = now.toLocaleString("en-GB",{weekday:"long"});
-    const shows = schedule && schedule[day];
-    let out = "Off Air";
-    if (shows) {
-      const nowMins = now.getHours()*60 + now.getMinutes();
-      for (const show of shows) {
-        const [sh,sm] = show.start.split(":").map(Number);
-        const [eh,em] = show.end.split(":").map(Number);
-        let start = sh*60 + sm;
-        let end = eh*60 + em;
-        if (end===0 && start>0) end = 1440;
-        if (nowMins >= start && nowMins < end) {
-          out = show.title || "On Air";
-        }
+    async function fetchSchedule() {
+      try {
+        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        return await res.json();
+      } catch {
+        return null;
       }
     }
-    currentShow.textContent = out;
-  } catch {
-    currentShow.textContent = "Schedule unavailable";
-  }
-}
-setInterval(updateCurrentShow, 60_000);
-updateCurrentShow();
 
-// --- RECENTLY PLAYED ---
-const recentList = document.getElementById("recent-list");
-function decode(s){ const t = document.createElement('textarea'); t.innerHTML=s; return t.value; }
-async function updateRecent() {
-  try {
-    const res = await fetch(PLAYOUT_URL+'?_='+(Date.now()), {cache:'no-store'});
-    const data = await res.json();
-    recentList.innerHTML = '';
-    let count = 0;
-    for (let i = data.length - 1; i >= 0 && count < 5; i--) {
-      const item = data[i];
-      if (!item.Artist || !item.Title) continue;
-      let art = "Essential Radio Logo.png";
-      if (item.Artwork) art = item.Artwork;
-      const li = document.createElement('li');
-      li.className = "recent-item";
-      const img = document.createElement('img');
-      img.src = art;
-      img.className = "recent-art";
-      img.alt = "Artwork";
-      img.onload = ()=>img.classList.add('loaded');
-      img.onerror = ()=>{img.src="Essential Radio Logo.png"; img.classList.add('loaded');}
-      const info = document.createElement('div');
-      info.className = "recent-track-info";
-      info.textContent = decode(item.Artist) + " – " + decode(item.Title);
-      const time = document.createElement('span');
-      time.className = "recent-time";
-      time.textContent = item["Displayed Time"]?.slice(0,5) || "";
-      li.appendChild(img);
-      li.appendChild(info);
-      li.appendChild(time);
-      recentList.appendChild(li);
-      count++;
+    function getCurrentShow(schedule) {
+      const now = new Date();
+      const day = now.toLocaleString("en-GB", { weekday: "long" });
+      const shows = schedule?.[day] || [];
+      const nowMins = now.getHours() * 60 + now.getMinutes();
+      for (const show of shows) {
+        const [sh, sm] = show.start.split(":").map(Number);
+        const [eh, em] = show.end.split(":").map(Number);
+        let start = sh * 60 + sm, end = eh * 60 + em;
+        if (end === 0 && start > 0) end = 1440;
+        if (nowMins >= start && nowMins < end) return show.title;
+      }
+      return "Off Air";
     }
-  } catch {
-    recentList.innerHTML = '<li style="color:#fed351;text-align:center;">Unable to load recent tracks</li>';
-  }
-}
-setInterval(updateRecent, 18_000);
-updateRecent();
-</script>
+
+    async function updateOnAirNow() {
+      const schedule = await fetchSchedule();
+      const show = schedule ? getCurrentShow(schedule) : "Loading…";
+      const el = document.getElementById("currentShow");
+      if (show.includes(" with ")) {
+        const [title, presenter] = show.split(" with ");
+        el.innerHTML = `<span class="show-title">${title.trim()}</span><span class="show-presenter">with ${presenter.trim()}</span>`;
+      } else {
+        el.textContent = show;
+      }
+    }
+
+    async function updateNowPlaying() {
+      try {
+        const res = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+        const data = await res.json();
+        document.getElementById("now-playing").textContent = data.title || "Loading…";
+        document.getElementById("now-playing-artist").textContent = data.artist ? `by ${data.artist}` : "";
+        document.getElementById("artwork").src = data.artwork || "Essential Radio Logo.png";
+      } catch {
+        document.getElementById("now-playing").textContent = "Loading…";
+        document.getElementById("now-playing-artist").textContent = "";
+        document.getElementById("artwork").src = "Essential Radio Logo.png";
+      }
+    }
+
+    async function updateRecent() {
+      try {
+        const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now());
+        const data = await res.json();
+        const list = document.getElementById('recent-list');
+        list.innerHTML = "";
+        data.slice(-8, -2).reverse().forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <img src="${item.Artwork || 'Essential Radio Logo.png'}" alt="" />
+            <span class="info">${item.Artist} – ${item.Title}</span>
+            <span class="time">${(item["Displayed Time"] || item["Scheduled Time"] || "").slice(0, 5)}</span>`;
+          list.appendChild(li);
+        });
+      } catch {
+        document.getElementById('recent-list').innerHTML = '<li><span class="info">Unavailable</span></li>';
+      }
+    }
+
+    updateOnAirNow();
+    updateNowPlaying();
+    updateRecent();
+    setInterval(updateOnAirNow, 60_000);
+    setInterval(updateNowPlaying, 12_000);
+    setInterval(updateRecent, 18_000);
+  </script>
 </body>
 </html>
