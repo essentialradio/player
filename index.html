@@ -759,7 +759,6 @@
         .then(response => response.json())
         .then(data => {
           const container = document.getElementById('mixcloud-embeds');
-          const shows = data.data.slice(0, 6); // Only show 6
           shows.forEach(show => {
             const block = document.createElement('div');
             block.className = 'show-block';
