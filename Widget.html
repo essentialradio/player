@@ -353,9 +353,8 @@
         const data = await res.json();
         const list = document.getElementById('recent-list');
         list.innerHTML = "";
-        // Take the 4 previous tracks (skipping latest two: currently playing and just played)
-        // Show up to 4 previous tracks after the currently playing one
-	const recentItems = data.slice(-5, -1).reverse();
+        const recentItems = data.slice(-5).reverse().slice(1);
+
 
 
 
