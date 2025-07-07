@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-21T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Bill Grainger",
-    "Title": "Fire Island Hi-NRG",
-    "Duration (s)": 3592,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-22T00:00:00Z",
     "Scheduled Time": "01:02",
     "Displayed Time": "",
@@ -42986,5 +42975,16 @@
     "Full Duration (s)": 259,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-07T11:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 160,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
