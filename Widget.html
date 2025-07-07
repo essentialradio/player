@@ -354,7 +354,7 @@
         const list = document.getElementById('recent-list');
         list.innerHTML = "";
         // Take the 4 previous tracks (skipping latest two: currently playing and just played)
-        const recentItems = data.slice(-6, -2).reverse();
+        const recentItems = data.slice(1, 5).reverse; // 4 tracks after now playing
 
         for (const item of recentItems) {
           const artist = decodeHtmlEntities(item.Artist);
