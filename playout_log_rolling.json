@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-06-21T17:00:00Z",
-    "Scheduled Time": "18:01",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1358,
-    "Full Duration (s)": 1361,
-    "Duration (mins)": 23,
-    "Full Duration (mins)": 23
-  },
-  {
-    "Hour": "2025-06-21T17:00:00Z",
-    "Scheduled Time": "18:25",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 924,
-    "Full Duration (s)": 929,
-    "Duration (mins)": 15,
-    "Full Duration (mins)": 15
-  },
-  {
-    "Hour": "2025-06-21T17:00:00Z",
-    "Scheduled Time": "18:42",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1035,
-    "Full Duration (s)": 1037,
-    "Duration (mins)": 17,
-    "Full Duration (mins)": 17
-  },
-  {
     "Hour": "2025-06-21T18:00:00Z",
     "Scheduled Time": "19:01",
     "Displayed Time": "",
@@ -42491,5 +42458,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-07T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Azizam",
+    "Duration (s)": 158,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
