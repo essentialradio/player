@@ -22,8 +22,8 @@
       background: #191c29;
       border-radius: 18px;
       box-shadow: 0 2px 16px #0006;
-      width: 480px;
-      height: 320px;
+      width: 600px;
+      height: 400px;
       display: flex;
       flex-direction: row;
       padding: 16px;
@@ -49,7 +49,7 @@
 
     #artwork {
       width: 100%;
-      max-width: 110px;
+      max-width: 120px;
       aspect-ratio: 1/1;
       border-radius: 10px;
       border: 2px solid #fed351;
@@ -135,7 +135,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      max-height: 95px;
+      max-height: 180px;
       overflow-y: auto;
     }
 
@@ -170,22 +170,6 @@
       width: 36px;
       text-align: right;
       flex-shrink: 0;
-    }
-
-    @media (max-width: 500px) {
-      .widget-container {
-        flex-direction: column;
-        height: auto;
-        width: 95vw;
-      }
-      .left, .right {
-        width: 100%;
-        align-items: center;
-      }
-      .audio-controls {
-        justify-content: center;
-        flex-wrap: wrap;
-      }
     }
   </style>
 </head>
@@ -293,12 +277,21 @@
 
     async function updateNowPlaying() {
       try {
-        const res = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+        const res = await fetch('https://player-green.vercel.app/api/metadata?_=' + Date.now());
         const data = await res.json();
-        document.getElementById("now-playing").textContent = data.title || "Loading…";
-        document.getElementById("now-playing-artist").textContent = data.artist ? `by ${data.artist}` : "";
-        document.getElementById("artwork").src = data.artwork || "Essential Radio Logo.png";
-      } catch {
+
+        const artist = data.artist || "";
+        const title = data.title || "Loading…";
+        const searchTerm = encodeURIComponent(`${artist} ${title}`);
+        const iTunesRes = await fetch(`https://itunes.apple.com/search?term=${searchTerm}&media=music&limit=1`);
+        const iTunesData = await iTunesRes.json();
+        const artwork = iTunesData.results?.[0]?.artworkUrl100?.replace('100x100', '300x300') || "Essential Radio Logo.png";
+
+        document.getElementById("now-playing").textContent = title;
+        document.getElementById("now-playing-artist").textContent = artist ? `by ${artist}` : "";
+        document.getElementById("artwork").src = artwork;
+      } catch (err) {
+        console.error("Now Playing error:", err);
         document.getElementById("now-playing").textContent = "Loading…";
         document.getElementById("now-playing-artist").textContent = "";
         document.getElementById("artwork").src = "Essential Radio Logo.png";
@@ -307,19 +300,29 @@
 
     async function updateRecent() {
       try {
-        const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now());
+        const res = await fetch('https://player-green.vercel.app/api/metadata/log?_=' + Date.now());
         const data = await res.json();
         const list = document.getElementById('recent-list');
         list.innerHTML = "";
-        data.slice(-6, -2).reverse().forEach(item => {
+
+        const recentItems = data.slice(-6, -2).reverse();
+
+        for (const item of recentItems) {
+          const searchTerm = encodeURIComponent(`${item.artist} ${item.title}`);
+          const iTunesRes = await fetch(`https://itunes.apple.com/search?term=${searchTerm}&media=music&limit=1`);
+          const iTunesData = await iTunesRes.json();
+          const artwork = iTunesData.results?.[0]?.artworkUrl100?.replace('100x100', '100x100') || "Essential Radio Logo.png";
+
           const li = document.createElement('li');
           li.innerHTML = `
-            <img src="${item.Artwork || 'Essential Radio Logo.png'}" alt="" />
-            <span class="info">${item.Artist} – ${item.Title}</span>
-            <span class="time">${(item["Displayed Time"] || item["Scheduled Time"] || "").slice(0, 5)}</span>`;
+            <img src="${artwork}" alt="" />
+            <span class="info">${item.artist} – ${item.title}</span>
+            <span class="time">${(item.time || "").slice(0, 5)}</span>
+          `;
           list.appendChild(li);
-        });
-      } catch {
+        }
+      } catch (err) {
+        console.error("Recently Played error:", err);
         document.getElementById('recent-list').innerHTML = '<li><span class="info">Unavailable</span></li>';
       }
     }
