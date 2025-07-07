@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-21T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3455,
-    "Full Duration (s)": 3458,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-06-21T17:00:00Z",
     "Scheduled Time": "18:01",
     "Displayed Time": "",
@@ -42357,6 +42346,17 @@
     "Title": "Tonight",
     "Duration (s)": 173,
     "Full Duration (s)": 175,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-07T06:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "",
+    "Artist": "Gayle",
+    "Title": "ABCDEF",
+    "Duration (s)": 150,
+    "Full Duration (s)": 152,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
