@@ -355,7 +355,7 @@
         list.innerHTML = "";
         // Take the 4 previous tracks (skipping latest two: currently playing and just played)
         // Show up to 4 previous tracks after the currently playing one
-	const recentItems = data.slice(1, 3).reverse;
+	const recentItems = data.slice(1, 3).reverse();
 
 
         for (const item of recentItems) {
