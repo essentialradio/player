@@ -165,13 +165,17 @@
       margin-right: 2px;
     }
     ul#recent-list span.info {
-      color: #fff;
-      font-size: 0.99em;
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+  color: #fff;
+  font-size: 0.99em;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
     ul#recent-list span.time {
       color: #fed351;
       font-size: 0.94em;
