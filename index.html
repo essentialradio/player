@@ -704,11 +704,23 @@
     font-size: 0.96em !important;
   }
 }
+@media (max-width: 768px) {
+  #burgerMenuBtn {
+    left: 7px !important;
+    top: 7px !important;
+    right: auto !important;
+    font-size: 1.45em !important;
+    padding: 7px 11px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 4px #0001 !important;
+  }
+}
+
 </style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
-<div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;position:fixed;top:16px;right:22px;z-index:2001;background:#fed351;padding:11px 18px;border-radius:11px;box-shadow:0 2px 8px #0002;font-size:2.1em;cursor:pointer;">
+<div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;position:fixed;top:16px;left:10px;z-index:2001;background:#fed351;padding:11px 18px;border-radius:11px;box-shadow:0 2px 8px #0002;font-size:2.1em;cursor:pointer;">
   ☰
 </div>
 
