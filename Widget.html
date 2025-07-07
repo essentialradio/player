@@ -353,7 +353,8 @@
         const data = await res.json();
         const list = document.getElementById('recent-list');
         list.innerHTML = "";
-        const recentItems = data.slice(1, 5);
+        const recentItems = data.slice(-5, -1).reverse();
+
 
 
 
