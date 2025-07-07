@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-22T08:00:00Z",
-    "Scheduled Time": "09:02",
-    "Displayed Time": "",
-    "Artist": "Caledonia Media",
-    "Title": "The Week in Holyrood with Charles Fletcher",
-    "Duration (s)": 3401,
-    "Full Duration (s)": 3420,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-06-22T09:00:00Z",
     "Scheduled Time": "10:01",
     "Displayed Time": "",
@@ -43129,5 +43118,16 @@
     "Full Duration (s)": 219,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-07T20:00:00Z",
+    "Scheduled Time": "21:01",
+    "Displayed Time": "",
+    "Artist": "Oasis",
+    "Title": "Stand by Me",
+    "Duration (s)": 286,
+    "Full Duration (s)": 290,
+    "Duration (mins)": 5,
+    "Full Duration (mins)": 5
   }
 ]
