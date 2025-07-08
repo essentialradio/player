@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:01",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 160,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "",
-    "Artist": "Robbie Williams",
-    "Title": "Let Me Entertain You",
-    "Duration (s)": 209,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:08",
-    "Displayed Time": "",
-    "Artist": "Rudimental Featuring John Newman",
-    "Title": "Feel The Love",
-    "Duration (s)": 257,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:13",
-    "Displayed Time": "",
-    "Artist": "Beyonce",
-    "Title": "BREAK MY SOUL",
-    "Duration (s)": 156,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:16",
-    "Displayed Time": "",
-    "Artist": "Arctic Monkeys",
-    "Title": "I Bet You Look Good on the Dancefloor",
-    "Duration (s)": 164,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:22",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:26",
-    "Displayed Time": "",
-    "Artist": "Olivia Rodrigo",
-    "Title": "Vampire",
-    "Duration (s)": 211,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:29",
-    "Displayed Time": "",
-    "Artist": "Def Leppard",
-    "Title": "Pour Some Sugar on Me",
-    "Duration (s)": 281,
-    "Full Duration (s)": 293,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:34",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:41",
-    "Displayed Time": "",
-    "Artist": "Mark Ronson Feat. Miley Cyrus",
-    "Title": "Nothing Breaks Like a Heart",
-    "Duration (s)": 207,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:44",
-    "Displayed Time": "",
-    "Artist": "Lola Young",
-    "Title": "One Thing",
-    "Duration (s)": 200,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:48",
-    "Displayed Time": "",
-    "Artist": "Shania Twain",
-    "Title": "Man! I Feel Like a Woman",
-    "Duration (s)": 226,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:51",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson x Alex Warren",
-    "Title": "Carry You Home",
-    "Duration (s)": 158,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T04:00:00Z",
-    "Scheduled Time": "05:54",
-    "Displayed Time": "",
-    "Artist": "James Blunt",
-    "Title": "Wisemen",
-    "Duration (s)": 183,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-06-23T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "",
@@ -44425,6 +44271,17 @@
     "Title": "Firestarter",
     "Duration (s)": 222,
     "Full Duration (s)": 226,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-08T15:00:00Z",
+    "Scheduled Time": "16:01",
+    "Displayed Time": "",
+    "Artist": "Adele",
+    "Title": "Rolling in the Deep",
+    "Duration (s)": 225,
+    "Full Duration (s)": 227,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
