@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-22T15:00:00Z",
-    "Scheduled Time": "16:03",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3590,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-22T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "",
@@ -43525,5 +43514,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-08T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "",
+    "Artist": "Swedish House Mafia Feat. John Martin",
+    "Title": "Don't You Worry Child",
+    "Duration (s)": 206,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
   }
 ]
