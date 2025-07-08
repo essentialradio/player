@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-23T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3403,
-    "Full Duration (s)": 3411,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-06-23T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44272,6 +44261,17 @@
     "Duration (s)": 218,
     "Full Duration (s)": 222,
     "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-08T11:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 208,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
 ]
