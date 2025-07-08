@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-22T21:00:00Z",
-    "Scheduled Time": "22:04",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3475,
-    "Full Duration (s)": 3478,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-06-22T22:00:00Z",
     "Scheduled Time": "23:00",
     "Displayed Time": "",
@@ -43897,6 +43886,17 @@
     "Title": "There She Goes",
     "Duration (s)": 156,
     "Full Duration (s)": 164,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-08T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "",
+    "Artist": "Myles Smith",
+    "Title": "Stargazing",
+    "Duration (s)": 167,
+    "Full Duration (s)": 173,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
