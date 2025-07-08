@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-22T23:00:00Z",
-    "Scheduled Time": "00:02",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3397,
-    "Full Duration (s)": 3406,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-06-23T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -44152,5 +44141,16 @@
     "Full Duration (s)": 174,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-08T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "",
+    "Artist": "Culture Beat",
+    "Title": "Mr Vain",
+    "Duration (s)": 252,
+    "Full Duration (s)": 256,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
