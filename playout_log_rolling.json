@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "",
-    "Artist": "Christina Perri",
-    "Title": "Jar of Hearts",
-    "Duration (s)": 209,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:07",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:10",
-    "Displayed Time": "",
-    "Artist": "Robert Palmer",
-    "Title": "Bad Case of Loving You (Doctor, Doctor)",
-    "Duration (s)": 183,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:13",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Before You Go",
-    "Duration (s)": 203,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:20",
-    "Displayed Time": "",
-    "Artist": "Tyler, The Creator, Lola Young",
-    "Title": "Like Him",
-    "Duration (s)": 267,
-    "Full Duration (s)": 278,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:24",
-    "Displayed Time": "",
-    "Artist": "John Parr",
-    "Title": "The Best",
-    "Duration (s)": 198,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:27",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 167,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:30",
-    "Displayed Time": "",
-    "Artist": "Jonas Blue Featuring William Singe",
-    "Title": "Mama",
-    "Duration (s)": 170,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:33",
-    "Displayed Time": "",
-    "Artist": "Mark Ronson & RAYE",
-    "Title": "Suzanne",
-    "Duration (s)": 223,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:40",
-    "Displayed Time": "",
-    "Artist": "Blue",
-    "Title": "Too Close",
-    "Duration (s)": 217,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:43",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:46",
-    "Displayed Time": "",
-    "Artist": "Zara Larsson",
-    "Title": "Can't Tame Her",
-    "Duration (s)": 188,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:49",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 215,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-23T12:00:00Z",
-    "Scheduled Time": "13:53",
-    "Displayed Time": "",
-    "Artist": "Avicii",
-    "Title": "Hey Brother",
-    "Duration (s)": 248,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-23T13:00:00Z",
     "Scheduled Time": "14:01",
     "Displayed Time": "",
@@ -44427,5 +44273,16 @@
     "Full Duration (s)": 288,
     "Duration (mins)": 4,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-07-09T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Beyonce",
+    "Title": "Irreplaceable",
+    "Duration (s)": 222,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
