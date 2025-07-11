@@ -1371,23 +1371,80 @@
   <script>
     async function fetchWeather() {
       const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=Kilmarnock,GB&units=metric&appid=${API_KEY}`;
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        const iconCode = data.weather[0].icon;
-        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-        const temp = Math.round(data.main.temp);
-        const desc = data.weather[0].description;
-        document.getElementById("weather-icon").src = iconUrl;
-        document.getElementById("weather-icon").alt = desc;
-        document.getElementById("weather-text").innerText = `${desc.charAt(0).toUpperCase() + desc.slice(1)}, ${temp}°C`;
-      } catch (e) {
-        document.getElementById("weather-text").innerText = "Weather unavailable";
-      }
-    }
-    fetchWeather();
-    setInterval(fetchWeather, 15 * 60 * 1000); // refresh every 15 mins
+  const url = 'https://api.openweathermap.org/data/2.5/weather?q=Kilmarnock,GB&units=metric&appid=' + API_KEY;
+
+  // Each raw phrase → an array of nicer variants
+  const niceVariants = {
+    'clear sky':               ['Sunny', 'Bright sunshine', 'Blue skies'],
+    'few clouds':              ['Mostly sunny', 'Sunny spells', 'Bright with a few clouds'],
+    'scattered clouds':        ['Partly cloudy', 'Patchy cloud', 'Sun & cloud mix'],
+    'broken clouds':           ['Partly cloudy', 'Sunny intervals', 'Some cloud, some sun'],
+    'overcast clouds':         ['Cloudy', 'Overcast', 'Dull and grey'],
+    'light rain':              ['Light rain', 'Drizzly', 'Spits of rain'],
+    'moderate rain':           ['Rain', 'Steady rain', 'Showery'],
+    'heavy intensity rain':    ['Heavy rain', 'Pouring', 'Soaking rain'],
+    'very heavy rain':         ['Very heavy rain', 'Torrential rain'],
+    'extreme rain':            ['Torrential rain', 'Driving rain'],
+    'freezing rain':           ['Freezing rain', 'Icy rain'],
+    'light intensity shower rain': ['Intermittent showers', 'On-off light showers'],
+    'shower rain':             ['Showers', 'Passing showers'],
+    'heavy shower rain':       ['Heavy showers', 'Downpours'],
+    'ragged shower rain':      ['Blustery showers', 'Wind-driven showers'],
+    'light drizzle':           ['Drizzle', 'Fine drizzle'],
+    'drizzle':                 ['Patchy drizzle', 'Light drizzle'],
+    'heavy intensity drizzle': ['Heavy drizzle', 'Thick drizzle'],
+    'light snow':              ['Light snow', 'Flurries'],
+    'snow':                    ['Snow', 'Snowy'],
+    'heavy snow':              ['Heavy snow', 'Snow piling up'],
+    'sleet':                   ['Sleet', 'Wintry mix'],
+    'light shower snow':       ['Light snow showers', 'Flurries'],
+    'shower snow':             ['Snow showers', 'Burst of snow'],
+    'heavy shower snow':       ['Heavy snow showers', 'Snow squalls'],
+    'mist':                    ['Misty', 'Mist hanging around'],
+    'smoke':                   ['Smoky skies'],
+    'haze':                    ['Hazy', 'Hazy sunshine'],
+    'fog':                     ['Foggy', 'Thick fog'],
+    'sand':                    ['Dusty', 'Sandy air'],
+    'dust':                    ['Dusty', 'Dust in the air'],
+    'volcanic ash':            ['Volcanic haze'],
+    'squalls':                 ['Gusty winds', 'Windy'],
+    'tornado':                 ['Tornado conditions'],
+    'light thunderstorm':      ['Light thunderstorm', 'A few rumbles of thunder'],
+    'thunderstorm':            ['Thunderstorms', 'Stormy with thunder'],
+    'heavy thunderstorm':      ['Intense thunderstorm', 'Severe thunderstorms'],
+    'ragged thunderstorm':     ['Isolated thunderstorm'],
+    'thunderstorm with rain':  ['Thunderstorm & rain', 'Storm with rain'],
+    'thunderstorm with heavy rain': ['Storm with heavy rain', 'Violent storm & rain']
+  };
+
+  // Helper: pick a random element from an array
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  try {
+    const res   = await fetch(url);
+    const data  = await res.json();
+    const raw   = data.weather[0].description.toLowerCase();
+    const temp  = Math.round(data.main.temp);
+    const clouds= data.clouds.all;        // 0–100 %
+
+    // 1) Special override for hot & clear
+    let desc = (temp > 20 && clouds < 20)
+      ? 'Warm and sunny'
+      : pick(niceVariants[raw] || [raw.charAt(0).toUpperCase() + raw.slice(1)]);
+
+    // 2) Update icon + text
+    const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    document.getElementById('weather-icon').src = iconUrl;
+    document.getElementById('weather-icon').alt = desc;
+    document.getElementById('weather-text').textContent = `${desc}, ${temp}°C`;
+
+  } catch (e) {
+    document.getElementById('weather-text').textContent = 'Weather unavailable';
+  }
+}
+
+fetchWeather();
+setInterval(fetchWeather, 15 * 60 * 1000);   // refresh every 15 min
   </script>
 
   <!-- MODAL JS -->
