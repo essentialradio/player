@@ -427,9 +427,16 @@
       .left-panel, .right-panel { width: 100%; padding: 20px; }
       #artwork { width: 100%; max-width: 280px; height: auto; }
       #onAirNow { text-align: center; }
-    }
-    #onAirNow { margin-top: 10px; margin-bottom: 10px; text-align: center; padding-right: 16px; max-width: 95%; margin-left: auto; margin-right: 0; }
-    #onAirNow br { display: none; }
+    }@media (max-width: 768px) {
+  #onAirNow {
+    text-align: center !important;
+    padding: 0 !important;
+    margin: 4px auto !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+#onAirNow br { display: none; }
     #play-toggle { margin-bottom: 12px; }
     #onAirNow span { display: block; line-height: 1.2; }
     .show-title { font-weight: 600; }
