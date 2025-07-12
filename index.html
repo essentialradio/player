@@ -248,11 +248,19 @@
       color: #ff4d4d;
       font-weight: 700;
       animation: pulseText 5s infinite;
-    }
-    @keyframes pulseText {
-      0%, 100% { opacity: 0.6; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.1); }
-    }
+  
+
+/* Keep ON-AIR header tidy on all screens */
+#onAirNow{
+  position: relative;
+  overflow: hidden;   /* ← main fix */
+}
+
+/* Optional: reduce scale so it’s less likely to clip */
+@keyframes pulseText{
+  0%,100%{opacity:.6; transform:scale(1);}
+  50%    {opacity:1;  transform:scale(1.05);} /* was 1.1 */
+}
     @media (max-width: 768px) {
       button#play-toggle {
         font-size: 16px;
