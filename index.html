@@ -426,36 +426,10 @@
       .strip-container { flex-direction: column; }
       .left-panel, .right-panel { width: 100%; padding: 20px; }
       #artwork { width: 100%; max-width: 280px; height: auto; }
-     
-@media (max-width: 750px) {
-  #onAirNow {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #ff4c4c;
-    margin-top: -2px;
-    margin-bottom: 6px;
-    line-height: 1.4em !important;
-    padding-bottom: 4px !important;
-    overflow: visible !important;
-    text-align: right;
-    width: 100%;
-  }
-
-  #logo {
-    max-height: 40px;
-    margin-right: auto;
-    z-index: 2;
-    position: relative;
-  }
-
-  #nowPlayingBlock, .header-container, .top-banner {
-    overflow: visible !important;
-  }
-}
-#onAirNow br { display: none; }
+      #onAirNow { text-align: center; }
+    }
+    #onAirNow { margin-top: 10px; margin-bottom: 10px; text-align: center; padding-right: 16px; max-width: 95%; margin-left: auto; margin-right: 0; }
+    #onAirNow br { display: none; }
     #play-toggle { margin-bottom: 12px; }
     #onAirNow span { display: block; line-height: 1.2; }
     .show-title { font-weight: 600; }
