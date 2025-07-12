@@ -427,14 +427,13 @@
       .left-panel, .right-panel { width: 100%; padding: 20px; }
       #artwork { width: 100%; max-width: 280px; height: auto; }
      
-/* FINAL fix – prevents right-edge clipping */
-#onAirNow{
-  max-width:none !important;      /* full width of its parent                */
-  width:100%     !important;      /* always stretch all the way              */
-  padding-right:0!important;      /* no hidden padding                       */
-  overflow:visible!important;     /* let descenders show                     */
-  text-align:left!important;      /* keep “Essential Radio” layout as before */
-  box-sizing:border-box!important;/* include any padding you add in future   */
+#onAirNow {
+  text-align: right !important;       /* keep it right-aligned */
+  width: 100% !important;             /* fill entire container */
+  max-width: 100% !important;         /* no hidden overflow */
+  padding-right: 12px !important;     /* slight spacing but not too much */
+  box-sizing: border-box !important;  /* include padding in width */
+  overflow: visible !important;       /* allow full character display */
 }
 #onAirNow br { display: none; }
     #play-toggle { margin-bottom: 12px; }
