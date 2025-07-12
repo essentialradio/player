@@ -1379,67 +1379,90 @@
       const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
   const url = 'https://api.openweathermap.org/data/2.5/weather?q=Kilmarnock,GB&units=metric&appid=' + API_KEY;
 
-  // Each raw phrase → an array of nicer variants
-  const niceVariants = {
-    'clear sky':               ['Sunny', 'Bright sunshine', 'Blue skies'],
-    'few clouds':              ['Mostly sunny', 'Sunny spells', 'Bright with a few clouds'],
-    'scattered clouds':        ['Partly cloudy', 'Patchy cloud', 'Sun & cloud mix'],
-    'broken clouds':           ['Partly cloudy', 'Sunny intervals', 'Some cloud, some sun'],
-    'overcast clouds':         ['Cloudy', 'Overcast', 'Dull and grey'],
-    'light rain':              ['Light rain', 'Drizzly', 'Spits of rain'],
-    'moderate rain':           ['Rain', 'Steady rain', 'Showery'],
-    'heavy intensity rain':    ['Heavy rain', 'Pouring', 'Soaking rain'],
-    'very heavy rain':         ['Very heavy rain', 'Torrential rain'],
-    'extreme rain':            ['Torrential rain', 'Driving rain'],
-    'freezing rain':           ['Freezing rain', 'Icy rain'],
-    'light intensity shower rain': ['Intermittent showers', 'On-off light showers'],
-    'shower rain':             ['Showers', 'Passing showers'],
-    'heavy shower rain':       ['Heavy showers', 'Downpours'],
-    'ragged shower rain':      ['Blustery showers', 'Wind-driven showers'],
-    'light drizzle':           ['Drizzle', 'Fine drizzle'],
-    'drizzle':                 ['Patchy drizzle', 'Light drizzle'],
-    'heavy intensity drizzle': ['Heavy drizzle', 'Thick drizzle'],
-    'light snow':              ['Light snow', 'Flurries'],
-    'snow':                    ['Snow', 'Snowy'],
-    'heavy snow':              ['Heavy snow', 'Snow piling up'],
-    'sleet':                   ['Sleet', 'Wintry mix'],
-    'light shower snow':       ['Light snow showers', 'Flurries'],
-    'shower snow':             ['Snow showers', 'Burst of snow'],
-    'heavy shower snow':       ['Heavy snow showers', 'Snow squalls'],
-    'mist':                    ['Misty', 'Mist hanging around'],
-    'smoke':                   ['Smoky skies'],
-    'haze':                    ['Hazy', 'Hazy sunshine'],
-    'fog':                     ['Foggy', 'Thick fog'],
-    'sand':                    ['Dusty', 'Sandy air'],
-    'dust':                    ['Dusty', 'Dust in the air'],
-    'volcanic ash':            ['Volcanic haze'],
-    'squalls':                 ['Gusty winds', 'Windy'],
-    'tornado':                 ['Tornado conditions'],
-    'light thunderstorm':      ['Light thunderstorm', 'A few rumbles of thunder'],
-    'thunderstorm':            ['Thunderstorms', 'Stormy with thunder'],
-    'heavy thunderstorm':      ['Intense thunderstorm', 'Severe thunderstorms'],
-    'ragged thunderstorm':     ['Isolated thunderstorm'],
-    'thunderstorm with rain':  ['Thunderstorm & rain', 'Storm with rain'],
-    'thunderstorm with heavy rain': ['Storm with heavy rain', 'Violent storm & rain']
+  const variants = {
+    'clear sky': {
+      day: ['Sunny', 'Bright sunshine', 'Blue skies', 'Clear & bright', 'Wall-to-wall sunshine'],
+      night: ['Clear night', 'Starry sky', 'Calm, clear night']
+    },
+    'few clouds': {
+      day: ['Mostly sunny', 'Sunny spells', 'Bright with a few clouds', 'Plenty of sunshine', 'Sunshine peeking through'],
+      night: ['Mainly clear', 'A few clouds', 'Partly clear night', 'Patchy cloud at night', 'Clear breaks']
+    },
+    'scattered clouds': {
+      day: ['Partly cloudy', 'Patchy cloud', 'Mix of sun and cloud', 'Sunny intervals', 'Fair-weather cloud'],
+      night: ['Partly cloudy night', 'Some cloud, some clear', 'Variable cloud', 'Broken cloud cover', 'Intervals of cloud']
+    },
+    'broken clouds': {
+      day: ['Sunny intervals', 'Partly cloudy', 'Some sun breaking through', 'Brighter spells', 'Clouds with sunny breaks'],
+      night: ['Cloudy night', 'Large cloud breaks', 'Partly cloudy after dark', 'Cloud gaps overnight', 'Intermittent cloud']
+    },
+    'overcast clouds': {
+      day: ['Cloudy', 'Overcast', 'Grey skies', 'Thick cloud cover', 'Dull and overcast'],
+      night: ['Overcast night', 'Thick clouds', 'Dark & cloudy', 'Blanket of cloud', 'Grey, overcast night']
+    },
+    'light rain': {
+      day: ['Light rain', 'Drizzly', 'Spits of rain', 'Passing light rain', 'Fine rain'],
+      night: ['Light rain', 'Drizzly night', 'Patchy light rain', 'Light showers overnight', 'On-off drizzle']
+    },
+    'moderate rain': {
+      day: ['Rain', 'Steady rain', 'Showery rain', 'On-and-off rain', 'Persistent rain'],
+      night: ['Rainy night', 'Steady rain after dark', 'Overnight rain', 'Continuous rain', 'Showery night']
+    },
+    'heavy intensity rain': {
+      day: ['Heavy rain', 'Pouring', 'Soaking rain', 'Torrential downpours', 'Lashing rain'],
+      night: ['Heavy rain overnight', 'Downpours at night', 'Driving rain', 'Bucketing rain', 'Torrential rain']
+    },
+    'light drizzle': {
+      day: ['Light drizzle', 'Fine drizzle', 'Misty drizzle', 'Damp and drizzly'],
+      night: ['Light drizzle', 'Damp night', 'Occasional drizzle', 'Drizzly conditions']
+    },
+    'light snow': {
+      day: ['Light snow', 'Flurries', 'Light snowflakes', 'Brief snow showers'],
+      night: ['Light snow', 'Flurries overnight', 'Light snow showers', 'Snow flurries']
+    },
+    'snow': {
+      day: ['Snowy', 'Snow falling', 'Wintry snow', 'Snow showers', 'Steady snow'],
+      night: ['Snowy night', 'Snow continuing', 'Wintry night', 'Overnight snow', 'Snow showers after dark']
+    },
+    'fog': {
+      day: ['Foggy', 'Thick fog', 'Low-lying fog', 'Murky conditions'],
+      night: ['Dense fog', 'Foggy night', 'Night fog', 'Thick mist']
+    },
+    'mist': {
+      day: ['Misty', 'Morning mist', 'Hazy mist', 'Mist lingering'],
+      night: ['Misty night', 'Light mist', 'Patchy mist', 'Evening mist']
+    },
+    'thunderstorm': {
+      day: ['Thunderstorms', 'Stormy with thunder', 'Rumbles of thunder', 'Thundery showers'],
+      night: ['Thunderstorms', 'Stormy night', 'Night-time thunder', 'Lightning & thunder']
+    },
+    'default': {
+      day: ['Daytime weather'],
+      night: ['Night-time weather']
+    }
   };
 
-  // Helper: pick a random element from an array
   const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
   try {
-    const res   = await fetch(url);
-    const data  = await res.json();
-    const raw   = data.weather[0].description.toLowerCase();
-    const temp  = Math.round(data.main.temp);
-    const clouds= data.clouds.all;        // 0–100 %
+    const res  = await fetch(url);
+    const data = await res.json();
 
-    // 1) Special override for hot & clear
-    let desc = (temp > 20 && clouds < 20)
-      ? 'Warm and sunny'
-      : pick(niceVariants[raw] || [raw.charAt(0).toUpperCase() + raw.slice(1)]);
+    const raw       = data.weather[0].description.toLowerCase();
+    const temp      = Math.round(data.main.temp);
+    const clouds    = data.clouds.all;
+    const iconCode  = data.weather[0].icon; // e.g., "01d", "04n"
+    const isDaytime = iconCode.endsWith('d');
 
-    // 2) Update icon + text
-    const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    let desc;
+    if (isDaytime && temp > 20 && clouds < 20) {
+      desc = 'Warm and sunny';
+    } else {
+      const set = variants[raw] || variants['default'];
+      desc = isDaytime ? pick(set.day) : pick(set.night);
+    }
+
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
     document.getElementById('weather-icon').src = iconUrl;
     document.getElementById('weather-icon').alt = desc;
     document.getElementById('weather-text').textContent = `${desc}, ${temp}°C`;
@@ -1450,8 +1473,10 @@
 }
 
 fetchWeather();
-setInterval(fetchWeather, 15 * 60 * 1000);   // refresh every 15 min
-  </script>
+setInterval(fetchWeather, 15 * 60 * 1000); // refresh every 15 min
+</script>
+
+
 
   <!-- MODAL JS -->
   <script>
