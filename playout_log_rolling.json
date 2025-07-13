@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:03",
-    "Displayed Time": "",
-    "Artist": "Junior Jack",
-    "Title": "Thrill Me",
-    "Duration (s)": 220,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:06",
-    "Displayed Time": "",
-    "Artist": "Perpetual Dawn",
-    "Title": "Keep on Dancin' (Let's Go)",
-    "Duration (s)": 194,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:10",
-    "Displayed Time": "",
-    "Artist": "Boogie Box High",
-    "Title": "Jive Talkin'",
-    "Duration (s)": 205,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:13",
-    "Displayed Time": "",
-    "Artist": "Morgan Seatree x Florence + The Machine",
-    "Title": "Say My Name (Remix)",
-    "Duration (s)": 161,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:16",
-    "Displayed Time": "",
-    "Artist": "Maxx",
-    "Title": "Get-A-Way",
-    "Duration (s)": 213,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:20",
-    "Displayed Time": "",
-    "Artist": "Odyssey",
-    "Title": "Use It up and Wear It Out",
-    "Duration (s)": 214,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:27",
-    "Displayed Time": "",
-    "Artist": "Undercover",
-    "Title": "Never Let Her Slip Away",
-    "Duration (s)": 194,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:30",
-    "Displayed Time": "",
-    "Artist": "Hannah Laing feat. Rhys From The Sticks",
-    "Title": "4am In A Rave",
-    "Duration (s)": 140,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:33",
-    "Displayed Time": "",
-    "Artist": "Club Nouveau",
-    "Title": "Lean on Me",
-    "Duration (s)": 223,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:36",
-    "Displayed Time": "",
-    "Artist": "Dr Alban",
-    "Title": "Sing Hallelujah!",
-    "Duration (s)": 230,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:40",
-    "Displayed Time": "",
-    "Artist": "Alexandra Burke Feat. Flo Rida",
-    "Title": "Bad Boys",
-    "Duration (s)": 185,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:44",
-    "Displayed Time": "",
-    "Artist": "The Time Frequency",
-    "Title": "New Emotion",
-    "Duration (s)": 197,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:47",
-    "Displayed Time": "",
-    "Artist": "PAWSA",
-    "Title": "Too Cool To Be Careless",
-    "Duration (s)": 211,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:51",
-    "Displayed Time": "",
-    "Artist": "Iio",
-    "Title": "Rapture",
-    "Duration (s)": 183,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-27T19:00:00Z",
-    "Scheduled Time": "20:54",
-    "Displayed Time": "",
-    "Artist": "Kenny \"Dope\" Presents the Bucketheads",
-    "Title": "The Bomb! (These Sounds Fall Into My Mind)",
-    "Duration (s)": 191,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-06-27T20:00:00Z",
     "Scheduled Time": "21:02",
     "Displayed Time": "",
@@ -43194,6 +43029,17 @@
     "Duration (s)": 206,
     "Full Duration (s)": 222,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-13T08:00:00Z",
+    "Scheduled Time": "09:02",
+    "Displayed Time": "",
+    "Artist": "Philip Oakey & Giorgio Moroder",
+    "Title": "Together in Electric Dreams",
+    "Duration (s)": 220,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
