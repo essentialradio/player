@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-27T22:00:00Z",
-    "Scheduled Time": "23:01",
-    "Displayed Time": "",
-    "Artist": "",
-    "Title": "CLUBCLASSICS",
-    "Duration (s)": 3493,
-    "Full Duration (s)": 3495,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-06-27T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "",
@@ -43118,5 +43107,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-13T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 181,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
