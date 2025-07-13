@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-27T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 1",
-    "Duration (s)": 3587,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-28T00:00:00Z",
     "Scheduled Time": "01:00",
     "Displayed Time": "",
@@ -43270,6 +43259,17 @@
     "Title": "God is a DJ",
     "Duration (s)": 203,
     "Full Duration (s)": 215,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-13T12:00:00Z",
+    "Scheduled Time": "13:01",
+    "Displayed Time": "",
+    "Artist": "Teddy Swims",
+    "Title": "The Door",
+    "Duration (s)": 204,
+    "Full Duration (s)": 213,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
