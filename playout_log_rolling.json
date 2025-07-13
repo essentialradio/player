@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-06-27T18:00:00Z",
-    "Scheduled Time": "19:02",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1205,
-    "Full Duration (s)": 1206,
-    "Duration (mins)": 20,
-    "Full Duration (mins)": 20
-  },
-  {
-    "Hour": "2025-06-27T18:00:00Z",
-    "Scheduled Time": "19:22",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1086,
-    "Full Duration (s)": 1087,
-    "Duration (mins)": 18,
-    "Full Duration (mins)": 18
-  },
-  {
     "Hour": "2025-06-27T19:00:00Z",
     "Scheduled Time": "20:03",
     "Displayed Time": "",
@@ -43140,5 +43118,16 @@
     "Full Duration (s)": 138,
     "Duration (mins)": 2,
     "Full Duration (mins)": 2
+  },
+  {
+    "Hour": "2025-07-13T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "",
+    "Artist": "Mabel",
+    "Title": "Don't Call Me Up",
+    "Duration (s)": 175,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
