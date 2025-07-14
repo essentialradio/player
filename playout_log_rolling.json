@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-06-28T17:00:00Z",
-    "Scheduled Time": "18:02",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1342,
-    "Full Duration (s)": 1347,
-    "Duration (mins)": 22,
-    "Full Duration (mins)": 22
-  },
-  {
-    "Hour": "2025-06-28T17:00:00Z",
-    "Scheduled Time": "18:26",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1043,
-    "Full Duration (s)": 1048,
-    "Duration (mins)": 17,
-    "Full Duration (mins)": 17
-  },
-  {
     "Hour": "2025-06-28T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "",
@@ -42458,5 +42436,16 @@
     "Full Duration (s)": 254,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-14T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "",
+    "Artist": "Walk the Moon",
+    "Title": "Shut Up + Dance",
+    "Duration (s)": 195,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
