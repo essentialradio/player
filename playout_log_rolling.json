@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:01",
-    "Displayed Time": "",
-    "Artist": "The Weeknd",
-    "Title": "Blinding Lights",
-    "Duration (s)": 193,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:05",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 174,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:08",
-    "Displayed Time": "",
-    "Artist": "ABBA (ESC",
-    "Title": "1974 - Sweden - GF-1st) - Waterloo",
-    "Duration (s)": 149,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:10",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson x Alex Warren",
-    "Title": "Carry You Home",
-    "Duration (s)": 160,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:16",
-    "Displayed Time": "",
-    "Artist": "Cian Ducrot",
-    "Title": "I'll Be Waiting",
-    "Duration (s)": 168,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:19",
-    "Displayed Time": "",
-    "Artist": "Lionel Richie",
-    "Title": "Dancing on the Ceiling",
-    "Duration (s)": 251,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:23",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 198,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:27",
-    "Displayed Time": "",
-    "Artist": "Emeli Sande",
-    "Title": "Next to Me",
-    "Duration (s)": 189,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:30",
-    "Displayed Time": "",
-    "Artist": "Sleep Token",
-    "Title": "Damocles",
-    "Duration (s)": 250,
-    "Full Duration (s)": 265,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:36",
-    "Displayed Time": "",
-    "Artist": "The Bee Gees",
-    "Title": "Stayin' Alive",
-    "Duration (s)": 271,
-    "Full Duration (s)": 281,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:41",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 245,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:45",
-    "Displayed Time": "",
-    "Artist": "Kenya Grace",
-    "Title": "Strangers",
-    "Duration (s)": 167,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:48",
-    "Displayed Time": "",
-    "Artist": "Shaboozey ft Myles Smith",
-    "Title": "Blink Twice",
-    "Duration (s)": 150,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:50",
-    "Displayed Time": "",
-    "Artist": "Shawn Mendes",
-    "Title": "There's Nothing Holdin' Me Back",
-    "Duration (s)": 197,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-06-29T12:00:00Z",
-    "Scheduled Time": "13:54",
-    "Displayed Time": "",
-    "Artist": "Moloko",
-    "Title": "The Time Is Now",
-    "Duration (s)": 214,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-29T13:00:00Z",
     "Scheduled Time": "14:00",
     "Displayed Time": "",
@@ -43215,6 +43050,17 @@
     "Title": "Why Does My Heart Feel So Bad?",
     "Duration (s)": 218,
     "Full Duration (s)": 221,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-14T23:00:00Z",
+    "Scheduled Time": "00:02",
+    "Displayed Time": "",
+    "Artist": "Coldplay",
+    "Title": "Yellow",
+    "Duration (s)": 263,
+    "Full Duration (s)": 269,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
