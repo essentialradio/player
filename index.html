@@ -718,43 +718,56 @@ body.noscroll{overflow:hidden}
     box-shadow: 0 1px 4px #0001 !important;
   }
 }
-/* === FULL MOBILE SCROLL FIX === */
+/* =========================================================
+   MOBILE HARD-LOCK SCROLL FIX
+   (place AFTER your existing styles)
+   ========================================================= */
 @media (max-width: 768px) {
-  html, body {
+
+  /* 1️⃣  Turn <body> back into a normal page container
+         and let it grow naturally.                    */
+  html,
+  body {
+    display: block !important;      /* overrides desktop flex */
     height: auto !important;
     min-height: 100% !important;
-    overflow-y: auto !important;
-    display: block !important;
+    overflow-y: auto !important;    /* guarantee outer scroll */
+    overscroll-behavior: auto !important;  /* allow bounce / chain */
   }
 
+  /* 2️⃣  Let the main wrapper expand instead of filling
+         the viewport like a card.                      */
   .strip-container {
-    display: block !important;
+    display: block !important;      /* no flexbox at all   */
     height: auto !important;
-    min-height: 100% !important;
+    min-height: 100% !important;    /* full-page if needed */
   }
 
+  /* 3️⃣  Panels should behave like regular blocks;
+         never clamp their own height.                  */
   .left-panel,
   .right-panel {
-    height: auto !important;
-    min-height: unset !important;
-    overflow: visible !important;
     display: block !important;
-  }
-
-  /* Ensure recently played can stretch */
-  .recently-played-container {
-    flex: none !important;
     height: auto !important;
-    overflow-y: visible !important;
+    min-height: auto !important;
+    overflow: visible !important;
   }
 
-  /* This will help just in case */
+  /* 4️⃣  Recently-played list must be able to grow.
+         Remove its flex “fill” behaviour.              */
+  .recently-played-container {
+    flex: initial !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
   ul#recent-list {
     max-height: none !important;
     overflow: visible !important;
+    -webkit-overflow-scrolling: auto !important; /* iOS */
   }
 }
-/* === END MOBILE SCROLL FIX === */
+/* ========================================================= */
 </style>
 </head>
 <body>
