@@ -768,6 +768,39 @@ body.noscroll{overflow:hidden}
   }
 }
 /* ========================================================= */
+@media (max-width: 768px) {
+  html, body {
+    display: block !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+    overscroll-behavior: auto !important;
+  }
+
+  .strip-container {
+    display: block !important;
+    height: auto !important;
+    min-height: 100% !important;
+  }
+
+  .left-panel,
+  .right-panel {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .recently-played-container {
+    flex: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  ul#recent-list {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
 </style>
 </head>
 <body>
