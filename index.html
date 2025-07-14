@@ -462,23 +462,7 @@
       ul#recent-list span.time { font-size: 12px; width: 40px; }
     }
     /* Weather Widget - styled block above Recently Played */
-    #weather-widget {
-      margin-bottom: 12px;
-      background: rgba(0,0,0,0.21);
-      padding: 7px 14px;
-      border-radius: 10px;
-      font-size: 15px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      opacity: 0.97;
-    }
-    #weather-widget img {
-      width: 32px;
-      height: 32px;
-    }
+   
     /* Modal Schedule Styling */
     #modalScheduleContainer .day-card {
       background: #111;
@@ -837,16 +821,144 @@
   </div>
 
   <!-- Weather underneath -->
-  <div id="weatherPanel" style="
-      background:#17182a; border-radius:12px; border:2px solid #00818a;
-      min-width:134px; max-width:230px; min-height:64px; box-shadow:0 1px 10px #1116;
-      padding:12px 16px 12px 16px; margin:0 auto 22px auto; display:flex; align-items:center; gap:12px; justify-content:center;">
-    <img id="weather-icon" src="" alt="Weather" width="32" height="32" style="margin-right:5px;" />
-    <div>
-      <strong style="color:#fed351;">Ayrshire Weather</strong><br>
-      <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
-    </div>
+ <!-- ░░ ESSENTIAL RADIO ░░  ADVANCED WEATHER WIDGET (dusk-fix) ░░ -->
+<!-- 1 ▪ Mark-up ------------------------------------------------>
+<div id="weather-widget" class="day">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <select id="wxLocation">
+      <option value="Kilwinning,55.6558,-4.7057">Kilwinning</option>
+      <option value="Kilmarnock,55.6118,-4.4955">Kilmarnock</option>
+      <option value="Ayr,55.4586,-4.6292">Ayr</option>
+    </select>
+    <img id="weather-icon" width="46" height="46" alt="Weather icon">
+    <span id="weather-text">Loading weather…</span>
   </div>
+
+  <!-- extras -->
+  <div id="wxStrip"  style="margin-top:4px;font-size:0.9em;"></div>
+  <div id="wxAlert"  style="color:#ff4d4d;font-weight:700;"></div>
+</div>
+
+<!-- 2 ▪ Styles (tweak colours if you like) --------------------->
+<style>
+  #weather-widget{font-family:inherit;font-size:15px;line-height:1.35;}
+  #weather-widget select{
+    background:#fed351;border:none;font-weight:600;padding:4px 6px;border-radius:6px;
+  }
+  #weather-widget.day  {color:#000;}
+  #weather-widget.night{background:#111;color:#eee;border-radius:8px;padding:6px;}
+  #weather-widget.night select{background:#333;color:#fff;}
+
+  #wxStrip span{margin-right:10px;white-space:nowrap;}
+  @media (max-width:500px){
+    #weather-widget{font-size:14px;}
+    #weather-widget select{font-size:0.9em;}
+    #wxStrip{font-size:0.8em;}
+  }
+</style>
+
+<!-- 3 ▪ Script ----------------------------------------------->
+<script>
+(function(){
+  const API_KEY='YOUR_API_KEY_HERE';                 //  ←  add your key
+  const SEL  =document.getElementById('wxLocation');
+  const ICON =document.getElementById('weather-icon');
+  const TEXT =document.getElementById('weather-text');
+  const STRIP=document.getElementById('wxStrip');
+  const ALERT=document.getElementById('wxAlert');
+  const WID  =document.getElementById('weather-widget');
+
+  if(localStorage.wxChoice) SEL.value=localStorage.wxChoice;
+
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+
+  /* --- friendly wording table (full) --- */
+  const variants={
+    'clear sky':{day:['Sunny','Bright sunshine','Clear & bright','Blue skies','Wall-to-wall sunshine'],
+                 night:['Clear night','Starry sky','Moonlit sky','Calm, clear night']},
+    'few clouds':{day:['Mostly sunny','Sunny spells','Plenty of sunshine','Sunshine peeking through'],
+                  night:['Mainly clear','A few clouds','Clear breaks']},
+    'scattered clouds':{day:['Partly cloudy','Sunny intervals','Mix of sun & cloud'],
+                        night:['Variable cloud','Partly cloudy night']},
+    'broken clouds':{day:['Sunny intervals','Some sun breaking through'],
+                     night:['Cloudy night','Intermittent cloud']},
+    'overcast clouds':{day:['Cloudy','Overcast','Dull grey skies'],
+                       night:['Overcast night','Blanket of cloud']},
+    'light rain':{day:['Light rain','Drizzly','Spits of rain'],
+                  night:['Light rain','Drizzly night']},
+    'moderate rain':{day:['Rain','Showery rain'],
+                     night:['Steady rain night','Rainy night']},
+    'heavy intensity rain':{day:['Heavy rain','Pouring'],
+                            night:['Heavy rain overnight','Downpours at night']},
+    'light drizzle':{day:['Fine drizzle','Damp & drizzly'],
+                     night:['Drizzly night','Occasional drizzle']},
+    'light snow':{day:['Light snow','Flurries'],
+                  night:['Light snow','Snow flurries']},
+    'snow':{day:['Snowy','Snow showers'],
+            night:['Snowy night','Overnight snow']},
+    'fog':{day:['Foggy','Thick fog'],
+           night:['Dense fog','Foggy night']},
+    'mist':{day:['Misty'],night:['Misty night']},
+    'thunderstorm':{day:['Thunderstorms'],night:['Thunderstorms']},
+    default:{day:['Daytime weather'],night:['Night-time weather']}
+  };
+
+  function extra(cur,next){
+    let s=''; const uv=cur.uvi, pop=Math.round((next?.pop||0)*100),
+          wind=Math.round(cur.wind_speed*3.6);
+    if(uv>=6)   s+=` • <span title="High UV">UV ${uv}</span>`;
+    if(pop>=40) s+=` • ${pop}% rain`;
+    if(wind>=25)s+=` • ${wind} km/h wind`;
+    return s;
+  }
+
+  function strip(hr){
+    STRIP.innerHTML='';
+    hr.slice(1,5).forEach(h=>{
+      const t=new Date(h.dt*1000).getHours().toString().padStart(2,'0')+':00';
+      STRIP.innerHTML+=`<span>${t}<img src="https://openweathermap.org/img/wn/${h.weather[0].icon}.png" width="22"> ${Math.round(h.temp)}°</span>`;
+    });
+  }
+
+  async function load(){
+    const [city,lat,lon]=SEL.value.split(',');
+    localStorage.wxChoice=SEL.value;
+    const url=`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,daily&appid=${API_KEY}`;
+    try{
+      const d=await (await fetch(url)).json();
+      const cur=d.current, nxt=d.hourly?.[1];
+      const raw=cur.weather[0].description.toLowerCase();
+      const icon=cur.weather[0].icon, temp=Math.round(cur.temp), clouds=cur.clouds;
+
+      /* refined daylight: sunrise+1h … sunset-1h */
+      const day=(cur.dt>=cur.sunrise+3600)&&(cur.dt<cur.sunset-3600);
+      WID.className=day?'day':'night';
+
+      /* choose description */
+      let desc;
+      if(day && temp>20 && clouds<20) desc='Warm and sunny';
+      else{
+        const set=variants[raw]||variants.default;
+        desc=pick(set[day?'day':'night']);
+      }
+
+      /* guards */
+      if(!day && /sunny|bright/i.test(desc))          desc=pick(variants['clear sky'].night);
+      if(clouds>90 && /sunny|bright/i.test(desc))     desc=pick(variants['overcast clouds'][day?'day':'night']);
+      if(temp<10 && /warm|hot/i.test(desc))           desc=pick(variants['few clouds'][day?'day':'night']);
+
+      TEXT.innerHTML=`${desc}, ${temp}°C${extra(cur,nxt)}`;
+      ICON.src=`https://openweathermap.org/img/wn/${icon}@2x.png`;
+      ICON.alt=desc;
+
+      strip(d.hourly);
+      ALERT.textContent=d.alerts?.length?`⚠ ${d.alerts[0].event}`:'';
+    }catch{TEXT.textContent='Weather unavailable';}
+  }
+  load(); let t=setInterval(load,900000);
+  SEL.addEventListener('change',()=>{clearInterval(t);load();t=setInterval(load,900000);});
+})();
+</script>
 
   <!-- Recently Played fills the rest of the panel -->
   <div class="recently-played-container" style="flex:1;display:flex;flex-direction:column;min-height:0;">
