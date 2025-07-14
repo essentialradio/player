@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Essential Radio Player</title>
-  html, body { overscroll-behavior: contain; }
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+html,body{margin:0;padding:0;overscroll-behavior:contain;font-family:Inter,sans-serif;background:linear-gradient(135deg,#00818a,#7e1974);color:#fff}
+body.noscroll{overflow:hidden}
+
     /* --- NAVBAR & MODALS ONLY --- */
     @media (max-width: 750px) {
   .navbar { display: none !important; }
