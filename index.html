@@ -959,8 +959,12 @@
     }catch{TEXT.textContent='Weather unavailable';}
   }
   load(); let t=setInterval(load,900000);
-  SEL.addEventListener('change',()=>{clearInterval(t);load();t=setInterval(load,900000);});
-})();
+  // refresh instantly when user picks a new town
+SEL.addEventListener('change', () => {
+  clearInterval(t);        // stop old 15-min timer
+  loadWeather();           // ← 🔑 fetch + update now
+  t = setInterval(loadWeather, 900000); // restart timer
+});
 </script>
 
   <!-- Recently Played fills the rest of the panel -->
