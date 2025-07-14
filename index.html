@@ -132,9 +132,7 @@
       margin: 0 0 5px 0;
     }
     /* --- END NAVBAR & MODALS ONLY --- */
-#weather-text {
-  color: white !important;
-}
+
     /* --- PLAYER AND PANEL STYLES --- */
     body {
       font-family: 'Inter', sans-serif;
@@ -464,7 +462,23 @@
       ul#recent-list span.time { font-size: 12px; width: 40px; }
     }
     /* Weather Widget - styled block above Recently Played */
-   
+    #weather-widget {
+      margin-bottom: 12px;
+      background: rgba(0,0,0,0.21);
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      opacity: 0.97;
+    }
+    #weather-widget img {
+      width: 32px;
+      height: 32px;
+    }
     /* Modal Schedule Styling */
     #modalScheduleContainer .day-card {
       background: #111;
@@ -822,104 +836,17 @@
     </span>
   </div>
 
-  <!-<!-- ░░ ESSENTIAL RADIO – LOCATION-AWARE WEATHER SCRIPT ░░ -->
-<script>
-(function () {
-  /* 1 ▪ OpenWeather API key */
-  const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
-
-  /* 2 ▪ Lat/Lon for each city */
-  const LOCS = {
-    'Kilwinning':  { lat: 55.6558, lon: -4.7057 },
-    'Kilmarnock':  { lat: 55.6118, lon: -4.4955 },
-    'Ayr':         { lat: 55.4586, lon: -4.6292 }
-  };
-
-  /* 3 ▪ Grab DOM elements */
-  const sel   = document.getElementById('wxLocation');
-  const icon  = document.getElementById('weather-icon');
-  const text  = document.getElementById('weather-text');
-  const strip = document.getElementById('wxStrip');
-  const alert = document.getElementById('wxAlert');
-  const wrap  = document.getElementById('weather-widget');
-
-  /* 4 ▪ Restore last chosen city */
-  if (localStorage.wxChoice && LOCS[localStorage.wxChoice.split(',')[0]]) {
-    sel.value = localStorage.wxChoice;
-  }
-
-  /* 5 ▪ Quick phrase helper */
-  const phrase = (raw, day) => {
-    raw = raw.toLowerCase();
-    if (raw === 'clear sky')          return day ? 'Sunny' : 'Clear night';
-    if (raw.includes('few clouds'))   return day ? 'Mostly sunny' : 'Mainly clear';
-    if (raw.includes('scattered'))    return day ? 'Partly cloudy' : 'Variable cloud';
-    if (raw.includes('broken'))       return day ? 'Sunny intervals' : 'Cloudy night';
-    if (raw.includes('overcast'))     return 'Overcast';
-    if (raw.includes('light rain'))   return 'Light rain';
-    if (raw.includes('rain'))         return 'Rain';
-    if (raw.includes('snow'))         return 'Snow';
-    return day ? 'Daytime weather' : 'Night-time weather';
-  };
-
-  /* 6 ▪ Build mini forecast strip */
-  function buildStrip(arr){
-    strip.innerHTML='';
-    arr.slice(1,5).forEach(h=>{
-      const hr = new Date(h.dt*1e3).getHours().toString().padStart(2,'0')+':00';
-      const ic = h.weather[0].icon;
-      const tp = Math.round(h.temp);
-      strip.innerHTML += `<span>${hr} <img src="https://openweathermap.org/img/wn/${ic}.png" width="22"> ${tp}°</span> `;
-    });
-  }
-
-  /* 7 ▪ Main fetch */
-  async function fetchWx(){
-    const [city,lat,lon]=sel.value.split(',');
-    localStorage.wxChoice = sel.value;
-
-    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,daily&appid=${API_KEY}`;
-    try{
-      const d = await (await fetch(url)).json();
-      const cur = d.current, nxt = d.hourly?.[1];
-      const raw = cur.weather[0].description;
-      const ic  = cur.weather[0].icon;
-      const tmp = Math.round(cur.temp);
-      const cld = cur.clouds;
-
-      /* daylight = sunrise+1h … sunset-1h */
-      const now = cur.dt, day = now >= cur.sunrise+3600 && now < cur.sunset-3600;
-      wrap.className = day ? 'day' : 'night';
-
-      let desc = phrase(raw, day);
-      if(!day && /sunny|bright/i.test(desc))          desc='Clear night';
-      if(cld>90 && /sunny|bright/i.test(desc))        desc='Overcast';
-      if(tmp<10 && /warm|hot/i.test(desc))            desc = day ? 'Cool & bright' : 'Cool night';
-
-      /* extras: UV / wind / rain pop */
-      let extra='', uv=cur.uvi, wind=Math.round(cur.wind_speed*3.6),
-          pop=Math.round((nxt?.pop||0)*100);
-      if(uv>=6)   extra += ` • UV ${uv}`;
-      if(pop>=40) extra += ` • ${pop}% rain`;
-      if(wind>=25)extra += ` • ${wind} km/h wind`;
-
-      text.innerHTML = `${desc}, ${tmp}°C${extra}`;
-      icon.src = `https://openweathermap.org/img/wn/${ic}@2x.png`;
-      icon.alt = desc;
-
-      buildStrip(d.hourly);
-      alert.textContent = d.alerts?.length ? `⚠ ${d.alerts[0].event}` : '';
-    }catch{
-      text.textContent='Weather unavailable';
-    }
-  }
-
-  /* initial + 15-minute refresh */
-  fetchWx();
-  let timer = setInterval(fetchWx, 900000);
-  sel.addEventListener('change', ()=>{clearInterval(timer); fetchWx(); timer=setInterval(fetchWx,900000);});
-})();
-</script>
+  <!-- Weather underneath -->
+  <div id="weatherPanel" style="
+      background:#17182a; border-radius:12px; border:2px solid #00818a;
+      min-width:134px; max-width:230px; min-height:64px; box-shadow:0 1px 10px #1116;
+      padding:12px 16px 12px 16px; margin:0 auto 22px auto; display:flex; align-items:center; gap:12px; justify-content:center;">
+    <img id="weather-icon" src="" alt="Weather" width="32" height="32" style="margin-right:5px;" />
+    <div>
+      <strong style="color:#fed351;">Ayrshire Weather</strong><br>
+      <span id="weather-text" style="vertical-align: middle;">Loading weather…</span>
+    </div>
+  </div>
 
   <!-- Recently Played fills the rest of the panel -->
   <div class="recently-played-container" style="flex:1;display:flex;flex-direction:column;min-height:0;">
@@ -998,18 +925,6 @@
       <img src="ERPlaylist.png" alt="Essential Radio Playlist" class="playlist-image" />
     </div>
   </div>
-
-<div id="weather-widget">
-  <select id="wxLocation">
-    <option value="Kilmarnock,55.6118,-4.4955">Kilmarnock</option>
-    <option value="Kilwinning,55.6558,-4.7057">Kilwinning</option>
-    <option value="Ayr,55.4586,-4.6292">Ayr</option>
-  </select>
-  <img id="weather-icon" src="" alt="" />
-  <span id="weather-text">Loading...</span>
-  <div id="wxStrip"></div>
-  <div id="wxAlert"></div>
-</div>
 
  <div id="listenModal" class="modal">
   <div class="modal-content" style="max-width:700px;width:97vw;">
@@ -1468,7 +1383,127 @@
   </div>
 </div>
 
-  
+  <!-- WEATHER WIDGET SCRIPT -->
+  <script>
+    async function fetchWeather() {
+      const API_KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
+  const url = 'https://api.openweathermap.org/data/2.5/weather?q=Kilmarnock,GB&units=metric&appid=' + API_KEY;
+  const variants = {
+    'clear sky': {
+      day:  ['Sunny','Bright sunshine','Blue skies','Clear & bright','Wall-to-wall sunshine'],
+      night:['Clear night','Starry sky','Starlit evening','Calm, clear night','Moonlit sky']
+    },
+    'few clouds': {
+      day:  ['Mostly sunny','Sunny spells','Bright with a few clouds','Plenty of sunshine','Sunshine peeking through'],
+      night:['Mainly clear','A few clouds','Partly clear night','Patchy cloud at night','Clear breaks']
+    },
+    'scattered clouds': {
+      day:  ['Partly cloudy','Patchy cloud','Mix of sun and cloud','Sunny intervals','Fair-weather cloud'],
+      night:['Partly cloudy night','Some cloud, some clear','Variable cloud','Broken cloud cover','Intervals of cloud']
+    },
+    'broken clouds': {
+      day:  ['Sunny intervals','Partly cloudy','Some sun breaking through','Brighter spells','Clouds with sunny breaks'],
+      night:['Cloudy night','Large cloud breaks','Partly cloudy after dark','Cloud gaps overnight','Intermittent cloud']
+    },
+    'overcast clouds': {
+      day:  ['Cloudy','Overcast','Grey skies','Thick cloud cover','Dull and overcast'],
+      night:['Overcast night','Thick clouds','Dark & cloudy','Blanket of cloud','Grey, overcast night']
+    },
+    'light rain': {
+      day:  ['Light rain','Drizzly','Spits of rain','Passing light rain','Fine rain'],
+      night:['Light rain','Drizzly night','Patchy light rain','Light showers overnight','On-off drizzle']
+    },
+    'moderate rain': {
+      day:  ['Rain','Steady rain','Showery rain','On-and-off rain','Persistent rain'],
+      night:['Rainy night','Steady rain after dark','Overnight rain','Continuous rain','Showery night']
+    },
+    'heavy intensity rain': {
+      day:  ['Heavy rain','Pouring','Soaking rain','Torrential downpours','Lashing rain'],
+      night:['Heavy rain overnight','Downpours at night','Driving rain','Bucketing rain','Torrential rain']
+    },
+    'light drizzle': {
+      day:  ['Light drizzle','Fine drizzle','Misty drizzle','Damp and drizzly'],
+      night:['Light drizzle','Damp night','Occasional drizzle','Drizzly conditions']
+    },
+    'light snow': {
+      day:  ['Light snow','Flurries','Light snowflakes','Brief snow showers'],
+      night:['Light snow','Flurries overnight','Light snow showers','Snow flurries']
+    },
+    'snow': {
+      day:  ['Snowy','Snow falling','Wintry snow','Snow showers','Steady snow'],
+      night:['Snowy night','Snow continuing','Wintry night','Overnight snow','Snow showers after dark']
+    },
+    'fog': {
+      day:  ['Foggy','Thick fog','Low-lying fog','Murky conditions'],
+      night:['Dense fog','Foggy night','Night fog','Thick mist']
+    },
+    'mist': {
+      day:  ['Misty','Morning mist','Hazy mist','Mist lingering'],
+      night:['Misty night','Light mist','Patchy mist','Evening mist']
+    },
+    'thunderstorm': {
+      day:  ['Thunderstorms','Stormy with thunder','Rumbles of thunder','Thundery showers'],
+      night:['Thunderstorms','Stormy night','Night-time thunder','Lightning & thunder']
+    },
+    default:{ day:['Daytime weather'], night:['Night-time weather'] }
+  };
+
+  const pick = a => a[Math.floor(Math.random()*a.length)];
+
+  try {
+    const data   = await (await fetch(url)).json();
+    const raw    = data.weather[0].description.toLowerCase();
+    const temp   = Math.round(data.main.temp);
+    const cloud  = data.clouds.all;
+    const icon   = data.weather[0].icon;             // "01d" / "01n"
+    const isDay  = icon.endsWith('d');
+
+    /* Day-only warm & sunny override */
+    let desc;
+    if (isDay && temp > 20 && cloud < 20) {
+      desc = 'Warm and sunny';
+    } else {
+      const set = variants[raw] || variants.default;
+      desc = isDay ? pick(set.day) : pick(set.night);
+    }
+
+    /* ----- Guard clauses against mismatches ----- */
+
+    /* No sunny/bright words at night */
+    if (!isDay && /sunny|bright/i.test(desc)) {
+      desc = pick(variants['clear sky'].night);
+    }
+
+    /* No warm/hot words if cold */
+    if (temp < 10 && /warm|hot/i.test(desc)) {
+      desc = pick(variants['few clouds'][isDay ? 'day' : 'night']);
+    }
+
+    /* No cold/chilly if warm */
+    if (temp > 18 && /cold|chilly/i.test(desc)) {
+      desc = pick(variants['scattered clouds'][isDay ? 'day' : 'night']);
+    }
+
+    /* Avoid bright phrases if >90 % cloud */
+    if (cloud > 90 && /sunny|bright/i.test(desc)) {
+      desc = pick(variants['overcast clouds'][isDay ? 'day' : 'night']);
+    }
+
+    /* -------------- Update DOM -------------- */
+    document.getElementById('weather-icon').src =
+      `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    document.getElementById('weather-icon').alt = desc;
+    document.getElementById('weather-text').textContent = `${desc}, ${temp}°C`;
+
+  } catch (err) {
+    document.getElementById('weather-text').textContent = 'Weather unavailable';
+  }
+}
+
+/* initial + 15-min refresh */
+fetchWeather();
+setInterval(fetchWeather, 15*60*1000);
+</script>
 
 
   <!-- MODAL JS -->
