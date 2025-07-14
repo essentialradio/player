@@ -810,7 +810,7 @@
   </div>
 
 
-<!-- === ESSENTIAL WEATHER WIDGET (All-in-one, Polished, with Smart Phrasing) === -->
+<!-- <!-- === ESSENTIAL WEATHER WIDGET (Always Shows Hourly Strip) === -->
 <div id="wxWrap"
      style="font-family:Inter,sans-serif;background:linear-gradient(135deg, #24243e 0%, #191c29 100%);
             color:#f5f5f5;border-radius:18px;padding:16px;box-shadow:0 6px 32px #0007;
@@ -918,7 +918,6 @@
   if (show5) swapView();
   if (localStorage.wxChoice) locSel.value = localStorage.wxChoice;
 
-  // SMART PHRASE FUNCTION
   function phrase(desc, isDay, temp = null, pop = null) {
     desc = desc.toLowerCase();
     if (desc.includes('thunder')) return 'Thunderstorm';
@@ -955,22 +954,20 @@
       const tmp = Math.round(cur.temp);
       wxNow.innerHTML = `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C${pop !== null && pop >= 30 ? ` • ${pop}% rain` : ''}`;
 
-      // Hourly layout (5 hours)
+      // Hourly layout (5 hours) - ALWAYS show, day or night
       hrWrap.innerHTML = '';
-      if (day) {
-        let times = '', details = '';
-        d.hourly.slice(1, 6).forEach(h => {
-          const t = new Date(h.dt * 1e3).getHours().toString().padStart(2, '0') + ':00';
-          const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
-          times += `<div style="display:inline-block;width:52px;text-align:center;">${t}</div>`;
-          details += `<div style="display:inline-block;width:52px;text-align:center;">
-                        <img src="${icon}" width="20" class="forecast-icon" style="vertical-align:middle">
-                        <br>${Math.round(h.temp)}°
-                      </div>`;
-        });
-        hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
-        if (!show5) hrWrap.style.display = 'grid'; else hrWrap.style.display = 'none';
-      } else hrWrap.style.display = 'none';
+      let times = '', details = '';
+      d.hourly.slice(1, 6).forEach(h => {
+        const t = new Date(h.dt * 1e3).getHours().toString().padStart(2, '0') + ':00';
+        const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
+        times += `<div style="display:inline-block;width:52px;text-align:center;">${t}</div>`;
+        details += `<div style="display:inline-block;width:52px;text-align:center;">
+                      <img src="${icon}" width="20" class="forecast-icon" style="vertical-align:middle">
+                      <br>${Math.round(h.temp)}°
+                    </div>`;
+      });
+      hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
+      if (!show5) hrWrap.style.display = 'grid'; else hrWrap.style.display = 'none';
 
       // Daily layout (5 days)
       dyWrap.innerHTML = '';
