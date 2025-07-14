@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-28T20:00:00Z",
-    "Scheduled Time": "21:00",
-    "Displayed Time": "",
-    "Artist": "Big Tommy",
-    "Title": "Big Fat  Party Anthems",
-    "Duration (s)": 10801,
-    "Full Duration (s)": 10801,
-    "Duration (mins)": 180,
-    "Full Duration (mins)": 180
-  },
-  {
     "Hour": "2025-06-28T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "",
@@ -42808,6 +42797,17 @@
     "Title": "Dancing in the Moonlight",
     "Duration (s)": 157,
     "Full Duration (s)": 164,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-14T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "",
+    "Artist": "Shaboozey",
+    "Title": "A Bar Song (Tipsy)",
+    "Duration (s)": 168,
+    "Full Duration (s)": 171,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
