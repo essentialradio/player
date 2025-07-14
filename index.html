@@ -718,33 +718,19 @@ body.noscroll{overflow:hidden}
     box-shadow: 0 1px 4px #0001 !important;
   }
 }
-/* === MOBILE SCROLL FIX === */
-@media (max-width: 768px) {
-  /* Let the page flow like a normal document */
-  body {
-    display: block !important;     /* stop flexbox shrinking the page */
-  }
-
-  /* Safety: allow full-height growth */
-  html,
-  body {
-    min-height: 100% !important;
-    height: auto !important;
-  }
-}
-/* === END MOBILE SCROLL FIX === */
-
+/* === FULL MOBILE SCROLL FIX === */
 @media (max-width: 768px) {
   html, body {
     height: auto !important;
     min-height: 100% !important;
     overflow-y: auto !important;
+    display: block !important;
   }
 
   .strip-container {
+    display: block !important;
     height: auto !important;
     min-height: 100% !important;
-    display: block !important;     /* ensure natural flow */
   }
 
   .left-panel,
@@ -752,8 +738,23 @@ body.noscroll{overflow:hidden}
     height: auto !important;
     min-height: unset !important;
     overflow: visible !important;
+    display: block !important;
+  }
+
+  /* Ensure recently played can stretch */
+  .recently-played-container {
+    flex: none !important;
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+
+  /* This will help just in case */
+  ul#recent-list {
+    max-height: none !important;
+    overflow: visible !important;
   }
 }
+/* === END MOBILE SCROLL FIX === */
 </style>
 </head>
 <body>
