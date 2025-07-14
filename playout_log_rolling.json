@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-28T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3534,
-    "Full Duration (s)": 3540,
-    "Duration (mins)": 59,
-    "Full Duration (mins)": 59
-  },
-  {
     "Hour": "2025-06-28T17:00:00Z",
     "Scheduled Time": "18:02",
     "Displayed Time": "",
@@ -42302,6 +42291,17 @@
     "Title": "Golden Eye",
     "Duration (s)": 199,
     "Full Duration (s)": 208,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-14T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "",
+    "Artist": "Tom Grennan",
+    "Title": "Full Attention",
+    "Duration (s)": 177,
+    "Full Duration (s)": 184,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
