@@ -733,6 +733,27 @@ body.noscroll{overflow:hidden}
   }
 }
 /* === END MOBILE SCROLL FIX === */
+
+@media (max-width: 768px) {
+  html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+  }
+
+  .strip-container {
+    height: auto !important;
+    min-height: 100% !important;
+    display: block !important;     /* ensure natural flow */
+  }
+
+  .left-panel,
+  .right-panel {
+    height: auto !important;
+    min-height: unset !important;
+    overflow: visible !important;
+  }
+}
 </style>
 </head>
 <body>
