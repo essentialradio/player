@@ -810,8 +810,7 @@
   </div>
 
 
-<!-- === ESSENTIAL WEATHER WIDGET === -->
-<!-- === ESSENTIAL WEATHER WIDGET (Ultimate Polished Version) === -->
+<!-- === ESSENTIAL WEATHER WIDGET (All-in-one, Polished, with Smart Phrasing) === -->
 <div id="wxWrap"
      style="font-family:Inter,sans-serif;background:linear-gradient(135deg, #24243e 0%, #191c29 100%);
             color:#f5f5f5;border-radius:18px;padding:16px;box-shadow:0 6px 32px #0007;
@@ -831,9 +830,7 @@
   <!-- Main summary and toggle -->
   <div style="display:flex;justify-content:space-between;align-items:center;
               border-bottom:1px solid #2224;margin-bottom:10px;padding-bottom:7px;">
-    <div id="wxNow" style="text-align:left;font-size:1em;">
-      <!-- Condition/Temp appears here -->
-    </div>
+    <div id="wxNow" style="text-align:left;font-size:1em;"></div>
     <button id="toggleBtn"
             style="background:#fed351;color:#191c29;font-weight:600;border:none;
                    border-radius:6px;padding:3px 10px;font-size:0.8em;cursor:pointer;
@@ -855,10 +852,8 @@
   <div id="wxAlert" style="color:#ff6969;font-size:0.85em;margin-top:5px;"></div>
 </div>
 
-<!-- Nicer divider below widget -->
 <hr class="weather-divider">
 
-<!-- Weather Widget Styling Upgrades -->
 <style>
   .weather-divider {
     border: 0;
@@ -877,7 +872,6 @@
     box-shadow: 0 2px 8px #fed35180;
     transition: all 0.18s;
   }
-  /* Animate swapping of hourly/daily */
   #hrWrap, #dyWrap {
     transition: opacity 0.35s, transform 0.3s;
     opacity: 1;
@@ -892,6 +886,19 @@
   .forecast-icon:hover {
     filter: brightness(1.15) drop-shadow(0 2px 8px #fed35188);
     transform: scale(1.16) rotate(-8deg);
+  }
+  @media (max-width: 500px) {
+    #toggleBtn {
+      font-size: 0.72em !important;
+      padding: 2px 6px !important;
+      border-radius: 5px !important;
+    }
+  }
+  #dyWrap > div > div {
+    width: 20% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    box-sizing: border-box;
   }
 </style>
 
@@ -911,16 +918,28 @@
   if (show5) swapView();
   if (localStorage.wxChoice) locSel.value = localStorage.wxChoice;
 
-  function phrase(d, day) {
-    d = d.toLowerCase();
-    if (d === 'clear sky') return day ? 'Sunny' : 'Clear';
-    if (d.includes('few clouds')) return day ? 'Mostly sunny' : 'Mainly clear';
-    if (d.includes('scattered')) return day ? 'Partly cloudy' : 'Patches';
-    if (d.includes('broken')) return day ? 'Sunny intervals' : 'Cloudy';
-    if (d.includes('overcast')) return 'Overcast';
-    if (d.includes('rain')) return 'Rain';
-    if (d.includes('snow')) return 'Snow';
-    return day ? 'Fair' : 'Calm';
+  // SMART PHRASE FUNCTION
+  function phrase(desc, isDay, temp = null, pop = null) {
+    desc = desc.toLowerCase();
+    if (desc.includes('thunder')) return 'Thunderstorm';
+    if (desc.includes('snow') && (!temp || temp < 5)) return 'Snow';
+    if (desc.includes('snow') && temp && temp >= 5) return 'Showers';
+    if (desc.includes('rain') || desc.includes('drizzle')) {
+      if (pop !== null && pop < 30) return isDay ? 'Chance of showers' : 'Possible showers';
+      return 'Rain';
+    }
+    if (desc.includes('fog')) return 'Foggy';
+    if (desc.includes('mist')) return 'Misty';
+    if (desc.includes('haze')) return 'Hazy';
+    if (desc.includes('smoke')) return 'Smoky';
+    if (desc === 'clear sky') return isDay ? 'Sunny' : 'Clear';
+    if (desc.includes('few clouds')) return isDay ? 'Mostly sunny' : 'Mainly clear';
+    if (desc.includes('scattered')) return isDay ? 'Partly cloudy' : 'Some cloud';
+    if (desc.includes('broken')) return isDay ? 'Sunny intervals' : 'Cloudy';
+    if (desc.includes('overcast')) return 'Overcast';
+    // Never mention sunshine or bright at night
+    if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
+    return isDay ? 'Fair' : 'Calm';
   }
 
   async function update() {
@@ -931,9 +950,10 @@
       const d = await fetch(url).then(r => r.json());
       const cur = d.current, nxt = d.hourly[1];
       const day = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600;
-      const desc = phrase(cur.weather[0].description, day), tmp = Math.round(cur.temp);
-      const pop = Math.round((nxt.pop || 0) * 100);
-      wxNow.innerHTML = `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C${pop >= 30 ? ` • ${pop}% rain` : ''}`;
+      const pop = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null;
+      const desc = phrase(cur.weather[0].description, day, cur.temp, pop);
+      const tmp = Math.round(cur.temp);
+      wxNow.innerHTML = `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C${pop !== null && pop >= 30 ? ` • ${pop}% rain` : ''}`;
 
       // Hourly layout (5 hours)
       hrWrap.innerHTML = '';
@@ -958,8 +978,8 @@
       d.daily.slice(1, 6).forEach(dd => {
         const wd = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', { weekday: 'short' });
         const icon = `https://openweathermap.org/img/wn/${dd.weather[0].icon}.png`;
-        days += `<div style="display:inline-block;width:60px;text-align:center;">${wd}</div>`;
-        temps += `<div style="display:inline-block;width:60px;text-align:center;">
+        days += `<div style="display:inline-block;text-align:center;">${wd}</div>`;
+        temps += `<div style="display:inline-block;text-align:center;">
                     <img src="${icon}" width="20" class="forecast-icon" style="vertical-align:middle">
                     <br>${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
                   </div>`;
@@ -967,7 +987,14 @@
       dyWrap.innerHTML = `<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>`;
       dyWrap.style.display = show5 ? 'grid' : 'none';
 
-      alertBox.textContent = d.alerts?.length ? `⚠ ${d.alerts[0].event}` : '';
+      // Alert only if active
+      if (d.alerts && d.alerts.length) {
+        const now = Math.floor(Date.now()/1000);
+        const valid = d.alerts.find(a => a.end ? a.end > now : true);
+        alertBox.textContent = valid ? `⚠ ${valid.event}` : '';
+      } else {
+        alertBox.textContent = '';
+      }
     } catch (e) {
       console.error(e);
       wxNow.textContent = 'Weather unavailable';
