@@ -718,7 +718,21 @@ body.noscroll{overflow:hidden}
     box-shadow: 0 1px 4px #0001 !important;
   }
 }
+/* === MOBILE SCROLL FIX === */
+@media (max-width: 768px) {
+  /* Let the page flow like a normal document */
+  body {
+    display: block !important;     /* stop flexbox shrinking the page */
+  }
 
+  /* Safety: allow full-height growth */
+  html,
+  body {
+    min-height: 100% !important;
+    height: auto !important;
+  }
+}
+/* === END MOBILE SCROLL FIX === */
 </style>
 </head>
 <body>
