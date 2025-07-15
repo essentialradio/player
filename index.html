@@ -965,6 +965,21 @@
     max-width: none !important;
     box-sizing: border-box;
   }
+
+/* Styling for the “chance of rain” sub-line */
+.wxRainNote {
+  font-size: 90%;
+  font-style: italic;
+  display: inline-block;   /* so text-align works */
+}
+
+/* On phones, right-align that sub-line for a tidy look */
+@media (max-width: 500px) {
+  .wxRainNote {
+    text-align: right;
+    width: 100%;
+  }
+}
 </style>
 
 <!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL) === -->
@@ -1029,7 +1044,7 @@ const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
 wxNow.innerHTML =
   `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
   (showPop
-     ? ` <span style="white-space:nowrap">•&nbsp;${pop}%&nbsp;rain</span>`
+     ? `<br><span class="wxRainNote">☔&nbsp;${pop}% chance of rain</span>`
      : '');
     
       // HOURLY STRIP
