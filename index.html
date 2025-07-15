@@ -980,23 +980,22 @@
   display: inline-block;   /* so text-align works */
 }
 
+/<style>
 /* On phones, right-align that sub-line for a tidy look */
 @media (max-width: 500px) {
   .wxRainNote {
     text-align: right;
     width: 100%;
   }
-}
 
-@media (max-width: 500px) {
   #liveClock {
-    padding: 10px 14px;
-    font-size: 1em;
-    min-width: unset;
-    max-width: 100%;
-    margin: 10px auto;
-    flex-direction: column;
+    display: flex;          /* Added */
+    flex-direction: column; /* Moved up for clarity */
     align-items: center;
+    padding: 10px 14px;
+    margin: 10px auto;
+    max-width: 100%;
+    font-size: 1em;
     text-align: center;
     font-family: 'Montserrat', 'Inter', sans-serif;
   }
@@ -1012,11 +1011,15 @@
     display: inline;
     font-size: 1em;
     line-height: 1.2;
-    font-family: inherit;
   }
 
   .blink {
     animation: blink 1s steps(1, start) infinite;
+  }
+
+  /* Respect users who prefer less motion */
+  @media (prefers-reduced-motion: reduce) {
+    .blink { animation: none; }
   }
 
   @keyframes blink {
