@@ -757,18 +757,26 @@
   }
 }
 /* keep entire clock on one line */
+/* keep one-line, centre */
 #clockCombined {
   white-space: nowrap;
   text-align: center;
-  font-size: 90%;          /* adjust if needed */
+  font-size: 1.35em;        /* desktop/tablet size */
+  letter-spacing: 0.04em;
 }
 
+/* colours match your old scheme */
+.clockDate { color:#fed351; }   /* gold */
+.clockTime { color:#e53935; }   /* red */
+
 /* blinking colon */
-.blink {
-  animation: blink 1s steps(1) infinite;
+.blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity:0; } }
+
+/* scale down on phones so it never overflows */
+@media (max-width: 500px) {
+  #clockCombined { font-size: 1.05em; }
 }
-@keyframes blink { 50% { opacity: 0; } }
-/* ========================================= */
 </style>
 </head>
 <body>
@@ -847,16 +855,32 @@
      <div class="right-panel" style="display:flex;flex-direction:column;">
 
   <!-- Studio Clock at the very top -->
-<div id="liveClock"
-     style="background:#151516;border-radius:12px;border:2px solid #500;box-shadow:0 1px 10px #111a;
-            min-width:140px;max-width:175px;padding:8px 18px 9px 18px;margin:0 auto 14px auto;
-            display:flex;align-items:center;justify-content:center;">
-  <!-- NEW single line clock -->
-  <div id="clockCombined"
-       style="color:#e53935;font-family:'Consolas','Courier New',monospace;
-              font-size:1.6em;font-weight:700;letter-spacing:0.04em;text-align:center;
-              white-space:nowrap;"></div>
-</div>
+function updateLiveClock() {
+  const now  = new Date();
+  const pad  = n => n.toString().padStart(2, '0');
+
+  // Time with blinking colons
+  const hh = pad(now.getHours());
+  const mm = pad(now.getMinutes());
+  const ss = pad(now.getSeconds());
+  const timeHTML =
+    `${hh}<span class="blink">:</span>${mm}<span class="blink">:</span>${ss}`;
+
+  // Date parts
+  const days   = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const months = [
+    'January','February','March','April','May','June',
+    'July','August','September','October','November','December'
+  ];
+  const dateHTML =
+    `${days[now.getDay()]} ${now.getDate()} ${months[now.getMonth()]}`;
+
+  // Build combined line with separate spans so we can colour them
+  document.getElementById('clockCombined').innerHTML =
+    `<span class="clockDate">${dateHTML}</span> • <span class="clockTime">${timeHTML}</span>`;
+}
+updateLiveClock();
+setInterval(updateLiveClock, 1000);
 
 <!-- <!-- === ESSENTIAL WEATHER WIDGET (Always Shows Hourly Strip) === -->
 <div id="wxWrap"
