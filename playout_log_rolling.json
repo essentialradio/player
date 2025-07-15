@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-06-29T14:00:00Z",
-    "Scheduled Time": "15:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3480,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
-    "Hour": "2025-06-29T14:00:00Z",
-    "Scheduled Time": "15:58",
-    "Displayed Time": "",
-    "Artist": "Fatboy Slim",
-    "Title": "Right Here, Right Now",
-    "Duration (s)": 228,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-06-29T15:00:00Z",
     "Scheduled Time": "16:03",
     "Displayed Time": "",
@@ -43338,5 +43316,16 @@
     "Full Duration (s)": 235,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-15T01:00:00Z",
+    "Scheduled Time": "02:02",
+    "Displayed Time": "",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 181,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
