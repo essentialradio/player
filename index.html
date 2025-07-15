@@ -716,7 +716,33 @@
     box-shadow: 0 1px 4px #0001 !important;
   }
 }
+@media (max-width: 768px) {
+  .strip-container {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
 
+  .left-panel,
+  .right-panel {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .recently-played-container {
+    flex: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  ul#recent-list {
+    max-height: none !important;
+    overflow: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+}
 </style>
 </head>
 <body>
