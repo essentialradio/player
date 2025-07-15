@@ -756,7 +756,15 @@
     touch-action: pan-y !important;
   }
 }
+
 /* ========================================= */
+/* === MOBILE WEATHER SUMMARY SIZE === */
+@media (max-width: 500px) {
+  #wxNow {
+    font-size: 0.9em !important;   /* tweak value to taste */
+    line-height: 1.25;
+  }
+}
 </style>
 </head>
 <body>
@@ -851,136 +859,45 @@
   </div>
 
 
-<!-- <!-- === ESSENTIAL WEATHER WIDGET (Always Shows Hourly Strip) === -->
-<div id="wxWrap"
-     style="font-family:Inter,sans-serif;background:linear-gradient(135deg, #24243e 0%, #191c29 100%);
-            color:#f5f5f5;border-radius:18px;padding:16px;box-shadow:0 6px 32px #0007;
-            border:1px solid #252e42;max-width:100%;text-align:center;margin-bottom:18px;transition:background 0.3s, box-shadow 0.3s;">
-
-  <!-- Location selector -->
-  <div style="margin-bottom:7px;">
-    <select id="locSel"
-            style="background:#222;color:#fed351;border:1px solid #444;
-                   border-radius:6px;padding:4px 10px;font-weight:bold;">
-      <option value="Kilmarnock,55.6118,-4.4955">Kilmarnock</option>
-      <option value="Kilwinning,55.6558,-4.7057">Kilwinning</option>
-      <option value="Ayr,55.4586,-4.6292">Ayr</option>
-    </select>
-  </div>
-
-  <!-- Main summary and toggle -->
-  <div style="display:flex;justify-content:space-between;align-items:center;
-              border-bottom:1px solid #2224;margin-bottom:10px;padding-bottom:7px;">
-    <div id="wxNow" style="text-align:left;font-size:1em;"></div>
-    <button id="toggleBtn"
-            style="background:#fed351;color:#191c29;font-weight:600;border:none;
-                   border-radius:6px;padding:3px 10px;font-size:0.8em;cursor:pointer;
-                   box-shadow:0 1px 4px rgba(0,0,0,0.3);transition:all 0.18s;">
-      5-day ▸
-    </button>
-  </div>
-
-  <!-- Hourly (2-row layout) -->
-  <div id="hrWrap" style="display:grid;grid-template-rows:auto auto;gap:4px;
-                          overflow-x:auto;white-space:nowrap;font-size:0.82em;
-                          padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
-
-  <!-- Daily (2-row layout) -->
-  <div id="dyWrap" style="display:none;grid-template-rows:auto auto;gap:4px;
-                          overflow-x:auto;white-space:nowrap;font-size:0.82em;
-                          padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
-
-  <div id="wxAlert" style="color:#ff6969;font-size:0.85em;margin-top:5px;"></div>
-</div>
-
-<hr class="weather-divider">
-
-<style>
-  .weather-divider {
-    border: 0;
-    border-top: 1.5px solid #28304c;
-    margin: 14px 0 0 0;
-    opacity: 0.6;
-  }
-  #wxNow span {
-    text-shadow: 0 2px 10px #000c, 0 1px 0 #fed351;
-    font-size: 1.06em;
-  }
-/* Stop the hourly / daily strip from hijacking vertical swipes */
-#hrWrap, #dyWrap { touch-action: pan-x; }
-
-  #toggleBtn:hover {
-    background: #ffe67c !important;
-    color: #222 !important;
-    transform: scale(1.08);
-    box-shadow: 0 2px 8px #fed35180;
-    transition: all 0.18s;
-  }
-  #hrWrap, #dyWrap {
-    transition: opacity 0.35s, transform 0.3s;
-    opacity: 1;
-  }
-  #hrWrap[style*="display: none"], #dyWrap[style*="display: none"] {
-    opacity: 0 !important;
-    transform: translateY(-8px);
-  }
-  .forecast-icon {
-    transition: transform 0.2s ease-in-out, filter 0.2s;
-  }
-  .forecast-icon:hover {
-    filter: brightness(1.15) drop-shadow(0 2px 8px #fed35188);
-    transform: scale(1.16) rotate(-8deg);
-  }
-  @media (max-width: 500px) {
-    #toggleBtn {
-      font-size: 0.72em !important;
-      padding: 2px 6px !important;
-      border-radius: 5px !important;
-    }
-  }
-  #dyWrap > div > div {
-    width: 20% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    box-sizing: border-box;
-  }
-</style>
-
+<!-- === ESSENTIAL WEATHER WIDGET === -->
 <script>
 (() => {
   // ==== OPENWEATHERMAP API KEY ====
   const KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
 
-  const q = s => document.querySelector(s),
+  // Shorthand helpers
+  const q      = s => document.querySelector(s),
         locSel = q('#locSel'),
-        wxNow = q('#wxNow'),
-        tBtn = q('#toggleBtn'),
+        wxNow  = q('#wxNow'),
+        tBtn   = q('#toggleBtn'),
         hrWrap = q('#hrWrap'),
         dyWrap = q('#dyWrap'),
         alertBox = q('#wxAlert');
+
   let show5 = localStorage.wxView === '5';
   if (show5) swapView();
   if (localStorage.wxChoice) locSel.value = localStorage.wxChoice;
 
+  // Human-friendly phrasing
   function phrase(desc, isDay, temp = null, pop = null) {
     desc = desc.toLowerCase();
-    if (desc.includes('thunder')) return 'Thunderstorm';
+    if (desc.includes('thunder'))              return 'Thunderstorm';
     if (desc.includes('snow') && (!temp || temp < 5)) return 'Snow';
-    if (desc.includes('snow') && temp && temp >= 5) return 'Showers';
+    if (desc.includes('snow') && temp && temp >= 5)   return 'Showers';
     if (desc.includes('rain') || desc.includes('drizzle')) {
       if (pop !== null && pop < 30) return isDay ? 'Chance of showers' : 'Possible showers';
       return 'Rain';
     }
-    if (desc.includes('fog')) return 'Foggy';
+    if (desc.includes('fog'))  return 'Foggy';
     if (desc.includes('mist')) return 'Misty';
     if (desc.includes('haze')) return 'Hazy';
-    if (desc.includes('smoke')) return 'Smoky';
-    if (desc === 'clear sky') return isDay ? 'Sunny' : 'Clear';
-    if (desc.includes('few clouds')) return isDay ? 'Mostly sunny' : 'Mainly clear';
-    if (desc.includes('scattered')) return isDay ? 'Partly cloudy' : 'Some cloud';
-    if (desc.includes('broken')) return isDay ? 'Sunny intervals' : 'Cloudy';
-    if (desc.includes('overcast')) return 'Overcast';
-    // Never mention sunshine or bright at night
+    if (desc.includes('smoke'))return 'Smoky';
+    if (desc === 'clear sky')  return isDay ? 'Sunny' : 'Clear';
+    if (desc.includes('few clouds'))       return isDay ? 'Mostly sunny' : 'Mainly clear';
+    if (desc.includes('scattered clouds')) return isDay ? 'Partly cloudy' : 'Some cloud';
+    if (desc.includes('broken clouds'))    return isDay ? 'Sunny intervals' : 'Cloudy';
+    if (desc.includes('overcast'))         return 'Overcast';
+    // Never mention sunshine at night
     if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
     return isDay ? 'Fair' : 'Calm';
   }
@@ -988,66 +905,77 @@
   async function update() {
     const [label, lat, lon] = locSel.value.split(',');
     localStorage.wxChoice = locSel.value;
-    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`;
-    try {
-      const d = await fetch(url).then(r => r.json());
-      const cur = d.current, nxt = d.hourly[1];
-      const day = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600;
-      const pop = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null;
-      const desc = phrase(cur.weather[0].description, day, cur.temp, pop);
-      const tmp = Math.round(cur.temp);
-      wxNow.innerHTML = `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C${pop !== null && pop >= 30 ? ` • ${pop}% rain` : ''}`;
 
-      // Hourly layout (5 hours) - ALWAYS show, day or night
+    try {
+      const d   = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`)
+                         .then(r => r.json());
+
+      // ==== CURRENT CONDITIONS ====
+      const cur   = d.current,
+            nxt   = d.hourly[1],
+            day   = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600,
+            pop   = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null,
+            desc  = phrase(cur.weather[0].description, day, cur.temp, pop),
+            tmp   = Math.round(cur.temp);
+
+      // NEW: only show % chance if desc doesn’t already say rain/showers
+      const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
+
+      wxNow.innerHTML =
+        `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
+        (showPop ? ` • ${pop}% rain` : '');
+
+      // ==== HOURLY STRIP (next 5 hours) ====
       hrWrap.innerHTML = '';
       let times = '', details = '';
       d.hourly.slice(1, 6).forEach(h => {
         const t = new Date(h.dt * 1e3).getHours().toString().padStart(2, '0') + ':00';
         const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
-        times += `<div style="display:inline-block;width:52px;text-align:center;">${t}</div>`;
-        details += `<div style="display:inline-block;width:52px;text-align:center;">
-                      <img src="${icon}" width="20" class="forecast-icon" style="vertical-align:middle">
-                      <br>${Math.round(h.temp)}°
+        times   += `<div style="width:52px;text-align:center;">${t}</div>`;
+        details += `<div style="width:52px;text-align:center;">
+                      <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
                     </div>`;
       });
       hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
-      if (!show5) hrWrap.style.display = 'grid'; else hrWrap.style.display = 'none';
+      hrWrap.style.display = show5 ? 'none' : 'grid';
 
-      // Daily layout (5 days)
+      // ==== DAILY STRIP (next 5 days) ====
       dyWrap.innerHTML = '';
       let days = '', temps = '';
       d.daily.slice(1, 6).forEach(dd => {
-        const wd = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', { weekday: 'short' });
-        const icon = `https://openweathermap.org/img/wn/${dd.weather[0].icon}.png`;
-        days += `<div style="display:inline-block;text-align:center;">${wd}</div>`;
-        temps += `<div style="display:inline-block;text-align:center;">
-                    <img src="${icon}" width="20" class="forecast-icon" style="vertical-align:middle">
-                    <br>${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
+        const wd   = new Date(dd.dt * 1e3).toLocaleDateString('en-GB',{weekday:'short'}),
+              icon = `https://openweathermap.org/img/wn/${dd.weather[0].icon}.png`;
+        days  += `<div style="text-align:center;">${wd}</div>`;
+        temps += `<div style="text-align:center;">
+                    <img src="${icon}" width="20" class="forecast-icon"><br>
+                    ${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
                   </div>`;
       });
-      dyWrap.innerHTML = `<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>`;
+      dyWrap.innerHTML  = `<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>`;
       dyWrap.style.display = show5 ? 'grid' : 'none';
 
-      // Alert only if active
+      // ==== ALERTS ====
       if (d.alerts && d.alerts.length) {
-        const now = Math.floor(Date.now()/1000);
-        const valid = d.alerts.find(a => a.end ? a.end > now : true);
+        const now   = Math.floor(Date.now() / 1000),
+              valid = d.alerts.find(a => !a.end || a.end > now);
         alertBox.textContent = valid ? `⚠ ${valid.event}` : '';
       } else {
         alertBox.textContent = '';
       }
+
     } catch (e) {
-      console.error(e);
+      console.error('Weather fetch error', e);
       wxNow.textContent = 'Weather unavailable';
     }
   }
 
-  // Animated swap between hourly/daily
+  // Toggle between hourly ↔ daily view
   function swapView() {
     hrWrap.style.opacity = '0';
     dyWrap.style.opacity = '0';
     setTimeout(() => {
-      show5 = !show5; localStorage.wxView = show5 ? '5' : 'hr';
+      show5 = !show5;
+      localStorage.wxView = show5 ? '5' : 'hr';
       hrWrap.style.display = show5 ? 'none' : 'grid';
       dyWrap.style.display = show5 ? 'grid' : 'none';
       tBtn.textContent = show5 ? 'Hourly ▶' : '5-day ▸';
@@ -1058,10 +986,14 @@
     }, 180);
   }
 
-  tBtn.addEventListener('click', swapView);
-  locSel.addEventListener('change', update);
-  update(); setInterval(update, 900000);
+  // Listeners & first run
+  tBtn  .addEventListener('click',   swapView);
+  locSel.addEventListener('change',  update);
+  update();                         // first load
+  setInterval(update, 900_000);     // every 15 min
 })();
+</script>
+<!-- === END WEATHER WIDGET SCRIPT === -->
 </script>
   <!-- Recently Played fills the rest of the panel -->
   <div class="recently-played-container" style="flex:1;display:flex;flex-direction:column;min-height:0;">
