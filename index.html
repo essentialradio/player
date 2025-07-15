@@ -1031,10 +1031,7 @@ wxNow.innerHTML =
   (showPop
      ? ` <span style="white-space:nowrap">•&nbsp;${pop}%&nbsp;rain</span>`
      : '');
-      wxNow.innerHTML =
-        `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
-        (showPop ? ` • ${pop}% rain` : '');
-
+    
       // HOURLY STRIP
       hrWrap.innerHTML = '';
       let times = '', details = '';
