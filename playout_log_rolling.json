@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-29T20:00:00Z",
-    "Scheduled Time": "21:03",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3477,
-    "Full Duration (s)": 3479,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-06-29T21:00:00Z",
     "Scheduled Time": "22:03",
     "Displayed Time": "",
@@ -43732,6 +43721,17 @@
     "Title": "Austin (Boots Stop Workin')",
     "Duration (s)": 163,
     "Full Duration (s)": 172,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-15T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "",
+    "Artist": "Thomas Headon",
+    "Title": "Georgia",
+    "Duration (s)": 173,
+    "Full Duration (s)": 174,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
