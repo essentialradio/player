@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-06-29T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "",
-    "Artist": "Essential Radio",
-    "Title": "Airplay 40 Intro",
-    "Duration (s)": 24,
-    "Full Duration (s)": 28,
-    "Duration (mins)": 0,
-    "Full Duration (mins)": 0
-  },
-  {
-    "Hour": "2025-06-29T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3549,
-    "Full Duration (s)": 3550,
-    "Duration (mins)": 59,
-    "Full Duration (mins)": 59
-  },
-  {
     "Hour": "2025-06-29T14:00:00Z",
     "Scheduled Time": "15:00",
     "Displayed Time": "",
@@ -43204,6 +43182,17 @@
     "Title": "Budapest",
     "Duration (s)": 194,
     "Full Duration (s)": 201,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-15T00:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "",
+    "Artist": "Kygo X Tina Turner",
+    "Title": "What's Love Got to Do With It",
+    "Duration (s)": 203,
+    "Full Duration (s)": 208,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
