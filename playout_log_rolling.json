@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-30T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3401,
-    "Full Duration (s)": 3404,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-06-30T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44273,5 +44262,16 @@
     "Full Duration (s)": 172,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-15T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "",
+    "Artist": "Coldplay",
+    "Title": "Feels Like I'm Falling in Love",
+    "Duration (s)": 221,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
