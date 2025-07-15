@@ -946,18 +946,19 @@
   }
 </style>
 
+<!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL) === -->
 <script>
 (() => {
-  // ==== OPENWEATHERMAP API KEY ====
   const KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
 
   const q = s => document.querySelector(s),
         locSel = q('#locSel'),
-        wxNow = q('#wxNow'),
-        tBtn = q('#toggleBtn'),
+        wxNow  = q('#wxNow'),
+        tBtn   = q('#toggleBtn'),
         hrWrap = q('#hrWrap'),
         dyWrap = q('#dyWrap'),
         alertBox = q('#wxAlert');
+
   let show5 = localStorage.wxView === '5';
   if (show5) swapView();
   if (localStorage.wxChoice) locSel.value = localStorage.wxChoice;
@@ -971,16 +972,15 @@
       if (pop !== null && pop < 30) return isDay ? 'Chance of showers' : 'Possible showers';
       return 'Rain';
     }
-    if (desc.includes('fog')) return 'Foggy';
-    if (desc.includes('mist')) return 'Misty';
-    if (desc.includes('haze')) return 'Hazy';
+    if (desc.includes('fog'))   return 'Foggy';
+    if (desc.includes('mist'))  return 'Misty';
+    if (desc.includes('haze'))  return 'Hazy';
     if (desc.includes('smoke')) return 'Smoky';
-    if (desc === 'clear sky') return isDay ? 'Sunny' : 'Clear';
-    if (desc.includes('few clouds')) return isDay ? 'Mostly sunny' : 'Mainly clear';
-    if (desc.includes('scattered')) return isDay ? 'Partly cloudy' : 'Some cloud';
-    if (desc.includes('broken')) return isDay ? 'Sunny intervals' : 'Cloudy';
-    if (desc.includes('overcast')) return 'Overcast';
-    // Never mention sunshine or bright at night
+    if (desc === 'clear sky')   return isDay ? 'Sunny' : 'Clear';
+    if (desc.includes('few clouds'))       return isDay ? 'Mostly sunny' : 'Mainly clear';
+    if (desc.includes('scattered clouds')) return isDay ? 'Partly cloudy' : 'Some cloud';
+    if (desc.includes('broken clouds'))    return isDay ? 'Sunny intervals' : 'Cloudy';
+    if (desc.includes('overcast'))         return 'Overcast';
     if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
     return isDay ? 'Fair' : 'Calm';
   }
@@ -988,81 +988,91 @@
   async function update() {
     const [label, lat, lon] = locSel.value.split(',');
     localStorage.wxChoice = locSel.value;
-    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`;
+
     try {
-      const d = await fetch(url).then(r => r.json());
+      const d = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`)
+                       .then(r => r.json());
+
       const cur = d.current, nxt = d.hourly[1];
       const day = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600;
       const pop = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null;
       const desc = phrase(cur.weather[0].description, day, cur.temp, pop);
-      const tmp = Math.round(cur.temp);
-      wxNow.innerHTML = `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C${pop !== null && pop >= 30 ? ` • ${pop}% rain` : ''}`;
+      const tmp  = Math.round(cur.temp);
 
-      // Hourly layout (5 hours) - ALWAYS show, day or night
+      // 👉 Only show % if desc doesn’t already include “rain / showers”
+      const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
+
+      wxNow.innerHTML =
+        `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
+        (showPop ? ` • ${pop}% rain` : '');
+
+      // HOURLY STRIP
       hrWrap.innerHTML = '';
       let times = '', details = '';
       d.hourly.slice(1, 6).forEach(h => {
-        const t = new Date(h.dt * 1e3).getHours().toString().padStart(2, '0') + ':00';
+        const t = new Date(h.dt * 1e3).getHours().toString().padStart(2,'0') + ':00';
         const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
-        times += `<div style="display:inline-block;width:52px;text-align:center;">${t}</div>`;
-        details += `<div style="display:inline-block;width:52px;text-align:center;">
-                      <img src="${icon}" width="20" class="forecast-icon" style="vertical-align:middle">
-                      <br>${Math.round(h.temp)}°
+        times   += `<div style="width:52px;text-align:center;">${t}</div>`;
+        details += `<div style="width:52px;text-align:center;">
+                      <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
                     </div>`;
       });
       hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
-      if (!show5) hrWrap.style.display = 'grid'; else hrWrap.style.display = 'none';
+      hrWrap.style.display = show5 ? 'none' : 'grid';
 
-      // Daily layout (5 days)
+      // DAILY STRIP
       dyWrap.innerHTML = '';
       let days = '', temps = '';
       d.daily.slice(1, 6).forEach(dd => {
-        const wd = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', { weekday: 'short' });
+        const wd   = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', {weekday:'short'});
         const icon = `https://openweathermap.org/img/wn/${dd.weather[0].icon}.png`;
-        days += `<div style="display:inline-block;text-align:center;">${wd}</div>`;
-        temps += `<div style="display:inline-block;text-align:center;">
-                    <img src="${icon}" width="20" class="forecast-icon" style="vertical-align:middle">
-                    <br>${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
+        days  += `<div style="text-align:center;">${wd}</div>`;
+        temps += `<div style="text-align:center;">
+                    <img src="${icon}" width="20" class="forecast-icon"><br>
+                    ${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
                   </div>`;
       });
       dyWrap.innerHTML = `<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>`;
       dyWrap.style.display = show5 ? 'grid' : 'none';
 
-      // Alert only if active
+      // ALERTS
       if (d.alerts && d.alerts.length) {
         const now = Math.floor(Date.now()/1000);
-        const valid = d.alerts.find(a => a.end ? a.end > now : true);
+        const valid = d.alerts.find(a => !a.end || a.end > now);
         alertBox.textContent = valid ? `⚠ ${valid.event}` : '';
       } else {
         alertBox.textContent = '';
       }
-    } catch (e) {
-      console.error(e);
+
+    } catch(e) {
+      console.error('Weather fetch error', e);
       wxNow.textContent = 'Weather unavailable';
     }
   }
 
-  // Animated swap between hourly/daily
   function swapView() {
     hrWrap.style.opacity = '0';
     dyWrap.style.opacity = '0';
     setTimeout(() => {
-      show5 = !show5; localStorage.wxView = show5 ? '5' : 'hr';
-      hrWrap.style.display = show5 ? 'none' : 'grid';
-      dyWrap.style.display = show5 ? 'grid' : 'none';
+      show5 = !show5;
+      localStorage.wxView = show5 ? '5' : 'hr';
+      hrWrap.style.display = show5 ? 'none':'grid';
+      dyWrap.style.display = show5 ? 'grid':'none';
       tBtn.textContent = show5 ? 'Hourly ▶' : '5-day ▸';
       setTimeout(() => {
-        hrWrap.style.opacity = show5 ? '0' : '1';
-        dyWrap.style.opacity = show5 ? '1' : '0';
-      }, 20);
-    }, 180);
+        hrWrap.style.opacity = show5 ? '0':'1';
+        dyWrap.style.opacity = show5 ? '1':'0';
+      },20);
+    },180);
   }
 
-  tBtn.addEventListener('click', swapView);
+  tBtn  .addEventListener('click', swapView);
   locSel.addEventListener('change', update);
-  update(); setInterval(update, 900000);
+  update();
+  setInterval(update, 900000);
 })();
 </script>
+<!-- === END WEATHER WIDGET SCRIPT === -->
   <!-- Recently Played fills the rest of the panel -->
   <div class="recently-played-container" style="flex:1;display:flex;flex-direction:column;min-height:0;">
     <div class="recent-title" style="color:#fed351;font-size:1.1em;margin-bottom:7px;">Recently Played</div>
