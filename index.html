@@ -1014,15 +1014,23 @@
       const d = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`)
                        .then(r => r.json());
 
-      const cur = d.current, nxt = d.hourly[1];
-      const day = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600;
-      const pop = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null;
-      const desc = phrase(cur.weather[0].description, day, cur.temp, pop);
-      const tmp  = Math.round(cur.temp);
+      // ==== CURRENT CONDITIONS ====
+const cur  = d.current,
+      nxt  = d.hourly[1],
+      day  = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600,
+      pop  = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null,
+      desc = phrase(cur.weather[0].description, day, cur.temp, pop),
+      tmp  = Math.round(cur.temp);
 
-      // 👉 Only show % if desc doesn’t already include “rain / showers”
-      const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
+// Only show % if desc doesn’t already include “rain / showers”
+const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
 
+// Build the summary line (keeps “• 80 % rain” on one line)
+wxNow.innerHTML =
+  `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
+  (showPop
+     ? ` <span style="white-space:nowrap">•&nbsp;${pop}%&nbsp;rain</span>`
+     : '');
       wxNow.innerHTML =
         `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
         (showPop ? ` • ${pop}% rain` : '');
