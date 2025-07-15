@@ -757,26 +757,18 @@
   }
 }
 /* keep entire clock on one line */
-/* keep one-line, centre */
 #clockCombined {
   white-space: nowrap;
   text-align: center;
-  font-size: 1.35em;        /* desktop/tablet size */
-  letter-spacing: 0.04em;
+  font-size: 90%;          /* adjust if needed */
 }
-
-/* colours match your old scheme */
-.clockDate { color:#fed351; }   /* gold */
-.clockTime { color:#e53935; }   /* red */
 
 /* blinking colon */
-.blink { animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity:0; } }
-
-/* scale down on phones so it never overflows */
-@media (max-width: 500px) {
-  #clockCombined { font-size: 1.05em; }
+.blink {
+  animation: blink 1s steps(1) infinite;
 }
+@keyframes blink { 50% { opacity: 0; } }
+/* ========================================= */
 </style>
 </head>
 <body>
@@ -855,14 +847,17 @@
      <div class="right-panel" style="display:flex;flex-direction:column;">
 
   <!-- Studio Clock at the very top -->
-<!-- Studio Clock - Combined Line -->
 <div id="liveClock"
-     style="background:#151516; border-radius:12px; border:2px solid #500;
-            box-shadow:0 1px 10px #111a; max-width:320px; margin:0 auto 14px auto;
-            padding:10px 20px; text-align:center; font-family:'Consolas','Courier New',monospace;
-            font-size:1.4em; font-weight:600; letter-spacing:0.06em; color:#e53935;">
-  <span id="clockCombined"></span>
+     style="background:#151516;border-radius:12px;border:2px solid #500;box-shadow:0 1px 10px #111a;
+            min-width:140px;max-width:175px;padding:8px 18px 9px 18px;margin:0 auto 14px auto;
+            display:flex;align-items:center;justify-content:center;">
+  <!-- NEW single line clock -->
+  <div id="clockCombined"
+       style="color:#e53935;font-family:'Consolas','Courier New',monospace;
+              font-size:1.6em;font-weight:700;letter-spacing:0.04em;text-align:center;
+              white-space:nowrap;"></div>
 </div>
+
 <!-- <!-- === ESSENTIAL WEATHER WIDGET (Always Shows Hourly Strip) === -->
 <div id="wxWrap"
      style="font-family:Inter,sans-serif;background:linear-gradient(135deg, #24243e 0%, #191c29 100%);
@@ -2129,25 +2124,32 @@ wxNow.innerHTML =
   </script>
 </body>
 <script>
-function updateLiveClock(){
-  const now=new Date(), pad=n=>n.toString().padStart(2,'0');
-  const hh=pad(now.getHours()), mm=pad(now.getMinutes()), ss=pad(now.getSeconds());
+function updateLiveClock() {
+  const now  = new Date();
+  const pad  = n => n.toString().padStart(2, '0');
 
-  // only first colon blinks
-  const blink = now.getMilliseconds()<500?':':' ';
-  const timeHTML=`${hh}${blink}${mm}:${ss}`;
+  /* build time with each colon wrapped in <span class="blink"> */
+  const hh = pad(now.getHours());
+  const mm = pad(now.getMinutes());
+  const ss = pad(now.getSeconds());
+  const time = `${hh}<span class="blink">:</span>${mm}<span class="blink">:</span>${ss}`;
 
-  const days=['MON','TUE','WED','THU','FRI','SAT','SUN'];
-  const months=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
-                'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
-  const dateHTML=`${days[now.getDay()]} ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+  /* short weekday + full-month */
+  const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const months = [
+    'January','February','March','April','May','June',
+    'July','August','September','October','November','December'
+  ];
+  const dow   = days[now.getDay()];
+  const day   = now.getDate();
+  const month = months[now.getMonth()];
 
-  document.getElementById('clockCombined').innerHTML=
-    `<span class="clockDate">${dateHTML}</span> • <span class="clockTime">${timeHTML}</span>`;
+  /* final one-line string */
+  const dateTimeStr = `${dow} ${day} ${month} • ${time}`;
+  document.getElementById('clockCombined').innerHTML = dateTimeStr;
 }
 updateLiveClock();
-setInterval(updateLiveClock,1000);
-</script>
+setInterval(updateLiveClock, 1000);
 
 function toggleBurgerMenu() {
   var menu = document.getElementById('burgerDropdown');
