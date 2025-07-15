@@ -743,6 +743,20 @@
     -webkit-overflow-scrolling: auto !important;
   }
 }
+
+/* === FINAL MOBILE SMOOTH-SCROLL TWEAKS === */
+@media (max-width: 768px) {
+  /* Let right column release momentum smoothly */
+  .right-panel {
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Let recent list claim only vertical drags */
+  ul#recent-list {
+    touch-action: pan-y !important;
+  }
+}
+/* ========================================= */
 </style>
 </head>
 <body>
