@@ -1037,6 +1037,33 @@
   }
 }
 
+/* === WEATHER WIDGET SCROLL SMOOTHNESS === */
+
+/* Default: no horizontal scrolling = no hijack */
+#hrWrap, #dyWrap {
+  overflow-x: hidden;          /* nothing to drag */
+  touch-action: pan-y;         /* vertical only   */
+  overscroll-behavior: auto;   /* bubble freely   */
+}
+
+/* Phones in portrait get the sideways strip,
+   but ONLY inside each row, not the whole card */
+@media (max-width: 500px) {
+  #hrWrap, #dyWrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* momentum for iOS   */
+    touch-action: pan-x;               /* claim horizontal   */
+    overscroll-behavior-x: contain;    /* keep sideways wraps */
+    overscroll-behavior-y: auto;       /* let vertical bubble */
+  }
+}
+
+/* Make sure the main wx card never traps vertical scroll */
+#wxWrap {
+  overscroll-behavior: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (max-width: 500px) {
   #wxWrap h3 {
     font-size: 1em !important;
