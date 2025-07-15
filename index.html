@@ -987,6 +987,42 @@
     width: 100%;
   }
 }
+
+@media (max-width: 500px) {
+  #liveClock {
+    padding: 10px 14px;
+    font-size: 1em;
+    min-width: unset;
+    max-width: 100%;
+    margin: 10px auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+  }
+
+  #clockCombined {
+    font-size: 1.05em;
+    line-height: 1.4;
+    word-spacing: 0.1em;
+  }
+
+  .clockDate,
+  .clockTime {
+    display: inline;
+    font-size: 1em;
+    line-height: 1.2;
+    font-family: inherit;
+  }
+
+  .blink {
+    animation: blink 1s steps(1, start) infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+}
 </style>
 
 <!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL) === -->
