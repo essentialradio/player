@@ -922,7 +922,12 @@
 
   }
 
-v#hrWrap, #dyWrap, #recent-list {
+#hrWrap, #dyWrap {
+  touch-action: pan-x !important;
+  overscroll-behavior-y: auto !important;   /* allow chaining */
+}
+
+#hrWrap, #dyWrap, #recent-list {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
