@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-29T22:00:00Z",
-    "Scheduled Time": "23:00",
-    "Displayed Time": "",
-    "Artist": "Dave Watkins",
-    "Title": "The Country Mile",
-    "Duration (s)": 3599,
-    "Full Duration (s)": 3602,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-06-29T23:00:00Z",
     "Scheduled Time": "00:02",
     "Displayed Time": "",
@@ -44020,5 +44009,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-15T06:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "",
+    "Artist": "The Script",
+    "Title": "For the First Time",
+    "Duration (s)": 244,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
