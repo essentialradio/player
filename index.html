@@ -831,8 +831,8 @@ body {
 }
 @media (max-width: 768px) {
   .modal {
-    top: 60px !important; /* Change 64px to the height of your player/clock/bar */
-    height: calc(100vh - 60px) !important;
+    top: 56px !important; /* Change 64px to the height of your player/clock/bar */
+    height: calc(100vh - 56px) !important;
   }
 }
 @media (max-width: 768px) {
@@ -847,6 +847,21 @@ body {
   /* Ensure the burger is truly flush to the top */
   #burgerMenuBtn {
     top: 0 !important;
+  }
+}
+@media (max-width: 768px) {
+  .strip-container, .main-panel, .player-panel {
+    margin-top: 0 !important;
+    padding-top: 18px !important;  /* Tweak this value for best look */
+    position: relative !important;
+    top: 0 !important;
+    z-index: 1 !important;
+  }
+  .logo-overhang {
+    z-index: 2002 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
   }
 }
 
