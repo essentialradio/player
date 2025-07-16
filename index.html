@@ -18,7 +18,7 @@
   .navbar { display: none !important; }
   #burgerMenuBtn { display: block !important; }
    { display: flex; }
-
+}
 @media (min-width: 751px) {
   #burgerMenuBtn, #burgerDropdown { display: none !important; }
 }
@@ -829,50 +829,13 @@ body {
 .logo-hide {
   display: none !important;
 }
-@media (max-width: 768px) {
-  .modal {
-    top: 56px !important; /* Change 64px to the height of your player/clock/bar */
-    height: calc(100vh - 56px) !important;
-  }
-}
-@media (max-width: 768px) {
-  body, html {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  #main, .main, .main-panel, .strip-container, .content, .container, .player-panel {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  /* Ensure the burger is truly flush to the top */
-  #burgerMenuBtn {
-    top: 0 !important;
-  }
-}
-@media (max-width: 768px) {
-  .strip-container, .main-panel, .player-panel {
-    margin-top: 0 !important;
-    padding-top: 18px !important;  /* Tweak this value for best look */
-    position: relative !important;
-    top: 0 !important;
-    z-index: 1 !important;
-  }
-  .logo-overhang {
-    z-index: 2002 !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-  }
-}
-
 </style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
-<div id="burgerMenuBtn" onclick="toggleBurgerMenu()">
-  <span class="burger-icon"><div></div></span>
+<div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;position:fixed;top:15px;left:18px;z-index:2001;...">
+  ☰
 </div>
-
 
 <!-- MOBILE DROPDOWN MENU -->
 <div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
@@ -1463,45 +1426,13 @@ wxNow.innerHTML =
     box-sizing: border-box !important;
   }
 }
-/* Burger Icon Styles */
-.burger-icon {
-  display: block;
-  width: 30px;
-  height: 22px;
-  position: relative;
-  margin: 0 auto;
-}
-.burger-icon span,
-.burger-icon::before,
-.burger-icon::after {
-  content: '';
-  display: block;
-  background: #222;   /* Pure white bars for visibility */
-  height: 4px;
-  border-radius: 2px;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  transition: 0.3s;
-}
-.burger-icon::before {
-  top: 0;
-}
-.burger-icon span {
-  top: 9px;
-  position: absolute;
-}
-.burger-icon::after {
-  top: 18px;
-}
-
-/* Bigger and touch-friendly on mobile */
 @media (max-width: 768px) {
   #burgerMenuBtn {
     top: 12px !important;
-    left: 0 !important;
-    width: 48px !important;
-    height: 48px !important;
+    left: 0 !important;                /* flush with main content panel */
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 2.2em !important;
     padding: 0 !important;
     display: flex !important;
     align-items: center;
@@ -1511,30 +1442,7 @@ wxNow.innerHTML =
     box-shadow: 0 2px 8px #0002 !important;
     z-index: 2001 !important;
   }
-  .burger-icon {
-    width: 28px;
-    height: 20px;
-  }
 }
-@media (max-width: 768px) {
-  /* 1. Remove space above the black content panel */
-  .strip-container, .main-panel, .player-panel {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  /* 2. Burger menu button sits flush at top */
-  #burgerMenuBtn {
-    top: 0 !important;
-  }
-
-  /* 3. Dropdown menu appears below the top bar, not covering burger or logo */
-  #burgerDropdown {
-    top: 56px !important;                /* Change if your top bar is taller */
-    height: calc(100vh - 56px) !important;
-  }
-}
-
 
 
     </style>
