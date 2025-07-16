@@ -142,16 +142,19 @@
   border-radius: 12px;
   border: 2px solid #500;
   box-shadow: 0 1px 10px #111a;
-  padding: 8px 14px;
+  padding: 6px 14px;
   margin: 0 auto 14px auto;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   font-family: 'Consolas', 'Courier New', monospace;
+  white-space: nowrap;     /* ensures it stays on one line */
+  max-width: 100%;
+  overflow: hidden;
 }
 
 #clockCombined {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
