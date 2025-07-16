@@ -848,7 +848,8 @@ body {
 </div>
 
 <!-- MOBILE DROPDOWN MENU -->
-<div style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
+<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
+  <div style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
   <a href="#" onclick="openModalAndCloseBurger('aboutModal');return false;" class="menu-link">About Us</a>
   <a href="#" onclick="openModalAndCloseBurger('scheduleModal');return false;" class="menu-link">Schedule</a>
   <a href="#" onclick="openModalAndCloseBurger('playlistModal');return false;" class="menu-link">Playlist</a>
@@ -873,21 +874,6 @@ body {
   <a href="#" onclick="openModal('newsModal');return false;">News</a>
   <a href="#" onclick="openModal('travelModal');return false;">Travel</a>
 </nav>
-
-
-
-  <!-- NAVIGATION MENU -->
-  <nav class="navbar" role="navigation">
-    <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
-    <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
-    <a href="#" onclick="openModal('playlistModal');return false;">Playlist</a>
-    <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
-    <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
-    <a href="#" onclick="openModal('requestsModal');return false;">Requests</a>
-    <a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
-    <a href="#" onclick="openModal('newsModal');return false;">News</a>
-    <a href="#" onclick="openModal('travelModal');return false;">Travel</a>
-  </nav>
 
 <div class="header-spacer"></div>
 
