@@ -848,20 +848,18 @@ body {
 </div>
 
 <!-- MOBILE DROPDOWN MENU -->
-<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
-  <div style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
-  <a href="#" onclick="openModal('aboutModal');closeBurgerMenu();return false;" class="menu-link">About Us</a>
-  <a href="#" onclick="openModal('scheduleModal');closeBurgerMenu();return false;" class="menu-link">Schedule</a>
-  <a href="#" onclick="openModal('playlistModal');closeBurgerMenu();return false;" class="menu-link">Playlist</a>
-  <a href="#" onclick="openModal('listenModal');closeBurgerMenu();return false;" class="menu-link">Listen Again</a>
-  <a href="#" onclick="openModal('searchModal');closeBurgerMenu();return false;" class="menu-link">Song Search</a>
-  <a href="#" onclick="openModal('requestsModal');closeBurgerMenu();return false;" class="menu-link">Requests</a>
-  <a href="#" onclick="openModal('contactModal');closeBurgerMenu();return false;" class="menu-link">Contact Us</a>
-  <a href="#" onclick="openModal('newsModal');closeBurgerMenu();return false;" class="menu-link">News</a>
-  <a href="#" onclick="openModal('travelModal');closeBurgerMenu();return false;" class="menu-link">Travel</a>
+<div style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
+  <a href="#" onclick="openModalAndCloseBurger('aboutModal');return false;" class="menu-link">About Us</a>
+  <a href="#" onclick="openModalAndCloseBurger('scheduleModal');return false;" class="menu-link">Schedule</a>
+  <a href="#" onclick="openModalAndCloseBurger('playlistModal');return false;" class="menu-link">Playlist</a>
+  <a href="#" onclick="openModalAndCloseBurger('listenModal');return false;" class="menu-link">Listen Again</a>
+  <a href="#" onclick="openModalAndCloseBurger('searchModal');return false;" class="menu-link">Song Search</a>
+  <a href="#" onclick="openModalAndCloseBurger('requestsModal');return false;" class="menu-link">Requests</a>
+  <a href="#" onclick="openModalAndCloseBurger('contactModal');return false;" class="menu-link">Contact Us</a>
+  <a href="#" onclick="openModalAndCloseBurger('newsModal');return false;" class="menu-link">News</a>
+  <a href="#" onclick="openModalAndCloseBurger('travelModal');return false;" class="menu-link">Travel</a>
 </div>
 
-</div>
 
 <!-- DESKTOP NAVIGATION -->
 <nav class="navbar" role="navigation">
@@ -1785,6 +1783,11 @@ wxNow.innerHTML =
       document.getElementById(id).style.display = 'none';
       document.body.style.overflow = '';
     }
+	function openModalAndCloseBurger(modalId) {
+  closeBurgerMenu();
+  openModal(modalId);
+}
+
     window.onclick = function(event) {
       document.querySelectorAll('.modal').forEach(modal => {
         if (event.target === modal) {
@@ -2252,25 +2255,40 @@ function updateLiveClock() {
     updateLiveClock();
     setInterval(updateLiveClock, 1000);
 
+function hideLogo() {
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.add('logo-hide');
+}
+
+function showLogo() {
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.remove('logo-hide');
+}
+
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
-  const logo = document.querySelector('.logo-overhang');
   const isOpen = burgerDropdown.style.display === 'flex';
-
   if (isOpen) {
     burgerDropdown.style.display = 'none';
-    if (logo) logo.classList.remove('logo-hide');
+    // Check if any modal is still open before showing the logo
+    const stillOpen = Array.from(document.querySelectorAll('.modal'))
+      .some(m => m.style.display === 'block' || m.style.display === 'flex');
+    if (!stillOpen) showLogo();
   } else {
     burgerDropdown.style.display = 'flex';
-    if (logo) logo.classList.add('logo-hide');
+    hideLogo();
   }
 }
 
 function closeBurgerMenu() {
-  document.getElementById('burgerDropdown').style.display = 'none';
-  const logo = document.querySelector('.logo-overhang');
-  if (logo) logo.classList.remove('logo-hide');
+  const burgerDropdown = document.getElementById('burgerDropdown');
+  burgerDropdown.style.display = 'none';
+  // Check if any modal is still open before showing the logo
+  const stillOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  if (!stillOpen) showLogo();
 }
+
 
 // Close when clicking outside the menu panel
 document.addEventListener('click', function(e) {
