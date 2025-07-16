@@ -797,6 +797,14 @@
     touch-action: pan-y !important;
   }
 }
+
+@media (max-width: 768px) {
+  .right-panel {
+    overscroll-behavior: auto !important;   /* let scroll bubble out */
+    overflow-y: auto !important;            /* its own scroll, momentum OK */
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
 /* ========================================= */
 </style>
 </head>
@@ -938,12 +946,12 @@
 
   <!-- Hourly (2-row layout) -->
   <div id="hrWrap" style="display:grid;grid-template-rows:auto auto;gap:4px;
-                          overflow-x:auto;white-space:nowrap;font-size:0.82em;
+                          white-space:nowrap;font-size:0.82em;
                           padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
 
   <!-- Daily (2-row layout) -->
   <div id="dyWrap" style="display:none;grid-template-rows:auto auto;gap:4px;
-                          overflow-x:auto;white-space:nowrap;font-size:0.82em;
+                          white-space:nowrap;font-size:0.82em;
                           padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
 
   <div id="wxAlert" style="color:#ff6969;font-size:0.85em;margin-top:5px;"></div>
