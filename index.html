@@ -482,17 +482,19 @@ body {
 }
 @media (max-width: 768px) {
   .logo-overhang {
-    width: 80px !important;            /* Visible but not too big */
+    width: 68px !important;
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
-    transform: translate(-32%, -32%) !important;  /* Still overhangs, less extreme than desktop */
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.28)) !important;
+    /* Make the logo break out of the player nicely: */
+    transform: translate(-42%, -40%) !important;
     z-index: 2002 !important;
     pointer-events: none !important;
     user-select: none !important;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.27)) !important;
   }
 }
+
 
 
 
