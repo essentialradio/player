@@ -135,36 +135,42 @@
     }
     /* --- END NAVBAR & MODALS ONLY --- */
 
-    /* --- PLAYER AND PANEL STYLES --- */#liveClock {
+    /* --- PLAYER AND PANEL STYLES --- */
+
+#liveClock {
+  background: #151516;
+  border-radius: 12px;
+  border: 2px solid #500;
+  box-shadow: 0 1px 10px #111a;
+  padding: 8px 14px;
+  margin: 0 auto 14px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+#clockCombined {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 12px;
-  padding: 6px 16px;
-  background: #000;
-  border: 2px solid #900;
-  border-radius: 14px;
-  font-family: 'Courier New', monospace;
-  margin: 0 auto 14px auto;
-  box-shadow: 0 0 10px #000c;
+  line-height: 1.2;
+  word-spacing: 0.1em;
+}
+
+#clockTime {
+  color: #e53935;
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+#clockDate {
   font-size: 1.05em;
-}
-
-.clockTime {
-  color: #f44;
-  text-shadow: 0 0 4px #f001, 0 1px 1px #300;
-  letter-spacing: 2px;
-  font-weight: bold;
-}
-
-.clockDate {
   color: #fed351;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 1px;
-  font-size: 0.95em;
-
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 1px 2px #111;
 }
 body {
       font-family: 'Inter', sans-serif;
@@ -761,21 +767,7 @@ body {
 }
 
 /* MOBILE TWEAKS */
-@media (max-width: 500px) {
-  #liveClock {
-    padding: 6px 10px;
-    max-width: 94vw;
-    gap: 10px;
-  }
 
-  #clockTime {
-    font-size: 1.2em;
-  }
-
-  #clockDate {
-    font-size: 0.95em;
-  }
-}
 @media (max-width: 768px) {
   #burgerMenuBtn {
     left: 7px !important;
