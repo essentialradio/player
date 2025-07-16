@@ -135,25 +135,38 @@
     }
     /* --- END NAVBAR & MODALS ONLY --- */
 
-    /* --- PLAYER AND PANEL STYLES --- */
-    #liveClock {
-  background: #111;
-  color: #f44;
-  font-family: 'Courier New', monospace;
-  border: 2px solid red;
-  padding: 6px 10px;
-  font-weight: bold;
-  border-radius: 8px;
-  text-align: center;
-  display: inline-block;
-}
-
-#clockCombined {
+    /* --- PLAYER AND PANEL STYLES --- */#liveClock {
   display: flex;
   justify-content: center;
-  gap: 10px;
   align-items: center;
-}body {
+  gap: 12px;
+  padding: 6px 16px;
+  background: #000;
+  border: 2px solid #900;
+  border-radius: 14px;
+  font-family: 'Courier New', monospace;
+  margin: 0 auto 14px auto;
+  box-shadow: 0 0 10px #000c;
+  font-size: 1.05em;
+}
+
+.clockTime {
+  color: #f44;
+  text-shadow: 0 0 4px #f001, 0 1px 1px #300;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.clockDate {
+  color: #fed351;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1px;
+  font-size: 0.95em;
+
+}
+body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 88px 30px 30px;
