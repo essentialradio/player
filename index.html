@@ -139,34 +139,33 @@
 
 #liveClock {
   background: #151516;
-  border-radius: 12px;
   border: 2px solid #500;
-  box-shadow: 0 1px 10px #111a;
-  padding: 6px 14px;
+  border-radius: 14px;
+  padding: 6px 16px;
   margin: 0 auto 14px auto;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   font-family: 'Consolas', 'Courier New', monospace;
-  white-space: nowrap;     /* ensures it stays on one line */
-  max-width: 100%;
+  white-space: nowrap;
   overflow: hidden;
+  box-shadow: 0 1px 10px #111a;
+  max-width: 95vw;
 }
 
 #clockCombined {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
+  gap: 16px; /* more breathing space between time and date */
   line-height: 1.2;
-  word-spacing: 0.1em;
 }
 
 #clockTime {
   color: #e53935;
-  font-size: 1.6em;
+  font-size: 1.4em;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 #clockDate {
