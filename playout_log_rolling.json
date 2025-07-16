@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Take That",
-    "Title": "Up All Night",
-    "Duration (s)": 193,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:05",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 244,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:09",
-    "Displayed Time": "",
-    "Artist": "Elton John & Dua Lipa",
-    "Title": "Cold Heart",
-    "Duration (s)": 186,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:12",
-    "Displayed Time": "",
-    "Artist": "Miley Cyrus",
-    "Title": "Easy Lover",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:16",
-    "Displayed Time": "",
-    "Artist": "Wheatus",
-    "Title": "Teenage Dirtbag",
-    "Duration (s)": 227,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:23",
-    "Displayed Time": "",
-    "Artist": "ABC",
-    "Title": "The Look of Love",
-    "Duration (s)": 203,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:27",
-    "Displayed Time": "",
-    "Artist": "Harry Styles",
-    "Title": "As It Was",
-    "Duration (s)": 154,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:29",
-    "Displayed Time": "",
-    "Artist": "The Mavericks",
-    "Title": "Dance the Night Away",
-    "Duration (s)": 253,
-    "Full Duration (s)": 262,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:34",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Azizam",
-    "Duration (s)": 154,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:36",
-    "Displayed Time": "",
-    "Artist": "Westlife",
-    "Title": "Uptown Girl",
-    "Duration (s)": 174,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:43",
-    "Displayed Time": "",
-    "Artist": "Alex Warren with Jelly Roll",
-    "Title": "Bloodline",
-    "Duration (s)": 174,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:46",
-    "Displayed Time": "",
-    "Artist": "Maroon 5",
-    "Title": "Won't Go Home Without You",
-    "Duration (s)": 215,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:50",
-    "Displayed Time": "",
-    "Artist": "Nathan Evans",
-    "Title": "Highland Girl",
-    "Duration (s)": 170,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "",
-    "Artist": "Salt 'N' Pepa with En Vogue",
-    "Title": "Whatta Man",
-    "Duration (s)": 229,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-01T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44482,5 +44328,16 @@
     "Full Duration (s)": 158,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-16T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "",
+    "Artist": "Teddy Swims",
+    "Title": "The Door",
+    "Duration (s)": 210,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
