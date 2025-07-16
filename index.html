@@ -1474,6 +1474,30 @@ wxNow.innerHTML =
     z-index: 2001 !important;
   }
 }
+/* === MODALS DROP BELOW LOGO/BURGER (Desktop + Mobile) === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 62px;   /* Desktop: below logo/burger; adjust if your top area is taller/shorter */
+  width: 100vw;
+  height: calc(100vh - 62px); /* Prevents modal covering logo/burger */
+  overflow: auto;
+  background: rgba(0,0,0,0.78);
+  transition: background 0.2s;
+}
+
+@media (max-width: 750px) {
+  .modal {
+    top: 56px;   /* Mobile: slightly less space */
+    height: calc(100vh - 56px);
+  }
+  .modal-content {
+    border-radius: 14px 14px 0 0 !important;
+    margin-top: 0 !important;
+  }
+}
 
 
     </style>
