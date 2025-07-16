@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:02",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 178,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:05",
-    "Displayed Time": "",
-    "Artist": "Kylie Minogue",
-    "Title": "On a Night Like This",
-    "Duration (s)": 202,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:09",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 199,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:12",
-    "Displayed Time": "",
-    "Artist": "Joel Corry & MNEK",
-    "Title": "Head & Heart (Acoustic Mix)",
-    "Duration (s)": 200,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:19",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Beautiful Things",
-    "Duration (s)": 172,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:22",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Busy Woman",
-    "Duration (s)": 178,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:26",
-    "Displayed Time": "",
-    "Artist": "Jorja Smith",
-    "Title": "The Way I Love You",
-    "Duration (s)": 169,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:29",
-    "Displayed Time": "",
-    "Artist": "Olly Murs Feat. Demi Lovato",
-    "Title": "Up",
-    "Duration (s)": 216,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:36",
-    "Displayed Time": "",
-    "Artist": "Dua Lipa",
-    "Title": "Houdini",
-    "Duration (s)": 177,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:40",
-    "Displayed Time": "",
-    "Artist": "Taylor Dayne",
-    "Title": "Tell It to My Heart",
-    "Duration (s)": 205,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:44",
-    "Displayed Time": "",
-    "Artist": "PinkPantheress",
-    "Title": "Tonight",
-    "Duration (s)": 172,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:47",
-    "Displayed Time": "",
-    "Artist": "The Script",
-    "Title": "For the First Time",
-    "Duration (s)": 239,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:51",
-    "Displayed Time": "",
-    "Artist": "Daniel Powter",
-    "Title": "Bad Day",
-    "Duration (s)": 217,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T11:00:00Z",
-    "Scheduled Time": "12:55",
-    "Displayed Time": "",
-    "Artist": "Garbage",
-    "Title": "Only Happy When It Rains",
-    "Duration (s)": 219,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-01T12:00:00Z",
     "Scheduled Time": "13:04",
     "Displayed Time": "",
@@ -44515,5 +44361,16 @@
     "Full Duration (s)": 193,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-16T19:00:00Z",
+    "Scheduled Time": "20:01",
+    "Displayed Time": "",
+    "Artist": "Cyndi Lauper",
+    "Title": "Time After Time",
+    "Duration (s)": 224,
+    "Full Duration (s)": 242,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
