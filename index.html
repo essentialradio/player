@@ -835,6 +835,20 @@ body {
     height: calc(100vh - 60px) !important;
   }
 }
+@media (max-width: 768px) {
+  body, html {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  #main, .main, .main-panel, .strip-container, .content, .container, .player-panel {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  /* Ensure the burger is truly flush to the top */
+  #burgerMenuBtn {
+    top: 0 !important;
+  }
+}
 
 </style>
 </head>
