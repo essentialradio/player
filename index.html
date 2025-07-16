@@ -831,8 +831,8 @@ body {
 }
 @media (max-width: 768px) {
   .modal {
-    top: 64px !important; /* Change 64px to the height of your player/clock/bar */
-    height: calc(100vh - 64px) !important;
+    top: 60px !important; /* Change 64px to the height of your player/clock/bar */
+    height: calc(100vh - 60px) !important;
   }
 }
 
@@ -1434,20 +1434,60 @@ wxNow.innerHTML =
     box-sizing: border-box !important;
   }
 }
+/* Burger Icon Styles */
+.burger-icon {
+  display: block;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  margin: 0 auto;
+}
+.burger-icon span,
+.burger-icon::before,
+.burger-icon::after {
+  content: '';
+  display: block;
+  background: #fff;   /* Pure white bars for visibility */
+  height: 4px;
+  border-radius: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  transition: 0.3s;
+}
+.burger-icon::before {
+  top: 0;
+}
+.burger-icon span {
+  top: 9px;
+  position: absolute;
+}
+.burger-icon::after {
+  top: 18px;
+}
+
+/* Bigger and touch-friendly on mobile */
 @media (max-width: 768px) {
   #burgerMenuBtn {
-    padding: 0 !important;
+    top: 12px !important;
+    left: 0 !important;
     width: 48px !important;
     height: 48px !important;
+    padding: 0 !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
+    border-radius: 13px !important;
+    background: #fed351 !important;
+    box-shadow: 0 2px 8px #0002 !important;
+    z-index: 2001 !important;
   }
   .burger-icon {
     width: 28px;
     height: 20px;
   }
 }
+
 
 
     </style>
