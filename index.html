@@ -832,12 +832,12 @@ body {
 @media (max-width: 750px) {
   #burgerMenuBtn {
     position: fixed;
-    top: 12px;
+    top: 10px;
     left: 8px;
-    width: 38px;
-    height: 38px;
+    width: 32px;          /* Smaller width */
+    height: 32px;         /* Smaller height */
     background: #fed351;
-    border-radius: 8px;
+    border-radius: 7px;
     z-index: 2001;
     display: flex !important;
     flex-direction: column;
@@ -845,17 +845,19 @@ body {
     justify-content: center;
     box-shadow: 0 2px 8px #0002;
     padding: 0;
+    transition: box-shadow 0.18s;
   }
   #burgerMenuBtn .burger-bar {
     display: block;
-    width: 22px;
-    height: 3.3px;
+    width: 17px;         /* Shorter lines */
+    height: 2.7px;       /* Thinner lines */
     background: #191c29;
-    border-radius: 2.5px;
-    margin: 3.5px 0;
+    border-radius: 2px;
+    margin: 2.8px 0;
     transition: all 0.2s;
   }
 }
+
 
 </style>
 </head>
