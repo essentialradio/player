@@ -1764,13 +1764,21 @@ wxNow.innerHTML =
   <!-- MODAL JS -->
   <script>
     function openModal(id) {
-      document.getElementById(id).style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-      document.body.style.overflow = '';
-    }
+  hideLogo(); // Always hide logo on modal open
+  document.getElementById(id).style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+  document.body.style.overflow = '';
+  // Only show logo if NO modals or burger menu are open
+  const stillOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
+  if (!stillOpen && !burgerOpen) showLogo();
+}
+
 	function openModalAndCloseBurger(modalId) {
   closeBurgerMenu();
   openModal(modalId);
