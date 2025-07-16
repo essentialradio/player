@@ -482,13 +482,18 @@ body {
 }
 @media (max-width: 768px) {
   .logo-overhang {
-    width: 70px !important;
-    left: 8px !important;
-    top: 6px !important;
-    transform: none !important;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.25)) !important;
+    width: 80px !important;            /* Visible but not too big */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: translate(-32%, -32%) !important;  /* Still overhangs, less extreme than desktop */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.28)) !important;
+    z-index: 2002 !important;
+    pointer-events: none !important;
+    user-select: none !important;
   }
 }
+
 
 
     .live-indicator {
@@ -835,7 +840,9 @@ body {
     -webkit-overflow-scrolling: touch !important;
   }
 }
-/* ========================================= */
+.logo-hide {
+  display: none !important;
+}
 </style>
 </head>
 <body>
@@ -2249,20 +2256,25 @@ function updateLiveClock() {
     setInterval(updateLiveClock, 1000);
 
 function toggleBurgerMenu() {
-  var menu = document.getElementById('burgerDropdown');
-  if (menu.style.display === 'flex') {
-    menu.style.display = 'none';
-    document.body.style.overflow = '';
+  const burgerDropdown = document.getElementById('burgerDropdown');
+  const logo = document.querySelector('.logo-overhang');
+  const isOpen = burgerDropdown.style.display === 'flex';
+
+  if (isOpen) {
+    burgerDropdown.style.display = 'none';
+    if (logo) logo.classList.remove('logo-hide');
   } else {
-    menu.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    burgerDropdown.style.display = 'flex';
+    if (logo) logo.classList.add('logo-hide');
   }
 }
+
 function closeBurgerMenu() {
-  var menu = document.getElementById('burgerDropdown');
-  menu.style.display = 'none';
-  document.body.style.overflow = '';
+  document.getElementById('burgerDropdown').style.display = 'none';
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.remove('logo-hide');
 }
+
 // Close when clicking outside the menu panel
 document.addEventListener('click', function(e) {
   var menu = document.getElementById('burgerDropdown');
