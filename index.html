@@ -1447,7 +1447,7 @@ wxNow.innerHTML =
 .burger-icon::after {
   content: '';
   display: block;
-  background: #fff;   /* Pure white bars for visibility */
+  background: #222;   /* Pure white bars for visibility */
   height: 4px;
   border-radius: 2px;
   width: 100%;
@@ -1485,6 +1485,24 @@ wxNow.innerHTML =
   .burger-icon {
     width: 28px;
     height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  /* 1. Remove space above the black content panel */
+  .strip-container, .main-panel, .player-panel {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* 2. Burger menu button sits flush at top */
+  #burgerMenuBtn {
+    top: 0 !important;
+  }
+
+  /* 3. Dropdown menu appears below the top bar, not covering burger or logo */
+  #burgerDropdown {
+    top: 56px !important;                /* Change if your top bar is taller */
+    height: calc(100vh - 56px) !important;
   }
 }
 
