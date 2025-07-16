@@ -141,9 +141,9 @@
   background: #151516;
   border: 2px solid #500;
   border-radius: 14px;
-  padding: 6px 16px;
+  padding: 8px 16px;
   margin: 0 auto 14px auto;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Consolas', 'Courier New', monospace;
@@ -151,14 +151,16 @@
   overflow: hidden;
   box-shadow: 0 1px 10px #111a;
   max-width: 95vw;
+  text-align: center;
 }
 
 #clockCombined {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  gap: 16px; /* more breathing space between time and date */
+  gap: 16px;
   line-height: 1.2;
+  word-spacing: 0.1em;
 }
 
 #clockTime {
@@ -173,6 +175,25 @@
   color: #fed351;
   font-family: 'Montserrat', sans-serif;
   text-shadow: 0 1px 2px #111;
+}
+
+/* ✅ MOBILE TWEAKS */
+@media (max-width: 480px) {
+  #clockTime {
+    font-size: 1.2em;
+  }
+
+  #clockDate {
+    font-size: 0.95em;
+  }
+
+  #clockCombined {
+    gap: 10px;
+  }
+
+  #liveClock {
+    padding: 6px 12px;
+  }
 }
 body {
       font-family: 'Inter', sans-serif;
@@ -796,24 +817,6 @@ body {
     overscroll-behavior: auto !important;   /* let scroll bubble out */
     overflow-y: auto !important;            /* its own scroll, momentum OK */
     -webkit-overflow-scrolling: touch !important;
-  }
-}
-
-@media (max-width: 480px) {
-  #clockTime {
-    font-size: 1.2em;
-  }
-
-  #clockDate {
-    font-size: 0.95em;
-  }
-
-  #clockCombined {
-    gap: 10px;
-  }
-
-  #liveClock {
-    padding: 6px 12px;
   }
 }
 /* ========================================= */
