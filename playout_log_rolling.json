@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:10",
-    "Displayed Time": "",
-    "Artist": "Chic",
-    "Title": "Le Freak",
-    "Duration (s)": 200,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:13",
-    "Displayed Time": "",
-    "Artist": "Elton John",
-    "Title": "Philadelphia Freedom",
-    "Duration (s)": 302,
-    "Full Duration (s)": 319,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:18",
-    "Displayed Time": "",
-    "Artist": "Sister Sledge",
-    "Title": "He's the Greatest Dancer",
-    "Duration (s)": 198,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:22",
-    "Displayed Time": "",
-    "Artist": "Heatwave",
-    "Title": "Boogie Nights",
-    "Duration (s)": 200,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:25",
-    "Displayed Time": "",
-    "Artist": "Rainbow",
-    "Title": "Since You Been Gone",
-    "Duration (s)": 184,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:31",
-    "Displayed Time": "",
-    "Artist": "Johnny Bristol",
-    "Title": "Hang On In There Baby",
-    "Duration (s)": 218,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:34",
-    "Displayed Time": "",
-    "Artist": "Leo Sayer",
-    "Title": "When I Need You",
-    "Duration (s)": 231,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:38",
-    "Displayed Time": "",
-    "Artist": "Dean Friedman",
-    "Title": "Lucky Stars",
-    "Duration (s)": 225,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:42",
-    "Displayed Time": "",
-    "Artist": "Marvin Gaye",
-    "Title": "What's Going On",
-    "Duration (s)": 207,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:48",
-    "Displayed Time": "",
-    "Artist": "10cc",
-    "Title": "Good Morning Judge",
-    "Duration (s)": 162,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:51",
-    "Displayed Time": "",
-    "Artist": "The Emotions",
-    "Title": "Best of My Love",
-    "Duration (s)": 208,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-01T18:00:00Z",
-    "Scheduled Time": "19:54",
-    "Displayed Time": "",
-    "Artist": "Lynyrd Skynyrd",
-    "Title": "Freebird",
-    "Duration (s)": 244,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-01T19:00:00Z",
     "Scheduled Time": "20:01",
     "Displayed Time": "",
@@ -44524,6 +44392,17 @@
     "Title": "Need You Now",
     "Duration (s)": 221,
     "Full Duration (s)": 236,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-17T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "",
+    "Artist": "Maroon 5",
+    "Title": "Sugar",
+    "Duration (s)": 232,
+    "Full Duration (s)": 235,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
