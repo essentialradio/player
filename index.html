@@ -855,6 +855,26 @@ body {
   }
 }
 
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100vw;
+}
+
+/* Ensure the modal itself doesn't scroll the background */
+.modal {
+  overflow: hidden !important;
+  overscroll-behavior: contain;
+}
+
+/* Modal content scrolls inside, not the page */
+.modal-content {
+  max-height: 85vh;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
 
 </style>
 </head>
@@ -2305,6 +2325,35 @@ function renderDayScheduleModal(day, shows) {
       showSpan2.innerHTML = formatShowTitleMobileOnly(showSpan2.textContent);
     }
   </script>
+<script>
+// Modal open/close: prevent background scroll
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+  document.body.classList.add('modal-open');
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+  document.body.classList.remove('modal-open');
+}
+function openModalAndCloseBurger(id) {
+  document.getElementById('burgerDropdown').style.display = "none";
+  document.getElementById(id).style.display = "block";
+  document.body.classList.add('modal-open');
+}
+
+// (Optional: Trap iOS scroll bounce inside modal content)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.modal-content').forEach(function(mc) {
+    mc.addEventListener('touchstart', function() {
+      var top = mc.scrollTop === 0;
+      var bottom = mc.scrollHeight - mc.scrollTop === mc.clientHeight;
+      if (top) mc.scrollTop = 1;
+      if (bottom) mc.scrollTop -= 1;
+    });
+  });
+});
+</script>
+
 </body>
 <script>
 function updateLiveClock() {
