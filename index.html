@@ -1870,9 +1870,10 @@ wxNow.innerHTML =
 <script>
 function openModal(id) {
   hideLogo(); // Always hide logo on modal open
-  document.getElementById(id).style.display = 'block';
+  document.getElementById(id).style.display = ''; // Let CSS handle display!
   document.body.classList.add('modal-open');
 }
+
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
