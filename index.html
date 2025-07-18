@@ -88,6 +88,30 @@
         border-radius: 10px;
       }
     }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      overflow: auto;
+      background: rgba(0,0,0,0.78);
+      transition: background 0.2s;
+    }
+    .modal-content {
+      background: #fff;
+      color: #222;
+      margin: 8% auto;
+      padding: 30px 20px 20px 20px;
+      border-radius: 16px;
+      width: 94vw;
+      max-width: 920px;
+      min-height: 80px;
+      box-shadow: 0 0 34px #00818a99;
+      position: relative;
+      text-align: left;
+      animation: modalpop 0.2s;
+    }
     @keyframes modalpop {
       0% { transform: scale(0.85); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
@@ -102,6 +126,15 @@
       transition: color 0.2s;
     }
     .close:hover { color: #ff4d4d; }
+    .modal-content h2 {
+      margin-top: 0;
+      color: #00818a;
+      font-size: 1.25em;
+      margin-bottom: 6px;
+    }
+    .modal-content p {
+      margin: 0 0 5px 0;
+    }
     /* --- END NAVBAR & MODALS ONLY --- */
 
     /* --- PLAYER AND PANEL STYLES --- */
@@ -590,6 +623,9 @@ body {
       margin-top: 4px;
       line-height: 1.5;
     }
+    @media (max-width: 900px) {
+      #modalScheduleContainer .split-columns { flex-direction: column; gap:0; }
+    }
     /* Playlist Modal Styling */
     .playlist-image {
   width: 100%;
@@ -707,6 +743,13 @@ body {
   .show-presenter { font-size: 0.8em !important; }
 
   /* Modal Styling */
+  .modal-content {
+    padding: 13px 2vw 8px 2vw !important;
+    font-size: 15px !important;
+    min-height: 30px !important;
+    border-radius: 9px !important;
+    max-width: 97vw !important;
+  }
   .close {
     font-size: 24px !important;
     top: 8px !important;
@@ -819,107 +862,19 @@ body.modal-open {
   width: 100vw;
 }
 
-/* --- MODAL BASE STYLE --- */
+/* Ensure the modal itself doesn't scroll the background */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: rgba(0,0,0,0.78);
-  transition: background 0.2s;
-}
-
-/* --- DESKTOP MODAL CONTENT --- */
-.modal-content {
-  margin: 8% auto;
-  width: 94vw;
-  max-width: 920px;
-  min-height: 80px;
-  padding: 30px 20px 20px 20px;
-  border-radius: 16px;
-  box-sizing: border-box;
-  overflow-y: auto;
+  overflow: hidden !important;
   overscroll-behavior: contain;
-  background: #fff;
-  font-size: 15px;
-  scroll-behavior: smooth;
+}
+
+/* Modal content scrolls inside, not the page */
+.modal-content {
+  max-height: 85vh;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  position: relative;
-  text-align: left;
-  box-shadow: 0 0 34px #00818a99;
-  scrollbar-width: thin;
-  scrollbar-color: #fed351 #23272f;
 }
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-  background: #23272f;
-  border-radius: 8px;
-}
-.modal-content::-webkit-scrollbar-thumb {
-  background: #fed351;
-  border-radius: 8px;
-}
-
-/* --- MOBILE OVERRIDE --- */
-@media (max-width: 768px) {
-  .modal {
-    top: 0 !important;
-    height: 100vh !important;
-    min-height: 100vh !important;
-    left: 0 !important;
-    width: 100vw !important;
-    overflow: hidden !important;
-    background: rgba(0,0,0,0.78) !important;
-  }
-  .modal-content {
-    margin: 0 !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    height: auto !important;
-    max-height: 95vh !important;
-    padding-top: 46px !important;
-    padding-bottom: 16px !important;
-    border-radius: 0 !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overscroll-behavior: contain !important;
-    background: #fff !important;
-    font-size: 15px !important;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-@media (min-width: 769px) {
-  .modal-content {
-    margin: 8% auto !important;
-    border-radius: 16px !important;
-    max-width: 920px !important;
-    width: 94vw !important;
-    padding-top: 30px !important;
-    padding-bottom: 20px !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .modal {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-  }
-  .modal-content {
-    margin: 0 !important;
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-  }
-}
-
-
 
 </style>
 </head>
@@ -1521,10 +1476,60 @@ wxNow.innerHTML =
     box-sizing: border-box !important;
   }
 }
+
+/* === MODALS DROP BELOW LOGO/BURGER (Desktop + Mobile) === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 5px;   /* Desktop: below logo/burger; adjust if your top area is taller/shorter */
+  width: 100vw;
+  height: calc(100vh - 5px); /* Prevents modal covering logo/burger */
+  overflow: auto;
+  background: rgba(0,0,0,0.78);
+  transition: background 0.2s;
+}
+
+@media (max-width: 750px) {
+  .modal {
+    top: 56px;   /* Mobile: slightly less space */
+    height: calc(100vh - 56px);
+  }
+  .modal-content {
+    border-radius: 14px 14px 0 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    top: 0 !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    left: 0 !important;
+    width: 100vw !important;
+    overflow: hidden !important;
+    background: rgba(0,0,0,0.78) !important;
+  }
+  .modal-content {
+    margin: 0 !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    min-height: 100vh !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding-top: 46px !important;
+    padding-bottom: 16px !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    background: #fff !important;
+    font-size: 15px !important;
+  }
+}
     </style>
-
-
-
   </div>
 </div>
 
@@ -1866,18 +1871,17 @@ wxNow.innerHTML =
   
 
 
-<!-- MODAL JS -->
-<script>
-function openModal(id) {
+  <!-- MODAL JS -->
+  <script>
+    function openModal(id) {
   hideLogo(); // Always hide logo on modal open
-  document.getElementById(id).style.display = ''; // Let CSS handle display!
-  document.body.classList.add('modal-open');
+  document.getElementById(id).style.display = 'block';
+  document.body.style.overflow = 'hidden';
 }
-
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
-  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
   // Only show logo if NO modals or burger menu are open
   const stillOpen = Array.from(document.querySelectorAll('.modal'))
     .some(m => m.style.display === 'block' || m.style.display === 'flex');
@@ -1885,34 +1889,28 @@ function closeModal(id) {
   if (!stillOpen && !burgerOpen) showLogo();
 }
 
-function openModalAndCloseBurger(modalId) {
+	function openModalAndCloseBurger(modalId) {
   closeBurgerMenu();
   openModal(modalId);
 }
-</script>
 
-
-<script>
-// Click-outside: close modal if clicking backdrop (not modal content)
-window.addEventListener('click', function(event) {
-  document.querySelectorAll('.modal').forEach(modal => {
-    if (modal.style.display !== 'none' && event.target === modal) {
-      closeModal(modal.id);
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
     }
-  });
-
-// ESC key closes any open modals (and burger menu)
-window.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal').forEach(modal => {
-      if (modal.style.display !== 'none') closeModal(modal.id);
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+          modal.style.display = 'none';
+        });
+        document.body.style.overflow = '';
+      }
     });
-    closeBurgerMenu(); // in case menu is open
-  }
-});
-</script>
-
-});
+  </script>
 
   <!-- NATIVE MODAL SCHEDULE LOGIC -->
   <script>
@@ -2354,6 +2352,20 @@ function renderDayScheduleModal(day, shows) {
     }
   </script>
 <script>
+// Modal open/close: prevent background scroll
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+  document.body.classList.add('modal-open');
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+  document.body.classList.remove('modal-open');
+}
+function openModalAndCloseBurger(id) {
+  document.getElementById('burgerDropdown').style.display = "none";
+  document.getElementById(id).style.display = "block";
+  document.body.classList.add('modal-open');
+}
 
 // (Optional: Trap iOS scroll bounce inside modal content)
 document.addEventListener('DOMContentLoaded', function() {
