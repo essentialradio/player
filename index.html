@@ -893,6 +893,17 @@ body.modal-open {
     -webkit-overflow-scrolling: touch;
   }
 }
+@media (min-width: 769px) {
+  .modal-content {
+    margin: 8% auto !important;
+    border-radius: 16px !important;
+    max-width: 920px !important;
+    width: 94vw !important;
+    padding-top: 30px !important;
+    padding-bottom: 20px !important;
+  }
+}
+
 
 
 
@@ -1497,6 +1508,9 @@ wxNow.innerHTML =
   }
 }
     </style>
+
+
+
   </div>
 </div>
 
@@ -1871,7 +1885,6 @@ window.addEventListener('click', function(event) {
       closeModal(modal.id);
     }
   });
-});
 
 // ESC key closes any open modals (and burger menu)
 window.addEventListener('keydown', function(e) {
