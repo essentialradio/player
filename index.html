@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,173 +9,22 @@
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* ===== RESET & FONTS ===== */
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #00818a, #7e1974);
-      color: #fff;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    a { color: #fed351; text-decoration: none; }
-    a:hover, a:focus { text-decoration: underline; }
 
-    /* ===== NAVBAR / BURGER ===== */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; width: 100vw;
-      background: #222; z-index: 1001;
-      display: flex; justify-content: center; gap: 8px;
-      padding: 9px 0 8px 0; box-shadow: 0 2px 12px #111a;
-      flex-wrap: wrap;
-    }
-    .navbar a {
-      color: #222; background: #fed351;
-      padding: 8px 18px; border-radius: 16px; font-weight: bold;
-      text-decoration: none; font-size: 16px;
-      margin: 0 2px; transition: background 0.2s, color 0.2s;
-      border: none; cursor: pointer; outline: none;
-      display: inline-block;
-    }
-    .navbar a:hover, .navbar a:focus { background: #00818a; color: #fff; }
+
+
+
+    /* --- NAVBAR & MODALS ONLY --- */
     @media (max-width: 750px) {
-      .navbar { display: none !important; }
-    }
-    #burgerMenuBtn {
-      display: none;
-      position: fixed; top: 20px; left: 8px;
-      width: 32px; height: 32px;
-      background: #fed351; border-radius: 7px; z-index: 2001;
-      flex-direction: column; align-items: center; justify-content: center;
-      box-shadow: 0 2px 8px #0002; padding: 0; transition: box-shadow 0.18s;
-    }
-    #burgerMenuBtn .burger-bar {
-      width: 17px; height: 2.7px; background: #191c29;
-      border-radius: 2px; margin: 2.8px 0; transition: all 0.2s;
-    }
-    @media (max-width: 750px) { #burgerMenuBtn { display: flex !important; } }
-
-    /* ======= BURGER DROPDOWN ======= */
-    #burgerDropdown {
-      display: none; position: fixed; top: 0; left: 0;
-      width: 100vw; height: 100vh; background: rgba(0,0,0,0.92);
-      z-index: 2000; flex-direction: column; align-items: center;
-      justify-content: flex-start; padding-top: 28px;
-    }
-    #burgerDropdown .menu-link {
-      background: #fed351; color: #191c29;
-      font-size: 1.07em; font-weight: 600; border-radius: 8px;
-      padding: 10px 0; text-align: center;
-      margin-bottom: 0; box-shadow: 0 2px 10px #0001;
-      transition: background 0.2s, color 0.2s;
-    }
-    #burgerDropdown .menu-link:hover { background: #ffe67c; color: #191c29; }
-
-    /* ======= HEADER SPACER ======= */
-    .header-spacer { height: 92px; }
-    @media (max-width: 750px) { .header-spacer { height: 8px; } }
-
-    /* ===== LOGO ===== */
-    .logo-overhang {
-      position: absolute; top: 0; left: 0;
-      transform: translate(-36%, -36%);
-      width: 220px; z-index: 2002; opacity: 0.97;
-      pointer-events: none; user-select: none;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
-    }
-    .logo-hide { display: none !important; }
-    @media (max-width: 768px) {
-      .logo-overhang {
-        width: 100px !important;
-        top: 0 !important; left: 0 !important; transform: none !important;
-      }
-    }
-
-    /* ===== PLAYER LAYOUT ===== */
-    .player-wrapper {
-      position: relative; margin: 0 auto; width: 100%;
-      max-width: 1100px;
-    }
-    .strip-container {
-      display: flex; flex-direction: row;
-      width: 100%; max-width: 1100px; min-height: 280px;
-      border-radius: 15px; overflow: hidden; box-shadow: 0 0 25px rgba(0,0,0,0.5);
-      background-color: #111; position: relative; z-index: 1;
-    }
-    .left-panel, .right-panel {
-      width: 50%; padding: 20px 30px; box-sizing: border-box;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .left-panel { background: #111; align-items: center; text-align: center; border-right: 1px solid #333; padding-top: 30px; }
-    .right-panel { background: #222; border-left: 1px solid #333; }
-    @media (max-width: 768px) {
-      .strip-container { flex-direction: column !important; }
-      .left-panel, .right-panel { width: 100% !important; padding: 10px 4px !important; border: none !important; }
-    }
-
-    /* ===== BASE & FONT ===== */
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #00818a, #7e1974);
-  color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  .navbar { display: none !important; }
+  #burgerMenuBtn { display: block !important; }
+   { display: flex; }
 }
-
-a { color: #fed351; text-decoration: none; }
-a:hover, a:focus { text-decoration: underline; }
-
-/* ===== NAVBAR & BURGER ===== */
-.navbar {
-  position: fixed;
-  top: 0; left: 0; width: 100vw;
-  background: #222; z-index: 1001;
-  display: flex; justify-content: center; gap: 8px;
-  padding: 9px 0 8px 0; box-shadow: 0 2px 12px #111a;
-  flex-wrap: wrap;
-}
-.navbar a {
-  color: #222; background: #fed351;
-  padding: 8px 18px; border-radius: 16px; font-weight: bold;
-  text-decoration: none; font-size: 16px;
-  margin: 0 2px; transition: background 0.2s, color 0.2s;
-  border: none; cursor: pointer; outline: none;
-  display: inline-block;
-}
-.navbar a:hover, .navbar a:focus { background: #00818a; color: #fff; }
-@media (max-width: 750px) { .navbar { display: none !important; } }
-@media (max-width: 750px) {
-  .navbar { flex-direction: column; gap: 2px; padding: 5px 0; }
-  .navbar a { margin: 2px 0; font-size: 15px; padding: 8px 12px; border-radius: 10px; }
-}
-@media (min-width: 751px) { #burgerMenuBtn, #burgerDropdown { display: none !important; } }
-
-#burgerMenuBtn {
-  display: none;
-  position: fixed; top: 20px; left: 8px;
-  width: 32px; height: 32px;
-  background: #fed351; border-radius: 7px; z-index: 2001;
-  flex-direction: column; align-items: center; justify-content: center;
-  box-shadow: 0 2px 8px #0002; padding: 0; transition: box-shadow 0.18s;
-}
-#burgerMenuBtn .burger-bar {
-  display: block;
-  width: 17px; height: 2.7px; background: #191c29;
-  border-radius: 2px; margin: 2.8px 0; transition: all 0.2s;
-}
-@media (max-width: 750px) { #burgerMenuBtn { display: flex !important; } }
-
-#burgerDropdown {
-  display: none; position: fixed; top: 0; left: 0;
-  width: 100vw; height: 100vh; background: rgba(0,0,0,0.92);
-  z-index: 2000; flex-direction: column; align-items: center;
-  justify-content: flex-start; padding-top: 28px;
+@media (min-width: 751px) {
+  #burgerMenuBtn, #burgerDropdown { display: none !important; }
 }
 .menu-link {
   display: block;
-  background: #fed351;
+  background: #fed351;   /* <-- This line adds the yellow background */
   color: #191c29;
   font-size: 1.07em;
   font-weight: 600;
@@ -187,161 +36,109 @@ a:hover, a:focus { text-decoration: underline; }
   box-shadow: 0 2px 10px #0001;
   transition: background 0.2s, color 0.2s;
 }
-.menu-link:active, .menu-link:hover { background: #ffe67c; color: #191c29; }
-
-/* ===== MODALS ===== */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0; top: 0;
-  width: 100vw; height: 100vh;
-  overflow: auto;
-  background: rgba(0,0,0,0.78);
-  transition: background 0.2s;
-  overscroll-behavior: contain;
-}
-.modal-content {
-  background: #fff;
-  color: #222;
-  margin: 8% auto;
-  padding: 30px 20px 20px 20px;
-  border-radius: 16px;
-  width: 94vw;
-  max-width: 920px;
-  min-height: 80px;
-  box-shadow: 0 0 34px #00818a99;
-  position: relative;
-  text-align: left;
-  animation: modalpop 0.2s;
-  max-height: 85vh;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch;
-}
-@keyframes modalpop {
-  0% { transform: scale(0.85); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-.close {
-  position: absolute;
-  right: 16px; top: 14px;
-  font-size: 32px;
-  font-weight: bold;
-  color: #00818a;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.close:hover { color: #ff4d4d; }
-.modal-content h2 {
-  margin-top: 0; color: #00818a; font-size: 1.25em; margin-bottom: 6px;
-}
-.modal-content p { margin: 0 0 5px 0; }
-
-/* Prevent body scroll when modal is open */
-body.modal-open {
-  overflow: hidden !important;
-  position: fixed !important;
-  width: 100vw;
+.menu-link:active,
+.menu-link:hover {
+  background: #ffe67c;
+  color: #191c29;
 }
 
-.logo-hide { display: none !important; }
 
-/* ===== PANELS & PLAYER ===== */
-.header-spacer { height: 92px; }
-@media (max-width: 750px) { .header-spacer { height: 8px; } }
-.player-wrapper {
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1100px;
-}
-.strip-container {
-  display: flex; flex-direction: row;
-  width: 100%; max-width: 1100px; min-height: 280px;
-  border-radius: 15px; overflow: hidden; box-shadow: 0 0 25px rgba(0,0,0,0.5);
-  background-color: #111; position: relative; z-index: 1;
-}
-.left-panel, .right-panel {
-  width: 50%; padding: 20px 30px; box-sizing: border-box;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.left-panel {
-  background: #111; align-items: center; text-align: center;
-  border-right: 1px solid #333; justify-content: flex-start; padding-top: 30px;
-}
-.right-panel { background: #222; border-left: 1px solid #333; }
-@media (max-width: 768px) {
-  .strip-container { flex-direction: column !important; }
-  .left-panel, .right-panel { width: 100% !important; padding: 10px 4px !important; border: none !important; min-height: unset !important; }
-  .left-panel { padding-top: 8px !important; align-items: stretch !important; }
-}
+.navbar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      background: #222;
+      z-index: 1001;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 0 8px 0;
+      box-shadow: 0 2px 12px #111a;
+    }
+    .navbar a {
+      color: #222;
+      background: #fed351;
+      padding: 8px 18px;
+      border-radius: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 2px;
+      transition: background 0.2s, color 0.2s;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      display: inline-block;
+    }
+    .navbar a:hover, .navbar a:focus {
+      background: #00818a;
+      color: #fff;
+    }
+    @media (max-width: 750px) {
+      .navbar {
+        flex-direction: column;
+        gap: 2px;
+        padding: 5px 0 5px 0;
+      }
+      .navbar a {
+        margin: 2px 0;
+        font-size: 15px;
+        padding: 8px 12px;
+        border-radius: 10px;
+      }
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      overflow: auto;
+      background: rgba(0,0,0,0.78);
+      transition: background 0.2s;
+    }
+    .modal-content {
+      background: #fff;
+      color: #222;
+      margin: 8% auto;
+      padding: 30px 20px 20px 20px;
+      border-radius: 16px;
+      width: 94vw;
+      max-width: 920px;
+      min-height: 80px;
+      box-shadow: 0 0 34px #00818a99;
+      position: relative;
+      text-align: left;
+      animation: modalpop 0.2s;
+    }
+    @keyframes modalpop {
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .close {
+      position: absolute;
+      right: 16px; top: 14px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #00818a;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .close:hover { color: #ff4d4d; }
+    .modal-content h2 {
+      margin-top: 0;
+      color: #00818a;
+      font-size: 1.25em;
+      margin-bottom: 6px;
+    }
+    .modal-content p {
+      margin: 0 0 5px 0;
+    }
+    /* --- END NAVBAR & MODALS ONLY --- */
 
-/* Only right panel scrolls on desktop */
-@media (min-width: 769px) { .right-panel { overflow-y: auto; } }
-.right-panel { overscroll-behavior: contain; }
+    /* --- PLAYER AND PANEL STYLES --- */
 
-/* PLAYER/ARTWORK */
-#player-box { max-width: 420px; width: 100%; }
-#now-playing-card {
-  margin-top: 25px; background: #1a1a1a; border-radius: 10px;
-  padding: 20px; box-shadow: 0 0 15px rgba(0, 131, 138, 0.7);
-  max-width: 420px; text-align: left; font-size: 17px; line-height: 1.7; color: white;
-}
-#artwork {
-  margin-top: 25px; border-radius: 8px; width: 280px; height: 280px;
-  object-fit: cover; border: 2px solid #fed351; box-shadow: 0 0 15px #fed351aa;
-  user-select: none; opacity: 0; filter: blur(10px) brightness(0.8);
-  transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
-}
-#artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
-#artwork.fallback { filter: blur(5px) brightness(0.8); opacity: 0.7; box-shadow: 0 0 10px rgba(254, 211, 81, 0.4); }
-#onAirNow { margin-top: 10px; margin-bottom: 10px; text-align: center; padding-right: 0; max-width: 95%; margin-left: auto; margin-right: auto; }
-.pulsing-label { color: #ff4d4d; font-weight: 700; }
-.live-indicator { display: inline-flex; align-items: center; gap: 6px; font-weight: bold; color: #ff4d4d; font-size: 0.95em; margin-left: 10px; user-select: none; }
-.live-indicator .dot { width: 10px; height: 10px; border-radius: 50%; background: #ff4d4d; animation: pulse 1.2s infinite; }
-@keyframes pulse { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
-
-/* VOLUME/BUTTONS */
-button {
-  background-color: #fed351; color: #111; border-radius: 8px;
-  padding: 12px 24px; font-weight: 600; font-size: 18px;
-  border: none; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s;
-  user-select: none;
-}
-button:hover, button:focus { background-color: #e5c73f; box-shadow: 0 0 10px #fed351cc; outline: none; }
-#mute-toggle { font-size: 16px; padding: 6px 12px; vertical-align: middle; margin-left: 10px; }
-#volume-container { margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-#volume-container label { font-size: 16px; margin: 0; user-select: none; }
-#volume-slider { width: 180px; cursor: pointer; }
-#volume-display { font-size: 16px; color: #ccc; min-width: 40px; text-align: left; user-select: none; }
-
-/* NOW PLAYING / RECENT */
-.recent-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #fed351; user-select: none; }
-ul#recent-list { list-style: none; padding: 0; margin: 0; }
-ul#recent-list li { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #444; transition: background 0.2s; }
-ul#recent-list li:hover { background: rgba(255, 255, 255, 0.05); }
-ul#recent-list img { width: 50px; height: 50px; border-radius: 6px; object-fit: cover; border: 1px solid #fed351; box-shadow: 0 0 5px rgba(0,0,0,0.4); user-select: none; opacity: 0; transition: opacity 0.4s; }
-ul#recent-list img.loaded { opacity: 1; }
-ul#recent-list span.time { color: #fed351; font-weight: 600; width: 50px; text-align: right; flex-shrink: 0; user-select: none; }
-ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: none; }
-.refresh-indicator { display: inline-block; margin-left: 8px; width: 10px; height: 10px; border-radius: 50%; background: #fed351; animation: pulse 1.2s infinite; vertical-align: middle; }
-
-/* LOGO */
-.logo-overhang {
-  position: absolute;
-  top: 0; left: 0; transform: translate(-36%, -36%);
-  width: 220px; z-index: 2002; opacity: 0.97;
-  pointer-events: none; user-select: none;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
-}
-@media (max-width: 768px) {
-  .logo-overhang {
-    width: 100px !important; top: 0 !important; left: 0 !important; transform: none !important;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.20)) !important;
-  }
-}
-
-/* CLOCK */
 #liveClock {
   background: #151516;
   border: 2px solid #500;
@@ -358,91 +155,740 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
   max-width: 95vw;
   text-align: center;
 }
-#clockCombined { display: inline-flex; flex-direction: row; align-items: center; gap: 16px; line-height: 1.2; word-spacing: 0.1em; }
-#clockTime { color: #e53935; font-size: 1.4em; font-weight: 700; letter-spacing: 0.04em; }
-#clockDate { font-size: 1.05em; color: #fed351; font-family: 'Montserrat', sans-serif; text-shadow: 0 1px 2px #111; }
+
+#clockCombined {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  line-height: 1.2;
+  word-spacing: 0.1em;
+}
+
+#clockTime {
+  color: #e53935;
+  font-size: 1.4em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+#clockDate {
+  font-size: 1.05em;
+  color: #fed351;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 1px 2px #111;
+}
+
+/* ✅ MOBILE TWEAKS */
 @media (max-width: 480px) {
-  #clockTime { font-size: 1.2em; }
-  #clockDate { font-size: 0.95em; }
-  #clockCombined { gap: 10px; }
-  #liveClock { padding: 6px 12px; }
+  #clockTime {
+    font-size: 1.2em;
+  }
+
+  #clockDate {
+    font-size: 0.95em;
+  }
+
+  #clockCombined {
+    gap: 10px;
+  }
+
+  #liveClock {
+    padding: 6px 12px;
+  }
+}
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #00818a, #7e1974);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* display: flex; justify-content: center;  <== REMOVE THIS LINE */
+}
+.header-spacer {
+  height: 92px;
+}
+@media (max-width: 750px) {
+  .header-spacer { height: 8px; }
 }
 
-/* ===== SCHEDULE/PRESENTERS MODAL ===== */
-#modalScheduleContainer .day-card {
-  background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px;
-  width: 100%; max-width: 860px; box-shadow: 0 0 20px rgba(0,0,0,0.3); margin-bottom: 10px;
+    @media (max-width: 750px) {
+      body {
+        padding: 0 !important;
+      }
+    }
+    .strip-container {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 280px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      background-color: #111;
+      position: relative;
+      z-index: 1;
+    }
+    .left-panel, .right-panel {
+      width: 50%;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .left-panel {
+      background: #111;
+      align-items: center;
+      text-align: center;
+      border-right: 1px solid #333;
+      justify-content: flex-start;
+      padding-top: 30px;
+    }
+    .right-panel {
+  background: #222;
+  border-left: 1px solid #333;
 }
-#modalScheduleContainer .day-card h2, #modalScheduleContainer .day-card h3 {
-  font-size: 21px; margin: 0 0 18px; color: #fed351; text-align: center;
-}
-#modalScheduleContainer .split-columns { display: flex; gap: 24px; }
-#modalScheduleContainer .column { flex: 1; display: flex; flex-direction: column; }
-#modalScheduleContainer .show-entry { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
-#modalScheduleContainer .show-entry img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #fed351; flex-shrink: 0; }
-#modalScheduleContainer .show-info { display: flex; flex-direction: column; }
-#modalScheduleContainer .show-info time { font-weight: 600; color: #fed351; font-size: 14px; }
-#modalScheduleContainer .show-title-presenter { margin-top: 2px; margin-bottom: 2px; }
-#modalScheduleContainer .show-title-presenter .show-title {
-  font-weight: 600; color: #fff; display: block; font-size: 1.04em; line-height: 1.2; margin-bottom: 2px;
-}
-#modalScheduleContainer .show-title-presenter .show-presenter {
-  font-size: 0.96em; color: #fed351; font-style: italic; text-decoration: none; line-height: 1.2; display: inline-block;
-}
-#modalScheduleContainer .show-title-presenter .show-presenter:hover { text-decoration: underline; color: #ffd866; }
-#modalScheduleContainer .show-details { font-size: 13px; color: #ccc; margin-top: 4px; line-height: 1.5; }
-@media (max-width: 900px) { #modalScheduleContainer .split-columns { flex-direction: column; gap:0; } }
 
-/* PLAYLIST MODAL IMAGE */
-.playlist-image {
-  width: 100%; max-width: 600px; border-radius: 18px; display: block; margin: 0 auto 18px auto;
+/* Only give it its own scrollbar on desktop, never on phones */
+@media (min-width: 769px) {
+  .right-panel { overflow-y: auto; }
 }
 
-/* ===== MOBILE & RESPONSIVE TWEAKS ===== */
+/* And let wheel / swipe bubble out when you hit the end */
+.right-panel { overscroll-behavior: contain; }
+    #player-box {
+      max-width: 420px;
+      width: 100%;
+    }
+    button {
+      background-color: #fed351;
+      color: #111;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    button:hover,
+    button:focus {
+      background-color: #e5c73f;
+      box-shadow: 0 0 10px #fed351cc;
+      outline: none;
+    }
+    #mute-toggle {
+      font-size: 16px;
+      padding: 6px 12px;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+    #volume-container {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    #volume-container label {
+      font-size: 16px;
+      margin: 0;
+      user-select: none;
+    }
+    #volume-slider {
+      width: 180px;
+      cursor: pointer;
+    }
+    #volume-display {
+      font-size: 16px;
+      color: #ccc;
+      min-width: 40px;
+      text-align: left;
+      user-select: none;
+    }
+    #onAirNow {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      padding-right: 0;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pulsing-label {
+      color: #ff4d4d;
+      font-weight: 700;
+     # animation: pulseText 5s infinite;
+    }
+  #   @keyframes pulseText {
+     #  0%, 100% { opacity: 0.6; transform: scale(1); }
+    #   50% { opacity: 1; transform: scale(1.1); }
+    }
+    @media (max-width: 768px) {
+      button#play-toggle {
+        font-size: 16px;
+        padding: 12px 16px;
+        width: 100%;
+        margin-top: 10px;
+      }
+      #volume-container {
+        display: none !important;
+      }
+      #volume-slider {
+        width: 100%;
+      }
+      #volume-display, #mute-toggle {
+        align-self: flex-end;
+      }
+      #nowPlaying {
+        margin-top: 18px;
+      }
+      .artwork-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+    }
+    #now-playing-card {
+      margin-top: 25px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 131, 138, 0.7);
+      max-width: 420px;
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.7;
+      color: white;
+    }
+    #artwork {
+      margin-top: 25px;
+      border-radius: 8px;
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      box-shadow: 0 0 15px #fed351aa;
+      user-select: none;
+      opacity: 0;
+      filter: blur(10px) brightness(0.8);
+      transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
+    }
+    #artwork.loaded {
+      opacity: 1;
+      filter: blur(0) brightness(1);
+    }
+    #artwork.fallback {
+      filter: blur(5px) brightness(0.8);
+      opacity: 0.7;
+      box-shadow: 0 0 10px rgba(254, 211, 81, 0.4);
+    }
+    .recent-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #fed351;
+      user-select: none;
+    }
+    ul#recent-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul#recent-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #444;
+      transition: background 0.2s ease;
+    }
+    ul#recent-list li:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    ul#recent-list img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid #fed351;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      user-select: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    ul#recent-list img.loaded {
+      opacity: 1;
+    }
+    ul#recent-list span.time {
+      color: #fed351;
+      font-weight: 600;
+      width: 50px;
+      text-align: right;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    ul#recent-list span.info {
+      flex: 1;
+      color: white;
+      font-size: 16px;
+      user-select: none;
+    }
+    .refresh-indicator {
+      display: inline-block;
+      margin-left: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fed351;
+      animation: pulse 1.2s infinite;
+      vertical-align: middle;
+    }
+    .strip-container { position: relative; z-index: 1; }
+    .player-wrapper {
+  position: relative;
+  margin: 0 auto;      /* Center the wrapper as a block, but NOT flex */
+  width: 100%;
+  max-width: 1100px;   /* or whatever your strip-container's max-width is */
+}
+
+
+.logo-overhang {
+  position: absolute;
+  top: 0;        /* Always 0 for proper edge overhang */
+  left: 0;       /* Always 0 for proper edge overhang */
+  transform: translate(-36%, -36%);
+  width: 220px;  /* Looks premium and not too big */
+  z-index: 2002;
+  opacity: 0.97;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+}
+
 @media (max-width: 768px) {
-  body { padding: 48px 2vw 8vw 2vw !important; }
-  .strip-container { flex-direction: column !important; border-radius: 10px !important; max-width: 100vw !important; min-height: 0 !important; box-shadow: 0 0 14px rgba(0,0,0,0.22) !important; }
-  .left-panel, .right-panel { width: 100% !important; padding: 10px 4px 12px 4px !important; border: none !important; min-height: unset !important; }
-  .left-panel { padding-top: 8px !important; align-items: stretch !important; }
-  #player-box, #now-playing-card { max-width: 98vw !important; width: 100% !important; padding: 0 !important; margin: 0 auto !important; box-shadow: none !important; }
-  .presenter-line, .show-title-presenter span { font-size: 0.96em; color: #fed351; font-style: italic; display: inline-block; margin-top: 0.5px; line-height: 1.4; padding-bottom: 3px; }
-  #now-playing-card { font-size: 15px !important; padding: 10px 4px !important; border-radius: 7px !important; margin-top: 12px !important; }
-  #artwork { width: 94vw !important; max-width: 140px !important; height: auto !important; margin-top: 8px !important; margin-bottom: 8px !important; border-radius: 7px !important; }
-  .recent-title { font-size: 13px !important; margin-bottom: 5px !important; padding-top: 3px !important; }
-  ul#recent-list li { gap: 6px !important; padding: 8px 0 !important; }
-  ul#recent-list img { width: 26px !important; height: 26px !important; border-radius: 4px !important; }
-  ul#recent-list span.info, ul#recent-list span.time { font-size: 11px !important; }
-  button, #mute-toggle { font-size: 14px !important; padding: 8px 14px !important; border-radius: 7px !important; }
-  #volume-container label, #volume-display { font-size: 11px !important; }
-  #volume-slider { width: 84px !important; }
-  #onAirNow { font-size: 15px !important; margin-top: 4px !important; margin-bottom: 4px !important; padding-right: 0 !important; max-width: 100vw !important; }
+  .logo-overhang {
+    width: 100px !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: translate(0%, 0%) !important;
+    z-index: 2002 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.20)) !important;
+  }
+}
+
+
+
+
+
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+      color: #ff4d4d;
+      font-size: 0.95em;
+      margin-left: 10px;
+      user-select: none;
+    }
+    .live-indicator .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff4d4d;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+    @media (max-width: 768px) {
+      .strip-container { flex-direction: column; }
+      .left-panel, .right-panel { width: 100%; padding: 20px; }
+      #artwork { width: 100%; max-width: 280px; height: auto; }
+      #onAirNow { text-align: center; }
+    }
+    #onAirNow { margin-top: 10px; margin-bottom: 10px; text-align: center; padding-right: 16px; max-width: 95%; margin-left: auto; margin-right: 0; }
+    #onAirNow br { display: none; }
+    #play-toggle { margin-bottom: 12px; }
+    #onAirNow span { display: block; line-height: 1.2; }
+    .show-title { font-weight: 600; }
+    .show-presenter {
+  font-weight: 400;
+  font-size: 0.95em;
+  opacity: 0.9;
+  font-style: italic;
+  padding-bottom: 6px !important;
+  padding-right: 4px !important;   /* extra gap from the rounded corner   */
+  line-height: 1.45em !important;
+  display: block;
+  overflow: visible !important;
+}
+    .left-panel { padding-top: 4px; }
+    #player-box { margin-top: -4px; }
+    #nowPlaying { margin-top: 8px; margin-bottom: 8px; }
+    @media (max-width: 768px) {
+      .recent-title { font-size: 16px; margin-bottom: 14px; }
+      ul#recent-list li { gap: 10px; padding: 10px 0; }
+      ul#recent-list img { width: 38px; height: 38px; }
+      ul#recent-list span.info { font-size: 12px; }
+      ul#recent-list span.time { font-size: 12px; width: 40px; }
+    }
+    
+    /* Modal Schedule Styling */
+    #modalScheduleContainer .day-card {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      width: 100%;
+      max-width: 860px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+    #modalScheduleContainer .day-card h2,
+    #modalScheduleContainer .day-card h3 {
+      font-size: 21px;
+      margin: 0 0 18px;
+      color: #fed351;
+      text-align: center;
+    }
+    #modalScheduleContainer .split-columns {
+      display: flex;
+      gap: 24px;
+    }
+    #modalScheduleContainer .column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    #modalScheduleContainer .show-entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    #modalScheduleContainer .show-entry img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      flex-shrink: 0;
+    }
+    #modalScheduleContainer .show-info {
+      display: flex;
+      flex-direction: column;
+    }
+    #modalScheduleContainer .show-info time {
+      font-weight: 600;
+      color: #fed351;
+      font-size: 14px;
+    }
+    #modalScheduleContainer .show-title-presenter {
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    #modalScheduleContainer .show-title-presenter .show-title {
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      font-size: 1.04em;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    #modalScheduleContainer .show-title-presenter .show-presenter {
+      font-size: 0.96em;
+      color: #fed351;
+      font-style: italic;
+      text-decoration: none;
+      line-height: 1.2;
+      display: inline-block;
+    }
+    #modalScheduleContainer .show-title-presenter .show-presenter:hover {
+      text-decoration: underline;
+      color: #ffd866;
+    }
+    #modalScheduleContainer .show-details {
+      font-size: 13px;
+      color: #ccc;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      #modalScheduleContainer .split-columns { flex-direction: column; gap:0; }
+    }
+    /* Playlist Modal Styling */
+    .playlist-image {
+  width: 100%;
+  max-width: 600px; /* or 650px */
+  border-radius: 18px;
+  display: block;
+  margin: 0 auto 18px auto;
+}
+  /* --- IMPROVED RESPONSIVE CSS FOR MOBILE (≤ 768px) --- */
+@media (max-width: 768px) {
+
+  body {
+    padding: 48px 2vw 8vw 2vw !important;
+  }
+
+  .strip-container {
+    flex-direction: column !important;
+    border-radius: 10px !important;
+    max-width: 100vw !important;
+    min-height: 0 !important;
+    box-shadow: 0 0 14px rgba(0,0,0,0.22) !important;
+  }
+
+  .left-panel, .right-panel {
+    width: 100% !important;
+    padding: 10px 4px 12px 4px !important;
+    border: none !important;
+    min-height: unset !important;
+  }
+
+  .left-panel {
+    padding-top: 8px !important;
+    align-items: stretch !important;
+  }
+
+  #player-box, #now-playing-card {
+    max-width: 98vw !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+  }
+
+.presenter-line, .show-title-presenter span {
+  font-size: 0.96em;
+  color: #fed351;
+  font-style: italic;
+  display: inline-block;
+  margin-top: 0.5px;
+  line-height: 1.4;
+  padding-bottom: 3px;
+}
+
+  #now-playing-card {
+    font-size: 15px !important;
+    padding: 10px 4px !important;
+    border-radius: 7px !important;
+    margin-top: 12px !important;
+  }
+
+  #artwork {
+    width: 94vw !important;
+    max-width: 140px !important;
+    height: auto !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    border-radius: 7px !important;
+  }
+
+  
+  .recent-title {
+    font-size: 13px !important;
+    margin-bottom: 5px !important;
+    padding-top: 3px !important;
+  }
+
+  ul#recent-list li {
+    gap: 6px !important;
+    padding: 8px 0 !important;
+  }
+
+  ul#recent-list img {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 4px !important;
+  }
+
+  ul#recent-list span.info, ul#recent-list span.time {
+    font-size: 11px !important;
+  }
+
+  button, #mute-toggle {
+    font-size: 14px !important;
+    padding: 8px 14px !important;
+    border-radius: 7px !important;
+  }
+
+  #volume-container label, #volume-display {
+    font-size: 11px !important;
+  }
+
+  #volume-slider {
+    width: 84px !important;
+  }
+
+  /* ON AIR NOW & SHOW */
+  #onAirNow {
+    font-size: 15px !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    padding-right: 0 !important;
+    max-width: 100vw !important;
+  }
   .show-title { font-size: 0.9em !important; }
   .show-presenter { font-size: 0.8em !important; }
-  .modal-content { padding: 13px 2vw 8px 2vw !important; font-size: 15px !important; min-height: 30px !important; border-radius: 9px !important; max-width: 97vw !important; }
-  .close { font-size: 24px !important; top: 8px !important; right: 8px !important; }
-  .playlist-image { max-width: 97vw !important; border-radius: 9px !important; margin-bottom: 10px !important; }
-  .right-panel { overscroll-behavior: auto !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; }
-  .strip-container { display: block !important; height: auto !important; min-height: 0 !important; overflow: visible !important; }
-  .left-panel, .right-panel { display: block !important; height: auto !important; overflow: visible !important; }
-  .recently-played-container { flex: none !important; height: auto !important; overflow: visible !important; }
-  ul#recent-list { max-height: none !important; overflow: visible !important; -webkit-overflow-scrolling: auto !important; touch-action: pan-y !important; }
+
+  /* Modal Styling */
+  .modal-content {
+    padding: 13px 2vw 8px 2vw !important;
+    font-size: 15px !important;
+    min-height: 30px !important;
+    border-radius: 9px !important;
+    max-width: 97vw !important;
+  }
+  .close {
+    font-size: 24px !important;
+    top: 8px !important;
+    right: 8px !important;
+  }
+
+  .playlist-image {
+    max-width: 97vw !important;
+    border-radius: 9px !important;
+    margin-bottom: 10px !important;
+  }
+
+ 
+  
+
+/* MOBILE TWEAKS */
+
+
+@media (max-width: 768px) {
+  .right-panel {
+    overscroll-behavior: auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+@media (max-width: 768px) {
+  .strip-container {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .left-panel,
+  .right-panel {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .recently-played-container {
+    flex: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  ul#recent-list {
+    max-height: none !important;
+    overflow: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
 }
 
-/* MOBILE SCHEDULE */
-@media (max-width: 900px) { #modalScheduleContainer .split-columns { flex-direction: column; gap:0; } }
-  </style>
-</head>
+/* === FINAL MOBILE SMOOTH-SCROLL TWEAKS === */
+@media (max-width: 768px) {
+  /* Let right column release momentum smoothly */
+  .right-panel {
+    -webkit-overflow-scrolling: touch !important;
+  }
 
+  /* Let recent list claim only vertical drags */
+  ul#recent-list {
+    touch-action: pan-y !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-panel {
+    overscroll-behavior: auto !important;   /* let scroll bubble out */
+    overflow-y: auto !important;            /* its own scroll, momentum OK */
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+.logo-hide {
+  display: none !important;
+}
+@media (max-width: 750px) {
+  #burgerMenuBtn {
+    position: fixed;
+    top: 20px;
+    left: 8px;
+    width: 32px;          /* Smaller width */
+    height: 32px;         /* Smaller height */
+    background: #fed351;
+    border-radius: 7px;
+    z-index: 2001;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px #0002;
+    padding: 0;
+    transition: box-shadow 0.18s;
+  }
+  #burgerMenuBtn .burger-bar {
+    display: block;
+    width: 17px;         /* Shorter lines */
+    height: 2.7px;       /* Thinner lines */
+    background: #191c29;
+    border-radius: 2px;
+    margin: 2.8px 0;
+    transition: all 0.2s;
+  }
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100vw;
+}
+
+/* Ensure the modal itself doesn't scroll the background */
+.modal {
+  overflow: hidden !important;
+  overscroll-behavior: contain;
+}
+
+/* Modal content scrolls inside, not the page */
+.modal-content {
+  max-height: 85vh;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+</style>
+</head>
 <body>
-<!-- ===== BURGER MENU (mobile only) ===== -->
-<div id="burgerMenuBtn" onclick="toggleBurgerMenu()" aria-label="Open menu" tabindex="0">
+<!-- BURGER MENU (mobile only) -->
+<div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
   <span class="burger-bar"></span>
   <span class="burger-bar"></span>
   <span class="burger-bar"></span>
 </div>
 
-<!-- ===== MOBILE DROPDOWN MENU ===== -->
-<nav id="burgerDropdown">
+
+<!-- MOBILE DROPDOWN MENU -->
+<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
   <div style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
     <a href="#" onclick="openModalAndCloseBurger('aboutModal');return false;" class="menu-link">About Us</a>
     <a href="#" onclick="openModalAndCloseBurger('scheduleModal');return false;" class="menu-link">Schedule</a>
@@ -453,10 +899,12 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
     <a href="#" onclick="openModalAndCloseBurger('contactModal');return false;" class="menu-link">Contact Us</a>
     <a href="#" onclick="openModalAndCloseBurger('newsModal');return false;" class="menu-link">News</a>
     <a href="#" onclick="openModalAndCloseBurger('travelModal');return false;" class="menu-link">Travel</a>
-  </div>
-</nav>
+  </div> <!-- CLOSES INNER MENU WRAPPER -->
+</div> <!-- CLOSES burgerDropdown -->
 
-<!-- ===== DESKTOP NAVIGATION ===== -->
+
+
+<!-- DESKTOP NAVIGATION -->
 <nav class="navbar" role="navigation">
   <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
   <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
@@ -471,12 +919,12 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
 
 <div class="header-spacer"></div>
 
-<!-- ===== RIGHT PANEL: CLOCK, WEATHER, RECENTLY PLAYED ===== -->
-<div style="width:100%;display:flex;justify-content:center;">
-  <div class="player-wrapper">
+
+  <!-- PLAYER LAYOUT -->
+  <div style="width:100%;display:flex;justify-content:center;">
+	<div class="player-wrapper">
     <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
     <div class="strip-container">
-      <!-- ===== LEFT PANEL: PLAYER ===== -->
       <div class="left-panel">
         <div id="onAirNow" style="text-align: right;">
           <span class="pulsing-label">ON AIR NOW</span>
@@ -499,262 +947,314 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
           <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
         </div>
       </div>
-<div class="right-panel" style="display:flex;flex-direction:column;">
+     <div class="right-panel" style="display:flex;flex-direction:column;">
 
-  <!-- LIVE CLOCK -->
-  <div id="liveClock">
-    <div id="clockCombined">
-      <span id="clockTime">--:--:--</span>
-      <span id="clockDate">Date</span>
-    </div>
+  <!-- Studio Clock at the very top -->
+<div id="liveClock">
+  <div id="clockCombined">
+    <span id="clockTime">--:--:--</span>
+    <span id="clockDate">Date</span>
+  </div>
+</div>
+
+
+<!-- === ESSENTIAL WEATHER WIDGET (Always Shows Hourly Strip) === -->
+<div id="wxWrap"
+     style="font-family:Inter,sans-serif;background:linear-gradient(135deg,#24243e 0%,#191c29 100%);
+            color:#f5f5f5;border-radius:18px;padding:16px;box-shadow:0 6px 32px #0007;
+            border:1px solid #252e42;max-width:100%;text-align:center;margin-bottom:18px;
+            transition:background 0.3s,box-shadow 0.3s;">
+
+  <!-- Heading (desktop = one line, mobile = two lines) -->
+  <h3 class="wxHeading">
+    Ayrshire Weather
+    <span class="mobBreak"><br></span>
+    <span class="sub">– select a location</span>
+  </h3>
+
+  <!-- ♻︎ LOCAL HEADING STYLES – stay inside the widget -->
+  <style>
+    /* desktop / tablet */
+    #wxWrap .wxHeading{
+      font-size:1.15em;font-weight:600;margin:0 0 10px 0;color:#fed351;letter-spacing:.3px}
+    #wxWrap .wxHeading .sub{font-weight:400;font-style:italic;color:#bbb}
+    #wxWrap .mobBreak{display:none}
+
+    /* mobile ≤500 px */
+    @media(max-width:500px){
+      #wxWrap .wxHeading{font-size:1.05em}
+      #wxWrap .wxHeading .sub{font-size:.9em}
+      #wxWrap .mobBreak{display:inline}
+    }
+  </style>
+
+  <!-- Location selector -->
+  <div style="margin-bottom:7px;">
+    <select id="locSel"
+            style="background:#222;color:#fed351;border:1px solid #444;
+                   border-radius:6px;padding:4px 10px;font-weight:bold;">
+      <option value="Kilmarnock,55.6118,-4.4955">Kilmarnock</option>
+      <option value="Kilwinning,55.6558,-4.7057">Kilwinning</option>
+      <option value="Ayr,55.4586,-4.6292">Ayr</option>
+    </select>
+  </div>
+  <!-- …rest of the widget remains unchanged… -->
+
+  <div style="display:flex;justify-content:space-between;align-items:center;
+              border-bottom:1px solid #2224;margin-bottom:10px;padding-bottom:7px;">
+    <div id="wxNow" style="text-align:left;font-size:1em;"></div>
+    <button id="toggleBtn"
+            style="background:#fed351;color:#191c29;font-weight:600;border:none;
+                   border-radius:6px;padding:3px 10px;font-size:0.8em;cursor:pointer;
+                   box-shadow:0 1px 4px rgba(0,0,0,0.3);transition:all 0.18s;">
+      5-day ▸
+    </button>
   </div>
 
-  <!-- ESSENTIAL WEATHER WIDGET -->
-  <div id="wxWrap"
-       style="font-family:Inter,sans-serif;background:linear-gradient(135deg,#24243e 0%,#191c29 100%);
-              color:#f5f5f5;border-radius:18px;padding:16px;box-shadow:0 6px 32px #0007;
-              border:1px solid #252e42;max-width:100%;text-align:center;margin-bottom:18px;
-              transition:background 0.3s,box-shadow 0.3s;">
-    <!-- Heading -->
-    <h3 class="wxHeading">
-      Ayrshire Weather
-      <span class="mobBreak"><br></span>
-      <span class="sub">– select a location</span>
-    </h3>
-    <style>
-      /* desktop / tablet */
-      #wxWrap .wxHeading{
-        font-size:1.15em;font-weight:600;margin:0 0 10px 0;color:#fed351;letter-spacing:.3px}
-      #wxWrap .wxHeading .sub{font-weight:400;font-style:italic;color:#bbb}
-      #wxWrap .mobBreak{display:none}
-      @media(max-width:500px){
-        #wxWrap .wxHeading{font-size:1.05em}
-        #wxWrap .wxHeading .sub{font-size:.9em}
-        #wxWrap .mobBreak{display:inline}
-      }
-      .weather-divider {
-        border: 0;
-        border-top: 1.5px solid #28304c;
-        margin: 14px 0 0 0;
-        opacity: 0.6;
-      }
-      #wxNow span {
-        text-shadow: 0 2px 10px #000c, 0 1px 0 #fed351;
-        font-size: 1.06em;
-      }
-      #hrWrap, #dyWrap {
-        overflow-x: hidden;
-        touch-action: pan-y;
-        overscroll-behavior: auto;
-        transition: opacity 0.35s, transform 0.3s;
-        opacity: 1;
-        scroll-snap-type: x mandatory;
-      }
-      @media (max-width: 500px) {
-        #hrWrap, #dyWrap {
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          touch-action: pan-x;
-          overscroll-behavior-x: contain;
-          overscroll-behavior-y: auto;
-        }
-        #toggleBtn {
-          font-size: 0.72em !important;
-          padding: 2px 6px !important;
-          border-radius: 5px !important;
-        }
-        #wxWrap h3 { font-size: 1em !important; }
-        .wxRainNote { text-align: right; width: 100%; }
-      }
-      #wxWrap {
-        overscroll-behavior: auto !important;
-        -webkit-overflow-scrolling: touch;
-      }
-      #hrWrap[style*="display: none"],
-      #dyWrap[style*="display: none"] {
-        opacity: 0 !important;
-        transform: translateY(-8px);
-      }
-      .forecast-icon {
-        transition: transform 0.2s ease-in-out, filter 0.2s;
-      }
-      .forecast-icon:hover {
-        filter: brightness(1.15) drop-shadow(0 2px 8px #fed35188);
-        transform: scale(1.16) rotate(-8deg);
-      }
-      #dyWrap > div > div {
-        width: 20% !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        box-sizing: border-box;
-      }
-      .wxRainNote {
-        font-size: 90%;
-        font-style: italic;
-        display: inline-block;
-      }
-    </style>
+  <!-- Hourly (2-row layout) -->
+  <div id="hrWrap" style="display:grid;grid-template-rows:auto auto;gap:4px;
+                          white-space:nowrap;font-size:0.82em;
+                          padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
 
-    <!-- Location selector -->
-    <div style="margin-bottom:7px;">
-      <select id="locSel"
-              style="background:#222;color:#fed351;border:1px solid #444;
-                     border-radius:6px;padding:4px 10px;font-weight:bold;">
-        <option value="Kilmarnock,55.6118,-4.4955">Kilmarnock</option>
-        <option value="Kilwinning,55.6558,-4.7057">Kilwinning</option>
-        <option value="Ayr,55.4586,-4.6292">Ayr</option>
-      </select>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;
-                border-bottom:1px solid #2224;margin-bottom:10px;padding-bottom:7px;">
-      <div id="wxNow" style="text-align:left;font-size:1em;"></div>
-      <button id="toggleBtn"
-              style="background:#fed351;color:#191c29;font-weight:600;border:none;
-                     border-radius:6px;padding:3px 10px;font-size:0.8em;cursor:pointer;
-                     box-shadow:0 1px 4px rgba(0,0,0,0.3);transition:all 0.18s;">
-        5-day ▸
-      </button>
-    </div>
-    <!-- Hourly and Daily forecast strips -->
-    <div id="hrWrap" style="display:grid;grid-template-rows:auto auto;gap:4px;white-space:nowrap;font-size:0.82em;padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
-    <div id="dyWrap" style="display:none;grid-template-rows:auto auto;gap:4px;white-space:nowrap;font-size:0.82em;padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
-    <div id="wxAlert" style="color:#ff6969;font-size:0.85em;margin-top:5px;"></div>
-  </div>
+  <!-- Daily (2-row layout) -->
+  <div id="dyWrap" style="display:none;grid-template-rows:auto auto;gap:4px;
+                          white-space:nowrap;font-size:0.82em;
+                          padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
 
-  <hr class="weather-divider">
+  <div id="wxAlert" style="color:#ff6969;font-size:0.85em;margin-top:5px;"></div>
+</div>
 
-  <!-- WEATHER WIDGET SCRIPT -->
-  <script>
-    (() => {
-      const KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
+<hr class="weather-divider">
 
-      const q = s => document.querySelector(s),
-            locSel = q('#locSel'),
-            wxNow  = q('#wxNow'),
-            tBtn   = q('#toggleBtn'),
-            hrWrap = q('#hrWrap'),
-            dyWrap = q('#dyWrap'),
-            alertBox = q('#wxAlert');
+<style>
+  .weather-divider {
+    border: 0;
+    border-top: 1.5px solid #28304c;
+    margin: 14px 0 0 0;
+    opacity: 0.6;
+  }
 
-      let show5 = localStorage.wxView === '5';
-      if (show5) swapView();
-      if (localStorage.wxChoice) locSel.value = localStorage.wxChoice;
+  #wxNow span {
+    text-shadow: 0 2px 10px #000c, 0 1px 0 #fed351;
+    font-size: 1.06em;
+  }
 
-      function phrase(desc, isDay, temp = null, pop = null) {
-        desc = desc.toLowerCase();
-        if (desc.includes('thunder')) return 'Thunderstorm';
-        if (desc.includes('snow') && (!temp || temp < 5)) return 'Snow';
-        if (desc.includes('snow') && temp && temp >= 5) return 'Showers';
-        if (desc.includes('rain') || desc.includes('drizzle')) {
-          if (pop !== null && pop < 30) return isDay ? 'Chance of showers' : 'Possible showers';
-          return 'Rain';
-        }
-        if (desc.includes('fog'))   return 'Foggy';
-        if (desc.includes('mist'))  return 'Misty';
-        if (desc.includes('haze'))  return 'Hazy';
-        if (desc.includes('smoke')) return 'Smoky';
-        if (desc === 'clear sky')   return isDay ? 'Sunny' : 'Clear';
-        if (desc.includes('few clouds'))       return isDay ? 'Mostly sunny' : 'Mainly clear';
-        if (desc.includes('scattered clouds')) return isDay ? 'Partly cloudy' : 'Some cloud';
-        if (desc.includes('broken clouds'))    return isDay ? 'Sunny intervals' : 'Cloudy';
-        if (desc.includes('overcast'))         return 'Overcast';
-        if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
-        return isDay ? 'Fair' : 'Calm';
-      }
+  /* ========= WEATHER WIDGET SCROLL SMOOTHNESS ========= */
 
-      async function update() {
-        const [label, lat, lon] = locSel.value.split(',');
-        localStorage.wxChoice = locSel.value;
+  /* Default: no horizontal scroll = no vertical stall */
+  #hrWrap, #dyWrap {
+    overflow-x: hidden;      /* nothing to drag */
+    touch-action: pan-y;     /* vertical only   */
+    overscroll-behavior: auto;
+  }
 
-        try {
-          const d = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`)
-                           .then(r => r.json());
+  /* Phones (≤500 px) get sideways strips */
+  @media (max-width: 500px) {
+    #hrWrap, #dyWrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;           /* claim horizontal drags */
+      overscroll-behavior-x: contain;
+      overscroll-behavior-y: auto;   /* let vertical bubble out */
+    }
+  }
 
-          // ==== CURRENT CONDITIONS ====
-          const cur  = d.current,
-                nxt  = d.hourly[1],
-                day  = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600,
-                pop  = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null,
-                desc = phrase(cur.weather[0].description, day, cur.temp, pop),
-                tmp  = Math.round(cur.temp);
+  /* Ensure the whole widget never traps vertical scroll */
+  #wxWrap {
+    overscroll-behavior: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
 
-          // Only show % if desc doesn’t already include “rain / showers”
-          const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
+  /* ========== OTHER EXISTING STYLES (unchanged) ========== */
 
-          wxNow.innerHTML =
-            `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
-            (showPop
-               ? `<br><span class="wxRainNote">☔&nbsp;${pop}% chance of rain</span>`
-               : '');
+  #toggleBtn:hover {
+    background: #ffe67c !important;
+    color: #222 !important;
+    transform: scale(1.08);
+    box-shadow: 0 2px 8px #fed35180;
+    transition: all 0.18s;
+  }
 
-          // HOURLY STRIP
-          hrWrap.innerHTML = '';
-          let times = '', details = '';
-          d.hourly.slice(1, 6).forEach(h => {
-            const t = new Date(h.dt * 1e3).getHours().toString().padStart(2,'0') + ':00';
-            const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
-            times   += `<div style="width:52px;text-align:center;">${t}</div>`;
-            details += `<div style="width:52px;text-align:center;">
-                          <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
-                        </div>`;
-          });
-          hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
-          hrWrap.style.display = show5 ? 'none' : 'grid';
+  #hrWrap, #dyWrap {
+    transition: opacity 0.35s, transform 0.3s;
+    opacity: 1;
+    scroll-snap-type: x mandatory;   /* keep snap if you like */
+  }
 
-          // DAILY STRIP
-          dyWrap.innerHTML = '';
-          let days = '', temps = '';
-          d.daily.slice(1, 6).forEach(dd => {
-            const wd   = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', {weekday:'short'});
-            const icon = `https://openweathermap.org/img/wn/${dd.weather[0].icon}.png`;
-            days  += `<div style="text-align:center;">${wd}</div>`;
-            temps += `<div style="text-align:center;">
-                        <img src="${icon}" width="20" class="forecast-icon"><br>
-                        ${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
-                      </div>`;
-          });
-          dyWrap.innerHTML = `<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>`;
-          dyWrap.style.display = show5 ? 'grid' : 'none';
+  #hrWrap[style*="display: none"],
+  #dyWrap[style*="display: none"] {
+    opacity: 0 !important;
+    transform: translateY(-8px);
+  }
 
-          // ALERTS
-          if (d.alerts && d.alerts.length) {
-            const now = Math.floor(Date.now()/1000);
-            const valid = d.alerts.find(a => !a.end || a.end > now);
-            alertBox.textContent = valid ? `⚠ ${valid.event}` : '';
-          } else {
-            alertBox.textContent = '';
-          }
+  .forecast-icon {
+    transition: transform 0.2s ease-in-out, filter 0.2s;
+  }
+  .forecast-icon:hover {
+    filter: brightness(1.15) drop-shadow(0 2px 8px #fed35188);
+    transform: scale(1.16) rotate(-8deg);
+  }
 
-        } catch(e) {
-          console.error('Weather fetch error', e);
-          wxNow.textContent = 'Weather unavailable';
-        }
+  @media (max-width: 500px) {
+    #toggleBtn {
+      font-size: 0.72em !important;
+      padding: 2px 6px !important;
+      border-radius: 5px !important;
+    }
+    #wxWrap h3 { font-size: 1em !important; }
+  }
+
+  #dyWrap > div > div {
+    width: 20% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    box-sizing: border-box;
+  }
+
+  /* “chance of rain” sub-line */
+  .wxRainNote {
+    font-size: 90%;
+    font-style: italic;
+    display: inline-block;
+  }
+  @media (max-width: 500px) {
+    .wxRainNote { text-align: right; width: 100%; }
+  }
+</style>
+
+<!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL) === -->
+<script>
+(() => {
+  const KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
+
+  const q = s => document.querySelector(s),
+        locSel = q('#locSel'),
+        wxNow  = q('#wxNow'),
+        tBtn   = q('#toggleBtn'),
+        hrWrap = q('#hrWrap'),
+        dyWrap = q('#dyWrap'),
+        alertBox = q('#wxAlert');
+
+  let show5 = localStorage.wxView === '5';
+  if (show5) swapView();
+  if (localStorage.wxChoice) locSel.value = localStorage.wxChoice;
+
+  function phrase(desc, isDay, temp = null, pop = null) {
+    desc = desc.toLowerCase();
+    if (desc.includes('thunder')) return 'Thunderstorm';
+    if (desc.includes('snow') && (!temp || temp < 5)) return 'Snow';
+    if (desc.includes('snow') && temp && temp >= 5) return 'Showers';
+    if (desc.includes('rain') || desc.includes('drizzle')) {
+      if (pop !== null && pop < 30) return isDay ? 'Chance of showers' : 'Possible showers';
+      return 'Rain';
+    }
+    if (desc.includes('fog'))   return 'Foggy';
+    if (desc.includes('mist'))  return 'Misty';
+    if (desc.includes('haze'))  return 'Hazy';
+    if (desc.includes('smoke')) return 'Smoky';
+    if (desc === 'clear sky')   return isDay ? 'Sunny' : 'Clear';
+    if (desc.includes('few clouds'))       return isDay ? 'Mostly sunny' : 'Mainly clear';
+    if (desc.includes('scattered clouds')) return isDay ? 'Partly cloudy' : 'Some cloud';
+    if (desc.includes('broken clouds'))    return isDay ? 'Sunny intervals' : 'Cloudy';
+    if (desc.includes('overcast'))         return 'Overcast';
+    if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
+    return isDay ? 'Fair' : 'Calm';
+  }
+
+  async function update() {
+    const [label, lat, lon] = locSel.value.split(',');
+    localStorage.wxChoice = locSel.value;
+
+    try {
+      const d = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`)
+                       .then(r => r.json());
+
+      // ==== CURRENT CONDITIONS ====
+const cur  = d.current,
+      nxt  = d.hourly[1],
+      day  = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600,
+      pop  = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null,
+      desc = phrase(cur.weather[0].description, day, cur.temp, pop),
+      tmp  = Math.round(cur.temp);
+
+// Only show % if desc doesn’t already include “rain / showers”
+const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
+
+// Build the summary line (keeps “• 80 % rain” on one line)
+wxNow.innerHTML =
+  `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
+  (showPop
+     ? `<br><span class="wxRainNote">☔&nbsp;${pop}% chance of rain</span>`
+     : '');
+    
+      // HOURLY STRIP
+      hrWrap.innerHTML = '';
+      let times = '', details = '';
+      d.hourly.slice(1, 6).forEach(h => {
+        const t = new Date(h.dt * 1e3).getHours().toString().padStart(2,'0') + ':00';
+        const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
+        times   += `<div style="width:52px;text-align:center;">${t}</div>`;
+        details += `<div style="width:52px;text-align:center;">
+                      <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
+                    </div>`;
+      });
+      hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
+      hrWrap.style.display = show5 ? 'none' : 'grid';
+
+      // DAILY STRIP
+      dyWrap.innerHTML = '';
+      let days = '', temps = '';
+      d.daily.slice(1, 6).forEach(dd => {
+        const wd   = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', {weekday:'short'});
+        const icon = `https://openweathermap.org/img/wn/${dd.weather[0].icon}.png`;
+        days  += `<div style="text-align:center;">${wd}</div>`;
+        temps += `<div style="text-align:center;">
+                    <img src="${icon}" width="20" class="forecast-icon"><br>
+                    ${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
+                  </div>`;
+      });
+      dyWrap.innerHTML = `<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>`;
+      dyWrap.style.display = show5 ? 'grid' : 'none';
+
+      // ALERTS
+      if (d.alerts && d.alerts.length) {
+        const now = Math.floor(Date.now()/1000);
+        const valid = d.alerts.find(a => !a.end || a.end > now);
+        alertBox.textContent = valid ? `⚠ ${valid.event}` : '';
+      } else {
+        alertBox.textContent = '';
       }
 
-      function swapView() {
-        hrWrap.style.opacity = '0';
-        dyWrap.style.opacity = '0';
-        setTimeout(() => {
-          show5 = !show5;
-          localStorage.wxView = show5 ? '5' : 'hr';
-          hrWrap.style.display = show5 ? 'none':'grid';
-          dyWrap.style.display = show5 ? 'grid':'none';
-          tBtn.textContent = show5 ? 'Hourly ▶' : '5-day ▸';
-          setTimeout(() => {
-            hrWrap.style.opacity = show5 ? '0':'1';
-            dyWrap.style.opacity = show5 ? '1':'0';
-          },20);
-        },180);
-      }
+    } catch(e) {
+      console.error('Weather fetch error', e);
+      wxNow.textContent = 'Weather unavailable';
+    }
+  }
 
-      tBtn  .addEventListener('click', swapView);
-      locSel.addEventListener('change', update);
-      update();
-      setInterval(update, 900000);
-    })();
-  </script>
+  function swapView() {
+    hrWrap.style.opacity = '0';
+    dyWrap.style.opacity = '0';
+    setTimeout(() => {
+      show5 = !show5;
+      localStorage.wxView = show5 ? '5' : 'hr';
+      hrWrap.style.display = show5 ? 'none':'grid';
+      dyWrap.style.display = show5 ? 'grid':'none';
+      tBtn.textContent = show5 ? 'Hourly ▶' : '5-day ▸';
+      setTimeout(() => {
+        hrWrap.style.opacity = show5 ? '0':'1';
+        dyWrap.style.opacity = show5 ? '1':'0';
+      },20);
+    },180);
+  }
 
-  <!-- RECENTLY PLAYED TRACKS -->
+  tBtn  .addEventListener('click', swapView);
+  locSel.addEventListener('change', update);
+  update();
+  setInterval(update, 900000);
+})();
+</script>
+<!-- === END WEATHER WIDGET SCRIPT === -->
+  <!-- Recently Played fills the rest of the panel -->
   <div class="recently-played-container" style="flex:1;display:flex;flex-direction:column;min-height:0;">
     <div class="recent-title" style="color:#fed351;font-size:1.1em;margin-bottom:7px;">Recently Played</div>
     <ul id="recent-list" style="list-style:none;padding:0;margin:0;flex:1;overflow-y:auto;"></ul>
@@ -762,10 +1262,8 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
 </div>
 
 
-<!-- ======= ALL MODALS ======= -->
-
-<!-- ABOUT MODAL -->
-<div id="aboutModal" class="modal">
+    <!-- MODALS -->
+  <div id="aboutModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('aboutModal')">&times;</span>
     <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;">
@@ -810,34 +1308,31 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
   </div>
 </div>
 
-<!-- SCHEDULE MODAL -->
-<div id="scheduleModal" class="modal">
-  <div class="modal-content" style="max-width:920px;width:95vw;">
-    <span class="close" onclick="closeModal('scheduleModal')">&times;</span>
-    <h2 style="margin-top:0;">Programme Schedule</h2>
-    <div style="margin-bottom:18px;">
-      <label for="modalDaySelect" style="color:#222;font-weight:600;">Choose a day: </label>
-      <select id="modalDaySelect" style="padding:8px 12px;border-radius:7px;border:none;background:#fed351;color:#111;font-weight:600;"></select>
-    </div>
-    <div id="modalScheduleContainer">
-      <div class="day-card" id="modalDaySchedule">
-        <h3>Loading…</h3>
+  <div id="scheduleModal" class="modal">
+    <div class="modal-content" style="max-width:920px;width:95vw;">
+      <span class="close" onclick="closeModal('scheduleModal')">&times;</span>
+      <h2 style="margin-top:0;">Programme Schedule</h2>
+      <div style="margin-bottom:18px;">
+        <label for="modalDaySelect" style="color:#222;font-weight:600;">Choose a day: </label>
+        <select id="modalDaySelect" style="padding:8px 12px;border-radius:7px;border:none;background:#fed351;color:#111;font-weight:600;"></select>
+      </div>
+      <div id="modalScheduleContainer">
+        <div class="day-card" id="modalDaySchedule">
+          <h3>Loading…</h3>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- PLAYLIST MODAL -->
-<div id="playlistModal" class="modal">
-  <div class="modal-content" style="max-width:650px;width:97vw;">
-    <span class="close" onclick="closeModal('playlistModal')">&times;</span>
-    <h2 style="margin-top:0;color:#00818a;">Essential Radio Playlist</h2>
-    <img src="ERPlaylist.png" alt="Essential Radio Playlist" class="playlist-image" />
+  <div id="playlistModal" class="modal">
+    <div class="modal-content" style="max-width:650px;width:97vw;">
+      <span class="close" onclick="closeModal('playlistModal')">&times;</span>
+      <h2 style="margin-top:0;color:#00818a;">Essential Radio Playlist</h2>
+      <img src="ERPlaylist.png" alt="Essential Radio Playlist" class="playlist-image" />
+    </div>
   </div>
-</div>
 
-<!-- LISTEN AGAIN MODAL -->
-<div id="listenModal" class="modal">
+ <div id="listenModal" class="modal">
   <div class="modal-content" style="max-width:700px;width:97vw;">
     <span class="close" onclick="closeModal('listenModal')">&times;</span>
     <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;">
@@ -853,6 +1348,7 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
     <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
       Essential Radio &copy; 2025
     </div>
+
     <script>
       fetch('https://api.mixcloud.com/essentialradio/cloudcasts/')
         .then(response => response.json())
@@ -883,29 +1379,175 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
         });
     </script>
     <style>
-      .show-block { margin-bottom: 30px; }
-      .show-title { font-size: 18px; margin-bottom: 8px; color: #fff; word-break: break-word; line-height: 1.2; font-weight: 500; }
-      .mixcloud-player { width: 100%; min-width: 0; height: 120px; border: 0; display: block; border-radius: 8px; background: #222; }
-      @media (max-width: 600px) { .show-title { font-size: 16px; } .mixcloud-player { height: 150px; } }
-      @media (max-width: 400px) { .mixcloud-player { height: 165px; } }
+      .show-block {
+        margin-bottom: 30px;
+      }
+      .show-title {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #fff;
+        word-break: break-word;
+        line-height: 1.2;
+        font-weight: 500;
+      }
+      .mixcloud-player {
+        width: 100%;
+        min-width: 0;
+        height: 120px;
+        border: 0;
+        display: block;
+        border-radius: 8px;
+        background: #222;
+      }
+      @media (max-width: 600px) {
+        .show-title {
+          font-size: 16px;
+        }
+        .mixcloud-player {
+          height: 150px;
+        }
+      }
+      @media (max-width: 400px) {
+        .mixcloud-player {
+          height: 165px;
+        }
+      }
     </style>
   </div>
 </div>
 
-<!-- SONG SEARCH MODAL -->
-<div id="searchModal" class="modal">
+    </script>
+    <style>
+      .show-block {
+        margin-bottom: 30px;
+      }
+      .show-title {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #fff;
+        word-break: break-word;
+        line-height: 1.2;
+        font-weight: 500;
+      }
+      .mixcloud-player {
+        width: 100%;
+        min-width: 0;
+        height: 120px;
+        border: 0;
+        display: block;
+        border-radius: 8px;
+        background: #222;
+      }
+      @media (max-width: 600px) {
+        .show-title {
+          font-size: 16px;
+        }
+        .mixcloud-player {
+          height: 150px;
+        }
+      }
+      @media (max-width: 400px) {
+        .mixcloud-player {
+          height: 165px;
+        }
+      }
+
+/* === MOBILE WEATHER SUMMARY SIZE === */
+@media (max-width: 500px) {
+  #wxNow {
+    font-size: 0.9em !important;   /* tweak value to taste */
+    line-height: 1.25;
+  }
+}
+@media (max-width: 768px) {
+  .left-panel {
+    width: 100% !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    box-sizing: border-box !important;
+  }
+  #player-box, #now-playing-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* === MODALS DROP BELOW LOGO/BURGER (Desktop + Mobile) === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 5px;   /* Desktop: below logo/burger; adjust if your top area is taller/shorter */
+  width: 100vw;
+  height: calc(100vh - 5px); /* Prevents modal covering logo/burger */
+  overflow: auto;
+  background: rgba(0,0,0,0.78);
+  transition: background 0.2s;
+}
+
+@media (max-width: 750px) {
+  .modal {
+    top: 56px;   /* Mobile: slightly less space */
+    height: calc(100vh - 56px);
+  }
+  .modal-content {
+    border-radius: 14px 14px 0 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    top: 0 !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    left: 0 !important;
+    width: 100vw !important;
+    overflow: hidden !important;
+    background: rgba(0,0,0,0.78) !important;
+  }
+  .modal-content {
+    margin: 0 !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    min-height: 100vh !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding-top: 46px !important;
+    padding-bottom: 16px !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    background: #fff !important;
+    font-size: 15px !important;
+  }
+}
+    </style>
+  </div>
+</div>
+
+ <div id="searchModal" class="modal">
   <div class="modal-content" style="max-width:950px;width:97vw;">
     <span class="close" onclick="closeModal('searchModal')">&times;</span>
     <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;">
       <h2 style="margin:0;color:#00818a;font-size:1.45em;">Song Search</h2>
     </div>
     <div style="background:#111;border:1px solid #333;border-radius:12px;padding:0 0 20px 0;box-shadow:0 0 20px rgba(0,0,0,0.23);margin-bottom:0; color:#eee;">
+      <!-- Original intro wording -->
       <div class="content-card" style="background:#151921ea;border:1px solid #343648;border-radius:16px;padding:24px 18px 12px 18px;max-width:850px;margin:24px auto 16px auto;box-shadow:0 0 18px #0008;">
         <p style="font-size:17px;line-height:1.6;margin-bottom:0;">
           Trying to remember that amazing track we just played?<br>
           Use our Song Search to find recent songs and discover more about what’s been on Essential Radio.
         </p>
       </div>
+      <!-- Playout Log Viewer Embed Starts -->
       <div class="container" style="background:#191b24f2;border-radius:18px;box-shadow:0 0 18px #0008;max-width:850px;margin:0 auto 36px auto;padding:20px 18px 32px 18px;">
         <div class="filters" style="margin-bottom:1.5rem;display:flex;flex-wrap:wrap;align-items:center;gap:0.7rem 1.2rem;">
           <label for="dateSelect">Date:</label>
@@ -929,6 +1571,7 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
         </table>
         <div id="noResultsMessage" class="no-results" style="display: none;text-align:center;font-style:italic;color:#fed351;padding:1.4rem 0 0.7rem 0;font-size:18px;letter-spacing:0.1px;">No tracks found for this time period.</div>
       </div>
+      <!-- End Playout Log Viewer Embed -->
     </div>
     <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
       Essential Radio &copy; 2025
@@ -1099,8 +1742,6 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
     </script>
   </div>
 </div>
-
-<!-- REQUESTS MODAL -->
 <div id="requestsModal" class="modal">
   <div class="modal-content" style="max-width:700px;width:97vw;">
     <span class="close" onclick="closeModal('requestsModal')">&times;</span>
@@ -1127,9 +1768,7 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
     </div>
   </div>
 </div>
-
-<!-- CONTACT MODAL -->
-<div id="contactModal" class="modal">
+  <div id="contactModal" class="modal">
   <div class="modal-content" style="max-width:620px;width:97vw;">
     <span class="close" onclick="closeModal('contactModal')">&times;</span>
     <div style="display:flex;align-items:center;gap:18px;margin-bottom:24px;">
@@ -1163,7 +1802,6 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
   </div>
 </div>
 
-<!-- NEWS MODAL -->
 <div id="newsModal" class="modal">
   <div class="modal-content" style="max-width:700px;width:97vw;">
     <span class="close" onclick="closeModal('newsModal')">&times;</span>
@@ -1181,9 +1819,7 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
     </div>
   </div>
 </div>
-
-<!-- TRAVEL MODAL -->
-<div id="travelModal" class="modal">
+  <div id="travelModal" class="modal">
   <div class="modal-content" style="max-width:900px;width:97vw;">
     <span class="close" onclick="closeModal('travelModal')">&times;</span>
     <div style="display:flex;align-items:center;gap:18px;margin-bottom:20px;">
@@ -1231,263 +1867,595 @@ ul#recent-list span.info { flex: 1; color: white; font-size: 16px; user-select: 
   </div>
 </div>
 
+ 
+  
 
-<!-- ======= SCRIPTS AT BOTTOM ======= -->
-<script>
-/* === MODAL & BURGER LOGIC (CLEAN, UNIFIED) === */
 
-// Open modal and hide logo
-function openModal(id) {
-  hideLogo();
-  document.getElementById(id).style.display = "block";
-  document.body.classList.add("modal-open");
+  <!-- MODAL JS -->
+  <script>
+    function openModal(id) {
+  hideLogo(); // Always hide logo on modal open
+  document.getElementById(id).style.display = 'block';
+  document.body.style.overflow = 'hidden';
 }
 
-// Close modal and restore logo (if appropriate)
 function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-  document.body.classList.remove("modal-open");
-  checkShowLogo();
+  document.getElementById(id).style.display = 'none';
+  document.body.style.overflow = '';
+  // Only show logo if NO modals or burger menu are open
+  const stillOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
+  if (!stillOpen && !burgerOpen) showLogo();
 }
 
-// Close burger, then open modal (for mobile)
-function openModalAndCloseBurger(modalId) {
+	function openModalAndCloseBurger(modalId) {
   closeBurgerMenu();
   openModal(modalId);
 }
 
-// Hide/show logo helpers
-function hideLogo() {
-  const logo = document.querySelector(".logo-overhang");
-  if (logo) logo.classList.add("logo-hide");
-}
-function showLogo() {
-  const logo = document.querySelector(".logo-overhang");
-  if (logo) logo.classList.remove("logo-hide");
-}
-
-// Show logo only if no modals/burger are open
-function checkShowLogo() {
-  const anyModalOpen = Array.from(document.querySelectorAll('.modal')).some(
-    m => m.style.display === "block"
-  );
-  const burgerOpen = document.getElementById("burgerDropdown")?.style.display === "flex";
-  if (!anyModalOpen && !burgerOpen) showLogo();
-}
-
-// Burger menu logic
-function toggleBurgerMenu() {
-  const burgerDropdown = document.getElementById("burgerDropdown");
-  if (!burgerDropdown) return;
-  const isOpen = burgerDropdown.style.display === "flex";
-  burgerDropdown.style.display = isOpen ? "none" : "flex";
-  isOpen ? checkShowLogo() : hideLogo();
-}
-function closeBurgerMenu() {
-  const burgerDropdown = document.getElementById("burgerDropdown");
-  if (burgerDropdown) burgerDropdown.style.display = "none";
-  checkShowLogo();
-}
-
-// ESC closes all modals and burger menu
-window.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") {
-    document.querySelectorAll(".modal").forEach(modal => {
-      if (modal.style.display === "block") closeModal(modal.id);
-    });
-    closeBurgerMenu();
-  }
-});
-
-// Click-outside closes open modals and/or burger menu
-window.addEventListener("click", function(event) {
-  // Modals
-  document.querySelectorAll(".modal").forEach(modal => {
-    if (modal.style.display === "block" && event.target === modal) {
-      closeModal(modal.id);
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
     }
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+          modal.style.display = 'none';
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <!-- NATIVE MODAL SCHEDULE LOGIC -->
+  <script>
+  (function() {
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const todayIndex = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1;
+
+    const modalScheduleContainer = document.getElementById("modalDaySchedule");
+    const modalDaySelect = document.getElementById("modalDaySelect");
+    let modalFullSchedule = null;
+
+    // Populate dropdown
+    daysOfWeek.forEach((day, idx) => {
+      const opt = document.createElement("option");
+      opt.value = day;
+      opt.textContent = day;
+      if (idx === todayIndex) opt.selected = true;
+      modalDaySelect.appendChild(opt);
+    });
+
+    async function fetchScheduleModal() {
+      try {
+        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (e) {
+        modalScheduleContainer.innerHTML = `<h3>Schedule Unavailable</h3>`;
+        console.error("Schedule fetch failed:", e);
+        return null;
+      }
+    }
+
+    function getFullDate(dayName) {
+  // Get date for the next occurrence of 'dayName'
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const now = new Date();
+  const todayIdx = now.getDay() === 0 ? 6 : now.getDay() - 1;
+  const targetIdx = daysOfWeek.indexOf(dayName);
+  let diff = (targetIdx - todayIdx + 7) % 7;
+  const showDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + diff);
+  const day = showDate.getDate();
+  const month = showDate.toLocaleString('en-GB', { month: 'long' });
+  return `${dayName} ${day} ${month}`;
+}
+
+function renderDayScheduleModal(day, shows) {
+  modalScheduleContainer.innerHTML = `
+    <h3>${getFullDate(day)}</h3>
+    <div class="split-columns">
+      <div class="column left-column" id="modalLeftCol"></div>
+      <div class="column right-column" id="modalRightCol"></div>
+    </div>
+  `;
+
+  const mid = Math.ceil(shows.length / 2);
+  const leftShows = shows.slice(0, mid);
+  const rightShows = shows.slice(mid);
+
+  [leftShows, rightShows].forEach((group, i) => {
+    const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
+    group.forEach(show => {
+      const presenter = show.presenter || {};
+      const presenterImg = presenter.photo || "images/presenters/default.jpg";
+      const presenterName = presenter.name || "";
+      const presenterLink = presenter.bio || "#";
+      const description = show.info || "";
+
+      let mainTitle = show.title || '';
+      let presenterLine = "";
+      if (mainTitle && mainTitle.toLowerCase().includes(" with ")) {
+        const idx = mainTitle.toLowerCase().indexOf(" with ");
+        const showTitlePart = mainTitle.slice(0, idx);
+        const withPart = mainTitle.slice(idx); // includes 'with'
+        mainTitle = showTitlePart.trim();
+        presenterLine = `<span class="show-presenter">${withPart.trim()}</span>`;
+      } else if (presenterName) {
+        presenterLine = `<a href="${presenterLink}" target="_blank" rel="noopener" class="show-presenter">${presenterName}</a>`;
+      }
+
+      const entry = document.createElement("div");
+      entry.className = "show-entry";
+      entry.innerHTML = `
+        <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
+        <div class="show-info">
+          <time>${show.start}–${show.end}</time>
+          <div class="show-title-presenter">
+            <span class="show-title">${mainTitle}</span>
+            ${presenterLine}
+          </div>
+          <div class="show-details">${description}</div>
+        </div>`;
+      col.appendChild(entry);
+    });
   });
-  // Burger
-  const menu = document.getElementById("burgerDropdown");
-  const btn = document.getElementById("burgerMenuBtn");
+}
+
+    modalDaySelect.addEventListener("change", () => {
+      const selectedDay = modalDaySelect.value;
+      if (modalFullSchedule && modalFullSchedule[selectedDay]) {
+        renderDayScheduleModal(selectedDay, modalFullSchedule[selectedDay]);
+      }
+    });
+
+    fetchScheduleModal().then(data => {
+      if (data) {
+        modalFullSchedule = data;
+        const todayName = daysOfWeek[todayIndex];
+        renderDayScheduleModal(todayName, data[todayName]);
+      }
+    });
+  })();
+  </script>
+
+  <!-- PLAYER SCRIPTS (UNCHANGED) -->
+  <script>
+    async function fetchSchedule() {
+      try {
+        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (e) {
+        console.error("Schedule fetch error:", e);
+        return null;
+      }
+    }
+    function getCurrentShow(schedule) {
+      const now = new Date();
+      const day = now.toLocaleString("en-GB", { weekday: "long" });
+      const shows = schedule && schedule[day];
+      if (!shows) return "No schedule available";
+      const nowMins = now.getHours() * 60 + now.getMinutes();
+      for (const show of shows) {
+        const [sh, sm] = show.start.split(":").map(Number);
+        const [eh, em] = show.end.split(":").map(Number);
+        let start = sh * 60 + sm;
+        let end = eh * 60 + em;
+        if (end === 0 && start > 0) end = 1440;
+        if (nowMins >= start && nowMins < end) {
+          return show.title;
+        }
+      }
+      return "Off Air";
+    }
+    async function updateOnAirNow() {
+      const schedule = await fetchSchedule();
+      const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
+      const el = document.getElementById("currentShow");
+      if (fullShow.includes(" with ")) {
+        const [title, presenter] = fullShow.split(" with ");
+        el.innerHTML = `
+          <span class="show-title">${title.trim()}</span>
+          <span class="show-presenter">with ${presenter.trim()}</span>`;
+      } else {
+        el.textContent = fullShow;
+      }
+    }
+    updateOnAirNow();
+    setInterval(updateOnAirNow, 60_000);
+  </script>
+  <script>
+    const audio = document.getElementById('stream');
+    const playBtn = document.getElementById('play-toggle');
+    const muteBtn = document.getElementById('mute-toggle');
+    const volumeSlider = document.getElementById('volume-slider');
+    if (window.innerWidth <= 768) {
+      volumeSlider.disabled = true;
+      muteBtn.disabled = true;
+    }
+    const volumeDisplay = document.getElementById('volume-display');
+    const nowPlaying = document.getElementById('now-playing');
+    const artworkImg = document.getElementById('artwork');
+    const observer = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('loaded');
+          observer.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.1 });
+    let isPlaying = false, lastVolume = 1;
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.load();
+        audio.play().catch(() => {});
+        playBtn.textContent = '⏸ Pause';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️ Play Essential Radio';
+        isPlaying = false;
+      }
+    });
+    volumeSlider.addEventListener('input', () => {
+      const vol = volumeSlider.value / 100;
+      audio.volume = vol;
+      volumeDisplay.textContent = `${volumeSlider.value}%`;
+      muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
+    });
+    muteBtn.addEventListener('click', () => {
+      if (!audio.muted) {
+        audio.muted = true;
+        muteBtn.textContent = '🔇';
+        volumeDisplay.textContent = 'Muted';
+      } else {
+        audio.muted = false;
+        muteBtn.textContent = audio.volume < 0.5 ? '🔈' : '🔊';
+        volumeDisplay.textContent = `${volumeSlider.value}%`;
+      }
+    });
+    async function fetchDurationAndStartTime(artist, title) {
+      try {
+        const logUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+        const res = await fetch(`${logUrl}?_=${Date.now()}`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const match = data.reverse().find(item =>
+          item.Artist?.toLowerCase() === artist.toLowerCase() &&
+          item.Title?.toLowerCase() === title.toLowerCase()
+        );
+        if (match && match["Scheduled Time"] && match["Duration (s)"] && match["Hour"]) {
+          const hourDate = new Date(match["Hour"]);
+          const [sh, sm] = match["Scheduled Time"].split(":").map(Number);
+          const start = new Date(
+            hourDate.getFullYear(),
+            hourDate.getMonth(),
+            hourDate.getDate(),
+            sh,
+            sm,
+            0
+          );
+          return {
+            duration: parseInt(match["Duration (s)"], 10),
+            startTime: start
+          };
+        }
+      } catch (e) {
+        console.warn("Duration/start time fetch failed:", e);
+      }
+      return null;
+    }
+    function showMoreMusicSoon() {
+      nowPlaying.innerHTML = `
+        <span style="color:#fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
+        <span style="color:white;">on Essential Radio</span>`;
+      document.title = `Essential Radio: More music soon`;
+      applyFallbackImmediate();
+    }
+    let currentTrackID = null;
+    let songHasEnded = false;
+    let trackEndTimeout = null;
+    async function fetchNowPlaying() {
+      try {
+        const res = await fetch('https://player-green.vercel.app/api/metadata', { cache: 'no-store' });
+        const data = await res.json();
+        const decode = str => {
+          const t = document.createElement('textarea');
+          t.innerHTML = str;
+          return t.value;
+        };
+        const raw = decode(data.nowPlaying || '').trim();
+        let artist = '', title = '';
+        const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
+        if (sep) {
+          [artist, title] = raw.split(sep).map(s => s.trim());
+        } else {
+          showMoreMusicSoon();
+          return;
+        }
+        currentTrackID = `${artist} – ${title}`;
+        songHasEnded = false;
+        nowPlaying.innerHTML = `
+          <span style="color:#fed351;">Now Playing:</span>
+          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+          <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
+          <span style="color:white;">by ${artist}</span>`;
+        document.title = `Essential Radio: ${artist} – ${title}`;
+        fetchArtwork(`${artist} - ${title}`);
+        const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+        const latest = await latestRes.json();
+        if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+          console.warn("latestTrack.json missing fields");
+          return;
+        }
+        if (
+          latest.artist.toLowerCase() !== artist.toLowerCase() ||
+          latest.title.toLowerCase() !== title.toLowerCase()
+        ) {
+          console.log("latestTrack.json does not match metadata track");
+          return;
+        }
+        const startTime = new Date(latest.startTime);
+        const durationMs = latest.duration * 1000;
+        const endTime = new Date(startTime.getTime() + durationMs);
+        const now = new Date();
+        const timeRemaining = endTime - now;
+        if (trackEndTimeout) clearTimeout(trackEndTimeout);
+        if (timeRemaining <= 0) {
+          showMoreMusicSoon();
+          songHasEnded = true;
+          currentTrackID = null;
+        } else {
+          trackEndTimeout = setTimeout(() => {
+            showMoreMusicSoon();
+            songHasEnded = true;
+            currentTrackID = null;
+          }, timeRemaining);
+        }
+      } catch (e) {
+        console.error("Now playing error:", e);
+        showMoreMusicSoon();
+        currentTrackID = null;
+        songHasEnded = false;
+      }
+    }
+    async function fetchRecentFromGitHub() {
+      try {
+        const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+        const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const recentItems = data
+          .filter(item => {
+            const name = `${item.Artist} – ${item.Title}`;
+            return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
+          })
+          .slice(-5)
+          .reverse();
+        const entries = await Promise.all(recentItems.map(async item => {
+          const time = item['Scheduled Time'] || item.time || '';
+          const name = `${item.Artist} – ${item.Title}`;
+          const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+          return `
+            <li>
+              <span class="time">${time}</span>
+              <img src="${art}"
+                   alt="Cover for ${name}"
+                   loading="lazy" />
+              <span class="info">${name}</span>
+            </li>`;
+        }));
+        const list = document.getElementById('recent-list');
+        list.innerHTML = entries.join('');
+        document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+      } catch (e) {
+        console.error('Recent fetch failed:', e);
+      }
+    }
+    async function fetchArtwork(trackName) {
+      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.classList.remove('loaded', 'fallback');
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
+        const js = await res.json();
+        if (js.results[0]?.artworkUrl100) {
+          const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkCache[trackName] = url;
+          artworkImg.src = url;
+          return;
+        }
+      } catch {}
+      const safe = trackName
+        .replace(/\s*\(.*?\)/g, '')
+        .replace(/[^a-zA-Z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '_');
+      const [artist, title] = safe.split('_-_');
+      const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
+      try {
+        const head = await fetch(autoUrl, { method: 'HEAD' });
+        if (head.ok) {
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkImg.src = autoUrl;
+          return;
+        }
+      } catch {}
+      applyFallbackImmediate();
+    }
+    function applyFallbackImmediate() {
+      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.classList.remove('loaded');
+      artworkImg.classList.add('fallback');
+    }
+    const artworkCache = {};
+    async function getTrackArtwork(query) {
+      if (artworkCache[query]) return artworkCache[query];
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
+        const d = await res.json();
+        if (d.results[0]?.artworkUrl100) {
+          return d.results[0].artworkUrl100.replace('100x100', '300x300');
+        }
+      } catch {}
+      return '';
+    }
+    fetchNowPlaying();
+    fetchRecentFromGitHub();
+    setInterval(fetchNowPlaying, 15000);
+    setInterval(fetchRecentFromGitHub, 15000);
+  </script>
+  <script>
+    function formatShowTitleMobileOnly(title) {
+      if (window.innerWidth <= 600) {
+        const match = title.match(/(.*)\s+with\s+(.*)/i);
+        if (match) {
+          return `${match[1]}<br>with ${match[2]}`;
+        }
+      }
+      return title;
+    }
+    const showSpan = document.getElementById("currentShow");
+    const rawTitle = showSpan?.textContent || "";
+    showSpan.innerHTML = formatShowTitleMobileOnly(rawTitle);
+  </script>
+  <script>
+    function formatShowTitleMobileOnly(title) {
+      if (window.innerWidth <= 600) {
+        const match = title.match(/(.*)\s+with\s+(.*)/i);
+        if (match) {
+          return `${match[1]}<br>with ${match[2]}`;
+        }
+      }
+      return title;
+    }
+    const showSpan2 = document.getElementById("currentShow");
+    // MutationObserver ensures that when the schedule updates, we reformat it
+    const observer = new MutationObserver(() => {
+      const raw = showSpan2?.textContent || "";
+      showSpan2.innerHTML = formatShowTitleMobileOnly(raw);
+    });
+    if (showSpan2) {
+      observer.observe(showSpan2, { childList: true });
+      // initial format
+      showSpan2.innerHTML = formatShowTitleMobileOnly(showSpan2.textContent);
+    }
+  </script>
+<script>
+// Modal open/close: prevent background scroll
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+  document.body.classList.add('modal-open');
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+  document.body.classList.remove('modal-open');
+}
+function openModalAndCloseBurger(id) {
+  document.getElementById('burgerDropdown').style.display = "none";
+  document.getElementById(id).style.display = "block";
+  document.body.classList.add('modal-open');
+}
+
+// (Optional: Trap iOS scroll bounce inside modal content)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.modal-content').forEach(function(mc) {
+    mc.addEventListener('touchstart', function() {
+      var top = mc.scrollTop === 0;
+      var bottom = mc.scrollHeight - mc.scrollTop === mc.clientHeight;
+      if (top) mc.scrollTop = 1;
+      if (bottom) mc.scrollTop -= 1;
+    });
+  });
+});
+</script>
+
+</body>
+<script>
+function updateLiveClock() {
+      const now = new Date();
+      // 24-hour, 2 digits always
+      const pad = n => n.toString().padStart(2, '0');
+      const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = [
+        'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+        'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'
+      ];
+      const dow = days[now.getDay()];
+      const day = now.getDate();
+      const month = months[now.getMonth()];
+      const year = now.getFullYear();
+      const dateStr = `${dow} ${day} ${month} ${year}`;
+      document.getElementById('clockTime').textContent = time;
+      document.getElementById('clockDate').textContent = dateStr;
+    }
+    updateLiveClock();
+    setInterval(updateLiveClock, 1000);
+
+function hideLogo() {
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.add('logo-hide');
+}
+
+function showLogo() {
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.remove('logo-hide');
+}
+
+function toggleBurgerMenu() {
+  const burgerDropdown = document.getElementById('burgerDropdown');
+  const isOpen = burgerDropdown.style.display === 'flex';
+  if (isOpen) {
+    burgerDropdown.style.display = 'none';
+    // Check if any modal is still open before showing the logo
+    const stillOpen = Array.from(document.querySelectorAll('.modal'))
+      .some(m => m.style.display === 'block' || m.style.display === 'flex');
+    if (!stillOpen) showLogo();
+  } else {
+    burgerDropdown.style.display = 'flex';
+    hideLogo();
+  }
+}
+
+function closeBurgerMenu() {
+  const burgerDropdown = document.getElementById('burgerDropdown');
+  burgerDropdown.style.display = 'none';
+  // Check if any modal is still open before showing the logo
+  const stillOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  if (!stillOpen) showLogo();
+}
+
+
+// Close when clicking outside the menu panel
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('burgerDropdown');
+  var btn = document.getElementById('burgerMenuBtn');
   if (
     window.innerWidth <= 750 &&
-    menu?.style.display === "flex" &&
-    !menu.contains(event.target) &&
-    !btn.contains(event.target)
+    menu.style.display === 'flex' &&
+    !menu.contains(e.target) &&
+    !btn.contains(e.target)
   ) {
     closeBurgerMenu();
   }
 });
-</script>
-
-<!-- ======= ALL YOUR OTHER SCRIPTS HERE (player, widgets, clock, etc) ======= -->
-<script>
-/* === AUDIO PLAYER LOGIC === */
-
-// Elements
-const audio = document.getElementById("stream");
-const playBtn = document.getElementById("play-toggle");
-const volumeSlider = document.getElementById("volume-slider");
-const volumeDisplay = document.getElementById("volume-display");
-const muteBtn = document.getElementById("mute-toggle");
-const nowPlaying = document.getElementById("now-playing");
-const artworkImg = document.getElementById("artwork");
-
-// Play/Pause Toggle
-let playing = false;
-playBtn.onclick = function() {
-  if (!playing) {
-    audio.play();
-    playBtn.textContent = "⏸ Pause Essential Radio";
-    playing = true;
-  } else {
-    audio.pause();
-    playBtn.textContent = "▶️ Play Essential Radio";
-    playing = false;
-  }
-};
-
-// Update volume
-volumeSlider.oninput = function() {
-  const vol = +this.value;
-  audio.volume = vol / 100;
-  volumeDisplay.textContent = vol + "%";
-  if (vol === 0) {
-    audio.muted = true;
-    muteBtn.textContent = "🔇";
-  } else {
-    audio.muted = false;
-    muteBtn.textContent = "🔊";
-  }
-};
-muteBtn.onclick = function() {
-  audio.muted = !audio.muted;
-  muteBtn.textContent = audio.muted ? "🔇" : "🔊";
-  volumeSlider.value = audio.muted ? 0 : Math.round(audio.volume * 100);
-  volumeDisplay.textContent = volumeSlider.value + "%";
-};
-
-// On stream end/error
-audio.onerror = function() {
-  nowPlaying.textContent = "Stream unavailable";
-  artworkImg.src = "Essential Radio Logo.png";
-  artworkImg.classList.remove("loaded");
-  playing = false;
-  playBtn.textContent = "▶️ Play Essential Radio";
-};
-
-// === NOW PLAYING + ARTWORK FETCH (Autopo.st + iTunes Fallback) ===
-
-function fetchNowPlaying() {
-  fetch("nowplaying.json") // Your backend endpoint, e.g., update this path
-    .then(r => r.json())
-    .then(data => {
-      if (data && data.artist && data.title) {
-        nowPlaying.textContent = data.artist + " – " + data.title;
-        // Try to get artwork from Autopo.st
-        fetch(`https://api.autopo.st/v1/cover?artist=${encodeURIComponent(data.artist)}&title=${encodeURIComponent(data.title)}&size=large`)
-          .then(r2 => r2.json())
-          .then(res => {
-            if (res && res.image) {
-              artworkImg.src = res.image;
-              artworkImg.classList.add("loaded");
-            } else {
-              // Try iTunes fallback
-              fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(data.artist + " " + data.title)}&entity=song&limit=1`)
-                .then(r3 => r3.json())
-                .then(it => {
-                  if (it.results && it.results[0] && it.results[0].artworkUrl100) {
-                    artworkImg.src = it.results[0].artworkUrl100.replace("100x100", "400x400");
-                  } else {
-                    artworkImg.src = "Essential Radio Logo.png";
-                  }
-                  artworkImg.classList.add("loaded");
-                });
-            }
-          });
-      } else {
-        nowPlaying.textContent = "Loading current track…";
-        artworkImg.src = "Essential Radio Logo.png";
-        artworkImg.classList.remove("loaded");
-      }
-    }).catch(() => {
-      nowPlaying.textContent = "Loading current track…";
-      artworkImg.src = "Essential Radio Logo.png";
-      artworkImg.classList.remove("loaded");
-    });
-}
-fetchNowPlaying();
-setInterval(fetchNowPlaying, 15000); // Update every 15s
+// Optional: ESC key closes burger menu
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeBurgerMenu();
+});
 
 </script>
 
-<script>
-/* === LIVE STUDIO CLOCK === */
-function updateClock() {
-  const now = new Date();
-  // Always display in HH:MM:SS format, UK local
-  const time = now.toLocaleTimeString("en-GB", { hour12: false });
-  const date = now.toLocaleDateString("en-GB", { weekday: 'long', day: 'numeric', month: 'long' });
-  document.getElementById("clockTime").textContent = time;
-  document.getElementById("clockDate").textContent = date;
-}
-updateClock();
-setInterval(updateClock, 1000);
-</script>
-
-<script>
-/* === RECENTLY PLAYED TRACKS === */
-// Expects your playout_log_rolling.json to be present and formatted correctly.
-function updateRecentlyPlayed() {
-  fetch("playout_log_rolling.json")
-    .then(res => res.json())
-    .then(data => {
-      const list = document.getElementById("recent-list");
-      if (!list) return;
-      list.innerHTML = "";
-      let count = 0;
-      for (let i = data.length - 1; i >= 0 && count < 8; i--) {
-        const item = data[i];
-        if (!item["Artist"] || !item["Title"]) continue;
-        const li = document.createElement("li");
-        // Format time as HH:MM
-        const time = new Date(item["Hour"]).toLocaleTimeString("en-GB", { hour: '2-digit', minute: '2-digit', hour12: false });
-        li.innerHTML = `
-          <span class="time">${time}</span>
-          <span class="info">${item["Artist"]} – ${item["Title"]}</span>
-          <img src="Essential Radio Logo.png" alt="Artwork" />
-        `;
-        // Fetch artwork just like above
-        const img = li.querySelector("img");
-        fetch(`https://api.autopo.st/v1/cover?artist=${encodeURIComponent(item["Artist"])}&title=${encodeURIComponent(item["Title"])}&size=small`)
-          .then(r => r.json())
-          .then(res => {
-            if (res && res.image) {
-              img.src = res.image;
-              img.classList.add("loaded");
-            } else {
-              // Try iTunes fallback
-              fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(item["Artist"] + " " + item["Title"])}&entity=song&limit=1`)
-                .then(r2 => r2.json())
-                .then(it => {
-                  if (it.results && it.results[0] && it.results[0].artworkUrl100) {
-                    img.src = it.results[0].artworkUrl100;
-                  }
-                  img.classList.add("loaded");
-                });
-            }
-          }).catch(() => {
-            img.classList.remove("loaded");
-          });
-        list.appendChild(li);
-        count++;
-      }
-    });
-}
-updateRecentlyPlayed();
-setInterval(updateRecentlyPlayed, 25000); // Update every 25s
-</script>
-
-</body>
 </html>
