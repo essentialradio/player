@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:01",
-    "Displayed Time": "",
-    "Artist": "Sigala Feat. John Newman & Nile Rodgers",
-    "Title": "Give Me Your Love",
-    "Duration (s)": 202,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:05",
-    "Displayed Time": "",
-    "Artist": "Miley Cyrus",
-    "Title": "End Of The World",
-    "Duration (s)": 239,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:09",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris, Ellie Goulding",
-    "Title": "Miracle",
-    "Duration (s)": 171,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:13",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:16",
-    "Displayed Time": "",
-    "Artist": "Mark Ronson ft Amy Winehouse",
-    "Title": "Valerie",
-    "Duration (s)": 207,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:24",
-    "Displayed Time": "",
-    "Artist": "Van Halen",
-    "Title": "Jump",
-    "Duration (s)": 220,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:27",
-    "Displayed Time": "",
-    "Artist": "Gigi Perez",
-    "Title": "Sailor Song",
-    "Duration (s)": 200,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:31",
-    "Displayed Time": "",
-    "Artist": "Green Day",
-    "Title": "Basket Case",
-    "Duration (s)": 166,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:34",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:36",
-    "Displayed Time": "",
-    "Artist": "Gorillaz",
-    "Title": "Clint Eastwood (Ed Case/Sweetie Irie Refix)",
-    "Duration (s)": 212,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:44",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Is This What You've Been Waiting For",
-    "Duration (s)": 202,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:47",
-    "Displayed Time": "",
-    "Artist": "The Script",
-    "Title": "Breakeven",
-    "Duration (s)": 218,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:51",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson x Rudimental",
-    "Title": "Alibi",
-    "Duration (s)": 176,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T03:00:00Z",
-    "Scheduled Time": "04:54",
-    "Displayed Time": "",
-    "Artist": "Freak Power",
-    "Title": "Turn on, Tune in, Cop Out",
-    "Duration (s)": 245,
-    "Full Duration (s)": 259,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-04T04:00:00Z",
     "Scheduled Time": "05:01",
     "Displayed Time": "",
@@ -44271,6 +44117,17 @@
     "Title": "Grow Old With Me",
     "Duration (s)": 175,
     "Full Duration (s)": 183,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-19T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "James Arthur & Anne-Marie",
+    "Title": "Rewrite the Stars",
+    "Duration (s)": 196,
+    "Full Duration (s)": 201,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
