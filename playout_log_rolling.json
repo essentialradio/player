@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:01",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "",
-    "Artist": "Jennifer Lopez",
-    "Title": "If You Had My Love",
-    "Duration (s)": 215,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:08",
-    "Displayed Time": "",
-    "Artist": "The Weeknd",
-    "Title": "Can't Feel My Face",
-    "Duration (s)": 201,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:12",
-    "Displayed Time": "",
-    "Artist": "Tones and I",
-    "Title": "Dance Monkey",
-    "Duration (s)": 200,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:15",
-    "Displayed Time": "",
-    "Artist": "Christina Aguilera",
-    "Title": "Fighter",
-    "Duration (s)": 202,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:23",
-    "Displayed Time": "",
-    "Artist": "James Morrison",
-    "Title": "Fight Another Day",
-    "Duration (s)": 218,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:26",
-    "Displayed Time": "",
-    "Artist": "David Guetta & Sia",
-    "Title": "Beautiful People",
-    "Duration (s)": 178,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:29",
-    "Displayed Time": "",
-    "Artist": "The Pretenders",
-    "Title": "Don't Get Me Wrong",
-    "Duration (s)": 214,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:33",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 242,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:41",
-    "Displayed Time": "",
-    "Artist": "Omi",
-    "Title": "Cheerleader",
-    "Duration (s)": 173,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:44",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:47",
-    "Displayed Time": "",
-    "Artist": "Oasis",
-    "Title": "Live Forever",
-    "Duration (s)": 262,
-    "Full Duration (s)": 277,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:52",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "Cruel Summer",
-    "Duration (s)": 170,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T04:00:00Z",
-    "Scheduled Time": "05:55",
-    "Displayed Time": "",
-    "Artist": "Blu Cantrell",
-    "Title": "Hit 'Em Up Style (Oops!)",
-    "Duration (s)": 228,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-04T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "",
@@ -44273,5 +44119,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-19T16:00:00Z",
+    "Scheduled Time": "17:02",
+    "Displayed Time": "",
+    "Artist": "Jan Gow",
+    "Title": "The JanCave 70s Jukebox",
+    "Duration (s)": 3401,
+    "Full Duration (s)": 3409,
+    "Duration (mins)": 57,
+    "Full Duration (mins)": 57
   }
 ]
