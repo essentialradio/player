@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:01",
-    "Displayed Time": "",
-    "Artist": "Will.I.Am Feat. Cheryl Cole",
-    "Title": "Heartbreaker",
-    "Duration (s)": 192,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:05",
-    "Displayed Time": "",
-    "Artist": "Planet Perfecto Feat. Grace",
-    "Title": "Not Over Yet '99",
-    "Duration (s)": 211,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:08",
-    "Displayed Time": "",
-    "Artist": "Booker Newberry III",
-    "Title": "Love Town",
-    "Duration (s)": 195,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:12",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "Shake It Off",
-    "Duration (s)": 214,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:15",
-    "Displayed Time": "",
-    "Artist": "Strike",
-    "Title": "U Sure Do",
-    "Duration (s)": 219,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:19",
-    "Displayed Time": "",
-    "Artist": "Grandmaster Flash & Melle Mel",
-    "Title": "White Lines (Don't Don't Do It)",
-    "Duration (s)": 261,
-    "Full Duration (s)": 265,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:26",
-    "Displayed Time": "",
-    "Artist": "Clock",
-    "Title": "Axel F",
-    "Duration (s)": 199,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:29",
-    "Displayed Time": "",
-    "Artist": "Zara Larsson ft David Guetta",
-    "Title": "On My Love",
-    "Duration (s)": 187,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:33",
-    "Displayed Time": "",
-    "Artist": "Kool & The Gang",
-    "Title": "Ladies Night",
-    "Duration (s)": 196,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:36",
-    "Displayed Time": "",
-    "Artist": "Motiv 8",
-    "Title": "Rockin' for Myself",
-    "Duration (s)": 220,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:40",
-    "Displayed Time": "",
-    "Artist": "Sweet Female Attitude",
-    "Title": "Flowers (Supa-Flyas Mix)",
-    "Duration (s)": 212,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:43",
-    "Displayed Time": "",
-    "Artist": "DJ Duke",
-    "Title": "Blow Your Whistle",
-    "Duration (s)": 164,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:46",
-    "Displayed Time": "",
-    "Artist": "Elton John & Dua Lipa",
-    "Title": "Cold Heart",
-    "Duration (s)": 190,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:50",
-    "Displayed Time": "",
-    "Artist": "Layo & Bushwacka",
-    "Title": "Love Story (Vs Finally)",
-    "Duration (s)": 211,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-04T21:00:00Z",
-    "Scheduled Time": "22:53",
-    "Displayed Time": "",
-    "Artist": "Camisra",
-    "Title": "Let Me Show You",
-    "Duration (s)": 197,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-04T22:00:00Z",
     "Scheduled Time": "23:01",
     "Displayed Time": "",
@@ -43481,5 +43316,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-20T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 182,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
