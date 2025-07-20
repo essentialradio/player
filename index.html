@@ -2562,5 +2562,20 @@ document.addEventListener('DOMContentLoaded', function() {
   observeModalOpens();
 });
 </script>
+<script>
+function injectScrollCueAll() {
+  document.querySelectorAll('.modal-content').forEach(function(content){
+    if (!content.querySelector('.scroll-cue')) {
+      const cue = document.createElement('div');
+      cue.className = 'scroll-cue';
+      cue.innerHTML = '&#8675;';
+      content.appendChild(cue);
+    }
+  });
+}
+// Run at startup and whenever a modal opens
+injectScrollCueAll();
+document.addEventListener('modalOpen', injectScrollCueAll); // Optional if you fire a custom event
+</script>
 
 </html>
