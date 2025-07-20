@@ -1536,6 +1536,32 @@ wxNow.innerHTML =
     overflow: visible !important;
   }
 }
+.modal-content {
+  position: relative; /* to anchor the cue */
+  scrollbar-width: thick;
+  scrollbar-color: #fed351 #eee;
+}
+.modal-content::-webkit-scrollbar {
+  width: 12px;
+  background: #eee;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: #fed351;
+  border-radius: 8px;
+  border: 2px solid #eee;
+}
+.scroll-cue {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  font-size: 28px;
+  color: #fed351;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 
     </style>
   </div>
