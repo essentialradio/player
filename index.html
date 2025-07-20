@@ -875,81 +875,6 @@ body.modal-open {
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
-/* ======= MODAL UNIVERSAL STYLES ======= */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.78);
-  overflow: auto;
-  transition: background 0.2s;
-}
-.modal-content {
-  position: relative;
-  background: #fff;
-  color: #222;
-  margin: 60px auto;
-  padding: 32px 32px 18px 32px;
-  border-radius: 16px;
-  max-width: 900px;
-  box-sizing: border-box;
-  box-shadow: 0 20px 60px #000c;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-.close {
-  position: absolute;
-  top: 16px;
-  right: 24px;
-  font-size: 32px;
-  color: #aaa;
-  cursor: pointer;
-  transition: color .15s, transform .15s;
-  z-index: 10;
-}
-.close:hover {
-  color: #e53935;
-  transform: scale(1.15);
-}
-
-/* ======= MOBILE OVERRIDES ======= */
-@media (max-width: 768px) {
-  .modal {
-    display: flex !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    overflow: visible !important;
-    padding: 0 !important;
-    height: 100vh !important;
-  }
-  .modal-content {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    border-radius: 0 0 14px 14px !important;
-    box-shadow: 0 10px 32px #000b;
-    max-height: 96vh !important;
-    padding-top: 48px !important;
-    padding-left: 5vw !important;
-    padding-right: 5vw !important;
-    padding-bottom: 16px !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior: contain !important;
-  }
-}
-
-/* Optional: Prevent background scroll when modal open (always add this) */
-body.modal-open {
-  overflow: hidden !important;
-  position: fixed !important;
-  width: 100vw;
-}
 
 </style>
 </head>
@@ -1584,7 +1509,7 @@ wxNow.innerHTML =
     width: 100vw !important;
     height: 100vh !important;
     min-height: 0 !important;
-    overflow: auto !important;
+    overflow: hidden !important;
     background: rgba(0,0,0,0.78) !important;
   }
   .modal-content {
@@ -1603,12 +1528,6 @@ wxNow.innerHTML =
     font-size: 15px !important;
   }
 }
-body.modal-open {
-  overflow: hidden !important;
-  position: fixed !important;
-  width: 100vw;
-}
-
     </style>
   </div>
 </div>
@@ -1951,46 +1870,45 @@ body.modal-open {
   
 
 
-function openModal(id) {
-  hideLogo?.(); // if function exists, call it
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.style.display = 'block';
-  document.body.classList.add('modal-open');
+  <!-- MODAL JS -->
+  <script>
+    function openModal(id) {
+  hideLogo(); // Always hide logo on modal open
+  document.getElementById(id).style.display = 'block';
+  document.body.style.overflow = 'hidden';
 }
+
 function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.style.display = 'none';
-  document.body.classList.remove('modal-open');
-  // Show logo only if no modals or burger open
-  const stillOpen = Array.from(document.querySelectorAll('.modal')).some(
-    m => m.style.display === 'block' || m.style.display === 'flex'
-  );
-  const burgerOpen = document.getElementById('burgerDropdown')?.style.display === 'flex';
-  if (!stillOpen && !burgerOpen) showLogo?.();
+  document.getElementById(id).style.display = 'none';
+  document.body.style.overflow = '';
+  // Only show logo if NO modals or burger menu are open
+  const stillOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
+  if (!stillOpen && !burgerOpen) showLogo();
 }
-function openModalAndCloseBurger(modalId) {
-  closeBurgerMenu?.();
+
+	function openModalAndCloseBurger(modalId) {
+  closeBurgerMenu();
   openModal(modalId);
 }
 
-
-    document.querySelectorAll('.modal').forEach(m => {
-  m.addEventListener('click', e => {
-    if (e.target === m) closeModal(m.id);
-  });
-});
-
-   window.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal').forEach(modal => {
-      if (modal.style.display === 'block' || modal.style.display === 'flex')
-        closeModal(modal.id);
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+          modal.style.display = 'none';
+        });
+        document.body.style.overflow = '';
+      }
     });
-  }
-});
-
   </script>
 
   <!-- NATIVE MODAL SCHEDULE LOGIC -->
