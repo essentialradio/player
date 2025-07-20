@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-04T22:00:00Z",
-    "Scheduled Time": "23:01",
-    "Displayed Time": "",
-    "Artist": "with Ronny Costello",
-    "Title": "Club Classics <16 - 03.07.25>",
-    "Duration (s)": 3502,
-    "Full Duration (s)": 3504,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-07-04T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "",
@@ -43481,5 +43470,16 @@
     "Full Duration (s)": 281,
     "Duration (mins)": 4,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-07-20T12:00:00Z",
+    "Scheduled Time": "13:01",
+    "Displayed Time": "",
+    "Artist": "Chappell Roan",
+    "Title": "Good Luck, Babe!",
+    "Duration (s)": 204,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
   }
 ]
