@@ -2517,5 +2517,44 @@ window.addEventListener('keydown', function(e) {
 });
 
 </script>
+<script>
+function setupAllModalCues() {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    const content = modal.querySelector('.modal-content');
+    const cue = content && content.querySelector('.scroll-cue');
+    if (!content || !cue) return;
+
+    function updateCue() {
+      const atBottom = Math.abs(content.scrollTop + content.clientHeight - content.scrollHeight) < 2;
+      cue.classList.toggle('hidden', atBottom || content.scrollHeight <= content.clientHeight + 2);
+    }
+    updateCue();
+    content.removeEventListener('scroll', updateCue); // in case of double
+    content.addEventListener('scroll', updateCue);
+    window.removeEventListener('resize', updateCue);
+    window.addEventListener('resize', updateCue);
+    // For dynamic changes
+    if (!content._scrollCueObs) {
+      content._scrollCueObs = new MutationObserver(updateCue);
+      content._scrollCueObs.observe(content, {attributes:true,childList:true,subtree:true});
+    }
+  });
+}
+
+// Re-run cues every time a modal opens
+function observeModalOpens() {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    const showCue = () => { if (modal.style.display === 'block' || modal.style.display === 'flex') setupAllModalCues(); };
+    modal.addEventListener('transitionend', showCue);
+    modal.addEventListener('animationend', showCue);
+    modal.addEventListener('click', showCue);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  setupAllModalCues();
+  observeModalOpens();
+});
+</script>
 
 </html>
