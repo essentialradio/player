@@ -1528,6 +1528,19 @@ wxNow.innerHTML =
     font-size: 15px !important;
   }
 }
+@media (max-width: 768px) {
+  .modal-content {
+    height: calc(100vh - 48px) !important;
+    max-height: calc(100vh - 48px) !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .modal {
+    overflow: visible !important;
+  }
+}
+
     </style>
   </div>
 </div>
