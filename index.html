@@ -2414,6 +2414,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+<script>
+// Show/hide scroll cue on modal-content scroll
+function handleScrollCue(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  const content = modal.querySelector('.modal-content');
+  const cue = modal.querySelector('.scroll-cue');
+  if (!content || !cue) return;
+
+  function updateCue() {
+    // Show cue only if NOT scrolled to bottom
+    const atBottom = Math.abs(content.scrollTop + content.clientHeight - content.scrollHeight) < 2;
+    cue.classList.toggle('hidden', atBottom || content.scrollHeight <= content.clientHeight + 2);
+  }
+
+  // Update immediately and on scroll
+  updateCue();
+  content.addEventListener('scroll', updateCue);
+  // If modal can change height (window resize), update then too
+  window.addEventListener('resize', updateCue);
+}
+
+// Hook for all modals with cue arrow
+['aboutModal'/*, 'otherModalId'*/].forEach(handleScrollCue);
+</script>
 
 </body>
 <script>
