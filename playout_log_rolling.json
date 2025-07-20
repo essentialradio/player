@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-04T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 1",
-    "Duration (s)": 3589,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-05T00:00:00Z",
     "Scheduled Time": "01:00",
     "Displayed Time": "",
@@ -43646,5 +43635,16 @@
     "Full Duration (s)": 236,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-20T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "",
+    "Artist": "Essential Radio",
+    "Title": "Airplay 40 Intro",
+    "Duration (s)": 24,
+    "Full Duration (s)": 28,
+    "Duration (mins)": 0,
+    "Full Duration (mins)": 0
   }
 ]
