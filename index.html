@@ -1528,6 +1528,21 @@ wxNow.innerHTML =
     font-size: 15px !important;
   }
 }
+/* --- QUICK MOBILE SCROLL FIX (paste AFTER your existing modal rules) --- */
+@media (max-width: 768px) {
+  /* 1.  Give the modal itself a vertical scrollbar again          */
+  #aboutModal {                     /* or just .modal if you prefer */
+    overflow-y: auto !important;
+  }
+
+  /* 2.  Let the white panel grow beyond one viewport‑height        */
+  #aboutModal .modal-content {
+    max-height: none !important;   /* unwrap the 100 vh clamp       */
+    height: auto !important;       /* allow natural height          */
+    overflow-y: visible !important;/* scrolling handled by parent   */
+  }
+}
+
     </style>
   </div>
 </div>
