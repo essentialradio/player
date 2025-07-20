@@ -1508,26 +1508,22 @@ wxNow.innerHTML =
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
+    overflow: auto !important;   /* <-- allow modal overlay to scroll if needed */
     background: rgba(0,0,0,0.78) !important;
   }
   .modal-content {
-    margin: 0 !important;
-    max-height: 100vh !important;
-    min-height: 0 !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    padding-top: 36px !important;
-    padding-bottom: 12px !important;
+    margin: 0 auto !important;
+    max-height: 90vh !important;
+    width: 97vw !important;
+    padding-top: 32px !important;
+    padding-bottom: 14px !important;
+    overflow-y: auto !important;   /* <-- this is all you need for scroll! */
     border-radius: 0 !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overscroll-behavior: contain !important;
     background: #fff !important;
     font-size: 15px !important;
   }
 }
+
 @media (max-width: 768px) {
   .modal-content {
     height: calc(100vh - 48px) !important;
