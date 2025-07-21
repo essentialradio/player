@@ -9,10 +9,6 @@
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-
-
-
-
     /* --- NAVBAR & MODALS ONLY --- */
     @media (max-width: 750px) {
   .navbar { display: none !important; }
@@ -742,14 +738,7 @@ body {
   .show-title { font-size: 0.9em !important; }
   .show-presenter { font-size: 0.8em !important; }
 
-  /* Modal Styling */
-  .modal-content {
-    padding: 13px 2vw 8px 2vw !important;
-    font-size: 15px !important;
-    min-height: 30px !important;
-    border-radius: 9px !important;
-    max-width: 97vw !important;
-  }
+ 
   .close {
     font-size: 24px !important;
     top: 8px !important;
@@ -1539,34 +1528,6 @@ wxNow.innerHTML =
   background: rgba(0,0,0,0.78);
   transition: background 0.2s;
 }
-
-
-@media (max-width: 768px) {
-  .modal {
-    top: 56px !important;  /* Match black burger/box height */
-    left: 0 !important;
-    width: 100vw !important;
-    height: calc(100vh - 56px) !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
-    background: rgba(0,0,0,0.78) !important;
-  }
-  .modal-content {
-    margin: 0 !important;
-    max-height: calc(100vh - 56px) !important;
-    min-height: 0 !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    padding-top: 18px !important; /* Leaves space between burger and modal content */
-    padding-bottom: 12px !important;
-    border-radius: 14px 14px 0 0 !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overscroll-behavior: contain !important;
-    background: #fff !important;
-    font-size: 15px !important;
-  }
-}
 @media (max-width: 768px) {
   .modal {
     top: 56px !important;  /* Push modal below burger/nav */
@@ -1613,8 +1574,6 @@ wxNow.innerHTML =
     border-radius: 10px;
   }
 }
-
-
     </style>
   </div>
 </div>
