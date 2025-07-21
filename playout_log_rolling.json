@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-05T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Bill Grainger",
-    "Title": "Fire Island Hi-NRG",
-    "Duration (s)": 3588,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-06T00:00:00Z",
     "Scheduled Time": "01:02",
     "Displayed Time": "",
@@ -43270,6 +43259,17 @@
     "Title": "Running From Myself",
     "Duration (s)": 154,
     "Full Duration (s)": 157,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-21T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "",
+    "Artist": "Gabriella Cilmi",
+    "Title": "Sweet About Me",
+    "Duration (s)": 196,
+    "Full Duration (s)": 198,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
