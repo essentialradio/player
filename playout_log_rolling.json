@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:01",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Lose Control",
-    "Duration (s)": 201,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:05",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 210,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:09",
-    "Displayed Time": "",
-    "Artist": "Curtis Mayfield",
-    "Title": "Move On Up",
-    "Duration (s)": 198,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:12",
-    "Displayed Time": "",
-    "Artist": "Harry Styles",
-    "Title": "As It Was",
-    "Duration (s)": 154,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:19",
-    "Displayed Time": "",
-    "Artist": "RAYE",
-    "Title": "Oscar Winning Tears",
-    "Duration (s)": 169,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:21",
-    "Displayed Time": "",
-    "Artist": "Don McLean",
-    "Title": "American Pie",
-    "Duration (s)": 238,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:25",
-    "Displayed Time": "",
-    "Artist": "Shaboozey ft Myles Smith",
-    "Title": "Blink Twice",
-    "Duration (s)": 149,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:28",
-    "Displayed Time": "",
-    "Artist": "Nick Jonas",
-    "Title": "Jealous",
-    "Duration (s)": 212,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:32",
-    "Displayed Time": "",
-    "Artist": "Sleep Token",
-    "Title": "Damocles",
-    "Duration (s)": 249,
-    "Full Duration (s)": 265,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:38",
-    "Displayed Time": "",
-    "Artist": "Luther Vandross",
-    "Title": "Never Too Much",
-    "Duration (s)": 213,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:42",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Azizam",
-    "Duration (s)": 155,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:44",
-    "Displayed Time": "",
-    "Artist": "Alex Warren & Joe Jonas",
-    "Title": "Burning Down",
-    "Duration (s)": 171,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:47",
-    "Displayed Time": "",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 181,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:50",
-    "Displayed Time": "",
-    "Artist": "Charlie Puth",
-    "Title": "How Long",
-    "Duration (s)": 197,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T12:00:00Z",
-    "Scheduled Time": "13:54",
-    "Displayed Time": "",
-    "Artist": "Britney Spears",
-    "Title": "Sometimes",
-    "Duration (s)": 225,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-06T13:00:00Z",
     "Scheduled Time": "14:00",
     "Displayed Time": "",
@@ -43393,5 +43228,16 @@
     "Full Duration (s)": 156,
     "Duration (mins)": 2,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-21T23:00:00Z",
+    "Scheduled Time": "00:02",
+    "Displayed Time": "",
+    "Artist": "Pink",
+    "Title": "So What",
+    "Duration (s)": 213,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
