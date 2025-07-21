@@ -1934,10 +1934,20 @@ function closeModal(id) {
   if (!stillOpen && !burgerOpen) showLogo();
 }
 
-	function openModalAndCloseBurger(modalId) {
-  closeBurgerMenu();
-  openModal(modalId);
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
 }
+
+function openModalAndCloseBurger(modalId) {
+  closeAllModals();            // <-- new line to close any open modal
+  closeBurgerMenu();           // close burger menu first
+  openModal(modalId);          // open the selected modal
+}
+
 
     window.onclick = function(event) {
       document.querySelectorAll('.modal').forEach(modal => {
