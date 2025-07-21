@@ -2234,12 +2234,15 @@ function renderDayScheduleModal(day, shows) {
         const raw = decode(data.nowPlaying || '').trim();
         let artist = '', title = '';
         const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-        if (sep) {
-          [artist, title] = raw.split(sep).map(s => s.trim());
-        } else {
-          showMoreMusicSoon();
-          return;
-        }
+if (sep) {
+  const idx = raw.lastIndexOf(sep);
+  artist = raw.substring(0, idx).trim();
+  title  = raw.substring(idx + sep.length).trim();
+} else {
+  showMoreMusicSoon();
+  return;
+}
+
         currentTrackID = `${artist} – ${title}`;
         songHasEnded = false;
         nowPlaying.innerHTML = `
