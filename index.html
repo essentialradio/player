@@ -1574,6 +1574,10 @@ wxNow.innerHTML =
     border-radius: 10px;
   }
 }
+#burgerMenuBtn {
+  z-index: 3000 !important; /* Higher than .modal (z-index: 2000) */
+}
+
     </style>
   </div>
 </div>
@@ -2471,17 +2475,20 @@ function showLogo() {
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
   const isOpen = burgerDropdown.style.display === 'flex';
+
   if (isOpen) {
     burgerDropdown.style.display = 'none';
-    // Check if any modal is still open before showing the logo
+    // Only show logo if no modal is open
     const stillOpen = Array.from(document.querySelectorAll('.modal'))
       .some(m => m.style.display === 'block' || m.style.display === 'flex');
     if (!stillOpen) showLogo();
   } else {
+    closeAllModals(); // NEW: closes any open modal first!
     burgerDropdown.style.display = 'flex';
     hideLogo();
   }
 }
+
 
 function closeBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
