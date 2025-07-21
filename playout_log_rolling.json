@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:01",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Something To Someone",
-    "Duration (s)": 190,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:05",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:08",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Here",
-    "Duration (s)": 185,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:11",
-    "Displayed Time": "",
-    "Artist": "Ravyn Lanae",
-    "Title": "Love Me Not",
-    "Duration (s)": 159,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:14",
-    "Displayed Time": "",
-    "Artist": "Eve Feat. Gwen Stefani",
-    "Title": "Let Me Blow Ya Mind",
-    "Duration (s)": 208,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:21",
-    "Displayed Time": "",
-    "Artist": "Michael Jackson",
-    "Title": "Man in the Mirror",
-    "Duration (s)": 303,
-    "Full Duration (s)": 313,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:26",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "Cruel Summer",
-    "Duration (s)": 170,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:29",
-    "Displayed Time": "",
-    "Artist": "Simply Red",
-    "Title": "Stars",
-    "Duration (s)": 236,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:33",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 242,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:37",
-    "Displayed Time": "",
-    "Artist": "Ellie Goulding",
-    "Title": "Anything Could Happen",
-    "Duration (s)": 218,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:45",
-    "Displayed Time": "",
-    "Artist": "Miley Cyrus",
-    "Title": "Easy Lover",
-    "Duration (s)": 180,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:48",
-    "Displayed Time": "",
-    "Artist": "James Arthur & Anne-Marie",
-    "Title": "Rewrite the Stars",
-    "Duration (s)": 190,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:51",
-    "Displayed Time": "",
-    "Artist": "James Hype ft Miguel",
-    "Title": "Ferrari",
-    "Duration (s)": 178,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-06T03:00:00Z",
-    "Scheduled Time": "04:54",
-    "Displayed Time": "",
-    "Artist": "Savage Garden",
-    "Title": "I Knew I Loved You",
-    "Duration (s)": 237,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-06T04:00:00Z",
     "Scheduled Time": "05:01",
     "Displayed Time": "",
@@ -43413,6 +43259,17 @@
     "Title": "The Day We Caught the Train",
     "Duration (s)": 179,
     "Full Duration (s)": 185,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-21T14:00:00Z",
+    "Scheduled Time": "15:01",
+    "Displayed Time": "",
+    "Artist": "Benson Boone",
+    "Title": "Slow It Down",
+    "Duration (s)": 155,
+    "Full Duration (s)": 162,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
