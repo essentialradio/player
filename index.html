@@ -1498,16 +1498,6 @@ wxNow.innerHTML =
   transition: background 0.2s;
 }
 
-@media (max-width: 750px) {
-  .modal {
-    top: 56px;   /* Mobile: slightly less space */
-    height: calc(100vh - 56px);
-  }
-  .modal-content {
-    border-radius: 14px 14px 0 0 !important;
-    margin-top: 0 !important;
-  }
-}
 
 @media (max-width: 768px) {
   .modal {
@@ -1535,21 +1525,53 @@ wxNow.innerHTML =
     font-size: 15px !important;
   }
 }
-
-/* --- QUICK MOBILE SCROLL FIX (paste AFTER your existing modal rules) --- */
 @media (max-width: 768px) {
-  /* 1.  Give the modal itself a vertical scrollbar again          */
-  #aboutModal {                     /* or just .modal if you prefer */
-    overflow-y: auto !important;
+  .modal {
+    top: 56px !important;  /* Push modal below burger/nav */
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 56px) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    background: rgba(0,0,0,0.78) !important;
+    z-index: 2000;
   }
-
-  /* 2.  Let the white panel grow beyond one viewport‑height        */
-  #aboutModal .modal-content {
-    max-height: none !important;   /* unwrap the 100 vh clamp       */
-    height: auto !important;       /* allow natural height          */
-    overflow-y: visible !important;/* scrolling handled by parent   */
+  .modal-content {
+    margin: 0 !important;
+    max-height: calc(100vh - 56px) !important;
+    min-height: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding-top: 18px !important;
+    padding-bottom: 12px !important;
+    border-radius: 14px 14px 0 0 !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    background: #fff !important;
+    font-size: 15px !important;
+    scrollbar-width: thin;
+    scrollbar-color: #fed351 #ececec;
+  }
+  .modal-content::-webkit-scrollbar {
+    width: 14px;
+    background: #ececec;
+    border-radius: 10px;
+  }
+  .modal-content::-webkit-scrollbar-thumb {
+    background: #fed351;
+    border-radius: 10px;
+    border: 3px solid #ececec;
+  }
+  .modal-content::-webkit-scrollbar-thumb:active {
+    background: #ffe67c;
+  }
+  .modal-content::-webkit-scrollbar-track {
+    background: #ececec;
+    border-radius: 10px;
   }
 }
+
 
     </style>
   </div>
