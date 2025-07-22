@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "",
-    "Artist": "Wheatus",
-    "Title": "Teenage Dirtbag",
-    "Duration (s)": 232,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "",
-    "Artist": "Spice Girls",
-    "Title": "Say You'll Be There",
-    "Duration (s)": 199,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:09",
-    "Displayed Time": "",
-    "Artist": "Green Day",
-    "Title": "American Idiot",
-    "Duration (s)": 168,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:11",
-    "Displayed Time": "",
-    "Artist": "Bruce Springsteen",
-    "Title": "Dancing in the Dark",
-    "Duration (s)": 221,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:15",
-    "Displayed Time": "",
-    "Artist": "Ace of Base",
-    "Title": "All That She Wants",
-    "Duration (s)": 196,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:23",
-    "Displayed Time": "",
-    "Artist": "Tom Petty",
-    "Title": "Free Fallin'",
-    "Duration (s)": 236,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:27",
-    "Displayed Time": "",
-    "Artist": "Christina Aguilera",
-    "Title": "Ain't No Other Man",
-    "Duration (s)": 216,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:31",
-    "Displayed Time": "",
-    "Artist": "Brandy with Monica",
-    "Title": "The Boy Is Mine",
-    "Duration (s)": 232,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:35",
-    "Displayed Time": "",
-    "Artist": "Fleetwood Mac",
-    "Title": "Go Your Own Way",
-    "Duration (s)": 205,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:42",
-    "Displayed Time": "",
-    "Artist": "James Blunt",
-    "Title": "High",
-    "Duration (s)": 218,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:45",
-    "Displayed Time": "",
-    "Artist": "James",
-    "Title": "Sit Down",
-    "Duration (s)": 228,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:49",
-    "Displayed Time": "",
-    "Artist": "Eurythmics",
-    "Title": "Who's That Girl?",
-    "Duration (s)": 212,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T10:00:00Z",
-    "Scheduled Time": "11:53",
-    "Displayed Time": "",
-    "Artist": "Train",
-    "Title": "Drops of Jupiter (Tell Me)",
-    "Duration (s)": 246,
-    "Full Duration (s)": 259,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-07T11:00:00Z",
     "Scheduled Time": "12:02",
     "Displayed Time": "",
@@ -44635,6 +44492,17 @@
     "Duration (s)": 202,
     "Full Duration (s)": 208,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-22T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "",
+    "Artist": "The Police",
+    "Title": "Can't Stand Losing You",
+    "Duration (s)": 148,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2,
     "Full Duration (mins)": 3
   }
 ]
