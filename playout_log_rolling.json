@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-06T21:00:00Z",
-    "Scheduled Time": "22:02",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3478,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-07-06T22:00:00Z",
     "Scheduled Time": "23:00",
     "Displayed Time": "",
@@ -44095,6 +44084,17 @@
     "Title": "Driftwood",
     "Duration (s)": 205,
     "Full Duration (s)": 217,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-22T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "",
+    "Artist": "Swedish House Mafia Feat. John Martin",
+    "Title": "Don't You Worry Child",
+    "Duration (s)": 206,
+    "Full Duration (s)": 213,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
