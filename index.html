@@ -1,4 +1,4 @@
-@<!DOCTYPE html> 
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -448,38 +448,42 @@ body {
     .strip-container { position: relative; z-index: 1; }
     .player-wrapper {
   position: relative;
-  margin: 0 auto;      /* Center the wrapper as a block, but NOT flex */
-  width: 100%;
-  max-width: 1100px;   /* or whatever your strip-container's max-width is */
 }
-
 
 .logo-overhang {
   position: absolute;
-  top: 0;        /* Always 0 for proper edge overhang */
-  left: 0;       /* Always 0 for proper edge overhang */
-  transform: translate(-36%, -36%);
-  width: 220px;  /* Looks premium and not too big */
-  z-index: 2002;
-  opacity: 0.97;
+  top: 0;
+  left: 0;
+  width: 220px;
+  max-width: 320px;
+  z-index: 3000;
+  opacity: 0.98;
   pointer-events: none;
   user-select: none;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.32));
+  /* New: Only overhang a bit on big screens */
+  transform: translate(-24%, -32%);
+  transition: width 0.2s, transform 0.2s;
 }
 
-@media (max-width: 768px) {
+/* Medium screens: pull the logo in a bit */
+@media (max-width: 1000px) {
   .logo-overhang {
-    width: 100px !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    transform: translate(0%, 0%) !important;
-    z-index: 2002 !important;
-    pointer-events: none !important;
-    user-select: none !important;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.20)) !important;
+    width: 140px;
+    transform: translate(-10%, -22%);
   }
 }
+
+/* Mobile screens: shrink and drop overhang */
+@media (max-width: 600px) {
+  .logo-overhang {
+    width: 64px;
+    transform: translate(0, 0);
+    left: 4px;
+    top: 2px;
+  }
+}
+
 
 
 
@@ -1001,11 +1005,10 @@ body.modal-open {
 
 <div style="width:100%;display:flex;justify-content:center;">
   <div class="player-wrapper">
+<img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
 
  <!-- ✅ MAIN PLAYER WRAPPER -->
 <div class="strip-container three-panel">
-
-  <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
 
   <!-- LEFT PANEL -->
   <div class="left-panel">
