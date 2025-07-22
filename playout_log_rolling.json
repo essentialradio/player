@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:04",
-    "Displayed Time": "",
-    "Artist": "Gayle",
-    "Title": "ABCDEF",
-    "Duration (s)": 150,
-    "Full Duration (s)": 152,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:06",
-    "Displayed Time": "",
-    "Artist": "Kim Wilde",
-    "Title": "You Keep Me Hangin' On",
-    "Duration (s)": 238,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:10",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:13",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "How Does It Feel",
-    "Duration (s)": 137,
-    "Full Duration (s)": 144,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:15",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga",
-    "Title": "Paparazzi",
-    "Duration (s)": 200,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:24",
-    "Displayed Time": "",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 185,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:27",
-    "Displayed Time": "",
-    "Artist": "Anne-Marie",
-    "Title": "2002",
-    "Duration (s)": 183,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:32",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "I Can Do It With a Broken Heart",
-    "Duration (s)": 214,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:36",
-    "Displayed Time": "",
-    "Artist": "Roxette",
-    "Title": "Joyride",
-    "Duration (s)": 236,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:45",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:48",
-    "Displayed Time": "",
-    "Artist": "Pharrell Williams",
-    "Title": "Happy",
-    "Duration (s)": 205,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:51",
-    "Displayed Time": "",
-    "Artist": "Fontaines D.C.",
-    "Title": "It's Amazing To Be Young",
-    "Duration (s)": 210,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T06:00:00Z",
-    "Scheduled Time": "07:55",
-    "Displayed Time": "",
-    "Artist": "Will Smith",
-    "Title": "Gettin' Jiggy Wit It",
-    "Duration (s)": 223,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-07T07:00:00Z",
     "Scheduled Time": "08:02",
     "Displayed Time": "",
@@ -44592,5 +44449,16 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-22T14:00:00Z",
+    "Scheduled Time": "15:01",
+    "Displayed Time": "",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 164,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
