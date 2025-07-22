@@ -1231,10 +1231,11 @@ wxNow.innerHTML =
       d.hourly.slice(1, 6).forEach(h => {
         const t = new Date(h.dt * 1e3).getHours().toString().padStart(2,'0') + ':00';
         const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
-        times   += `<div style="width:52px;text-align:center;">${t}</div>`;
-        details += `<div style="width:52px;text-align:center;">
-                      <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
-                    </div>`;
+        times   += `<div style="flex:1;text-align:center;min-width:60px;">${t}</div>`;
+details += `<div style="flex:1;text-align:center;min-width:60px;">
+              <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
+            </div>`;
+
       });
       hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
       hrWrap.style.display = show5 ? 'none' : 'grid';
