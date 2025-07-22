@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-07-06T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "",
-    "Artist": "Essential Radio",
-    "Title": "Airplay 40 Intro",
-    "Duration (s)": 24,
-    "Full Duration (s)": 28,
-    "Duration (mins)": 0,
-    "Full Duration (mins)": 0
-  },
-  {
-    "Hour": "2025-07-06T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3549,
-    "Full Duration (s)": 3551,
-    "Duration (mins)": 59,
-    "Full Duration (mins)": 59
-  },
-  {
     "Hour": "2025-07-06T14:00:00Z",
     "Scheduled Time": "15:00",
     "Displayed Time": "",
@@ -43382,5 +43360,16 @@
     "Full Duration (s)": 226,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-22T00:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "",
+    "Artist": "Take That",
+    "Title": "Up All Night",
+    "Duration (s)": 193,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
