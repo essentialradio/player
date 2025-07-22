@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+@<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -481,6 +481,10 @@ body {
   }
 }
 
+
+
+
+
     .live-indicator {
       display: inline-flex;
       align-items: center;
@@ -901,7 +905,55 @@ body.modal-open {
     background: #ececec;
     border-radius: 10px;
   }
+/* Make 3-column layout */
+.strip-container.three-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px; /* Optional spacing between panels */
 }
+
+.strip-container.three-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px; /* or adjust to your preference */
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+
+/* Banner image */
+.side-banner-img {
+  width: 160px;
+  height: auto;
+  max-height: 1000px;
+  object-fit: contain;
+}
+
+/* Responsive stacking on mobile */
+@media (max-width: 768px) {
+  .strip-container.three-panel {
+    flex-direction: column;
+  }
+
+  .side-banner-panel {
+    width: 100%;
+    padding: 20px 0;
+    justify-content: center;
+  }
+
+  .side-banner-img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+  }
+}
+
 
 </style>
 </head>
@@ -947,44 +999,47 @@ body.modal-open {
 <div class="header-spacer"></div>
 
 
-  <!-- PLAYER LAYOUT -->
-  <div style="width:100%;display:flex;justify-content:center;">
-	<div class="player-wrapper">
-    <img src="ERLogo2.png" alt="Essential Radio Logo" class="logo-overhang" />
-    <div class="strip-container">
-      <div class="left-panel">
-        <div id="onAirNow" style="text-align: right;">
-          <span class="pulsing-label">ON AIR NOW</span>
-          <span id="currentShow" style="font-weight: 600;">Loading...</span>
-        </div>
-        <div id="player-box">
-          <audio id="stream" preload="none">
-            <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
-          </audio>
-          <button id="play-toggle">▶️ Play Essential Radio</button>
-          <div id="volume-container">
-            <label for="volume-slider">Volume:</label>
-            <input type="range" id="volume-slider" min="0" max="100" value="100" />
-            <span id="volume-display">100%</span>
-            <button id="mute-toggle">🔊</button>
-          </div>
-          <div id="now-playing-card">
-            <div id="now-playing">Loading current track…</div>
-          </div>
-          <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
-        </div>
+<div style="width:100%;display:flex;justify-content:center;">
+  <div class="player-wrapper">
+
+ <!-- ✅ MAIN PLAYER WRAPPER -->
+<div class="strip-container three-panel">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div id="onAirNow" style="text-align: right;">
+      <span class="pulsing-label">ON AIR NOW</span>
+      <span id="currentShow" style="font-weight: 600;">Loading...</span>
+    </div>
+    <div id="player-box">
+      <audio id="stream" preload="none">
+        <source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg" />
+      </audio>
+      <button id="play-toggle">▶️ Play Essential Radio</button>
+      <div id="volume-container">
+        <label for="volume-slider">Volume:</label>
+        <input type="range" id="volume-slider" min="0" max="100" value="100" />
+        <span id="volume-display">100%</span>
+        <button id="mute-toggle">🔊</button>
       </div>
-     <div class="right-panel" style="display:flex;flex-direction:column;">
-
-  <!-- Studio Clock at the very top -->
-<div id="liveClock">
-  <div id="clockCombined">
-    <span id="clockTime">--:--:--</span>
-    <span id="clockDate">Date</span>
+      <div id="now-playing-card">
+        <div id="now-playing">Loading current track…</div>
+      </div>
+      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
+    </div>
   </div>
-</div>
 
-<!-- === ESSENTIAL WEATHER WIDGET (Always Shows Hourly Strip) === -->
+  <!-- RIGHT PANEL -->
+  <div class="right-panel" style="display:flex;flex-direction:column;">
+    <!-- Studio Clock -->
+    <div id="liveClock">
+      <div id="clockCombined">
+        <span id="clockTime">--:--:--</span>
+        <span id="clockDate">Date</span>
+      </div>
+    </div>
+
+   <!-- === ESSENTIAL WEATHER WIDGET (Always Shows Hourly Strip) === -->
 <div id="wxWrap"
      style="font-family:Inter,sans-serif;background:linear-gradient(135deg,#24243e 0%,#191c29 100%);
             color:#f5f5f5;border-radius:18px;padding:16px;box-shadow:0 6px 32px #0007;
@@ -1294,6 +1349,66 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     <ul id="recent-list" style="list-style:none;padding:0;margin:0;flex:1;overflow-y:auto;"></ul>
   </div>
 </div>
+
+  <!-- SIDE BANNER (Third Panel) -->
+  <div class="side-banner-panel">
+    <img src="Additional.png" alt="Ways to Listen" class="side-banner-img" />
+  </div>
+
+</div>
+
+<!-- CSS STYLES -->
+<style>
+  .strip-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: nowrap;
+  }
+
+  .left-panel, .right-panel {
+    flex: 1 1 0;
+  }
+
+  .side-banner-panel {
+    width: 200px;
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .side-banner-img {
+    width: 200px;
+    height: auto;
+    max-height: 1000px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .strip-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .left-panel, .right-panel {
+      width: 100%;
+    }
+
+    .side-banner-panel {
+      width: 100%;
+      text-align: center;
+      order: 3;
+    }
+
+    .side-banner-img {
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+    }
+  }
+</style>
+
 
 
     <!-- MODALS -->
