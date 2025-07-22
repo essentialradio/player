@@ -1357,7 +1357,15 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
   <!-- SIDE BANNER (Third Panel) -->
   <div class="side-banner-panel">
-    <img src="Additional.png" alt="Ways to Listen" class="side-banner-img" />
+<div style="color:#fed351;font-weight:700;font-size:1.1em;margin-bottom:-14px;">Additional Ways to Listen</div>
+    <img src="Additional.png" alt="Ways to Listen" class="side-banner-img" style="margin-top:0;" />
+<div id="rnh-news-hub" style="margin-top:14px;">
+  <div style="color:#fed351;font-weight:700;font-size:1.1em;margin-bottom:14px;">Latest News from Radio News Hub</div>
+  <div id="rnh-news-list">
+    <div style="color:#bbb;font-size:1em;">Loading headlines…</div>
+  </div>
+</div>
+
   </div>
 
 </div>
@@ -1378,13 +1386,13 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   }
 
   .side-banner-panel {
-    width: 200px;
-    min-width: 200px;
+    width: 190px;
+    min-width: 190px;
     flex-shrink: 0;
   }
 
   .side-banner-img {
-    width: 200px;
+    width: 190px;
     height: auto;
     max-height: 1000px;
     display: block;
@@ -2556,6 +2564,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+</script>
+<script>
+async function fetchRNHNews() {
+  // Use a public RSS-to-JSON proxy (CORS-safe)
+  const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+    if (!data.items || !data.items.length) throw new Error("No items found");
+    const top2 = data.items.slice(0,2);
+    document.getElementById('rnh-news-list').innerHTML = top2.map(item => `
+      <div style="margin-bottom:18px;">
+        <a href="${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
+          ${item.title}
+        </a>
+        <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
+          ${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}
+        </div>
+        <div style="color:#bbb;font-size:0.96em;margin-top:2px;">
+          ${item.description.replace(/<[^>]+>/g, '').slice(0,90)}...
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    document.getElementById('rnh-news-list').innerHTML =
+      '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
+  }
+}
+fetchRNHNews();
 </script>
 
 </body>
