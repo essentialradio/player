@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "",
-    "Artist": "Becky Hill ft Topic",
-    "Title": "My Heart Goes (La Di Da)",
-    "Duration (s)": 147,
-    "Full Duration (s)": 149,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:06",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:09",
-    "Displayed Time": "",
-    "Artist": "The Proclaimers",
-    "Title": "Letter From America",
-    "Duration (s)": 229,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:13",
-    "Displayed Time": "",
-    "Artist": "Jax Jones, Joel Corry, Jason Derulo",
-    "Title": "Tonight (D.I.Y.A.)",
-    "Duration (s)": 172,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:19",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "It Isn't Perfect But It Might Be (From \"Bridget Jones: Mad About The Boy\")",
-    "Duration (s)": 206,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:23",
-    "Displayed Time": "",
-    "Artist": "Avicii",
-    "Title": "Levels",
-    "Duration (s)": 186,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:26",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:30",
-    "Displayed Time": "",
-    "Artist": "Jonas Brothers",
-    "Title": "Sucker",
-    "Duration (s)": 173,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:33",
-    "Displayed Time": "",
-    "Artist": "Caity Baser",
-    "Title": "Running From Myself",
-    "Duration (s)": 149,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:37",
-    "Displayed Time": "",
-    "Artist": "Bachman-Turner Overdrive",
-    "Title": "You Ain't Seen Nothing Yet",
-    "Duration (s)": 197,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:41",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:43",
-    "Displayed Time": "",
-    "Artist": "Beyonce",
-    "Title": "Texas Hold 'Em",
-    "Duration (s)": 226,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:47",
-    "Displayed Time": "",
-    "Artist": "Shaboozey",
-    "Title": "A Bar Song (Tipsy)",
-    "Duration (s)": 163,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:50",
-    "Displayed Time": "",
-    "Artist": "Madonna",
-    "Title": "Open Your Heart",
-    "Duration (s)": 212,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-07T12:00:00Z",
-    "Scheduled Time": "13:54",
-    "Displayed Time": "",
-    "Artist": "John Newman",
-    "Title": "Love Me Again",
-    "Duration (s)": 208,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-07T13:00:00Z",
     "Scheduled Time": "14:01",
     "Displayed Time": "",
@@ -44612,6 +44447,17 @@
     "Title": "Big in Japan",
     "Duration (s)": 218,
     "Full Duration (s)": 232,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-22T20:00:00Z",
+    "Scheduled Time": "21:01",
+    "Displayed Time": "",
+    "Artist": "Mariah Carey",
+    "Title": "Always Be My Baby",
+    "Duration (s)": 244,
+    "Full Duration (s)": 254,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
