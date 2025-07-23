@@ -2581,27 +2581,26 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-<script>
 async function fetchRNHNews() {
+  // Use a public RSS-to-JSON proxy (CORS-safe)
   const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
   const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
     const res = await fetch(api);
     const data = await res.json();
     if (!data.items || !data.items.length) throw new Error("No items found");
-    const top2 = data.items.slice(0, 2);
+    const top2 = data.items.slice(0,2);
     document.getElementById('rnh-news-list').innerHTML = top2.map(item => `
-      <div style="margin-bottom:14px;">
-        <a href="${item.link}" target="_blank"
-          style="color:#fff;font-weight:600;text-decoration:none;">
+      <div style="margin-bottom:18px;">
+        <a href="${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
           ${item.title}
         </a>
-        <span style="margin-left:7px;">
-          <a href="${item.link}" target="_blank"
-            style="color:#fed351;font-size:0.98em;text-decoration:underline;font-weight:500;">
-            more…
-          </a>
-        </span>
+        <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
+          ${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}
+        </div>
+        <div style="color:#bbb;font-size:0.96em;margin-top:2px;">
+          ${item.description.replace(/<[^>]+>/g, '').slice(0,90)}...
+        </div>
       </div>
     `).join('');
   } catch(e) {
@@ -2611,7 +2610,6 @@ async function fetchRNHNews() {
 }
 fetchRNHNews();
 </script>
-
 
 </body>
 <script>
