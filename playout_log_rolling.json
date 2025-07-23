@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Mabel",
-    "Title": "Don't Call Me Up",
-    "Duration (s)": 175,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:06",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 160,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:08",
-    "Displayed Time": "",
-    "Artist": "Mark Ambor",
-    "Title": "Belong Together",
-    "Duration (s)": 144,
-    "Full Duration (s)": 148,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:11",
-    "Displayed Time": "",
-    "Artist": "Alanis Morissette",
-    "Title": "Ironic",
-    "Duration (s)": 216,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:19",
-    "Displayed Time": "",
-    "Artist": "Lola Young",
-    "Title": "One Thing",
-    "Duration (s)": 206,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:22",
-    "Displayed Time": "",
-    "Artist": "Onerepublic",
-    "Title": "Stop and Stare",
-    "Duration (s)": 218,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:26",
-    "Displayed Time": "",
-    "Artist": "JP Cooper",
-    "Title": "September Song",
-    "Duration (s)": 212,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:33",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 242,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:37",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 215,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:44",
-    "Displayed Time": "",
-    "Artist": "Duran Duran",
-    "Title": "Hungry Like the Wolf",
-    "Duration (s)": 194,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:47",
-    "Displayed Time": "",
-    "Artist": "James Morrison",
-    "Title": "Fight Another Day",
-    "Duration (s)": 218,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:51",
-    "Displayed Time": "",
-    "Artist": "Blur",
-    "Title": "Parklife",
-    "Duration (s)": 176,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T16:00:00Z",
-    "Scheduled Time": "17:54",
-    "Displayed Time": "",
-    "Artist": "Casso, Raye, D-Block Europe",
-    "Title": "Prada",
-    "Duration (s)": 129,
-    "Full Duration (s)": 132,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
     "Hour": "2025-07-08T17:00:00Z",
     "Scheduled Time": "18:01",
     "Displayed Time": "",
@@ -44548,5 +44405,16 @@
     "Full Duration (s)": 251,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-23T22:00:00Z",
+    "Scheduled Time": "23:01",
+    "Displayed Time": "",
+    "Artist": "Thompson Twins",
+    "Title": "If You Were Here",
+    "Duration (s)": 168,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
