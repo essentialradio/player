@@ -2077,10 +2077,26 @@ function checkOverlayLogo() {
   }
 }
 
-// === MODAL & BURGER MENU CONTROL ===
+function showLogo() {
+  document.querySelector('.logo-overhang')?.classList.remove('logo-hide');
+}
+function hideLogo() {
+  document.querySelector('.logo-overhang')?.classList.add('logo-hide');
+}
+function checkOverlayLogo() {
+  const anyModalOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
+  if (anyModalOpen || burgerOpen) {
+    hideLogo();
+  } else {
+    showLogo();
+  }
+}
+
 function openModal(id) {
-  closeAllModals();                  // Always close others first
-  hideLogo();                        // Hide logo on modal open
+  closeAllModals();
+  hideLogo();
   document.getElementById(id).style.display = 'block';
   document.body.style.overflow = 'hidden';
 }
@@ -2102,16 +2118,18 @@ function closeAllModals() {
 function openModalAndCloseBurger(modalId) {
   closeAllModals();
   closeBurgerMenu();
-  openModal(modalId); // openModal will handle hiding logo
+  openModal(modalId);
 }
 
 function toggleBurgerMenu() {
-  closeAllModals();
   var dropdown = document.getElementById('burgerDropdown');
   if (dropdown.style.display === 'flex') {
+    // Burger is open, so close it
     dropdown.style.display = 'none';
     checkOverlayLogo();
   } else {
+    // Burger is closed, so open it
+    closeAllModals(); // Only close modals when opening burger
     dropdown.style.display = 'flex';
     hideLogo();
   }
@@ -2122,8 +2140,8 @@ function closeBurgerMenu() {
   checkOverlayLogo();
 }
 
-// Optionally, you may want to call checkOverlayLogo() on page load
 document.addEventListener('DOMContentLoaded', checkOverlayLogo);
+
 
 
     window.onclick = function(event) {
