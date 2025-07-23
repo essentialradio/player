@@ -2060,55 +2060,97 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
 
   <!-- MODAL JS -->
-  <script>
-    function openModal(id) {
-  hideLogo(); // Always hide logo on modal open
+<script>
+function showLogo() {
+  document.querySelector('.logo-overhang')?.classList.remove('logo-hide');
+}
+function hideLogo() {
+  document.querySelector('.logo-overhang')?.classList.add('logo-hide');
+}
+function checkOverlayLogo() {
+  const anyModalOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown')?.style.display === 'flex';
+  if (anyModalOpen || burgerOpen) {
+    hideLogo();
+  } else {
+    showLogo();
+  }
+}
+
+// --- Modal open/close helpers ---
+function openModal(id) {
+  closeAllModals();
+  hideLogo();
   document.getElementById(id).style.display = 'block';
+  document.body.classList.add('modal-open');
   document.body.style.overflow = 'hidden';
 }
-
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
+  document.body.classList.remove('modal-open');
   document.body.style.overflow = '';
-  // Only show logo if NO modals or burger menu are open
-  const stillOpen = Array.from(document.querySelectorAll('.modal'))
-    .some(m => m.style.display === 'block' || m.style.display === 'flex');
-  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
-  if (!stillOpen && !burgerOpen) showLogo();
+  checkOverlayLogo();
 }
-
 function closeAllModals() {
   document.querySelectorAll('.modal').forEach(function(modal) {
     modal.style.display = 'none';
   });
   document.body.classList.remove('modal-open');
   document.body.style.overflow = '';
+  checkOverlayLogo();
 }
 
 function openModalAndCloseBurger(modalId) {
-  closeAllModals();            // <-- new line to close any open modal
-  closeBurgerMenu();           // close burger menu first
-  openModal(modalId);          // open the selected modal
+  closeAllModals();
+  closeBurgerMenu();
+  openModal(modalId);
 }
 
+// --- Burger menu logic (make sure this matches your burger controls) ---
+function toggleBurgerMenu() {
+  const burgerDropdown = document.getElementById('burgerDropdown');
+  if (burgerDropdown.style.display === 'flex') {
+    burgerDropdown.style.display = 'none';
+    checkOverlayLogo();
+  } else {
+    closeAllModals();
+    burgerDropdown.style.display = 'flex';
+    hideLogo();
+  }
+}
+function closeBurgerMenu() {
+  const burgerDropdown = document.getElementById('burgerDropdown');
+  if (burgerDropdown) {
+    burgerDropdown.style.display = 'none';
+    checkOverlayLogo();
+  }
+}
 
-    window.onclick = function(event) {
-      document.querySelectorAll('.modal').forEach(modal => {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
+// --- Click outside modal closes, with logo recheck ---
+window.onclick = function(event) {
+  document.querySelectorAll('.modal').forEach(modal => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      checkOverlayLogo();
     }
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(modal => {
-          modal.style.display = 'none';
-        });
-        document.body.style.overflow = '';
-      }
-    });
-  </script>
+  });
+};
+// --- Escape key closes all modals, with logo recheck ---
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeAllModals();
+  }
+});
+
+// --- Extra: Fix for scroll/touchend on mobile (logo sometimes gets stuck hidden) ---
+if (window.innerWidth <= 768) {
+  window.addEventListener('scroll', checkOverlayLogo, { passive: true });
+  window.addEventListener('touchend', checkOverlayLogo, { passive: true });
+}
+</script>
 
   <!-- NATIVE MODAL SCHEDULE LOGIC -->
   <script>
