@@ -2060,93 +2060,55 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
 
   <!-- MODAL JS -->
-<script>
-function showLogo() {
-  document.querySelector('.logo-overhang')?.classList.remove('logo-hide');
-}
-function hideLogo() {
-  document.querySelector('.logo-overhang')?.classList.add('logo-hide');
-}
-function checkOverlayLogo() {
-  const anyModalOpen = Array.from(document.querySelectorAll('.modal'))
-    .some(m => m.style.display === 'block' || m.style.display === 'flex');
-  const burgerOpen = document.getElementById('burgerDropdown')?.style.display === 'flex';
-  if (anyModalOpen || burgerOpen) hideLogo();
-  else showLogo();
+  <script>
+    function openModal(id) {
+  hideLogo(); // Always hide logo on modal open
+  document.getElementById(id).style.display = 'block';
+  document.body.style.overflow = 'hidden';
 }
 
-function openModal(id) {
-  closeAllModals(); // This will call checkOverlayLogo()
-  document.getElementById(id).style.display = 'block';
-  document.body.classList.add('modal-open');
-  document.body.style.overflow = 'hidden';
-  checkOverlayLogo();
-}
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
-  document.body.classList.remove('modal-open');
   document.body.style.overflow = '';
-  checkOverlayLogo();
+  // Only show logo if NO modals or burger menu are open
+  const stillOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
+  if (!stillOpen && !burgerOpen) showLogo();
 }
+
 function closeAllModals() {
   document.querySelectorAll('.modal').forEach(function(modal) {
     modal.style.display = 'none';
   });
   document.body.classList.remove('modal-open');
   document.body.style.overflow = '';
-  checkOverlayLogo();
-}
-
-function toggleBurgerMenu() {
-  const burgerDropdown = document.getElementById('burgerDropdown');
-  if (burgerDropdown.style.display === 'flex') {
-    burgerDropdown.style.display = 'none';
-    checkOverlayLogo();
-  } else {
-    closeAllModals();
-    burgerDropdown.style.display = 'flex';
-    checkOverlayLogo();
-  }
-}
-function closeBurgerMenu() {
-  const burgerDropdown = document.getElementById('burgerDropdown');
-  if (burgerDropdown) {
-    burgerDropdown.style.display = 'none';
-    checkOverlayLogo();
-  }
 }
 
 function openModalAndCloseBurger(modalId) {
-  closeAllModals();
-  closeBurgerMenu();
-  openModal(modalId);
+  closeAllModals();            // <-- new line to close any open modal
+  closeBurgerMenu();           // close burger menu first
+  openModal(modalId);          // open the selected modal
 }
 
-// Window click outside modal
-window.onclick = function(event) {
-  document.querySelectorAll('.modal').forEach(modal => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-      document.body.classList.remove('modal-open');
-      document.body.style.overflow = '';
-      checkOverlayLogo();
+
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
     }
-  });
-};
-window.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeAllModals();
-  }
-});
-
-// Mobile scroll/touch: always restore if appropriate
-if (window.innerWidth <= 768) {
-  window.addEventListener('scroll', checkOverlayLogo, { passive: true });
-  window.addEventListener('touchend', checkOverlayLogo, { passive: true });
-}
-
-}
-</script>
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+          modal.style.display = 'none';
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 
   <!-- NATIVE MODAL SCHEDULE LOGIC -->
   <script>
@@ -2681,7 +2643,6 @@ function showLogo() {
 
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
-  if (!burgerDropdown) return;
   const isOpen = burgerDropdown.style.display === 'flex';
 
   if (isOpen) {
@@ -2696,8 +2657,6 @@ function toggleBurgerMenu() {
     hideLogo();
   }
 }
-window.toggleBurgerMenu = toggleBurgerMenu; // Ensure it's global
-
 
 
 function closeBurgerMenu() {
