@@ -2071,20 +2071,16 @@ function checkOverlayLogo() {
   const anyModalOpen = Array.from(document.querySelectorAll('.modal'))
     .some(m => m.style.display === 'block' || m.style.display === 'flex');
   const burgerOpen = document.getElementById('burgerDropdown')?.style.display === 'flex';
-  if (anyModalOpen || burgerOpen) {
-    hideLogo();
-  } else {
-    showLogo();
-  }
+  if (anyModalOpen || burgerOpen) hideLogo();
+  else showLogo();
 }
 
-// --- Modal open/close helpers ---
 function openModal(id) {
-  closeAllModals();
-  hideLogo();
+  closeAllModals(); // This will call checkOverlayLogo()
   document.getElementById(id).style.display = 'block';
   document.body.classList.add('modal-open');
   document.body.style.overflow = 'hidden';
+  checkOverlayLogo();
 }
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
@@ -2101,13 +2097,6 @@ function closeAllModals() {
   checkOverlayLogo();
 }
 
-function openModalAndCloseBurger(modalId) {
-  closeAllModals();
-  closeBurgerMenu();
-  openModal(modalId);
-}
-
-// --- Burger menu logic (make sure this matches your burger controls) ---
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
   if (burgerDropdown.style.display === 'flex') {
@@ -2116,7 +2105,7 @@ function toggleBurgerMenu() {
   } else {
     closeAllModals();
     burgerDropdown.style.display = 'flex';
-    hideLogo();
+    checkOverlayLogo();
   }
 }
 function closeBurgerMenu() {
@@ -2127,7 +2116,13 @@ function closeBurgerMenu() {
   }
 }
 
-// --- Click outside modal closes, with logo recheck ---
+function openModalAndCloseBurger(modalId) {
+  closeAllModals();
+  closeBurgerMenu();
+  openModal(modalId);
+}
+
+// Window click outside modal
 window.onclick = function(event) {
   document.querySelectorAll('.modal').forEach(modal => {
     if (event.target === modal) {
@@ -2138,17 +2133,18 @@ window.onclick = function(event) {
     }
   });
 };
-// --- Escape key closes all modals, with logo recheck ---
 window.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeAllModals();
   }
 });
 
-// --- Extra: Fix for scroll/touchend on mobile (logo sometimes gets stuck hidden) ---
+// Mobile scroll/touch: always restore if appropriate
 if (window.innerWidth <= 768) {
   window.addEventListener('scroll', checkOverlayLogo, { passive: true });
   window.addEventListener('touchend', checkOverlayLogo, { passive: true });
+}
+
 }
 </script>
 
