@@ -2363,7 +2363,7 @@ function renderDayScheduleModal(day, shows) {
     let trackEndTimeout = null;
     async function fetchNowPlaying() {
       try {
-        const res = await fetch('https://essential.radio/api/metadata', { cache: 'no-store' });
+        const res = await fetch('https://player-green.vercel.app/api/metadata', { cache: 'no-store' });
         const data = await res.json();
         const decode = str => {
           const t = document.createElement('textarea');
