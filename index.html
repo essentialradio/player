@@ -2598,9 +2598,6 @@ async function fetchRNHNews() {
         <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
           ${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}
         </div>
-      //  <div style="color:#bbb;font-size:0.96em;margin-top:2px;">
-      //    ${item.description.replace(/<[^>]+>/g, '').slice(0,90)}...
-      //  </div>
       </div>
     `).join('');
   } catch(e) {
