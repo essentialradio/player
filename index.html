@@ -2681,6 +2681,7 @@ function showLogo() {
 
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
+  if (!burgerDropdown) return;
   const isOpen = burgerDropdown.style.display === 'flex';
 
   if (isOpen) {
@@ -2695,6 +2696,8 @@ function toggleBurgerMenu() {
     hideLogo();
   }
 }
+window.toggleBurgerMenu = toggleBurgerMenu; // Ensure it's global
+
 
 
 function closeBurgerMenu() {
