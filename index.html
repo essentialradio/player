@@ -2077,23 +2077,6 @@ function checkOverlayLogo() {
   }
 }
 
-function showLogo() {
-  document.querySelector('.logo-overhang')?.classList.remove('logo-hide');
-}
-function hideLogo() {
-  document.querySelector('.logo-overhang')?.classList.add('logo-hide');
-}
-function checkOverlayLogo() {
-  const anyModalOpen = Array.from(document.querySelectorAll('.modal'))
-    .some(m => m.style.display === 'block' || m.style.display === 'flex');
-  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
-  if (anyModalOpen || burgerOpen) {
-    hideLogo();
-  } else {
-    showLogo();
-  }
-}
-
 function openModal(id) {
   closeAllModals();
   hideLogo();
@@ -2142,6 +2125,54 @@ function closeBurgerMenu() {
 
 document.addEventListener('DOMContentLoaded', checkOverlayLogo);
 
+
+// === MODAL & BURGER MENU CONTROL ===
+function openModal(id) {
+  closeAllModals();                  // Always close others first
+  hideLogo();                        // Hide logo on modal open
+  document.getElementById(id).style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+  document.body.style.overflow = '';
+  checkOverlayLogo();
+}
+
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
+}
+
+function openModalAndCloseBurger(modalId) {
+  closeAllModals();
+  closeBurgerMenu();
+  openModal(modalId); // openModal will handle hiding logo
+}
+
+function toggleBurgerMenu() {
+  closeAllModals();
+  var dropdown = document.getElementById('burgerDropdown');
+  if (dropdown.style.display === 'flex') {
+    dropdown.style.display = 'none';
+    checkOverlayLogo();
+  } else {
+    dropdown.style.display = 'flex';
+    hideLogo();
+  }
+}
+
+function closeBurgerMenu() {
+  document.getElementById('burgerDropdown').style.display = 'none';
+  checkOverlayLogo();
+}
+
+// Optionally, you may want to call checkOverlayLogo() on page load
+document.addEventListener('DOMContentLoaded', checkOverlayLogo);
 
 
     window.onclick = function(event) {
