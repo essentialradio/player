@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essential Radio + Facebook</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fed351;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0" nonce="xyz123"></script>
+
+<!-- Radio News Hub (Placeholder) -->
+<div class="section">
+  <div class="section-title">Radio News Hub</div>
+  <p>Latest news updates go here...</p>
+</div>
+
+<!-- Ayrshire College News (Facebook Embed) -->
+<div class="section" id="ayrshire-college-news">
+  <div class="section-title">Ayrshire College News</div>
+  <div class="fb-page"
+       data-href="https://www.facebook.com/AyrshireCollege"
+       data-tabs="timeline"
+       data-width="500"
+       data-height="500"
+       data-small-header="false"
+       data-adapt-container-width="true"
+       data-hide-cover="false"
+       data-show-facepile="true">
+    <blockquote cite="https://www.facebook.com/AyrshireCollege" class="fb-xfbml-parse-ignore">
+      <a href="https://www.facebook.com/AyrshireCollege">Ayrshire College</a>
+    </blockquote>
+  </div>
+</div>
+
+</body>
+</html>
