@@ -1701,6 +1701,21 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 #burgerMenuBtn {
   z-index: 3000 !important; /* Higher than .modal (z-index: 2000) */
 }
+@media (max-width: 500px) {
+  #hrWrap > div > div {
+    min-width: 0 !important;
+    padding: 0 1px !important;
+    font-size: 11px !important;
+  }
+  #hrWrap img.forecast-icon {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  #hrWrap {
+    gap: 1px !important;
+  }
+}
+
 
     </style>
   </div>
