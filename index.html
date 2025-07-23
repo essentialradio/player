@@ -2631,48 +2631,77 @@ function updateLiveClock() {
     updateLiveClock();
     setInterval(updateLiveClock, 1000);
 
+// ===== LOGO SHOW/HIDE HELPERS =====
+function showLogo() {
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.remove('logo-hide');
+}
 function hideLogo() {
   const logo = document.querySelector('.logo-overhang');
   if (logo) logo.classList.add('logo-hide');
 }
 
-function showLogo() {
-  const logo = document.querySelector('.logo-overhang');
-  if (logo) logo.classList.remove('logo-hide');
+// Checks if any overlay (modal or burger) is open, and hides/shows logo accordingly
+function checkOverlayLogo() {
+  const anyModalOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
+  if (anyModalOpen || burgerOpen) {
+    hideLogo();
+  } else {
+    showLogo();
+  }
+}
+
+// ===== MODAL & BURGER MENU CONTROL =====
+function openModal(id) {
+  closeAllModals();
+  document.getElementById(id).style.display = 'block';
+  checkOverlayLogo();
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+  checkOverlayLogo();
+}
+
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+  checkOverlayLogo();
 }
 
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
   const isOpen = burgerDropdown.style.display === 'flex';
-
   if (isOpen) {
     burgerDropdown.style.display = 'none';
-    // Only show logo if no modal is open
-    const stillOpen = Array.from(document.querySelectorAll('.modal'))
-      .some(m => m.style.display === 'block' || m.style.display === 'flex');
-    if (!stillOpen) showLogo();
+    checkOverlayLogo();
   } else {
-    closeAllModals(); // NEW: closes any open modal first!
+    closeAllModals(); // Always close modals first!
     burgerDropdown.style.display = 'flex';
-    hideLogo();
+    checkOverlayLogo();
   }
 }
 
-
-function closeBurgerMenu() {
-  const burgerDropdown = document.getElementById('burgerDropdown');
-  burgerDropdown.style.display = 'none';
-  // Check if any modal is still open before showing the logo
-  const stillOpen = Array.from(document.querySelectorAll('.modal'))
-    .some(m => m.style.display === 'block' || m.style.display === 'flex');
-  if (!stillOpen) showLogo();
+// For burger menu links that open a modal
+function openModalAndCloseBurger(id) {
+  closeBurgerMenu();
+  openModal(id);
 }
 
+function closeBurgerMenu() {
+  document.getElementById('burgerDropdown').style.display = 'none';
+  checkOverlayLogo();
+}
 
-// Close when clicking outside the menu panel
+// ===== EVENT LISTENERS =====
+
+// Close when clicking outside the burger menu
 document.addEventListener('click', function(e) {
-  var menu = document.getElementById('burgerDropdown');
-  var btn = document.getElementById('burgerMenuBtn');
+  const menu = document.getElementById('burgerDropdown');
+  const btn = document.getElementById('burgerMenuBtn');
   if (
     window.innerWidth <= 750 &&
     menu.style.display === 'flex' &&
@@ -2682,10 +2711,15 @@ document.addEventListener('click', function(e) {
     closeBurgerMenu();
   }
 });
-// Optional: ESC key closes burger menu
+
+// ESC key closes burger menu and all modals
 window.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeBurgerMenu();
+  if (e.key === 'Escape') {
+    closeBurgerMenu();
+    closeAllModals();
+  }
 });
+
 
 </script>
 
