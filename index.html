@@ -2518,10 +2518,34 @@ if (sep) {
       } catch {}
       return '';
     }
+let nowPlayingInterval = null;
+let recentInterval = null;
+
+function startIntervals() {
+  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
+  if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
+}
+function stopIntervals() {
+  clearInterval(nowPlayingInterval); nowPlayingInterval = null;
+  clearInterval(recentInterval); recentInterval = null;
+}
+
+// Always fetch once on page load
+fetchNowPlaying();
+fetchRecentFromGitHub();
+startIntervals();
+
+// On tab visibility change, only run when visible
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
     fetchNowPlaying();
     fetchRecentFromGitHub();
-    setInterval(fetchNowPlaying, 15000);
-    setInterval(fetchRecentFromGitHub, 15000);
+    startIntervals();
+  } else {
+    stopIntervals();
+  }
+});
+
   </script>
   <script>
     function formatShowTitleMobileOnly(title) {
