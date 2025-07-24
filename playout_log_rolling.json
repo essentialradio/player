@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:10",
-    "Displayed Time": "",
-    "Artist": "Supertramp",
-    "Title": "Breakfast in America",
-    "Duration (s)": 150,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:13",
-    "Displayed Time": "",
-    "Artist": "Chic",
-    "Title": "Everybody Dance",
-    "Duration (s)": 194,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:16",
-    "Displayed Time": "",
-    "Artist": "Bay City Rollers",
-    "Title": "Give A Little Love",
-    "Duration (s)": 180,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:19",
-    "Displayed Time": "",
-    "Artist": "Yvonne Elliman",
-    "Title": "If I Can't Have You",
-    "Duration (s)": 166,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:22",
-    "Displayed Time": "",
-    "Artist": "The Undertones",
-    "Title": "Teenage Kicks",
-    "Duration (s)": 138,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:27",
-    "Displayed Time": "",
-    "Artist": "Gladys Knight & The Pips",
-    "Title": "Midnight Train to Georgia",
-    "Duration (s)": 221,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:31",
-    "Displayed Time": "",
-    "Artist": "10cc",
-    "Title": "Dreadlock Holiday",
-    "Duration (s)": 216,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:35",
-    "Displayed Time": "",
-    "Artist": "Cheap Trick",
-    "Title": "I Want You To Want Me",
-    "Duration (s)": 171,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:38",
-    "Displayed Time": "",
-    "Artist": "Tavares",
-    "Title": "More Than a Woman",
-    "Duration (s)": 182,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:43",
-    "Displayed Time": "",
-    "Artist": "Sad Cafe",
-    "Title": "Every Day Hurts",
-    "Duration (s)": 208,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:46",
-    "Displayed Time": "",
-    "Artist": "The Bee Gees",
-    "Title": "Night Fever",
-    "Duration (s)": 194,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:50",
-    "Displayed Time": "",
-    "Artist": "The Knack",
-    "Title": "My Sharona",
-    "Duration (s)": 231,
-    "Full Duration (s)": 241,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-08T18:00:00Z",
-    "Scheduled Time": "19:53",
-    "Displayed Time": "",
-    "Artist": "The Doobie Brothers",
-    "Title": "Long Train Runnin'",
-    "Duration (s)": 194,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-08T19:00:00Z",
     "Scheduled Time": "20:01",
     "Displayed Time": "",
@@ -44537,5 +44394,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-24T00:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "",
+    "Artist": "Maroon 5",
+    "Title": "Won't Go Home Without You",
+    "Duration (s)": 220,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
