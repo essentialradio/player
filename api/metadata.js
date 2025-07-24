@@ -20,14 +20,20 @@ export async function GET() {
     return new Response(JSON.stringify({
       nowPlaying: track ? decodeHtml(track.trim()) : "Unknown Track"
     }), {
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'  // <-- ADD THIS LINE
+      }
     });
   } catch (err) {
     return new Response(JSON.stringify({
       nowPlaying: "Unable to fetch metadata"
     }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'  // <-- ADD THIS LINE HERE TOO
+      }
     });
   }
 }
