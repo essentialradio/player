@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:01",
-    "Displayed Time": "",
-    "Artist": "Beyonce",
-    "Title": "Irreplaceable",
-    "Duration (s)": 222,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:05",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:08",
-    "Displayed Time": "",
-    "Artist": "Blossoms",
-    "Title": "Perfect Me",
-    "Duration (s)": 181,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:12",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Mystical Magical",
-    "Duration (s)": 157,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:14",
-    "Displayed Time": "",
-    "Artist": "The Killers",
-    "Title": "Human",
-    "Duration (s)": 233,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:22",
-    "Displayed Time": "",
-    "Artist": "Madonna",
-    "Title": "Holiday",
-    "Duration (s)": 226,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:25",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 215,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:29",
-    "Displayed Time": "",
-    "Artist": "The Mavericks",
-    "Title": "Dance the Night Away",
-    "Duration (s)": 251,
-    "Full Duration (s)": 262,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:33",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 168,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:36",
-    "Displayed Time": "",
-    "Artist": "Florence + the Machine",
-    "Title": "Rabbit Heart (Raise it Up)",
-    "Duration (s)": 198,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:44",
-    "Displayed Time": "",
-    "Artist": "Tyla",
-    "Title": "Push 2 Start",
-    "Duration (s)": 150,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:46",
-    "Displayed Time": "",
-    "Artist": "Sia",
-    "Title": "Cheap Thrills",
-    "Duration (s)": 198,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:50",
-    "Displayed Time": "",
-    "Artist": "Disturbed",
-    "Title": "The Sound of Silence",
-    "Duration (s)": 237,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-09T01:00:00Z",
-    "Scheduled Time": "02:54",
-    "Displayed Time": "",
-    "Artist": "U2",
-    "Title": "Hold Me, Thrill Me, Kiss Me, Kill Me",
-    "Duration (s)": 267,
-    "Full Duration (s)": 281,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
     "Hour": "2025-07-09T02:00:00Z",
     "Scheduled Time": "03:01",
     "Displayed Time": "",
@@ -44557,6 +44403,17 @@
     "Title": "Kisses",
     "Duration (s)": 135,
     "Full Duration (s)": 138,
+    "Duration (mins)": 2,
+    "Full Duration (mins)": 2
+  },
+  {
+    "Hour": "2025-07-24T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "",
+    "Artist": "Meghan Trainor",
+    "Title": "Mother",
+    "Duration (s)": 146,
+    "Full Duration (s)": 147,
     "Duration (mins)": 2,
     "Full Duration (mins)": 2
   }
