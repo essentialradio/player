@@ -2400,94 +2400,76 @@ function renderDayScheduleModal(day, shows) {
       document.title = `Essential Radio: More music soon`;
       applyFallbackImmediate();
     }
-   
     let currentTrackID = null;
-let trackEndTimeout = null;
-let stuckOnMoreMusicSoon = false;
-
-async function fetchNowPlaying() {
-  try {
-    const res = await fetch('/api/metadata', { cache: 'no-store' });
-    const data = await res.json();
-    const decode = str => {
-      const t = document.createElement('textarea');
-      t.innerHTML = str;
-      return t.value;
-    };
-    const raw = decode(data.nowPlaying || '').trim();
-
-    let artist = '', title = '';
-    const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-
-    if (!sep) {
-      // If no valid song, only show More Music Soon if not already shown
-      if (!stuckOnMoreMusicSoon) {
-        showMoreMusicSoon();
-        stuckOnMoreMusicSoon = true;
-      }
-      currentTrackID = null;
-      return;
-    }
-
-    // Song detected: always unstick and display immediately
-    stuckOnMoreMusicSoon = false;
-
-    // Parse artist and title
-    const idx = raw.lastIndexOf(sep);
-    artist = raw.substring(0, idx).trim();
-    title  = raw.substring(idx + sep.length).trim();
-    currentTrackID = `${artist} – ${title}`;
-    nowPlaying.innerHTML = `
-      <span style="color:#fed351;">Now Playing:</span>
-      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-      <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-      <span style="color:white;">by ${artist}</span>`;
-    document.title = `Essential Radio: ${artist} – ${title}`;
-    fetchArtwork(`${artist} - ${title}`);
-
-    // ---- Timer logic: get duration and schedule showMoreMusicSoon at track end ----
-    try {
-      const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
-      const latest = await latestRes.json();
-      if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) return;
-
-      if (
-        latest.artist.toLowerCase() !== artist.toLowerCase() ||
-        latest.title.toLowerCase() !== title.toLowerCase()
-      ) return;
-
-      const startTime = new Date(latest.startTime);
-      const durationMs = latest.duration * 1000;
-      const endTime = new Date(startTime.getTime() + durationMs);
-      const now = new Date();
-      const timeRemaining = endTime - now;
-      if (trackEndTimeout) clearTimeout(trackEndTimeout);
-
-      if (timeRemaining <= 0) {
-        showMoreMusicSoon();
-        stuckOnMoreMusicSoon = true;
-        currentTrackID = null;
-        setTimeout(fetchNowPlaying, 2000); // Poll again quickly after song should finish
-      } else {
-        trackEndTimeout = setTimeout(() => {
-          showMoreMusicSoon();
-          stuckOnMoreMusicSoon = true;
-          currentTrackID = null;
-          setTimeout(fetchNowPlaying, 2000); // Poll again after track ends
-        }, timeRemaining);
-      }
-    } catch { /* ignore errors */ }
-
-  } catch (e) {
-    console.error("Now playing error:", e);
-    if (!stuckOnMoreMusicSoon) {
-      showMoreMusicSoon();
-      stuckOnMoreMusicSoon = true;
-    }
-    currentTrackID = null;
-  }
+    let songHasEnded = false;
+    let trackEndTimeout = null;
+    async function fetchNowPlaying() {
+      try {
+        const res = await fetch('/api/metadata', { cache: 'no-store' });
+        const data = await res.json();
+        const decode = str => {
+          const t = document.createElement('textarea');
+          t.innerHTML = str;
+          return t.value;
+        };
+        const raw = decode(data.nowPlaying || '').trim();
+        let artist = '', title = '';
+        const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
+if (sep) {
+  const idx = raw.lastIndexOf(sep);
+  artist = raw.substring(0, idx).trim();
+  title  = raw.substring(idx + sep.length).trim();
+} else {
+  showMoreMusicSoon();
+  return;
 }
 
+        currentTrackID = `${artist} – ${title}`;
+        songHasEnded = false;
+        nowPlaying.innerHTML = `
+          <span style="color:#fed351;">Now Playing:</span>
+          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+          <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
+          <span style="color:white;">by ${artist}</span>`;
+        document.title = `Essential Radio: ${artist} – ${title}`;
+        fetchArtwork(`${artist} - ${title}`);
+        const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+        const latest = await latestRes.json();
+        if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+          console.warn("latestTrack.json missing fields");
+          return;
+        }
+        if (
+          latest.artist.toLowerCase() !== artist.toLowerCase() ||
+          latest.title.toLowerCase() !== title.toLowerCase()
+        ) {
+          console.log("latestTrack.json does not match metadata track");
+          return;
+        }
+        const startTime = new Date(latest.startTime);
+        const durationMs = latest.duration * 1000;
+        const endTime = new Date(startTime.getTime() + durationMs);
+        const now = new Date();
+        const timeRemaining = endTime - now;
+        if (trackEndTimeout) clearTimeout(trackEndTimeout);
+        if (timeRemaining <= 0) {
+          showMoreMusicSoon();
+          songHasEnded = true;
+          currentTrackID = null;
+        } else {
+          trackEndTimeout = setTimeout(() => {
+            showMoreMusicSoon();
+            songHasEnded = true;
+            currentTrackID = null;
+          }, timeRemaining);
+        }
+      } catch (e) {
+        console.error("Now playing error:", e);
+        showMoreMusicSoon();
+        currentTrackID = null;
+        songHasEnded = false;
+      }
+    }
     async function fetchRecentFromGitHub() {
       try {
         const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
