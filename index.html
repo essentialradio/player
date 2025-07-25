@@ -1059,11 +1059,16 @@ body.modal-open {
         <button id="mute-toggle">🔊</button>
       </div>
       <div id="now-playing-card">
-        <div id="now-playing">Loading current track…</div>
-      </div>
-      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
-    </div>
+  <div id="now-playing" style="display:flex;align-items:center;gap:7px;">
+    <button id="np-refresh" title="Refresh now playing"
+      style="background:none;border:none;padding:0 4px 0 0;margin:0;cursor:pointer;font-size:1.25em;line-height:1;height:1em;opacity:0.64;transition:opacity 0.15s;vertical-align:middle;"
+      aria-label="Refresh Now Playing"
+      onmouseover="this.style.opacity=1"
+      onmouseout="this.style.opacity=0.64">🔄</button>
+    <span id="nowPlayingText">Loading current track…</span>
   </div>
+</div>
+>
 
   <!-- RIGHT PANEL -->
   <div class="right-panel" style="display:flex;flex-direction:column;">
@@ -2401,75 +2406,116 @@ function renderDayScheduleModal(day, shows) {
       applyFallbackImmediate();
     }
     let currentTrackID = null;
-    let songHasEnded = false;
-    let trackEndTimeout = null;
-    async function fetchNowPlaying() {
-      try {
-        const res = await fetch('/api/metadata', { cache: 'no-store' });
-        const data = await res.json();
-        const decode = str => {
-          const t = document.createElement('textarea');
-          t.innerHTML = str;
-          return t.value;
-        };
-        const raw = decode(data.nowPlaying || '').trim();
-        let artist = '', title = '';
-        const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-if (sep) {
-  const idx = raw.lastIndexOf(sep);
-  artist = raw.substring(0, idx).trim();
-  title  = raw.substring(idx + sep.length).trim();
-} else {
-  showMoreMusicSoon();
-  return;
+let songHasEnded = false;
+let trackEndTimeout = null;
+let nowPlayingPoll = null;
+
+const nowPlayingText = document.getElementById('nowPlayingText');
+const nowPlayingDiv = document.getElementById('now-playing');
+const refreshBtn = document.getElementById('np-refresh');
+
+// Helper to show fallback
+function showMoreMusicSoon() {
+  nowPlayingText.innerHTML = `<span style="color:#fed351;">More Music Soon</span>`;
+  document.title = "Essential Radio";
+  // (Optionally: reset artwork, e.g., document.getElementById('artwork').src = 'Essential Radio Logo.png')
 }
 
-        currentTrackID = `${artist} – ${title}`;
-        songHasEnded = false;
-        nowPlaying.innerHTML = `
-          <span style="color:#fed351;">Now Playing:</span>
-          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-          <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-          <span style="color:white;">by ${artist}</span>`;
-        document.title = `Essential Radio: ${artist} – ${title}`;
-        fetchArtwork(`${artist} - ${title}`);
-        const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
-        const latest = await latestRes.json();
-        if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
-          console.warn("latestTrack.json missing fields");
-          return;
-        }
-        if (
-          latest.artist.toLowerCase() !== artist.toLowerCase() ||
-          latest.title.toLowerCase() !== title.toLowerCase()
-        ) {
-          console.log("latestTrack.json does not match metadata track");
-          return;
-        }
-        const startTime = new Date(latest.startTime);
-        const durationMs = latest.duration * 1000;
-        const endTime = new Date(startTime.getTime() + durationMs);
-        const now = new Date();
-        const timeRemaining = endTime - now;
-        if (trackEndTimeout) clearTimeout(trackEndTimeout);
-        if (timeRemaining <= 0) {
-          showMoreMusicSoon();
-          songHasEnded = true;
-          currentTrackID = null;
-        } else {
-          trackEndTimeout = setTimeout(() => {
-            showMoreMusicSoon();
-            songHasEnded = true;
-            currentTrackID = null;
-          }, timeRemaining);
-        }
-      } catch (e) {
-        console.error("Now playing error:", e);
-        showMoreMusicSoon();
-        currentTrackID = null;
-        songHasEnded = false;
-      }
+// Main fetch function
+async function fetchNowPlaying() {
+  try {
+    const res = await fetch('/api/metadata', { cache: 'no-store' });
+    const data = await res.json();
+    const decode = str => {
+      const t = document.createElement('textarea');
+      t.innerHTML = str;
+      return t.value;
+    };
+    const raw = decode(data.nowPlaying || '').trim();
+    let artist = '', title = '';
+    const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
+    if (sep) {
+      const idx = raw.lastIndexOf(sep);
+      artist = raw.substring(0, idx).trim();
+      title  = raw.substring(idx + sep.length).trim();
+    } else {
+      showMoreMusicSoon();
+      currentTrackID = null;
+      songHasEnded = false;
+      // Don't stop polling!
+      return;
     }
+
+    currentTrackID = `${artist} – ${title}`;
+    songHasEnded = false;
+    nowPlayingText.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span>
+      <br/><span style="color:white;font-weight:600;font-size:1.2em;">${title}</span>
+      <br/><span style="color:white;">by ${artist}</span>`;
+    document.title = `Essential Radio: ${artist} – ${title}`;
+    // If you use artwork:
+    if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`);
+
+    // Timing logic
+    const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+    const latest = await latestRes.json();
+    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+      // Do not set timeout, but keep polling
+      return;
+    }
+    if (
+      latest.artist.toLowerCase() !== artist.toLowerCase() ||
+      latest.title.toLowerCase() !== title.toLowerCase()
+    ) {
+      // Data mismatch, wait for next poll
+      return;
+    }
+    const startTime = new Date(latest.startTime);
+    const durationMs = latest.duration * 1000;
+    const endTime = new Date(startTime.getTime() + durationMs);
+    const now = new Date();
+    const timeRemaining = endTime - now;
+
+    if (trackEndTimeout) clearTimeout(trackEndTimeout);
+    if (timeRemaining <= 0) {
+      showMoreMusicSoon();
+      songHasEnded = true;
+      currentTrackID = null;
+      // Do NOT stop polling here!
+    } else {
+      // When song is expected to end, show fallback then (but polling will keep running!)
+      trackEndTimeout = setTimeout(() => {
+        showMoreMusicSoon();
+        songHasEnded = true;
+        currentTrackID = null;
+      }, timeRemaining);
+    }
+  } catch (e) {
+    console.error("Now playing error:", e);
+    showMoreMusicSoon();
+    currentTrackID = null;
+    songHasEnded = false;
+    // Do not stop polling!
+  }
+}
+
+// POLLING (every 15s, adjust as desired)
+function startNowPlayingPoll() {
+  if (nowPlayingPoll) clearInterval(nowPlayingPoll);
+  nowPlayingPoll = setInterval(fetchNowPlaying, 15000);
+  fetchNowPlaying(); // Initial load
+}
+startNowPlayingPoll();
+
+// Manual refresh
+if (refreshBtn) refreshBtn.onclick = fetchNowPlaying;
+
+// Optional: refresh on visibility change (if user switches tabs)
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) fetchNowPlaying();
+});
+
     async function fetchRecentFromGitHub() {
       try {
         const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
