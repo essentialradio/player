@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "",
-    "Artist": "Westlife",
-    "Title": "Flying Without Wings",
-    "Duration (s)": 212,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "",
-    "Artist": "U2",
-    "Title": "With or Without You",
-    "Duration (s)": 278,
-    "Full Duration (s)": 292,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:10",
-    "Displayed Time": "",
-    "Artist": "Justin Timberlake",
-    "Title": "What Goes Around...Comes Around",
-    "Duration (s)": 234,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:14",
-    "Displayed Time": "",
-    "Artist": "Bob Marley & The Wailers",
-    "Title": "Iron Lion Zion",
-    "Duration (s)": 181,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:17",
-    "Displayed Time": "",
-    "Artist": "Gwen Stefani Featuring Akon",
-    "Title": "The Sweet Escape",
-    "Duration (s)": 237,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:25",
-    "Displayed Time": "",
-    "Artist": "Mya",
-    "Title": "Case of the Ex",
-    "Duration (s)": 194,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:29",
-    "Displayed Time": "",
-    "Artist": "Elton John",
-    "Title": "I'm Still Standing",
-    "Duration (s)": 175,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:32",
-    "Displayed Time": "",
-    "Artist": "Shania Twain",
-    "Title": "That Don't Impress Me Much",
-    "Duration (s)": 229,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:35",
-    "Displayed Time": "",
-    "Artist": "Scissor Sisters",
-    "Title": "Take Your Mama",
-    "Duration (s)": 206,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:42",
-    "Displayed Time": "",
-    "Artist": "Blue",
-    "Title": "One Love",
-    "Duration (s)": 202,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:46",
-    "Displayed Time": "",
-    "Artist": "John Lennon",
-    "Title": "Imagine",
-    "Duration (s)": 176,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:49",
-    "Displayed Time": "",
-    "Artist": "Alanis Morissette",
-    "Title": "You Oughta Know",
-    "Duration (s)": 246,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-10T10:00:00Z",
-    "Scheduled Time": "11:53",
-    "Displayed Time": "",
-    "Artist": "Franz Ferdinand",
-    "Title": "Take Me Out",
-    "Duration (s)": 201,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-10T11:00:00Z",
     "Scheduled Time": "12:02",
     "Displayed Time": "",
@@ -44438,5 +44295,16 @@
     "Full Duration (s)": 153,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-25T12:00:00Z",
+    "Scheduled Time": "13:03",
+    "Displayed Time": "",
+    "Artist": "Pink",
+    "Title": "A Million Dreams",
+    "Duration (s)": 262,
+    "Full Duration (s)": 274,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 5
   }
 ]
