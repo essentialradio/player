@@ -2141,56 +2141,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   
 
 
-  <!-- MODAL JS -->
-  <script>
-    function openModal(id) {
-  hideLogo(); // Always hide logo on modal open
-  document.getElementById(id).style.display = 'block';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-  document.body.style.overflow = '';
-  // Only show logo if NO modals or burger menu are open
-  const stillOpen = Array.from(document.querySelectorAll('.modal'))
-    .some(m => m.style.display === 'block' || m.style.display === 'flex');
-  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
-  if (!stillOpen && !burgerOpen) showLogo();
-}
-
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(function(modal) {
-    modal.style.display = 'none';
-  });
-  document.body.classList.remove('modal-open');
-  document.body.style.overflow = '';
-}
-
-function openModalAndCloseBurger(modalId) {
-  closeAllModals();            // <-- new line to close any open modal
-  closeBurgerMenu();           // close burger menu first
-  openModal(modalId);          // open the selected modal
-}
-
-
-    window.onclick = function(event) {
-      document.querySelectorAll('.modal').forEach(modal => {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
-    }
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(modal => {
-          modal.style.display = 'none';
-        });
-        document.body.style.overflow = '';
-      }
-    });
-  </script>
+  <!-- Removed duplicate modal JS script -->
 
   <!-- NATIVE MODAL SCHEDULE LOGIC -->
   <script>
@@ -2652,20 +2603,7 @@ document.addEventListener("visibilitychange", () => {
 });
 
   </script>
-  <script>
-    function formatShowTitleMobileOnly(title) {
-      if (window.innerWidth <= 600) {
-        const match = title.match(/(.*)\s+with\s+(.*)/i);
-        if (match) {
-          return `${match[1]}<br>with ${match[2]}`;
-        }
-      }
-      return title;
-    }
-    const showSpan = document.getElementById("currentShow");
-    const rawTitle = showSpan?.textContent || "";
-    showSpan.innerHTML = formatShowTitleMobileOnly(rawTitle);
-  </script>
+  <!-- Removed duplicate show title formatter script -->
   <script>
     function formatShowTitleMobileOnly(title) {
       if (window.innerWidth <= 600) {
@@ -2688,34 +2626,7 @@ document.addEventListener("visibilitychange", () => {
       showSpan2.innerHTML = formatShowTitleMobileOnly(showSpan2.textContent);
     }
   </script>
-<script>
-// Modal open/close: prevent background scroll
-function openModal(id) {
-  document.getElementById(id).style.display = "block";
-  document.body.classList.add('modal-open');
-}
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-  document.body.classList.remove('modal-open');
-}
-function openModalAndCloseBurger(id) {
-  document.getElementById('burgerDropdown').style.display = "none";
-  document.getElementById(id).style.display = "block";
-  document.body.classList.add('modal-open');
-}
-
-// (Optional: Trap iOS scroll bounce inside modal content)
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.modal-content').forEach(function(mc) {
-    mc.addEventListener('touchstart', function() {
-      var top = mc.scrollTop === 0;
-      var bottom = mc.scrollHeight - mc.scrollTop === mc.clientHeight;
-      if (top) mc.scrollTop = 1;
-      if (bottom) mc.scrollTop -= 1;
-    });
-  });
-});
-</script>
+<!-- Removed redundant modal open/close script; bounce handling moved to unified script -->
 <script>
 async function fetchRNHNews() {
   // Use a public RSS-to-JSON proxy (CORS-safe)
@@ -2800,11 +2711,15 @@ function checkOverlayLogo() {
 function openModal(id) {
   closeAllModals();
   document.getElementById(id).style.display = 'block';
+  // Prevent background from scrolling when a modal opens
+  document.body.classList.add('modal-open');
   checkOverlayLogo();
 }
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
+  // Restore scrolling when a modal closes
+  document.body.classList.remove('modal-open');
   checkOverlayLogo();
 }
 
@@ -2812,6 +2727,8 @@ function closeAllModals() {
   document.querySelectorAll('.modal').forEach(function(modal) {
     modal.style.display = 'none';
   });
+  // Ensure body can scroll after all modals close
+  document.body.classList.remove('modal-open');
   checkOverlayLogo();
 }
 
@@ -2838,6 +2755,29 @@ function closeBurgerMenu() {
   document.getElementById('burgerDropdown').style.display = 'none';
   checkOverlayLogo();
 }
+
+// Close modals when clicking outside of them
+document.addEventListener('click', function(event) {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+      checkOverlayLogo();
+    }
+  });
+});
+
+// Prevent iOS scroll bounce inside modal content
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.modal-content').forEach(function(mc) {
+    mc.addEventListener('touchstart', function() {
+      var top = mc.scrollTop === 0;
+      var bottom = mc.scrollHeight - mc.scrollTop === mc.clientHeight;
+      if (top) mc.scrollTop = 1;
+      if (bottom) mc.scrollTop -= 1;
+    });
+  });
+});
 
 // ===== EVENT LISTENERS =====
 
