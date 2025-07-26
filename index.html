@@ -1259,7 +1259,10 @@ body.modal-open {
   function phrase(desc, isDay, temp = null, pop = null) {
   const now = new Date();
   const hr = now.getHours();
-  const darkHours = (hr < 9 || hr >= 20);
+  // Treat the period from 21:00 to 09:00 as night (per Met Office guidance)
+  // rather than switching to night at 20:00.  This keeps "sunny intervals"
+  // out of the early morning forecasts【480738903751570†L369-L371】.
+  const darkHours = (hr < 9 || hr >= 21);
 
   desc = desc.toLowerCase();
   if (darkHours && /(sun|sunshine|mostly sunny|sunny intervals)/.test(desc)) {
@@ -1296,7 +1299,21 @@ body.modal-open {
       // ==== CURRENT CONDITIONS ====
 const cur  = d.current,
       nxt  = d.hourly[1],
-      day  = cur.dt >= cur.sunrise + 3600 && cur.dt < cur.sunset - 3600,
+      // Determine whether to treat the current conditions as "day" or "night".
+      //
+      // The original code based the "day" flag on astronomical sunrise and sunset
+      // times (plus/minus one hour).  This meant that in mid‑summer the code
+      // would switch to using daytime descriptions (e.g. "Sunny intervals") as
+      // soon as an hour after sunrise, which can be as early as 6 AM in the UK.
+      // However, the Met Office defines the daytime period for its public
+      // forecast symbols as running from 09:00 until 21:00, and the nighttime
+      // period from 21:00 until 09:00【480738903751570†L369-L371】.  To avoid
+      // seeing daytime phrases like "sunny intervals" before 9 AM, we instead
+      // base the day/night decision on the local clock hour.
+      day  = (() => {
+        const hour = new Date(cur.dt * 1000).getHours();
+        return hour >= 9 && hour < 21;
+      })(),
       pop  = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null,
       desc = phrase(cur.weather[0].description, day, cur.temp, pop),
       tmp  = Math.round(cur.temp);
