@@ -1058,8 +1058,31 @@ body.modal-open {
         <span id="volume-display">100%</span>
         <button id="mute-toggle">🔊</button>
       </div>
-      <div id="now-playing-card">
+      <div id="now-playing-card" style="position: relative;">
         <div id="now-playing">Loading current track…</div>
+        <!-- Refresh button for the Now Playing box -->
+        <button
+          id="refresh-now-playing"
+          title="Refresh Now Playing"
+          aria-label="Refresh Now Playing"
+          style="
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent !important;
+            background-color: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            color: #fed351;
+            font-size: 1.3em;
+            padding: 0;
+            line-height: 1;
+            font-weight: normal;
+            cursor: pointer;
+            outline: none;
+          "
+        >↻</button>
       </div>
       <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="loaded" />
     </div>
@@ -2847,6 +2870,15 @@ document.addEventListener('visibilitychange', () => {
 });
 window.addEventListener('focus', () => {
   fetchNowPlaying();
+  fetchRecentFromGitHub();
+});
+
+// === Now Playing Manual Refresh ===
+// Attach click event to refresh button to manually refresh now playing information and the recent track list
+document.getElementById('refresh-now-playing')?.addEventListener('click', () => {
+  // Immediately fetch the latest now playing info
+  fetchNowPlaying();
+  // Also refresh the recent songs list
   fetchRecentFromGitHub();
 });
 
