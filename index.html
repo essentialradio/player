@@ -2223,16 +2223,15 @@ function renderDayScheduleModal(day, shows) {
       if (mainTitle && mainTitle.toLowerCase().includes(" with ")) {
   const idx = mainTitle.toLowerCase().indexOf(" with ");
   const showTitlePart = mainTitle.slice(0, idx);
-  const presenterNameRaw = mainTitle.slice(idx + 6).trim(); // after 'with'
+  const presenterNameRaw = mainTitle.slice(idx + 6).trim(); // after 'with '
   const presenterId = 'presenter-' + presenterNameRaw.toLowerCase()
     .replace(/[\s']/g, '-')
     .replace(/[^a-z0-9\-]/g, '');
 
   mainTitle = showTitlePart.trim();
-  presenterLine = `<a href="#" class="show-presenter" onclick="openModal('${presenterId}');return false;">${presenterNameRaw}</a>`;
+  presenterLine = `<span style="font-style: italic;">with <a href="#" class="show-presenter" onclick="openModal('${presenterId}');return false;">${presenterNameRaw}</a></span>`;
 }
-rel="noopener" class="show-presenter">${presenterName}</a>`;
-      }
+}
 
       const entry = document.createElement("div");
       entry.className = "show-entry";
