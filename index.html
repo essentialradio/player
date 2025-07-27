@@ -2219,21 +2219,23 @@ function renderDayScheduleModal(day, shows) {
   const description = show.info || "";
 
   let mainTitle = show.title || '';
-  let presenterLine = "";
+let presenterLine = "";
 
-  if (mainTitle && mainTitle.toLowerCase().includes(" with ")) {
-    const idx = mainTitle.toLowerCase().indexOf(" with ");
-    const showTitlePart = mainTitle.slice(0, idx);
-    const presenterNameRaw = mainTitle.slice(idx + 6).trim();
-    const presenterId = 'presenter-' + presenterNameRaw.toLowerCase()
-      .replace(/[\s']/g, '-')
-      .replace(/[^a-z0-9\-]/g, '');
+// Only modify presenter display inside modal
+if (mainTitle && mainTitle.toLowerCase().includes(" with ")) {
+  const idx = mainTitle.toLowerCase().indexOf(" with ");
+  const showTitlePart = mainTitle.slice(0, idx);
+  const presenterNameRaw = mainTitle.slice(idx + 6).trim(); // after 'with '
+  const presenterId = 'presenter-' + presenterNameRaw.toLowerCase()
+    .replace(/[\s']/g, '-')
+    .replace(/[^a-z0-9\-]/g, '');
 
-    mainTitle = showTitlePart.trim();
-    presenterLine = `<span style="font-style: italic;">with <a href="#" class="show-presenter" onclick="openModal('${presenterId}');return false;">${presenterNameRaw}</a></span>`;
-  } else if (presenterName) {
-    presenterLine = `<a href="${presenterLink}" target="_blank" rel="noopener" class="show-presenter">${presenterName}</a>`;
-  }
+  mainTitle = showTitlePart.trim();
+  presenterLine = `<span style="font-style: italic;">with <a href="#" class="show-presenter" onclick="openModal('${presenterId}');return false;">${presenterNameRaw}</a></span>`;
+} else if (presenterName) {
+  presenterLine = `<a href="${presenterLink}" target="_blank" rel="noopener" class="show-presenter">${presenterName}</a>`;
+}
+
 
   const block = document.createElement("div");
   block.className = "schedule-block";
