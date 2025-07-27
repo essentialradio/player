@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-12T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3471,
-    "Full Duration (s)": 3478,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-07-12T17:00:00Z",
     "Scheduled Time": "18:01",
     "Displayed Time": "",
@@ -42907,6 +42896,17 @@
     "Title": "The Pluggin' Baby Radio Show",
     "Duration (s)": 3486,
     "Full Duration (s)": 3486,
+    "Duration (mins)": 58,
+    "Full Duration (mins)": 58
+  },
+  {
+    "Hour": "2025-07-27T21:00:00Z",
+    "Scheduled Time": "22:02",
+    "Displayed Time": "",
+    "Artist": "Emma Scott",
+    "Title": "The Pluggin' Baby Radio Show",
+    "Duration (s)": 3471,
+    "Full Duration (s)": 3474,
     "Duration (mins)": 58,
     "Full Duration (mins)": 58
   }
