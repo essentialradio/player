@@ -1282,15 +1282,15 @@ body.modal-open {
   function phrase(desc, isDay, temp = null, pop = null) {
   const now = new Date();
   const hr = now.getHours();
-  // Treat the period from 21:00 to 09:00 as night (per Met Office guidance)
-  // rather than switching to night at 20:00.  This keeps "sunny intervals"
-  // out of the early morning forecasts【480738903751570†L369-L371】.
-  const darkHours = (hr < 9 || hr >= 21);
+  const darkHours = (hr < 9 || hr >= 21); // Met Office guidance
 
   desc = desc.toLowerCase();
+
+  // Suppress sunshine at night or early morning
   if (darkHours && /(sun|sunshine|mostly sunny|sunny intervals)/.test(desc)) {
     return 'Clear';
   }
+
   if (desc.includes('thunder')) return 'Thunderstorm';
   if (desc.includes('snow') && (!temp || temp < 5)) return 'Snow';
   if (desc.includes('snow') && temp && temp >= 5) return 'Showers';
@@ -1302,14 +1302,21 @@ body.modal-open {
   if (desc.includes('mist'))  return 'Misty';
   if (desc.includes('haze'))  return 'Hazy';
   if (desc.includes('smoke')) return 'Smoky';
-  if (desc === 'clear sky')   return isDay ? 'Sunny' : 'Clear';
-  if (desc.includes('few clouds'))       return isDay ? 'Mostly sunny' : 'Mainly clear';
-  if (desc.includes('scattered clouds')) return isDay ? 'Partly cloudy' : 'Some cloud';
-  if (desc.includes('broken clouds'))    return isDay ? 'Sunny intervals' : 'Cloudy';
+
+  // Sunshine logic (strict)
+  if (desc === 'clear sky')              return isDay ? 'Sunny' : 'Clear';
+  if (desc.includes('few clouds'))       return isDay ? 'Bright with sun' : 'Mainly clear';
+  if (desc.includes('scattered clouds')) return isDay ? 'Bright spells' : 'Some cloud';
+  if (desc.includes('broken clouds'))    return isDay ? 'Bright intervals' : 'Cloudy';
   if (desc.includes('overcast'))         return 'Overcast';
+
+  // Catch unhandled bright cases
   if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
-  return isDay ? 'Fair' : 'Calm';
+
+  // Fallbacks
+  return isDay ? 'Bright' : 'Calm';
 }
+
 
   async function update() {
     const [label, lat, lon] = locSel.value.split(',');
