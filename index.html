@@ -2906,22 +2906,25 @@ function openModal(id) {
   checkOverlayLogo();
 }
 
-function closeModal(id) {
-  if (id) document.getElementById(id).style.display = 'none';
-  else {
-    // closes any open modal
-    document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-  }
-  document.body.classList.remove('modal-open');
-  checkOverlayLogo();
+function openPresenterModalFromSchedule(presenterId) {
+      window.returnToScheduleModal = true;
+      closeAllModals();
+      openModal(presenterId);
+    }
 
-  // If we just closed a presenter modal and the flag is set, show schedule again
-  if (window.returnToScheduleModal) {
-    window.returnToScheduleModal = false;
-    openModal('scheduleModal');
-  }
-}
+    function closeModal(id) {
+      if (id) document.getElementById(id).style.display = 'none';
+      else {
+        document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+      }
+      document.body.classList.remove('modal-open');
+      checkOverlayLogo();
 
+      if (window.returnToScheduleModal) {
+        window.returnToScheduleModal = false;
+        openModal('scheduleModal');
+      }
+    }
 
 function closeAllModals() {
   document.querySelectorAll('.modal').forEach(function(modal) {
@@ -3022,19 +3025,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   fetchRecentFromGitHub();
 });
 
-// When opening a presenter modal from the schedule modal:
-function openPresenterModalFromSchedule(presenterId) {
-  window.returnToScheduleModal = true;
-  closeAllModals();
-  openModal(presenterId);
-}
 
-// Use this in your schedule rendering:
-// Instead of: titleEl.addEventListener("click", () => { closeModal(); openModal(presenterIdForModal); });
-// Use:
-titleEl.addEventListener("click", () => {
-  openPresenterModalFromSchedule(presenterIdForModal);
-});
 
 
 
