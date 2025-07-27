@@ -2212,41 +2212,46 @@ function renderDayScheduleModal(day, shows) {
   [leftShows, rightShows].forEach((group, i) => {
     const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
     group.forEach(show => {
-      const presenter = show.presenter || {};
-      const presenterImg = presenter.photo || "images/presenters/default.jpg";
-      const presenterName = presenter.name || "";
-      const presenterLink = presenter.bio || "#";
-      const description = show.info || "";
+  const presenter = show.presenter || {};
+  const presenterImg = presenter.photo || "images/presenters/default.jpg";
+  const presenterName = presenter.name || "";
+  const presenterLink = presenter.bio || "#";
+  const description = show.info || "";
 
-      let mainTitle = show.title || '';
-      let presenterLine = "";
-      if (mainTitle && mainTitle.toLowerCase().includes(" with ")) {
-  const idx = mainTitle.toLowerCase().indexOf(" with ");
-  const showTitlePart = mainTitle.slice(0, idx);
-  const presenterNameRaw = mainTitle.slice(idx + 6).trim(); // after 'with '
-  const presenterId = 'presenter-' + presenterNameRaw.toLowerCase()
-    .replace(/[\s']/g, '-')
-    .replace(/[^a-z0-9\-]/g, '');
+  let mainTitle = show.title || '';
+  let presenterLine = "";
 
-  mainTitle = showTitlePart.trim();
-  presenterLine = `<span style="font-style: italic;">with <a href="#" class="show-presenter" onclick="openModal('${presenterId}');return false;">${presenterNameRaw}</a></span>`;
-}
-}
+  if (mainTitle && mainTitle.toLowerCase().includes(" with ")) {
+    const idx = mainTitle.toLowerCase().indexOf(" with ");
+    const showTitlePart = mainTitle.slice(0, idx);
+    const presenterNameRaw = mainTitle.slice(idx + 6).trim();
+    const presenterId = 'presenter-' + presenterNameRaw.toLowerCase()
+      .replace(/[\s']/g, '-')
+      .replace(/[^a-z0-9\-]/g, '');
 
-      const entry = document.createElement("div");
-      entry.className = "show-entry";
-      entry.innerHTML = `
-        <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
-        <div class="show-info">
-          <time>${show.start}–${show.end}</time>
-          <div class="show-title-presenter">
-            <span class="show-title">${mainTitle}</span>
-            ${presenterLine}
-          </div>
-          <div class="show-details">${description}</div>
-        </div>`;
-      col.appendChild(entry);
-    });
+    mainTitle = showTitlePart.trim();
+    presenterLine = `<span style="font-style: italic;">with <a href="#" class="show-presenter" onclick="openModal('${presenterId}');return false;">${presenterNameRaw}</a></span>`;
+  } else if (presenterName) {
+    presenterLine = `<a href="${presenterLink}" target="_blank" rel="noopener" class="show-presenter">${presenterName}</a>`;
+  }
+
+  const block = document.createElement("div");
+  block.className = "schedule-block";
+
+  block.innerHTML = `
+    <div class="schedule-block-inner">
+      <div class="show-time">${show.time}</div>
+      <div class="show-info">
+        <div class="show-title">${mainTitle}</div>
+        <div class="show-presenter-line">${presenterLine}</div>
+        ${description ? `<div class="show-description">${description}</div>` : ""}
+      </div>
+    </div>
+  `;
+
+  col.appendChild(block);
+});
+
   });
 }
 
