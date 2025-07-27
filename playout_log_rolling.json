@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-07-12T17:00:00Z",
-    "Scheduled Time": "18:01",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1372,
-    "Full Duration (s)": 1377,
-    "Duration (mins)": 23,
-    "Full Duration (mins)": 23
-  },
-  {
-    "Hour": "2025-07-12T17:00:00Z",
-    "Scheduled Time": "18:26",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 970,
-    "Full Duration (s)": 973,
-    "Duration (mins)": 16,
-    "Full Duration (mins)": 16
-  },
-  {
-    "Hour": "2025-07-12T17:00:00Z",
-    "Scheduled Time": "18:43",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1052,
-    "Full Duration (s)": 1054,
-    "Duration (mins)": 18,
-    "Full Duration (mins)": 18
-  },
-  {
     "Hour": "2025-07-12T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "",
@@ -42909,5 +42876,16 @@
     "Full Duration (s)": 3474,
     "Duration (mins)": 58,
     "Full Duration (mins)": 58
+  },
+  {
+    "Hour": "2025-07-27T22:00:00Z",
+    "Scheduled Time": "23:00",
+    "Displayed Time": "",
+    "Artist": "Dave Watkins",
+    "Title": "The Country Mile",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
