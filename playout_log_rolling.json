@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Pointless",
-    "Duration (s)": 224,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:06",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:08",
-    "Displayed Time": "",
-    "Artist": "KT Tunstall",
-    "Title": "Black Horse And The Cherry Tree",
-    "Duration (s)": 162,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:12",
-    "Displayed Time": "",
-    "Artist": "Sam Fender & Olivia Dean",
-    "Title": "Rein Me In",
-    "Duration (s)": 229,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:16",
-    "Displayed Time": "",
-    "Artist": "Tina Turner",
-    "Title": "Typical Male",
-    "Duration (s)": 238,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:23",
-    "Displayed Time": "",
-    "Artist": "Tom Walker",
-    "Title": "Serotonin",
-    "Duration (s)": 171,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:26",
-    "Displayed Time": "",
-    "Artist": "Mariah Carey",
-    "Title": "Dreamlover",
-    "Duration (s)": 224,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:31",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:34",
-    "Displayed Time": "",
-    "Artist": "Wet Wet Wet",
-    "Title": "Sweet Little Mystery",
-    "Duration (s)": 208,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:42",
-    "Displayed Time": "",
-    "Artist": "Lola Young",
-    "Title": "Messy",
-    "Duration (s)": 190,
-    "Full Duration (s)": 284,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:45",
-    "Displayed Time": "",
-    "Artist": "Cat Burns",
-    "Title": "Girls!",
-    "Duration (s)": 132,
-    "Full Duration (s)": 142,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:47",
-    "Displayed Time": "",
-    "Artist": "The Cardigans",
-    "Title": "Erase/Rewind",
-    "Duration (s)": 207,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:51",
-    "Displayed Time": "",
-    "Artist": "James Morrison",
-    "Title": "Fight Another Day",
-    "Duration (s)": 218,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-12T10:00:00Z",
-    "Scheduled Time": "11:54",
-    "Displayed Time": "",
-    "Artist": "Passenger",
-    "Title": "Let Her Go",
-    "Duration (s)": 208,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-12T11:00:00Z",
     "Scheduled Time": "12:01",
     "Displayed Time": "",
@@ -43195,5 +43041,16 @@
     "Full Duration (s)": 3591,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-07-27T18:00:00Z",
+    "Scheduled Time": "18:59",
+    "Displayed Time": "",
+    "Artist": "Kevin McCallum",
+    "Title": "Mr Rocks Show",
+    "Duration (s)": 7198,
+    "Full Duration (s)": 7204,
+    "Duration (mins)": 120,
+    "Full Duration (mins)": 120
   }
 ]
