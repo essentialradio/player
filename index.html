@@ -996,6 +996,7 @@ body.modal-open {
   display: block;
 }
 
+
 </style>
 </head>
 <body>
@@ -1270,6 +1271,9 @@ body.modal-open {
 
 <!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL) === -->
 <script>
+
+let scheduleWasOpen = false;
+
 (() => {
   const KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
 
@@ -2903,11 +2907,21 @@ function openModal(id) {
 }
 
 function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-  // Restore scrolling when a modal closes
+  if (id) document.getElementById(id).style.display = 'none';
+  else {
+    // closes any open modal
+    document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+  }
   document.body.classList.remove('modal-open');
   checkOverlayLogo();
+
+  // If we just closed a presenter modal and the flag is set, show schedule again
+  if (window.returnToScheduleModal) {
+    window.returnToScheduleModal = false;
+    openModal('scheduleModal');
+  }
 }
+
 
 function closeAllModals() {
   document.querySelectorAll('.modal').forEach(function(modal) {
@@ -3007,6 +3021,14 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   // Also refresh the recent songs list
   fetchRecentFromGitHub();
 });
+
+// When opening a presenter modal from the schedule modal:
+function openPresenterModalFromSchedule(presenterId) {
+  window.returnToScheduleModal = true;
+  closeAllModals();
+  openModal(presenterId);
+}
+
 
 
 </script>
