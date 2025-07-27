@@ -996,7 +996,6 @@ body.modal-open {
   display: block;
 }
 
-
 </style>
 </head>
 <body>
@@ -1271,9 +1270,6 @@ body.modal-open {
 
 <!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL) === -->
 <script>
-
-let scheduleWasOpen = false;
-
 (() => {
   const KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
 
@@ -2906,25 +2902,12 @@ function openModal(id) {
   checkOverlayLogo();
 }
 
-function openPresenterModalFromSchedule(presenterId) {
-      window.returnToScheduleModal = true;
-      closeAllModals();
-      openModal(presenterId);
-    }
-
-    function closeModal(id) {
-      if (id) document.getElementById(id).style.display = 'none';
-      else {
-        document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-      }
-      document.body.classList.remove('modal-open');
-      checkOverlayLogo();
-
-      if (window.returnToScheduleModal) {
-        window.returnToScheduleModal = false;
-        openModal('scheduleModal');
-      }
-    }
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+  // Restore scrolling when a modal closes
+  document.body.classList.remove('modal-open');
+  checkOverlayLogo();
+}
 
 function closeAllModals() {
   document.querySelectorAll('.modal').forEach(function(modal) {
@@ -3024,10 +3007,6 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   // Also refresh the recent songs list
   fetchRecentFromGitHub();
 });
-
-
-
-
 
 
 </script>
