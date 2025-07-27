@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-07-11T18:00:00Z",
-    "Scheduled Time": "19:01",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1040,
-    "Full Duration (s)": 1043,
-    "Duration (mins)": 17,
-    "Full Duration (mins)": 17
-  },
-  {
-    "Hour": "2025-07-11T18:00:00Z",
-    "Scheduled Time": "19:19",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1485,
-    "Full Duration (s)": 1488,
-    "Duration (mins)": 25,
-    "Full Duration (mins)": 25
-  },
-  {
     "Hour": "2025-07-11T19:00:00Z",
     "Scheduled Time": "20:03",
     "Displayed Time": "",
@@ -43151,5 +43129,16 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-07-27T00:00:00Z",
+    "Scheduled Time": "01:02",
+    "Displayed Time": "",
+    "Artist": "Jessie J",
+    "Title": "Living My Best Life",
+    "Duration (s)": 173,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
