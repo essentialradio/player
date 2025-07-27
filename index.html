@@ -3029,6 +3029,14 @@ function openPresenterModalFromSchedule(presenterId) {
   openModal(presenterId);
 }
 
+// Use this in your schedule rendering:
+// Instead of: titleEl.addEventListener("click", () => { closeModal(); openModal(presenterIdForModal); });
+// Use:
+titleEl.addEventListener("click", () => {
+  openPresenterModalFromSchedule(presenterIdForModal);
+});
+
+
 
 
 </script>
