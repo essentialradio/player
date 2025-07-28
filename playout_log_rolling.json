@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-13T14:00:00Z",
-    "Scheduled Time": "14:59",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3481,
-    "Full Duration (s)": 3481,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-07-13T15:00:00Z",
     "Scheduled Time": "16:02",
     "Displayed Time": "",
@@ -43370,6 +43359,17 @@
     "Duration (s)": 244,
     "Full Duration (s)": 252,
     "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-28T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "",
+    "Artist": "Chic",
+    "Title": "Le Freak",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
 ]
