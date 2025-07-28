@@ -2895,6 +2895,7 @@ function checkOverlayLogo() {
 
 // ===== MODAL & BURGER MENU CONTROL =====
 function openModal(id) {
+  closeAllModals();
   document.getElementById(id).style.display = 'block';
   // Prevent background from scrolling when a modal opens
   document.body.classList.add('modal-open');
