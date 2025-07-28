@@ -2286,13 +2286,6 @@ col.appendChild(entry);
     });
 }
 
-document.querySelectorAll('.modal-trigger').forEach(el => {
-  el.addEventListener('click', function (e) {
-    e.preventDefault();
-    const modalId = this.dataset.modalId;
-    if (modalId) openModal(modalId);
-  });
-});
 
 
     modalDaySelect.addEventListener("change", () => {
@@ -2310,6 +2303,15 @@ document.querySelectorAll('.modal-trigger').forEach(el => {
       }
     });
   })();
+
+document.querySelectorAll('.modal-trigger').forEach(el => {
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    const modalId = this.dataset.modalId;
+    if (modalId) openModal(modalId);
+  });
+});
+
   </script>
 
   <!-- PLAYER SCRIPTS (UNCHANGED) -->
