@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-13T22:00:00Z",
-    "Scheduled Time": "23:00",
-    "Displayed Time": "",
-    "Artist": "Dave Watkins",
-    "Title": "The Country Mile",
-    "Duration (s)": 3599,
-    "Full Duration (s)": 3601,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-13T23:00:00Z",
     "Scheduled Time": "00:02",
     "Displayed Time": "",
@@ -44019,6 +44008,17 @@
     "Duration (s)": 208,
     "Full Duration (s)": 214,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-28T23:00:00Z",
+    "Scheduled Time": "00:01",
+    "Displayed Time": "",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 214,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
