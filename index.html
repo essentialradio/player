@@ -2239,7 +2239,9 @@ function renderDayScheduleModal(day, shows) {
           const presenterNameRaw = mainTitle.slice(idx + 6).trim();
           // Build presenter ID by slugifying the presenter name
           presenterIdForModal = 'presenter-' + presenterNameRaw.toLowerCase()
-            .replace(/[\s']/g, '-')
+            .replace(/[’‘‛`´]/g, "'") // normalize curly quotes to '
+		.replace(/[\s']/g, '-')    // then slugify
+
             .replace(/[^a-z0-9\-]/g, '');
           // Update mainTitle to only include the show title part
           mainTitle = showTitlePart.trim();
@@ -2726,7 +2728,7 @@ function refreshCombinedTravel() {
 <div id="presenter-scott-ohare" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-scott-ohare')">&times;</span>
-    <h2>Scott OHare</h2>
+    <h2>Scott O'Hare</h2>
     <p>Scott eases you out of the workday on <strong>Essential Hometime</strong>, with upbeat tunes, campus updates and his trademark dry wit.</p>
   </div>
 </div>
