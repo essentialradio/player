@@ -1,82 +1,5 @@
 [
   {
-    "Hour": "2025-07-13T07:00:00Z",
-    "Scheduled Time": "08:01",
-    "Displayed Time": "",
-    "Artist": "Mabel",
-    "Title": "Don't Call Me Up",
-    "Duration (s)": 175,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-13T07:00:00Z",
-    "Scheduled Time": "08:05",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-13T07:00:00Z",
-    "Scheduled Time": "08:07",
-    "Displayed Time": "",
-    "Artist": "The Killers",
-    "Title": "Read My Mind",
-    "Duration (s)": 233,
-    "Full Duration (s)": 241,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-13T07:00:00Z",
-    "Scheduled Time": "08:11",
-    "Displayed Time": "",
-    "Artist": "Queen",
-    "Title": "I Want to Break Free",
-    "Duration (s)": 238,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-13T07:00:00Z",
-    "Scheduled Time": "08:20",
-    "Displayed Time": "",
-    "Artist": "HAIM",
-    "Title": "Down To Be Wrong",
-    "Duration (s)": 233,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-13T07:00:00Z",
-    "Scheduled Time": "08:24",
-    "Displayed Time": "",
-    "Artist": "Kings of Leon",
-    "Title": "Supersoaker",
-    "Duration (s)": 217,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-13T07:00:00Z",
-    "Scheduled Time": "08:27",
-    "Displayed Time": "",
-    "Artist": "Urban Cookie Collective",
-    "Title": "The Key, the Secret",
-    "Duration (s)": 206,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-13T08:00:00Z",
     "Scheduled Time": "09:02",
     "Displayed Time": "",
@@ -43195,5 +43118,16 @@
     "Full Duration (s)": 273,
     "Duration (mins)": 4,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-07-28T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Jessie J",
+    "Title": "Living My Best Life",
+    "Duration (s)": 173,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
