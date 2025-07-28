@@ -2238,11 +2238,12 @@ function renderDayScheduleModal(day, shows) {
           const showTitlePart = mainTitle.slice(0, idx);
           const presenterNameRaw = mainTitle.slice(idx + 6).trim();
           // Build presenter ID by slugifying the presenter name
-          presenterIdForModal = 'presenter-' + presenterNameRaw.toLowerCase()
-            .replace(/[’‘‛`´]/g, "'") // normalize curly quotes to '
-		.replace(/[\s']/g, '-')    // then slugify
+          presenterIdForModal = 'presenter-' + presenterNameRaw
+  .replace(/[’‘‛`´]/g, "'")         // fix curly apostrophes and quotes
+  .toLowerCase()
+  .replace(/[\s']/g, '-')           // replace space and straight apostrophe with hyphen
+  .replace(/[^a-z0-9\-]/g, '');     // remove anything else non-safe
 
-            .replace(/[^a-z0-9\-]/g, '');
           // Update mainTitle to only include the show title part
           mainTitle = showTitlePart.trim();
           // Build the presenter line (plain text, italicised) without a link
