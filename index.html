@@ -2244,7 +2244,7 @@ function renderDayScheduleModal(day, shows) {
           // Update mainTitle to only include the show title part
           mainTitle = showTitlePart.trim();
           // Build the presenter line (plain text, italicised) without a link
-          presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
+          presenterLine = `<a href="#" class="show-presenter" style="font-style: italic;" onclick="openModal('${presenterIdForModal}', true); return false;">${presenterNameRaw}</a>`;
         } else if (presenterName) {
           // If a presenter object is provided but no 'with' in the title,
           // still slugify the name so clicking the show title can open the modal
@@ -2252,7 +2252,7 @@ function renderDayScheduleModal(day, shows) {
             .replace(/[\s']/g, '-')
             .replace(/[^a-z0-9\-]/g, '');
           // Show the presenter name italicised (no link)
-          presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
+          presenterLine = `<a href="#" class="show-presenter" style="font-style: italic;" onclick="openModal('${presenterIdForModal}', true); return false;">${presenterName}</a>`;
         }
 
         // Determine how to render the main title: clickable if we have a modal presenter ID
@@ -2897,19 +2897,23 @@ function checkOverlayLogo() {
 }
 
 // ===== MODAL & BURGER MENU CONTROL =====
-function openModal(id) {
-  closeAllModals();
+function openModal(id, keepSchedule = false) {
+  closeAllModals(keepSchedule);
   document.getElementById(id).style.display = 'block';
-  // Prevent background from scrolling when a modal opens
   document.body.classList.add('modal-open');
   checkOverlayLogo();
 }
 
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-  // Restore scrolling when a modal closes
+function closeAllModals(keepSchedule = false) {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    // If keepSchedule is true, skip closing the scheduleModal
+    if (keepSchedule && modal.id === 'scheduleModal') return;
+    modal.style.display = 'none';
+  });
   document.body.classList.remove('modal-open');
   checkOverlayLogo();
+}
+
 }
 
 function closeAllModals() {
