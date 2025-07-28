@@ -2258,7 +2258,7 @@ function renderDayScheduleModal(day, shows) {
         // Determine how to render the main title: clickable if we have a modal presenter ID
         let mainTitleHtml;
         if (presenterIdForModal) {
-          mainTitleHtml = `<a href="#" onclick="openModalbyname('${presenterIdForModal}');return false;" class="show-title">${mainTitle}</a>`;
+          mainTitleHtml = `<a href="#" onclick="openModal('${presenterIdForModal}');return false;" class="show-title">${mainTitle}</a>`;
         } else {
           mainTitleHtml = `<span class="show-title">${mainTitle}</span>`;
         }
@@ -2723,7 +2723,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-scott-ohare" class="modal presenter-modal">
+<div id="presenter-scott-o'hare" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-scott-ohare')">&times;</span>
     <h2>Scott O’Hare</h2>
@@ -2896,22 +2896,6 @@ function checkOverlayLogo() {
     showLogo();
   }
 }
-
-// 🔧 Paste here:
-  function generateModalId(name) {
-    return 'presenter-' + name
-      .toLowerCase()
-      .replace(/[’'‘]/g, '')         // remove curly or straight apostrophes
-      .replace(/[^a-z0-9]+/g, '-')   // replace non-alphanumerics with hyphen
-      .replace(/^-+|-+$/g, '')       // trim hyphens
-      .replace(/--+/g, '-');         // collapse double hyphens
-  }
-
-function openModalByName(name) {
-  const id = generateModalId(name);
-  openModal(id);
-}
-
 
 function openModal(id) {
   document.getElementById(id).style.display = 'block';
