@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-13T15:00:00Z",
-    "Scheduled Time": "16:02",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3590,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-13T18:00:00Z",
     "Scheduled Time": "19:00",
     "Displayed Time": "",
@@ -43491,6 +43480,17 @@
     "Duration (s)": 206,
     "Full Duration (s)": 227,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-28T19:00:00Z",
+    "Scheduled Time": "20:01",
+    "Displayed Time": "",
+    "Artist": "Go West",
+    "Title": "We Close Our Eyes",
+    "Duration (s)": 218,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
