@@ -995,6 +995,9 @@ body.modal-open {
   margin-bottom: 4px;
   display: block;
 }
+.presenter-modal {
+  z-index: 2100 !important;
+}
 
 </style>
 </head>
@@ -2702,9 +2705,9 @@ function refreshCombinedTravel() {
   iframe.src = "https://travel-ac.vercel.app/Current_Combined_Travel_Report.html?ts=" + Date.now();
 }
 </script>
-<!-- ✅ FULL PRESENTER MODALS -->
+<!-- ✅ FULL PRESENTER MODALS - now with presenter-modal class -->
 
-<div id="presenter-paul-woodland" class="modal">
+<div id="presenter-paul-woodland" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-paul-woodland')">&times;</span>
     <h2>Paul Woodland</h2>
@@ -2712,7 +2715,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-bex-mcnamee" class="modal">
+<div id="presenter-bex-mcnamee" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-bex-mcnamee')">&times;</span>
     <h2>Bex McNamee</h2>
@@ -2720,7 +2723,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-scott-ohare" class="modal">
+<div id="presenter-scott-ohare" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-scott-ohare')">&times;</span>
     <h2>Scott O’Hare</h2>
@@ -2728,7 +2731,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-faith-montgomery" class="modal">
+<div id="presenter-faith-montgomery" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-faith-montgomery')">&times;</span>
     <h2>Faith Montgomery</h2>
@@ -2736,7 +2739,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-lee-everest" class="modal">
+<div id="presenter-lee-everest" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-lee-everest')">&times;</span>
     <h2>Lee Everest</h2>
@@ -2744,7 +2747,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-ronny-costello" class="modal">
+<div id="presenter-ronny-costello" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-ronny-costello')">&times;</span>
     <h2>Ronny Costello</h2>
@@ -2752,7 +2755,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-davy-sims" class="modal">
+<div id="presenter-davy-sims" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-davy-sims')">&times;</span>
     <h2>Davy Sims</h2>
@@ -2760,7 +2763,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-big-tommy" class="modal">
+<div id="presenter-big-tommy" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-big-tommy')">&times;</span>
     <h2>Big Tommy</h2>
@@ -2768,7 +2771,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-jan-cave" class="modal">
+<div id="presenter-jan-cave" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-jan-cave')">&times;</span>
     <h2>Jan Cave</h2>
@@ -2776,7 +2779,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-tim-graham" class="modal">
+<div id="presenter-tim-graham" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-tim-graham')">&times;</span>
     <h2>Tim Graham</h2>
@@ -2784,7 +2787,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-stephen-howie" class="modal">
+<div id="presenter-stephen-howie" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-stephen-howie')">&times;</span>
     <h2>Stephen Howie</h2>
@@ -2792,7 +2795,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-tommy-martin" class="modal">
+<div id="presenter-tommy-martin" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-tommy-martin')">&times;</span>
     <h2>Tommy Martin</h2>
@@ -2800,7 +2803,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-bill-grainger" class="modal">
+<div id="presenter-bill-grainger" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-bill-grainger')">&times;</span>
     <h2>Bill Grainger</h2>
@@ -2808,7 +2811,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-spencer-james" class="modal">
+<div id="presenter-spencer-james" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-spencer-james')">&times;</span>
     <h2>Spencer James</h2>
@@ -2816,7 +2819,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-kevin-mccallum" class="modal">
+<div id="presenter-kevin-mccallum" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-kevin-mccallum')">&times;</span>
     <h2>Kevin McCallum</h2>
@@ -2824,7 +2827,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-emma-scott" class="modal">
+<div id="presenter-emma-scott" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-emma-scott')">&times;</span>
     <h2>Emma Scott</h2>
@@ -2832,7 +2835,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-dave-watkins" class="modal">
+<div id="presenter-dave-watkins" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-dave-watkins')">&times;</span>
     <h2>Dave Watkins</h2>
@@ -2840,13 +2843,14 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
-<div id="presenter-brian-woolfson" class="modal">
+<div id="presenter-brian-woolfson" class="modal presenter-modal">
   <div class="modal-content" style="max-width:600px;">
     <span class="close" onclick="closeModal('presenter-brian-woolfson')">&times;</span>
     <h2>Brian Woolfson</h2>
     <p>Brian hosts <strong>Retro Charts</strong>, digging into the hits of the past with trivia, stats and pop facts galore – a must for chart fans.</p>
   </div>
 </div>
+
 
 </body>
 <script>
@@ -2893,19 +2897,18 @@ function checkOverlayLogo() {
   }
 }
 
-// ===== MODAL & BURGER MENU CONTROL =====
 function openModal(id) {
-  closeAllModals();
   document.getElementById(id).style.display = 'block';
-  // Prevent background from scrolling when a modal opens
   document.body.classList.add('modal-open');
   checkOverlayLogo();
 }
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
-  // Restore scrolling when a modal closes
-  document.body.classList.remove('modal-open');
+  // Only remove modal-open if no modals are open
+  if (![...document.querySelectorAll('.modal')].some(m => m.style.display === 'block')) {
+    document.body.classList.remove('modal-open');
+  }
   checkOverlayLogo();
 }
 
@@ -2913,7 +2916,6 @@ function closeAllModals() {
   document.querySelectorAll('.modal').forEach(function(modal) {
     modal.style.display = 'none';
   });
-  // Ensure body can scroll after all modals close
   document.body.classList.remove('modal-open');
   checkOverlayLogo();
 }
@@ -2931,7 +2933,6 @@ function toggleBurgerMenu() {
   }
 }
 
-// For burger menu links that open a modal
 function openModalAndCloseBurger(id) {
   closeBurgerMenu();
   openModal(id);
@@ -2947,7 +2948,10 @@ document.addEventListener('click', function(event) {
   document.querySelectorAll('.modal').forEach(function(modal) {
     if (event.target === modal) {
       modal.style.display = 'none';
-      document.body.classList.remove('modal-open');
+      // Only remove modal-open if no modals left open
+      if (![...document.querySelectorAll('.modal')].some(m => m.style.display === 'block')) {
+        document.body.classList.remove('modal-open');
+      }
       checkOverlayLogo();
     }
   });
@@ -2964,6 +2968,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
 
 // ===== EVENT LISTENERS =====
 
