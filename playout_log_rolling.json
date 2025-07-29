@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-14T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3399,
-    "Full Duration (s)": 3402,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-07-14T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44305,6 +44294,17 @@
     "Duration (s)": 205,
     "Full Duration (s)": 221,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-29T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
