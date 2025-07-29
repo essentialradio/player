@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "",
-    "Artist": "Olivia Rodrigo",
-    "Title": "Drivers License",
-    "Duration (s)": 238,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:08",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 156,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:11",
-    "Displayed Time": "",
-    "Artist": "Meat Loaf",
-    "Title": "Dead Ringer for Love",
-    "Duration (s)": 252,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:15",
-    "Displayed Time": "",
-    "Artist": "*NSYNC",
-    "Title": "Bye Bye Bye",
-    "Duration (s)": 189,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:22",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "It Isn't Perfect But It Might Be (From \"Bridget Jones: Mad About The Boy\")",
-    "Duration (s)": 206,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:25",
-    "Displayed Time": "",
-    "Artist": "Sandi Thom",
-    "Title": "I Wish I Was a Punk Rocker (With Flowers in My Hair)",
-    "Duration (s)": 143,
-    "Full Duration (s)": 148,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:28",
-    "Displayed Time": "",
-    "Artist": "JADE",
-    "Title": "Plastic Box",
-    "Duration (s)": 193,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:31",
-    "Displayed Time": "",
-    "Artist": "DJ Snake ft Justin Bieber",
-    "Title": "Let Me Love You",
-    "Duration (s)": 194,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:34",
-    "Displayed Time": "",
-    "Artist": "Wunderhorse",
-    "Title": "The Rope",
-    "Duration (s)": 181,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:39",
-    "Displayed Time": "",
-    "Artist": "The Bee Gees",
-    "Title": "Stayin' Alive",
-    "Duration (s)": 267,
-    "Full Duration (s)": 281,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:44",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 172,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:47",
-    "Displayed Time": "",
-    "Artist": "Inhaler",
-    "Title": "A Question Of You",
-    "Duration (s)": 212,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:50",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Kiss Me",
-    "Duration (s)": 212,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-14T12:00:00Z",
-    "Scheduled Time": "13:54",
-    "Displayed Time": "",
-    "Artist": "Nicki Minaj",
-    "Title": "Starships",
-    "Duration (s)": 208,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-14T13:00:00Z",
     "Scheduled Time": "14:01",
     "Displayed Time": "",
@@ -44381,6 +44227,17 @@
     "Title": "Don't Call Me Up",
     "Duration (s)": 175,
     "Full Duration (s)": 179,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-29T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "",
+    "Artist": "Tate McRae",
+    "Title": "Sports Car",
+    "Duration (s)": 163,
+    "Full Duration (s)": 165,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
