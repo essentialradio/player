@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-13T23:00:00Z",
-    "Scheduled Time": "00:02",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3397,
-    "Full Duration (s)": 3401,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-07-14T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -44161,6 +44150,17 @@
     "Title": "Big Girls Don't Cry",
     "Duration (s)": 254,
     "Full Duration (s)": 257,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-29T00:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "",
+    "Artist": "Pink",
+    "Title": "Beautiful Trauma",
+    "Duration (s)": 239,
+    "Full Duration (s)": 250,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
