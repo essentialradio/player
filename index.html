@@ -2233,29 +2233,20 @@ function renderDayScheduleModal(day, shows) {
         let mainTitle = show.title || '';
         let presenterLine = '';
         let presenterIdForModal = null;
+// If the show title includes "with", split it and use the presenter part for the modal
+if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
+  const idx = mainTitle.toLowerCase().indexOf(' with ');
+  const showTitlePart = mainTitle.slice(0, idx);
+  const presenterNameRaw = mainTitle.slice(idx + 6).trim();
+  // Use normalised presenter name for modal ID
+  presenterIdForModal = 'presenter-' + normaliseName(presenterNameRaw);
+  mainTitle = showTitlePart.trim();
+  presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
+} else if (presenterName) {
+  presenterIdForModal = 'presenter-' + normaliseName(presenterName);
+  presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
+}
 
-        // If the show title includes "with", split it and use the presenter part for the modal
-        if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
-          const idx = mainTitle.toLowerCase().indexOf(' with ');
-          const showTitlePart = mainTitle.slice(0, idx);
-          const presenterNameRaw = mainTitle.slice(idx + 6).trim();
-          // Build presenter ID by slugifying the presenter name
-          presenterIdForModal = 'presenter-' + presenterNameRaw.toLowerCase()
-            .replace(/[\s']/g, '-')
-            .replace(/[^a-z0-9\-]/g, '');
-          // Update mainTitle to only include the show title part
-          mainTitle = showTitlePart.trim();
-          // Build the presenter line (plain text, italicised) without a link
-          presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
-        } else if (presenterName) {
-          // If a presenter object is provided but no 'with' in the title,
-          // still slugify the name so clicking the show title can open the modal
-          presenterIdForModal = 'presenter-' + presenterName.toLowerCase()
-            .replace(/[\s']/g, '-')
-            .replace(/[^a-z0-9\-]/g, '');
-          // Show the presenter name italicised (no link)
-          presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
-        }
 
         // Determine how to render the main title: clickable if we have a modal presenter ID
         let mainTitleHtml;
@@ -2886,6 +2877,13 @@ function updateLiveClock() {
     setInterval(updateLiveClock, 1000);
 
 // ===== LOGO SHOW/HIDE HELPERS =====
+function normaliseName(name) {
+  return name
+    .toLowerCase()
+    .replace(/[’']/g, '')      // strip curly and straight apostrophes
+    .replace(/\s+/g, '-')      // convert spaces to dashes
+    .replace(/[^a-z0-9\-]/g, ''); // remove anything else
+}
 function showLogo() {
   const logo = document.querySelector('.logo-overhang');
   if (logo) logo.classList.remove('logo-hide');
