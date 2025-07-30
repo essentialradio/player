@@ -2224,7 +2224,9 @@ function renderDayScheduleModal(day, shows) {
       const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
       group.forEach(show => {
         const presenter = show.presenter || {};
-        const presenterImg = presenter.photo || "images/presenters/default.jpg";
+        const presenterSlug = presenterName.toLowerCase().replace(/[\s']/g, '-').replace(/[^a-z0-9\-]/g, '');
+const presenterImg = `${presenterSlug}.jpg`;
+
         const presenterName = presenter.name || "";
         const presenterLink = presenter.bio || "#";
         const description = show.info || "";
