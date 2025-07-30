@@ -2223,57 +2223,48 @@ function renderDayScheduleModal(day, shows) {
   [leftShows, rightShows].forEach((group, i) => {
   const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
   group.forEach(show => {
-    const presenter = show.presenter || {};
-    const presenterName = presenter.name || "";
-    const presenterSlug = presenterName.replace(/[\s']/g, '-').replace(/[^a-zA-Z0-9\-]/g, '');
-	const presenterImg = `images/presenters/${presenterSlug}.jpg`;
-    const presenterLink = presenter.bio || "#";
-    const description = show.info || "";
+  const presenter = show.presenter || {};
+  let presenterName = presenter.name || "";
+  let mainTitle = show.title || '';
+  let presenterLine = '';
+  let presenterIdForModal = null;
 
-    // Extract show title and presenter details
-    let mainTitle = show.title || '';
-    let presenterLine = '';
-    let presenterIdForModal = null;
+  // If the show title includes "with", split it and use the presenter part for the modal
+  if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
+    const idx = mainTitle.toLowerCase().indexOf(' with ');
+    const showTitlePart = mainTitle.slice(0, idx);
+    const presenterNameRaw = mainTitle.slice(idx + 6).trim();
+    presenterName = presenterNameRaw;  // ✅ update presenterName used below
+    presenterIdForModal = 'presenter-' + normaliseName(presenterNameRaw);
+    mainTitle = showTitlePart.trim();
+    presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
+  } else if (presenterName) {
+    presenterIdForModal = 'presenter-' + normaliseName(presenterName);
+    presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
+  }
 
-// If the show title includes "with", split it and use the presenter part for the modal
-if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
-  const idx = mainTitle.toLowerCase().indexOf(' with ');
-  const showTitlePart = mainTitle.slice(0, idx);
-  const presenterNameRaw = mainTitle.slice(idx + 6).trim();
-  // Use normalised presenter name for modal ID
-  presenterIdForModal = 'presenter-' + normaliseName(presenterNameRaw);
-  mainTitle = showTitlePart.trim();
-  presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
-} else if (presenterName) {
-  presenterIdForModal = 'presenter-' + normaliseName(presenterName);
-  presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
-}
+  // Now that presenterName is definitely set, we can build slug and image path
+  const presenterSlug = presenterName.replace(/[\s']/g, '-').replace(/[^a-zA-Z0-9\-]/g, '');
+  const presenterImg = `images/presenters/${presenterSlug}.jpg`;
+  const presenterLink = presenter.bio || "#";
+  const description = show.info || "";
 
+  const entry = document.createElement('div');
+  entry.className = 'show-entry';
+  entry.innerHTML = `
+    <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
+    <div class="show-info">
+      <time>${show.start}–${show.end}</time>
+      <div class="show-title-presenter">
+        ${presenterIdForModal ? `<a href="#" onclick="openModal('${presenterIdForModal}');return false;" class="show-title">${mainTitle}</a>` : `<span class="show-title">${mainTitle}</span>`}
+        ${presenterLine}
+      </div>
+      <div class="show-details">${description || ''}</div>
+    </div>
+  `;
+  col.appendChild(entry);
+});
 
-        // Determine how to render the main title: clickable if we have a modal presenter ID
-        let mainTitleHtml;
-        if (presenterIdForModal) {
-          mainTitleHtml = `<a href="#" onclick="openModal('${presenterIdForModal}');return false;" class="show-title">${mainTitle}</a>`;
-        } else {
-          mainTitleHtml = `<span class="show-title">${mainTitle}</span>`;
-        }
-
-        // Build the show entry using the classic show-entry layout from the older version
-        const entry = document.createElement('div');
-        entry.className = 'show-entry';
-        entry.innerHTML = `
-          <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='images/presenters/default.jpg'">
-          <div class="show-info">
-            <time>${show.start}–${show.end}</time>
-            <div class="show-title-presenter">
-              ${mainTitleHtml}
-              ${presenterLine}
-            </div>
-            <div class="show-details">${description || ''}</div>
-          </div>
-        `;
-        col.appendChild(entry);
-      });
     });
 }
 
