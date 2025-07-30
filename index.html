@@ -2220,21 +2220,21 @@ function renderDayScheduleModal(day, shows) {
   const leftShows = shows.slice(0, mid);
   const rightShows = shows.slice(mid);
 
-    [leftShows, rightShows].forEach((group, i) => {
-      const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
-      group.forEach(show => {
-        const presenter = show.presenter || {};
-        const presenterSlug = presenterName.toLowerCase().replace(/[\s']/g, '-').replace(/[^a-z0-9\-]/g, '');
-const presenterImg = `${presenterSlug}.jpg`;
+  [leftShows, rightShows].forEach((group, i) => {
+  const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
+  group.forEach(show => {
+    const presenter = show.presenter || {};
+    const presenterName = presenter.name || "";
+    const presenterSlug = presenterName.toLowerCase().replace(/[\s']/g, '-').replace(/[^a-z0-9\-]/g, '');
+    const presenterImg = `images/presenters/${presenterSlug}.jpg`;
+    const presenterLink = presenter.bio || "#";
+    const description = show.info || "";
 
-        const presenterName = presenter.name || "";
-        const presenterLink = presenter.bio || "#";
-        const description = show.info || "";
+    // Extract show title and presenter details
+    let mainTitle = show.title || '';
+    let presenterLine = '';
+    let presenterIdForModal = null;
 
-        // Extract show title and presenter details
-        let mainTitle = show.title || '';
-        let presenterLine = '';
-        let presenterIdForModal = null;
 // If the show title includes "with", split it and use the presenter part for the modal
 if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
   const idx = mainTitle.toLowerCase().indexOf(' with ');
