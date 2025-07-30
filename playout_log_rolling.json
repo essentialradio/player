@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:10",
-    "Displayed Time": "",
-    "Artist": "Thin Lizzy",
-    "Title": "The Boys Are Back in Town",
-    "Duration (s)": 177,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:13",
-    "Displayed Time": "",
-    "Artist": "Freda Payne",
-    "Title": "Band of Gold",
-    "Duration (s)": 163,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:16",
-    "Displayed Time": "",
-    "Artist": "Abba",
-    "Title": "I Wonder",
-    "Duration (s)": 256,
-    "Full Duration (s)": 270,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:20",
-    "Displayed Time": "",
-    "Artist": "Sister Sledge",
-    "Title": "We Are Family",
-    "Duration (s)": 191,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:23",
-    "Displayed Time": "",
-    "Artist": "Dr Hook",
-    "Title": "A Little Bit More",
-    "Duration (s)": 161,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:29",
-    "Displayed Time": "",
-    "Artist": "Stevie Wonder",
-    "Title": "Isn't She Lovely",
-    "Duration (s)": 186,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:32",
-    "Displayed Time": "",
-    "Artist": "Terry Jacks",
-    "Title": "Seasons in the Sun",
-    "Duration (s)": 195,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:36",
-    "Displayed Time": "",
-    "Artist": "Carpenters",
-    "Title": "I Won't Last A Day Without You",
-    "Duration (s)": 212,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:39",
-    "Displayed Time": "",
-    "Artist": "Bryan Ferry",
-    "Title": "Let's Stick Together",
-    "Duration (s)": 164,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:44",
-    "Displayed Time": "",
-    "Artist": "Mary Mason",
-    "Title": "Angel Of The Morning/Any Way You Want Me",
-    "Duration (s)": 218,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:48",
-    "Displayed Time": "",
-    "Artist": "Billy Ocean",
-    "Title": "Red Light Spells Danger",
-    "Duration (s)": 199,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:51",
-    "Displayed Time": "",
-    "Artist": "Dionne Warwick",
-    "Title": "Walk On By",
-    "Duration (s)": 149,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T18:00:00Z",
-    "Scheduled Time": "19:54",
-    "Displayed Time": "",
-    "Artist": "David Bowie",
-    "Title": "Young Americans",
-    "Duration (s)": 293,
-    "Full Duration (s)": 311,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
     "Hour": "2025-07-15T19:00:00Z",
     "Scheduled Time": "20:02",
     "Displayed Time": "",
@@ -44602,6 +44459,17 @@
     "Duration (s)": 148,
     "Full Duration (s)": 155,
     "Duration (mins)": 2,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-07-30T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "",
+    "Artist": "The Real Thing",
+    "Title": "Can't Get By Without You",
+    "Duration (s)": 184,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
 ]
