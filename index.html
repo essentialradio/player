@@ -2245,8 +2245,8 @@ function renderDayScheduleModal(day, shows) {
 
   // Now that presenterName is definitely set, we can build slug and image path
   const presenterSlug = presenterName.replace(/[\s']/g, '-').replace(/[^a-zA-Z0-9\-]/g, '');
-  const presenterImg = `images/presenters/${presenterSlug}.jpg`;
-  const presenterLink = presenter.bio || "#";
+const presenterImg = `${presenterSlug}.jpg`;  // looks in base directory
+const presenterLink = presenter.bio || "#";
   const description = show.info || "";
 
   const entry = document.createElement('div');
@@ -2265,7 +2265,7 @@ function renderDayScheduleModal(day, shows) {
   col.appendChild(entry);
 });
 
-    });
+});
 }
 
     modalDaySelect.addEventListener("change", () => {
