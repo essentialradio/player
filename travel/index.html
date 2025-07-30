@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Updates – Essential Radio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* --- NAVBAR & MODALS ONLY --- */
+    @media (max-width: 750px) {
+  .navbar { display: none !important; }
+  #burgerMenuBtn { display: block !important; }
+   { display: flex; }
+}
+@media (min-width: 751px) {
+  #burgerMenuBtn, #burgerDropdown { display: none !important; }
+}
+.menu-link {
+  display: block;
+  background: #fed351;   /* <-- This line adds the yellow background */
+  color: #191c29;
+  font-size: 1.07em;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 0;
+  box-shadow: 0 2px 10px #0001;
+  transition: background 0.2s, color 0.2s;
+}
+.menu-link:active,
+.menu-link:hover {
+  background: #ffe67c;
+  color: #191c29;
+}
+
+
+.navbar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      background: #222;
+      z-index: 1001;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 0 8px 0;
+      box-shadow: 0 2px 12px #111a;
+    }
+    .navbar a {
+      color: #222;
+      background: #fed351;
+      padding: 8px 18px;
+      border-radius: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 2px;
+      transition: background 0.2s, color 0.2s;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      display: inline-block;
+    }
+    .navbar a:hover, .navbar a:focus {
+      background: #00818a;
+      color: #fff;
+    }
+    @media (max-width: 750px) {
+      .navbar {
+        flex-direction: column;
+        gap: 2px;
+        padding: 5px 0 5px 0;
+      }
+      .navbar a {
+        margin: 2px 0;
+        font-size: 15px;
+        padding: 8px 12px;
+        border-radius: 10px;
+      }
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      overflow: auto;
+      background: rgba(0,0,0,0.78);
+      transition: background 0.2s;
+    }
+    .modal-content {
+      background: #fff;
+      color: #222;
+      margin: 8% auto;
+      padding: 30px 20px 20px 20px;
+      border-radius: 16px;
+      width: 94vw;
+      max-width: 920px;
+      min-height: 80px;
+      box-shadow: 0 0 34px #00818a99;
+      position: relative;
+      text-align: left;
+      animation: modalpop 0.2s;
+    }
+    @keyframes modalpop {
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .close {
+      position: absolute;
+      right: 16px; top: 14px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #00818a;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .close:hover { color: #ff4d4d; }
+    .modal-content h2 {
+      margin-top: 0;
+      color: #00818a;
+      font-size: 1.25em;
+      margin-bottom: 6px;
+    }
+    .modal-content p {
+      margin: 0 0 5px 0;
+    }
+    /* --- END NAVBAR & MODALS ONLY --- */
+
+    /* --- PLAYER AND PANEL STYLES --- */
+
+#liveClock {
+  background: #151516;
+  border: 2px solid #500;
+  border-radius: 14px;
+  padding: 8px 16px;
+  margin: 0 auto 14px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Consolas', 'Courier New', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  box-shadow: 0 1px 10px #111a;
+  max-width: 95vw;
+  text-align: center;
+}
+
+#clockCombined {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  line-height: 1.2;
+  word-spacing: 0.1em;
+}
+
+#clockTime {
+  color: #e53935;
+  font-size: 1.4em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+#clockDate {
+  font-size: 1.05em;
+  color: #fed351;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 1px 2px #111;
+}
+
+/* ✅ MOBILE TWEAKS */
+@media (max-width: 480px) {
+  #clockTime {
+    font-size: 1.2em;
+  }
+
+  #clockDate {
+    font-size: 0.95em;
+  }
+
+  #clockCombined {
+    gap: 10px;
+  }
+
+  #liveClock {
+    padding: 6px 12px;
+  }
+}
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #00818a, #7e1974);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* display: flex; justify-content: center;  <== REMOVE THIS LINE */
+}
+.header-spacer {
+  height: 92px;
+}
+@media (max-width: 750px) {
+  .header-spacer { height: 8px; }
+}
+
+    @media (max-width: 750px) {
+      body {
+        padding: 0 !important;
+      }
+    }
+    .strip-container {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 280px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      background-color: #111;
+      position: relative;
+      z-index: 1;
+    }
+    .left-panel, .right-panel {
+      width: 50%;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .left-panel {
+      background: #111;
+      align-items: center;
+      text-align: center;
+      border-right: 1px solid #333;
+      justify-content: flex-start;
+      padding-top: 30px;
+    }
+    .right-panel {
+  background: #222;
+  border-left: 1px solid #333;
+}
+
+/* Only give it its own scrollbar on desktop, never on phones */
+@media (min-width: 769px) {
+  .right-panel { overflow-y: auto; }
+}
+
+/* And let wheel / swipe bubble out when you hit the end */
+.right-panel { overscroll-behavior: contain; }
+    #player-box {
+      max-width: 420px;
+      width: 100%;
+    }
+    button {
+      background-color: #fed351;
+      color: #111;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    button:hover,
+    button:focus {
+      background-color: #e5c73f;
+      box-shadow: 0 0 10px #fed351cc;
+      outline: none;
+    }
+    #mute-toggle {
+      font-size: 16px;
+      padding: 6px 12px;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+    #volume-container {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    #volume-container label {
+      font-size: 16px;
+      margin: 0;
+      user-select: none;
+    }
+    #volume-slider {
+      width: 180px;
+      cursor: pointer;
+    }
+    #volume-display {
+      font-size: 16px;
+      color: #ccc;
+      min-width: 40px;
+      text-align: left;
+      user-select: none;
+    }
+    #onAirNow {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      padding-right: 0;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pulsing-label {
+      color: #ff4d4d;
+      font-weight: 700;
+     # animation: pulseText 5s infinite;
+    }
+  #   @keyframes pulseText {
+     #  0%, 100% { opacity: 0.6; transform: scale(1); }
+    #   50% { opacity: 1; transform: scale(1.1); }
+    }
+    @media (max-width: 768px) {
+      button#play-toggle {
+        font-size: 16px;
+        padding: 12px 16px;
+        width: 100%;
+        margin-top: 10px;
+      }
+      #volume-container {
+        display: none !important;
+      }
+      #volume-slider {
+        width: 100%;
+      }
+      #volume-display, #mute-toggle {
+        align-self: flex-end;
+      }
+      #nowPlaying {
+        margin-top: 18px;
+      }
+      .artwork-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+    }
+    #now-playing-card {
+      margin-top: 25px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 131, 138, 0.7);
+      max-width: 420px;
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.7;
+      color: white;
+    }
+    #artwork {
+      margin-top: 25px;
+      border-radius: 8px;
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      box-shadow: 0 0 15px #fed351aa;
+      user-select: none;
+      opacity: 0;
+      filter: blur(10px) brightness(0.8);
+      transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
+    }
+    #artwork.loaded {
+      opacity: 1;
+      filter: blur(0) brightness(1);
+    }
+    #artwork.fallback {
+      filter: blur(5px) brightness(0.8);
+      opacity: 0.7;
+      box-shadow: 0 0 10px rgba(254, 211, 81, 0.4);
+    }
+    .recent-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #fed351;
+      user-select: none;
+    }
+    ul#recent-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul#recent-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #444;
+      transition: background 0.2s ease;
+    }
+    ul#recent-list li:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    ul#recent-list img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid #fed351;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      user-select: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    ul#recent-list img.loaded {
+      opacity: 1;
+    }
+    ul#recent-list span.time {
+      color: #fed351;
+      font-weight: 600;
+      width: 50px;
+      text-align: right;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    ul#recent-list span.info {
+      flex: 1;
+      color: white;
+      font-size: 16px;
+      user-select: none;
+    }
+    .refresh-indicator {
+      display: inline-block;
+      margin-left: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fed351;
+      animation: pulse 1.2s infinite;
+      vertical-align: middle;
+    }
+    .strip-container { position: relative; z-index: 1; }
+    .player-wrapper {
+  position: relative;
+}
+
+.logo-overhang {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  max-width: 320px;
+  z-index: 3000;
+  opacity: 0.98;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.32));
+  /* New: Only overhang a bit on big screens */
+  transform: translate(-24%, -32%);
+  transition: width 0.2s, transform 0.2s;
+}
+
+/* Medium screens: pull the logo in a bit */
+@media (max-width: 1000px) {
+  .logo-overhang {
+    width: 140px;
+    transform: translate(-10%, -22%);
+  }
+}
+
+/* Mobile screens: shrink and drop overhang */
+@media (max-width: 600px) {
+  .logo-overhang {
+    width: 130px;
+    transform: translate(0, 0);
+    left: 4px;
+    top: 2px;
+  }
+}
+
+
+
+
+
+
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+      color: #ff4d4d;
+      font-size: 0.95em;
+      margin-left: 10px;
+      user-select: none;
+    }
+    .live-indicator .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff4d4d;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+    @media (max-width: 768px) {
+      .strip-container { flex-direction: column; }
+      .left-panel, .right-panel { width: 100%; padding: 20px; }
+      #artwork { width: 100%; max-width: 280px; height: auto; }
+      #onAirNow { text-align: center; }
+    }
+    #onAirNow { margin-top: 10px; margin-bottom: 10px; text-align: center; padding-right: 16px; max-width: 95%; margin-left: auto; margin-right: 0; }
+    #onAirNow br { display: none; }
+    #play-toggle { margin-bottom: 12px; }
+    #onAirNow span { display: block; line-height: 1.2; }
+    .show-title { font-weight: 600; }
+    .show-presenter {
+  font-weight: 400;
+  font-size: 0.95em;
+  opacity: 0.9;
+  font-style: italic;
+  padding-bottom: 6px !important;
+  padding-right: 4px !important;   /* extra gap from the rounded corner   */
+  line-height: 1.45em !important;
+  display: block;
+  overflow: visible !important;
+}
+    .left-panel { padding-top: 4px; }
+    #player-box { margin-top: -4px; }
+    #nowPlaying { margin-top: 8px; margin-bottom: 8px; }
+    @media (max-width: 768px) {
+      .recent-title { font-size: 16px; margin-bottom: 14px; }
+      ul#recent-list li { gap: 10px; padding: 10px 0; }
+      ul#recent-list img { width: 38px; height: 38px; }
+      ul#recent-list span.info { font-size: 12px; }
+      ul#recent-list span.time { font-size: 12px; width: 40px; }
+    }
+    
+    /* Modal Schedule Styling */
+    #modalScheduleContainer .day-card {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      width: 100%;
+      max-width: 860px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+    #modalScheduleContainer .day-card h2,
+    #modalScheduleContainer .day-card h3 {
+      font-size: 21px;
+      margin: 0 0 18px;
+      color: #fed351;
+      text-align: center;
+    }
+    #modalScheduleContainer .split-columns {
+      display: flex;
+      gap: 24px;
+    }
+    #modalScheduleContainer .column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    #modalScheduleContainer .show-entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    #modalScheduleContainer .show-entry img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      flex-shrink: 0;
+    }
+    #modalScheduleContainer .show-info {
+      display: flex;
+      flex-direction: column;
+    }
+    #modalScheduleContainer .show-info time {
+      font-weight: 600;
+      color: #fed351;
+      font-size: 14px;
+    }
+    #modalScheduleContainer .show-title-presenter {
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    #modalScheduleContainer .show-title-presenter .show-title {
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      font-size: 1.04em;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    #modalScheduleContainer .show-title-presenter .show-presenter {
+      font-size: 0.96em;
+      color: #fed351;
+      font-style: italic;
+      text-decoration: none;
+      line-height: 1.2;
+      display: inline-block;
+    }
+    #modalScheduleContainer .show-title-presenter .show-presenter:hover {
+      color: #ffd866;
+    }
+    #modalScheduleContainer .show-details {
+      font-size: 13px;
+      color: #ccc;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      #modalScheduleContainer .split-columns { flex-direction: column; gap:0; }
+    }
+    /* Playlist Modal Styling */
+    .playlist-image {
+  width: 100%;
+  max-width: 600px; /* or 650px */
+  border-radius: 18px;
+  display: block;
+  margin: 0 auto 18px auto;
+}
+  /* --- IMPROVED RESPONSIVE CSS FOR MOBILE (≤ 768px) --- */
+@media (max-width: 768px) {
+
+  body {
+    padding: 48px 2vw 8vw 2vw !important;
+  }
+
+  .strip-container {
+    flex-direction: column !important;
+    border-radius: 10px !important;
+    max-width: 100vw !important;
+    min-height: 0 !important;
+    box-shadow: 0 0 14px rgba(0,0,0,0.22) !important;
+  }
+
+  .left-panel, .right-panel {
+    width: 100% !important;
+    padding: 10px 4px 12px 4px !important;
+    border: none !important;
+    min-height: unset !important;
+  }
+
+  .left-panel {
+    padding-top: 8px !important;
+    align-items: stretch !important;
+  }
+
+  #player-box, #now-playing-card {
+    max-width: 98vw !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+  }
+
+.presenter-line, .show-title-presenter span {
+  font-size: 0.96em;
+  color: #fed351;
+  font-style: italic;
+  display: inline-block;
+  margin-top: 0.5px;
+  line-height: 1.4;
+  padding-bottom: 3px;
+}
+
+  #now-playing-card {
+    font-size: 15px !important;
+    padding: 10px 4px !important;
+    border-radius: 7px !important;
+    margin-top: 12px !important;
+  }
+
+  #artwork {
+    width: 94vw !important;
+    max-width: 140px !important;
+    height: auto !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    border-radius: 7px !important;
+  }
+
+  
+  .recent-title {
+    font-size: 13px !important;
+    margin-bottom: 5px !important;
+    padding-top: 3px !important;
+  }
+
+  ul#recent-list li {
+    gap: 6px !important;
+    padding: 8px 0 !important;
+  }
+
+  ul#recent-list img {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 4px !important;
+  }
+
+  ul#recent-list span.info, ul#recent-list span.time {
+    font-size: 11px !important;
+  }
+
+  button, #mute-toggle {
+    font-size: 14px !important;
+    padding: 8px 14px !important;
+    border-radius: 7px !important;
+  }
+
+  #volume-container label, #volume-display {
+    font-size: 11px !important;
+  }
+
+  #volume-slider {
+    width: 84px !important;
+  }
+
+  /* ON AIR NOW & SHOW */
+  #onAirNow {
+    font-size: 15px !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    padding-right: 0 !important;
+    max-width: 100vw !important;
+  }
+  .show-title { font-size: 0.9em !important; }
+  .show-presenter { font-size: 0.8em !important; }
+
+ 
+  .close {
+    font-size: 24px !important;
+    top: 8px !important;
+    right: 8px !important;
+  }
+
+  .playlist-image {
+    max-width: 97vw !important;
+    border-radius: 9px !important;
+    margin-bottom: 10px !important;
+  }
+
+ 
+  
+
+/* MOBILE TWEAKS */
+
+
+@media (max-width: 768px) {
+  .right-panel {
+    overscroll-behavior: auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+@media (max-width: 768px) {
+  .strip-container {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .left-panel,
+  .right-panel {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .recently-played-container {
+    flex: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  ul#recent-list {
+    max-height: none !important;
+    overflow: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+}
+
+/* === FINAL MOBILE SMOOTH-SCROLL TWEAKS === */
+@media (max-width: 768px) {
+  /* Let right column release momentum smoothly */
+  .right-panel {
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Let recent list claim only vertical drags */
+  ul#recent-list {
+    touch-action: pan-y !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-panel {
+    overscroll-behavior: auto !important;   /* let scroll bubble out */
+    overflow-y: auto !important;            /* its own scroll, momentum OK */
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+.logo-hide {
+  display: none !important;
+}
+@media (max-width: 750px) {
+  #burgerMenuBtn {
+    position: fixed;
+    top: 20px;
+    left: 8px;
+    width: 32px;          /* Smaller width */
+    height: 32px;         /* Smaller height */
+    background: #fed351;
+    border-radius: 7px;
+    z-index: 2001;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px #0002;
+    padding: 0;
+    transition: box-shadow 0.18s;
+  }
+  #burgerMenuBtn .burger-bar {
+    display: block;
+    width: 17px;         /* Shorter lines */
+    height: 2.7px;       /* Thinner lines */
+    background: #191c29;
+    border-radius: 2px;
+    margin: 2.8px 0;
+    transition: all 0.2s;
+  }
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100vw;
+}
+
+/* Ensure the modal itself doesn't scroll the background */
+.modal {
+  overflow: hidden !important;
+  overscroll-behavior: contain;
+}
+
+/* Modal content scrolls inside, not the page */
+.modal-content {
+  max-height: 85vh;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 750px) {
+  #burgerDropdown {
+    top: 56px !important;
+    height: calc(100vh - 56px) !important;
+  }
+}
+@media (max-width: 768px) {
+  .modal-content {
+    width: 96vw !important;
+    max-width: 96vw !important;
+    margin: 0 auto !important;
+    border-radius: 14px !important;
+    /* Your other styles here, such as: */
+    margin-top: 0 !important;
+    padding-top: 18px !important;
+    padding-bottom: 12px !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    background: #fff !important;
+    font-size: 15px !important;
+    scrollbar-width: thin;
+    scrollbar-color: #fed351 #ececec;
+  }
+  .modal-content::-webkit-scrollbar {
+    width: 14px;
+    background: #ececec;
+    border-radius: 10px;
+  }
+  .modal-content::-webkit-scrollbar-thumb {
+    background: #fed351;
+    border-radius: 10px;
+    border: 3px solid #ececec;
+  }
+  .modal-content::-webkit-scrollbar-thumb:active {
+    background: #ffe67c;
+  }
+  .modal-content::-webkit-scrollbar-track {
+    background: #ececec;
+    border-radius: 10px;
+  }
+/* Make 3-column layout */
+.strip-container.three-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px; /* Optional spacing between panels */
+}
+
+.strip-container.three-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px; /* or adjust to your preference */
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+
+/* Banner image */
+.side-banner-img {
+  width: 160px;
+  height: auto;
+  max-height: 1000px;
+  object-fit: contain;
+}
+
+/* Responsive stacking on mobile */
+@media (max-width: 768px) {
+  .strip-container.three-panel {
+    flex-direction: column;
+  }
+
+  .side-banner-panel {
+    width: 100%;
+    padding: 20px 0;
+    justify-content: center;
+  }
+
+  .side-banner-img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal,
+  .modal-content {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+  #modalScheduleContainer,
+  #modalScheduleContainer .day-card,
+  #modalScheduleContainer .split-columns,
+  #modalScheduleContainer .column,
+  #modalScheduleContainer .show-entry {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  #modalScheduleContainer .split-columns,
+  #modalScheduleContainer .column,
+  #modalScheduleContainer .show-entry {
+    flex-wrap: wrap !important;
+  }
+  #modalScheduleContainer .show-entry img {
+    max-width: 44px !important;
+    height: auto !important;
+  }
+}
+.show-time {
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #222;
+  margin-bottom: 4px;
+  display: block;
+}
+.presenter-modal {
+  z-index: 2100 !important;
+}
+
+</style>
+  <style>
+    body {
+      background: linear-gradient(135deg, #00818a, #7e1974);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .travel-standalone {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      color: #222;
+      border-radius: 14px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      padding: 30px 22px;
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align:center;margin-bottom:20px;">
+    <img src="ERLogo2.png" alt="Essential Radio Logo" style="width:150px;max-width:90%;filter:drop-shadow(0 2px 8px #0008);" />
+    <h1 style="color:#fed351;margin:12px 0 0 0;font-size:1.9em;">Essential Travel Updates</h1>
+  </div>
+  <div class="travel-standalone" id="travelModal">
+<div class="modal-content" style="max-width:900px;width:97vw;">
+
+<div style="display:flex;align-items:center;gap:18px;margin-bottom:20px;">
+<h2 style="margin:0;color:#00818a;font-size:1.3em;">Travel &amp; Transport</h2>
+</div>
+<div style="background:#111;border:1px solid #333;border-radius:12px;padding:24px 18px 24px 18px;box-shadow:0 0 20px rgba(0,0,0,0.20);margin-bottom:0; color:#eee;">
+<p style="font-size:17px;line-height:1.65;margin-bottom:18px;">
+        Stay up-to-date with live road, rail, and travel news across Ayrshire and the West of Scotland. This page brings you <b>real-time delays, incidents, roadworks and ScotRail disruption</b> - all updated automatically for Essential Radio listeners.<br/>
+<span style="color:#fed351;">Tip:</span> Click or tap the sections below to browse maps, incidents and more.
+      </p>
+<details style="margin-bottom:20px;">
+<summary style="font-size:18px;font-weight:600;color:#fed351;cursor:pointer;outline:none;">🗺️ Combined Travel Report (All Modes)</summary>
+<div style="margin:10px 0 0 0;">
+<button onclick="refreshCombinedTravel()" style="background:#fed351;color:#191c29;font-weight:600;border:none;border-radius:6px;padding:4px 14px;margin-bottom:8px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.2);font-size:1em;">
+      🔄 Refresh
+    </button>
+<iframe #0004;background:#fff;"="" 14px="" 2px="" box-shadow:0="" height="700" id="combined-travel-iframe" loading="lazy" no"="" src="https://travel-ac.vercel.app/Current_Combined_Travel_Report.html" style="overflow:hidden;" title="Combined Travel Report" width="100%"></iframe>
+</div>
+</details>
+<details style="margin-bottom:20px;">
+<summary style="font-size:18px;font-weight:600;color:#fed351;cursor:pointer;outline:none;">🚨 Current Incidents &amp; Queues</summary>
+<div style="margin:10px 0 0 0;">
+<iframe height="340" loading="lazy" src="https://travel-ac.vercel.app/Current_Incidents_Traffic_Scotland.html" style="border-radius:10px;border:none;box-shadow:0 2px 14px #0004;background:#fff;" title="Current Incidents" width="100%"></iframe>
+</div>
+</details>
+<details style="margin-bottom:20px;">
+<summary style="font-size:18px;font-weight:600;color:#fed351;cursor:pointer;outline:none;">🚦 Current Road Delays &amp; Hotspots</summary>
+<div style="margin:10px 0 0 0;">
+<iframe height="420" loading="lazy" src="https://travel-ac.vercel.app/Current_Hotspots_Traffic_Scotland.html" style="border-radius:10px;border:none;box-shadow:0 2px 14px #0004;background:#fff;" title="Current Road Delays &amp; Hotspots" width="100%"></iframe>
+</div>
+</details>
+<details style="margin-bottom:20px;">
+<summary style="font-size:18px;font-weight:600;color:#fed351;cursor:pointer;outline:none;">🚧 Current Roadworks &amp; Closures</summary>
+<div style="margin:10px 0 0 0;">
+<iframe height="340" loading="lazy" src="https://travel-ac.vercel.app/Current_Roadworks_Traffic_Scotland.html" style="border-radius:10px;border:none;box-shadow:0 2px 14px #0004;background:#fff;" title="Current Roadworks" width="100%"></iframe>
+</div>
+</details>
+<details>
+<summary style="font-size:18px;font-weight:600;color:#fed351;cursor:pointer;outline:none;">🚆 ScotRail Live Service Updates</summary>
+<div style="margin:10px 0 0 0;">
+<iframe height="360" loading="lazy" src="https://travel-ac.vercel.app/Scotrail_Incidents.html" style="border-radius:10px;border:none;box-shadow:0 2px 14px #0004;background:#fff;" title="ScotRail Live Updates" width="100%"></iframe>
+</div>
+</details>
+</div>
+<div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
+      Essential Radio © 2025
+    </div>
+</div>
+</div>
+</body>
+</html>
