@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:01",
-    "Displayed Time": "",
-    "Artist": "Thomas Headon",
-    "Title": "Georgia",
-    "Duration (s)": 173,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 220,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:08",
-    "Displayed Time": "",
-    "Artist": "Miley Cyrus",
-    "Title": "End Of The World",
-    "Duration (s)": 246,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:13",
-    "Displayed Time": "",
-    "Artist": "Tyla",
-    "Title": "Push 2 Start",
-    "Duration (s)": 154,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:16",
-    "Displayed Time": "",
-    "Artist": "Red Hot Chili Peppers",
-    "Title": "By the Way",
-    "Duration (s)": 211,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:23",
-    "Displayed Time": "",
-    "Artist": "Bangles",
-    "Title": "Walk Like an Egyptian",
-    "Duration (s)": 191,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:26",
-    "Displayed Time": "",
-    "Artist": "Becky Hill & David Guetta",
-    "Title": "Remember",
-    "Duration (s)": 156,
-    "Full Duration (s)": 161,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:29",
-    "Displayed Time": "",
-    "Artist": "The B-52's",
-    "Title": "Love Shack",
-    "Duration (s)": 205,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:32",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:35",
-    "Displayed Time": "",
-    "Artist": "Bodyrockers",
-    "Title": "I Like the Way",
-    "Duration (s)": 195,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:42",
-    "Displayed Time": "",
-    "Artist": "Mark Ronson & RAYE",
-    "Title": "Suzanne",
-    "Duration (s)": 229,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:46",
-    "Displayed Time": "",
-    "Artist": "Gayle",
-    "Title": "ABCDEF",
-    "Duration (s)": 150,
-    "Full Duration (s)": 152,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:49",
-    "Displayed Time": "",
-    "Artist": "Take That",
-    "Title": "This Life",
-    "Duration (s)": 222,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-15T04:00:00Z",
-    "Scheduled Time": "05:53",
-    "Displayed Time": "",
-    "Artist": "Baby D",
-    "Title": "Let Me Be Your Fantasy",
-    "Duration (s)": 222,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-15T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "",
@@ -44623,6 +44469,17 @@
     "Title": "Higher Love",
     "Duration (s)": 217,
     "Full Duration (s)": 228,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-30T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 250,
+    "Full Duration (s)": 258,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
