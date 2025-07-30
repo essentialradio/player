@@ -2248,7 +2248,7 @@ function renderDayScheduleModal(day, shows) {
 
   // Now that presenterName is definitely set, we can build slug and image path
  
-  group.forEach(show => {
+ group.forEach(show => {
   const presenter = show.presenter || {};
   let presenterName = presenter.name || "";
   let mainTitle = show.title || '';
@@ -2260,7 +2260,7 @@ function renderDayScheduleModal(day, shows) {
     const idx = mainTitle.toLowerCase().indexOf(' with ');
     const showTitlePart = mainTitle.slice(0, idx);
     const presenterNameRaw = mainTitle.slice(idx + 6).trim();
-    presenterName = presenterNameRaw;  // ✅ update presenterName used below
+    presenterName = presenterNameRaw;  // ✅ override presenterName
     presenterIdForModal = 'presenter-' + normaliseName(presenterNameRaw);
     mainTitle = showTitlePart.trim();
     presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
@@ -2269,12 +2269,17 @@ function renderDayScheduleModal(day, shows) {
     presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
   }
 
-  // Now that presenterName is definitely set, we can build slug and image path
-  const presenterSlug = presenterName.replace(/[\s']/g, '-').replace(/[^a-zA-Z0-9\-]/g, '');
-const presenterImg = `${presenterSlug}.jpg`;  // looks in base directory
-const presenterLink = presenter.bio || "#";
-  const description = show.info || "";
-const presenterLink = presenter.bio || "#";
+  // 🔁 Image filename override map
+  const imageOverrides = {
+    "Scott O'Hare": "Scott-OHare.jpg",
+    "Bex McNamee": "Bex-Mcnamee.jpg"
+  };
+
+  // ✅ Use override if available, else fall back to slug
+  const presenterImg = imageOverrides[presenterName] ||
+    `${presenterName.replace(/[\s']/g, '-').replace(/[^a-zA-Z0-9\-]/g, '')}.jpg`;
+
+  const presenterLink = presenter.bio || "#";
   const description = show.info || "";
 
   const entry = document.createElement('div');
@@ -2291,6 +2296,8 @@ const presenterLink = presenter.bio || "#";
     </div>
   `;
   col.appendChild(entry);
+});
+
 });
 
 });
