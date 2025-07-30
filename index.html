@@ -2499,17 +2499,25 @@ function renderDayScheduleModal(day, shows) {
 
     if (trackEndTimeout) clearTimeout(trackEndTimeout);
 
-    if (timeRemaining <= 500) {
+    if (timeRemaining <= 2000) {
+  // Grace period – don't show fallback immediately
+  setTimeout(() => {
+    if (currentTrackID === `${artist} – ${title}`) {
       showMoreMusicSoon();
       songHasEnded = true;
       currentTrackID = null;
-    } else {
-      trackEndTimeout = setTimeout(() => {
-        showMoreMusicSoon();
-        songHasEnded = true;
-        currentTrackID = null;
-      }, timeRemaining);
     }
+  }, 2000);
+} else {
+  trackEndTimeout = setTimeout(() => {
+    if (currentTrackID === `${artist} – ${title}`) {
+      showMoreMusicSoon();
+      songHasEnded = true;
+      currentTrackID = null;
+    }
+  }, timeRemaining);
+}
+
 
   } catch (e) {
     console.error("Now playing error:", e);
