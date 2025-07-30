@@ -2222,6 +2222,32 @@ function renderDayScheduleModal(day, shows) {
 
   [leftShows, rightShows].forEach((group, i) => {
   const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
+
+
+
+  group.forEach(show => {
+  const presenter = show.presenter || {};
+  let presenterName = presenter.name || "";
+  let mainTitle = show.title || '';
+  let presenterLine = '';
+  let presenterIdForModal = null;
+
+  // If the show title includes "with", split it and use the presenter part for the modal
+  if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
+    const idx = mainTitle.toLowerCase().indexOf(' with ');
+    const showTitlePart = mainTitle.slice(0, idx);
+    const presenterNameRaw = mainTitle.slice(idx + 6).trim();
+    presenterName = presenterNameRaw;  // ✅ update presenterName used below
+    presenterIdForModal = 'presenter-' + normaliseName(presenterNameRaw);
+    mainTitle = showTitlePart.trim();
+    presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
+  } else if (presenterName) {
+    presenterIdForModal = 'presenter-' + normaliseName(presenterName);
+    presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
+  }
+
+  // Now that presenterName is definitely set, we can build slug and image path
+ 
   group.forEach(show => {
   const presenter = show.presenter || {};
   let presenterName = presenter.name || "";
@@ -2246,6 +2272,8 @@ function renderDayScheduleModal(day, shows) {
   // Now that presenterName is definitely set, we can build slug and image path
   const presenterSlug = presenterName.replace(/[\s']/g, '-').replace(/[^a-zA-Z0-9\-]/g, '');
 const presenterImg = `${presenterSlug}.jpg`;  // looks in base directory
+const presenterLink = presenter.bio || "#";
+  const description = show.info || "";
 const presenterLink = presenter.bio || "#";
   const description = show.info || "";
 
