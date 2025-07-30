@@ -2429,9 +2429,11 @@ if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
       applyFallbackImmediate();
     }
     let currentTrackID = null;
-    let songHasEnded = false;
-    let trackEndTimeout = null;
-    async function fetchNowPlaying() {
+let songHasEnded = false;
+let trackEndTimeout = null;
+let trackEndTime = null; // NEW
+
+async function fetchNowPlaying() {
   try {
     const res = await fetch('/api/metadata', { cache: 'no-store' });
     const data = await res.json();
@@ -2488,35 +2490,39 @@ if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
     const now = new Date();
     const timeRemaining = endTime - now;
 
+    // ⛔ Prevent flashback to old track
+    if (trackEndTime && now < trackEndTime && startTime < trackEndTime) {
+      console.log("Stale metadata ignored — track already ended.");
+      return;
+    }
+
+    trackEndTime = endTime;
+
     if (trackEndTimeout) clearTimeout(trackEndTimeout);
 
-    if (timeRemaining <= 2000) {
-  // Grace period – don't show fallback immediately
-  setTimeout(() => {
-    if (currentTrackID === `${artist} – ${title}`) {
+    if (timeRemaining <= 500) {
       showMoreMusicSoon();
       songHasEnded = true;
       currentTrackID = null;
+      trackEndTime = null;
+    } else {
+      trackEndTimeout = setTimeout(() => {
+        showMoreMusicSoon();
+        songHasEnded = true;
+        currentTrackID = null;
+        trackEndTime = null;
+      }, timeRemaining);
     }
-  }, 2000);
-} else {
-  trackEndTimeout = setTimeout(() => {
-    if (currentTrackID === `${artist} – ${title}`) {
-      showMoreMusicSoon();
-      songHasEnded = true;
-      currentTrackID = null;
-    }
-  }, timeRemaining);
-}
-
 
   } catch (e) {
     console.error("Now playing error:", e);
     showMoreMusicSoon();
     currentTrackID = null;
     songHasEnded = false;
+    trackEndTime = null;
   }
 }
+
 
     async function fetchRecentFromGitHub() {
   try {
