@@ -1029,6 +1029,7 @@ body.modal-open {
   <div style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
     <a href="#" onclick="openModalAndCloseBurger('aboutModal');return false;" class="menu-link">About Us</a>
     <a href="#" onclick="openModalAndCloseBurger('scheduleModal');return false;" class="menu-link">Schedule</a>
+<a href="#" onclick="openModalAndCloseBurger('scheduleModal');return false;" class="menu-link">Presenters</a>
     <a href="#" onclick="openModalAndCloseBurger('playlistModal');return false;" class="menu-link">Playlist</a>
     <a href="#" onclick="openModalAndCloseBurger('listenModal');return false;" class="menu-link">Listen Again</a>
     <a href="#" onclick="openModalAndCloseBurger('searchModal');return false;" class="menu-link">Song Search</a>
@@ -1044,6 +1045,7 @@ body.modal-open {
 <!-- DESKTOP NAVIGATION -->
 <nav class="navbar" role="navigation">
   <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
+  <a href="#" onclick="openModal('presentersModal');return false;">Presenters</a>
   <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
   <a href="#" onclick="openModal('playlistModal');return false;">Playlist</a>
   <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
@@ -3265,6 +3267,106 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
+<!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
+<div id="presentersModal" class="modal presenter-modal">
+  <div class="modal-content" style="max-width:1020px;width:95vw;">
+    <span class="close" onclick="closeModal('presentersModal')">&times;</span>
+    <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
+
+    <div class="presenters-grid">
+      <a href="#" class="presenter-card" onclick="openModal('presenter-david-southway');return false;">
+        <img src="David-Southway.jpg" alt="David Southway">
+        <h3>David Southway</h3>
+        <p>Soul Vaults</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-paul-woodland');return false;">
+        <img src="Paul-Woodland.jpg" alt="Paul Woodland">
+        <h3>Paul Woodland</h3>
+        <p>Essential Breakfast</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-bex-mcnamee');return false;">
+        <img src="Bex-McNamee.jpg" alt="Bex McNamee">
+        <h3>Bex McNamee</h3>
+        <p>Feelgood Lunch & The Midweek Mash-Up</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-scott-ohare');return false;">
+        <img src="Scott-OHare.jpg" alt="Scott O'Hare">
+        <h3>Scott O'Hare</h3>
+        <p>Essential Hometime</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-faith-montgomery');return false;">
+        <img src="Faith-Montgomery.jpg" alt="Faith Montgomery">
+        <h3>Faith Montgomery</h3>
+        <p>Feelgood Friday</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-lee-everest');return false;">
+        <img src="Lee-Everest.jpg" alt="Lee Everest">
+        <h3>Lee Everest</h3>
+        <p>Ready for the Weekend</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-ronny-costello');return false;">
+        <img src="Ronny-Costello.jpg" alt="Ronny Costello">
+        <h3>Ronny Costello</h3>
+        <p>Club Classics</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-davy-sims');return false;">
+        <img src="Davy-Sims.jpg" alt="Davy Sims">
+        <h3>Davy Sims</h3>
+        <p>Around the World</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-big-tommy');return false;">
+        <img src="Big-Tommy.jpg" alt="Big Tommy">
+        <h3>Big Tommy</h3>
+        <p>Saturday Music Marathon & Party Anthems</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-jan-cave');return false;">
+        <img src="Jan-Cave.jpg" alt="Jan Cave">
+        <h3>Jan Cave</h3>
+        <p>70s Jukebox</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-tim-graham');return false;">
+        <img src="Tim-Graham.jpg" alt="Tim Graham">
+        <h3>Tim Graham</h3>
+        <p>LGBTQ Music Chart</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-stephen-howie');return false;">
+        <img src="Stephen-Howie.jpg" alt="Stephen Howie">
+        <h3>Stephen Howie</h3>
+        <p>Grooveline</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-bill-grainger');return false;">
+        <img src="Bill-Grainger.jpg" alt="Bill Grainger">
+        <h3>Bill Grainger</h3>
+        <p>Hi-NRG</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-spencer-james');return false;">
+        <img src="Spencer-James.jpg" alt="Spencer James">
+        <h3>Spencer James</h3>
+        <p>Airplay 40</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-kevin-mccallum');return false;">
+        <img src="Kevin-McCallum.jpg" alt="Kevin McCallum">
+        <h3>Kevin McCallum</h3>
+        <p>Mr Rocks Show</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-emma-scott');return false;">
+        <img src="Emma-Scott.jpg" alt="Emma Scott">
+        <h3>Emma Scott</h3>
+        <p>Pluggin' Baby Radio Show</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-dave-watkins');return false;">
+        <img src="Dave-Watkins.jpg" alt="Dave Watkins">
+        <h3>Dave Watkins</h3>
+        <p>The Country Mile</p>
+      </a>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-brian-woolfson');return false;">
+        <img src="Brian-Woolfson.jpg" alt="Brian Woolfson">
+        <h3>Brian Woolfson</h3>
+        <p>Retro Charts</p>
+      </a>
+    </div>
+  </div>
+</div>
 
 
 </body>
