@@ -3269,7 +3269,7 @@ function refreshCombinedTravel() {
 
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
-<div id="presentersModal" class="modal presenter-modal">
+<div id="presentersModal" class="modal presenter-modal" style="z-index: 9998;">
   <div class="modal-content" style="max-width:1020px;width:95vw;">
     <span class="close" onclick="closeModal('presentersModal')">&times;</span>
     <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
@@ -3324,6 +3324,10 @@ function refreshCombinedTravel() {
         font-style: normal;
       }
 
+      .modal {
+        z-index: 9999 !important;
+      }
+
       @media (max-width: 768px) {
         .presenters-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -3337,6 +3341,7 @@ function refreshCombinedTravel() {
       }
     </style>
 
+
     <div class="presenters-grid">
       <a href="#" class="presenter-card" onclick="openModal('presenter-david-southway');return false;">
         <img src="David-Southway.jpg" alt="David Southway">
@@ -3349,7 +3354,7 @@ function refreshCombinedTravel() {
         <p>Essential Breakfast</p>
       </a>
       <a href="#" class="presenter-card" onclick="openModal('presenter-bex-mcnamee');return false;">
-        <img src="Bex-McNamee.jpg" alt="Bex McNamee">
+        <img src="Bex-Mcnamee.jpg" alt="Bex McNamee">
         <h3>Bex McNamee</h3>
         <p>Feelgood Lunch & The Midweek Mash-Up</p>
       </a>
@@ -3383,13 +3388,13 @@ function refreshCombinedTravel() {
         <h3>Big Tommy</h3>
         <p>Saturday Music Marathon & Party Anthems</p>
       </a>
-      <a href="#" class="presenter-card" onclick="openModal('presenter-jan-cave');return false;">
-        <img src="Jan-Cave.jpg" alt="Jan Cave">
-        <h3>Jan Cave</h3>
+      <a href="#" class="presenter-card" onclick="openModal('presenter-jan-gow');return false;">
+        <img src="Jan-Gow.jpg" alt="Jan Cave">
+        <h3>Jan Gow</h3>
         <p>70s Jukebox</p>
       </a>
       <a href="#" class="presenter-card" onclick="openModal('presenter-tim-graham');return false;">
-        <img src="Tim-Graham.jpg" alt="Tim Graham">
+        <img src="Tim-Graham.jpeg" alt="Tim Graham">
         <h3>Tim Graham</h3>
         <p>LGBTQ Music Chart</p>
       </a>
@@ -3401,7 +3406,7 @@ function refreshCombinedTravel() {
       <a href="#" class="presenter-card" onclick="openModal('presenter-bill-grainger');return false;">
         <img src="Bill-Grainger.jpg" alt="Bill Grainger">
         <h3>Bill Grainger</h3>
-        <p>Hi-NRG</p>
+        <p>Fire Island Hi-NRG</p>
       </a>
       <a href="#" class="presenter-card" onclick="openModal('presenter-spencer-james');return false;">
         <img src="Spencer-James.jpg" alt="Spencer James">
@@ -3409,7 +3414,7 @@ function refreshCombinedTravel() {
         <p>Airplay 40</p>
       </a>
       <a href="#" class="presenter-card" onclick="openModal('presenter-kevin-mccallum');return false;">
-        <img src="Kevin-McCallum.jpg" alt="Kevin McCallum">
+        <img src="Kevin-Mccallum.jpg" alt="Kevin McCallum">
         <h3>Kevin McCallum</h3>
         <p>Mr Rocks Show</p>
       </a>
