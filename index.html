@@ -3267,6 +3267,7 @@ function refreshCombinedTravel() {
   </div>
 </div>
 
+
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
 <div id="presentersModal" class="modal presenter-modal" style="z-index: 9000;">
   <div class="modal-content" style="max-width:1020px;width:95vw;">
@@ -3298,6 +3299,8 @@ function refreshCombinedTravel() {
         box-shadow: 0 0 10px #0006;
         text-decoration: none;
         transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+        z-index: 1;
       }
 
       .presenter-card:hover {
@@ -3381,6 +3384,10 @@ function refreshCombinedTravel() {
         cursor: pointer;
       }
 
+      .modal.presenter-detail.show {
+        display: flex !important;
+      }
+
       @media (max-width: 768px) {
         .presenters-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -3393,8 +3400,11 @@ function refreshCombinedTravel() {
         }
       }
     </style>
+ </div>
+  </div>
+</div>
 
-    <div class="presenters-grid">
+<div class="presenters-grid">
       
       <a href="#" class="presenter-card" onclick="openModal('presenter-paul-woodland');return false;">
         <img src="Paul-Woodland.jpg" alt="Paul Woodland">
@@ -3486,12 +3496,11 @@ function refreshCombinedTravel() {
         <h3>Brian Woolfson</h3>
         <p>Retro Charts</p>
       </a>
-    </div>
-  </div>
-</div>
+   
 
 
 </body>
+    
 <script>
 function updateLiveClock() {
       const now = new Date();
