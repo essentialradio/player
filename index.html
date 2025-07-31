@@ -3265,27 +3265,6 @@ function refreshCombinedTravel() {
       <li><strong>When he's not on air:</strong> Teaching, compiling charts, curating his Now That’s What I Call Music collection, or correcting your chart trivia on X.</li>
     </ul>
   </div>
-
-
-/* Ensure presenter overview modal is behind detail modals */
-#presentersModal.modal.presenter-modal {
-  z-index: 9000 !important;
-}
-.modal.presenter-detail {
-  z-index: 10001 !important;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  display: none; /* Shown via JS */
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(6px);
-  background-color: rgba(0, 0, 0, 0.85);
-}
-.modal.presenter-detail.show {
-  display: flex !important;
-}
-
 </div><!-- ✅ ESSENTIAL RADIO PRESENTERS MODAL – FULL WORKING BLOCK -->
 <div id="presentersModal" class="modal presenter-modal" style="z-index: 9000;">
   <div class="modal-content" style="max-width:1020px;width:95vw;">
@@ -3442,6 +3421,25 @@ function refreshCombinedTravel() {
           grid-template-columns: 1fr;
         }
       }
+/* Ensure presenter overview modal is behind detail modals */
+#presentersModal.modal.presenter-modal {
+  z-index: 9000 !important;
+}
+.modal.presenter-detail {
+  z-index: 10001 !important;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  display: none; /* Shown via JS */
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.modal.presenter-detail.show {
+  display: flex !important;
+}
+
     </style>
   </div>
 </div>
