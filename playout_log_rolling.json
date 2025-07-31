@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:01",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Gold",
-    "Duration (s)": 160,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:04",
-    "Displayed Time": "",
-    "Artist": "Brandy with Monica",
-    "Title": "The Boy Is Mine",
-    "Duration (s)": 232,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:08",
-    "Displayed Time": "",
-    "Artist": "Post Malone & Swae Lee",
-    "Title": "Sunflower",
-    "Duration (s)": 149,
-    "Full Duration (s)": 156,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:11",
-    "Displayed Time": "",
-    "Artist": "Hozier",
-    "Title": "Nobody's Soldier",
-    "Duration (s)": 226,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:15",
-    "Displayed Time": "",
-    "Artist": "Kings Of Leon",
-    "Title": "Use Somebody",
-    "Duration (s)": 221,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:22",
-    "Displayed Time": "",
-    "Artist": "HAIM",
-    "Title": "Down To Be Wrong",
-    "Duration (s)": 233,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:26",
-    "Displayed Time": "",
-    "Artist": "Sam Fender",
-    "Title": "People Watching",
-    "Duration (s)": 231,
-    "Full Duration (s)": 311,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:29",
-    "Displayed Time": "",
-    "Artist": "Aztec Camera",
-    "Title": "Somewhere in My Heart",
-    "Duration (s)": 220,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:33",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 176,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:41",
-    "Displayed Time": "",
-    "Artist": "Becky Hill ft Topic",
-    "Title": "My Heart Goes (La Di Da)",
-    "Duration (s)": 143,
-    "Full Duration (s)": 149,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:43",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 197,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:46",
-    "Displayed Time": "",
-    "Artist": "The Verve",
-    "Title": "Lucky Man",
-    "Duration (s)": 269,
-    "Full Duration (s)": 294,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:51",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Lose Control",
-    "Duration (s)": 200,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T03:00:00Z",
-    "Scheduled Time": "04:54",
-    "Displayed Time": "",
-    "Artist": "Lady A",
-    "Title": "Need You Now",
-    "Duration (s)": 221,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-17T04:00:00Z",
     "Scheduled Time": "05:01",
     "Displayed Time": "",
@@ -44535,6 +44381,17 @@
     "Title": "Suddenly Last Summer",
     "Duration (s)": 202,
     "Full Duration (s)": 213,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-31T23:00:00Z",
+    "Scheduled Time": "00:01",
+    "Displayed Time": "",
+    "Artist": "Train",
+    "Title": "Hey, Soul Sister",
+    "Duration (s)": 209,
+    "Full Duration (s)": 217,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
