@@ -3270,7 +3270,7 @@ function refreshCombinedTravel() {
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
 <div id="presentersModal" class="modal presenter-modal" style="z-index: 9998;">
-  <div class="modal-content" style="max-width:1020px;width:95vw;">
+  <div class="modal-content" style="max-width:1020px;width:95vw;position:relative;z-index:1;">
     <span class="close" onclick="closeModal('presentersModal')">&times;</span>
     <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
 
@@ -3281,8 +3281,6 @@ function refreshCombinedTravel() {
         gap: 24px;
         justify-content: center;
         padding: 10px 0;
-        position: relative;
-        z-index: 10000;
       }
 
       .presenter-card {
@@ -3327,13 +3325,21 @@ function refreshCombinedTravel() {
       }
 
       .modal {
-        z-index: 9999 !important;
+        z-index: 9999;
       }
 
       .modal.presenter-detail {
-        z-index: 10001 !important;
-        backdrop-filter: blur(6px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
         background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        backdrop-filter: blur(6px);
       }
 
       .modal.presenter-detail .modal-content {
@@ -3342,10 +3348,9 @@ function refreshCombinedTravel() {
         padding: 20px;
         border-radius: 10px;
         max-width: 600px;
-        margin: 10vh auto;
+        margin: auto;
         color: white;
         box-shadow: 0 0 20px #000;
-        z-index: 10002;
       }
 
       .modal.presenter-detail .close {
