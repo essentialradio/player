@@ -1012,6 +1012,25 @@ body.modal-open {
 .presenter-modal {
   z-index: 2100 !important;
 }
+/* Ensure presenter overview modal is behind detail modals */
+#presentersModal.modal.presenter-modal {
+  z-index: 9000 !important;
+}
+.modal.presenter-detail {
+  z-index: 10001 !important;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  display: none; /* Shown via JS */
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.modal.presenter-detail.show {
+  display: flex !important;
+}
+
 
 </style>
 </head>
