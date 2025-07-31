@@ -3268,6 +3268,7 @@ function refreshCombinedTravel() {
 </div>
 
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
+<!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
 <div id="presentersModal" class="modal presenter-modal" style="z-index: 9998;">
   <div class="modal-content" style="max-width:1020px;width:95vw;">
     <span class="close" onclick="closeModal('presentersModal')">&times;</span>
@@ -3281,7 +3282,7 @@ function refreshCombinedTravel() {
         justify-content: center;
         padding: 10px 0;
         position: relative;
-        z-index: 10000;
+        z-index: 9999;
       }
 
       .presenter-card {
@@ -3295,6 +3296,7 @@ function refreshCombinedTravel() {
         box-shadow: 0 0 10px #0006;
         text-decoration: none;
         transition: transform 0.2s, box-shadow 0.2s;
+        z-index: 9999;
       }
 
       .presenter-card:hover {
@@ -3394,6 +3396,7 @@ function refreshCombinedTravel() {
         }
       }
     </style>
+
     <div class="presenters-grid">
       
       <a href="#" class="presenter-card" onclick="openModal('presenter-paul-woodland');return false;">
