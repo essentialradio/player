@@ -2796,7 +2796,7 @@ function refreshCombinedTravel() {
     <img src="Scott-OHare.jpg"
          alt="Scott O'Hare"
          style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;" />
-    <p>Scott eases you out of the workday on <strong>Essential Hometime</strong>, with upbeat tunes, campus updates and his trademark dry wit.</p>
+    <p>Oh yes! Scott eases you out of the workday on <strong>Essential Hometime</strong>, with upbeat tunes, campus updates and his trademark dry wit. OHH YESSSSS!!!!</p>
   </div>
 </div>
 
@@ -3268,9 +3268,8 @@ function refreshCombinedTravel() {
 </div>
 
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
-<!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
 <div id="presentersModal" class="modal presenter-modal" style="z-index: 9998;">
-  <div class="modal-content" style="max-width:1020px;width:95vw;position:relative;z-index:1;">
+  <div class="modal-content" style="max-width:1020px;width:95vw;">
     <span class="close" onclick="closeModal('presentersModal')">&times;</span>
     <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
 
@@ -3281,6 +3280,8 @@ function refreshCombinedTravel() {
         gap: 24px;
         justify-content: center;
         padding: 10px 0;
+        position: relative;
+        z-index: 10000;
       }
 
       .presenter-card {
@@ -3325,7 +3326,7 @@ function refreshCombinedTravel() {
       }
 
       .modal {
-        z-index: 9999;
+        z-index: 9999 !important;
       }
 
       .modal.presenter-detail {
@@ -3334,21 +3335,25 @@ function refreshCombinedTravel() {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 10000;
+        overflow-y: auto;
+        z-index: 10001 !important;
         backdrop-filter: blur(6px);
+        background-color: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
       }
 
       .modal.presenter-detail .modal-content {
         position: relative;
+        z-index: 10002;
         background: #111;
         padding: 20px;
         border-radius: 10px;
         max-width: 600px;
-        margin: auto;
+        width: 90vw;
+        margin: 5vh auto;
         color: white;
         box-shadow: 0 0 20px #000;
       }
@@ -3389,8 +3394,6 @@ function refreshCombinedTravel() {
         }
       }
     </style>
-
-
     <div class="presenters-grid">
       
       <a href="#" class="presenter-card" onclick="openModal('presenter-paul-woodland');return false;">
