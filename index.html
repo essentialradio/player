@@ -3268,6 +3268,7 @@ function refreshCombinedTravel() {
 </div>
 
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
+<!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
 <div id="presentersModal" class="modal presenter-modal" style="z-index: 9998;">
   <div class="modal-content" style="max-width:1020px;width:95vw;">
     <span class="close" onclick="closeModal('presentersModal')">&times;</span>
@@ -3327,6 +3328,47 @@ function refreshCombinedTravel() {
         z-index: 9999 !important;
       }
 
+      .modal.presenter-detail {
+        z-index: 10000 !important;
+        backdrop-filter: blur(6px);
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .modal.presenter-detail .modal-content {
+        position: relative;
+        background: #111;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 10vh auto;
+        color: white;
+        box-shadow: 0 0 20px #000;
+      }
+
+      .modal.presenter-detail .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #fed351;
+        font-size: 26px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .modal.presenter-detail .back-button {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .modal.presenter-detail .back-button button {
+        background: #fed351;
+        border: none;
+        padding: 10px 16px;
+        font-size: 14px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
       @media (max-width: 768px) {
         .presenters-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -3339,6 +3381,7 @@ function refreshCombinedTravel() {
         }
       }
     </style>
+
 
     <div class="presenters-grid">
       <a href="#" class="presenter-card" onclick="openModal('presenter-david-southway');return false;">
