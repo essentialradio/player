@@ -668,7 +668,8 @@ body {
     box-shadow: none !important;
   }
 
-.presenter-line, .show-title-presenter span {
+/* Fix mobile font styling */
+.presenter-line {
   font-size: 0.96em;
   color: #fed351;
   font-style: italic;
@@ -677,6 +678,17 @@ body {
   line-height: 1.4;
   padding-bottom: 3px;
 }
+
+.show-title-presenter .show-title {
+  font-weight: 600;
+  color: #fff;
+  font-style: normal; /* ✅ Ensure show title is NOT italic */
+  font-size: 1.04em;
+  display: block;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
 
   #now-playing-card {
     font-size: 15px !important;
