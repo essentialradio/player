@@ -3281,6 +3281,8 @@ function refreshCombinedTravel() {
         gap: 24px;
         justify-content: center;
         padding: 10px 0;
+        position: relative;
+        z-index: 10000;
       }
 
       .presenter-card {
@@ -3329,7 +3331,7 @@ function refreshCombinedTravel() {
       }
 
       .modal.presenter-detail {
-        z-index: 10000 !important;
+        z-index: 10001 !important;
         backdrop-filter: blur(6px);
         background-color: rgba(0, 0, 0, 0.8);
       }
@@ -3343,6 +3345,7 @@ function refreshCombinedTravel() {
         margin: 10vh auto;
         color: white;
         box-shadow: 0 0 20px #000;
+        z-index: 10002;
       }
 
       .modal.presenter-detail .close {
