@@ -3268,21 +3268,23 @@ function refreshCombinedTravel() {
 </div>
 
 <!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
-<!-- ✅ UPDATED PRESENTERS MODAL OVERVIEW PAGE WITH LINKED PRESENTER MODALS -->
-<div id="presentersModal" class="modal presenter-modal" style="z-index: 9998;">
+<div id="presentersModal" class="modal presenter-modal" style="z-index: 9000;">
   <div class="modal-content" style="max-width:1020px;width:95vw;">
     <span class="close" onclick="closeModal('presentersModal')">&times;</span>
     <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
 
     <style>
+      body {
+        position: relative;
+        z-index: 0;
+      }
+
       .presenters-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 24px;
         justify-content: center;
         padding: 10px 0;
-        position: relative;
-        z-index: 9999;
       }
 
       .presenter-card {
@@ -3296,7 +3298,6 @@ function refreshCombinedTravel() {
         box-shadow: 0 0 10px #0006;
         text-decoration: none;
         transition: transform 0.2s, box-shadow 0.2s;
-        z-index: 9999;
       }
 
       .presenter-card:hover {
@@ -3325,10 +3326,6 @@ function refreshCombinedTravel() {
         color: #ccc;
         margin: 0;
         font-style: normal;
-      }
-
-      .modal {
-        z-index: 9999 !important;
       }
 
       .modal.presenter-detail {
