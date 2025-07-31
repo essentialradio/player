@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:01",
-    "Displayed Time": "",
-    "Artist": "Rag'N'Bone Man",
-    "Title": "What Do You Believe In",
-    "Duration (s)": 184,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:05",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 156,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:08",
-    "Displayed Time": "",
-    "Artist": "Gwen Stefani Featuring Akon",
-    "Title": "The Sweet Escape",
-    "Duration (s)": 230,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:12",
-    "Displayed Time": "",
-    "Artist": "Lorde",
-    "Title": "What Was That",
-    "Duration (s)": 202,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:15",
-    "Displayed Time": "",
-    "Artist": "Cat Burns",
-    "Title": "Girls!",
-    "Duration (s)": 132,
-    "Full Duration (s)": 142,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:22",
-    "Displayed Time": "",
-    "Artist": "Aloe Blacc",
-    "Title": "I Need a Dollar",
-    "Duration (s)": 234,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:26",
-    "Displayed Time": "",
-    "Artist": "Billie Eilish",
-    "Title": "Birds of a Feather",
-    "Duration (s)": 200,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:30",
-    "Displayed Time": "",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 221,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:34",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:41",
-    "Displayed Time": "",
-    "Artist": "Tiesto & Tate McRae",
-    "Title": "10:35",
-    "Duration (s)": 163,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:44",
-    "Displayed Time": "",
-    "Artist": "MOLIY, Silent Addy",
-    "Title": "Shake It To The Max (Fly)",
-    "Duration (s)": 119,
-    "Full Duration (s)": 127,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:47",
-    "Displayed Time": "",
-    "Artist": "Cerrone/Christine & The Queens",
-    "Title": "Catching Feelings",
-    "Duration (s)": 192,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:50",
-    "Displayed Time": "",
-    "Artist": "HAIM",
-    "Title": "Down To Be Wrong",
-    "Duration (s)": 233,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-16T13:00:00Z",
-    "Scheduled Time": "14:54",
-    "Displayed Time": "",
-    "Artist": "Boyzone",
-    "Title": "Love Is A Hurricane",
-    "Duration (s)": 202,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-16T14:00:00Z",
     "Scheduled Time": "15:01",
     "Displayed Time": "",
@@ -44591,6 +44437,17 @@
     "Duration (s)": 209,
     "Full Duration (s)": 221,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-07-31T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 236,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
