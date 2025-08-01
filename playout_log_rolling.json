@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:01",
-    "Displayed Time": "",
-    "Artist": "Billy Joel",
-    "Title": "We Didn't Start the Fire",
-    "Duration (s)": 253,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:06",
-    "Displayed Time": "",
-    "Artist": "Orchestral Manoeuvres in the Dark",
-    "Title": "Enola Gay",
-    "Duration (s)": 199,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:09",
-    "Displayed Time": "",
-    "Artist": "Billy Ocean",
-    "Title": "Loverboy",
-    "Duration (s)": 232,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:13",
-    "Displayed Time": "",
-    "Artist": "RUN-DMC",
-    "Title": "It's Tricky",
-    "Duration (s)": 179,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:16",
-    "Displayed Time": "",
-    "Artist": "The Clash",
-    "Title": "London Calling",
-    "Duration (s)": 190,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:23",
-    "Displayed Time": "",
-    "Artist": "The Housemartins",
-    "Title": "Happy Hour",
-    "Duration (s)": 133,
-    "Full Duration (s)": 141,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:26",
-    "Displayed Time": "",
-    "Artist": "Dead or Alive",
-    "Title": "Brand New Lover",
-    "Duration (s)": 201,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:29",
-    "Displayed Time": "",
-    "Artist": "Jim Diamond",
-    "Title": "I Should Have Known Better",
-    "Duration (s)": 233,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:33",
-    "Displayed Time": "",
-    "Artist": "Simple Minds",
-    "Title": "Waterfront",
-    "Duration (s)": 272,
-    "Full Duration (s)": 279,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:42",
-    "Displayed Time": "",
-    "Artist": "Womack & Womack",
-    "Title": "Teardrops",
-    "Duration (s)": 217,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:45",
-    "Displayed Time": "",
-    "Artist": "The Psychedelic Furs",
-    "Title": "Pretty in Pink",
-    "Duration (s)": 231,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:49",
-    "Displayed Time": "",
-    "Artist": "The Human League",
-    "Title": "Human",
-    "Duration (s)": 214,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-17T19:00:00Z",
-    "Scheduled Time": "20:53",
-    "Displayed Time": "",
-    "Artist": "Ultravox",
-    "Title": "Love's Great Adventure",
-    "Duration (s)": 177,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-17T20:00:00Z",
     "Scheduled Time": "21:01",
     "Displayed Time": "",
@@ -44680,5 +44537,16 @@
     "Full Duration (s)": 203,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-01T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "",
+    "Artist": "Sam Fender",
+    "Title": "Arm's Length",
+    "Duration (s)": 213,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
