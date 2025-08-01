@@ -2068,30 +2068,89 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <div id="newsModal" class="modal">
   <div class="modal-content" style="max-width:1000px;width:97vw;">
     <span class="close" onclick="closeModal('newsModal')">&times;</span>
-    <div style="display:flex;align-items:center;gap:18px;margin-bottom:24px;">
-      <h2 style="margin:0;color:#00818a;font-size:1.3em;">Latest from Radio News Hub</h2>
+    
+    <!-- Main Heading -->
+    <h2 style="margin:0 0 26px 0;text-align:center;font-size:2em;letter-spacing:0.5px;color:#00b5e2;font-weight:700;">
+      Scottish &amp; National News
+    </h2>
+
+    <!-- Scottish News Update Section -->
+    <div style="
+      background: linear-gradient(99deg, #183052 70%, #202d3d 100%);
+      border: 2px solid #0091ca;
+      border-radius: 18px;
+      padding: 30px 22px 22px 22px;
+      box-shadow: 0 4px 36px 0 rgba(15, 53, 96, 0.18);
+      margin-bottom: 32px;
+      color: #e7f6fd;
+      position: relative;
+      overflow: hidden;">
+      
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+        <span style="font-size:1.5em;">🏴</span>
+        <h3 style="
+          margin: 0;
+          color: #8be3ff;
+          font-size:1.3em;
+          font-weight:700;
+          letter-spacing:0.1em;
+          text-shadow:0 2px 16px #0002;">
+          Scottish News Update
+        </h3>
+        <span id="scotNewsTime" style="
+          margin-left:auto;
+          color:#67c9fa;
+          font-size:1em;
+          font-weight:400;
+        "></span>
+      </div>
+      <div style="font-size:1.13em;line-height:1.7;padding-left:6px;">
+        <pre id="scottishNewsText" style="
+          font-family:inherit;
+          white-space:pre-wrap;
+          background:transparent;
+          border:none;
+          padding:0;
+          margin:0;
+          color:#e7f6fd;
+          font-size:1.13em;
+        ">Loading...</pre>
+      </div>
     </div>
 
-    <!-- Scottish News Section -->
-    <div style="background:#18232b;border:1px solid #2474a6;border-radius:12px;padding:24px 18px 18px 18px;box-shadow:0 0 20px rgba(0,0,0,0.19);margin-bottom:22px;color:#d4f2ff;">
-      <h3 style="color:#62c7fc;margin-top:0;font-size:1.12em;display:flex;align-items:center;gap:14px;">
-        <span>🏴 Scottish News</span>
-        <span id="scotNewsTime" style="font-weight:normal;font-size:0.97em;color:#80dfff;"></span>
-      </h3>
-      <pre id="scottishNewsText" style="font-family:inherit;white-space:pre-wrap;background:transparent;border:none;padding:0;margin:0;font-size:1.05em;line-height:1.65;color:#d4f2ff;">Loading...</pre>
-    </div>
-
-    <div style="background:#111;border:1px solid #333;border-radius:12px;padding:28px 18px 32px 18px;box-shadow:0 0 20px rgba(0,0,0,0.28);margin-bottom:0; color:#eee;">
-      <h3 style="color:#00e0ff;margin-top:0;font-size:1.15em;">📰 Latest Headlines</h3>
+    <!-- National News Section -->
+    <div style="
+      background: linear-gradient(98deg, #111 85%, #232323 100%);
+      border: 1.5px solid #2fd8fe;
+      border-radius: 15px;
+      padding: 28px 18px 32px 18px;
+      box-shadow: 0 0 22px rgba(0,0,0,0.24);
+      margin-bottom:0;
+      color:#f2fdff;
+      ">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <span style="font-size:1.25em;">📰</span>
+        <h3 style="
+          color:#2fd8fe;
+          margin:0;
+          font-size:1.19em;
+          font-weight:700;
+          letter-spacing:0.04em;
+          ">
+          The Latest From Radio News Hub
+        </h3>
+      </div>
       <!-- Elfsight RSS Feed | News Feed from RNH -->
       <script src="https://static.elfsight.com/platform/platform.js" async></script>
       <div class="elfsight-app-9b4542e0-7fb9-4bfb-a258-38a84ee937a7" data-elfsight-app-lazy></div>
     </div>
-    <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
+
+    <div style="margin-top:20px;text-align:center;color:#7fd6ef;font-size:15px;opacity:0.88;">
       Essential Radio &copy; 2025
     </div>
   </div>
 </div>
+
 
 
 <div id="localModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="localModalTitle">
