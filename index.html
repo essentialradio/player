@@ -3807,7 +3807,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
 <script>
 function fetchScottishNews() {
   // Try fetching the text file
-  fetch('travel_bulletin.txt?' + Date.now()) // cache-busting for updates
+  fetch('news_bulletin.txt?' + Date.now()) // cache-busting for updates
     .then(response => {
       if (!response.ok) throw new Error("File not found");
       // Try to get last-modified header if possible
