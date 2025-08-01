@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 177,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:05",
-    "Displayed Time": "",
-    "Artist": "George Michael",
-    "Title": "Too Funky",
-    "Duration (s)": 217,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:09",
-    "Displayed Time": "",
-    "Artist": "Jonasu",
-    "Title": "Black Magic",
-    "Duration (s)": 165,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:12",
-    "Displayed Time": "",
-    "Artist": "Harry Styles",
-    "Title": "Late Night Talking",
-    "Duration (s)": 169,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:15",
-    "Displayed Time": "",
-    "Artist": "Paolo Nutini",
-    "Title": "Pencil Full Of Lead",
-    "Duration (s)": 138,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:21",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:24",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 215,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:28",
-    "Displayed Time": "",
-    "Artist": "Bangles",
-    "Title": "Manic Monday",
-    "Duration (s)": 172,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:31",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:38",
-    "Displayed Time": "",
-    "Artist": "Olly Murs",
-    "Title": "Thinking Of Me",
-    "Duration (s)": 197,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:41",
-    "Displayed Time": "",
-    "Artist": "James Morrison",
-    "Title": "Fight Another Day",
-    "Duration (s)": 218,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:45",
-    "Displayed Time": "",
-    "Artist": "The Charlatans",
-    "Title": "The Only One I Know",
-    "Duration (s)": 226,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:48",
-    "Displayed Time": "",
-    "Artist": "Hozier",
-    "Title": "Too Sweet",
-    "Duration (s)": 239,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-18T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "",
-    "Artist": "OutKast",
-    "Title": "Roses",
-    "Duration (s)": 240,
-    "Full Duration (s)": 260,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-18T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44669,5 +44515,16 @@
     "Full Duration (s)": 159,
     "Duration (mins)": 2,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-01T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "",
+    "Artist": "Lee Everest",
+    "Title": "Ready for the Weekend",
+    "Duration (s)": 1120,
+    "Full Duration (s)": 1124,
+    "Duration (mins)": 19,
+    "Full Duration (mins)": 19
   }
 ]
