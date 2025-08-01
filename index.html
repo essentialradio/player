@@ -1020,6 +1020,7 @@ body.modal-open {
     <a href="#" onclick="openModalAndCloseBurger('requestsModal');return false;" class="menu-link">Requests</a>
     <a href="#" onclick="openModalAndCloseBurger('newsModal');return false;" class="menu-link">News</a>
     <a href="#" onclick="openModalAndCloseBurger('travelModal');return false;" class="menu-link">Travel</a>
+    <a href="#" onclick="openModalAndCloseBurger('localModal');return false;" class="menu-link">Local</a>
     <a href="#" onclick="openModalAndCloseBurger('playlistModal');return false;" class="menu-link">Playlist</a>
     <a href="#" onclick="openModalAndCloseBurger('listenModal');return false;" class="menu-link">Listen Again</a>
     <a href="#" onclick="openModalAndCloseBurger('searchModal');return false;" class="menu-link">Song Search</a>
@@ -1036,7 +1037,8 @@ body.modal-open {
   <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
   <a href="#" onclick="openModal('requestsModal');return false;">Requests</a>
   <a href="#" onclick="openModal('newsModal');return false;">News</a>
-  <a href="#" onclick="openModal('travelModal');return false;">Travel</a>
+  <a href="#" onclick="openModal('travelModal');return false;">Travel</a>	
+  <a href="#" onclick="openModal('localModal');return false;">Local</a>
   <a href="#" onclick="openModal('playlistModal');return false;">Playlist</a>
   <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
   <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
@@ -2080,6 +2082,41 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </div>
   </div>
 </div>
+
+<div id="localModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="localModalTitle">
+  <div class="modal-content" style="max-width:1000px;width:97vw;">
+    <span class="close" onclick="closeModal('localModal')" aria-label="Close">&times;</span>
+    <h2 id="localModalTitle" style="margin-top:0;color:#00818a;">Local Events</h2>
+
+    <!-- Controls -->
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 16px 0;">
+      <label><strong>Council:</strong></label>
+      <select id="localAreaSel">
+        <option value="north">North Ayrshire</option>
+        <option value="south">South Ayrshire</option>
+        <option value="east">East Ayrshire</option>
+        <option value="all">All</option>
+      </select>
+
+      <label><strong>From:</strong></label>
+      <input type="date" id="localFromDate">
+      <label><strong>To:</strong></label>
+      <input type="date" id="localToDate">
+
+      <input id="localSearch" type="text" placeholder="Search title, venue, town…" style="flex:1;min-width:160px;">
+      <button id="localReset">Reset</button>
+    </div>
+
+    <!-- Events output -->
+    <div id="localEventsWrap"></div>
+
+    <!-- Small helper note -->
+    <div style="margin-top:10px;color:#666;font-size:0.92em;">
+      Tip: use the Council dropdown to switch between North, South and East Ayrshire.
+    </div>
+  </div>
+</div>
+
   <div id="travelModal" class="modal">
   <div class="modal-content" style="max-width:900px;width:97vw;">
     <span class="close" onclick="closeModal('travelModal')">&times;</span>
@@ -3426,8 +3463,6 @@ function refreshCombinedTravel() {
 .modal.presenter-detail.show {
   display: flex !important;
 }
-
-
     </style>
   </div>
 </div>
@@ -3606,5 +3641,164 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   fetchRecentFromGitHub();
 });
 </script>
+
+<script>
+(() => {
+  const WRAP   = document.getElementById('localEventsWrap');
+  const AREA   = document.getElementById('localAreaSel');
+  const FROM   = document.getElementById('localFromDate');
+  const TO     = document.getElementById('localToDate');
+  const SEARCH = document.getElementById('localSearch');
+  const RESET  = document.getElementById('localReset');
+
+  let data = { north:[], south:[], east:[] };
+
+  function parseDT(d, t) {
+    // Build a Date from ISO date + optional HH:mm (assume local time)
+    if (!d) return null;
+    const iso = t ? `${d}T${t}:00` : `${d}T00:00:00`;
+    return new Date(iso);
+  }
+
+  function fmtDate(d) {
+    return d ? d.toLocaleDateString('en-GB', { weekday:'short', day:'2-digit', month:'short', year:'numeric' }) : '';
+  }
+  function fmtTime(t) {
+    if (!t) return '';
+    const [h,m] = t.split(':');
+    const dt = new Date(); dt.setHours(+h, +m || 0, 0, 0);
+    return dt.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+  }
+
+  function matchesQuery(ev, q) {
+    if (!q) return true;
+    q = q.toLowerCase();
+    return [ev.title, ev.venue, ev.town, ev.desc].some(v => (v||'').toLowerCase().includes(q));
+  }
+
+  function inRange(ev, fromVal, toVal) {
+    const dt = parseDT(ev.date, ev.time);
+    if (!dt) return false;
+    if (fromVal) {
+      const f = new Date(fromVal + 'T00:00:00');
+      if (dt < f) return false;
+    }
+    if (toVal) {
+      const t = new Date(toVal + 'T23:59:59');
+      if (dt > t) return false;
+    }
+    return true;
+  }
+
+  function render() {
+    const area = AREA.value;
+    const from = FROM.value;
+    const to   = TO.value;
+    const q    = SEARCH.value.trim();
+
+    // Collect rows
+    const pools = (area === 'all') ? [data.north, data.south, data.east]
+                                   : [data[area] || []];
+
+    let rows = pools.flat().filter(ev =>
+      inRange(ev, from, to) && matchesQuery(ev, q)
+    );
+
+    // Sort by date/time ascending
+    rows.sort((a,b) => {
+      const da = parseDT(a.date, a.time) || 0;
+      const db = parseDT(b.date, b.time) || 0;
+      return da - db;
+    });
+
+    // Group by area if "All" selected
+    const byArea = { north:[], south:[], east:[] };
+    rows.forEach(ev => {
+      const key = ev._area || 'north';
+      byArea[key].push(ev);
+    });
+
+    // Build HTML
+    if (rows.length === 0) {
+      WRAP.innerHTML = `<div style="color:#fed351;font-weight:600">No matching events.</div>`;
+      return;
+    }
+
+    const areaTitle = a => ({
+      north: 'North Ayrshire',
+      south: 'South Ayrshire',
+      east:  'East Ayrshire'
+    }[a]);
+
+    const makeCard = ev => {
+      const dt = parseDT(ev.date, ev.time);
+      const dateStr = fmtDate(dt);
+      const timeStr = fmtTime(ev.time);
+
+      return `
+        <article class="event-card">
+          <h3>${ev.title}</h3>
+          <div class="event-meta">
+            <span>📅 ${dateStr}${timeStr ? ' • ' + timeStr : ''}</span>
+            ${ev.venue ? `<span>📍 ${ev.venue}${ev.town ? ', ' + ev.town : ''}</span>` : ''}
+          </div>
+          ${ev.desc ? `<div class="event-desc">${ev.desc}</div>` : ''}
+          ${ev.link ? `<div class="event-actions"><a href="${ev.link}" target="_blank" rel="noopener">More info →</a></div>` : ''}
+        </article>
+      `;
+    };
+
+    if (area === 'all') {
+      // Show grouped sections in N/S/E order
+      const sections = ['north','south','east']
+        .filter(a => byArea[a].length)
+        .map(a => `
+          <section>
+            <h3 style="color:#00818a;margin:8px 0 8px 0;">${areaTitle(a)}</h3>
+            <div class="event-col">${byArea[a].map(makeCard).join('')}</div>
+          </section>
+        `);
+      WRAP.innerHTML = sections.join('');
+    } else {
+      WRAP.innerHTML = `<div class="event-col">${rows.map(makeCard).join('')}</div>`;
+    }
+  }
+
+  async function load() {
+    try {
+      const res = await fetch('events-ayrshire.json', { cache: 'no-store' });
+      const json = await res.json();
+      // Tag each item with its area for grouping when "All" is used
+      ['north','south','east'].forEach(k => {
+        data[k] = (json[k] || []).map(e => ({ ...e, _area: k }));
+      });
+      // Defaults: show from today onwards
+      const today = new Date(); today.setHours(0,0,0,0);
+      FROM.value = today.toISOString().slice(0,10);
+      render();
+    } catch (e) {
+      WRAP.innerHTML = `<div style="color:#ff6b6b;">Could not load events.</div>`;
+      console.error('Local events load failed', e);
+    }
+  }
+
+  // Events
+  AREA.addEventListener('change', render);
+  FROM.addEventListener('change', render);
+  TO.addEventListener('change', render);
+  SEARCH.addEventListener('input', () => { render(); });
+  document.getElementById('localReset').addEventListener('click', () => {
+    AREA.value = 'north';
+    FROM.value = '';
+    TO.value   = '';
+    SEARCH.value = '';
+    render();
+  });
+
+  // Load once when page is ready
+  document.addEventListener('DOMContentLoaded', load);
+})();
+</script>
+
 </body>
 </html>
