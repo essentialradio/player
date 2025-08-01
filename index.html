@@ -3464,6 +3464,11 @@ function checkOverlayLogo() {
 }
 
 function openModal(id) {
+  // Close all modals first
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+  // Then open the requested modal
   document.getElementById(id).style.display = 'block';
   document.body.classList.add('modal-open');
   checkOverlayLogo();
@@ -3485,6 +3490,7 @@ function closeAllModals() {
   document.body.classList.remove('modal-open');
   checkOverlayLogo();
 }
+
 
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
