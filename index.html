@@ -3649,118 +3649,120 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   const FROM   = document.getElementById('localFromDate');
   const TO     = document.getElementById('localToDate');
   const SEARCH = document.getElementById('localSearch');
-  const RESET  = document.getElementById('localReset');
 
-  let data = { north:[], south:[], east:[] };
+  // --- Formatters (UK) ---
+  const tz   = 'Europe/London';
+  const dFmt = new Intl.DateTimeFormat('en-GB', { weekday:'short', day:'2-digit', month:'short', year:'numeric', timeZone: tz }); // date label
+  const tFmt = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone: tz });                // time label
+  // Tip: prefer Intl over manual string building for language-sensitive formatting. :contentReference[oaicite:1]{index=1}
 
-  function parseDT(d, t) {
-    // Build a Date from ISO date + optional HH:mm (assume local time)
-    if (!d) return null;
-    const iso = t ? `${d}T${t}:00` : `${d}T00:00:00`;
-    return new Date(iso);
+  // --- Helpers ---
+  function toDateObj(dateStr, timeStr) {
+    // Build a local Date safely (treat times like local wall-clock for display)
+    if (!dateStr) return null;
+    const [Y, M, D] = dateStr.split('-').map(Number);
+    const [h, m] = (timeStr && timeStr !== 'unknown') ? timeStr.split(':').map(Number) : [0, 0];
+    return new Date(Y, (M - 1), D, h || 0, m || 0, 0, 0); // local time
   }
-
-  function fmtDate(d) {
-    return d ? d.toLocaleDateString('en-GB', { weekday:'short', day:'2-digit', month:'short', year:'numeric' }) : '';
-  }
-  function fmtTime(t) {
-    if (!t) return '';
-    const [h,m] = t.split(':');
-    const dt = new Date(); dt.setHours(+h, +m || 0, 0, 0);
-    return dt.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
-  }
-
+  function dateLabel(d) { return d ? dFmt.format(d) : ''; }
+  function timeLabel(t) { return (t && t !== 'unknown') ? tFmt.format(toDateObj('2000-01-01', t)) : ''; } // dummy date for formatting only
   function matchesQuery(ev, q) {
     if (!q) return true;
     q = q.toLowerCase();
-    return [ev.title, ev.venue, ev.town, ev.desc].some(v => (v||'').toLowerCase().includes(q));
+    return [ev.title, ev.venue, ev.town, ev.desc].some(v => (v || '').toLowerCase().includes(q));
   }
-
   function inRange(ev, fromVal, toVal) {
-    const dt = parseDT(ev.date, ev.time);
-    if (!dt) return false;
+    const start = toDateObj(ev.start_date, ev.start_time);
+    const end   = toDateObj(ev.end_date || ev.start_date, ev.end_time || ev.start_time);
+    if (!start) return false;
     if (fromVal) {
       const f = new Date(fromVal + 'T00:00:00');
-      if (dt < f) return false;
+      if (end < f) return false;
     }
     if (toVal) {
       const t = new Date(toVal + 'T23:59:59');
-      if (dt > t) return false;
+      if (start > t) return false;
     }
     return true;
   }
+  function rangeLabel(ev) {
+    const sD = toDateObj(ev.start_date, ev.start_time);
+    const eD = toDateObj(ev.end_date || ev.start_date, ev.end_time || ev.start_time);
+    const sDate = dateLabel(sD);
+    const eDate = dateLabel(eD);
+    const sTime = timeLabel(ev.start_time);
+    const eTime = timeLabel(ev.end_time);
+
+    // Same day
+    if (ev.end_date === ev.start_date || !ev.end_date) {
+      const timePart = (sTime && eTime) ? ` • ${sTime}–${eTime}` : (sTime ? ` • ${sTime}` : '');
+      return `${sDate}${timePart}`;
+    }
+    // Multi-day
+    return `${sDate} – ${eDate}`;
+  }
+
+  function makeCard(ev) {
+    const when = rangeLabel(ev);
+    const where = ev.venue ? `${ev.venue}${ev.town ? ', ' + ev.town : ''}` : (ev.town || '');
+    return `
+      <article class="event-card" aria-labelledby="${slug(ev.title)}-h">
+        <h3 id="${slug(ev.title)}-h">${escapeHTML(ev.title)}</h3>
+        <div class="event-meta">
+          <span>📅 ${when}</span>
+          ${where ? `<span>📍 ${escapeHTML(where)}</span>` : ''}
+        </div>
+        ${ev.desc ? `<div class="event-desc">${escapeHTML(ev.desc)}</div>` : ''}
+        ${ev.link ? `<div class="event-actions"><a href="${ev.link}" target="_blank" rel="noopener">More info →</a></div>` : ''}
+      </article>
+    `;
+  }
+  function slug(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+  function escapeHTML(s) { return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  // --- Data + render ---
+  let data = { north:[], south:[], east:[] };
 
   function render() {
-    const area = AREA.value;
-    const from = FROM.value;
-    const to   = TO.value;
-    const q    = SEARCH.value.trim();
+    const area = AREA?.value || 'north';
+    const from = FROM?.value || '';
+    const to   = TO?.value || '';
+    const q    = (SEARCH?.value || '').trim();
 
-    // Collect rows
-    const pools = (area === 'all') ? [data.north, data.south, data.east]
-                                   : [data[area] || []];
+    const pools = (area === 'all') ? [data.north, data.south, data.east] : [data[area] || []];
 
-    let rows = pools.flat().filter(ev =>
-      inRange(ev, from, to) && matchesQuery(ev, q)
-    );
+    let rows = pools.flat().filter(ev => inRange(ev, from, to) && matchesQuery(ev, q));
 
-    // Sort by date/time ascending
-    rows.sort((a,b) => {
-      const da = parseDT(a.date, a.time) || 0;
-      const db = parseDT(b.date, b.time) || 0;
-      return da - db;
+    // Sort by start_date then start_time
+    rows.sort((a, b) => {
+      const aStart = toDateObj(a.start_date, a.start_time) || 0;
+      const bStart = toDateObj(b.start_date, b.start_time) || 0;
+      return aStart - bStart;
     });
 
-    // Group by area if "All" selected
-    const byArea = { north:[], south:[], east:[] };
-    rows.forEach(ev => {
-      const key = ev._area || 'north';
-      byArea[key].push(ev);
-    });
-
-    // Build HTML
-    if (rows.length === 0) {
+    if (!rows.length) {
       WRAP.innerHTML = `<div style="color:#fed351;font-weight:600">No matching events.</div>`;
       return;
     }
 
-    const areaTitle = a => ({
-      north: 'North Ayrshire',
-      south: 'South Ayrshire',
-      east:  'East Ayrshire'
-    }[a]);
-
-    const makeCard = ev => {
-      const dt = parseDT(ev.date, ev.time);
-      const dateStr = fmtDate(dt);
-      const timeStr = fmtTime(ev.time);
-
-      return `
-        <article class="event-card">
-          <h3>${ev.title}</h3>
-          <div class="event-meta">
-            <span>📅 ${dateStr}${timeStr ? ' • ' + timeStr : ''}</span>
-            ${ev.venue ? `<span>📍 ${ev.venue}${ev.town ? ', ' + ev.town : ''}</span>` : ''}
-          </div>
-          ${ev.desc ? `<div class="event-desc">${ev.desc}</div>` : ''}
-          ${ev.link ? `<div class="event-actions"><a href="${ev.link}" target="_blank" rel="noopener">More info →</a></div>` : ''}
-        </article>
-      `;
-    };
-
     if (area === 'all') {
-      // Show grouped sections in N/S/E order
-      const sections = ['north','south','east']
-        .filter(a => byArea[a].length)
-        .map(a => `
-          <section>
-            <h3 style="color:#00818a;margin:8px 0 8px 0;">${areaTitle(a)}</h3>
-            <div class="event-col">${byArea[a].map(makeCard).join('')}</div>
-          </section>
-        `);
-      WRAP.innerHTML = sections.join('');
+      const groups = { north:[], south:[], east:[] };
+      rows.forEach(ev => groups[ev._area || 'north'].push(ev));
+      const title = k => ({north:'North Ayrshire', south:'South Ayrshire', east:'East Ayrshire'})[k];
+      WRAP.innerHTML = ['north','south','east'].filter(k => groups[k].length).map(k => `
+        <section aria-labelledby="sec-${k}">
+          <h3 id="sec-${k}" style="color:#00818a;margin:8px 0;">${title(k)}</h3>
+          <ul class="event-col" role="list">
+            ${groups[k].map(ev => `<li>${makeCard(ev)}</li>`).join('')}
+          </ul>
+        </section>
+      `).join('');
     } else {
-      WRAP.innerHTML = `<div class="event-col">${rows.map(makeCard).join('')}</div>`;
+      WRAP.innerHTML = `
+        <ul class="event-col" role="list">
+          ${rows.map(ev => `<li>${makeCard(ev)}</li>`).join('')}
+        </ul>
+      `;
     }
   }
 
@@ -3768,37 +3770,29 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
     try {
       const res = await fetch('events-ayrshire.json', { cache: 'no-store' });
       const json = await res.json();
-      // Tag each item with its area for grouping when "All" is used
+      // Tag area for grouping under "All"
       ['north','south','east'].forEach(k => {
         data[k] = (json[k] || []).map(e => ({ ...e, _area: k }));
       });
-      // Defaults: show from today onwards
+      // Default from today
       const today = new Date(); today.setHours(0,0,0,0);
-      FROM.value = today.toISOString().slice(0,10);
+      if (FROM) FROM.value = today.toISOString().slice(0,10);
       render();
-    } catch (e) {
-      WRAP.innerHTML = `<div style="color:#ff6b6b;">Could not load events.</div>`;
+    } catch(e) {
       console.error('Local events load failed', e);
+      WRAP.innerHTML = `<div style="color:#ff6b6b;">Could not load events.</div>`;
     }
   }
 
-  // Events
-  AREA.addEventListener('change', render);
-  FROM.addEventListener('change', render);
-  TO.addEventListener('change', render);
-  SEARCH.addEventListener('input', () => { render(); });
-  document.getElementById('localReset').addEventListener('click', () => {
-    AREA.value = 'north';
-    FROM.value = '';
-    TO.value   = '';
-    SEARCH.value = '';
-    render();
-  });
-
-  // Load once when page is ready
+  // Wire controls
+  AREA?.addEventListener('change', render);
+  FROM?.addEventListener('change', render);
+  TO?.addEventListener('change', render);
+  SEARCH?.addEventListener('input', render);
   document.addEventListener('DOMContentLoaded', load);
 })();
 </script>
+
 
 </body>
 </html>
