@@ -3835,65 +3835,6 @@ function fetchScottishNews() {
 // Optionally call this only when modal opens for efficiency
 document.addEventListener("DOMContentLoaded", fetchScottishNews);
 </script>
-<script>
-// Helper to get the full current show object (not just title)
-function getCurrentShowObject(schedule) {
-  const now = new Date();
-  const day = now.toLocaleString("en-GB", { weekday: "long" });
-  const shows = schedule && schedule[day];
-  if (!shows) return null;
-  const nowMins = now.getHours() * 60 + now.getMinutes();
-  for (const show of shows) {
-    const [sh, sm] = show.start.split(":").map(Number);
-    const [eh, em] = show.end.split(":").map(Number);
-    let start = sh * 60 + sm;
-    let end = eh * 60 + em;
-    if (end === 0 && start > 0) end = 1440;
-    if (nowMins >= start && nowMins < end) {
-      return show;
-    }
-  }
-  return null;
-}
-
-// Override/update the existing updateOnAirNow to stash the current show object
-let latestCurrentShow = null; // will hold the full object
-
-async function updateOnAirNowWithPresenterLink() {
-  const schedule = await fetchSchedule();
-  const fullShowTitle = schedule ? (getCurrentShowObject(schedule)?.title || "Off Air") : "Schedule unavailable";
-  const el = document.getElementById("currentShow");
-  if (el) {
-    el.textContent = fullShowTitle;
-    // store full show object for click handler
-    latestCurrentShow = schedule ? getCurrentShowObject(schedule) : null;
-  }
-}
-
-// Initial call and replace any previous usage of updateOnAirNow where appropriate
-updateOnAirNowWithPresenterLink();
-setInterval(updateOnAirNowWithPresenterLink, 60000); // keep it reasonably fresh
-
-// Make the on-air-now title clickable to open the presenter's modal
-document.getElementById("currentShow")?.addEventListener("click", function (e) {
-  if (!latestCurrentShow) return;
-  // Determine presenter name: prioritise show.presenter.name, fallback to parsing "with" in title
-  let presenterName = latestCurrentShow.presenter && latestCurrentShow.presenter.name;
-  if (!presenterName && latestCurrentShow.title && / with /i.test(latestCurrentShow.title)) {
-    const parts = latestCurrentShow.title.split(/ with /i);
-    presenterName = parts[1]?.trim();
-  }
-  if (presenterName) {
-    const normalized = normaliseName(presenterName);
-    const modalId = `presenter-${normalized}`;
-    // Only open if that modal exists
-    if (document.getElementById(modalId)) {
-      openModal(modalId);
-    }
-  }
-  // Optionally: prevent default or give feedback if no presenter found
-});
-</script>
 
 </body>
 </html>
