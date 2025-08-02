@@ -2005,45 +2005,31 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </script>
   </div>
 </div>
+<iframe width="640px" height="480px" src="https://forms.office.com/e/4MK3MuPHTp?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
 
 <div id="requestsModal" class="modal">
-  <div class="modal-content">
+  <div class="modal-content" style="max-width:900px;width:97vw;">
     <span class="close" onclick="closeModal('requestsModal')">&times;</span>
-    <div class="request-header">
+    <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;">
       <h2 style="margin:0;color:#00818a;font-size:1.5em;">Request a Song</h2>
     </div>
-    <div class="request-body">
-      <p style="font-size:17px;line-height:1.6;margin-bottom:8px;">
+    <div style="background:#111;border:1px solid #333;border-radius:12px;padding:28px 18px 32px 18px;box-shadow:0 0 20px rgba(0,0,0,0.28);margin-bottom:0; color:#eee;">
+      <p style="font-size:17px;line-height:1.6;margin-bottom:22px;">
         Got a favourite track or a shout-out for someone special?<br>
         Send us your song requests and messages – and we might play them live on air!<br>
         <span style="color:#aaa;font-size:15px;">
           (Note: Many of our shows are pre-recorded, so requests may not always be instant.)
         </span>
       </p>
-      <div class="form-wrapper">
-        <div class="form-actions">
-          <div style="font-size:14px;color:#ccc;">
-            If the form doesn’t fully render below, you can open it directly.
-          </div>
-          <a class="view-full" href="https://forms.office.com/e/4MK3MuPHTp" target="_blank" rel="noopener noreferrer">
-            View full form
-          </a>
-        </div>
-        <iframe
-          class="form-iframe"
-          src="https://forms.office.com/e/4MK3MuPHTp?embed=true"
-          allowfullscreen
-          webkitallowfullscreen
-          mozallowfullscreen
-          msallowfullscreen
-          title="Song request form"
-        >
+      <div style="width:100%;min-height:340px;">
+        <!-- Replaced Elfsight with Microsoft Form -->
+        <iframe width="100%" height="100%" src="https://forms.office.com/e/4MK3MuPHTp?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; min-height:340px; border-radius:8px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
           Loading…
         </iframe>
       </div>
-      <div id="thank-you-message" class="thank-you"></div>
+      <div id="thank-you-message" class="thank-you" style="font-size:18px;margin-top:18px;min-height:36px;"></div>
     </div>
-    <div class="footer">
+    <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
       Essential Radio &copy; 2025
     </div>
   </div>
@@ -3594,86 +3580,7 @@ function refreshCombinedTravel() {
   max-height: 88vh;
   margin: 3% auto;
 }
-/* Modal sizing */
-  #requestsModal .modal-content {
-    max-width: 1000px;
-    width: 95vw;
-    height: 95vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-  }
-  .close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #fff;
-  }
-  .request-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 16px;
-    flex: 0 0 auto;
-  }
-  .request-body {
-    background: #111;
-    border: 1px solid #333;
-    border-radius: 12px;
-    padding: 28px 18px 32px 18px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.28);
-    margin-bottom: 0;
-    color: #eee;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  .form-wrapper {
-    width: 100%;
-    flex: 1 1 auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .form-iframe {
-    flex: 1 1 auto;
-    border: none;
-    border-radius: 8px;
-    min-height: 0;
-    width: 100%;
-    /* large height to try to show full form if it’s tall */
-    height: 100%;
-    overflow: visible;
-  }
-  .form-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex: 0 0 auto;
-    gap: 8px;
-  }
-  .footer {
-    margin-top: 18px;
-    text-align: center;
-    color: #888;
-    font-size: 14px;
-    opacity: 0.8;
-    flex: 0 0 auto;
-  }
-  .view-full {
-    background: #00818a;
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.9em;
-    font-weight: 600;
-  }
+
 
     </style>
   </div>
