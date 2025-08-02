@@ -2365,22 +2365,61 @@ group.forEach(show => {
       }
       return "Off Air";
     }
-    async function updateOnAirNow() {
-      const schedule = await fetchSchedule();
-      const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
-      const el = document.getElementById("currentShow");
-      if (fullShow.includes(" with ")) {
-        const [title, presenter] = fullShow.split(" with ");
-        el.innerHTML = `
-          <span class="show-title">${title.trim()}</span>
-          <span class="show-presenter">with ${presenter.trim()}</span>`;
+   
+  // normalize "Paul Woodland" → "presenter-paul-woodland"
+  function presenterNameToModalId(name) {
+    const slug = name
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-')            // spaces → dashes
+      .replace(/[^a-z0-9\-]/g, '');   // strip unexpected chars
+    return `presenter-${slug}`;
+  }
+
+  async function updateOnAirNow() {
+    const schedule = await fetchSchedule();
+    const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
+    const el = document.getElementById("currentShow");
+
+    if (fullShow.includes(" with ")) {
+      const [title, presenterRaw] = fullShow.split(" with ");
+      const titleText = title.trim();
+      const presenterName = presenterRaw.trim();
+
+      const modalId = presenterNameToModalId(presenterName);
+      const hasModal = !!document.getElementById(modalId);
+
+      let presenterLine;
+      if (hasModal) {
+        presenterLine = `<a href="#" class="show-presenter-link" data-modal="${modalId}" style="text-decoration:none;color:inherit;"><em>with ${presenterName}</em></a>`;
       } else {
-        el.textContent = fullShow;
+        presenterLine = `<em>with ${presenterName}</em>`;
       }
+
+      el.innerHTML = `
+        <div class="show-title-line">${titleText}</div>
+        <div class="presenter-line">${presenterLine}</div>
+      `;
+
+      if (hasModal) {
+        const link = el.querySelector(".show-presenter-link");
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          const targetId = link.getAttribute("data-modal");
+          openModal(targetId);
+        });
+      }
+    } else {
+      // no presenter parsed; just show the full text
+      el.textContent = fullShow;
     }
-    updateOnAirNow();
-    setInterval(updateOnAirNow, 60_000);
-  </script>
+  }
+
+  updateOnAirNow();
+  setInterval(updateOnAirNow, 60_000);
+</script>
+
+
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
