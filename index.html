@@ -999,42 +999,6 @@ body.modal-open {
   margin-bottom: 4px;
   display: block;
 }
-/* Make any modal content responsive and scrollable */
-.modal-content {
-  position: relative;
-  max-height: 90vh;              /* never exceed viewport height */
-  overflow-y: auto;              /* inner scrolling if content is tall */
-  box-sizing: border-box;
-  margin: 5% auto;               /* tighter vertical margin for mobile */
-  padding: 20px;                 /* comfortable padding */
-  width: 100%;
-  max-width: 600px;              /* constrain width on large screens */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-}
-
-/* Specific mobile adjustments */
-@media (max-width: 800px) {
-  .modal-content {
-    margin: 4% 8px;
-    width: auto;
-    max-width: 97vw;
-    padding: 16px;
-    border-radius: 10px;
-  }
-}
-
-/* Optional: ensure the backdrop doesn't trap scroll behind */
-.modal-backdrop {
-  overflow: hidden;
-}
-
-/* If the news modal has a special wrapper, ensure it fills its parent */
-.news-modal-inner {
-  display: flex;
-  flex-direction: column;
-  min-height: 0; /* allows its children to scroll inside flex layouts */
-}
-
 
 </style>
 </head>
@@ -3573,6 +3537,42 @@ function refreshCombinedTravel() {
 #currentShow .presenter-line a:hover {
   text-decoration: underline;
 }
+/* Make any modal content responsive and scrollable */
+.modal-content {
+  position: relative;
+  max-height: 90vh;              /* never exceed viewport height */
+  overflow-y: auto;              /* inner scrolling if content is tall */
+  box-sizing: border-box;
+  margin: 5% auto;               /* tighter vertical margin for mobile */
+  padding: 20px;                 /* comfortable padding */
+  width: 100%;
+  max-width: 600px;              /* constrain width on large screens */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* Specific mobile adjustments */
+@media (max-width: 800px) {
+  .modal-content {
+    margin: 4% 8px;
+    width: auto;
+    max-width: 97vw;
+    padding: 16px;
+    border-radius: 10px;
+  }
+}
+
+/* Optional: ensure the backdrop doesn't trap scroll behind */
+.modal-backdrop {
+  overflow: hidden;
+}
+
+/* If the news modal has a special wrapper, ensure it fills its parent */
+.news-modal-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* allows its children to scroll inside flex layouts */
+}
+
 
     </style>
   </div>
