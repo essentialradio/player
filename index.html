@@ -2366,13 +2366,13 @@ group.forEach(show => {
       return "Off Air";
     }
    
-  // normalize "Paul Woodland" → "presenter-paul-woodland"
+ 
   function presenterNameToModalId(name) {
     const slug = name
       .trim()
       .toLowerCase()
-      .replace(/\s+/g, '-')            // spaces → dashes
-      .replace(/[^a-z0-9\-]/g, '');   // strip unexpected chars
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9\-]/g, '');
     return `presenter-${slug}`;
   }
 
@@ -2391,7 +2391,7 @@ group.forEach(show => {
 
       let presenterLine;
       if (hasModal) {
-        presenterLine = `<a href="#" class="show-presenter-link" data-modal="${modalId}" style="text-decoration:none;color:inherit;"><em>with ${presenterName}</em></a>`;
+        presenterLine = `<a href="#" class="show-presenter-link" data-modal="${modalId}"><em>with ${presenterName}</em></a>`;
       } else {
         presenterLine = `<em>with ${presenterName}</em>`;
       }
@@ -2410,7 +2410,6 @@ group.forEach(show => {
         });
       }
     } else {
-      // no presenter parsed; just show the full text
       el.textContent = fullShow;
     }
   }
@@ -2418,6 +2417,7 @@ group.forEach(show => {
   updateOnAirNow();
   setInterval(updateOnAirNow, 60_000);
 </script>
+
 
 
   <script>
@@ -3519,6 +3519,25 @@ function refreshCombinedTravel() {
 .modal.presenter-detail.show {
   display: flex !important;
 }
+#currentShow .show-title-line {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#currentShow .presenter-line {
+  font-size: 0.85rem;      /* slightly smaller */
+  font-weight: 400;
+  opacity: 0.65;           /* lighter via opacity */
+  margin-top: 2px;
+}
+#currentShow .presenter-line a {
+  color: inherit;          /* keep link from changing color */
+  text-decoration: none;
+}
+#currentShow .presenter-line a:hover {
+  text-decoration: underline;
+}
+
     </style>
   </div>
 </div>
