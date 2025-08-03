@@ -3126,7 +3126,68 @@ function openLivePresenterModal() {
   }
 }
 
-</script><div class="modal presenter-modal" id="presenter-paul-woodland" style="z-index: 10001;">
+</script>
+<style>
+.modal.presenter-modal {
+  display: none;
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999 !important;
+}
+.modal.presenter-modal .modal-content {
+  z-index: 10000 !important;
+  position: relative;
+}
+</style>
+<script>
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.style.display = 'none';
+  });
+  document.body.classList.remove('modal-open');
+}
+
+function openModal(id) {
+  closeAllModals();
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'block';
+    modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
+    document.body.classList.add('modal-open');
+  }
+}
+
+// ✅ DO NOT CLOSE ANYTHING when opening presenter modal — just open on top
+function openPresenterModal(presenterId) {
+  const modal = document.getElementById(presenterId);
+  if (modal) {
+    modal.style.display = 'block';
+    modal.style.zIndex = '9999';
+    modal.style.position = 'fixed';
+    document.body.classList.add('modal-open');
+  }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+    if (id === 'presentersModal') {
+      document.body.classList.remove('modal-open');
+    }
+  }
+}
+
+function closePresenterModal(presenterId) {
+  const modal = document.getElementById(presenterId);
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+</script>
+<div class="modal presenter-modal" id="presenter-paul-woodland" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closeModal('presenter-paul-woodland')">×</span>
 <h2>Paul Woodland</h2>
@@ -3506,92 +3567,92 @@ function openLivePresenterModal() {
 <span class="close" onclick="closeModal('presentersModal')">×</span>
 <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
 <div class="presenters-grid">
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-paul-woodland');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-paul-woodland');return false;">
 <img alt="Paul Woodland" src="Paul-Woodland.jpg"/>
 <h3>Paul Woodland</h3>
 <p>Essential Breakfast</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-bex-mcnamee');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-bex-mcnamee');return false;">
 <img alt="Bex McNamee" src="Bex-Mcnamee.jpg"/>
 <h3>Bex McNamee</h3>
 <p>Feelgood Lunch &amp; The Midweek Mash-Up</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-scott-ohare');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-scott-ohare');return false;">
 <img alt="Scott O'Hare" src="Scott-OHare.jpg"/>
 <h3>Scott O'Hare</h3>
 <p>Essential Hometime</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-faith-montgomery');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-faith-montgomery');return false;">
 <img alt="Faith Montgomery" src="Faith-Montgomery.jpg"/>
 <h3>Faith Montgomery</h3>
 <p>Feelgood Lunch</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-david-southway');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-david-southway');return false;">
 <img alt="David Southway" src="David-Southway.jpg"/>
 <h3>David Southway</h3>
 <p>Soul Vaults</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-lee-everest');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-lee-everest');return false;">
 <img alt="Lee Everest" src="Lee-Everest.jpg"/>
 <h3>Lee Everest</h3>
 <p>Ready for the Weekend</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-ronny-costello');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-ronny-costello');return false;">
 <img alt="Ronny Costello" src="Ronny-Costello.jpg"/>
 <h3>Ronny Costello</h3>
 <p>Club Classics</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-davy-sims');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-davy-sims');return false;">
 <img alt="Davy Sims" src="Davy-Sims.jpg"/>
 <h3>Davy Sims</h3>
 <p>Around the World</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-big-tommy');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-big-tommy');return false;">
 <img alt="Big Tommy" src="Big-Tommy.jpg"/>
 <h3>Big Tommy</h3>
 <p>Saturday Music Marathon &amp; Party Anthems</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-jan-gow');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-jan-gow');return false;">
 <img alt="Jan Gow" src="Jan-Gow.jpg"/>
 <h3>Jan Gow</h3>
 <p>70s Jukebox</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-tim-graham');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-tim-graham');return false;">
 <img alt="Tim Graham" src="Tim-Graham.jpeg"/>
 <h3>Tim Graham</h3>
 <p>LGBTQ Music Chart</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-stephen-howie');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-stephen-howie');return false;">
 <img alt="Stephen Howie" src="Stephen-Howie.jpg"/>
 <h3>Stephen Howie</h3>
 <p>Grooveline</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-bill-grainger');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-bill-grainger');return false;">
 <img alt="Bill Grainger" src="Bill-Grainger.jpg"/>
 <h3>Bill Grainger</h3>
 <p>Fire Island Hi-NRG</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-kevin-mccallum');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-kevin-mccallum');return false;">
 <img alt="Kevin McCallum" src="Kevin-Mccallum.jpg"/>
 <h3>Kevin McCallum</h3>
 <p>Mr Rocks Show</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-emma-scott');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-emma-scott');return false;">
 <img alt="Emma Scott" src="Emma-Scott.jpg"/>
 <h3>Emma Scott</h3>
 <p>Pluggin' Baby Radio Show</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-dave-watkins');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-dave-watkins');return false;">
 <img alt="Dave Watkins" src="Dave-Watkins.jpg"/>
 <h3>Dave Watkins</h3>
 <p>The Country Mile</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-brian-woolfson');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-brian-woolfson');return false;">
 <img alt="Brian Woolfson" src="Brian-Woolfson.jpg"/>
 <h3>Brian Woolfson</h3>
 <p>Retro Charts</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-spencer-james');return false;">
+<a class="presenter-card" href="#" onclick="openModal('presenter-spencer-james');return false;">
 <img alt="Spencer James" src="Spencer-James.jpg"/>
 <h3>Spencer James</h3>
 <p>Airplay40</p>
@@ -3673,66 +3734,5 @@ function openLivePresenterModal() {
 }
     </style>
 </div>
-</div>
-<style>
-.modal.presenter-modal {
-  display: none;
-  position: fixed !important;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.85);
-  z-index: 9999 !important;
-}
-.modal.presenter-modal .modal-content {
-  z-index: 10000 !important;
-  position: relative;
-}
-</style>
-<script>
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(modal => {
-    modal.style.display = 'none';
-  });
-  document.body.classList.remove('modal-open');
-}
-
-function openModal(id) {
-  closeAllModals();
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
-    document.body.classList.add('modal-open');
-  }
-}
-
-// ✅ DO NOT CLOSE ANYTHING when opening presenter modal — just open on top
-function openPresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = '9999';
-    modal.style.position = 'fixed';
-    document.body.classList.add('modal-open');
-  }
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-    if (id === 'presentersModal') {
-      document.body.classList.remove('modal-open');
-    }
-  }
-}
-
-function closePresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'none';
-  }
-}
-</script>
-</body>
+</div></body>
 </html>
