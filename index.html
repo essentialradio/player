@@ -1010,12 +1010,10 @@ body.modal-open {
     height: calc(100svh - 56px) !important;
     overflow-y: auto !important;
   }
-
   .modal-content {
     max-height: calc(100svh - 56px) !important;
     overflow-y: auto !important;
   }
-
   #requestsModal .embed-wrap {
     min-height: 78svh !important;
     height: 78svh !important;
@@ -1068,7 +1066,7 @@ body.modal-open {
 <div class="strip-container three-panel">
 <!-- LEFT PANEL -->
 <div class="left-panel">
-<div id="onAirNow" style="text-align: right;">
+<div id="onAirNow" onclick="openLivePresenterModal()" style="text-align: right;;cursor:pointer;">
 <span class="pulsing-label">ON AIR NOW</span>
 <span id="currentShow" style="font-weight: 600;">Loading...</span>
 </div>
@@ -2131,7 +2129,138 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 <!-- Removed duplicate modal JS script -->
 <!-- NATIVE MODAL SCHEDULE LOGIC -->
+<script>
+  (function() {
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const todayIndex = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1;
 
+    const modalScheduleContainer = document.getElementById("modalDaySchedule");
+    const modalDaySelect = document.getElementById("modalDaySelect");
+    let modalFullSchedule = null;
+
+    // Populate dropdown
+    daysOfWeek.forEach((day, idx) => {
+      const opt = document.createElement("option");
+      opt.value = day;
+      opt.textContent = day;
+      if (idx === todayIndex) opt.selected = true;
+      modalDaySelect.appendChild(opt);
+    });
+
+    async function fetchScheduleModal() {
+      try {
+        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (e) {
+        modalScheduleContainer.innerHTML = `<h3>Schedule Unavailable</h3>`;
+        console.error("Schedule fetch failed:", e);
+        return null;
+      }
+    }
+
+    function getFullDate(dayName) {
+  // Get date for the next occurrence of 'dayName'
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const now = new Date();
+  const todayIdx = now.getDay() === 0 ? 6 : now.getDay() - 1;
+  const targetIdx = daysOfWeek.indexOf(dayName);
+  let diff = (targetIdx - todayIdx + 7) % 7;
+  const showDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + diff);
+  const day = showDate.getDate();
+  const month = showDate.toLocaleString('en-GB', { month: 'long' });
+  return `${dayName} ${day} ${month}`;
+}
+
+function renderDayScheduleModal(day, shows) {
+  modalScheduleContainer.innerHTML = `
+    <h3>${getFullDate(day)}</h3>
+    <div class="split-columns">
+      <div class="column left-column" id="modalLeftCol"></div>
+      <div class="column right-column" id="modalRightCol"></div>
+    </div>
+  `;
+
+  const mid = Math.ceil(shows.length / 2);
+  const leftShows = shows.slice(0, mid);
+  const rightShows = shows.slice(mid);
+
+  [leftShows, rightShows].forEach((group, i) => {
+  const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
+
+
+group.forEach(show => {
+  const presenter = show.presenter || {};
+  let presenterName = presenter.name || "";
+  let mainTitle = show.title || '';
+  let presenterLine = '';
+  let presenterIdForModal = null;
+
+  // If the show title includes "with", split it and use the presenter part for the modal
+  if (mainTitle && mainTitle.toLowerCase().includes(' with ')) {
+    const idx = mainTitle.toLowerCase().indexOf(' with ');
+    const showTitlePart = mainTitle.slice(0, idx);
+    const presenterNameRaw = mainTitle.slice(idx + 6).trim();
+    presenterName = presenterNameRaw;  // ✅ override presenterName
+    presenterIdForModal = 'presenter-' + normaliseName(presenterNameRaw);
+    mainTitle = showTitlePart.trim();
+    presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>`;
+  } else if (presenterName) {
+    presenterIdForModal = 'presenter-' + normaliseName(presenterName);
+    presenterLine = `<span class="show-presenter" style="font-style: italic;">${presenterName}</span>`;
+  }
+
+  // 🔁 Image filename override map
+  const imageOverrides = {
+    "Scott O'Hare": "Scott-OHare.jpg",
+"Tim Graham": "Tim-Graham.jpeg",
+    "Bex McNamee": "Bex-Mcnamee.jpg",
+	"Kevin McCallum": "Kevin-Mccallum.jpg"
+  };
+
+  // ✅ Use override if available, else fall back to slug
+  const presenterImg = imageOverrides[presenterName] ||
+    `${presenterName.replace(/[\s']/g, '-').replace(/[^a-zA-Z0-9\-]/g, '')}.jpg`;
+
+  const presenterLink = presenter.bio || "#";
+  const description = show.info || "";
+
+  const entry = document.createElement('div');
+  entry.className = 'show-entry';
+  entry.innerHTML = `
+    <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='default.png'">
+    <div class="show-info">
+      <time>${show.start}–${show.end}</time>
+      <div class="show-title-presenter">
+        ${presenterIdForModal ? `<a href="#" onclick="openModal('${presenterIdForModal}');return false;" class="show-title">${mainTitle}</a>` : `<span class="show-title">${mainTitle}</span>`}
+        ${presenterLine}
+      </div>
+      <div class="show-details">${description || ''}</div>
+    </div>
+  `;
+  col.appendChild(entry);
+});
+
+
+});
+}
+
+    modalDaySelect.addEventListener("change", () => {
+      const selectedDay = modalDaySelect.value;
+      if (modalFullSchedule && modalFullSchedule[selectedDay]) {
+        renderDayScheduleModal(selectedDay, modalFullSchedule[selectedDay]);
+      }
+    });
+
+    fetchScheduleModal().then(data => {
+      if (data) {
+        modalFullSchedule = data;
+        const todayName = daysOfWeek[todayIndex];
+        renderDayScheduleModal(todayName, data[todayName]);
+      }
+    });
+  })();
+  </script>
 <!-- PLAYER SCRIPTS (UNCHANGED) -->
 <script>
     async function fetchSchedule() {
@@ -3121,7 +3250,179 @@ function refreshCombinedTravel() {
     </style>
 </div>
 </div>
+<script>
+function updateLiveClock() {
+      const now = new Date();
+      // 24-hour, 2 digits always
+      const pad = n => n.toString().padStart(2, '0');
+      const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = [
+        'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+        'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'
+      ];
+      const dow = days[now.getDay()];
+      const day = now.getDate();
+      const month = months[now.getMonth()];
+      const year = now.getFullYear();
+      const dateStr = `${dow} ${day} ${month} ${year}`;
+      document.getElementById('clockTime').textContent = time;
+      document.getElementById('clockDate').textContent = dateStr;
+    }
+    updateLiveClock();
+    setInterval(updateLiveClock, 1000);
 
+// ===== LOGO SHOW/HIDE HELPERS =====
+function normaliseName(name) {
+  return name
+    .toLowerCase()
+    .replace(/[’']/g, '')      // strip curly and straight apostrophes
+    .replace(/\s+/g, '-')      // convert spaces to dashes
+    .replace(/[^a-z0-9\-]/g, ''); // remove anything else
+}
+function showLogo() {
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.remove('logo-hide');
+}
+function hideLogo() {
+  const logo = document.querySelector('.logo-overhang');
+  if (logo) logo.classList.add('logo-hide');
+}
+
+// Checks if any overlay (modal or burger) is open, and hides/shows logo accordingly
+function checkOverlayLogo() {
+  const anyModalOpen = Array.from(document.querySelectorAll('.modal'))
+    .some(m => m.style.display === 'block' || m.style.display === 'flex');
+  const burgerOpen = document.getElementById('burgerDropdown').style.display === 'flex';
+  if (anyModalOpen || burgerOpen) {
+    hideLogo();
+  } else {
+    showLogo();
+  }
+}
+
+function openModal(id) {
+  // Close all modals first
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+  // Then open the requested modal
+  document.getElementById(id).style.display = 'block';
+  document.body.classList.add('modal-open');
+  checkOverlayLogo();
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+  // Only remove modal-open if no modals are open
+  if (![...document.querySelectorAll('.modal')].some(m => m.style.display === 'block')) {
+    document.body.classList.remove('modal-open');
+  }
+  checkOverlayLogo();
+}
+
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+  document.body.classList.remove('modal-open');
+  checkOverlayLogo();
+}
+
+
+function toggleBurgerMenu() {
+  const burgerDropdown = document.getElementById('burgerDropdown');
+  const isOpen = burgerDropdown.style.display === 'flex';
+  if (isOpen) {
+    burgerDropdown.style.display = 'none';
+    checkOverlayLogo();
+  } else {
+    closeAllModals(); // Always close modals first!
+    burgerDropdown.style.display = 'flex';
+    checkOverlayLogo();
+  }
+}
+
+function openModalAndCloseBurger(id) {
+  closeBurgerMenu();
+  openModal(id);
+}
+
+function closeBurgerMenu() {
+  document.getElementById('burgerDropdown').style.display = 'none';
+  checkOverlayLogo();
+}
+
+// Close modals when clicking outside of them
+document.addEventListener('click', function(event) {
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      // Only remove modal-open if no modals left open
+      if (![...document.querySelectorAll('.modal')].some(m => m.style.display === 'block')) {
+        document.body.classList.remove('modal-open');
+      }
+      checkOverlayLogo();
+    }
+  });
+});
+
+// Prevent iOS scroll bounce inside modal content
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.modal-content').forEach(function(mc) {
+    mc.addEventListener('touchstart', function() {
+      var top = mc.scrollTop === 0;
+      var bottom = mc.scrollHeight - mc.scrollTop === mc.clientHeight;
+      if (top) mc.scrollTop = 1;
+      if (bottom) mc.scrollTop -= 1;
+    });
+  });
+});
+
+
+// ===== EVENT LISTENERS =====
+
+// Close when clicking outside the burger menu
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('burgerDropdown');
+  const btn = document.getElementById('burgerMenuBtn');
+  if (
+    window.innerWidth <= 750 &&
+    menu.style.display === 'flex' &&
+    !menu.contains(e.target) &&
+    !btn.contains(e.target)
+  ) {
+    closeBurgerMenu();
+  }
+});
+
+// ESC key closes burger menu and all modals
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeBurgerMenu();
+    closeAllModals();
+  }
+});
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) {
+    fetchNowPlaying();
+    fetchRecentFromGitHub();
+  }
+});
+window.addEventListener('focus', () => {
+  fetchNowPlaying();
+  fetchRecentFromGitHub();
+});
+
+// === Now Playing Manual Refresh ===
+// Attach click event to refresh button to manually refresh now playing information and the recent track list
+document.getElementById('refresh-now-playing')?.addEventListener('click', () => {
+  // Immediately fetch the latest now playing info
+  fetchNowPlaying();
+  // Also refresh the recent songs list
+  fetchRecentFromGitHub();
+});
+</script>
 <script>
 (() => {
   const WRAP   = document.getElementById('localEventsWrap');
@@ -3334,10 +3635,7 @@ window.addEventListener('load', () => {
 });
 </script><script>
 function closeAllModals() {
-  const modals = document.querySelectorAll('.modal');
-  modals.forEach(modal => {
-    modal.style.display = 'none';
-  });
+  document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
 }
 
 function openModal(modalId) {
@@ -3353,6 +3651,18 @@ function openModal(modalId) {
         iframe.setAttribute('src', src);
       }
     }
+  }
+}
+</script><script>
+function openLivePresenterModal() {
+  const presenterEl = document.querySelector('#onAirNow .presenter-name');
+  if (!presenterEl) return;
+
+  const name = presenterEl.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+  const lookup = {'paul-woodland': 'presenter-paul-woodland', 'bex-mcnamee': 'presenter-bex-mcnamee', "scott-o'hare": 'presenter-scott-ohare', 'faith-montgomery': 'presenter-faith-montgomery', 'david-southway': 'presenter-david-southway', 'lee-everest': 'presenter-lee-everest', 'ronny-costello': 'presenter-ronny-costello', 'davy-sims': 'presenter-davy-sims', 'big-tommy': 'presenter-big-tommy', 'jan-gow': 'presenter-jan-gow', 'tim-graham': 'presenter-tim-graham', 'stephen-howie': 'presenter-stephen-howie', 'bill-grainger': 'presenter-bill-grainger', 'kevin-mccallum': 'presenter-kevin-mccallum', 'emma-scott': 'presenter-emma-scott', 'dave-watkins': 'presenter-dave-watkins', 'brian-woolfson': 'presenter-brian-woolfson', 'spencer-james': 'presenter-spencer-james'};
+
+  if (lookup[name]) {
+    openModal(lookup[name]);
   }
 }
 </script></body>
