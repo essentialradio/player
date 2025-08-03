@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-19T00:00:00Z",
-    "Scheduled Time": "01:00",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 2",
-    "Duration (s)": 3588,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-19T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "",
@@ -43723,5 +43712,16 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-08-03T00:00:00Z",
+    "Scheduled Time": "01:02",
+    "Displayed Time": "",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 172,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
