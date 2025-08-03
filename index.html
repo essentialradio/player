@@ -3765,5 +3765,41 @@ function closePresenterModal(presenterId) {
   toggleLogoVisibility();
 }
 </script>
+<script>
+// Fallback observer: if modals’ display/style changes outside openModal/closeModal, keep logo in sync.
+(function() {
+  const modalEls = Array.from(document.querySelectorAll('.modal'));
+  const burger = document.getElementById('burgerDropdown');
+
+  const sync = () => {
+    // reuse existing logic
+    if (typeof checkOverlayLogo === 'function') {
+      checkOverlayLogo();
+    }
+  };
+
+  // Observe style/class changes on modals
+  const observer = new MutationObserver(sync);
+  modalEls.forEach(m => observer.observe(m, {
+    attributes: true,
+    attributeFilter: ['style', 'class']
+  }));
+
+  // Observe burger dropdown similarly
+  if (burger) {
+    observer.observe(burger, {
+      attributes: true,
+      attributeFilter: ['style', 'class']
+    });
+  }
+
+  // On history navigation (back/forward), re-evaluate logo visibility
+  window.addEventListener('popstate', sync);
+
+  // Initial sync in case page loaded with a modal already open
+  document.addEventListener('DOMContentLoaded', sync);
+})();
+</script>
+
 </body>
 </html>
