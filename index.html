@@ -3603,36 +3603,6 @@ function refreshCombinedTravel() {
   max-height: 88vh;
   margin: 3% auto;
 }
-@media (max-width: 768px) {
-  #requestsModal .embed-wrap { min-height: 75svh; }
-}
-/* === Requests modal: desktop/tablet sizing === */
-@media (min-width: 769px) {
-  /* Let the modal content allocate vertical space to the iframe area */
-  #requestsModal .modal-content {
-    display: flex;
-    flex-direction: column;
-    /* keep it within the viewport */
-    max-height: calc(100vh - 120px);
-    /* match your existing centered look; adjust if you prefer */
-    margin: 60px auto;
-  }
-
-  /* The iframe wrapper should expand to fill available height */
-  #requestsModal .embed-wrap {
-    flex: 1 1 auto;
-    min-height: 720px;   /* desktop guarantee; tweak if you want more/less */
-    max-height: none;
-  }
-}
-
-/* Extra safety: ensure the iframe always fills its wrapper */
-#requestsModal .embed-wrap > iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
 
 
     </style>
