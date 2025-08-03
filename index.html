@@ -3108,21 +3108,34 @@ function openModal(modalId) {
 }
 </script><script>
 function openLivePresenterModal() {
-  const showText = document.querySelector('#currentShow')?.innerText || '';
-  const match = showText.match(/with\s+(.+)$/i);
-  if (!match || !match[1]) {
-    openModal('presentersModal'); // fallback
+  // Try to get the presenter from the structured element first
+  let presenterName = '';
+  const presenterSpan = document.querySelector('#currentShow .show-presenter');
+  if (presenterSpan) {
+    presenterName = presenterSpan.textContent.replace(/^with\s+/i, '').trim();
+  } else {
+    // Fallback: loose regex against innerText (handles unexpected formatting/newlines)
+    const showText = document.querySelector('#currentShow')?.innerText || '';
+    const m = showText.match(/with\s+([^\n\r]+)/i);
+    if (m) presenterName = m[1].trim();
+  }
+
+  if (!presenterName) {
+    openModal('presentersModal'); // fallback if nothing parsed
     return;
   }
 
-  const presenterName = match[1].trim().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
-  const modalId = `presenter-${presenterName}`;
+  // Use the shared normalisation helper so slugs match presenter IDs
+  const slug = typeof normaliseName === 'function'
+    ? normaliseName(presenterName)
+    : presenterName.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
 
+  const modalId = `presenter-${slug}`;
   const modalEl = document.getElementById(modalId);
   if (modalEl) {
     openModal(modalId);
   } else {
-    openModal('presentersModal'); // fallback
+    openModal('presentersModal');
   }
 }
 
