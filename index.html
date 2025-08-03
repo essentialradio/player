@@ -1966,7 +1966,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 </div>
 <div class="modal" id="requestsModal" style="position:fixed;inset:0;display:none;background:rgba(0,0,0,0.6);z-index:9999;">
-<div class="modal-content" style="margin:0;padding:0;border-radius:0;position:absolute;inset:0;width:100vw;height:100svh;max-width:none;background:#fff;overflow:hidden;"><div style="height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #e5e7eb;background:#ffffff;"><div style="font-weight:600;color:#00818a;">Send a Request or Shout-out</div><button aria-label="Close" onclick="closeModal('requestsModal')" style="border:0;background:transparent;font-size:24px;line-height:1;cursor:pointer;">×</button></div><div style="position:absolute;top:48px;left:0;right:0;bottom:0;"><iframe allowfullscreen="True" src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u&amp;embed=true" style="border:0;width:100%;height:100%;" title="Essential Radio Requests"></iframe></div><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u" rel="noopener" style="position:absolute;left:12px;bottom:10px;font-size:12px;color:#6b7280;text-decoration:underline;" target="_blank">Open in a new tab</a></div>
+<div class="modal-content" style="margin:0;padding:0;border-radius:0;position:absolute;inset:0;width:100vw;height:100svh;max-width:none;background:#fff;overflow:hidden;"><div style="height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #e5e7eb;background:#ffffff;"><div style="font-weight:600;color:#00818a;">Send a Request or Shout-out</div><button aria-label="Close" onclick="closeModal('requestsModal')" style="border:0;background:transparent;font-size:24px;line-height:1;cursor:pointer;">×</button></div><div style="position:absolute;top:48px;left:0;right:0;bottom:0;"><iframe allowfullscreen="True" id="requestsIframe" src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u&amp;embed=true" style="border:0;width:100%;height:100%;" title="Essential Radio Requests"></iframe></div><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u" rel="noopener" style="position:absolute;left:12px;bottom:10px;font-size:12px;color:#6b7280;text-decoration:underline;" target="_blank">Open in a new tab</a></div>
 </div>
 <div class="modal" id="contactModal">
 <div class="modal-content" style="max-width:900px;width:97vw;">
@@ -3580,5 +3580,40 @@ function fetchScottishNews() {
 // Optionally call this only when modal opens for efficiency
 document.addEventListener("DOMContentLoaded", fetchScottishNews);
 </script>
-</div></div></div></body>
+</div></div></div><script>
+window.addEventListener('load', () => {
+  const iframe = document.getElementById('requestsIframe');
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  if (!isMobile || !iframe) return;
+
+  // Create invisible clickable overlay
+  const overlay = document.createElement('div');
+  overlay.style.position = 'absolute';
+  overlay.style.top = '48px';
+  overlay.style.left = 0;
+  overlay.style.right = 0;
+  overlay.style.bottom = 0;
+  overlay.style.zIndex = 10;
+  overlay.style.cursor = 'pointer';
+  overlay.title = 'Tap to open the form';
+
+  overlay.addEventListener('click', () => {
+    window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u', '_blank');
+  });
+
+  setTimeout(() => {
+    try {
+      const doc = iframe.contentWindow?.document;
+      const bodyContent = doc?.body?.innerHTML?.trim();
+      const isBlank = !bodyContent || bodyContent.length === 0;
+      if (isBlank) {
+        iframe.parentNode.appendChild(overlay);
+      }
+    } catch (e) {
+      // On access errors (cross-origin), assume iframe failed
+      iframe.parentNode.appendChild(overlay);
+    }
+  }, 1500);
+});
+</script></body>
 </html>
