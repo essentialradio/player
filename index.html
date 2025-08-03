@@ -1725,23 +1725,23 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   background: rgba(0,0,0,0.78);
   transition: background 0.2s;
 }
+/* Mobile modal rules — single, valid media block */
 @media (max-width: 768px) {
-  @media (max-width: 768px) {
   .modal {
     top: 56px !important;
     left: 0 !important;
     width: 100vw !important;
-    /* Use small-viewport height to play nice with mobile browser chrome */
-    height: calc(100svh - 56px) !important;
+    height: calc(100svh - 56px) !important; /* below burger/nav */
     min-height: 0 !important;
-    overflow-y: auto !important;             /* ✅ allow modal to scroll */
+    overflow-y: auto !important;            /* allow modal to scroll */
     -webkit-overflow-scrolling: touch !important;
     background: rgba(0,0,0,0.78) !important;
     z-index: 2000;
   }
+
   .modal-content {
     margin: 0 !important;
-    max-height: calc(100vh - 56px) !important;
+    max-height: calc(100svh - 56px) !important;  /* use svh consistently */
     min-height: 0 !important;
     width: 100vw !important;
     max-width: 100vw !important;
@@ -1756,24 +1756,13 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     scrollbar-width: thin;
     scrollbar-color: #fed351 #ececec;
   }
-  .modal-content::-webkit-scrollbar {
-    width: 14px;
-    background: #ececec;
-    border-radius: 10px;
-  }
-  .modal-content::-webkit-scrollbar-thumb {
-    background: #fed351;
-    border-radius: 10px;
-    border: 3px solid #ececec;
-  }
-  .modal-content::-webkit-scrollbar-thumb:active {
-    background: #ffe67c;
-  }
-  .modal-content::-webkit-scrollbar-track {
-    background: #ececec;
-    border-radius: 10px;
-  }
+
+  .modal-content::-webkit-scrollbar { width: 14px; background: #ececec; border-radius: 10px; }
+  .modal-content::-webkit-scrollbar-thumb { background: #fed351; border-radius: 10px; border: 3px solid #ececec; }
+  .modal-content::-webkit-scrollbar-thumb:active { background: #ffe67c; }
+  .modal-content::-webkit-scrollbar-track { background: #ececec; border-radius: 10px; }
 }
+
 #burgerMenuBtn {
   z-index: 3000 !important; /* Higher than .modal (z-index: 2000) */
 }
