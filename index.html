@@ -1068,7 +1068,7 @@ body.modal-open {
 <div class="left-panel">
 <div id="onAirNow" onclick="openLivePresenterModal()" style="text-align: right;;cursor:pointer;">
 <span class="pulsing-label">ON AIR NOW</span>
-<span id="currentShow" style="font-weight: 600;">Loading...</span>
+<span id="currentShow" style="font-weight: 600;"><span class="presenter-name">Loading...</span></span>
 </div>
 <div id="player-box">
 <audio id="stream" preload="none">
@@ -3655,15 +3655,23 @@ function openModal(modalId) {
 }
 </script><script>
 function openLivePresenterModal() {
-  const presenterEl = document.querySelector('#onAirNow .presenter-name');
-  if (!presenterEl) return;
+  const showText = document.querySelector('#currentShow')?.innerText || '';
+  const match = showText.match(/with\s+(.+)$/i);
+  if (!match || !match[1]) {
+    openModal('presentersModal'); // fallback
+    return;
+  }
 
-  const name = presenterEl.textContent.trim().toLowerCase().replace(/\s+/g, '-');
-  const lookup = {'paul-woodland': 'presenter-paul-woodland', 'bex-mcnamee': 'presenter-bex-mcnamee', "scott-o'hare": 'presenter-scott-ohare', 'faith-montgomery': 'presenter-faith-montgomery', 'david-southway': 'presenter-david-southway', 'lee-everest': 'presenter-lee-everest', 'ronny-costello': 'presenter-ronny-costello', 'davy-sims': 'presenter-davy-sims', 'big-tommy': 'presenter-big-tommy', 'jan-gow': 'presenter-jan-gow', 'tim-graham': 'presenter-tim-graham', 'stephen-howie': 'presenter-stephen-howie', 'bill-grainger': 'presenter-bill-grainger', 'kevin-mccallum': 'presenter-kevin-mccallum', 'emma-scott': 'presenter-emma-scott', 'dave-watkins': 'presenter-dave-watkins', 'brian-woolfson': 'presenter-brian-woolfson', 'spencer-james': 'presenter-spencer-james'};
+  const presenterName = match[1].trim().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+  const modalId = `presenter-${presenterName}`;
 
-  if (lookup[name]) {
-    openModal(lookup[name]);
+  const modalEl = document.getElementById(modalId);
+  if (modalEl) {
+    openModal(modalId);
+  } else {
+    openModal('presentersModal'); // fallback
   }
 }
+
 </script></body>
 </html>
