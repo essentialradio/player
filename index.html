@@ -3126,68 +3126,7 @@ function openLivePresenterModal() {
   }
 }
 
-</script>
-<style>
-.modal.presenter-modal {
-  display: none;
-  position: fixed !important;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.85);
-  z-index: 9999 !important;
-}
-.modal.presenter-modal .modal-content {
-  z-index: 10000 !important;
-  position: relative;
-}
-</style>
-<script>
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(modal => {
-    modal.style.display = 'none';
-  });
-  document.body.classList.remove('modal-open');
-}
-
-function openModal(id) {
-  closeAllModals();
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
-    document.body.classList.add('modal-open');
-  }
-}
-
-// ✅ DO NOT CLOSE ANYTHING when opening presenter modal — just open on top
-function openPresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = '9999';
-    modal.style.position = 'fixed';
-    document.body.classList.add('modal-open');
-  }
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-    if (id === 'presentersModal') {
-      document.body.classList.remove('modal-open');
-    }
-  }
-}
-
-function closePresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'none';
-  }
-}
-</script>
-<div class="modal presenter-modal" id="presenter-paul-woodland" style="z-index: 10001;">
+</script><div class="modal presenter-modal" id="presenter-paul-woodland" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closeModal('presenter-paul-woodland')">×</span>
 <h2>Paul Woodland</h2>
@@ -3734,5 +3673,75 @@ function closePresenterModal(presenterId) {
 }
     </style>
 </div>
-</div></body>
+</div>
+<style>
+.modal.presenter-modal {
+  display: none;
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999 !important;
+}
+.modal.presenter-modal .modal-content {
+  z-index: 10000 !important;
+  position: relative;
+}
+#requestsModal {
+  z-index: 2500 !important;
+}
+</style>
+<script>
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(modal => {
+    if (modal.id !== 'presentersModal') {
+      modal.style.display = 'none';
+    }
+  });
+  // only remove modal-open if presentersModal is not open
+  const presentersOpen = document.getElementById('presentersModal')?.style.display === 'block';
+  if (!presentersOpen) document.body.classList.remove('modal-open');
+}
+
+function openModal(id) {
+  closeAllModals();
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'block';
+    modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
+    document.body.classList.add('modal-open');
+  }
+}
+
+// ✅ Absolutely no closing of presentersModal
+function openPresenterModal(presenterId) {
+  const modal = document.getElementById(presenterId);
+  if (modal) {
+    modal.style.display = 'block';
+    modal.style.zIndex = '9999';
+    modal.style.position = 'fixed';
+    document.body.classList.add('modal-open');
+  }
+}
+
+// ✅ Absolutely no closing of presentersModal
+function closePresenterModal(presenterId) {
+  const modal = document.getElementById(presenterId);
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+// ✅ This still closes presentersModal if requested explicitly
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+    if (id === 'presentersModal') {
+      document.body.classList.remove('modal-open');
+    }
+  }
+}
+</script>
+</body>
 </html>
