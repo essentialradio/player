@@ -3692,15 +3692,23 @@ function openLivePresenterModal() {
 }
 </style>
 <script>
+function toggleLogoVisibility() {
+  const logo = document.querySelector('.logo-container');
+  const anyModalOpen = [...document.querySelectorAll('.modal')].some(
+    m => m.style.display === 'block'
+  );
+  if (logo) logo.style.display = anyModalOpen ? 'none' : 'block';
+}
+
 function closeAllModals() {
   document.querySelectorAll('.modal').forEach(modal => {
     if (modal.id !== 'presentersModal') {
       modal.style.display = 'none';
     }
   });
-  // only remove modal-open if presentersModal is not open
   const presentersOpen = document.getElementById('presentersModal')?.style.display === 'block';
   if (!presentersOpen) document.body.classList.remove('modal-open');
+  toggleLogoVisibility();
 }
 
 function openModal(id) {
@@ -3711,9 +3719,9 @@ function openModal(id) {
     modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
     document.body.classList.add('modal-open');
   }
+  toggleLogoVisibility();
 }
 
-// ✅ Absolutely no closing of presentersModal
 function openPresenterModal(presenterId) {
   const modal = document.getElementById(presenterId);
   if (modal) {
@@ -3722,17 +3730,9 @@ function openPresenterModal(presenterId) {
     modal.style.position = 'fixed';
     document.body.classList.add('modal-open');
   }
+  toggleLogoVisibility();
 }
 
-// ✅ Absolutely no closing of presentersModal
-function closePresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'none';
-  }
-}
-
-// ✅ This still closes presentersModal if requested explicitly
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
@@ -3741,6 +3741,15 @@ function closeModal(id) {
       document.body.classList.remove('modal-open');
     }
   }
+  toggleLogoVisibility();
+}
+
+function closePresenterModal(presenterId) {
+  const modal = document.getElementById(presenterId);
+  if (modal) {
+    modal.style.display = 'none';
+  }
+  toggleLogoVisibility();
 }
 </script>
 </body>
