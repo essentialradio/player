@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-19T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Bill Grainger",
-    "Title": "Fire Island Hi-NRG",
-    "Duration (s)": 3595,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-20T00:00:00Z",
     "Scheduled Time": "01:02",
     "Displayed Time": "",
@@ -43921,5 +43910,16 @@
     "Full Duration (s)": 7206,
     "Duration (mins)": 120,
     "Full Duration (mins)": 120
+  },
+  {
+    "Hour": "2025-08-03T20:00:00Z",
+    "Scheduled Time": "21:02",
+    "Displayed Time": "",
+    "Artist": "Emma Scott",
+    "Title": "The Pluggin' Baby Radio Show",
+    "Duration (s)": 3475,
+    "Full Duration (s)": 3477,
+    "Duration (mins)": 58,
+    "Full Duration (mins)": 58
   }
 ]
