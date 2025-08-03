@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:01",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 173,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:05",
-    "Displayed Time": "",
-    "Artist": "Dua Lipa",
-    "Title": "Physical",
-    "Duration (s)": 190,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:08",
-    "Displayed Time": "",
-    "Artist": "Blur",
-    "Title": "Parklife",
-    "Duration (s)": 181,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:11",
-    "Displayed Time": "",
-    "Artist": "Gigi Perez",
-    "Title": "Sailor Song",
-    "Duration (s)": 206,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:19",
-    "Displayed Time": "",
-    "Artist": "Amy Winehouse",
-    "Title": "Back to Black",
-    "Duration (s)": 237,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:23",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 201,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:26",
-    "Displayed Time": "",
-    "Artist": "Jess Glynne",
-    "Title": "Thursday",
-    "Duration (s)": 211,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:31",
-    "Displayed Time": "",
-    "Artist": "Savage Garden",
-    "Title": "Truly Madly Deeply",
-    "Duration (s)": 264,
-    "Full Duration (s)": 277,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:36",
-    "Displayed Time": "",
-    "Artist": "Jorja Smith",
-    "Title": "The Way I Love You",
-    "Duration (s)": 172,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:39",
-    "Displayed Time": "",
-    "Artist": "The Lumineers",
-    "Title": "Ho Hey",
-    "Duration (s)": 148,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:45",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 177,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:48",
-    "Displayed Time": "",
-    "Artist": "Bon Jovi",
-    "Title": "Livin' on a Prayer",
-    "Duration (s)": 216,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:51",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 203,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T09:00:00Z",
-    "Scheduled Time": "10:55",
-    "Displayed Time": "",
-    "Artist": "Plain White Ts",
-    "Title": "Hey There Delilah",
-    "Duration (s)": 227,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-19T10:00:00Z",
     "Scheduled Time": "11:02",
     "Displayed Time": "",
@@ -43800,5 +43646,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-03T09:00:00Z",
+    "Scheduled Time": "10:01",
+    "Displayed Time": "",
+    "Artist": "Fleetwood Mac",
+    "Title": "Little Lies",
+    "Duration (s)": 202,
+    "Full Duration (s)": 219,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
   }
 ]
