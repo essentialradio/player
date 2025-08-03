@@ -2131,7 +2131,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
     async function fetchScheduleModal() {
       try {
-        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
@@ -2247,7 +2247,7 @@ group.forEach(show => {
 <script>
     async function fetchSchedule() {
       try {
-        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
