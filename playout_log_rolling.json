@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-19T20:00:00Z",
-    "Scheduled Time": "21:00",
-    "Displayed Time": "",
-    "Artist": "Big Tommy",
-    "Title": "Big Fat  Party Anthems",
-    "Duration (s)": 10799,
-    "Full Duration (s)": 10800,
-    "Duration (mins)": 180,
-    "Full Duration (mins)": 180
-  },
-  {
     "Hour": "2025-07-19T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "",
@@ -43921,5 +43910,16 @@
     "Full Duration (s)": 3590,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-08-03T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "",
+    "Artist": "Kevin McCallum",
+    "Title": "Mr Rocks Show",
+    "Duration (s)": 7201,
+    "Full Duration (s)": 7206,
+    "Duration (mins)": 120,
+    "Full Duration (mins)": 120
   }
 ]
