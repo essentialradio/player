@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-18T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 1",
-    "Duration (s)": 3588,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-19T00:00:00Z",
     "Scheduled Time": "01:00",
     "Displayed Time": "",
@@ -43723,5 +43712,16 @@
     "Full Duration (s)": 10800,
     "Duration (mins)": 180,
     "Full Duration (mins)": 180
+  },
+  {
+    "Hour": "2025-08-02T23:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "",
+    "Artist": "Bill Grainger",
+    "Title": "Fire Island Hi-NRG",
+    "Duration (s)": 3596,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
