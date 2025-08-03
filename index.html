@@ -3603,6 +3603,44 @@ function refreshCombinedTravel() {
   max-height: 88vh;
   margin: 3% auto;
 }
+/* === FINAL OVERRIDES: Requests modal renders fully (mobile + desktop) === */
+
+/* Mobile: allow the modal to scroll; size to small viewport height */
+@media (max-width: 768px) {
+  body .modal {                      /* stronger selector than earlier blocks */
+    overflow-y: auto !important;
+    height: calc(100svh - 56px) !important;   /* below the burger/nav */
+  }
+  body .modal-content {
+    max-height: calc(100svh - 56px) !important;
+  }
+  #requestsModal .embed-wrap {
+    min-height: 78svh !important;            /* plenty of room for the form */
+  }
+}
+
+/* Desktop/tablet: let the iframe area grow */
+@media (min-width: 769px) {
+  #requestsModal .modal-content {
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: calc(100vh - 120px) !important;
+    margin: 60px auto !important;            /* keep your centred look */
+  }
+  #requestsModal .embed-wrap {
+    flex: 1 1 auto !important;
+    min-height: 720px !important;            /* guarantee a tall iframe */
+    max-height: none !important;
+  }
+}
+
+/* Iframe always fills its wrapper */
+#requestsModal .embed-wrap > iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
 
 
     </style>
