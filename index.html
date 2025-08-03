@@ -2246,8 +2246,7 @@ group.forEach(show => {
 <!-- PLAYER SCRIPTS (UNCHANGED) -->
 <script>
     async function fetchSchedule() {
-      try {
-        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
