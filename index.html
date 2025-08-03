@@ -856,6 +856,11 @@ body.modal-open {
   width: 100vw;
 }
 
+/* Ensure the modal itself doesn't scroll the background */
+.modal {
+  overflow: hidden !important;
+  overscroll-behavior: contain;
+}
 
 /* Modal content scrolls inside, not the page */
 .modal-content {
@@ -1725,23 +1730,20 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   background: rgba(0,0,0,0.78);
   transition: background 0.2s;
 }
-/* Mobile modal rules — single, valid media block */
 @media (max-width: 768px) {
   .modal {
-    top: 56px !important;
+    top: 56px !important;  /* Push modal below burger/nav */
     left: 0 !important;
     width: 100vw !important;
-    height: calc(100svh - 56px) !important; /* below burger/nav */
+    height: calc(100vh - 56px) !important;
     min-height: 0 !important;
-    overflow-y: auto !important;            /* allow modal to scroll */
-    -webkit-overflow-scrolling: touch !important;
+    overflow: hidden !important;
     background: rgba(0,0,0,0.78) !important;
     z-index: 2000;
   }
-
   .modal-content {
     margin: 0 !important;
-    max-height: calc(100svh - 56px) !important;  /* use svh consistently */
+    max-height: calc(100vh - 56px) !important;
     min-height: 0 !important;
     width: 100vw !important;
     max-width: 100vw !important;
@@ -1756,13 +1758,24 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     scrollbar-width: thin;
     scrollbar-color: #fed351 #ececec;
   }
-
-  .modal-content::-webkit-scrollbar { width: 14px; background: #ececec; border-radius: 10px; }
-  .modal-content::-webkit-scrollbar-thumb { background: #fed351; border-radius: 10px; border: 3px solid #ececec; }
-  .modal-content::-webkit-scrollbar-thumb:active { background: #ffe67c; }
-  .modal-content::-webkit-scrollbar-track { background: #ececec; border-radius: 10px; }
+  .modal-content::-webkit-scrollbar {
+    width: 14px;
+    background: #ececec;
+    border-radius: 10px;
+  }
+  .modal-content::-webkit-scrollbar-thumb {
+    background: #fed351;
+    border-radius: 10px;
+    border: 3px solid #ececec;
+  }
+  .modal-content::-webkit-scrollbar-thumb:active {
+    background: #ffe67c;
+  }
+  .modal-content::-webkit-scrollbar-track {
+    background: #ececec;
+    border-radius: 10px;
+  }
 }
-
 #burgerMenuBtn {
   z-index: 3000 !important; /* Higher than .modal (z-index: 2000) */
 }
@@ -1992,26 +2005,32 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </script>
   </div>
 </div>
-
-<div id="requestsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="requestsTitle">
+<div id="requestsModal" class="modal">
   <div class="modal-content" style="max-width:900px;width:97vw;">
-    <span class="close" onclick="closeModal('requestsModal')" aria-label="Close">&times;</span>
-    <div style="display:flex;align-items:center;gap:20px;margin-bottom:16px;">
-      <h2 id="requestsTitle" style="margin:0;color:#00818a;font-size:1.5em;">Request a Song</h2>
+    <span class="close" onclick="closeModal('requestsModal')">&times;</span>
+    <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;">
+      <h2 style="margin:0;color:#00818a;font-size:1.5em;">Request a Song</h2>
     </div>
-
-    <div style="background:#111;border:1px solid #333;border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,0.28);color:#eee;">
-      <div style="padding:18px 16px 6px 16px;">
-        <p style="font-size:17px;line-height:1.6;margin:0 0 10px 0;">
-          Got a favourite track or a shout-out for someone special?<br>
-          Send us your song requests and messages – and we might play them live on air!<br>
-          <span style="color:#aaa;font-size:15px;">
-            (Note: Many of our shows are pre-recorded, so requests may not always be instant.)
-          </span>
-        </p>
+    <div style="background:#111;border:1px solid #333;border-radius:12px;padding:28px 18px 32px 18px;box-shadow:0 0 20px rgba(0,0,0,0.28);margin-bottom:0; color:#eee;">
+      <p style="font-size:17px;line-height:1.6;margin-bottom:22px;">
+        Got a favourite track or a shout-out for someone special?<br>
+        Send us your song requests and messages – and we might play them live on air!<br>
+        <span style="color:#aaa;font-size:15px;">
+          (Note: Many of our shows are pre-recorded, so requests may not always be instant.)
+        </span>
+      </p>
+      <div style="width:100%;min-height:340px;">
+        <!-- Elfsight Contact Form | Request a song -->
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div class="elfsight-app-69585003-61ea-407e-a005-4861876e1a5b" data-elfsight-app-lazy></div>
       </div>
-
-
+      <div id="thank-you-message" class="thank-you" style="font-size:18px;margin-top:18px;min-height:36px;"></div>
+    </div>
+    <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
+      Essential Radio &copy; 2025
+    </div>
+  </div>
+</div>
   <div id="contactModal" class="modal">
   <div class="modal-content" style="max-width:900px;width:97vw;">
     <span class="close" onclick="closeModal('contactModal')">&times;</span>
@@ -2346,61 +2365,22 @@ group.forEach(show => {
       }
       return "Off Air";
     }
-   
- 
-  function presenterNameToModalId(name) {
-    const slug = name
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9\-]/g, '');
-    return `presenter-${slug}`;
-  }
-
-  async function updateOnAirNow() {
-    const schedule = await fetchSchedule();
-    const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
-    const el = document.getElementById("currentShow");
-
-    if (fullShow.includes(" with ")) {
-      const [title, presenterRaw] = fullShow.split(" with ");
-      const titleText = title.trim();
-      const presenterName = presenterRaw.trim();
-
-      const modalId = presenterNameToModalId(presenterName);
-      const hasModal = !!document.getElementById(modalId);
-
-      let presenterLine;
-      if (hasModal) {
-        presenterLine = `<a href="#" class="show-presenter-link" data-modal="${modalId}"><em>with ${presenterName}</em></a>`;
+    async function updateOnAirNow() {
+      const schedule = await fetchSchedule();
+      const fullShow = schedule ? getCurrentShow(schedule) : "Schedule unavailable";
+      const el = document.getElementById("currentShow");
+      if (fullShow.includes(" with ")) {
+        const [title, presenter] = fullShow.split(" with ");
+        el.innerHTML = `
+          <span class="show-title">${title.trim()}</span>
+          <span class="show-presenter">with ${presenter.trim()}</span>`;
       } else {
-        presenterLine = `<em>with ${presenterName}</em>`;
+        el.textContent = fullShow;
       }
-
-      el.innerHTML = `
-        <div class="show-title-line">${titleText}</div>
-        <div class="presenter-line">${presenterLine}</div>
-      `;
-
-      if (hasModal) {
-        const link = el.querySelector(".show-presenter-link");
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          const targetId = link.getAttribute("data-modal");
-          openModal(targetId);
-        });
-      }
-    } else {
-      el.textContent = fullShow;
     }
-  }
-
-  updateOnAirNow();
-  setInterval(updateOnAirNow, 60_000);
-</script>
-
-
-
+    updateOnAirNow();
+    setInterval(updateOnAirNow, 60_000);
+  </script>
   <script>
     const audio = document.getElementById('stream');
     const playBtn = document.getElementById('play-toggle');
@@ -3500,104 +3480,9 @@ function refreshCombinedTravel() {
 .modal.presenter-detail.show {
   display: flex !important;
 }
-#currentShow .show-title-line {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-#currentShow .presenter-line {
-  font-size: 0.85rem;      /* slightly smaller */
-  font-weight: 400;
-  opacity: 0.65;           /* lighter via opacity */
-  margin-top: 2px;
-}
-#currentShow .presenter-line a {
-  color: inherit;          /* keep link from changing color */
-  text-decoration: none;
-}
-#currentShow .presenter-line a:hover {
-  text-decoration: underline;
-}
-/* Make any modal content responsive and scrollable */
-.modal-content {
-  position: relative;
-  max-height: 90vh;              /* never exceed viewport height */
-  overflow-y: auto;              /* inner scrolling if content is tall */
-  box-sizing: border-box;
-  margin: 5% auto;               /* tighter vertical margin for mobile */
-  padding: 20px;                 /* comfortable padding */
-  width: 100%;
-  max-width: 600px;              /* constrain width on large screens */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-}
-
-/* Specific mobile adjustments */
-@media (max-width: 800px) {
-  .modal-content {
-    margin: 4% 8px;
-    width: auto;
-    max-width: 97vw;
-    padding: 16px;
-    border-radius: 10px;
-  }
-}
-
-/* Optional: ensure the backdrop doesn't trap scroll behind */
-.modal-backdrop {
-  overflow: hidden;
-}
-
-/* If the news modal has a special wrapper, ensure it fills its parent */
-.news-modal-inner {
-  display: flex;
-  flex-direction: column;
-  min-height: 0; /* allows its children to scroll inside flex layouts */
-}
-.news-modal .modal-content {
-  max-height: 88vh;
-  margin: 3% auto;
-}
-/* === FINAL OVERRIDES: Requests modal renders fully (mobile + desktop) === */
-
-/* Mobile: allow the modal to scroll; size to small viewport height */
-@media (max-width: 768px) {
-  body .modal {                      /* stronger selector than earlier blocks */
-    overflow-y: auto !important;
-    height: calc(100svh - 56px) !important;   /* below the burger/nav */
-  }
-  body .modal-content {
-    max-height: calc(100svh - 56px) !important;
-  }
-  #requestsModal .embed-wrap {
-    min-height: 78svh !important;            /* plenty of room for the form */
-  }
-}
-
-/* Desktop/tablet: let the iframe area grow */
-@media (min-width: 769px) {
-  #requestsModal .modal-content {
-    display: flex !important;
-    flex-direction: column !important;
-    max-height: calc(100vh - 120px) !important;
-    margin: 60px auto !important;            /* keep your centred look */
-  }
-  #requestsModal .embed-wrap {
-    flex: 1 1 auto !important;
-    min-height: 720px !important;            /* guarantee a tall iframe */
-    max-height: none !important;
-  }
-}
-
-/* Iframe always fills its wrapper */
-#requestsModal .embed-wrap > iframe {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: 0 !important;
-}
-
-
     </style>
+  </div>
+</div>
 
     
 <script>
