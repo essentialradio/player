@@ -2012,7 +2012,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <div id="requestsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="requestsTitle">
   <div class="modal-content" style="max-width:900px;width:97vw;">
     <span class="close" onclick="closeModal('requestsModal')" aria-label="Close">&times;</span>
-
     <div style="display:flex;align-items:center;gap:20px;margin-bottom:16px;">
       <h2 id="requestsTitle" style="margin:0;color:#00818a;font-size:1.5em;">Request a Song</h2>
     </div>
@@ -2028,32 +2027,15 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         </p>
       </div>
 
-      <!-- Responsive iframe wrapper -->
-      <div class="embed-wrap" style="
-            width:100%;
-            /* let the iframe breathe within the modal viewport */
-            min-height: 70vh;
-            /* give it room on desktop */
-            max-height: 1200px;
-            border-top: 1px solid #222;
-            background:#fff;
-            border-radius: 0 0 12px 12px;
-            overflow:hidden;">
+      <div class="embed-wrap" style="width:100%;min-height:70vh;max-height:1200px;border-top:1px solid #222;background:#fff;border-radius:0 0 12px 12px;overflow:hidden;">
         <iframe
           title="Song Requests Form"
           src="https://forms.office.com/e/4MK3MuPHTp?embed=true"
           style="display:block;border:0;width:100%;height:100%;"
-          allowfullscreen
-          webkitallowfullscreen
-          mozallowfullscreen
-          msallowfullscreen
-          loading="lazy">
+          loading="lazy"
+          allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
         </iframe>
       </div>
-    </div>
-
-    <div style="margin-top:14px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
-      Essential Radio &copy; 2025
     </div>
   </div>
 </div>
