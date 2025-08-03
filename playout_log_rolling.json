@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:01",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Gold",
-    "Duration (s)": 160,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:04",
-    "Displayed Time": "",
-    "Artist": "Train",
-    "Title": "Play That Song",
-    "Duration (s)": 194,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:08",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "All These Nights",
-    "Duration (s)": 146,
-    "Full Duration (s)": 154,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:10",
-    "Displayed Time": "",
-    "Artist": "Madonna",
-    "Title": "Ray of Light",
-    "Duration (s)": 257,
-    "Full Duration (s)": 274,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:14",
-    "Displayed Time": "",
-    "Artist": "Alex Warren with Jelly Roll",
-    "Title": "Bloodline",
-    "Duration (s)": 173,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:22",
-    "Displayed Time": "",
-    "Artist": "Adele",
-    "Title": "Easy on Me",
-    "Duration (s)": 209,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:26",
-    "Displayed Time": "",
-    "Artist": "Shaboozey",
-    "Title": "A Bar Song (Tipsy)",
-    "Duration (s)": 163,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:29",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 242,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:33",
-    "Displayed Time": "",
-    "Artist": "Shania Twain",
-    "Title": "Man! I Feel Like a Woman",
-    "Duration (s)": 226,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:37",
-    "Displayed Time": "",
-    "Artist": "Paolo Nutini",
-    "Title": "New Shoes",
-    "Duration (s)": 185,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:43",
-    "Displayed Time": "",
-    "Artist": "Tyla",
-    "Title": "Push 2 Start",
-    "Duration (s)": 150,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:46",
-    "Displayed Time": "",
-    "Artist": "Belinda Carlisle",
-    "Title": "Leave a Light On",
-    "Duration (s)": 235,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:50",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Forget Me",
-    "Duration (s)": 195,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-19T07:00:00Z",
-    "Scheduled Time": "08:53",
-    "Displayed Time": "",
-    "Artist": "Lou Bega",
-    "Title": "Mambo No. 5 (A Little Bit Of...)",
-    "Duration (s)": 208,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-19T08:00:00Z",
     "Scheduled Time": "09:01",
     "Displayed Time": "",
@@ -43875,6 +43721,17 @@
     "Title": "Oh My God",
     "Duration (s)": 215,
     "Full Duration (s)": 223,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-03T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "",
+    "Artist": "The Weeknd ft Daft Punk",
+    "Title": "Starboy",
+    "Duration (s)": 222,
+    "Full Duration (s)": 227,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
