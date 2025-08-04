@@ -1041,6 +1041,23 @@ body.modal-open {
   }
 </style>
 
+
+<!-- === Burger Priority Pointer-Events Fix (Injected) === -->
+<style id="burger-pointer-events-fix">
+  /* When burger is open, route all pointer events to the burger UI */
+  body.burger-open .modal,
+  body.burger-open .modal * {
+    pointer-events: none !important;
+  }
+  /* But keep the burger button and dropdown interactive */
+  #burgerMenuBtn,
+  #burgerMenuBtn *,
+  #burgerDropdown,
+  #burgerDropdown * {
+    pointer-events: auto !important;
+  }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -3993,58 +4010,46 @@ function closePresenterModal(presenterId) {
 </script>
 
 
-<!-- === Burger Link Handler (ensures menu links work over Presenters) === -->
-<script id="burger-link-handler">
+<!-- === Burger Open/Close Hook (ensures body.burger-open is set) === -->
+<script id="burger-open-close-hook">
 (function(){
   function byId(id){ return document.getElementById(id); }
+  function ensureToggle(){
+    const btn = byId('burgerMenuBtn');
+    const dd  = byId('burgerDropdown');
+    if (!btn || !dd) return;
 
-  // Minimal helpers if site's openModal/closeModal aren't available
-  function _showModal(id){
-    const m = byId(id);
-    if (!m) return;
-    // Close any active base modals (non-presenter)
-    document.querySelectorAll('.modal.active:not(.presenter-modal)').forEach(x=>{
-      x.style.display='none'; x.classList.remove('active');
+    // Wrap any existing toggleBurgerMenu to guarantee body.burger-open state
+    const prev = window.toggleBurgerMenu;
+    window.toggleBurgerMenu = function(){
+      if (typeof prev === 'function') prev();
+      // If previous didn't exist or didn't set classes, enforce here
+      const open = dd.style.display === 'flex' || dd.style.display === '';
+      if (open) {
+        dd.style.display = 'none';
+        document.body.classList.remove('burger-open');
+      } else {
+        dd.style.display = 'flex';
+        document.body.classList.add('burger-open');
+      }
+    };
+
+    // Ensure burger links close dropdown and clear burger-open
+    const linkCloser = function(){
+      if (dd) dd.style.display = 'none';
+      document.body.classList.remove('burger-open');
+    };
+
+    dd.addEventListener('click', (e)=>{
+      const a = e.target.closest('a');
+      if (a) linkCloser();
     });
-    // If opening a top-level modal, also close all presenter modals
-    if (!m.classList.contains('presenter-modal')) {
-      document.querySelectorAll('.modal.presenter-modal.active').forEach(x=>{
-        x.style.display='none'; x.classList.remove('active');
-      });
-    }
-    m.style.display = 'block';
-    m.classList.add('active');
-    document.body.classList.add('modal-open');
   }
 
-  // Ensure burger function exists and closes the dropdown properly before opening target modal
-  window.openModalAndCloseBurger = function(id){
-    const dd = byId('burgerDropdown');
-    if (dd) {
-      dd.style.display = 'none';
-      document.body.classList.remove('burger-open');
-    }
-    if (typeof window.openModal === 'function') {
-      // Use site's modal opener if available
-      window.openModal(id);
-    } else {
-      // Fallback
-      _showModal(id);
-    }
-  };
-
-  // Defensive: if any <a> inside burger lacks inline onclick, delegate via data-target
-  const dd = byId('burgerDropdown');
-  if (dd) {
-    dd.addEventListener('click', function(e){
-      const link = e.target.closest('a');
-      if (!link) return;
-      const target = link.getAttribute('data-target');
-      if (target) {
-        e.preventDefault();
-        window.openModalAndCloseBurger(target);
-      }
-    }, true);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureToggle);
+  } else {
+    ensureToggle();
   }
 })();
 </script>
