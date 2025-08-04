@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-20T22:00:00Z",
-    "Scheduled Time": "23:00",
-    "Displayed Time": "",
-    "Artist": "Dave Watkins",
-    "Title": "The Country Mile",
-    "Duration (s)": 3599,
-    "Full Duration (s)": 3601,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-20T23:00:00Z",
     "Scheduled Time": "00:02",
     "Displayed Time": "",
@@ -44240,5 +44229,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-04T16:00:00Z",
+    "Scheduled Time": "17:03",
+    "Displayed Time": "",
+    "Artist": "Jubel ft Neimy",
+    "Title": "Dancing in the Moonlight",
+    "Duration (s)": 153,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
