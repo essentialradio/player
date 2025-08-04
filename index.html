@@ -4269,5 +4269,22 @@ function closePresenterModal(presenterId) {
 })();
 </script>
 
+
+<script>
+(function(){
+  var burgerOpen=false;
+  var orig = document.addEventListener;
+  document.addEventListener('click', function(e){
+    var dd  = document.getElementById('burgerDropdown');
+    var btn = document.getElementById('burgerMenuBtn');
+    if (!document.body.classList.contains('burger-open')) return;
+    if ((btn && (e.target===btn || btn.contains(e.target))) ||
+        (dd && (e.target===dd || dd.contains(e.target)))) return;
+    try { dd.style.display='none'; } catch(e){}
+    document.body.classList.remove('burger-open');
+  }, false);
+})();
+</script>
+
 </body>
 </html>
