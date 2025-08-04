@@ -3992,5 +3992,55 @@ function closePresenterModal(presenterId) {
 })();
 </script>
 
+
+<!-- === Artist Normaliser (Now Playing & Recently Played) === -->
+<script id="artist-normaliser">
+(function(){
+  function normaliseArtist(a){
+    if (!a) return a;
+    const s = String(a).trim();
+    if (/^new roads?$/i.test(s)) return 'Black Country, New Road';
+    return s;
+  }
+  function normaliseArtistInNameString(str){
+    if (!str) return str;
+    // If the line starts with "New Road(s)" before a dash, replace it.
+    return str.replace(/^\s*(new roads?)\s*([–—-])\s*/i, 'Black Country, New Road $2 ');
+  }
+  // Expose for other scripts
+  window.normaliseArtist = normaliseArtist;
+
+  // Fix Now Playing text whenever it changes
+  const np = document.getElementById('now-playing');
+  if (np) {
+    const fixNow = () => {
+      const t = np.textContent || '';
+      const fixed = normaliseArtistInNameString(t);
+      if (fixed !== t) np.textContent = fixed;
+    };
+    new MutationObserver(fixNow).observe(np, {childList:true, characterData:true, subtree:true});
+    fixNow();
+  }
+
+  // Fix Recently Played entries as they render
+  const list = document.getElementById('recent-list');
+  if (list) {
+    const fixRecent = (root) => {
+      const nodes = root ? [root] : Array.from(list.querySelectorAll('li, span.info, span'));
+      nodes.forEach(el => {
+        if (!el || !el.textContent) return;
+        const t = el.textContent;
+        const fixed = normaliseArtistInNameString(t);
+        if (fixed !== t) el.textContent = fixed;
+      });
+    };
+    new MutationObserver(muts => {
+      muts.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) fixRecent(n); }));
+    }).observe(list, {childList:true, subtree:true});
+    fixRecent();
+  }
+})();
+</script>
+
 </body>
 </html>
