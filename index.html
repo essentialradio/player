@@ -1042,20 +1042,22 @@ body.modal-open {
 </style>
 
 
-<!-- === Burger Priority Pointer-Events Fix (Injected) === -->
-<style id="burger-pointer-events-fix">
-  /* When burger is open, route all pointer events to the burger UI */
+<!-- === FINAL Burger Priority & Layout (Injected) === -->
+<style id="burger-final-styles">
+  #burgerMenuBtn { position: fixed !important; z-index: 6001 !important; pointer-events: auto !important; }
+  #burgerDropdown { position: fixed !important; z-index: 6000 !important; pointer-events: auto !important; }
+  /* Keep modals below a top bar on mobile so the burger is reachable */
+  @media (max-width: 768px) {
+    .modal { top: 56px !important; height: calc(100svh - 56px) !important; }
+  }
+  /* Only when the burger is open, prevent the modal underneath from catching taps */
   body.burger-open .modal,
-  body.burger-open .modal * {
-    pointer-events: none !important;
-  }
-  /* But keep the burger button and dropdown interactive */
-  #burgerMenuBtn,
-  #burgerMenuBtn *,
-  #burgerDropdown,
-  #burgerDropdown * {
-    pointer-events: auto !important;
-  }
+  body.burger-open .modal * { pointer-events: none !important; }
+  /* But keep the burger interactive */
+  body.burger-open #burgerMenuBtn,
+  body.burger-open #burgerMenuBtn *,
+  body.burger-open #burgerDropdown,
+  body.burger-open #burgerDropdown * { pointer-events: auto !important; }
 </style>
 
 </head>
@@ -4010,47 +4012,109 @@ function closePresenterModal(presenterId) {
 </script>
 
 
-<!-- === Burger Open/Close Hook (ensures body.burger-open is set) === -->
-<script id="burger-open-close-hook">
+<!-- === FINAL Burger Controller (Injected) === -->
+<script id="burger-final-controller">
 (function(){
-  function byId(id){ return document.getElementById(id); }
-  function ensureToggle(){
+  const byId = (id)=>document.getElementById(id);
+  let burgerOpen = false;
+
+  function mountTop(){
+    const btn = byId('burgerMenuBtn');
+    const dd  = byId('burgerDropdown');
+    const body = document.body;
+    if (btn && btn.parentNode !== body) body.appendChild(btn);
+    if (dd && dd.parentNode !== body) body.appendChild(dd);
+  }
+
+  function openBurger(){
+    const dd = byId('burgerDropdown');
+    if (!dd) return;
+    dd.style.display = 'flex';
+    document.body.classList.add('burger-open');
+    burgerOpen = true;
+  }
+
+  function closeBurger(){
+    const dd = byId('burgerDropdown');
+    if (!dd) return;
+    dd.style.display = 'none';
+    document.body.classList.remove('burger-open');
+    burgerOpen = false;
+  }
+
+  function toggleBurger(e){
+    // Stop other handlers from racing us
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (!burgerOpen) openBurger(); else closeBurger();
+  }
+
+  // Ensure robust modal opener for burger links
+  function ensureOpenModalAndCloseBurger(){
+    if (typeof window.openModalAndCloseBurger === 'function') return;
+    window.openModalAndCloseBurger = function(id){
+      closeBurger();
+      const m = byId(id);
+      if (!m) return;
+      // Close base modals
+      document.querySelectorAll('.modal.active:not(.presenter-modal)').forEach(x=>{
+        x.style.display='none'; x.classList.remove('active');
+      });
+      // Close presenter modals when opening a top-level modal
+      if (!m.classList.contains('presenter-modal')) {
+        document.querySelectorAll('.modal.presenter-modal.active').forEach(x=>{
+          x.style.display='none'; x.classList.remove('active');
+        });
+      }
+      m.style.display = 'block';
+      m.classList.add('active');
+      document.body.classList.add('modal-open');
+    };
+  }
+
+  function bind(){
+    mountTop();
+    ensureOpenModalAndCloseBurger();
+
     const btn = byId('burgerMenuBtn');
     const dd  = byId('burgerDropdown');
     if (!btn || !dd) return;
 
-    // Wrap any existing toggleBurgerMenu to guarantee body.burger-open state
-    const prev = window.toggleBurgerMenu;
-    window.toggleBurgerMenu = function(){
-      if (typeof prev === 'function') prev();
-      // If previous didn't exist or didn't set classes, enforce here
-      const open = dd.style.display === 'flex' || dd.style.display === '';
-      if (open) {
-        dd.style.display = 'none';
-        document.body.classList.remove('burger-open');
-      } else {
-        dd.style.display = 'flex';
-        document.body.classList.add('burger-open');
-      }
-    };
+    // Remove any existing inline onclick side-effects by overriding
+    btn.onclick = toggleBurger;
+    // Extra safety for touch devices
+    btn.addEventListener('touchstart', toggleBurger, {passive:false});
+    btn.addEventListener('click', toggleBurger, {capture:true});
 
-    // Ensure burger links close dropdown and clear burger-open
-    const linkCloser = function(){
-      if (dd) dd.style.display = 'none';
-      document.body.classList.remove('burger-open');
-    };
+    // Keep clicks inside dropdown from closing immediately
+    dd.addEventListener('click', function(e){ e.stopPropagation(); }, true);
 
-    dd.addEventListener('click', (e)=>{
+    // Allow outside tap to close burger
+    document.addEventListener('click', function(){
+      if (burgerOpen) closeBurger();
+    }, true);
+
+    // Delegate links that might lack inline onclick
+    dd.addEventListener('click', function(e){
       const a = e.target.closest('a');
-      if (a) linkCloser();
+      if (!a) return;
+      // If anchor has data-target, use it; otherwise try to parse from inline handler
+      const target = a.getAttribute('data-target');
+      if (target) {
+        e.preventDefault();
+        window.openModalAndCloseBurger(target);
+      }
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ensureToggle);
+    document.addEventListener('DOMContentLoaded', bind);
   } else {
-    ensureToggle();
+    bind();
   }
+
+  // Re-assert our control if DOM changes dramatically
+  const mo = new MutationObserver(()=> mountTop());
+  mo.observe(document.body, {childList:true, subtree:true});
 })();
 </script>
 
