@@ -1041,24 +1041,9 @@ body.modal-open {
   }
 </style>
 
-
-<!-- === Burger / Presenters Priority Fix === -->
-<style id="burger-presenters-fix">
-  #burgerMenuBtn,
-  #burgerMenuBtn *,
-  #burgerDropdown,
-  #burgerDropdown * {
-    z-index: 9999 !important;
-    pointer-events: auto !important;
-    position: fixed !important;
-  }
-  #presentersModal.modal {
-    z-index: 500 !important;
-  }
-</style>
-
 </head>
 <body>
+
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
@@ -4009,15 +3994,30 @@ function closePresenterModal(presenterId) {
 </script>
 
 
-<!-- === Stop Presenters Modal from swallowing burger taps === -->
-<script id="burger-presenters-stop">
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('burgerMenuBtn');
-  if (btn) {
-    ['click','touchstart'].forEach(evt => {
-      btn.addEventListener(evt, e => e.stopPropagation(), true);
-    });
-  }
+  const dd  = document.getElementById('burgerDropdown');
+  if (!btn || !dd) return;
+  btn.style.display = 'flex';
+  dd.style.display = 'none';
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (dd.style.display === 'flex') {
+      dd.style.display = 'none';
+      document.body.classList.remove('burger-open');
+    } else {
+      dd.style.display = 'flex';
+      document.body.classList.add('burger-open');
+    }
+  });
+  dd.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', () => {
+    if (document.body.classList.contains('burger-open')) {
+      dd.style.display = 'none';
+      document.body.classList.remove('burger-open');
+    }
+  });
 });
 </script>
 
