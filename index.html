@@ -4156,7 +4156,17 @@ function closePresenterModal(presenterId) {
   function ensureOpenModalAndCloseBurger(){
     window.openModalAndCloseBurger = function(id){
       closeBurger();
-      // If switching away from Presenters, close it to avoid layering
+      
+      if (id === 'presentersModal') {
+        var presenters = document.getElementById('presentersModal');
+        if (presenters) {
+          presenters.style.display = 'block';
+          presenters.classList.add('active');
+          document.body.classList.add('modal-open');
+          return;
+        }
+      }
+    // If switching away from Presenters, close it to avoid layering
       const target = byId(id);
       if (target && !target.classList.contains('presenter-modal')) {
         const presenters = byId('presentersModal');
