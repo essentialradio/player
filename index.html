@@ -4184,7 +4184,7 @@ function closePresenterModal(presenterId) {
       btn.addEventListener('click', toggleBurger, {capture:true});
     }
     if (dd) {
-      dd.addEventListener('click', e => e.stopPropagation(), true);
+      dd.addEventListener('click', e => e.stopPropagation(), false);
       // Delegate anchors with data-target if any
       dd.addEventListener('click', e => {
         const a = e.target.closest('a');
@@ -4196,7 +4196,7 @@ function closePresenterModal(presenterId) {
         }
       });
     }
-    document.addEventListener('click', () => { if (burgerOpen) closeBurger(); }, true);
+    document.addEventListener('click', () => { if (burgerOpen) closeBurger(); }, false);
   }
 
   if (document.readyState === 'loading') {
