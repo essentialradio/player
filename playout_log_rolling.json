@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:02",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Celestial",
-    "Duration (s)": 204,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:06",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 161,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:08",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Don't Forget Me",
-    "Duration (s)": 181,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:12",
-    "Displayed Time": "",
-    "Artist": "Alex Warren with Jelly Roll",
-    "Title": "Bloodline",
-    "Duration (s)": 175,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:15",
-    "Displayed Time": "",
-    "Artist": "Gotye Feat. Kimbra",
-    "Title": "Somebody That I Used to Know",
-    "Duration (s)": 237,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:22",
-    "Displayed Time": "",
-    "Artist": "The Police",
-    "Title": "Every Breath You Take",
-    "Duration (s)": 225,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:26",
-    "Displayed Time": "",
-    "Artist": "David Guetta & Sia",
-    "Title": "Beautiful People",
-    "Duration (s)": 180,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:29",
-    "Displayed Time": "",
-    "Artist": "Suede",
-    "Title": "Beautiful Ones",
-    "Duration (s)": 205,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:32",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 203,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:36",
-    "Displayed Time": "",
-    "Artist": "Gorillaz",
-    "Title": "Feel Good Inc",
-    "Duration (s)": 216,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:43",
-    "Displayed Time": "",
-    "Artist": "MK featuring Chrystal",
-    "Title": "Dior",
-    "Duration (s)": 163,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:46",
-    "Displayed Time": "",
-    "Artist": "Nico & Vinz",
-    "Title": "Am I Wrong",
-    "Duration (s)": 228,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:50",
-    "Displayed Time": "",
-    "Artist": "Nathan Evans",
-    "Title": "Highland Girl",
-    "Duration (s)": 171,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T01:00:00Z",
-    "Scheduled Time": "02:53",
-    "Displayed Time": "",
-    "Artist": "Oasis",
-    "Title": "She's Electric",
-    "Duration (s)": 215,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-21T02:00:00Z",
     "Scheduled Time": "03:01",
     "Displayed Time": "",
@@ -44647,5 +44493,16 @@
     "Full Duration (s)": 339,
     "Duration (mins)": 5,
     "Full Duration (mins)": 6
+  },
+  {
+    "Hour": "2025-08-04T19:00:00Z",
+    "Scheduled Time": "20:02",
+    "Displayed Time": "",
+    "Artist": "Status Quo",
+    "Title": "In The Army Now",
+    "Duration (s)": 206,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
   }
 ]
