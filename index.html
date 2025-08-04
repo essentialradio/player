@@ -1042,19 +1042,37 @@ body.modal-open {
 </style>
 
 
-<style>
-/* Presenters modal uses base modal behaviour */
-@media (max-width: 768px) {
-  #presentersModal.modal {
-    top: 56px !important;
-    height: calc(100svh - 56px) !important;
-  }
-}
-</style>
+<!-- === FINAL: Stacking & Burger Styles (Injected) === -->
+<style id="final-styles">
+  /* Keep desktop navbar above modals */
+  .navbar { z-index: 3001 !important; }
 
-<style>
-#burgerMenuBtn { position: fixed !important; z-index: 6001 !important; pointer-events: auto !important; }
-#burgerDropdown { position: fixed !important; z-index: 6000 !important; pointer-events: auto !important; }
+  /* Burger UI always above any modal */
+  #burgerMenuBtn { position: fixed !important; z-index: 6001 !important; pointer-events: auto !important; }
+  #burgerDropdown { position: fixed !important; z-index: 6000 !important; pointer-events: auto !important; }
+
+  /* Presenter profile overlays sit above base modals */
+  .modal.presenter-modal { z-index: 2100 !important; }
+
+  /* Hide the overhang logo whenever any modal or burger is open */
+  body.modal-open .logo-overhang,
+  body.burger-open .logo-overhang { display: none !important; }
+
+  /* Mobile: keep a 56px top bar so burger stays reachable */
+  @media (max-width: 768px) {
+    .modal {
+      top: 56px !important;
+      height: calc(100svh - 56px) !important;
+    }
+  }
+
+  /* When burger is open, direct taps to burger; avoid modals swallowing taps */
+  body.burger-open .modal,
+  body.burger-open .modal * { pointer-events: none !important; }
+  body.burger-open #burgerMenuBtn,
+  body.burger-open #burgerMenuBtn *,
+  body.burger-open #burgerDropdown,
+  body.burger-open #burgerDropdown * { pointer-events: auto !important; }
 </style>
 
 </head>
@@ -3551,7 +3569,7 @@ function openLivePresenterModal() {
 <li><strong>When he's not on air:</strong> Teaching, compiling charts, curating his Now That’s What I Call Music collection, or correcting your chart trivia on X.</li>
 </ul>
 </div>
-</div><div class="modal" id="presentersModal" class="modal" style="z-index: 9000;">
+</div><div class="modal presenter-modal" id="presentersModal" class="modal" style="z-index: 9000;">
 <div class="modal-content" style="max-width:1020px;width:95vw;">
 <span class="close" onclick="closeModal('presentersModal')">×</span>
 <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
@@ -3704,7 +3722,9 @@ function openLivePresenterModal() {
           grid-template-columns: 1fr;
         }
       }
-/* removed: presentersModal was mis-tagged as presenter-modal */
+#presentersModal.modal.presenter-modal {
+  z-index: 9000 !important;
+}
 .modal.presenter-detail {
   z-index: 10001 !important;
   position: fixed;
@@ -4007,36 +4027,236 @@ function closePresenterModal(presenterId) {
 </script>
 
 
-<script>
-// Ensure burger links always work even if Presenters is open
-window.openModalAndCloseBurger = function(id){
-  const dd = document.getElementById('burgerDropdown');
-  if (dd) dd.style.display = 'none';
-  document.body.classList.remove('burger-open');
+<!-- === FINAL: Modal Behavior Overrides (Injected) === -->
+<script id="final-modal-behavior">
+(function(){
+  const $  = (s, ctx=document)=>ctx.querySelector(s);
+  const $$ = (s, ctx=document)=>Array.from(ctx.querySelectorAll(s));
 
-  // Close Presenters when switching to any other top-level modal
-  const presenters = document.getElementById('presentersModal');
-  if (presenters && id !== 'presentersModal') {
-    presenters.style.display = 'none';
-    presenters.classList.remove('active');
+  function anyModalOpen(){ return !!$('.modal.active'); }
+  function setBodyModalState(){
+    document.body.classList.toggle('modal-open', anyModalOpen());
   }
 
-  // Close any presenter detail profiles if target isn't one of them
-  const target = document.getElementById(id);
-  if (target && !target.classList.contains('presenter-modal')) {
-    document.querySelectorAll('.modal.presenter-modal.active').forEach(x=>{
-      x.style.display='none'; x.classList.remove('active');
+  function closeAllBaseModals(){
+    $$('.modal.active:not(.presenter-modal)').forEach(m=>{
+      m.style.display='none'; m.classList.remove('active');
+    });
+  }
+  function closeAllPresenterModals(){
+    $$('.modal.presenter-modal.active').forEach(m=>{
+      m.style.display='none'; m.classList.remove('active');
     });
   }
 
-  if (typeof window.openModal === 'function') {
-    window.openModal(id);
-  } else {
-    // Fallback
-    const m = document.getElementById(id);
-    if (m) { m.style.display='block'; m.classList.add('active'); document.body.classList.add('modal-open'); }
+  // Open a top-level modal: closes other top-levels and presenter profiles
+  function openModal(id){
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    closeAllPresenterModals();
+    closeAllBaseModals();
+    modal.style.display='block';
+    modal.classList.add('active');
+    setBodyModalState();
   }
-};
+
+  function closeModal(id){
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    if (id === 'presentersModal') closeAllPresenterModals();
+    modal.style.display='none';
+    modal.classList.remove('active');
+    setBodyModalState();
+  }
+
+  // Presenter profile: keep Presenters list open underneath
+  function openPresenterModal(presenterId){
+    const pm = document.getElementById('presentersModal');
+    if (pm && !pm.classList.contains('active')) {
+      pm.style.display='block';
+      pm.classList.add('active');
+    }
+    const modal = document.getElementById(presenterId);
+    if (!modal) return;
+    modal.style.display='block';
+    modal.classList.add('active');
+    setBodyModalState();
+  }
+
+  function closePresenterModal(presenterId){
+    const modal = document.getElementById(presenterId);
+    if (!modal) return;
+    modal.style.display='none';
+    modal.classList.remove('active');
+    setBodyModalState();
+  }
+
+  // ON AIR NOW → presenter profile if found; else open Presenters
+  function openLivePresenterModal(){
+    const el = document.querySelector('#currentShow .presenter-name') || document.querySelector('#currentShow');
+    if (!el) return;
+    const raw = (el.textContent || '').trim();
+    if (!raw) return;
+    const slug = raw.toLowerCase()
+      .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g,'')
+      .replace(/[^a-z0-9]+/g, '-');
+    const ids = [
+      `presenter-${slug}`,
+      `presenter-${slug.replace(/^with-/, '')}`,
+      `presenter-${slug.replace(/^with-/, '').replace(/^and-/, '')}`,
+    ];
+    for (const id of ids) {
+      const m = document.getElementById(id);
+      if (m) { openPresenterModal(id); return; }
+    }
+    openModal('presentersModal');
+  }
+
+  // Expose
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+  window.openPresenterModal = openPresenterModal;
+  window.closePresenterModal = closePresenterModal;
+  window.openLivePresenterModal = openLivePresenterModal;
+})();
+</script>
+
+
+<!-- === FINAL: Burger Controller (Injected) === -->
+<script id="final-burger-controller">
+(function(){
+  const byId = id => document.getElementById(id);
+  let burgerOpen = false;
+
+  function mountTop(){
+    const btn = byId('burgerMenuBtn');
+    const dd  = byId('burgerDropdown');
+    const body = document.body;
+    if (btn && btn.parentNode !== body) body.appendChild(btn);
+    if (dd && dd.parentNode !== body) body.appendChild(dd);
+  }
+
+  function openBurger(){
+    const dd = byId('burgerDropdown'); if (!dd) return;
+    dd.style.display='flex';
+    document.body.classList.add('burger-open');
+    burgerOpen = true;
+  }
+  function closeBurger(){
+    const dd = byId('burgerDropdown'); if (!dd) return;
+    dd.style.display='none';
+    document.body.classList.remove('burger-open');
+    burgerOpen = false;
+  }
+  function toggleBurger(e){
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    burgerOpen ? closeBurger() : openBurger();
+  }
+
+  function ensureOpenModalAndCloseBurger(){
+    window.openModalAndCloseBurger = function(id){
+      closeBurger();
+      // If switching away from Presenters, close it to avoid layering
+      const target = byId(id);
+      if (target && !target.classList.contains('presenter-modal')) {
+        const presenters = byId('presentersModal');
+        if (presenters && presenters.classList.contains('active')) {
+          presenters.style.display='none'; presenters.classList.remove('active');
+        }
+      }
+      if (typeof window.openModal === 'function') {
+        window.openModal(id);
+      } else {
+        const m = byId(id);
+        if (m) { m.style.display='block'; m.classList.add('active'); document.body.classList.add('modal-open'); }
+      }
+    };
+  }
+
+  function bind(){
+    mountTop();
+    ensureOpenModalAndCloseBurger();
+    const btn = byId('burgerMenuBtn');
+    const dd  = byId('burgerDropdown');
+    if (btn) {
+      btn.onclick = toggleBurger;
+      btn.addEventListener('touchstart', toggleBurger, {passive:false});
+      btn.addEventListener('click', toggleBurger, {capture:true});
+    }
+    if (dd) {
+      dd.addEventListener('click', e => e.stopPropagation(), true);
+      // Delegate anchors with data-target if any
+      dd.addEventListener('click', e => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const target = a.getAttribute('data-target');
+        if (target) {
+          e.preventDefault();
+          window.openModalAndCloseBurger(target);
+        }
+      });
+    }
+    document.addEventListener('click', () => { if (burgerOpen) closeBurger(); }, true);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
+
+  // Re-assert control if DOM changes
+  const mo = new MutationObserver(()=> mountTop());
+  mo.observe(document.body, {childList:true, subtree:true});
+})();
+</script>
+
+
+<!-- === FINAL: Artist Normaliser (Injected) === -->
+<script id="final-artist-normaliser">
+(function(){
+  function normaliseArtist(a){
+    if (!a) return a;
+    const s = String(a).trim();
+    if (/^new roads?$/i.test(s)) return 'Black Country, New Road';
+    return s;
+  }
+  function normaliseArtistInNameString(str){
+    if (!str) return str;
+    return str.replace(/^\s*(new roads?)\s*([–—-])\s*/i, 'Black Country, New Road $2 ');
+  }
+  window.normaliseArtist = normaliseArtist;
+
+  // Now Playing
+  const np = document.getElementById('now-playing');
+  if (np) {
+    const fixNow = () => {
+      const t = np.textContent || '';
+      const fixed = normaliseArtistInNameString(t);
+      if (fixed !== t) np.textContent = fixed;
+    };
+    new MutationObserver(fixNow).observe(np, {childList:true, characterData:true, subtree:true});
+    fixNow();
+  }
+
+  // Recently Played
+  const list = document.getElementById('recent-list');
+  if (list) {
+    const fixRecent = (root) => {
+      const nodes = root ? [root] : Array.from(list.querySelectorAll('li, span.info, span'));
+      nodes.forEach(el => {
+        if (!el || !el.textContent) return;
+        const t = el.textContent;
+        const fixed = normaliseArtistInNameString(t);
+        if (fixed !== t) el.textContent = fixed;
+      });
+    };
+    new MutationObserver(muts => {
+      muts.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) fixRecent(n); }));
+    }).observe(list, {childList:true, subtree:true});
+    fixRecent();
+  }
+})();
 </script>
 
 </body>
