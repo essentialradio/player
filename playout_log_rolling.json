@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-20T14:00:00Z",
-    "Scheduled Time": "15:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3480,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-07-20T15:00:00Z",
     "Scheduled Time": "16:03",
     "Displayed Time": "",
@@ -43523,6 +43512,17 @@
     "Title": "Semi-Charmed Life",
     "Duration (s)": 211,
     "Full Duration (s)": 225,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-04T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 214,
+    "Full Duration (s)": 220,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
