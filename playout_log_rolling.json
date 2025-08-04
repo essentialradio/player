@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-20T20:00:00Z",
-    "Scheduled Time": "21:03",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3477,
-    "Full Duration (s)": 3479,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-07-20T21:00:00Z",
     "Scheduled Time": "22:03",
     "Displayed Time": "",
@@ -43965,5 +43954,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-04T14:00:00Z",
+    "Scheduled Time": "15:02",
+    "Displayed Time": "",
+    "Artist": "Peggy Gou",
+    "Title": "(It Goes Like) Nanana",
+    "Duration (s)": 229,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
