@@ -87,7 +87,7 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 2000;
+      z-index: 4000 !important;
       left: 0; top: 0;
       width: 100vw; height: 100vh;
       overflow: auto;
@@ -1722,7 +1722,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 .modal {
   display: none;
   position: fixed;
-  z-index: 2000;
+  z-index: 4000 !important;
   left: 0;
   top: 5px;   /* Desktop: below logo/burger; adjust if your top area is taller/shorter */
   width: 100vw;
@@ -1740,7 +1740,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     min-height: 0 !important;
     overflow: hidden !important;
     background: rgba(0,0,0,0.78) !important;
-    z-index: 2000;
+    z-index: 4000 !important;
   }
   .modal-content {
     margin: 0 !important;
@@ -3930,7 +3930,8 @@ function closePresenterModal(presenterId) {
   }
 
   // Mobile helper used in burger links
-  function openModalAndCloseBurger(id){
+  function openModalAndCloseBurger(id) {
+    closeBurgerMenu();
     openModal(id);
   }
 
