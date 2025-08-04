@@ -1029,7 +1029,7 @@ body.modal-open {
   #burgerDropdown { z-index: 3100 !important; }
 
   /* Presenter modals sit above base modals (like the presenters list) */
-  .modal.presenter-modal { z-index: 2100 !important; }
+  .modal.presenter-modal { z-index: 2050 !important; }
 
   /* Hide the overhang logo whenever any modal is open */
   body.modal-open .logo-overhang { display: none !important; }
@@ -3535,7 +3535,7 @@ function openLivePresenterModal() {
 <li><strong>When he's not on air:</strong> Teaching, compiling charts, curating his Now That’s What I Call Music collection, or correcting your chart trivia on X.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presentersModal" class="modal presenter-modal" style="z-index: 9000;">
+</div><div class="modal presenter-modal" id="presentersModal" class="modal presenter-modal" style="z-index: 2050;">
 <div class="modal-content" style="max-width:1020px;width:95vw;">
 <span class="close" onclick="closeModal('presentersModal')">×</span>
 <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
@@ -3689,7 +3689,7 @@ function openLivePresenterModal() {
         }
       }
 #presentersModal.modal.presenter-modal {
-  z-index: 9000 !important;
+  z-index: 2050 !important;
 }
 .modal.presenter-detail {
   z-index: 10001 !important;
