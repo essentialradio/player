@@ -1042,18 +1042,22 @@ body.modal-open {
 </style>
 
 
-<!-- === Mobile Burger Stacking & Interaction Fix (Injected) === -->
-<style id="burger-stacking-fix">
-  /* Ensure burger button and dropdown are always above any modal */
-  #burgerMenuBtn { z-index: 4001 !important; pointer-events: auto !important; }
-  #burgerDropdown { z-index: 4000 !important; pointer-events: auto !important; }
+<!-- === Mobile Burger Stacking & Interaction Fix v2 (Injected) === -->
+<style id="burger-stacking-fix-v2">
+  /* Keep burger UI above ANYTHING */
+  #burgerMenuBtn { position: fixed !important; z-index: 5001 !important; pointer-events: auto !important; }
+  #burgerDropdown { position: fixed !important; z-index: 5000 !important; pointer-events: auto !important; }
 
-  /* Keep mobile modals below the burger area */
+  /* Make sure desktop navbar also wins when visible */
+  .navbar { z-index: 4000 !important; }
+
+  /* All modals sit below burger area on mobile */
   @media (max-width: 768px) {
-    .modal { top: 56px !important; height: calc(100vh - 56px) !important; }
+    .modal { top: 56px !important; height: calc(100svh - 56px) !important; }
+    #presentersModal.modal { top: 56px !important; height: calc(100svh - 56px) !important; }
   }
 
-  /* Hide the logo when burger is open too */
+  /* When burger is open, hide logo to avoid overlap */
   body.burger-open .logo-overhang { display: none !important; }
 </style>
 
@@ -4009,61 +4013,71 @@ function closePresenterModal(presenterId) {
 </script>
 
 
-<!-- === Mobile Burger Toggle Override (Injected) === -->
-<script id="burger-toggle-fix">
+<!-- === Mobile Burger DOM Re-anchor + Toggle Override (Injected) === -->
+<script id="burger-reanchor-fix">
 (function(){
-  const btn = document.getElementById('burgerMenuBtn');
-  const dd  = document.getElementById('burgerDropdown');
+  function byId(id){ return document.getElementById(id); }
 
-  function ensureElems(){ return btn && dd; }
+  // Re-anchor burger elements at the END of <body> so they are top of the stacking order
+  function reanchorBurger(){
+    const btn = byId('burgerMenuBtn');
+    const dd  = byId('burgerDropdown');
+    const body = document.body;
+    if (btn && btn.parentNode !== body) body.appendChild(btn);
+    if (dd && dd.parentNode !== body) body.appendChild(dd);
+  }
+
+  function ensureSetup(){
+    reanchorBurger();
+    const btn = byId('burgerMenuBtn');
+    const dd  = byId('burgerDropdown');
+    if (!btn || !dd) return;
+
+    // Always ensure our handler is attached
+    btn.onclick = toggleBurgerMenu;
+
+    // Prevent clicks inside the dropdown from bubbling to modals
+    dd.addEventListener('click', (e)=>{ e.stopPropagation(); }, true);
+
+    // Close burger if user taps outside the menu but inside the overlay
+    document.addEventListener('click', (e)=>{
+      const open = dd.style.display === 'flex';
+      if (!open) return;
+      const inside = dd.contains(e.target) || e.target === btn;
+      if (!inside) {
+        dd.style.display = 'none';
+        document.body.classList.remove('burger-open');
+      }
+    });
+  }
 
   function toggleBurgerMenu(){
-    if (!ensureElems()) return;
-    const open = dd.style.display !== 'none' && dd.style.display !== '';
+    reanchorBurger();
+    const dd = byId('burgerDropdown');
+    if (!dd) return;
+    const open = dd.style.display === 'flex';
     if (open) {
       dd.style.display = 'none';
       document.body.classList.remove('burger-open');
     } else {
-      dd.style.display = 'flex'; /* overlay above any open modal */
+      dd.style.display = 'flex';
       document.body.classList.add('burger-open');
     }
   }
 
-  // Expose/override globally so inline onclick works
+  // Expose globally (override earlier versions safely)
   window.toggleBurgerMenu = toggleBurgerMenu;
 
-  // Close burger when a burger link opens a modal
-  window.openModalAndCloseBurger = function(id){
-    if (ensureElems()) {
-      dd.style.display = 'none';
-      document.body.classList.remove('burger-open');
-    }
-    if (typeof window.openModal === 'function') {
-      window.openModal(id);
-    } else {
-      // Fallback: show the target modal if openModal isn't defined yet
-      const m = document.getElementById(id);
-      if (m) {
-        // Close any other base modals
-        document.querySelectorAll('.modal.active:not(.presenter-modal)').forEach(x=>{
-          x.style.display='none'; x.classList.remove('active');
-        });
-        m.style.display = 'block';
-        m.classList.add('active');
-        document.body.classList.add('modal-open');
-      }
-    }
-  };
+  // Hook after DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureSetup);
+  } else {
+    ensureSetup();
+  }
 
-  // Optional: press ESC to close burger overlay but leave modals alone
-  document.addEventListener('keydown', (e)=>{
-    if (e.key === 'Escape' && ensureElems()) {
-      if (dd.style.display === 'flex') {
-        dd.style.display = 'none';
-        document.body.classList.remove('burger-open');
-      }
-    }
-  });
+  // Also re-anchor after any modal opens (in case other scripts move nodes)
+  const mo = new MutationObserver(()=> reanchorBurger());
+  mo.observe(document.body, { childList: true, subtree: true });
 })();
 </script>
 
