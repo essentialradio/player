@@ -1041,6 +1041,22 @@ body.modal-open {
   }
 </style>
 
+
+<style>
+/* Presenters modal uses base modal behaviour */
+@media (max-width: 768px) {
+  #presentersModal.modal {
+    top: 56px !important;
+    height: calc(100svh - 56px) !important;
+  }
+}
+</style>
+
+<style>
+#burgerMenuBtn { position: fixed !important; z-index: 6001 !important; pointer-events: auto !important; }
+#burgerDropdown { position: fixed !important; z-index: 6000 !important; pointer-events: auto !important; }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -3688,9 +3704,7 @@ function openLivePresenterModal() {
           grid-template-columns: 1fr;
         }
       }
-#presentersModal.modal.presenter-modal {
-  z-index: 9000 !important;
-}
+/* removed: presentersModal was mis-tagged as presenter-modal */
 .modal.presenter-detail {
   z-index: 10001 !important;
   position: fixed;
@@ -3993,57 +4007,36 @@ function closePresenterModal(presenterId) {
 </script>
 
 
-<!-- === Robust burger link handler (forces Presenters to close) === -->
-<script id="burger-link-handler-override">
-(function(){
-  const $ = (s, c=document)=>c.querySelector(s);
-  const $$= (s, c=document)=>Array.from(c.querySelectorAll(s));
+<script>
+// Ensure burger links always work even if Presenters is open
+window.openModalAndCloseBurger = function(id){
+  const dd = document.getElementById('burgerDropdown');
+  if (dd) dd.style.display = 'none';
+  document.body.classList.remove('burger-open');
 
-  function showModal(id){
-    const m = document.getElementById(id);
-    if (!m) return;
-
-    // Close ALL base modals
-    $$('.modal.active:not(.presenter-modal)').forEach(x=>{
-      x.style.display='none'; x.classList.remove('active');
-    });
-
-    // Always close Presenters modal when opening any other top-level modal
-    const presenters = document.getElementById('presentersModal');
-    if (presenters && presenters.classList.contains('active') && id !== 'presentersModal') {
-      presenters.style.display = 'none';
-      presenters.classList.remove('active');
-    }
-
-    // Close all presenter profile modals when opening a non-presenter modal
-    if (!m.classList.contains('presenter-modal')) {
-      $$('.modal.presenter-modal.active').forEach(x=>{
-        x.style.display='none'; x.classList.remove('active');
-      });
-    }
-
-    // Open target
-    m.style.display = 'block';
-    m.classList.add('active');
-    document.body.classList.add('modal-open');
+  // Close Presenters when switching to any other top-level modal
+  const presenters = document.getElementById('presentersModal');
+  if (presenters && id !== 'presentersModal') {
+    presenters.style.display = 'none';
+    presenters.classList.remove('active');
   }
 
-  // Force override regardless of any previous definitions
-  window.openModalAndCloseBurger = function(id){
-    // Close burger dropdown/state
-    const dd = $('#burgerDropdown');
-    if (dd) dd.style.display = 'none';
-    document.body.classList.remove('burger-open');
+  // Close any presenter detail profiles if target isn't one of them
+  const target = document.getElementById(id);
+  if (target && !target.classList.contains('presenter-modal')) {
+    document.querySelectorAll('.modal.presenter-modal.active').forEach(x=>{
+      x.style.display='none'; x.classList.remove('active');
+    });
+  }
 
-    // Use site openModal if you have extra animations/hook, else our showModal
-    if (typeof window.openModal === 'function') {
-      try { window.openModal(id); }
-      catch(e){ showModal(id); }
-    } else {
-      showModal(id);
-    }
-  };
-})();
+  if (typeof window.openModal === 'function') {
+    window.openModal(id);
+  } else {
+    // Fallback
+    const m = document.getElementById(id);
+    if (m) { m.style.display='block'; m.classList.add('active'); document.body.classList.add('modal-open'); }
+  }
+};
 </script>
 
 </body>
