@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-20T23:00:00Z",
-    "Scheduled Time": "00:02",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3399,
-    "Full Duration (s)": 3405,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-07-21T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -44361,5 +44350,16 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-04T17:00:00Z",
+    "Scheduled Time": "18:01",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
