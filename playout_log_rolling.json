@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "",
-    "Artist": "Maroon 5",
-    "Title": "Girls Like You",
-    "Duration (s)": 212,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:05",
-    "Displayed Time": "",
-    "Artist": "David Bowie & Mick Jagger",
-    "Title": "Dancing in the Street",
-    "Duration (s)": 170,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:08",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 176,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:11",
-    "Displayed Time": "",
-    "Artist": "Ariana Grande",
-    "Title": "Yes, And?",
-    "Duration (s)": 173,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:14",
-    "Displayed Time": "",
-    "Artist": "Sugababes",
-    "Title": "Round Round",
-    "Duration (s)": 223,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:21",
-    "Displayed Time": "",
-    "Artist": "Sam Fender & Olivia Dean",
-    "Title": "Rein Me In",
-    "Duration (s)": 229,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:25",
-    "Displayed Time": "",
-    "Artist": "Harry Styles",
-    "Title": "Late Night Talking",
-    "Duration (s)": 169,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:28",
-    "Displayed Time": "",
-    "Artist": "2 Unlimited",
-    "Title": "Get Ready For This",
-    "Duration (s)": 165,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:33",
-    "Displayed Time": "",
-    "Artist": "Bruno Mars",
-    "Title": "Marry You",
-    "Duration (s)": 222,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:37",
-    "Displayed Time": "",
-    "Artist": "Gabrielle",
-    "Title": "Dreams",
-    "Duration (s)": 212,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:44",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 158,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:47",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Bed Chem",
-    "Duration (s)": 162,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:50",
-    "Displayed Time": "",
-    "Artist": "A-Ha",
-    "Title": "Take on Me",
-    "Duration (s)": 205,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T05:00:00Z",
-    "Scheduled Time": "06:53",
-    "Displayed Time": "",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 182,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-21T06:00:00Z",
     "Scheduled Time": "07:04",
     "Displayed Time": "",
@@ -44614,5 +44460,16 @@
     "Full Duration (s)": 267,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-04T23:00:00Z",
+    "Scheduled Time": "00:01",
+    "Displayed Time": "",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
