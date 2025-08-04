@@ -1020,7 +1020,29 @@ body.modal-open {
   }
 }
 </style>
-<style>.no-scroll{overflow:hidden;}</style></head>
+<style>.no-scroll{overflow:hidden;}</style>
+/* === Modal/Nav stacking & presenter modal rules (Injected) === */
+<style id="stacking-overrides">
+  /* Keep desktop navbar clickable even when a base modal is open */
+  .navbar { z-index: 3001 !important; }
+
+  /* Ensure the mobile dropdown sits above any modal when opened */
+  #burgerDropdown { z-index: 3100 !important; }
+
+  /* Presenter modals sit above base modals (like the presenters list) */
+  .modal.presenter-modal { z-index: 2100 !important; }
+
+  /* Hide the overhang logo whenever any modal is open */
+  body.modal-open .logo-overhang { display: none !important; }
+
+  /* Allow clicking nav through the modal backdrop edge on desktop if needed */
+  @media (min-width: 751px) {
+    /* Keep a small gap for the top navbar to remain visible/clickable */
+    .modal { top: 48px !important; height: calc(100vh - 48px) !important; }
+  }
+</style>
+
+</head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
@@ -3091,7 +3113,7 @@ function closeAllModals() {
   document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
 }
 
-function openModal(modalId) {
+function openPresenterModal(modalId) {
   closeAllModals();
   const modal = document.getElementById(modalId);
   if (modal) {
@@ -3133,7 +3155,7 @@ function openLivePresenterModal() {
   const modalId = `presenter-${slug}`;
   const modalEl = document.getElementById(modalId);
   if (modalEl) {
-    openModal(modalId);
+    openPresenterModal(modalId);
   } else {
     openModal('presentersModal');
   }
@@ -3141,7 +3163,7 @@ function openLivePresenterModal() {
 
 </script><div class="modal presenter-modal" id="presenter-paul-woodland" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-paul-woodland')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-paul-woodland')">×</span>
 <h2>Paul Woodland</h2>
 <!-- Presenter Image -->
 <img alt="Paul Woodland" src="Paul-Woodland.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3154,7 +3176,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-bex-mcnamee" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-bex-mcnamee')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-bex-mcnamee')">×</span>
 <h2>Bex McNamee</h2>
 <!-- Presenter Image -->
 <img alt="Bex NcNamee" src="Bex-Mcnamee.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3175,7 +3197,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-scott-ohare" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-scott-ohare')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-scott-ohare')">×</span>
 <h2>Scott O’Hare</h2>
 <!-- Presenter Image -->
 <img alt="Scott O'Hare" src="Scott-OHare.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3183,7 +3205,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-faith-montgomery" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-faith-montgomery')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-faith-montgomery')">×</span>
 <h2>Faith Montgomery</h2>
 <!-- Presenter Image -->
 <img alt="Faith Montgomery" src="Faith-Montgomery.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3204,7 +3226,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-lee-everest" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-lee-everest')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-lee-everest')">×</span>
 <h2>Lee Everest</h2>
 <!-- Presenter Image -->
 <img alt="Lee Everest" src="Lee-Everest.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3226,7 +3248,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-ronny-costello" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-ronny-costello')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-ronny-costello')">×</span>
 <h2>Ronny Costello</h2>
 <!-- Presenter Image -->
 <img alt="Ronny Costello" src="Ronny-Costello.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3250,7 +3272,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-david-southway" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-david-southway')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-david-southway')">×</span>
 <h2>David Southway</h2>
 <!-- Presenter Image -->
 <img alt="David Southway" src="David-Southway.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3272,7 +3294,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-davy-sims" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-davy-sims')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-davy-sims')">×</span>
 <h2>Davy Sims</h2>
 <!-- Presenter Image -->
 <img alt="Davy Sims" src="Davy-Sims.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3295,7 +3317,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-big-tommy" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-big-tommy')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-big-tommy')">×</span>
 <h2>Big Tommy</h2>
 <!-- Presenter Image -->
 <img alt="Big Tommy" src="Big-Tommy.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3317,7 +3339,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-jan-gow" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-jan-gow')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-jan-gow')">×</span>
 <h2>Jan Gow</h2>
 <!-- Presenter Image -->
 <img alt="Jan Gow" src="Jan-Gow.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3335,7 +3357,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-spencer-james" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-spencer-james')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-spencer-james')">×</span>
 <h2>Spencer James</h2>
 <!-- Presenter Image -->
 <img alt="Spencer James" src="Spencer-James.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3353,7 +3375,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-dr-hilary-jones" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-dr-hilary-jones')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-dr-hilary-jones')">×</span>
 <h2>Dr Hilary Jones</h2>
 <!-- Presenter Image -->
 <img alt="Dr Hilary Jones" src="Dr-Hilary-Jones.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3371,7 +3393,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-tim-graham" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-tim-graham')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-tim-graham')">×</span>
 <h2>Tim Graham</h2>
 <!-- Presenter Image -->
 <img alt="Tim Graham" src="Tim-Graham.jpeg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3389,7 +3411,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-stephen-howie" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-stephen-howie')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-stephen-howie')">×</span>
 <h2>Stephen Howie</h2>
 <!-- Presenter Image -->
 <img alt="Stephen Howie" src="Stephen-Howie.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3411,7 +3433,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-bill-grainger" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-bill-grainger')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-bill-grainger')">×</span>
 <h2>Bill Grainger</h2>
 <!-- Presenter Image -->
 <img alt="Bill Grainger" src="Bill-Grainger.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3429,7 +3451,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-kevin-mccallum" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-kevin-mccallum')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-kevin-mccallum')">×</span>
 <h2>Kevin McCallum</h2>
 <!-- Presenter Image -->
 <img alt="Kevin McCallum" src="Kevin-Mccallum.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3452,7 +3474,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-emma-scott" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-emma-scott')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-emma-scott')">×</span>
 <h2>Emma Scott</h2>
 <!-- Presenter Image -->
 <img alt="Emma Scott" src="Emma-Scott.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3471,7 +3493,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-dave-watkins" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-dave-watkins')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-dave-watkins')">×</span>
 <h2>Dave Watkins</h2>
 <!-- Presenter Image -->
 <img alt="Dave Watkins" src="Dave-Watkins.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3493,7 +3515,7 @@ function openLivePresenterModal() {
 </div>
 </div><div class="modal presenter-modal" id="presenter-brian-woolfson" style="z-index: 10001;">
 <div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closeModal('presenter-brian-woolfson')">×</span>
+<span class="close" onclick="closePresenterModal('presenter-brian-woolfson')">×</span>
 <h2>Brian Woolfson</h2>
 <!-- Presenter Image -->
 <img alt="Brian Woolfson" src="Brian-Woolfson.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -3514,97 +3536,97 @@ function openLivePresenterModal() {
 <li><strong>When he's not on air:</strong> Teaching, compiling charts, curating his Now That’s What I Call Music collection, or correcting your chart trivia on X.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presentersModal" style="z-index: 9000;">
+</div><div class="modal presenter-modal" id="presentersModal" class="modal presenter-modal" style="z-index: 9000;">
 <div class="modal-content" style="max-width:1020px;width:95vw;">
 <span class="close" onclick="closeModal('presentersModal')">×</span>
 <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
 <div class="presenters-grid">
-<a class="presenter-card" href="#" onclick="openModal('presenter-paul-woodland');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-paul-woodland');return false;">
 <img alt="Paul Woodland" src="Paul-Woodland.jpg"/>
 <h3>Paul Woodland</h3>
 <p>Essential Breakfast</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-bex-mcnamee');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-bex-mcnamee');return false;">
 <img alt="Bex McNamee" src="Bex-Mcnamee.jpg"/>
 <h3>Bex McNamee</h3>
 <p>Feelgood Lunch &amp; The Midweek Mash-Up</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-scott-ohare');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-scott-ohare');return false;">
 <img alt="Scott O'Hare" src="Scott-OHare.jpg"/>
 <h3>Scott O'Hare</h3>
 <p>Essential Hometime</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-faith-montgomery');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-faith-montgomery');return false;">
 <img alt="Faith Montgomery" src="Faith-Montgomery.jpg"/>
 <h3>Faith Montgomery</h3>
 <p>Feelgood Lunch</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-david-southway');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-david-southway');return false;">
 <img alt="David Southway" src="David-Southway.jpg"/>
 <h3>David Southway</h3>
 <p>Soul Vaults</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-lee-everest');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-lee-everest');return false;">
 <img alt="Lee Everest" src="Lee-Everest.jpg"/>
 <h3>Lee Everest</h3>
 <p>Ready for the Weekend</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-ronny-costello');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-ronny-costello');return false;">
 <img alt="Ronny Costello" src="Ronny-Costello.jpg"/>
 <h3>Ronny Costello</h3>
 <p>Club Classics</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-davy-sims');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-davy-sims');return false;">
 <img alt="Davy Sims" src="Davy-Sims.jpg"/>
 <h3>Davy Sims</h3>
 <p>Around the World</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-big-tommy');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-big-tommy');return false;">
 <img alt="Big Tommy" src="Big-Tommy.jpg"/>
 <h3>Big Tommy</h3>
 <p>Saturday Music Marathon &amp; Party Anthems</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-jan-gow');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-jan-gow');return false;">
 <img alt="Jan Gow" src="Jan-Gow.jpg"/>
 <h3>Jan Gow</h3>
 <p>70s Jukebox</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-tim-graham');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-tim-graham');return false;">
 <img alt="Tim Graham" src="Tim-Graham.jpeg"/>
 <h3>Tim Graham</h3>
 <p>LGBTQ Music Chart</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-stephen-howie');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-stephen-howie');return false;">
 <img alt="Stephen Howie" src="Stephen-Howie.jpg"/>
 <h3>Stephen Howie</h3>
 <p>Grooveline</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-bill-grainger');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-bill-grainger');return false;">
 <img alt="Bill Grainger" src="Bill-Grainger.jpg"/>
 <h3>Bill Grainger</h3>
 <p>Fire Island Hi-NRG</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-kevin-mccallum');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-kevin-mccallum');return false;">
 <img alt="Kevin McCallum" src="Kevin-Mccallum.jpg"/>
 <h3>Kevin McCallum</h3>
 <p>Mr Rocks Show</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-emma-scott');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-emma-scott');return false;">
 <img alt="Emma Scott" src="Emma-Scott.jpg"/>
 <h3>Emma Scott</h3>
 <p>Pluggin' Baby Radio Show</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-dave-watkins');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-dave-watkins');return false;">
 <img alt="Dave Watkins" src="Dave-Watkins.jpg"/>
 <h3>Dave Watkins</h3>
 <p>The Country Mile</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-brian-woolfson');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-brian-woolfson');return false;">
 <img alt="Brian Woolfson" src="Brian-Woolfson.jpg"/>
 <h3>Brian Woolfson</h3>
 <p>Retro Charts</p>
 </a>
-<a class="presenter-card" href="#" onclick="openModal('presenter-spencer-james');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-spencer-james');return false;">
 <img alt="Spencer James" src="Spencer-James.jpg"/>
 <h3>Spencer James</h3>
 <p>Airplay40</p>
@@ -3798,6 +3820,176 @@ function closePresenterModal(presenterId) {
 
   // Initial sync in case page loaded with a modal already open
   document.addEventListener('DOMContentLoaded', sync);
+})();
+</script>
+
+
+<!-- === Modal Behavior Overrides (Injected) === -->
+<script id="modal-behavior-overrides">
+(function(){
+  const $ = (sel, ctx=document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+  function anyModalOpen(){
+    return !!$('.modal.active');
+  }
+
+  function setBodyModalState(){
+    if (anyModalOpen()) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }
+
+  // Close the mobile burger menu if it's open
+  function closeBurger(){
+    const dd = $('#burgerDropdown');
+    if (dd && dd.style.display !== 'none') {
+      dd.style.display = 'none';
+    }
+  }
+
+  // Close all non-presenter modals (base modals)
+  function closeAllBaseModals(){
+    $$('.modal.active:not(.presenter-modal)').forEach(m => {
+      m.style.display = 'none';
+      m.classList.remove('active');
+    });
+  }
+
+  // Close all presenter modals
+  function closeAllPresenterModals(){
+    $$('.modal.presenter-modal.active').forEach(m => {
+      m.style.display = 'none';
+      m.classList.remove('active');
+    });
+  }
+
+  // Public: open a base modal by id (About, Schedule, Requests, News, Travel, Local, Playlist, Listen, Search, Contact, Presenters, etc.)
+  function openModal(id){
+    const modal = document.getElementById(id);
+    if (!modal) return;
+
+    // If we open a base modal, close all other base modals and all presenter modals
+    closeAllPresenterModals();
+    closeAllBaseModals();
+
+    // Show this one
+    modal.style.display = 'block';
+    modal.classList.add('active');
+
+    // Close burger if needed
+    closeBurger();
+
+    // Track body state
+    setBodyModalState();
+  }
+
+  // Public: close a base modal by id
+  function closeModal(id){
+    const modal = document.getElementById(id);
+    if (!modal) return;
+
+    // If we're closing the presentersModal, also close any presenter profile modals
+    if (id === 'presentersModal') {
+      closeAllPresenterModals();
+    }
+    modal.style.display = 'none';
+    modal.classList.remove('active');
+    setBodyModalState();
+  }
+
+  // Public: open a presenter modal (keeps presentersModal open underneath)
+  function openPresenterModal(presenterId){
+    const modal = document.getElementById(presenterId);
+    if (!modal) return;
+
+    // Ensure the presenters list remains open (if available)
+    const presenters = document.getElementById('presentersModal');
+    if (presenters && !presenters.classList.contains('active')) {
+      presenters.style.display = 'block';
+      presenters.classList.add('active');
+    }
+
+    // Show the presenter modal on top
+    modal.style.display = 'block';
+    modal.classList.add('active');
+
+    // Track body state
+    setBodyModalState();
+  }
+
+  // Public: close a presenter modal only
+  function closePresenterModal(presenterId){
+    const modal = document.getElementById(presenterId);
+    if (!modal) return;
+    modal.style.display = 'none';
+    modal.classList.remove('active');
+    setBodyModalState();
+  }
+
+  // Mobile helper used in burger links
+  function openModalAndCloseBurger(id){
+    openModal(id);
+  }
+
+  // Allow ON AIR NOW box to open the live presenter's modal (if present)
+  function openLivePresenterModal(){
+    // Try to find a slug from text like "with Stephen Howie"
+    const el = document.querySelector('#currentShow .presenter-name') || document.querySelector('#currentShow');
+    if (!el) return;
+
+    const raw = (el.textContent || '').trim();
+    if (!raw) return;
+
+    // Expect ids like "presenter-stephen-howie"
+    const slug = raw
+      .toLowerCase()
+      .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g,'')
+      .replace(/[^a-z0-9]+/g, '-');
+
+    const candidateIds = [
+      `presenter-${slug}`,                 // e.g. presenter-stephen-howie
+      `presenter-${slug.replace(/^with-/, '')}`, // if "with " is included
+      `presenter-${slug.replace(/^with-/, '').replace(/^and-/, '')}`,
+    ];
+
+    for (const id of candidateIds) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        openPresenterModal(id);
+        return;
+      }
+    }
+    // Fallback: ensure Presenters modal is open if no specific match
+    if (document.getElementById('presentersModal')) {
+      openModal('presentersModal');
+    }
+  }
+
+  // Expose on window to override any earlier definitions
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+  window.openPresenterModal = openPresenterModal;
+  window.closePresenterModal = closePresenterModal;
+  window.openLivePresenterModal = openLivePresenterModal;
+  window.openModalAndCloseBurger = openModalAndCloseBurger;
+})();
+</script>
+
+
+<script id="presenter-stack-shim">
+(function(){
+  const $$ = (s, c=document)=>Array.from(c.querySelectorAll(s));
+  function setBodyModalState(){
+    const any = $$('.modal').some(m => getComputedStyle(m).display !== 'none');
+    document.body.classList.toggle('modal-open', any);
+  }
+  window.addEventListener('click', function(e){
+    // no-op; we only want the function loaded so others can call setBodyModalState if needed
+  });
+  window._syncModalBodyState = setBodyModalState;
 })();
 </script>
 
