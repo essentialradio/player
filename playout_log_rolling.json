@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:01",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 177,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:05",
-    "Displayed Time": "",
-    "Artist": "Reef",
-    "Title": "Place Your Hands",
-    "Duration (s)": 208,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:08",
-    "Displayed Time": "",
-    "Artist": "Sia",
-    "Title": "Elastic Heart",
-    "Duration (s)": 215,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:12",
-    "Displayed Time": "",
-    "Artist": "Joe Jonas",
-    "Title": "Heart By Heart",
-    "Duration (s)": 178,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:15",
-    "Displayed Time": "",
-    "Artist": "The Script",
-    "Title": "The Man Who Can't Be Moved",
-    "Duration (s)": 227,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:22",
-    "Displayed Time": "",
-    "Artist": "Alex Warren with Jelly Roll",
-    "Title": "Bloodline",
-    "Duration (s)": 173,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:25",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "The Door",
-    "Duration (s)": 204,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:29",
-    "Displayed Time": "",
-    "Artist": "Don Henley",
-    "Title": "The Boys of Summer",
-    "Duration (s)": 269,
-    "Full Duration (s)": 286,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:33",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:40",
-    "Displayed Time": "",
-    "Artist": "Jason Derulo",
-    "Title": "The Other Side",
-    "Duration (s)": 214,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:44",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:47",
-    "Displayed Time": "",
-    "Artist": "The Corrs",
-    "Title": "What Can I Do",
-    "Duration (s)": 245,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:51",
-    "Displayed Time": "",
-    "Artist": "The Weeknd",
-    "Title": "Blinding Lights",
-    "Duration (s)": 191,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-22T03:00:00Z",
-    "Scheduled Time": "04:55",
-    "Displayed Time": "",
-    "Artist": "Girls Aloud",
-    "Title": "The Promise",
-    "Duration (s)": 213,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-22T04:00:00Z",
     "Scheduled Time": "05:01",
     "Displayed Time": "",
@@ -44614,5 +44460,16 @@
     "Full Duration (s)": 219,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-05T21:00:00Z",
+    "Scheduled Time": "22:02",
+    "Displayed Time": "",
+    "Artist": "Tears For Fears",
+    "Title": "Woman in Chains",
+    "Duration (s)": 293,
+    "Full Duration (s)": 300,
+    "Duration (mins)": 5,
+    "Full Duration (mins)": 5
   }
 ]
