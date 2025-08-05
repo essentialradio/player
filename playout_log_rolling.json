@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:02",
-    "Displayed Time": "",
-    "Artist": "The Script",
-    "Title": "The Last Time",
-    "Duration (s)": 193,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:05",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:09",
-    "Displayed Time": "",
-    "Artist": "Dua Lipa",
-    "Title": "Levitating",
-    "Duration (s)": 200,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:12",
-    "Displayed Time": "",
-    "Artist": "Shaboozey ft Myles Smith",
-    "Title": "Blink Twice",
-    "Duration (s)": 153,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:15",
-    "Displayed Time": "",
-    "Artist": "Lighthouse Family",
-    "Title": "High",
-    "Duration (s)": 273,
-    "Full Duration (s)": 275,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:25",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 214,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:28",
-    "Displayed Time": "",
-    "Artist": "George Ezra",
-    "Title": "Hold My Girl",
-    "Duration (s)": 202,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:32",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Good Luck, Babe!",
-    "Duration (s)": 210,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:36",
-    "Displayed Time": "",
-    "Artist": "Paloma Faith",
-    "Title": "Only Love Can Hurt Like This",
-    "Duration (s)": 214,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:39",
-    "Displayed Time": "",
-    "Artist": "Jax Jones, Joel Corry, Jason Derulo",
-    "Title": "Tonight (D.I.Y.A.)",
-    "Duration (s)": 177,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:42",
-    "Displayed Time": "",
-    "Artist": "Gnarls Barkley",
-    "Title": "Crazy",
-    "Duration (s)": 174,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:49",
-    "Displayed Time": "",
-    "Artist": "Katy Perry",
-    "Title": "Last Friday Night (T.G.I.F)",
-    "Duration (s)": 229,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-21T09:00:00Z",
-    "Scheduled Time": "10:54",
-    "Displayed Time": "",
-    "Artist": "Caity Baser",
-    "Title": "Running From Myself",
-    "Duration (s)": 154,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-21T10:00:00Z",
     "Scheduled Time": "11:01",
     "Displayed Time": "",
@@ -44679,6 +44536,17 @@
     "Duration (s)": 208,
     "Full Duration (s)": 217,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-05T03:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
