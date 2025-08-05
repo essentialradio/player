@@ -3116,25 +3116,6 @@ function fetchScottishNews() {
 document.addEventListener("DOMContentLoaded", fetchScottishNews);
 </script>
 </div></div></div><script>
-window.addEventListener('load', () => {
-  const iframe = document.getElementById('requestsIframe');
-  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-  if (!isMobile || !iframe) return;
-
-  // Create invisible clickable overlay
-  const overlay = document.createElement('div');
-  overlay.style.position = 'absolute';
-  overlay.style.top = '48px';
-  overlay.style.left = 0;
-  overlay.style.right = 0;
-  overlay.style.bottom = 0;
-  overlay.style.zIndex = 10;
-  overlay.style.cursor = 'pointer';
-  overlay.title = 'Tap to open the form';
-
-  overlay.addEventListener('click', () => {
-    window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u', '_blank');
-  });
 
   setTimeout(() => {
     try {
