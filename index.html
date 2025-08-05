@@ -2004,42 +2004,47 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </script>
 </div>
 </div>
-<div class="modal" id="requestsModal" style="position:fixed;inset:0;display:none;background:rgba(0,0,0,0.6);z-index:9999;">
-<div class="modal-content" style="margin:0;padding:0;border-radius:0;position:absolute;inset:0;width:100vw;height:100svh;max-width:none;background:#fff;overflow:hidden;"><div style="height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #e5e7eb;background:#ffffff;"><div style="font-weight:600;color:#00818a;">Send a Request or Shout-out</div><button aria-label="Close" onclick="closeModal('requestsModal')" style="border:0;background:transparent;font-size:24px;line-height:1;cursor:pointer;">×</button></div><div style="position:absolute;top:48px;left:0;right:0;bottom:0;"><div class="embed-wrap" style="min-height:80vh;height:80vh;width:100%;overflow:hidden;"><iframe allowfullscreen="" id="requestsIframe" loading="lazy" mozallowfullscreen="" msallowfullscreen="" src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u&amp;embed=true" style="width:100%;height:100%;border:none;" title="Essential Radio Requests" webkitallowfullscreen=""></iframe></div></div><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u" rel="noopener" style="position:absolute;left:12px;bottom:10px;font-size:12px;color:#6b7280;text-decoration:underline;" target="_blank">Open in a new tab</a></div>
-</div>
-<div class="modal" id="contactModal">
-<div class="modal-content" style="max-width:900px;width:97vw;">
-<span class="close" onclick="closeModal('contactModal')">×</span>
-<div style="display:flex;align-items:center;gap:18px;margin-bottom:24px;">
-<h2 style="margin:0;color:#00818a;font-size:1.35em;">Contact</h2>
-</div>
-<div style="background:#111;border:1px solid #333;border-radius:12px;padding:24px 18px 18px 18px;box-shadow:0 0 20px rgba(0,0,0,0.23);margin-bottom:0; color:#eee;">
-<p style="font-size:17px;line-height:1.6;">
-        We’d love to hear from you! Whether it’s feedback, a shout-out, or just to say hello, drop us a message and we’ll get back to you as soon as we can. Essential Radio – always here, always listening.
-      </p>
-<div style="margin-top:22px;margin-bottom:22px;">
-<!-- Elfsight Contact Form | Contact Us -->
-<script async="" src="https://static.elfsight.com/platform/platform.js"></script>
-<div class="elfsight-app-974fdef7-6e84-49a1-8384-9604e1f7be5c" data-elfsight-app-lazy=""></div>
-</div>
-<div class="contact-details" style="margin-top:8px;">
-<p style="margin-bottom:12px;"><strong>Email:</strong>
-<a href="mailto:essentialradio@ayrshire.ac.uk" style="color:#00e0ff;text-decoration:none;font-weight:600;">essentialradio@ayrshire.ac.uk</a>
-</p>
-<p style="margin-bottom:8px;"><strong>Follow us:</strong> @ERadioAyrshire on</p>
-<ul style="list-style:none;padding-left:0;margin:0 0 0 6px;">
-<li style="margin-bottom:7px;font-size:17px;">🐦 <a href="https://x.com/eradioayrshire" style="color:#00e0ff;text-decoration:none;font-weight:600;" target="_blank">X</a></li>
-<li style="margin-bottom:7px;font-size:17px;">📸 <a href="https://instagram.com/eradioayrshire" style="color:#00e0ff;text-decoration:none;font-weight:600;" target="_blank">Instagram</a></li>
-<li style="margin-bottom:7px;font-size:17px;">☁️ <a href="https://bsky.app/profile/eradioayrshire" style="color:#00e0ff;text-decoration:none;font-weight:600;" target="_blank">Bluesky</a></li>
-<li style="margin-bottom:7px;font-size:17px;">📘 <a href="https://facebook.com/eradioayrshire" style="color:#00e0ff;text-decoration:none;font-weight:600;" target="_blank">Facebook</a></li>
-</ul>
-</div>
-</div>
-<div style="margin-top:16px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
-      Essential Radio © 2025
+<div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
+     background:rgba(0,0,0,0.6);z-index:9999;">
+  <div class="modal-content" style="margin:0;padding:0;border-radius:0;
+       position:absolute;inset:0;width:100vw;height:100svh;max-width:none;
+       background:#fff;overflow:hidden;">
+    <!-- Top bar -->
+    <div style="height:48px;display:flex;align-items:center;
+         justify-content:space-between;padding:0 12px;
+         border-bottom:1px solid #e5e7eb;background:#ffffff;">
+      <div style="font-weight:600;color:#00818a;">
+        Contact Us
+      </div>
+      <button aria-label="Close" onclick="closeModal('contactModal')"
+              style="border:0;background:transparent;font-size:24px;
+                     line-height:1;cursor:pointer;">×
+      </button>
     </div>
+
+    <!-- Embed area -->
+    <div style="position:absolute;top:48px;left:0;right:0;bottom:0;">
+      <div class="embed-wrap" style="min-height:80vh;height:80vh;
+           width:100%;overflow:hidden;">
+        <iframe allowfullscreen id="contactIframe" loading="lazy"
+                mozallowfullscreen msallowfullscreen
+                src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUQ1A2NUlNMkpFTDY2RkJBU0tUMFdJR0YyVC4u&embed=true"
+                style="width:100%;height:100%;border:none;"
+                title="Essential Radio Contact">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- “Open in new tab” link -->
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUQ1A2NUlNMkpFTDY2RkJBU0tUMFdJR0YyVC4u"
+       rel="noopener" target="_blank"
+       style="position:absolute;left:12px;bottom:10px;
+              font-size:12px;color:#6b7280;text-decoration:underline;">
+      Open in a new tab
+    </a>
+  </div>
 </div>
-</div>
+
 <div class="modal" id="newsModal">
 <div class="modal-content" style="max-width:900px;width:97vw;">
 <span class="close" onclick="closeModal('newsModal')">×</span>
