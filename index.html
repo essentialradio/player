@@ -3772,17 +3772,15 @@ function openLivePresenterModal() {
   z-index: 10000 !important;
   position: relative;
 }
-#requestsModal {
-  z-index: 2500 !important;
+@media (max-width: 768px) {
+  #requestsModal .embed-wrap {
+    min-height: 80vh !important;
+    height:    80vh !important;
+    overflow:  hidden !important;
+    /* (no need for -webkit-overflow-scrolling here, since the iframe scrolls itself) */
+  }
 }
 
-#requestsModal .embed-wrap {
-      min-height: 80vh !important;
-      height: 80vh !important;
-      overflow: hidden !important;            /* iframe handles its own scroll */
-      -webkit-overflow-scrolling: touch;       /* momentum scroll on iOS */
-    }
-  }
 </style>
 <script>
 function toggleLogoVisibility() {
