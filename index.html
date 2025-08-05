@@ -1572,10 +1572,10 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
       </button>
     </div>
 
-    <!-- Embed area -->
+    <!-- Embed area (scrollable) -->
     <div style="position:absolute;top:48px;left:0;right:0;bottom:0;">
-      <div class="embed-wrap" style="min-height:80vh;height:80vh;
-           width:100%;overflow:hidden;">
+      <div class="embed-wrap" style="height:calc(100vh - 48px);
+           width:100%;overflow:auto;">
         <iframe allowfullscreen id="requestsIframe" loading="lazy"
                 mozallowfullscreen msallowfullscreen
                 src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u&embed=true"
