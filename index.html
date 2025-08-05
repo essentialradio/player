@@ -1436,6 +1436,31 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 <!-- SIDE BANNER (Third Panel) -->
 <div class="side-banner-panel">
+<!-- Social (right column) -->
+<div class="side-social">
+  <div class="side-social-title">Follow Essential Radio</div>
+  <div class="side-social-row">
+    <a class="side-social-btn" href="https://facebook.com/ERadioAyrshire" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+      <!-- Facebook -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12A12 12 0 1 0 10.9 23.9v-8.4H8V12h2.9V9.6c0-2.9 1.8-4.5 4.4-4.5 1.2 0 2.4.1 2.7.1v3h-1.9c-1.5 0-1.8.7-1.8 1.7V12H18l-.4 3.5h-2.6v8.4A12 12 0 0 0 24 12z"/></svg>
+    </a>
+
+    <a class="side-social-btn" href="https://x.com/ERadioAyrshire" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)">
+      <!-- X -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2h3.36l-7.51 8.74L22 22h-6.86l-4.73-6.83L4.88 22H1.52l7.51-8.74L2 2h6.98l4.38 6.3L18.24 2z"/></svg>
+    </a>
+
+    <a class="side-social-btn" href="https://instagram.com/ERadioAyrshire" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+      <!-- Instagram -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4.6"/>
+        <circle cx="17.5" cy="6.5" r="1.3"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
 <div style="color:#fed351;font-weight:700;font-size:1.1em;margin-bottom:-14px;">Additional Ways to Listen</div>
 <img alt="Ways to Listen" class="side-banner-img" src="Additional.png" style="margin-top:0;"/>
 <div id="rnh-news-hub" style="margin-top:14px;">
@@ -1480,6 +1505,43 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     max-height: 1000px;
     display: block;
   }
+/* Right column social strip */
+.side-social {
+  text-align: center;
+  margin: 8px 0 10px 0;
+}
+.side-social-title {
+  color: #fed351;
+  font-weight: 700;
+  font-size: 1.02em;
+  margin-bottom: 8px;
+}
+.side-social-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.side-social-btn {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #fed351; color: #111; text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  transition: transform .15s, background .2s, color .2s;
+}
+.side-social-btn:hover, .side-social-btn:focus {
+  background: #00818a; color: #fff; transform: translateY(-2px); outline: none;
+}
+.side-social-btn svg { width: 18px; height: 18px; display: block; }
+.side-social-btn svg * { fill: currentColor; }
+
+/* Keep things neat on very narrow screens */
+@media (max-width: 768px){
+  .side-social { margin-top: 6px; }
+  .side-social-btn { width: 32px; height: 32px; }
+  .side-social-btn svg { width: 16px; height: 16px; }
+}
+
 
   @media (max-width: 768px) {
     .strip-container {
