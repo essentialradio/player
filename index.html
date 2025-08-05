@@ -1565,16 +1565,17 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
                      line-height:1;cursor:pointer;">×</button>
     </div>
 
-    <!-- Embed via Microsoft’s script (scrolls natively) -->
+    <!-- SCROLLABLE CONTAINER (Full-width & height, minus top bar & bottom link) -->
     <div style="position:absolute;top:48px;left:0;right:0;bottom:36px;
                 overflow:auto;
-                -webkit-overflow-scrolling:touch;
-                padding:12px;">  <!-- optional padding -->
-      <!-- Forms Embed Script -->
-      <script src="https://apps.forms.office.com/f/hostedForms/scripts/embed.js"></script>
-      <div class="msforms-embed"
-           data-form-id="CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u">
-      </div>
+                -webkit-overflow-scrolling: touch;">
+      <iframe allowfullscreen
+              id="requestsIframe"
+              loading="lazy"
+              src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u&amp;embed=true"
+              style="width:100%;min-height:300%;border:none;"
+              title="Essential Radio Requests">
+      </iframe>
     </div>
 
     <!-- “Open in new tab” link -->
@@ -1586,7 +1587,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </a>
   </div>
 </div>
-
 
 
 
