@@ -1569,23 +1569,20 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
                      line-height:1;cursor:pointer;">×</button>
     </div>
 
-    <!-- Embed area -->
-   <!-- Embed area: container scrolls, iframe just grows -->
-<div style="position:absolute;top:48px;left:0;right:0;bottom:0;
-            overflow:auto;           /* container handles scroll */
-            -webkit-overflow-scrolling: touch; /* smooth iOS momentum */
-            ">
-  <iframe
-    allowfullscreen
-    id="requestsIframe"
-    loading="lazy"
-    src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u&embed=true"
-    style="width:100%; min-height:100%; border:none;"
-    title="Essential Radio Requests">
-  </iframe>
-</div>
+    <!-- Embed area: scrolls, stops above link -->
+    <div style="position:absolute;top:48px;left:0;right:0;bottom:36px;
+                overflow:auto;
+                -webkit-overflow-scrolling:touch;">
+      <iframe allowfullscreen
+              id="requestsIframe"
+              loading="lazy"
+              src="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u&embed=true"
+              style="width:100%;min-height:100%;border:none;"
+              title="Essential Radio Requests">
+      </iframe>
+    </div>
 
-
+    <!-- “Open in new tab” link -->
     <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=CWFOersEtkWIfvFCzEk3ZoQ5eCgoNHZNotQcUOD47KRUME1NTVZOV0lBU05SWlEwOEc2RkI2SUdRNS4u"
        rel="noopener" target="_blank"
        style="position:absolute;left:12px;bottom:10px;
@@ -1594,6 +1591,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </a>
   </div>
 </div>
+
 
 
 
