@@ -2942,23 +2942,17 @@ document.addEventListener("visibilitychange", () => {
 <!-- Removed redundant modal open/close script; bounce handling moved to unified script -->
 <script>
 async function fetchRNHNews() {
+  // Use a public RSS-to-JSON proxy (CORS-safe)
   const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
   const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-
-  const mq = window.matchMedia("(max-width: 768px)");
-  const isMobile = mq.matches;
-  const targetAttr = isMobile ? '' : ' target="_blank" rel="noopener"';
-
   try {
     const res = await fetch(api);
     const data = await res.json();
     if (!data.items || !data.items.length) throw new Error("No items found");
-
-    const top2 = data.items.slice(0, 2);
-    const list = document.getElementById('rnh-news-list');
-    list.innerHTML = top2.map(item => `
+    const top2 = data.items.slice(0,2);
+    document.getElementById('rnh-news-list').innerHTML = top2.map(item => `
       <div style="margin-bottom:18px;">
-        <a href="${item.link}"${targetAttr} style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
+        <a href="${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
           ${item.title}
         </a>
         <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
@@ -2966,30 +2960,13 @@ async function fetchRNHNews() {
         </div>
       </div>
     `).join('');
-
-    // Apply JS-controlled height
-    const applyHeight = () => {
-      if (mq.matches) {
-        list.style.maxHeight = '';   // <-- adjust height here
-        list.style.overflowY = 'auto';
-      } else {
-        list.style.maxHeight = '';
-        list.style.overflow = '';
-      }
-    };
-    applyHeight();
-    // Update if viewport crosses the breakpoint
-    mq.addEventListener('change', applyHeight);
-
-  } catch (e) {
+  } catch(e) {
     document.getElementById('rnh-news-list').innerHTML =
       '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
   }
 }
 fetchRNHNews();
 </script>
-
-
 <script>
 function refreshCombinedTravel() {
   var iframe = document.getElementById('combined-travel-iframe');
@@ -2997,6 +2974,25 @@ function refreshCombinedTravel() {
   iframe.src = "https://travel-ac.vercel.app/Current_Combined_Travel_Report.html?ts=" + Date.now();
 }
 </script>
+<!--  FULL PRESENTER MODALS - now with presenter-modal class -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ✅ ESSENTIAL RADIO PRESENTERS MODAL – FULL WORKING BLOCK -->
 
@@ -3962,25 +3958,6 @@ function openLivePresenterModal() {
 .modal.presenter-detail.show {
   display: flex !important;
 }
-/* Desktop: natural height */
-#rnh-news-list { max-height: none; overflow: visible; }
-
-/* Mobile: limit height + scroll */
-@media (max-width: 768px){
-  #rnh-news-list {
-    max-height: none;   /* <-- adjust this */
-    overflow-y: auto;
-  }
-  /* Optional: keep headlines tidy (2-line clamp) */
-  #rnh-news-list a{
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  /* Optional: bigger tap targets */
-  #rnh-news-list > div{ padding: 6px 0; }
-}
     </style>
 </div>
 </div>
@@ -4271,66 +4248,6 @@ function closePresenterModal(presenterId) {
     // no-op; we only want the function loaded so others can call setBodyModalState if needed
   });
   window._syncModalBodyState = setBodyModalState;
-})();
-</script>
-
-
-
-<!-- RNH mobile layout override: full-height hub + scrollable list -->
-<style id="rnh-mobile-clean">
-@media (max-width: 768px){
-  #rnh-news-hub{
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-  }
-  #rnh-news-list{
-    flex: 1 1 auto;
-    min-height: 0;
-    max-height: none;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
-}
-</style>
-
-
-<!-- Strong mobile override + runtime guard -->
-<style id="rnh-mobile-force">
-@media (max-width:768px){
-  #rnh-news-hub{
-    height:100dvh !important;
-    display:flex !important;
-    flex-direction:column !important;
-  }
-  #rnh-news-list{
-    flex:1 1 auto !important;
-    min-height:0 !important;
-    max-height:none !important;
-    height:auto !important;
-    overflow-y:auto !important;
-    -webkit-overflow-scrolling:touch !important;
-    overscroll-behavior:contain !important;
-  }
-}
-</style>
-<script>
-(function(){
-  function clearInlineCaps(){
-    var list = document.getElementById('rnh-news-list');
-    if (!list) return;
-    list.style.maxHeight = '';
-    list.style.height = '';
-    list.style.overflowY = 'auto';
-    list.style.overflow = '';
-  }
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', clearInlineCaps);
-  } else {
-    clearInlineCaps();
-  }
-  window.addEventListener('resize', clearInlineCaps);
 })();
 </script>
 
