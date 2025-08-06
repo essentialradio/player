@@ -2967,21 +2967,21 @@ async function fetchRNHNews() {
       </div>
     `).join('');
 
-   // Let CSS control height/scroll; no caps in JS
-const applyHeight = () => {
-  if (mq.matches) {
-    list.style.maxHeight = '';
-    list.style.height = '';
-    list.style.overflowY = 'auto';
-  } else {
-    list.style.maxHeight = '';
-    list.style.height = '';
-    list.style.overflow = '';
-  }
-};
-applyHeight();
-mq.addEventListener('change', applyHeight);
-
+    // Let CSS control height/scroll; no caps in JS
+    const applyHeight = () => {
+      if (mq.matches) {
+        list.style.maxHeight = '';
+        list.style.height = '';
+        list.style.overflowY = 'auto';
+      } else {
+        list.style.maxHeight = '';
+        list.style.height = '';
+        list.style.overflow = '';
+      }
+    };
+    applyHeight();
+    // Update if viewport crosses the breakpoint
+    mq.addEventListener('change', applyHeight);
 
   } catch (e) {
     document.getElementById('rnh-news-list').innerHTML =
@@ -3966,7 +3966,7 @@ function openLivePresenterModal() {
 }
 /* Desktop: natural height */
 #rnh-news-list { max-height: none; overflow: visible; }
-.
+
   /* Optional: keep headlines tidy (2-line clamp) */
   #rnh-news-list a{
     display: -webkit-box;
@@ -4007,13 +4007,11 @@ function openLivePresenterModal() {
     display: flex;
     flex-direction: column;
   }
-  #rnh-news-list{
-    max-height: none !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
+  #rnh-news-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
   }
-}
-
 }
 
 </style>
