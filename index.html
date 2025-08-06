@@ -2314,11 +2314,29 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 <!-- National News Section -->
 <div>
-<h3 style="color:#00e0ff;margin:0 0 9px 0;font-size:1.15em;">
-          📰 The Latest from Radio News Hub
-        </h3>
-<script async="" src="https://static.elfsight.com/platform/platform.js"></script>
-<div class="elfsight-app-9b4542e0-7fb9-4bfb-a258-38a84ee937a7" data-elfsight-app-lazy=""></div>
+<h3 style="color:#00e0ff;margin:0 0 9px 0;font-size:1.15em;">📰 The Latest from Radio News Hub</h3>
+
+<style>
+  /* Modal news cards */
+  .rnh-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+  }
+  .rnh-card{
+    background:#0e0e0e;border:1px solid #333;border-radius:12px;overflow:hidden
+  }
+  .rnh-card a{color:inherit;text-decoration:none;display:block}
+  .rnh-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+  .rnh-title{padding:10px 12px;font-weight:700;line-height:1.25;color:#fff}
+  .rnh-meta{padding:0 12px 12px;color:#fed351;font-size:.9em}
+  @media (max-width:500px){ .rnh-cards{grid-template-columns:1fr} }
+</style>
+
+<div id="rnh-modal-list" class="rnh-cards">
+  <div style="color:#bbb">Loading headlines…</div>
+</div>
+
 </div>
 </div>
 <div style="margin-top:16px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
@@ -4248,6 +4266,46 @@ function closePresenterModal(presenterId) {
     // no-op; we only want the function loaded so others can call setBodyModalState if needed
   });
   window._syncModalBodyState = setBodyModalState;
+})();
+</script>
+<script>
+(async function fetchRNHModalNews(){
+  const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  const wrap = document.getElementById("rnh-modal-list");
+  if(!wrap) return;
+
+  try{
+    const res = await fetch(api);
+    const data = await res.json();
+    const items = (data.items || []).slice(0, 8); // show up to 8
+
+    const getImg = it =>
+      (it.enclosure && it.enclosure.link) ||
+      it.thumbnail ||
+      (it.content && (it.content.match(/<img[^>]+src="([^"]+)"/i) || [])[1]) ||
+      "";
+
+    wrap.innerHTML = items.map(it => {
+      const img = getImg(it);
+      const date = it.pubDate ? new Date(it.pubDate).toLocaleDateString("en-GB",
+        { day:"numeric", month:"short" }) : "";
+      return `
+        <article class="rnh-card">
+          <a href="${it.link}" target="_blank" rel="noopener">
+            ${img ? `<img src="${img}" alt="${it.title}" loading="lazy">` : ""}
+            <div class="rnh-title">${it.title}</div>
+            ${date ? `<div class="rnh-meta">${date}</div>` : ""}
+          </a>
+        </article>`;
+    }).join("");
+
+    if(!items.length){
+      wrap.innerHTML = '<div style="color:#fed351;">No stories found right now.</div>';
+    }
+  }catch(e){
+    wrap.innerHTML = '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
+  }
 })();
 </script>
 
