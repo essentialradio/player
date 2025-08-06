@@ -234,7 +234,7 @@ body {
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
     .left-panel {
       background: #111;
@@ -1052,33 +1052,6 @@ body.modal-open {
   }
 </style>
 
-<style>
-/* === NEWS MODAL: full-height iframe on mobile === */
-@media (max-width: 768px){
-  #newsModal{ padding:0 !important; }
-  #newsModal .modal-content{
-    width:100vw !important;
-    max-width:none !important;
-    height:100dvh !important;
-    max-height:100dvh !important;
-    margin:0 !important;
-    border-radius:0 !important;
-    display:flex !important;
-    flex-direction:column !important;
-    overflow:hidden !important;
-  }
-  #newsModal h2, #newsModal .close{ z-index:2; }
-  #newsModal iframe{
-    flex:1 1 auto !important;
-    min-height:0 !important;
-    width:100% !important;
-    height:100% !important;
-    display:block !important;
-    border:0 !important;
-    -webkit-overflow-scrolling:touch;
-  }
-}
-</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -3079,33 +3052,6 @@ function checkOverlayLogo() {
 }
 
 function openModal(id) {
-  // Ensure NEWS modal iframe expands to full height on mobile
-  if (id === 'newsModal'){
-    var modal = document.getElementById('newsModal');
-    if (modal){
-      var mc = modal.querySelector('.modal-content');
-      if (mc){
-        mc.style.height = '100dvh';
-        mc.style.maxHeight = '100dvh';
-        mc.style.display = 'flex';
-        mc.style.flexDirection = 'column';
-        mc.style.overflow = 'hidden';
-      }
-      modal.style.padding = '0';
-      modal.style.overflow = 'hidden';
-      var iframes = modal.querySelectorAll('iframe');
-      iframes.forEach(function(f){
-        try{
-          f.removeAttribute('height');
-        }catch(e){}
-        f.style.height = '100%';
-        f.style.width = '100%';
-        f.style.flex = '1 1 auto';
-        f.style.display = 'block';
-      });
-    }
-  }
-
   // Close all modals first
   document.querySelectorAll('.modal').forEach(function(modal) {
     modal.style.display = 'none';
@@ -4388,22 +4334,66 @@ function closePresenterModal(presenterId) {
 })();
 </script>
 
+</body>
+</html>
+<style>
+/* --- RIGHT PANEL TOP ALIGN OVERRIDE --- */
+.right-panel{ justify-content: flex-start !important; align-items: stretch !important; }
+</style>
 
-<!-- Generic safety net for any modal with an iframe -->
-<style id="modal-iframe-safetynet">
-@media (max-width: 768px){
-  .modal .modal-content:has(iframe){
+<style id="news-modal-fullheight">
+/* === NEWS MODAL: full-height & scrollable on mobile === */
+@media (max-width:768px){
+  #newsModal{ padding:0 !important; }
+  #newsModal .modal-content{
+    width:100vw !important;
+    max-width:none !important;
+    height:100dvh !important;
+    max-height:100dvh !important;
+    margin:0 !important;
+    border-radius:0 !important;
     display:flex !important;
     flex-direction:column !important;
+    overflow:hidden !important;
   }
-  .modal .modal-content:has(iframe) iframe{
+  /* Make the main content area inside the modal scroll */
+  #newsModal .modal-content > div:last-of-type{
     flex:1 1 auto !important;
     min-height:0 !important;
-    width:100% !important;
-    height:100% !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior:contain !important;
   }
 }
 </style>
 
-</body>
-</html>
+<script>
+(function(){
+  function fixNewsModalIframe(){
+    var modal = document.getElementById('newsModal');
+    if(!modal) return;
+    var mc = modal.querySelector('.modal-content');
+    if(mc){
+      mc.style.height = '100dvh';
+      mc.style.maxHeight = '100dvh';
+      mc.style.display = 'flex';
+      mc.style.flexDirection = 'column';
+      mc.style.overflow = 'hidden';
+    }
+    // If any inline heights sneak in, clear them
+    var scrollArea = modal.querySelector('.modal-content > div:last-of-type');
+    if(scrollArea){
+      scrollArea.style.flex = '1 1 auto';
+      scrollArea.style.minHeight = '0';
+      scrollArea.style.overflowY = 'auto';
+      scrollArea.style.webkitOverflowScrolling = 'touch';
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', fixNewsModalIframe);
+  } else {
+    fixNewsModalIframe();
+  }
+  window.addEventListener('resize', fixNewsModalIframe);
+})();
+</script>
