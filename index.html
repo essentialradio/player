@@ -2945,7 +2945,8 @@ async function fetchRNHNews() {
   const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
   const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
 
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const mq = window.matchMedia("(max-width: 768px)");
+  const isMobile = mq.matches;
   const targetAttr = isMobile ? '' : ' target="_blank" rel="noopener"';
 
   try {
@@ -2954,7 +2955,8 @@ async function fetchRNHNews() {
     if (!data.items || !data.items.length) throw new Error("No items found");
 
     const top2 = data.items.slice(0, 2);
-    document.getElementById('rnh-news-list').innerHTML = top2.map(item => `
+    const list = document.getElementById('rnh-news-list');
+    list.innerHTML = top2.map(item => `
       <div style="margin-bottom:18px;">
         <a href="${item.link}"${targetAttr} style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
           ${item.title}
@@ -2964,13 +2966,29 @@ async function fetchRNHNews() {
         </div>
       </div>
     `).join('');
-  } catch(e) {
+
+    // Apply JS-controlled height
+    const applyHeight = () => {
+      if (mq.matches) {
+        list.style.maxHeight = '300px';   // <-- adjust height here
+        list.style.overflow = 'auto';
+      } else {
+        list.style.maxHeight = '';
+        list.style.overflow = '';
+      }
+    };
+    applyHeight();
+    // Update if viewport crosses the breakpoint
+    mq.addEventListener('change', applyHeight);
+
+  } catch (e) {
     document.getElementById('rnh-news-list').innerHTML =
       '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
   }
 }
 fetchRNHNews();
 </script>
+
 
 <script>
 function refreshCombinedTravel() {
@@ -2979,25 +2997,6 @@ function refreshCombinedTravel() {
   iframe.src = "https://travel-ac.vercel.app/Current_Combined_Travel_Report.html?ts=" + Date.now();
 }
 </script>
-<!--  FULL PRESENTER MODALS - now with presenter-modal class -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- ✅ ESSENTIAL RADIO PRESENTERS MODAL – FULL WORKING BLOCK -->
 
