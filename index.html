@@ -3964,13 +3964,7 @@ function openLivePresenterModal() {
 }
 /* Desktop: natural height */
 #rnh-news-list { max-height: none; overflow: visible; }
-
-/* Mobile: limit height + scroll */
-@media (max-width: 768px){
-  #rnh-news-list {
-    max-height: 140px;   /* <-- adjust this */
-    overflow: auto;
-  }
+.
   /* Optional: keep headlines tidy (2-line clamp) */
   #rnh-news-list a{
     display: -webkit-box;
@@ -4003,6 +3997,18 @@ function openLivePresenterModal() {
     height:    80vh !important;
     overflow:  hidden !important;
     /* (no need for -webkit-overflow-scrolling here, since the iframe scrolls itself) */
+  }
+}
+@media (max-width: 768px){
+  #rnh-news-hub {
+    height: 100dvh;           /* or calc(100dvh - <header-height>) */
+    display: flex;
+    flex-direction: column;
+  }
+  #rnh-news-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
   }
 }
 
