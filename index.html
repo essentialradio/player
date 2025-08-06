@@ -758,7 +758,15 @@ body {
   }
 
  
-  
+  /* Right column separators — similar feel to the left */
+.side-banner-panel > :is(.side-social, .side-listen, #rnh-news-hub, #ayrshire-college)
+  + :is(.side-social, .side-listen, #rnh-news-hub, #ayrshire-college){
+  margin-top:12px;              /* space before the next section */
+  padding-top:12px;             /* space after the rule */
+  border-top:1px solid #2b2b2b; /* the line */
+  box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
+}
+
 
 /* MOBILE TWEAKS */
 
@@ -1654,6 +1662,15 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   .side-social { margin-top: 6px; }
   .side-social-btn { width: 32px; height: 32px; }
   .side-social-btn svg { width: 16px; height: 16px; }
+}
+
+/* Right column separators — similar feel to the left */
+.side-banner-panel > :is(.side-social, .side-listen, #rnh-news-hub, #ayrshire-college)
+  + :is(.side-social, .side-listen, #rnh-news-hub, #ayrshire-college){
+  margin-top:12px;              /* space before the next section */
+  padding-top:12px;             /* space after the rule */
+  border-top:1px solid #2b2b2b; /* the line */
+  box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
 }
 
 
