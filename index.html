@@ -1437,7 +1437,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <!-- SIDE BANNER (Third Panel) -->
 <div class="side-banner-panel">
 <!-- Social (right column) -->
-<div class="side-social" style="margin-bottom:32px">
+<div class="side-social">
   <div class="side-social-title">Follow Essential Radio</div>
   <div class="side-social-row">
     <a class="side-social-btn" href="https://facebook.com/ERadioAyrshire" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
@@ -1461,8 +1461,80 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   </div>
 </div>
 
-<div style="color:#fed351;font-weight:700;font-size:1.1em;margin-bottom:-14px;">Additional Ways to Listen</div>
-<img alt="Ways to Listen" class="side-banner-img" src="Additional.png" style="margin-top:0;"/>
+<!-- Additional Ways to Listen -->
+<div class="side-listen">
+  <div class="side-listen-title">Additional Ways to Listen</div>
+
+  <!-- Group 1 -->
+  <div class="listen-group">
+    <div class="listen-group-title">On your smart speaker</div>
+    <div class="tile-row">
+      <a class="tile" href="https://www.amazon.co.uk/REL-MEDIA-Essential-Radio/dp/B0BZPTK8ZF" target="_blank" rel="noopener" aria-label="Open Essential Radio Alexa Skill">
+        <span class="tile-icon">
+          <!-- Alexa -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a8 8 0 0 0-8 8c0 4.4 3.6 8 8 8h.2c.3 2.2 1.3 3.7 3.4 4-1.1-.9-1.8-2.2-1.8-3.7 3.8-1 6.2-4.5 6.2-8.3a8 8 0 0 0-8-8z"/>
+          </svg>
+        </span>
+        <span class="tile-caption">Alexa</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Group 2 -->
+  <div class="listen-group">
+    <div class="listen-group-title">Download the official apps for Apple and Android</div>
+    <div class="tile-row">
+      <a class="tile" href="https://apps.apple.com/gb/app/essential-radio/id6478086650" target="_blank" rel="noopener" aria-label="Open Essential Radio on the Apple App Store">
+        <span class="tile-icon">
+          <!-- Apple -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.3 13.2c0-2 1.8-3 1.8-3-.9-1.3-2.3-1.5-2.8-1.5-1.2 0-2.1.8-2.7.8-.6 0-1.4-.8-2.4-.8-1.2 0-2.4.7-3.1 1.9-1.4 2.3-.4 5.7 1 7.7.7 1 1.6 2.1 2.7 2.1 1-.1 1.4-.6 2.5-.6 1 0 1.4.6 2.5.6 1.1 0 1.9-1 2.6-2 0 0-.9-.4-1.4-1.4-.4-.9-.7-2-.7-2.8zM14 5.2c.5-.7.8-1.6.7-2.4-.8.1-1.6.6-2.1 1.3-.4.6-.8 1.5-.7 2.3.9.1 1.7-.4 2.1-1.2z"/>
+          </svg>
+        </span>
+        <span class="tile-caption">Apple</span>
+      </a>
+
+      <a class="tile" href="https://play.google.com/store/apps/details?id=com.codewai.radios.uk.essential&hl=en-US" target="_blank" rel="noopener" aria-label="Open Essential Radio on Google Play">
+        <span class="tile-icon">
+          <!-- Google Play -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 2.8v18.4c0 .5.5.8.9.6l12-6.8c.5-.3.5-1 0-1.2L3.9 2.2c-.4-.2-.9.1-.9.6z"/>
+          </svg>
+        </span>
+        <span class="tile-caption">Android</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Group 3 -->
+  <div class="listen-group">
+    <div class="listen-group-title">Via the My Ayrshire College app</div>
+    <div class="tile-row">
+      <a class="tile" href="https://apps.apple.com/gb/app/my-ayrshire-college/id1521950988" target="_blank" rel="noopener" aria-label="Open My Ayrshire College on the Apple App Store">
+        <span class="tile-icon">
+          <!-- Mortarboard -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3 2 8l10 5 10-5-10-5zM6 11v4.5c0 1.7 3 3.5 6 3.5s6-1.8 6-3.5V11l-6 3-6-3z"/>
+          </svg>
+        </span>
+        <span class="tile-caption">iOS</span>
+      </a>
+
+      <a class="tile" href="https://play.google.com/store/apps/details?id=cloud.myday.ayrshire" target="_blank" rel="noopener" aria-label="Open My Ayrshire College on Google Play">
+        <span class="tile-icon">
+          <!-- Mortarboard -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3 2 8l10 5 10-5-10-5zM6 11v4.5c0 1.7 3.5 3.5 6 3.5s6-1.8 6-3.5V11l-6 3-6-3z"/>
+          </svg>
+        </span>
+        <span class="tile-caption">Android</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
 <div id="rnh-news-hub" style="margin-top:14px;">
 <div style="color:#fed351;font-weight:700;font-size:1.1em;margin-bottom:14px;">Latest News from Radio News Hub</div>
 <div id="rnh-news-list">
@@ -1505,6 +1577,48 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     max-height: 1000px;
     display: block;
   }
+/* Section title */
+.side-listen { margin-top: 14px; }
+.side-listen-title {
+  color:#fed351; font-weight:700; font-size:1.1em; margin-bottom:8px;
+}
+
+/* Groups */
+.listen-group { margin-bottom: 12px; }
+.listen-group-title {
+  color:#bbb; font-weight:600; font-size:.95em; margin:4px 0 8px 0; text-align:center;
+}
+
+/* Icon tiles */
+.tile-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+
+.tile{
+  width:72px; text-align:center; text-decoration:none; color:#ddd;
+  transition: transform .15s ease, color .2s ease;
+}
+.tile-icon{
+  width:54px; height:54px; border-radius:50%;
+  background:#fed351; color:#111;
+  display:inline-flex; align-items:center; justify-content:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.25);
+  margin:0 auto 6px auto;
+}
+.tile-icon svg{ width:24px; height:24px; display:block; }
+.tile-icon svg *{ fill: currentColor; }
+
+.tile-caption{ font-size:.85em; line-height:1.1; display:block; }
+
+.tile:hover .tile-icon,
+.tile:focus .tile-icon{ background:#00818a; color:#fff; }
+.tile:hover, .tile:focus{ transform: translateY(-2px); outline:none; }
+
+/* Slightly tighter on narrow screens */
+@media (max-width: 768px){
+  .tile{ width:64px; }
+  .tile-icon{ width:50px; height:50px; }
+  .tile-icon svg{ width:22px; height:22px; }
+}
+
 /* Right column social strip */
 .side-social {
   text-align: center;
@@ -1565,6 +1679,20 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
       height: auto;
     }
   }
+/* Compact tiles */
+.side-listen .tile-row { gap: 6px; }
+.side-listen .tile { width: 42px; }
+.side-listen .tile-icon { width: 32px; height: 32px; margin-bottom: 3px; }
+.side-listen .tile-icon svg { width: 14px; height: 14px; }
+.side-listen .tile-caption { font-size: 0.70em; line-height: 1.05; }
+
+/* Match Follow icons to Compact tile size */
+.side-social .side-social-btn { width:32px; height:32px; }
+.side-social .side-social-btn svg { width:14px; height:14px; }
+
+/* Optional: tighten spacing to match tiles */
+.side-social .side-social-row { gap: 6px; }
+
 </style>
 <!-- MODALS -->
 <div class="modal" id="aboutModal">
