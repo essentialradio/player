@@ -4295,5 +4295,44 @@ function closePresenterModal(presenterId) {
 }
 </style>
 
+
+<!-- Strong mobile override + runtime guard -->
+<style id="rnh-mobile-force">
+@media (max-width:768px){
+  #rnh-news-hub{
+    height:100dvh !important;
+    display:flex !important;
+    flex-direction:column !important;
+  }
+  #rnh-news-list{
+    flex:1 1 auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    height:auto !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior:contain !important;
+  }
+}
+</style>
+<script>
+(function(){
+  function clearInlineCaps(){
+    var list = document.getElementById('rnh-news-list');
+    if (!list) return;
+    list.style.maxHeight = '';
+    list.style.height = '';
+    list.style.overflowY = 'auto';
+    list.style.overflow = '';
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', clearInlineCaps);
+  } else {
+    clearInlineCaps();
+  }
+  window.addEventListener('resize', clearInlineCaps);
+})();
+</script>
+
 </body>
 </html>
