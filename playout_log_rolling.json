@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:02",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:05",
-    "Displayed Time": "",
-    "Artist": "Nirvana",
-    "Title": "Smells Like Teen Spirit",
-    "Duration (s)": 265,
-    "Full Duration (s)": 271,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:09",
-    "Displayed Time": "",
-    "Artist": "Bruno Mars",
-    "Title": "24K Magic",
-    "Duration (s)": 219,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:13",
-    "Displayed Time": "",
-    "Artist": "Andy C & Becky Hill",
-    "Title": "Indestructible",
-    "Duration (s)": 153,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:16",
-    "Displayed Time": "",
-    "Artist": "Adele",
-    "Title": "Set Fire to the Rain",
-    "Duration (s)": 232,
-    "Full Duration (s)": 241,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:23",
-    "Displayed Time": "",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 177,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:26",
-    "Displayed Time": "",
-    "Artist": "Billie Eilish",
-    "Title": "Birds of a Feather",
-    "Duration (s)": 202,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:30",
-    "Displayed Time": "",
-    "Artist": "Belinda Carlisle",
-    "Title": "Circle In The Sand",
-    "Duration (s)": 209,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:33",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 170,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:40",
-    "Displayed Time": "",
-    "Artist": "Scouting for Girls",
-    "Title": "This Ain't a Love Song",
-    "Duration (s)": 180,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:43",
-    "Displayed Time": "",
-    "Artist": "JADE",
-    "Title": "Plastic Box",
-    "Duration (s)": 195,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:46",
-    "Displayed Time": "",
-    "Artist": "Oasis",
-    "Title": "Stand by Me",
-    "Duration (s)": 280,
-    "Full Duration (s)": 290,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:51",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "How Does It Feel",
-    "Duration (s)": 135,
-    "Full Duration (s)": 144,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-24T03:00:00Z",
-    "Scheduled Time": "04:53",
-    "Displayed Time": "",
-    "Artist": "Charlotte Church",
-    "Title": "Crazy Chick",
-    "Duration (s)": 177,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-24T04:00:00Z",
     "Scheduled Time": "05:01",
     "Displayed Time": "",
@@ -44658,5 +44504,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-07T21:00:00Z",
+    "Scheduled Time": "22:01",
+    "Displayed Time": "",
+    "Artist": "Elton John",
+    "Title": "Nikita",
+    "Duration (s)": 282,
+    "Full Duration (s)": 288,
+    "Duration (mins)": 5,
+    "Full Duration (mins)": 5
   }
 ]
