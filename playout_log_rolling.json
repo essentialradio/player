@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "",
-    "Artist": "Glass Animals",
-    "Title": "Heat Waves",
-    "Duration (s)": 217,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:07",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 173,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:10",
-    "Displayed Time": "",
-    "Artist": "Majestic x The Jammin Kid x Celine Dion",
-    "Title": "Set My Heart On Fire (I'm Alive x And The Beat Goes On)",
-    "Duration (s)": 176,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:13",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Before You Go",
-    "Duration (s)": 209,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:21",
-    "Displayed Time": "",
-    "Artist": "Portugal. The Man",
-    "Title": "Feel It Still",
-    "Duration (s)": 158,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:24",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris ft Rihanna",
-    "Title": "This Is What You Came For",
-    "Duration (s)": 217,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:27",
-    "Displayed Time": "",
-    "Artist": "Sam Fender & Olivia Dean",
-    "Title": "Rein Me In",
-    "Duration (s)": 236,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:31",
-    "Displayed Time": "",
-    "Artist": "Kygo X Tina Turner",
-    "Title": "What's Love Got to Do With It",
-    "Duration (s)": 202,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:35",
-    "Displayed Time": "",
-    "Artist": "Richard Ashcroft",
-    "Title": "Lover",
-    "Duration (s)": 209,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:41",
-    "Displayed Time": "",
-    "Artist": "Florence + the Machine",
-    "Title": "Dog Days Are Over",
-    "Duration (s)": 218,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:44",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 177,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:47",
-    "Displayed Time": "",
-    "Artist": "Griff",
-    "Title": "Last Night's Mascara",
-    "Duration (s)": 175,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:50",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Stargazing",
-    "Duration (s)": 166,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-23T12:00:00Z",
-    "Scheduled Time": "13:53",
-    "Displayed Time": "",
-    "Artist": "Vance Joy",
-    "Title": "Riptide",
-    "Duration (s)": 197,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-23T13:00:00Z",
     "Scheduled Time": "14:02",
     "Displayed Time": "",
@@ -44645,6 +44491,17 @@
     "Title": "It's Amazing To Be Young",
     "Duration (s)": 204,
     "Full Duration (s)": 211,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-07T06:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "",
+    "Artist": "Jess Glynne",
+    "Title": "All I Am",
+    "Duration (s)": 208,
+    "Full Duration (s)": 210,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
