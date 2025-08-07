@@ -2712,6 +2712,7 @@ group.forEach(show => {
 let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
+
 async function fetchNowPlaying() {
   try {
     const res = await fetch('/api/metadata', { cache: 'no-store' });
@@ -2722,29 +2723,18 @@ async function fetchNowPlaying() {
       t.innerHTML = str;
       return t.value;
     };
-
     const raw = decode(data.nowPlaying || '').trim();
 
     let artist = '', title = '';
     const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-
     if (sep) {
-      const idx = raw.indexOf(sep);  // ✅ changed from lastIndexOf
+      const idx = raw.lastIndexOf(sep);
       artist = raw.substring(0, idx).trim();
       title  = raw.substring(idx + sep.length).trim();
     } else {
       showMoreMusicSoon();  // No valid title/artist format
       return;
     }
-
-    // ✅ Update the DOM or use artist/title
-    document.getElementById('now-playing').textContent = `${artist} – ${title}`;
-
-  } catch (err) {
-    console.error("Metadata fetch failed", err);
-  }
-}
-
 
     const newTrackID = `${artist} – ${title}`;
 
