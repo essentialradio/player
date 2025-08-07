@@ -2727,8 +2727,9 @@ async function fetchNowPlaying() {
 
     let artist = '', title = '';
     const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
+
     if (sep) {
-      const idx = raw.lastIndexOf(sep);
+      const idx = raw.indexOf(sep); // ✅ FIX: was lastIndexOf
       artist = raw.substring(0, idx).trim();
       title  = raw.substring(idx + sep.length).trim();
     } else {
@@ -2738,7 +2739,6 @@ async function fetchNowPlaying() {
 
     const newTrackID = `${artist} – ${title}`;
 
-    // Reset state if a new track starts after silence
     if (songHasEnded || currentTrackID !== newTrackID) {
       songHasEnded = false;
       currentTrackID = newTrackID;
@@ -2770,7 +2770,6 @@ async function fetchNowPlaying() {
     const now = new Date();
     const timeRemaining = endTime - now;
 
-    // ⛔ Prevent flashback to old track
     if (trackEndTime && now < trackEndTime && startTime < trackEndTime) {
       console.log("Stale metadata ignored — track already ended.");
       return;
@@ -2802,6 +2801,7 @@ async function fetchNowPlaying() {
     trackEndTime = null;
   }
 }
+
 
 
     async function fetchRecentFromGitHub() {
