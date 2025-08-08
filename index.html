@@ -6,8 +6,8 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="require-corp" http-equiv="Cross-Origin-Embedder-Policy"/>
-<meta content="same-origin" http-equiv="Cross-Origin-Opener-Policy"/>
+
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
     /* --- NAVBAR & MODALS ONLY --- */
@@ -2910,6 +2910,72 @@ nav + div {
     #themeToggleBtn.theme-navbtn { display: inline-flex !important; }
   }
 </style>
+<style id="contact-requests-fullscreen-mobile">
+/* Contact & Requests: make embedded forms truly fullscreen on mobile */
+@media (max-width: 768px) {
+
+  /* Remove generic mobile offset for these two modals only */
+  #contactModal.modal, #requestsModal.modal,
+  #contact-us-modal.modal, #requestModal.modal,
+  #requests-modal.modal, #contact-modal.modal {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100svw !important;
+    height: 100dvh !important;
+    max-width: 100svw !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;     /* prevent page scroll behind */
+  }
+
+  /* Make the modal content fill the viewport with no padding/radius */
+  #contactModal .modal-content, #requestsModal .modal-content,
+  #contact-us-modal .modal-content, #requestModal .modal-content,
+  #requests-modal .modal-content, #contact-modal .modal-content {
+    width: 100svw !important;
+    height: 100dvh !important;
+    max-width: 100svw !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;     /* internal scroll handled by iframe */
+  }
+
+  /* If there is a heading/close row, allow it and give the rest to iframe */
+  #contactModal .modal-content > *, #requestsModal .modal-content > *,
+  #contact-us-modal .modal-content > *, #requestModal .modal-content > *,
+  #requests-modal .modal-content > *, #contact-modal .modal-content > * {
+    min-height: 0 !important;
+  }
+
+  /* Target the embedded form (iframe or form wrapper) to stretch */
+  #contactModal iframe, #requestsModal iframe,
+  #contact-us-modal iframe, #requestModal iframe,
+  #requests-modal iframe, #contact-modal iframe,
+  #contactModal .form-embed, #requestsModal .form-embed,
+  #contact-us-modal .form-embed, #requestModal .form-embed,
+  #requests-modal .form-embed, #contact-modal .form-embed {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    border: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* Keep the close button visible over the full-bleed form */
+  #contactModal .close, #requestsModal .close,
+  #contact-us-modal .close, #requestModal .close,
+  #requests-modal .close, #contact-modal .close {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 10 !important;
+    mix-blend-mode: normal !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -2946,7 +3012,7 @@ nav + div {
 <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
 <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
 <a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
-  <button class="theme-navbtn" id="themeToggleBtn"><span class="mode-emoji">☀️</span><span class="mode-label">Light</span></button>
+<button class="theme-navbtn" id="themeToggleBtn"><span class="mode-emoji">☀️</span><span class="mode-label">Light</span></button>
 </nav>
 <div class="header-spacer"></div>
 <div style="width:100%;display:flex;justify-content:center;">
@@ -4118,50 +4184,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </a>
 </div>
 </div>
-<div class="modal" id="newsModal">
-<div class="modal-content" style="max-width:900px;width:97vw">
-<span class="close" onclick="closeModal('newsModal')">×</span>
-<div style="display:flex;align-items:center;gap:18px;margin-bottom:24px">
-<h2 style="margin:0;color:#00818a;font-size:1.35em">Scottish &amp; National News</h2>
-</div>
-<div style="border:1px solid #333;border-radius:12px;padding:24px 18px 18px 18px;box-shadow:0 0 20px rgba(0,0,0,0.23);margin-bottom:0;color:#eee">
-<!-- Scottish News Section -->
-<div style="margin-bottom:22px">
-<h3 style="color:#62c7fc;margin:0 0 9px 0;font-size:1.12em;display:flex;align-items:center;gap:10px">
-<span>🏴 Scottish News Update</span>
-<span id="scotNewsTime" style="font-weight:normal;font-size:0.97em;color:#80dfff"></span>
-</h3>
-<pre id="scottishNewsText" style="font-family:inherit;white-space:pre-wrap;border:none;padding:0;margin:0;font-size:1.05em;line-height:1.65;color:#d4f2ff">Loading...</pre>
-</div>
-<!-- National News Section -->
-<div>
-<h3 class="rnh-title" style="color:#00e0ff;margin:0 0 9px 0;font-size:1.15em">📰 The Latest from Radio News Hub</h3>
-<style>
-  /* Modal news cards */
-  .rnh-cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:14px;
-  }
-  .rnh-card{
-    background:#0e0e0e;border:1px solid #333;border-radius:12px;overflow:hidden
-  }
-  .rnh-card a{color:inherit;text-decoration:none;display:block}
-  .rnh-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-  .rnh-title{padding:10px 12px;font-weight:700;line-height:1.25;color:#fff}
-  .rnh-meta{padding:0 12px 12px;color:#fed351;font-size:.9em}
-  @media (max-width:500px){ .rnh-cards{grid-template-columns:1fr} }
-</style>
-<div class="rnh-cards" id="rnh-modal-list">
-<div style="color:#bbb">Loading headlines…</div>
-</div>
-</div>
-</div>
-<div style="margin-top:16px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
-      Essential Radio © 2025
-    </div>
-</div>
-</div>
+
 <div aria-labelledby="localModalTitle" aria-modal="true" class="modal" id="localModal" role="dialog">
 <div class="modal-content" style="max-width:1000px;width:97vw;">
 <span aria-label="Close" class="close" onclick="closeModal('localModal')">×</span>
@@ -6106,4 +6129,40 @@ function closePresenterModal(presenterId) {
   }
 })();
 </script>
-</body></html>
+<div class="modal" id="newsModal">
+<div class="modal-content" style="max-width:900px;width:97vw;">
+<span class="close" onclick="closeModal('newsModal')">×</span>
+<div style="display:flex;align-items:center;gap:18px;margin-bottom:24px;">
+<h2 style="margin:0;color:#00818a;font-size:1.35em;">Scottish &amp; National News</h2>
+</div>
+<div style="background:#111;border:1px solid #333;border-radius:12px;padding:24px 18px 18px 18px;box-shadow:0 0 20px rgba(0,0,0,0.23);margin-bottom:0;color:#eee;">
+<!-- Scottish News Section -->
+<div style="margin-bottom:22px;">
+<h3 style="color:#62c7fc;margin:0 0 9px 0;font-size:1.12em;display:flex;align-items:center;gap:10px;">
+<span>🏴 Scottish News Update</span>
+<span id="scotNewsTime" style="font-weight:normal;font-size:0.97em;color:#80dfff;"></span>
+</h3>
+<pre id="scottishNewsText" style="font-family:inherit;white-space:pre-wrap;background:transparent;border:none;padding:0;margin:0;font-size:1.05em;line-height:1.65;color:#d4f2ff;">Loading...</pre>
+</div>
+<!-- National News Section -->
+<div>
+<h3 style="color:#00e0ff;margin:0 0 9px 0;font-size:1.15em;">📰 The Latest from Radio News Hub</h3>
+<style>
+  /* Modal news cards */
+  .rnh-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+  }
+  .rnh-card{
+    background:#0e0e0e;border:1px solid #333;border-radius:12px;overflow:hidden
+  }
+  .rnh-card a{color:inherit;text-decoration:none;display:block}
+  .rnh-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+  .rnh-title{padding:10px 12px;font-weight:700;line-height:1.25;color:#fff}
+  .rnh-meta{padding:0 12px 12px;color:#fed351;font-size:.9em}
+  @media (max-width:500px){ .rnh-cards{grid-template-columns:1fr} }
+</style>
+<div class="rnh-cards" id="rnh-modal-list">
+<div style="color:#bbb">Loading headlines…</div>
+</div></div></div></div></div></body></html>
