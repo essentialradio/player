@@ -2965,6 +2965,50 @@ nav + div {
   }
 }
 </style>
+<style>
+/* === Mobile modal priority & spacing === */
+@media (max-width: 768px) {
+  /* Modals should cover the header/toggle entirely */
+  .modal,
+  .modal-overlay,
+  .modal-backdrop {
+    z-index: 9000 !important;
+  }
+  /* Header/toggle below modal */
+  nav.navbar,
+  #burgerMenuBtn,
+  #themeToggleBtn {
+    z-index: 3000 !important;
+  }
+  /* Tighten modal top spacing so text doesn't sit under header/toggle */
+  .modal .modal-content,
+  .modal .content,
+  .modal .modal-body {
+    padding-top: 8px !important;
+    margin-top: 0 !important;
+  }
+}
+/* Remove any global nav-gap pushing content down when a modal is present */
+@media (max-width: 768px) {
+  nav + .header-spacer + main,
+  nav + .header-spacer + section,
+  nav + .header-spacer + div,
+  nav + main,
+  nav + section,
+  nav + div {
+    margin-top: 0 !important;
+  }
+  .header-spacer { height: 0 !important; margin: 0 !important; padding: 0 !important; }
+}
+/* When a modal is open, don't let the header capture taps on mobile */
+@media (max-width: 768px) {
+  body.modal-open nav,
+  body.modal-open #burgerMenuBtn,
+  body.modal-open #themeToggleBtn {
+    pointer-events: none !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6225,6 +6269,21 @@ function closePresenterModal(presenterId) {
 (function(){
   const STORAGE_KEY = 'er-theme';
   const root = document.documentElement;
+<script>
+(function(){
+  var _open = window.openModal;
+  window.openModal = function(id){
+    document.body.classList.add('modal-open');
+    if (typeof _open === 'function') return _open(id);
+  };
+  var _close = window.closeModal;
+  window.closeModal = function(id){
+    document.body.classList.remove('modal-open');
+    if (typeof _close === 'function') return _close(id);
+  };
+})();
+</script>
+
   const btn = document.getElementById('themeToggleBtn');
   if (!btn) return;
 
