@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" data-theme="light" data-theme="light">
+<html data-theme="light" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -1762,7 +1762,6 @@ body.modal-open {
     .navbar .theme-navbtn { padding: 0 8px; }
   }
 </style>
-
 <style id="wx-icon-light-fix">
   /* OpenWeather PNGs were being inverted by generic light-mode rules.
      Restore them to normal in LIGHT mode so clouds etc. render correctly. */
@@ -2055,7 +2054,6 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
   border-bottom: 1px solid #eee !important;
 }
 </style>
-
 <style id="light-mode-components">
 :root[data-theme="light"] #player,
 :root[data-theme="light"] .player,
@@ -2071,7 +2069,6 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
 }
 :root[data-theme="light"] .recent-title { color: var(--er-heading) !important; }
 </style>
-
 <style id="bigger-icons-in-circles">
 /* === Enlarge icons within yellow circles (social + tiles) === */
 /* Social buttons: keep circle size, scale SVG up inside */
@@ -2218,7 +2215,6 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
 :root[data-theme="dark"] .modal { background: rgba(0,0,0,0.6) !important; }
 :root[data-theme="light"] .modal { background: rgba(255,255,255,0.75) !important; }
 </style>
-
 <style id="light-modal-theme-sync">
 /* Light mode: make modals match the main page */
 :root[data-theme="light"] .modal {
@@ -2269,8 +2265,6 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
   border-color: var(--er-border, #272a33) !important;
 }
 </style>
-
-
 <style id="search-hour-nav-white">
 /* Make 'Previous hour' / 'Next hour' controls white for better contrast */
 #searchModal .hour-nav a,
@@ -2282,21 +2276,15 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
   color: #ffffff !important;
 }
 </style>
-
-
 <style id="search-hour-nav-final">
 #searchModal .hour-nav { color: #ffffff !important; font-weight: 600; }
 #searchModal .hour-nav:hover { opacity: 0.9; }
 </style>
-
-
 <style id="search-hour-nav-id-override">
 /* Force white text on specific hour nav buttons */
 #searchModal #prevHour,
 #searchModal #nextHour { color: #ffffff !important; font-weight: 600; }
 </style>
-
-
 <style id="search-reset-white">
 #searchModal #prevHour,
 #searchModal #nextHour { color: #ffffff !important; font-weight: 600; }
@@ -2306,7 +2294,6 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
 #searchModal #resetSearch, 
 #searchModal #searchReset { color: #ffffff !important; font-weight: 600; }
 </style>
-
 <style id="rnh-dates-dark-restore">
 :root[data-theme="dark"] #rnh-news-list .rnh-date,
 :root[data-theme="dark"] #rnh-news-list time,
@@ -2315,7 +2302,6 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
   color: var(--er-accent, #fed351) !important;
 }
 </style>
-
 <style id="nav-gap-reduce">
 /* Pull content up slightly below the nav */
 main, .main, .content, #content, .page, #page, .wrapper {
@@ -2324,8 +2310,6 @@ main, .main, .content, #content, .page, #page, .wrapper {
 /* If a hero banner exists, keep a bit more breathing room */
 .hero, .banner { margin-top: 1rem !important; }
 </style>
-
-
 <style id="search-news-targeted-light-fixes">
 :root[data-theme="light"] #newsModal,
 :root[data-theme="light"] #newsModal * { color: #111827 !important; }
@@ -2339,12 +2323,9 @@ main, .main, .content, #content, .page, #page, .wrapper {
 :root[data-theme="light"] #newsModal .inner,
 :root[data-theme="light"] #newsModal .content { background: #ffffff !important; border-color: #e5e7eb !important; }
 </style>
-
 <style id="nav-gap-reduce-stronger">
 header + *, header + section, header + div, header + main { margin-top: 0.5rem !important; }
 </style>
-
-
 <style id="reset-controls-white">
 #searchModal #resetFilters,
 #localModal #localReset {
@@ -2352,8 +2333,6 @@ header + *, header + section, header + div, header + main { margin-top: 0.5rem !
   font-weight: 600;
 }
 </style>
-
-
 <style id="nav-gap-fix">
 /* Kill the big spacer after the nav and tighten the gap */
 .header-spacer { height: 0 !important; margin: 0 !important; padding: 0 !important; }
@@ -2363,14 +2342,56 @@ nav + * { margin-top: 1rem !important; }
 /* Keep hero/banner comfortable if present */
 .hero, .banner { margin-top: .75rem !important; }
 </style>
-
-
-<style id="nav-gap-spacer">
-/* Use the explicit spacer for nav gap so it's predictable and visible */
-.header-spacer { height: 0.75rem !important; margin: 0 !important; padding: 0 !important; }
+<style id="darklight-toggle-navbar">
+nav {
+  position: relative;
+}
+nav #theme-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+</style>
+<style id="navbar-scroll-fix">
+@media (max-width: 767px) {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+</style>
+<style id="burger-align-toggle-fix">
+@media (max-width: 991px) {
+  #theme-toggle {
+    float: right;
+    margin-right: 1rem;
+    margin-top: 0.3rem;
+  }
+}
+.navbar-collapse {
+  color: #000 !important;
+}
+.navbar-collapse a {
+  color: #000 !important;
+}
 </style>
 
-</head>
+<style id="desktop-toggle-realign">
+@media (min-width: 992px) {
+  #theme-toggle {
+    position: absolute;
+    left: max(1rem, 5vw);
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 9999;
+  }
+}
+</style></head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
@@ -3597,7 +3618,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 <!-- National News Section -->
 <div>
-<h3 style="color:#00e0ff;margin:0 0 9px 0;font-size:1.15em" class="rnh-title">📰 The Latest from Radio News Hub</h3>
+<h3 class="rnh-title" style="color:#00e0ff;margin:0 0 9px 0;font-size:1.15em">📰 The Latest from Radio News Hub</h3>
 <style>
   /* Modal news cards */
   .rnh-cards{
@@ -5565,7 +5586,6 @@ function closePresenterModal(presenterId) {
 </script>
 </body>
 </html>
-
 <style id="ultimate-light-modal-overlay-override">
 /* FINAL OVERRIDE: ensure light-mode modal overlays are light, even if later !important rules exist */
 html[data-theme="light"] .modal,
@@ -5579,8 +5599,6 @@ html[data-theme="light"] .modal::before {
   background: rgba(255,255,255,0.78) !important;
 }
 </style>
-
-
 <style id="final-light-overlays-presenters-schedule">
 /* Force light overlay for presenters and schedule in light mode */
 html[data-theme="light"] .modal.presenter-modal,
@@ -5592,8 +5610,6 @@ html[data-theme="light"] #scheduleModal::before {
   background: rgba(255,255,255,0.78) !important;
 }
 </style>
-
-
 <style id="final-presenters-schedule-news-light-fix">
 /* Light overlay for ALL modals in light mode */
 html[data-theme="light"] .modal,
@@ -5654,8 +5670,6 @@ html[data-theme="light"] #newsModal #rnh-news-list time {
 }
 html[data-theme="light"] #newsModal a { color: #111827 !important; }
 </style>
-
-
 <style id="final-schedule-news-only">
 /* Light overlays for schedule & news modals */
 html[data-theme="light"] #scheduleModal,
@@ -5709,8 +5723,6 @@ html[data-theme="light"] #newsModal * {
   --panel-bg: #ffffff;
 }
 </style>
-
-
 <style id="light-mode-schedule-news-inner-fixes">
 /* Schedule: inner block (day-card) should be light in light mode */
 html[data-theme="light"] #scheduleModal .day-card {
@@ -5735,8 +5747,6 @@ html[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent
 html[data-theme="light"] #newsModal [style*="border:1px solid #333"] { border: 1px solid #e5e7eb !important; }
 html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important; }
 </style>
-
-
 <style id="light-mode-search-news-fixes">
 /* === Song Search (light mode): make menus legible === */
 :root[data-theme="light"] #searchModal input,
@@ -5792,8 +5802,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   color: var(--er-accent, #fed351) !important;
 }
 </style>
-
-
 <style id="search-news-targeted-light-fixes">
 /* === Song Search (light mode): make menus legible === */
 :root[data-theme="light"] #searchModal input,
@@ -5845,8 +5853,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
 :root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
 :root[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
 </style>
-
-
 <style id="targeted-fixes-rnh-card-and-search">
 /* Radio News Hub modal: card blocks should be light in light mode */
 :root[data-theme="light"] #newsModal .rnh-card {
@@ -5871,8 +5877,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   color: #111827 !important;
 }
 </style>
-
-
 <style id="songsearch-light-override-final">
 /* Keep these controls WHITE in light mode, even if a global light text rule exists */
 :root[data-theme="light"] #searchModal #prevHour,
@@ -5883,8 +5887,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   text-shadow: 0 1px 2px rgba(0,0,0,0.25);
 }
 </style>
-
-
 <style id="rnh-dark-dates-frontpage">
 /* Dark mode: front page RNH dates back to yellow (override any white text rules) */
 :root[data-theme="dark"] body #right-panel #rnh-news-list time,
@@ -5894,8 +5896,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   color: var(--er-accent, #fed351) !important;
 }
 </style>
-
-
 <style id="rnh-rightpanel-dates-structural">
 /* Dark mode: force the right-panel RNH date (the last child div in each item) back to yellow */
 :root[data-theme="dark"] #right-panel #rnh-news-list > div > div:last-child,
@@ -5903,8 +5903,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   color: var(--er-accent, #fed351) !important;
 }
 </style>
-
-
 <style id="dark-modal-headings-white">
 :root[data-theme="dark"] .modal-content h1,
 :root[data-theme="dark"] .modal-content h2,
@@ -5915,8 +5913,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   color: #ffffff !important;
 }
 </style>
-
-
 <style id="schedule-links-and-dropdowns-fixed">
 /* Programme Schedule: kill teal/underlines in dark mode */
 :root[data-theme="dark"] #scheduleModal a,
@@ -5976,8 +5972,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   background: var(--er-panel, #12141a) !important; color: #ffffff !important; border: 1px solid var(--er-border, #272a33) !important;
 }
 </style>
-
-
 <style id="about-email-dark-fix">
 /* About Us: make email link white in dark mode (no underline), with underline on hover */
 :root[data-theme="dark"] #aboutModal a[href^="mailto:"] {
@@ -5988,8 +5982,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   text-decoration: underline !important;
 }
 </style>
-
-
 <style id="songsearch-artist-title-yellow">
 /* Song Search: make 'Artist - Title' text yellow */
 #searchModal .result-title,
@@ -6001,8 +5993,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   color: var(--er-accent, #fed351) !important;
 }
 </style>
-
-
 <style id="songsearch-thead-yellow">
 /* Song Search: make the table header (including "Artist – Title") yellow in both themes */
 #searchModal thead,
@@ -6010,8 +6000,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   color: var(--er-accent, #fed351) !important;
 }
 </style>
-
-
 <style id="about-email-yellow">
 /* About Us: email link in accent yellow, both themes (wins over earlier dark-mode white) */
 :root[data-theme="dark"] #aboutModal a[href^="mailto:"],
@@ -6024,11 +6012,20 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   text-decoration: underline !important;
 }
 </style>
-
-
 <style id="about-email-light-readable">
 /* About Us email: readable teal in light mode, yellow in dark mode */
 :root[data-theme="light"] #aboutModal a[href^="mailto:"] { color: #00818a !important; }
 :root[data-theme="dark"]  #aboutModal a[href^="mailto:"] { color: var(--er-accent, #fed351) !important; }
 #aboutModal a[href^="mailto:"]:hover { text-decoration: underline !important; }
+</style>
+<style id="nav-gap-visible">
+/* Push page content lower under the nav bar */
+nav + .header-spacer + main,
+nav + .header-spacer + section,
+nav + .header-spacer + div,
+nav + main,
+nav + section,
+nav + div {
+  margin-top: 1.5rem !important;
+}
 </style>
