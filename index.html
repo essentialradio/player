@@ -2876,7 +2876,22 @@ nav + div {
   window.addEventListener('resize', setNavOffset);
   setTimeout(setNavOffset, 250);
 })();
-</script></head>
+</script><style id="mobile-toggle-style">
+/* Make the theme toggle appear nicely in the burger dropdown */
+#burgerDropdown #themeToggleBtn.menu-link {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-top: 8px !important;
+  margin-bottom: 6px !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+}
+@media (max-width: 750px){
+  /* Ensure it's visible even if navbar button rules differ */
+  #themeToggleBtn { display: block !important; }
+}
+</style></head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
@@ -6129,5 +6144,49 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     }, true);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script><script id="theme-toggle-relocator">
+(function(){
+  function isMobile(){ return window.matchMedia('(max-width: 750px)').matches; }
+
+  function relocateToggle(){
+    var btn = document.getElementById('themeToggleBtn');
+    if (!btn) return;
+
+    var navbar = document.querySelector('.navbar');
+    var dropdown = document.getElementById('burgerDropdown');
+
+    if (isMobile()) {
+      if (dropdown && !dropdown.contains(btn)) {
+        // Put it into the inner container if present, else directly into dropdown
+        var inner = dropdown.querySelector('div') || dropdown;
+        // Make it look like the other menu links
+        btn.classList.add('menu-link');
+        inner.appendChild(btn);
+      }
+    } else {
+      if (navbar && !navbar.contains(btn)) {
+        btn.classList.remove('menu-link');
+        navbar.appendChild(btn);
+      }
+    }
+  }
+
+  // Run on load, resize, and when opening the burger
+  window.addEventListener('load', relocateToggle);
+  window.addEventListener('resize', function(){
+    // Defer to allow layout switches to finish
+    setTimeout(relocateToggle, 50);
+  });
+
+  // If there's a global toggle for the burger menu, hook it
+  window.addEventListener('DOMContentLoaded', function(){
+    var burger = document.getElementById('burgerMenuBtn');
+    if (burger) burger.addEventListener('click', function(){
+      setTimeout(relocateToggle, 0);
+    });
+    // Initial placement
+    relocateToggle();
+  });
 })();
 </script></body></html>
