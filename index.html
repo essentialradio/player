@@ -2894,29 +2894,21 @@ nav + div {
     -webkit-text-fill-color: #000000 !important;
   }
 </style>
-<style id="desktop-now-playing-yellow-real">
-  /* Desktop-only: yellow "Now Playing" with black text */
+
+<style id="desktop-play-toggle-yellow">
   @media (min-width: 751px) {
-    #now-playing-card,
-    #now-playing-card * {
+    #play-toggle {
       background: #fed351 !important;
       color: #000 !important;
-      text-shadow: none !important;
+      border: none !important;
     }
-    #now-playing-card a,
-    #now-playing-card a:link,
-    #now-playing-card a:visited,
-    #now-playing-card a:hover,
-    #now-playing-card a:active {
+    #play-toggle:hover {
+      background: #f5c941 !important;
       color: #000 !important;
     }
-    /* Keep the card border subtle in yellow */
-    #now-playing-card {
-      border: 1px solid rgba(0,0,0,0.15) !important;
-      box-shadow: none !important;
-    }
   }
-</style></head>
+</style>
+</head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
