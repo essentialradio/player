@@ -2,19 +2,6 @@
 
 <html data-theme="light" lang="en">
 <head>
-<style id="additional-ways-mobile-text-colour">
-  /* Mobile-only: set black/white text ONLY inside #additional-ways */
-  @media (max-width: 768px) {
-    :root[data-theme="light"] #additional-ways,
-    :root[data-theme="light"] #additional-ways * {
-      color: #000000 !important;
-    }
-    :root[data-theme="dark"] #additional-ways,
-    :root[data-theme="dark"] #additional-ways * {
-      color: #ffffff !important;
-    }
-  }
-</style>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
@@ -23,7 +10,6 @@
 <meta content="same-origin" http-equiv="Cross-Origin-Opener-Policy"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
-
     /* --- NAVBAR & MODALS ONLY --- */
     @media (max-width: 750px) {
   .navbar { display: none !important; }
@@ -1325,7 +1311,8 @@ body.modal-open {
     box-shadow: none !important;
   }
 </style>
-<script id="theme-mode-script">(function(){
+<script id="theme-mode-script">
+(function(){
   const root = document.documentElement;
   const saved = localStorage.getItem('theme');
   const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
@@ -1335,36 +1322,34 @@ body.modal-open {
   function labelFor(theme) {
     return theme === 'light' ? { emoji: '🌙', text: 'Dark' } : { emoji: '☀️', text: 'Light' };
   }
-  function setLabels(theme){
-    const l = labelFor(theme);
-    document.querySelectorAll('#themeToggleBtn, #themeToggleBtnDesktop').forEach(btn => {
-      const emoji = btn && btn.querySelector('.mode-emoji');
-      const text = btn && btn.querySelector('.mode-label');
-      if (emoji) emoji.textContent = l.emoji;
-      if (text) text.textContent = l.text;
-      if (btn) {
-        btn.setAttribute('aria-pressed', theme === 'dark');
-        btn.title = (theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
-      }
-    });
-  }
   function setTheme(t) {
     root.setAttribute('data-theme', t);
     localStorage.setItem('theme', t);
-    setLabels(t);
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      const l = labelFor(t);
+      const emoji = btn.querySelector('.mode-emoji');
+      const text = btn.querySelector('.mode-label');
+      if (emoji) emoji.textContent = l.emoji;
+      if (text) text.textContent = l.text;
+      btn.setAttribute('aria-pressed', t === 'dark');
+      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+    }
   }
+
   document.addEventListener('DOMContentLoaded', function(){
     const current = root.getAttribute('data-theme') || initial;
     setTheme(current);
-    function handleClick(){
-      const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-      setTheme(next);
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      btn.addEventListener('click', function(){
+        const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
+        setTheme(next);
+      });
     }
-    document.querySelectorAll('#themeToggleBtn, #themeToggleBtnDesktop').forEach(btn => {
-      if (btn) btn.addEventListener('click', handleClick);
-    });
   });
-})();</script>
+})();
+</script>
 <style id="light-mode-contrast-tune">
   /* Headings, titles in light mode: use dark ink */
   [data-theme="light"] h1, 
@@ -2394,6 +2379,7 @@ nav #theme-toggle {
   color: #000 !important;
 }
 </style>
+
 <style id="desktop-toggle-realign">
 @media (min-width: 992px) {
   #theme-toggle {
@@ -2901,187 +2887,15 @@ nav + div {
   nav.navbar { display:flex; align-items:center; justify-content:space-between; }
 }
 </style>
-<style id="contact-us-text-fix">
-  @media (min-width: 751px) {
-    .navbar a[onclick*="contactModal"] { color: #ffffff !important; }
-  }
-  @media (max-width: 750px) {
-    #burgerDropdown a[onclick*="contactModal"],
-    .menu-link[onclick*="contactModal"] { color: #191c29 !important; }
-  }
-</style>
-<style id="mobile-toggle-final">
-  /* Final mobile sizing & label-only look for theme toggle */
-  @media (max-width: 750px) {
-    #themeToggleBtn {
-      position: fixed !important;
-      top: calc(env(safe-area-inset-top) + 20px) !important;
-      left: calc(env(safe-area-inset-left) + 48px) !important; /* 8px gap after 32px burger */
-      width: 60px !important;
-      height: 32px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      border-radius: 7px !important;
-      z-index: 4200 !important;
-      background: var(--accent) !important;
-      color: #fff !important;
-      border: none !important;
-      box-shadow: 0 2px 8px #0002 !important;
-      font-size: 13px !important;
-      line-height: 1 !important;
-      padding: 0 !important;
-    }
-    #themeToggleBtn .mode-emoji { display: none !important; }
-    #themeToggleBtn .mode-label { display: inline !important; }
-    [data-theme="light"] #themeToggleBtn { background: #0b6b73 !important; }
-  }
-</style>
-<style id="play-essential-radio-bg">
-  #playEssentialRadioContainer {
-    background-color: #fed351 !important;
-    border-radius: 8px !important;
-    padding: 12px !important;
+<style id="additional-ways-side-listen-fix">
+  /* Light mode: force black text in Additional Ways to Listen (.side-listen) */
+  [data-theme="light"] .side-listen,
+  [data-theme="light"] .side-listen * {
     color: #000000 !important;
-    transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
-  }
-  #playEssentialRadioContainer:hover,
-  #playEssentialRadioContainer:active {
-    background-color: #e5bc45 !important; /* slightly darker yellow */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-    animation: tapFeedback 0.3s ease;
-  }
-  @keyframes tapFeedback {
-    0% { background-color: #e5bc45; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-    100% { background-color: #fed351; box-shadow: none; }
-  }
-  #playEssentialRadioContainer a,
-  #playEssentialRadioContainer i,
-  #playEssentialRadioContainer svg {
-    color: #000000 !important;
-    fill: #000000 !important;
-    transition: color 0.2s ease, background-color 0.2s ease;
-  }
-  #playEssentialRadioContainer a:hover,
-  #playEssentialRadioContainer a:active {
-    background-color: #d9ae3f !important; /* darker yellow on link hover/tap */
-    text-decoration: underline !important;
+    -webkit-text-fill-color: #000000 !important;
   }
 </style>
-<style id="light-mode-additional-ways-text">
-  body.light-mode #additional-ways-to-listen,
-  body.light-mode #additional-ways-to-listen * {
-    color: #000000 !important;
-  }
-</style>
-<style id="contact-us-colors">
-  /* Contact Us nav link in black (both modes) */
-  nav a#contact-us-link {
-    color: #000000 !important;
-  }
-
-  /* Contact Us modal heading in white (both modes) */
-  #contactModal .modal-header h5 {
-    color: #ffffff !important;
-  }
-</style>
-<style id="all-modal-headers-dark">
-  /* All modal headers with dark background, white text, and yellow underline */
-  .modal-header {
-    background-color: #222222 !important; /* dark grey for contrast */
-    color: #ffffff !important;
-    border-bottom: 3px solid #fed351 !important; /* yellow underline */
-  }
-
-  .modal-header h5 {
-    color: #ffffff !important;
-  }
-</style>
-<style id="contact-us-link-modes">
-  /* Light mode: black Contact Us nav link */
-  body.light-mode .navbar.navbar-light nav ul li a#contact-us-link,
-  body.light-mode nav.navbar-light ul li a#contact-us-link {
-    color: #000000 !important;
-  }
-
-  /* Dark mode: white Contact Us nav link */
-  body.dark-mode .navbar.navbar-dark nav ul li a#contact-us-link,
-  body.dark-mode nav.navbar-dark ul li a#contact-us-link {
-    color: #ffffff !important;
-  }
-</style>
-<style id="contact-us-link-final-override">
-  /* Light mode - always black */
-  #contact-us-link {
-    color: #000000 !important;
-  }
-
-  /* Dark mode - always white */
-  body.dark-mode #contact-us-link {
-    color: #ffffff !important;
-  }
-</style>
-<style id="contact-us-link-theme-correct">
-  /* Swapped because themes are inverted in actual usage */
-  :root[data-theme="light"] .navbar a#contact-us-link,
-  :root[data-theme="light"] .navbar a[onclick*="contactModal"] {
-    color: #ffffff !important; /* white for actual dark mode */
-  }
-  :root[data-theme="dark"] .navbar a#contact-us-link,
-  :root[data-theme="dark"] .navbar a[onclick*="contactModal"] {
-    color: #000000 !important; /* black for actual light mode */
-  }
-</style>
-<style id="theme-toggle-visibility-safety">
-  @media (max-width: 750px) {
-    #themeToggleBtn { display: flex !important; }
-    #themeToggleBtn .mode-label { display: inline !important; opacity: 1 !important; visibility: visible !important; }
-  }
-  @media (min-width: 751px) {
-    #themeToggleBtnDesktop { display: flex !important; }
-    #themeToggleBtnDesktop .mode-label { display: inline !important; opacity: 1 !important; visibility: visible !important; }
-  }
-</style>
-<style id="theme-toggle-force-visible">
-  #themeToggleBtn, #themeToggleBtnDesktop {
-    display: flex !important;
-    align-items: center !important;
-    cursor: pointer;
-    padding: 6px 10px;
-  }
-  #themeToggleBtn .mode-label, #themeToggleBtnDesktop .mode-label {
-    display: inline !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    color: inherit !important;
-  }
-</style>
-<style id="theme-toggle-hardshow">#themeToggleBtn, #themeToggleBtnDesktop { visibility: visible !important; opacity: 1 !important; }
-@media (max-width: 750px) {
-  /* Mobile button sits beside burger (burger is 32px at left:8px => 8+32+8 = 48px) */
-  #themeToggleBtn {
-    position: fixed !important;
-    top: 20px !important;
-    left: 48px !important;
-    width: 60px !important;
-    height: 32px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 7px !important;
-    z-index: 5000 !important;
-    background: var(--accent) !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 0 6px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
-  }
-  #themeToggleBtnDesktop { display: none !important; }
-}
-@media (min-width: 751px) {
-  #themeToggleBtn { display: none !important; }
-  #themeToggleBtnDesktop { display: flex !important; }
-}</style></head>
+</head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
@@ -3107,9 +2921,10 @@ nav + div {
 <!-- DESKTOP NAVIGATION -->
 <nav class="navbar" role="navigation">
 <!-- Inserted Theme Toggle -->
-<button aria-label="Toggle dark/light mode" id="themeToggle" title="Toggle dark/light mode">
-<span aria-hidden="true">☾/☀</span>
+<button id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+  <span aria-hidden="true">☾/☀</span>
 </button>
+
 <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
 <a href="#" onclick="openModal('presentersModal');return false;">Presenters</a>
 <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
@@ -3120,11 +2935,9 @@ nav + div {
 <a href="#" onclick="openModal('playlistModal');return false;">Playlist</a>
 <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
 <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
-<a href="#" id="contact-us-link" onclick="openModal('contactModal');return false;">Contact Us</a>
-<button aria-label="Toggle light or dark mode" class="theme-navbtn" id="themeToggleBtn"><span class="mode-emoji">🌙</span><span class="mode-label">Dark</span></button>
-<button aria-label="Toggle Theme" class="theme-toggle desktop" id="themeToggleBtnDesktop" style="display:flex;align-items:center;">
-<span class="mode-emoji">🌙</span>
-<span class="mode-label" style="margin-left:6px;">Dark</span>
+<a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
+<button aria-label="Toggle light or dark mode" class="theme-navbtn" id="themeToggleBtn">
+<span class="mode-emoji">☀️</span><span class="mode-label" style="margin-left:6px;">Light</span>
 </button>
 </nav>
 <div class="header-spacer"></div>
@@ -6285,27 +6098,4 @@ function closePresenterModal(presenterId) {
   }
 })();
 </script>
-<script id="theme-toggle-placement-robust">document.addEventListener('DOMContentLoaded', function(){
-  var btnM = document.getElementById('themeToggleBtn');         // mobile button
-  var btnD = document.getElementById('themeToggleBtnDesktop');   // desktop button
-  var nav = document.querySelector('.navbar');
-  var mq = window.matchMedia('(max-width: 750px)');
-  function place(){
-    if (mq.matches) {
-      // MOBILE: show mobile button, hide desktop one
-      if (btnM) {
-        // Keep mobile button outside navbar, positioned near burger (CSS handles position)
-        if (btnM.parentElement !== document.body) document.body.appendChild(btnM);
-        btnM.style.display = 'flex';
-      }
-      if (btnD) btnD.style.display = 'none';
-    } else {
-      // DESKTOP: show desktop in navbar, hide mobile
-      if (nav && btnD && btnD.parentElement !== nav) nav.appendChild(btnD);
-      if (btnD) btnD.style.display = 'flex';
-      if (btnM) btnM.style.display = 'none';
-    }
-  }
-  place();
-  try{ mq.addEventListener('change', place); }catch(e){ mq.addListener(place); }
-});</script></body></html>
+</body></html>
