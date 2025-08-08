@@ -3103,6 +3103,49 @@ nav + div {
 }
 
 </style>
+<style id="mobile-toolbar-final">
+/* === Mobile Toolbar — FINAL (08 Aug 2025) === */
+@media (max-width: 750px) {
+  html, body { overflow-x: hidden !important; }
+  body { padding-top: 56px !important; }
+
+  .mobile-toolbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 10px;
+    background: #0e6c72; /* teal */
+    z-index: 7000;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  .mobile-toolbar #burgerMenuBtn {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .mobile-toolbar #burgerMenuBtn .burger-bar { width: 18px; height: 3px; }
+
+  .mobile-toolbar .theme-toggle-btn {
+    height: 36px; padding: 0 12px;
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: var(--accent, #0e6c72);
+    color: #fff;
+  }
+  @media (max-width: 380px) {
+    .mobile-toolbar .theme-toggle-btn .mode-label { display: none; }
+  }
+
+  #burgerDropdown { position: fixed; top: 56px !important; left: 0; right: 0;
+    height: calc(100vh - 56px) !important; z-index: 6500; }
+
+  .modal { top: 56px !important; height: calc(100vh - 56px) !important; }
+  .modal-content { max-height: calc(100vh - 56px) !important; }
+
+  .header-spacer, .nav-spacer, .top-spacer { display: none !important; height: 0 !important; }
+}
+
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6479,6 +6522,108 @@ function closePresenterModal(presenterId) {
     // If a desktop toggle exists and is hidden on mobile, it won't interfere.
     // The theme script in the page updates label/emoji/aria-pressed for #themeToggleBtn.
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  function isPhone(){ return window.matchMedia('(max-width: 750px)').matches; }
+
+  function ensureDarkDefault(){
+    try {
+      var key = 'theme-preference';
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, 'dark');
+      }
+      var pref = localStorage.getItem(key);
+      document.documentElement.setAttribute('data-theme', pref || 'dark');
+    } catch(e){}
+  }
+
+  function findThemeButton(){
+    // Try multiple selectors to find the site's existing toggle
+    var candidates = [
+      document.getElementById('themeToggleBtn'),
+      document.querySelector('.theme-toggle'),
+      document.querySelector('[data-theme-toggle]'),
+      document.querySelector('button[title*="Toggle theme" i]'),
+      document.querySelector('button[aria-label*="theme" i]'),
+      document.querySelector('button:where(:not([id])):where(:not([class])):where(:not([data-*]))') // fallback
+    ].filter(Boolean);
+    // Prefer one with recognizable content
+    for (var i=0;i<candidates.length;i++){
+      var b = candidates[i];
+      var t = (b.textContent||'') + ' ' + (b.title||'') + ' ' + (b.getAttribute('aria-label')||'');
+      if (/dark|light|theme|🌙|☀️/i.test(t)) return b;
+    }
+    return candidates[0] || null;
+  }
+
+  function buildToolbar(){
+    var tb = document.getElementById('mobileToolbar');
+    if (!tb){
+      tb = document.createElement('div');
+      tb.id = 'mobileToolbar';
+      tb.className = 'mobile-toolbar';
+      tb.setAttribute('role','toolbar');
+      document.body.appendChild(tb);
+    }
+    return tb;
+  }
+
+  function makeFallbackToggle(){
+    var btn = document.createElement('button');
+    btn.className = 'theme-toggle-btn';
+    btn.innerHTML = '<span class="mode-emoji" aria-hidden="true">🌙</span><span class="mode-label">Dark</span>';
+    btn.addEventListener('click', function(){
+      var root = document.documentElement;
+      var cur = root.getAttribute('data-theme') || 'dark';
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme-preference', next); } catch(e){}
+      btn.querySelector('.mode-emoji').textContent = next === 'dark' ? '🌙' : '☀️';
+      btn.querySelector('.mode-label').textContent = next === 'dark' ? 'Dark' : 'Light';
+    });
+    return btn;
+  }
+
+  function removeThemeButtonsInside(container){
+    if (!container) return;
+    var btns = container.querySelectorAll('button, [role="button"]');
+    btns.forEach(function(b){
+      var t = (b.textContent||'') + ' ' + (b.title||'') + ' ' + (b.getAttribute('aria-label')||'');
+      var looksLikeTheme = /dark|light|theme|🌙|☀️/i.test(t) || b.id === 'themeToggleBtn';
+      if (looksLikeTheme) b.remove();
+    });
+  }
+
+  function mount(){
+    if (!isPhone()) return;
+
+    ensureDarkDefault();
+
+    var tb = buildToolbar();
+
+    // Move burger into toolbar
+    var burger = document.getElementById('burgerMenuBtn');
+    if (burger && burger.parentElement !== tb) tb.appendChild(burger);
+
+    // Use site's theme toggle if we can, otherwise create a fallback one
+    var themeBtn = findThemeButton();
+    if (themeBtn){
+      themeBtn.classList.add('theme-toggle-btn');
+      if (themeBtn.parentElement !== tb) tb.appendChild(themeBtn);
+    } else {
+      tb.appendChild(makeFallbackToggle());
+    }
+
+    // Nuke any theme toggles left in dropdown or nav
+    removeThemeButtonsInside(document.getElementById('burgerDropdown'));
+    removeThemeButtonsInside(document.querySelector('nav'));
+  }
+
+  document.addEventListener('DOMContentLoaded', mount);
 })();
 </script>
 
