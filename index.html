@@ -2448,31 +2448,443 @@ nav #theme-toggle {
 </style>
 <style>
 
-/* === Visible theme toggle button (MOBILE ONLY) === */
-#themeToggle {
-  display: none; /* hidden by default (desktop) */
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 9999px;
-  border: 1px solid rgba(0,0,0,.15);
-  background: #fed351;
-  color: #0b1220;
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
-  margin-left: .5rem;
-}
-#themeToggle:focus { outline: 2px solid #0b1220; outline-offset: 2px; }
-@media (max-width: 768px) {
-  nav.navbar { display:flex; align-items:center; justify-content:space-between; }
-  #themeToggle { display: inline-flex; order: 2; }
-  #burgerMenuBtn { order: 2; }
-}
-
   #burgerMenuBtn { order: 2; }
   #themeToggle { order: 2; }
+}
+</style>
+<style id="ultimate-light-modal-overlay-override">
+/* FINAL OVERRIDE: ensure light-mode modal overlays are light, even if later !important rules exist */
+html[data-theme="light"] .modal,
+html[data-theme="light"] .modal-overlay,
+html[data-theme="light"] .modal-backdrop,
+html[data-theme="light"] .backdrop {
+  background: rgba(255,255,255,0.78) !important;
+}
+html[data-theme="light"] body.modal-open::before,
+html[data-theme="light"] .modal::before {
+  background: rgba(255,255,255,0.78) !important;
+}
+</style><style id="final-light-overlays-presenters-schedule">
+/* Force light overlay for presenters and schedule in light mode */
+html[data-theme="light"] .modal.presenter-modal,
+html[data-theme="light"] #scheduleModal {
+  background: rgba(255,255,255,0.78) !important;
+}
+html[data-theme="light"] .modal.presenter-modal::before,
+html[data-theme="light"] #scheduleModal::before {
+  background: rgba(255,255,255,0.78) !important;
+}
+</style><style id="final-presenters-schedule-news-light-fix">
+/* Light overlay for ALL modals in light mode */
+html[data-theme="light"] .modal,
+html[data-theme="light"] .modal.presenter-modal,
+html[data-theme="light"] .modal.presenter-detail,
+html[data-theme="light"] #scheduleModal,
+html[data-theme="light"] #presentersModal,
+html[data-theme="light"] #newsModal {
+  background: rgba(255,255,255,0.78) !important;
+}
+
+/* Ensure no pseudo-element re-darkens the overlay */
+html[data-theme="light"] .modal::before,
+html[data-theme="light"] .modal.presenter-modal::before,
+html[data-theme="light"] .modal.presenter-detail::before,
+html[data-theme="light"] #scheduleModal::before,
+html[data-theme="light"] #presentersModal::before,
+html[data-theme="light"] #newsModal::before {
+  background: rgba(255,255,255,0.78) !important;
+}
+
+/* Panels inside modals use light palette */
+html[data-theme="light"] .modal-content,
+html[data-theme="light"] .modal .modal-content,
+html[data-theme="light"] .presenter-modal .modal-content {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+}
+
+/* Any inner cards/panels/tiles inside these modals also light */
+html[data-theme="light"] .modal-content .card,
+html[data-theme="light"] .modal-content .panel,
+html[data-theme="light"] .modal-content .tile,
+html[data-theme="light"] .modal-content .presenter-card {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Presenters: kill any residual dark background declarations */
+html[data-theme="light"] .presenter-modal { background: rgba(255,255,255,0.78) !important; }
+html[data-theme="light"] .modal.presenter-modal { background: rgba(255,255,255,0.78) !important; }
+
+/* Schedule: enforce light */
+html[data-theme="light"] #scheduleModal .modal-content { background: #ffffff !important; color: #111827 !important; }
+html[data-theme="light"] #scheduleModal { background: rgba(255,255,255,0.78) !important; }
+
+/* NEWS modal: readable story text & yellow dates in light mode */
+html[data-theme="light"] #newsModal #rnh-news-list,
+html[data-theme="light"] #newsModal #rnh-news-list * {
+  color: #111827 !important;
+}
+html[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+html[data-theme="light"] #newsModal #rnh-news-list time {
+  color: var(--er-accent, #fed351) !important;
+}
+html[data-theme="light"] #newsModal a { color: #111827 !important; }
+</style><style id="final-schedule-news-only">
+/* Light overlays for schedule & news modals */
+html[data-theme="light"] #scheduleModal,
+html[data-theme="light"] #scheduleModal::before,
+html[data-theme="light"] #newsModal,
+html[data-theme="light"] #newsModal::before {
+  background: rgba(255,255,255,0.78) !important;
+}
+
+/* Modal panels */
+html[data-theme="light"] #scheduleModal .modal-content,
+html[data-theme="light"] #newsModal .modal-content {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+}
+
+/* Ensure any nested cards/panels/tiles are light */
+html[data-theme="light"] #scheduleModal .modal-content .card,
+html[data-theme="light"] #scheduleModal .modal-content .panel,
+html[data-theme="light"] #scheduleModal .modal-content .tile,
+html[data-theme="light"] #newsModal .modal-content .card,
+html[data-theme="light"] #newsModal .modal-content .panel,
+html[data-theme="light"] #newsModal .modal-content .tile {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* News list readability (light mode) */
+html[data-theme="light"] #newsModal #rnh-news-list,
+html[data-theme="light"] #newsModal #rnh-news-list * { color: #111827 !important; }
+html[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+html[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
+html[data-theme="light"] #newsModal a { color: #111827 !important; }
+
+/* Schedule-specific inner sections often use dark chips; neutralize them in light mode */
+html[data-theme="light"] #scheduleModal .chip,
+html[data-theme="light"] #scheduleModal .badge,
+html[data-theme="light"] #scheduleModal .show-block,
+html[data-theme="light"] #scheduleModal .slot-block {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Force any lingering dark backgrounds inside schedule/news to inherit light */
+html[data-theme="light"] #scheduleModal *,
+html[data-theme="light"] #newsModal * {
+  --panel-bg: #ffffff;
+}
+</style><style id="light-mode-schedule-news-inner-fixes">
+/* Schedule: inner block (day-card) should be light in light mode */
+html[data-theme="light"] #scheduleModal .day-card {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06) !important;
+}
+html[data-theme="light"] #scheduleModal .day-card * { color: #111827 !important; }
+
+/* News modal: force readable text in light mode */
+html[data-theme="light"] #newsModal * { color: #111827 !important; }
+html[data-theme="light"] #newsModal h2,
+html[data-theme="light"] #newsModal h3,
+html[data-theme="light"] #newsModal h4 { color: #111827 !important; }
+
+/* Keep RNH dates yellow in news modal */
+html[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+html[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
+
+/* Soften dark borders/shadows inside news modal */
+html[data-theme="light"] #newsModal [style*="border:1px solid #333"] { border: 1px solid #e5e7eb !important; }
+html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important; }
+</style><style id="light-mode-search-news-fixes">
+/* === Song Search (light mode): make menus legible === */
+:root[data-theme="light"] #searchModal input,
+:root[data-theme="light"] #searchModal select,
+:root[data-theme="light"] #searchModal textarea {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Common menu/dropdown containers in search modal */
+:root[data-theme="light"] #searchModal .dropdown-menu,
+:root[data-theme="light"] #searchModal .menu,
+:root[data-theme="light"] #searchModal .listbox,
+:root[data-theme="light"] #searchModal .options,
+:root[data-theme="light"] #searchModal .select-menu,
+:root[data-theme="light"] #searchModal ul,
+:root[data-theme="light"] #searchModal li {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Placeholder contrast */
+:root[data-theme="light"] #searchModal ::placeholder { color: #6b7280 !important; }
+
+/* === Radio News Hub modal (light mode): kill dark inner blocks === */
+:root[data-theme="light"] #newsModal [style*="background"],
+:root[data-theme="light"] #newsModal [style*="background-color"] {
+  background: #ffffff !important;
+}
+
+/* Ensure all common inner containers are light */
+:root[data-theme="light"] #newsModal .card,
+:root[data-theme="light"] #newsModal .panel,
+:root[data-theme="light"] #newsModal .tile,
+:root[data-theme="light"] #newsModal .rnh-item,
+:root[data-theme="light"] #newsModal .rnh-story,
+:root[data-theme="light"] #newsModal .inner,
+:root[data-theme="light"] #newsModal .content {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Text readability + keep dates yellow */
+:root[data-theme="light"] #newsModal,
+:root[data-theme="light"] #newsModal * {
+  color: #111827 !important;
+}
+:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+:root[data-theme="light"] #newsModal #rnh-news-list time {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="search-news-targeted-light-fixes">
+/* === Song Search (light mode): make menus legible === */
+:root[data-theme="light"] #searchModal input,
+:root[data-theme="light"] #searchModal select,
+:root[data-theme="light"] #searchModal textarea {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+}
+
+/* Style native <option> where supported */
+:root[data-theme="light"] #searchModal option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* If there's a results list UL, ensure it's light */
+:root[data-theme="light"] #searchModal ul,
+:root[data-theme="light"] #searchModal ul li {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* === News: nuke any inner dark blocks in light mode === */
+:root[data-theme="light"] #newsModal [style*="background"],
+:root[data-theme="light"] #newsModal [style*="background-color"] {
+  background: #ffffff !important;
+}
+
+/* Common inner containers in news modal */
+:root[data-theme="light"] #newsModal .card,
+:root[data-theme="light"] #newsModal .panel,
+:root[data-theme="light"] #newsModal .tile,
+:root[data-theme="light"] #newsModal .rnh-item,
+:root[data-theme="light"] #newsModal .rnh-story,
+:root[data-theme="light"] #newsModal .inner,
+:root[data-theme="light"] #newsModal .content,
+:root[data-theme="light"] #newsModal .modal-body {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Keep RNH dates yellow; ensure story text is dark */
+:root[data-theme="light"] #newsModal #rnh-news-list,
+:root[data-theme="light"] #newsModal #rnh-news-list * { color: #111827 !important; }
+:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+:root[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
+</style><style id="targeted-fixes-rnh-card-and-search">
+/* Radio News Hub modal: card blocks should be light in light mode */
+:root[data-theme="light"] #newsModal .rnh-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+:root[data-theme="light"] #newsModal .rnh-cards { background: transparent !important; }
+
+/* Song Search: ensure everything is legible in light mode */
+:root[data-theme="light"] #searchModal,
+:root[data-theme="light"] #searchModal * {
+  color: #111827 !important;
+}
+:root[data-theme="light"] #searchModal select,
+:root[data-theme="light"] #searchModal input,
+:root[data-theme="light"] #searchModal textarea {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+:root[data-theme="light"] #searchModal option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+</style><style id="songsearch-light-override-final">
+/* Keep these controls WHITE in light mode, even if a global light text rule exists */
+:root[data-theme="light"] #searchModal #prevHour,
+:root[data-theme="light"] #searchModal #nextHour,
+:root[data-theme="light"] #searchModal #resetFilters {
+  color: #ffffff !important;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+</style><style id="rnh-dark-dates-frontpage">
+/* Dark mode: front page RNH dates back to yellow (override any white text rules) */
+:root[data-theme="dark"] body #right-panel #rnh-news-list time,
+:root[data-theme="dark"] body #right-panel #rnh-news-list #rnh-news-list .rnh-date,
+:root[data-theme="dark"] body #rnh-news-list time,
+:root[data-theme="dark"] body #rnh-news-list #rnh-news-list .rnh-date {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="rnh-rightpanel-dates-structural">
+/* Dark mode: force the right-panel RNH date (the last child div in each item) back to yellow */
+:root[data-theme="dark"] #right-panel #rnh-news-list > div > div:last-child,
+:root[data-theme="dark"] #rnh-news-list > div > div:last-child {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="dark-modal-headings-white">
+:root[data-theme="dark"] .modal-content h1,
+:root[data-theme="dark"] .modal-content h2,
+:root[data-theme="dark"] .modal-content h3,
+:root[data-theme="dark"] .modal-content h4,
+:root[data-theme="dark"] .modal-content h5,
+:root[data-theme="dark"] .modal-content h6 {
+  color: #ffffff !important;
+}
+</style><style id="schedule-links-and-dropdowns-fixed">
+/* Programme Schedule: kill teal/underlines in dark mode */
+:root[data-theme="dark"] #scheduleModal a,
+:root[data-theme="dark"] .programme-schedule a,
+:root[data-theme="dark"] .program-schedule a,
+:root[data-theme="dark"] .schedule a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+:root[data-theme="dark"] #scheduleModal a:hover,
+:root[data-theme="dark"] .programme-schedule a:hover,
+:root[data-theme="dark"] .program-schedule a:hover,
+:root[data-theme="dark"] .schedule a:hover {
+  text-decoration: underline !important; /* optional hover */
+}
+
+/* Schedule dropdown legibility */
+/* Light mode */
+:root[data-theme="light"] #scheduleModal label { color: #111827 !important; }
+:root[data-theme="light"] #scheduleModal select {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+:root[data-theme="light"] #scheduleModal option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* Dark mode */
+:root[data-theme="dark"] #scheduleModal label { color: #ffffff !important; }
+:root[data-theme="dark"] #scheduleModal select {
+  background: var(--er-panel, #12141a) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--er-border, #272a33) !important;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+:root[data-theme="dark"] #scheduleModal option {
+  background: var(--er-panel, #12141a) !important;
+  color: #ffffff !important;
+}
+
+/* If a custom dropdown/menu is used */
+:root[data-theme="light"] #scheduleModal .dropdown-menu,
+:root[data-theme="light"] #scheduleModal .menu,
+:root[data-theme="light"] #scheduleModal .listbox,
+:root[data-theme="light"] #scheduleModal .options {
+  background: #ffffff !important; color: #111827 !important; border: 1px solid #e5e7eb !important;
+}
+:root[data-theme="dark"] #scheduleModal .dropdown-menu,
+:root[data-theme="dark"] #scheduleModal .menu,
+:root[data-theme="dark"] #scheduleModal .listbox,
+:root[data-theme="dark"] #scheduleModal .options {
+  background: var(--er-panel, #12141a) !important; color: #ffffff !important; border: 1px solid var(--er-border, #272a33) !important;
+}
+</style><style id="about-email-dark-fix">
+/* About Us: make email link white in dark mode (no underline), with underline on hover */
+:root[data-theme="dark"] #aboutModal a[href^="mailto:"] {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+:root[data-theme="dark"] #aboutModal a[href^="mailto:"]:hover {
+  text-decoration: underline !important;
+}
+</style><style id="songsearch-artist-title-yellow">
+/* Song Search: make 'Artist - Title' text yellow */
+#searchModal .result-title,
+#searchModal .song-title,
+#searchModal .track-title,
+#searchModal .track,
+#searchModal .result .title,
+#searchModal .song-result .title {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="songsearch-thead-yellow">
+/* Song Search: make the table header (including "Artist – Title") yellow in both themes */
+#searchModal thead,
+#searchModal thead th {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="about-email-yellow">
+/* About Us: email link in accent yellow, both themes (wins over earlier dark-mode white) */
+:root[data-theme="dark"] #aboutModal a[href^="mailto:"],
+:root[data-theme="light"] #aboutModal a[href^="mailto:"],
+#aboutModal a[href^="mailto:"] {
+  color: var(--er-accent, #fed351) !important;
+  text-decoration: none !important;
+}
+#aboutModal a[href^="mailto:"]:hover {
+  text-decoration: underline !important;
+}
+</style><style id="about-email-light-readable">
+/* About Us email: readable teal in light mode, yellow in dark mode */
+:root[data-theme="light"] #aboutModal a[href^="mailto:"] { color: #00818a !important; }
+:root[data-theme="dark"]  #aboutModal a[href^="mailto:"] { color: var(--er-accent, #fed351) !important; }
+#aboutModal a[href^="mailto:"]:hover { text-decoration: underline !important; }
+</style><style id="nav-gap-visible">
+/* Push page content lower under the nav bar */
+nav + .header-spacer + main,
+nav + .header-spacer + section,
+nav + .header-spacer + div,
+nav + main,
+nav + section,
+nav + div {
+  margin-top: 1.5rem !important;
+}
+</style><style>
+/* === Mobile-only cloned theme toggle beside burger === */
+#themeToggle {
+  display: none; /* hide on desktop */
+}
+@media (max-width: 768px) {
+  #themeToggle { display: inline-flex; order: 2; margin-left: .5rem; }
+  #burgerMenuBtn { order: 2; }
+  nav.navbar { display:flex; align-items:center; justify-content:space-between; }
 }
 </style>
 </head>
@@ -5651,45 +6063,24 @@ function closePresenterModal(presenterId) {
       (it.content && (it.content.match(/<img[^>]+src="([^"]+)"/i) || [])[1]) ||
       "";
 
-    wrap.innerHTML = items.map(it => {
-      const img = getImg(it);
-      const date = it.pubDate ? new Date(it.pubDate).toLocaleDateString("en-GB",
-        { day:"numeric", month:"short" }) : "";
-      retu
-<script>
+    /* replaced render with safe concatenation */
 (function(){
-  const STORAGE_KEY = 'er-theme';
-  const root = document.documentElement;
-  function apply(theme){
-    if(theme === 'light'){ root.classList.remove('dark'); root.setAttribute('data-theme','light'); }
-    else { root.classList.add('dark'); root.setAttribute('data-theme','dark'); }
-  }
-  // Initialise (prefer saved, else dark)
+  function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  var list = [];
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    apply(saved || 'dark');
-  } catch(e){ apply('dark'); }
-
-  const btn = document.getElementById('themeToggle');
-  if(btn){
-    btn.addEventListener('click', () => {
-      const isDark = root.classList.contains('dark');
-      const next = isDark ? 'light' : 'dark';
-      apply(next);
-      try { localStorage.setItem(STORAGE_KEY, next); } catch(e){}
-    });
+    list = (data && data.items) ? data.items.slice(0,6) : [];
+  } catch(e){ list = []; }
+  var buf = '';
+  for (var i=0;i<list.length;i++){
+    var it = list[i];
+    var d = it.pubDate ? new Date(it.pubDate).toLocaleString('en-GB',{ day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'}) : '';
+    buf += '<a class="rnh-item" href="' + esc(it.link || '#') + '" target="_blank" rel="noopener">';
+    buf +=   '<div class="rnh-title">' + esc(it.title) + '</div>';
+    if (d) buf += '<div class="rnh-date">' + esc(d) + '</div>';
+    buf += '</a>';
   }
+  wrap.innerHTML = list.length ? buf : '<div class="rnh-empty">No stories found right now.</div>';
 })();
-</script>
-rn `
-        <article class="rnh-card">
-          <a href="${it.link}" target="_blank" rel="noopener">
-            ${img ? `<img src="${img}" alt="${it.title}" loading="lazy">` : ""}
-            <div class="rnh-title">${it.title}</div>
-            ${date ? `<div class="rnh-meta">${date}</div>` : ""}
-          </a>
-        </article>`;
-    }).join("");
 
     if(!items.length){
       wrap.innerHTML = '<div style="color:#fed351;">No stories found right now.</div>';
@@ -5699,448 +6090,4 @@ rn `
   }
 })();
 </script>
-</body>
-</html>
-<style id="ultimate-light-modal-overlay-override">
-/* FINAL OVERRIDE: ensure light-mode modal overlays are light, even if later !important rules exist */
-html[data-theme="light"] .modal,
-html[data-theme="light"] .modal-overlay,
-html[data-theme="light"] .modal-backdrop,
-html[data-theme="light"] .backdrop {
-  background: rgba(255,255,255,0.78) !important;
-}
-html[data-theme="light"] body.modal-open::before,
-html[data-theme="light"] .modal::before {
-  background: rgba(255,255,255,0.78) !important;
-}
-</style>
-<style id="final-light-overlays-presenters-schedule">
-/* Force light overlay for presenters and schedule in light mode */
-html[data-theme="light"] .modal.presenter-modal,
-html[data-theme="light"] #scheduleModal {
-  background: rgba(255,255,255,0.78) !important;
-}
-html[data-theme="light"] .modal.presenter-modal::before,
-html[data-theme="light"] #scheduleModal::before {
-  background: rgba(255,255,255,0.78) !important;
-}
-</style>
-<style id="final-presenters-schedule-news-light-fix">
-/* Light overlay for ALL modals in light mode */
-html[data-theme="light"] .modal,
-html[data-theme="light"] .modal.presenter-modal,
-html[data-theme="light"] .modal.presenter-detail,
-html[data-theme="light"] #scheduleModal,
-html[data-theme="light"] #presentersModal,
-html[data-theme="light"] #newsModal {
-  background: rgba(255,255,255,0.78) !important;
-}
-
-/* Ensure no pseudo-element re-darkens the overlay */
-html[data-theme="light"] .modal::before,
-html[data-theme="light"] .modal.presenter-modal::before,
-html[data-theme="light"] .modal.presenter-detail::before,
-html[data-theme="light"] #scheduleModal::before,
-html[data-theme="light"] #presentersModal::before,
-html[data-theme="light"] #newsModal::before {
-  background: rgba(255,255,255,0.78) !important;
-}
-
-/* Panels inside modals use light palette */
-html[data-theme="light"] .modal-content,
-html[data-theme="light"] .modal .modal-content,
-html[data-theme="light"] .presenter-modal .modal-content {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
-}
-
-/* Any inner cards/panels/tiles inside these modals also light */
-html[data-theme="light"] .modal-content .card,
-html[data-theme="light"] .modal-content .panel,
-html[data-theme="light"] .modal-content .tile,
-html[data-theme="light"] .modal-content .presenter-card {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* Presenters: kill any residual dark background declarations */
-html[data-theme="light"] .presenter-modal { background: rgba(255,255,255,0.78) !important; }
-html[data-theme="light"] .modal.presenter-modal { background: rgba(255,255,255,0.78) !important; }
-
-/* Schedule: enforce light */
-html[data-theme="light"] #scheduleModal .modal-content { background: #ffffff !important; color: #111827 !important; }
-html[data-theme="light"] #scheduleModal { background: rgba(255,255,255,0.78) !important; }
-
-/* NEWS modal: readable story text & yellow dates in light mode */
-html[data-theme="light"] #newsModal #rnh-news-list,
-html[data-theme="light"] #newsModal #rnh-news-list * {
-  color: #111827 !important;
-}
-html[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
-html[data-theme="light"] #newsModal #rnh-news-list time {
-  color: var(--er-accent, #fed351) !important;
-}
-html[data-theme="light"] #newsModal a { color: #111827 !important; }
-</style>
-<style id="final-schedule-news-only">
-/* Light overlays for schedule & news modals */
-html[data-theme="light"] #scheduleModal,
-html[data-theme="light"] #scheduleModal::before,
-html[data-theme="light"] #newsModal,
-html[data-theme="light"] #newsModal::before {
-  background: rgba(255,255,255,0.78) !important;
-}
-
-/* Modal panels */
-html[data-theme="light"] #scheduleModal .modal-content,
-html[data-theme="light"] #newsModal .modal-content {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
-}
-
-/* Ensure any nested cards/panels/tiles are light */
-html[data-theme="light"] #scheduleModal .modal-content .card,
-html[data-theme="light"] #scheduleModal .modal-content .panel,
-html[data-theme="light"] #scheduleModal .modal-content .tile,
-html[data-theme="light"] #newsModal .modal-content .card,
-html[data-theme="light"] #newsModal .modal-content .panel,
-html[data-theme="light"] #newsModal .modal-content .tile {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* News list readability (light mode) */
-html[data-theme="light"] #newsModal #rnh-news-list,
-html[data-theme="light"] #newsModal #rnh-news-list * { color: #111827 !important; }
-html[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
-html[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
-html[data-theme="light"] #newsModal a { color: #111827 !important; }
-
-/* Schedule-specific inner sections often use dark chips; neutralize them in light mode */
-html[data-theme="light"] #scheduleModal .chip,
-html[data-theme="light"] #scheduleModal .badge,
-html[data-theme="light"] #scheduleModal .show-block,
-html[data-theme="light"] #scheduleModal .slot-block {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-}
-
-/* Force any lingering dark backgrounds inside schedule/news to inherit light */
-html[data-theme="light"] #scheduleModal *,
-html[data-theme="light"] #newsModal * {
-  --panel-bg: #ffffff;
-}
-</style>
-<style id="light-mode-schedule-news-inner-fixes">
-/* Schedule: inner block (day-card) should be light in light mode */
-html[data-theme="light"] #scheduleModal .day-card {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-  box-shadow: 0 1px 8px rgba(0,0,0,0.06) !important;
-}
-html[data-theme="light"] #scheduleModal .day-card * { color: #111827 !important; }
-
-/* News modal: force readable text in light mode */
-html[data-theme="light"] #newsModal * { color: #111827 !important; }
-html[data-theme="light"] #newsModal h2,
-html[data-theme="light"] #newsModal h3,
-html[data-theme="light"] #newsModal h4 { color: #111827 !important; }
-
-/* Keep RNH dates yellow in news modal */
-html[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
-html[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
-
-/* Soften dark borders/shadows inside news modal */
-html[data-theme="light"] #newsModal [style*="border:1px solid #333"] { border: 1px solid #e5e7eb !important; }
-html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important; }
-</style>
-<style id="light-mode-search-news-fixes">
-/* === Song Search (light mode): make menus legible === */
-:root[data-theme="light"] #searchModal input,
-:root[data-theme="light"] #searchModal select,
-:root[data-theme="light"] #searchModal textarea {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-}
-
-/* Common menu/dropdown containers in search modal */
-:root[data-theme="light"] #searchModal .dropdown-menu,
-:root[data-theme="light"] #searchModal .menu,
-:root[data-theme="light"] #searchModal .listbox,
-:root[data-theme="light"] #searchModal .options,
-:root[data-theme="light"] #searchModal .select-menu,
-:root[data-theme="light"] #searchModal ul,
-:root[data-theme="light"] #searchModal li {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* Placeholder contrast */
-:root[data-theme="light"] #searchModal ::placeholder { color: #6b7280 !important; }
-
-/* === Radio News Hub modal (light mode): kill dark inner blocks === */
-:root[data-theme="light"] #newsModal [style*="background"],
-:root[data-theme="light"] #newsModal [style*="background-color"] {
-  background: #ffffff !important;
-}
-
-/* Ensure all common inner containers are light */
-:root[data-theme="light"] #newsModal .card,
-:root[data-theme="light"] #newsModal .panel,
-:root[data-theme="light"] #newsModal .tile,
-:root[data-theme="light"] #newsModal .rnh-item,
-:root[data-theme="light"] #newsModal .rnh-story,
-:root[data-theme="light"] #newsModal .inner,
-:root[data-theme="light"] #newsModal .content {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* Text readability + keep dates yellow */
-:root[data-theme="light"] #newsModal,
-:root[data-theme="light"] #newsModal * {
-  color: #111827 !important;
-}
-:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
-:root[data-theme="light"] #newsModal #rnh-news-list time {
-  color: var(--er-accent, #fed351) !important;
-}
-</style>
-<style id="search-news-targeted-light-fixes">
-/* === Song Search (light mode): make menus legible === */
-:root[data-theme="light"] #searchModal input,
-:root[data-theme="light"] #searchModal select,
-:root[data-theme="light"] #searchModal textarea {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
-}
-
-/* Style native <option> where supported */
-:root[data-theme="light"] #searchModal option {
-  background: #ffffff !important;
-  color: #111827 !important;
-}
-
-/* If there's a results list UL, ensure it's light */
-:root[data-theme="light"] #searchModal ul,
-:root[data-theme="light"] #searchModal ul li {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* === News: nuke any inner dark blocks in light mode === */
-:root[data-theme="light"] #newsModal [style*="background"],
-:root[data-theme="light"] #newsModal [style*="background-color"] {
-  background: #ffffff !important;
-}
-
-/* Common inner containers in news modal */
-:root[data-theme="light"] #newsModal .card,
-:root[data-theme="light"] #newsModal .panel,
-:root[data-theme="light"] #newsModal .tile,
-:root[data-theme="light"] #newsModal .rnh-item,
-:root[data-theme="light"] #newsModal .rnh-story,
-:root[data-theme="light"] #newsModal .inner,
-:root[data-theme="light"] #newsModal .content,
-:root[data-theme="light"] #newsModal .modal-body {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* Keep RNH dates yellow; ensure story text is dark */
-:root[data-theme="light"] #newsModal #rnh-news-list,
-:root[data-theme="light"] #newsModal #rnh-news-list * { color: #111827 !important; }
-:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
-:root[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
-</style>
-<style id="targeted-fixes-rnh-card-and-search">
-/* Radio News Hub modal: card blocks should be light in light mode */
-:root[data-theme="light"] #newsModal .rnh-card {
-  background: #ffffff !important;
-  border: 1px solid #e5e7eb !important;
-}
-:root[data-theme="light"] #newsModal .rnh-cards { background: transparent !important; }
-
-/* Song Search: ensure everything is legible in light mode */
-:root[data-theme="light"] #searchModal,
-:root[data-theme="light"] #searchModal * {
-  color: #111827 !important;
-}
-:root[data-theme="light"] #searchModal select,
-:root[data-theme="light"] #searchModal input,
-:root[data-theme="light"] #searchModal textarea {
-  background: #ffffff !important;
-  border: 1px solid #e5e7eb !important;
-}
-:root[data-theme="light"] #searchModal option {
-  background: #ffffff !important;
-  color: #111827 !important;
-}
-</style>
-<style id="songsearch-light-override-final">
-/* Keep these controls WHITE in light mode, even if a global light text rule exists */
-:root[data-theme="light"] #searchModal #prevHour,
-:root[data-theme="light"] #searchModal #nextHour,
-:root[data-theme="light"] #searchModal #resetFilters {
-  color: #ffffff !important;
-  font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-}
-</style>
-<style id="rnh-dark-dates-frontpage">
-/* Dark mode: front page RNH dates back to yellow (override any white text rules) */
-:root[data-theme="dark"] body #right-panel #rnh-news-list time,
-:root[data-theme="dark"] body #right-panel #rnh-news-list #rnh-news-list .rnh-date,
-:root[data-theme="dark"] body #rnh-news-list time,
-:root[data-theme="dark"] body #rnh-news-list #rnh-news-list .rnh-date {
-  color: var(--er-accent, #fed351) !important;
-}
-</style>
-<style id="rnh-rightpanel-dates-structural">
-/* Dark mode: force the right-panel RNH date (the last child div in each item) back to yellow */
-:root[data-theme="dark"] #right-panel #rnh-news-list > div > div:last-child,
-:root[data-theme="dark"] #rnh-news-list > div > div:last-child {
-  color: var(--er-accent, #fed351) !important;
-}
-</style>
-<style id="dark-modal-headings-white">
-:root[data-theme="dark"] .modal-content h1,
-:root[data-theme="dark"] .modal-content h2,
-:root[data-theme="dark"] .modal-content h3,
-:root[data-theme="dark"] .modal-content h4,
-:root[data-theme="dark"] .modal-content h5,
-:root[data-theme="dark"] .modal-content h6 {
-  color: #ffffff !important;
-}
-</style>
-<style id="schedule-links-and-dropdowns-fixed">
-/* Programme Schedule: kill teal/underlines in dark mode */
-:root[data-theme="dark"] #scheduleModal a,
-:root[data-theme="dark"] .programme-schedule a,
-:root[data-theme="dark"] .program-schedule a,
-:root[data-theme="dark"] .schedule a {
-  color: #ffffff !important;
-  text-decoration: none !important;
-}
-:root[data-theme="dark"] #scheduleModal a:hover,
-:root[data-theme="dark"] .programme-schedule a:hover,
-:root[data-theme="dark"] .program-schedule a:hover,
-:root[data-theme="dark"] .schedule a:hover {
-  text-decoration: underline !important; /* optional hover */
-}
-
-/* Schedule dropdown legibility */
-/* Light mode */
-:root[data-theme="light"] #scheduleModal label { color: #111827 !important; }
-:root[data-theme="light"] #scheduleModal select {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 8px;
-  padding: 8px 12px;
-}
-:root[data-theme="light"] #scheduleModal option {
-  background: #ffffff !important;
-  color: #111827 !important;
-}
-
-/* Dark mode */
-:root[data-theme="dark"] #scheduleModal label { color: #ffffff !important; }
-:root[data-theme="dark"] #scheduleModal select {
-  background: var(--er-panel, #12141a) !important;
-  color: #ffffff !important;
-  border: 1px solid var(--er-border, #272a33) !important;
-  border-radius: 8px;
-  padding: 8px 12px;
-}
-:root[data-theme="dark"] #scheduleModal option {
-  background: var(--er-panel, #12141a) !important;
-  color: #ffffff !important;
-}
-
-/* If a custom dropdown/menu is used */
-:root[data-theme="light"] #scheduleModal .dropdown-menu,
-:root[data-theme="light"] #scheduleModal .menu,
-:root[data-theme="light"] #scheduleModal .listbox,
-:root[data-theme="light"] #scheduleModal .options {
-  background: #ffffff !important; color: #111827 !important; border: 1px solid #e5e7eb !important;
-}
-:root[data-theme="dark"] #scheduleModal .dropdown-menu,
-:root[data-theme="dark"] #scheduleModal .menu,
-:root[data-theme="dark"] #scheduleModal .listbox,
-:root[data-theme="dark"] #scheduleModal .options {
-  background: var(--er-panel, #12141a) !important; color: #ffffff !important; border: 1px solid var(--er-border, #272a33) !important;
-}
-</style>
-<style id="about-email-dark-fix">
-/* About Us: make email link white in dark mode (no underline), with underline on hover */
-:root[data-theme="dark"] #aboutModal a[href^="mailto:"] {
-  color: #ffffff !important;
-  text-decoration: none !important;
-}
-:root[data-theme="dark"] #aboutModal a[href^="mailto:"]:hover {
-  text-decoration: underline !important;
-}
-</style>
-<style id="songsearch-artist-title-yellow">
-/* Song Search: make 'Artist - Title' text yellow */
-#searchModal .result-title,
-#searchModal .song-title,
-#searchModal .track-title,
-#searchModal .track,
-#searchModal .result .title,
-#searchModal .song-result .title {
-  color: var(--er-accent, #fed351) !important;
-}
-</style>
-<style id="songsearch-thead-yellow">
-/* Song Search: make the table header (including "Artist – Title") yellow in both themes */
-#searchModal thead,
-#searchModal thead th {
-  color: var(--er-accent, #fed351) !important;
-}
-</style>
-<style id="about-email-yellow">
-/* About Us: email link in accent yellow, both themes (wins over earlier dark-mode white) */
-:root[data-theme="dark"] #aboutModal a[href^="mailto:"],
-:root[data-theme="light"] #aboutModal a[href^="mailto:"],
-#aboutModal a[href^="mailto:"] {
-  color: var(--er-accent, #fed351) !important;
-  text-decoration: none !important;
-}
-#aboutModal a[href^="mailto:"]:hover {
-  text-decoration: underline !important;
-}
-</style>
-<style id="about-email-light-readable">
-/* About Us email: readable teal in light mode, yellow in dark mode */
-:root[data-theme="light"] #aboutModal a[href^="mailto:"] { color: #00818a !important; }
-:root[data-theme="dark"]  #aboutModal a[href^="mailto:"] { color: var(--er-accent, #fed351) !important; }
-#aboutModal a[href^="mailto:"]:hover { text-decoration: underline !important; }
-</style>
-<style id="nav-gap-visible">
-/* Push page content lower under the nav bar */
-nav + .header-spacer + main,
-nav + .header-spacer + section,
-nav + .header-spacer + div,
-nav + main,
-nav + section,
-nav + div {
-  margin-top: 1.5rem !important;
-}
-</style>
+</body></html>
