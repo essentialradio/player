@@ -2887,6 +2887,17 @@ nav + div {
   nav.navbar { display:flex; align-items:center; justify-content:space-between; }
 }
 </style>
+<style>
+/* Ensure mobile toggle is visible and near the burger */
+@media (max-width: 768px) {
+  #themeToggle {
+    position: fixed;
+    top: 20px;
+    left: 52px;          /* sits just to the right of burger */
+    z-index: 3000 !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
