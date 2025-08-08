@@ -3010,27 +3010,40 @@ nav + div {
 }
 </style>
 <style>
-/* === Mobile navbar: burger + toggle side-by-side, no overlap/gap === */
-@media (max-width: 768px) {
-  nav.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
+/* === Mobile navbar: burger + toggle inline, no top gap === */
+@media (max-width: 768px){
+  nav.navbar{
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
   }
-  /* Order elements explicitly */
-  #burgerMenuBtn { order: 1; position: relative; z-index: 2; }
-  #themeToggleBtn { order: 2; display: inline-flex; position: static; z-index: 2; }
-  .logo, #logo, .brand, .site-logo { order: 3; }
-  /* Ensure dropdown appears below, not covering toggle area at rest */
-  #burgerDropdown { top: 54px !important; }
-  /* Remove top spacer/gap */
-  .header-spacer { height: 0 !important; margin: 0 !important; padding: 0 !important; }
-  nav + .header-spacer + main,
-  nav + .header-spacer + section,
-  nav + .header-spacer + div,
-  nav + main, nav + section, nav + div {
+  /* Make sure burger and toggle participate in flow (no absolute positioning) */
+  #burgerMenuBtn, #themeToggleBtn{
+    position: static !important;
+  }
+  /* Style toggle pill compactly */
+  #themeToggleBtn{
+    display:inline-flex;
+    align-items:center;
+    height: 34px;
+    border-radius: 9999px;
+    padding: 0 10px;
+    background: var(--brand, #fed351);
+    color: #0b1220;
+    border: 1px solid rgba(0,0,0,.15);
+  }
+  /* Remove header spacer gap */
+  .header-spacer{ height:0 !important; margin:0 !important; padding:0 !important; display:none !important; }
+  /* Ensure first content card doesn't sit under the navbar edge */
+  main, section, .page, .container{
     margin-top: 0 !important;
+  }
+  /* Dropdown should open below navbar, not overlapping controls */
+  #burgerDropdown{
+    top: 56px !important;   /* approx. navbar height */
+    left: 8px !important;
   }
 }
 </style>
@@ -6318,44 +6331,7 @@ function closePresenterModal(presenterId) {
   function apply(theme){
     if(theme === 'light'){
       root.classList.remove('dark');
-      root.setAttribute('
-<script>
-(function(){
-  var btn = document.getElementById('themeToggleBtn');
-  var burger = document.getElementById('burgerMenuBtn');
-  var nav = document.querySelector('nav.navbar');
-  if(!btn || !burger || !nav) return;
-
-  var origParent = btn.parentNode;
-  var origNext = btn.nextSibling;
-
-  function place(){
-    var isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if(isMobile){
-      // Insert btn right after burger inside nav
-      if (btn.parentNode !== nav || btn.previousElementSibling !== burger) {
-        if (burger.nextSibling) {
-          nav.insertBefore(btn, burger.nextSibling);
-        } else {
-          nav.appendChild(btn);
-        }
-      }
-    } else {
-      // restore original placement
-      if (btn.parentNode !== origParent) {
-        if (origNext && origNext.parentNode === origParent) {
-          origParent.insertBefore(btn, origNext);
-        } else {
-          origParent.appendChild(btn);
-        }
-      }
-    }
-  }
-  window.addEventListener('DOMContentLoaded', place);
-  window.addEventListener('resize', place);
-})();
-</script>
-data-theme','light');
+      root.setAttribute('data-theme','light');
       if (emojiEl) emojiEl.textContent = '☀️';
       if (labelEl) labelEl.textContent = 'Light';
     } else {
@@ -6382,6 +6358,40 @@ data-theme','light');
     apply(next);
     try { localStorage.setItem(STORAGE_KEY, next); } catch(e){}
   }, true);
+})();
+</script>
+
+<script>
+(function(){
+  var btn, burger, nav, originalParent, originalNext;
+  function placeMobile(){
+    btn = document.getElementById('themeToggleBtn');
+    burger = document.getElementById('burgerMenuBtn');
+    nav = document.querySelector('nav.navbar');
+    if(!btn || !burger || !nav) return;
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile){
+      if (!originalParent){ originalParent = btn.parentNode; originalNext = btn.nextSibling; }
+      // Ensure both are inside nav and ordered burger -> toggle
+      if (btn.parentNode !== nav) nav.insertBefore(btn, nav.firstChild);
+      if (burger.parentNode !== nav) nav.insertBefore(burger, nav.firstChild);
+      // Ensure order: burger then toggle
+      if (btn.previousElementSibling !== burger){
+        nav.insertBefore(btn, burger.nextSibling);
+      }
+    } else {
+      // put toggle back to original location on desktop
+      if (originalParent && btn.parentNode !== originalParent){
+        if (originalNext && originalNext.parentNode === originalParent){
+          originalParent.insertBefore(btn, originalNext);
+        } else {
+          originalParent.appendChild(btn);
+        }
+      }
+    }
+  }
+  window.addEventListener('DOMContentLoaded', placeMobile);
+  window.addEventListener('resize', placeMobile);
 })();
 </script>
 </body></html>
