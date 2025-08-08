@@ -1727,24 +1727,18 @@ body.modal-open {
   }
 </style>
 <style id="theme-toggle-nav-style">
-  .navbar { position: relative; }
   .navbar .theme-navbtn {
-    position: absolute;
-    right: 20px; /* spacing from edge */
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-    height: 100%; /* match full navbar height */
-    display: flex;
+    position: static;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 10px; /* horizontal padding only */
-    font-size: 12px;
-    border-radius: 0; /* match rectangular navbar items */
-    z-index: 5;
+    gap: 4px;
     background: var(--accent) !important;
     color: #fff !important;
     border: 1px solid rgba(255,255,255,0.18) !important;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
   }
   [data-theme="light"] .navbar .theme-navbtn {
     background: #0b6b73 !important;
@@ -1755,7 +1749,7 @@ body.modal-open {
     .navbar .theme-navbtn .mode-label { display: none; }
     .navbar .theme-navbtn { padding: 0 8px; }
   }
-</style>
+    </style>
 <style id="wx-icon-light-fix">
   /* OpenWeather PNGs were being inverted by generic light-mode rules.
      Restore them to normal in LIGHT mode so clouds etc. render correctly. */
@@ -2908,10 +2902,15 @@ nav + div {
       z-index: 3201 !important;
     }
   }
-  @media (min-width: 751px) {
-    #themeToggleBtn { display: none !important; }
+  
   }
-</style></head>
+</style>
+<style id="show-desktop-theme-toggle">
+  @media (min-width: 751px){
+    #themeToggleBtn.theme-navbtn { display: inline-flex !important; }
+  }
+</style>
+</head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
@@ -2935,11 +2934,7 @@ nav + div {
 </div> <!-- CLOSES INNER MENU WRAPPER -->
 </div> <!-- CLOSES burgerDropdown -->
 <!-- DESKTOP NAVIGATION -->
-<nav class="navbar" role="navigation">
-<!-- Inserted Theme Toggle -->
-<button aria-label="Toggle dark/light mode" id="themeToggle" title="Toggle dark/light mode">
-<span aria-hidden="true">☾/☀</span>
-</button>
+<nav class="navbar" role="navigation"><!-- Inserted Theme Toggle -->
 <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
 <a href="#" onclick="openModal('presentersModal');return false;">Presenters</a>
 <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
@@ -2951,9 +2946,7 @@ nav + div {
 <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
 <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
 <a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
-<button aria-label="Toggle light or dark mode" class="theme-navbtn" id="themeToggleBtn">
-<span class="mode-emoji">☀️</span><span class="mode-label" style="margin-left:6px;">Light</span>
-</button>
+  <button class="theme-navbtn" id="themeToggleBtn"><span class="mode-emoji">☀️</span><span class="mode-label">Light</span></button>
 </nav>
 <div class="header-spacer"></div>
 <div style="width:100%;display:flex;justify-content:center;">
