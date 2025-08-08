@@ -1311,30 +1311,25 @@ body.modal-open {
     box-shadow: none !important;
   }
 </style>
-<script id="theme-mode-script">
-(function(){
+<script id="theme-mode-script">(function(){
   const root = document.documentElement;
   const saved = localStorage.getItem('theme');
   const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
   const initial = saved || (prefersLight ? 'light' : 'dark');
   root.setAttribute('data-theme', initial);
 
-  function labelFor(theme) {
-    return theme === 'light' ? { emoji: '🌙', text: 'Dark' } : { emoji: '☀️', text: 'Light' };
+  function nextLabel(theme){ return theme === 'light' ? 'Dark' : 'Light'; }
+  function setLabels(theme){
+    const btn = document.getElementById('themeToggleBtn');
+    if (!btn) return;
+    const lab = btn.querySelector('.mode-label');
+    if (lab) lab.textContent = nextLabel(theme);
+    btn.title = theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
   }
-  function setTheme(t) {
+  function setTheme(t){
     root.setAttribute('data-theme', t);
     localStorage.setItem('theme', t);
-    const btn = document.getElementById('themeToggleBtn');
-    if (btn) {
-      const l = labelFor(t);
-      const emoji = btn.querySelector('.mode-emoji');
-      const text = btn.querySelector('.mode-label');
-      if (emoji) emoji.textContent = l.emoji;
-      if (text) text.textContent = l.text;
-      btn.setAttribute('aria-pressed', t === 'dark');
-      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
-    }
+    setLabels(t);
   }
 
   document.addEventListener('DOMContentLoaded', function(){
@@ -1348,8 +1343,7 @@ body.modal-open {
       });
     }
   });
-})();
-</script>
+})();</script>
 <style id="light-mode-contrast-tune">
   /* Headings, titles in light mode: use dark ink */
   [data-theme="light"] h1, 
@@ -2894,28 +2888,37 @@ nav + div {
     -webkit-text-fill-color: #000000 !important;
   }
 </style>
-
-<style id="desktop-play-toggle-yellow">
-  @media (min-width: 751px) {
-    #play-toggle {
-      background: #fed351 !important;
-      color: #000 !important;
+<style id="mobile-text-toggle-near-burger">
+  @media (max-width: 750px) {
+    #themeToggleBtn {
+      position: fixed !important;
+      top: 20px !important;
+      left: 48px !important;
+      height: 32px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 10px !important;
+      border-radius: 7px !important;
+      background: var(--accent) !important;
+      color: #fff !important;
       border: none !important;
-    }
-    #play-toggle:hover {
-      background: #f5c941 !important;
-      color: #000 !important;
+      font-size: 14px !important;
+      line-height: 1 !important;
+      z-index: 3201 !important;
     }
   }
-</style>
-</head>
+  @media (min-width: 751px) {
+    #themeToggleBtn { display: none !important; }
+  }
+</style></head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
 <span class="burger-bar"></span>
 <span class="burger-bar"></span>
-</div>
+</div><button aria-label="Toggle theme" id="themeToggleBtn"><span class="mode-label">Dark</span></button>
 <!-- MOBILE DROPDOWN MENU -->
 <div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
 <div class="rnh-date" style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;"><a class="menu-link" href="#" onclick="openModalAndCloseBurger('aboutModal');return false;">About Us</a>
