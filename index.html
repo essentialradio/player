@@ -1311,25 +1311,30 @@ body.modal-open {
     box-shadow: none !important;
   }
 </style>
-<script id="theme-mode-script">(function(){
+<script id="theme-mode-script">
+(function(){
   const root = document.documentElement;
   const saved = localStorage.getItem('theme');
   const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
   const initial = saved || (prefersLight ? 'light' : 'dark');
   root.setAttribute('data-theme', initial);
 
-  function nextLabel(theme){ return theme === 'light' ? 'Dark' : 'Light'; }
-  function setLabels(theme){
-    const btn = document.getElementById('themeToggleBtn');
-    if (!btn) return;
-    const lab = btn.querySelector('.mode-label');
-    if (lab) lab.textContent = nextLabel(theme);
-    btn.title = theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+  function labelFor(theme) {
+    return theme === 'light' ? { emoji: '🌙', text: 'Dark' } : { emoji: '☀️', text: 'Light' };
   }
-  function setTheme(t){
+  function setTheme(t) {
     root.setAttribute('data-theme', t);
     localStorage.setItem('theme', t);
-    setLabels(t);
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      const l = labelFor(t);
+      const emoji = btn.querySelector('.mode-emoji');
+      const text = btn.querySelector('.mode-label');
+      if (emoji) emoji.textContent = l.emoji;
+      if (text) text.textContent = l.text;
+      btn.setAttribute('aria-pressed', t === 'dark');
+      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function(){
@@ -1343,7 +1348,8 @@ body.modal-open {
       });
     }
   });
-})();</script>
+})();
+</script>
 <style id="light-mode-contrast-tune">
   /* Headings, titles in light mode: use dark ink */
   [data-theme="light"] h1, 
@@ -2888,38 +2894,26 @@ nav + div {
     -webkit-text-fill-color: #000000 !important;
   }
 </style>
-<style id="mobile-text-toggle-near-burger">
-  @media (max-width: 750px) {
-    #themeToggleBtn {
-      position: fixed !important;
-      top: 20px !important;
-      left: 48px !important;
-      height: 32px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      padding: 0 10px !important;
-      border-radius: 7px !important;
-      background: var(--accent) !important;
-      color: #fff !important;
-      border: none !important;
-      font-size: 14px !important;
-      line-height: 1 !important;
-      z-index: 3201 !important;
-    }
-  }
+<style id="desktop-now-playing-yellow-real">
+  /* Desktop-only: yellow "Now Playing" with black text */
   @media (min-width: 751px) {
-    #themeToggleBtn { display: none !important; }
-  }
-</style><style id="desktop-now-playing-yellow">
-  @media (min-width: 751px) {
-    .now-playing-container {
+    #now-playing-card,
+    #now-playing-card * {
       background: #fed351 !important;
       color: #000 !important;
-      padding: 0.5rem 1rem !important;
+      text-shadow: none !important;
     }
-    .now-playing-container a {
+    #now-playing-card a,
+    #now-playing-card a:link,
+    #now-playing-card a:visited,
+    #now-playing-card a:hover,
+    #now-playing-card a:active {
       color: #000 !important;
+    }
+    /* Keep the card border subtle in yellow */
+    #now-playing-card {
+      border: 1px solid rgba(0,0,0,0.15) !important;
+      box-shadow: none !important;
     }
   }
 </style></head>
@@ -2929,7 +2923,7 @@ nav + div {
 <span class="burger-bar"></span>
 <span class="burger-bar"></span>
 <span class="burger-bar"></span>
-</div><button aria-label="Toggle theme" id="themeToggleBtn"><span class="mode-label">Dark</span></button>
+</div>
 <!-- MOBILE DROPDOWN MENU -->
 <div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
 <div class="rnh-date" style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;"><a class="menu-link" href="#" onclick="openModalAndCloseBurger('aboutModal');return false;">About Us</a>
