@@ -2921,6 +2921,30 @@ nav + div {
   #themeToggle { display: none !important; }
 }
 </style>
+<style>
+/* === Reuse original desktop toggle on mobile beside burger === */
+@media (max-width: 768px) {
+  #burgerMenuBtn { position: relative; }
+  /* Ensure the original toggle is visible and sized nicely on mobile */
+  #themeToggleBtn {
+    position: absolute;
+    top: -2px;
+    right: -48px;     /* small gap to the right of burger */
+    z-index: 4000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    border-radius: 9999px;
+    padding: 0 10px;
+    background: var(--brand, #fed351);
+    color: #0b1220;
+    border: 1px solid rgba(0,0,0,.15);
+  }
+  /* Optional: tighten label spacing on tiny phones */
+  #themeToggleBtn .mode-label { margin-left: 6px; }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6140,6 +6164,40 @@ function closePresenterModal(presenterId) {
     apply(next);
     try { localStorage.setItem(STORAGE_KEY, next); } catch(e){}
   });
+})();
+</script>
+
+<script>
+(function(){
+  var btn, burger, originalParent, originalNext;
+  function moveForMobile(){
+    btn = document.getElementById('themeToggleBtn');
+    burger = document.getElementById('burgerMenuBtn');
+    if(!btn || !burger) return;
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+      // Save original location once
+      if (!originalParent) {
+        originalParent = btn.parentNode;
+        originalNext = btn.nextSibling;
+      }
+      // Move next to burger if not already inside
+      if (btn.parentNode !== burger) {
+        burger.appendChild(btn);
+      }
+    } else {
+      // Move it back to original place on desktop
+      if (originalParent && btn.parentNode !== originalParent) {
+        if (originalNext && originalNext.parentNode === originalParent) {
+          originalParent.insertBefore(btn, originalNext);
+        } else {
+          originalParent.appendChild(btn);
+        }
+      }
+    }
+  }
+  window.addEventListener('DOMContentLoaded', moveForMobile);
+  window.addEventListener('resize', moveForMobile);
 })();
 </script>
 </body></html>
