@@ -2908,72 +2908,15 @@ nav + div {
     #themeToggleBtn.theme-navbtn { display: inline-flex !important; }
   }
 </style>
-<style id="contact-requests-fullscreen-mobile">
-/* Contact & Requests: make embedded forms truly fullscreen on mobile */
-@media (max-width: 768px) {
 
-  /* Remove generic mobile offset for these two modals only */
-  #contactModal.modal, #requestsModal.modal,
-  #contact-us-modal.modal, #requestModal.modal,
-  #requests-modal.modal, #contact-modal.modal {
-    top: 0 !important;
-    left: 0 !important;
-    width: 100svw !important;
-    height: 100dvh !important;
-    max-width: 100svw !important;
-    max-height: 100dvh !important;
-    overflow: hidden !important;     /* prevent page scroll behind */
+<style id="hide-contact-request-headings">
+  /* Hide blue H2 headers inside Contact and Requests modals */
+  #contactModal .modal-content h2,
+  #requestsModal .modal-content h2 {
+    display: none !important;
   }
-
-  /* Make the modal content fill the viewport with no padding/radius */
-  #contactModal .modal-content, #requestsModal .modal-content,
-  #contact-us-modal .modal-content, #requestModal .modal-content,
-  #requests-modal .modal-content, #contact-modal .modal-content {
-    width: 100svw !important;
-    height: 100dvh !important;
-    max-width: 100svw !important;
-    max-height: 100dvh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;     /* internal scroll handled by iframe */
-  }
-
-  /* If there is a heading/close row, allow it and give the rest to iframe */
-  #contactModal .modal-content > *, #requestsModal .modal-content > *,
-  #contact-us-modal .modal-content > *, #requestModal .modal-content > *,
-  #requests-modal .modal-content > *, #contact-modal .modal-content > * {
-    min-height: 0 !important;
-  }
-
-  /* Target the embedded form (iframe or form wrapper) to stretch */
-  #contactModal iframe, #requestsModal iframe,
-  #contact-us-modal iframe, #requestModal iframe,
-  #requests-modal iframe, #contact-modal iframe,
-  #contactModal .form-embed, #requestsModal .form-embed,
-  #contact-us-modal .form-embed, #requestModal .form-embed,
-  #requests-modal .form-embed, #contact-modal .form-embed {
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-    border: 0 !important;
-    flex: 1 1 auto !important;
-  }
-
-  /* Keep the close button visible over the full-bleed form */
-  #contactModal .close, #requestsModal .close,
-  #contact-us-modal .close, #requestModal .close,
-  #requests-modal .close, #contact-modal .close {
-    position: fixed !important;
-    top: 10px !important;
-    right: 10px !important;
-    z-index: 10 !important;
-    mix-blend-mode: normal !important;
-  }
-}
 </style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
