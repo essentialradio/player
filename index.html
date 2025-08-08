@@ -1309,39 +1309,7 @@ body.modal-open {
     box-shadow: none !important;
   }
 </style>
-<script id="theme-mode-script">(function(){
-  const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
-  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-  const initial = saved || (prefersLight ? 'light' : 'dark');
-  root.setAttribute('data-theme', initial);
 
-  function nextLabel(theme){ return theme === 'light' ? 'Dark' : 'Light'; }
-  function setLabels(theme){
-    const btn = document.getElementById('themeToggleBtn');
-    if (!btn) return;
-    const lab = btn.querySelector('.mode-label');
-    if (lab) lab.textContent = nextLabel(theme);
-    btn.title = theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
-  }
-  function setTheme(t){
-    root.setAttribute('data-theme', t);
-    localStorage.setItem('theme', t);
-    setLabels(t);
-  }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    const current = root.getAttribute('data-theme') || initial;
-    setTheme(current);
-    const btn = document.getElementById('themeToggleBtn');
-    if (btn) {
-      btn.addEventListener('click', function(){
-        const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-        setTheme(next);
-      });
-    }
-  });
-})();</script>
 <style id="light-mode-contrast-tune">
   /* Headings, titles in light mode: use dark ink */
   [data-theme="light"] h1, 
@@ -2895,6 +2863,22 @@ nav + div {
   }
   /* Hide long text label on narrow screens, keep the icon */
   #themeToggleBtn .mode-label { display: none !important; }
+}
+</style><style id="mobile-theme-toggle-style">
+/* Mobile: pin the same button beside the burger */
+.theme-navbtn.mobile-fixed{
+  position: fixed;
+  top: 20px;
+  right: 8px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 10px;
+  z-index: 2002; /* above burger; below dropdown */
+}
+@media (max-width: 480px){
+  .theme-navbtn.mobile-fixed .mode-label{ display:none; }
 }
 </style></head>
 <body>
@@ -6149,5 +6133,60 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     }, true);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script><script id="theme-mode-script">
+(function(){
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  const initial = saved || (prefersLight ? 'light' : 'dark');
+  root.setAttribute('data-theme', initial);
+
+  function nextLabel(theme){ return theme === 'light' ? 'Dark' : 'Light'; }
+  function setLabels(theme){
+    const btn = document.getElementById('themeToggleBtn');
+    if (!btn) return;
+    const lab = btn.querySelector('.mode-label');
+    if (lab) lab.textContent = nextLabel(theme);
+    btn.title = theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+  }
+  function setTheme(t){
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    setLabels(t);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    const current = root.getAttribute('data-theme') || initial;
+    setTheme(current);
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      btn.addEventListener('click', function(){
+        const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
+        setTheme(next);
+      });
+    }
+  });
+})();
+</script><script id="theme-toggle-mover">
+(function(){
+  function placeThemeBtn(){
+    const btn = document.getElementById('themeToggleBtn');
+    const nav = document.querySelector('.navbar');
+    if(!btn) return;
+    if (window.innerWidth > 750) {
+      if (nav && btn.parentElement !== nav){
+        nav.appendChild(btn);
+        btn.classList.remove('mobile-fixed');
+      }
+    } else {
+      if (btn.parentElement !== document.body){
+        document.body.appendChild(btn);
+      }
+      btn.classList.add('mobile-fixed');
+    }
+  }
+  window.addEventListener('resize', placeThemeBtn);
+  window.addEventListener('DOMContentLoaded', placeThemeBtn);
 })();
 </script></body></html>
