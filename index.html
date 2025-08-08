@@ -813,6 +813,997 @@ body {
   }
 }
 
+/* === FINAL MOBILE SMOOTH-SCROLL TWEAKS === */
+@media (max-width: 768px) {
+  /* Let right column release momentum smoothly */
+  .right-panel {
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Let recent list claim only vertical drags */
+  ul#recent-list {
+    touch-action: pan-y !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-panel {
+    overscroll-behavior: auto !important;   /* let scroll bubble out */
+    overflow-y: auto !important;            /* its own scroll, momentum OK */
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+.logo-hide {
+  display: none !important;
+}
+@media (max-width: 750px) {
+  #burgerMenuBtn {
+    position: fixed;
+    top: 20px;
+    left: 8px;
+    width: 32px;          /* Smaller width */
+    height: 32px;         /* Smaller height */
+    background: #fed351;
+    border-radius: 7px;
+    z-index: 2001;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px #0002;
+    padding: 0;
+    transition: box-shadow 0.18s;
+  }
+  #burgerMenuBtn .burger-bar {
+    display: block;
+    width: 17px;         /* Shorter lines */
+    height: 2.7px;       /* Thinner lines */
+    background: #191c29;
+    border-radius: 2px;
+    margin: 2.8px 0;
+    transition: all 0.2s;
+  }
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100vw;
+}
+
+/* Ensure the modal itself doesn't scroll the background */
+.modal {
+  overflow: hidden !important;
+  overscroll-behavior: contain;
+}
+
+/* Modal content scrolls inside, not the page */
+.modal-content {
+  max-height: 85vh;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 750px) {
+  #burgerDropdown {
+    top: 56px !important;
+    height: calc(100vh - 56px) !important;
+  }
+}
+@media (max-width: 768px) {
+  .modal-content {
+    width: 96vw !important;
+    max-width: 96vw !important;
+    margin: 0 auto !important;
+    border-radius: 14px !important;
+    /* Your other styles here, such as: */
+    margin-top: 0 !important;
+    padding-top: 18px !important;
+    padding-bottom: 12px !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    background: #fff !important;
+    font-size: 15px !important;
+    scrollbar-width: thin;
+    scrollbar-color: #fed351 #ececec;
+  }
+  .modal-content::-webkit-scrollbar {
+    width: 14px;
+    background: #ececec;
+    border-radius: 10px;
+  }
+  .modal-content::-webkit-scrollbar-thumb {
+    background: #fed351;
+    border-radius: 10px;
+    border: 3px solid #ececec;
+  }
+  .modal-content::-webkit-scrollbar-thumb:active {
+    background: #ffe67c;
+  }
+  .modal-content::-webkit-scrollbar-track {
+    background: #ececec;
+    border-radius: 10px;
+  }
+/* Make 3-column layout */
+.strip-container.three-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px; /* Optional spacing between panels */
+}
+
+.strip-container.three-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px; /* or adjust to your preference */
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+
+/* Banner image */
+.side-banner-img {
+  width: 160px;
+  height: auto;
+  max-height: 1000px;
+  object-fit: contain;
+}
+
+/* Responsive stacking on mobile */
+@media (max-width: 768px) {
+  .strip-container.three-panel {
+    flex-direction: column;
+  }
+
+  .side-banner-panel {
+    width: 100%;
+    padding: 20px 0;
+    justify-content: center;
+  }
+
+  .side-banner-img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal,
+  .modal-content {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+  #modalScheduleContainer,
+  #modalScheduleContainer .day-card,
+  #modalScheduleContainer .split-columns,
+  #modalScheduleContainer .column,
+  #modalScheduleContainer .show-entry {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  #modalScheduleContainer .split-columns,
+  #modalScheduleContainer .column,
+  #modalScheduleContainer .show-entry {
+    flex-wrap: wrap !important;
+  }
+#modalScheduleContainer .show-entry img {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+  }
+}
+.show-time {
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #222;
+  margin-bottom: 4px;
+  display: block;
+}
+
+
+@media (max-width: 768px) {
+  .modal {
+    top: 56px !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 56px) !important;
+    overflow-y: auto !important;
+  }
+  .modal-content {
+    max-height: calc(100vh - 56px) !important;
+    overflow-y: auto !important;
+  }
+}
+</style>
+<style>.no-scroll{overflow:hidden;}</style>
+<style id="stacking-overrides">
+  /* Keep desktop navbar clickable even when a base modal is open */
+  .navbar { z-index: 3001 !important; }
+
+  /* Ensure the mobile dropdown sits above any modal when opened */
+  #burgerDropdown { z-index: 3100 !important; }
+
+  /* Presenter modals sit above base modals (like the presenters list) */
+  .modal.presenter-modal { z-index: 2050 !important; }
+
+  /* Hide the overhang logo whenever any modal is open */
+  body.modal-open .logo-overhang { display: none !important; }
+
+  /* Allow clicking nav through the modal backdrop edge on desktop if needed */
+  @media (min-width: 751px) {
+    /* Keep a small gap for the top navbar to remain visible/clickable */
+    .modal { top: 0px !important; height: calc(100vh - 0px) !important; }
+  }
+</style>
+<style id="theme-mode">
+  :root {
+    /* Core brand */
+    --brand: #fed351;     /* Essential yellow */
+    --accent: #00818a;    /* Teal accent */
+    --danger: #e0322f;
+
+    /* Dark (default) */
+    --bg-grad-1: #00818a;
+    --bg-grad-2: #7e1974;
+    --text: #f7f8fb;
+    --panel: #101215;
+    --panel-2: #171a1f;
+    --border: #272c33;
+    --muted: #c8d1dc;
+  }
+
+  /* Light theme overrides – tuned for print-friendliness & contrast */
+  
+  [data-theme="light"] {
+    --bg-grad-1: #ffffff;
+    --bg-grad-2: #f4f7fb;
+    --text: #0b1220;
+    --panel: #ffffff;
+    --panel-2: #f7f9fc;
+    --border: #e6ecf3;
+    --muted: #6a778a;
+    --accent: #0b6b73;   /* deep teal for contrast */
+    --danger: #b42318;
+    --brand: #c89d00;    /* darkened yellow for accents only */
+  }
+    
+
+  /* Base */
+  html, body { color: var(--text) !important; }
+  body {
+    background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2)) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent) !important; }
+
+  /* Containers */
+  .strip-container { background-color: var(--panel) !important; }
+  .left-panel { background: var(--panel) !important; border-right: 1px solid var(--border) !important; }
+  .right-panel { background: var(--panel-2) !important; border-left: 1px solid var(--border) !important; }
+
+  /* Now Playing */
+  #now-playing-card { background: var(--panel-2) !important; color: var(--text) !important; box-shadow: 0 6px 18px rgba(0,0,0,0.12) !important; border: 1px solid var(--border) !important; }
+  #artwork { border: 2px solid var(--brand) !important; }
+
+  /* Recent list */
+  .recent-title { color: var(--brand) !important; }
+  ul#recent-list li { border-bottom: 1px solid var(--border) !important; }
+  ul#recent-list span.info { color: var(--text) !important; }
+  ul#recent-list span.time { color: var(--muted) !important; }
+
+  /* Live indicator */
+  .live-indicator, .pulsing-label { color: var(--danger) !important; }
+
+  /* Navbar & buttons */
+  .navbar { background: var(--panel) !important; box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important; border-bottom: 1px solid var(--border) !important; }
+  .navbar a { background: var(--brand) !important; color: #1a1a1a !important; }
+  .navbar a:hover, .navbar a:focus { background: var(--accent) !important; color: #ffffff !important; }
+  button, #mute-toggle { background: var(--brand) !important; color: #1a1a1a !important; border: 1px solid rgba(0,0,0,0.05) !important; }
+  button:hover, button:focus, #mute-toggle:hover, #mute-toggle:focus { filter: brightness(0.97); box-shadow: 0 0 0 3px rgba(0,0,0,0.06) inset !important; }
+
+  /* Modals */
+  .modal { background: rgba(0,0,0,0.78) !important; }
+  .modal-content { background: var(--panel) !important; color: var(--text) !important; border: 1px solid var(--border) !important; }
+  .modal-content h2 { color: var(--accent) !important; }
+  .modal-content a { color: var(--accent) !important; }
+
+  /* Weather */
+  #wxWrap { background: linear-gradient(135deg, var(--panel-2), var(--panel)) !important; color: var(--text) !important; border: 1px solid var(--border) !important; }
+  #wxWrap .wxHeading { color: var(--brand) !important; }
+  #wxNow span { text-shadow: none !important; }
+  .weather-divider { border-top-color: var(--border) !important; }
+
+  /* Right column & tiles */
+  .side-social-title, .side-listen-title { color: var(--brand) !important; }
+  .side-social-btn { background: var(--brand) !important; color:#111 !important; border: 1px solid rgba(0,0,0,0.05) !important; }
+  .tile { border: 1px solid var(--border) !important; background: var(--panel) !important; }
+  .tile-icon { background: var(--brand) !important; color:#111 !important; }
+  .tile:hover .tile-icon, .tile:focus .tile-icon { background: var(--accent) !important; color:#fff !important; }
+
+  /* Clock (tune light mode to avoid red-on-yellow clashes) */
+  #liveClock { background: var(--panel-2) !important; border: 1px solid var(--border) !important; }
+  #clockTime { color: #f0f3f8 !important; }
+  #clockDate { color: var(--brand) !important; }
+  [data-theme="light"] #clockTime { color: #111827 !important; } /* deep grey */
+  [data-theme="light"] #clockDate { color: #e0b12b !important; text-shadow: none !important; }
+
+  /* Forms & inputs */
+  input, select, textarea { background: var(--panel-2) !important; color: var(--text) !important; border: 1px solid var(--border) !important; }
+  [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea { background: #ffffff !important; color: #0b1220 !important; }
+</style>
+<style id="theme-contrast-patch">
+  /* Global light-mode contrast fixes */
+  [data-theme="light"] * { text-shadow: none !important; }
+  [data-theme="light"] .menu-link { color: #0b1220 !important; background: transparent !important; }
+  [data-theme="light"] .menu-link:hover, 
+  [data-theme="light"] .menu-link:focus { background: #eef2f7 !important; }
+
+  /* Any leftover white-on-light from legacy inline styles */
+  [data-theme="light"] .text-light, 
+  [data-theme="light"] .white, 
+  [data-theme="light"] .label, 
+  [data-theme="light"] .tag,
+  [data-theme="light"] .chip,
+  [data-theme="light"] .badge { color: #0b1220 !important; background: #f2f5fb !important; border-color: #e6ecf3 !important; }
+
+  /* Links inside light panels */
+  [data-theme="light"] .modal-content a,
+  [data-theme="light"] .left-panel a,
+  [data-theme="light"] .right-panel a { color: #0b6b73 !important; }
+
+  /* Tables */
+  [data-theme="light"] table { background: #ffffff !important; color: #0b1220 !important; border: 1px solid #e6ecf3 !important; }
+  [data-theme="light"] th, [data-theme="light"] td { border-color: #e6ecf3 !important; }
+  [data-theme="light"] th { background: #f4f7fb !important; }
+
+  /* Forms */
+  [data-theme="light"] input, 
+  [data-theme="light"] select, 
+  [data-theme="light"] textarea { background: #ffffff !important; color: #0b1220 !important; border: 1px solid #d9e2ec !important; }
+  [data-theme="light"] ::placeholder { color: #6a778a !important; }
+
+  /* Buttons on light backgrounds */
+  [data-theme="light"] button, 
+  [data-theme="light"] #mute-toggle { color: #1a1a1a !important; border: 1px solid rgba(0,0,0,0.06) !important; }
+
+  /* Timestamps, small/meta text */
+  [data-theme="light"] .time, 
+  [data-theme="light"] .meta, 
+  [data-theme="light"] .note, 
+  [data-theme="light"] small { color: #334155 !important; }
+
+  /* Live badges / alerts */
+  [data-theme="light"] .live-indicator, 
+  [data-theme="light"] .pulsing-label { color: #b42318 !important; }
+
+  /* SVG icons that were hard-coded white */
+  [data-theme="light"] svg [fill="#fff"],
+  [data-theme="light"] svg [fill="#FFFFFF"] { fill: #111111 !important; }
+  [data-theme="light"] svg,
+  [data-theme="light"] .icon { color: #0b1220 !important; }
+
+  /* Cards/tiles inside right column */
+  [data-theme="light"] .tile { background: #ffffff !important; color: #0b1220 !important; border: 1px solid #e6ecf3 !important; }
+  [data-theme="light"] .tile .tile-icon { background: #fed351 !important; color:#111 !important; }
+
+  /* News modal iframe wrapper (if any) */
+  [data-theme="light"] .news-iframe-wrap { background: #ffffff !important; }
+
+  /* Ensure headings don't fade */
+  [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, 
+  [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 { color: #0b1220 !important; }
+</style>
+<style id="theme-contrast-hardpatch">
+  /* Global: make sure UA picks light palette for forms etc. */
+  [data-theme="light"] { color-scheme: light; }
+
+  /* 1) Kill lingering white text set inline */
+  [data-theme="light"] [style*="color:#fff"],
+  [data-theme="light"] [style*="color: #fff"],
+  [data-theme="light"] [style*="color:#FFF"],
+  [data-theme="light"] [style*="color: #FFF"],
+  [data-theme="light"] [style*="color:#ffffff"],
+  [data-theme="light"] [style*="color: #ffffff"],
+  [data-theme="light"] [style*="color:#FFFFFF"],
+  [data-theme="light"] [style*="color: #FFFFFF"] { color: #0b1220 !important; }
+
+  /* 2) Labels/badges that may be white-on-yellow or white-on-light */
+  [data-theme="light"] .badge, 
+  [data-theme="light"] .label, 
+  [data-theme="light"] .tag, 
+  [data-theme="light"] .chip, 
+  [data-theme="light"] .pill {
+    background: #f6f8fc !important; 
+    color: #0b1220 !important; 
+    border: 1px solid #e6ecf3 !important;
+  }
+
+  /* 3) Any title elements that used brand-yellow as text */
+  [data-theme="light"] .recent-title,
+  [data-theme="light"] .side-social-title,
+  [data-theme="light"] .side-listen-title {
+    color: #0b1220 !important;
+  }
+
+  /* 4) Links on light panels */
+  [data-theme="light"] .left-panel a,
+  [data-theme="light"] .right-panel a,
+  [data-theme="light"] .modal-content a,
+  [data-theme="light"] .tile a { color: #0b6b73 !important; }
+
+  /* 5) Buttons that might be transparent/ghost */
+  [data-theme="light"] .btn, 
+  [data-theme="light"] .button, 
+  [data-theme="light"] button,
+  [data-theme="light"] #mute-toggle,
+  [data-theme="light"] .side-social-btn {
+    background: #fed351 !important;
+    color: #1a1a1a !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    text-shadow: none !important;
+  }
+
+  /* 6) Tables, list dividers */
+  [data-theme="light"] table { background: #ffffff !important; color: #0b1220 !important; }
+  [data-theme="light"] th, 
+  [data-theme="light"] td, 
+  [data-theme="light"] ul#recent-list li { border-color: #e6ecf3 !important; }
+
+  /* 7) Clock & small text */
+  [data-theme="light"] #clockTime { color: #111827 !important; }
+  [data-theme="light"] #clockDate { color: #ad7e00 !important; } /* deeper yellow for contrast */
+  [data-theme="light"] .time, 
+  [data-theme="light"] small, 
+  [data-theme="light"] .meta, 
+  [data-theme="light"] .note { color: #334155 !important; }
+
+  /* 8) Hard-coded white SVGs/icons */
+  [data-theme="light"] svg [fill="#fff"],
+  [data-theme="light"] svg [fill="#FFF"],
+  [data-theme="light"] svg [fill="#ffffff"],
+  [data-theme="light"] svg [fill="#FFFFFF"] { fill: #0b1220 !important; }
+  [data-theme="light"] .icon, [data-theme="light"] svg { color: #0b1220 !important; }
+
+  /* 9) Card/tiles backgrounds */
+  [data-theme="light"] .tile, 
+  [data-theme="light"] #now-playing-card, 
+  [data-theme="light"] .card { 
+    background: #ffffff !important; 
+    color: #0b1220 !important; 
+    border: 1px solid #e6ecf3 !important; 
+    box-shadow: 0 3px 14px rgba(0,0,0,0.06) !important;
+  }
+
+  /* 10) Navbar links that were white text */
+  [data-theme="light"] .navbar a { color: #1a1a1a !important; }
+
+  /* 11) Force transparent panels that were using white text */
+  [data-theme="light"] .panel, 
+  [data-theme="light"] .panel-ghost, 
+  [data-theme="light"] .section,
+  [data-theme="light"] .strip-container { color: #0b1220 !important; }
+
+  /* 12) Focus visibility for keyboard nav in light mode */
+  [data-theme="light"] a:focus, 
+  [data-theme="light"] button:focus, 
+  [data-theme="light"] input:focus, 
+  [data-theme="light"] select:focus, 
+  [data-theme="light"] textarea:focus {
+    outline: 2px solid #0b6b73 !important;
+    outline-offset: 2px !important;
+    box-shadow: none !important;
+  }
+</style>
+<script id="theme-mode-script">
+(function(){
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  const initial = saved || (prefersLight ? 'light' : 'dark');
+  root.setAttribute('data-theme', initial);
+
+  function labelFor(theme) {
+    return theme === 'light' ? { emoji: '🌙', text: 'Dark' } : { emoji: '☀️', text: 'Light' };
+  }
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      const l = labelFor(t);
+      const emoji = btn.querySelector('.mode-emoji');
+      const text = btn.querySelector('.mode-label');
+      if (emoji) emoji.textContent = l.emoji;
+      if (text) text.textContent = l.text;
+      btn.setAttribute('aria-pressed', t === 'dark');
+      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    const current = root.getAttribute('data-theme') || initial;
+    setTheme(current);
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      btn.addEventListener('click', function(){
+        const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
+        setTheme(next);
+      });
+    }
+  });
+})();
+</script>
+<style id="light-mode-contrast-tune">
+  /* Headings, titles in light mode: use dark ink */
+  [data-theme="light"] h1, 
+  [data-theme="light"] h2, 
+  [data-theme="light"] h3, 
+  [data-theme="light"] h4, 
+  [data-theme="light"] h5, 
+  [data-theme="light"] h6,
+  [data-theme="light"] .recent-title,
+  [data-theme="light"] .side-social-title,
+  [data-theme="light"] .side-listen-title {
+    color: #0b1220 !important;
+  }
+
+  /* Buttons/nav in light mode: teal background */
+  [data-theme="light"] button, 
+  [data-theme="light"] .navbar a,
+  [data-theme="light"] .side-social-btn,
+  [data-theme="light"] #mute-toggle {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+  }
+
+  /* Borders/dividers in light mode */
+  [data-theme="light"] hr, 
+  [data-theme="light"] .divider, 
+  [data-theme="light"] ul#recent-list li, 
+  [data-theme="light"] table, 
+  [data-theme="light"] th, 
+  [data-theme="light"] td {
+    border-color: var(--border) !important;
+  }
+
+  /* Keep yellow for icons, small accents */
+  [data-theme="light"] .icon,
+  [data-theme="light"] svg .accent,
+  [data-theme="light"] .accent {
+    color: var(--brand) !important;
+    fill: var(--brand) !important;
+  }
+
+  /* Remove yellow from clock date text, use dark teal instead */
+  [data-theme="light"] #clockDate {
+    color: var(--accent) !important;
+  }
+</style>
+<style id="lightmode-hardpatch-yellow">
+  /* In light mode, force replace all yellow text with dark ink, except icons/accents */
+  [data-theme="light"] *:not(.icon):not(.accent):not(svg):not(path):not(use):not(.mode-emoji) {
+    /* If it's yellow, make it dark ink */
+  }
+  /* Target yellow text color inline or in CSS */
+  [data-theme="light"] [style*="color:#fed351"],
+  [data-theme="light"] [style*="color: #fed351"],
+  [data-theme="light"] [style*="color:#e5b930"],
+  [data-theme="light"] [style*="color: #e5b930"],
+  [data-theme="light"] [style*="color:#c89d00"],
+  [data-theme="light"] [style*="color: #c89d00"],
+  [data-theme="light"] .text-yellow,
+  [data-theme="light"] .recent-title,
+  [data-theme="light"] .side-social-title,
+  [data-theme="light"] .side-listen-title,
+  [data-theme="light"] .label-yellow {
+    color: #0b1220 !important;
+  }
+  /* Target yellow SVG fills/strokes for text shapes */
+  [data-theme="light"] svg [fill="#fed351"],
+  [data-theme="light"] svg [fill="#e5b930"],
+  [data-theme="light"] svg [fill="#c89d00"],
+  [data-theme="light"] svg [stroke="#fed351"],
+  [data-theme="light"] svg [stroke="#e5b930"],
+  [data-theme="light"] svg [stroke="#c89d00"] {
+    fill: #0b1220 !important;
+    stroke: #0b1220 !important;
+  }
+  /* Keep yellow for icons or explicit accent class */
+  [data-theme="light"] .icon,
+  [data-theme="light"] .accent,
+  [data-theme="light"] svg.icon,
+  [data-theme="light"] svg .accent {
+    color: #c89d00 !important;
+    fill: #c89d00 !important;
+    stroke: #c89d00 !important;
+  }
+</style>
+<style id="socials-yellow-style">
+  /* === SOCIAL BUTTONS: yellow background, high contrast text/icons === */
+  .side-social-btn,
+  .follow-icons .social-btn,
+  .side-social .social-btn {
+    background: var(--brand) !important; /* yellow background */
+    color: #111 !important;              /* dark ink text */
+    border: 1px solid rgba(0,0,0,0.12) !important;
+  }
+  /* Icons on yellow should be dark for contrast */
+  .side-social-btn .icon, .side-social-btn svg,
+  .follow-icons .social-btn .icon, .follow-icons .social-btn svg,
+  .side-social .social-btn .icon, .side-social .social-btn svg {
+    color: #111 !important;
+    fill: #111 !important;
+    stroke: #111 !important;
+  }
+  .side-social-btn:hover, .side-social-btn:focus,
+  .follow-icons .social-btn:hover, .follow-icons .social-btn:focus,
+  .side-social .social-btn:hover, .side-social .social-btn:focus {
+    filter: brightness(0.97);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  }
+
+  /* Keep the 'Follow' section heading readable in light mode */
+  [data-theme="light"] .side-social-title { color: #0b1220 !important; }
+
+  /* === EXTRA LEGIBILITY SWEEPS (light mode) === */
+  /* Kill any leftover white-on-white in common areas */
+  [data-theme="light"] .modal-content [style*="color:#fff"],
+  [data-theme="light"] .modal-content [style*="color: #fff"],
+  [data-theme="light"] .left-panel [style*="color:#fff"],
+  [data-theme="light"] .left-panel [style*="color: #fff"],
+  [data-theme="light"] .right-panel [style*="color:#fff"],
+  [data-theme="light"] .right-panel [style*="color: #fff"] {
+    color: #0b1220 !important;
+  }
+
+  /* Presenter names, show titles, schedule times */
+  [data-theme="light"] .presenter-name,
+  [data-theme="light"] .show-title,
+  [data-theme="light"] .schedule time,
+  [data-theme="light"] .badge,
+  [data-theme="light"] .tag,
+  [data-theme="light"] .chip {
+    color: #0b1220 !important;
+    background: #f7f9fc !important;
+    border: 1px solid #e6ecf3 !important;
+  }
+
+  /* Links in content areas should use teal for clarity */
+  [data-theme="light"] .left-panel a,
+  [data-theme="light"] .right-panel a,
+  [data-theme="light"] .modal-content a {
+    color: var(--accent) !important;
+  }
+
+  /* Now Playing headings/labels */
+  [data-theme="light"] #now-playing-card h3,
+  [data-theme="light"] #now-playing-card h4,
+  [data-theme="light"] #now-playing-card .label {
+    color: #0b1220 !important;
+  }
+
+  /* Ensure recent list artist/title are readable */
+  [data-theme="light"] ul#recent-list span.info { color: #0b1220 !important; }
+  [data-theme="light"] ul#recent-list span.time { color: #6a778a !important; }
+
+  /* If any remaining yellow text sneaks in, force it dark */
+  [data-theme="light"] [style*="color:#fed351"],
+  [data-theme="light"] [style*="color: #fed351"],
+  [data-theme="light"] [style*="color:#e5b930"],
+  [data-theme="light"] [style*="color: #e5b930"],
+  [data-theme="light"] [style*="color:#c89d00"],
+  [data-theme="light"] [style*="color: #c89d00"] {
+    color: #0b1220 !important;
+  }
+</style>
+<style id="np-social-rnh-specifics">
+  /* === 1) NOW PLAYING: ensure song text is dark in light mode === */
+  [data-theme="light"] #now-playing-card,
+  [data-theme="light"] #now-playing-card * {
+    text-shadow: none !important;
+  }
+  /* Common class/id guesses for title/artist; adjust as needed to your markup */
+  [data-theme="light"] #now-playing-card .song,
+  [data-theme="light"] #now-playing-card .title,
+  [data-theme="light"] #now-playing-card .track-title,
+  [data-theme="light"] #now-playing-card .artist,
+  [data-theme="light"] #now-playing-card .np-title,
+  [data-theme="light"] #now-playing-card .np-artist,
+  [data-theme="light"] #now-playing-card h2,
+  [data-theme="light"] #now-playing-card h3,
+  [data-theme="light"] #now-playing-card p,
+  [data-theme="light"] #now-playing-card span.info {
+    color: #0b1220 !important;
+  }
+  /* Kill any inline white in Now Playing block */
+  [data-theme="light"] #now-playing-card [style*="color:#fff"],
+  [data-theme="light"] #now-playing-card [style*="color: #fff"] {
+    color: #0b1220 !important;
+  }
+  /* Links inside Now Playing use teal for clarity */
+  [data-theme="light"] #now-playing-card a {
+    color: var(--accent) !important;
+  }
+
+  /* === 2) SOCIAL BUTTONS: keep yellow backgrounds with dark text/icons === */
+  .side-social-btn,
+  .follow-icons .social-btn,
+  .side-social .social-btn {
+    background: var(--brand) !important;
+    color: #111 !important;
+    border: 1px solid rgba(0,0,0,0.12) !important;
+  }
+  .side-social-btn .icon, .side-social-btn svg,
+  .follow-icons .social-btn .icon, .follow-icons .social-btn svg,
+  .side-social .social-btn .icon, .side-social .social-btn svg {
+    color: #111 !important;
+    fill: #111 !important;
+    stroke: #111 !important;
+  }
+
+  /* === 3) RADIO NEWS HUB: make text/links teal in light mode === */
+  [data-theme="light"] #rnh-news-list,
+  [data-theme="light"] #rnh-news-list * {
+    color: var(--accent) !important;
+  }
+  /* Headlines bold in dark ink; links teal */
+  [data-theme="light"] #rnh-news-list .headline,
+  [data-theme="light"] #rnh-news-list h3,
+  [data-theme="light"] #rnh-news-list h4 {
+    color: #0b1220 !important;
+  }
+  [data-theme="light"] #rnh-news-list a {
+    color: var(--accent) !important;
+  }
+</style>
+<style id="socials-follow-lastfm-yellow">
+  /* Apply to both Follow Essential Radio and Last.fm sections */
+  .follow-icons .social-btn,
+  .follow-icons a,
+  .follow-icons button,
+  .lastfm-icons .social-btn,
+  .lastfm-icons a,
+  .lastfm-icons button {
+    background: var(--brand) !important;   /* yellow background */
+    color: #111 !important;                /* dark text for contrast */
+    border: 1px solid rgba(0,0,0,0.12) !important;
+  }
+  /* Icons/glyphs inside those buttons */
+  .follow-icons .social-btn .icon, .follow-icons .social-btn svg,
+  .follow-icons a .icon, .follow-icons a svg,
+  .follow-icons button .icon, .follow-icons button svg,
+  .lastfm-icons .social-btn .icon, .lastfm-icons .social-btn svg,
+  .lastfm-icons a .icon, .lastfm-icons a svg,
+  .lastfm-icons button .icon, .lastfm-icons button svg {
+    color: #111 !important;
+    fill: #111 !important;
+    stroke: #111 !important;
+  }
+  /* Hover/focus feedback */
+  .follow-icons .social-btn:hover, .follow-icons .social-btn:focus,
+  .follow-icons a:hover, .follow-icons a:focus,
+  .follow-icons button:hover, .follow-icons button:focus,
+  .lastfm-icons .social-btn:hover, .lastfm-icons .social-btn:focus,
+  .lastfm-icons a:hover, .lastfm-icons a:focus,
+  .lastfm-icons button:hover, .lastfm-icons button:focus {
+    filter: brightness(0.97);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    outline: none;
+  }
+</style>
+<style id="socials-follow-lastfm-yellow-strong">
+  /* Force yellow backgrounds in LIGHT MODE for Follow + Last.fm buttons/links */
+  [data-theme="light"] :is(.follow-icons, .side-social, .lastfm-icons) :is(a, button, .social-btn) {
+    background-color: var(--brand) !important;
+    border-color: rgba(0,0,0,0.14) !important;
+    color: #111 !important;
+  }
+  [data-theme="light"] :is(.follow-icons, .side-social, .lastfm-icons) :is(a, button, .social-btn) :is(svg, .icon) {
+    color: #111 !important;
+    fill: #111 !important;
+    stroke: #111 !important;
+  }
+  /* If something earlier forces teal on all buttons in light mode, outrank it here */
+  [data-theme="light"] .navbar :is(a, button).theme-navbtn {
+    /* Keep the nav theme toggle teal — unaffected */
+  }
+  /* Counter any inline yellow/white text overrides inside these buttons */
+  [data-theme="light"] :is(.follow-icons, .side-social, .lastfm-icons) :is(a, button, .social-btn) [style*="color:#fff"],
+  [data-theme="light"] :is(.follow-icons, .side-social, .lastfm-icons) :is(a, button, .social-btn) [style*="color: #fff"],
+  [data-theme="light"] :is(.follow-icons, .side-social, .lastfm-icons) :is(a, button, .social-btn) [style*="color:#ffffff"],
+  [data-theme="light"] :is(.follow-icons, .side-social, .lastfm-icons) :is(a, button, .social-btn) [style*="color: #ffffff"] {
+    color: #111 !important;
+  }
+  /* Compact padding so they don't dominate */
+  [data-theme="light"] :is(.follow-icons, .side-social, .lastfm-icons) :is(a, button, .social-btn) {
+    padding: 6px 10px !important;
+  }
+</style>
+<style id="lastfm-keep-yellow">
+  /* Keep the Last.fm circle yellow even in light mode overrides */
+  /* Targets the inline icon injected in Recent list: <a href="...last.fm..." class="hour-nav prev-hour hour-nav next-hour"><svg><circle fill="#fed351"> */
+  a[href*="last.fm"] svg circle[fill="#fed351"],
+  a[href*="last.fm"] svg circle[fill="#e5b930"],
+  a[href*="last.fm"] svg circle[fill="#c89d00"] {
+    fill: var(--brand) !important;
+  }
+  /* Ensure the glyph path remains visible */
+  a[href*="last.fm"] svg path { fill: #111 !important; stroke: none !important; }
+</style>
+<style id="nowplaying-inline-white-fix">
+  /* In light mode, convert inline 'color:white' in Now Playing to dark ink */
+  [data-theme="light"] #now-playing-card [style*="color:white"],
+  [data-theme="light"] #now-playing-card [style*="color: white"] {
+    color: #0b1220 !important;
+  }
+</style>
+<style id="navbar-gap-fix">
+  /* Trim right padding now that the toggle is absolutely positioned */
+  .navbar {
+    padding-right: 16px !important;
+    margin-bottom: 0 !important; /* no extra gap below navbar */
+  }
+  /* Ensure main block starts immediately after navbar */
+  .strip-container,
+  .main,
+  .content,
+  .wrapper {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  /* Kill any spacer divs used previously for top bars */
+  .nav-spacer,
+  .top-spacer {
+    display: none !important;
+    height: 0 !important;
+  }
+</style>
+<style id="navbar-compact">
+  /* Base navbar compaction */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;     /* center nav items */
+    gap: 10px;
+    flex-wrap: wrap;             /* allow wrapping instead of horizontal scroll */
+    overflow-x: hidden;          /* belt-and-braces */
+  }
+  /* Compact nav links/buttons (not the theme toggle which is absolute) */
+  .navbar a:not(.theme-navbtn),
+  .navbar button:not(.theme-navbtn) {
+    padding: 6px 10px;
+    font-size: 13px;
+    line-height: 1.2;
+    border-radius: 8px;
+    white-space: nowrap;         /* keep each item on one line */
+    max-width: 100%;
+  }
+
+  /* Theme toggle stays absolute (defined earlier), but shrink its text a touch */
+  .navbar .theme-navbtn {
+    font-size: 12px;
+    padding: 3px 7px;
+  }
+
+  /* Medium screens: tighten further */
+  @media (max-width: 900px) {
+    .navbar { gap: 8px; }
+    .navbar a:not(.theme-navbtn),
+    .navbar button:not(.theme-navbtn) {
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+  }
+  /* Small screens: tighter again; hide long labels if needed */
+  @media (max-width: 600px) {
+    .navbar { gap: 6px; }
+    .navbar a:not(.theme-navbtn),
+    .navbar button:not(.theme-navbtn) {
+      padding: 4px 7px;
+      font-size: 11px;
+    }
+    /* Optional: hide text on very long items, show ellipsis */
+    .navbar a:not(.theme-navbtn),
+    .navbar button:not(.theme-navbtn) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  /* Very narrow: icon-first UX; hide labels inside nav items if they have .label spans */
+  @media (max-width: 420px) {
+    .navbar .label { display: none; }
+  }
+</style>
+<style id="theme-toggle-nav-style">
+  .navbar { position: relative; }
+  .navbar .theme-navbtn {
+    position: absolute;
+    right: 20px; /* spacing from edge */
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 100%; /* match full navbar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px; /* horizontal padding only */
+    font-size: 12px;
+    border-radius: 0; /* match rectangular navbar items */
+    z-index: 5;
+    background: var(--accent) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+  }
+  [data-theme="light"] .navbar .theme-navbtn {
+    background: #0b6b73 !important;
+    color: #fff !important;
+    border-color: rgba(0,0,0,0.10) !important;
+  }
+  @media (max-width: 480px) {
+    .navbar .theme-navbtn .mode-label { display: none; }
+    .navbar .theme-navbtn { padding: 0 8px; }
+  }
+</style>
+<style id="wx-icon-light-fix">
+  /* OpenWeather PNGs were being inverted by generic light-mode rules.
+     Restore them to normal in LIGHT mode so clouds etc. render correctly. */
+  [data-theme="light"] #wxWrap img.forecast-icon,
+  [data-theme="light"] #wxWrap img[src*="openweathermap.org/img/wn/"] {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    opacity: 1 !important;
+  }
+  /* Ensure no unintended colorization of PNG icons */
+  [data-theme="light"] #wxWrap .forecast-icon {
+    background: transparent !important;
+  }
+</style>
+<style>
+/* === Quick tweak: force white text for RNH heading and 'Additional Ways to Listen' captions === */
+#rnh, #rnh *,
+#rnh-widget, #rnh-widget *,
+#rnh-news, #rnh-news *,
+#rnh-news-container, #rnh-news-container *,
+#newsModal .rnh-title, #newsModal .modal-title.rnh-title,
+.rnh-title, .rnh-heading,
+#right-panel h3:has(span[data-source='rnh']),
+#right-panel h3[data-section='rnh'] {
+  color: #fff !important;
+}
+
+/* Captions under 'Additional Ways to Listen' tiles */
+#listen-tiles .tile .caption,
+#listen-tiles .tile .label,
+#listen-tiles .tile small,
+#listen-tiles .tile p,
+#listen-tiles .tile span.caption,
+#additional-ways .tile .caption,
+#additional-ways .tile p,
+#additional-ways small,
+#additional-ways .tile .label,
+.addl-ways .tile .caption,
+.addl-ways .tile p {
+  color: #fff !important;
+}
+
 </style>
 <style id="dark-theme-overrides">
 
@@ -951,6 +1942,509 @@ footer, .footer {
 
 
 
+/* === RNH story text to white === */
+#rnh-news-list,
+#rnh-news-list *,
+#rnh .rnh-story,
+#rnh .rnh-story *,
+#rnh .story,
+#rnh .story *,
+.rnh-story, .rnh-story *,
+#right-panel .rnh-item, #right-panel .rnh-item *,
+#newsModal .rnh-item, #newsModal .rnh-item *,
+#newsModal #rnh-news-list, #newsModal #rnh-news-list *,
+#rnh-news-list a, #rnh-news-list p, #rnh-news-list li, #rnh-news-list small, #rnh-news-list span {
+  color: #fff !important;
+}
+
+</style>
+<style id="rnh-date-accent">
+
+/* === RNH dates in yellow === */
+#rnh, #right-panel, #newsModal {
+  --rnh-accent: var(--er-accent, #fed351);
+}
+/* Target common date/time elements in RNH widgets (panel + modal) */
+#rnh-news-list time,
+#rnh time,
+#rnh .date, #rnh .rnh-date, #rnh .pub-date, #rnh .posted-on, #rnh .meta .date,
+#rnh-news-list .date, #rnh-news-list .rnh-date, #rnh-news-list .pub-date, #rnh-news-list .posted-on,
+#right-panel .rnh-item time, #right-panel .rnh-item .date, #right-panel .rnh-item .rnh-date, #right-panel .rnh-item .pub-date,
+#newsModal .rnh-item time, #newsModal .rnh-item .date, #newsModal .rnh-item .rnh-date, #newsModal .rnh-item .pub-date,
+#newsModal #rnh-news-list time,
+#newsModal #rnh-news-list .date,
+#rnh-news-list small.time, #rnh-news-list small.date,
+#rnh-news-list .meta time, #rnh-news-list .meta .date {
+  color: var(--rnh-accent) !important;
+}
+
+</style>
+<style id="rnh-date-fix">
+/* === Force RNH dates to yellow === */
+#rnh-news-list .rnh-date, #rnh-news-list #rnh-news-list .rnh-date, #right-panel .rnh-item #rnh-news-list .rnh-date, #newsModal .rnh-item #rnh-news-list .rnh-date {
+  color: var(--er-accent, #fed351) !important;
+}
+</style>
+<style id="rnh-date-final">
+/* === FINAL: Force RNH dates to yellow (override white rules) === */
+#rnh-news-list #rnh-news-list .rnh-date,
+#right-panel .rnh-item #rnh-news-list .rnh-date,
+#newsModal .rnh-item #rnh-news-list .rnh-date,
+#rnh-news-list .rnh-date { color: var(--er-accent, #fed351) !important; }
+</style>
+<style id="rnh-date-structural">
+/* === Structural target: make the date (2nd child div) yellow === */
+#rnh-news-list > div > div,
+#newsModal #rnh-news-list > div > div {
+  color: var(--er-accent, #fed351) !important;
+}
+</style>
+<style id="gradient-restore">
+/* Let the page gradient show through */
+main, .main, .content, .wrapper, #page, #app {
+  background: transparent !important;
+}
+</style>
+<style id="gradient-assert">
+/* Ensure the site gradient is visible */
+html { background: transparent !important; }
+body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
+</style>
+<style id="clock-red-fix">
+/* === Enforce original red clock time === */
+#clockTime { color: #e53935 !important; }
+</style>
+<style id="light-mode-readability">
+/* ===== Light Mode Readability Fixes (Now Playing & Recently Played) ===== */
+:root[data-theme="light"] #now-playing,
+:root[data-theme="light"] #now-playing *,
+:root[data-theme="light"] #now-playing-card,
+:root[data-theme="light"] #nowplaying-inline-white-fix {
+  color: #111 !important;
+}
+
+:root[data-theme="light"] #now-playing-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important; /* Tailwind slate-200-ish */
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+
+:root[data-theme="light"] .recently-played-container,
+:root[data-theme="light"] .recent-title {
+  color: #111 !important;
+}
+
+:root[data-theme="light"] ul#recent-list,
+:root[data-theme="light"] ul#recent-list * {
+  color: #111 !important;
+}
+
+:root[data-theme="light"] ul#recent-list span.time {
+  color: #555 !important;
+}
+
+/* Links inside recent list in light mode */
+:root[data-theme="light"] ul#recent-list a {
+  color: #111 !important;
+  text-decoration: none;
+}
+
+/* Optional: subtle separators in light mode */
+:root[data-theme="light"] ul#recent-list li {
+  border-bottom: 1px solid #eee !important;
+}
+</style>
+<style id="light-mode-components">
+:root[data-theme="light"] #player,
+:root[data-theme="light"] .player,
+:root[data-theme="light"] #now-playing,
+:root[data-theme="light"] #now-playing-card {
+  background: var(--er-card) !important;
+  color: var(--er-text) !important;
+  border: 1px solid var(--er-border) !important;
+}
+:root[data-theme="light"] ul#recent-list,
+:root[data-theme="light"] ul#recent-list * {
+  color: var(--er-text) !important;
+}
+:root[data-theme="light"] .recent-title { color: var(--er-heading) !important; }
+</style>
+<style id="bigger-icons-in-circles">
+/* === Enlarge icons within yellow circles (social + tiles) === */
+/* Social buttons: keep circle size, scale SVG up inside */
+.side-social-btn svg {
+  width: 78% !important;
+  height: 78% !important;
+}
+
+/* 'Additional Ways to Listen' tile icons */
+.tile-icon svg {
+  width: 82% !important;
+  height: 82% !important;
+}
+
+/* If any tile icons use <img>, scale them too */
+.tile-icon img {
+  width: 82% !important;
+  height: 82% !important;
+  object-fit: contain !important;
+}
+
+/* Ensure the circle remains perfectly centered */
+.side-social-btn, .tile-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+</style>
+<style id="bigger-icons-tweak">
+/* === Tweak: slightly reduce icon scale inside circles === */
+.side-social-btn svg { width: 70% !important; height: 70% !important; }
+.tile-icon svg { width: 76% !important; height: 76% !important; }
+.tile-icon img { width: 76% !important; height: 76% !important; }
+</style>
+<style id="light-modal-fixes">
+/* ===== Light Mode: modal readability fixes ===== */
+:root[data-theme="light"] .modal-content,
+:root[data-theme="light"] .modal .modal-content {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+}
+
+/* Ensure all text inside modals is readable in light mode */
+:root[data-theme="light"] .modal-content h1,
+:root[data-theme="light"] .modal-content h2,
+:root[data-theme="light"] .modal-content h3,
+:root[data-theme="light"] .modal-content h4,
+:root[data-theme="light"] .modal-content h5,
+:root[data-theme="light"] .modal-content h6,
+:root[data-theme="light"] .modal-content p,
+:root[data-theme="light"] .modal-content li,
+:root[data-theme="light"] .modal-content dt,
+:root[data-theme="light"] .modal-content dd,
+:root[data-theme="light"] .modal-content span,
+:root[data-theme="light"] .modal-content a {
+  color: #111827 !important;
+}
+
+/* RNH in modal: dark text for stories in light mode; keep dates yellow */
+:root[data-theme="light"] #newsModal #rnh-news-list,
+:root[data-theme="light"] #newsModal #rnh-news-list * {
+  color: #111827 !important;
+}
+:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+:root[data-theme="light"] #newsModal #rnh-news-list time {
+  color: var(--er-accent, #fed351) !important;
+}
+
+/* Scope previous RNH white text to dark mode only */
+:root[data-theme="dark"] #rnh-news-list,
+:root[data-theme="dark"] #rnh-news-list *,
+:root[data-theme="dark"] #newsModal #rnh-news-list,
+:root[data-theme="dark"] #newsModal #rnh-news-list * {
+  color: #fff !important;
+}
+</style>
+<style id="light-mode-modal-force">
+/* === Force light backgrounds for all modal contents in light mode === */
+:root[data-theme="light"] #aboutModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #presentersModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #scheduleModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #requestsModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #newsModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #travelModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #localModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #playlistModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #listenModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #searchModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+:root[data-theme="light"] #contactModal .modal-content { background:#ffffff !important; color:#111827 !important; border:1px solid #e5e7eb !important; }
+</style>
+<style id="light-modal-hard-override">
+/* ---- FINAL OVERRIDE: Light mode modals must be white ---- */
+:root[data-theme="light"] .modal-content,
+:root[data-theme="light"] .modal .modal-content,
+:root[data-theme="light"] #aboutModal .modal-content,
+:root[data-theme="light"] #presentersModal .modal-content,
+:root[data-theme="light"] #scheduleModal .modal-content,
+:root[data-theme="light"] #requestsModal .modal-content,
+:root[data-theme="light"] #newsModal .modal-content,
+:root[data-theme="light"] #travelModal .modal-content,
+:root[data-theme="light"] #localModal .modal-content,
+:root[data-theme="light"] #playlistModal .modal-content,
+:root[data-theme="light"] #listenModal .modal-content,
+:root[data-theme="light"] #searchModal .modal-content,
+:root[data-theme="light"] #contactModal .modal-content,
+:root[data-theme="light"] .presenter-modal .modal-content {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+  z-index: 10002 !important;
+}
+
+/* Also ensure any nested cards inside modals use light tones */
+:root[data-theme="light"] .modal-content .card,
+:root[data-theme="light"] .modal-content .panel,
+:root[data-theme="light"] .modal-content .tile {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+</style>
+<style id="light-modal-overlay-fix">
+/* === Light mode: make modal overlay light, not black === */
+:root[data-theme="light"] .modal {
+  background: rgba(255,255,255,0.7) !important; /* light glassy backdrop */
+}
+/* Ensure scroll blockers don't add dark layers */
+:root[data-theme="light"] body.modal-open::before,
+:root[data-theme="light"] .modal::before {
+  background: transparent !important;
+}
+
+:root[data-theme="light"] .modal-overlay,
+:root[data-theme="light"] .modal-backdrop,
+:root[data-theme="light"] .backdrop {
+  background: rgba(255,255,255,0.7) !important;
+}
+</style>
+<style id="theme-overlay-bg">
+/* Theme-scoped modal overlay backgrounds */
+:root[data-theme="dark"] .modal { background: rgba(0,0,0,0.6) !important; }
+:root[data-theme="light"] .modal { background: rgba(255,255,255,0.75) !important; }
+</style>
+<style id="light-modal-theme-sync">
+/* Light mode: make modals match the main page */
+:root[data-theme="light"] .modal {
+  background: rgba(255,255,255,0.78) !important; /* light overlay */
+}
+
+/* Modal panel uses light palette */
+:root[data-theme="light"] .modal-content {
+  background: var(--er-panel, #ffffff) !important;
+  color: var(--er-text, #111827) !important;
+  border: 1px solid var(--er-border, #e5e7eb) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+}
+
+/* Ensure all text inside is readable in light mode */
+:root[data-theme="light"] .modal-content h1,
+:root[data-theme="light"] .modal-content h2,
+:root[data-theme="light"] .modal-content h3,
+:root[data-theme="light"] .modal-content h4,
+:root[data-theme="light"] .modal-content h5,
+:root[data-theme="light"] .modal-content h6,
+:root[data-theme="light"] .modal-content p,
+:root[data-theme="light"] .modal-content li,
+:root[data-theme="light"] .modal-content dt,
+:root[data-theme="light"] .modal-content dd,
+:root[data-theme="light"] .modal-content span,
+:root[data-theme="light"] .modal-content a {
+  color: var(--er-text, #111827) !important;
+}
+
+/* Any nested cards/panels/tiles inside a modal should also be light */
+:root[data-theme="light"] .modal-content .card,
+:root[data-theme="light"] .modal-content .panel,
+:root[data-theme="light"] .modal-content .tile {
+  background: var(--er-card, #ffffff) !important;
+  color: var(--er-text, #111827) !important;
+  border-color: var(--er-border, #e5e7eb) !important;
+}
+
+/* Scope any previous dark panel rule to dark mode only (belt-and-braces) */
+:root[data-theme="dark"] .modal-content,
+:root[data-theme="dark"] .drawer,
+:root[data-theme="dark"] .sidebar,
+:root[data-theme="dark"] .right-panel,
+:root[data-theme="dark"] #right-panel {
+  background: var(--er-panel, #12141a) !important;
+  color: var(--er-text, #ffffff) !important;
+  border-color: var(--er-border, #272a33) !important;
+}
+</style>
+<style id="search-hour-nav-white">
+/* Make 'Previous hour' / 'Next hour' controls white for better contrast */
+#searchModal .hour-nav a,
+#searchModal .hour-nav button,
+#searchModal .hour-next,
+#searchModal .hour-prev,
+#searchModal .next-hour,
+#searchModal .prev-hour {
+  color: #ffffff !important;
+}
+</style>
+<style id="search-hour-nav-final">
+#searchModal .hour-nav { color: #ffffff !important; font-weight: 600; }
+#searchModal .hour-nav:hover { opacity: 0.9; }
+</style>
+<style id="search-hour-nav-id-override">
+/* Force white text on specific hour nav buttons */
+#searchModal #prevHour,
+#searchModal #nextHour { color: #ffffff !important; font-weight: 600; }
+</style>
+<style id="search-reset-white">
+#searchModal #prevHour,
+#searchModal #nextHour { color: #ffffff !important; font-weight: 600; }
+#searchModal #reset, 
+#searchModal #resetBtn, 
+#searchModal #resetButton, 
+#searchModal #resetSearch, 
+#searchModal #searchReset { color: #ffffff !important; font-weight: 600; }
+</style>
+<style id="rnh-dates-dark-restore">
+:root[data-theme="dark"] #rnh-news-list .rnh-date,
+:root[data-theme="dark"] #rnh-news-list time,
+:root[data-theme="dark"] #right-panel .rnh-item .rnh-date,
+:root[data-theme="dark"] #right-panel .rnh-item time {
+  color: var(--er-accent, #fed351) !important;
+}
+</style>
+<style id="nav-gap-reduce">
+/* Pull content up slightly below the nav */
+main, .main, .content, #content, .page, #page, .wrapper {
+  margin-top: 0.75rem !important; /* reduce top gap */
+}
+/* If a hero banner exists, keep a bit more breathing room */
+.hero, .banner { margin-top: 1rem !important; }
+</style>
+<style id="search-news-targeted-light-fixes">
+:root[data-theme="light"] #newsModal,
+:root[data-theme="light"] #newsModal * { color: #111827 !important; }
+:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+:root[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
+:root[data-theme="light"] #newsModal .card,
+:root[data-theme="light"] #newsModal .panel,
+:root[data-theme="light"] #newsModal .tile,
+:root[data-theme="light"] #newsModal .rnh-item,
+:root[data-theme="light"] #newsModal .rnh-story,
+:root[data-theme="light"] #newsModal .inner,
+:root[data-theme="light"] #newsModal .content { background: #ffffff !important; border-color: #e5e7eb !important; }
+</style>
+<style id="nav-gap-reduce-stronger">
+header + *, header + section, header + div, header + main { margin-top: 0.5rem !important; }
+</style>
+<style id="reset-controls-white">
+#searchModal #resetFilters,
+#localModal #localReset {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+</style>
+<style id="nav-gap-fix">
+/* Kill the big spacer after the nav and tighten the gap */
+.header-spacer { height: 0 !important; margin: 0 !important; padding: 0 !important; }
+/* Nudge immediate content up */
+nav + .header-spacer + *, 
+nav + * { margin-top: 1rem !important; }
+/* Keep hero/banner comfortable if present */
+.hero, .banner { margin-top: .75rem !important; }
+</style>
+<style id="darklight-toggle-navbar">
+nav {
+  position: relative;
+}
+nav #theme-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+</style>
+<style id="navbar-scroll-fix">
+@media (max-width: 767px) {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+</style>
+<style id="burger-align-toggle-fix">
+@media (max-width: 991px) {
+  #theme-toggle {
+    float: right;
+    margin-right: 1rem;
+    margin-top: 0.3rem;
+  }
+}
+.navbar-collapse {
+  color: #000 !important;
+}
+.navbar-collapse a {
+  color: #000 !important;
+}
+</style>
+
+<style id="desktop-toggle-realign">
+@media (min-width: 992px) {
+  #theme-toggle {
+    position: absolute;
+    left: max(1rem, 5vw);
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 9999;
+  }
+}
+</style><style>
+/* === Fix: Mobile burger menu text visibility === */
+#burgerDropdown a, #burgerDropdown .menu-link, .burger-dropdown a, .burger-dropdown .menu-link {
+  color: #0b1220 !important;          /* dark text */
+  background: #fed351 !important;     /* brand yellow */
+}
+#burgerDropdown a:hover, #burgerDropdown a:focus,
+#burgerDropdown .menu-link:hover, #burgerDropdown .menu-link:focus,
+.burger-dropdown a:hover, .burger-dropdown a:focus,
+.burger-dropdown .menu-link:hover, .burger-dropdown .menu-link:focus {
+  background: #ffe67c !important;
+  color: #0b1220 !important;
+}
+/* In case a parent sets color to yellow (e.g., .rnh-date), neutralize it within dropdown */
+#burgerDropdown, .burger-dropdown {
+  color: inherit !important;
+}
+</style>
+<style>
+/* === Place theme toggle beside burger on mobile === */
+@media (max-width: 768px) {
+  /* Make navbar a flex row if not already */
+  header .navbar, nav.navbar, .navbar, header nav, .site-header, .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+  /* Treat burger and toggle as a cluster on the right */
+  .burger, .burger-button, #burgerButton, #burger, .hamburger, .menu-toggle {
+    order: 2;
+  }
+  /* Theme toggle */
+  #themeToggle, #theme-toggle, .theme-toggle, .dark-light-toggle, .mode-toggle, #modeToggle {
+    order: 2;
+    margin-left: .5rem;
+  }
+  /* Keep logo to the left */
+  .logo, #logo, .brand, .site-logo {
+    order: 1;
+  }
+  /* Put the right-side controls (burger+toggle) in a wrap if container supports it */
+  .navbar, header .navbar, header nav, .topbar {
+    flex-wrap: nowrap;
+  }
+  /* If toggle was hidden on mobile, reveal it */
+  #themeToggle, #theme-toggle, .theme-toggle, .dark-light-toggle, .mode-toggle, #modeToggle {
+    display: inline-flex !important;
+  }
+  /* Fine-tune vertical alignment */
+  #themeToggle button, #theme-toggle button, .theme-toggle button {
+    height: 36px;
+  }
+}
 </style>
 <style>
 
@@ -1115,6 +2609,283 @@ html[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent
 html[data-theme="light"] #newsModal [style*="border:1px solid #333"] { border: 1px solid #e5e7eb !important; }
 html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important; }
 </style><style id="light-mode-search-news-fixes">
+/* === Song Search (light mode): make menus legible === */
+:root[data-theme="light"] #searchModal input,
+:root[data-theme="light"] #searchModal select,
+:root[data-theme="light"] #searchModal textarea {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Common menu/dropdown containers in search modal */
+:root[data-theme="light"] #searchModal .dropdown-menu,
+:root[data-theme="light"] #searchModal .menu,
+:root[data-theme="light"] #searchModal .listbox,
+:root[data-theme="light"] #searchModal .options,
+:root[data-theme="light"] #searchModal .select-menu,
+:root[data-theme="light"] #searchModal ul,
+:root[data-theme="light"] #searchModal li {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Placeholder contrast */
+:root[data-theme="light"] #searchModal ::placeholder { color: #6b7280 !important; }
+
+/* === Radio News Hub modal (light mode): kill dark inner blocks === */
+:root[data-theme="light"] #newsModal [style*="background"],
+:root[data-theme="light"] #newsModal [style*="background-color"] {
+  background: #ffffff !important;
+}
+
+/* Ensure all common inner containers are light */
+:root[data-theme="light"] #newsModal .card,
+:root[data-theme="light"] #newsModal .panel,
+:root[data-theme="light"] #newsModal .tile,
+:root[data-theme="light"] #newsModal .rnh-item,
+:root[data-theme="light"] #newsModal .rnh-story,
+:root[data-theme="light"] #newsModal .inner,
+:root[data-theme="light"] #newsModal .content {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Text readability + keep dates yellow */
+:root[data-theme="light"] #newsModal,
+:root[data-theme="light"] #newsModal * {
+  color: #111827 !important;
+}
+:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+:root[data-theme="light"] #newsModal #rnh-news-list time {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="search-news-targeted-light-fixes">
+/* === Song Search (light mode): make menus legible === */
+:root[data-theme="light"] #searchModal input,
+:root[data-theme="light"] #searchModal select,
+:root[data-theme="light"] #searchModal textarea {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+}
+
+/* Style native <option> where supported */
+:root[data-theme="light"] #searchModal option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* If there's a results list UL, ensure it's light */
+:root[data-theme="light"] #searchModal ul,
+:root[data-theme="light"] #searchModal ul li {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* === News: nuke any inner dark blocks in light mode === */
+:root[data-theme="light"] #newsModal [style*="background"],
+:root[data-theme="light"] #newsModal [style*="background-color"] {
+  background: #ffffff !important;
+}
+
+/* Common inner containers in news modal */
+:root[data-theme="light"] #newsModal .card,
+:root[data-theme="light"] #newsModal .panel,
+:root[data-theme="light"] #newsModal .tile,
+:root[data-theme="light"] #newsModal .rnh-item,
+:root[data-theme="light"] #newsModal .rnh-story,
+:root[data-theme="light"] #newsModal .inner,
+:root[data-theme="light"] #newsModal .content,
+:root[data-theme="light"] #newsModal .modal-body {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Keep RNH dates yellow; ensure story text is dark */
+:root[data-theme="light"] #newsModal #rnh-news-list,
+:root[data-theme="light"] #newsModal #rnh-news-list * { color: #111827 !important; }
+:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
+:root[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
+</style><style id="targeted-fixes-rnh-card-and-search">
+/* Radio News Hub modal: card blocks should be light in light mode */
+:root[data-theme="light"] #newsModal .rnh-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+:root[data-theme="light"] #newsModal .rnh-cards { background: transparent !important; }
+
+/* Song Search: ensure everything is legible in light mode */
+:root[data-theme="light"] #searchModal,
+:root[data-theme="light"] #searchModal * {
+  color: #111827 !important;
+}
+:root[data-theme="light"] #searchModal select,
+:root[data-theme="light"] #searchModal input,
+:root[data-theme="light"] #searchModal textarea {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+:root[data-theme="light"] #searchModal option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+</style><style id="songsearch-light-override-final">
+/* Keep these controls WHITE in light mode, even if a global light text rule exists */
+:root[data-theme="light"] #searchModal #prevHour,
+:root[data-theme="light"] #searchModal #nextHour,
+:root[data-theme="light"] #searchModal #resetFilters {
+  color: #ffffff !important;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+</style><style id="rnh-dark-dates-frontpage">
+/* Dark mode: front page RNH dates back to yellow (override any white text rules) */
+:root[data-theme="dark"] body #right-panel #rnh-news-list time,
+:root[data-theme="dark"] body #right-panel #rnh-news-list #rnh-news-list .rnh-date,
+:root[data-theme="dark"] body #rnh-news-list time,
+:root[data-theme="dark"] body #rnh-news-list #rnh-news-list .rnh-date {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="rnh-rightpanel-dates-structural">
+/* Dark mode: force the right-panel RNH date (the last child div in each item) back to yellow */
+:root[data-theme="dark"] #right-panel #rnh-news-list > div > div:last-child,
+:root[data-theme="dark"] #rnh-news-list > div > div:last-child {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="dark-modal-headings-white">
+:root[data-theme="dark"] .modal-content h1,
+:root[data-theme="dark"] .modal-content h2,
+:root[data-theme="dark"] .modal-content h3,
+:root[data-theme="dark"] .modal-content h4,
+:root[data-theme="dark"] .modal-content h5,
+:root[data-theme="dark"] .modal-content h6 {
+  color: #ffffff !important;
+}
+</style><style id="schedule-links-and-dropdowns-fixed">
+/* Programme Schedule: kill teal/underlines in dark mode */
+:root[data-theme="dark"] #scheduleModal a,
+:root[data-theme="dark"] .programme-schedule a,
+:root[data-theme="dark"] .program-schedule a,
+:root[data-theme="dark"] .schedule a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+:root[data-theme="dark"] #scheduleModal a:hover,
+:root[data-theme="dark"] .programme-schedule a:hover,
+:root[data-theme="dark"] .program-schedule a:hover,
+:root[data-theme="dark"] .schedule a:hover {
+  text-decoration: underline !important; /* optional hover */
+}
+
+/* Schedule dropdown legibility */
+/* Light mode */
+:root[data-theme="light"] #scheduleModal label { color: #111827 !important; }
+:root[data-theme="light"] #scheduleModal select {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+:root[data-theme="light"] #scheduleModal option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* Dark mode */
+:root[data-theme="dark"] #scheduleModal label { color: #ffffff !important; }
+:root[data-theme="dark"] #scheduleModal select {
+  background: var(--er-panel, #12141a) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--er-border, #272a33) !important;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+:root[data-theme="dark"] #scheduleModal option {
+  background: var(--er-panel, #12141a) !important;
+  color: #ffffff !important;
+}
+
+/* If a custom dropdown/menu is used */
+:root[data-theme="light"] #scheduleModal .dropdown-menu,
+:root[data-theme="light"] #scheduleModal .menu,
+:root[data-theme="light"] #scheduleModal .listbox,
+:root[data-theme="light"] #scheduleModal .options {
+  background: #ffffff !important; color: #111827 !important; border: 1px solid #e5e7eb !important;
+}
+:root[data-theme="dark"] #scheduleModal .dropdown-menu,
+:root[data-theme="dark"] #scheduleModal .menu,
+:root[data-theme="dark"] #scheduleModal .listbox,
+:root[data-theme="dark"] #scheduleModal .options {
+  background: var(--er-panel, #12141a) !important; color: #ffffff !important; border: 1px solid var(--er-border, #272a33) !important;
+}
+</style><style id="about-email-dark-fix">
+/* About Us: make email link white in dark mode (no underline), with underline on hover */
+:root[data-theme="dark"] #aboutModal a[href^="mailto:"] {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+:root[data-theme="dark"] #aboutModal a[href^="mailto:"]:hover {
+  text-decoration: underline !important;
+}
+</style><style id="songsearch-artist-title-yellow">
+/* Song Search: make 'Artist - Title' text yellow */
+#searchModal .result-title,
+#searchModal .song-title,
+#searchModal .track-title,
+#searchModal .track,
+#searchModal .result .title,
+#searchModal .song-result .title {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="songsearch-thead-yellow">
+/* Song Search: make the table header (including "Artist – Title") yellow in both themes */
+#searchModal thead,
+#searchModal thead th {
+  color: var(--er-accent, #fed351) !important;
+}
+</style><style id="about-email-yellow">
+/* About Us: email link in accent yellow, both themes (wins over earlier dark-mode white) */
+:root[data-theme="dark"] #aboutModal a[href^="mailto:"],
+:root[data-theme="light"] #aboutModal a[href^="mailto:"],
+#aboutModal a[href^="mailto:"] {
+  color: var(--er-accent, #fed351) !important;
+  text-decoration: none !important;
+}
+#aboutModal a[href^="mailto:"]:hover {
+  text-decoration: underline !important;
+}
+</style><style id="about-email-light-readable">
+/* About Us email: readable teal in light mode, yellow in dark mode */
+:root[data-theme="light"] #aboutModal a[href^="mailto:"] { color: #00818a !important; }
+:root[data-theme="dark"]  #aboutModal a[href^="mailto:"] { color: var(--er-accent, #fed351) !important; }
+#aboutModal a[href^="mailto:"]:hover { text-decoration: underline !important; }
+</style><style id="nav-gap-visible">
+/* Push page content lower under the nav bar */
+nav + .header-spacer + main,
+nav + .header-spacer + section,
+nav + .header-spacer + div,
+nav + main,
+nav + section,
+nav + div {
+  margin-top: 1.5rem !important;
+}
+</style><style>
+/* === Mobile-only cloned theme toggle beside burger === */
+#themeToggle {
+  display: none; /* hide on desktop */
+}
+@media (max-width: 768px) {
+  #themeToggle { display: inline-flex; order: 2; margin-left: .5rem; }
+  #burgerMenuBtn { order: 2; }
+  nav.navbar { display:flex; align-items:center; justify-content:space-between; }
+}
 </style>
 <style>
 
@@ -1235,6 +3006,44 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
   body.modal-open #burgerMenuBtn,
   body.modal-open #themeToggleBtn {
     pointer-events: none !important;
+  }
+}
+</style>
+<style>
+/* === Mobile navbar: burger + toggle inline, no top gap === */
+@media (max-width: 768px){
+  nav.navbar{
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+  /* Make sure burger and toggle participate in flow (no absolute positioning) */
+  #burgerMenuBtn, #themeToggleBtn{
+    position: static !important;
+  }
+  /* Style toggle pill compactly */
+  #themeToggleBtn{
+    display:inline-flex;
+    align-items:center;
+    height: 34px;
+    border-radius: 9999px;
+    padding: 0 10px;
+    background: var(--brand, #fed351);
+    color: #0b1220;
+    border: 1px solid rgba(0,0,0,.15);
+  }
+  /* Remove header spacer gap */
+  .header-spacer{ height:0 !important; margin:0 !important; padding:0 !important; display:none !important; }
+  /* Ensure first content card doesn't sit under the navbar edge */
+  main, section, .page, .container{
+    margin-top: 0 !important;
+  }
+  /* Dropdown should open below navbar, not overlapping controls */
+  #burgerDropdown{
+    top: 56px !important;   /* approx. navbar height */
+    left: 8px !important;
   }
 }
 </style>
@@ -2838,39 +4647,7 @@ group.forEach(show => {
             0
           );
           return {
-            duration: parseInt(m<style>
-/* === Mobile navbar: burger left, original toggle right; menu below === */
-@media (max-width: 768px) {
-  nav.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 6000;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 10px;
-    /* keep background transparent to show your header design */
-    background: transparent;
-  }
-  /* Use auto margin so the original desktop toggle sits on the right edge */
-  #themeToggleBtn { margin-left: auto; display: inline-flex; align-items: center; }
-  /* Ensure header spacer doesn't add extra gap */
-  .header-spacer { height: 0 !important; margin: 0 !important; padding: 0 !important; }
-  /* Place the dropdown under the navbar row */
-  #burgerDropdown {
-    position: fixed !important;
-    top: 56px !important; /* height of navbar row inc. padding */
-    left: 0;
-    right: 0;
-    z-index: 5500;
-  }
-  /* Avoid the navbar covering content; remove any content push rules */
-  nav + main, nav + section, nav + div {
-    margin-top: 0 !important;
-  }
-}
-</style>
-atch["Duration (s)"], 10),
+            duration: parseInt(match["Duration (s)"], 10),
             startTime: start
           };
         }
@@ -4583,22 +6360,29 @@ function closePresenterModal(presenterId) {
   }, true);
 })();
 </script>
-</body></html>
+
 <script>
 (function(){
-  var btn = document.getElementById('themeToggleBtn');
-  var nav = document.querySelector('nav.navbar');
-  if (!btn || !nav) return;
-  var originalParent = btn.parentNode;
-  var originalNext = btn.nextSibling;
-
-  function placeToggle(){
+  var btn, burger, nav, originalParent, originalNext;
+  function placeMobile(){
+    btn = document.getElementById('themeToggleBtn');
+    burger = document.getElementById('burgerMenuBtn');
+    nav = document.querySelector('nav.navbar');
+    if(!btn || !burger || !nav) return;
     var isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile) {
-      if (btn.parentNode !== nav) nav.appendChild(btn);
+    if (isMobile){
+      if (!originalParent){ originalParent = btn.parentNode; originalNext = btn.nextSibling; }
+      // Ensure both are inside nav and ordered burger -> toggle
+      if (btn.parentNode !== nav) nav.insertBefore(btn, nav.firstChild);
+      if (burger.parentNode !== nav) nav.insertBefore(burger, nav.firstChild);
+      // Ensure order: burger then toggle
+      if (btn.previousElementSibling !== burger){
+        nav.insertBefore(btn, burger.nextSibling);
+      }
     } else {
-      if (originalParent && btn.parentNode !== originalParent) {
-        if (originalNext && originalNext.parentNode === originalParent) {
+      // put toggle back to original location on desktop
+      if (originalParent && btn.parentNode !== originalParent){
+        if (originalNext && originalNext.parentNode === originalParent){
           originalParent.insertBefore(btn, originalNext);
         } else {
           originalParent.appendChild(btn);
@@ -4606,7 +6390,8 @@ function closePresenterModal(presenterId) {
       }
     }
   }
-  window.addEventListener('DOMContentLoaded', placeToggle);
-  window.addEventListener('resize', placeToggle);
+  window.addEventListener('DOMContentLoaded', placeMobile);
+  window.addEventListener('resize', placeMobile);
 })();
 </script>
+</body></html>
