@@ -2926,7 +2926,21 @@ nav + div {
 @media (max-width: 768px) {
   #burgerMenuBtn { position: relative; }
   /* Ensure the original toggle is visible and sized nicely on mobile */
-  #themeToggleBtn {}
+  #themeToggleBtn {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 8px);  /* small gap to the right of burger */
+    z-index: 4000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    border-radius: 9999px;
+    padding: 0 10px;
+    background: var(--brand, #fed351);
+    color: #0b1220;
+    border: 1px solid rgba(0,0,0,.15);
+  }
   /* Optional: tighten label spacing on tiny phones */
   #themeToggleBtn .mode-label { margin-left: 6px; }
 }
@@ -2995,6 +3009,31 @@ nav + div {
   }
 }
 </style>
+<style>
+/* === Mobile navbar: burger + toggle side-by-side, no overlap/gap === */
+@media (max-width: 768px) {
+  nav.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  /* Order elements explicitly */
+  #burgerMenuBtn { order: 1; position: relative; z-index: 2; }
+  #themeToggleBtn { order: 2; display: inline-flex; position: static; z-index: 2; }
+  .logo, #logo, .brand, .site-logo { order: 3; }
+  /* Ensure dropdown appears below, not covering toggle area at rest */
+  #burgerDropdown { top: 54px !important; }
+  /* Remove top spacer/gap */
+  .header-spacer { height: 0 !important; margin: 0 !important; padding: 0 !important; }
+  nav + .header-spacer + main,
+  nav + .header-spacer + section,
+  nav + .header-spacer + div,
+  nav + main, nav + section, nav + div {
+    margin-top: 0 !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -3004,37 +3043,7 @@ nav + div {
 <span class="burger-bar"></span>
 </div>
 <!-- MOBILE DROPDOWN MENU -->
-<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background<style>
-/* === Mobile: burger + toggle inline, no overlap, small gap === */
-@media (max-width: 768px) {
-  nav.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  /* Group left side elements inline with a gap */
-  #burgerMenuBtn, #themeToggleBtn {
-    position: static !important;
-  }
-  #themeToggleBtn {
-    margin-left: 8px !important;
-    display: inline-flex;
-    align-items: center;
-    height: 36px;
-    border-radius: 9999px;
-    padding: 0 10px;
-    background: var(--brand, #fed351);
-    color: #0b1220;
-    border: 1px solid rgba(0,0,0,.15);
-    z-index: 1;
-  }
-  /* Ensure content starts right below nav */
-  .header-spacer {
-    height: 0 !important;
-  }
-}
-</style>
-:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
+<div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
 <div class="rnh-date" style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;"><a class="menu-link" href="#" onclick="openModalAndCloseBurger('aboutModal');return false;">About Us</a>
 <a class="menu-link hour-nav prev-hour hour-nav next-hour" href="#" onclick="openModalAndCloseBurger('presentersModal');return false;">Presenters</a>
 <a class="menu-link" href="#" onclick="openModalAndCloseBurger('scheduleModal');return false;">Schedule</a>
@@ -6309,7 +6318,44 @@ function closePresenterModal(presenterId) {
   function apply(theme){
     if(theme === 'light'){
       root.classList.remove('dark');
-      root.setAttribute('data-theme','light');
+      root.setAttribute('
+<script>
+(function(){
+  var btn = document.getElementById('themeToggleBtn');
+  var burger = document.getElementById('burgerMenuBtn');
+  var nav = document.querySelector('nav.navbar');
+  if(!btn || !burger || !nav) return;
+
+  var origParent = btn.parentNode;
+  var origNext = btn.nextSibling;
+
+  function place(){
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if(isMobile){
+      // Insert btn right after burger inside nav
+      if (btn.parentNode !== nav || btn.previousElementSibling !== burger) {
+        if (burger.nextSibling) {
+          nav.insertBefore(btn, burger.nextSibling);
+        } else {
+          nav.appendChild(btn);
+        }
+      }
+    } else {
+      // restore original placement
+      if (btn.parentNode !== origParent) {
+        if (origNext && origNext.parentNode === origParent) {
+          origParent.insertBefore(btn, origNext);
+        } else {
+          origParent.appendChild(btn);
+        }
+      }
+    }
+  }
+  window.addEventListener('DOMContentLoaded', place);
+  window.addEventListener('resize', place);
+})();
+</script>
+data-theme','light');
       if (emojiEl) emojiEl.textContent = '☀️';
       if (labelEl) labelEl.textContent = 'Light';
     } else {
@@ -6336,41 +6382,6 @@ function closePresenterModal(presenterId) {
     apply(next);
     try { localStorage.setItem(STORAGE_KEY, next); } catch(e){}
   }, true);
-})();
-</script>
-
-<script>
-(function(){
-  var btn = document.getElementById('themeToggleBtn');
-  var burger = document.getElementById('burgerMenuBtn');
-  if (!btn || !burger) return;
-
-  var originalParent = btn.parentNode;
-  var originalNext = btn.nextSibling;
-
-  function placeForMobile(){
-    var isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile) {
-      // Insert AFTER the burger button, as a sibling inside nav
-      var parent = burger.parentNode;
-      if (parent && btn.parentNode !== parent) {
-        parent.insertBefore(btn, burger.nextSibling);
-      } else if (parent && btn.previousElementSibling !== burger) {
-        parent.insertBefore(btn, burger.nextSibling);
-      }
-    } else {
-      // Put back in original spot for desktop
-      if (originalParent && btn.parentNode !== originalParent) {
-        if (originalNext && originalNext.parentNode === originalParent) {
-          originalParent.insertBefore(btn, originalNext);
-        } else {
-          originalParent.appendChild(btn);
-        }
-      }
-    }
-  }
-  window.addEventListener('DOMContentLoaded', placeForMobile);
-  window.addEventListener('resize', placeForMobile);
 })();
 </script>
 </body></html>
