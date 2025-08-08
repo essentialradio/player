@@ -2446,6 +2446,30 @@ nav #theme-toggle {
   }
 }
 </style>
+<style>
+/* === Visible theme toggle button === */
+#themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,.15);
+  background: #fed351;
+  color: #0b1220;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: .5rem;
+}
+#themeToggle:focus { outline: 2px solid #0b1220; outline-offset: 2px; }
+@media (max-width: 768px) {
+  nav.navbar { display:flex; align-items:center; justify-content:space-between; }
+  #burgerMenuBtn { order: 2; }
+  #themeToggle { order: 2; }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -2471,6 +2495,11 @@ nav #theme-toggle {
 </div> <!-- CLOSES burgerDropdown -->
 <!-- DESKTOP NAVIGATION -->
 <nav class="navbar" role="navigation">
+<!-- Inserted Theme Toggle -->
+<button id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+  <span aria-hidden="true">☾/☀</span>
+</button>
+
 <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
 <a href="#" onclick="openModal('presentersModal');return false;">Presenters</a>
 <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
@@ -5621,7 +5650,33 @@ function closePresenterModal(presenterId) {
       const img = getImg(it);
       const date = it.pubDate ? new Date(it.pubDate).toLocaleDateString("en-GB",
         { day:"numeric", month:"short" }) : "";
-      return `
+      retu
+<script>
+(function(){
+  const STORAGE_KEY = 'er-theme';
+  const root = document.documentElement;
+  function apply(theme){
+    if(theme === 'light'){ root.classList.remove('dark'); root.setAttribute('data-theme','light'); }
+    else { root.classList.add('dark'); root.setAttribute('data-theme','dark'); }
+  }
+  // Initialise (prefer saved, else dark)
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    apply(saved || 'dark');
+  } catch(e){ apply('dark'); }
+
+  const btn = document.getElementById('themeToggle');
+  if(btn){
+    btn.addEventListener('click', () => {
+      const isDark = root.classList.contains('dark');
+      const next = isDark ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch(e){}
+    });
+  }
+})();
+</script>
+rn `
         <article class="rnh-card">
           <a href="${it.link}" target="_blank" rel="noopener">
             ${img ? `<img src="${img}" alt="${it.title}" loading="lazy">` : ""}
