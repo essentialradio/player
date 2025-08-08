@@ -2928,8 +2928,8 @@ nav + div {
   /* Ensure the original toggle is visible and sized nicely on mobile */
   #themeToggleBtn {
     position: absolute;
-    top: -2px;
-    right: -48px;     /* small gap to the right of burger */
+    top: 0;
+    left: calc(100% + 8px);  /* small gap to the right of burger */
     z-index: 4000;
     display: inline-flex;
     align-items: center;
@@ -6200,4 +6200,10 @@ function closePresenterModal(presenterId) {
   window.addEventListener('resize', moveForMobile);
 })();
 </script>
-</body></html>
+<script>
+// Prevent theme toggle clicks from toggling the burger menu
+document.addEventListener('click', function(e){
+  var t = e.target.closest && e.target.closest('#themeToggleBtn');
+  if (t) { e.stopPropagation(); e.stopImmediatePropagation && e.stopImmediatePropagation(); }
+}, true);
+</script></body></html>
