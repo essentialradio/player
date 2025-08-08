@@ -2888,14 +2888,20 @@ nav + div {
 }
 </style>
 <style>
-/* Ensure mobile toggle is visible and near the burger */
+/* === Mobile-only burger-adjacent theme toggle (inside burger container) === */
 @media (max-width: 768px) {
-  #themeToggle {
-    position: fixed;
-    top: 20px;
-    left: 52px;          /* sits just to the right of burger */
-    z-index: 3000 !important;
+  #themeToggle { 
+    display: inline-flex !important;
+    align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 9999px;
+    border: 1px solid rgba(0,0,0,.15);
+    background: #fed351; color: #0b1220; font-size: 16px; line-height: 1;
+    position: absolute; top: -2px; right: -52px; z-index: 4000;
   }
+  #burgerMenuBtn { position: relative !important; display: block !important; }
+}
+@media (min-width: 769px) {
+  #themeToggle { display: none !important; }
 }
 </style>
 </head>
@@ -2923,12 +2929,7 @@ nav + div {
 </div> <!-- CLOSES burgerDropdown -->
 <!-- DESKTOP NAVIGATION -->
 <nav class="navbar" role="navigation">
-<!-- Inserted Theme Toggle -->
-<button id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
-  <span aria-hidden="true">☾/☀</span>
-</button>
-
-<a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
+<!-- Inserted Theme Toggle --> <a href="#" onclick="openModal('aboutModal');return false;">About Us</a>
 <a href="#" onclick="openModal('presentersModal');return false;">Presenters</a>
 <a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a>
 <a href="#" onclick="openModal('requestsModal');return false;">Requests</a>
@@ -6099,6 +6100,29 @@ function closePresenterModal(presenterId) {
   }catch(e){
     wrap.innerHTML = '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
   }
+})();
+</script>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'er-theme';
+  const root = document.documentElement;
+  function apply(theme){
+    if(theme === 'light'){ root.classList.remove('dark'); root.setAttribute('data-theme','light'); }
+    else { root.classList.add('dark'); root.setAttribute('data-theme','dark'); }
+  }
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    apply(saved || 'dark');
+  } catch(e){ apply('dark'); }
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest && e.target.closest('#themeToggle');
+    if(!btn) return;
+    const isDark = root.classList.contains('dark');
+    const next = isDark ? 'light' : 'dark';
+    apply(next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch(e){}
+  });
 })();
 </script>
 </body></html>
