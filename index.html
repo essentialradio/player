@@ -1309,7 +1309,6 @@ body.modal-open {
     box-shadow: none !important;
   }
 </style>
-
 <style id="light-mode-contrast-tune">
   /* Headings, titles in light mode: use dark ink */
   [data-theme="light"] h1, 
@@ -2879,6 +2878,30 @@ nav + div {
 }
 @media (max-width: 480px){
   .theme-navbtn.mobile-fixed .mode-label{ display:none; }
+}
+</style><style id="theme-toggle-compact">
+/* Compact icon-only theme toggle, like the burger */
+#themeToggleBtn.theme-navbtn {
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 7px !important;
+  line-height: 1 !important;
+  gap: 0 !important;
+}
+#themeToggleBtn .mode-label { display: none !important; } /* icon-only everywhere */
+
+/* Mobile: keep the same button beside the burger (fixed) */
+@media (max-width: 750px){
+  #themeToggleBtn.theme-navbtn.mobile-fixed {
+    position: fixed !important;
+    top: 20px !important;
+    right: 8px !important;
+    z-index: 2002 !important;
+  }
 }
 </style></head>
 <body>
@@ -6148,6 +6171,8 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     if (!btn) return;
     const lab = btn.querySelector('.mode-label');
     if (lab) lab.textContent = nextLabel(theme);
+    const emo = btn.querySelector('.mode-emoji');
+    if (emo) emo.textContent = (theme === 'light') ? '🌙' : '☀️';
     btn.title = theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
   }
   function setTheme(t){
