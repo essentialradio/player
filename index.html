@@ -3047,6 +3047,62 @@ nav + div {
   }
 }
 </style>
+<style id="mobile-fixes-20250808">
+/* === Mobile fixes (08 Aug 2025) === */
+@media (max-width: 750px) {
+  html, body { overflow-x: hidden !important; }
+  body { padding-top: 56px !important; } /* room for burger + toggle */
+  /* Burger: tuck up to the very top-left and shrink slightly */
+  #burgerMenuBtn {
+    top: 8px !important;
+    left: 8px !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 8px !important;
+    z-index: 3002 !important;
+  }
+  #burgerMenuBtn .burger-bar { width: 18px !important; }
+  /* Mobile theme toggle lives beside the burger */
+  #themeToggleBtn.mobile-toggle {
+    position: fixed !important;
+    top: 8px !important;
+    left: 52px !important;        /* sit just to the right of burger */
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 0 10px !important;
+    border-radius: 8px !important;
+    background: var(--accent) !important;
+    color: #fff !important;
+    z-index: 3002 !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    border: 1px solid rgba(0,0,0,0.12) !important;
+  }
+  /* Hide the text label on very narrow widths to avoid collisions */
+  @media (max-width: 380px) {
+    #themeToggleBtn.mobile-toggle .mode-label { display: none !important; }
+  }
+  /* Dropdown respects the new top bar height */
+  #burgerDropdown {
+    top: 56px !important;
+    height: calc(100vh - 56px) !important;
+    z-index: 3001 !important;
+  }
+  /* Kill stray top gaps from legacy spacers */
+  .header-spacer, .nav-spacer, .top-spacer { display: none !important; height: 0 !important; }
+  /* Ensure modal doesn’t collide with top controls */
+  .modal {
+    top: 56px !important;
+    height: calc(100vh - 56px) !important;
+  }
+  .modal-content {
+    max-height: calc(100vh - 56px) !important;
+  }
+}
+
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6394,4 +6450,36 @@ function closePresenterModal(presenterId) {
   window.addEventListener('resize', placeMobile);
 })();
 </script>
+
+<script>
+// === Mobile theme toggle injector (08 Aug 2025) ===
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    // If there's already a #themeToggleBtn (desktop), clone a lightweight mobile version
+    var existing = document.getElementById('themeToggleBtn');
+    var mobile = document.getElementById('themeToggleBtnMobile');
+    if (!mobile) {
+      var btn = document.createElement('button');
+      btn.id = 'themeToggleBtn';            // keep same ID so existing theme script wires it up
+      btn.setAttribute('type','button');
+      btn.className = 'mobile-toggle';
+      btn.setAttribute('aria-pressed','false');
+      btn.title = 'Toggle theme';
+      btn.innerHTML = '<span class="mode-emoji" aria-hidden="true">🌙</span><span class="mode-label">Dark</span>';
+      // Only add if not present in DOM already
+      if (!existing) {
+        document.body.appendChild(btn);
+      } else {
+        // If a desktop toggle exists, duplicate for mobile but keep the original too
+        var clone = btn;
+        clone.id = 'themeToggleBtn'; // ensure ID matches what the theme script expects
+        document.body.appendChild(clone);
+      }
+    }
+    // If a desktop toggle exists and is hidden on mobile, it won't interfere.
+    // The theme script in the page updates label/emoji/aria-pressed for #themeToggleBtn.
+  });
+})();
+</script>
+
 </body></html>
