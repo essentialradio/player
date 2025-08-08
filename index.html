@@ -6,8 +6,6 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
     /* --- NAVBAR & MODALS ONLY --- */
@@ -4184,7 +4182,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </a>
 </div>
 </div>
-
 <div aria-labelledby="localModalTitle" aria-modal="true" class="modal" id="localModal" role="dialog">
 <div class="modal-content" style="max-width:1000px;width:97vw;">
 <span aria-label="Close" class="close" onclick="closeModal('localModal')">×</span>
@@ -4799,32 +4796,7 @@ document.addEventListener("visibilitychange", () => {
     }
   </script>
 <!-- Removed redundant modal open/close script; bounce handling moved to unified script -->
-<script>
-async function fetchRNHNews() {
-  // Use a public RSS-to-JSON proxy (CORS-safe)
-  const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
-  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-  try {
-    const res = await fetch(api);
-    const data = await res.json();
-    if (!data.items || !data.items.length) throw new Error("No items found");
-    const top2 = data.items.slice(0,2);
-    document.getElementById('rnh-news-list').innerHTML = top2.map(item => `
-      <div style="margin-bottom:18px;">
-        <a href="${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
-          ${item.title}
-        </a>
-        <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
-          ${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}</div>
-      </div>
-    `).join('');
-  } catch(e) {
-    document.getElementById('rnh-news-list').innerHTML =
-      '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
-  }
-}
-fetchRNHNews();
-</script>
+
 <script>
 function refreshCombinedTravel() {
   var iframe = document.getElementById('combined-travel-iframe');
@@ -5157,31 +5129,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   document.addEventListener('DOMContentLoaded', load);
 })();
 </script>
-<script>
-function fetchScottishNews() {
-  // Try fetching the text file
-  fetch('news_bulletin.txt?' + Date.now()) // cache-busting for updates
-    .then(response => {
-      if (!response.ok) throw new Error("File not found");
-      // Try to get last-modified header if possible
-      const lastModified = response.headers.get('last-modified');
-      if (lastModified) {
-        document.getElementById('scotNewsTime').textContent = "updated on " + new Date(lastModified).toLocaleString();
-      }
-      return response.text();
-    })
-    .then(text => {
-      document.getElementById('scottishNewsText').textContent = text.trim();
-    })
-    .catch(err => {
-      document.getElementById('scottishNewsText').textContent = "Scottish news bulletin is currently unavailable.";
-      document.getElementById('scotNewsTime').textContent = "";
-    });
-}
 
-// Optionally call this only when modal opens for efficiency
-document.addEventListener("DOMContentLoaded", fetchScottishNews);
-</script>
 </div></div></div><script>
 
   setTimeout(() => {
@@ -6084,51 +6032,9 @@ function closePresenterModal(presenterId) {
   window._syncModalBodyState = setBodyModalState;
 })();
 </script>
-<script>
-(async function fetchRNHModalNews(){
-  const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
-  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-  const wrap = document.getElementById("rnh-modal-list");
-  if(!wrap) return;
 
-  try{
-    const res = await fetch(api);
-    const data = await res.json();
-    const items = (data.items || []).slice(0, 8); // show up to 8
 
-    const getImg = it =>
-      (it.enclosure && it.enclosure.link) ||
-      it.thumbnail ||
-      (it.content && (it.content.match(/<img[^>]+src="([^"]+)"/i) || [])[1]) ||
-      "";
 
-    /* replaced render with safe concatenation */
-(function(){
-  function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
-  var list = [];
-  try {
-    list = (data && data.items) ? data.items.slice(0,6) : [];
-  } catch(e){ list = []; }
-  var buf = '';
-  for (var i=0;i<list.length;i++){
-    var it = list[i];
-    var d = it.pubDate ? new Date(it.pubDate).toLocaleString('en-GB',{ day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'}) : '';
-    buf += '<a class="rnh-item" href="' + esc(it.link || '#') + '" target="_blank" rel="noopener">';
-    buf +=   '<div class="rnh-title">' + esc(it.title) + '</div>';
-    if (d) buf += '<div class="rnh-date">' + esc(d) + '</div>';
-    buf += '</a>';
-  }
-  wrap.innerHTML = list.length ? buf : '<div class="rnh-empty">No stories found right now.</div>';
-})();
-
-    if(!items.length){
-      wrap.innerHTML = '<div style="color:#fed351;">No stories found right now.</div>';
-    }
-  }catch(e){
-    wrap.innerHTML = '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
-  }
-})();
-</script>
 <div class="modal" id="newsModal">
 <div class="modal-content" style="max-width:900px;width:97vw;">
 <span class="close" onclick="closeModal('newsModal')">×</span>
@@ -6165,4 +6071,100 @@ function closePresenterModal(presenterId) {
 </style>
 <div class="rnh-cards" id="rnh-modal-list">
 <div style="color:#bbb">Loading headlines…</div>
-</div></div></div></div></div></body></html>
+</div>
+</div>
+</div>
+<div style="margin-top:16px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
+      Essential Radio © 2025
+    </div>
+</div>
+</div><script>
+async function fetchRNHNews() {
+  // Use a public RSS-to-JSON proxy (CORS-safe)
+  const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+    if (!data.items || !data.items.length) throw new Error("No items found");
+    const top2 = data.items.slice(0,2);
+    document.getElementById('rnh-news-list').innerHTML = top2.map(item => `
+      <div style="margin-bottom:18px;">
+        <a href="${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
+          ${item.title}
+        </a>
+        <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
+          ${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    document.getElementById('rnh-news-list').innerHTML =
+      '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
+  }
+}
+fetchRNHNews();
+</script><script>
+function fetchScottishNews() {
+  // Try fetching the text file
+  fetch('news_bulletin.txt?' + Date.now()) // cache-busting for updates
+    .then(response => {
+      if (!response.ok) throw new Error("File not found");
+      // Try to get last-modified header if possible
+      const lastModified = response.headers.get('last-modified');
+      if (lastModified) {
+        document.getElementById('scotNewsTime').textContent = "updated on " + new Date(lastModified).toLocaleString();
+      }
+      return response.text();
+    })
+    .then(text => {
+      document.getElementById('scottishNewsText').textContent = text.trim();
+    })
+    .catch(err => {
+      document.getElementById('scottishNewsText').textContent = "Scottish news bulletin is currently unavailable.";
+      document.getElementById('scotNewsTime').textContent = "";
+    });
+}
+
+// Optionally call this only when modal opens for efficiency
+document.addEventListener("DOMContentLoaded", fetchScottishNews);
+</script><script>
+(async function fetchRNHModalNews(){
+  const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  const wrap = document.getElementById("rnh-modal-list");
+  if(!wrap) return;
+
+  try{
+    const res = await fetch(api);
+    const data = await res.json();
+    const items = (data.items || []).slice(0, 8); // show up to 8
+
+    const getImg = it =>
+      (it.enclosure && it.enclosure.link) ||
+      it.thumbnail ||
+      (it.content && (it.content.match(/<img[^>]+src="([^"]+)"/i) || [])[1]) ||
+      "";
+
+    wrap.innerHTML = items.map(it => {
+      const img = getImg(it);
+      const date = it.pubDate ? new Date(it.pubDate).toLocaleDateString("en-GB",
+        { day:"numeric", month:"short" }) : "";
+      return `
+        <article class="rnh-card">
+          <a href="${it.link}" target="_blank" rel="noopener">
+            ${img ? `<img src="${img}" alt="${it.title}" loading="lazy">` : ""}
+            <div class="rnh-title">${it.title}</div>
+            ${date ? `<div class="rnh-meta">${date}</div>` : ""}
+          </a>
+        </article>`;
+    }).join("");
+
+    if(!items.length){
+      wrap.innerHTML = '<div style="color:#fed351;">No stories found right now.</div>';
+    }
+  }catch(e){
+    wrap.innerHTML = '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
+  }
+})();
+</script></body></html>
