@@ -1322,31 +1322,34 @@ body.modal-open {
   function labelFor(theme) {
     return theme === 'light' ? { emoji: '🌙', text: 'Dark' } : { emoji: '☀️', text: 'Light' };
   }
-  function setTheme(t) {
-    root.setAttribute('data-theme', t);
-    localStorage.setItem('theme', t);
-    const btn = document.getElementById('themeToggleBtn');
-    if (btn) {
-      const l = labelFor(t);
+  function setLabels(theme){
+    const l = labelFor(theme);
+    document.querySelectorAll('#themeToggleBtn, #themeToggleBtnDesktop').forEach(btn => {
+      if (!btn) return;
       const emoji = btn.querySelector('.mode-emoji');
       const text = btn.querySelector('.mode-label');
       if (emoji) emoji.textContent = l.emoji;
       if (text) text.textContent = l.text;
-      btn.setAttribute('aria-pressed', t === 'dark');
-      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
-    }
+      btn.setAttribute('aria-pressed', theme === 'dark');
+      btn.title = (theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+    });
+  }
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    setLabels(t);
   }
 
   document.addEventListener('DOMContentLoaded', function(){
     const current = root.getAttribute('data-theme') || initial;
     setTheme(current);
-    const btn = document.getElementById('themeToggleBtn');
-    if (btn) {
-      btn.addEventListener('click', function(){
-        const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-        setTheme(next);
-      });
+    function handleClick(){
+      const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
+      setTheme(next);
     }
+    document.querySelectorAll('#themeToggleBtn, #themeToggleBtnDesktop').forEach(btn => {
+      btn && btn.addEventListener('click', handleClick);
+    });
   });
 })();
 </script>
@@ -2887,8 +2890,91 @@ nav + div {
   nav.navbar { display:flex; align-items:center; justify-content:space-between; }
 }
 </style>
+
+<style id="desktop-theme-toggle-ensure">
+  @media (min-width: 751px) {
+    #themeToggleBtn.theme-navbtn { display: flex !important; }
+  }
+</style>
+
+<style id="mobile-theme-toggle">
+  /* Hidden by default; shown on small screens */
+  #themeToggleBtn{
+      left: calc(56px + env(safe-area-inset-left)) !important; 
+    display: none;
+  }
+  @media (max-width: 750px) {
+    #themeToggleBtn {
+      position: fixed;
+      top: calc(12px + env(safe-area-inset-top)) !important;
+      
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      z-index: 4200 !important; /* above burger (2001) and burger dropdown (3100) */
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+    [data-theme="light"] #themeToggleBtn {
+      background: #0b6b73;
+      color: #fff;
+    }
+  }
+</style>
+
+<style id="burger-z-fix">@media (max-width: 750px) {
+  #burgerMenuBtn { z-index: 3000 !important; }
+}</style>
+
+<style id="theme-toggle-visibility-test">
+  @media (max-width: 750px) {
+    #themeToggleBtn {
+      outline: 2px solid rgba(255,255,255,.65);
+      outline-offset: 2px;
+    }
+  }
+</style>
+
+<style id="dual-toggle-css">
+/* MOBILE: show the mobile toggle, hide the desktop one */
+  @media (max-width: 750px) {
+    #themeToggleBtn { 
+      position: fixed !important;
+      top: calc(12px + env(safe-area-inset-top)) !important;
+      left: calc(56px + env(safe-area-inset-left)) !important; /* just to the right of burger */
+      width: 32px !important;
+      height: 32px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border-radius: 7px !important;
+      z-index: 4200 !important;
+      background: var(--accent) !important;
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 2px 8px #0002;
+      font-size: 16px !important;
+    }
+    [data-theme="light"] #themeToggleBtn { background: #0b6b73 !important; }
+    #themeToggleBtnDesktop { display: none !important; }
+  }
+  /* DESKTOP: hide the mobile one, show the navbar one (styled by .theme-navbtn rules) */
+  @media (min-width: 751px) {
+    #themeToggleBtn { display: none !important; }
+    #themeToggleBtnDesktop { display: flex !important; }
+  }
+</style>
 </head>
 <body>
+<button id="themeToggleBtn" class="mobile-theme-toggle" aria-label="Toggle Theme"><span class="mode-emoji">🌙</span><span class="mode-label" style="margin-left:6px;">Dark</span></button>
+
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
@@ -2928,7 +3014,7 @@ nav + div {
 <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
 <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
 <a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
-<button aria-label="Toggle light or dark mode" class="theme-navbtn" id="themeToggleBtn">
+<button aria-label="Toggle light or dark mode" class="theme-navbtn" id="themeToggleBtnDesktop">
 <span class="mode-emoji">☀️</span><span class="mode-label" style="margin-left:6px;">Light</span>
 </button>
 </nav>
@@ -6090,4 +6176,39 @@ function closePresenterModal(presenterId) {
   }
 })();
 </script>
+
+
+
+<style id="theme-toggle-force-show">
+  @media (max-width: 750px) {
+    #themeToggleBtn { display: flex !important; }
+  }
+</style>
 </body></html>
+<style id="theme-toggle-safearea">
+  @media (max-width: 750px) {
+    #themeToggleBtn {
+      position: fixed !important;
+      top: calc(12px + env(safe-area-inset-top)) !important;
+      left: calc(56px + env(safe-area-inset-left)) !important;
+      width: 36px !important;
+      height: 36px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border-radius: 10px !important;
+      z-index: 4200 !important;
+      background: var(--accent) !important;
+      color: #fff !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,.25) !important;
+      border: none !important;
+    }
+    [data-theme="light"] #themeToggleBtn {
+      background: #0b6b73 !important;
+    }
+    /* Compact the label on tiny widths */
+    @media (max-width: 420px) {
+      #themeToggleBtn .mode-label { display:none !important; }
+    }
+  }
+</style>
