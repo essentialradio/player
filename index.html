@@ -2394,17 +2394,27 @@ nav #theme-toggle {
   [data-theme="light"] .menu-link { background: var(--brand) !important; color:#111 !important; }
   [data-theme="light"] .menu-link:hover,
   [data-theme="light"] .menu-link:focus { background: #ffe67c !important; }
-</style><style id="modal-burger-fix">
-      [data-theme="light"] .modal .menu-link {
-        background: #fed351 !important;
-        color: #000 !important;
-      }
-      [data-theme="light"] .modal .menu-link:hover,
-      [data-theme="light"] .modal .menu-link:focus {
-        background: #ffe67c !important;
-        color: #000 !important;
-      }
-    </style></head>
+</style><style id="modal-burger-dark-fix">
+  [data-theme="dark"] .modal .menu-link {
+    background: #fed351 !important;
+    color: #000 !important;
+  }
+  [data-theme="dark"] .modal .menu-link:hover,
+  [data-theme="dark"] .modal .menu-link:focus {
+    background: #ffe67c !important;
+    color: #000 !important;
+  }
+</style><style id="desktop-toggle-fix">
+  @media (min-width: 769px) {
+    #theme-toggle {
+      position: relative !important;
+      float: none !important;
+      margin-left: 1rem !important;
+      margin-right: 0 !important;
+      transform: none !important;
+    }
+  }
+</style></head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
