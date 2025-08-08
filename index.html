@@ -2945,6 +2945,26 @@ nav + div {
   #themeToggleBtn .mode-label { margin-left: 6px; }
 }
 </style>
+<style>
+/* === Mobile top space fix === */
+@media (max-width: 768px) {
+  /* Remove any extra top margin introduced by nav-gap rules */
+  nav + .header-spacer + main,
+  nav + .header-spacer + section,
+  nav + .header-spacer + div,
+  nav + main,
+  nav + section,
+  nav + div {
+    margin-top: 0 !important;
+  }
+  /* Header spacer shouldn't create gap on mobile */
+  .header-spacer {
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6200,10 +6220,47 @@ function closePresenterModal(presenterId) {
   window.addEventListener('resize', moveForMobile);
 })();
 </script>
+
 <script>
-// Prevent theme toggle clicks from toggling the burger menu
-document.addEventListener('click', function(e){
-  var t = e.target.closest && e.target.closest('#themeToggleBtn');
-  if (t) { e.stopPropagation(); e.stopImmediatePropagation && e.stopImmediatePropagation(); }
-}, true);
-</script></body></html>
+(function(){
+  const STORAGE_KEY = 'er-theme';
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+
+  const emojiEl = btn.querySelector('.mode-emoji');
+  const labelEl = btn.querySelector('.mode-label');
+
+  function apply(theme){
+    if(theme === 'light'){
+      root.classList.remove('dark');
+      root.setAttribute('data-theme','light');
+      if (emojiEl) emojiEl.textContent = '☀️';
+      if (labelEl) labelEl.textContent = 'Light';
+    } else {
+      root.classList.add('dark');
+      root.setAttribute('data-theme','dark');
+      if (emojiEl) emojiEl.textContent = '🌙';
+      if (labelEl) labelEl.textContent = 'Dark';
+    }
+  }
+
+  // Initialise (prefer saved, else dark)
+  let initial = 'dark';
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'light' || saved === 'dark') initial = saved;
+  } catch(e){}
+  apply(initial);
+
+  // Click handler (stop bubbling into burger)
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    const isDark = root.classList.contains('dark');
+    const next = isDark ? 'light' : 'dark';
+    apply(next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch(e){}
+  }, true);
+})();
+</script>
+</body></html>
