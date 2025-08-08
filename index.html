@@ -2447,9 +2447,10 @@ nav #theme-toggle {
 }
 </style>
 <style>
-/* === Visible theme toggle button === */
+
+/* === Visible theme toggle button (MOBILE ONLY) === */
 #themeToggle {
-  display: inline-flex;
+  display: none; /* hidden by default (desktop) */
   align-items: center;
   justify-content: center;
   width: 38px;
@@ -2466,6 +2467,10 @@ nav #theme-toggle {
 #themeToggle:focus { outline: 2px solid #0b1220; outline-offset: 2px; }
 @media (max-width: 768px) {
   nav.navbar { display:flex; align-items:center; justify-content:space-between; }
+  #themeToggle { display: inline-flex; order: 2; }
+  #burgerMenuBtn { order: 2; }
+}
+
   #burgerMenuBtn { order: 2; }
   #themeToggle { order: 2; }
 }
