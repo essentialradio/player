@@ -2647,56 +2647,6 @@ html[data-theme="light"] #newsModal [style*="box-shadow:0 0 20px"] { box-shadow:
 :root[data-theme="light"] #newsModal #rnh-news-list time {
   color: var(--er-accent, #fed351) !important;
 }
-</style><style id="search-news-targeted-light-fixes">
-/* === Song Search (light mode): make menus legible === */
-:root[data-theme="light"] #searchModal input,
-:root[data-theme="light"] #searchModal select,
-:root[data-theme="light"] #searchModal textarea {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border: 1px solid #e5e7eb !important;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
-}
-
-/* Style native <option> where supported */
-:root[data-theme="light"] #searchModal option {
-  background: #ffffff !important;
-  color: #111827 !important;
-}
-
-/* If there's a results list UL, ensure it's light */
-:root[data-theme="light"] #searchModal ul,
-:root[data-theme="light"] #searchModal ul li {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* === News: nuke any inner dark blocks in light mode === */
-:root[data-theme="light"] #newsModal [style*="background"],
-:root[data-theme="light"] #newsModal [style*="background-color"] {
-  background: #ffffff !important;
-}
-
-/* Common inner containers in news modal */
-:root[data-theme="light"] #newsModal .card,
-:root[data-theme="light"] #newsModal .panel,
-:root[data-theme="light"] #newsModal .tile,
-:root[data-theme="light"] #newsModal .rnh-item,
-:root[data-theme="light"] #newsModal .rnh-story,
-:root[data-theme="light"] #newsModal .inner,
-:root[data-theme="light"] #newsModal .content,
-:root[data-theme="light"] #newsModal .modal-body {
-  background: #ffffff !important;
-  color: #111827 !important;
-  border-color: #e5e7eb !important;
-}
-
-/* Keep RNH dates yellow; ensure story text is dark */
-:root[data-theme="light"] #newsModal #rnh-news-list,
-:root[data-theme="light"] #newsModal #rnh-news-list * { color: #111827 !important; }
-:root[data-theme="light"] #newsModal #rnh-news-list .rnh-date,
-:root[data-theme="light"] #newsModal #rnh-news-list time { color: var(--er-accent, #fed351) !important; }
 </style><style id="targeted-fixes-rnh-card-and-search">
 /* Radio News Hub modal: card blocks should be light in light mode */
 :root[data-theme="light"] #newsModal .rnh-card {
@@ -2908,7 +2858,6 @@ nav + div {
     #themeToggleBtn.theme-navbtn { display: inline-flex !important; }
   }
 </style>
-
 <style id="hide-contact-request-headings">
   /* Hide blue H2 headers inside Contact and Requests modals */
   #contactModal .modal-content h2,
@@ -2916,15 +2865,25 @@ nav + div {
     display: none !important;
   }
 </style>
-
-</head>
+<style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
+(function() {
+  function setNavOffset(){
+    const nav = document.querySelector('.navbar');
+    const h = nav ? nav.offsetHeight : 60;
+    document.documentElement.style.setProperty('--nav-h', h + 'px');
+  }
+  window.addEventListener('load', setNavOffset, {once:true});
+  window.addEventListener('resize', setNavOffset);
+  setTimeout(setNavOffset, 250);
+})();
+</script></head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
 <span class="burger-bar"></span>
 <span class="burger-bar"></span>
-</div><button aria-label="Toggle theme" id="themeToggleBtn"><span class="mode-label">Dark</span></button>
+</div>
 <!-- MOBILE DROPDOWN MENU -->
 <div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;">
 <div class="rnh-date" style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;"><a class="menu-link" href="#" onclick="openModalAndCloseBurger('aboutModal');return false;">About Us</a>
@@ -4739,7 +4698,6 @@ document.addEventListener("visibilitychange", () => {
     }
   </script>
 <!-- Removed redundant modal open/close script; bounce handling moved to unified script -->
-
 <script>
 function refreshCombinedTravel() {
   var iframe = document.getElementById('combined-travel-iframe');
@@ -5072,7 +5030,6 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   document.addEventListener('DOMContentLoaded', load);
 })();
 </script>
-
 </div></div></div><script>
 
   setTimeout(() => {
@@ -5975,9 +5932,6 @@ function closePresenterModal(presenterId) {
   window._syncModalBodyState = setBodyModalState;
 })();
 </script>
-
-
-
 <div class="modal" id="newsModal">
 <div class="modal-content" style="max-width:900px;width:97vw;">
 <span class="close" onclick="closeModal('newsModal')">×</span>
@@ -6109,5 +6063,71 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   }catch(e){
     wrap.innerHTML = '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
   }
+})();
+</script><script>
+(function(){
+  function applyTheme(t){
+    var root = document.documentElement;
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('theme', t); } catch(e){}
+    var btn = document.getElementById('themeToggleBtn');
+    if (btn){
+      var lab = btn.querySelector('.mode-label');
+      var emo = btn.querySelector('.mode-emoji');
+      if (lab) lab.textContent = (t === 'light') ? 'Dark' : 'Light';
+      if (emo) emo.textContent = (t === 'light') ? '🌙' : '☀️';
+      btn.setAttribute('aria-pressed', t === 'dark');
+      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+    }
+  }
+  function init(){
+    var btn = document.getElementById('themeToggleBtn');
+    if (!btn) return;
+    // set initial from html[data-theme] or storage
+    var root = document.documentElement;
+    var saved = null; try { saved = localStorage.getItem('theme'); } catch(e){}
+    var current = saved || root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    applyTheme(current);
+    btn.onclick = function(e){
+      e.preventDefault();
+      var next = (document.documentElement.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
+      applyTheme(next);
+    };
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script><script>
+(function(){
+  function applyTheme(t){
+    var root = document.documentElement;
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('theme', t); } catch(e){}
+    var btns = document.querySelectorAll('#themeToggleBtn');
+    btns.forEach(function(btn){
+      var lab = btn.querySelector('.mode-label');
+      var emo = btn.querySelector('.mode-emoji');
+      if (lab) lab.textContent = (t === 'light') ? 'Dark' : 'Light';
+      if (emo) emo.textContent = (t === 'light') ? '🌙' : '☀️';
+      btn.setAttribute('aria-pressed', t === 'dark');
+      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+    });
+  }
+  function init(){
+    var saved = null; try { saved = localStorage.getItem('theme'); } catch(e){}
+    var current = saved || document.documentElement.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    applyTheme(current);
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest && e.target.closest('#themeToggleBtn');
+      if (!btn) return;
+      e.preventDefault();
+      var next = (document.documentElement.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
+      applyTheme(next);
+    }, true);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script></body></html>
