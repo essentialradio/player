@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:02",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:05",
-    "Displayed Time": "",
-    "Artist": "Dua Lipa",
-    "Title": "Houdini",
-    "Duration (s)": 181,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:10",
-    "Displayed Time": "",
-    "Artist": "Mark Morrison",
-    "Title": "Return of the Mack",
-    "Duration (s)": 200,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:14",
-    "Displayed Time": "",
-    "Artist": "Sam Smith",
-    "Title": "Diamonds",
-    "Duration (s)": 207,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:17",
-    "Displayed Time": "",
-    "Artist": "Tina Turner",
-    "Title": "We Don't Need Another Hero (Thunderdome)",
-    "Duration (s)": 247,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:26",
-    "Displayed Time": "",
-    "Artist": "Tyla",
-    "Title": "Push 2 Start",
-    "Duration (s)": 154,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:32",
-    "Displayed Time": "",
-    "Artist": "Post Malone & Morgan Wallen",
-    "Title": "I Had Some Help",
-    "Duration (s)": 174,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:35",
-    "Displayed Time": "",
-    "Artist": "The Stone Roses",
-    "Title": "Fools Gold",
-    "Duration (s)": 247,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:40",
-    "Displayed Time": "",
-    "Artist": "Eve Feat. Gwen Stefani",
-    "Title": "Let Me Blow Ya Mind",
-    "Duration (s)": 214,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:49",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Busy Woman",
-    "Duration (s)": 182,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:53",
-    "Displayed Time": "",
-    "Artist": "Naughty Boy Feat. Beyonce & Arrow Benjamin",
-    "Title": "Runnin' (Lose It All)",
-    "Duration (s)": 195,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T07:00:00Z",
-    "Scheduled Time": "08:56",
-    "Displayed Time": "",
-    "Artist": "Anne-Marie ft Shania Twain",
-    "Title": "Unhealthy",
-    "Duration (s)": 145,
-    "Full Duration (s)": 150,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
     "Hour": "2025-07-24T08:00:00Z",
     "Scheduled Time": "09:03",
     "Displayed Time": "",
@@ -44669,5 +44537,16 @@
     "Full Duration (s)": 196,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-08T01:00:00Z",
+    "Scheduled Time": "02:02",
+    "Displayed Time": "",
+    "Artist": "The Weeknd ft Daft Punk",
+    "Title": "Starboy",
+    "Duration (s)": 222,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
