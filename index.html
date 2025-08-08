@@ -2888,17 +2888,34 @@ nav + div {
 }
 </style>
 <style>
-/* === Mobile-only burger-adjacent theme toggle (inside burger container) === */
+
+@media (min-width: 769px) {
+  #themeToggle { display: none !important; }
+}
+</style>
+<style>
+/* === Mobile-only toggle next to burger (no layout push) === */
 @media (max-width: 768px) {
-  #themeToggle { 
+  /* Show the cloned toggle only on mobile */
+  #themeToggle {
     display: inline-flex !important;
-    align-items: center; justify-content: center;
-    width: 36px; height: 36px; border-radius: 9999px;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
     border: 1px solid rgba(0,0,0,.15);
-    background: #fed351; color: #0b1220; font-size: 16px; line-height: 1;
-    position: absolute; top: -2px; right: -52px; z-index: 4000;
+    background: #fed351;
+    color: #0b1220;
+    font-size: 16px;
+    line-height: 1;
+    position: absolute;   /* position *without* changing parent's display */
+    top: 0;
+    right: -48px;         /* nudge to the right of burger; adjust if needed */
+    z-index: 4000;
   }
-  #burgerMenuBtn { position: relative !important; display: block !important; }
+  /* Only add positioning context; do NOT change display */
+  #burgerMenuBtn { position: relative !important; }
 }
 @media (min-width: 769px) {
   #themeToggle { display: none !important; }
