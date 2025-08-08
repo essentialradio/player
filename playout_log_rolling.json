@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:02",
-    "Displayed Time": "",
-    "Artist": "Des'ree",
-    "Title": "You Gotta Be",
-    "Duration (s)": 230,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "",
-    "Artist": "New Order",
-    "Title": "Blue Monday '88",
-    "Duration (s)": 239,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:09",
-    "Displayed Time": "",
-    "Artist": "Keane",
-    "Title": "Everybody's Changing",
-    "Duration (s)": 208,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:13",
-    "Displayed Time": "",
-    "Artist": "Eric Clapton",
-    "Title": "Tears in Heaven",
-    "Duration (s)": 265,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:17",
-    "Displayed Time": "",
-    "Artist": "Lily Allen",
-    "Title": "Not Fair",
-    "Duration (s)": 199,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:25",
-    "Displayed Time": "",
-    "Artist": "Basement Jaxx",
-    "Title": "Oh My Gosh",
-    "Duration (s)": 203,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:28",
-    "Displayed Time": "",
-    "Artist": "The Cure",
-    "Title": "The Lovecats",
-    "Duration (s)": 216,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:32",
-    "Displayed Time": "",
-    "Artist": "Phats & Small",
-    "Title": "Turn Around",
-    "Duration (s)": 204,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:35",
-    "Displayed Time": "",
-    "Artist": "Santana Feat. Rob Thomas",
-    "Title": "Smooth",
-    "Duration (s)": 229,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:43",
-    "Displayed Time": "",
-    "Artist": "Red Hot Chili Peppers",
-    "Title": "Snow (Hey Oh)",
-    "Duration (s)": 278,
-    "Full Duration (s)": 283,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:48",
-    "Displayed Time": "",
-    "Artist": "Hot Chocolate",
-    "Title": "So You Win Again",
-    "Duration (s)": 254,
-    "Full Duration (s)": 260,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-24T10:00:00Z",
-    "Scheduled Time": "11:52",
-    "Displayed Time": "",
-    "Artist": "TLC",
-    "Title": "Unpretty",
-    "Duration (s)": 241,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-24T11:00:00Z",
     "Scheduled Time": "12:02",
     "Displayed Time": "",
@@ -44724,5 +44592,16 @@
     "Full Duration (s)": 223,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-08T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
