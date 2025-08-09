@@ -3365,6 +3365,82 @@ nav + div {
 }
 </style>
 
+
+<style id="modal-expand-fixes">
+/* === Modal expansion hardening === */
+
+/* Prefer dynamic viewport units to avoid iOS 100vh issues */
+@supports (height: 100dvh) {
+  .modal { height: 100dvh !important; }
+  /* Desktop */
+  .modal-content { max-height: calc(100dvh - 8vh) !important; }
+  /* Mobile header offset case */
+  @media (max-width: 768px) {
+    .modal { top: 56px !important; height: calc(100dvh - 56px) !important; }
+    .modal-content { max-height: calc(100dvh - 56px) !important; }
+  }
+}
+/* Safe fallback when dvh unsupported */
+@supports not (height: 100dvh) {
+  .modal { height: 100svh !important; }
+  .modal-content { max-height: calc(100svh - 8vh) !important; }
+  @media (max-width: 768px) {
+    .modal { top: 56px !important; height: calc(100svh - 56px) !important; }
+    .modal-content { max-height: calc(100svh - 56px) !important; }
+  }
+}
+
+/* Make sure the modal itself isn't clipping content */
+.modal { overflow: hidden !important; }
+.modal-content {
+  display: block !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  contain: content; /* prevent weird overflow painting on iOS */
+}
+
+/* Flex children inside modal should be allowed to shrink/grow */
+#scheduleModal *, 
+#newsModal *, 
+.modal-content * {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Specific to schedule modal columns: prevent overflow clipping */
+#modalScheduleContainer .split-columns, 
+#modalScheduleContainer .column,
+#modalDaySchedule .split-columns,
+#modalDaySchedule .column {
+  min-width: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Media inside modals should scale down */
+.modal-content img,
+.modal-content video,
+.modal-content iframe,
+.modal-content embed {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* If an iframe needs a reasonable default height */
+.modal-content iframe {
+  min-height: 240px;
+}
+
+/* Make sure sticky headers/footers inside the modal don't steal space */
+.modal-content .sticky,
+.modal-content [style*="position:sticky"] {
+  top: 0;
+}
+
+/* Avoid scroll chaining glitches near edges */
+.modal, .modal-content { overscroll-behavior: contain; }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
