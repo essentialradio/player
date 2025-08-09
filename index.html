@@ -3072,6 +3072,7 @@ nav + div {
 </style>
 
 
+
 <style id="play-toggle-override">
 /* Base yellow button styling (desktop) */
 #play-toggle {
@@ -3084,7 +3085,7 @@ nav + div {
   border-radius: 10px !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 8px !important;
   transition: background-color 0.2s ease, transform 0.15s ease !important;
 }
 
@@ -3101,18 +3102,20 @@ nav + div {
   background-color: #ffe67c !important;
 }
 
-/* Mobile adjustments – scale down */
+/* Mobile adjustments – scale down further */
 @media (max-width: 768px) {
   #play-toggle {
-    font-size: 15px !important;
-    padding: 10px 16px !important;
-    width: auto !important; /* don't span full width */
+    font-size: 13px !important;
+    padding: 8px 14px !important;
+    width: auto !important;
     margin: 0 auto !important;
+    border-radius: 8px !important;
+    gap: 6px !important;
   }
   #play-toggle svg,
   #play-toggle i {
-    width: 1.2em !important;
-    height: 1.2em !important;
+    width: 1.1em !important;
+    height: 1.1em !important;
   }
 }
 </style>
