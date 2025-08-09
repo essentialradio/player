@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "",
-    "Artist": "Pink",
-    "Title": "A Million Dreams",
-    "Duration (s)": 262,
-    "Full Duration (s)": 274,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:08",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 211,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:12",
-    "Displayed Time": "",
-    "Artist": "Jason Donovan",
-    "Title": "Too Many Broken Hearts",
-    "Duration (s)": 194,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:15",
-    "Displayed Time": "",
-    "Artist": "Tommy Richman",
-    "Title": "Million Dollar Baby",
-    "Duration (s)": 151,
-    "Full Duration (s)": 155,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:21",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "I Can Do It With a Broken Heart",
-    "Duration (s)": 212,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:25",
-    "Displayed Time": "",
-    "Artist": "Robyn",
-    "Title": "Dancing On My Own",
-    "Duration (s)": 211,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:28",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 246,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:32",
-    "Displayed Time": "",
-    "Artist": "George Ezra",
-    "Title": "Budapest",
-    "Duration (s)": 197,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:36",
-    "Displayed Time": "",
-    "Artist": "Wunderhorse",
-    "Title": "The Rope",
-    "Duration (s)": 184,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:41",
-    "Displayed Time": "",
-    "Artist": "Christine And The Queens",
-    "Title": "Tilted",
-    "Duration (s)": 227,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:45",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 162,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:48",
-    "Displayed Time": "",
-    "Artist": "Eminem",
-    "Title": "Houdini",
-    "Duration (s)": 217,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:52",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "How Does It Feel",
-    "Duration (s)": 136,
-    "Full Duration (s)": 144,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-25T12:00:00Z",
-    "Scheduled Time": "13:54",
-    "Displayed Time": "",
-    "Artist": "Marshmello Ft. Chvrches",
-    "Title": "Here With Me",
-    "Duration (s)": 152,
-    "Full Duration (s)": 156,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-25T13:00:00Z",
     "Scheduled Time": "14:01",
     "Displayed Time": "",
@@ -44867,5 +44713,16 @@
     "Full Duration (s)": 279,
     "Duration (mins)": 4,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-08-09T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 250,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
