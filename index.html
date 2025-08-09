@@ -7194,11 +7194,25 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 
   liveBox.appendChild(btn);
 
-  const getNowText = () => {
-    const npCard = document.querySelector("#now-playing-card") || document.querySelector("#nowPlaying");
-    const el = npCard && (npCard.querySelector(".np-text,.title,.song,.np-artist,.np-title") || npCard);
-    return el ? (el.innerText || el.textContent || "").trim() : "";
-  };
+ const getNowText = () => {
+  const npCard = document.querySelector("#now-playing-card") || document.querySelector("#nowPlaying");
+  if (!npCard) return "";
+  // Prefer explicit title/artist elements if present
+  const el = npCard && npCard.querySelector(".np-text,.title,.song,.np-artist,.np-title");
+  if (el) return (el.innerText || el.textContent || "").trim();
+
+  // Otherwise clone the card and remove the share toolbar before reading text
+  const clone = npCard.cloneNode(true);
+  const toolbar = clone.querySelector("#np-share-toolbar");
+  if (toolbar) toolbar.remove();
+
+  // Final clean to kill any stray "Share" tokens/colons
+  return (clone.textContent || "")
+    .replace(/\bShare\b:?/gi, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+};
+
 
   const buildShareText = () => {
     const t = getNowText();
