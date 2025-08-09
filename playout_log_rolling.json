@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-07-25T18:00:00Z",
-    "Scheduled Time": "19:01",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1183,
-    "Full Duration (s)": 1187,
-    "Duration (mins)": 20,
-    "Full Duration (mins)": 20
-  },
-  {
-    "Hour": "2025-07-25T18:00:00Z",
-    "Scheduled Time": "19:21",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1277,
-    "Full Duration (s)": 1280,
-    "Duration (mins)": 21,
-    "Full Duration (mins)": 21
-  },
-  {
     "Hour": "2025-07-25T19:00:00Z",
     "Scheduled Time": "20:02",
     "Displayed Time": "",
@@ -44724,5 +44702,16 @@
     "Full Duration (s)": 3386,
     "Duration (mins)": 56,
     "Full Duration (mins)": 56
+  },
+  {
+    "Hour": "2025-08-09T17:00:00Z",
+    "Scheduled Time": "18:01",
+    "Displayed Time": "",
+    "Artist": "Tim Graham",
+    "Title": "The LGBTQ Music Chart",
+    "Duration (s)": 1377,
+    "Full Duration (s)": 1381,
+    "Duration (mins)": 23,
+    "Full Duration (mins)": 23
   }
 ]
