@@ -3190,24 +3190,40 @@ nav + div {
 }
 
 
-/* --- Share platform popup on hover/focus --- */
+/* Share button inside Now Playing card */
+#share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85em;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--brand, #fed351);
+  color: #111;
+  border: 1px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+  margin-top: 8px;
+}
+#share-btn:hover, #share-btn:focus { filter: brightness(.97); }
+
+/* Share platform popup anchors relative to NP button */
 #share-btn { position: relative; }
 #share-platforms {
   position: absolute;
-  top: 100%;
+  top: 110%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--panel, #222);
   border: 1px solid var(--border, #444);
   border-radius: 6px;
-  padding: 6px 8px;
+  padding: 4px 6px;
   display: flex;
-  gap: 6px;
+  gap: 4px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease;
   z-index: 5000;
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
 }
 #share-btn:hover #share-platforms,
 #share-btn:focus-within #share-platforms {
@@ -3218,14 +3234,13 @@ nav + div {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
   background: var(--brand, #fed351);
   color: #111;
   text-decoration: none;
-  font-size: 16px; /* emoji icons */
-  line-height: 1;
+  font-size: 14px;
 }
 #share-platforms a:hover { filter: brightness(0.95); }
 
@@ -3236,6 +3251,58 @@ nav + div {
     transform: translateX(-50%);
   }
 }
+
+
+
+/* --- Share button inside LIVE box --- */
+.live-indicator #share-btn {
+  background: var(--brand, #fed351);
+  color: #111;
+  border: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.75em;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.live-indicator #share-btn:hover,
+.live-indicator #share-btn:focus { filter: brightness(.95); }
+
+.live-indicator #share-btn { position: relative; }
+.live-indicator #share-platforms {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: var(--panel, #222);
+  border: 1px solid var(--border, #444);
+  border-radius: 6px;
+  padding: 4px 6px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 5000;
+}
+.live-indicator #share-btn:hover #share-platforms,
+.live-indicator #share-btn:focus-within #share-platforms {
+  opacity: 1;
+  pointer-events: auto;
+}
+.live-indicator #share-platforms a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--brand, #fed351);
+  color: #111;
+  font-size: 13px;
+  text-decoration: none;
+}
+.live-indicator #share-platforms a:hover { filter: brightness(0.95); }
 
 </style>
 
@@ -6626,65 +6693,62 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 
   /* =========  B) SHARE BUTTON (Web Share API + fallbacks)  ========= */
   function mountShareButton() {
-    const playBtn = document.querySelector("#play-toggle");
-    if (!playBtn || document.querySelector("#share-btn")) return;
+  const liveBox = document.querySelector(".live-indicator");
+  if (!liveBox) return;
 
-    const btn = document.createElement("button");
-    btn.id = "share-btn";
-    btn.type = "button";
-    btn.setAttribute("aria-label", "Share the current track");
-    btn.innerHTML = '<span class="share-dot" aria-hidden="true"></span> Share';
+  // If an older share button exists elsewhere, remove it to avoid duplicates
+  const old = document.querySelector("#share-btn");
+  if (old && old.parentElement !== liveBox) old.remove();
+  if (document.querySelector("#share-btn")) return;
 
-    // Place next to Play on desktop, below on mobile (CSS handles width)
-    playBtn.insertAdjacentElement("afterend", btn);
+  const btn = document.createElement("button");
+  btn.id = "share-btn";
+  btn.type = "button";
+  btn.textContent = "Share";
+  btn.setAttribute("aria-label", "Share the current track");
 
-    const getNowText = () => {
-      const np = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
-      const el = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
-      return el ? (el.innerText || el.textContent || "").trim() : "";
-    };
+  liveBox.appendChild(btn);
 
-    const buildShareText = () => {
-      const t = getNowText();
-      return t ? `I'm listening to ${t} on Essential Radio` : `I'm listening to Essential Radio`;
-    };
+  const getNowText = () => {
+    const npCard = document.querySelector("#now-playing-card") || document.querySelector("#nowPlaying");
+    const el = npCard && (npCard.querySelector(".np-text,.title,.song,.np-artist,.np-title") || npCard);
+    return el ? (el.innerText || el.textContent || "").trim() : "";
+  };
 
-    btn.addEventListener("click", async () => {
-      const shareData = {
-        title: "Essential Radio",
-        text: buildShareText(),
-        url: location.href
-      };
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-        } else {
-          // fallbacks: X/Twitter, Facebook, WhatsApp
-          const txt = encodeURIComponent(buildShareText());
-          const url = encodeURIComponent(location.href);
-          const twitter = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
-          window.open(twitter, "_blank", "noopener");
-        }
-      } catch (e) {
-        // optional: copy to clipboard as last resort
-        try {
-          await navigator.clipboard.writeText(buildShareText() + " " + location.href);
-          btn.textContent = "Copied!";
-          setTimeout(() => (btn.innerHTML = '<span class="share-dot"></span> Share'), 1200);
-        } catch {}
+  const buildShareText = () => {
+    const t = getNowText();
+    return t ? `I'm listening to ${t} on Essential Radio` : `I'm listening to Essential Radio`;
+  };
+
+  btn.addEventListener("click", async () => {
+    const shareData = { title: "Essential Radio", text: buildShareText(), url: location.href };
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        const txt = encodeURIComponent(buildShareText());
+        const url = encodeURIComponent(location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${txt}&url=${url}`, "_blank", "noopener");
       }
-    });
-
-    // keep the label in sync as Now Playing changes
-    const npNode = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
-    if (npNode) {
-      const obs = new MutationObserver(() => {
-        btn.title = buildShareText();
-        btn.setAttribute("aria-label", "Share: " + buildShareText());
-      });
-      obs.observe(npNode, { childList: true, subtree: true, characterData: true });
+    } catch (e) {
+      try {
+        await navigator.clipboard.writeText(buildShareText() + " " + location.href);
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = "Share"), 1200);
+      } catch {}
     }
+  });
+
+  // keep label in sync
+  const npCard = document.querySelector("#now-playing-card") || document.querySelector("#nowPlaying");
+  if (npCard) {
+    const obs = new MutationObserver(() => {
+      btn.title = buildShareText();
+      btn.setAttribute("aria-label", "Share: " + buildShareText());
+    });
+    obs.observe(npCard, { childList: true, subtree: true, characterData: true });
   }
+}
 
   
   function addPlatformIcons() {
