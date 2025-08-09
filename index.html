@@ -3122,6 +3122,74 @@ nav + div {
 }
 </style>
 
+
+<!-- Enhancements: marquee, live highlight, share button -->
+<style id="enhancements-ui">
+/* --- Now Playing marquee --- */
+.np-marquee {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.np-track {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  animation: np-scroll linear infinite;
+  animation-duration: 18s; /* JS recalculates based on text width */
+}
+.np-track:hover { animation-play-state: paused; }
+
+/* soft gradient fades at the edges */
+.np-marquee::before,
+.np-marquee::after {
+  content:"";
+  position:absolute; top:0; bottom:0; width:28px; pointer-events:none;
+}
+.np-marquee::before { left:0; background:linear-gradient(to right, rgba(0,0,0,.35), transparent); }
+.np-marquee::after  { right:0; background:linear-gradient(to left,  rgba(0,0,0,.35), transparent); }
+[data-theme="light"] .np-marquee::before { background:linear-gradient(to right, rgba(255,255,255,.75), transparent); }
+[data-theme="light"] .np-marquee::after  { background:linear-gradient(to left,  rgba(255,255,255,.75), transparent); }
+
+@keyframes np-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* --- Live show highlight in schedule --- */
+.live-now {
+  border-left: 4px solid var(--brand, #fed351);
+  background: linear-gradient(90deg, rgba(254,211,81,.12), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(254,211,81,.18) inset, 0 0 22px rgba(254,211,81,.18);
+  border-radius: 10px;
+  padding-left: 12px;
+}
+[data-theme="light"] .live-now {
+  background: linear-gradient(90deg, rgba(254,211,81,.16), transparent 70%);
+}
+
+/* --- Share button --- */
+#share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--brand, #fed351);
+  color: #111;
+  border: 1px solid rgba(0,0,0,.06);
+  cursor: pointer;
+}
+#share-btn:hover, #share-btn:focus { filter: brightness(.97); }
+
+#share-btn .share-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+}
+
+/* mobile layout: keep share under play */
+@media (max-width:768px){
+  #share-btn { width: 100%; margin-top: 10px; justify-content: center; }
+}
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6433,4 +6501,240 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   window.addEventListener('resize', placeThemeBtn);
   window.addEventListener('DOMContentLoaded', placeThemeBtn);
 })();
-</script></body></html>
+</script>
+<!-- Enhancements JS: marquee, live highlight, share -->
+<script>
+(() => {
+  const TZ = "Europe/London";
+
+  /* =========  A) NOW PLAYING MARQUEE  ========= */
+  function ensureMarquee() {
+    const np = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-text") || document.querySelector("#now-playing-card");
+    if (!np) return;
+
+    // pick an element that holds the text (if card, use its first text node)
+    let textEl = np.querySelector(".np-text") || np.querySelector(".title") || np.querySelector(".song") || np.querySelector(".np-title") || np.querySelector("h3, h4, p, span");
+    if (!textEl) textEl = np;
+
+    const containerAlready = np.querySelector(".np-marquee");
+    const label = (textEl.innerText || textEl.textContent || "").trim();
+    if (!label) return;
+
+    // measure
+    const tmp = document.createElement("span");
+    tmp.style.visibility = "hidden";
+    tmp.style.whiteSpace = "nowrap";
+    tmp.textContent = label;
+    document.body.appendChild(tmp);
+    const textW = tmp.getBoundingClientRect().width;
+    document.body.removeChild(tmp);
+
+    const containerW = np.getBoundingClientRect().width || 0;
+
+    // Only build marquee if overflow is meaningful
+    if (textW > containerW * 1.1) {
+      if (!containerAlready) {
+        const wrap = document.createElement("div");
+        wrap.className = "np-marquee";
+        const track = document.createElement("div");
+        track.className = "np-track";
+
+        // duplicate content for seamless loop
+        const sep = "   •   ";
+        track.textContent = label + sep + label + sep + label;
+
+        // replace original text with marquee (non-destructive: hide old)
+        if (!textEl.classList.contains("np-hidden-original")) {
+          textEl.style.display = "none";
+          textEl.classList.add("np-hidden-original");
+        }
+        wrap.appendChild(track);
+        np.appendChild(wrap);
+
+        // speed based on total width (pixels / 40px per second baseline)
+        requestAnimationFrame(() => {
+          const total = track.getBoundingClientRect().width / 2; // one cycle width
+          const seconds = Math.max(12, Math.min(40, total / 40));
+          track.style.animationDuration = seconds + "s";
+        });
+      }
+    } else if (containerAlready) {
+      // no longer overflowing: remove marquee, restore text
+      containerAlready.remove();
+      const hidden = np.querySelector(".np-hidden-original");
+      if (hidden) { hidden.style.display = ""; hidden.classList.remove("np-hidden-original"); }
+    }
+  }
+
+  // Observe Now Playing text changes so marquee updates automatically
+  function setNowPlayingObserver() {
+    const node = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
+    if (!node) return;
+    const obs = new MutationObserver(() => ensureMarquee());
+    obs.observe(node, { childList: true, subtree: true, characterData: true });
+    ensureMarquee();
+  }
+
+  /* =========  B) SHARE BUTTON (Web Share API + fallbacks)  ========= */
+  function mountShareButton() {
+    const playBtn = document.querySelector("#play-toggle");
+    if (!playBtn || document.querySelector("#share-btn")) return;
+
+    const btn = document.createElement("button");
+    btn.id = "share-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Share the current track");
+    btn.innerHTML = '<span class="share-dot" aria-hidden="true"></span> Share';
+
+    // Place next to Play on desktop, below on mobile (CSS handles width)
+    playBtn.insertAdjacentElement("afterend", btn);
+
+    const getNowText = () => {
+      const np = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
+      const el = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
+      return el ? (el.innerText || el.textContent || "").trim() : "";
+    };
+
+    const buildShareText = () => {
+      const t = getNowText();
+      return t ? `I'm listening to ${t} on Essential Radio` : `I'm listening to Essential Radio`;
+    };
+
+    btn.addEventListener("click", async () => {
+      const shareData = {
+        title: "Essential Radio",
+        text: buildShareText(),
+        url: location.href
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          // fallbacks: X/Twitter, Facebook, WhatsApp
+          const txt = encodeURIComponent(buildShareText());
+          const url = encodeURIComponent(location.href);
+          const twitter = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
+          window.open(twitter, "_blank", "noopener");
+        }
+      } catch (e) {
+        // optional: copy to clipboard as last resort
+        try {
+          await navigator.clipboard.writeText(buildShareText() + " " + location.href);
+          btn.textContent = "Copied!";
+          setTimeout(() => (btn.innerHTML = '<span class="share-dot"></span> Share'), 1200);
+        } catch {}
+      }
+    });
+
+    // keep the label in sync as Now Playing changes
+    const npNode = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
+    if (npNode) {
+      const obs = new MutationObserver(() => {
+        btn.title = buildShareText();
+        btn.setAttribute("aria-label", "Share: " + buildShareText());
+      });
+      obs.observe(npNode, { childList: true, subtree: true, characterData: true });
+    }
+  }
+
+  /* =========  C) HIGHLIGHT LIVE SHOWS IN SCHEDULE  ========= */
+  function parseRange(str) {
+    // accepts "09:00 – 12:00" or "9:00-12:00"
+    const m = (str || "").replace(/\s/g, "").match(/(\d{1,2}:\d{2})[–-](\d{1,2}:\d{2})/);
+    if (!m) return null;
+    return { start: m[1], end: m[2] };
+  }
+  function toLondon(dateLike) {
+    const d = new Date(dateLike);
+    const iso = d.toLocaleString("sv-SE", { timeZone: TZ }).replace(" ", "T");
+    return new Date(iso);
+  }
+  function todayName() {
+    return new Intl.DateTimeFormat("en-GB", { weekday: "long", timeZone: TZ }).format(new Date());
+  }
+  function nextByClock(base, hhmm) {
+    const [h, m] = hhmm.split(":").map(Number);
+    const d = toLondon(base);
+    d.setHours(h, m, 0, 0);
+    return d;
+  }
+  function highlightLiveShows() {
+    const container = document.querySelector("#modalScheduleContainer");
+    if (!container) return;
+
+    // clear existing highlights
+    container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
+
+    const now = toLondon(new Date());
+    const today = todayName().toLowerCase();
+
+    container.querySelectorAll(".day-card").forEach(dayCard => {
+      const heading = (dayCard.querySelector("h2, h3")?.textContent || "").trim().toLowerCase();
+      const isToday = heading.includes(today);
+
+      dayCard.querySelectorAll(".show-entry").forEach(entry => {
+        const timeEl = entry.querySelector("time");
+        if (!timeEl) return;
+
+        const range = parseRange(timeEl.textContent);
+        if (!range) return;
+
+        if (isToday) {
+          let start = nextByClock(now, range.start);
+          let end   = nextByClock(now, range.end);
+          if (end <= start) end = new Date(end.getTime() + 24 * 3600 * 1000);
+
+          if (now >= start && now < end) {
+            entry.classList.add("live-now");
+          }
+        }
+      });
+    });
+  }
+
+  // Recompute highlights periodically while the modal is open
+  let liveTimer = null;
+  function scheduleLiveTick() {
+    if (liveTimer) clearInterval(liveTimer);
+    liveTimer = setInterval(highlightLiveShows, 60 * 1000);
+  }
+
+  const schedReady = () => {
+    highlightLiveShows();
+    scheduleLiveTick();
+    const cont = document.querySelector("#modalScheduleContainer");
+    if (cont) {
+      const obs = new MutationObserver(() => highlightLiveShows());
+      obs.observe(cont, { childList: true, subtree: true });
+    }
+  };
+
+  // Init after DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      setNowPlayingObserver();
+      mountShareButton();
+      schedReady();
+    });
+  } else {
+    setNowPlayingObserver();
+    mountShareButton();
+    schedReady();
+  }
+
+  // Re-run marquee on resize (responsive width changes)
+  let rAF, lastW = 0;
+  window.addEventListener("resize", () => {
+    if (rAF) cancelAnimationFrame(rAF);
+    rAF = requestAnimationFrame(() => {
+      const w = window.innerWidth;
+      if (Math.abs(w - lastW) > 12) {
+        lastW = w;
+        ensureMarquee();
+      }
+    });
+  });
+})();
+</script>
+
+</body></html>
