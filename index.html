@@ -3306,6 +3306,18 @@ nav + div {
 
 </style>
 
+
+<style id="volume-label-restore">
+  /* Ensure the volume percentage label shows and matches theme */
+  #volume-container #volume-display {
+    display: inline-block !important;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  :root:not([data-theme="light"]) #volume-display { color: #f7f8fb !important; } /* dark */
+  [data-theme="light"] #volume-display { color: #0b1220 !important; }           /* light */
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6938,59 +6950,51 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 })();
 </script>
 
-<script>
-  function updateShareButtons({ title, artist, url = 'https://essential.radio' }) {
-    // Clean up any stray 'Share' text
-    const clean = (str) => str ? str.replace(/\bShare\b/gi, '').trim() : '';
-    title = clean(title);
-    artist = clean(artist);
-    const trackLine = title && artist ? \`\${title} by \${artist}\` :
-                       title ? title : artist ? \`by \${artist}\` : '';
-    const shareText = trackLine ? \`I'm listening to \${trackLine} on Essential Radio\` :
-                                  \`I'm listening to Essential Radio\`;
-    const encText = encodeURIComponent(shareText);
-    const encURL  = encodeURIComponent(url);
-    const fb = document.getElementById('share-facebook');
-    const tw = document.getElementById('share-twitter');
-    const wa = document.getElementById('share-whatsapp');
-    const cp = document.getElementById('share-copy');
-    if (fb) fb.href = \`https://www.facebook.com/sharer/sharer.php?u=\${encURL}&quote=\${encText}\`;
-    if (tw) tw.href = \`https://twitter.com/intent/tweet?text=\${encText}&url=\${encURL}\`;
-    if (wa) wa.href = \`https://wa.me/?text=\${encText}%20\${encURL}\`;
-    if (cp) {
-      cp.onclick = async (e) => {
-        e.preventDefault();
-        const clip = \`\${shareText} \${url}\`;
-        try {
-          await navigator.clipboard.writeText(clip);
-          cp.dataset.copied = 'true';
-          setTimeout(() => (cp.dataset.copied = ''), 1500);
-        } catch {
-          alert('Copied text:\n\n' + clip);
-        }
-      };
+<script id="volume-label-restore">
+document.addEventListener("DOMContentLoaded", function(){
+  var slider = document.getElementById("volume-slider");
+  var display = document.getElementById("volume-display");
+  var audio = document.querySelector("audio, #audio, #player audio");
+  function asPercent(val, max){
+    try {
+      val = parseFloat(val);
+      max = parseFloat(max);
+      if (!isFinite(val)) return 100;
+      if (!isFinite(max) || max === 1 || max === 0) {
+        // Common case: range 0..1 or missing max
+        if (val <= 1) return Math.round(val * 100);
+        // Fallback if slider stores 0..100 directly
+        return Math.round(val);
+      }
+      // Generic: percent of max
+      return Math.round((val / max) * 100);
+    } catch(e) {
+      return 100;
     }
   }
-
-  // Observe now-playing for changes
-  const npEl = document.getElementById('now-playing');
-  if (npEl) {
-    const updateFromNP = () => {
-      let txt = npEl.textContent.trim();
-      let title = '', artist = '';
-      if (txt.includes(' - ')) {
-        [artist, title] = txt.split(' - ');
-      } else if (txt.toLowerCase().includes(' by ')) {
-        [title, artist] = txt.split(/ by /i);
-      } else {
-        title = txt;
-      }
-      updateShareButtons({ title, artist });
-    };
-    const mo = new MutationObserver(updateFromNP);
-    mo.observe(npEl, { childList: true, subtree: true, characterData: true });
-    updateFromNP();
+  function updateFromSlider(){
+    if (!slider || !display) return;
+    var pct = asPercent(slider.value, slider.max || 1);
+    display.textContent = pct + "%";
+    display.setAttribute("aria-label", "Volume " + pct + " percent");
   }
+  function updateFromAudio(){
+    if (!audio || !display) return;
+    var v = typeof audio.volume === "number" ? audio.volume : 1;
+    var pct = asPercent(v, 1);
+    display.textContent = pct + "%";
+    display.setAttribute("aria-label", "Volume " + pct + " percent");
+  }
+  if (slider) {
+    slider.addEventListener("input", updateFromSlider);
+    slider.addEventListener("change", updateFromSlider);
+  }
+  if (audio) {
+    audio.addEventListener && audio.addEventListener("volumechange", updateFromAudio);
+  }
+  // Initial paint
+  if (slider) updateFromSlider(); else if (audio) updateFromAudio(); else if (display) display.textContent = "100%";
+});
 </script>
 
 </body></html>
