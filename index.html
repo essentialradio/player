@@ -1028,6 +1028,36 @@ body.modal-open {
     overflow-y: auto !important;
   }
 }
+
+/* === Play Essential Radio button styling === */
+#play-toggle {
+  background-color: #fed351 !important; /* Essential yellow */
+  color: #111 !important;               /* Dark text for contrast */
+  border: 2px solid #e6c13c !important;  /* Slightly darker yellow border */
+  font-weight: bold;
+  font-size: 20px;                       /* Larger text size */
+  padding: 16px 28px;                    /* Bigger click/tap area */
+  border-radius: 10px;                   /* Slightly rounder corners */
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+#play-toggle:hover,
+#play-toggle:focus {
+  background-color: #ffe67c !important;  /* Lighter yellow on hover */
+  transform: scale(1.05);                /* Slight zoom on hover */
+}
+
+/* === Mobile adjustments === */
+@media (max-width: 768px) {
+  #play-toggle {
+    font-size: 18px !important;
+    padding: 14px 24px !important;
+    width: 100%;                         /* Full width on mobile */
+    margin-top: 12px !important;
+  }
+}
+
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -2903,7 +2933,203 @@ nav + div {
     z-index: 2002 !important;
   }
 }
-</style></head>
+</style>
+
+<style id="play-toggle-override">
+/* Slightly larger button but not oversized */
+#play-toggle {
+  background-color: #fed351 !important;
+  color: #111 !important;
+  border: 2px solid #e6c13c !important;
+  font-weight: bold !important;
+  font-size: 18px !important;  /* reduced from 22px */
+  padding: 14px 24px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: background-color 0.2s ease, transform 0.15s ease !important;
+}
+
+/* Make play icon larger */
+#play-toggle svg,
+#play-toggle i {
+  width: 1.6em !important;
+  height: 1.6em !important;
+}
+
+/* Hover effect */
+#play-toggle:hover,
+#play-toggle:focus {
+  background-color: #ffe67c !important;
+  transform: scale(1.03) !important;
+  outline: none !important;
+}
+
+/* Light mode compatibility */
+[data-theme="light"] #play-toggle {
+  background-color: #fed351 !important;
+  color: #111 !important;
+  border-color: #e6c13c !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  #play-toggle {
+    font-size: 17px !important;
+    padding: 12px 20px !important;
+    width: 100% !important;
+  }
+  #play-toggle svg,
+  #play-toggle i {
+    width: 1.8em !important;
+    height: 1.8em !important;
+  }
+}
+</style>
+
+
+
+<style id="mute-toggle-override">
+/* Mute button styling – Essential yellow theme */
+#mute-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background-color: #fed351 !important;  /* Essential yellow */
+  color: #111 !important;                /* Dark icon for contrast */
+  border: 2px solid #e6c13c !important;   /* Slightly darker yellow border */
+  font-size: 20px !important;
+  transition: background-color 0.2s, transform 0.15s ease;
+  padding: 0 !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Icon inside */
+#mute-toggle svg,
+#mute-toggle i {
+  width: 1.5em !important;
+  height: 1.5em !important;
+}
+
+/* Hover effect */
+#mute-toggle:hover {
+  background-color: #ffe67c !important;   /* lighter yellow on hover */
+  transform: scale(1.05);
+}
+</style>
+
+
+<style id="contact-modal-fullscreen-override">
+/* ===== Contact modal: force true fullscreen on DESKTOP, prevent bottom cut ===== */
+
+/* Base: let the modal backdrop fill the viewport and not crop content */
+.modal {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;           /* background doesn't scroll */
+}
+
+/* Generic modal-content rules are already present; raise the cap for desktop */
+@media (min-width: 751px) {
+  /* Target Contact + Requests if present */
+  #contactModal .modal-content,
+  #requestsModal .modal-content {
+    margin: 0 auto !important;
+    width: 96vw !important;
+    max-width: 1200px !important;
+    height: 94vh !important;             /* nearly fullscreen */
+    max-height: 94vh !important;
+    padding: 16px !important;
+    overflow: hidden !important;         /* inner wrapper/iframe will scroll */
+    border-radius: 16px !important;
+  }
+
+  /* Inner scrolling area (iframe or wrapper) */
+  #contactModal .modal-content .embed-wrap,
+  #requestsModal .modal-content .embed-wrap {
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* Make the iframe fill the available height */
+  #contactModal iframe,
+  #requestsModal iframe,
+  #contactModal .embed-wrap iframe,
+  #requestsModal .embed-wrap iframe {
+    display: block !important;
+    width: 100% !important;
+    height: calc(94vh - 48px) !important; /* subtract padding/close button */
+    border: 0 !important;
+    overflow: auto !important;
+  }
+}
+
+/* MOBILE already handles 56px top offset elsewhere; ensure contact/request iframes fill */
+@media (max-width: 750px) {
+  #contactModal .modal-content,
+  #requestsModal .modal-content {
+    margin: 0 !important;
+    width: 96vw !important;
+    max-width: 96vw !important;
+    max-height: calc(100vh - 56px) !important;
+    height: calc(100vh - 56px) !important;
+    overflow: hidden !important;
+  }
+  #contactModal iframe,
+  #requestsModal iframe {
+    width: 100% !important;
+    height: calc(100vh - 56px - 36px) !important;
+    border: 0 !important;
+  }
+}
+
+/* Keep close button above the iframe and clickable */
+#contactModal .close,
+#requestsModal .close {
+  position: absolute !important;
+  z-index: 10 !important;
+}
+</style>
+
+
+<style id="song-search-buttons-override">
+/* Song Search navigation buttons in Essential Yellow */
+#song-search button,
+#song-search a.button,
+#song-search .nav-btn,
+.song-search-prev,
+.song-search-next,
+.song-search-reset {
+  background-color: #fed351 !important; /* Essential yellow */
+  color: #111 !important;               /* Dark text/icon for contrast */
+  border: 2px solid #e6c13c !important;  /* Slightly darker border */
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+/* Hover/focus effect */
+#song-search button:hover,
+#song-search a.button:hover,
+#song-search .nav-btn:hover,
+.song-search-prev:hover,
+.song-search-next:hover,
+.song-search-reset:hover {
+  background-color: #ffe67c !important;
+  transform: scale(1.03);
+}
+</style>
+
+</head>
 <body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
