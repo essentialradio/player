@@ -3100,32 +3100,44 @@ nav + div {
 </style>
 
 
+
 <style id="song-search-buttons-override">
-/* Song Search navigation buttons in Essential Yellow */
-#song-search button,
-#song-search a.button,
-#song-search .nav-btn,
-.song-search-prev,
-.song-search-next,
-.song-search-reset {
-  background-color: #fed351 !important; /* Essential yellow */
-  color: #111 !important;               /* Dark text/icon for contrast */
-  border: 2px solid #e6c13c !important;  /* Slightly darker border */
-  font-weight: 600 !important;
-  border-radius: 8px !important;
+/* Song Search: Previous / Next / Reset in Essential Yellow */
+#searchModal #prevHour,
+#searchModal #nextHour,
+#searchModal #resetFilters {
+  background-color: #fed351 !important;
+  color: #111 !important;
+  border: 2px solid #e6c13c !important;
+  font-weight: 700 !important;
+  border-radius: 9px !important;
   padding: 8px 16px !important;
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
+  transition: background-color .2s ease, transform .15s ease !important;
 }
 
-/* Hover/focus effect */
-#song-search button:hover,
-#song-search a.button:hover,
-#song-search .nav-btn:hover,
-.song-search-prev:hover,
-.song-search-next:hover,
-.song-search-reset:hover {
+/* Hover / focus */
+#searchModal #prevHour:hover,
+#searchModal #nextHour:hover,
+#searchModal #resetFilters:hover,
+#searchModal #prevHour:focus,
+#searchModal #nextHour:focus,
+#searchModal #resetFilters:focus {
   background-color: #ffe67c !important;
-  transform: scale(1.03);
+  transform: translateY(-1px) !important;
+  outline: none !important;
+}
+
+/* Keep consistent in light & dark modes */
+:root[data-theme="light"] #searchModal #prevHour,
+:root[data-theme="light"] #searchModal #nextHour,
+:root[data-theme="light"] #searchModal #resetFilters,
+:root[data-theme="dark"]  #searchModal #prevHour,
+:root[data-theme="dark"]  #searchModal #nextHour,
+:root[data-theme="dark"]  #searchModal #resetFilters {
+  background-color: #fed351 !important;
+  color: #111 !important;
+  border-color: #e6c13c !important;
 }
 </style>
 
