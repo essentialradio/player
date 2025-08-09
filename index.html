@@ -3441,6 +3441,133 @@ nav + div {
 .modal, .modal-content { overscroll-behavior: contain; }
 </style>
 
+
+<style id="presenter-image-uniform">
+/* === Uniform Presenter Image Sizing === */
+/* Schedule modal presenter avatars */
+#modalScheduleContainer .show-entry img,
+#modalDaySchedule .show-entry img {
+  width: 48px !important;
+  height: 48px !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+/* Presenter list / presenter modal cards */
+#presentersModal .presenter-card img,
+.presenter-modal .presenter-card img,
+#presentersModal .presenter img,
+.presenter-modal .presenter img,
+#presentersModal .presenter-photo,
+.presenter-modal .presenter-photo,
+#presentersModal .presenter-list img,
+.presenter-modal .presenter-list img {
+  width: 96px !important;
+  height: 96px !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  display: block !important;
+}
+
+/* Fall-back: any image flagged as presenter via class */
+img.presenter, img.presenter-photo, img.host, img.host-photo {
+  width: 96px !important;
+  height: 96px !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+}
+
+/* Mobile tweak */
+@media (max-width: 768px) {
+  #modalScheduleContainer .show-entry img,
+  #modalDaySchedule .show-entry img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  #presentersModal .presenter-card img,
+  .presenter-modal .presenter-card img,
+  #presentersModal .presenter img,
+  .presenter-modal .presenter img,
+  #presentersModal .presenter-photo,
+  .presenter-modal .presenter-photo,
+  #presentersModal .presenter-list img,
+  .presenter-modal .presenter-list img,
+  img.presenter, img.presenter-photo, img.host, img.host-photo {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+</style>
+
+
+<style id="presenter-image-centering">
+/* === Presenter image centering === */
+
+/* 1) Schedule entries: vertically center avatar relative to text */
+#modalScheduleContainer .show-entry,
+#modalDaySchedule .show-entry {
+  align-items: center !important; /* override earlier align-items:flex-start */
+}
+
+/* 2) Make the actual <img> center itself in any layout (flex, grid, or block) */
+#modalScheduleContainer .show-entry img,
+#modalDaySchedule .show-entry img,
+#presentersModal .presenter-card img,
+.presenter-modal .presenter-card img,
+#presentersModal .presenter img,
+.presenter-modal .presenter img,
+#presentersModal .presenter-photo,
+.presenter-modal .presenter-photo,
+#presentersModal .presenter-list img,
+.presenter-modal .presenter-list img,
+img.presenter, img.presenter-photo, img.host, img.host-photo {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center !important;     /* centers along cross-axis in flex/grid */
+  object-position: center center !important; /* ensure crop is centered */
+  place-self: center !important;     /* grid-friendly centering */
+}
+
+/* Optional: if presenter cards have a fixed-height image area, center inside it */
+.presenter-card .image, .presenter .image, .presenter-photo-wrap {
+  display: grid !important;
+  place-items: center !important;
+}
+</style>
+
+
+<style id="schedule-alignment-restore">
+/* Restore original schedule row alignment */
+#modalScheduleContainer .show-entry,
+#modalDaySchedule .show-entry {
+  align-items: flex-start !important;
+}
+</style>
+
+
+<style id="schedule-alignment-hard-restore">
+/* === Schedule avatar alignment: restore original === */
+#modalScheduleContainer .show-entry,
+#modalDaySchedule .show-entry {
+  align-items: flex-start !important;
+}
+
+/* Avatars in schedule rows: no auto-centering, sit at the top-left of their slot */
+#modalScheduleContainer .show-entry img,
+#modalDaySchedule .show-entry img {
+  margin: 0 !important;
+  align-self: flex-start !important;
+  place-self: auto !important;
+  object-position: center center !important; /* keep crop centered inside the circle */
+  display: block !important;
+}
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6883,7 +7010,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 
   const buildShareText = () => {
     const t = getNowText();
-    return t ? `I'm listening to ${t} on Essential Radio` : `I'm listening to Essential Radio`;
+    return t ? `I'm listening to ${t} on Essential Radio`;
   };
 
   btn.addEventListener("click", async () => {
@@ -6926,7 +7053,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     const np = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
     const el = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
     const baseText = el ? (el.innerText || el.textContent || "").trim() : "";
-    const text = encodeURIComponent(baseText ? `I'm listening to ${baseText} on Essential Radio` : `I'm listening to Essential Radio`);
+    const text = encodeURIComponent(baseText ? `I'm listening to ${baseText} on Essential Radio`);
 
     const platforms = document.createElement("div");
     platforms.id = "share-platforms";
@@ -6942,7 +7069,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
       const obs = new MutationObserver(() => {
         const el2 = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
         const base2 = el2 ? (el2.innerText || el2.textContent || "").trim() : "";
-        const t2 = encodeURIComponent(base2 ? `I'm listening to ${base2} on Essential Radio` : `I'm listening to Essential Radio`);
+        const t2 = encodeURIComponent(base2 ? `I'm listening to ${base2} on Essential Radio`);
         platforms.querySelectorAll("a").forEach(a => {
           const href = a.getAttribute("href");
           if (href.includes("twitter.com/intent/tweet")) {
