@@ -3717,6 +3717,49 @@ html:not([data-theme="light"]) #volume-container #volume-display {
 .modal { z-index: 2000 !important; }
 </style>
 
+
+<style id="np-share-order-guard">
+#np-share-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#np-share-toolbar .np-share-btn{order:10;text-decoration:none}
+#np-share-toolbar .np-share-btn[data-platform="facebook"],
+#np-share-toolbar .np-share-btn[data-platform="fb"]{order:1}
+#np-share-toolbar .np-share-btn[data-platform="twitter"],
+#np-share-toolbar .np-share-btn[data-platform="x"]{order:2}
+#np-share-toolbar .np-share-btn[data-platform="whatsapp"],
+#np-share-toolbar .np-share-btn[data-platform="wa"]{order:3}
+</style>
+
+
+<style id="np-share-style-neutral">
+#np-share-toolbar{margin-top:8px}
+#np-share-toolbar .np-share-btn{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+[data-theme="light"] #np-share-toolbar .np-share-btn{
+  border-color: rgba(0,0,0,0.15);
+}
+#np-share-toolbar .np-share-btn svg{width:16px;height:16px}
+#np-share-toolbar .np-share-btn svg [fill="#fed351"],
+#np-share-toolbar .np-share-btn svg [fill="#FFF"],
+#np-share-toolbar .np-share-btn svg [fill="#ffffff"]{fill:#fff}
+[data-theme="light"] #np-share-toolbar .np-share-btn svg [fill="#FFF"],
+[data-theme="light"] #np-share-toolbar .np-share-btn svg [fill="#ffffff"]{fill:#111}
+</style>
+
+
+<style id="np-share-modal-stack">
+#now-playing-card{position:relative}
+#np-share-toolbar{position:relative;z-index:1200}
+.modal{z-index:2000 !important}
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -7365,120 +7408,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 })();
 </script>
 
-<script id="np-share-toolbar-js">
-(function(){
-  function getRawNowText(){
-    var npCard = document.getElementById('now-playing-card');
-    if(!npCard) return '';
-    var el = npCard.querySelector('#now-playing, .np-text, .np-title, .title, .song');
-    if (!el) return '';
-    return (el.innerText || el.textContent || '').trim();
-  }
-  function parseArtistTitle(s){
-    if(!s) return {artist:'', title:''};
-    s = s.replace(/\bNow\s*Playing:?\b/i, '');
-    s = s.replace(/\bLIVE\b/i, '');
-    s = s.replace(/\bMore\s*music\s*soon\b/i, '');
-    s = s.replace(/\s{2,}/g, ' ').trim();
-    var lines = s.split(/\n|<br\s*\/?>/i).map(function(x){return x.trim();}).filter(Boolean);
-    var candidate = s;
-    if(lines.length > 1){
-      for(var i=0;i<lines.length;i++){
-        if(/[\-–—]/.test(lines[i]) && !/Now\s*Playing|LIVE/i.test(lines[i])){
-          candidate = lines[i];
-          break;
-        }
-      }
-    }
-    var m = candidate.match(/^(.+?)\s*[\-–—]\s*(.+)$/);
-    if(m){
-      var artist = m[1].trim().replace(/^[:\-–—\s]+|[:\-–—\s]+$/g,'');
-      var title  = m[2].trim().replace(/^[:\-–—\s]+|[:\-–—\s]+$/g,'');
-      return {artist: artist, title: title};
-    }
-    var m2 = candidate.match(/^(.+?)\s+by\s+(.+)$/i);
-    if(m2){ return {artist: m2[1].trim(), title: m2[2].trim()}; }
-    return {artist:'', title:candidate};
-  }
-  function shareSentence(){
-    try {
-      var raw = (typeof getRawNowText === 'function') ? getRawNowText() : '';
-      var at = (typeof parseArtistTitle === 'function') ? parseArtistTitle(raw) : null;
-      var title = at && at.title ? at.title : '';
-      var artist = at && at.artist ? at.artist : '';
-      if (title && artist) return "I'm listening to " + title + " by " + artist + " on Ayrshire College's Essential Radio";
-      if (title && !artist) return "I'm listening to " + title + " on Ayrshire College's Essential Radio";
-      if (!title && artist) return "I'm listening to " + artist + " on Ayrshire College's Essential Radio";
-      return "I'm listening to Essential Radio on Ayrshire College's Essential Radio";
-    } catch(e) {
-      return "I'm listening to Essential Radio on Ayrshire College's Essential Radio";
-    }
-    } else if (t && !a) {
-      base = "I'm Listening to " + t + " on Ayrshire College's Essential Radio";
-    } else if (!t && a) {
-      base = "I'm Listening to " + a + " on Ayrshire College's Essential Radio";
-    }
-    if (base) {
-      base += " https://essential.radio";
-    }
-    return base;
-    }
-    if (t && !a) {
-      return "I'm Listening to " + t + " on Ayrshire College's Essential Radio";
-    }
-    if (!t && a) {
-      return "I'm Listening to " + a + " on Ayrshire College's Essential Radio";
-    }
-    return "";
-    }
-    var core = (t || a);
-    return core ? ("I'm Listening to " + core + " on Ayrshire College's Essential Radio") : "";
-  }
-  function openShare(platform){
-  var text = shareSentence() || "";
-  var cleanQuote = text.replace(/\s*https?:\/\/essential\.radio\/?/i, "").trim();
-  var link = " https://essential.radio";
-  var url = null;
-  try{
-    if(platform === 'whatsapp'){
-      url = 'https://api.whatsapp.com/send?text=' + encodeURIComponent((text || cleanQuote) + link);
-    } else if(platform === 'twitter'){
-      url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
-    } else if(platform === 'facebook'){
-      var u = 'https://essential.radio';
-      url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
-    }
-    if(url){ window.open(url, '_blank', 'noopener'); }
-  }catch(e){}
-} else if(platform === 'twitter'){
-      // Full sentence + link (unfurls on X/Twitter)
-      url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
-    } else if(platform === 'facebook'){
-      // Quote shows the sentence without the link; URL param provides the preview
-      var u = 'https://essential.radio';
-      url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
-    }
-    if(url){ window.open(url, '_blank', 'noopener'); }
-  }catch(e){ /* no-op */ }
-}else if(platform === 'twitter'){
-        var tw = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
-        window.open(tw, '_blank', 'noopener');
-      }else if(platform === 'facebook'){
-        var fb = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href) + '&quote=' + encodeURIComponent(text);
-        window.open(fb, '_blank', 'noopener');
-      }
-    }catch(e){}
-  }
-  var toolbar = document.getElementById('np-share-toolbar');
-  if(toolbar){
-    toolbar.addEventListener('click', function(e){
-      var btn = e.target.closest('.np-share-btn');
-      if(!btn) return;
-      openShare(btn.getAttribute('data-platform'));
-    });
-  }
-})();
-</script>
+
 
 
 <script id="schedule-highlight-logic">
@@ -7683,21 +7613,16 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 
 
 
+
 <script id="np-share-href-enhancer">
 (function(){
-  function shareSentenceText(){
-    try { return window.shareSentence && window.shareSentence() || ""; } catch(e){ return ""; }
-  }
-  function build(platform){
-    var text = shareSentenceText() || "";
+  function s(){ try { return (window.shareSentence && window.shareSentence()) || ""; } catch(e){ return ""; } }
+  function build(pf){
+    var text = s() || "";
     var link = " https://essential.radio";
-    var p = (platform||"").toLowerCase();
-    if (p === 'whatsapp' || p === 'wa'){
-      return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text + link);
-    }
-    if (p === 'twitter' || p === 'x'){
-      return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text + link);
-    }
+    var p = (pf||"").toLowerCase();
+    if (p === 'whatsapp' || p === 'wa') return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text + link);
+    if (p === 'twitter' || p === 'x')   return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text + link);
     if (p === 'facebook' || p === 'fb'){
       var u = 'https://essential.radio';
       return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(text);
@@ -7705,48 +7630,45 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     return '#';
   }
   function ensureAnchors(){
-    var toolbar = document.getElementById('np-share-toolbar');
-    if(!toolbar) return;
-    var btns = toolbar.querySelectorAll('.np-share-btn');
-    btns.forEach(function(el){
-      var platform = el.getAttribute('data-platform') || '';
-      if (el.tagName !== 'A') {
+    var tb = document.getElementById('np-share-toolbar');
+    if(!tb) return;
+    tb.querySelectorAll('.np-share-btn').forEach(function(el){
+      var p = el.getAttribute('data-platform') || '';
+      if (el.tagName !== 'A'){
         var a = document.createElement('a');
         a.className = el.className;
-        a.setAttribute('data-platform', platform);
+        a.setAttribute('data-platform', p);
         a.innerHTML = el.innerHTML;
         el.parentNode.replaceChild(a, el);
         el = a;
       }
-      el.setAttribute('href', build(platform));
+      el.setAttribute('href', build(p));
       el.setAttribute('target', '_blank');
       el.setAttribute('rel', 'noopener');
       el.setAttribute('role', 'button');
+      // Remove any old onclick that might cancel navigation
+      try { el.onclick = null; } catch(e){}
     });
   }
   function updateHrefs(){
-    var toolbar = document.getElementById('np-share-toolbar');
-    if(!toolbar) return;
-    toolbar.querySelectorAll('.np-share-btn').forEach(function(a){
+    var tb = document.getElementById('np-share-toolbar');
+    if(!tb) return;
+    tb.querySelectorAll('.np-share-btn').forEach(function(a){
       var p = a.getAttribute('data-platform') || '';
       a.setAttribute('href', build(p));
       a.setAttribute('target', '_blank');
       a.setAttribute('rel', 'noopener');
+      try { a.onclick = null; } catch(e){}
     });
   }
-  function init(){
-    ensureAnchors();
-    updateHrefs();
-  }
-  if (document.readyState === 'complete' || document.readyState === 'interactive'){
-    setTimeout(init, 60);
-  } else {
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 60); });
-  }
+  function init(){ ensureAnchors(); updateHrefs(); }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') { setTimeout(init, 60); }
+  else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 60); }); }
   setInterval(updateHrefs, 3000);
   window.addEventListener('essential:nowplaying:update', updateHrefs);
 })();
 </script>
+
 
 
 
@@ -7790,8 +7712,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     if (p === 'twitter' || p === 'facebook' || p === 'whatsapp') return p;
     return p;
   }
-  function shareSentence(){
-    try { return window.shareSentence && window.shareSentence() || ""; } catch(e){ return ""; }
+  /* shareSentence replaced by extractor */ catch(e){ return ""; }
   }
   function build(platform){
     var p = norm(platform);
@@ -7856,6 +7777,212 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   }
   setInterval(updateHrefs, 3000);
   window.addEventListener('essential:nowplaying:update', updateHrefs);
+})();
+</script>
+
+
+
+
+
+<script id="np-share-title-artist-extractor">
+(function(){
+  function txt(el){ return (el && (el.textContent||"").trim()) || ""; }
+  function q(sel){ return document.querySelector(sel); }
+  function clean(s){
+    s = (s||"").replace(/\s+/g,' ').trim();
+    s = s.replace(/\bLIVE\b/gi, '').replace(/\bNow Playing\b/gi, '').replace(/\bOn Air Now\b/gi, '');
+    s = s.replace(/\bMore music soon\b/gi, '');
+    s = s.replace(/^[–—\-:|]+|[–—\-:|]+$/g, '').trim();
+    return s;
+  }
+  function splitGuess(s){
+    if(!s) return {title:"", artist:""};
+    var m = s.match(/^(.*?)\s+by\s+(.*)$/i);
+    if(m) return {title: clean(m[1]), artist: clean(m[2])};
+    m = s.match(/^(.*?)\s*[–\-]\s*(.*)$/);
+    if(m){
+      var left = clean(m[1]), right = clean(m[2]);
+      // Heuristic: if either side contains "feat." treat left as artist
+      if (/feat\.|ft\./i.test(right)) { return {title: right, artist: left}; }
+      return {title: right, artist: left};
+    }
+    return {title:"", artist:""};
+  }
+  function fromDataAttrs(){
+    var c = document.getElementById('now-playing-card');
+    if(!c) return {title:"",artist:""};
+    var t = c.getAttribute('data-song-title') || c.dataset?.songTitle || "";
+    var a = c.getAttribute('data-song-artist') || c.dataset?.songArtist || "";
+    return {title: clean(t), artist: clean(a)};
+  }
+  function fromSelectors(){
+    var titleSelectors = [
+      '#npTitle', '#np-title', '#np_title',
+      '#nowPlayingTitle', '#nowPlaying .track-title', '#now-playing-card .track-title',
+      '[data-np-title]', '[data-role="title"]', '.np-title', '.np-song', '.song-title'
+    ];
+    var artistSelectors = [
+      '#npArtist', '#np-artist', '#np_artist',
+      '#nowPlayingArtist', '#nowPlaying .track-artist', '#now-playing-card .track-artist',
+      '[data-np-artist]', '[data-role="artist"]', '.np-artist', '.artist-name'
+    ];
+    for (var i=0;i<titleSelectors.length;i++){
+      var t = clean(txt(q(titleSelectors[i])));
+      if (t){
+        for (var j=0;j<artistSelectors.length;j++){
+          var a = clean(txt(q(artistSelectors[j])));
+          if (a) return {title:t, artist:a};
+        }
+        return {title:t, artist:""};
+      }
+    }
+    return {title:"", artist:""};
+  }
+  function fromCombined(){
+    var lines = [
+      txt(q('#now-playing-card .np-marquee')),
+      txt(q('#now-playing-card #np-marquee')),
+      txt(q('#nowPlaying')), txt(q('#onAirNow')), txt(q('#now-playing-card'))
+    ].map(clean).filter(Boolean);
+    for (var i=0;i<lines.length;i++){
+      var g = splitGuess(lines[i]);
+      if (g.title || g.artist) return g;
+    }
+    return {title:"", artist:""};
+  }
+  function fromJS(){
+    try {
+      // Common globals some players expose
+      if (window.NOW_PLAYING && (NOW_PLAYING.title || NOW_PLAYING.artist)){
+        return {title: clean(NOW_PLAYING.title||""), artist: clean(NOW_PLAYING.artist||"")};
+      }
+      if (window.nowPlaying && (nowPlaying.title || nowPlaying.artist)){
+        return {title: clean(nowPlaying.title||""), artist: clean(nowPlaying.artist||"")};
+      }
+      if (window.NP_STATE && NP_STATE.current){
+        return {title: clean(NP_STATE.current.title||""), artist: clean(NP_STATE.current.artist||"")};
+      }
+    } catch(e){}
+    return {title:"", artist:""};
+  }
+  function best(){
+    var sources = [fromDataAttrs, fromSelectors, fromCombined, fromJS];
+    for (var i=0;i<sources.length;i++){
+      var r = sources[i]();
+      if (r.title && r.artist) return r;
+    }
+    // If we didn’t get both, try to fill missing piece from another source
+    var t="", a="";
+    sources.forEach(function(fn){
+      var r = fn(); if (r.title && !t) t=r.title; if (r.artist && !a) a=r.artist;
+    });
+    return {title: t, artist: a};
+  }
+
+  window.shareSentence = function(){
+    
+    var r = (typeof best === 'function') ? best() : {title:"",artist:""};
+    var title = (r && r.title) ? r.title : "";
+    var artist = (r && r.artist) ? r.artist : "";
+    if (title && artist) return "I'm listening to " + title + " by " + artist + " on Essential Radio";
+    if (title && !artist) return "I'm listening to " + title + " on Essential Radio";
+    if (!title && artist) return "I'm listening to " + artist + " on Essential Radio";
+    return "I'm listening to Essential Radio";
+    
+  };
+
+  // Trigger an update for share hrefs
+  try { window.dispatchEvent(new Event('essential:nowplaying:update')); } catch(e){}
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="np-share-toolbar-js">
+(function(){
+  function inToolbar(el){ while(el){ if (el.id==='np-share-toolbar') return true; el=el.parentElement; } return false; }
+  function firstOutside(root, sel){
+    var list=(root||document).querySelectorAll(sel);
+    for(var i=0;i<list.length;i++){ if(!inToolbar(list[i])) return list[i]; }
+    return null;
+  }
+  function txt(el){ return (el && (el.textContent||'').trim()) || ''; }
+  function clean(s){
+    s=(s||'').replace(/\s+/g,' ').trim();
+    s=s.replace(/\b(Share|LIVE|Now Playing|On Air Now|More music soon)\b/gi,'');
+    s=s.replace(/^[–—\-:|]+|[–—\-:|]+$/g,'').replace(/\s{2,}/g,' ').trim();
+    return s;
+  }
+  function splitTA(s){
+    s=clean(s); if(!s) return {title:'',artist:''};
+    var m=s.match(/^(.+?)\s+by\s+(.+)$/i); if(m) return {title:clean(m[1]), artist:clean(m[2])};
+    var d=s.match(/^(.+?)\s*[–\-]\s*(.+)$/); if(d) return {artist:clean(d[1]), title:clean(d[2])};
+    return {title:s, artist:''};
+  }
+  function readTA(){
+    var card=document.getElementById('now-playing-card')||document;
+    var titleEl=firstOutside(card,'#npTitle, .np-title, .track-title, [data-role="title"], #nowPlayingTitle');
+    var artistEl=firstOutside(card,'#npArtist, .np-artist, .track-artist, [data-role="artist"], #nowPlayingArtist');
+    var title=clean(txt(titleEl)); var artist=clean(txt(artistEl));
+    if(!title && !artist && card && card.getAttribute){
+      title=clean(card.getAttribute('data-song-title')||(card.dataset&&card.dataset.songTitle)||'');
+      artist=clean(card.getAttribute('data-song-artist')||(card.dataset&&card.dataset.songArtist)||'');
+    }
+    if(!title && !artist){
+      var combinedEl=firstOutside(card,'.np-marquee, #np-marquee, #nowPlaying, #now-playing, #onAirNow, .np-text, .now-playing');
+      var combined=clean(txt(combinedEl));
+      var g=splitTA(combined); title=title||g.title; artist=artist||g.artist;
+    }
+    return {title:title, artist:artist};
+  }
+  function shareSentence(){
+    var r=readTA();
+    var t=(r.title||'').replace(/\s+on\s+Essential\s+Radio\s*$/i,'').trim();
+    var a=(r.artist||'').replace(/\s+on\s+Essential\s+Radio\s*$/i,'').trim();
+    if(t && a) return "I'm listening to " + t + " by " + a + " on Essential Radio";
+    if(t && !a) return "I'm listening to " + t + " on Essential Radio";
+    if(!t && a) return "I'm listening to " + a + " on Essential Radio";
+    return "I'm listening to Essential Radio";
+  }
+  function buildHref(platform){
+    var text=shareSentence(); var url='https://essential.radio'; var p=(platform||'').toLowerCase();
+    if(p==='whatsapp'||p==='wa') return 'https://api.whatsapp.com/send?text='+encodeURIComponent(text+' '+url);
+    if(p==='twitter'||p==='x')   return 'https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
+    if(p==='facebook'||p==='fb') return 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url)+'&quote='+encodeURIComponent(text);
+    return '#';
+  }
+  function refreshAnchors(){
+    var tb=document.getElementById('np-share-toolbar'); if(!tb) return;
+    tb.querySelectorAll('.np-share-btn').forEach(function(a){
+      var p=a.getAttribute('data-platform')||'';
+      a.href=buildHref(p); a.target='_blank'; a.rel='noopener';
+    });
+  }
+  function observeNP(){
+    var targets=[document.getElementById('now-playing-card'),
+                 document.getElementById('now-playing'),
+                 document.getElementById('nowPlaying')].filter(Boolean);
+    if(targets.length && window.MutationObserver){
+      var obs=new MutationObserver(function(){ refreshAnchors(); });
+      targets.forEach(function(t){ obs.observe(t,{subtree:true,childList:true,characterData:true}); });
+    }
+    refreshAnchors();
+  }
+  if(document.readyState==='complete'||document.readyState==='interactive'){ setTimeout(observeNP,60); }
+  else{ document.addEventListener('DOMContentLoaded', function(){ setTimeout(observeNP,60); }); }
+  window.addEventListener('essential:nowplaying:update', refreshAnchors);
+  setInterval(refreshAnchors,5000);
 })();
 </script>
 
