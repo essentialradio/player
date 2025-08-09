@@ -6395,6 +6395,15 @@ function closePresenterModal(presenterId) {
   .rnh-title{padding:10px 12px;font-weight:700;line-height:1.25;color:#fff}
   .rnh-meta{padding:0 12px 12px;color:#fed351;font-size:.9em}
   @media (max-width:500px){ .rnh-cards{grid-template-columns:1fr} }
+
+/* Force black text on yellow Song Search modal buttons in all themes */
+#songSearchModal button,
+#songSearchModal .menu-link {
+  background-color: #fed351 !important;
+  color: #111 !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
 </style>
 <div class="rnh-cards" id="rnh-modal-list">
 <div style="color:#bbb">Loading headlines…</div>
@@ -6892,4 +6901,34 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 })();
 </script>
 
+
+<!-- Robustness patch: keep Share button from disappearing if Now Playing re-renders -->
+<script>
+(function () {
+  function ensureShareMounted() {
+    var liveBox = document.querySelector(".live-indicator");
+    if (!liveBox) return;
+    var btn = document.querySelector("#share-btn");
+    if (!btn || btn.parentElement !== liveBox) {
+      try {
+        if (typeof mountShareButton === "function") mountShareButton();
+        if (typeof addPlatformIcons === "function") addPlatformIcons();
+      } catch (e) {
+        // no-op
+      }
+    }
+  }
+
+  // Observe Now Playing area for DOM replacements and re-mount Share if needed
+  var target = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card") || document.body;
+  try {
+    var obs = new MutationObserver(function () { ensureShareMounted(); });
+    obs.observe(target, { childList: true, subtree: true, characterData: true });
+  } catch (e) {}
+
+  // Initial mount + periodic belt-and-braces
+  ensureShareMounted();
+  setInterval(ensureShareMounted, 4000);
+})();
+</script>
 </body></html>
