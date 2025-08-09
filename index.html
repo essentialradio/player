@@ -3568,6 +3568,155 @@ img.presenter, img.presenter-photo, img.host, img.host-photo {
 }
 </style>
 
+
+<style id="volume-display-contrast-fix">
+/* Ensure the volume % label is readable in both themes */
+#volume-container #volume-display {
+  color: var(--text, #fff) !important;
+  font-weight: 600;
+  text-shadow: none !important;
+}
+/* Light mode: dark ink */
+[data-theme="light"] #volume-container #volume-display {
+  color: #111827 !important;
+}
+/* Dark mode: bright ink */
+[data-theme="dark"] #volume-container #volume-display,
+html:not([data-theme="light"]) #volume-container #volume-display {
+  color: #f5f7ff !important;
+}
+</style>
+
+
+<style id="np-share-clickable-fix">
+#now-playing-card .np-share-toolbar,
+#now-playing-card .np-share-btn {
+  pointer-events: auto !important;
+  z-index: 5;
+  position: relative;
+}
+#now-playing-card *[style*="pointer-events: none"] .np-share-toolbar,
+#now-playing-card *[style*="pointer-events:none"] .np-share-toolbar {
+  pointer-events: auto !important;
+}
+</style>
+
+
+<style id="np-share-click-path">
+/* Put the toolbar above artwork, badges, and decorative layers */
+#now-playing-card { position: relative; }
+#now-playing-card #np-share-toolbar {
+  position: relative !important;
+  z-index: 6000 !important;
+  pointer-events: auto !important;
+}
+#now-playing-card #np-share-toolbar * {
+  pointer-events: auto !important;
+}
+
+/* Ensure common overlapping bits sit lower */
+#now-playing-card #artwork,
+#now-playing-card .artwork,
+#now-playing-card .artwork-container,
+#now-playing-card .badge,
+#now-playing-card .np-marquee,
+#now-playing-card .overlay,
+#now-playing-card .glow {
+  position: relative;
+  z-index: 1 !important;
+}
+
+/* Share links should behave like buttons and be obviously clickable */
+#now-playing-card #np-share-toolbar .np-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+/* If any ancestor mistakenly disables clicks, re-enable here */
+#now-playing-card,
+#now-playing-card *:not(#np-share-toolbar):not(#np-share-toolbar *)
+{
+  /* don't force pointer-events here; just ensure toolbar is clickable */
+}
+</style>
+
+
+<style id="np-share-icon-contrast">
+/* Make SVGs inherit button text color */
+#np-share-toolbar .np-share-btn svg,
+#np-share-toolbar .np-share-btn svg * {
+  fill: currentColor !important;
+  stroke: none !important;
+}
+
+/* Base colors per theme */
+[data-theme="dark"] #np-share-toolbar .np-share-btn { color: #fff !important; }   /* white icons in dark mode */
+[data-theme="light"] #np-share-toolbar .np-share-btn { color: #000 !important; }  /* black icons in light mode */
+
+/* Platform-specific overrides to guarantee contrast in light mode */
+[data-theme="light"] #np-share-toolbar .np-share-btn[data-platform="twitter"]  { color: #fff !important; }  /* black bg -> white icon */
+[data-theme="light"] #np-share-toolbar .np-share-btn[data-platform="facebook"] { color: #fff !important; }  /* blue bg -> white icon */
+/* WhatsApp on light: keep black icon for max contrast on green */
+</style>
+
+
+<style id="np-share-neutral-buttons">
+/* Neutralize share button background/outline */
+#np-share-toolbar .np-share-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 6px 8px !important;
+  border-radius: 8px !important;
+}
+#np-share-toolbar .np-share-btn:hover,
+#np-share-toolbar .np-share-btn:focus {
+  background: rgba(0,0,0,0.06) !important;
+}
+[data-theme="dark"] #np-share-toolbar .np-share-btn:hover,
+[data-theme="dark"] #np-share-toolbar .np-share-btn:focus {
+  background: rgba(255,255,255,0.08) !important;
+}
+</style>
+
+
+<style id="np-share-mobile-order-and-modal-stack">
+/* --- Keep button order consistent on mobile: Facebook, Twitter, WhatsApp --- */
+#np-share-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#np-share-toolbar .np-share-btn { order: 10; } /* default */
+#np-share-toolbar .np-share-btn[data-platform="facebook"],
+#np-share-toolbar .np-share-btn[data-platform="fb"] { order: 1; }
+#np-share-toolbar .np-share-btn[data-platform="twitter"],
+#np-share-toolbar .np-share-btn[data-platform="x"] { order: 2; }
+#np-share-toolbar .np-share-btn[data-platform="whatsapp"],
+#np-share-toolbar .np-share-btn[data-platform="wa"] { order: 3; }
+
+/* Make sure wrapping keeps the sequence visually on small screens */
+@media (max-width: 640px) {
+  #np-share-toolbar {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+}
+
+/* --- Ensure modals cover share toolbar (share should NOT sit above modals) --- */
+#now-playing-card { position: relative; }
+#now-playing-card #np-share-toolbar {
+  position: relative !important;
+  z-index: 1200 !important;  /* below .modal (2000) but above card bits */
+  pointer-events: auto !important;
+}
+/* Keep modal on top (your modals use z-index:2000+) */
+.modal { z-index: 2000 !important; }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -3634,16 +3783,16 @@ img.presenter, img.presenter-photo, img.host, img.host-photo {
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
-  <button type="button" class="np-share-btn" data-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-</svg></button>
-  <button type="button" class="np-share-btn" data-platform="twitter" aria-label="Share on X (Twitter)" title="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-</svg></button>
-  <button type="button" class="np-share-btn" data-platform="facebook" aria-label="Share on Facebook" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+  
+  
+  
+<a  type="button" class="np-share-btn" data-platform="facebook" aria-label="Share on Facebook" title="Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fessential.radio" target="_blank" rel="noopener" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
   <path fill="currentColor" d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-</svg></button>
-</div>
+</svg></a><a  type="button" class="np-share-btn" data-platform="twitter" aria-label="Share on X (Twitter)" title="X (Twitter)" href="https://twitter.com/intent/tweet?text=I%27m%20listening%20to%20Essential%20Radio%20https%3A%2F%2Fessential.radio" target="_blank" rel="noopener" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+</svg></a><a  type="button" class="np-share-btn" data-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp" href="https://api.whatsapp.com/send?text=I%27m%20listening%20to%20Essential%20Radio%20https%3A%2F%2Fessential.radio" target="_blank" rel="noopener" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg></a></div>
 
 </div>
 <img alt="Artwork" class="loaded" id="artwork" src="Essential Radio Logo.png"/>
@@ -7010,7 +7159,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 
   const buildShareText = () => {
     const t = getNowText();
-    return t ? `I'm listening to ${t} on Essential Radio`;
+    return t ? `I'm Listening to ${t} on Essential Radio` : `I'm Listening to Essential Radio`;
   };
 
   btn.addEventListener("click", async () => {
@@ -7053,7 +7202,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     const np = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
     const el = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
     const baseText = el ? (el.innerText || el.textContent || "").trim() : "";
-    const text = encodeURIComponent(baseText ? `I'm listening to ${baseText} on Essential Radio`);
+    const text = encodeURIComponent(baseText ? `I'm Listening to ${baseText} on Essential Radio` : `I'm Listening to Essential Radio`);
 
     const platforms = document.createElement("div");
     platforms.id = "share-platforms";
@@ -7069,7 +7218,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
       const obs = new MutationObserver(() => {
         const el2 = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
         const base2 = el2 ? (el2.innerText || el2.textContent || "").trim() : "";
-        const t2 = encodeURIComponent(base2 ? `I'm listening to ${base2} on Essential Radio`);
+        const t2 = encodeURIComponent(base2 ? `I'm Listening to ${base2} on Essential Radio` : `I'm Listening to Essential Radio`);
         platforms.querySelectorAll("a").forEach(a => {
           const href = a.getAttribute("href");
           if (href.includes("twitter.com/intent/tweet")) {
@@ -7252,25 +7401,66 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     return {artist:'', title:candidate};
   }
   function shareSentence(){
-    var raw = getRawNowText();
-    var at = parseArtistTitle(raw);
-    if(!at.title && !at.artist) return '';
-    var t = at.title || '';
-    var a = at.artist || '';
-    if(t && a){
-      return "I'm listening to " + t + " by " + a + " on Ayrshire College's Essential Radio";
+    try {
+      var raw = (typeof getRawNowText === 'function') ? getRawNowText() : '';
+      var at = (typeof parseArtistTitle === 'function') ? parseArtistTitle(raw) : null;
+      var title = at && at.title ? at.title : '';
+      var artist = at && at.artist ? at.artist : '';
+      if (title && artist) return "I'm listening to " + title + " by " + artist + " on Ayrshire College's Essential Radio";
+      if (title && !artist) return "I'm listening to " + title + " on Ayrshire College's Essential Radio";
+      if (!title && artist) return "I'm listening to " + artist + " on Ayrshire College's Essential Radio";
+      return "I'm listening to Essential Radio on Ayrshire College's Essential Radio";
+    } catch(e) {
+      return "I'm listening to Essential Radio on Ayrshire College's Essential Radio";
+    }
+    } else if (t && !a) {
+      base = "I'm Listening to " + t + " on Ayrshire College's Essential Radio";
+    } else if (!t && a) {
+      base = "I'm Listening to " + a + " on Ayrshire College's Essential Radio";
+    }
+    if (base) {
+      base += " https://essential.radio";
+    }
+    return base;
+    }
+    if (t && !a) {
+      return "I'm Listening to " + t + " on Ayrshire College's Essential Radio";
+    }
+    if (!t && a) {
+      return "I'm Listening to " + a + " on Ayrshire College's Essential Radio";
+    }
+    return "";
     }
     var core = (t || a);
-    return core ? ("I'm listening to " + core + " on Ayrshire College's Essential Radio") : "";
+    return core ? ("I'm Listening to " + core + " on Ayrshire College's Essential Radio") : "";
   }
   function openShare(platform){
-    var text = shareSentence();
-    if(!text) return;
-    try{
-      if(platform === 'whatsapp'){
-        var wa = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text);
-        window.open(wa, '_blank', 'noopener');
-      }else if(platform === 'twitter'){
+  var text = shareSentence() || "";
+  var cleanQuote = text.replace(/\s*https?:\/\/essential\.radio\/?/i, "").trim();
+  var link = " https://essential.radio";
+  var url = null;
+  try{
+    if(platform === 'whatsapp'){
+      url = 'https://api.whatsapp.com/send?text=' + encodeURIComponent((text || cleanQuote) + link);
+    } else if(platform === 'twitter'){
+      url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
+    } else if(platform === 'facebook'){
+      var u = 'https://essential.radio';
+      url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
+    }
+    if(url){ window.open(url, '_blank', 'noopener'); }
+  }catch(e){}
+} else if(platform === 'twitter'){
+      // Full sentence + link (unfurls on X/Twitter)
+      url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
+    } else if(platform === 'facebook'){
+      // Quote shows the sentence without the link; URL param provides the preview
+      var u = 'https://essential.radio';
+      url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
+    }
+    if(url){ window.open(url, '_blank', 'noopener'); }
+  }catch(e){ /* no-op */ }
+}else if(platform === 'twitter'){
         var tw = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
         window.open(tw, '_blank', 'noopener');
       }else if(platform === 'facebook'){
@@ -7460,6 +7650,212 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   // If pages use custom events
   window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
   window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
+})();
+</script>
+
+
+<script id="np-share-binder">
+(function(){
+  function bindShareButtons(){
+    var btns = document.querySelectorAll('#np-share-toolbar .np-share-btn');
+    btns.forEach(function(btn){
+      btn.onclick = function(ev){
+        ev.preventDefault();
+        ev.stopPropagation();
+        var p = btn.getAttribute('data-platform');
+        if (typeof openShare === 'function' && p){ openShare(p); }
+      };
+    });
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(bindShareButtons, 80);
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(bindShareButtons, 80); });
+  }
+  var tb = document.getElementById('np-share-toolbar');
+  if (tb && window.MutationObserver){
+    var obs = new MutationObserver(function(){ bindShareButtons(); });
+    obs.observe(tb, {childList:true, subtree:true});
+  }
+})();
+</script>
+
+
+
+
+<script id="np-share-href-enhancer">
+(function(){
+  function shareSentenceText(){
+    try { return window.shareSentence && window.shareSentence() || ""; } catch(e){ return ""; }
+  }
+  function build(platform){
+    var text = shareSentenceText() || "";
+    var link = " https://essential.radio";
+    var p = (platform||"").toLowerCase();
+    if (p === 'whatsapp' || p === 'wa'){
+      return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text + link);
+    }
+    if (p === 'twitter' || p === 'x'){
+      return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text + link);
+    }
+    if (p === 'facebook' || p === 'fb'){
+      var u = 'https://essential.radio';
+      return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(text);
+    }
+    return '#';
+  }
+  function ensureAnchors(){
+    var toolbar = document.getElementById('np-share-toolbar');
+    if(!toolbar) return;
+    var btns = toolbar.querySelectorAll('.np-share-btn');
+    btns.forEach(function(el){
+      var platform = el.getAttribute('data-platform') || '';
+      if (el.tagName !== 'A') {
+        var a = document.createElement('a');
+        a.className = el.className;
+        a.setAttribute('data-platform', platform);
+        a.innerHTML = el.innerHTML;
+        el.parentNode.replaceChild(a, el);
+        el = a;
+      }
+      el.setAttribute('href', build(platform));
+      el.setAttribute('target', '_blank');
+      el.setAttribute('rel', 'noopener');
+      el.setAttribute('role', 'button');
+    });
+  }
+  function updateHrefs(){
+    var toolbar = document.getElementById('np-share-toolbar');
+    if(!toolbar) return;
+    toolbar.querySelectorAll('.np-share-btn').forEach(function(a){
+      var p = a.getAttribute('data-platform') || '';
+      a.setAttribute('href', build(p));
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+  }
+  function init(){
+    ensureAnchors();
+    updateHrefs();
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive'){
+    setTimeout(init, 60);
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 60); });
+  }
+  setInterval(updateHrefs, 3000);
+  window.addEventListener('essential:nowplaying:update', updateHrefs);
+})();
+</script>
+
+
+
+
+<script id="np-share-move-to-front">
+(function(){
+  function moveToolbar(){
+    var card = document.getElementById('now-playing-card');
+    var tb = document.getElementById('np-share-toolbar');
+    if (card && tb && tb.parentNode !== card) {
+      // If it's outside, append to the card so z-index stacking is consistent
+      try { card.appendChild(tb); } catch(e){}
+    } else if (card && tb && card.lastElementChild !== tb){
+      // If it's in the card but not last, move it to the end for safety
+      try { card.appendChild(tb); } catch(e){}
+    }
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive'){
+    setTimeout(moveToolbar, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(moveToolbar, 50); });
+  }
+  // Rerun if card contents change
+  var card = document.getElementById('now-playing-card');
+  if (card && window.MutationObserver){
+    var obs = new MutationObserver(function(){ moveToolbar(); });
+    obs.observe(card, {childList:true, subtree:true});
+  }
+})();
+</script>
+
+
+<script id="np-share-click-clean">
+(function(){
+  function norm(p){
+    if(!p) return "";
+    p = String(p).toLowerCase().trim();
+    if (p === 'x') p = 'twitter';
+    if (p === 'fb' || p === 'facebook') p = 'facebook';
+    if (p === 'wa' || p === 'whatsapp') p = 'whatsapp';
+    if (p === 'twitter' || p === 'facebook' || p === 'whatsapp') return p;
+    return p;
+  }
+  function shareSentence(){
+    try { return window.shareSentence && window.shareSentence() || ""; } catch(e){ return ""; }
+  }
+  function build(platform){
+    var p = norm(platform);
+    var text = shareSentence() || "";
+    var cleanQuote = text.replace(/\s*https?:\/\/essential\.radio\/?/i, "").trim();
+    var link = " https://essential.radio";
+    if (p === 'whatsapp'){
+      return 'https://api.whatsapp.com/send?text=' + encodeURIComponent((text || cleanQuote) + link);
+    }
+    if (p === 'twitter'){
+      return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
+    }
+    if (p === 'facebook'){
+      var u = 'https://essential.radio';
+      return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
+    }
+    return '#';
+  }
+  function ensureAnchors(){
+    var tb = document.getElementById('np-share-toolbar');
+    if(!tb) return;
+    tb.querySelectorAll('.np-share-btn').forEach(function(el){
+      // remove old onclick handlers that might prevent default
+      try { el.onclick = null; } catch(e){}
+      // ensure <a> tag with target/rel
+      var p = el.getAttribute('data-platform');
+      if (el.tagName !== 'A') {
+        var a = document.createElement('a');
+        a.className = el.className;
+        a.setAttribute('data-platform', p || '');
+        a.innerHTML = el.innerHTML;
+        el.parentNode.replaceChild(a, el);
+        el = a;
+      }
+      el.setAttribute('href', build(p));
+      el.setAttribute('target', '_blank');
+      el.setAttribute('rel', 'noopener');
+      // also ensure role=button for accessibility
+      el.setAttribute('role', 'button');
+    });
+  }
+  function updateHrefs(){
+    var tb = document.getElementById('np-share-toolbar');
+    if(!tb) return;
+    tb.querySelectorAll('.np-share-btn').forEach(function(a){
+      var p = a.getAttribute('data-platform');
+      a.setAttribute('href', build(p));
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+      // nuke any residual onclick each refresh
+      try { a.onclick = null; } catch(e){}
+    });
+  }
+  function init(){
+    ensureAnchors();
+    updateHrefs();
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(init, 40);
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 40); });
+  }
+  setInterval(updateHrefs, 3000);
+  window.addEventListener('essential:nowplaying:update', updateHrefs);
 })();
 </script>
 
