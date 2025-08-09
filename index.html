@@ -3306,460 +3306,6 @@ nav + div {
 
 </style>
 
-
-<style id="schedule-live-css">
-#modalDaySchedule .show-entry.live-now {
-  background: rgba(254, 211, 81, 0.12);
-  border-left: 4px solid var(--brand, #fed351);
-  border-radius: 10px;
-  box-shadow: 0 0 0 1px rgba(254, 211, 81, 0.25) inset;
-  padding: 10px 12px;
-}
-#modalDaySchedule .show-entry.live-now time { color: var(--brand, #fed351); }
-#modalDaySchedule .show-entry.live-now .show-title { color: #fff; text-shadow: 0 0 8px rgba(254,211,81,0.25); }
-</style>
-
-
-<style id="np-share-icon-css">
-#now-playing-card .np-share-toolbar{
-  display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:flex-end; margin:8px 0 6px 0;
-}
-#now-playing-card .np-share-btn svg { display:block; }
-#now-playing-card .np-share-btn { width:30px; height:30px; padding:0; display:inline-flex; align-items:center; justify-content:center; color:#111;
-  background: var(--brand, #fed351); color:#111; border:1px solid rgba(0,0,0,.08); border-radius:8px; cursor:pointer; }
-#now-playing-card .np-share-btn:focus{ outline:2px solid rgba(0,0,0,.15); outline-offset:2px; }
-#now-playing-card .np-share-btn:hover{ filter:brightness(0.97); }
-#now-playing-card .np-share-label { margin-right: 4px; font-size:12px; font-weight:700; color: var(--text, #fff); }
-[data-theme="light"] #now-playing-card .np-share-label { color:#111; }
-@media (max-width: 480px){ #now-playing-card .np-share-toolbar{ justify-content:flex-start; } }
-</style>
-
-
-<style id="schedule-highlight-style">
-/* Highlight for the current show inside the Schedule modal */
-.show--current,
-.current-show,
-.schedule-current {
-  position: relative;
-  background: linear-gradient(135deg, rgba(254,211,81,.18), rgba(0,129,138,.12));
-  border: 2px solid rgba(254,211,81,.8);
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.18);
-}
-.show--current::after {
-  content: "LIVE NOW";
-  position: absolute;
-  top: 6px; right: 10px;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .06em;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: #e0322f;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(224,50,47,.35);
-}
-/* If the entry already has a highlight class from older CSS, keep it visible */
-.show-entry.current, .show.current, .schedule-item.current { 
-  outline: 2px solid rgba(254,211,81,.85);
-}
-</style>
-
-
-<style id="modal-expand-fixes">
-/* === Modal expansion hardening === */
-
-/* Prefer dynamic viewport units to avoid iOS 100vh issues */
-@supports (height: 100dvh) {
-  .modal { height: 100dvh !important; }
-  /* Desktop */
-  .modal-content { max-height: calc(100dvh - 8vh) !important; }
-  /* Mobile header offset case */
-  @media (max-width: 768px) {
-    .modal { top: 56px !important; height: calc(100dvh - 56px) !important; }
-    .modal-content { max-height: calc(100dvh - 56px) !important; }
-  }
-}
-/* Safe fallback when dvh unsupported */
-@supports not (height: 100dvh) {
-  .modal { height: 100svh !important; }
-  .modal-content { max-height: calc(100svh - 8vh) !important; }
-  @media (max-width: 768px) {
-    .modal { top: 56px !important; height: calc(100svh - 56px) !important; }
-    .modal-content { max-height: calc(100svh - 56px) !important; }
-  }
-}
-
-/* Make sure the modal itself isn't clipping content */
-.modal { overflow: hidden !important; }
-.modal-content {
-  display: block !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  contain: content; /* prevent weird overflow painting on iOS */
-}
-
-/* Flex children inside modal should be allowed to shrink/grow */
-#scheduleModal *, 
-#newsModal *, 
-.modal-content * {
-  min-width: 0;
-  min-height: 0;
-}
-
-/* Specific to schedule modal columns: prevent overflow clipping */
-#modalScheduleContainer .split-columns, 
-#modalScheduleContainer .column,
-#modalDaySchedule .split-columns,
-#modalDaySchedule .column {
-  min-width: 0 !important;
-  min-height: 0 !important;
-}
-
-/* Media inside modals should scale down */
-.modal-content img,
-.modal-content video,
-.modal-content iframe,
-.modal-content embed {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
-}
-
-/* If an iframe needs a reasonable default height */
-.modal-content iframe {
-  min-height: 240px;
-}
-
-/* Make sure sticky headers/footers inside the modal don't steal space */
-.modal-content .sticky,
-.modal-content [style*="position:sticky"] {
-  top: 0;
-}
-
-/* Avoid scroll chaining glitches near edges */
-.modal, .modal-content { overscroll-behavior: contain; }
-</style>
-
-
-<style id="presenter-image-uniform">
-/* === Uniform Presenter Image Sizing === */
-/* Schedule modal presenter avatars */
-#modalScheduleContainer .show-entry img,
-#modalDaySchedule .show-entry img {
-  width: 48px !important;
-  height: 48px !important;
-  aspect-ratio: 1 / 1 !important;
-  object-fit: cover !important;
-  border-radius: 50% !important;
-  flex-shrink: 0 !important;
-}
-
-/* Presenter list / presenter modal cards */
-#presentersModal .presenter-card img,
-.presenter-modal .presenter-card img,
-#presentersModal .presenter img,
-.presenter-modal .presenter img,
-#presentersModal .presenter-photo,
-.presenter-modal .presenter-photo,
-#presentersModal .presenter-list img,
-.presenter-modal .presenter-list img {
-  width: 96px !important;
-  height: 96px !important;
-  aspect-ratio: 1 / 1 !important;
-  object-fit: cover !important;
-  border-radius: 12px !important;
-  display: block !important;
-}
-
-/* Fall-back: any image flagged as presenter via class */
-img.presenter, img.presenter-photo, img.host, img.host-photo {
-  width: 96px !important;
-  height: 96px !important;
-  aspect-ratio: 1 / 1 !important;
-  object-fit: cover !important;
-  border-radius: 12px !important;
-}
-
-/* Mobile tweak */
-@media (max-width: 768px) {
-  #modalScheduleContainer .show-entry img,
-  #modalDaySchedule .show-entry img {
-    width: 40px !important;
-    height: 40px !important;
-  }
-  #presentersModal .presenter-card img,
-  .presenter-modal .presenter-card img,
-  #presentersModal .presenter img,
-  .presenter-modal .presenter img,
-  #presentersModal .presenter-photo,
-  .presenter-modal .presenter-photo,
-  #presentersModal .presenter-list img,
-  .presenter-modal .presenter-list img,
-  img.presenter, img.presenter-photo, img.host, img.host-photo {
-    width: 80px !important;
-    height: 80px !important;
-  }
-}
-</style>
-
-
-<style id="presenter-image-centering">
-/* === Presenter image centering === */
-
-/* 1) Schedule entries: vertically center avatar relative to text */
-#modalScheduleContainer .show-entry,
-#modalDaySchedule .show-entry {
-  align-items: center !important; /* override earlier align-items:flex-start */
-}
-
-/* 2) Make the actual <img> center itself in any layout (flex, grid, or block) */
-#modalScheduleContainer .show-entry img,
-#modalDaySchedule .show-entry img,
-#presentersModal .presenter-card img,
-.presenter-modal .presenter-card img,
-#presentersModal .presenter img,
-.presenter-modal .presenter img,
-#presentersModal .presenter-photo,
-.presenter-modal .presenter-photo,
-#presentersModal .presenter-list img,
-.presenter-modal .presenter-list img,
-img.presenter, img.presenter-photo, img.host, img.host-photo {
-  display: block !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  align-self: center !important;     /* centers along cross-axis in flex/grid */
-  object-position: center center !important; /* ensure crop is centered */
-  place-self: center !important;     /* grid-friendly centering */
-}
-
-/* Optional: if presenter cards have a fixed-height image area, center inside it */
-.presenter-card .image, .presenter .image, .presenter-photo-wrap {
-  display: grid !important;
-  place-items: center !important;
-}
-</style>
-
-
-<style id="schedule-alignment-restore">
-/* Restore original schedule row alignment */
-#modalScheduleContainer .show-entry,
-#modalDaySchedule .show-entry {
-  align-items: flex-start !important;
-}
-</style>
-
-
-<style id="schedule-alignment-hard-restore">
-/* === Schedule avatar alignment: restore original === */
-#modalScheduleContainer .show-entry,
-#modalDaySchedule .show-entry {
-  align-items: flex-start !important;
-}
-
-/* Avatars in schedule rows: no auto-centering, sit at the top-left of their slot */
-#modalScheduleContainer .show-entry img,
-#modalDaySchedule .show-entry img {
-  margin: 0 !important;
-  align-self: flex-start !important;
-  place-self: auto !important;
-  object-position: center center !important; /* keep crop centered inside the circle */
-  display: block !important;
-}
-</style>
-
-
-<style id="volume-display-contrast-fix">
-/* Ensure the volume % label is readable in both themes */
-#volume-container #volume-display {
-  color: var(--text, #fff) !important;
-  font-weight: 600;
-  text-shadow: none !important;
-}
-/* Light mode: dark ink */
-[data-theme="light"] #volume-container #volume-display {
-  color: #111827 !important;
-}
-/* Dark mode: bright ink */
-[data-theme="dark"] #volume-container #volume-display,
-html:not([data-theme="light"]) #volume-container #volume-display {
-  color: #f5f7ff !important;
-}
-</style>
-
-
-<style id="np-share-clickable-fix">
-#now-playing-card .np-share-toolbar,
-#now-playing-card .np-share-btn {
-  pointer-events: auto !important;
-  z-index: 5;
-  position: relative;
-}
-#now-playing-card *[style*="pointer-events: none"] .np-share-toolbar,
-#now-playing-card *[style*="pointer-events:none"] .np-share-toolbar {
-  pointer-events: auto !important;
-}
-</style>
-
-
-<style id="np-share-click-path">
-/* Put the toolbar above artwork, badges, and decorative layers */
-#now-playing-card { position: relative; }
-#now-playing-card #np-share-toolbar {
-  position: relative !important;
-  z-index: 6000 !important;
-  pointer-events: auto !important;
-}
-#now-playing-card #np-share-toolbar * {
-  pointer-events: auto !important;
-}
-
-/* Ensure common overlapping bits sit lower */
-#now-playing-card #artwork,
-#now-playing-card .artwork,
-#now-playing-card .artwork-container,
-#now-playing-card .badge,
-#now-playing-card .np-marquee,
-#now-playing-card .overlay,
-#now-playing-card .glow {
-  position: relative;
-  z-index: 1 !important;
-}
-
-/* Share links should behave like buttons and be obviously clickable */
-#now-playing-card #np-share-toolbar .np-share-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none !important;
-  cursor: pointer !important;
-}
-
-/* If any ancestor mistakenly disables clicks, re-enable here */
-#now-playing-card,
-#now-playing-card *:not(#np-share-toolbar):not(#np-share-toolbar *)
-{
-  /* don't force pointer-events here; just ensure toolbar is clickable */
-}
-</style>
-
-
-<style id="np-share-icon-contrast">
-/* Make SVGs inherit button text color */
-#np-share-toolbar .np-share-btn svg,
-#np-share-toolbar .np-share-btn svg * {
-  fill: currentColor !important;
-  stroke: none !important;
-}
-
-/* Base colors per theme */
-[data-theme="dark"] #np-share-toolbar .np-share-btn { color: #fff !important; }   /* white icons in dark mode */
-[data-theme="light"] #np-share-toolbar .np-share-btn { color: #000 !important; }  /* black icons in light mode */
-
-/* Platform-specific overrides to guarantee contrast in light mode */
-[data-theme="light"] #np-share-toolbar .np-share-btn[data-platform="twitter"]  { color: #fff !important; }  /* black bg -> white icon */
-[data-theme="light"] #np-share-toolbar .np-share-btn[data-platform="facebook"] { color: #fff !important; }  /* blue bg -> white icon */
-/* WhatsApp on light: keep black icon for max contrast on green */
-</style>
-
-
-<style id="np-share-neutral-buttons">
-/* Neutralize share button background/outline */
-#np-share-toolbar .np-share-btn {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 6px 8px !important;
-  border-radius: 8px !important;
-}
-#np-share-toolbar .np-share-btn:hover,
-#np-share-toolbar .np-share-btn:focus {
-  background: rgba(0,0,0,0.06) !important;
-}
-[data-theme="dark"] #np-share-toolbar .np-share-btn:hover,
-[data-theme="dark"] #np-share-toolbar .np-share-btn:focus {
-  background: rgba(255,255,255,0.08) !important;
-}
-</style>
-
-
-<style id="np-share-mobile-order-and-modal-stack">
-/* --- Keep button order consistent on mobile: Facebook, Twitter, WhatsApp --- */
-#np-share-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-#np-share-toolbar .np-share-btn { order: 10; } /* default */
-#np-share-toolbar .np-share-btn[data-platform="facebook"],
-#np-share-toolbar .np-share-btn[data-platform="fb"] { order: 1; }
-#np-share-toolbar .np-share-btn[data-platform="twitter"],
-#np-share-toolbar .np-share-btn[data-platform="x"] { order: 2; }
-#np-share-toolbar .np-share-btn[data-platform="whatsapp"],
-#np-share-toolbar .np-share-btn[data-platform="wa"] { order: 3; }
-
-/* Make sure wrapping keeps the sequence visually on small screens */
-@media (max-width: 640px) {
-  #np-share-toolbar {
-    flex-wrap: wrap;
-    row-gap: 6px;
-  }
-}
-
-/* --- Ensure modals cover share toolbar (share should NOT sit above modals) --- */
-#now-playing-card { position: relative; }
-#now-playing-card #np-share-toolbar {
-  position: relative !important;
-  z-index: 1200 !important;  /* below .modal (2000) but above card bits */
-  pointer-events: auto !important;
-}
-/* Keep modal on top (your modals use z-index:2000+) */
-.modal { z-index: 2000 !important; }
-</style>
-
-
-<style id="np-share-order-guard">
-#np-share-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-#np-share-toolbar .np-share-btn{order:10;text-decoration:none}
-#np-share-toolbar .np-share-btn[data-platform="facebook"],
-#np-share-toolbar .np-share-btn[data-platform="fb"]{order:1}
-#np-share-toolbar .np-share-btn[data-platform="twitter"],
-#np-share-toolbar .np-share-btn[data-platform="x"]{order:2}
-#np-share-toolbar .np-share-btn[data-platform="whatsapp"],
-#np-share-toolbar .np-share-btn[data-platform="wa"]{order:3}
-</style>
-
-
-<style id="np-share-style-neutral">
-#np-share-toolbar{margin-top:8px}
-#np-share-toolbar .np-share-btn{
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,0.18);
-  padding: 6px 10px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  line-height: 1;
-}
-[data-theme="light"] #np-share-toolbar .np-share-btn{
-  border-color: rgba(0,0,0,0.15);
-}
-#np-share-toolbar .np-share-btn svg{width:16px;height:16px}
-#np-share-toolbar .np-share-btn svg [fill="#fed351"],
-#np-share-toolbar .np-share-btn svg [fill="#FFF"],
-#np-share-toolbar .np-share-btn svg [fill="#ffffff"]{fill:#fff}
-[data-theme="light"] #np-share-toolbar .np-share-btn svg [fill="#FFF"],
-[data-theme="light"] #np-share-toolbar .np-share-btn svg [fill="#ffffff"]{fill:#111}
-</style>
-
-
-<style id="np-share-modal-stack">
-#now-playing-card{position:relative}
-#np-share-toolbar{position:relative;z-index:1200}
-.modal{z-index:2000 !important}
-</style>
-
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -3823,20 +3369,6 @@ html:not([data-theme="light"]) #volume-container #volume-display {
 </div>
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
-
-<div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
-  <span class="np-share-label">Share:</span>
-  
-  
-  
-<a  type="button" class="np-share-btn" data-platform="facebook" aria-label="Share on Facebook" title="Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fessential.radio" target="_blank" rel="noopener" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-</svg></a><a  type="button" class="np-share-btn" data-platform="twitter" aria-label="Share on X (Twitter)" title="X (Twitter)" href="https://twitter.com/intent/tweet?text=I%27m%20listening%20to%20Essential%20Radio%20https%3A%2F%2Fessential.radio" target="_blank" rel="noopener" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-</svg></a><a  type="button" class="np-share-btn" data-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp" href="https://api.whatsapp.com/send?text=I%27m%20listening%20to%20Essential%20Radio%20https%3A%2F%2Fessential.radio" target="_blank" rel="noopener" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-</svg></a></div>
-
 </div>
 <img alt="Artwork" class="loaded" id="artwork" src="Essential Radio Logo.png"/>
 </div>
@@ -5177,8 +4709,6 @@ group.forEach(show => {
 
 
 });
-  try { if (typeof highlightLiveShows === "function") highlightLiveShows(); } catch(e) {}
-
 }
 
     modalDaySelect.addEventListener("change", () => {
@@ -7202,7 +6732,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 
   const buildShareText = () => {
     const t = getNowText();
-    return t ? `I'm Listening to ${t} on Essential Radio` : `I'm Listening to Essential Radio`;
+    return t ? `I'm listening to ${t} on Essential Radio` : `I'm listening to Essential Radio`;
   };
 
   btn.addEventListener("click", async () => {
@@ -7245,7 +6775,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     const np = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
     const el = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
     const baseText = el ? (el.innerText || el.textContent || "").trim() : "";
-    const text = encodeURIComponent(baseText ? `I'm Listening to ${baseText} on Essential Radio` : `I'm Listening to Essential Radio`);
+    const text = encodeURIComponent(baseText ? `I'm listening to ${baseText} on Essential Radio` : `I'm listening to Essential Radio`);
 
     const platforms = document.createElement("div");
     platforms.id = "share-platforms";
@@ -7261,7 +6791,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
       const obs = new MutationObserver(() => {
         const el2 = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
         const base2 = el2 ? (el2.innerText || el2.textContent || "").trim() : "";
-        const t2 = encodeURIComponent(base2 ? `I'm Listening to ${base2} on Essential Radio` : `I'm Listening to Essential Radio`);
+        const t2 = encodeURIComponent(base2 ? `I'm listening to ${base2} on Essential Radio` : `I'm listening to Essential Radio`);
         platforms.querySelectorAll("a").forEach(a => {
           const href = a.getAttribute("href");
           if (href.includes("twitter.com/intent/tweet")) {
@@ -7278,7 +6808,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   /* =========  C) HIGHLIGHT LIVE SHOWS IN SCHEDULE  ========= */
   function parseRange(str) {
     // accepts "09:00 – 12:00" or "9:00-12:00"
-    const m = (str || "").replace(/\s/g, "").match(/(\d{1,2}:\d{2})[–—-](\d{1,2}:\d{2})/);
+    const m = (str || "").replace(/\s/g, "").match(/(\d{1,2}:\d{2})[–-](\d{1,2}:\d{2})/);
     if (!m) return null;
     return { start: m[1], end: m[2] };
   }
@@ -7297,7 +6827,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     return d;
   }
   function highlightLiveShows() {
-    const container = document.querySelector("#modalDaySchedule");
+    const container = document.querySelector("#modalScheduleContainer");
     if (!container) return;
 
     // clear existing highlights
@@ -7340,7 +6870,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   const schedReady = () => {
     highlightLiveShows();
     scheduleLiveTick();
-    const cont = document.querySelector("#modalDaySchedule");
+    const cont = document.querySelector("#modalScheduleContainer");
     if (cont) {
       const obs = new MutationObserver(() => highlightLiveShows());
       obs.observe(cont, { childList: true, subtree: true });
@@ -7408,582 +6938,59 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 })();
 </script>
 
-
-
-
-<script id="schedule-highlight-logic">
-(function() {
-  const LONDON_TZ = 'Europe/London';
-  const DASH = '[\-–—]'; // hyphen, en-dash, em-dash
-  const TIME_RX = new RegExp(
-    String.raw`(\d{1,2}):(\d{2})\s*(am|pm|AM|PM)?\s*${DASH}\s*(\d{1,2}):(\d{2})\s*(am|pm|AM|PM)?`
-  );
-
-  function nowMinutesLondon() {
-    // Get current time in Europe/London as minutes since midnight
-    const parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: LONDON_TZ,
-      hour: '2-digit', minute: '2-digit', hour12: false
-    }).formatToParts(new Date());
-    const hh = parseInt(parts.find(p => p.type === 'hour').value, 10);
-    const mm = parseInt(parts.find(p => p.type === 'minute').value, 10);
-    return hh*60 + mm;
-  }
-
-  function to24h(h, m, ampm) {
-    h = parseInt(h, 10);
-    m = parseInt(m, 10);
-    if (ampm) {
-      const a = ampm.toLowerCase();
-      if (a === 'pm' && h < 12) h += 12;
-      if (a === 'am' && h === 12) h = 0;
-    }
-    return h*60 + m;
-  }
-
-  function parseRangeFromText(txt) {
-    const m = txt && txt.match(TIME_RX);
-    if (!m) return null;
-    const s = to24h(m[1], m[2], m[3]);
-    const e = to24h(m[4], m[5], m[6]);
-    return [s, e];
-    }
-
-  function getText(node) {
-    return (node.textContent || '').replace(/\s+/g, ' ').trim();
-  }
-
-  function extractRange(el) {
-    // Priority 1: data attrs in minutes or HH:MM
-    let ds = el.getAttribute('data-start') || el.dataset.start;
-    let de = el.getAttribute('data-end') || el.dataset.end;
-    if (ds && de) {
-      const mm = (v)=>{
-        if (/^\d{1,2}:\d{2}(?:\s*[aApP][mM])?$/.test(v)) {
-          // HH:MM or HH:MM am/pm
-          const ms = v.match(/(\d{1,2}):(\d{2})\s*([aApP][mM])?/);
-          return to24h(ms[1], ms[2], ms[3]);
+<script>
+  function updateShareButtons({ title, artist, url = 'https://essential.radio' }) {
+    // Clean up any stray 'Share' text
+    const clean = (str) => str ? str.replace(/\bShare\b/gi, '').trim() : '';
+    title = clean(title);
+    artist = clean(artist);
+    const trackLine = title && artist ? \`\${title} by \${artist}\` :
+                       title ? title : artist ? \`by \${artist}\` : '';
+    const shareText = trackLine ? \`I'm listening to \${trackLine} on Essential Radio\` :
+                                  \`I'm listening to Essential Radio\`;
+    const encText = encodeURIComponent(shareText);
+    const encURL  = encodeURIComponent(url);
+    const fb = document.getElementById('share-facebook');
+    const tw = document.getElementById('share-twitter');
+    const wa = document.getElementById('share-whatsapp');
+    const cp = document.getElementById('share-copy');
+    if (fb) fb.href = \`https://www.facebook.com/sharer/sharer.php?u=\${encURL}&quote=\${encText}\`;
+    if (tw) tw.href = \`https://twitter.com/intent/tweet?text=\${encText}&url=\${encURL}\`;
+    if (wa) wa.href = \`https://wa.me/?text=\${encText}%20\${encURL}\`;
+    if (cp) {
+      cp.onclick = async (e) => {
+        e.preventDefault();
+        const clip = \`\${shareText} \${url}\`;
+        try {
+          await navigator.clipboard.writeText(clip);
+          cp.dataset.copied = 'true';
+          setTimeout(() => (cp.dataset.copied = ''), 1500);
+        } catch {
+          alert('Copied text:\n\n' + clip);
         }
-        // assume minutes since midnight
-        const n = parseInt(String(v).replace(/\D/g,''),10);
-        return isFinite(n) ? n : null;
       };
-      const s = mm(ds), e = mm(de);
-      if (s!=null && e!=null) return [s,e];
     }
-
-    // Priority 2: two <time> elements inside
-    const times = el.querySelectorAll('time');
-    if (times.length >= 2) {
-      const t1 = getText(times[0]);
-      const t2 = getText(times[1]);
-      const p1 = t1.match(/(\d{1,2}):(\d{2})\s*([aApP][mM])?/);
-      const p2 = t2.match(/(\d{1,2}):(\d{2})\s*([aApP][mM])?/);
-      if (p1 && p2) return [ to24h(p1[1],p1[2],p1[3]), to24h(p2[1],p2[2],p2[3]) ];
-    }
-
-    // Priority 3: fall back to any text with start–end
-    return parseRangeFromText(getText(el));
   }
 
-  function isNowWithin(s, e, now) {
-    if (s == null || e == null) return false;
-    if (s === e) return false; // zero-length
-    if (e > s) return now >= s && now < e;
-    // crosses midnight
-    return now >= s || now < e;
-  }
-
-  function findScheduleContainer() {
-    return document.querySelector('#modalScheduleContainer, #modalDaySchedule, .schedule-modal .content, .schedule, .schedule-list');
-  }
-
-  function entryNodes(root) {
-    return root.querySelectorAll('.show-entry, .show, .schedule-item, li');
-  }
-
-  function clearHighlights(root) {
-    root.querySelectorAll('.show--current, .current-show, .schedule-current, .show-entry.current, .show.current, .schedule-item.current')
-      .forEach(n => {
-        n.classList.remove('show--current','current-show','schedule-current','current');
-        n.style.removeProperty('--now-flag');
-      });
-  }
-
-  let lastScrollId = null;
-  function highlightCurrentShow() {
-    const container = findScheduleContainer();
-    if (!container) return;
-
-    const now = nowMinutesLondon();
-    let winner = null;
-
-    entryNodes(container).forEach(node => {
-      const range = extractRange(node);
-      if (!range) return;
-      const [s,e] = range;
-      if (isNowWithin(s,e,now)) {
-        winner = node;
+  // Observe now-playing for changes
+  const npEl = document.getElementById('now-playing');
+  if (npEl) {
+    const updateFromNP = () => {
+      let txt = npEl.textContent.trim();
+      let title = '', artist = '';
+      if (txt.includes(' - ')) {
+        [artist, title] = txt.split(' - ');
+      } else if (txt.toLowerCase().includes(' by ')) {
+        [title, artist] = txt.split(/ by /i);
+      } else {
+        title = txt;
       }
-    });
-
-    clearHighlights(container);
-
-    if (winner) {
-      winner.classList.add('show--current');
-      // Auto-scroll on first detection only (avoid fighting user scroll)
-      const id = winner.getAttribute('data-id') || winner.id || `${Array.from(entryNodes(container)).indexOf(winner)}`;
-      if (lastScrollId !== id) {
-        lastScrollId = id;
-        setTimeout(()=>{
-          try { winner.scrollIntoView({behavior:'smooth', block:'center'}); } catch(e) {}
-        }, 60);
-      }
-    }
+      updateShareButtons({ title, artist });
+    };
+    const mo = new MutationObserver(updateFromNP);
+    mo.observe(npEl, { childList: true, subtree: true, characterData: true });
+    updateFromNP();
   }
-
-  // Run when modal opens
-  function onModalToggle(e) {
-    const tgt = e.target;
-    if (!(tgt instanceof HTMLElement)) return;
-    const isScheduleOpen = tgt.matches('#scheduleModal.show, .modal.show') && (tgt.id?.toLowerCase().includes('schedule'));
-    if (isScheduleOpen) {
-      setTimeout(highlightCurrentShow, 120);
-    }
-  }
-
-  // Observe mutations in the modal content
-  const obs = new MutationObserver(()=> {
-    // debounce
-    clearTimeout(window.__hlDebounce);
-    window.__hlDebounce = setTimeout(highlightCurrentShow, 80);
-  });
-
-  // Boot
-  document.addEventListener('readystatechange', () => {
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      setTimeout(highlightCurrentShow, 150);
-      const container = findScheduleContainer();
-      if (container) obs.observe(container, {childList:true, subtree:true});
-    }
-  });
-
-  // Periodic refresh (handles minute rollover)
-  setInterval(highlightCurrentShow, 30 * 1000);
-
-  // Heuristics: clicks that likely opened the schedule
-  document.addEventListener('click', (e)=>{
-    const t = e.target.closest('a,button,[data-open="schedule"],[data-target*="schedule"],[href*="schedule"]');
-    if (t) setTimeout(highlightCurrentShow, 180);
-  });
-
-  // If pages use custom events
-  window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
-  window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
-})();
-</script>
-
-
-<script id="np-share-binder">
-(function(){
-  function bindShareButtons(){
-    var btns = document.querySelectorAll('#np-share-toolbar .np-share-btn');
-    btns.forEach(function(btn){
-      btn.onclick = function(ev){
-        ev.preventDefault();
-        ev.stopPropagation();
-        var p = btn.getAttribute('data-platform');
-        if (typeof openShare === 'function' && p){ openShare(p); }
-      };
-    });
-  }
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(bindShareButtons, 80);
-  } else {
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(bindShareButtons, 80); });
-  }
-  var tb = document.getElementById('np-share-toolbar');
-  if (tb && window.MutationObserver){
-    var obs = new MutationObserver(function(){ bindShareButtons(); });
-    obs.observe(tb, {childList:true, subtree:true});
-  }
-})();
-</script>
-
-
-
-
-
-<script id="np-share-href-enhancer">
-(function(){
-  function s(){ try { return (window.shareSentence && window.shareSentence()) || ""; } catch(e){ return ""; } }
-  function build(pf){
-    var text = s() || "";
-    var link = " https://essential.radio";
-    var p = (pf||"").toLowerCase();
-    if (p === 'whatsapp' || p === 'wa') return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text + link);
-    if (p === 'twitter' || p === 'x')   return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text + link);
-    if (p === 'facebook' || p === 'fb'){
-      var u = 'https://essential.radio';
-      return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(text);
-    }
-    return '#';
-  }
-  function ensureAnchors(){
-    var tb = document.getElementById('np-share-toolbar');
-    if(!tb) return;
-    tb.querySelectorAll('.np-share-btn').forEach(function(el){
-      var p = el.getAttribute('data-platform') || '';
-      if (el.tagName !== 'A'){
-        var a = document.createElement('a');
-        a.className = el.className;
-        a.setAttribute('data-platform', p);
-        a.innerHTML = el.innerHTML;
-        el.parentNode.replaceChild(a, el);
-        el = a;
-      }
-      el.setAttribute('href', build(p));
-      el.setAttribute('target', '_blank');
-      el.setAttribute('rel', 'noopener');
-      el.setAttribute('role', 'button');
-      // Remove any old onclick that might cancel navigation
-      try { el.onclick = null; } catch(e){}
-    });
-  }
-  function updateHrefs(){
-    var tb = document.getElementById('np-share-toolbar');
-    if(!tb) return;
-    tb.querySelectorAll('.np-share-btn').forEach(function(a){
-      var p = a.getAttribute('data-platform') || '';
-      a.setAttribute('href', build(p));
-      a.setAttribute('target', '_blank');
-      a.setAttribute('rel', 'noopener');
-      try { a.onclick = null; } catch(e){}
-    });
-  }
-  function init(){ ensureAnchors(); updateHrefs(); }
-  if (document.readyState === 'complete' || document.readyState === 'interactive') { setTimeout(init, 60); }
-  else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 60); }); }
-  setInterval(updateHrefs, 3000);
-  window.addEventListener('essential:nowplaying:update', updateHrefs);
-})();
-</script>
-
-
-
-
-
-<script id="np-share-move-to-front">
-(function(){
-  function moveToolbar(){
-    var card = document.getElementById('now-playing-card');
-    var tb = document.getElementById('np-share-toolbar');
-    if (card && tb && tb.parentNode !== card) {
-      // If it's outside, append to the card so z-index stacking is consistent
-      try { card.appendChild(tb); } catch(e){}
-    } else if (card && tb && card.lastElementChild !== tb){
-      // If it's in the card but not last, move it to the end for safety
-      try { card.appendChild(tb); } catch(e){}
-    }
-  }
-  if (document.readyState === 'complete' || document.readyState === 'interactive'){
-    setTimeout(moveToolbar, 50);
-  } else {
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(moveToolbar, 50); });
-  }
-  // Rerun if card contents change
-  var card = document.getElementById('now-playing-card');
-  if (card && window.MutationObserver){
-    var obs = new MutationObserver(function(){ moveToolbar(); });
-    obs.observe(card, {childList:true, subtree:true});
-  }
-})();
-</script>
-
-
-<script id="np-share-click-clean">
-(function(){
-  function norm(p){
-    if(!p) return "";
-    p = String(p).toLowerCase().trim();
-    if (p === 'x') p = 'twitter';
-    if (p === 'fb' || p === 'facebook') p = 'facebook';
-    if (p === 'wa' || p === 'whatsapp') p = 'whatsapp';
-    if (p === 'twitter' || p === 'facebook' || p === 'whatsapp') return p;
-    return p;
-  }
-  /* shareSentence replaced by extractor */ catch(e){ return ""; }
-  }
-  function build(platform){
-    var p = norm(platform);
-    var text = shareSentence() || "";
-    var cleanQuote = text.replace(/\s*https?:\/\/essential\.radio\/?/i, "").trim();
-    var link = " https://essential.radio";
-    if (p === 'whatsapp'){
-      return 'https://api.whatsapp.com/send?text=' + encodeURIComponent((text || cleanQuote) + link);
-    }
-    if (p === 'twitter'){
-      return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
-    }
-    if (p === 'facebook'){
-      var u = 'https://essential.radio';
-      return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
-    }
-    return '#';
-  }
-  function ensureAnchors(){
-    var tb = document.getElementById('np-share-toolbar');
-    if(!tb) return;
-    tb.querySelectorAll('.np-share-btn').forEach(function(el){
-      // remove old onclick handlers that might prevent default
-      try { el.onclick = null; } catch(e){}
-      // ensure <a> tag with target/rel
-      var p = el.getAttribute('data-platform');
-      if (el.tagName !== 'A') {
-        var a = document.createElement('a');
-        a.className = el.className;
-        a.setAttribute('data-platform', p || '');
-        a.innerHTML = el.innerHTML;
-        el.parentNode.replaceChild(a, el);
-        el = a;
-      }
-      el.setAttribute('href', build(p));
-      el.setAttribute('target', '_blank');
-      el.setAttribute('rel', 'noopener');
-      // also ensure role=button for accessibility
-      el.setAttribute('role', 'button');
-    });
-  }
-  function updateHrefs(){
-    var tb = document.getElementById('np-share-toolbar');
-    if(!tb) return;
-    tb.querySelectorAll('.np-share-btn').forEach(function(a){
-      var p = a.getAttribute('data-platform');
-      a.setAttribute('href', build(p));
-      a.setAttribute('target', '_blank');
-      a.setAttribute('rel', 'noopener');
-      // nuke any residual onclick each refresh
-      try { a.onclick = null; } catch(e){}
-    });
-  }
-  function init(){
-    ensureAnchors();
-    updateHrefs();
-  }
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(init, 40);
-  } else {
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 40); });
-  }
-  setInterval(updateHrefs, 3000);
-  window.addEventListener('essential:nowplaying:update', updateHrefs);
-})();
-</script>
-
-
-
-
-
-<script id="np-share-title-artist-extractor">
-(function(){
-  function txt(el){ return (el && (el.textContent||"").trim()) || ""; }
-  function q(sel){ return document.querySelector(sel); }
-  function clean(s){
-    s = (s||"").replace(/\s+/g,' ').trim();
-    s = s.replace(/\bLIVE\b/gi, '').replace(/\bNow Playing\b/gi, '').replace(/\bOn Air Now\b/gi, '');
-    s = s.replace(/\bMore music soon\b/gi, '');
-    s = s.replace(/^[–—\-:|]+|[–—\-:|]+$/g, '').trim();
-    return s;
-  }
-  function splitGuess(s){
-    if(!s) return {title:"", artist:""};
-    var m = s.match(/^(.*?)\s+by\s+(.*)$/i);
-    if(m) return {title: clean(m[1]), artist: clean(m[2])};
-    m = s.match(/^(.*?)\s*[–\-]\s*(.*)$/);
-    if(m){
-      var left = clean(m[1]), right = clean(m[2]);
-      // Heuristic: if either side contains "feat." treat left as artist
-      if (/feat\.|ft\./i.test(right)) { return {title: right, artist: left}; }
-      return {title: right, artist: left};
-    }
-    return {title:"", artist:""};
-  }
-  function fromDataAttrs(){
-    var c = document.getElementById('now-playing-card');
-    if(!c) return {title:"",artist:""};
-    var t = c.getAttribute('data-song-title') || c.dataset?.songTitle || "";
-    var a = c.getAttribute('data-song-artist') || c.dataset?.songArtist || "";
-    return {title: clean(t), artist: clean(a)};
-  }
-  function fromSelectors(){
-    var titleSelectors = [
-      '#npTitle', '#np-title', '#np_title',
-      '#nowPlayingTitle', '#nowPlaying .track-title', '#now-playing-card .track-title',
-      '[data-np-title]', '[data-role="title"]', '.np-title', '.np-song', '.song-title'
-    ];
-    var artistSelectors = [
-      '#npArtist', '#np-artist', '#np_artist',
-      '#nowPlayingArtist', '#nowPlaying .track-artist', '#now-playing-card .track-artist',
-      '[data-np-artist]', '[data-role="artist"]', '.np-artist', '.artist-name'
-    ];
-    for (var i=0;i<titleSelectors.length;i++){
-      var t = clean(txt(q(titleSelectors[i])));
-      if (t){
-        for (var j=0;j<artistSelectors.length;j++){
-          var a = clean(txt(q(artistSelectors[j])));
-          if (a) return {title:t, artist:a};
-        }
-        return {title:t, artist:""};
-      }
-    }
-    return {title:"", artist:""};
-  }
-  function fromCombined(){
-    var lines = [
-      txt(q('#now-playing-card .np-marquee')),
-      txt(q('#now-playing-card #np-marquee')),
-      txt(q('#nowPlaying')), txt(q('#onAirNow')), txt(q('#now-playing-card'))
-    ].map(clean).filter(Boolean);
-    for (var i=0;i<lines.length;i++){
-      var g = splitGuess(lines[i]);
-      if (g.title || g.artist) return g;
-    }
-    return {title:"", artist:""};
-  }
-  function fromJS(){
-    try {
-      // Common globals some players expose
-      if (window.NOW_PLAYING && (NOW_PLAYING.title || NOW_PLAYING.artist)){
-        return {title: clean(NOW_PLAYING.title||""), artist: clean(NOW_PLAYING.artist||"")};
-      }
-      if (window.nowPlaying && (nowPlaying.title || nowPlaying.artist)){
-        return {title: clean(nowPlaying.title||""), artist: clean(nowPlaying.artist||"")};
-      }
-      if (window.NP_STATE && NP_STATE.current){
-        return {title: clean(NP_STATE.current.title||""), artist: clean(NP_STATE.current.artist||"")};
-      }
-    } catch(e){}
-    return {title:"", artist:""};
-  }
-  function best(){
-    var sources = [fromDataAttrs, fromSelectors, fromCombined, fromJS];
-    for (var i=0;i<sources.length;i++){
-      var r = sources[i]();
-      if (r.title && r.artist) return r;
-    }
-    // If we didn’t get both, try to fill missing piece from another source
-    var t="", a="";
-    sources.forEach(function(fn){
-      var r = fn(); if (r.title && !t) t=r.title; if (r.artist && !a) a=r.artist;
-    });
-    return {title: t, artist: a};
-  }
-
-  window.shareSentence = function(){
-    
-    var r = (typeof best === 'function') ? best() : {title:"",artist:""};
-    var title = (r && r.title) ? r.title : "";
-    var artist = (r && r.artist) ? r.artist : "";
-    if (title && artist) return "I'm listening to " + title + " by " + artist + " on Essential Radio";
-    if (title && !artist) return "I'm listening to " + title + " on Essential Radio";
-    if (!title && artist) return "I'm listening to " + artist + " on Essential Radio";
-    return "I'm listening to Essential Radio";
-    
-  };
-
-  // Trigger an update for share hrefs
-  try { window.dispatchEvent(new Event('essential:nowplaying:update')); } catch(e){}
-})();
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script id="np-share-toolbar-js">
-(function(){
-  function inToolbar(el){ while(el){ if (el.id==='np-share-toolbar') return true; el=el.parentElement; } return false; }
-  function firstOutside(root, sel){
-    var list=(root||document).querySelectorAll(sel);
-    for(var i=0;i<list.length;i++){ if(!inToolbar(list[i])) return list[i]; }
-    return null;
-  }
-  function txt(el){ return (el && (el.textContent||'').trim()) || ''; }
-  function clean(s){
-    s=(s||'').replace(/\s+/g,' ').trim();
-    s=s.replace(/\b(Share|LIVE|Now Playing|On Air Now|More music soon)\b/gi,'');
-    s=s.replace(/^[–—\-:|]+|[–—\-:|]+$/g,'').replace(/\s{2,}/g,' ').trim();
-    return s;
-  }
-  function splitTA(s){
-    s=clean(s); if(!s) return {title:'',artist:''};
-    var m=s.match(/^(.+?)\s+by\s+(.+)$/i); if(m) return {title:clean(m[1]), artist:clean(m[2])};
-    var d=s.match(/^(.+?)\s*[–\-]\s*(.+)$/); if(d) return {artist:clean(d[1]), title:clean(d[2])};
-    return {title:s, artist:''};
-  }
-  function readTA(){
-    var card=document.getElementById('now-playing-card')||document;
-    var titleEl=firstOutside(card,'#npTitle, .np-title, .track-title, [data-role="title"], #nowPlayingTitle');
-    var artistEl=firstOutside(card,'#npArtist, .np-artist, .track-artist, [data-role="artist"], #nowPlayingArtist');
-    var title=clean(txt(titleEl)); var artist=clean(txt(artistEl));
-    if(!title && !artist && card && card.getAttribute){
-      title=clean(card.getAttribute('data-song-title')||(card.dataset&&card.dataset.songTitle)||'');
-      artist=clean(card.getAttribute('data-song-artist')||(card.dataset&&card.dataset.songArtist)||'');
-    }
-    if(!title && !artist){
-      var combinedEl=firstOutside(card,'.np-marquee, #np-marquee, #nowPlaying, #now-playing, #onAirNow, .np-text, .now-playing');
-      var combined=clean(txt(combinedEl));
-      var g=splitTA(combined); title=title||g.title; artist=artist||g.artist;
-    }
-    return {title:title, artist:artist};
-  }
-  function shareSentence(){
-    var r=readTA();
-    var t=(r.title||'').replace(/\s+on\s+Essential\s+Radio\s*$/i,'').trim();
-    var a=(r.artist||'').replace(/\s+on\s+Essential\s+Radio\s*$/i,'').trim();
-    if(t && a) return "I'm listening to " + t + " by " + a + " on Essential Radio";
-    if(t && !a) return "I'm listening to " + t + " on Essential Radio";
-    if(!t && a) return "I'm listening to " + a + " on Essential Radio";
-    return "I'm listening to Essential Radio";
-  }
-  function buildHref(platform){
-    var text=shareSentence(); var url='https://essential.radio'; var p=(platform||'').toLowerCase();
-    if(p==='whatsapp'||p==='wa') return 'https://api.whatsapp.com/send?text='+encodeURIComponent(text+' '+url);
-    if(p==='twitter'||p==='x')   return 'https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
-    if(p==='facebook'||p==='fb') return 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url)+'&quote='+encodeURIComponent(text);
-    return '#';
-  }
-  function refreshAnchors(){
-    var tb=document.getElementById('np-share-toolbar'); if(!tb) return;
-    tb.querySelectorAll('.np-share-btn').forEach(function(a){
-      var p=a.getAttribute('data-platform')||'';
-      a.href=buildHref(p); a.target='_blank'; a.rel='noopener';
-    });
-  }
-  function observeNP(){
-    var targets=[document.getElementById('now-playing-card'),
-                 document.getElementById('now-playing'),
-                 document.getElementById('nowPlaying')].filter(Boolean);
-    if(targets.length && window.MutationObserver){
-      var obs=new MutationObserver(function(){ refreshAnchors(); });
-      targets.forEach(function(t){ obs.observe(t,{subtree:true,childList:true,characterData:true}); });
-    }
-    refreshAnchors();
-  }
-  if(document.readyState==='complete'||document.readyState==='interactive'){ setTimeout(observeNP,60); }
-  else{ document.addEventListener('DOMContentLoaded', function(){ setTimeout(observeNP,60); }); }
-  window.addEventListener('essential:nowplaying:update', refreshAnchors);
-  setInterval(refreshAnchors,5000);
-})();
 </script>
 
 </body></html>
