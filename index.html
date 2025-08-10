@@ -3775,6 +3775,25 @@ html:not([data-theme="light"]) #volume-container #volume-display {
   }
 </style>
 
+
+<style id="events-modal-darkmode-fix">
+/* === Dark mode – Events modal link colour override === */
+[data-theme="dark"] #eventsModal a,
+[data-theme="dark"] #eventsModal a:visited {
+  color: var(--text) !important; /* Match normal dark mode text colour */
+}
+[data-theme="dark"] #eventsModal a:hover,
+[data-theme="dark"] #eventsModal a:focus {
+  color: var(--er-accent) !important; /* Yellow hover for visibility */
+}
+</style>
+
+
+<style id="hide-livebox-share">
+/* Hide the old LIVE-box Share button to avoid duplicates */
+.live-indicator #share-btn { display: none !important; }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -7193,7 +7212,17 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 
   /* =========  B) SHARE BUTTON (Web Share API + fallbacks)  ========= */
   function mountShareButton() {
-  const liveBox = document.querySelector(".live-indicator");
+  
+  // Prefer the inline 3-link toolbar; if present, remove any LIVE-box share and exit.
+  try {
+    const toolbar = document.querySelector('#np-share-toolbar');
+    if (toolbar) {
+      const stray = document.querySelector('.live-indicator #share-btn');
+      if (stray) stray.remove();
+      return;
+    }
+  } catch (e) { /* no-op */ }
+const liveBox = document.querySelector(".live-indicator");
   if (!liveBox) return;
 
   // If an older share button exists elsewhere, remove it to avoid duplicates
