@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-25T23:00:00Z",
-    "Scheduled Time": "00:01",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 1",
-    "Duration (s)": 3586,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-26T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -44273,5 +44262,16 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-08-10T00:00:00Z",
+    "Scheduled Time": "01:02",
+    "Displayed Time": "",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 181,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
