@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:02",
-    "Displayed Time": "",
-    "Artist": "Rag'N'Bone Man",
-    "Title": "All You Ever Wanted",
-    "Duration (s)": 184,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 156,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:08",
-    "Displayed Time": "",
-    "Artist": "Tyler, The Creator, Lola Young",
-    "Title": "Like Him",
-    "Duration (s)": 268,
-    "Full Duration (s)": 278,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:13",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 198,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:16",
-    "Displayed Time": "",
-    "Artist": "Busted",
-    "Title": "Year 3000",
-    "Duration (s)": 190,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:23",
-    "Displayed Time": "",
-    "Artist": "Bronski Beat",
-    "Title": "Smalltown Boy",
-    "Duration (s)": 232,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:27",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "Cruel Summer",
-    "Duration (s)": 170,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:30",
-    "Displayed Time": "",
-    "Artist": "Deee-Lite",
-    "Title": "Groove Is in the Heart",
-    "Duration (s)": 219,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:34",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 209,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:37",
-    "Displayed Time": "",
-    "Artist": "Just Jack",
-    "Title": "Stars in Their Eyes",
-    "Duration (s)": 177,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:43",
-    "Displayed Time": "",
-    "Artist": "Fontaines D.C.",
-    "Title": "It's Amazing To Be Young",
-    "Duration (s)": 204,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:47",
-    "Displayed Time": "",
-    "Artist": "Ariana Grande",
-    "Title": "No Tears Left to Cry",
-    "Duration (s)": 197,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:50",
-    "Displayed Time": "",
-    "Artist": "Jax Jones, Calum Scott",
-    "Title": "Whistle",
-    "Duration (s)": 174,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-26T04:00:00Z",
-    "Scheduled Time": "05:53",
-    "Displayed Time": "",
-    "Artist": "Pras Michel feat. ODB & Mya",
-    "Title": "Ghetto Supastar (That Is What You Are)",
-    "Duration (s)": 185,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-26T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "",
@@ -44581,5 +44427,16 @@
     "Full Duration (s)": 223,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-10T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 164,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
