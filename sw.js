@@ -1,9 +1,11 @@
-const CACHE = 'essential-radio-v1';
+
+// Essential Radio Service Worker (v3)
+const CACHE = 'essential-radio-v3';
 const ASSETS = [
   '/', '/index.html',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
-  // add your CSS/JS/fonts used at initial load
+  '/manifest.json',
+  '/icon-192-yellow.png', '/icon-512-yellow.png', '/icon-180-yellow.png'
+  // Add your CSS/JS here for faster startup, e.g. '/styles.css', '/app.js'
 ];
 
 self.addEventListener('install', (event) => {
@@ -13,9 +15,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(
-      keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))
-    ))
+    caches.keys().then(keys => Promise.all(keys.map(k => k !== CACHE ? caches.delete(k) : Promise.resolve())))
   );
   self.clients.claim();
 });
@@ -24,12 +24,11 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
   event.respondWith(
-    caches.match(req).then((cached) => {
+    caches.match(req).then(cached => {
       if (cached) return cached;
       return fetch(req).then((resp) => {
-        // cache a copy in the background
         const copy = resp.clone();
-        caches.open(CACHE).then((c) => c.put(req, copy));
+        caches.open(CACHE).then(c => c.put(req, copy));
         return resp;
       }).catch(() => caches.match('/index.html'));
     })
