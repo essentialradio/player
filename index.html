@@ -3795,6 +3795,9 @@ html:not([data-theme="light"]) #volume-container #volume-display {
 </style>
 
 <link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180-yellow.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -8149,9 +8152,101 @@ const liveBox = document.querySelector(".live-indicator");
 })();
 </script>
 
+<style>
+  /* Minimal style so it sits like a compact utility button */
+  .er-install-btn {
+    display: none;
+    margin-left: .5rem;
+    padding: .35rem .6rem;
+    border: 0;
+    border-radius: .5rem;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+    background: #ffd400; /* Essential yellow */
+    color: #000;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  }
+  .er-install-btn:focus { outline: 2px solid #000; outline-offset: 2px; }
+</style>
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
-}
+(function(){
+  // Register service worker if supported
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    });
+  }
+
+  let deferredPrompt = null;
+
+  function createInstallButton() {
+    const btn = document.createElement('button');
+    btn.id = 'install-btn';
+    btn.className = 'er-install-btn';
+    btn.type = 'button';
+    btn.textContent = 'Install app';
+    btn.title = 'Install Essential Radio';
+    btn.setAttribute('aria-label', 'Install Essential Radio');
+    btn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      try {
+        const { outcome } = await deferredPrompt.userChoice;
+        // console.log('Install choice:', outcome);
+      } catch(e){}
+      deferredPrompt = null;
+      btn.style.display = 'none';
+    });
+    return btn;
+  }
+
+  function placeNextToToggle(btn){
+    const ids = ['theme-toggle','dark-toggle','darkModeToggle','mode-toggle','toggle-theme'];
+    let toggle = null;
+    for (const id of ids) {
+      toggle = document.getElementById(id);
+      if (toggle) break;
+    }
+    // Fallback: try a button with data attribute or icon class likely used for theme
+    if (!toggle) toggle = document.querySelector('[data-theme-toggle], .theme-toggle, .dark-toggle');
+
+    if (toggle && toggle.parentElement) {
+      // Insert after the toggle button
+      if (toggle.nextSibling) {
+        toggle.parentElement.insertBefore(btn, toggle.nextSibling);
+      } else {
+        toggle.parentElement.appendChild(btn);
+      }
+      return true;
+    }
+    // If we couldn't find it, add to body top-right as fallback
+    btn.style.position = 'fixed';
+    btn.style.top = '10px';
+    btn.style.right = '10px';
+    document.body.appendChild(btn);
+    return false;
+  }
+
+  const installBtn = createInstallButton();
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Insert the button the first time we become eligible
+    if (!installBtn.isConnected) placeNextToToggle(installBtn);
+    installBtn.style.display = '';
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    if (installBtn) installBtn.style.display = 'none';
+  });
+
+  // If already installed, hide button if shown
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    installBtn.style.display = 'none';
+  }
+})();
 </script>
 </body></html>
