@@ -4557,9 +4557,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
             iframe.className = 'mixcloud-player';
             iframe.src = `https://www.mixcloud.com/widget/iframe/?feed=${encodeURIComponent(show.url)}&hide_cover=1&light=0`;
             iframe.allow = 'autoplay';
-            // Force compact height
-            iframe.style.height = '68px';
-            iframe.setAttribute('height','68');
 
             block.appendChild(title);
             block.appendChild(iframe);
@@ -4571,21 +4568,9 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
             '<div style="color:#fed351;font-size:1.1em;margin-top:12px;">Unable to load previous shows at the moment.</div>';
         });
     </script>
-<style id="mixcloud-compact-override">
-/* Hard override for Mixcloud embeds */
-#listenModal .mixcloud-player { height: 68px !important; min-height: 0 !important; }
-#listenModal .show-block { margin-bottom: 14px !important; }
-@media (max-width: 600px) {
-  #listenModal .mixcloud-player { height: 68px !important; }
-}
-@media (max-width: 400px) {
-  #listenModal .mixcloud-player { height: 72px !important; }
-}
-</style>
-
 <style>
       .show-block {
-        margin-bottom: 14px;
+        margin-bottom: 30px;
       }
       .show-title {
         font-size: 18px;
@@ -4622,7 +4607,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 <style>
       .show-block {
-        margin-bottom: 14px;
+        margin-bottom: 30px;
       }
       .show-title {
         font-size: 18px;
@@ -8015,4 +8000,66 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 })();
 </script>
 
+
+<script>
+(function(){
+  function getCard() {
+    return document.querySelector("#now-playing-card") || document.querySelector("#nowPlaying") || null;
+  }
+  function extractNowPlayingText() {
+    const card = getCard();
+    if (!card) return "";
+    const pick = card.querySelector(".np-text,.np-title,.title,.song,.artist,.np-artist");
+    let raw = pick ? (pick.innerText || pick.textContent || "") : (card.innerText || card.textContent || "");
+    raw = (raw || "")
+      .replace(/\bShare\b:?/gi, "")
+      .replace(/\bNow\s*Playing\b:?/gi, "")
+      .replace(/\bLIVE\b:?/gi, "")
+      .replace(/\bon\s+essential\s+radio\b/gi, "")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+    raw = raw.replace(/^[\-\–\—:\|]+|[\-\–\—:\|]+$/g, "").trim();
+    return raw;
+  }
+  function buildSentence() {
+    const t = extractNowPlayingText();
+    let sentence = t ? `I'm listening to ${t} on Essential Radio`
+                     : `I'm listening to Essential Radio`;
+    sentence = sentence.replace(/(?:\s*on Essential Radio){2,}/gi, " on Essential Radio").trim();
+    return sentence;
+  }
+  window.shareSentence = buildSentence;
+  function rewriteShareLinks(scope=document) {
+    const text = encodeURIComponent(buildSentence());
+    const url  = encodeURIComponent(location.href);
+    const links = Array.from(scope.querySelectorAll('a[href*="facebook.com/sharer"],a[href*="twitter.com/intent/tweet"],a[href*="api.whatsapp.com/send"]'));
+    links.forEach(a => {
+      const href = a.getAttribute("href") || "";
+      if (href.includes("facebook.com/sharer")) {
+        a.setAttribute("href", `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`);
+      } else if (href.includes("twitter.com/intent/tweet")) {
+        a.setAttribute("href", `https://twitter.com/intent/tweet?text=${text}&url=${url}`);
+      } else if (href.includes("api.whatsapp.com/send")) {
+        a.setAttribute("href", `https://api.whatsapp.com/send?text=${text}%20${url}`);
+      }
+      if (!a.getAttribute("aria-label")) a.setAttribute("aria-label", "Share the current track");
+      a.setAttribute("rel","noopener");
+      a.setAttribute("target","_blank");
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function(){
+    rewriteShareLinks(document);
+  });
+  const card = getCard();
+  if (card && window.MutationObserver) {
+    const obs = new MutationObserver(() => rewriteShareLinks(document));
+    obs.observe(card, { childList: true, subtree: true, characterData: true });
+  }
+  const platforms = document.querySelector("#share-platforms");
+  if (platforms && window.MutationObserver) {
+    const obs2 = new MutationObserver(() => rewriteShareLinks(platforms));
+    obs2.observe(platforms, { childList: true, subtree: true, characterData: true });
+  }
+})();
+</script>
 </body></html>
