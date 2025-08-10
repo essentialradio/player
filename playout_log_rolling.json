@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-25T22:00:00Z",
-    "Scheduled Time": "23:01",
-    "Displayed Time": "",
-    "Artist": "with Ronny Costello",
-    "Title": "Club Classics Radio Show <19 - 24.07.25>",
-    "Duration (s)": 3533,
-    "Full Duration (s)": 3537,
-    "Duration (mins)": 59,
-    "Full Duration (mins)": 59
-  },
-  {
     "Hour": "2025-07-25T23:00:00Z",
     "Scheduled Time": "00:01",
     "Displayed Time": "",
@@ -44273,5 +44262,16 @@
     "Full Duration (s)": 10801,
     "Duration (mins)": 180,
     "Full Duration (mins)": 180
+  },
+  {
+    "Hour": "2025-08-09T23:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "",
+    "Artist": "Bill Grainger",
+    "Title": "Fire Island Hi-NRG",
+    "Duration (s)": 3596,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
