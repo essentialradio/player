@@ -8299,4 +8299,77 @@ const liveBox = document.querySelector(".live-indicator");
 })();
 </script>
 
-</body></html>
+</body><style>
+/* === Desktop modal centring fix === */
+@media (min-width: 769px) {
+  .modal {
+    display: flex;
+    align-items: center;       /* centre vertically */
+    justify-content: center;   /* centre horizontally */
+    padding: 20px;              /* keep away from edges */
+  }
+  .modal-content {
+    margin: 0 !important;       /* remove old 8% top margin */
+    max-height: 90vh;           /* fit within viewport */
+    overflow-y: auto !important;/* scroll inside if needed */
+  }
+}
+</style>
+
+<style>
+/* === Desktop modal centring fix (safe) ===
+   Only center when the modal is actually visible. We do NOT force display:flex globally.
+*/
+@media (min-width: 769px) {
+  /* Keep base hidden state intact */
+  .modal { /* no display change here */ padding: 20px; }
+
+  /* When a modal is explicitly shown via inline style or common 'open' classes, center it */
+  .modal[style*="display: block"],
+  .modal.show,
+  .modal.active,
+  .modal.is-open,
+  .modal.open {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .modal-content {
+    margin: 0 !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+}
+</style>
+
+<style>
+/* === Desktop modal centring fix (v3, force reset) === */
+@media (min-width: 769px) {
+  /* Force the base state back to hidden on desktop */
+  .modal {
+    display: none !important;            /* neutralize any earlier display:flex */
+    align-items: center;                 /* harmless while hidden */
+    justify-content: center;             /* harmless while hidden */
+    padding: 20px;
+  }
+
+  /* Only centre when explicitly opened */
+  .modal[style*="display: block"],
+  .modal.show,
+  .modal.active,
+  .modal.is-open,
+  .modal.open {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .modal-content {
+    margin: 0 !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+}
+</style>
+</html>
