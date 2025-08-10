@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-26T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 2",
-    "Duration (s)": 3580,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-26T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "",
@@ -44414,6 +44403,17 @@
     "Title": "The Fear",
     "Duration (s)": 195,
     "Full Duration (s)": 209,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-10T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Bruno Mars",
+    "Title": "Treasure",
+    "Duration (s)": 165,
+    "Full Duration (s)": 177,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
