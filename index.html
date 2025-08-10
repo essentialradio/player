@@ -3794,6 +3794,7 @@ html:not([data-theme="light"]) #volume-container #volume-display {
 .live-indicator #share-btn { display: none !important; }
 </style>
 
+<link rel="manifest" href="/manifest.json">
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -8148,4 +8149,9 @@ const liveBox = document.querySelector(".live-indicator");
 })();
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+}
+</script>
 </body></html>
