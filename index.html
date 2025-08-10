@@ -3797,7 +3797,29 @@ html:not([data-theme="light"]) #volume-container #volume-display {
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-180-yellow.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0b0c0f">
+
+<style>
+  .install-hint {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: .6rem .8rem;
+    background: rgba(0,0,0,.85);
+    color: #fff;
+    border-radius: .75rem;
+    font-size: .9rem;
+    line-height: 1.2;
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    z-index: 9999;
+    display: none;
+  }
+  .install-hint strong { color: #ffd400; }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -8249,4 +8271,32 @@ const liveBox = document.querySelector(".live-indicator");
   }
 })();
 </script>
+
+<script>
+(function(){
+  // If the native prompt event never fires (iOS), show a hint after a short delay.
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  let promptSeen = false;
+  window.addEventListener('beforeinstallprompt', () => { promptSeen = true; });
+
+  function showHint(){
+    if (document.querySelector('.install-hint')) return;
+    const el = document.createElement('div');
+    el.className = 'install-hint';
+    el.innerHTML = 'To install: tap <strong>Share</strong> and choose <strong>Add to Home Screen</strong>';
+    document.body.appendChild(el);
+    el.style.display = 'block';
+    setTimeout(() => el.remove(), 8000);
+  }
+
+  // Show hint only on iOS Safari (no native beforeinstallprompt), not if already installed
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (isIOS && !isStandalone && !promptSeen) showHint();
+    }, 1800);
+  });
+})();
+</script>
+
 </body></html>
