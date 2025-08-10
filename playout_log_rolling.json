@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:02",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 173,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:06",
-    "Displayed Time": "",
-    "Artist": "Seal",
-    "Title": "Crazy",
-    "Duration (s)": 247,
-    "Full Duration (s)": 269,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:10",
-    "Displayed Time": "",
-    "Artist": "Eliza Rose, Calvin Harris",
-    "Title": "Body Moving",
-    "Duration (s)": 146,
-    "Full Duration (s)": 154,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:13",
-    "Displayed Time": "",
-    "Artist": "Coldplay X BTS",
-    "Title": "My Universe",
-    "Duration (s)": 184,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:16",
-    "Displayed Time": "",
-    "Artist": "Take That",
-    "Title": "Shine",
-    "Duration (s)": 201,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:23",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:26",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Forget Me",
-    "Duration (s)": 195,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:30",
-    "Displayed Time": "",
-    "Artist": "Billy Ocean",
-    "Title": "When the Going Gets Tough, the Tough Get Going",
-    "Duration (s)": 224,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:34",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:40",
-    "Displayed Time": "",
-    "Artist": "Maroon 5 ft Christina Aguilera",
-    "Title": "Moves Like Jagger",
-    "Duration (s)": 193,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:43",
-    "Displayed Time": "",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 175,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:46",
-    "Displayed Time": "",
-    "Artist": "Simply Red",
-    "Title": "Stars",
-    "Duration (s)": 236,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:50",
-    "Displayed Time": "",
-    "Artist": "Post Malone & Morgan Wallen",
-    "Title": "I Had Some Help",
-    "Duration (s)": 168,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "",
-    "Artist": "Sugababes",
-    "Title": "Too Lost In You",
-    "Duration (s)": 228,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-27T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44449,5 +44295,16 @@
     "Full Duration (s)": 3475,
     "Duration (mins)": 58,
     "Full Duration (mins)": 58
+  },
+  {
+    "Hour": "2025-08-10T22:00:00Z",
+    "Scheduled Time": "23:00",
+    "Displayed Time": "",
+    "Artist": "Dave Watkins",
+    "Title": "The Country Mile",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3601,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
