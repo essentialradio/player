@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:02",
-    "Displayed Time": "",
-    "Artist": "Hall & Oates",
-    "Title": "Maneater",
-    "Duration (s)": 195,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:05",
-    "Displayed Time": "",
-    "Artist": "David Bowie",
-    "Title": "Heroes",
-    "Duration (s)": 194,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:08",
-    "Displayed Time": "",
-    "Artist": "Texas",
-    "Title": "Black Eyed Boy",
-    "Duration (s)": 178,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:11",
-    "Displayed Time": "",
-    "Artist": "The Beatles",
-    "Title": "Please Please Me",
-    "Duration (s)": 111,
-    "Full Duration (s)": 117,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:17",
-    "Displayed Time": "",
-    "Artist": "Alison Moyet",
-    "Title": "All Cried Out",
-    "Duration (s)": 202,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:20",
-    "Displayed Time": "",
-    "Artist": "House of Pain",
-    "Title": "Jump Around",
-    "Duration (s)": 199,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:23",
-    "Displayed Time": "",
-    "Artist": "Japan",
-    "Title": "Quiet Life",
-    "Duration (s)": 202,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:27",
-    "Displayed Time": "",
-    "Artist": "Warren G & Nate Dogg",
-    "Title": "Regulate",
-    "Duration (s)": 219,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:33",
-    "Displayed Time": "",
-    "Artist": "Genesis",
-    "Title": "Follow You Follow Me",
-    "Duration (s)": 227,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:36",
-    "Displayed Time": "",
-    "Artist": "Bob Marley & The Wailers",
-    "Title": "One Love / People Get Ready",
-    "Duration (s)": 153,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:43",
-    "Displayed Time": "",
-    "Artist": "Kylie Minogue",
-    "Title": "The Loco-Motion",
-    "Duration (s)": 177,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:46",
-    "Displayed Time": "",
-    "Artist": "New Kids on the Block",
-    "Title": "Hangin' Tough",
-    "Duration (s)": 209,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:50",
-    "Displayed Time": "",
-    "Artist": "The Archies",
-    "Title": "Sugar Sugar",
-    "Duration (s)": 159,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:52",
-    "Displayed Time": "",
-    "Artist": "Shakin' Stevens & Bonnie Tyler",
-    "Title": "A Rockin' Good Way (To Mess Around and Fall in Love)",
-    "Duration (s)": 160,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-27T08:00:00Z",
-    "Scheduled Time": "09:55",
-    "Displayed Time": "",
-    "Artist": "Queen",
-    "Title": "Good Old-Fashioned Lover Boy",
-    "Duration (s)": 167,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-07-27T09:00:00Z",
     "Scheduled Time": "10:01",
     "Displayed Time": "",
@@ -44040,6 +43875,17 @@
     "Title": "Knock on Wood",
     "Duration (s)": 213,
     "Full Duration (s)": 231,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-11T06:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "",
+    "Artist": "Dire Straits",
+    "Title": "Money for Nothing",
+    "Duration (s)": 239,
+    "Full Duration (s)": 244,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
