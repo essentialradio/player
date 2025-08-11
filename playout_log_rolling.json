@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-28T00:00:00Z",
-    "Scheduled Time": "01:02",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3401,
-    "Full Duration (s)": 3410,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-07-28T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -45063,6 +45052,17 @@
     "Title": "Seven Seas Of Rhye",
     "Duration (s)": 151,
     "Full Duration (s)": 163,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-11T19:00:00Z",
+    "Scheduled Time": "20:02",
+    "Displayed Time": "",
+    "Artist": "Dolly Parton",
+    "Title": "9 To 5",
+    "Duration (s)": 153,
+    "Full Duration (s)": 160,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
