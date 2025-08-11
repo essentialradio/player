@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-27T15:00:00Z",
-    "Scheduled Time": "15:58",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3591,
-    "Full Duration (s)": 3591,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-27T18:00:00Z",
     "Scheduled Time": "18:59",
     "Displayed Time": "",
@@ -44240,5 +44229,16 @@
     "Full Duration (s)": 205,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-11T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
