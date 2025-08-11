@@ -7496,6 +7496,13 @@ const liveBox = document.querySelector(".live-indicator");
 <script id="schedule-highlight-logic">
 (function() {
   const LONDON_TZ = 'Europe/London';
+function todayKey() {
+  // "Mon", "Tue", etc. in Europe/London
+  return new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: LONDON_TZ })
+    .format(new Date())
+    .slice(0,3);
+}
+
   const DASH = '[\-–—]'; // hyphen, en-dash, em-dash
   const TIME_RX = new RegExp(
     String.raw`(\d{1,2}):(\d{2})\s*(am|pm|AM|PM)?\s*${DASH}\s*(\d{1,2}):(\d{2})\s*(am|pm|AM|PM)?`
@@ -7581,8 +7588,20 @@ const liveBox = document.querySelector(".live-indicator");
   }
 
   function entryNodes(root) {
-    return root.querySelectorAll('.show-entry, .show, .schedule-item, li');
+  const day = todayKey();
+  // If your markup groups by day wrappers, prefer that:
+  const todayWrapper = root.querySelector(`.day[data-day="${day}"], [data-day-wrapper="${day}"]`);
+  if (todayWrapper) {
+    return todayWrapper.querySelectorAll('.show-entry, .show, .schedule-item, li');
   }
+  // Otherwise, filter rows by their own data-day
+  const all = root.querySelectorAll('.show-entry, .show, .schedule-item, li');
+  return Array.from(all).filter(n => {
+    const d = (n.getAttribute('data-day') || n.dataset.day || '').slice(0,3);
+    return d === '' || d === day;   // if no day given, keep it; else require today
+  });
+}
+
 
   function clearHighlights(root) {
     root.querySelectorAll('.show--current, .current-show, .schedule-current, .show-entry.current, .show.current, .schedule-item.current')
@@ -7601,7 +7620,10 @@ const liveBox = document.querySelector(".live-indicator");
     let winner = null;
 
     entryNodes(container).forEach(node => {
-      const range = extractRange(node);
+  const d = (node.getAttribute('data-day') || node.dataset.day || '').slice(0,3);
+  if (d && d !== todayKey()) return;   // ignore other days
+  const range = extractRange(node);
+
       if (!range) return;
       const [s,e] = range;
       if (isNowWithin(s,e,now)) {
