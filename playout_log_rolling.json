@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-07-27T22:00:00Z",
-    "Scheduled Time": "23:00",
-    "Displayed Time": "",
-    "Artist": "Dave Watkins",
-    "Title": "The Country Mile",
-    "Duration (s)": 3600,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-07-27T23:00:00Z",
     "Scheduled Time": "00:02",
     "Displayed Time": "",
@@ -44788,6 +44777,17 @@
     "Title": "Ferrari",
     "Duration (s)": 184,
     "Full Duration (s)": 186,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-11T17:00:00Z",
+    "Scheduled Time": "18:01",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
