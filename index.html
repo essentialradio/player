@@ -4583,7 +4583,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <img alt="Essential Radio Playlist" class="playlist-image" src="ERPlaylist.png"/>
 </div>
 </div>
-<div class="modal" id="listenModal" data-mixcloud-username="essentialradio" data-limit="12">
+<div class="modal" id="listenModal">
 <div class="modal-content" style="max-width:900px;width:97vw">
 <span class="close" onclick="closeModal('listenModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
@@ -4599,7 +4599,35 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8;">
       Essential Radio © 2025
     </div>
+<script>
+      fetch('https://api.mixcloud.com/essentialradio/cloudcasts/')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('mixcloud-embeds');
+          const shows = data.data.slice(0, 6); // Only show 6
+          shows.forEach(show => {
+            const block = document.createElement('div');
+            block.className = 'show-block';
 
+            const title = document.createElement('div');
+            title.className = 'show-title';
+            title.textContent = show.name || show.slug || 'Previous Show';
+
+            const iframe = document.createElement('iframe');
+            iframe.className = 'mixcloud-player';
+            iframe.src = `https://www.mixcloud.com/widget/iframe/?feed=${encodeURIComponent(show.url)}&hide_cover=1&light=0`;
+            iframe.allow = 'autoplay';
+
+            block.appendChild(title);
+            block.appendChild(iframe);
+            container.appendChild(block);
+          });
+        })
+        .catch(error => {
+          document.getElementById('mixcloud-embeds').innerHTML =
+            '<div style="color:#fed351;font-size:1.1em;margin-top:12px;">Unable to load previous shows at the moment.</div>';
+        });
+    </script>
 <style>
       .show-block {
         margin-bottom: 30px;
@@ -5697,7 +5725,6 @@ function openModal(id) {
   document.getElementById(id).style.display = 'block';
   document.body.classList.add('modal-open');
   checkOverlayLogo();
-  try { if (window.refreshModalById && typeof window.refreshModalById[id] === "function") { window.refreshModalById[id](); } } catch (e) { console.warn("modal refresh error", e); }
 }
 
 function closeModal(id) {
@@ -8439,7 +8466,7 @@ if ('serviceWorker' in navigator) {
 // ==== Listen Again (Mixcloud) — auto-refresh on open/resume ====
 (function(){
   const MODAL_ID = 'listenModal'; // your real modal ID
-  const CONTAINER_SEL = '#mixcloud-embeds';
+  const CONTAINER_SEL = '#listenAgainContainer';
 
   // Register with the modal auto-refresh system (if it exists)
   window.refreshModalById = window.refreshModalById || {};
