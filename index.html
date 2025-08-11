@@ -7586,58 +7586,150 @@ function todayKey() {
   function findScheduleContainer() {
     return document.querySelector('#modalScheduleContainer, #modalDaySchedule, .schedule-modal .content, .schedule, .schedule-list');
   }
-function entryNodes(root) {
-  const scope = root || document;
 
-  // --- helpers ---
-  const dayKey = new Intl.DateTimeFormat('en-GB', { weekday:'short', timeZone:'Europe/London' })
-    .format(new Date()).slice(0,3); // "Mon"
-  const dayFull = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'}[dayKey];
-  const ROW_SEL = '.show-entry, .show, .schedule-item, li';
-  const isVisible = el => !!(el && (el.offsetParent || el.getClientRects().length));
+  function entryNodes(root) {
+  const day = todayKey();
+  // If your markup groups by day wrappers, prefer that:
+  const todayWrapper = root.querySelector(`.day[data-day="${day}"], [data-day-wrapper="${day}"]`);
+  if (todayWrapper) {
+    return todayWrapper.querySelectorAll('.show-entry, .show, .schedule-item, li');
+  }
+  // Otherwise, filter rows by their own data-day
+  const all = root.querySelectorAll('.show-entry, .show, .schedule-item, li');
+  return Array.from(all).filter(n => {
+    const d = (n.getAttribute('data-day') || n.dataset.day || '').slice(0,3);
+    return d === '' || d === day;   // if no day given, keep it; else require today
+  });
+}
 
-  // 1) Prefer explicit wrappers like: <div class="day" data-day="Mon">…</div>
-  const wrap = scope.querySelector(`.day[data-day="${dayKey}"], [data-day-wrapper="${dayKey}"], [data-day="${dayKey}"]`);
-  if (wrap) {
-    return Array.from(wrap.querySelectorAll(ROW_SEL)).filter(isVisible);
+
+  function clearHighlights(root) {
+    root.querySelectorAll('.show--current, .current-show, .schedule-current, .show-entry.current, .show.current, .schedule-item.current')
+      .forEach(n => {
+        n.classList.remove('show--current','current-show','schedule-current','current');
+        n.style.removeProperty('--now-flag');
+      });
   }
 
-  // 2) Otherwise, find today's heading and collect live siblings until the next heading
+
+// === PATCH: limit highlight to TODAY's section by heading text ===
+
+// Map "Europe/London" to a 3-letter key like "Mon"
+function __todayKey3() {
+  return new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: 'Europe/London' })
+    .format(new Date()).slice(0,3); // "Mon"
+}
+function __todayNames() {
+  const k = __todayKey3(); // "Mon"
+  const map = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'};
+  return {short:k, long:map[k]};
+}
+
+// Find the DOM block that corresponds to TODAY by scanning headings
+function __findTodaySection(root) {
+  // Headings/day labels you might be using
   const headingSel = [
     '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
     'h2', 'h3', 'h4', '[role="heading"]'
   ].join(',');
 
-  const heads = Array.from(scope.querySelectorAll(headingSel)).filter(isVisible);
-  const re = new RegExp(`\\b(${dayFull}|${dayKey})\\b`, 'i');
-  const idx = heads.findIndex(h => re.test((h.textContent || '').trim()));
+  const {short, long} = __todayNames();
+  const dayRegex = new RegExp(`\\b(${long}|${short})\\b`, 'i');
 
-  if (idx !== -1) {
-    const start = heads[idx];
-    const end = heads[idx + 1] || null;
+  // Get all headings in order
+  const heads = Array.from(root.querySelectorAll(headingSel))
+    // keep only visible-ish
+    .filter(el => !!(el.offsetParent || el.getClientRects().length));
 
-    // Walk *live DOM* siblings between start and end
-    const nodes = [];
-    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling) {
-      // If this block contains rows, grab them
-      const rows = n.matches(ROW_SEL) ? [n] : Array.from(n.querySelectorAll(ROW_SEL));
-      rows.forEach(r => isVisible(r) && nodes.push(r));
+  // Find the heading that matches today
+  const idx = heads.findIndex(h => dayRegex.test((h.textContent || '').trim()));
+  if (idx === -1) return null;
+
+  const startHead = heads[idx];
+  const endHead = heads[idx+1] || null;
+
+  // Collect siblings between startHead and the next heading
+  const section = document.createElement('div');
+  for (let n = startHead.nextElementSibling; n && n !== endHead; n = n.nextElementSibling) {
+    section.appendChild(n.cloneNode(true)); // clone so we can query safely
+  }
+  // If nothing obvious sits under the heading, also try the parent block
+  if (!section.childElementCount) {
+    // Common pattern: <section class="day"><h3>Monday</h3><ul>...</ul></section>
+    const parentBlock = startHead.closest('.day, .schedule-day-block, section, article, div');
+    if (parentBlock) return parentBlock;
+  }
+  return section.childElementCount ? section : (startHead.parentElement || root);
+}
+
+// === Safe TODAY-only entryNodes override (no extra <script> tags) ===
+(function(){
+  const ORIGINAL_SELECTORS = '.show-entry, .show, .schedule-item, li';
+
+  function todayKey3(){
+    return new Intl.DateTimeFormat('en-GB',{weekday:'short', timeZone:'Europe/London'})
+      .format(new Date()).slice(0,3);
+  }
+  const DAY_SHORT = todayKey3();
+  const DAY_LONG  = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'}[DAY_SHORT];
+
+  function findTodaySection(root){
+    // Prefer explicit wrappers
+    const wrap = root.querySelector(`.day[data-day="${DAY_SHORT}"], [data-day-wrapper="${DAY_SHORT}"], [data-day="${DAY_SHORT}"]`);
+    if (wrap) return wrap;
+
+    // Otherwise find by heading text
+    const headingSel = [
+      '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
+      'h2','h3','h4','[role="heading"]'
+    ].join(',');
+    const heads = Array.from(root.querySelectorAll(headingSel))
+      .filter(el => !!(el.offsetParent || el.getClientRects().length));
+    const re = new RegExp(`\\b(${DAY_LONG}|${DAY_SHORT})\\b`, 'i');
+    const idx = heads.findIndex(h => re.test((h.textContent||'').trim()));
+    if (idx === -1) return null;
+    const start = heads[idx], end = heads[idx+1] || null;
+
+    // Grab siblings until the next heading
+    const section = document.createElement('div');
+    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling){
+      section.appendChild(n.cloneNode(true));
     }
-
-    if (nodes.length) return nodes;
-    // Fallback: use the closest day-ish container around the heading
-    const parentBlock = start.closest('.day, .schedule-day-block, section, article, div');
-    if (parentBlock) return Array.from(parentBlock.querySelectorAll(ROW_SEL)).filter(isVisible);
+    return section.childElementCount ? section : start.closest('.day, section, article, div');
   }
 
-  // 3) Last resort: return all visible rows but filter by row-level day if present
-  let all = Array.from(scope.querySelectorAll(ROW_SEL)).filter(isVisible);
-  all = all.filter(n => {
-    const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0,3);
-    return !d || d === dayKey;
-  });
-  return all;
-}
+  // Keep a reference to the original if it exists
+  if (!window.__entryNodesOriginal && typeof entryNodes === 'function') {
+    window.__entryNodesOriginal = entryNodes;
+  }
+
+  window.entryNodes = function(root){
+    const scope = root || document;
+    const todaySection = findTodaySection(scope);
+    let base = todaySection ? todaySection : scope;
+
+    // Collect rows
+    let nodes = Array.from(base.querySelectorAll(ORIGINAL_SELECTORS))
+      .filter(n => (n.offsetParent || n.getClientRects().length));
+
+    // If rows carry their own day, filter them to today; otherwise keep them
+    nodes = nodes.filter(n => {
+      const d = ((n.getAttribute('data-day') || n.dataset?.day || '')+'').slice(0,3);
+      const wrap = n.closest('[data-day]');
+      const wrapDay = wrap ? (wrap.getAttribute('data-day')||'').slice(0,3) : '';
+      return (!d && !wrapDay) || d === DAY_SHORT || wrapDay === DAY_SHORT;
+    });
+
+    // Belt & braces: if we somehow ended up empty, fall back to all rows so you still get a highlight
+    if (!nodes.length && typeof window.__entryNodesOriginal === 'function') {
+      return window.__entryNodesOriginal(scope);
+    }
+    if (!nodes.length) {
+      nodes = Array.from(scope.querySelectorAll(ORIGINAL_SELECTORS));
+    }
+    return nodes;
+  };
+})();
 
 
 
@@ -7715,6 +7807,59 @@ function entryNodes(root) {
   window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
   window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
 })();
+
+function entryNodes(root) {
+  const scope = root || document;
+
+  // Helpers
+  const dayKey = new Intl.DateTimeFormat('en-GB', { weekday:'short', timeZone:'Europe/London' })
+    .format(new Date()).slice(0,3); // "Mon"
+  const dayFull = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'}[dayKey];
+  const ROW_SEL = '.show-entry, .show, .schedule-item, li';
+  const isVisible = el => !!(el && (el.offsetParent || el.getClientRects().length));
+
+  // 1) Prefer explicit wrappers for today
+  const wrap = scope.querySelector(`.day[data-day="${dayKey}"], [data-day-wrapper="${dayKey}"], [data-day="${dayKey}"]`);
+  if (wrap) {
+    return Array.from(wrap.querySelectorAll(ROW_SEL)).filter(isVisible);
+  }
+
+  // 2) Otherwise find today's heading and walk live siblings until the next heading
+  const headingSel = [
+    '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
+    'h2', 'h3', 'h4', '[role="heading"]'
+  ].join(',');
+
+  const heads = Array.from(scope.querySelectorAll(headingSel)).filter(isVisible);
+  const re = new RegExp(`\\b(${dayFull}|${dayKey})\\b`, 'i');
+  const idx = heads.findIndex(h => re.test((h.textContent || '').trim()));
+
+  if (idx !== -1) {
+    const start = heads[idx];
+    const end = heads[idx + 1] || null;
+
+    const nodes = [];
+    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling) {
+      const rows = n.matches(ROW_SEL) ? [n] : Array.from(n.querySelectorAll(ROW_SEL));
+      rows.forEach(r => isVisible(r) && nodes.push(r));
+    }
+
+    if (nodes.length) return nodes;
+
+    // Fallback to a parent block around the heading
+    const parentBlock = start.closest('.day, .schedule-day-block, section, article, div');
+    if (parentBlock) return Array.from(parentBlock.querySelectorAll(ROW_SEL)).filter(isVisible);
+  }
+
+  // 3) Last resort: all visible rows, filtered by row-level day if present
+  let all = Array.from(scope.querySelectorAll(ROW_SEL)).filter(isVisible);
+  all = all.filter(n => {
+    const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0,3);
+    return !d || d === dayKey;
+  });
+  return all;
+}
+
 </script>
 
 
