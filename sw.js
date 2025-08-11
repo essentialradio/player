@@ -26,6 +26,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
+  // Bypass Mixcloud API and widgets entirely
+  if (url.hostname.endsWith("mixcloud.com")) {
+    event.respondWith(fetch(req, { cache: "no-store" }).catch(() => fetch(req)));
+    return;
+  }
+
 
   // 1) Don't touch non-GET requests
   if (req.method !== 'GET') return;
