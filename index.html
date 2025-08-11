@@ -7583,155 +7583,154 @@ function todayKey() {
     return now >= s || now < e;
   }
 
-  function findScheduleContainer() {
-    return document.querySelector('#modalScheduleContainer, #modalDaySchedule, .schedule-modal .content, .schedule, .schedule-list');
-  }
-
-  function entryNodes(root) {
-  const day = todayKey();
-  // If your markup groups by day wrappers, prefer that:
-  const todayWrapper = root.querySelector(`.day[data-day="${day}"], [data-day-wrapper="${day}"]`);
-  if (todayWrapper) {
-    return todayWrapper.querySelectorAll('.show-entry, .show, .schedule-item, li');
-  }
-  // Otherwise, filter rows by their own data-day
-  const all = root.querySelectorAll('.show-entry, .show, .schedule-item, li');
-  return Array.from(all).filter(n => {
-    const d = (n.getAttribute('data-day') || n.dataset.day || '').slice(0,3);
-    return d === '' || d === day;   // if no day given, keep it; else require today
-  });
-}
-
-
-  function clearHighlights(root) {
-    root.querySelectorAll('.show--current, .current-show, .schedule-current, .show-entry.current, .show.current, .schedule-item.current')
-      .forEach(n => {
-        n.classList.remove('show--current','current-show','schedule-current','current');
-        n.style.removeProperty('--now-flag');
-      });
-  }
-
-
-// === PATCH: limit highlight to TODAY's section by heading text ===
-
-// Map "Europe/London" to a 3-letter key like "Mon"
-function __todayKey3() {
-  return new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: 'Europe/London' })
-    .format(new Date()).slice(0,3); // "Mon"
-}
-function __todayNames() {
-  const k = __todayKey3(); // "Mon"
-  const map = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'};
-  return {short:k, long:map[k]};
-}
-
-// Find the DOM block that corresponds to TODAY by scanning headings
-function __findTodaySection(root) {
-  // Headings/day labels you might be using
-  const headingSel = [
+  <script id="schedule-highlight-logic">
+(function () {
+  // ---- Config / helpers ----
+  const LONDON_TZ = 'Europe/London';
+  const ROW_SEL = '.show-entry, .show, .schedule-item, li';
+  const HEADING_SEL = [
     '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
     'h2', 'h3', 'h4', '[role="heading"]'
   ].join(',');
 
-  const {short, long} = __todayNames();
-  const dayRegex = new RegExp(`\\b(${long}|${short})\\b`, 'i');
-
-  // Get all headings in order
-  const heads = Array.from(root.querySelectorAll(headingSel))
-    // keep only visible-ish
-    .filter(el => !!(el.offsetParent || el.getClientRects().length));
-
-  // Find the heading that matches today
-  const idx = heads.findIndex(h => dayRegex.test((h.textContent || '').trim()));
-  if (idx === -1) return null;
-
-  const startHead = heads[idx];
-  const endHead = heads[idx+1] || null;
-
-  // Collect siblings between startHead and the next heading
-  const section = document.createElement('div');
-  for (let n = startHead.nextElementSibling; n && n !== endHead; n = n.nextElementSibling) {
-    section.appendChild(n.cloneNode(true)); // clone so we can query safely
+  function findScheduleContainer() {
+    return document.querySelector('#modalScheduleContainer, #modalDaySchedule, .schedule-modal .content, .schedule, .schedule-list');
   }
-  // If nothing obvious sits under the heading, also try the parent block
-  if (!section.childElementCount) {
-    // Common pattern: <section class="day"><h3>Monday</h3><ul>...</ul></section>
-    const parentBlock = startHead.closest('.day, .schedule-day-block, section, article, div');
-    if (parentBlock) return parentBlock;
+
+  function todayKey3() {
+    return new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: LONDON_TZ })
+      .format(new Date()).slice(0, 3); // "Mon"
   }
-  return section.childElementCount ? section : (startHead.parentElement || root);
-}
-
-// === Safe TODAY-only entryNodes override (no extra <script> tags) ===
-(function(){
-  const ORIGINAL_SELECTORS = '.show-entry, .show, .schedule-item, li';
-
-  function todayKey3(){
-    return new Intl.DateTimeFormat('en-GB',{weekday:'short', timeZone:'Europe/London'})
-      .format(new Date()).slice(0,3);
+  function todayFull() {
+    const map = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
+    return map[todayKey3()];
   }
-  const DAY_SHORT = todayKey3();
-  const DAY_LONG  = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'}[DAY_SHORT];
 
-  function findTodaySection(root){
-    // Prefer explicit wrappers
-    const wrap = root.querySelector(`.day[data-day="${DAY_SHORT}"], [data-day-wrapper="${DAY_SHORT}"], [data-day="${DAY_SHORT}"]`);
+  function nowMinutesLondon() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: LONDON_TZ, hour: '2-digit', minute: '2-digit', hour12: false
+    }).formatToParts(new Date());
+    const hh = parseInt(parts.find(p => p.type === 'hour').value, 10);
+    const mm = parseInt(parts.find(p => p.type === 'minute').value, 10);
+    return hh * 60 + mm;
+  }
+
+  function to24m(h, m, ampm) {
+    h = parseInt(h, 10); m = parseInt(m, 10);
+    if (ampm) {
+      const a = ampm.toLowerCase();
+      if (a === 'pm' && h < 12) h += 12;
+      if (a === 'am' && h === 12) h = 0;
+    }
+    return h * 60 + m;
+  }
+
+  // Parse start–end from attributes, <time> tags, or inline text “HH:MM–HH:MM”
+  const DASH = '[\\-–—]';
+  const TIME_RX = new RegExp(String.raw`(\d{1,2}):(\d{2})\s*([aApP][mM])?\s*${DASH}\s*(\d{1,2}):(\d{2})\s*([aApP][mM])?`);
+  function extractRange(el) {
+    // 1) data-start/data-end (minutes or HH:MM[/am/pm])
+    let ds = el.getAttribute('data-start') || el.dataset?.start;
+    let de = el.getAttribute('data-end') || el.dataset?.end;
+    if (ds && de) {
+      const mm = v => {
+        if (/^\d{1,2}:\d{2}(?:\s*[aApP][mM])?$/.test(v)) {
+          const ms = v.match(/(\d{1,2}):(\d{2})\s*([aApP][mM])?/);
+          return to24m(ms[1], ms[2], ms[3]);
+        }
+        const n = parseInt(String(v).replace(/\D/g, ''), 10);
+        return isFinite(n) ? n : null;
+      };
+      const s = mm(ds), e = mm(de);
+      if (s != null && e != null) return [s, e];
+    }
+    // 2) two <time> elements
+    const times = el.querySelectorAll('time');
+    if (times.length >= 2) {
+      const p = (t) => (t.textContent || '').match(/(\d{1,2}):(\d{2})\s*([aApP][mM])?/);
+      const p1 = p(times[0]), p2 = p(times[1]);
+      if (p1 && p2) return [to24m(p1[1], p1[2], p1[3]), to24m(p2[1], p2[2], p2[3])];
+    }
+    // 3) fallback: inline text pattern
+    const txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    const m = txt.match(TIME_RX);
+    if (m) return [to24m(m[1], m[2], m[3]), to24m(m[4], m[5], m[6])];
+    return null;
+  }
+
+  function isNowWithin(s, e, now) {
+    if (s == null || e == null || s === e) return false;
+    if (e > s) return now >= s && now < e;   // same-day
+    return now >= s || now < e;              // crosses midnight
+  }
+
+  function isVisible(el) { return !!(el && (el.offsetParent || el.getClientRects().length)); }
+
+  // Find TODAY’s section (prefer explicit wrappers, else by heading text)
+  function findTodaySection(root) {
+    const key = todayKey3();
+    const wrap = root.querySelector(`.day[data-day="${key}"], [data-day-wrapper="${key}"], [data-day="${key}"]`);
     if (wrap) return wrap;
 
-    // Otherwise find by heading text
-    const headingSel = [
-      '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
-      'h2','h3','h4','[role="heading"]'
-    ].join(',');
-    const heads = Array.from(root.querySelectorAll(headingSel))
-      .filter(el => !!(el.offsetParent || el.getClientRects().length));
-    const re = new RegExp(`\\b(${DAY_LONG}|${DAY_SHORT})\\b`, 'i');
-    const idx = heads.findIndex(h => re.test((h.textContent||'').trim()));
+    const heads = Array.from(root.querySelectorAll(HEADING_SEL)).filter(isVisible);
+    const re = new RegExp(`\\b(${todayFull()}|${key})\\b`, 'i');
+    const idx = heads.findIndex(h => re.test((h.textContent || '').trim()));
     if (idx === -1) return null;
-    const start = heads[idx], end = heads[idx+1] || null;
 
-    // Grab siblings until the next heading
-    const section = document.createElement('div');
-    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling){
-      section.appendChild(n.cloneNode(true));
+    const start = heads[idx];
+    const end = heads[idx + 1] || null;
+
+    // Collect *live* siblings between start and next heading
+    const nodes = [];
+    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling) {
+      const rows = n.matches(ROW_SEL) ? [n] : Array.from(n.querySelectorAll(ROW_SEL));
+      rows.forEach(r => isVisible(r) && nodes.push(r));
     }
-    return section.childElementCount ? section : start.closest('.day, section, article, div');
+    if (nodes.length) return { _list: nodes }; // special: pre-collected list
+
+    // Fallback to a parent block around the heading
+    return start.closest('.day, .schedule-day-block, section, article, div');
   }
 
-  // Keep a reference to the original if it exists
-  if (!window.__entryNodesOriginal && typeof entryNodes === 'function') {
-    window.__entryNodesOriginal = entryNodes;
-  }
-
-  window.entryNodes = function(root){
+  // Return ONLY today’s rows (live nodes)
+  function entryNodes(root) {
     const scope = root || document;
-    const todaySection = findTodaySection(scope);
-    let base = todaySection ? todaySection : scope;
+    const key = todayKey3();
 
-    // Collect rows
-    let nodes = Array.from(base.querySelectorAll(ORIGINAL_SELECTORS))
-      .filter(n => (n.offsetParent || n.getClientRects().length));
+    const section = findTodaySection(scope);
+    if (section && section._list) {
+      // Already a curated list between heading boundaries
+      return section._list;
+    }
+    const base = section || scope;
 
-    // If rows carry their own day, filter them to today; otherwise keep them
+    let nodes = Array.from(base.querySelectorAll(ROW_SEL)).filter(isVisible);
+
+    // If rows (or their closest wrapper) carry data-day, filter to today
     nodes = nodes.filter(n => {
-      const d = ((n.getAttribute('data-day') || n.dataset?.day || '')+'').slice(0,3);
+      const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0, 3);
       const wrap = n.closest('[data-day]');
-      const wrapDay = wrap ? (wrap.getAttribute('data-day')||'').slice(0,3) : '';
-      return (!d && !wrapDay) || d === DAY_SHORT || wrapDay === DAY_SHORT;
+      const wrapDay = wrap ? (wrap.getAttribute('data-day') || '').slice(0, 3) : '';
+      return (!d && !wrapDay) || d === key || wrapDay === key;
     });
 
-    // Belt & braces: if we somehow ended up empty, fall back to all rows so you still get a highlight
-    if (!nodes.length && typeof window.__entryNodesOriginal === 'function') {
-      return window.__entryNodesOriginal(scope);
-    }
+    // Last resort: if empty, take all visible rows but keep only those with no day or today’s day
     if (!nodes.length) {
-      nodes = Array.from(scope.querySelectorAll(ORIGINAL_SELECTORS));
+      nodes = Array.from(scope.querySelectorAll(ROW_SEL)).filter(isVisible).filter(n => {
+        const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0, 3);
+        return !d || d === key;
+      });
     }
     return nodes;
-  };
-})();
+  }
 
-
+  function clearHighlights(root) {
+    root.querySelectorAll('.show--current, .current-show, .schedule-current, .show-entry.current, .show.current, .schedule-item.current')
+      .forEach(n => {
+        n.classList.remove('show--current', 'current-show', 'schedule-current', 'current');
+        n.style.removeProperty('--now-flag');
+      });
+  }
 
   let lastScrollId = null;
   function highlightCurrentShow() {
@@ -7742,13 +7741,10 @@ function __findTodaySection(root) {
     let winner = null;
 
     entryNodes(container).forEach(node => {
-  const d = (node.getAttribute('data-day') || node.dataset.day || '').slice(0,3);
-  if (d && d !== todayKey()) return;   // ignore other days
-  const range = extractRange(node);
-
+      const range = extractRange(node);
       if (!range) return;
-      const [s,e] = range;
-      if (isNowWithin(s,e,now)) {
+      const [s, e] = range;
+      if (isNowWithin(s, e, now)) {
         winner = node;
       }
     });
@@ -7757,110 +7753,45 @@ function __findTodaySection(root) {
 
     if (winner) {
       winner.classList.add('show--current');
-      // Auto-scroll on first detection only (avoid fighting user scroll)
-      const id = winner.getAttribute('data-id') || winner.id || `${Array.from(entryNodes(container)).indexOf(winner)}`;
+      // Auto-scroll on first detection only
+      const allNodes = entryNodes(container);
+      const idx = allNodes.indexOf ? allNodes.indexOf(winner) : Array.from(allNodes).indexOf(winner);
+      const id = winner.getAttribute('data-id') || winner.id || String(idx);
       if (lastScrollId !== id) {
         lastScrollId = id;
-        setTimeout(()=>{
-          try { winner.scrollIntoView({behavior:'smooth', block:'center'}); } catch(e) {}
+        setTimeout(() => {
+          try { winner.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
         }, 60);
       }
     }
   }
 
-  // Run when modal opens
-  function onModalToggle(e) {
-    const tgt = e.target;
-    if (!(tgt instanceof HTMLElement)) return;
-    const isScheduleOpen = tgt.matches('#scheduleModal.show, .modal.show') && (tgt.id?.toLowerCase().includes('schedule'));
-    if (isScheduleOpen) {
-      setTimeout(highlightCurrentShow, 120);
-    }
-  }
-
-  // Observe mutations in the modal content
-  const obs = new MutationObserver(()=> {
-    // debounce
+  // ---- Boot / observers ----
+  const obs = new MutationObserver(() => {
     clearTimeout(window.__hlDebounce);
     window.__hlDebounce = setTimeout(highlightCurrentShow, 80);
   });
 
-  // Boot
   document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setTimeout(highlightCurrentShow, 150);
       const container = findScheduleContainer();
-      if (container) obs.observe(container, {childList:true, subtree:true});
+      if (container) obs.observe(container, { childList: true, subtree: true });
     }
   });
 
-  // Periodic refresh (handles minute rollover)
   setInterval(highlightCurrentShow, 30 * 1000);
 
-  // Heuristics: clicks that likely opened the schedule
-  document.addEventListener('click', (e)=>{
+  document.addEventListener('click', (e) => {
     const t = e.target.closest('a,button,[data-open="schedule"],[data-target*="schedule"],[href*="schedule"]');
     if (t) setTimeout(highlightCurrentShow, 180);
   });
 
-  // If pages use custom events
   window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
   window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
 })();
-
-function entryNodes(root) {
-  const scope = root || document;
-
-  // Helpers
-  const dayKey = new Intl.DateTimeFormat('en-GB', { weekday:'short', timeZone:'Europe/London' })
-    .format(new Date()).slice(0,3); // "Mon"
-  const dayFull = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'}[dayKey];
-  const ROW_SEL = '.show-entry, .show, .schedule-item, li';
-  const isVisible = el => !!(el && (el.offsetParent || el.getClientRects().length));
-
-  // 1) Prefer explicit wrappers for today
-  const wrap = scope.querySelector(`.day[data-day="${dayKey}"], [data-day-wrapper="${dayKey}"], [data-day="${dayKey}"]`);
-  if (wrap) {
-    return Array.from(wrap.querySelectorAll(ROW_SEL)).filter(isVisible);
-  }
-
-  // 2) Otherwise find today's heading and walk live siblings until the next heading
-  const headingSel = [
-    '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
-    'h2', 'h3', 'h4', '[role="heading"]'
-  ].join(',');
-
-  const heads = Array.from(scope.querySelectorAll(headingSel)).filter(isVisible);
-  const re = new RegExp(`\\b(${dayFull}|${dayKey})\\b`, 'i');
-  const idx = heads.findIndex(h => re.test((h.textContent || '').trim()));
-
-  if (idx !== -1) {
-    const start = heads[idx];
-    const end = heads[idx + 1] || null;
-
-    const nodes = [];
-    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling) {
-      const rows = n.matches(ROW_SEL) ? [n] : Array.from(n.querySelectorAll(ROW_SEL));
-      rows.forEach(r => isVisible(r) && nodes.push(r));
-    }
-
-    if (nodes.length) return nodes;
-
-    // Fallback to a parent block around the heading
-    const parentBlock = start.closest('.day, .schedule-day-block, section, article, div');
-    if (parentBlock) return Array.from(parentBlock.querySelectorAll(ROW_SEL)).filter(isVisible);
-  }
-
-  // 3) Last resort: all visible rows, filtered by row-level day if present
-  let all = Array.from(scope.querySelectorAll(ROW_SEL)).filter(isVisible);
-  all = all.filter(n => {
-    const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0,3);
-    return !d || d === dayKey;
-  });
-  return all;
-}
-
 </script>
+
 
 
 <script id="np-share-binder">
