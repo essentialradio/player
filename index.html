@@ -5411,7 +5411,7 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-async function fetchNowPlayingLegacy() {
+async function fetchNowPlaying() {
   try {
     const res = await fetch('/api/metadata', { cache: 'no-store' });
     const data = await res.json();
@@ -5450,7 +5450,7 @@ async function fetchNowPlayingLegacy() {
       fetchArtwork(`${artist} - ${title}`);
     }
 
-    const latestRes = await fetch('https://www.essential.radio/api/metadata?_=' + Date.now());
+    const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
     const latest = await latestRes.json();
 
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) return;
@@ -5616,14 +5616,14 @@ function stopIntervals() {
 }
 
 // Always fetch once on page load
-window.refreshNowPlaying();
+fetchNowPlaying();
 fetchRecentFromGitHub();
 startIntervals();
 
 // On tab visibility change, only run when visible
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
-    window.refreshNowPlaying();
+    fetchNowPlaying();
     fetchRecentFromGitHub();
     startIntervals();
   } else {
@@ -5820,12 +5820,12 @@ window.addEventListener('keydown', function(e) {
 });
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
-    window.refreshNowPlaying();
+    fetchNowPlaying();
     fetchRecentFromGitHub();
   }
 });
 window.addEventListener('focus', () => {
-  window.refreshNowPlaying();
+  fetchNowPlaying();
   fetchRecentFromGitHub();
 });
 
@@ -5833,7 +5833,7 @@ window.addEventListener('focus', () => {
 // Attach click event to refresh button to manually refresh now playing information and the recent track list
 document.getElementById('refresh-now-playing')?.addEventListener('click', () => {
   // Immediately fetch the latest now playing info
-  window.refreshNowPlaying();
+  fetchNowPlaying();
   // Also refresh the recent songs list
   fetchRecentFromGitHub();
 });
