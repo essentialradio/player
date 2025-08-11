@@ -8564,12 +8564,10 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 <script>
-// ==== Listen Again (Mixcloud) — auto-refresh on open/resume ====
 (function(){
-  const MODAL_ID = 'listenModal'; // your real modal ID
+  const MODAL_ID = 'listenModal';
   const CONTAINER_SEL = '#listenAgainContainer';
 
-  // Register with the modal auto-refresh system (if it exists)
   window.refreshModalById = window.refreshModalById || {};
   window.refreshModalById[MODAL_ID] = refreshListenAgain;
 
@@ -8583,14 +8581,31 @@ if ('serviceWorker' in navigator) {
 
     const url = new URL(`https://api.mixcloud.com/${encodeURIComponent(username)}/cloudcasts/`);
     url.searchParams.set('limit', String(limit));
-    url.searchParams.set('ts', Date.now()); // cache-bust so today's uploads appear
+    url.searchParams.set('ts', Date.now()); // cache-bust
 
     box.innerHTML = `<p>Loading…</p>`;
     try {
       const res = await fetch(url.toString(), { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-      box.innerHTML = renderCloudcasts(data);
+      const api = await res.json();
+
+      const items = Array.isArray(api?.data) ? api.data : [];
+
+      // Put "today" on top (Europe/London)
+      const today = new Date().toLocaleDateString('en-GB', { timeZone: 'Europe/London' });
+      const toLocal = (iso) => new Date(iso);
+      const isTodayUK = (iso) =>
+        toLocal(iso).toLocaleDateString('en-GB', { timeZone: 'Europe/London' }) === today;
+
+      const todays = items.filter(it => it?.created_time && isTodayUK(it.created_time));
+      const earlier = items.filter(it => !(it?.created_time && isTodayUK(it.created_time)));
+
+      // Render: Today section first (if any)
+      box.innerHTML = [
+        renderSection(todays, 'Today'),
+        renderSection(earlier, todays.length ? 'Earlier' : '')
+      ].join('');
+
       wireEmbeds(box);
     } catch (e) {
       console.warn('[ListenAgain] fetch failed:', e);
@@ -8598,30 +8613,37 @@ if ('serviceWorker' in navigator) {
     }
   }
 
-  function renderCloudcasts(api){
-    const items = Array.isArray(api?.data) ? api.data : [];
-    if (!items.length) return `<p>No shows yet — check back soon.</p>`;
+  function renderSection(list, heading){
+    if (!list.length) return '';
     return `
+      ${heading ? `<h3 style="margin:8px 0 6px 0;">${heading}</h3>` : ``}
       <div class="la-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
-        ${items.map(it => {
-          const title = escapeHTML(it?.name || 'Untitled');
-          const mcUrl = `https://www.mixcloud.com${it?.key || ''}`;
-          const img = it?.pictures?.medium || it?.pictures?.thumbnail || '';
-          const when = it?.created_time ? new Date(it.created_time).toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: 'short' }) : '';
-          return `
-            <article class="la-card" data-mc-url="${mcUrl}" style="background:var(--panel,#111);border:1px solid var(--border,#333);border-radius:12px;overflow:hidden;">
-              <div class="la-thumb" style="aspect-ratio:1.6/1;background:#000;">
-                ${img ? `<img src="${img}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">` : ``}
-              </div>
-              <div class="la-meta" style="padding:10px;">
-                <div class="la-title" style="font-weight:600;line-height:1.3;">${title}</div>
-                ${when ? `<div class="la-time" style="opacity:.8;font-size:.9em;margin-top:4px;">${when}</div>` : ``}
-                <button class="la-play" style="margin-top:8px;">Play</button>
-                <a class="la-open" href="${mcUrl}" target="_blank" rel="noopener" style="margin-left:8px;">Open</a>
-              </div>
-            </article>`;
-        }).join('')}
+        ${list.map(renderCard).join('')}
       </div>`;
+  }
+
+  function renderCard(it){
+    const title = escapeHTML(it?.name || 'Untitled');
+    const mcUrl = `https://www.mixcloud.com${it?.key || ''}`;
+    const img = it?.pictures?.medium || it?.pictures?.thumbnail || '';
+    const when = it?.created_time
+      ? new Date(it.created_time).toLocaleString('en-GB', {
+          timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit',
+          day: '2-digit', month: 'short'
+        })
+      : '';
+    return `
+      <article class="la-card" data-mc-url="${mcUrl}" style="background:var(--panel,#111);border:1px solid var(--border,#333);border-radius:12px;overflow:hidden;">
+        <div class="la-thumb" style="aspect-ratio:1.6/1;background:#000;">
+          ${img ? `<img src="${img}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">` : ``}
+        </div>
+        <div class="la-meta" style="padding:10px;">
+          <div class="la-title" style="font-weight:600;line-height:1.3;">${title}</div>
+          ${when ? `<div class="la-time" style="opacity:.8;font-size:.9em;margin-top:4px;">${when}</div>` : ``}
+          <button class="la-play" style="margin-top:8px;">Play</button>
+          <a class="la-open" href="${mcUrl}" target="_blank" rel="noopener" style="margin-left:8px;">Open</a>
+        </div>
+      </article>`;
   }
 
   function wireEmbeds(root){
@@ -8642,7 +8664,7 @@ if ('serviceWorker' in navigator) {
 
   function escapeHTML(s=''){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[c])); }
 
-  // Fallback: refresh when opening modal via click
+  // Fallback hook: refresh when opening this modal via click
   document.addEventListener('click', (e) => {
     const t = e.target;
     if (t && (t.matches('[data-open="listenModal"]') || t.closest?.('[data-open="listenModal"]'))) {
