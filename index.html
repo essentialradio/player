@@ -8310,6 +8310,159 @@ if ('serviceWorker' in navigator) {
 
 
 <script src="/nowplaying-refresh.js"></script>
+
+<script>
+  // --- Auto-refresh when specific modals are open ---
+
+  let _newsTimer = null;
+  let _travelTimer = null;
+
+  function startNewsAuto() {
+    if (_newsTimer) return;
+    // one immediate refresh
+    try { window.fetchRNHNews?.(); } catch {}
+    try { window.fetchScottishNews?.(); } catch {}
+    // then every 60s
+    _newsTimer = setInterval(() => {
+      try { window.fetchRNHNews?.(); } catch {}
+      try { window.fetchScottishNews?.(); } catch {}
+    }, 60000);
+  }
+  function stopNewsAuto() {
+    clearInterval(_newsTimer); _newsTimer = null;
+  }
+
+  function refreshAllTravelIframes() {
+    const modal = document.getElementById('travelModal');
+    if (!modal) return;
+    // cache-bust every iframe in the travel modal
+    modal.querySelectorAll('iframe').forEach((ifr) => {
+      const base = (ifr.getAttribute('src') || '').split('?')[0];
+      ifr.src = `${base}?ts=${Date.now()}`;
+    });
+  }
+  function startTravelAuto() {
+    if (_travelTimer) return;
+    refreshAllTravelIframes();            // immediate
+    _travelTimer = setInterval(refreshAllTravelIframes, 60000); // then every 60s
+  }
+  function stopTravelAuto() {
+    clearInterval(_travelTimer); _travelTimer = null;
+  }
+
+  // Patch existing modal open/close helpers
+  const _openModal = window.openModal;
+  window.openModal = function (id) {
+    _openModal(id);
+    if (id === 'newsModal') startNewsAuto();
+    if (id === 'travelModal') startTravelAuto();
+  };
+
+  const _closeModal = window.closeModal;
+  window.closeModal = function (id) {
+    _closeModal(id);
+    if (id === 'newsModal') stopNewsAuto();
+    if (id === 'travelModal') stopTravelAuto();
+    // If no modals remain open, belt-and-braces stop
+    const anyOpen = [...document.querySelectorAll('.modal')]
+      .some(m => m.style.display === 'block' || m.style.display === 'flex');
+    if (!anyOpen) { stopNewsAuto(); stopTravelAuto(); }
+  };
+
+  // Pause timers when tab not visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible') {
+      stopNewsAuto(); stopTravelAuto();
+    }
+  });
+</script>
+
+
+
+<!-- News & Travel auto-refresh -->
+
+<script>
+// ===== News & Travel modal auto-refresh (inline) =====
+(function(){
+  function isOpen(modal){
+    if (!modal) return false;
+    const cs = getComputedStyle(modal);
+    return cs.display !== 'none' && modal.offsetParent !== null;
+  }
+  let _newsTimer = null;
+  function startNewsAuto(){
+    if (_newsTimer) return;
+    try { window.fetchRNHNews && window.fetchRNHNews(); } catch(e){}
+    try { window.fetchScottishNews && window.fetchScottishNews(); } catch(e){}
+    _newsTimer = setInterval(() => {
+      try { window.fetchRNHNews && window.fetchRNHNews(); } catch(e){}
+      try { window.fetchScottishNews && window.fetchScottishNews(); } catch(e){}
+    }, 60000);
+  }
+  function stopNewsAuto(){ if (_newsTimer){ clearInterval(_newsTimer); _newsTimer = null; } }
+
+  let _travelTimer = null;
+  function refreshAllTravelIframes(){
+    const modal = document.getElementById('travelModal');
+    if (!modal) return;
+    modal.querySelectorAll('iframe').forEach((ifr) => {
+      const base = (ifr.getAttribute('src') || '').split('?')[0];
+      if (!base) return;
+      try { const url = new URL(base, location.href); url.searchParams.set('ts', Date.now()); ifr.src = url.toString(); } catch{}
+    });
+  }
+  function startTravelAuto(){ if (_travelTimer) return; refreshAllTravelIframes(); _travelTimer = setInterval(refreshAllTravelIframes, 60000); }
+  function stopTravelAuto(){ if (_travelTimer){ clearInterval(_travelTimer); _travelTimer = null; } }
+
+  const _openModal = window.openModal;
+  if (typeof _openModal === 'function'){
+    window.openModal = function(id){
+      _openModal(id);
+      if (id === 'newsModal')   startNewsAuto();
+      if (id === 'travelModal') startTravelAuto();
+    };
+  }
+  const _closeModal = window.closeModal;
+  if (typeof _closeModal === 'function'){
+    window.closeModal = function(id){
+      _closeModal(id);
+      if (id === 'newsModal')   stopNewsAuto();
+      if (id === 'travelModal') stopTravelAuto();
+      const anyOpen = Array.from(document.querySelectorAll('.modal')).some(m => isOpen(m));
+      if (!anyOpen){ stopNewsAuto(); stopTravelAuto(); }
+    };
+  }
+
+  const targetIds = ['newsModal','travelModal'];
+  const obs = new MutationObserver(() => {
+    targetIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (isOpen(el)){
+        if (id === 'newsModal') startNewsAuto();
+        if (id === 'travelModal') startTravelAuto();
+      } else {
+        if (id === 'newsModal') stopNewsAuto();
+        if (id === 'travelModal') stopTravelAuto();
+      }
+    });
+  });
+  obs.observe(document.body, { attributes:true, childList:true, subtree:true, attributeFilter:['style','class'] });
+
+  function resumeRefresh(){
+    const news = document.getElementById('newsModal');
+    const trav = document.getElementById('travelModal');
+    if (isOpen(news)){ startNewsAuto(); }
+    if (isOpen(trav)){ startTravelAuto(); }
+  }
+  window.addEventListener('focus', resumeRefresh);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') resumeRefresh();
+    else { stopNewsAuto(); stopTravelAuto(); }
+  });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
