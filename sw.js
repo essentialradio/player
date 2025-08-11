@@ -1,7 +1,7 @@
 // Essential Radio — Service Worker (dynamic-safe)
 // v2 — avoids caching now playing JSON/artwork/streams
 
-const STATIC_CACHE = 'essential-radio-static-v2';
+const STATIC_CACHE = 'essential-radio-static-v3';
 const STATIC_ASSETS = [
   '/', '/index.html',
   // Add your core CSS/JS/fonts here for fast startup, e.g.:
@@ -24,6 +24,12 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  const req = event.request;
+  const url = new URL(req.url);
+  if (url.hostname === 'www.essential.radio' && url.pathname === '/api/metadata') {
+    event.respondWith(fetch(req, { cache: 'no-store' }).catch(() => caches.match(req)));
+    return;
+  }
   const req = event.request;
   const url = new URL(req.url);
 
