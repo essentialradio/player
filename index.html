@@ -7611,7 +7611,7 @@ function todayKey() {
       });
   }
 
-<script>
+
 // === PATCH: limit highlight to TODAY's section by heading text ===
 
 // Map "Europe/London" to a 3-letter key like "Mon"
@@ -7662,38 +7662,76 @@ function __findTodaySection(root) {
   return section.childElementCount ? section : (startHead.parentElement || root);
 }
 
-// Replace entryNodes to use ONLY today's section
+// === Safe TODAY-only entryNodes override (no extra <script> tags) ===
 (function(){
   const ORIGINAL_SELECTORS = '.show-entry, .show, .schedule-item, li';
 
-  const prevEntryNodes = window.__entryNodesOriginal || null;
-  if (!prevEntryNodes && typeof entryNodes === 'function') {
-    window.__entryNodesOriginal = entryNodes; // keep a reference just in case
+  function todayKey3(){
+    return new Intl.DateTimeFormat('en-GB',{weekday:'short', timeZone:'Europe/London'})
+      .format(new Date()).slice(0,3);
+  }
+  const DAY_SHORT = todayKey3();
+  const DAY_LONG  = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'}[DAY_SHORT];
+
+  function findTodaySection(root){
+    // Prefer explicit wrappers
+    const wrap = root.querySelector(`.day[data-day="${DAY_SHORT}"], [data-day-wrapper="${DAY_SHORT}"], [data-day="${DAY_SHORT}"]`);
+    if (wrap) return wrap;
+
+    // Otherwise find by heading text
+    const headingSel = [
+      '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
+      'h2','h3','h4','[role="heading"]'
+    ].join(',');
+    const heads = Array.from(root.querySelectorAll(headingSel))
+      .filter(el => !!(el.offsetParent || el.getClientRects().length));
+    const re = new RegExp(`\\b(${DAY_LONG}|${DAY_SHORT})\\b`, 'i');
+    const idx = heads.findIndex(h => re.test((h.textContent||'').trim()));
+    if (idx === -1) return null;
+    const start = heads[idx], end = heads[idx+1] || null;
+
+    // Grab siblings until the next heading
+    const section = document.createElement('div');
+    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling){
+      section.appendChild(n.cloneNode(true));
+    }
+    return section.childElementCount ? section : start.closest('.day, section, article, div');
   }
 
-  window.entryNodes = function(root) {
-    // Prefer the schedule modal that is visible
-    const modal = document.querySelector('#scheduleModal, .schedule-modal');
-    const scope = (modal && (modal.matches('.show') || modal.style.display === 'block' || modal.open || modal.classList.contains('show')))
-      ? modal
-      : root;
+  // Keep a reference to the original if it exists
+  if (!window.__entryNodesOriginal && typeof entryNodes === 'function') {
+    window.__entryNodesOriginal = entryNodes;
+  }
 
-    // Find a specific today section
-    const todaySection = __findTodaySection(scope || root) || scope || root;
-    let nodes = Array.from(todaySection.querySelectorAll(ORIGINAL_SELECTORS));
+  window.entryNodes = function(root){
+    const scope = root || document;
+    const todaySection = findTodaySection(scope);
+    let base = todaySection ? todaySection : scope;
 
-    // Fallback: filter by visibility and by data-day if present
-    nodes = nodes.filter(n => (n.offsetParent || n.getClientRects().length));
-    const key = __todayKey3();
+    // Collect rows
+    let nodes = Array.from(base.querySelectorAll(ORIGINAL_SELECTORS))
+      .filter(n => (n.offsetParent || n.getClientRects().length));
+
+    // If rows carry their own day, filter them to today; otherwise keep them
     nodes = nodes.filter(n => {
-      const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0,3);
-      return !d || d === key; // keep if no day OR day === today
+      const d = ((n.getAttribute('data-day') || n.dataset?.day || '')+'').slice(0,3);
+      const wrap = n.closest('[data-day]');
+      const wrapDay = wrap ? (wrap.getAttribute('data-day')||'').slice(0,3) : '';
+      return (!d && !wrapDay) || d === DAY_SHORT || wrapDay === DAY_SHORT;
     });
 
+    // Belt & braces: if we somehow ended up empty, fall back to all rows so you still get a highlight
+    if (!nodes.length && typeof window.__entryNodesOriginal === 'function') {
+      return window.__entryNodesOriginal(scope);
+    }
+    if (!nodes.length) {
+      nodes = Array.from(scope.querySelectorAll(ORIGINAL_SELECTORS));
+    }
     return nodes;
   };
 })();
-</script>
+
+
 
   let lastScrollId = null;
   function highlightCurrentShow() {
