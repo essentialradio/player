@@ -7611,6 +7611,90 @@ function todayKey() {
       });
   }
 
+<script>
+// === PATCH: limit highlight to TODAY's section by heading text ===
+
+// Map "Europe/London" to a 3-letter key like "Mon"
+function __todayKey3() {
+  return new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: 'Europe/London' })
+    .format(new Date()).slice(0,3); // "Mon"
+}
+function __todayNames() {
+  const k = __todayKey3(); // "Mon"
+  const map = {Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday'};
+  return {short:k, long:map[k]};
+}
+
+// Find the DOM block that corresponds to TODAY by scanning headings
+function __findTodaySection(root) {
+  // Headings/day labels you might be using
+  const headingSel = [
+    '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
+    'h2', 'h3', 'h4', '[role="heading"]'
+  ].join(',');
+
+  const {short, long} = __todayNames();
+  const dayRegex = new RegExp(`\\b(${long}|${short})\\b`, 'i');
+
+  // Get all headings in order
+  const heads = Array.from(root.querySelectorAll(headingSel))
+    // keep only visible-ish
+    .filter(el => !!(el.offsetParent || el.getClientRects().length));
+
+  // Find the heading that matches today
+  const idx = heads.findIndex(h => dayRegex.test((h.textContent || '').trim()));
+  if (idx === -1) return null;
+
+  const startHead = heads[idx];
+  const endHead = heads[idx+1] || null;
+
+  // Collect siblings between startHead and the next heading
+  const section = document.createElement('div');
+  for (let n = startHead.nextElementSibling; n && n !== endHead; n = n.nextElementSibling) {
+    section.appendChild(n.cloneNode(true)); // clone so we can query safely
+  }
+  // If nothing obvious sits under the heading, also try the parent block
+  if (!section.childElementCount) {
+    // Common pattern: <section class="day"><h3>Monday</h3><ul>...</ul></section>
+    const parentBlock = startHead.closest('.day, .schedule-day-block, section, article, div');
+    if (parentBlock) return parentBlock;
+  }
+  return section.childElementCount ? section : (startHead.parentElement || root);
+}
+
+// Replace entryNodes to use ONLY today's section
+(function(){
+  const ORIGINAL_SELECTORS = '.show-entry, .show, .schedule-item, li';
+
+  const prevEntryNodes = window.__entryNodesOriginal || null;
+  if (!prevEntryNodes && typeof entryNodes === 'function') {
+    window.__entryNodesOriginal = entryNodes; // keep a reference just in case
+  }
+
+  window.entryNodes = function(root) {
+    // Prefer the schedule modal that is visible
+    const modal = document.querySelector('#scheduleModal, .schedule-modal');
+    const scope = (modal && (modal.matches('.show') || modal.style.display === 'block' || modal.open || modal.classList.contains('show')))
+      ? modal
+      : root;
+
+    // Find a specific today section
+    const todaySection = __findTodaySection(scope || root) || scope || root;
+    let nodes = Array.from(todaySection.querySelectorAll(ORIGINAL_SELECTORS));
+
+    // Fallback: filter by visibility and by data-day if present
+    nodes = nodes.filter(n => (n.offsetParent || n.getClientRects().length));
+    const key = __todayKey3();
+    nodes = nodes.filter(n => {
+      const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0,3);
+      return !d || d === key; // keep if no day OR day === today
+    });
+
+    return nodes;
+  };
+})();
+</script>
+
   let lastScrollId = null;
   function highlightCurrentShow() {
     const container = findScheduleContainer();
