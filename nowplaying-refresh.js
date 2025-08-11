@@ -56,6 +56,3 @@ if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches
 
 // Poll every 30 seconds (tweak if needed)
 setInterval(kickRefresh, 30000);
-
-
-if (typeof window !== 'undefined') { window.refreshNowPlaying = fetchNowPlaying; }
