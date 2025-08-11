@@ -5165,13 +5165,16 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
 
 function renderDayScheduleModal(day, shows) {
-  modalScheduleContainer.innerHTML = `
-    <h3>${getFullDate(day)}</h3>
-    <div class="split-columns">
-      <div class="column left-column" id="modalLeftCol"></div>
-      <div class="column right-column" id="modalRightCol"></div>
-    </div>
-  `;
+  const dayRoot = document.getElementById('modalDaySchedule');
+if (!dayRoot) return;
+dayRoot.innerHTML = `
+  <h3>${getFullDate(day)}</h3>
+  <div class="split-columns">
+    <div class="column left-column" id="modalLeftCol"></div>
+    <div class="column right-column" id="modalRightCol"></div>
+  </div>
+`;
+
 
   const mid = Math.ceil(shows.length / 2);
   const leftShows = shows.slice(0, mid);
@@ -7379,38 +7382,66 @@ const liveBox = document.querySelector(".live-indicator");
     return d;
   }
   function highlightLiveShows() {
-    const container = document.querySelector("#modalDaySchedule");
-    if (!container) return;
+  // Work inside the modal's day area
+  const container = document.querySelector("#modalDaySchedule");
+  if (!container) return;
 
-    // clear existing highlights
-    container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
+  // Clear previous highlights just within the modal day
+  container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
 
-    const now = toLondon(new Date());
-    const today = todayName().toLowerCase();
+  // Current time in Europe/London
+  const now = toLondon(new Date());
+  const todayLong = (todayName() || "").trim().toLowerCase(); // e.g. "monday"
 
-    container.querySelectorAll(".day-card").forEach(dayCard => {
-      const heading = (dayCard.querySelector("h2, h3")?.textContent || "").trim().toLowerCase();
-      const isToday = heading.includes(today);
+  // Find the *today* card if multiple are present; otherwise fall back to the container
+  const dayCards = Array.from(container.querySelectorAll(".day-card"));
+  let targetScope = container;
 
-      dayCard.querySelectorAll(".show-entry").forEach(entry => {
-        const timeEl = entry.querySelector("time");
-        if (!timeEl) return;
-
-        const range = parseRange(timeEl.textContent);
-        if (!range) return;
-
-        if (isToday) {
-          let start = nextByClock(now, range.start);
-          let end   = nextByClock(now, range.end);
-          if (end <= start) end = new Date(end.getTime() + 24 * 3600 * 1000);
-
-          if (now >= start && now < end) {
-            entry.classList.add("live-now");
-          }
-        }
-      });
-    });
+  for (const card of dayCards) {
+    const heading = (card.querySelector("h2, h3, .day-title, .schedule-heading")?.textContent || "")
+      .trim().toLowerCase();
+    const attrKey = (card.getAttribute("data-day") || card.dataset?.day || "").toLowerCase(); // e.g. "mon"
+    // Match by full day name in heading OR 3-letter code in data attributes
+    if (heading.includes(todayLong) || attrKey.startsWith(todayLong.slice(0,3))) {
+      targetScope = card;
+      break;
+    }
   }
+
+  // Scan only the shows inside the chosen scope (today)
+  const entries = Array.from(targetScope.querySelectorAll(".show-entry"));
+  let liveEntry = null;
+
+  for (const entry of entries) {
+    const timeEl = entry.querySelector("time");
+    if (!timeEl) continue;
+
+    // parseRange should return something like: { start:{h,m}, end:{h,m} } or similar
+    const range = parseRange(timeEl.textContent);
+    if (!range || !range.start || !range.end) continue;
+
+    // Convert to real Date objects anchored to "now" (Europe/London)
+    let start = nextByClock(now, range.start); // next occurrence of start time
+    let end   = nextByClock(now, range.end);   // next occurrence of end time
+
+    // Handle slots that roll past midnight (e.g. 22:00–02:00)
+    if (end <= start) end = new Date(end.getTime() + 24 * 60 * 60 * 1000);
+
+    // Mark live if within the window
+    if (now >= start && now < end) {
+      entry.classList.add("live-now");
+      liveEntry = entry;
+      break; // only one live show at a time
+    }
+  }
+
+  // Optional: auto-scroll the live row into view on first detection
+  if (liveEntry && !container.__scrolledOnce) {
+    container.__scrolledOnce = true;
+    try { liveEntry.scrollIntoView({ behavior: "smooth", block: "center" }); } catch(_) {}
+  }
+}
+
 
   // Recompute highlights periodically while the modal is open
   let liveTimer = null;
