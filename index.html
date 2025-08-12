@@ -3823,6 +3823,100 @@ html:not([data-theme="light"]) #volume-container #volume-display {
   .install-hint strong { color: #ffd400; }
 </style>
 
+
+<style id="modal-dimension-overrides">
+  /* === Wider, taller modals on desktop; keep mobile behaviour === */
+  @media (min-width: 1024px) {
+    .modal-content {
+      width: auto !important;         /* size to content up to cap */
+      max-width: 1200px !important;   /* wider than previous 920px */
+      max-height: 95vh !important;    /* taller viewport allowance */
+      overflow-y: auto !important;    /* still scroll if truly needed */
+      margin: 4% auto !important;     /* tighten top spacing slightly */
+    }
+  }
+</style>
+<style id='schedule-modal-wide'>
+@media (min-width: 1024px) {
+  #scheduleModal .modal-content,
+  #scheduleModal #modalScheduleContainer {
+    max-width: 1100px !important; /* schedule only */
+    width: 100% !important;
+    max-height: 96vh !important;
+  }
+
+  /* Ensure Presenters modal keeps the wider default */
+  #presentersModal .modal-content {
+    max-width: 1200px !important;
+    max-height: 95vh !important;
+  }
+}
+</style>
+<style id='schedule-layout-wide'>
+/* === Schedule modal: make better use of extra width on desktop === */
+@media (min-width: 1200px) {
+  /* Give the two columns more breathing room */
+  #modalScheduleContainer .split-columns {
+    display: flex !important;
+    gap: 32px !important;
+  }
+  #modalScheduleContainer .column {
+    flex: 1 1 0 !important;
+    min-width: 520px !important; /* lets columns widen nicely without squashing */
+  }
+
+  /* Enlarge avatars and tighten layout rhythm */
+  #modalScheduleContainer .show-entry { 
+    gap: 16px !important; 
+    margin-bottom: 20px !important;
+  }
+  #modalScheduleContainer .show-entry img {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  /* Improve typographic hierarchy */
+  #modalScheduleContainer .show-info time {
+    font-size: 15px !important;
+  }
+  #modalScheduleContainer .show-title-presenter .show-title {
+    font-size: 1.12em !important;
+    line-height: 1.25 !important;
+  }
+  #modalScheduleContainer .show-title-presenter .show-presenter {
+    font-size: 1.02em !important;
+  }
+  #modalScheduleContainer .show-details {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+}
+
+/* Ultra‑wide: if there’s space, allow 3 columns safely when markup permits more than 2 columns */
+@media (min-width: 1500px) {
+  #modalScheduleContainer .split-columns.three {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 28px !important;
+  }
+  #modalScheduleContainer .split-columns.three .column {
+    min-width: 0 !important;
+  }
+}
+</style>
+<style id='presenter-modal-width-fix'>
+/* Presenter modal width fixes (don’t affect the big presenters list) */
+.modal.presenter-modal:not(#presentersModal) .modal-content {
+  max-width: 820px !important;   /* tweak this to taste: 760–900 works well */
+  width: min(94vw, 820px) !important;
+}
+
+/* Ensure the big presenters list stays nice and wide */
+#presentersModal .modal-content {
+  max-width: 1300px !important;
+  width: min(96vw, 1300px) !important;
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
