@@ -567,6 +567,7 @@ body {
       flex-direction: column;
     }
     #modalScheduleContainer .show-entry {
+      position: relative;
       display: flex;
       align-items: flex-start;
       gap: 14px;
@@ -987,6 +988,7 @@ body.modal-open {
   #modalScheduleContainer .split-columns,
   #modalScheduleContainer .column,
   #modalScheduleContainer .show-entry {
+      position: relative;
     max-width: 100vw !important;
     min-width: 0 !important;
     overflow-x: hidden !important;
@@ -997,6 +999,7 @@ body.modal-open {
   #modalScheduleContainer .split-columns,
   #modalScheduleContainer .column,
   #modalScheduleContainer .show-entry {
+      position: relative;
     flex-wrap: wrap !important;
   }
 #modalScheduleContainer .show-entry img {
@@ -3161,6 +3164,21 @@ nav + div {
   border-radius: 10px;
   padding-left: 12px;
 }
+.show--current, .current-show, .show-entry.current, .show.current, .schedule-item.current, .live-now {
+border-left: 4px solid var(--brand, #fed351);
+  background: linear-gradient(90deg, rgba(254,211,81,.12), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(254,211,81,.18) inset, 0 0 22px rgba(254,211,81,.18);
+  border-radius: 10px;
+  padding-left: 12px;
+}
+
+.show--current, .current-show, .show-entry.current, .show.current, .schedule-item.current  {
+  border-left: 4px solid var(--brand, #fed351);
+  background: linear-gradient(90deg, rgba(254,211,81,.12), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(254,211,81,.18) inset, 0 0 22px rgba(254,211,81,.18);
+  border-radius: 10px;
+  padding-left: 12px;
+}
 [data-theme="light"] .live-now {
   background: linear-gradient(90deg, rgba(254,211,81,.16), transparent 70%);
 }
@@ -3339,26 +3357,8 @@ nav + div {
 /* Highlight for the current show inside the Schedule modal */
 .show--current,
 .current-show,
-.schedule-current {
-  position: relative;
-  background: linear-gradient(135deg, rgba(254,211,81,.18), rgba(0,129,138,.12));
-  border: 2px solid rgba(254,211,81,.8);
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.18);
-}
-.show--current::after {
-  content: "ON AIR NOW";
-  position: absolute;
-  top: 6px; right: 10px;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .06em;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: #e0322f;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(224,50,47,.35);
-}
+
+
 /* If the entry already has a highlight class from older CSS, keep it visible */
 .show-entry.current, .show.current, .schedule-item.current { 
   outline: 2px solid rgba(254,211,81,.85);
@@ -3510,6 +3510,7 @@ img.presenter, img.presenter-photo, img.host, img.host-photo {
 /* 1) Schedule entries: vertically center avatar relative to text */
 #modalScheduleContainer .show-entry,
 #modalDaySchedule .show-entry {
+      position: relative;
   align-items: center !important; /* override earlier align-items:flex-start */
 }
 
@@ -3545,6 +3546,7 @@ img.presenter, img.presenter-photo, img.host, img.host-photo {
 /* Restore original schedule row alignment */
 #modalScheduleContainer .show-entry,
 #modalDaySchedule .show-entry {
+      position: relative;
   align-items: flex-start !important;
 }
 </style>
@@ -3554,6 +3556,7 @@ img.presenter, img.presenter-photo, img.host, img.host-photo {
 /* === Schedule avatar alignment: restore original === */
 #modalScheduleContainer .show-entry,
 #modalDaySchedule .show-entry {
+      position: relative;
   align-items: flex-start !important;
 }
 
@@ -5165,13 +5168,13 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
 
 function renderDayScheduleModal(day, shows) {
-  modalScheduleContainer.innerHTML = `
+  modalScheduleContainer.innerHTML = `<div id="modalDaySchedule"><div class="day-card">
     <h3>${getFullDate(day)}</h3>
     <div class="split-columns">
       <div class="column left-column" id="modalLeftCol"></div>
       <div class="column right-column" id="modalRightCol"></div>
     </div>
-  `;
+  </div></div>`;
 
   const mid = Math.ceil(shows.length / 2);
   const leftShows = shows.slice(0, mid);
@@ -5232,6 +5235,8 @@ group.forEach(show => {
   `;
   col.appendChild(entry);
 });
+  setTimeout(() => { try { highlightLiveShows(); } catch(e) {} }, 0);
+
 
 
 });
@@ -6600,6 +6605,7 @@ function openLivePresenterModal() {
   background-color: rgba(0, 0, 0, 0.85);
 }
 .modal.presenter-detail.show {
+      position: relative;
   display: flex !important;
 }
     </style>
@@ -7406,6 +7412,7 @@ const liveBox = document.querySelector(".live-indicator");
 
           if (now >= start && now < end) {
             entry.classList.add("live-now");
+        try { entry.style.setProperty('--now-flag', '\"ON AIR NOW\"'); } catch(e) {}
           }
         }
       });
@@ -7496,13 +7503,6 @@ const liveBox = document.querySelector(".live-indicator");
 <script id="schedule-highlight-logic">
 (function() {
   const LONDON_TZ = 'Europe/London';
-function todayKey() {
-  // "Mon", "Tue", etc. in Europe/London
-  return new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: LONDON_TZ })
-    .format(new Date())
-    .slice(0,3);
-}
-
   const DASH = '[\-–—]'; // hyphen, en-dash, em-dash
   const TIME_RX = new RegExp(
     String.raw`(\d{1,2}):(\d{2})\s*(am|pm|AM|PM)?\s*${DASH}\s*(\d{1,2}):(\d{2})\s*(am|pm|AM|PM)?`
@@ -7588,20 +7588,8 @@ function todayKey() {
   }
 
   function entryNodes(root) {
-  const day = todayKey();
-  // If your markup groups by day wrappers, prefer that:
-  const todayWrapper = root.querySelector(`.day[data-day="${day}"], [data-day-wrapper="${day}"]`);
-  if (todayWrapper) {
-    return todayWrapper.querySelectorAll('.show-entry, .show, .schedule-item, li');
+    return root.querySelectorAll('.show-entry, .show, .schedule-item, li');
   }
-  // Otherwise, filter rows by their own data-day
-  const all = root.querySelectorAll('.show-entry, .show, .schedule-item, li');
-  return Array.from(all).filter(n => {
-    const d = (n.getAttribute('data-day') || n.dataset.day || '').slice(0,3);
-    return d === '' || d === day;   // if no day given, keep it; else require today
-  });
-}
-
 
   function clearHighlights(root) {
     root.querySelectorAll('.show--current, .current-show, .schedule-current, .show-entry.current, .show.current, .schedule-item.current')
@@ -7613,6 +7601,9 @@ function todayKey() {
 
   let lastScrollId = null;
   function highlightCurrentShow() {
+    const sched = document.getElementById("scheduleModal");
+    if (sched && (sched.style.display === "block" || sched.classList.contains("show"))) { return; }
+
     const container = findScheduleContainer();
     if (!container) return;
 
@@ -7620,10 +7611,7 @@ function todayKey() {
     let winner = null;
 
     entryNodes(container).forEach(node => {
-  const d = (node.getAttribute('data-day') || node.dataset.day || '').slice(0,3);
-  if (d && d !== todayKey()) return;   // ignore other days
-  const range = extractRange(node);
-
+      const range = extractRange(node);
       if (!range) return;
       const [s,e] = range;
       if (isNowWithin(s,e,now)) {
@@ -7636,7 +7624,11 @@ function todayKey() {
     if (winner) {
       winner.classList.add('show--current');
       // Auto-scroll on first detection only (avoid fighting user scroll)
-      const id = winner.getAttribute('data-id') || winner.id || `${Array.from(entryNodes(container)).indexOf(winner)}`;
+      const id = winner.getAttribute('data-id') || winner.id || `${Array.from(entryNodes(container)).indexOf(winner)
+      // Ensure unified styling and badge text on current show
+      winner.classList.add('show--current','current-show','current','live-now');
+      try { winner.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch(e) {}
+}`;
       if (lastScrollId !== id) {
         lastScrollId = id;
         setTimeout(()=>{
@@ -8658,5 +8650,25 @@ if ('serviceWorker' in navigator) {
     overflow-y: auto !important;
   }
 }
+
+
+.show--current::after, .current-show::after, .show-entry.current::after, .show.current::after, .schedule-item.current::after, .live-now::after {
+  content: var(--now-flag, "ON AIR NOW");
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e0322f;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(224,50,47,.35);
+  z-index: 2;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 </style>
 </html>
