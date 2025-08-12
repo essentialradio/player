@@ -5165,16 +5165,13 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
 
 function renderDayScheduleModal(day, shows) {
-  const dayRoot = document.getElementById('modalDaySchedule');
-if (!dayRoot) return;
-dayRoot.innerHTML = `
-  <h3>${getFullDate(day)}</h3>
-  <div class="split-columns">
-    <div class="column left-column" id="modalLeftCol"></div>
-    <div class="column right-column" id="modalRightCol"></div>
-  </div>
-`;
-
+  modalScheduleContainer.innerHTML = `
+    <h3>${getFullDate(day)}</h3>
+    <div class="split-columns">
+      <div class="column left-column" id="modalLeftCol"></div>
+      <div class="column right-column" id="modalRightCol"></div>
+    </div>
+  `;
 
   const mid = Math.ceil(shows.length / 2);
   const leftShows = shows.slice(0, mid);
@@ -7382,66 +7379,38 @@ const liveBox = document.querySelector(".live-indicator");
     return d;
   }
   function highlightLiveShows() {
-  // Work inside the modal's day area
-  const container = document.querySelector("#modalDaySchedule");
-  if (!container) return;
+    const container = document.querySelector("#modalDaySchedule");
+    if (!container) return;
 
-  // Clear previous highlights just within the modal day
-  container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
+    // clear existing highlights
+    container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
 
-  // Current time in Europe/London
-  const now = toLondon(new Date());
-  const todayLong = (todayName() || "").trim().toLowerCase(); // e.g. "monday"
+    const now = toLondon(new Date());
+    const today = todayName().toLowerCase();
 
-  // Find the *today* card if multiple are present; otherwise fall back to the container
-  const dayCards = Array.from(container.querySelectorAll(".day-card"));
-  let targetScope = container;
+    container.querySelectorAll(".day-card").forEach(dayCard => {
+      const heading = (dayCard.querySelector("h2, h3")?.textContent || "").trim().toLowerCase();
+      const isToday = heading.includes(today);
 
-  for (const card of dayCards) {
-    const heading = (card.querySelector("h2, h3, .day-title, .schedule-heading")?.textContent || "")
-      .trim().toLowerCase();
-    const attrKey = (card.getAttribute("data-day") || card.dataset?.day || "").toLowerCase(); // e.g. "mon"
-    // Match by full day name in heading OR 3-letter code in data attributes
-    if (heading.includes(todayLong) || attrKey.startsWith(todayLong.slice(0,3))) {
-      targetScope = card;
-      break;
-    }
+      dayCard.querySelectorAll(".show-entry").forEach(entry => {
+        const timeEl = entry.querySelector("time");
+        if (!timeEl) return;
+
+        const range = parseRange(timeEl.textContent);
+        if (!range) return;
+
+        if (isToday) {
+          let start = nextByClock(now, range.start);
+          let end   = nextByClock(now, range.end);
+          if (end <= start) end = new Date(end.getTime() + 24 * 3600 * 1000);
+
+          if (now >= start && now < end) {
+            entry.classList.add("live-now");
+          }
+        }
+      });
+    });
   }
-
-  // Scan only the shows inside the chosen scope (today)
-  const entries = Array.from(targetScope.querySelectorAll(".show-entry"));
-  let liveEntry = null;
-
-  for (const entry of entries) {
-    const timeEl = entry.querySelector("time");
-    if (!timeEl) continue;
-
-    // parseRange should return something like: { start:{h,m}, end:{h,m} } or similar
-    const range = parseRange(timeEl.textContent);
-    if (!range || !range.start || !range.end) continue;
-
-    // Convert to real Date objects anchored to "now" (Europe/London)
-    let start = nextByClock(now, range.start); // next occurrence of start time
-    let end   = nextByClock(now, range.end);   // next occurrence of end time
-
-    // Handle slots that roll past midnight (e.g. 22:00–02:00)
-    if (end <= start) end = new Date(end.getTime() + 24 * 60 * 60 * 1000);
-
-    // Mark live if within the window
-    if (now >= start && now < end) {
-      entry.classList.add("live-now");
-      liveEntry = entry;
-      break; // only one live show at a time
-    }
-  }
-
-  // Optional: auto-scroll the live row into view on first detection
-  if (liveEntry && !container.__scrolledOnce) {
-    container.__scrolledOnce = true;
-    try { liveEntry.scrollIntoView({ behavior: "smooth", block: "center" }); } catch(_) {}
-  }
-}
-
 
   // Recompute highlights periodically while the modal is open
   let liveTimer = null;
@@ -7614,151 +7583,30 @@ function todayKey() {
     return now >= s || now < e;
   }
 
-  <script id="schedule-highlight-logic">
-(function () {
-  // ---- Config / helpers ----
-  const LONDON_TZ = 'Europe/London';
-  const ROW_SEL = '.show-entry, .show, .schedule-item, li';
-  const HEADING_SEL = [
-    '.day-title', '.schedule-day', '.schedule__day', '.schedule-heading',
-    'h2', 'h3', 'h4', '[role="heading"]'
-  ].join(',');
-
   function findScheduleContainer() {
     return document.querySelector('#modalScheduleContainer, #modalDaySchedule, .schedule-modal .content, .schedule, .schedule-list');
   }
 
-  function todayKey3() {
-    return new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: LONDON_TZ })
-      .format(new Date()).slice(0, 3); // "Mon"
-  }
-  function todayFull() {
-    const map = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
-    return map[todayKey3()];
-  }
-
-  function nowMinutesLondon() {
-    const parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: LONDON_TZ, hour: '2-digit', minute: '2-digit', hour12: false
-    }).formatToParts(new Date());
-    const hh = parseInt(parts.find(p => p.type === 'hour').value, 10);
-    const mm = parseInt(parts.find(p => p.type === 'minute').value, 10);
-    return hh * 60 + mm;
-  }
-
-  function to24m(h, m, ampm) {
-    h = parseInt(h, 10); m = parseInt(m, 10);
-    if (ampm) {
-      const a = ampm.toLowerCase();
-      if (a === 'pm' && h < 12) h += 12;
-      if (a === 'am' && h === 12) h = 0;
-    }
-    return h * 60 + m;
-  }
-
-  // Parse start–end from attributes, <time> tags, or inline text “HH:MM–HH:MM”
-  const DASH = '[\\-–—]';
-  const TIME_RX = new RegExp(String.raw`(\d{1,2}):(\d{2})\s*([aApP][mM])?\s*${DASH}\s*(\d{1,2}):(\d{2})\s*([aApP][mM])?`);
-  function extractRange(el) {
-    // 1) data-start/data-end (minutes or HH:MM[/am/pm])
-    let ds = el.getAttribute('data-start') || el.dataset?.start;
-    let de = el.getAttribute('data-end') || el.dataset?.end;
-    if (ds && de) {
-      const mm = v => {
-        if (/^\d{1,2}:\d{2}(?:\s*[aApP][mM])?$/.test(v)) {
-          const ms = v.match(/(\d{1,2}):(\d{2})\s*([aApP][mM])?/);
-          return to24m(ms[1], ms[2], ms[3]);
-        }
-        const n = parseInt(String(v).replace(/\D/g, ''), 10);
-        return isFinite(n) ? n : null;
-      };
-      const s = mm(ds), e = mm(de);
-      if (s != null && e != null) return [s, e];
-    }
-    // 2) two <time> elements
-    const times = el.querySelectorAll('time');
-    if (times.length >= 2) {
-      const p = (t) => (t.textContent || '').match(/(\d{1,2}):(\d{2})\s*([aApP][mM])?/);
-      const p1 = p(times[0]), p2 = p(times[1]);
-      if (p1 && p2) return [to24m(p1[1], p1[2], p1[3]), to24m(p2[1], p2[2], p2[3])];
-    }
-    // 3) fallback: inline text pattern
-    const txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
-    const m = txt.match(TIME_RX);
-    if (m) return [to24m(m[1], m[2], m[3]), to24m(m[4], m[5], m[6])];
-    return null;
-  }
-
-  function isNowWithin(s, e, now) {
-    if (s == null || e == null || s === e) return false;
-    if (e > s) return now >= s && now < e;   // same-day
-    return now >= s || now < e;              // crosses midnight
-  }
-
-  function isVisible(el) { return !!(el && (el.offsetParent || el.getClientRects().length)); }
-
-  // Find TODAY’s section (prefer explicit wrappers, else by heading text)
-  function findTodaySection(root) {
-    const key = todayKey3();
-    const wrap = root.querySelector(`.day[data-day="${key}"], [data-day-wrapper="${key}"], [data-day="${key}"]`);
-    if (wrap) return wrap;
-
-    const heads = Array.from(root.querySelectorAll(HEADING_SEL)).filter(isVisible);
-    const re = new RegExp(`\\b(${todayFull()}|${key})\\b`, 'i');
-    const idx = heads.findIndex(h => re.test((h.textContent || '').trim()));
-    if (idx === -1) return null;
-
-    const start = heads[idx];
-    const end = heads[idx + 1] || null;
-
-    // Collect *live* siblings between start and next heading
-    const nodes = [];
-    for (let n = start.nextElementSibling; n && n !== end; n = n.nextElementSibling) {
-      const rows = n.matches(ROW_SEL) ? [n] : Array.from(n.querySelectorAll(ROW_SEL));
-      rows.forEach(r => isVisible(r) && nodes.push(r));
-    }
-    if (nodes.length) return { _list: nodes }; // special: pre-collected list
-
-    // Fallback to a parent block around the heading
-    return start.closest('.day, .schedule-day-block, section, article, div');
-  }
-
-  // Return ONLY today’s rows (live nodes)
   function entryNodes(root) {
-    const scope = root || document;
-    const key = todayKey3();
-
-    const section = findTodaySection(scope);
-    if (section && section._list) {
-      // Already a curated list between heading boundaries
-      return section._list;
-    }
-    const base = section || scope;
-
-    let nodes = Array.from(base.querySelectorAll(ROW_SEL)).filter(isVisible);
-
-    // If rows (or their closest wrapper) carry data-day, filter to today
-    nodes = nodes.filter(n => {
-      const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0, 3);
-      const wrap = n.closest('[data-day]');
-      const wrapDay = wrap ? (wrap.getAttribute('data-day') || '').slice(0, 3) : '';
-      return (!d && !wrapDay) || d === key || wrapDay === key;
-    });
-
-    // Last resort: if empty, take all visible rows but keep only those with no day or today’s day
-    if (!nodes.length) {
-      nodes = Array.from(scope.querySelectorAll(ROW_SEL)).filter(isVisible).filter(n => {
-        const d = ((n.getAttribute('data-day') || n.dataset?.day || '') + '').slice(0, 3);
-        return !d || d === key;
-      });
-    }
-    return nodes;
+  const day = todayKey();
+  // If your markup groups by day wrappers, prefer that:
+  const todayWrapper = root.querySelector(`.day[data-day="${day}"], [data-day-wrapper="${day}"]`);
+  if (todayWrapper) {
+    return todayWrapper.querySelectorAll('.show-entry, .show, .schedule-item, li');
   }
+  // Otherwise, filter rows by their own data-day
+  const all = root.querySelectorAll('.show-entry, .show, .schedule-item, li');
+  return Array.from(all).filter(n => {
+    const d = (n.getAttribute('data-day') || n.dataset.day || '').slice(0,3);
+    return d === '' || d === day;   // if no day given, keep it; else require today
+  });
+}
+
 
   function clearHighlights(root) {
     root.querySelectorAll('.show--current, .current-show, .schedule-current, .show-entry.current, .show.current, .schedule-item.current')
       .forEach(n => {
-        n.classList.remove('show--current', 'current-show', 'schedule-current', 'current');
+        n.classList.remove('show--current','current-show','schedule-current','current');
         n.style.removeProperty('--now-flag');
       });
   }
@@ -7772,10 +7620,13 @@ function todayKey() {
     let winner = null;
 
     entryNodes(container).forEach(node => {
-      const range = extractRange(node);
+  const d = (node.getAttribute('data-day') || node.dataset.day || '').slice(0,3);
+  if (d && d !== todayKey()) return;   // ignore other days
+  const range = extractRange(node);
+
       if (!range) return;
-      const [s, e] = range;
-      if (isNowWithin(s, e, now)) {
+      const [s,e] = range;
+      if (isNowWithin(s,e,now)) {
         winner = node;
       }
     });
@@ -7784,45 +7635,57 @@ function todayKey() {
 
     if (winner) {
       winner.classList.add('show--current');
-      // Auto-scroll on first detection only
-      const allNodes = entryNodes(container);
-      const idx = allNodes.indexOf ? allNodes.indexOf(winner) : Array.from(allNodes).indexOf(winner);
-      const id = winner.getAttribute('data-id') || winner.id || String(idx);
+      // Auto-scroll on first detection only (avoid fighting user scroll)
+      const id = winner.getAttribute('data-id') || winner.id || `${Array.from(entryNodes(container)).indexOf(winner)}`;
       if (lastScrollId !== id) {
         lastScrollId = id;
-        setTimeout(() => {
-          try { winner.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
+        setTimeout(()=>{
+          try { winner.scrollIntoView({behavior:'smooth', block:'center'}); } catch(e) {}
         }, 60);
       }
     }
   }
 
-  // ---- Boot / observers ----
-  const obs = new MutationObserver(() => {
+  // Run when modal opens
+  function onModalToggle(e) {
+    const tgt = e.target;
+    if (!(tgt instanceof HTMLElement)) return;
+    const isScheduleOpen = tgt.matches('#scheduleModal.show, .modal.show') && (tgt.id?.toLowerCase().includes('schedule'));
+    if (isScheduleOpen) {
+      setTimeout(highlightCurrentShow, 120);
+    }
+  }
+
+  // Observe mutations in the modal content
+  const obs = new MutationObserver(()=> {
+    // debounce
     clearTimeout(window.__hlDebounce);
     window.__hlDebounce = setTimeout(highlightCurrentShow, 80);
   });
 
+  // Boot
   document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setTimeout(highlightCurrentShow, 150);
       const container = findScheduleContainer();
-      if (container) obs.observe(container, { childList: true, subtree: true });
+      if (container) obs.observe(container, {childList:true, subtree:true});
     }
   });
 
+  // Periodic refresh (handles minute rollover)
   setInterval(highlightCurrentShow, 30 * 1000);
 
-  document.addEventListener('click', (e) => {
+  // Heuristics: clicks that likely opened the schedule
+  document.addEventListener('click', (e)=>{
     const t = e.target.closest('a,button,[data-open="schedule"],[data-target*="schedule"],[href*="schedule"]');
     if (t) setTimeout(highlightCurrentShow, 180);
   });
 
+  // If pages use custom events
   window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
   window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
 })();
 </script>
-
 
 
 <script id="np-share-binder">
