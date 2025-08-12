@@ -3917,6 +3917,31 @@ html:not([data-theme="light"]) #volume-container #volume-display {
   width: min(96vw, 1300px) !important;
 }
 </style>
+<style id='widen-requests-listen-events'>
+@media (min-width: 1024px) {
+  /* Requests & Contact Us wider */
+  #requestsModal .modal-content,
+  #contactModal .modal-content {
+    max-width: 1300px !important;
+    width: min(96vw, 1300px) !important;
+    max-height: 95vh !important;
+  }
+
+  /* Listen Again back to original width */
+  #listenModal .modal-content {
+    max-width: 920px !important;
+    width: min(96vw, 920px) !important;
+    max-height: 95vh !important;
+  }
+
+  /* Local Events stays at 1300px */
+  #localModal .modal-content {
+    max-width: 1300px !important;
+    width: min(96vw, 1300px) !important;
+    max-height: 95vh !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
