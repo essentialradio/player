@@ -8653,6 +8653,95 @@ if ('serviceWorker' in navigator) {
   obs.observe(document.body, { attributes:true, childList:true, subtree:true, attributeFilter:['style','class'] });
 })();
 </script>
+<script id="presenter-click-hijack">
+// Hijack ON AIR NOW presenter click to open the specific presenter modal if we can find it.
+// Fallback to the big Presenters list if there's no match.
+(function(){
+  function slugify(str){
+    return (str||'')
+      .toLowerCase()
+      .normalize('NFKD')           // split accents
+      .replace(/[\u0300-\u036f]/g,'') // remove accents
+      .replace(/&/g,'and')
+      .replace(/[^a-z0-9]+/g,'-')  // non-alphanum -> dashes
+      .replace(/^-+|-+$/g,'')      // trim dashes
+      .replace(/--+/g,'-');        // collapse
+  }
+
+  // Try common patterns to locate a specific presenter modal element in the DOM.
+  function findPresenterModalByName(name){
+    if (!name) return null;
+    const s = slugify(name);
+
+    // 1) Common id patterns
+    const idCandidates = [
+      `presenter-${s}`,
+      `modal-presenter-${s}`,
+      `modal-${s}`,
+      s // just in case ids are already slugs (e.g., "brian-woolfson")
+    ];
+    for (const id of idCandidates){
+      const el = document.getElementById(id);
+      if (el && el.classList.contains('modal')) return el;
+    }
+
+    // 2) Any .modal with a matching data attribute
+    const dataSelectors = [
+      `[data-presenter='${s}']`,
+      `[data-presenter*='${s}']`,
+      `[data-presenter-slug='${s}']`
+    ];
+    for (const sel of dataSelectors){
+      const el = document.querySelector(`.modal${sel}`);
+      if (el) return el;
+    }
+
+    // 3) Scan presenter modals by inner text of a known heading element
+    const candidates = document.querySelectorAll('.modal.presenter-modal, .modal .presenter-modal, .modal[data-type="presenter"]');
+    for (const m of candidates){
+      const heading = m.querySelector('.presenter-name, h2, h3');
+      if (heading) {
+        const text = heading.textContent.trim();
+        if (slugify(text) === s) return m;
+      }
+    }
+    return null;
+  }
+
+  document.addEventListener('click', function(e){
+    const link = e.target.closest('#onAirNow .presenter-link');
+    if (!link) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const name = link.textContent.trim();
+    const specific = findPresenterModalByName(name);
+
+    // Close other modals
+    if (typeof window.closeAllModals === 'function') window.closeAllModals();
+
+    if (specific && specific.id) {
+      // Open just the specific person
+      if (typeof window.openModal === 'function') {
+        window.openModal(specific.id);
+      } else {
+        specific.style.display = 'block';
+      }
+    } else if (typeof window.openLivePresenterModal === 'function') {
+      // Some sites keep a resolver; use it as a secondary attempt
+      try {
+        const opened = window.openLivePresenterModal(name);
+        if (opened) return;
+      } catch(e){ /* continue to fallback */ }
+      // Fallback to full presenters list
+      if (typeof window.openModal === 'function') window.openModal('presentersModal');
+    } else if (typeof window.openModal === 'function') {
+      window.openModal('presentersModal');
+    }
+  }, { capture: true });
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
