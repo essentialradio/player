@@ -5141,7 +5141,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
     </style>
 </div>
-<div class="modal" id="searchModal">
+<div class="modal" id="searchModal data-refresh-fn="refreshSongSearch">>
 <div class="modal-content" style="max-width:950px;width:97vw">
 <span class="close" onclick="closeModal('searchModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
@@ -9463,115 +9463,83 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var songSearchModal = document.getElementById('songSearchModal');
-    if (songSearchModal) {
-        songSearchModal.addEventListener('shown.bs.modal', function () {
-            var frame = document.getElementById('songSearchFrame');
-            if (frame) {
-                // Reload iframe when modal opens
-                frame.src = frame.src;
-            }
-        });
-    }
-});
-</script>
-<script>
-/* ===== Song Search: open reliably + auto-refresh on open (hotfix) ===== */
-(function () {
+<script id="song-search-auto-refresh">
+(function(){
   const MODAL_ID = 'searchModal';
 
-  // 1) Fetch latest playout log + re-render UI
-  async function refreshSongSearch() {
+  // Core refresher: fetch JSON, repopulate, preserve selections
+  async function refreshSongSearch(){
     const modal = document.getElementById(MODAL_ID);
     if (!modal) return;
+
+    const searchInputEl = document.getElementById('searchInput');
+    const dateEl = document.getElementById('dateSelect');
+    const hourEl = document.getElementById('hourSelect');
+
+    const prevSearch = searchInputEl ? searchInputEl.value : '';
+    const prevDate   = dateEl ? dateEl.value : '';
+    const prevHour   = hourEl ? hourEl.value : '';
+
     try {
-      const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
+      const res = await fetch('playout_log_rolling.json?ts=' + Date.now(), { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
-      // assumes populateDropdowns/renderTable exist already in your page
+
+      // Update global data + UI using existing functions defined in the Song Search block
       window.fullData = data;
-      populateDropdowns(data);
-      renderTable(data);
-    } catch (e) {
+      if (typeof populateDropdowns === 'function') populateDropdowns(data);
+
+      // Try to restore date/hour if still valid
+      try {
+        if (dateEl && prevDate && window.dateMap && typeof window.dateMap.has === 'function' && window.dateMap.has(prevDate)) {
+          dateEl.value = prevDate;
+          if (typeof updateHourDropdown === 'function') {
+            const hasPrev = window.dateMap.get(prevDate) && window.dateMap.get(prevDate).has && window.dateMap.get(prevDate).has(prevHour);
+            updateHourDropdown(prevDate, hasPrev ? prevHour : null);
+          }
+        }
+      } catch(_) {}
+
+      if (searchInputEl) searchInputEl.value = prevSearch;
+      if (typeof renderTable === 'function') renderTable(data);
+    } catch(e) {
       console.warn('[SongSearch] refresh failed:', e);
     }
   }
-  window.refreshSongSearch = refreshSongSearch; // expose globally
+  window.refreshSongSearch = refreshSongSearch;
 
-  // 2) Register with central "refresh on modal open" (if present) and set attribute
+  // Register with the central modal system (if present)
   window.refreshModalById = window.refreshModalById || {};
   window.refreshModalById[MODAL_ID] = refreshSongSearch;
 
-  // Ensure the modal has the attribute (non-breaking if it already does)
-  const searchModal = document.getElementById(MODAL_ID);
-  if (searchModal && !searchModal.getAttribute('data-refresh-fn')) {
-    searchModal.setAttribute('data-refresh-fn', 'refreshSongSearch');
+  // Ensure the attribute is present so the central helper can resolve it
+  const modalEl = document.getElementById(MODAL_ID);
+  if (modalEl && !modalEl.getAttribute('data-refresh-fn')) {
+    modalEl.setAttribute('data-refresh-fn', 'refreshSongSearch');
   }
 
-  // 3) Make sure clicking any Song Search trigger opens the modal (works even if other JS missed it)
+  // Re-run refresh if the tab regains focus and the Search modal is open (mirrors News modal)
+  function isOpen(el){
+    if (!el) return false;
+    const cs = getComputedStyle(el);
+    return cs.display !== 'none' && el.offsetParent !== null;
+  }
+  function resumeIfOpen(){
+    const m = document.getElementById(MODAL_ID);
+    if (m && isOpen(m)) refreshSongSearch();
+  }
+  window.addEventListener('focus', resumeIfOpen);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') resumeIfOpen();
+  });
+
+  // Also kick refresh right after a click that opens Song Search (belt & braces)
   document.addEventListener('click', (e) => {
-    const t = e.target;
-    const trigger = t.closest?.('[data-open="searchModal"], [href="#songsearch"], [href="#search"], [data-target="#searchModal"], a[href="#Song%20Search"]');
-    if (!trigger) return;
-    e.preventDefault();
-    if (typeof window.openModal === 'function') {
-      window.openModal(MODAL_ID);
-    } else {
-      // ultra-safe fallback
-      const m = document.getElementById(MODAL_ID);
-      if (m) { m.style.display = 'block'; m.classList.add('active'); document.body.classList.add('modal-open'); }
-    }
-    // kick the refresh immediately on open
-    try { refreshSongSearch(); } catch (_) {}
+    const t = e.target.closest && e.target.closest('[data-open="searchModal"], [href="#search"], [data-target="#searchModal"], #openSearchModal');
+    if (t) setTimeout(refreshSongSearch, 40);
   }, true);
-
-  // 4) Wire the Song Search controls in case earlier script ran before DOM existed
-  function wireSongSearchControls() {
-    const si   = document.getElementById('searchInput');
-    const ds   = document.getElementById('dateSelect');
-    const hs   = document.getElementById('hourSelect');
-    const prev = document.getElementById('prevHour');
-    const next = document.getElementById('nextHour');
-    const reset= document.getElementById('resetFilters');
-
-    if (si)   si.addEventListener('input',   () => renderTable(window.fullData || []));
-    if (ds)   ds.addEventListener('change',  () => { updateHourDropdown(ds.value); renderTable(window.fullData || []); });
-    if (hs)   hs.addEventListener('change',  () => renderTable(window.fullData || []));
-    if (prev) prev.addEventListener('click', () => {
-      const hours = Array.from((window.dateMap && window.dateMap.get(ds.value)) || []).sort();
-      if (!hours.length) return;
-      const curr = hs.value;
-      const i = Math.max(0, hours.indexOf(curr) - 1);
-      updateHourDropdown(ds.value, hours[i]);
-      renderTable(window.fullData || []);
-    });
-    if (next) next.addEventListener('click', () => {
-      const hours = Array.from((window.dateMap && window.dateMap.get(ds.value)) || []).sort();
-      if (!hours.length) return;
-      const curr = hs.value;
-      const i = Math.min(hours.length - 1, hours.indexOf(curr) + 1);
-      updateHourDropdown(ds.value, hours[i]);
-      renderTable(window.fullData || []);
-    });
-    if (reset) reset.addEventListener('click', () => {
-      if (si) si.value = '';
-      if (typeof window.latestDate !== 'undefined' && typeof window.latestHour !== 'undefined') {
-        ds && (ds.value = window.latestDate);
-        updateHourDropdown(window.latestDate, window.latestHour);
-      }
-      renderTable(window.fullData || []);
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', wireSongSearchControls, { once: true });
-  } else {
-    wireSongSearchControls();
-  }
 })();
 </script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
