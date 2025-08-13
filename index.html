@@ -9615,6 +9615,49 @@ if ('serviceWorker' in navigator) {
   window.__updateCurrentHourBtnVisibility = setBtnVisibility;
 })();
 </script>
+<script id="updateHourVisibilityScript">
+(function(){
+  function getTodayStr(){
+    try { return new Date().toLocaleDateString("en-GB"); } catch(e){ return ""; }
+  }
+  function getCurrentHourStr(){
+    try { var h = new Date().getHours(); return (h<10?"0":"") + h + ":00"; } catch(e){ return ""; }
+  }
+  function isCurrentHourSelected(){
+    var ds = document.getElementById("dateSelect");
+    var hs = document.getElementById("hourSelect");
+    if (!ds || !hs) return false;
+    var today = getTodayStr();
+    var currHour = getCurrentHourStr();
+    return (ds.value === today) && (hs.value === currHour);
+  }
+  function updateBtnVisibility(){
+    var btn = document.getElementById("updateHourBtn");
+    if (!btn) return;
+    btn.style.display = isCurrentHourSelected() ? "" : "none";
+  }
+  // Wire events
+  document.addEventListener("DOMContentLoaded", updateBtnVisibility);
+  window.addEventListener("focus", updateBtnVisibility);
+  var ds = document.getElementById("dateSelect");
+  var hs = document.getElementById("hourSelect");
+  if (ds) ds.addEventListener("change", updateBtnVisibility);
+  if (hs) hs.addEventListener("change", updateBtnVisibility);
+  // Periodic check in case hour ticks over while open
+  setInterval(updateBtnVisibility, 15000);
+})();
+</script>
+<script id="wireUpdateCurrentClick">
+document.addEventListener('DOMContentLoaded', function(){
+  var btn = document.getElementById("updateHourBtn");
+  if (!btn) return;
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    if (typeof window.refreshCurrentHour === "function") return window.refreshCurrentHour();
+    if (typeof window.refreshSongSearch === "function") return window.refreshSongSearch();
+  });
+});
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
