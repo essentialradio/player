@@ -5141,7 +5141,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
     </style>
 </div>
-<div class="modal" id="searchModal" data-refresh-fn="refreshSongSearch">
+<div class="modal" id="searchModal">
 <div class="modal-content" style="max-width:950px;width:97vw">
 <span class="close" onclick="closeModal('searchModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
@@ -5290,8 +5290,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
       document.getElementById("searchInput").addEventListener("input", () => renderTable(fullData));
       document.getElementById("dateSelect").addEventListener("change", () => {
         updateHourDropdown(document.getElementById("dateSelect").value);
-const updateHourBtn = document.getElementById("updateHourBtn"); if (updateHourBtn) { updateHourBtn.addEventListener("click", () => { if (typeof window.refreshSongSearch === "function") window.refreshSongSearch(); }); }
-
         renderTable(fullData);
       });
       document.getElementById("hourSelect").addEventListener("change", () => renderTable(fullData));
@@ -5344,46 +5342,14 @@ const updateHourBtn = document.getElementById("updateHourBtn"); if (updateHourBt
         }
       });
 
-      fetch("https://essentialradio.github.io/player/playout_log_rolling.json")
+      fetch("playout_log_rolling.json")
         .then(res => res.json())
         .then(data => {
           fullData = data;
           populateDropdowns(data);
           renderTable(data);
         });
-    
-
-// Auto-refresh when the Song Search modal opens
-window.refreshSongSearch = async function refreshSongSearch() {
-  
-  
-  // Preserve only the search text; keep current date/hour selections untouched
-  const searchInputEl = document.getElementById("searchInput");
-  const prevSearch = searchInputEl ? searchInputEl.value : "";
-
-  // Busy state on button (if present)
-  const btn = document.getElementById("updateHourBtn");
-  if (btn) { btn.disabled = true; btn.textContent = "Updating…"; }
-
-  try {
-    const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-
-    try { fullData = data; } catch (_e) {}
-    try { window.fullData = data; } catch (_e) {}
-
-    // Do NOT repopulate dropdowns; keep user’s current date/hour selection
-    if (searchInputEl) searchInputEl.value = prevSearch;
-
-    // Re-render using current UI selections (renderTable reads the DOM filters)
-    if (typeof renderTable === 'function') renderTable((typeof fullData!=='undefined'&&fullData) || data);
-  } catch (e) {
-    console.warn('[SongSearch] refresh failed:', e);
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = "Update Hour"; }
-  }
-};</script>
+    </script>
 </div>
 </div>
 <div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
@@ -9499,6 +9465,60 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
+
+<script id="updateHourScript">
+(function(){
+  function latestHourForDate(dateStr){
+    try{
+      if (typeof dateMap !== 'undefined' && dateMap && typeof dateMap.get === 'function' && dateMap.has(dateStr)){
+        var hours = Array.from(dateMap.get(dateStr) || []);
+        hours.sort();
+        return hours.length ? hours[hours.length - 1] : null;
+      }
+    }catch(e){}
+    // Fallback: compute from fullData
+    try{
+      var hours = [];
+      (window.fullData || []).forEach(function(item){
+        var dt = new Date(item["Hour"]);
+        var localDate = dt.toLocaleDateString("en-GB");
+        if (localDate === dateStr){
+          hours.push(dt.getHours().toString().padStart(2,'0') + ":00");
+        }
+      });
+      hours.sort();
+      return hours.length ? hours[hours.length - 1] : null;
+    }catch(e){ return null; }
+  }
+
+  function jumpToLatestHour(){
+    var dateEl = document.getElementById('dateSelect');
+    var hourEl = document.getElementById('hourSelect');
+    if (!dateEl || !hourEl) return;
+    var d = dateEl.value;
+    if (!d) return;
+    var latest = latestHourForDate(d);
+    if (!latest) return;
+    // If we have an updateHourDropdown helper, use it so options reflect the latest hour set
+    if (typeof updateHourDropdown === 'function'){
+      updateHourDropdown(d, latest);
+    } else {
+      hourEl.value = latest;
+    }
+    if (typeof renderTable === 'function'){
+      renderTable(window.fullData || []);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var btn = document.getElementById('updateHourBtn');
+    if (btn){
+      btn.addEventListener('click', function(e){ e.preventDefault(); jumpToLatestHour(); });
+    }
+  });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
