@@ -4056,17 +4056,10 @@ html[data-theme="light"] #mobileNowBar {
   border-top-color: rgba(0,0,0,0.08);
 }
 </style>
-<style id="mobile-mini-player-style">
-  #mobileNowBar{position:fixed;left:0;right:0;bottom:0;z-index:3002;display:none;align-items:center;gap:12px;padding:10px 12px;background:rgba(16,18,21,.96);backdrop-filter:blur(6px);border-top:1px solid rgba(255,255,255,.08)}
-  #mobileNowBar-inner{width:100%;max-width:900px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}
-  #mobilePlayBtn{-webkit-tap-highlight-color:transparent;border:none;border-radius:999px;width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;background:#fed351;color:#111;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.25);cursor:pointer}
-  #mobilePlayBtn:active{transform:scale(.98)}
-  #mobileNowText{color:#fff;font-size:14.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;width:100%}
-  @media (max-width:768px){#mobileNowBar{display:flex}}
-  @media print{#mobileNowBar{display:none!important}}
-  [data-theme="light"] #mobileNowBar{background:rgba(255,255,255,.96);border-top-color:#e6ecf3}
-  [data-theme="light"] #mobileNowText{color:#0b1220}
-</style>
+
+
+
+
 <style id="mobile-mini-player-style">
   /* Mobile mini-player bar */
   #mobileNowBar {
@@ -4125,7 +4118,6 @@ html[data-theme="light"] #mobileNowBar {
   [data-theme="light"] #mobileNowBar { background: rgba(255,255,255,.96); border-top-color: #e6ecf3; }
   [data-theme="light"] #mobileNowText { color: #0b1220; }
 </style>
-
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -9176,10 +9168,7 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <!-- Sticky Mobile Now Playing Bar -->
-<div id="mobileNowBar" aria-live="polite">
-  <button id="mobilePlayToggle" class="np-cta" aria-label="Play/Pause">▶</button>
-  <div class="np-text">
-    <div class="title" id="mobileNpTitle">Loading…</div>
+
     <div class="artist" id="mobileNpArtist"></div>
   </div>
 </div>
@@ -9308,77 +9297,19 @@ if ('serviceWorker' in navigator) {
   });
 })();
 </script>
-<script id="mobile-mini-player-script">
-(function () {
-  const $ = (sel, root=document) => root.querySelector(sel);
-  const mobileBar = $('#mobileNowBar');
-  const mobileBtn = $('#mobilePlayBtn');
-  const mobileText= $('#mobileNowText');
-  const mainToggle= $('#play-toggle');
-  const playerBox = $('#player-box') || $('.left-panel');
-  function clickMainToggle(){ if (mainToggle) mainToggle.click(); }
-  if (mobileBtn) mobileBtn.addEventListener('click', clickMainToggle);
-  let audioEl = document.querySelector('audio');
-  function setMobileIcon(isPlaying){
-    if (!mobileBtn) return;
-    mobileBtn.textContent = isPlaying ? '❚❚' : '▷';
-    mobileBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
-  }
-  if (audioEl){
-    setMobileIcon(!audioEl.paused);
-    audioEl.addEventListener('play', ()=>setMobileIcon(True));
-    audioEl.addEventListener('pause',()=>setMobileIcon(False));
-  } else if (mainToggle){
-    const observeMainBtn=new MutationObserver(()=>{
-      const pressed=(mainToggle.getAttribute('aria-pressed')==='true'||mainToggle.dataset.state==='playing'||mainToggle.classList.contains('playing'));
-      setMobileIcon(!!pressed);
-    });
-    observeMainBtn.observe(mainToggle,{attributes:true,attributeFilter:['aria-pressed','data-state','class']});
-  }
-  function updateMobileNowText(artist,title){
-    if (!mobileText) return;
-    const a=(artist||'').trim(), t=(title||'').trim();
-    const line=(a&&t)?`${a} – ${t}`:(a||t||'Essential Radio');
-    mobileText.textContent=line;
-    mobileText.setAttribute('title', line);
-  }
-  window.addEventListener('np:update',(ev)=>{
-    const {artist,title}=ev.detail||{}; updateMobileNowText(artist,title);
-  });
-  function scrapeNowPlayingFromDOM(){
-    const titleSel=['#npTitle','.np-title','.track-title','#nowPlayingTitle'];
-    const artistSel=['#npArtist','.np-artist','.track-artist','#nowPlayingArtist'];
-    const pick=(list)=>{ for(const s of list){ const el=document.querySelector(s); if(el&&el.textContent.trim()) return el.textContent.trim(); } return ''; };
-    let title=pick(titleSel), artist=pick(artistSel);
-    if ((!artist||!title)){
-      const card=document.querySelector('#now-playing-card');
-      if (card){
-        const guessTitle=card.querySelector('.title,h3,.np-title,.track-title');
-        const guessArtist=card.querySelector('.artist,h4,.np-artist,.track-artist');
-        title=title||(guessTitle?guessTitle.textContent.trim():'');
-        artist=artist||(guessArtist?guessArtist.textContent.trim():'');
-      }
-    }
-    updateMobileNowText(artist,title);
-  }
-  scrapeNowPlayingFromDOM();
-  setInterval(scrapeNowPlayingFromDOM, 10000);
-  const npCard=document.querySelector('#now-playing-card');
-  if (npCard){
-    const mo=new MutationObserver(()=>scrapeNowPlayingFromDOM());
-    mo.observe(npCard,{childList:true,subtree:true,characterData:true});
-  }
-  if (playerBox && 'IntersectionObserver' in window){
-    const io=new IntersectionObserver((entries)=>{
-      const visible=entries[0].isIntersecting;
-      mobileBar.style.opacity=visible?'0':'1';
-      mobileBar.style.pointerEvents=visible?'none':'auto';
-      mobileBar.style.transform=visible?'translateY(8px)':'translateY(0)';
-    },{threshold:0.2});
-    io.observe(playerBox);
-  }
-})();
-</script>
+
+<!-- Mobile mini-player (single-line "Artist – Title") -->
+
+
+
+<!-- Mobile mini-player (single-line "Artist – Title") -->
+<div id="mobileNowBar" role="region" aria-label="Mini player">
+  <div id="mobileNowBar-inner">
+    <button id="mobilePlayBtn" aria-label="Play/Pause" title="Play/Pause">▷</button>
+    <div id="mobileNowText" title="Now Playing">Artist – Title</div>
+  </div>
+</div>
+
 <script id="mobile-mini-player-script">
 (function () {
   const $ = (sel, root=document) => root.querySelector(sel);
@@ -9420,7 +9351,7 @@ if ('serviceWorker' in navigator) {
     if (!mobileText) return;
     const a = (artist || '').trim();
     const t = (title  || '').trim();
-    const line = (a && t) ? `${a} \u2013 ${t}` : (a || t || 'Essential Radio');
+    const line = (a && t) ? `${a} – ${t}` : (a || t || 'Essential Radio');
     mobileText.textContent = line;
     mobileText.title = line;
   }
@@ -9467,8 +9398,8 @@ if ('serviceWorker' in navigator) {
 
   const npCard = document.querySelector('#now-playing-card');
   if (npCard) {
-    const mo = new MutationObserver(scrapeNowPlaying);
-    mo.observe(npCard, { childList: true, subtree: true, characterData: true });
+    const moNP = new MutationObserver(scrapeNowPlaying);
+    moNP.observe(npCard, { childList: true, subtree: true, characterData: true });
   }
 
   // --- Optional: auto-hide mini bar when main player is visible (comment out if you want it always on) ---
@@ -9483,14 +9414,6 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<!-- Mobile mini-player (single-line "Artist – Title") -->
-<div id="mobileNowBar" role="region" aria-label="Mini player">
-  <div id="mobileNowBar-inner">
-    <button id="mobilePlayBtn" aria-label="Play/Pause" title="Play/Pause">▷</button>
-    <div id="mobileNowText" title="Now Playing">Artist – Title</div>
-  </div>
-</div>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
