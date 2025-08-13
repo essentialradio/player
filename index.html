@@ -5141,7 +5141,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
     </style>
 </div>
-<div class="modal" id="searchModal">
+<div class="modal" id="searchModal" data-refresh-fn="refreshSongSearch">
 <div class="modal-content" style="max-width:950px;width:97vw">
 <span class="close" onclick="closeModal('searchModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
@@ -5347,7 +5347,22 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
           populateDropdowns(data);
           renderTable(data);
         });
-    </script>
+    
+
+// Auto-refresh handler invoked when the Search modal opens
+window.refreshSongSearch = async function refreshSongSearch() {
+  try {
+    const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    fullData = data;
+    populateDropdowns(data);
+    renderTable(data);
+  } catch (e) {
+    console.warn('[SongSearch] refresh failed:', e);
+  }
+};
+</script>
 </div>
 </div>
 <div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
@@ -9463,21 +9478,6 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var songSearchModal = document.getElementById('songSearchModal');
-    if (songSearchModal) {
-        songSearchModal.addEventListener('shown.bs.modal', function () {
-            var frame = document.getElementById('songSearchFrame');
-            if (frame) {
-                // Reload iframe when modal opens
-                frame.src = frame.src;
-            }
-        });
-    }
-});
-</script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
