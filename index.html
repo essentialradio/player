@@ -4118,6 +4118,46 @@ html[data-theme="light"] #mobileNowBar {
   [data-theme="light"] #mobileNowBar { background: rgba(255,255,255,.96); border-top-color: #e6ecf3; }
   [data-theme="light"] #mobileNowText { color: #0b1220; }
 </style>
+
+
+<style id="presenter-modal-tidy">
+  /* === Force tidy for presenter modal images === */
+  .modal[id*="presenter"] .modal-content img,
+  .modal.presenter .modal-content img {
+    display: block !important;
+    max-width: 300px !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 6px auto 14px auto !important;
+    border-radius: 14px !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25) !important;
+    object-fit: cover !important;
+  }
+
+  /* Reduce padding for presenter modals */
+  .modal[id*="presenter"] .modal-content,
+  .modal.presenter .modal-content {
+    padding-top: 16px !important;
+    padding-bottom: 14px !important;
+  }
+
+  /* Adjust on very small screens */
+  @media (max-width: 480px) {
+    .modal[id*="presenter"] .modal-content img,
+    .modal.presenter .modal-content img {
+      max-width: 260px !important;
+      border-radius: 12px !important;
+      margin: 4px auto 12px auto !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.22) !important;
+    }
+    .modal[id*="presenter"] .modal-content,
+    .modal.presenter .modal-content {
+      padding-top: 12px !important;
+      padding-bottom: 10px !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
