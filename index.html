@@ -5340,23 +5340,29 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         }
       });
 
-      
-  // Auto-refresh handler invoked when the Song Search modal opens
-  async function refreshSongSearch() {
-    try {
-      const res = await fetch('https://essential.radio/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-      fullData = data;
-      populateDropdowns(data);
-      renderTable(data);
-    } catch (e) {
-      console.warn('[SongSearch] refresh failed:', e);
-    }
-  }refreshSongSearch();
-renderTable(data);
+      fetch("https://essential.radio/playout_log_rolling.json")
+        .then(res => res.json())
+        .then(data => {
+          fullData = data;
+          populateDropdowns(data);
+          renderTable(data);
         });
-    </script>
+    
+// Auto-refresh when the Song Search modal opens
+window.refreshSongSearch = async function refreshSongSearch() {
+  try {
+    const res = await fetch('https://essential.radio/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    try { fullData = data; } catch (_e) { /* ignore if not in scope */ }
+    try { window.fullData = data; } catch (_e) { /* ensure global for any listeners */ }
+    if (typeof populateDropdowns === 'function') populateDropdowns(data);
+    if (typeof renderTable === 'function') renderTable((typeof fullData!=='undefined'&&fullData)||data);
+  } catch (e) {
+    console.warn('[SongSearch] refresh failed:', e);
+  }
+};
+</script>
 </div>
 </div>
 <div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
