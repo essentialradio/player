@@ -9497,12 +9497,37 @@ if ('serviceWorker' in navigator) {
     if (!dateEl || !hourEl) return;
     var d = dateEl.value;
     if (!d) return;
-    var latest = latestHourForDate(d);
-    if (!latest) return;
-    // If we have an updateHourDropdown helper, use it so options reflect the latest hour set
-    if (typeof updateHourDropdown === 'function'){
-      updateHourDropdown(d, latest);
+
+    // Compute latest hour present in fullData for the selected date
+    var latest = null;
+    try{
+      var hours = [];
+      (window.fullData || []).forEach(function(item){
+        var dt = new Date(item["Hour"]);
+        var localDate = dt.toLocaleDateString("en-GB");
+        if (localDate === d){
+          hours.push(dt.getHours().toString().padStart(2,'0') + ":00");
+        }
+      });
+      hours.sort();
+      latest = hours.length ? hours[hours.length - 1] : null;
+    }catch(e){ latest = null; }
+
+    if (!latest) return; // nothing newer in data; keep current hour
+
+    // Only set the value if that hour already exists in the dropdown options
+    var opts = Array.from(hourEl.options).map(function(o){ return o.value; });
+    if (opts.indexOf(latest) !== -1){
+      hourEl.value = latest;
     } else {
+      // fallback: do not alter; keep current selection to avoid blank state
+      return;
+    }
+
+    if (typeof renderTable === 'function'){
+      renderTable(window.fullData || []);
+    }
+  } else {
       hourEl.value = latest;
     }
     if (typeof renderTable === 'function'){
