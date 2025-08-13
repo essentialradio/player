@@ -9517,9 +9517,10 @@ if ('serviceWorker' in navigator) {
       fetch(url, {cache:"no-store"})
         .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
         .then(function(data){
-          window.fullData = data;
+          try { fullData = data; } catch(_) {}
+          try { window.fullData = data; } catch(_) {}
           if (typeof populateDropdowns === "function") populateDropdowns(data);
-          if (typeof renderTable === "function") renderTable(data);
+          if (typeof renderTable === "function") renderTable((typeof fullData!=="undefined"&&fullData) || data);
           if (typeof window.__showSongSearchUpdated === "function") window.__showSongSearchUpdated();
         })
         .catch(function(e){ console.warn("[SongSearch] refresh error", e); });
