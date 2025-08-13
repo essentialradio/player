@@ -4158,33 +4158,6 @@ html[data-theme="light"] #mobileNowBar {
   }
 </style>
 
-
-<style id="songsearch-update-style">
-  /* Song Search: success badge */
-  #searchModal .update-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(40, 167, 69, 0.95);
-    color: #fff;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 180ms ease, transform 180ms ease;
-    z-index: 2003;
-    pointer-events: none;
-  }
-  #searchModal .update-badge.show { opacity: 1; transform: translateY(0); }
-  #searchModal .update-badge svg { width: 16px; height: 16px; display: inline-block; }
-  #searchModal .modal-content { position: relative; }
-</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5315,9 +5288,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
       document.getElementById("searchInput").addEventListener("input", () => renderTable(fullData));
       document.getElementById("dateSelect").addEventListener("change", () => {
         updateHourDropdown(document.getElementById("dateSelect").value);
-        \1
-    if (typeof window.__showSongSearchUpdated === 'function') window.__showSongSearchUpdated();
-    });
+        renderTable(fullData);
+      });
       document.getElementById("hourSelect").addEventListener("change", () => renderTable(fullData));
 
       document.getElementById("prevHour").addEventListener("click", () => {
@@ -5368,12 +5340,21 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         }
       });
 
-      fetch("https://essential.radio/playout_log_rolling.json")
-        .then(res => res.json())
-        .then(data => {
-          fullData = data;
-          populateDropdowns(data);
-          renderTable(data);
+      
+  // Auto-refresh handler invoked when the Song Search modal opens
+  async function refreshSongSearch() {
+    try {
+      const res = await fetch('https://essential.radio/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      fullData = data;
+      populateDropdowns(data);
+      renderTable(data);
+    } catch (e) {
+      console.warn('[SongSearch] refresh failed:', e);
+    }
+  }refreshSongSearch();
+renderTable(data);
         });
     </script>
 </div>
@@ -9491,63 +9472,21 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script id="songsearch-update-helper">
-(function(){
-  window.__showSongSearchUpdated = function(){
-    var modal = document.getElementById('searchModal');
-    if (!modal) return;
-    var host = modal.querySelector('.modal-content') || modal;
-    var old = host.querySelector('.update-badge');
-    if (old && old.parentNode) old.parentNode.removeChild(old);
-    var b = document.createElement('div');
-    b.className = 'update-badge';
-    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Updated just now</span>';
-    host.appendChild(b);
-    requestAnimationFrame(function(){ b.classList.add('show'); });
-    setTimeout(function(){ b.classList.remove('show'); setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 220); }, 2000);
-  };
-})();
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var songSearchModal = document.getElementById('songSearchModal');
+    if (songSearchModal) {
+        songSearchModal.addEventListener('shown.bs.modal', function () {
+            var frame = document.getElementById('songSearchFrame');
+            if (frame) {
+                // Reload iframe when modal opens
+                frame.src = frame.src;
+            }
+        });
+    }
+});
 </script>
-<script id="songsearch-refresh-fn">
-(function(){
-  window.refreshSongSearch = function(){
-    try{
-      var url = "https://essential.radio/playout_log_rolling.json";
-      url += (url.indexOf("?")===-1?"?":"&")+"ts="+Date.now();
-      fetch(url, {cache:"no-store"})
-        .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
-        .then(function(data){
-          try { fullData = data; } catch(_) {}
-          try { window.fullData = data; } catch(_) {}
-          if (typeof populateDropdowns === "function") populateDropdowns(data);
-          if (typeof renderTable === "function") renderTable((typeof fullData!=="undefined"&&fullData) || data);
-          if (typeof window.__showSongSearchUpdated === "function") window.__showSongSearchUpdated();
-        })
-        .catch(function(e){ console.warn("[SongSearch] refresh error", e); if (typeof window.__songSearchError==="function") window.__songSearchError(e && e.message || "Error"); });
-    }catch(e){ console.warn("[SongSearch] exception", e); }
-  };
-})();
-</script>
-<script id="songsearch-error-helper">
-(function(){
-  window.__songSearchError = function(msg){
-    try{
-      var modal = document.getElementById('searchModal');
-      if (!modal) return;
-      var host = modal.querySelector('.modal-content') || modal;
-      var old = host.querySelector('.update-badge, .error-badge');
-      if (old && old.parentNode) old.parentNode.removeChild(old);
-      var b = document.createElement('div');
-      b.className = 'error-badge';
-      b.style.cssText = 'position:absolute;top:10px;right:10px;background:rgba(220,53,69,.95);color:#fff;font-weight:600;font-size:13px;padding:6px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:2003;';
-      b.innerHTML = '<span>Refresh failed</span>';
-      host.appendChild(b);
-      setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 3000);
-      if (console && console.warn) console.warn('[SongSearch] '+msg);
-    }catch(e){}
-  };
-})();
-</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
