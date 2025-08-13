@@ -5141,7 +5141,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
     </style>
 </div>
-<div class="modal" id="searchModal">
+<div class="modal" id="searchModal" data-refresh-fn="refreshSongSearch">
 <div class="modal-content" style="max-width:950px;width:97vw">
 <span class="close" onclick="closeModal('searchModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
@@ -5347,7 +5347,53 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
           populateDropdowns(data);
           renderTable(data);
         });
-    </script>
+    
+
+<script>
+  async function refreshSongSearch() {
+    const searchInputEl = document.getElementById("searchInput");
+    const dateEl = document.getElementById("dateSelect");
+    const hourEl = document.getElementById("hourSelect");
+
+    const prevSearch = (searchInputEl && searchInputEl.value) || "";
+    const prevDate   = (dateEl && dateEl.value) || "";
+    const prevHour   = (hourEl && hourEl.value) || "";
+
+    try {
+      // Use the SAME endpoint as the initial loader, with cache-busting
+      const endpointMatch = (document.currentScript && document.currentScript.dataset && document.currentScript.dataset.endpoint) ? document.currentScript.dataset.endpoint : "";
+      // Fallbacks: try to sniff any existing fetch URL for playout_log_rolling.json
+      let endpoint = "";
+      m = /fetch\((['\"])([^'\"]*playout_log_rolling\.json[^'\"]*)\1/.search(document.documentElement.innerHTML);
+      if (m) {
+        endpoint = m.group(2);
+      } else {
+        // Default relative path (works when file sits beside index)
+        endpoint = "playout_log_rolling.json";
+      }
+
+      const url = endpoint + (endpoint.includes("?") ? "&_=" : "?_=") + Date.now();
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+
+      // Update globals and UI
+      fullData = data;
+      populateDropdowns(data);
+
+      if (prevDate && dateMap.has(prevDate)) {
+        dateEl.value = prevDate;
+        updateHourDropdown(prevDate, (dateMap.get(prevDate) && dateMap.get(prevDate).has(prevHour)) ? prevHour : null);
+      }
+      if (searchInputEl) searchInputEl.value = prevSearch;
+
+      renderTable(fullData);
+    } catch (e) {
+      console.warn("[SongSearch] refresh failed:", e);
+    }
+  }
+</script>
+</script>
 </div>
 </div>
 <div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
@@ -9463,21 +9509,6 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var songSearchModal = document.getElementById('songSearchModal');
-    if (songSearchModal) {
-        songSearchModal.addEventListener('shown.bs.modal', function () {
-            var frame = document.getElementById('songSearchFrame');
-            if (frame) {
-                // Reload iframe when modal opens
-                frame.src = frame.src;
-            }
-        });
-    }
-});
-</script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
