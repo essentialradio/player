@@ -5368,7 +5368,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         }
       });
 
-      fetch("playout_log_rolling.json")
+      fetch("https://essentialradio.github.io/player/playout_log_rolling.json")
         .then(res => res.json())
         .then(data => {
           fullData = data;
@@ -9512,7 +9512,7 @@ if ('serviceWorker' in navigator) {
 (function(){
   window.refreshSongSearch = function(){
     try{
-      var url = "playout_log_rolling.json";
+      var url = "https://essentialradio.github.io/player/playout_log_rolling.json";
       url += (url.indexOf("?")===-1?"?":"&")+"ts="+Date.now();
       fetch(url, {cache:"no-store"})
         .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
@@ -9523,8 +9523,28 @@ if ('serviceWorker' in navigator) {
           if (typeof renderTable === "function") renderTable((typeof fullData!=="undefined"&&fullData) || data);
           if (typeof window.__showSongSearchUpdated === "function") window.__showSongSearchUpdated();
         })
-        .catch(function(e){ console.warn("[SongSearch] refresh error", e); });
+        .catch(function(e){ console.warn("[SongSearch] refresh error", e); if (typeof window.__songSearchError==="function") window.__songSearchError(e && e.message || "Error"); });
     }catch(e){ console.warn("[SongSearch] exception", e); }
+  };
+})();
+</script>
+<script id="songsearch-error-helper">
+(function(){
+  window.__songSearchError = function(msg){
+    try{
+      var modal = document.getElementById('searchModal');
+      if (!modal) return;
+      var host = modal.querySelector('.modal-content') || modal;
+      var old = host.querySelector('.update-badge, .error-badge');
+      if (old && old.parentNode) old.parentNode.removeChild(old);
+      var b = document.createElement('div');
+      b.className = 'error-badge';
+      b.style.cssText = 'position:absolute;top:10px;right:10px;background:rgba(220,53,69,.95);color:#fff;font-weight:600;font-size:13px;padding:6px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:2003;';
+      b.innerHTML = '<span>Refresh failed</span>';
+      host.appendChild(b);
+      setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 3000);
+      if (console && console.warn) console.warn('[SongSearch] '+msg);
+    }catch(e){}
   };
 })();
 </script>
