@@ -9463,6 +9463,21 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var songSearchModal = document.getElementById('songSearchModal');
+    if (songSearchModal) {
+        songSearchModal.addEventListener('shown.bs.modal', function () {
+            var frame = document.getElementById('songSearchFrame');
+            if (frame) {
+                // Reload iframe when modal opens
+                frame.src = frame.src;
+            }
+        });
+    }
+});
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
