@@ -4032,15 +4032,13 @@ body.dark-mode .modal-content::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  background: #fed351; /* explicit yellow */
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--brand, #fed351);
   color: #111;
   font-weight: 800;
-  border: 2px solid #e6c13c;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  border: 1px solid rgba(0,0,0,0.06);
 }
 #mobileNowBar .np-cta:active { transform: translateY(1px); }
 
@@ -4057,37 +4055,65 @@ html[data-theme="light"] #mobileNowBar {
   color: #0b1220;
   border-top-color: rgba(0,0,0,0.08);
 }
-
-#mobileNowBar .np-cta:hover,
-#mobileNowBar .np-cta:focus,
-#mobileNowBar .np-cta:active {
-  background-color: #ffe67c;
-  transform: scale(1.08);
-}
-
-#mobileNowBar { justify-content: center; }
-#mobileNowBar .np-text { 
-  flex: 0 1 auto; 
-  text-align: center; 
-  overflow: hidden; 
-  min-width: 0;
-}
-#mobileNowBar .line {
-  font-weight: 700;
-  white-space: nowrap;
-  display: inline-block;
-  padding-left: 100%;
-  animation: mobileMarquee 12s linear infinite;
-}
-#mobileNowBar .line:hover { animation-play-state: paused; }
-@keyframes mobileMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-/* Hide legacy two-line fields inside the mini bar if still present */
-#mobileNowBar #mobileNpTitle,
-#mobileNowBar #mobileNpArtist { display: none !important; }
 </style>
+
+<style id="mobile-mini-player-style">
+  /* Mobile mini-player bar */
+  #mobileNowBar {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 3002;
+    display: none;                /* hidden by default; shown on mobile only */
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: rgba(16, 18, 21, 0.96);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  #mobileNowBar-inner {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 12px;
+  }
+  #mobilePlayBtn {
+    -webkit-tap-highlight-color: transparent;
+    border: none;
+    border-radius: 999px;
+    width: 42px; height: 42px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #fed351; color: #111;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    cursor: pointer;
+  }
+  #mobilePlayBtn:active { transform: scale(.98); }
+  #mobileNowText {
+    color: #fff;
+    font-size: 14.5px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;          /* centered text */
+    width: 100%;
+  }
+
+  /* Only show bar on small screens */
+  @media (max-width: 768px) {
+    #mobileNowBar { display: flex; }
+  }
+
+  /* Hide bar when printing (and in light mode, keep contrast) */
+  @media print { #mobileNowBar { display: none !important; } }
+  [data-theme="light"] #mobileNowBar { background: rgba(255,255,255,.96); border-top-color: #e6ecf3; }
+  [data-theme="light"] #mobileNowText { color: #0b1220; }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -9137,26 +9163,17 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
-<!-- Sticky Mobile Now Playing Bar --><div id="mobileNowBar" aria-live="polite" role="region" aria-label="Now Playing mini player">
-  <button id="mobilePlayToggle" class="np-cta" aria-label="Play/Pause" title="Play/Pause">▶</button>
+<!-- Sticky Mobile Now Playing Bar -->
+<div id="mobileNowBar" aria-live="polite">
+  <button id="mobilePlayToggle" class="np-cta" aria-label="Play/Pause">▶</button>
   <div class="np-text">
-    <div class="line" id="mobileNpLine">Loading…</div>
+    <div class="title" id="mobileNpTitle">Loading…</div>
+    <div class="artist" id="mobileNpArtist"></div>
   </div>
 </div>
 
-<script id="mobile-now-bar-js"><script id="mobile-now-bar-js">
+<script id="mobile-now-bar-js">
 (function(){
-function updateMobilePlayIcon(){
-  const mainBtn = document.getElementById('play-toggle');
-  const mobBtn = document.getElementById('mobilePlayToggle');
-  if (!mobBtn) return;
-  let isPlaying = false;
-  if (mainBtn){
-    isPlaying = mainBtn.textContent.includes('❚') || mainBtn.classList.contains('playing');
-  }
-  mobBtn.textContent = isPlaying ? '❚❚' : '▶';
-}
-
   function text(el){ return (el && el.textContent || '').trim(); }
   function pick(sel){ return document.querySelector(sel); }
 
@@ -9204,20 +9221,7 @@ function updateMobilePlayIcon(){
   }
 
   function updateBar(){
-    const data = (typeof getNowPlaying === 'function') ? getNowPlaying() : { title:'', artist:'' };
-    const title = (data && data.title) || '';
-    const artist = (data && data.artist) || '';
-    const el = document.getElementById('mobileNpLine');
-    const line = (artist && title) ? `${artist} \u2013 ${title}`
-               : (title || artist || 'Essential Radio');
-    if (el) {
-      el.textContent = line;
-      el.style.animation = 'none';
-      void el.offsetWidth;
-      el.style.animation = null;
-    }
-}
-= getNowPlaying();
+    const { title, artist } = getNowPlaying();
     const tEl = document.getElementById('mobileNpTitle');
     const aEl = document.getElementById('mobileNpArtist');
     if (tEl) tEl.textContent = title || 'Essential Radio';
@@ -9231,7 +9235,6 @@ function updateMobilePlayIcon(){
     mobileBtn.addEventListener('click', function(){
       const mainBtn = document.getElementById('play-toggle');
       if (mainBtn) mainBtn.click();
-      updateMobilePlayIcon();
     });
   }
 
@@ -9239,14 +9242,12 @@ function updateMobilePlayIcon(){
   document.addEventListener('DOMContentLoaded', function(){
     setupControls();
     updateBar();
-    updateMobilePlayIcon();
     // Sync every 5s (lightweight text copy)
     setInterval(updateBar, 5000);
   });
 
   document.addEventListener('visibilitychange', function(){
     if (!document.hidden) updateBar();
-    updateMobilePlayIcon();
   });
 
   // If your existing code dispatches a custom event when now-playing changes,
@@ -9295,6 +9296,109 @@ function updateMobilePlayIcon(){
   });
 })();
 </script>
+
+<script id="mobile-mini-player-script">
+(function () {
+  const $ = (sel, root=document) => root.querySelector(sel);
+
+  const mobileBar   = $('#mobileNowBar');
+  const mobileBtn   = $('#mobilePlayBtn');
+  const mobileText  = $('#mobileNowText');
+  const mainToggle  = $('#play-toggle');         // your main big Play button (already exists)
+  const playerBox   = $('#player-box') || $('.left-panel'); // area to watch for auto-hide
+
+  // --- A) Keep mobile Play button in sync with the main player ---
+  function clickMainToggle() {
+    if (mainToggle) mainToggle.click();
+  }
+  if (mobileBtn) mobileBtn.addEventListener('click', clickMainToggle);
+
+  // Try to reflect state from an <audio> if one exists
+  let audioEl = document.querySelector('audio');
+  function setMobileIcon(isPlaying) {
+    if (!mobileBtn) return;
+    mobileBtn.textContent = isPlaying ? '❚❚' : '▷';
+    mobileBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
+  }
+  if (audioEl) {
+    setMobileIcon(!audioEl.paused);
+    audioEl.addEventListener('play',  () => setMobileIcon(true));
+    audioEl.addEventListener('pause', () => setMobileIcon(false));
+  } else if (mainToggle) {
+    // Fallback: observe main toggle aria-pressed/data-state changes
+    const observeMainBtn = new MutationObserver(() => {
+      const pressed = (mainToggle.getAttribute('aria-pressed') === 'true' || mainToggle.dataset.state === 'playing' || mainToggle.classList.contains('playing'));
+      setMobileIcon(!!pressed);
+    });
+    observeMainBtn.observe(mainToggle, { attributes: true, attributeFilter: ['aria-pressed','data-state','class'] });
+  }
+
+  // --- B) Single-line "Artist – Title" in the mobile bar ---
+  function updateMobileNowText(artist, title) {
+    if (!mobileText) return;
+    const a = (artist || '').trim();
+    const t = (title  || '').trim();
+    const line = (a && t) ? `${a} – ${t}` : (a || t || 'Essential Radio');
+    mobileText.textContent = line;
+    mobileText.setAttribute('title', line);
+  }
+
+  // 1) If your app already dispatches a custom event, hook it here:
+  //    window.dispatchEvent(new CustomEvent('np:update', { detail: { artist, title }}))
+  window.addEventListener('np:update', (ev) => {
+    const { artist, title } = ev.detail || {};
+    updateMobileNowText(artist, title);
+  });
+
+  // 2) Otherwise, mirror from existing DOM (robust selector sweep)
+  function scrapeNowPlayingFromDOM() {
+    // Try common IDs/classes in your page:
+    const titleSel  = ['#npTitle', '.np-title', '.track-title', '#nowPlayingTitle'];
+    const artistSel = ['#npArtist', '.np-artist', '.track-artist', '#nowPlayingArtist'];
+
+    const pick = (list) => {
+      for (const s of list) { const el = document.querySelector(s); if (el && el.textContent.trim()) return el.textContent.trim(); }
+      return '';
+    };
+    let title  = pick(titleSel);
+    let artist = pick(artistSel);
+
+    // As a last resort, look inside the now-playing card
+    if ((!artist || !title)) {
+      const card = document.querySelector('#now-playing-card');
+      if (card) {
+        const guessTitle  = card.querySelector('.title, h3, .np-title, .track-title');
+        const guessArtist = card.querySelector('.artist, h4, .np-artist, .track-artist');
+        title  = title  || (guessTitle  ? guessTitle.textContent.trim()  : '');
+        artist = artist || (guessArtist ? guessArtist.textContent.trim() : '');
+      }
+    }
+    updateMobileNowText(artist, title);
+  }
+  // Initial fill + periodic refresh as a safety net
+  scrapeNowPlayingFromDOM();
+  const npInterval = setInterval(scrapeNowPlayingFromDOM, 10000);
+
+  // 3) MutationObserver on the Now Playing card for instant updates
+  const npCard = document.querySelector('#now-playing-card');
+  if (npCard) {
+    const mo = new MutationObserver(() => scrapeNowPlayingFromDOM());
+    mo.observe(npCard, { childList: true, subtree: true, characterData: true });
+  }
+
+  // --- C) Auto-hide when the main player is visible to avoid duplication ---
+  if (playerBox && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      const visible = entries[0].isIntersecting;
+      mobileBar.style.opacity = visible ? '0' : '1';
+      mobileBar.style.pointerEvents = visible ? 'none' : 'auto';
+      mobileBar.style.transform = visible ? 'translateY(8px)' : 'translateY(0)';
+    }, { threshold: 0.2 });
+    io.observe(playerBox);
+  }
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
