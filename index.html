@@ -5141,7 +5141,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
     </style>
 </div>
-<div class="modal" id="searchModal">
+<div class="modal" id="searchModal" data-refresh-fn="refreshSongSearch">
 <div class="modal-content" style="max-width:950px;width:97vw">
 <span class="close" onclick="closeModal('searchModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
@@ -5347,7 +5347,61 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
           populateDropdowns(data);
           renderTable(data);
         });
-    </script>
+    
+
+// Auto-refresh when the Song Search modal opens
+window.refreshSongSearch = async function refreshSongSearch() {
+  // Preserve current UI selections
+  const searchInputEl = document.getElementById("searchInput");
+  const dateEl = document.getElementById("dateSelect");
+  const hourEl = document.getElementById("hourSelect");
+  const prevSearch = searchInputEl ? searchInputEl.value : "";
+  const prevDate   = dateEl ? dateEl.value : "";
+  const prevHour   = hourEl ? hourEl.value : "";
+
+  try {
+    const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+
+    // Update data
+    try { fullData = data; } catch (_e) { /* local var may exist */ }
+    try { window.fullData = data; } catch (_e) { }
+
+    // Recompute dropdowns so new dates/hours appear
+    if (typeof populateDropdowns === 'function') { try { populateDropdowns(data); } catch (_e) { } }
+
+    // Restore previous date if still present
+    if (dateEl && prevDate) {
+      dateEl.value = prevDate;
+    }
+
+    // Restore previous hour if still present, else choose latest hour for that date
+    if (typeof updateHourDropdown === 'function' && dateEl) {
+      let hourToSet = prevHour;
+      try {
+        if (typeof dateMap !== 'undefined' && dateMap && dateMap.has(prevDate)) {
+          const set = dateMap.get(prevDate);
+          if (!set || (hourToSet && !set.has(hourToSet))) {
+            const hours = Array.from(set || [] ).sort();
+            if (hours.length) hourToSet = hours[hours.length - 1];
+          }
+        }
+      } catch(_e){}
+      updateHourDropdown(prevDate || dateEl.value, hourToSet || null);
+    } else if (hourEl && prevHour) {
+      hourEl.value = prevHour;
+    }
+
+    if (searchInputEl) searchInputEl.value = prevSearch;
+
+    // Re-render
+    if (typeof renderTable === 'function') renderTable((typeof fullData!=='undefined'&&fullData)||data);
+  } catch (e) {
+    console.warn('[SongSearch] refresh failed:', e);
+  }
+};
+</script>
 </div>
 </div>
 <div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
@@ -6060,7 +6114,19 @@ function openModal(id) {
   // Close all modals first
   document.querySelectorAll('.modal').forEach(function(modal) {
     modal.style.display = 'none';
-  });
+  
+  // Run modal-specific refresh if declared
+  try {
+    var modal = document.getElementById(id);
+    if (modal) {
+      var fnName = modal.getAttribute('data-refresh-fn');
+      if (fnName && typeof window[fnName] === 'function') {
+        window[fnName]();
+      }
+    }
+  } catch(e) { console.warn('[openModal] refresh hook error', e); }
+
+});
   // Then open the requested modal
   document.getElementById(id).style.display = 'block';
   document.body.classList.add('modal-open');
