@@ -9493,21 +9493,17 @@ if ('serviceWorker' in navigator) {
 
   function jumpToLatestHour(){
     var dateEl = document.getElementById('dateSelect');
-    var hourEl = document.getElementById('hourSelect');
-    if (!dateEl || !hourEl) return;
+    if (!dateEl) return;
     var d = dateEl.value;
     if (!d) return;
-
-    // Compute latest hour present in fullData for the selected date
-    var latest = null;
-    try{
-      var hours = [];
-      (window.fullData || []).forEach(function(item){
-        var dt = new Date(item["Hour"]);
-        var localDate = dt.toLocaleDateString("en-GB");
-        if (localDate === d){
-          hours.push(dt.getHours().toString().padStart(2,'0') + ":00");
-        }
+    if (typeof updateHourDropdown === 'function'){
+      // Passing null makes updateHourDropdown pick the latest hour for that date
+      updateHourDropdown(d, null);
+    }
+    if (typeof renderTable === 'function'){
+      renderTable(window.fullData || []);
+    }
+  }
       });
       hours.sort();
       latest = hours.length ? hours[hours.length - 1] : null;
