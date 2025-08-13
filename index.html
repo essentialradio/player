@@ -5141,7 +5141,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
     </style>
 </div>
-<div class="modal" id="searchModal data-refresh-fn="refreshSongSearch">>
+<div class="modal" id="searchModal">
 <div class="modal-content" style="max-width:950px;width:97vw">
 <span class="close" onclick="closeModal('searchModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
@@ -9463,83 +9463,21 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script id="song-search-auto-refresh">
-(function(){
-  const MODAL_ID = 'searchModal';
-
-  // Core refresher: fetch JSON, repopulate, preserve selections
-  async function refreshSongSearch(){
-    const modal = document.getElementById(MODAL_ID);
-    if (!modal) return;
-
-    const searchInputEl = document.getElementById('searchInput');
-    const dateEl = document.getElementById('dateSelect');
-    const hourEl = document.getElementById('hourSelect');
-
-    const prevSearch = searchInputEl ? searchInputEl.value : '';
-    const prevDate   = dateEl ? dateEl.value : '';
-    const prevHour   = hourEl ? hourEl.value : '';
-
-    try {
-      const res = await fetch('playout_log_rolling.json?ts=' + Date.now(), { cache: 'no-store' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-
-      // Update global data + UI using existing functions defined in the Song Search block
-      window.fullData = data;
-      if (typeof populateDropdowns === 'function') populateDropdowns(data);
-
-      // Try to restore date/hour if still valid
-      try {
-        if (dateEl && prevDate && window.dateMap && typeof window.dateMap.has === 'function' && window.dateMap.has(prevDate)) {
-          dateEl.value = prevDate;
-          if (typeof updateHourDropdown === 'function') {
-            const hasPrev = window.dateMap.get(prevDate) && window.dateMap.get(prevDate).has && window.dateMap.get(prevDate).has(prevHour);
-            updateHourDropdown(prevDate, hasPrev ? prevHour : null);
-          }
-        }
-      } catch(_) {}
-
-      if (searchInputEl) searchInputEl.value = prevSearch;
-      if (typeof renderTable === 'function') renderTable(data);
-    } catch(e) {
-      console.warn('[SongSearch] refresh failed:', e);
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var songSearchModal = document.getElementById('songSearchModal');
+    if (songSearchModal) {
+        songSearchModal.addEventListener('shown.bs.modal', function () {
+            var frame = document.getElementById('songSearchFrame');
+            if (frame) {
+                // Reload iframe when modal opens
+                frame.src = frame.src;
+            }
+        });
     }
-  }
-  window.refreshSongSearch = refreshSongSearch;
-
-  // Register with the central modal system (if present)
-  window.refreshModalById = window.refreshModalById || {};
-  window.refreshModalById[MODAL_ID] = refreshSongSearch;
-
-  // Ensure the attribute is present so the central helper can resolve it
-  const modalEl = document.getElementById(MODAL_ID);
-  if (modalEl && !modalEl.getAttribute('data-refresh-fn')) {
-    modalEl.setAttribute('data-refresh-fn', 'refreshSongSearch');
-  }
-
-  // Re-run refresh if the tab regains focus and the Search modal is open (mirrors News modal)
-  function isOpen(el){
-    if (!el) return false;
-    const cs = getComputedStyle(el);
-    return cs.display !== 'none' && el.offsetParent !== null;
-  }
-  function resumeIfOpen(){
-    const m = document.getElementById(MODAL_ID);
-    if (m && isOpen(m)) refreshSongSearch();
-  }
-  window.addEventListener('focus', resumeIfOpen);
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') resumeIfOpen();
-  });
-
-  // Also kick refresh right after a click that opens Song Search (belt & braces)
-  document.addEventListener('click', (e) => {
-    const t = e.target.closest && e.target.closest('[data-open="searchModal"], [href="#search"], [data-target="#searchModal"], #openSearchModal');
-    if (t) setTimeout(refreshSongSearch, 40);
-  }, true);
-})();
+});
 </script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
