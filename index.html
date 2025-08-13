@@ -9658,6 +9658,33 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 </script>
+<script id="update-current-hour-local">
+(function(){
+  // Re-render the Song Search table using existing data only (no network)
+  window.updateCurrentHourLocal = function(){
+    try {
+      var searchInputEl = document.getElementById("searchInput");
+      // Keep current search text as-is; renderTable reads current date/hour from DOM
+      if (typeof renderTable === "function") {
+        renderTable((typeof fullData !== "undefined" && fullData) || (window.fullData || []));
+      }
+    } catch(e) {
+      console.warn("[SongSearch] local re-render failed:", e);
+    }
+  };
+})();
+</script>
+<script id="wire-update-current-hour-local">
+document.addEventListener('DOMContentLoaded', function(){
+  var btn = document.getElementById("updateHourBtn");
+  if (btn){
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+      if (typeof window.updateCurrentHourLocal === "function") window.updateCurrentHourLocal();
+    });
+  }
+});
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
