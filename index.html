@@ -5347,22 +5347,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
           populateDropdowns(data);
           renderTable(data);
         });
-    
-
-// Auto-refresh handler invoked when the Search modal opens
-window.refreshSongSearch = async function refreshSongSearch() {
-  try {
-    const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    fullData = data;
-    populateDropdowns(data);
-    renderTable(data);
-  } catch (e) {
-    console.warn('[SongSearch] refresh failed:', e);
-  }
-};
-</script>
+    </script>
 </div>
 </div>
 <div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
@@ -9476,6 +9461,26 @@ if ('serviceWorker' in navigator) {
     }, { threshold: 0.2 });
     io.observe(playerBox);
   }
+})();
+</script>
+<script id="songsearch-focus-refresh">
+(function(){
+  var MODAL_ID = 'searchModal';
+  function isOpen(modal){
+    if (!modal) return false;
+    var cs = getComputedStyle(modal);
+    return cs.display !== 'none' && modal.offsetParent !== null;
+  }
+  function refreshIfOpen(){
+    var modal = document.getElementById(MODAL_ID);
+    if (isOpen(modal) && typeof window.refreshSongSearch === 'function'){
+      try { window.refreshSongSearch(); } catch(e) { /* no-op */ }
+    }
+  }
+  window.addEventListener('focus', refreshIfOpen);
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) refreshIfOpen();
+  });
 })();
 </script>
 </body><style>
