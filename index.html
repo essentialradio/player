@@ -5368,7 +5368,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         }
       });
 
-      fetch("https://essentialradio.github.io/player/playout_log_rolling.json")
+      fetch("https://essential.radio/playout_log_rolling.json")
         .then(res => res.json())
         .then(data => {
           fullData = data;
@@ -9512,7 +9512,7 @@ if ('serviceWorker' in navigator) {
 (function(){
   window.refreshSongSearch = function(){
     try{
-      var url = "https://essentialradio.github.io/player/playout_log_rolling.json";
+      var url = "https://essential.radio/playout_log_rolling.json";
       url += (url.indexOf("?")===-1?"?":"&")+"ts="+Date.now();
       fetch(url, {cache:"no-store"})
         .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
