@@ -5162,6 +5162,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <select id="dateSelect"></select>
 <label for="hourSelect">Hour:</label>
 <select id="hourSelect"></select>
+<button id="updateHourBtn" class="btn btn-sm" style="margin-left:8px;">Update Hour</button>
+
 <button id="prevHour">⭠ Previous Hour</button>
 <button id="nextHour">Next Hour ➡</button>
 <label for="searchInput">Filter:</label>
@@ -5288,6 +5290,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
       document.getElementById("searchInput").addEventListener("input", () => renderTable(fullData));
       document.getElementById("dateSelect").addEventListener("change", () => {
         updateHourDropdown(document.getElementById("dateSelect").value);
+const updateHourBtn = document.getElementById("updateHourBtn"); if (updateHourBtn) { updateHourBtn.addEventListener("click", () => { if (typeof window.refreshSongSearch === "function") window.refreshSongSearch(); }); }
+
         renderTable(fullData);
       });
       document.getElementById("hourSelect").addEventListener("change", () => renderTable(fullData));
@@ -5351,16 +5355,33 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
 // Auto-refresh when the Song Search modal opens
 window.refreshSongSearch = async function refreshSongSearch() {
+  
+  
+  // Preserve only the search text; keep current date/hour selections untouched
+  const searchInputEl = document.getElementById("searchInput");
+  const prevSearch = searchInputEl ? searchInputEl.value : "";
+
+  // Busy state on button (if present)
+  const btn = document.getElementById("updateHourBtn");
+  if (btn) { btn.disabled = true; btn.textContent = "Updating…"; }
+
   try {
     const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    try { fullData = data; } catch (_e) { /* ignore if local not in scope */ }
-    try { window.fullData = data; } catch (_e) { /* ensure global */ }
-    if (typeof populateDropdowns === 'function') populateDropdowns(data);
-    if (typeof renderTable === 'function') renderTable((typeof fullData!=='undefined'&&fullData)||data);
+
+    try { fullData = data; } catch (_e) {}
+    try { window.fullData = data; } catch (_e) {}
+
+    // Do NOT repopulate dropdowns; keep user’s current date/hour selection
+    if (searchInputEl) searchInputEl.value = prevSearch;
+
+    // Re-render using current UI selections (renderTable reads the DOM filters)
+    if (typeof renderTable === 'function') renderTable((typeof fullData!=='undefined'&&fullData) || data);
   } catch (e) {
     console.warn('[SongSearch] refresh failed:', e);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = "Update Hour"; }
   }
 };</script>
 </div>
