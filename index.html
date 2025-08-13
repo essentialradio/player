@@ -9477,6 +9477,100 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+<script>
+/* ===== Song Search: open reliably + auto-refresh on open (hotfix) ===== */
+(function () {
+  const MODAL_ID = 'searchModal';
+
+  // 1) Fetch latest playout log + re-render UI
+  async function refreshSongSearch() {
+    const modal = document.getElementById(MODAL_ID);
+    if (!modal) return;
+    try {
+      const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      // assumes populateDropdowns/renderTable exist already in your page
+      window.fullData = data;
+      populateDropdowns(data);
+      renderTable(data);
+    } catch (e) {
+      console.warn('[SongSearch] refresh failed:', e);
+    }
+  }
+  window.refreshSongSearch = refreshSongSearch; // expose globally
+
+  // 2) Register with central "refresh on modal open" (if present) and set attribute
+  window.refreshModalById = window.refreshModalById || {};
+  window.refreshModalById[MODAL_ID] = refreshSongSearch;
+
+  // Ensure the modal has the attribute (non-breaking if it already does)
+  const searchModal = document.getElementById(MODAL_ID);
+  if (searchModal && !searchModal.getAttribute('data-refresh-fn')) {
+    searchModal.setAttribute('data-refresh-fn', 'refreshSongSearch');
+  }
+
+  // 3) Make sure clicking any Song Search trigger opens the modal (works even if other JS missed it)
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    const trigger = t.closest?.('[data-open="searchModal"], [href="#songsearch"], [href="#search"], [data-target="#searchModal"], a[href="#Song%20Search"]');
+    if (!trigger) return;
+    e.preventDefault();
+    if (typeof window.openModal === 'function') {
+      window.openModal(MODAL_ID);
+    } else {
+      // ultra-safe fallback
+      const m = document.getElementById(MODAL_ID);
+      if (m) { m.style.display = 'block'; m.classList.add('active'); document.body.classList.add('modal-open'); }
+    }
+    // kick the refresh immediately on open
+    try { refreshSongSearch(); } catch (_) {}
+  }, true);
+
+  // 4) Wire the Song Search controls in case earlier script ran before DOM existed
+  function wireSongSearchControls() {
+    const si   = document.getElementById('searchInput');
+    const ds   = document.getElementById('dateSelect');
+    const hs   = document.getElementById('hourSelect');
+    const prev = document.getElementById('prevHour');
+    const next = document.getElementById('nextHour');
+    const reset= document.getElementById('resetFilters');
+
+    if (si)   si.addEventListener('input',   () => renderTable(window.fullData || []));
+    if (ds)   ds.addEventListener('change',  () => { updateHourDropdown(ds.value); renderTable(window.fullData || []); });
+    if (hs)   hs.addEventListener('change',  () => renderTable(window.fullData || []));
+    if (prev) prev.addEventListener('click', () => {
+      const hours = Array.from((window.dateMap && window.dateMap.get(ds.value)) || []).sort();
+      if (!hours.length) return;
+      const curr = hs.value;
+      const i = Math.max(0, hours.indexOf(curr) - 1);
+      updateHourDropdown(ds.value, hours[i]);
+      renderTable(window.fullData || []);
+    });
+    if (next) next.addEventListener('click', () => {
+      const hours = Array.from((window.dateMap && window.dateMap.get(ds.value)) || []).sort();
+      if (!hours.length) return;
+      const curr = hs.value;
+      const i = Math.min(hours.length - 1, hours.indexOf(curr) + 1);
+      updateHourDropdown(ds.value, hours[i]);
+      renderTable(window.fullData || []);
+    });
+    if (reset) reset.addEventListener('click', () => {
+      if (si) si.value = '';
+      if (typeof window.latestDate !== 'undefined' && typeof window.latestHour !== 'undefined') {
+        ds && (ds.value = window.latestDate);
+        updateHourDropdown(window.latestDate, window.latestHour);
+      }
+      renderTable(window.fullData || []);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', wireSongSearchControls, { once: true });
+  } else {
+    wireSongSearchControls();
+  }
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
