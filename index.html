@@ -4165,7 +4165,7 @@ html[data-theme="light"] #mobileNowBar {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(40, 167, 69, 0.95); /* green */
+    background: rgba(40, 167, 69, 0.95);
     color: #fff;
     font-weight: 600;
     font-size: 13px;
@@ -4181,15 +4181,8 @@ html[data-theme="light"] #mobileNowBar {
     z-index: 2003;
     pointer-events: none;
   }
-  #searchModal .update-badge.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  #searchModal .update-badge svg {
-    width: 16px; height: 16px;
-    display: inline-block;
-  }
-  /* Ensure modal-content is positioning context */
+  #searchModal .update-badge.show { opacity: 1; transform: translateY(0); }
+  #searchModal .update-badge svg { width: 16px; height: 16px; display: inline-block; }
   #searchModal .modal-content { position: relative; }
 </style>
 </head>
@@ -5322,8 +5315,9 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
       document.getElementById("searchInput").addEventListener("input", () => renderTable(fullData));
       document.getElementById("dateSelect").addEventListener("change", () => {
         updateHourDropdown(document.getElementById("dateSelect").value);
-        renderTable(fullData);
-      });
+        \1
+    if (typeof window.__showSongSearchUpdated === 'function') window.__showSongSearchUpdated();
+    });
       document.getElementById("hourSelect").addEventListener("change", () => renderTable(fullData));
 
       document.getElementById("prevHour").addEventListener("click", () => {
@@ -6094,22 +6088,7 @@ function openModal(id) {
   // Close all modals first
   document.querySelectorAll('.modal').forEach(function(modal) {
     modal.style.display = 'none';
-  
-  // Auto-refresh on open: run function named in data-refresh-fn (or registry)
-  (function(){
-    var modal = document.getElementById(id);
-    if (!modal) return;
-    var fnName = modal.getAttribute('data-refresh-fn');
-    var fn = null;
-    if (fnName && typeof window[fnName] === 'function') {
-      fn = window[fnName];
-    } else if (window.refreshModalById && window.refreshModalById[id]) {
-      fn = window.refreshModalById[id];
-    }
-    try { fn && fn(); } catch(e){ console.warn('[ModalRefresh] error in', fnName || '(registered fn)', e); }
-  })();
-
-});
+  });
   // Then open the requested modal
   document.getElementById(id).style.display = 'block';
   document.body.classList.add('modal-open');
@@ -9512,47 +9491,39 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script id="songsearch-focus-refresh">
-(function(){
-  var MODAL_ID = 'searchModal';
-  function isOpen(modal){
-    if (!modal) return false;
-    var cs = getComputedStyle(modal);
-    return cs.display !== 'none' && modal.offsetParent !== null;
-  }
-  function refreshIfOpen(){
-    var modal = document.getElementById(MODAL_ID);
-    if (isOpen(modal) && typeof window.refreshSongSearch === 'function'){
-      try { window.refreshSongSearch(); } catch(e) { /* no-op */ }
-    }
-  }
-  window.addEventListener('focus', refreshIfOpen);
-  document.addEventListener('visibilitychange', function(){
-    if (!document.hidden) refreshIfOpen();
-  });
-})();
-</script>
 <script id="songsearch-update-helper">
 (function(){
   window.__showSongSearchUpdated = function(){
     var modal = document.getElementById('searchModal');
     if (!modal) return;
     var host = modal.querySelector('.modal-content') || modal;
-    // remove any existing badge
     var old = host.querySelector('.update-badge');
     if (old && old.parentNode) old.parentNode.removeChild(old);
-    // build badge
     var b = document.createElement('div');
     b.className = 'update-badge';
     b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Updated just now</span>';
     host.appendChild(b);
-    // animate in
     requestAnimationFrame(function(){ b.classList.add('show'); });
-    // auto remove after 2.2s with fade
-    setTimeout(function(){
-      b.classList.remove('show');
-      setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 220);
-    }, 2000);
+    setTimeout(function(){ b.classList.remove('show'); setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 220); }, 2000);
+  };
+})();
+</script>
+<script id="songsearch-refresh-fn">
+(function(){
+  window.refreshSongSearch = function(){
+    try{
+      var url = "playout_log_rolling.json";
+      url += (url.indexOf("?")===-1?"?":"&")+"ts="+Date.now();
+      fetch(url, {cache:"no-store"})
+        .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+        .then(function(data){
+          window.fullData = data;
+          if (typeof populateDropdowns === "function") populateDropdowns(data);
+          if (typeof renderTable === "function") renderTable(data);
+          if (typeof window.__showSongSearchUpdated === "function") window.__showSongSearchUpdated();
+        })
+        .catch(function(e){ console.warn("[SongSearch] refresh error", e); });
+    }catch(e){ console.warn("[SongSearch] exception", e); }
   };
 })();
 </script>
