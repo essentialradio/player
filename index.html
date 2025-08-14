@@ -9591,11 +9591,58 @@ if ('serviceWorker' in navigator) {
 
 
 
+
 <script id="np-parser-override">
 (function(){
   function np_decode(s){ try{ return decodeURIComponent(s||""); }catch(_){ return s||""; } }
 
-  // Only dash-based parsing: "Artist1, Artist2 – Title" or "Artist – Title"
+  // Build artist from structured fields if present (artist1, artist2, artists[], etc.)
+  function extractStructured(data){
+    var artist = "", title = "";
+    if (!data || typeof data !== "object") return { artist:"", title:"" };
+
+    // Collect artist parts from artist1..artist6, Artist1.., and artists[] arrays
+    var parts = [];
+    for (var i=1;i<=6;i++){
+      var k1 = data["artist"+i], k2 = data["Artist"+i];
+      if (k1) parts.push(String(k1).trim());
+      if (k2) parts.push(String(k2).trim());
+    }
+    if (Array.isArray(data.artists))  parts = parts.concat(data.artists.map(function(x){ return String(x||"").trim(); }));
+    if (Array.isArray(data.Artists))  parts = parts.concat(data.Artists.map(function(x){ return String(x||"").trim(); }));
+
+    // If no parts, fall back to single artist fields
+    if (!parts.length){
+      var singleArtistKeys = ["artist","Artist","artistName","artist_name","performer","Performer"];
+      for (var si=0; si<singleArtistKeys.length; si++){
+        var v = data[singleArtistKeys[si]];
+        if (v){ artist = String(v).trim(); break; }
+      }
+    } else {
+      // Deduplicate while preserving order
+      var seen = Object.create(null);
+      var dedup = [];
+      for (var pi=0; pi<parts.length; pi++){
+        var p = parts[pi];
+        if (!p) continue;
+        var key = p.toLowerCase();
+        if (seen[key]) continue;
+        seen[key] = true;
+        dedup.push(p);
+      }
+      artist = dedup.join(", ");
+    }
+
+    // Title fields
+    var titleKeys = ["title","Title","track","Track","trackTitle","track_title","song","Song"];
+    for (var ti=0; ti<titleKeys.length; ti++){
+      var tv = data[titleKeys[ti]];
+      if (tv){ title = String(tv).trim(); break; }
+    }
+    return { artist: artist, title: title };
+  }
+
+  // Dash-only parsing for raw strings
   function parseNowPlayingString(raw){
     var s = String(raw||"").trim();
     if (!s) return null;
@@ -9607,31 +9654,39 @@ if ('serviceWorker' in navigator) {
       var title  = s.slice(idx + sep.length).trim();
       if (artist || title) return { artist: artist, title: title };
     }
-    // No dash: try single split on the FIRST comma only
-    var commaIndex = s.indexOf(',');
-    if (commaIndex > 0){
-      var a2 = s.slice(0, commaIndex).trim();
-      var t2 = s.slice(commaIndex + 1).trim();
+    // If no dash, allow a single first-comma split as a rescue for "Artist, Title" feeds ONLY.
+    var c = s.indexOf(',');
+    if (c > 0){
+      var a2 = s.slice(0, c).trim();
+      var t2 = s.slice(c + 1).trim();
       if (a2 || t2) return { artist: a2, title: t2 };
     }
     return null;
   }
 
-  // Safe DOM write: preserve all commas/ampersands as-is (textContent)
+  // Multi-target writer so other components stay in sync, and preserve commas/ampersands via textContent
+  var ARTIST_SELECTORS = ["#np-artist",".np-artist",".now-artist","[data-role='artist']"];
+  var TITLE_SELECTORS  = ["#np-title", ".np-title", ".now-title", "[data-role='title']"];
+
   function setNowPlayingSafe(artist, title){
-    var tEl = document.getElementById("np-title");
-    var aEl = document.getElementById("np-artist");
-    if (tEl) tEl.textContent = (title || "More music soon");
-    if (aEl) aEl.textContent = (artist || "");
-    // remember full values for any later enforcement
-    if (aEl) aEl.dataset.artistRaw = (artist || "");
-    if (tEl) tEl.dataset.titleRaw  = (title  || "");
-    try { document.title = (title ? (title + " – " + (artist||"")) : document.title); } catch(_){}
+    var a = (artist==null?"":String(artist)).trim();
+    var t = (title ==null?"":String(title )).trim();
+    // write title
+    for (var i=0;i<TITLE_SELECTORS.length;i++){
+      var tEl = document.querySelector(TITLE_SELECTORS[i]);
+      if (tEl){ tEl.textContent = t || "More music soon"; tEl.dataset.titleRaw = t; }
+    }
+    // write artist
+    for (var j=0;j<ARTIST_SELECTORS.length;j++){
+      var aEl = document.querySelector(ARTIST_SELECTORS[j]);
+      if (aEl){ aEl.textContent = a; aEl.dataset.artistRaw = a; }
+    }
+    // also stash globals for enforcement and update tab title
+    try { window.NP_FULL_ARTIST = a; window.NP_TITLE = t; if (t) document.title = t + " – " + a; } catch(_){}
   }
   window.setNowPlayingSafe = setNowPlayingSafe;
 
   function showMoreMusicSoonNP(){
-    if (typeof window.showMoreMusicSoon === 'function') { try { window.showMoreMusicSoon(); return; } catch(_e){} }
     setNowPlayingSafe("", "");
   }
 
@@ -9642,7 +9697,6 @@ if ('serviceWorker' in navigator) {
     });
   }
 
-  // Prefer same-origin to avoid CORS; then fall back to www + GitHub
   var base = (location && location.origin) ? location.origin : "";
   var NP_ENDPOINTS = [
     base + "/player/latestTrack.json",
@@ -9668,14 +9722,13 @@ if ('serviceWorker' in navigator) {
   // OVERRIDE main
   window.fetchNowPlaying = function fetchNowPlaying(){
     return fetchFirstOK(NP_ENDPOINTS).then(function(data){
-      // Structured JSON preferred
-      var artist = (data && (data.artist || data.Artist)) ? String(data.artist || data.Artist).trim() : "";
-      var title  = (data && (data.title  || data.Title )) ? String(data.title  || data.Title ).trim() : "";
-      if (artist || title){
-        setNowPlayingSafe(artist, title);
+      // 1) Try structured extraction first (handles artist1, artist2, artists[])
+      var pair = extractStructured(data);
+      if (pair.artist || pair.title){
+        setNowPlayingSafe(pair.artist, pair.title);
         return;
       }
-      // Otherwise try dash-only parsing of a raw field
+      // 2) Fall back to raw field parsing
       var rawField = data && (data.nowPlaying || data.track || data.title) || "";
       var raw = typeof rawField === "object" ? (rawField.title || rawField.nowPlaying || "") : String(rawField || "");
       raw = np_decode(raw);
@@ -9686,12 +9739,35 @@ if ('serviceWorker' in navigator) {
       }
       showMoreMusicSoonNP();
     }).catch(function(err){
-      try { if (window.__errorOverlay) { window.__errorOverlay.textContent = "[NowPlaying] " + (err && err.message || String(err)); window.__errorOverlay.style.display = "block"; } } catch(_e){}
+      try { if (window.__errorOverlay) { window.__errorOverlay.textContent = "[NowPlaying] " + (err && err.message || String(err)); window.__errorOverlay.style.display = "block"; } } catch(_){}
       showMoreMusicSoonNP();
     });
   };
+
+  // Enforce against late truncation to the last-artist segment from other scripts
+  if (typeof MutationObserver !== "undefined"){
+    var mo = new MutationObserver(function(){
+      try {
+        var full = window.NP_FULL_ARTIST || "";
+        if (!full || !full.includes(",")) return;
+        var last = full.split(",").pop().trim();
+        // Restore full across all targets if any got changed to only the last segment
+        for (var k=0;k<ARTIST_SELECTORS.length;k++){
+          var el = document.querySelector(ARTIST_SELECTORS[k]);
+          if (el){
+            var current = (el.textContent||"").trim();
+            if (current && current === last && current !== full){
+              el.textContent = full;
+            }
+          }
+        }
+      } catch(_){}
+    });
+    mo.observe(document.documentElement, { childList:true, subtree:true, characterData:true });
+  }
 })();
 </script>
+
 
 
 
