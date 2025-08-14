@@ -2,7 +2,6 @@
 
 <html data-theme="light" lang="en">
 <head>
-<script>window.DISABLE_INLINE_NOWPLAYING=true;</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
@@ -5778,7 +5777,6 @@ let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
 async function fetchNowPlaying() {
-  if (window.DISABLE_INLINE_NOWPLAYING) return;
   try {
     const res = await fetch('/api/metadata', { cache: 'no-store' });
     const data = await res.json();
