@@ -5796,48 +5796,17 @@ async function fetchNowPlaying() {
       artist = raw.substring(0, idx).trim();
       title  = raw.substring(idx + sep.length).trim();
     
-    
     } else {
-      // Fallbacks when no dash separator is present:
-      // 1) Try simple "Artist, Title" (split on the FIRST comma)
-      let usedComma = false;
-      if (raw.includes(',')) {
-        const c = raw.indexOf(',');
-        const a = raw.slice(0, c).trim();
-        const t = raw.slice(c + 1).trim();
-        if (a || t) {
-          artist = a;
-          title  = t;
-          usedComma = true;
-        }
-      }
-      if (!usedComma || (!artist && !title)) {
-        // 2) Structured fallback: fetch latestTrack.json and use {artist,title} directly
-        try {
-          const url = "https://essentialradio.github.io/player/latestTrack.json?ts=" + Date.now();
-          const r = await fetch(url, { cache: "no-store" });
-          if (r.ok) {
-            const j = await r.json();
-            const a2 = (j.artist || j.Artist || "").trim();
-            const t2 = (j.title  || j.Title  || "").trim();
-            if (a2 || t2) {
-              artist = a2;
-              title  = t2;
-            } else {
-              showMoreMusicSoon();
-              return;
-            }
-          } else {
-            showMoreMusicSoon();
-            return;
-          }
-        } catch (_e) {
-          showMoreMusicSoon();
+      // Fallback: try simple "Artist, Title" (split on the FIRST comma)
+      const c = raw.indexOf(',');
+      if (c > 0) {
+        artist = raw.slice(0, c).trim();
+        title  = raw.slice(c + 1).trim();
+        if (!artist || !title) {
+          showMoreMusicSoon(); // missing parts after split
           return;
         }
-      }
-    }
-} else {
+      } else {
         // No valid title/artist format
         showMoreMusicSoon();
         return;
