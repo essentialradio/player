@@ -2,6 +2,7 @@
 
 <html data-theme="light" lang="en">
 <head>
+<script>window.DISABLE_INLINE_NOWPLAYING=true;</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
@@ -5777,6 +5778,7 @@ let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
 async function fetchNowPlaying() {
+  if (window.DISABLE_INLINE_NOWPLAYING) return;
   try {
     const res = await fetch('/api/metadata', { cache: 'no-store' });
     const data = await res.json();
@@ -5986,7 +5988,7 @@ let nowPlayingInterval = null;
 let recentInterval = null;
 
 function startIntervals() {
-  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
+  if (!nowPlayingInterval) nowPlayingInterval = /* setInterval(fetchNowPlaying, 15000) -- disabled in favor of nowplaying-refresh.js */;
   if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
 }
 function stopIntervals() {
@@ -5995,14 +5997,14 @@ function stopIntervals() {
 }
 
 // Always fetch once on page load
-fetchNowPlaying();
+/* fetchNowPlaying(); disabled (external updater in control) */
 fetchRecentFromGitHub();
 startIntervals();
 
 // On tab visibility change, only run when visible
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
-    fetchNowPlaying();
+    /* fetchNowPlaying(); disabled (external updater in control) */
     fetchRecentFromGitHub();
     startIntervals();
   } else {
@@ -6199,12 +6201,12 @@ window.addEventListener('keydown', function(e) {
 });
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
-    fetchNowPlaying();
+    /* fetchNowPlaying(); disabled (external updater in control) */
     fetchRecentFromGitHub();
   }
 });
 window.addEventListener('focus', () => {
-  fetchNowPlaying();
+  /* fetchNowPlaying(); disabled (external updater in control) */
   fetchRecentFromGitHub();
 });
 
@@ -6212,7 +6214,7 @@ window.addEventListener('focus', () => {
 // Attach click event to refresh button to manually refresh now playing information and the recent track list
 document.getElementById('refresh-now-playing')?.addEventListener('click', () => {
   // Immediately fetch the latest now playing info
-  fetchNowPlaying();
+  /* fetchNowPlaying(); disabled (external updater in control) */
   // Also refresh the recent songs list
   fetchRecentFromGitHub();
 });
