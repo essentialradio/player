@@ -5988,7 +5988,7 @@ let nowPlayingInterval = null;
 let recentInterval = null;
 
 function startIntervals() {
-  if (!nowPlayingInterval) nowPlayingInterval = /* setInterval(fetchNowPlaying, 15000) -- disabled in favor of nowplaying-refresh.js */;
+  if (!nowPlayingInterval) { /* disabled in favor of nowplaying-refresh.js */ }
   if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
 }
 function stopIntervals() {
