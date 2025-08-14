@@ -4182,6 +4182,44 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
+<style>
+
+/* === Enforce mobile-only visibility for Song Search refresh icon === */
+#searchModal .ss-mobile-refresh{ display:none !important; }
+@media (max-width: 768px){
+  #searchModal .ss-mobile-refresh{ display:inline-block !important; }
+}
+/* Hide any legacy mobile refresh IDs on desktop too */
+#searchModal #mobileRefreshBtn{ display:none !important; }
+@media (max-width: 768px){
+  #searchModal #mobileRefreshBtn{ display:inline-block !important; }
+}
+
+</style>
+<style>
+
+/* === Mobile-only yellow Refresh button beside Reset === */
+.btn-refresh-mobile{
+  display:none;                    /* hidden on desktop */
+  margin-left: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0a800;
+  background: #ffc107;            /* Bootstrap-like warning yellow */
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-refresh-mobile:active { transform: translateY(1px); }
+/* Show only on small screens */
+@media (max-width: 768px){
+  #searchModal .btn-refresh-mobile{ display:inline-block; }
+}
+/* Hide the older mobile header icon version if present */
+#searchModal .ss-mobile-refresh{ display:none !important; }
+
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5194,6 +5232,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <label for="searchInput">Filter:</label>
 <input id="searchInput" placeholder="Search by Artist or Title..." type="text"/>
 <button id="resetFilters">Reset</button>
+<button id="mobileRefreshYellow" class="btn-refresh-mobile" type="button">Refresh</button>
+
 </div>
 <table style="width:100%;border-collapse:collapse;margin-top:0.7rem;color:#fff;font-size:17px;border-radius:8px;overflow:hidden">
 <thead style="color:#7e1974;font-size:17.5px">
@@ -9645,6 +9685,51 @@ async function mobileSongSearchRefresh(){
     if (btn){ btn.disabled = false; btn.textContent = '↻'; }
   }
 }
+</script>
+
+
+<script>
+(function(){
+  function enforceMobileOnly(){
+    var btn = document.querySelector('#searchModal .ss-mobile-refresh, #searchModal #mobileRefreshBtn');
+    if (!btn) return;
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    btn.style.display = isMobile ? '' : 'none';
+  }
+  window.addEventListener('resize', enforceMobileOnly);
+  window.addEventListener('load', enforceMobileOnly);
+  // Also run when the modal opens (if your app dispatches a custom event, you can hook it here)
+  enforceMobileOnly();
+})();
+</script>
+
+
+<script id="wire-mobile-refresh-yellow">
+(function(){
+  function handler(){
+    if (typeof mobileSongSearchRefresh === 'function') {
+      mobileSongSearchRefresh();
+    } else if (typeof refreshSongSearch === 'function') {
+      refreshSongSearch();
+    } else if (typeof renderTable === 'function') {
+      renderTable(window.fullData || []);
+    }
+  }
+  function init(){
+    var btn = document.getElementById('mobileRefreshYellow');
+    if (btn && !btn.__wired){
+      btn.addEventListener('click', handler);
+      btn.__wired = true;
+    }
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+  // Also re-init on modal open (if your app re-renders portions)
+  window.addEventListener('focus', init);
+})();
 </script>
 
 </body><style>
