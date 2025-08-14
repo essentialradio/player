@@ -8075,12 +8075,12 @@ const liveBox = document.querySelector(".live-indicator");
   function s(){ try { return (window.shareSentence && window.shareSentence()) || ""; } catch(e){ return ""; } }
   function build(pf){
     var text = s() || "";
-    var link = " https://essential.radio";
+    var link = " https://www.essential.radio";
     var p = (pf||"").toLowerCase();
     if (p === 'whatsapp' || p === 'wa') return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text + link);
     if (p === 'twitter' || p === 'x')   return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text + link);
     if (p === 'facebook' || p === 'fb'){
-      var u = 'https://essential.radio';
+      var u = 'https://www.essential.radio';
       return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(text);
     }
     return '#';
@@ -8174,7 +8174,7 @@ const liveBox = document.querySelector(".live-indicator");
     var p = norm(platform);
     var text = shareSentence() || "";
     var cleanQuote = text.replace(/\s*https?:\/\/essential\.radio\/?/i, "").trim();
-    var link = " https://essential.radio";
+    var link = " https://www.essential.radio";
     if (p === 'whatsapp'){
       return 'https://api.whatsapp.com/send?text=' + encodeURIComponent((text || cleanQuote) + link);
     }
@@ -8182,7 +8182,7 @@ const liveBox = document.querySelector(".live-indicator");
       return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
     }
     if (p === 'facebook'){
-      var u = 'https://essential.radio';
+      var u = 'https://www.essential.radio';
       return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
     }
     return '#';
@@ -8412,7 +8412,7 @@ const liveBox = document.querySelector(".live-indicator");
     return "I'm listening to Essential Radio";
   }
   function buildHref(platform){
-    var text=shareSentence(); var url='https://essential.radio'; var p=(platform||'').toLowerCase();
+    var text=shareSentence(); var url='https://www.essential.radio'; var p=(platform||'').toLowerCase();
     if(p==='whatsapp'||p==='wa') return 'https://api.whatsapp.com/send?text='+encodeURIComponent(text+' '+url);
     if(p==='twitter'||p==='x')   return 'https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
     if(p==='facebook'||p==='fb') return 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url)+'&quote='+encodeURIComponent(text);
@@ -9633,8 +9633,8 @@ if ('serviceWorker' in navigator) {
 
   var base = (location && location.origin) ? location.origin : "";
   var NP_ENDPOINTS = [
-    base + "/player/latestTrack.json",
-    base + "/player/nowplaying.json",
+    (location && location.origin ? location.origin : "") + "/player/latestTrack.json",
+    (location && location.origin ? location.origin : "") + "/player/nowplaying.json",
     "https://www.essential.radio/player/latestTrack.json",
     "https://www.essential.radio/player/nowplaying.json",
     "https://essentialradio.github.io/player/latestTrack.json",
@@ -9765,6 +9765,18 @@ if ('serviceWorker' in navigator) {
       aEl.textContent = full;
     }
   }, 2000);
+})();
+</script>
+
+
+<script id="np-interval-guard">
+(function(){
+  try { if (window.npTimer) { clearInterval(window.npTimer); } } catch(_) {}
+  // Poll every 30s; call once immediately
+  try { if (typeof window.fetchNowPlaying === "function") { window.fetchNowPlaying(); } } catch(_) {}
+  window.npTimer = setInterval(function(){
+    try { if (typeof window.fetchNowPlaying === "function") { window.fetchNowPlaying(); } } catch(_){}
+  }, 30000);
 })();
 </script>
 
