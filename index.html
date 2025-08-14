@@ -11,7 +11,7 @@
     /* --- NAVBAR & MODALS ONLY --- */
     @media (max-width: 750px) {
   .navbar { display: none !important; }
-  #burgerMenuBtn { display: block !important; }
+  #burgerMenuBtn { display: block !importantF; }
 }
 @media (min-width: 751px) {
   #burgerMenuBtn, #burgerDropdown { display: none !important; }
@@ -9776,7 +9776,7 @@ if ('serviceWorker' in navigator) {
   try { if (typeof window.fetchNowPlaying === "function") { window.fetchNowPlaying(); } } catch(_) {}
   window.npTimer = setInterval(function(){
     try { if (typeof window.fetchNowPlaying === "function") { window.fetchNowPlaying(); } } catch(_){}
-  }, 30000);
+  }, 15000);
 })();
 </script>
 
