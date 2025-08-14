@@ -5795,10 +5795,24 @@ async function fetchNowPlaying() {
       const idx = raw.indexOf(sep); // ✅ FIX: was lastIndexOf
       artist = raw.substring(0, idx).trim();
       title  = raw.substring(idx + sep.length).trim();
+    
     } else {
-      showMoreMusicSoon();  // No valid title/artist format
-      return;
+      // Fallback: try simple "Artist, Title" (split on the FIRST comma)
+      const c = raw.indexOf(',');
+      if (c > 0) {
+        artist = raw.slice(0, c).trim();
+        title  = raw.slice(c + 1).trim();
+        if (!artist || !title) {
+          showMoreMusicSoon(); // missing parts after split
+          return;
+        }
+      } else {
+        // No valid title/artist format
+        showMoreMusicSoon();
+        return;
+      }
     }
+
 
     const newTrackID = `${artist} – ${title}`;
 
@@ -8075,12 +8089,12 @@ const liveBox = document.querySelector(".live-indicator");
   function s(){ try { return (window.shareSentence && window.shareSentence()) || ""; } catch(e){ return ""; } }
   function build(pf){
     var text = s() || "";
-    var link = " https://www.essential.radio";
+    var link = " https://essential.radio";
     var p = (pf||"").toLowerCase();
     if (p === 'whatsapp' || p === 'wa') return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text + link);
     if (p === 'twitter' || p === 'x')   return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text + link);
     if (p === 'facebook' || p === 'fb'){
-      var u = 'https://www.essential.radio';
+      var u = 'https://essential.radio';
       return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(text);
     }
     return '#';
@@ -8174,7 +8188,7 @@ const liveBox = document.querySelector(".live-indicator");
     var p = norm(platform);
     var text = shareSentence() || "";
     var cleanQuote = text.replace(/\s*https?:\/\/essential\.radio\/?/i, "").trim();
-    var link = " https://www.essential.radio";
+    var link = " https://essential.radio";
     if (p === 'whatsapp'){
       return 'https://api.whatsapp.com/send?text=' + encodeURIComponent((text || cleanQuote) + link);
     }
@@ -8182,7 +8196,7 @@ const liveBox = document.querySelector(".live-indicator");
       return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent((text || cleanQuote) + link);
     }
     if (p === 'facebook'){
-      var u = 'https://www.essential.radio';
+      var u = 'https://essential.radio';
       return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u) + '&quote=' + encodeURIComponent(cleanQuote);
     }
     return '#';
@@ -8412,7 +8426,7 @@ const liveBox = document.querySelector(".live-indicator");
     return "I'm listening to Essential Radio";
   }
   function buildHref(platform){
-    var text=shareSentence(); var url='https://www.essential.radio'; var p=(platform||'').toLowerCase();
+    var text=shareSentence(); var url='https://essential.radio'; var p=(platform||'').toLowerCase();
     if(p==='whatsapp'||p==='wa') return 'https://api.whatsapp.com/send?text='+encodeURIComponent(text+' '+url);
     if(p==='twitter'||p==='x')   return 'https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
     if(p==='facebook'||p==='fb') return 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url)+'&quote='+encodeURIComponent(text);
@@ -9557,318 +9571,6 @@ if ('serviceWorker' in navigator) {
   } else {
     init();
   }
-})();
-</script>
-
-
-<script id="safe-error-overlay">
-(function(){
-  if (window.__errorOverlay) return;
-  var overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:9999;background:#8b0000;color:#fff;font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;padding:10px;display:none;white-space:pre-wrap;';
-  overlay.id = '__errorOverlay';
-  document.addEventListener('click', function(){ overlay.style.display='none'; });
-  window.__errorOverlay = overlay;
-  document.body && document.body.appendChild(overlay);
-  function show(msg){
-    try {
-      if (!document.body.contains(overlay)) document.body.appendChild(overlay);
-      overlay.textContent = 'JavaScript error:\\n' + msg + '\\n(tap to dismiss)';
-      overlay.style.display = 'block';
-    } catch(e){}
-  }
-  window.addEventListener('error', function(e){ show((e && e.message)||String(e)); });
-  window.addEventListener('unhandledrejection', function(e){
-    var m = (e && e.reason && (e.reason.message||String(e.reason))) || 'Unhandled promise rejection';
-    show(m);
-  });
-  // If body isn't ready yet, append soon
-  if (!document.body) document.addEventListener('DOMContentLoaded', function(){ document.body.appendChild(overlay); }, {once:true});
-})();
-</script>
-
-
-
-
-
-
-<script id="np-parser-override">
-(function(){
-  function np_decode(s){ try{ return decodeURIComponent(s||""); }catch(_){ return s||""; } }
-
-  // Build artist from structured fields if present (artist1, artist2, artists[], etc.)
-  function extractStructured(data){
-    var artist = "", title = "";
-    if (!data || typeof data !== "object") return { artist:"", title:"" };
-
-    // Collect artist parts from artist1..artist6, Artist1.., and artists[] arrays
-    var parts = [];
-    for (var i=1;i<=6;i++){
-      var k1 = data["artist"+i], k2 = data["Artist"+i];
-      if (k1) parts.push(String(k1).trim());
-      if (k2) parts.push(String(k2).trim());
-    }
-    if (Array.isArray(data.artists))  parts = parts.concat(data.artists.map(function(x){ return String(x||"").trim(); }));
-    if (Array.isArray(data.Artists))  parts = parts.concat(data.Artists.map(function(x){ return String(x||"").trim(); }));
-
-    // If no parts, fall back to single artist fields
-    if (!parts.length){
-      var singleArtistKeys = ["artist","Artist","artistName","artist_name","performer","Performer"];
-      for (var si=0; si<singleArtistKeys.length; si++){
-        var v = data[singleArtistKeys[si]];
-        if (v){ artist = String(v).trim(); break; }
-      }
-    } else {
-      // Deduplicate while preserving order
-      var seen = Object.create(null);
-      var dedup = [];
-      for (var pi=0; pi<parts.length; pi++){
-        var p = parts[pi];
-        if (!p) continue;
-        var key = p.toLowerCase();
-        if (seen[key]) continue;
-        seen[key] = true;
-        dedup.push(p);
-      }
-      artist = dedup.join(", ");
-    }
-
-    // Title fields
-    var titleKeys = ["title","Title","track","Track","trackTitle","track_title","song","Song"];
-    for (var ti=0; ti<titleKeys.length; ti++){
-      var tv = data[titleKeys[ti]];
-      if (tv){ title = String(tv).trim(); break; }
-    }
-    return { artist: artist, title: title };
-  }
-
-  // Dash-only parsing for raw strings
-  function parseNowPlayingString(raw){
-    var s = String(raw||"").trim();
-    if (!s) return null;
-    var sepMatch = s.match(/\s(?:-|–|—)\s/);
-    if (sepMatch){
-      var sep = sepMatch[0];
-      var idx = s.indexOf(sep);
-      var artist = s.slice(0, idx).trim();
-      var title  = s.slice(idx + sep.length).trim();
-      if (artist || title) return { artist: artist, title: title };
-    }
-    // If no dash, allow a single first-comma split as a rescue for "Artist, Title" feeds ONLY.
-    var c = s.indexOf(',');
-    if (c > 0){
-      var a2 = s.slice(0, c).trim();
-      var t2 = s.slice(c + 1).trim();
-      if (a2 || t2) return { artist: a2, title: t2 };
-    }
-    return null;
-  }
-
-  // Multi-target writer so other components stay in sync, and preserve commas/ampersands via textContent
-  var ARTIST_SELECTORS = ["#np-artist",".np-artist",".now-artist","[data-role='artist']"];
-  var TITLE_SELECTORS  = ["#np-title", ".np-title", ".now-title", "[data-role='title']"];
-
-  function setNowPlayingSafe(artist, title){
-    var a = (artist==null?"":String(artist)).trim();
-    var t = (title ==null?"":String(title )).trim();
-    // write title
-    for (var i=0;i<TITLE_SELECTORS.length;i++){
-      var tEl = document.querySelector(TITLE_SELECTORS[i]);
-      if (tEl){ tEl.textContent = t || "More music soon"; tEl.dataset.titleRaw = t; }
-    }
-    // write artist
-    for (var j=0;j<ARTIST_SELECTORS.length;j++){
-      var aEl = document.querySelector(ARTIST_SELECTORS[j]);
-      if (aEl){ aEl.textContent = a; aEl.dataset.artistRaw = a; }
-    }
-    // also stash globals for enforcement and update tab title
-    try { window.NP_FULL_ARTIST = a; window.NP_TITLE = t; if (t) document.title = t + " – " + a; } catch(_){}
-  }
-  window.setNowPlayingSafe = setNowPlayingSafe;
-
-  function showMoreMusicSoonNP(){
-    setNowPlayingSafe("", "");
-  }
-
-  function fetchJSON(url){
-    return fetch(url, { cache:"no-store" }).then(function(res){
-      if (!res.ok) throw new Error("HTTP "+res.status+" @ "+url);
-      return res.json();
-    });
-  }
-
-  var base = (location && location.origin) ? location.origin : "";
-  var NP_ENDPOINTS = [
-    base + "/player/latestTrack.json",
-    base + "/player/nowplaying.json",
-    "https://www.essential.radio/player/latestTrack.json",
-    "https://www.essential.radio/player/nowplaying.json",
-    "https://essentialradio.github.io/player/latestTrack.json",
-    "https://essentialradio.github.io/player/nowplaying.json"
-  ];
-
-  function fetchFirstOK(urls){
-    var i = 0;
-    function next(){
-      if (i>=urls.length) return Promise.reject(new Error("All endpoints failed"));
-      var u = urls[i++];
-      if (!u || u.indexOf("undefined")>=0) return next();
-      u = u + (u.indexOf("?")===-1?"?":"&") + "ts=" + Date.now();
-      return fetchJSON(u).catch(function(){ return next(); });
-    }
-    return next();
-  }
-
-  // OVERRIDE main
-  window.fetchNowPlaying = function fetchNowPlaying(){
-    return fetchFirstOK(NP_ENDPOINTS).then(function(data){
-      // 1) Try structured extraction first (handles artist1, artist2, artists[])
-      var pair = extractStructured(data);
-      if (pair.artist || pair.title){
-        setNowPlayingSafe(pair.artist, pair.title);
-        return;
-      }
-      // 2) Fall back to raw field parsing
-      var rawField = data && (data.nowPlaying || data.track || data.title) || "";
-      var raw = typeof rawField === "object" ? (rawField.title || rawField.nowPlaying || "") : String(rawField || "");
-      raw = np_decode(raw);
-      var parsed = parseNowPlayingString(raw);
-      if (parsed && (parsed.artist || parsed.title)){
-        setNowPlayingSafe(parsed.artist || "", parsed.title || "");
-        return;
-      }
-      showMoreMusicSoonNP();
-    }).catch(function(err){
-      try { if (window.__errorOverlay) { window.__errorOverlay.textContent = "[NowPlaying] " + (err && err.message || String(err)); window.__errorOverlay.style.display = "block"; } } catch(_){}
-      showMoreMusicSoonNP();
-    });
-  };
-
-  // Enforce against late truncation to the last-artist segment from other scripts
-  if (typeof MutationObserver !== "undefined"){
-    var mo = new MutationObserver(function(){
-      try {
-        var full = window.NP_FULL_ARTIST || "";
-        if (!full || !full.includes(",")) return;
-        var last = full.split(",").pop().trim();
-        // Restore full across all targets if any got changed to only the last segment
-        for (var k=0;k<ARTIST_SELECTORS.length;k++){
-          var el = document.querySelector(ARTIST_SELECTORS[k]);
-          if (el){
-            var current = (el.textContent||"").trim();
-            if (current && current === last && current !== full){
-              el.textContent = full;
-            }
-          }
-        }
-      } catch(_){}
-    });
-    mo.observe(document.documentElement, { childList:true, subtree:true, characterData:true });
-  }
-})();
-</script>
-
-
-
-
-
-
-<script id="np-preserve-multiartist">
-(function(){
-  // Wrap setNowPlayingSafe to *never* split artists by comma
-  var origSet = window.setNowPlayingSafe || function(a,t){
-    var tEl = document.getElementById("np-title");
-    var aEl = document.getElementById("np-artist");
-    if (tEl) tEl.textContent = t || "More music soon";
-    if (aEl) aEl.textContent = a || "";
-  };
-  window.setNowPlayingSafe = function(artist, title){
-    // Ensure full artist string (including commas) is preserved
-    var a = (artist==null ? "" : String(artist)).trim();
-    var t = (title ==null ? "" : String(title )).trim();
-    // Do *not* split a by comma under any circumstances
-    var aEl = document.getElementById("np-artist");
-    var tEl = document.getElementById("np-title");
-    if (aEl) aEl.textContent = a;
-    if (tEl) tEl.textContent = t || "More music soon";
-    // Keep original for any other consumers
-    aEl && (aEl.dataset.artistRaw = a);
-    tEl && (tEl.dataset.titleRaw = t);
-    try { origSet(a, t); } catch(_) {}
-  };
-})();
-</script>
-
-
-<script id="np-multiartist-enforcer">
-(function(){
-  // Ensure we always keep the full artist string (including commas)
-  var _setNowPlayingSafe = window.setNowPlayingSafe || function(a,t){
-    var tEl = document.getElementById("np-title");
-    var aEl = document.getElementById("np-artist");
-    if (tEl) tEl.textContent = t || "More music soon";
-    if (aEl) aEl.textContent = a || "";
-  };
-
-  function applyNowPlaying(artist, title){
-    window.NP_FULL_ARTIST = (artist==null ? "" : String(artist)).trim();
-    window.NP_TITLE       = (title ==null ? "" : String(title )).trim();
-    // Write both
-    var aEl = document.getElementById("np-artist");
-    var tEl = document.getElementById("np-title");
-    if (aEl) { aEl.textContent = window.NP_FULL_ARTIST; aEl.dataset.artistRaw = window.NP_FULL_ARTIST; }
-    if (tEl) { tEl.textContent = window.NP_TITLE || "More music soon"; tEl.dataset.titleRaw = window.NP_TITLE; }
-    try { _setNowPlayingSafe(window.NP_FULL_ARTIST, window.NP_TITLE); } catch(_){}
-
-    // Also update tab title if present
-    try {
-      if (window.NP_TITLE) document.title = window.NP_TITLE + " – " + window.NP_FULL_ARTIST;
-    } catch(_){}
-  }
-
-  // Replace setNowPlayingSafe globally
-  window.setNowPlayingSafe = applyNowPlaying;
-
-  // Enforce full artist against any late mutation that truncates to the last artist
-  var target = document.getElementById("np-artist");
-  if (target && typeof MutationObserver !== "undefined"){
-    var mo = new MutationObserver(function(){
-      try {
-        var full = window.NP_FULL_ARTIST || "";
-        if (!full) return;
-        var current = target.textContent.trim();
-        // If full has a comma and current equals the LAST segment after a comma, restore
-        if (full.includes(",")){
-          var last = full.split(",").pop().trim();
-          if (current && current === last && current !== full){
-            target.textContent = full;
-          }
-        }
-      } catch(_){}
-    });
-    mo.observe(target, { characterData: true, subtree: true, childList: true });
-  }
-
-  // Light heartbeat to re-assert full artist occasionally (covers full re-renders)
-  setInterval(function(){
-    var full = window.NP_FULL_ARTIST || "";
-    var aEl = document.getElementById("np-artist");
-    if (aEl && full && aEl.textContent.trim() !== full){
-      aEl.textContent = full;
-    }
-  }, 2000);
-})();
-</script>
-
-
-<script id="np-interval-guard">
-(function(){
-  try { if (window.npTimer) { clearInterval(window.npTimer); } } catch(_) {}
-  // Poll every 30s; call once immediately
-  try { if (typeof window.fetchNowPlaying === "function") { window.fetchNowPlaying(); } } catch(_) {}
-  window.npTimer = setInterval(function(){
-    try { if (typeof window.fetchNowPlaying === "function") { window.fetchNowPlaying(); } } catch(_){}
-  }, 15000);
 })();
 </script>
 
