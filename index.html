@@ -5795,24 +5795,10 @@ async function fetchNowPlaying() {
       const idx = raw.indexOf(sep); // ✅ FIX: was lastIndexOf
       artist = raw.substring(0, idx).trim();
       title  = raw.substring(idx + sep.length).trim();
-    
     } else {
-      // Fallback: try simple "Artist, Title" (split on the FIRST comma)
-      const c = raw.indexOf(',');
-      if (c > 0) {
-        artist = raw.slice(0, c).trim();
-        title  = raw.slice(c + 1).trim();
-        if (!artist || !title) {
-          showMoreMusicSoon(); // missing parts after split
-          return;
-        }
-      } else {
-        // No valid title/artist format
-        showMoreMusicSoon();
-        return;
-      }
+      showMoreMusicSoon();  // No valid title/artist format
+      return;
     }
-
 
     const newTrackID = `${artist} – ${title}`;
 
@@ -9573,6 +9559,119 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
+
+
+<script id="safe-error-overlay">
+(function(){
+  if (window.__errorOverlay) return;
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:9999;background:#8b0000;color:#fff;font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;padding:10px;display:none;white-space:pre-wrap;';
+  overlay.id = '__errorOverlay';
+  document.addEventListener('click', function(){ overlay.style.display='none'; });
+  window.__errorOverlay = overlay;
+  document.body && document.body.appendChild(overlay);
+  function show(msg){
+    try {
+      if (!document.body.contains(overlay)) document.body.appendChild(overlay);
+      overlay.textContent = 'JavaScript error:\\n' + msg + '\\n(tap to dismiss)';
+      overlay.style.display = 'block';
+    } catch(e){}
+  }
+  window.addEventListener('error', function(e){ show((e && e.message)||String(e)); });
+  window.addEventListener('unhandledrejection', function(e){
+    var m = (e && e.reason && (e.reason.message||String(e.reason))) || 'Unhandled promise rejection';
+    show(m);
+  });
+  // If body isn't ready yet, append soon
+  if (!document.body) document.addEventListener('DOMContentLoaded', function(){ document.body.appendChild(overlay); }, {once:true});
+})();
+</script>
+
+
+
+<script id="np-parser-override">
+(function(){
+  function np_decode(s){ try{ return decodeURIComponent(s||""); }catch(_){ return s||""; } }
+  function parseNowPlayingString(raw){
+    var s = String(raw||"").trim();
+    if (!s) return null;
+    var sepMatch = s.match(/\s(?:-|–|—)\s/);
+    if (sepMatch){
+      var sep = sepMatch[0];
+      var idx = s.indexOf(sep);
+      var artist = s.slice(0, idx).trim();
+      var title  = s.slice(idx + sep.length).trim();
+      if (artist || title) return { artist: artist, title: title };
+    }
+    var c = s.indexOf(',');
+    if (c > 0){
+      var artist2 = s.slice(0, c).trim();
+      var title2  = s.slice(c + 1).trim();
+      if (artist2 || title2) return { artist: artist2, title: title2 };
+    }
+    return null;
+  }
+
+  function setNowPlayingSafe(artist, title){
+    var tEl = document.getElementById("np-title");
+    var aEl = document.getElementById("np-artist");
+    if (tEl) tEl.textContent = title || "More music soon";
+    if (aEl) aEl.textContent = artist || "";
+  }
+  function showMoreMusicSoonNP(){
+    if (typeof window.showMoreMusicSoon === 'function') { try { window.showMoreMusicSoon(); return; } catch(_e){} }
+    setNowPlayingSafe("", "");
+  }
+
+  function fetchJSON(url){
+    return fetch(url, { cache:"no-store" }).then(function(res){
+      if (!res.ok) throw new Error("HTTP "+res.status+" @ "+url);
+      return res.json();
+    });
+  }
+
+  function fetchFirstOK(urls){
+    var i = 0;
+    function next(){
+      if (i>=urls.length) return Promise.reject(new Error("All endpoints failed"));
+      var u = urls[i++] + (urls[i-1].indexOf("?")===-1?"?":"&") + "ts=" + Date.now();
+      return fetchJSON(u).catch(function(){ return next(); });
+    }
+    return next();
+  }
+
+  var NP_ENDPOINTS = [
+    "https://essential.radio/player/latestTrack.json",
+    "https://essentialradio.github.io/player/latestTrack.json",
+    "https://essential.radio/player/nowplaying.json",
+    "https://essentialradio.github.io/player/nowplaying.json"
+  ];
+
+  window.fetchNowPlaying = function fetchNowPlaying(){
+    return fetchFirstOK(NP_ENDPOINTS).then(function(data){
+      var artist = (data && (data.artist || data.Artist)) ? String(data.artist || data.Artist).trim() : "";
+      var title  = (data && (data.title  || data.Title )) ? String(data.title  || data.Title ).trim() : "";
+      if (artist || title){
+        setNowPlayingSafe(artist, title);
+        return;
+      }
+      var rawField = data && (data.nowPlaying || data.track || data.title) || "";
+      var raw = typeof rawField === "object" ? (rawField.title || rawField.nowPlaying || "") : String(rawField || "");
+      raw = np_decode(raw);
+      var parsed = parseNowPlayingString(raw);
+      if (parsed && (parsed.artist || parsed.title)){
+        setNowPlayingSafe(parsed.artist || "", parsed.title || "");
+        return;
+      }
+      showMoreMusicSoonNP();
+    }).catch(function(err){
+      try { if (window.__errorOverlay) { window.__errorOverlay.textContent = "[NowPlaying] " + (err && err.message || String(err)); window.__errorOverlay.style.display = "block"; } } catch(_e){}
+      showMoreMusicSoonNP();
+    });
+  };
+})();
+</script>
+
 
 </body><style>
 /* === Desktop modal centring fix === */
