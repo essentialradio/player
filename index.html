@@ -4158,6 +4158,29 @@ html[data-theme="light"] #mobileNowBar {
   }
 </style>
 
+<style>
+
+/* Song Search: make Reset & Refresh yellow (scoped) */
+#searchModal #resetFilters,
+#searchModal #songsearchRefreshBtn {
+  background: #fed351 !important;
+  color: #191c29 !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+  font-size: 0.9em !important;
+  cursor: pointer !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
+  transition: all 0.18s !important;
+  margin-left: 8px;
+}
+#searchModal #resetFilters:active,
+#searchModal #songsearchRefreshBtn:active {
+  transform: translateY(1px);
+}
+
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5167,6 +5190,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <label for="searchInput">Filter:</label>
 <input id="searchInput" placeholder="Search by Artist or Title..." type="text"/>
 <button id="resetFilters">Reset</button>
+<button id="songsearchRefreshBtn">Refresh</button>
+
 </div>
 <table style="width:100%;border-collapse:collapse;margin-top:0.7rem;color:#fff;font-size:17px;border-radius:8px;overflow:hidden">
 <thead style="color:#7e1974;font-size:17.5px">
@@ -5777,9 +5802,13 @@ async function fetchNowPlaying() {
       if (c > 0) {
         artist = raw.slice(0, c).trim();
         title  = raw.slice(c + 1).trim();
-        if (!artist || !title) { showMoreMusicSoon(); return; }
+        if (!artist || !title) {
+          showMoreMusicSoon(); // missing parts after split
+          return;
+        }
       } else {
-        showMoreMusicSoon();  // No valid title/artist format
+        // No valid title/artist format
+        showMoreMusicSoon();
         return;
       }
     }
@@ -9473,6 +9502,78 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
+
+<script id="wire-refresh-yellow-both">
+(function(){
+  async function unifiedRefresh(){
+    try{
+      var dateEl = document.getElementById('dateSelect');
+      var hourEl = document.getElementById('hourSelect');
+      var searchEl = document.getElementById('searchInput');
+      var prevDate   = dateEl ? dateEl.value : "";
+      var prevHour   = hourEl ? hourEl.value : "";
+      var prevSearch = searchEl ? searchEl.value : "";
+
+      var btn = document.getElementById('songsearchRefreshBtn');
+      if (btn){ btn.disabled = true; btn.textContent = 'Refreshing…'; }
+
+      if (typeof window.refreshSongSearch === 'function'){
+        await window.refreshSongSearch();
+      } else {
+        // Fallback fetch — matches earlier working endpoint
+        var url = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+        url += (url.indexOf('?')===-1?'?':'&') + 'ts=' + Date.now();
+        var res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var data = await res.json();
+        try { window.fullData = data; } catch(_) {}
+        try { fullData = data; } catch(_) {}
+        if (typeof populateDropdowns === 'function'){ try { populateDropdowns(data); } catch(_){} }
+      }
+
+      // Restore date
+      if (dateEl && prevDate) dateEl.value = prevDate;
+
+      // Ensure hour remains valid; if not, pick latest for that date
+      if (hourEl && dateEl){
+        var opts = Array.from(hourEl.options).map(function(o){ return o.value; });
+        if (opts.indexOf(prevHour) !== -1){
+          hourEl.value = prevHour;
+        } else if (typeof updateHourDropdown === 'function'){
+          try { updateHourDropdown(dateEl.value, null); } catch(_) {}
+        }
+      }
+
+      // Restore search
+      if (searchEl) searchEl.value = prevSearch;
+
+      if (typeof renderTable === 'function'){
+        try { renderTable((typeof fullData!=='undefined'&&fullData) || (window.fullData||[])); } catch(_){}
+      }
+    }catch(e){
+      console.warn('[SongSearch] Refresh failed:', e);
+    }finally{
+      var btn = document.getElementById('songsearchRefreshBtn');
+      if (btn){ btn.disabled = false; btn.textContent = 'Refresh'; }
+    }
+  }
+
+  function init(){
+    var btn = document.getElementById('songsearchRefreshBtn');
+    if (btn && !btn.__wired){
+      btn.addEventListener('click', function(){ unifiedRefresh(); });
+      btn.__wired = true;
+    }
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
