@@ -5817,19 +5817,34 @@ async function fetchNowPlaying() {
     };
     const raw = decode(data.nowPlaying || '').trim();
 
+    
     let artist = '', title = '';
-    const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-
-    if (sep) {
-      const idx = raw.indexOf(sep); // ✅ FIX: was lastIndexOf
-      artist = raw.substring(0, idx).trim();
-      title  = raw.substring(idx + sep.length).trim();
-    } else {
-      showMoreMusicSoon();  // No valid title/artist format
+    (function parseNowPlaying() {
+      const s = raw.replace(/\s+/g, ' ').trim();
+      // 1) Artist – Title / Artist — Title / Artist - Title
+      let m = s.match(/^(.*?)\s+[–—-]\s+(.*)$/);
+      if (m) { artist = m[1].trim(); title = m[2].trim(); return; }
+      // 2) Title by Artist
+      m = s.match(/^(.*?)\s+by\s+(.*)$/i);
+      if (m) { artist = m[2].trim(); title = m[1].trim(); return; }
+      // 3) Artist: Title
+      m = s.match(/^(.*?)\s*:\s*(.*)$/);
+      if (m) { artist = m[1].trim(); title = m[2].trim(); return; }
+      // 4) Artist, Title (only if exactly ONE comma overall)
+      const commas = (s.match(/,/g) || []).length;
+      if (commas === 1) {
+        const c = s.indexOf(',');
+        artist = s.slice(0, c).trim();
+        title = s.slice(c + 1).trim();
+        return;
+      }
+    })();
+    if (!artist || !title) {
+      showMoreMusicSoon();
       return;
     }
 
-    const newTrackID = `${artist} – ${title}`;
+const newTrackID = `${artist} – ${title}`;
 
     if (songHasEnded || currentTrackID !== newTrackID) {
       songHasEnded = false;
