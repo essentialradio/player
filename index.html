@@ -9607,6 +9607,13 @@ if ('serviceWorker' in navigator) {
       var title  = s.slice(idx + sep.length).trim();
       if (artist || title) return { artist: artist, title: title };
     }
+    // No dash: try single split on the FIRST comma only
+    var commaIndex = s.indexOf(',');
+    if (commaIndex > 0){
+      var a2 = s.slice(0, commaIndex).trim();
+      var t2 = s.slice(commaIndex + 1).trim();
+      if (a2 || t2) return { artist: a2, title: t2 };
+    }
     return null;
   }
 
