@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "",
-    "Artist": "Train",
-    "Title": "Play That Song",
-    "Duration (s)": 200,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:05",
-    "Displayed Time": "",
-    "Artist": "Toto",
-    "Title": "Africa",
-    "Duration (s)": 247,
-    "Full Duration (s)": 259,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:09",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 173,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:12",
-    "Displayed Time": "",
-    "Artist": "RAYE",
-    "Title": "Escapism",
-    "Duration (s)": 205,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:16",
-    "Displayed Time": "",
-    "Artist": "Christina Aguilera",
-    "Title": "Fighter",
-    "Duration (s)": 208,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:23",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 209,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:27",
-    "Displayed Time": "",
-    "Artist": "Olivia Rodrigo",
-    "Title": "Good 4 U",
-    "Duration (s)": 176,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:32",
-    "Displayed Time": "",
-    "Artist": "The Vamps ft Demi Lovato",
-    "Title": "Somebody to You",
-    "Duration (s)": 173,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:35",
-    "Displayed Time": "",
-    "Artist": "EMF",
-    "Title": "Unbelievable",
-    "Duration (s)": 202,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:42",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 201,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:45",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Shivers",
-    "Duration (s)": 198,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:49",
-    "Displayed Time": "",
-    "Artist": "Ultravox",
-    "Title": "Vienna",
-    "Duration (s)": 262,
-    "Full Duration (s)": 278,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-30T05:00:00Z",
-    "Scheduled Time": "06:53",
-    "Displayed Time": "",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 221,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-30T06:00:00Z",
     "Scheduled Time": "07:04",
     "Displayed Time": "",
@@ -45195,6 +45052,17 @@
     "Title": "Banquet",
     "Duration (s)": 185,
     "Full Duration (s)": 195,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-14T00:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "",
+    "Artist": "Dermot Kennedy",
+    "Title": "Something To Someone",
+    "Duration (s)": 190,
+    "Full Duration (s)": 193,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
