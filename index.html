@@ -5988,7 +5988,7 @@ let nowPlayingInterval = null;
 let recentInterval = null;
 
 function startIntervals() {
-  if (!nowPlayingInterval) { /* disabled in favor of nowplaying-refresh.js */ }
+  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
   if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
 }
 function stopIntervals() {
@@ -5997,14 +5997,14 @@ function stopIntervals() {
 }
 
 // Always fetch once on page load
-/* fetchNowPlaying(); disabled (external updater in control) */
+fetchNowPlaying();
 fetchRecentFromGitHub();
 startIntervals();
 
 // On tab visibility change, only run when visible
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
-    /* fetchNowPlaying(); disabled (external updater in control) */
+    fetchNowPlaying();
     fetchRecentFromGitHub();
     startIntervals();
   } else {
@@ -6201,12 +6201,12 @@ window.addEventListener('keydown', function(e) {
 });
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
-    /* fetchNowPlaying(); disabled (external updater in control) */
+    fetchNowPlaying();
     fetchRecentFromGitHub();
   }
 });
 window.addEventListener('focus', () => {
-  /* fetchNowPlaying(); disabled (external updater in control) */
+  fetchNowPlaying();
   fetchRecentFromGitHub();
 });
 
@@ -6214,7 +6214,7 @@ window.addEventListener('focus', () => {
 // Attach click event to refresh button to manually refresh now playing information and the recent track list
 document.getElementById('refresh-now-playing')?.addEventListener('click', () => {
   // Immediately fetch the latest now playing info
-  /* fetchNowPlaying(); disabled (external updater in control) */
+  fetchNowPlaying();
   // Also refresh the recent songs list
   fetchRecentFromGitHub();
 });
