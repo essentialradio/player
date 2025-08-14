@@ -9590,9 +9590,12 @@ if ('serviceWorker' in navigator) {
 
 
 
+
 <script id="np-parser-override">
 (function(){
   function np_decode(s){ try{ return decodeURIComponent(s||""); }catch(_){ return s||""; } }
+
+  // Only dash-based parsing: "Artist1, Artist2 – Title" or "Artist – Title"
   function parseNowPlayingString(raw){
     var s = String(raw||"").trim();
     if (!s) return null;
@@ -9604,21 +9607,22 @@ if ('serviceWorker' in navigator) {
       var title  = s.slice(idx + sep.length).trim();
       if (artist || title) return { artist: artist, title: title };
     }
-    var c = s.indexOf(',');
-    if (c > 0){
-      var artist2 = s.slice(0, c).trim();
-      var title2  = s.slice(c + 1).trim();
-      if (artist2 || title2) return { artist: artist2, title: title2 };
-    }
     return null;
   }
 
+  // Safe DOM write: preserve all commas/ampersands as-is (textContent)
   function setNowPlayingSafe(artist, title){
     var tEl = document.getElementById("np-title");
     var aEl = document.getElementById("np-artist");
-    if (tEl) tEl.textContent = title || "More music soon";
-    if (aEl) aEl.textContent = artist || "";
+    if (tEl) tEl.textContent = (title || "More music soon");
+    if (aEl) aEl.textContent = (artist || "");
+    // remember full values for any later enforcement
+    if (aEl) aEl.dataset.artistRaw = (artist || "");
+    if (tEl) tEl.dataset.titleRaw  = (title  || "");
+    try { document.title = (title ? (title + " – " + (artist||"")) : document.title); } catch(_){}
   }
+  window.setNowPlayingSafe = setNowPlayingSafe;
+
   function showMoreMusicSoonNP(){
     if (typeof window.showMoreMusicSoon === 'function') { try { window.showMoreMusicSoon(); return; } catch(_e){} }
     setNowPlayingSafe("", "");
@@ -9631,10 +9635,11 @@ if ('serviceWorker' in navigator) {
     });
   }
 
+  // Prefer same-origin to avoid CORS; then fall back to www + GitHub
   var base = (location && location.origin) ? location.origin : "";
   var NP_ENDPOINTS = [
-    (location && location.origin ? location.origin : "") + "/player/latestTrack.json",
-    (location && location.origin ? location.origin : "") + "/player/nowplaying.json",
+    base + "/player/latestTrack.json",
+    base + "/player/nowplaying.json",
     "https://www.essential.radio/player/latestTrack.json",
     "https://www.essential.radio/player/nowplaying.json",
     "https://essentialradio.github.io/player/latestTrack.json",
@@ -9653,14 +9658,17 @@ if ('serviceWorker' in navigator) {
     return next();
   }
 
+  // OVERRIDE main
   window.fetchNowPlaying = function fetchNowPlaying(){
     return fetchFirstOK(NP_ENDPOINTS).then(function(data){
+      // Structured JSON preferred
       var artist = (data && (data.artist || data.Artist)) ? String(data.artist || data.Artist).trim() : "";
       var title  = (data && (data.title  || data.Title )) ? String(data.title  || data.Title ).trim() : "";
       if (artist || title){
         setNowPlayingSafe(artist, title);
         return;
       }
+      // Otherwise try dash-only parsing of a raw field
       var rawField = data && (data.nowPlaying || data.track || data.title) || "";
       var raw = typeof rawField === "object" ? (rawField.title || rawField.nowPlaying || "") : String(rawField || "");
       raw = np_decode(raw);
@@ -9677,6 +9685,7 @@ if ('serviceWorker' in navigator) {
   };
 })();
 </script>
+
 
 
 
