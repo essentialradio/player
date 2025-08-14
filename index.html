@@ -9673,6 +9673,33 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
+
+<script id="np-preserve-multiartist">
+(function(){
+  // Wrap setNowPlayingSafe to *never* split artists by comma
+  var origSet = window.setNowPlayingSafe || function(a,t){
+    var tEl = document.getElementById("np-title");
+    var aEl = document.getElementById("np-artist");
+    if (tEl) tEl.textContent = t || "More music soon";
+    if (aEl) aEl.textContent = a || "";
+  };
+  window.setNowPlayingSafe = function(artist, title){
+    // Ensure full artist string (including commas) is preserved
+    var a = (artist==null ? "" : String(artist)).trim();
+    var t = (title ==null ? "" : String(title )).trim();
+    // Do *not* split a by comma under any circumstances
+    var aEl = document.getElementById("np-artist");
+    var tEl = document.getElementById("np-title");
+    if (aEl) aEl.textContent = a;
+    if (tEl) tEl.textContent = t || "More music soon";
+    // Keep original for any other consumers
+    aEl && (aEl.dataset.artistRaw = a);
+    tEl && (tEl.dataset.titleRaw = t);
+    try { origSet(a, t); } catch(_) {}
+  };
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
