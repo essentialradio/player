@@ -5,7 +5,7 @@ async function refreshNowPlaying() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    const root = document.getElementById("nowPlaying");
+    const root = document.getElementById("now-playing");
     if (!root) return;
 
     // Decode HTML entities safely
