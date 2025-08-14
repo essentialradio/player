@@ -9700,6 +9700,67 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+
+<script id="np-multiartist-enforcer">
+(function(){
+  // Ensure we always keep the full artist string (including commas)
+  var _setNowPlayingSafe = window.setNowPlayingSafe || function(a,t){
+    var tEl = document.getElementById("np-title");
+    var aEl = document.getElementById("np-artist");
+    if (tEl) tEl.textContent = t || "More music soon";
+    if (aEl) aEl.textContent = a || "";
+  };
+
+  function applyNowPlaying(artist, title){
+    window.NP_FULL_ARTIST = (artist==null ? "" : String(artist)).trim();
+    window.NP_TITLE       = (title ==null ? "" : String(title )).trim();
+    // Write both
+    var aEl = document.getElementById("np-artist");
+    var tEl = document.getElementById("np-title");
+    if (aEl) { aEl.textContent = window.NP_FULL_ARTIST; aEl.dataset.artistRaw = window.NP_FULL_ARTIST; }
+    if (tEl) { tEl.textContent = window.NP_TITLE || "More music soon"; tEl.dataset.titleRaw = window.NP_TITLE; }
+    try { _setNowPlayingSafe(window.NP_FULL_ARTIST, window.NP_TITLE); } catch(_){}
+
+    // Also update tab title if present
+    try {
+      if (window.NP_TITLE) document.title = window.NP_TITLE + " – " + window.NP_FULL_ARTIST;
+    } catch(_){}
+  }
+
+  // Replace setNowPlayingSafe globally
+  window.setNowPlayingSafe = applyNowPlaying;
+
+  // Enforce full artist against any late mutation that truncates to the last artist
+  var target = document.getElementById("np-artist");
+  if (target && typeof MutationObserver !== "undefined"){
+    var mo = new MutationObserver(function(){
+      try {
+        var full = window.NP_FULL_ARTIST || "";
+        if (!full) return;
+        var current = target.textContent.trim();
+        // If full has a comma and current equals the LAST segment after a comma, restore
+        if (full.includes(",")){
+          var last = full.split(",").pop().trim();
+          if (current && current === last && current !== full){
+            target.textContent = full;
+          }
+        }
+      } catch(_){}
+    });
+    mo.observe(target, { characterData: true, subtree: true, childList: true });
+  }
+
+  // Light heartbeat to re-assert full artist occasionally (covers full re-renders)
+  setInterval(function(){
+    var full = window.NP_FULL_ARTIST || "";
+    var aEl = document.getElementById("np-artist");
+    if (aEl && full && aEl.textContent.trim() !== full){
+      aEl.textContent = full;
+    }
+  }, 2000);
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
