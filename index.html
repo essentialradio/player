@@ -9589,6 +9589,7 @@ if ('serviceWorker' in navigator) {
 
 
 
+
 <script id="np-parser-override">
 (function(){
   function np_decode(s){ try{ return decodeURIComponent(s||""); }catch(_){ return s||""; } }
@@ -9630,22 +9631,27 @@ if ('serviceWorker' in navigator) {
     });
   }
 
+  var base = (location && location.origin) ? location.origin : "";
+  var NP_ENDPOINTS = [
+    base + "/player/latestTrack.json",
+    base + "/player/nowplaying.json",
+    "https://www.essential.radio/player/latestTrack.json",
+    "https://www.essential.radio/player/nowplaying.json",
+    "https://essentialradio.github.io/player/latestTrack.json",
+    "https://essentialradio.github.io/player/nowplaying.json"
+  ];
+
   function fetchFirstOK(urls){
     var i = 0;
     function next(){
       if (i>=urls.length) return Promise.reject(new Error("All endpoints failed"));
-      var u = urls[i++] + (urls[i-1].indexOf("?")===-1?"?":"&") + "ts=" + Date.now();
+      var u = urls[i++];
+      if (!u || u.indexOf("undefined")>=0) return next();
+      u = u + (u.indexOf("?")===-1?"?":"&") + "ts=" + Date.now();
       return fetchJSON(u).catch(function(){ return next(); });
     }
     return next();
   }
-
-  var NP_ENDPOINTS = [
-    "https://essential.radio/player/latestTrack.json",
-    "https://essentialradio.github.io/player/latestTrack.json",
-    "https://essential.radio/player/nowplaying.json",
-    "https://essentialradio.github.io/player/nowplaying.json"
-  ];
 
   window.fetchNowPlaying = function fetchNowPlaying(){
     return fetchFirstOK(NP_ENDPOINTS).then(function(data){
@@ -9671,6 +9677,7 @@ if ('serviceWorker' in navigator) {
   };
 })();
 </script>
+
 
 
 
