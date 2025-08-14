@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:04",
-    "Displayed Time": "",
-    "Artist": "The Weeknd Feat. Daft Punk",
-    "Title": "I Feel It Coming",
-    "Duration (s)": 225,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:08",
-    "Displayed Time": "",
-    "Artist": "The Human League",
-    "Title": "(Keep Feeling) Fascination",
-    "Duration (s)": 214,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:11",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 201,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:15",
-    "Displayed Time": "",
-    "Artist": "Hozier",
-    "Title": "Too Sweet",
-    "Duration (s)": 246,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:19",
-    "Displayed Time": "",
-    "Artist": "Outkast",
-    "Title": "Hey Ya!",
-    "Duration (s)": 221,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:29",
-    "Displayed Time": "",
-    "Artist": "Lola Young",
-    "Title": "One Thing",
-    "Duration (s)": 206,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:34",
-    "Displayed Time": "",
-    "Artist": "Kylie Minogue ft Bebe Rexha & Tove Lo",
-    "Title": "My Oh My",
-    "Duration (s)": 176,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:37",
-    "Displayed Time": "",
-    "Artist": "Sonny Fodera, Jazzy, D.O.D",
-    "Title": "Somedays",
-    "Duration (s)": 203,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:40",
-    "Displayed Time": "",
-    "Artist": "Zoe",
-    "Title": "Sunshine on a Rainy Day",
-    "Duration (s)": 229,
-    "Full Duration (s)": 241,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:50",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:53",
-    "Displayed Time": "",
-    "Artist": "Supermen Lovers & OneRepublic",
-    "Title": "Starlight (The Fame)",
-    "Duration (s)": 180,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-30T06:00:00Z",
-    "Scheduled Time": "07:56",
-    "Displayed Time": "",
-    "Artist": "Lighthouse Family",
-    "Title": "Lifted",
-    "Duration (s)": 239,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-30T07:00:00Z",
     "Scheduled Time": "08:02",
     "Displayed Time": "",
@@ -45206,6 +45074,17 @@
     "Title": "Hey Jealousy",
     "Duration (s)": 221,
     "Full Duration (s)": 232,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-14T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
