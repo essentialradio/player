@@ -4,7 +4,17 @@ import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
-// -------- helpers --------
+// ---------- timeouts ----------
+const TIMEOUT_MS = 2500;
+const ITUNES_TIMEOUT_MS = 2500;
+
+function fetchWithTimeout(url, { timeout = TIMEOUT_MS, ...opts } = {}) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(new Error('timeout')), timeout);
+  return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(t));
+}
+
+// ---------- helpers ----------
 const decodeHtml = (s) => String(s ?? '')
   .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
   .replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&nbsp;/g, ' ');
@@ -15,53 +25,39 @@ const clean = (s) => String(s ?? '')
   .replace(/\s*[–—-]\s*/g, ' – ')
   .trim();
 
-// last-ditch splitter for combined "Artist - Title" (or similar)
+// Split a combined "Artist - Title" safely (never on commas)
 function splitCombined(s) {
   const line = String(s || '').trim();
   if (!line) return { artist: '', title: '' };
-
-  let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/); // any dash with spaces
-  if (m) return { artist: m[1].trim(), title: m[2].trim() };
-
-  m = line.match(/^(.*?)\s*:\s*(.*)$/); // Artist: Title
-  if (m) return { artist: m[1].trim(), title: m[2].trim() };
-
-  m = line.match(/^(.*?)\s+by\s+(.*)$/i); // Title by Artist
-  if (m) return { artist: m[2].trim(), title: m[1].trim() };
-
+  let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/); if (m) return { artist: m[1].trim(), title: m[2].trim() };
+  m = line.match(/^(.*?)\s*:\s*(.*)$/);          if (m) return { artist: m[1].trim(), title: m[2].trim() };
+  m = line.match(/^(.*?)\s+by\s+(.*)$/i);        if (m) return { artist: m[2].trim(), title: m[1].trim() };
   return { artist: '', title: line };
 }
 
 const looksLikeTrack = (s) => {
   const line = String(s || '').trim();
   if (!line) return false;
-  if (/(.*?)\s+[–—-]\s+(.*)/.test(line)) return true;   // Artist – Title
-  if (/(.*?)\s+by\s+(.*)/i.test(line)) return true;     // Title by Artist
-  if (/(.*?)\s*:\s*(.*)/.test(line)) return true;       // Artist: Title
+  if (/(.*?)\s+[–—-]\s+(.*)/.test(line)) return true;
+  if (/(.*?)\s+by\s+(.*)/i.test(line)) return true;
+  if (/(.*?)\s*:\s*(.*)/.test(line)) return true;
   return false;
 };
 
 function parseCombined(s) {
   const line = clean(s);
   if (!line) return { artist: '', title: '' };
-
-  let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
-  if (m) return { artist: clean(m[1]), title: clean(m[2]) };
-
-  m = line.match(/^(.*?)\s+by\s+(.*)$/i);
-  if (m) return { artist: clean(m[2]), title: clean(m[1]) };
-
-  m = line.match(/^(.*?)\s*:\s*(.*)$/);
-  if (m) return { artist: clean(m[1]), title: clean(m[2]) };
-
-  // very conservative single-comma "Artist, Title"
+  let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/); if (m) return { artist: clean(m[1]), title: clean(m[2]) };
+  m = line.match(/^(.*?)\s+by\s+(.*)$/i);       if (m) return { artist: clean(m[2]), title: clean(m[1]) };
+  m = line.match(/^(.*?)\s*:\s*(.*)$/);         if (m) return { artist: clean(m[1]), title: clean(m[2]) };
+  // conservative single-comma "Artist, Title"
   const count = (line.match(/,/g) || []).length;
   if (count === 1) {
     const i = line.indexOf(',');
     const left  = clean(line.slice(0, i));
     const right = clean(line.slice(i + 1));
-    const looksLikeArtist = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
-    if (looksLikeArtist && right) return { artist: left, title: right };
+    const looksArtist = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
+    if (looksArtist && right) return { artist: left, title: right };
   }
   return { artist: '', title: line };
 }
@@ -120,19 +116,23 @@ function glueLivebox(text) {
   return clean(decodeHtml(joined));
 }
 
-// -------- handler --------
+// ---------- handler ----------
 export async function GET(req) {
+  const url = new URL(req.url);
+  const debug = url.searchParams.get('debug') === '1';
+
+  let artist = '', title = '', duration = null, startTime = null, source = 'unknown';
+  let latestNowPlaying = '';  // in case artist/title missing in latest
+  let rawCombined = '';       // from Livebox glue
+  let ltErr = null, lbErr = null, itErr = null;
+
   try {
-    const url = new URL(req.url);
-    const debug = url.searchParams.get('debug') === '1';
-
-    let artist = '', title = '', duration = null, startTime = null, source = 'unknown';
-    let latestNowPlaying = '';      // may be present even if artist/title are missing
-    let rawCombined = '';           // from Livebox glue, for safety net
-
-    // 0) Try canonical latestTrack.json FIRST
+    // 0) latestTrack.json FIRST (with timeout)
     try {
-      const ltRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now(), { cache: 'no-store' });
+      const ltRes = await fetchWithTimeout(
+        'https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now(),
+        { cache: 'no-store', timeout: TIMEOUT_MS }
+      );
       if (ltRes.ok) {
         const lt = await ltRes.json();
         latestNowPlaying = clean(decodeHtml(lt?.nowPlaying));
@@ -143,20 +143,25 @@ export async function GET(req) {
         if (lt?.duration != null) duration = Number(lt.duration) || null;
         if (lt?.startTime) startTime = lt.startTime;
         if (artist || title || latestNowPlaying) source = 'latestTrack';
+      } else {
+        ltErr = `HTTP ${ltRes.status}`;
       }
-    } catch { /* ignore */ }
+    } catch (e) { ltErr = String(e?.message || e); }
 
-    // If latestTrack didn't give artist/title but gave combined nowPlaying, derive it
+    // derive from combined if needed
     if ((!artist || !title) && latestNowPlaying) {
       const guess = splitCombined(latestNowPlaying);
       if (!artist) artist = guess.artist;
       if (!title)  title  = guess.title;
     }
 
-    // 1) If still empty, fallback to Livebox scrape
+    // 1) Livebox fallback (with timeout)
     if (!artist && !title) {
       try {
-        const lbRes = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' });
+        const lbRes = await fetchWithTimeout(
+          'https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html',
+          { cache: 'no-store', timeout: TIMEOUT_MS }
+        );
         if (lbRes.ok) {
           const lbText = await lbRes.text();
           rawCombined = glueLivebox(lbText);
@@ -164,11 +169,13 @@ export async function GET(req) {
           artist = p.artist;
           title  = p.title;
           source = 'livebox-fallback';
+        } else {
+          lbErr = `HTTP ${lbRes.status}`;
         }
-      } catch { /* ignore */ }
+      } catch (e) { lbErr = String(e?.message || e); }
     }
 
-    // 2) Safety net: if we still only have a combined string, split it
+    // 2) Safety net split if still only combined available
     if ((!artist || !title) && (latestNowPlaying || rawCombined)) {
       const combined = latestNowPlaying || rawCombined;
       const guess = splitCombined(combined);
@@ -176,17 +183,20 @@ export async function GET(req) {
       if (!title)  title  = guess.title;
     }
 
-    // 3) Optional iTunes duration fallback
+    // 3) iTunes duration fallback (with timeout)
     if (!duration && artist && title) {
       try {
-        const itRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&limit=1`, { cache: 'no-store' });
-        const itJson = await itRes.json();
-        const track = itJson.results?.[0];
+        const itRes = await fetchWithTimeout(
+          `https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&limit=1`,
+          { cache: 'no-store', timeout: ITUNES_TIMEOUT_MS }
+        );
+        const itJson = await itRes.json().catch(() => ({}));
+        const track = itJson?.results?.[0];
         if (track?.trackTimeMillis) duration = Math.round(track.trackTimeMillis / 1000);
-      } catch { /* ignore */ }
+      } catch (e) { itErr = String(e?.message || e); }
     }
 
-    // 4) Rolling log (best-effort; safe to ignore if FS is read-only)
+    // 4) Rolling log (best-effort; ignore failures on serverless/readonly)
     if (artist && title) {
       const nowISO = new Date().toISOString();
       const logEntry = { Artist: artist, Title: title, "Scheduled Time": nowISO, "Duration (s)": duration ?? null };
@@ -204,10 +214,10 @@ export async function GET(req) {
           const updated = [...parsed, logEntry].slice(-100);
           await fs.writeFile(logPath, JSON.stringify(updated, null, 2));
         }
-      } catch { /* ignore in serverless/edge */ }
+      } catch { /* ignore */ }
     }
 
-    // 5) Build payload
+    // 5) Build & return
     const payloadNowPlaying =
       (artist && title) ? `${artist} - ${title}`
                         : (latestNowPlaying || rawCombined || '');
@@ -221,12 +231,7 @@ export async function GET(req) {
       source
     };
 
-    if (debug) {
-      payload._debug = {
-        latestNowPlaying,
-        rawCombined
-      };
-    }
+    if (debug) payload._debug = { ltErr, lbErr, itErr, latestNowPlaying, rawCombined };
 
     return new Response(JSON.stringify(payload), {
       headers: {
@@ -236,6 +241,7 @@ export async function GET(req) {
       }
     });
   } catch {
+    // absolutely never hang: return an empty payload promptly
     return new Response(JSON.stringify({
       artist: '',
       title: '',
@@ -244,7 +250,7 @@ export async function GET(req) {
       startTime: null,
       source: 'error'
     }), {
-      status: 500,
+      status: 200,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
