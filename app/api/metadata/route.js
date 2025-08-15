@@ -3,23 +3,16 @@ import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
-// ---- helpers ----
+// --- helpers ---
 const decodeHtml = (s) => String(s ?? '')
-  .replace(/&amp;/g, '&')
-  .replace(/&lt;/g, '<')
-  .replace(/&gt;/g, '>')
-  .replace(/&quot;/g, '"')
-  .replace(/&#039;/g, "'")
-  .replace(/&nbsp;/g, ' ');
+  .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  .replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&nbsp;/g, ' ');
 
 const clean = (s) => String(s ?? '')
   .replace(/[\u200B-\u200D\uFEFF]/g, '')
   .replace(/\s+/g, ' ')
   .replace(/\s*[–—-]\s*/g, ' – ')
   .trim();
-
-const nfc = (s) => clean(decodeHtml(s)).toLowerCase().replace(/[’'"]/g, '').replace(/\s+/g,' ').trim();
-const nfcNoParen = (s) => nfc(s).replace(/\s*\([^)]*\)\s*/g, '').trim();
 
 const looksLikeTrack = (s) => {
   const line = String(s || '').trim();
@@ -33,48 +26,30 @@ const looksLikeTrack = (s) => {
 function parseCombined(s) {
   const line = clean(s);
   if (!line) return { artist: '', title: '' };
-
-  // Artist – Title (any dash)
   let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
   if (m) return { artist: clean(m[1]), title: clean(m[2]) };
-
-  // Title by Artist
   m = line.match(/^(.*?)\s+by\s+(.*)$/i);
   if (m) return { artist: clean(m[2]), title: clean(m[1]) };
-
-  // Artist: Title
   m = line.match(/^(.*?)\s*:\s*(.*)$/);
   if (m) return { artist: clean(m[1]), title: clean(m[2]) };
-
-  // Very conservative single-comma Artist, Title
+  // very conservative single-comma Artist, Title
   const count = (line.match(/,/g) || []).length;
   if (count === 1) {
     const i = line.indexOf(',');
     const left  = clean(line.slice(0, i));
     const right = clean(line.slice(i + 1));
-    const looksLikeArtistName = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
-    if (looksLikeArtistName && right) return { artist: left, title: right };
+    const looksLikeArtist = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
+    if (looksLikeArtist && right) return { artist: left, title: right };
   }
-
-  // Give up guessing: keep full as title
   return { artist: '', title: line };
 }
 
-const isNameFragment = (s) => {
-  const t = String(s || '').trim();
-  if (!t) return false;
-  if (/[0-9]{3,}/.test(t)) return false;
-  if (t.length > 50) return false;
-  if (!/[A-Za-z]/.test(t)) return false;
-  return /^[A-Za-z][A-Za-z '&.-]*$/.test(t);
-};
-
+// Livebox CSV “glue” to fix comma-split artist names before dash
 function glueLivebox(text) {
-  // Strip HTML, split on commas, and recombine intelligently
   const plain = text.replace(/<[^>]*>/g, '');
   const cells = plain.split(',');
 
-  // Rightmost track-like tail
+  // find rightmost tail that looks like a track
   let startIdx = -1, joined = '';
   for (let i = cells.length - 1; i >= 0; i--) {
     const candidate = cells.slice(i).join(',').trim();
@@ -92,13 +67,12 @@ function glueLivebox(text) {
   }
   if (startIdx === -1) { startIdx = 0; joined = plain.trim(); }
 
-  // Aggressively glue preceding name fragments BEFORE the dash
+  // aggressively glue preceding name fragments BEFORE the dash
   const dashMatch = joined.match(/^(.*?)\s+([–—-])\s+(.*)$/);
   if (dashMatch) {
     let left = dashMatch[1].trim();
     const dashChar = dashMatch[2];
     const right = dashMatch[3].trim();
-
     let k = startIdx - 1;
     const prependParts = [];
     let steps = 0;
@@ -123,115 +97,88 @@ function glueLivebox(text) {
   return clean(decodeHtml(joined));
 }
 
-function chooseBest(liveArtist, liveTitle, latestArtist, latestTitle) {
-  // If latest has both fields, and titles are close, prefer latest artist/title
-  const titlesClose = latestTitle && liveTitle && (
-    nfc(latestTitle) === nfc(liveTitle) ||
-    nfcNoParen(latestTitle) === nfcNoParen(liveTitle)
-  );
-
-  // "Broken" live artist heuristics: single token, or subset of latest, or empty
-  const liveTokens = (liveArtist || '').split(/\s+/).filter(Boolean);
-  const brokenLive = !liveArtist || liveTokens.length === 1 ||
-                     (latestArtist && latestArtist.toLowerCase().includes(liveArtist.toLowerCase()) && latestArtist.length > (liveArtist.length + 2));
-
-  if (latestArtist && latestTitle && titlesClose && (brokenLive || nfc(latestArtist) !== nfc(liveArtist))) {
-    return { artist: latestArtist, title: latestTitle, source: 'latestTrack' };
-  }
-  return {
-    artist: liveArtist || latestArtist || '',
-    title: liveTitle || latestTitle || '',
-    source: liveArtist ? 'livebox' : (latestArtist ? 'latestTrack' : 'unknown')
-  };
-}
-
 export async function GET(req) {
   try {
     const url = new URL(req.url);
     const debug = url.searchParams.get('debug') === '1';
 
-    // Fetch both in parallel
-    const [liveboxRes, latestRes] = await Promise.allSettled([
-      fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' }),
-      fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now(), { cache: 'no-store' })
-    ]);
+    // 0) Try canonical latestTrack.json FIRST
+    let artist = '', title = '', duration = null, startTime = null, source = 'latestTrack';
+    let ltOk = false, ltErr = null;
 
-    // Livebox parse
-    let liveArtist = '', liveTitle = '', rawCombined = '';
-    if (liveboxRes.status === 'fulfilled' && liveboxRes.value.ok) {
-      const liveText = await liveboxRes.value.text();
-      rawCombined = glueLivebox(liveText);
-      const parsed = parseCombined(rawCombined);
-      liveArtist = parsed.artist;
-      liveTitle  = parsed.title;
+    try {
+      const ltRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now(), { cache: 'no-store' });
+      if (ltRes.ok) {
+        const lt = await ltRes.json();
+        artist = clean(lt?.artist);
+        title  = clean(lt?.title);
+        if (lt?.duration) duration = Number(lt.duration) || null;
+        if (lt?.startTime) startTime = lt.startTime;
+        ltOk = Boolean(artist && title);
+      } else {
+        ltErr = `HTTP ${ltRes.status}`;
+      }
+    } catch (e) {
+      ltErr = String(e?.message || e);
     }
 
-    // Latest
-    let latestArtist = '', latestTitle = '', duration = null, startTime = null;
-    if (latestRes.status === 'fulfilled' && latestRes.value.ok) {
-      const latest = await latestRes.value.json();
-      latestArtist = clean(latest?.artist);
-      latestTitle  = clean(latest?.title);
-      if (latest?.duration) duration = Number(latest.duration) || null;
-      if (latest?.startTime) startTime = latest.startTime;
-    }
-
-    // Decide best
-    const best = chooseBest(liveArtist, liveTitle, latestArtist, latestTitle);
-
-    // Duration & timing: prefer latestTrack, fallback to iTunes
-    if (!duration && best.artist && best.title) {
+    // 1) If latestTrack was empty/unavailable, fall back to Livebox
+    let rawCombined = '';
+    if (!ltOk) {
+      source = 'livebox-fallback';
       try {
-        const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${best.artist} ${best.title}`)}&limit=1`, { cache: 'no-store' });
-        const itunesJson = await itunesRes.json();
-        const track = itunesJson.results?.[0];
-        if (track?.trackTimeMillis) duration = Math.round(track.trackTimeMillis / 1000);
-      } catch {}
+        const lbRes = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' });
+        if (lbRes.ok) {
+          const lbText = await lbRes.text();
+          rawCombined = glueLivebox(lbText);
+          const p = parseCombined(rawCombined);
+          artist = p.artist; title = p.title;
+        } else {
+          rawCombined = '';
+        }
+      } catch { /* ignore */ }
     }
 
-    // Rolling log (avoid dupes within 5 minutes)
-    if (best.artist && best.title) {
+    // 2) iTunes duration fallback if needed
+    if (!duration && artist && title) {
+      try {
+        const itRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&limit=1`, { cache: 'no-store' });
+        const itJson = await itRes.json();
+        const track = itJson.results?.[0];
+        if (track?.trackTimeMillis) duration = Math.round(track.trackTimeMillis / 1000);
+      } catch { /* ignore */ }
+    }
+
+    // 3) Rolling log (best-effort; ignore if not allowed on this runtime)
+    if (artist && title) {
       const nowISO = new Date().toISOString();
-      const logEntry = {
-        Artist: best.artist,
-        Title: best.title,
-        "Scheduled Time": nowISO,
-        "Duration (s)": duration ?? null
-      };
+      const logEntry = { Artist: artist, Title: title, "Scheduled Time": nowISO, "Duration (s)": duration ?? null };
       try {
         const logPath = path.join(process.cwd(), 'public', 'playout_log_rolling.json');
         const existingData = await fs.readFile(logPath, 'utf-8').catch(() => '[]');
         const parsed = JSON.parse(existingData);
         const fiveMinsAgo = Date.now() - 5 * 60 * 1000;
         const isRecentDuplicate = parsed.some(item =>
-          item.Artist === best.artist &&
-          item.Title === best.title &&
+          item.Artist === artist && item.Title === title &&
           new Date(item["Scheduled Time"]).getTime() > fiveMinsAgo
         );
         if (!isRecentDuplicate) {
           const updated = [...parsed, logEntry].slice(-100);
           await fs.writeFile(logPath, JSON.stringify(updated, null, 2));
         }
-      } catch {}
+      } catch { /* ignore on Edge/readonly */ }
     }
 
     const payload = {
-      artist: best.artist,
-      title: best.title,
-      nowPlaying: (best.artist && best.title) ? `${best.artist} - ${best.title}` : (rawCombined || latestTitle || ''),
+      artist,
+      title,
+      nowPlaying: (artist && title) ? `${artist} - ${title}` : (rawCombined || ''),
       duration,
       startTime,
-      source: best.source
+      source
     };
     if (debug) {
-      payload._debug = {
-        rawCombined,
-        liveArtist,
-        liveTitle,
-        latestArtist,
-        latestTitle,
-        decision: best
-      };
+      payload._debug = { ltOk, ltErr, rawCombined };
     }
 
     return new Response(JSON.stringify(payload), {
