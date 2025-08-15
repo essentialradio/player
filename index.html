@@ -5776,7 +5776,9 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-);
+async function fetchNowPlaying() {
+  try {
+    const res = await fetch('/api/metadata', { cache: 'no-store' });
     const data = await res.json();
 
     const decode = str => {
@@ -5984,7 +5986,7 @@ let nowPlayingInterval = null;
 let recentInterval = null;
 
 function startIntervals() {
-  if (!nowPlayingInterval) nowPlayingInterval = 
+  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
   if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
 }
 function stopIntervals() {
