@@ -1,30 +1,16 @@
 // nowplaying-refresh.js — single source of truth: /api/metadata
 (function () {
-  const ROOT_ID = "nowPlaying";           // your existing container id
-  let currentTrackID = null;
-  let endTimer = null;
+  const ROOT_ID = "nowPlaying";
+  let currentId = null, timer = null;
 
-  // helpers
   const $ = (id) => document.getElementById(id);
-  const getRoot = () => $(ROOT_ID) || document.getElementById("now-playing") || null;
+  const root = () => $(ROOT_ID) || document.getElementById("now-playing");
   const clean = (s) => String(s ?? "").replace(/[\u200B-\u200D\uFEFF]/g, "").replace(/\s+/g, " ").trim();
   const decode = (s) => { const t = document.createElement("textarea"); t.innerHTML = String(s ?? ""); return t.value; };
 
-  function showIdle() {
-    const root = getRoot();
-    if (!root) return;
-    root.innerHTML =
-      '<span style="color:#fed351;">Now Playing:</span><br/>' +
-      '<span style="color:white;">More music soon on Essential Radio</span>';
-    root.setAttribute("data-empty", "1");
-    const ind = root.querySelector(".live-indicator");
-    if (ind) ind.style.display = "none";
-    currentTrackID = null;
-  }
-
-  function ensureLiveIndicator(root) {
-    let ind = root.querySelector(".live-indicator");
-    if (!ind) {
+  function ensureLive() {
+    const el = root(); if (!el) return;
+    if (!el.querySelector(".live-indicator")) {
       const styleId = "np-live-style";
       if (!document.getElementById(styleId)) {
         const s = document.createElement("style");
@@ -36,86 +22,69 @@
         `;
         document.head.appendChild(s);
       }
-      ind = document.createElement("span");
-      ind.className = "live-indicator";
-      ind.innerHTML = '<span class="dot"></span>LIVE';
-      root.appendChild(ind);
+      const span = document.createElement("span");
+      span.className = "live-indicator";
+      span.innerHTML = '<span class="dot"></span>LIVE';
+      el.appendChild(span);
     }
-    ind.style.display = "inline-flex";
+  }
+
+  function showIdle() {
+    const el = root(); if (!el) return;
+    el.innerHTML = '<span style="color:#fed351;">Now Playing:</span><br/><span style="color:#fff;">More music soon on Essential Radio</span>';
+    currentId = null;
   }
 
   function paint(artist, title) {
-    const root = getRoot();
-    if (!root) return;
-    ensureLiveIndicator(root);
-    const t = root.querySelector(".np-title");
-    const a = root.querySelector(".np-artist");
-    if (t || a) {
-      if (t) t.textContent = title;
-      if (a) a.textContent = artist;
+    const el = root(); if (!el) return;
+    ensureLive();
+    const t = el.querySelector(".np-title");
+    const a = el.querySelector(".np-artist");
+    if (t && a) {
+      t.textContent = title; a.textContent = artist;
     } else {
-      root.innerHTML =
+      el.innerHTML =
         '<span style="color:#fed351;">Now Playing:</span>' +
         '<span class="live-indicator"><span class="dot"></span>LIVE</span><br/>' +
-        '<span class="np-title" style="color:white;font-weight:600;font-size:1.2em;"></span><br/>' +
-        '<span class="np-artist" style="color:white;"></span>';
-      root.querySelector(".np-title").textContent = title;
-      root.querySelector(".np-artist").textContent = "by " + artist;
+        '<span class="np-title" style="color:#fff;font-weight:600;font-size:1.2em;"></span><br/>' +
+        '<span class="np-artist" style="color:#fff;"></span>';
+      el.querySelector(".np-title").textContent = title;
+      el.querySelector(".np-artist").textContent = "by " + artist;
     }
-    root.removeAttribute("data-empty");
-    try { document.title = "Essential Radio: " + artist + " – " + title; } catch {}
-    try { if (typeof window.fetchArtwork === "function") window.fetchArtwork(artist + " - " + title); } catch {}
-    try { window.dispatchEvent(new CustomEvent("np:update", { detail: { artist, title } })); } catch {}
+    try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
   }
 
   function scheduleEnd(startTimeISO, durationSec) {
-    if (endTimer) { clearTimeout(endTimer); endTimer = null; }
-    if (!startTimeISO || !durationSec) return; // no schedule if we don't know
-
-    const start = new Date(startTimeISO);
-    const end = new Date(start.getTime() + durationSec * 1000);
-    let ms = end - new Date();
-
-    // Grace: if end time has passed due to clock skew, give a short delay
+    if (timer) clearTimeout(timer);
+    if (!startTimeISO || !durationSec) return;
+    const end = new Date(new Date(startTimeISO).getTime() + durationSec * 1000);
+    let ms = end - Date.now();
     if (ms <= 0) ms = 3000;
-    // Cap any long wait to avoid stale UI if timing is wrong
     ms = Math.max(1000, Math.min(ms, 15000));
-
-    endTimer = setTimeout(() => {
-      showIdle();
-    }, ms);
+    timer = setTimeout(showIdle, ms);
   }
 
-  async function updateNowPlaying() {
+  async function tick() {
     try {
-      const res = await fetch("/api/metadata?ts=" + Date.now(), { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      const res = await fetch('/api/metadata?ts=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
 
-      const artist = clean(decode(data?.artist));
-      const title  = clean(decode(data?.title));
-      const startTime = data?.startTime || null;
-      const duration  = (typeof data?.duration === "number") ? data.duration : null;
+      const artist = clean(decode(data.artist || ''));
+      const title  = clean(decode(data.title  || ''));
 
-      if (!artist || !title) {
-        showIdle();
-        return;
-      }
+      if (!artist || !title) return showIdle();
 
-      const id = artist + " – " + title;
-      if (id !== currentTrackID) {
-        currentTrackID = id;
-        paint(artist, title);
-      }
-      scheduleEnd(startTime, duration);
-    } catch (err) {
-      console.error("nowplaying-refresh error:", err);
+      const id = `${artist} – ${title}`;
+      if (id !== currentId) { currentId = id; paint(artist, title); }
+      scheduleEnd(data.startTime || null, typeof data.duration === 'number' ? data.duration : null);
+    } catch (e) {
+      console.error('nowplaying-refresh:', e);
       showIdle();
     }
   }
 
-  // Kickoff + polling + focus refresh
-  updateNowPlaying();
-  setInterval(updateNowPlaying, 10000);  // every 10s
-  window.addEventListener("focus", updateNowPlaying);
+  tick();
+  setInterval(tick, 10000);
+  window.addEventListener('focus', tick);
 })();
