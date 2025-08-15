@@ -4,45 +4,52 @@
 <meta charset="UTF-8">
 <title>Now Playing — Diagnostic</title>
 <style>
-  body { font-family: sans-serif; padding: 1rem; background: #111; color: #eee; }
-  pre { background: #222; padding: 1rem; border-radius: 4px; }
-  .good { color: #4caf50; }
-  .bad { color: #f44336; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding:16px; background:#0b1220; color:#e6edf3; }
+  .good{color:#19ff9c} .warn{color:#ffc85a} .bad{color:#ff6b6b}
+  pre{background:#0f1a33; padding:12px; border-radius:10px; overflow:auto}
 </style>
 </head>
 <body>
-<h1>Now Playing — Diagnostic</h1>
-
-<div id="status">Loading…</div>
-<pre id="debug"></pre>
+  <h1>Now Playing — Diagnostic</h1>
+  <div id="status">Loading…</div>
+  <div id="meta" class="warn" style="margin:.5rem 0 1rem 0;"></div>
+  <pre id="raw"></pre>
 
 <script>
-const statusEl = document.getElementById('status');
-const debugEl = document.getElementById('debug');
+async function go(){
+  const status = document.getElementById('status');
+  const meta   = document.getElementById('meta');
+  const raw    = document.getElementById('raw');
 
-async function fetchMetadata() {
-  try {
-    const r = await fetch('/api/metadata?ts=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+  try{
+    const r = await fetch('/api/metadata?ts=' + Date.now() + '&debug=1', { cache:'no-store' });
     const j = await r.json();
+    raw.textContent = JSON.stringify(j, null, 2);
 
-    debugEl.textContent = JSON.stringify(j, null, 2);
+    const artist = (j.artist || '').trim();
+    const title  = (j.title  || '').trim();
+    const combined = (j.nowPlaying || '').trim();
 
-    if (j.artist && j.title) {
-      statusEl.innerHTML = `<span class="good">${j.artist} – ${j.title}</span>`;
+    // Prefer artist/title; otherwise show combined "nowPlaying"
+    if (artist && title){
+      status.innerHTML = `<span class="good">${artist} – ${title}</span>`;
+      meta.textContent = `source=${j.source || 'unknown'} • duration=${j.duration ?? 'n/a'} • start=${j.startTime ?? 'n/a'}`;
+    } else if (combined){
+      status.innerHTML = `<span class="warn">${combined}</span> <span style="color:#9aa3ad">(combined)</span>`;
+      meta.textContent = `source=${j.source || 'unknown'} • duration=${j.duration ?? 'n/a'} • start=${j.startTime ?? 'n/a'}`;
     } else {
-      statusEl.innerHTML = `<span class="bad">No track info</span>`;
+      status.innerHTML = `<span class="bad">No track info</span>`;
+      meta.textContent = `source=${j.source || 'unknown'}`;
     }
-  } catch (err) {
-    statusEl.innerHTML = `<span class="bad">Error fetching metadata</span>`;
-    console.error(err);
+  } catch(e){
+    status.innerHTML = `<span class="bad">Fetch error</span>`;
+    meta.textContent = String(e.message || e);
   }
 }
 
-// first fetch, then repeat
-fetchMetadata();
-setInterval(fetchMetadata, 10000);
+// first fetch + poll
+go();
+setInterval(go, 10000);
 </script>
-<script src="nowplaying-refresh.diag.js"></script>
 </body>
 </html>
