@@ -1,88 +1,121 @@
-(() => {
-  const API_URL = '/api/metadata?debug=1';
-  const LATEST_URL = 'https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now();
+// nowplaying-refresh.js — single source of truth: /api/metadata
+(function () {
+  const ROOT_ID = "nowPlaying";           // your existing container id
+  let currentTrackID = null;
+  let endTimer = null;
 
-  const el = (id) => document.getElementById(id);
+  // helpers
+  const $ = (id) => document.getElementById(id);
+  const getRoot = () => $(ROOT_ID) || document.getElementById("now-playing") || null;
+  const clean = (s) => String(s ?? "").replace(/[\u200B-\u200D\uFEFF]/g, "").replace(/\s+/g, " ").trim();
+  const decode = (s) => { const t = document.createElement("textarea"); t.innerHTML = String(s ?? ""); return t.value; };
 
-  function fmtLine(a, t){
-    a = (a || '').trim();
-    t = (t || '').trim();
-    return (a && t) ? `${a} - ${t}` : (a || t || '—');
+  function showIdle() {
+    const root = getRoot();
+    if (!root) return;
+    root.innerHTML =
+      '<span style="color:#fed351;">Now Playing:</span><br/>' +
+      '<span style="color:white;">More music soon on Essential Radio</span>';
+    root.setAttribute("data-empty", "1");
+    const ind = root.querySelector(".live-indicator");
+    if (ind) ind.style.display = "none";
+    currentTrackID = null;
   }
 
-  function setBox(boxId, lineId, metaId, artist, title, extra){
-    const line = fmtLine(artist, title);
-    el(lineId).textContent = line;
-    el(metaId).textContent = extra || '';
-    const box = el(boxId);
-    box.classList.remove('diff-bad');
-    if (!artist && !title) box.classList.add('diff-bad');
+  function ensureLiveIndicator(root) {
+    let ind = root.querySelector(".live-indicator");
+    if (!ind) {
+      const styleId = "np-live-style";
+      if (!document.getElementById(styleId)) {
+        const s = document.createElement("style");
+        s.id = styleId;
+        s.textContent = `
+          .live-indicator{display:inline-flex;align-items:center;gap:.45rem;margin-left:.6rem;font-weight:700;color:#19ff9c;letter-spacing:.04em}
+          .live-indicator .dot{width:.6rem;height:.6rem;border-radius:50%;background:#19ff9c;display:inline-block;box-shadow:0 0 0 .15rem rgba(25,255,156,.25);animation:np-pulse 1.2s infinite}
+          @keyframes np-pulse{0%{transform:scale(1);opacity:1}70%{transform:scale(1.5);opacity:.3}100%{transform:scale(1);opacity:1}}
+        `;
+        document.head.appendChild(s);
+      }
+      ind = document.createElement("span");
+      ind.className = "live-indicator";
+      ind.innerHTML = '<span class="dot"></span>LIVE';
+      root.appendChild(ind);
+    }
+    ind.style.display = "inline-flex";
   }
 
-  function compare(a, b){
-    const n = (s)=> String(s||'').toLowerCase().replace(/[’'"]/g,'').replace(/\s+/g,' ').trim();
-    const np = (s)=> n(s).replace(/\s*\([^)]*\)\s*/g,'');
-    return n(a) === n(b) || np(a) === np(b);
+  function paint(artist, title) {
+    const root = getRoot();
+    if (!root) return;
+    ensureLiveIndicator(root);
+    const t = root.querySelector(".np-title");
+    const a = root.querySelector(".np-artist");
+    if (t || a) {
+      if (t) t.textContent = title;
+      if (a) a.textContent = artist;
+    } else {
+      root.innerHTML =
+        '<span style="color:#fed351;">Now Playing:</span>' +
+        '<span class="live-indicator"><span class="dot"></span>LIVE</span><br/>' +
+        '<span class="np-title" style="color:white;font-weight:600;font-size:1.2em;"></span><br/>' +
+        '<span class="np-artist" style="color:white;"></span>';
+      root.querySelector(".np-title").textContent = title;
+      root.querySelector(".np-artist").textContent = "by " + artist;
+    }
+    root.removeAttribute("data-empty");
+    try { document.title = "Essential Radio: " + artist + " – " + title; } catch {}
+    try { if (typeof window.fetchArtwork === "function") window.fetchArtwork(artist + " - " + title); } catch {}
+    try { window.dispatchEvent(new CustomEvent("np:update", { detail: { artist, title } })); } catch {}
   }
 
-  async function refresh(){
-    try{
-      const [apiRes, ltRes] = await Promise.all([
-        fetch(API_URL, { cache:'no-store' }),
-        fetch(LATEST_URL, { cache:'no-store' }),
-      ]);
+  function scheduleEnd(startTimeISO, durationSec) {
+    if (endTimer) { clearTimeout(endTimer); endTimer = null; }
+    if (!startTimeISO || !durationSec) return; // no schedule if we don't know
 
-      const api = await apiRes.json();
-      const lt  = ltRes.ok ? await ltRes.json() : {};
+    const start = new Date(startTimeISO);
+    const end = new Date(start.getTime() + durationSec * 1000);
+    let ms = end - new Date();
 
-      console.info('[diag] /api/metadata:', api);
-      console.info('[diag] latestTrack.json:', lt);
+    // Grace: if end time has passed due to clock skew, give a short delay
+    if (ms <= 0) ms = 3000;
+    // Cap any long wait to avoid stale UI if timing is wrong
+    ms = Math.max(1000, Math.min(ms, 15000));
 
-      // Paint /api/metadata
-      const apiArtist = api.artist || '';
-      const apiTitle  = api.title  || '';
-      const apiSource = api.source || (api._debug?.decision?.source) || 'unknown';
-      const apiExtra  = `source=${apiSource} • duration=${api.duration ?? 'n/a'} • start=${api.startTime ?? 'n/a'}`;
-      setBox('apiBox', 'apiNow', 'apiMeta', apiArtist, apiTitle, apiExtra);
+    endTimer = setTimeout(() => {
+      showIdle();
+    }, ms);
+  }
 
-      // Paint latestTrack.json
-      const ltArtist = lt.artist || '';
-      const ltTitle  = lt.title  || '';
-      const ltExtra  = `duration=${lt.duration ?? 'n/a'} • start=${lt.startTime ?? 'n/a'}`;
-      setBox('latestBox', 'ltNow', 'ltMeta', ltArtist, ltTitle, ltExtra);
+  async function updateNowPlaying() {
+    try {
+      const res = await fetch("/api/metadata?ts=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
 
-      // Decision / diff
-      const decisionEl = el('decision');
-      const reasonEl   = el('reason');
-      let decisionText = apiSource;
-      let reasonText   = '';
+      const artist = clean(decode(data?.artist));
+      const title  = clean(decode(data?.title));
+      const startTime = data?.startTime || null;
+      const duration  = (typeof data?.duration === "number") ? data.duration : null;
 
-      // Highlight disagreement
-      const disagree = !(compare(apiTitle, ltTitle) && (apiArtist && ltArtist ? ltArtist.toLowerCase().includes(apiArtist.toLowerCase()) || apiArtist.toLowerCase().includes(ltArtist.toLowerCase()) : true));
-      if (disagree){
-        el('apiBox').classList.add('diff-bad');
-        reasonText = 'API and latestTrack disagree on artist/title';
-      } else {
-        el('apiBox').classList.remove('diff-bad');
+      if (!artist || !title) {
+        showIdle();
+        return;
       }
 
-      // Idle detection
-      if (!apiArtist && !apiTitle){
-        decisionText = 'idle (empty from API)';
-        reasonText = 'Server returned empty artist/title';
+      const id = artist + " – " + title;
+      if (id !== currentTrackID) {
+        currentTrackID = id;
+        paint(artist, title);
       }
-
-      decisionEl.textContent = decisionText;
-      reasonEl.textContent = reasonText;
-
-    } catch (e){
-      console.error(e);
-      el('decision').textContent = 'error';
-      el('reason').textContent = String(e.message || e);
+      scheduleEnd(startTime, duration);
+    } catch (err) {
+      console.error("nowplaying-refresh error:", err);
+      showIdle();
     }
   }
 
-  el('refreshBtn').addEventListener('click', refresh);
-  refresh();
-  setInterval(refresh, 10000);
+  // Kickoff + polling + focus refresh
+  updateNowPlaying();
+  setInterval(updateNowPlaying, 10000);  // every 10s
+  window.addEventListener("focus", updateNowPlaying);
 })();
