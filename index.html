@@ -5853,6 +5853,12 @@ async function fetchNowPlaying() {
       latest.artist.toLowerCase() !== artist.toLowerCase() ||
       latest.title.toLowerCase() !== title.toLowerCase()
     ) {
+      // Mismatch between metadata sources => end immediately
+      if (trackEndTimeout) clearTimeout(trackEndTimeout);
+      showMoreMusicSoon();
+      songHasEnded = true;
+      currentTrackID = null;
+      trackEndTime = null;
       return;
     }
 
@@ -5871,7 +5877,7 @@ async function fetchNowPlaying() {
 
     if (trackEndTimeout) clearTimeout(trackEndTimeout);
 
-    if (timeRemaining <= 500) {
+    if (timeRemaining <= 2000) {
       showMoreMusicSoon();
       songHasEnded = true;
       currentTrackID = null;
@@ -5882,7 +5888,7 @@ async function fetchNowPlaying() {
         songHasEnded = true;
         currentTrackID = null;
         trackEndTime = null;
-      }, timeRemaining);
+      }, Math.min(timeRemaining, 10000));
     }
 
   } catch (e) {
