@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:05",
-    "Displayed Time": "",
-    "Artist": "Destiny's Child",
-    "Title": "Bills, Bills, Bills",
-    "Duration (s)": 232,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:09",
-    "Displayed Time": "",
-    "Artist": "The Weeknd",
-    "Title": "The Hills",
-    "Duration (s)": 223,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:13",
-    "Displayed Time": "",
-    "Artist": "Miley Cyrus",
-    "Title": "End Of The World",
-    "Duration (s)": 239,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:17",
-    "Displayed Time": "",
-    "Artist": "Plain White Ts",
-    "Title": "Hey There Delilah",
-    "Duration (s)": 221,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:25",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:28",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "How Does It Feel",
-    "Duration (s)": 133,
-    "Full Duration (s)": 144,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:30",
-    "Displayed Time": "",
-    "Artist": "The Pointer Sisters",
-    "Title": "I'm So Excited",
-    "Duration (s)": 214,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:33",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 208,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:41",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Outnumbered",
-    "Duration (s)": 190,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:44",
-    "Displayed Time": "",
-    "Artist": "Suede",
-    "Title": "Disintegrate",
-    "Duration (s)": 198,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:48",
-    "Displayed Time": "",
-    "Artist": "Texas",
-    "Title": "Black Eyed Boy",
-    "Duration (s)": 178,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:51",
-    "Displayed Time": "",
-    "Artist": "Ros\u00e9 & Bruno Mars",
-    "Title": "APT.",
-    "Duration (s)": 163,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T00:00:00Z",
-    "Scheduled Time": "01:54",
-    "Displayed Time": "",
-    "Artist": "Kanye West ft Jamie Foxx",
-    "Title": "Gold Digger",
-    "Duration (s)": 200,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-01T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "",
@@ -45142,5 +44988,16 @@
     "Full Duration (s)": 1190,
     "Duration (mins)": 20,
     "Full Duration (mins)": 20
+  },
+  {
+    "Hour": "2025-08-15T19:00:00Z",
+    "Scheduled Time": "20:02",
+    "Displayed Time": "",
+    "Artist": "Madison Avenue",
+    "Title": "Don't Call Me Baby",
+    "Duration (s)": 226,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
