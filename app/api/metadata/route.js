@@ -1,3 +1,4 @@
+
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -12,46 +13,35 @@ const decodeHtml = (s) => String(s ?? '')
 const clean = (s) => String(s ?? '')
   .replace(/[\u200B-\u200D\uFEFF]/g, '')
   .replace(/\s+/g, ' ')
-  .replace(/\s*[–—-]\s*/g, ' – ') // normalise dashes
+  .replace(/\s*[–—-]\s*/g, ' – ')
   .trim();
 
 const looksLikeTrack = (s) => {
   const line = String(s || '').trim();
   if (!line) return false;
-  if (/(.*?)\s+[–—-]\s+(.*)/.test(line)) return true;   // Artist – Title
-  if (/(.*?)\s+by\s+(.*)/i.test(line)) return true;     // Title by Artist
-  if (/(.*?)\s*:\s*(.*)/.test(line)) return true;       // Artist: Title
+  if (/(.*?)\s+[–—-]\s+(.*)/.test(line)) return true;
+  if (/(.*?)\s+by\s+(.*)/i.test(line)) return true;
+  if (/(.*?)\s*:\s*(.*)/.test(line)) return true;
   return false;
 };
 
-function parseCombined(s) {
-  const line = clean(s);
-  if (!line) return { artist: '', title: '' };
+const isNameFragment = (s) => {
+  const t = String(s || '').trim();
+  if (!t) return false;
+  if (/[0-9]/.test(t)) return false;
+  if (t.length > 40) return false;
+  if (!/^[A-Za-z]/.test(t)) return false;
+  return /^[A-Za-z][A-Za-z '&.-]*$/.test(t);
+};
 
-  // 1) Artist – Title (any dash)
-  let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
-  if (m) return { artist: clean(m[1]), title: clean(m[2]) };
-
-  // 2) Title by Artist
-  m = line.match(/^(.*?)\s+by\s+(.*)$/i);
-  if (m) return { artist: clean(m[2]), title: clean(m[1]) };
-
-  // 3) Artist: Title
-  m = line.match(/^(.*?)\s*:\s*(.*)$/);
-  if (m) return { artist: clean(m[1]), title: clean(m[2]) };
-
-  // 4) VERY conservative single-comma Artist, Title
-  const count = (line.match(/,/g) || []).length;
-  if (count === 1) {
-    const i = line.indexOf(',');
-    const left  = clean(line.slice(0, i));
-    const right = clean(line.slice(i + 1));
-    const looksLikeArtistName = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
-    if (looksLikeArtistName && right) return { artist: left, title: right };
-  }
-
-  // 5) Give up guessing: keep full as title
-  return { artist: '', title: line };
+function parseArtistTitle(line) {
+  const m1 = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
+  if (m1) return { artist: clean(m1[1]), title: clean(m1[2]) };
+  const m2 = line.match(/^(.*?)\s+by\s+(.*)$/i);
+  if (m2) return { artist: clean(m2[2]), title: clean(m2[1]) };
+  const m3 = line.match(/^(.*?)\s*:\s*(.*)$/);
+  if (m3) return { artist: clean(m3[1]), title: clean(m3[2]) };
+  return { artist: '', title: clean(line) };
 }
 
 function combineNowPlaying(artist, title) {
@@ -61,18 +51,14 @@ function combineNowPlaying(artist, title) {
 
 export async function GET() {
   try {
-    // 1) Pull raw CSV-like status from Livebox
     const res = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' });
     let text = await res.text();
-
-    // Strip HTML
     text = text.replace(/<[^>]*>/g, '');
 
-    // 2) Split on commas (Livebox isn't quoting) and recombine smartly
     const cells = text.split(',');
     let startIdx = -1;
     let joined = '';
-    // Find rightmost position where the remainder looks like a track line
+
     for (let i = cells.length - 1; i >= 0; i--) {
       const candidate = cells.slice(i).join(',').trim();
       if (looksLikeTrack(candidate)) {
@@ -81,9 +67,8 @@ export async function GET() {
         break;
       }
     }
-    // Fallbacks
+
     if (startIdx === -1) {
-      // take last non-numeric-ish cell joined with the tail
       for (let i = cells.length - 1; i >= 0; i--) {
         const c = (cells[i] || '').trim();
         if (c && isNaN(c) && c.length > 1) {
@@ -94,60 +79,32 @@ export async function GET() {
       }
     }
     if (startIdx === -1) {
-      // give up: whole text
       startIdx = 0;
       joined = text.trim();
     }
 
-    // 3) If we have a dash split, aggressively glue preceding name fragments BEFORE the dash
-    //    This fixes: "Paul, Young – Every Time You Go Away", "Peter, Gabriel – Sledgehammer",
-    //                "Earth, Wind & Fire – September", "KC, The Sunshine Band – Give It Up".
-    let fixedJoined = joined;
-    const dashMatch = joined.match(/^(.*?)\s+([–—-])\s+(.*)$/);
-    if (dashMatch) {
-      let left = dashMatch[1].trim();
-      const dashChar = dashMatch[2];
-      const right = dashMatch[3].trim();
-
-      // Walk backwards through previous cells and prepend any short, name-ish fragments
-      // Stop if we hit digits, another dash, or a very long cell.
+    // NEW: glue preceding comma-split fragments until dash
+    const dashPos = joined.search(/\s+[–—-]\s+/);
+    if (dashPos > 0) {
+      let left = joined.slice(0, dashPos).trim();
+      const right = joined.slice(dashPos + 3).trim();
       let k = startIdx - 1;
-      let prependParts = [];
-      let steps = 0;
-      while (k >= 0 && steps < 6) {
-        let prev = String(cells[k] || '').trim();
-        if (!prev) break;
-        // Abort on likely junk
-        if (prev.length > 50) break;
-        if (/[0-9]{3,}/.test(prev)) break;
-        if (/[–—-]/.test(prev)) break;
-
-        // If it looks like a name chunk (letters/&/'/.) keep it
-        if (/[A-Za-z]/.test(prev)) {
-          // Normalise stray trailing/leading punctuation/spaces
-          prev = prev.replace(/^,+\s*/, '').replace(/\s*,+\s*$/, '');
-          if (prev) {
-            prependParts.unshift(prev);
-            k--;
-            steps++;
-            continue;
-          }
-        }
-        break;
+      let fragments = [];
+      while (k >= 0) {
+        const prev = (cells[k] || '').trim();
+        if (!isNameFragment(prev)) break;
+        fragments.unshift(prev);
+        k--;
       }
-
-      if (prependParts.length) {
-        const gluedLeft = (prependParts.join(', ') + (left ? ', ' : '')) + left;
-        fixedJoined = `${gluedLeft} ${dashChar} ${right}`;
+      if (fragments.length) {
+        left = fragments.join(', ') + ', ' + left;
       }
+      joined = `${left} - ${right}`;
     }
 
-    const rawCombined = clean(decodeHtml(fixedJoined));
+    const rawCombined = clean(decodeHtml(joined));
+    let { artist, title } = parseArtistTitle(rawCombined);
 
-    // 4) Parse into fields
-    let { artist, title } = parseCombined(rawCombined);
-
-    // 5) Enrich from canonical latestTrack.json (adds collaborators; timing)
     let duration = null;
     let startTime = null;
     try {
@@ -164,9 +121,8 @@ export async function GET() {
         if (latest?.duration) duration = Number(latest.duration) || null;
         if (latest?.startTime) startTime = latest.startTime;
       }
-    } catch { /* ignore enrichment failure */ }
+    } catch {}
 
-    // 6) Optional iTunes duration fallback
     if (!duration && artist && title) {
       try {
         const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&limit=1`, { cache: 'no-store' });
@@ -176,7 +132,6 @@ export async function GET() {
       } catch {}
     }
 
-    // 7) Rolling log (avoid dupes within 5 minutes)
     if (artist && title) {
       const nowISO = new Date().toISOString();
       const logEntry = {
@@ -202,7 +157,6 @@ export async function GET() {
       } catch {}
     }
 
-    // 8) Final payload
     const payload = {
       artist,
       title,
