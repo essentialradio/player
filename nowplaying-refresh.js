@@ -36,8 +36,8 @@ async function refreshNowPlaying() {
 // Initial load
 refreshNowPlaying();
 
-// Poll every 30 seconds
-setInterval(refreshNowPlaying, 30000);
+// Poll every 10 seconds
+setInterval(refreshNowPlaying, 10000);
 
 // Update immediately when window regains focus
 window.addEventListener("focus", refreshNowPlaying);
