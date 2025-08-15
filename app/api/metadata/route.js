@@ -1,4 +1,3 @@
-
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -13,15 +12,15 @@ const decodeHtml = (s) => String(s ?? '')
 const clean = (s) => String(s ?? '')
   .replace(/[\u200B-\u200D\uFEFF]/g, '')
   .replace(/\s+/g, ' ')
-  .replace(/\s*[–—-]\s*/g, ' – ')
+  .replace(/\s*[–—-]\s*/g, ' – ') // normalise dashes
   .trim();
 
 const looksLikeTrack = (s) => {
   const line = String(s || '').trim();
   if (!line) return false;
-  if (/(.*?)\s+[–—-]\s+(.*)/.test(line)) return true;
-  if (/(.*?)\s+by\s+(.*)/i.test(line)) return true;
-  if (/(.*?)\s*:\s*(.*)/.test(line)) return true;
+  if (/(.*?)\s+[–—-]\s+(.*)/.test(line)) return true;   // Artist – Title
+  if (/(.*?)\s+by\s+(.*)/i.test(line)) return true;     // Title by Artist
+  if (/(.*?)\s*:\s*(.*)/.test(line)) return true;       // Artist: Title
   return false;
 };
 
@@ -34,14 +33,28 @@ const isNameFragment = (s) => {
   return /^[A-Za-z][A-Za-z '&.-]*$/.test(t);
 };
 
-function parseArtistTitle(line) {
-  const m1 = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
-  if (m1) return { artist: clean(m1[1]), title: clean(m1[2]) };
-  const m2 = line.match(/^(.*?)\s+by\s+(.*)$/i);
-  if (m2) return { artist: clean(m2[2]), title: clean(m2[1]) };
-  const m3 = line.match(/^(.*?)\s*:\s*(.*)$/);
-  if (m3) return { artist: clean(m3[1]), title: clean(m3[2]) };
-  return { artist: '', title: clean(line) };
+function parseCombined(s) {
+  const line = clean(s);
+  if (!line) return { artist: '', title: '' };
+
+  let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
+  if (m) return { artist: clean(m[1]), title: clean(m[2]) };
+
+  m = line.match(/^(.*?)\s+by\s+(.*)$/i);
+  if (m) return { artist: clean(m[2]), title: clean(m[1]) };
+
+  m = line.match(/^(.*?)\s*:\s*(.*)$/);
+  if (m) return { artist: clean(m[1]), title: clean(m[2]) };
+
+  // Handle multiple commas in artist name
+  const dashIdx = line.indexOf(' – ');
+  if (dashIdx > -1) {
+    const leftPart = line.slice(0, dashIdx);
+    const rightPart = line.slice(dashIdx + 3);
+    return { artist: clean(leftPart), title: clean(rightPart) };
+  }
+
+  return { artist: '', title: line };
 }
 
 function combineNowPlaying(artist, title) {
@@ -78,32 +91,37 @@ export async function GET() {
         }
       }
     }
+
     if (startIdx === -1) {
       startIdx = 0;
       joined = text.trim();
     }
 
-    // NEW: glue preceding comma-split fragments until dash
-    const dashPos = joined.search(/\s+[–—-]\s+/);
-    if (dashPos > 0) {
-      let left = joined.slice(0, dashPos).trim();
-      const right = joined.slice(dashPos + 3).trim();
+    let fixedJoined = joined;
+    const dashMatch = joined.match(/^(.*?)\s+([–—-])\s+(.*)$/);
+    if (dashMatch) {
+      let left = dashMatch[1].trim();
+      const dashChar = dashMatch[2];
+      const right = dashMatch[3].trim();
+
       let k = startIdx - 1;
       let fragments = [];
-      while (k >= 0) {
+      let steps = 0;
+      while (k >= 0 && steps < 3) {
         const prev = (cells[k] || '').trim();
         if (!isNameFragment(prev)) break;
         fragments.unshift(prev);
         k--;
+        steps++;
       }
       if (fragments.length) {
-        left = fragments.join(', ') + ', ' + left;
+        left = fragments.join(', ') + (left ? ', ' + left : '');
+        fixedJoined = `${left} ${dashChar} ${right}`;
       }
-      joined = `${left} - ${right}`;
     }
 
-    const rawCombined = clean(decodeHtml(joined));
-    let { artist, title } = parseArtistTitle(rawCombined);
+    const rawCombined = clean(decodeHtml(fixedJoined));
+    let { artist, title } = parseCombined(rawCombined);
 
     let duration = null;
     let startTime = null;
@@ -114,8 +132,7 @@ export async function GET() {
         const la = clean(latest?.artist);
         const lt = clean(latest?.title);
         if (lt && title && lt.toLowerCase() === title.toLowerCase() && la) {
-          const parsed = (artist || '').toLowerCase();
-          const richer = !artist || la.toLowerCase().includes(parsed) || la.length > artist.length + 2;
+          const richer = !artist || la.toLowerCase().includes(artist.toLowerCase()) || la.length > artist.length + 2;
           if (richer) artist = la;
         }
         if (latest?.duration) duration = Number(latest.duration) || null;
@@ -134,12 +151,7 @@ export async function GET() {
 
     if (artist && title) {
       const nowISO = new Date().toISOString();
-      const logEntry = {
-        Artist: artist,
-        Title: title,
-        "Scheduled Time": nowISO,
-        "Duration (s)": duration ?? null
-      };
+      const logEntry = { Artist: artist, Title: title, "Scheduled Time": nowISO, "Duration (s)": duration ?? null };
       try {
         const logPath = path.join(process.cwd(), 'public', 'playout_log_rolling.json');
         const existingData = await fs.readFile(logPath, 'utf-8').catch(() => '[]');
@@ -157,22 +169,20 @@ export async function GET() {
       } catch {}
     }
 
-    const payload = {
+    return new Response(JSON.stringify({
       artist,
       title,
       nowPlaying: combineNowPlaying(artist, title) || rawCombined,
       duration,
       startTime
-    };
-
-    return new Response(JSON.stringify(payload), {
+    }), {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Cache-Control': 'no-store'
       }
     });
-  } catch (err) {
+  } catch {
     return new Response(JSON.stringify({
       artist: '',
       title: '',
