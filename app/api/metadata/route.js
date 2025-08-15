@@ -24,16 +24,6 @@ const looksLikeTrack = (s) => {
   return false;
 };
 
-const isNameFragment = (s) => {
-  const t = String(s || '').trim();
-  if (!t) return false;
-  if (/[0-9]/.test(t)) return false;             // avoid numeric cols
-  if (t.length > 40) return false;               // avoid long junk
-  if (!/^[A-Za-z]/.test(t)) return false;        // start with a letter
-  // allow &, ' and simple words
-  return /^[A-Za-z][A-Za-z '&.-]*$/.test(t);
-};
-
 function parseCombined(s) {
   const line = clean(s);
   if (!line) return { artist: '', title: '' };
@@ -109,8 +99,9 @@ export async function GET() {
       joined = text.trim();
     }
 
-    // 3) If we have a dash split, check for comma-broken artist pieces BEFORE the dash
-    //    Example: cells[startIdx-1] = "Peter", joined = " Gabriel – Sledgehammer"
+    // 3) If we have a dash split, aggressively glue preceding name fragments BEFORE the dash
+    //    This fixes: "Paul, Young – Every Time You Go Away", "Peter, Gabriel – Sledgehammer",
+    //                "Earth, Wind & Fire – September", "KC, The Sunshine Band – Give It Up".
     let fixedJoined = joined;
     const dashMatch = joined.match(/^(.*?)\s+([–—-])\s+(.*)$/);
     if (dashMatch) {
@@ -118,24 +109,36 @@ export async function GET() {
       const dashChar = dashMatch[2];
       const right = dashMatch[3].trim();
 
-      // Look back up to 3 cells to glue name fragments (e.g., "Peter", "Earth", "KC")
+      // Walk backwards through previous cells and prepend any short, name-ish fragments
+      // Stop if we hit digits, another dash, or a very long cell.
       let k = startIdx - 1;
-      let fragments = [];
+      let prependParts = [];
       let steps = 0;
-      while (k >= 0 && steps < 3) {
-        const prev = (cells[k] || '').trim();
-        // Stop if previous cell looks numeric/junk
-        if (!isNameFragment(prev)) break;
-        // Prepend fragment
-        fragments.unshift(prev);
-        k--;
-        steps++;
-        // Heuristic: stop when previous previous cell wouldn't look like a name fragment
-        // (we'll check in next loop iteration)
+      while (k >= 0 && steps < 6) {
+        let prev = String(cells[k] || '').trim();
+        if (!prev) break;
+        // Abort on likely junk
+        if (prev.length > 50) break;
+        if (/[0-9]{3,}/.test(prev)) break;
+        if (/[–—-]/.test(prev)) break;
+
+        // If it looks like a name chunk (letters/&/'/.) keep it
+        if (/[A-Za-z]/.test(prev)) {
+          // Normalise stray trailing/leading punctuation/spaces
+          prev = prev.replace(/^,+\s*/, '').replace(/\s*,+\s*$/, '');
+          if (prev) {
+            prependParts.unshift(prev);
+            k--;
+            steps++;
+            continue;
+          }
+        }
+        break;
       }
-      if (fragments.length) {
-        left = (fragments.join(', ') + (left ? ', ' : '')) + left;
-        fixedJoined = `${left} ${dashChar} ${right}`;
+
+      if (prependParts.length) {
+        const gluedLeft = (prependParts.join(', ') + (left ? ', ' : '')) + left;
+        fixedJoined = `${gluedLeft} ${dashChar} ${right}`;
       }
     }
 
