@@ -1,112 +1,43 @@
+async function refreshNowPlaying() {
+  try {
+    const res = await fetch(`https://www.essential.radio/api/metadata?ts=${Date.now()}`, {
+      cache: 'no-store'
+    });
 
-// nowplaying-refresh.js — trust server, no external mismatch check, graceful end
-(function(){
-  const ROOT_ID = "nowPlaying";
-  let currentTrackID = null;
-  let trackEndTimeout = null;
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
 
-  function $(id){ return document.getElementById(id); }
-  function getRoot(){ return $(ROOT_ID) || document.getElementById('now-playing') || null; }
+    const nowPlayingContainer = document.getElementById("nowPlaying");
+    if (!nowPlayingContainer) return;
 
-  const clean = (s) => String(s ?? '').replace(/[\u200B-\u200D\uFEFF]/g,'').replace(/\s+/g,' ').trim();
-  const decode = (s) => { const t=document.createElement('textarea'); t.innerHTML=String(s??''); return t.value; };
+    let nowPlayingText = "";
+    if (data.nowPlaying && data.nowPlaying.trim() !== "") {
+      // Preserve the LIVE + flashing dot at the start
+      nowPlayingText = `<span class="live-indicator">NOW PLAYING <span class="dot"></span></span> ${data.nowPlaying} on Essential Radio`;
 
-  function showIdle(){
-    const root = getRoot();
-    if (!root) return;
-    root.innerHTML = '<span style="color:#fed351;">Now Playing:</span><br/>' +
-                     '<span style="color:white;">More music soon on Essential Radio</span>';
-    root.setAttribute('data-empty','1');
-    const ind = root.querySelector('.live-indicator');
-    if (ind) ind.style.display = 'none';
-    currentTrackID = null;
-  }
-
-  function ensureLive(root){
-    let ind = root.querySelector('.live-indicator');
-    if (!ind){
-      ind = document.createElement('span');
-      ind.className = 'live-indicator';
-      ind.innerHTML = '<span class="dot"></span>LIVE';
-      root.appendChild(ind);
-    }
-    ind.style.display = 'inline-flex';
-  }
-
-  function paint(artist, title){
-    const root = getRoot();
-    if (!root) return;
-    ensureLive(root);
-    const t = root.querySelector('.np-title');
-    const a = root.querySelector('.np-artist');
-    if (t || a){
-      if (t) t.textContent = title;
-      if (a) a.textContent = artist;
+      // Schedule "More Music Soon" once track ends
+      if (data.duration && Number.isFinite(data.duration)) {
+        clearTimeout(window._moreMusicSoonTimeout);
+        window._moreMusicSoonTimeout = setTimeout(() => {
+          nowPlayingContainer.innerHTML = `<span class="live-indicator">NOW PLAYING <span class="dot"></span></span> More Music Soon on Essential Radio`;
+        }, data.duration * 1000);
+      }
     } else {
-      root.innerHTML = ''
-        + '<span style="color:#fed351;">Now Playing:</span>'
-        + '<span class="live-indicator"><span class="dot"></span>LIVE</span><br/>'
-        + '<span class="np-title" style="color:white;font-weight:600;font-size:1.2em;">' + title + '</span><br/>'
-        + '<span class="np-artist" style="color:white;">by ' + artist + '</span>';
+      nowPlayingText = `<span class="live-indicator">NOW PLAYING <span class="dot"></span></span> More Music Soon on Essential Radio`;
     }
-    root.removeAttribute('data-empty');
-    try { document.title = 'Essential Radio: ' + artist + ' – ' + title; } catch {}
-    try { if (typeof window.fetchArtwork === 'function') window.fetchArtwork(artist + ' - ' + title); } catch {}
-    try { window.dispatchEvent(new CustomEvent('np:update', { detail: { artist, title } })); } catch {}
+
+    nowPlayingContainer.innerHTML = nowPlayingText;
+
+  } catch (err) {
+    console.error("Error refreshing now playing:", err);
   }
+}
 
-  function scheduleEnd(startTimeISO, durationSec){
-    if (trackEndTimeout) { clearTimeout(trackEndTimeout); trackEndTimeout = null; }
-    if (!startTimeISO || !durationSec) return; // no scheduling if missing
+// Initial load
+refreshNowPlaying();
 
-    const start = new Date(startTimeISO);
-    const end = new Date(start.getTime() + durationSec * 1000);
-    const now = new Date();
-    let ms = end - now;
+// Poll every 30 seconds
+setInterval(refreshNowPlaying, 30000);
 
-    // If we're already close or past, don't instantly nuke it—give a short grace to avoid flicker
-    if (ms <= 0) ms = 3000;        // 3s grace if end is in the past
-    ms = Math.min(ms, 15000);      // cap to 15s to avoid long hangs on bad clocks
-
-    trackEndTimeout = setTimeout(() => {
-      showIdle();
-    }, ms);
-  }
-
-  // Expose fetchNowPlaying, called by your index on interval/focus
-  window.fetchNowPlaying = async function(){
-    try{
-      const res = await fetch('/api/metadata?ts=' + Date.now(), { cache: 'no-store' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-
-      const artist = clean(decode(data?.artist));
-      const title  = clean(decode(data?.title));
-      const startTime = data?.startTime || null;
-      const duration  = (typeof data?.duration === 'number') ? data.duration : null;
-
-      if (!artist || !title){
-        showIdle();
-        return;
-      }
-
-      const id = artist + ' – ' + title;
-      if (id !== currentTrackID){
-        currentTrackID = id;
-        paint(artist, title);
-        scheduleEnd(startTime, duration);
-      } else {
-        // refresh end schedule if timing changed
-        scheduleEnd(startTime, duration);
-      }
-    } catch (e){
-      console.error('fetchNowPlaying failed:', e);
-      showIdle();
-    }
-  };
-
-  // Initial kick + 10s polling + focus refresh
-  window.fetchNowPlaying();
-  setInterval(window.fetchNowPlaying, 10000);
-  window.addEventListener('focus', window.fetchNowPlaying);
-})();
+// Update immediately when window regains focus
+window.addEventListener("focus", refreshNowPlaying);
