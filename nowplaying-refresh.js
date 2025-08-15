@@ -1,114 +1,99 @@
 
-// nowplaying-refresh.js — clean-first, comma-safe, with fast-end behaviour
+// nowplaying-refresh.js — clean-first, comma-safe, no timers, immediate idle on mismatch
 (function(){
-  const ROOT_ID = "now-playing";
-  let currentTrackID = null;
-  let songHasEnded = false;
-  let trackEndTime = null;
-  let trackEndTimeout = null;
-
+  // Helper to find the "Now Playing" container (supports both ids)
   function $(id){ return document.getElementById(id); }
+  function getRoot(){ return $('nowPlaying') || $('now-playing') || null; }
 
+  // HTML decode + cleaning
   function decode(s){
-    const t = document.createElement("textarea");
-    t.innerHTML = String(s ?? "");
+    const t = document.createElement('textarea');
+    t.innerHTML = String(s ?? '');
     return t.value;
   }
   function clean(s){
-    return String(s ?? "")
-      .replace(/[\u200B-\u200D\uFEFF]/g, "")
-      .replace(/\s+/g, " ")
-      .replace(/\s*[–—-]\s*/g, " – ")
+    return String(s ?? '')
+      .replace(/[\u200B-\u200D\uFEFF]/g, '')
+      .replace(/\s+/g, ' ')
+      .replace(/\s*[–—-]\s*/g, ' – ')
       .trim();
   }
 
-  function normalizeFromData(data){
+  // Normalise metadata to {artist, title} conservatively (preserve commas in titles)
+  function normalize(data){
     // Prefer explicit fields if present
-    const fieldArtist = clean(decode(data?.Artist ?? data?.artist ?? ""));
-    const fieldTitle  = clean(decode(data?.Title  ?? data?.title  ?? ""));
-    if (fieldArtist && fieldTitle){
-      return { artist: fieldArtist, title: fieldTitle, source: "fields" };
-    }
+    let artist = clean(decode(data?.Artist ?? data?.artist ?? ''));
+    let title  = clean(decode(data?.Title  ?? data?.title  ?? ''));
+    if (artist && title) return { artist, title, source: 'fields' };
 
-    // Fallback to combined line
-    const raw = clean(decode(data?.nowPlaying ?? data?.NowPlaying ?? data?.np ?? ""));
-    if (!raw) return { artist: "", title: "", source: "empty" };
+    // Combined string
+    const raw = clean(decode(data?.nowPlaying ?? data?.NowPlaying ?? data?.np ?? ''));
+    if (!raw) return { artist:'', title:'', source:'empty' };
 
-    // 1) Artist – Title (any dash)
+    // a) Artist – Title (any dash)
     let m = raw.match(/^(.*?)\s+[–—-]\s+(.*)$/);
-    if (m) return { artist: clean(m[1]), title: clean(m[2]), source: "dash" };
+    if (m) return { artist: clean(m[1]), title: clean(m[2]), source:'dash' };
 
-    // 2) Title by Artist
+    // b) Title by Artist
     m = raw.match(/^(.*?)\s+by\s+(.*)$/i);
-    if (m) return { artist: clean(m[2]), title: clean(m[1]), source: "by" };
+    if (m) return { artist: clean(m[2]), title: clean(m[1]), source:'by' };
 
-    // 3) Artist: Title
+    // c) Artist: Title
     m = raw.match(/^(.*?)\s*:\s*(.*)$/);
-    if (m) return { artist: clean(m[1]), title: clean(m[2]), source: "colon" };
+    if (m) return { artist: clean(m[1]), title: clean(m[2]), source:'colon' };
 
-    // 4) VERY conservative single-comma "Artist, Title"
+    // d) VERY conservative single-comma "Artist, Title"
     const count = (raw.match(/,/g) || []).length;
     if (count === 1){
-      const i = raw.indexOf(",");
+      const i = raw.indexOf(',');
       const left  = clean(raw.slice(0, i));
       const right = clean(raw.slice(i + 1));
       const looksLikeArtist = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
-      if (looksLikeArtist && right){
-        return { artist: left, title: right, source: "single-comma" };
-      }
+      if (looksLikeArtist && right) return { artist:left, title:right, source:'single-comma' };
     }
 
-    // 5) Give up guessing: keep full as title (preserves commas)
-    return { artist: "", title: raw, source: "literal" };
+    // e) Give up guessing: keep full as title (preserves commas)
+    return { artist:'', title: raw, source:'literal' };
   }
 
-  
-  function ensureLiveIndicator(root){
-    if (!root) return null;
-    let ind = root.querySelector('.live-indicator');
-    if (!ind) {
-      ind = document.createElement('span');
-      ind.className = 'live-indicator';
-      ind.innerHTML = '<span class="dot"></span>LIVE';
-      // Prefer to append after the "Now Playing:" label if present
-      const label = root.querySelector('.np-line, .np-label') ? root.querySelector('.np-line, .np-label') : null;
-      if (label && label.parentElement === root) {
-        label.insertAdjacentElement('afterend', ind);
-      } else {
-        root.appendChild(ind);
-      }
-    }
-    return ind;
-  }
-
-  function showMoreMusicSoon(){
-    const root = $(ROOT_ID);
+  function showIdle(){
+    const root = getRoot();
     if (!root) return;
     root.innerHTML = '<span style="color:#fed351;">Now Playing:</span><br/>' +
                      '<span style="color:white;">More music soon on Essential Radio</span>';
-    root.setAttribute("data-empty", "1");
+    root.setAttribute('data-empty', '1');
     const ind = root.querySelector('.live-indicator');
     if (ind) ind.style.display = 'none';
   }
 
-  function paint({artist, title}){
-    const root = $(ROOT_ID);
+  function ensureLive(root){
+    let ind = root.querySelector('.live-indicator');
+    if (!ind){
+      ind = document.createElement('span');
+      ind.className = 'live-indicator';
+      ind.innerHTML = '<span class="dot"></span>LIVE';
+      root.appendChild(ind);
+    }
+    ind.style.display = 'inline-flex';
+  }
+
+  function paint(artist, title){
+    const root = getRoot();
     if (!root) return;
 
     if (!artist || !title){
-      showMoreMusicSoon();
+      showIdle();
       return;
     }
 
-    // Ensure or reveal LIVE indicator
-    const live = ensureLiveIndicator(root);
-    if (live) live.style.display = 'inline-flex';
+    // Ensure LIVE indicator is visible
+    ensureLive(root);
 
-    const titleEl = root.querySelector(".np-title");
-    const artistEl = root.querySelector(".np-artist");
-    if (titleEl || artistEl){
-      if (titleEl)  titleEl.textContent  = title;
-      if (artistEl) artistEl.textContent = artist;
+    const t = root.querySelector('.np-title');
+    const a = root.querySelector('.np-artist');
+    if (t || a){
+      if (t) t.textContent = title;
+      if (a) a.textContent = artist;
     } else {
       root.innerHTML = ''
         + '<span style="color:#fed351;">Now Playing:</span>'
@@ -116,127 +101,47 @@
         + '<span class="np-title" style="color:white;font-weight:600;font-size:1.2em;">' + title + '</span><br/>'
         + '<span class="np-artist" style="color:white;">by ' + artist + '</span>';
     }
-    root.removeAttribute("data-empty");
+    root.removeAttribute('data-empty');
 
     try { document.title = 'Essential Radio: ' + artist + ' – ' + title; } catch {}
-
-    try { if (typeof window.fetchArtwork === 'function') window.fetchArtwork(artist + ' - ' + title); } catch {}
-    try { window.dispatchEvent(new CustomEvent('np:update', { detail: { artist, title } })); } catch {}
-  }
-const titleEl = root.querySelector(".np-title");
-    const artistEl = root.querySelector(".np-artist");
-    if (titleEl || artistEl){
-      if (titleEl)  titleEl.textContent  = title;
-      if (artistEl) artistEl.textContent = artist;
-    } else {
-      root.innerHTML = ''
-        + '<span style="color:#fed351;">Now Playing:</span>'
-        + '<span class="live-indicator"><span class="dot"></span>LIVE</span><br/>'
-        + '<span class="np-title" style="color:white;font-weight:600;font-size:1.2em;">' + title + '</span><br/>'
-        + '<span class="np-artist" style="color:white;">by ' + artist + '</span>';
-    }
-    root.removeAttribute("data-empty");
-
-    try { document.title = 'Essential Radio: ' + artist + ' – ' + title; } catch {}
-
-    // Artwork + notify
     try { if (typeof window.fetchArtwork === 'function') window.fetchArtwork(artist + ' - ' + title); } catch {}
     try { window.dispatchEvent(new CustomEvent('np:update', { detail: { artist, title } })); } catch {}
   }
 
-  async function refreshNowPlaying(){
+  // SAFELY override the global function your index already calls.
+  window.fetchNowPlaying = async function(){
     try{
-      // Primary metadata
+      // 1) Primary metadata
       const res = await fetch('/api/metadata?ts=' + Date.now(), { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
-      const { artist, title } = normalizeFromData(data);
+      const { artist, title } = normalize(data);
 
-      if (!artist || !title){
-        // No usable split — end immediately
-        if (trackEndTimeout) clearTimeout(trackEndTimeout);
-        showMoreMusicSoon();
-        songHasEnded = true;
-        currentTrackID = null;
-        trackEndTime = null;
-        return;
-      }
+      // If we can't reliably split, go idle immediately
+      if (!artist || !title){ showIdle(); return; }
 
-      const newID = artist + ' – ' + title;
-      const changed = (currentTrackID !== newID);
-
-      if (changed){
-        songHasEnded = false;
-        currentTrackID = newID;
-        paint({ artist, title });
-      }
-
-      // Cross-check against latestTrack.json for reliable end-time and mismatch detection
+      // 2) Cross-check latestTrack.json to decide live/idle state right now
+      //    If it doesn't match, we show idle immediately (no 30s linger).
       try {
-        const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
-        if (latestRes.ok){
-          const latest = await latestRes.json();
-          if (latest && latest.artist && latest.title && latest.duration && latest.startTime){
+        const lres = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+        if (lres.ok){
+          const latest = await lres.json();
+          if (latest && latest.artist && latest.title){
             const la = String(latest.artist || '').toLowerCase();
             const lt = String(latest.title  || '').toLowerCase();
-            const ca = artist.toLowerCase();
-            const ct = title.toLowerCase();
-
-            if (la !== ca || lt !== ct){
-              // Mismatch => end immediately
-              if (trackEndTimeout) clearTimeout(trackEndTimeout);
-              showMoreMusicSoon();
-              songHasEnded = true;
-              currentTrackID = null;
-              trackEndTime = null;
+            if (la !== artist.toLowerCase() || lt !== title.toLowerCase()){
+              showIdle();
               return;
-            }
-
-            // Compute end time and schedule a capped timeout
-            const startTime = new Date(latest.startTime);
-            const durationMs = latest.duration * 1000;
-            const endTime = new Date(startTime.getTime() + durationMs);
-            const now = new Date();
-            const timeRemaining = endTime - now;
-
-            // Prevent stale overlap re-trigger
-            if (trackEndTime && now < trackEndTime && startTime < trackEndTime){
-              // stale; ignore
-              return;
-            }
-
-            trackEndTime = endTime;
-            if (trackEndTimeout) clearTimeout(trackEndTimeout);
-
-            if (timeRemaining <= 2000){
-              // Finish right away if within 2s
-              showMoreMusicSoon();
-              songHasEnded = true;
-              currentTrackID = null;
-              trackEndTime = null;
-            } else {
-              trackEndTimeout = setTimeout(() => {
-                showMoreMusicSoon();
-                songHasEnded = true;
-                currentTrackID = null;
-                trackEndTime = null;
-              }, Math.min(timeRemaining, 10000)); // cap to 10s
             }
           }
         }
       } catch(_) { /* ignore cross-check errors */ }
-    } catch (err){
-      console.error('Error refreshing now playing:', err);
-      if (trackEndTimeout) clearTimeout(trackEndTimeout);
-      showMoreMusicSoon();
-      songHasEnded = true;
-      currentTrackID = null;
-      trackEndTime = null;
-    }
-  }
 
-  // Initial load + polling + focus refresh
-  refreshNowPlaying();
-  setInterval(refreshNowPlaying, 30000);
-  window.addEventListener('focus', refreshNowPlaying);
+      // 3) Paint live track (with LIVE indicator)
+      paint(artist, title);
+    } catch (e){
+      console.error('fetchNowPlaying failed:', e);
+      showIdle();
+    }
+  };
 })();
