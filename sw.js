@@ -1,7 +1,7 @@
 // Essential Radio — Service Worker (dynamic-safe)
-// v2 — avoids caching now playing JSON/artwork/streams
+// v3 — ignore cross-origin; never intercept /api/metadata; safe static caching only
 
-const STATIC_CACHE = 'essential-radio-static-v2';
+const STATIC_CACHE = 'essential-radio-static-v3'; // bump to force update
 const STATIC_ASSETS = [
   '/', '/index.html',
   // Add your core CSS/JS/fonts here for fast startup, e.g.:
@@ -10,7 +10,9 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(STATIC_CACHE).then((c) => c.addAll(STATIC_ASSETS)));
+  event.waitUntil(
+    caches.open(STATIC_CACHE).then((c) => c.addAll(STATIC_ASSETS)).catch(() => {})
+  );
   self.skipWaiting();
 });
 
@@ -26,12 +28,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
-  // Bypass Mixcloud API and widgets entirely
+
+  // NEW: Only handle SAME-ORIGIN requests. Do not touch GitHub or any third party.
+  if (url.origin !== self.location.origin) return;
+
+  // Bypass Mixcloud API and widgets entirely (same-origin guard above keeps cross-origin out anyway)
   if (url.hostname.endsWith("mixcloud.com")) {
     event.respondWith(fetch(req, { cache: "no-store" }).catch(() => fetch(req)));
     return;
   }
-
 
   // 1) Don't touch non-GET requests
   if (req.method !== 'GET') return;
@@ -40,10 +45,16 @@ self.addEventListener('fetch', (event) => {
   const isAudio = /\.(m3u8|aac|mp3|ogg)$/i.test(url.pathname);
   if (req.headers.get('range') || isAudio) return;
 
-  // 3) Bypass cache for dynamic now-playing endpoints & JSON
-  const isJSON = req.headers.get('accept')?.includes('application/json');
+  // NEW: Never intercept your metadata API (let it hit the network fresh)
+  if (url.pathname.startsWith('/api/metadata')) return;
+
+  // 3) Bypass cache for dynamic now-playing endpoints & JSON-like paths (same-origin only)
+  const accept = req.headers.get('accept') || '';
+  const isJSON = accept.includes('application/json') || url.pathname.endsWith('.json');
+
   const looksDynamicPath =
-    /now|np|current|metadata|artwork|cover|track/i.test(url.pathname);
+    /now|np|current|metadata|artwork|cover|track/i.test(url.pathname) ||
+    /latestTrack\.json|playout_log_rolling\.json/i.test(url.pathname); // NEW guard
 
   if (isJSON || looksDynamicPath) {
     event.respondWith(fetch(req, { cache: 'no-store' }).catch(() => caches.match(req)));
@@ -55,8 +66,10 @@ self.addEventListener('fetch', (event) => {
   if (isNav) {
     event.respondWith(
       fetch(req).then((resp) => {
-        const copy = resp.clone();
-        caches.open(STATIC_CACHE).then((c) => c.put(req, copy));
+        if (resp && resp.ok && resp.type === 'basic') {
+          const copy = resp.clone();
+          caches.open(STATIC_CACHE).then((c) => c.put(req, copy));
+        }
         return resp;
       }).catch(() => caches.match('/index.html'))
     );
@@ -68,15 +81,17 @@ self.addEventListener('fetch', (event) => {
   if (isStatic) {
     event.respondWith(
       caches.match(req).then((cached) => cached || fetch(req).then((resp) => {
-        const copy = resp.clone();
-        caches.open(STATIC_CACHE).then((c) => c.put(req, copy));
+        if (resp && resp.ok && resp.type === 'basic') {
+          const copy = resp.clone();
+          caches.open(STATIC_CACHE).then((c) => c.put(req, copy));
+        }
         return resp;
       }))
     );
     return;
   }
 
-  // 6) Everything else → try cache, then network
+  // 6) Everything else → try cache, then network (same-origin only)
   event.respondWith(
     caches.match(req).then((cached) => cached || fetch(req))
   );
