@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "",
-    "Artist": "Green Day",
-    "Title": "Basket Case",
-    "Duration (s)": 171,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:05",
-    "Displayed Time": "",
-    "Artist": "Alanis Morissette",
-    "Title": "Head Over Feet",
-    "Duration (s)": 244,
-    "Full Duration (s)": 265,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:09",
-    "Displayed Time": "",
-    "Artist": "The Cardigans",
-    "Title": "My Favourite Game",
-    "Duration (s)": 210,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:12",
-    "Displayed Time": "",
-    "Artist": "Sheryl Crow",
-    "Title": "A Change Would Do You Good",
-    "Duration (s)": 214,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:19",
-    "Displayed Time": "",
-    "Artist": "Robin S",
-    "Title": "Show Me Love",
-    "Duration (s)": 185,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:23",
-    "Displayed Time": "",
-    "Artist": "Supergrass",
-    "Title": "Pumping on Your Stereo",
-    "Duration (s)": 182,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:26",
-    "Displayed Time": "",
-    "Artist": "The Vengaboys",
-    "Title": "We're Going to Ibiza!",
-    "Duration (s)": 209,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:29",
-    "Displayed Time": "",
-    "Artist": "Beverley Knight",
-    "Title": "Greatest Day",
-    "Duration (s)": 221,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:33",
-    "Displayed Time": "",
-    "Artist": "MC Sar & The Real McCoy",
-    "Title": "Another Night",
-    "Duration (s)": 225,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:41",
-    "Displayed Time": "",
-    "Artist": "Nirvana",
-    "Title": "Come As You Are",
-    "Duration (s)": 201,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:44",
-    "Displayed Time": "",
-    "Artist": "Ten Sharp",
-    "Title": "You",
-    "Duration (s)": 228,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:48",
-    "Displayed Time": "",
-    "Artist": "Crowded House",
-    "Title": "Weather With You",
-    "Duration (s)": 212,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:52",
-    "Displayed Time": "",
-    "Artist": "World Party",
-    "Title": "Is It Like Today",
-    "Duration (s)": 204,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T20:00:00Z",
-    "Scheduled Time": "21:55",
-    "Displayed Time": "",
-    "Artist": "Fatboy Slim",
-    "Title": "Right Here, Right Now",
-    "Duration (s)": 222,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-07-31T21:00:00Z",
     "Scheduled Time": "22:02",
     "Displayed Time": "",
@@ -45241,5 +45087,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-15T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "",
+    "Artist": "Coldplay",
+    "Title": "All My Love",
+    "Duration (s)": 214,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
