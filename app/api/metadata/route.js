@@ -1,9 +1,10 @@
+
 import { promises as fs } from 'fs';
 import path from 'path';
 
-// Prefer latestTrack.json first, fallback to Livebox 7.html with CSV glue
+export const dynamic = 'force-dynamic';
 
-// --- helpers ---
+// ---- helpers ----
 const decodeHtml = (s) => String(s ?? '')
   .replace(/&amp;/g, '&')
   .replace(/&lt;/g, '<')
@@ -15,8 +16,11 @@ const decodeHtml = (s) => String(s ?? '')
 const clean = (s) => String(s ?? '')
   .replace(/[\u200B-\u200D\uFEFF]/g, '')
   .replace(/\s+/g, ' ')
-  .replace(/\s*[–—-]\s*/g, ' – ') // normalise dash variants
+  .replace(/\s*[–—-]\s*/g, ' – ')
   .trim();
+
+const nfc = (s) => clean(decodeHtml(s)).toLowerCase().replace(/[’'"]/g, '').replace(/\s+/g,' ').trim();
+const nfcNoParen = (s) => nfc(s).replace(/\s*\([^)]*\)\s*/g, '').trim();
 
 const looksLikeTrack = (s) => {
   const line = String(s || '').trim();
@@ -31,19 +35,19 @@ function parseCombined(s) {
   const line = clean(s);
   if (!line) return { artist: '', title: '' };
 
-  // 1) Artist – Title (any dash)
+  // Artist – Title (any dash)
   let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
   if (m) return { artist: clean(m[1]), title: clean(m[2]) };
 
-  // 2) Title by Artist
+  // Title by Artist
   m = line.match(/^(.*?)\s+by\s+(.*)$/i);
   if (m) return { artist: clean(m[2]), title: clean(m[1]) };
 
-  // 3) Artist: Title
+  // Artist: Title
   m = line.match(/^(.*?)\s*:\s*(.*)$/);
   if (m) return { artist: clean(m[1]), title: clean(m[2]) };
 
-  // 4) VERY conservative single-comma Artist, Title
+  // Very conservative single-comma Artist, Title
   const count = (line.match(/,/g) || []).length;
   if (count === 1) {
     const i = line.indexOf(',');
@@ -53,7 +57,7 @@ function parseCombined(s) {
     if (looksLikeArtistName && right) return { artist: left, title: right };
   }
 
-  // 5) Give up guessing: keep full as title
+  // Give up guessing: keep full as title
   return { artist: '', title: line };
 }
 
@@ -66,125 +70,129 @@ const isNameFragment = (s) => {
   return /^[A-Za-z][A-Za-z '&.-]*$/.test(t);
 };
 
-function combineNowPlaying(artist, title) {
-  if (artist && title) return `${artist} - ${title}`;
-  return title || artist || '';
+function glueLivebox(text) {
+  // Strip HTML, split on commas, and recombine intelligently
+  const plain = text.replace(/<[^>]*>/g, '');
+  const cells = plain.split(',');
+
+  // Rightmost track-like tail
+  let startIdx = -1, joined = '';
+  for (let i = cells.length - 1; i >= 0; i--) {
+    const candidate = cells.slice(i).join(',').trim();
+    if (looksLikeTrack(candidate)) { startIdx = i; joined = candidate; break; }
+  }
+  if (startIdx === -1) {
+    for (let i = cells.length - 1; i >= 0; i--) {
+      const c = (cells[i] || '').trim();
+      if (c && isNaN(c) && c.length > 1) {
+        startIdx = i;
+        joined = (i < cells.length - 1) ? (c + ',' + cells.slice(i + 1).join(',')).trim() : c;
+        break;
+      }
+    }
+  }
+  if (startIdx === -1) { startIdx = 0; joined = plain.trim(); }
+
+  // Aggressively glue preceding name fragments BEFORE the dash
+  const dashMatch = joined.match(/^(.*?)\s+([–—-])\s+(.*)$/);
+  if (dashMatch) {
+    let left = dashMatch[1].trim();
+    const dashChar = dashMatch[2];
+    const right = dashMatch[3].trim();
+
+    let k = startIdx - 1;
+    const prependParts = [];
+    let steps = 0;
+    while (k >= 0 && steps < 8) {
+      let prev = String(cells[k] || '').trim();
+      if (!prev) break;
+      if (prev.length > 50) break;
+      if (/[0-9]{3,}/.test(prev)) break;
+      if (/[–—-]/.test(prev)) break;
+      const stripped = prev.replace(/^,+\s*/, '').replace(/\s*,+\s*$/, '');
+      if (/^[A-Za-z][A-Za-z '&.-]*$/.test(stripped)) {
+        prependParts.unshift(stripped);
+        k--; steps++; continue;
+      }
+      break;
+    }
+    if (prependParts.length) {
+      left = (prependParts.join(', ') + (left ? ', ' : '')) + left;
+      joined = `${left} ${dashChar} ${right}`;
+    }
+  }
+  return clean(decodeHtml(joined));
 }
 
-export const dynamic = 'force-dynamic';
+function chooseBest(liveArtist, liveTitle, latestArtist, latestTitle) {
+  // If latest has both fields, and titles are close, prefer latest artist/title
+  const titlesClose = latestTitle && liveTitle && (
+    nfc(latestTitle) === nfc(liveTitle) ||
+    nfcNoParen(latestTitle) === nfcNoParen(liveTitle)
+  );
+
+  // "Broken" live artist heuristics: single token, or a suffix of latest artist, or empty
+  const liveTokens = (liveArtist || '').split(/\s+/).filter(Boolean);
+  const brokenLive = !liveArtist || liveTokens.length === 1 ||
+                     (latestArtist && latestArtist.toLowerCase().includes(liveArtist.toLowerCase()) && latestArtist.length > (liveArtist.length + 2));
+
+  if (latestArtist && latestTitle && titlesClose && (brokenLive || nfc(latestArtist) !== nfc(liveArtist))) {
+    return { artist: latestArtist, title: latestTitle, source: 'latestTrack' };
+  }
+
+  return { artist: liveArtist || latestArtist || '', title: liveTitle || latestTitle || '', source: liveArtist ? 'livebox' : (latestArtist ? 'latestTrack' : 'unknown') };
+}
 
 export async function GET(req) {
   try {
-    const nowISO = new Date().toISOString();
-    let artist = '', title = '', duration = null, startTime = null;
-    let rawCombined = '';
-    let used = 'latestTrack';
+    const url = new URL(req.url);
+    const debug = url.searchParams.get('debug') === '1';
 
-    // --- 0) Primary: latestTrack.json ---
-    try {
-      const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now(), { cache: 'no-store' });
-      if (latestRes.ok) {
-        const latest = await latestRes.json();
-        const la = clean(latest?.artist);
-        const lt = clean(latest?.title);
-        if (la && lt) {
-          artist = la;
-          title  = lt;
-          rawCombined = `${la} - ${lt}`;
-          if (latest?.duration) duration = Number(latest.duration) || null;
-          if (latest?.startTime) startTime = latest.startTime;
-        } else {
-          used = 'livebox-fallback';
-        }
-      } else {
-        used = 'livebox-fallback';
-      }
-    } catch {
-      used = 'livebox-fallback';
-    }
+    // Fetch both in parallel
+    const [liveboxRes, latestRes] = await Promise.allSettled([
+      fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' }),
+      fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now(), { cache: 'no-store' })
+    ]);
 
-    // --- 1) Fallback: Livebox scrape with CSV glue ---
-    if (!artist || !title) {
-      const res = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' });
-      let text = await res.text();
-
-      // Strip HTML
-      text = text.replace(/<[^>]*>/g, '');
-
-      const cells = text.split(',');
-      let startIdx = -1;
-      let joined = '';
-      // Rightmost tail that looks like a track
-      for (let i = cells.length - 1; i >= 0; i--) {
-        const candidate = cells.slice(i).join(',').trim();
-        if (looksLikeTrack(candidate)) { startIdx = i; joined = candidate; break; }
-      }
-      if (startIdx === -1) {
-        for (let i = cells.length - 1; i >= 0; i--) {
-          const c = (cells[i] || '').trim();
-          if (c && isNaN(c) && c.length > 1) {
-            startIdx = i;
-            joined = (i < cells.length - 1) ? (c + ',' + cells.slice(i + 1).join(',')).trim() : c;
-            break;
-          }
-        }
-      }
-      if (startIdx === -1) { startIdx = 0; joined = text.trim(); }
-
-      // Glue name fragments before dash
-      let fixedJoined = joined;
-      const dashMatch = joined.match(/^(.*?)\s+([–—-])\s+(.*)$/);
-      if (dashMatch) {
-        let left = dashMatch[1].trim();
-        const dashChar = dashMatch[2];
-        const right = dashMatch[3].trim();
-
-        let k = startIdx - 1;
-        const prependParts = [];
-        let steps = 0;
-        while (k >= 0 && steps < 8) {
-          let prev = String(cells[k] || '').trim();
-          if (!prev) break;
-          if (prev.length > 50) break;
-          if (/[0-9]{3,}/.test(prev)) break;
-          if (/[–—-]/.test(prev)) break;
-          const stripped = prev.replace(/^,+\s*/, '').replace(/\s*,+\s*$/, '');
-          if (/^[A-Za-z][A-Za-z '&.-]*$/.test(stripped)) {
-            prependParts.unshift(stripped);
-            k--; steps++;
-            continue;
-          }
-          break;
-        }
-        if (prependParts.length) {
-          left = (prependParts.join(', ') + (left ? ', ' : '')) + left;
-          fixedJoined = `${left} ${dashChar} ${right}`;
-        }
-      }
-
-      rawCombined = clean(decodeHtml(fixedJoined));
+    // Livebox parse
+    let liveArtist = '', liveTitle = '', rawCombined = '';
+    if (liveboxRes.status === 'fulfilled' && liveboxRes.value.ok) {
+      const liveText = await liveboxRes.value.text();
+      rawCombined = glueLivebox(liveText);
       const parsed = parseCombined(rawCombined);
-      artist = parsed.artist || artist;
-      title  = parsed.title  || title;
-      // duration/startTime remain null here (we'll try iTunes next)
-      used = 'livebox-fallback';
+      liveArtist = parsed.artist;
+      liveTitle  = parsed.title;
     }
 
-    // --- 2) iTunes duration fallback if still missing ---
-    if (!duration && artist && title) {
+    // Latest
+    let latestArtist = '', latestTitle = '', duration = null, startTime = null;
+    if (latestRes.status === 'fulfilled' && latestRes.value.ok) {
+      const latest = await latestRes.value.json();
+      latestArtist = clean(latest?.artist);
+      latestTitle  = clean(latest?.title);
+      if (latest?.duration) duration = Number(latest.duration) || null;
+      if (latest?.startTime) startTime = latest.startTime;
+    }
+
+    // Decide best
+    const best = chooseBest(liveArtist, liveTitle, latestArtist, latestTitle);
+
+    // Duration & timing: prefer latestTrack, fallback to iTunes
+    if (!duration && best.artist && best.title) {
       try {
-        const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&limit=1`, { cache: 'no-store' });
+        const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${best.artist} ${best.title}`)}&limit=1`, { cache: 'no-store' });
         const itunesJson = await itunesRes.json();
         const track = itunesJson.results?.[0];
         if (track?.trackTimeMillis) duration = Math.round(track.trackTimeMillis / 1000);
       } catch {}
     }
 
-    // --- 3) Rolling log (avoid dupes within 5 minutes) ---
-    if (artist && title) {
+    // Rolling log (avoid dupes within 5 minutes)
+    if (best.artist && best.title) {
+      const nowISO = new Date().toISOString();
       const logEntry = {
-        Artist: artist,
-        Title: title,
+        Artist: best.artist,
+        Title: best.title,
         "Scheduled Time": nowISO,
         "Duration (s)": duration ?? null
       };
@@ -194,8 +202,8 @@ export async function GET(req) {
         const parsed = JSON.parse(existingData);
         const fiveMinsAgo = Date.now() - 5 * 60 * 1000;
         const isRecentDuplicate = parsed.some(item =>
-          item.Artist === artist &&
-          item.Title === title &&
+          item.Artist === best.artist &&
+          item.Title === best.title &&
           new Date(item["Scheduled Time"]).getTime() > fiveMinsAgo
         );
         if (!isRecentDuplicate) {
@@ -206,13 +214,23 @@ export async function GET(req) {
     }
 
     const payload = {
-      artist,
-      title,
-      nowPlaying: combineNowPlaying(artist, title) || rawCombined,
+      artist: best.artist,
+      title: best.title,
+      nowPlaying: (best.artist && best.title) ? `${best.artist} - ${best.title}` : (rawCombined || latestTitle || ''),
       duration,
       startTime,
-      source: used
+      source: best.source
     };
+    if (debug) {
+      payload._debug = {
+        rawCombined,
+        liveArtist,
+        liveTitle,
+        latestArtist,
+        latestTitle,
+        decision: best
+      };
+    }
 
     return new Response(JSON.stringify(payload), {
       headers: {
@@ -233,8 +251,7 @@ export async function GET(req) {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-store'
+        'Access-Control': 'no-store'
       }
     });
   }
