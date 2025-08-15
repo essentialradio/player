@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:01",
-    "Displayed Time": "",
-    "Artist": "Train",
-    "Title": "Hey, Soul Sister",
-    "Duration (s)": 209,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:06",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:09",
-    "Displayed Time": "",
-    "Artist": "JADE",
-    "Title": "FUFN (Forget You For Now)",
-    "Duration (s)": 207,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:13",
-    "Displayed Time": "",
-    "Artist": "Lola Young",
-    "Title": "One Thing",
-    "Duration (s)": 200,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:16",
-    "Displayed Time": "",
-    "Artist": "Florence + the Machine",
-    "Title": "You've Got the Love",
-    "Duration (s)": 152,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:23",
-    "Displayed Time": "",
-    "Artist": "U2",
-    "Title": "With or Without You",
-    "Duration (s)": 270,
-    "Full Duration (s)": 292,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:27",
-    "Displayed Time": "",
-    "Artist": "Becky Hill & David Guetta",
-    "Title": "Remember",
-    "Duration (s)": 152,
-    "Full Duration (s)": 161,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:30",
-    "Displayed Time": "",
-    "Artist": "Reef",
-    "Title": "Place Your Hands",
-    "Duration (s)": 208,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:33",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 214,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:37",
-    "Displayed Time": "",
-    "Artist": "Black Legend",
-    "Title": "You See the Trouble With Me",
-    "Duration (s)": 188,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:44",
-    "Displayed Time": "",
-    "Artist": "Rita Ora",
-    "Title": "Heat",
-    "Duration (s)": 166,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:47",
-    "Displayed Time": "",
-    "Artist": "The Script",
-    "Title": "Breakeven",
-    "Duration (s)": 218,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:51",
-    "Displayed Time": "",
-    "Artist": "Rag'N'Bone Man",
-    "Title": "Rush of Blood",
-    "Duration (s)": 194,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-07-31T23:00:00Z",
-    "Scheduled Time": "00:54",
-    "Displayed Time": "",
-    "Artist": "Oasis",
-    "Title": "Cigarettes & Alcohol",
-    "Duration (s)": 270,
-    "Full Duration (s)": 279,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
     "Hour": "2025-08-01T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -45274,5 +45120,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-15T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "",
+    "Artist": "Lee Everest",
+    "Title": "Ready for the Weekend",
+    "Duration (s)": 1214,
+    "Full Duration (s)": 1218,
+    "Duration (mins)": 20,
+    "Full Duration (mins)": 20
   }
 ]
