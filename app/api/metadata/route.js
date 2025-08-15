@@ -1,4 +1,3 @@
-
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -131,7 +130,7 @@ function chooseBest(liveArtist, liveTitle, latestArtist, latestTitle) {
     nfcNoParen(latestTitle) === nfcNoParen(liveTitle)
   );
 
-  // "Broken" live artist heuristics: single token, or a suffix of latest artist, or empty
+  // "Broken" live artist heuristics: single token, or subset of latest, or empty
   const liveTokens = (liveArtist || '').split(/\s+/).filter(Boolean);
   const brokenLive = !liveArtist || liveTokens.length === 1 ||
                      (latestArtist && latestArtist.toLowerCase().includes(liveArtist.toLowerCase()) && latestArtist.length > (liveArtist.length + 2));
@@ -139,8 +138,11 @@ function chooseBest(liveArtist, liveTitle, latestArtist, latestTitle) {
   if (latestArtist && latestTitle && titlesClose && (brokenLive || nfc(latestArtist) !== nfc(liveArtist))) {
     return { artist: latestArtist, title: latestTitle, source: 'latestTrack' };
   }
-
-  return { artist: liveArtist || latestArtist || '', title: liveTitle || latestTitle || '', source: liveArtist ? 'livebox' : (latestArtist ? 'latestTrack' : 'unknown') };
+  return {
+    artist: liveArtist || latestArtist || '',
+    title: liveTitle || latestTitle || '',
+    source: liveArtist ? 'livebox' : (latestArtist ? 'latestTrack' : 'unknown')
+  };
 }
 
 export async function GET(req) {
@@ -251,7 +253,8 @@ export async function GET(req) {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control': 'no-store'
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'no-store'
       }
     });
   }
