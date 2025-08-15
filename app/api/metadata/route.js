@@ -25,7 +25,7 @@ const clean = (s) => String(s ?? '')
   .replace(/\s*[–—-]\s*/g, ' – ')
   .trim();
 
-// Split a combined "Artist - Title" safely (never on commas)
+// Split "Artist - Title" safely (never on commas)
 function splitCombined(s) {
   const line = String(s || '').trim();
   if (!line) return { artist: '', title: '' };
@@ -62,9 +62,9 @@ function parseCombined(s) {
   return { artist: '', title: line };
 }
 
-// Livebox CSV “glue” to fix comma-split artist names before the dash
-function glueLivebox(text) {
-  const plain = text.replace(/<[^>]*>/g, '');
+// Livebox CSV “glue” to fix comma-split artist pieces before the dash
+function glueLivebox(htmlText) {
+  const plain = htmlText.replace(/<[^>]*>/g, '');
   const cells = plain.split(',');
 
   // rightmost tail that looks like a track
@@ -91,7 +91,6 @@ function glueLivebox(text) {
     let left = dashMatch[1].trim();
     const dashChar = dashMatch[2];
     const right = dashMatch[3].trim();
-
     let k = startIdx - 1;
     const prependParts = [];
     let steps = 0;
@@ -121,9 +120,9 @@ export async function GET(req) {
   const url = new URL(req.url);
   const debug = url.searchParams.get('debug') === '1';
 
-  let artist = '', title = '', duration = null, startTime = null, source = 'unknown';
-  let latestNowPlaying = '';  // in case artist/title missing in latest
-  let rawCombined = '';       // from Livebox glue
+  let artist = '', title = '', duration = null, startTime = null, source = 'unknown', artwork = null;
+  let latestNowPlaying = '';  // combined from latestTrack if present
+  let rawCombined = '';       // combined from Livebox glue
   let ltErr = null, lbErr = null, itErr = null;
 
   try {
@@ -175,7 +174,7 @@ export async function GET(req) {
       } catch (e) { lbErr = String(e?.message || e); }
     }
 
-    // 2) Safety net split if still only combined available
+    // 2) Safety net: still only combined? split it.
     if ((!artist || !title) && (latestNowPlaying || rawCombined)) {
       const combined = latestNowPlaying || rawCombined;
       const guess = splitCombined(combined);
@@ -183,20 +182,24 @@ export async function GET(req) {
       if (!title)  title  = guess.title;
     }
 
-    // 3) iTunes duration fallback (with timeout)
-    if (!duration && artist && title) {
+    // 3) iTunes duration/artwork fallback (with timeout)
+    if ((artist || title) && (!duration || !artwork)) {
       try {
-        const itRes = await fetchWithTimeout(
-          `https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&limit=1`,
-          { cache: 'no-store', timeout: ITUNES_TIMEOUT_MS }
-        );
-        const itJson = await itRes.json().catch(() => ({}));
-        const track = itJson?.results?.[0];
-        if (track?.trackTimeMillis) duration = Math.round(track.trackTimeMillis / 1000);
+        const itTerm = [artist, title].filter(Boolean).join(' ') || latestNowPlaying || rawCombined;
+        if (itTerm) {
+          const itRes = await fetchWithTimeout(
+            `https://itunes.apple.com/search?term=${encodeURIComponent(itTerm)}&limit=1`,
+            { cache: 'no-store', timeout: ITUNES_TIMEOUT_MS }
+          );
+          const itJson = await itRes.json().catch(() => ({}));
+          const track = itJson?.results?.[0];
+          if (!duration && track?.trackTimeMillis) duration = Math.round(track.trackTimeMillis / 1000);
+          if (!artwork && track?.artworkUrl100) artwork = String(track.artworkUrl100).replace('100x100','300x300');
+        }
       } catch (e) { itErr = String(e?.message || e); }
     }
 
-    // 4) Rolling log (best-effort; ignore failures on serverless/readonly)
+    // 4) Rolling log (best-effort; ignore on readonly FS)
     if (artist && title) {
       const nowISO = new Date().toISOString();
       const logEntry = { Artist: artist, Title: title, "Scheduled Time": nowISO, "Duration (s)": duration ?? null };
@@ -218,16 +221,17 @@ export async function GET(req) {
     }
 
     // 5) Build & return
-    const payloadNowPlaying =
+    const nowPlayingCombined =
       (artist && title) ? `${artist} - ${title}`
                         : (latestNowPlaying || rawCombined || '');
 
     const payload = {
       artist,
       title,
-      nowPlaying: payloadNowPlaying,
+      nowPlaying: nowPlayingCombined,
       duration,
       startTime,
+      artwork,
       source
     };
 
@@ -241,13 +245,14 @@ export async function GET(req) {
       }
     });
   } catch {
-    // absolutely never hang: return an empty payload promptly
+    // never hang: return an empty but valid response
     return new Response(JSON.stringify({
       artist: '',
       title: '',
       nowPlaying: '',
       duration: null,
       startTime: null,
+      artwork: null,
       source: 'error'
     }), {
       status: 200,
