@@ -5776,6 +5776,7 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
+
 async function fetchNowPlaying() {
   try {
     const res = await fetch('/api/metadata', { cache: 'no-store' });
@@ -5788,32 +5789,45 @@ async function fetchNowPlaying() {
     };
     const raw = decode(data.nowPlaying || '').trim();
 
-    let artist = '', title = '';
-    const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
+    // --- comma-safe normalize ---
+    const clean = s => String(s || '')
+      .replace(/[\u200B-\u200D\uFEFF]/g, '')
+      .replace(/\s+/g, ' ')
+      .replace(/\s*[–—-]\s*/g, ' – ')
+      .trim();
 
-    if (sep) {
-      const idx = raw.indexOf(sep); // ✅ FIX: was lastIndexOf
-      artist = raw.substring(0, idx).trim();
-      title  = raw.substring(idx + sep.length).trim();
-    
-    } else {
-      // Fallback: try simple "Artist, Title" (split on the FIRST comma)
-      const c = raw.indexOf(',');
-      if (c > 0) {
-        artist = raw.slice(0, c).trim();
-        title  = raw.slice(c + 1).trim();
-        if (!artist || !title) {
-          showMoreMusicSoon(); // missing parts after split
-          return;
-        }
-      } else {
-        // No valid title/artist format
-        showMoreMusicSoon();
-        return;
+    function normalizeNowPlaying(line){
+      const s = clean(line);
+      if (!s) return {artist:'', title:''};
+
+      // 1) Artist – Title
+      let m = s.match(/^(.*?)\s+–\s+(.*)$/);
+      if (m) return { artist: clean(m[1]), title: clean(m[2]) };
+
+      // 2) Title by Artist
+      m = s.match(/^(.*?)\s+by\s+(.*)$/i);
+      if (m) return { artist: clean(m[2]), title: clean(m[1]) };
+
+      // 3) Artist: Title
+      m = s.match(/^(.*?)\s*:\s*(.*)$/);
+      if (m) return { artist: clean(m[1]), title: clean(m[2]) };
+
+      // 4) VERY conservative single-comma Artist, Title
+      const count = (s.match(/,/g) || []).length;
+      if (count === 1) {
+        const i = s.indexOf(',');
+        const left  = clean(s.slice(0, i));
+        const right = clean(s.slice(i + 1));
+        const looksLikeArtist = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
+        if (looksLikeArtist && right) return { artist: left, title: right };
       }
+
+      // 5) Give up guessing: keep full string as title (preserves commas)
+      return { artist: '', title: s };
     }
 
-
+    const { artist, title } = normalizeNowPlaying(raw);
+    if (!artist || !title) { showMoreMusicSoon(); return; }
     const newTrackID = `${artist} – ${title}`;
 
     if (songHasEnded || currentTrackID !== newTrackID) {
