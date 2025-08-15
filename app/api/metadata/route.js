@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-// Clean helpers
+// --- helpers ---
 const decodeHtml = (s) => String(s ?? '')
   .replace(/&amp;/g, '&')
   .replace(/&lt;/g, '<')
@@ -12,7 +12,7 @@ const decodeHtml = (s) => String(s ?? '')
 const clean = (s) => String(s ?? '')
   .replace(/[\u200B-\u200D\uFEFF]/g, '')
   .replace(/\s+/g, ' ')
-  .replace(/\s*[–—-]\s*/g, ' – ') // normalise dashes to EN dash
+  .replace(/\s*[–—-]\s*/g, ' – ') // normalise dashes
   .trim();
 
 const looksLikeTrack = (s) => {
@@ -24,11 +24,21 @@ const looksLikeTrack = (s) => {
   return false;
 };
 
+const isNameFragment = (s) => {
+  const t = String(s || '').trim();
+  if (!t) return false;
+  if (/[0-9]/.test(t)) return false;             // avoid numeric cols
+  if (t.length > 40) return false;               // avoid long junk
+  if (!/^[A-Za-z]/.test(t)) return false;        // start with a letter
+  // allow &, ' and simple words
+  return /^[A-Za-z][A-Za-z '&.-]*$/.test(t);
+};
+
 function parseCombined(s) {
   const line = clean(s);
   if (!line) return { artist: '', title: '' };
 
-  // 1) Artist – Title (accept -, –, —)
+  // 1) Artist – Title (any dash)
   let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/);
   if (m) return { artist: clean(m[1]), title: clean(m[2]) };
 
@@ -40,7 +50,7 @@ function parseCombined(s) {
   m = line.match(/^(.*?)\s*:\s*(.*)$/);
   if (m) return { artist: clean(m[1]), title: clean(m[2]) };
 
-  // 4) VERY conservative single-comma "Artist, Title"
+  // 4) VERY conservative single-comma Artist, Title
   const count = (line.match(/,/g) || []).length;
   if (count === 1) {
     const i = line.indexOf(',');
@@ -50,7 +60,7 @@ function parseCombined(s) {
     if (looksLikeArtistName && right) return { artist: left, title: right };
   }
 
-  // 5) Give up guessing: keep full string as title (preserves commas)
+  // 5) Give up guessing: keep full as title
   return { artist: '', title: line };
 }
 
@@ -61,41 +71,80 @@ function combineNowPlaying(artist, title) {
 
 export async function GET() {
   try {
-    // 1) Pull raw metadata from Livebox status page
+    // 1) Pull raw CSV-like status from Livebox
     const res = await fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' });
     let text = await res.text();
 
     // Strip HTML
     text = text.replace(/<[^>]*>/g, '');
 
-    // 2) Livebox outputs comma-separated columns. Titles can contain commas.
-    // Walk from the end and JOIN trailing cells until it *looks like* a track line.
+    // 2) Split on commas (Livebox isn't quoting) and recombine smartly
     const cells = text.split(',');
-    let rawTrack = '';
-
+    let startIdx = -1;
+    let joined = '';
+    // Find rightmost position where the remainder looks like a track line
     for (let i = cells.length - 1; i >= 0; i--) {
-      const joined = cells.slice(i).join(',').trim();
-      if (looksLikeTrack(joined)) { rawTrack = joined; break; }
+      const candidate = cells.slice(i).join(',').trim();
+      if (looksLikeTrack(candidate)) {
+        startIdx = i;
+        joined = candidate;
+        break;
+      }
     }
-
-    // Fallbacks if nothing matched
-    if (!rawTrack) {
+    // Fallbacks
+    if (startIdx === -1) {
+      // take last non-numeric-ish cell joined with the tail
       for (let i = cells.length - 1; i >= 0; i--) {
         const c = (cells[i] || '').trim();
         if (c && isNaN(c) && c.length > 1) {
-          rawTrack = (i < cells.length - 1) ? (c + ',' + cells.slice(i + 1).join(',')).trim() : c;
+          startIdx = i;
+          joined = (i < cells.length - 1) ? (c + ',' + cells.slice(i + 1).join(',')).trim() : c;
           break;
         }
       }
     }
-    if (!rawTrack) rawTrack = text.trim();
+    if (startIdx === -1) {
+      // give up: whole text
+      startIdx = 0;
+      joined = text.trim();
+    }
 
-    const rawCombined = clean(decodeHtml(rawTrack));
+    // 3) If we have a dash split, check for comma-broken artist pieces BEFORE the dash
+    //    Example: cells[startIdx-1] = "Peter", joined = " Gabriel – Sledgehammer"
+    let fixedJoined = joined;
+    const dashMatch = joined.match(/^(.*?)\s+([–—-])\s+(.*)$/);
+    if (dashMatch) {
+      let left = dashMatch[1].trim();
+      const dashChar = dashMatch[2];
+      const right = dashMatch[3].trim();
 
-    // 3) Parse combined into fields
+      // Look back up to 3 cells to glue name fragments (e.g., "Peter", "Earth", "KC")
+      let k = startIdx - 1;
+      let fragments = [];
+      let steps = 0;
+      while (k >= 0 && steps < 3) {
+        const prev = (cells[k] || '').trim();
+        // Stop if previous cell looks numeric/junk
+        if (!isNameFragment(prev)) break;
+        // Prepend fragment
+        fragments.unshift(prev);
+        k--;
+        steps++;
+        // Heuristic: stop when previous previous cell wouldn't look like a name fragment
+        // (we'll check in next loop iteration)
+      }
+      if (fragments.length) {
+        left = (fragments.join(', ') + (left ? ', ' : '')) + left;
+        fixedJoined = `${left} ${dashChar} ${right}`;
+      }
+    }
+
+    const rawCombined = clean(decodeHtml(fixedJoined));
+
+    // 4) Parse into fields
     let { artist, title } = parseCombined(rawCombined);
 
-    // 4) Enrich from canonical latestTrack.json (adds collaborators; gets timing)
+    // 5) Enrich from canonical latestTrack.json (adds collaborators; timing)
     let duration = null;
     let startTime = null;
     try {
@@ -114,17 +163,17 @@ export async function GET() {
       }
     } catch { /* ignore enrichment failure */ }
 
-    // 5) Optional iTunes duration fallback (if you want to keep it)
+    // 6) Optional iTunes duration fallback
     if (!duration && artist && title) {
       try {
         const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&limit=1`, { cache: 'no-store' });
         const itunesJson = await itunesRes.json();
         const track = itunesJson.results?.[0];
         if (track?.trackTimeMillis) duration = Math.round(track.trackTimeMillis / 1000);
-      } catch { /* ignore iTunes failure */ }
+      } catch {}
     }
 
-    // 6) Append to rolling log (avoid dupes within 5 minutes)
+    // 7) Rolling log (avoid dupes within 5 minutes)
     if (artist && title) {
       const nowISO = new Date().toISOString();
       const logEntry = {
@@ -147,10 +196,10 @@ export async function GET() {
           const updated = [...parsed, logEntry].slice(-100);
           await fs.writeFile(logPath, JSON.stringify(updated, null, 2));
         }
-      } catch { /* ignore log failure */ }
+      } catch {}
     }
 
-    // 7) Final payload
+    // 8) Final payload
     const payload = {
       artist,
       title,
@@ -166,7 +215,6 @@ export async function GET() {
         'Cache-Control': 'no-store'
       }
     });
-
   } catch (err) {
     return new Response(JSON.stringify({
       artist: '',
