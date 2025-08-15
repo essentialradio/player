@@ -1,147 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Now Playing Diagnostic</title>
+<meta charset="UTF-8">
+<title>Now Playing — Diagnostic</title>
 <style>
-  :root { --bg:#0b1220; --fg:#e6edf3; --muted:#9aa3ad; --accent:#fed351; --ok:#19ff9c; --warn:#ffc85a; }
-  html,body{margin:0;height:100%}
-  body{background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;display:flex;align-items:center;justify-content:center;padding:18px}
-  .card{width:min(900px,100%);background:#0f1a33;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.25);padding:18px}
-  h1{font-size:18px;margin:0 0 10px}
-  .np{font-size:20px;font-weight:600;margin-top:8px}
-  .live{display:inline-flex;align-items:center;gap:.45rem;margin-left:.6rem;font-weight:700;color:var(--ok);letter-spacing:.04em}
-  .live .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 .15rem rgba(25,255,156,.25);animation:pulse 1.2s infinite}
-  @keyframes pulse{0%{transform:scale(1);opacity:1}70%{transform:scale(1.5);opacity:.3}100%{transform:scale(1);opacity:1}}
-  .meta{color:var(--muted);font-size:12px;margin-top:6px}
-  .footer{color:var(--muted);font-size:12px;margin-top:14px}
-  .bad{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.35);padding:8px;border-radius:10px;margin-top:10px}
-  button{background:#17305f;color:#fff;border:1px solid #2b4d8c;border-radius:10px;padding:8px 10px;cursor:pointer}
-  button:hover{filter:brightness(1.1)}
+  body { font-family: sans-serif; padding: 1rem; background: #111; color: #eee; }
+  pre { background: #222; padding: 1rem; border-radius: 4px; }
+  .good { color: #4caf50; }
+  .bad { color: #f44336; }
 </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Now Playing — Diagnostic</h1>
+<h1>Now Playing — Diagnostic</h1>
 
-    <div id="np" class="np">Loading…</div>
-    <div id="diag" class="meta">—</div>
-
-    <div id="warn" class="bad" style="display:none;"></div>
-
-    <div class="footer">
-      <button id="refreshBtn">Refresh</button>
-      <span class="meta">Auto refresh: <code>10s</code></span>
-      <div class="meta">Open DevTools → Console for raw payload logs.</div>
-    </div>
-  </div>
+<div id="status">Loading…</div>
+<pre id="debug"></pre>
 
 <script>
-(function(){
-  const npEl = document.getElementById('np');
-  const diagEl = document.getElementById('diag');
-  const warnEl = document.getElementById('warn');
-  let endTimer = null;
-  let currentID = null;
+const statusEl = document.getElementById('status');
+const debugEl = document.getElementById('debug');
 
-  const clean = (s) => String(s ?? '').replace(/[\u200B-\u200D\uFEFF]/g,'').replace(/\s+/g,' ').trim();
-  const decode = (s) => { const t=document.createElement('textarea'); t.innerHTML=String(s??''); return t.value; };
+async function fetchMetadata() {
+  try {
+    const r = await fetch('/api/metadata?ts=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+    const j = await r.json();
 
-  function showLine(artist, title){
-    const safeA = clean(decode(artist));
-    const safeT = clean(decode(title));
-    npEl.innerHTML =
-      `<span>Now Playing:</span> <span style="color:var(--accent)"></span>` +
-      `<span class="live"><span class="dot"></span>LIVE</span><br/>` +
-      `<span style="font-weight:700">${safeT || '—'}</span>` +
-      (safeA ? ` <span style="color:var(--muted)">by</span> <span>${safeA}</span>` : '');
-  }
+    debugEl.textContent = JSON.stringify(j, null, 2);
 
-  function showIdle(reason){
-    npEl.innerHTML = `Now Playing:<br/><span>More music soon on Essential Radio</span>`;
-    diagEl.textContent = `[diag] ${reason || 'idle'}`;
-    currentID = null;
-  }
-
-  function scheduleEnd(startTimeISO, durationSec){
-    if (endTimer) { clearTimeout(endTimer); endTimer = null; }
-    if (!startTimeISO || !durationSec) return;
-    const end = new Date(new Date(startTimeISO).getTime() + durationSec*1000);
-    let ms = end - new Date();
-    if (ms <= 0) ms = 3000;
-    ms = Math.max(1000, Math.min(ms, 15000)); // 1s..15s
-    endTimer = setTimeout(() => showIdle('scheduled end'), ms);
-  }
-
-  async function fetchAPI(){
-    const url = '/api/metadata?ts=' + Date.now() + '&debug=1';
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error('API HTTP ' + res.status);
-    const data = await res.json();
-    console.info('[diag] /api/metadata payload:', data);
-    return data;
-  }
-
-  async function fetchLatestProxy(){
-    // Optional same-origin proxy route; skip if not present
-    try{
-      const res = await fetch('/api/proxy/latest?ts=' + Date.now(), { cache:'no-store' });
-      if (!res.ok) throw new Error('proxy HTTP ' + res.status);
-      const j = await res.json();
-      console.info('[diag] /api/proxy/latest payload:', j);
-      return j;
-    } catch (e) {
-      console.warn('[diag] proxy latest not available:', e.message || e);
-      return null;
+    if (j.artist && j.title) {
+      statusEl.innerHTML = `<span class="good">${j.artist} – ${j.title}</span>`;
+    } else {
+      statusEl.innerHTML = `<span class="bad">No track info</span>`;
     }
+  } catch (err) {
+    statusEl.innerHTML = `<span class="bad">Error fetching metadata</span>`;
+    console.error(err);
   }
+}
 
-  async function refresh(){
-    try{
-      warnEl.style.display = 'none';
-      const data = await fetchAPI();
-
-      const artist = clean(decode(data?.artist));
-      const title  = clean(decode(data?.title));
-      const startTime = data?.startTime || null;
-      const duration  = (typeof data?.duration === 'number') ? data.duration : null;
-
-      if (artist || title) {
-        const id = artist + ' – ' + title;
-        if (id !== currentID) {
-          currentID = id;
-          showLine(artist, title);
-        }
-        diagEl.textContent = `[diag] source=${data?.source || data?._debug?.decision?.source || 'unknown'} • duration=${duration ?? 'n/a'} • start=${startTime ?? 'n/a'}`;
-        scheduleEnd(startTime, duration);
-        return;
-      }
-
-      // Fallback: try same-origin proxy for latestTrack.json (ONLY if you created it)
-      const lt = await fetchLatestProxy();
-      if (lt && (lt.artist || lt.title)) {
-        showLine(lt.artist, lt.title);
-        diagEl.textContent = `[diag] fallback=proxy/latest • duration=${lt.duration ?? 'n/a'} • start=${lt.startTime ?? 'n/a'}`;
-        scheduleEnd(lt.startTime || null, (typeof lt.duration === 'number') ? lt.duration : null);
-      } else {
-        showIdle('empty artist/title from API');
-        warnEl.innerHTML = `If you want a fallback to <code>latestTrack.json</code> in the browser, add a same-origin proxy at <code>/api/proxy/latest</code> (so you avoid CORS).`;
-        warnEl.style.display = 'block';
-      }
-    } catch (err) {
-      console.error('[diag] refresh error:', err);
-      showIdle('fetch error');
-      warnEl.textContent = 'Fetch error — see Console for details.';
-      warnEl.style.display = 'block';
-    }
-  }
-
-  document.getElementById('refreshBtn').addEventListener('click', refresh);
-  refresh();
-  setInterval(refresh, 10000);
-  window.addEventListener('focus', refresh);
-})();
+// first fetch, then repeat
+fetchMetadata();
+setInterval(fetchMetadata, 10000);
 </script>
 </body>
 </html>
