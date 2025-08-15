@@ -5776,7 +5776,6 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-
 async function fetchNowPlaying() {
   try {
     const res = await fetch('/api/metadata', { cache: 'no-store' });
@@ -5784,51 +5783,37 @@ async function fetchNowPlaying() {
 
     const decode = str => {
       const t = document.createElement('textarea');
-      t.innerHTML = str ?? '';
+      t.innerHTML = str;
       return t.value;
     };
-    const clean = s => String(s || '')
-      .replace(/[\u200B-\u200D\uFEFF]/g,'')
-      .replace(/\s+/g,' ')
-      .replace(/\s*[–—-]\s*/g,' – ')
-      .trim();
+    const raw = decode(data.nowPlaying || '').trim();
 
-    // Field-aware first: trust separate fields if present
-    let artist = clean(decode(data?.Artist ?? data?.artist ?? ''));
-    let title  = clean(decode(data?.Title  ?? data?.title  ?? ''));
+    let artist = '', title = '';
+    const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
 
-    if (!artist || !title) {
-      // Fall back to combined string
-      const raw = clean(decode(data?.nowPlaying ?? data?.NowPlaying ?? ''));
-      if (!raw) { showMoreMusicSoon(); return; }
-
-      // Prefer "Artist – Title"
-      let m = raw.match(/^(.*?)\s+–\s+(.*)$/);
-      if (m) { artist = clean(m[1]); title = clean(m[2]); }
-      else {
-        // "Title by Artist"
-        m = raw.match(/^(.*?)\s+by\s+(.*)$/i);
-        if (m) { artist = clean(m[2]); title = clean(m[1]); }
-        else {
-          // "Artist: Title"
-          m = raw.match(/^(.*?)\s*:\s*(.*)$/);
-          if (m) { artist = clean(m[1]); title = clean(m[2]); }
-          else {
-            // VERY conservative single-comma "Artist, Title"
-            const count = (raw.match(/,/g) || []).length;
-            if (count === 1) {
-              const i = raw.indexOf(',');
-              const left  = clean(raw.slice(0, i));
-              const right = clean(raw.slice(i + 1));
-              const looksLikeArtist = left && left.split(/\s+/).length <= 6 && !/[!?]$/.test(left);
-              if (looksLikeArtist && right) { artist = left; title = right; }
-            }
-          }
+    if (sep) {
+      const idx = raw.indexOf(sep); // ✅ FIX: was lastIndexOf
+      artist = raw.substring(0, idx).trim();
+      title  = raw.substring(idx + sep.length).trim();
+    
+    } else {
+      // Fallback: try simple "Artist, Title" (split on the FIRST comma)
+      const c = raw.indexOf(',');
+      if (c > 0) {
+        artist = raw.slice(0, c).trim();
+        title  = raw.slice(c + 1).trim();
+        if (!artist || !title) {
+          showMoreMusicSoon(); // missing parts after split
+          return;
         }
+      } else {
+        // No valid title/artist format
+        showMoreMusicSoon();
+        return;
       }
-
-      if (!artist || !title) { showMoreMusicSoon(); return; }
     }
+
+
     const newTrackID = `${artist} – ${title}`;
 
     if (songHasEnded || currentTrackID !== newTrackID) {
@@ -5853,12 +5838,6 @@ async function fetchNowPlaying() {
       latest.artist.toLowerCase() !== artist.toLowerCase() ||
       latest.title.toLowerCase() !== title.toLowerCase()
     ) {
-      // Mismatch between metadata sources => end immediately
-      if (trackEndTimeout) clearTimeout(trackEndTimeout);
-      showMoreMusicSoon();
-      songHasEnded = true;
-      currentTrackID = null;
-      trackEndTime = null;
       return;
     }
 
@@ -5877,7 +5856,7 @@ async function fetchNowPlaying() {
 
     if (trackEndTimeout) clearTimeout(trackEndTimeout);
 
-    if (timeRemaining <= 2000) {
+    if (timeRemaining <= 500) {
       showMoreMusicSoon();
       songHasEnded = true;
       currentTrackID = null;
@@ -5888,7 +5867,7 @@ async function fetchNowPlaying() {
         songHasEnded = true;
         currentTrackID = null;
         trackEndTime = null;
-      }, Math.min(timeRemaining, 10000));
+      }, timeRemaining);
     }
 
   } catch (e) {
