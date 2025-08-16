@@ -1,5 +1,5 @@
 /**
- * Converted from your index.html to Next.js App Router page.
+ * Auto-generated from your existing index.html to preserve full styling and structure.
  * Place this file at: app/page.js
  */
 "use client";
