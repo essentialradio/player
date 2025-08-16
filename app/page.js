@@ -1,7 +1,7 @@
 /**
  * Converted from your index.html to Next.js App Router.
  * Place this file at: app/page.js
- * Ensure public/nowplaying-refresh.js and public/sw.js exist.
+ * Ensures ${...} in your HTML are escaped so Next doesn't try to interpolate them.
  */
 "use client";
 
@@ -4421,7 +4421,7 @@ html[data-theme="light"] #mobileNowBar {
     localStorage.wxChoice = locSel.value;
 
     try {
-      const d = await fetch(\`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}\`)
+      const d = await fetch(\`https://api.openweathermap.org/data/3.0/onecall?lat=\${lat}&lon=\${lon}&units=metric&appid=\${KEY}\`)
                        .then(r => r.json());
 
       // ==== CURRENT CONDITIONS ====
@@ -4451,9 +4451,9 @@ const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
 
 // Build the summary line (keeps “• 80 % rain” on one line)
 wxNow.innerHTML =
-  \`<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C\` +
+  \`<span style="color:#fed351;font-weight:bold">\${desc}</span>, \${tmp}°C\` +
   (showPop
-     ? \`<br><span class="wxRainNote">☔&nbsp;${pop}% chance of rain</span>\`
+     ? \`<br><span class="wxRainNote">☔&nbsp;\${pop}% chance of rain</span>\`
      : '');
     
       // HOURLY STRIP
@@ -4461,14 +4461,14 @@ wxNow.innerHTML =
       let times = '', details = '';
       d.hourly.slice(1, 6).forEach(h => {
         const t = new Date(h.dt * 1e3).getHours().toString().padStart(2,'0') + ':00';
-        const icon = \`https://openweathermap.org/img/wn/${h.weather[0].icon}.png\`;
-        times   += \`<div style="flex:1;text-align:center;min-width:60px;">${t}</div>\`;
+        const icon = \`https://openweathermap.org/img/wn/\${h.weather[0].icon}.png\`;
+        times   += \`<div style="flex:1;text-align:center;min-width:60px;">\${t}</div>\`;
 details += \`<div style="flex:1;text-align:center;min-width:60px;">
-              <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
+              <img src="\${icon}" width="20" class="forecast-icon"><br>\${Math.round(h.temp)}°
             </div>\`;
 
       });
-      hrWrap.innerHTML = \`<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>\`;
+      hrWrap.innerHTML = \`<div style="display:flex;">\${times}</div><div style="display:flex;">\${details}</div>\`;
       hrWrap.style.display = show5 ? 'none' : 'grid';
 
       // DAILY STRIP
@@ -4476,21 +4476,21 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
       let days = '', temps = '';
       d.daily.slice(1, 6).forEach(dd => {
         const wd   = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', {weekday:'short'});
-        const icon = \`https://openweathermap.org/img/wn/${dd.weather[0].icon}.png\`;
-        days  += \`<div style="text-align:center;">${wd}</div>\`;
+        const icon = \`https://openweathermap.org/img/wn/\${dd.weather[0].icon}.png\`;
+        days  += \`<div style="text-align:center;">\${wd}</div>\`;
         temps += \`<div style="text-align:center;">
-                    <img src="${icon}" width="20" class="forecast-icon"><br>
-                    ${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
+                    <img src="\${icon}" width="20" class="forecast-icon"><br>
+                    \${Math.round(dd.temp.max)}°/\${Math.round(dd.temp.min)}°
                   </div>\`;
       });
-      dyWrap.innerHTML = \`<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>\`;
+      dyWrap.innerHTML = \`<div style="display:flex;">\${days}</div><div style="display:flex;">\${temps}</div>\`;
       dyWrap.style.display = show5 ? 'grid' : 'none';
 
       // ALERTS
       if (d.alerts && d.alerts.length) {
         const now = Math.floor(Date.now()/1000);
         const valid = d.alerts.find(a => !a.end || a.end > now);
-        alertBox.textContent = valid ? \`⚠ ${valid.event}\` : '';
+        alertBox.textContent = valid ? \`⚠ \${valid.event}\` : '';
       } else {
         alertBox.textContent = '';
       }
@@ -4914,7 +4914,7 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
 
             const iframe = document.createElement('iframe');
             iframe.className = 'mixcloud-player';
-            iframe.src = \`https://www.mixcloud.com/widget/iframe/?feed=${encodeURIComponent(show.url)}&hide_cover=1&light=0\`;
+            iframe.src = \`https://www.mixcloud.com/widget/iframe/?feed=\${encodeURIComponent(show.url)}&hide_cover=1&light=0\`;
             iframe.allow = 'autoplay';
 
             block.appendChild(title);
@@ -5198,7 +5198,7 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
 
         const dateDropdown = document.getElementById("dateSelect");
         const dates = Array.from(dateMap.keys()).sort();
-        dateDropdown.innerHTML = dates.map(d => \`<option value="${d}">${d}</option>\`).join('');
+        dateDropdown.innerHTML = dates.map(d => \`<option value="\${d}">\${d}</option>\`).join('');
         dateDropdown.value = latestDate;
         updateHourDropdown(latestDate, latestHour);
       }
@@ -5206,7 +5206,7 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
       function updateHourDropdown(selectedDate, selectedHour = null) {
         const hourDropdown = document.getElementById("hourSelect");
         const hours = Array.from(dateMap.get(selectedDate) || []).sort();
-        hourDropdown.innerHTML = hours.map(h => \`<option value="${h}">${h}</option>\`).join('');
+        hourDropdown.innerHTML = hours.map(h => \`<option value="\${h}">\${h}</option>\`).join('');
         hourDropdown.value = selectedHour || hours[hours.length - 1];
       }
 
@@ -5223,7 +5223,7 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
           const dt = new Date(item["Hour"]);
           const localDate = dt.toLocaleDateString("en-GB");
           const localHour = dt.getHours().toString().padStart(2, '0') + ":00";
-          const key = \`${item["Artist"]} - ${item["Title"]}\`;
+          const key = \`\${item["Artist"]} - \${item["Title"]}\`;
 
           const durationMinutes = item["Duration (mins)"] || 0;
           const isMatch = localDate === selectedDate && localHour === selectedHour && key.toLowerCase().includes(searchText) && durationMinutes <= 10;
@@ -5241,7 +5241,7 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
           noResultsMessage.style.display = "none";
           filtered.forEach(item => {
             const time = item["Displayed Time"] || item["Scheduled Time"]?.substring(0, 5) || "";
-            const row = \`<tr><td>${time}</td><td>${item["Artist"]} – ${item["Title"]}</td></tr>\`;
+            const row = \`<tr><td>\${time}</td><td>\${item["Artist"]} – \${item["Title"]}</td></tr>\`;
             tbody.innerHTML += row;
           });
         }
@@ -5442,7 +5442,7 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
     async function fetchScheduleModal() {
       try {
         const res = await fetch("https://travel-ac.vercel.app/schedule.json");
-        if (!res.ok) throw new Error(\`HTTP ${res.status}\`);
+        if (!res.ok) throw new Error(\`HTTP \${res.status}\`);
         return await res.json();
       } catch (e) {
         modalScheduleContainer.innerHTML = \`<h3>Schedule Unavailable</h3>\`;
@@ -5461,12 +5461,12 @@ details += \`<div style="flex:1;text-align:center;min-width:60px;">
   const showDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + diff);
   const day = showDate.getDate();
   const month = showDate.toLocaleString('en-GB', { month: 'long' });
-  return \`${dayName} ${day} ${month}\`;
+  return \`\${dayName} \${day} \${month}\`;
 }
 
 function renderDayScheduleModal(day, shows) {
   modalScheduleContainer.innerHTML = \`<div id="modalDaySchedule"><div class="day-card">
-    <h3>${getFullDate(day)}</h3>
+    <h3>\${getFullDate(day)}</h3>
     <div class="split-columns">
       <div class="column left-column" id="modalLeftCol"></div>
       <div class="column right-column" id="modalRightCol"></div>
@@ -5496,10 +5496,10 @@ group.forEach(show => {
     presenterName = presenterNameRaw;  // ✅ override presenterName
     presenterIdForModal = 'presenter-' + normaliseName(presenterNameRaw);
     mainTitle = showTitlePart.trim();
-    presenterLine = \`<span class="show-presenter" style="font-style: italic;">${presenterNameRaw}</span>\`;
+    presenterLine = \`<span class="show-presenter" style="font-style: italic;">\${presenterNameRaw}</span>\`;
   } else if (presenterName) {
     presenterIdForModal = 'presenter-' + normaliseName(presenterName);
-    presenterLine = \`<span class="show-presenter" style="font-style: italic;">${presenterName}</span>\`;
+    presenterLine = \`<span class="show-presenter" style="font-style: italic;">\${presenterName}</span>\`;
   }
 
   // 🔁 Image filename override map
@@ -5512,7 +5512,7 @@ group.forEach(show => {
 
   // ✅ Use override if available, else fall back to slug
   const presenterImg = imageOverrides[presenterName] ||
-    \`${presenterName.replace(/[\\s']/g, '-').replace(/[^a-zA-Z0-9\\-]/g, '')}.jpg\`;
+    \`\${presenterName.replace(/[\\s']/g, '-').replace(/[^a-zA-Z0-9\\-]/g, '')}.jpg\`;
 
   const presenterLink = presenter.bio || "#";
   const description = show.info || "";
@@ -5520,14 +5520,14 @@ group.forEach(show => {
   const entry = document.createElement('div');
   entry.className = 'show-entry';
   entry.innerHTML = \`
-    <img src="${presenterImg}" alt="${presenterName}" onerror="this.src='default.png'">
+    <img src="\${presenterImg}" alt="\${presenterName}" onerror="this.src='default.png'">
     <div class="show-info">
-      <time>${show.start}–${show.end}</time>
+      <time>\${show.start}–\${show.end}</time>
       <div class="show-title-presenter">
-        ${presenterIdForModal ? \`<a href="#" onclick="openModal('${presenterIdForModal}');return false;" class="show-title">${mainTitle}</a>\` : \`<span class="show-title">${mainTitle}</span>\`}
-        ${presenterLine}
+        \${presenterIdForModal ? \`<a href="#" onclick="openModal('\${presenterIdForModal}');return false;" class="show-title">\${mainTitle}</a>\` : \`<span class="show-title">\${mainTitle}</span>\`}
+        \${presenterLine}
       </div>
-      <div class="show-details">${description || ''}</div>
+      <div class="show-details">\${description || ''}</div>
     </div>
   \`;
   col.appendChild(entry);
@@ -5562,7 +5562,7 @@ group.forEach(show => {
     async function fetchSchedule() {
       try {
         const res = await fetch("https://travel-ac.vercel.app/schedule.json");
-        if (!res.ok) throw new Error(\`HTTP ${res.status}\`);
+        if (!res.ok) throw new Error(\`HTTP \${res.status}\`);
         return await res.json();
       } catch (e) {
         console.error("Schedule fetch error:", e);
@@ -5601,13 +5601,13 @@ group.forEach(show => {
       : presenter.toLowerCase().replace(/[’']/g, '').replace(/\\s+/g, '-').replace(/[^a-z0-9\\-]/g, '');
 
     el.innerHTML = \`
-      <span class="show-title">${title}</span>
+      <span class="show-title">\${title}</span>
       <span class="show-presenter">
         with <a href="#"
                 class="presenter-link"
-                onclick="openPresenterModal('presenter-${slug}'); return false;"
-                aria-label="Open profile for ${presenter}">
-              ${presenter}
+                onclick="openPresenterModal('presenter-\${slug}'); return false;"
+                aria-label="Open profile for \${presenter}">
+              \${presenter}
             </a>
       </span>\`;
   } else {
@@ -5654,7 +5654,7 @@ group.forEach(show => {
     volumeSlider.addEventListener('input', () => {
       const vol = volumeSlider.value / 100;
       audio.volume = vol;
-      volumeDisplay.textContent = \`${volumeSlider.value}%\`;
+      volumeDisplay.textContent = \`\${volumeSlider.value}%\`;
       muteBtn.textContent = vol === 0 ? '🔇' : vol < 0.5 ? '🔈' : '🔊';
     });
     muteBtn.addEventListener('click', () => {
@@ -5665,14 +5665,14 @@ group.forEach(show => {
       } else {
         audio.muted = false;
         muteBtn.textContent = audio.volume < 0.5 ? '🔈' : '🔊';
-        volumeDisplay.textContent = \`${volumeSlider.value}%\`;
+        volumeDisplay.textContent = \`\${volumeSlider.value}%\`;
       }
     });
     async function fetchDurationAndStartTime(artist, title) {
       try {
         const logUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-        const res = await fetch(\`${logUrl}?_=${Date.now()}\`, { cache: 'no-store' });
-        if (!res.ok) throw new Error(\`HTTP ${res.status}\`);
+        const res = await fetch(\`\${logUrl}?_=\${Date.now()}\`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(\`HTTP \${res.status}\`);
         const data = await res.json();
         const match = data.reverse().find(item =>
           item.Artist?.toLowerCase() === artist.toLowerCase() &&
@@ -5751,7 +5751,7 @@ async function fetchNowPlaying() {
     }
 
 
-    const newTrackID = \`${artist} – ${title}\`;
+    const newTrackID = \`\${artist} – \${title}\`;
 
     if (songHasEnded || currentTrackID !== newTrackID) {
       songHasEnded = false;
@@ -5760,10 +5760,10 @@ async function fetchNowPlaying() {
       nowPlaying.innerHTML = \`
         <span style="color:#fed351;">Now Playing:</span>
         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-        <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-        <span style="color:white;">by ${artist}</span>\`;
-      document.title = \`Essential Radio: ${artist} – ${title}\`;
-      fetchArtwork(\`${artist} - ${title}\`);
+        <span style="color:white;font-weight:600;font-size:1.2em;">\${title}</span><br/>
+        <span style="color:white;">by \${artist}</span>\`;
+      document.title = \`Essential Radio: \${artist} – \${title}\`;
+      fetchArtwork(\`\${artist} - \${title}\`);
     }
 
     const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
@@ -5821,25 +5821,25 @@ async function fetchNowPlaying() {
     async function fetchRecentFromGitHub() {
   try {
     const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-    const res = await fetch(\`${baseUrl}?_=${Date.now()}\`, { cache: 'no-store' });
-    if (!res.ok) throw new Error(\`HTTP ${res.status}\`);
+    const res = await fetch(\`\${baseUrl}?_=\${Date.now()}\`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(\`HTTP \${res.status}\`);
     const data = await res.json();
     const recentItems = data
       .filter(item => {
-        const name = \`${item.Artist} – ${item.Title}\`;
+        const name = \`\${item.Artist} – \${item.Title}\`;
         return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
       })
       .slice(-5)
       .reverse();
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
-      const name = \`${item.Artist} – ${item.Title}\`;
+      const name = \`\${item.Artist} – \${item.Title}\`;
       const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
       // --- New: Last.fm icon link ---
-      const lastfmUrl = \`https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\\s+/g, '+'))}\`;
+      const lastfmUrl = \`https://www.last.fm/music/\${encodeURIComponent(item.Artist.replace(/\\s+/g, '+'))}\`;
       const lastfmIcon = \`
-        <a href="${lastfmUrl}" target="_blank" rel="noopener"
-          title="More about ${item.Artist} on Last.fm"
+        <a href="\${lastfmUrl}" target="_blank" rel="noopener"
+          title="More about \${item.Artist} on Last.fm"
           style="margin-left:7px;vertical-align:middle;display:inline-block;">
           <svg width="19" height="19" viewBox="0 0 32 32" style="display:inline-block;vertical-align:middle;">
             <circle cx="16" cy="16" r="16" fill="#fed351"/>
@@ -5851,13 +5851,13 @@ async function fetchNowPlaying() {
         </a>\`;
       return \`
         <li>
-          <span class="time">${time}</span>
-          <img src="${art}"
-               alt="Cover for ${name}"
+          <span class="time">\${time}</span>
+          <img src="\${art}"
+               alt="Cover for \${name}"
                loading="lazy" />
           <span class="info">
-            ${name}
-            ${lastfmIcon}
+            \${name}
+            \${lastfmIcon}
           </span>
         </li>\`;
     }));
@@ -5873,7 +5873,7 @@ async function fetchNowPlaying() {
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
-        const res = await fetch(\`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1\`);
+        const res = await fetch(\`https://itunes.apple.com/search?term=\${encodeURIComponent(trackName)}&limit=1\`);
         const js = await res.json();
         if (js.results[0]?.artworkUrl100) {
           const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
@@ -5890,7 +5890,7 @@ async function fetchNowPlaying() {
         .trim()
         .replace(/\\s+/g, '_');
       const [artist, title] = safe.split('_-_');
-      const autoUrl = \`https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg\`;
+      const autoUrl = \`https://cdn.autopo.st/images/coverart/\${artist?.[0]?.toLowerCase()||'a'}/\${artist}_\${title}.jpg\`;
       try {
         const head = await fetch(autoUrl, { method: 'HEAD' });
         if (head.ok) {
@@ -5911,7 +5911,7 @@ async function fetchNowPlaying() {
     async function getTrackArtwork(query) {
       if (artworkCache[query]) return artworkCache[query];
       try {
-        const res = await fetch(\`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1\`);
+        const res = await fetch(\`https://itunes.apple.com/search?term=\${encodeURIComponent(query)}&limit=1\`);
         const d = await res.json();
         if (d.results[0]?.artworkUrl100) {
           return d.results[0].artworkUrl100.replace('100x100', '300x300');
@@ -5954,7 +5954,7 @@ document.addEventListener("visibilitychange", () => {
       if (window.innerWidth <= 600) {
         const match = title.match(/(.*)\\s+with\\s+(.*)/i);
         if (match) {
-          return \`${match[1]}<br>with ${match[2]}\`;
+          return \`\${match[1]}<br>with \${match[2]}\`;
         }
       }
       return title;
@@ -5986,7 +5986,7 @@ function updateLiveClock() {
       const now = new Date();
       // 24-hour, 2 digits always
       const pad = n => n.toString().padStart(2, '0');
-      const time = \`${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}\`;
+      const time = \`\${pad(now.getHours())}:\${pad(now.getMinutes())}:\${pad(now.getSeconds())}\`;
       const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
       const months = [
         'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
@@ -5996,7 +5996,7 @@ function updateLiveClock() {
       const day = now.getDate();
       const month = months[now.getMonth()];
       const year = now.getFullYear();
-      const dateStr = \`${dow} ${day} ${month} ${year}\`;
+      const dateStr = \`\${dow} \${day} \${month} \${year}\`;
       document.getElementById('clockTime').textContent = time;
       document.getElementById('clockDate').textContent = dateStr;
     }
@@ -6207,25 +6207,25 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
 
     // Same day
     if (ev.end_date === ev.start_date || !ev.end_date) {
-      const timePart = (sTime && eTime) ? \` • ${sTime}–${eTime}\` : (sTime ? \` • ${sTime}\` : '');
-      return \`${sDate}${timePart}\`;
+      const timePart = (sTime && eTime) ? \` • \${sTime}–\${eTime}\` : (sTime ? \` • \${sTime}\` : '');
+      return \`\${sDate}\${timePart}\`;
     }
     // Multi-day
-    return \`${sDate} – ${eDate}\`;
+    return \`\${sDate} – \${eDate}\`;
   }
 
   function makeCard(ev) {
     const when = rangeLabel(ev);
-    const where = ev.venue ? \`${ev.venue}${ev.town ? ', ' + ev.town : ''}\` : (ev.town || '');
+    const where = ev.venue ? \`\${ev.venue}\${ev.town ? ', ' + ev.town : ''}\` : (ev.town || '');
     return \`
-      <article class="event-card" aria-labelledby="${slug(ev.title)}-h">
-        <h3 id="${slug(ev.title)}-h">${escapeHTML(ev.title)}</h3>
+      <article class="event-card" aria-labelledby="\${slug(ev.title)}-h">
+        <h3 id="\${slug(ev.title)}-h">\${escapeHTML(ev.title)}</h3>
         <div class="event-meta">
-          <span>📅 ${when}</span>
-          ${where ? \`<span>📍 ${escapeHTML(where)}</span>\` : ''}
+          <span>📅 \${when}</span>
+          \${where ? \`<span>📍 \${escapeHTML(where)}</span>\` : ''}
         </div>
-        ${ev.desc ? \`<div class="event-desc">${escapeHTML(ev.desc)}</div>\` : ''}
-        ${ev.link ? \`<div class="event-actions"><a href="${ev.link}" target="_blank" rel="noopener">More info →</a></div>\` : ''}
+        \${ev.desc ? \`<div class="event-desc">\${escapeHTML(ev.desc)}</div>\` : ''}
+        \${ev.link ? \`<div class="event-actions"><a href="\${ev.link}" target="_blank" rel="noopener">More info →</a></div>\` : ''}
       </article>
     \`;
   }
@@ -6262,17 +6262,17 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
       rows.forEach(ev => groups[ev._area || 'north'].push(ev));
       const title = k => ({north:'North Ayrshire', south:'South Ayrshire', east:'East Ayrshire'})[k];
       WRAP.innerHTML = ['north','south','east'].filter(k => groups[k].length).map(k => \`
-        <section aria-labelledby="sec-${k}">
-          <h3 id="sec-${k}" style="color:#00818a;margin:8px 0;">${title(k)}</h3>
+        <section aria-labelledby="sec-\${k}">
+          <h3 id="sec-\${k}" style="color:#00818a;margin:8px 0;">\${title(k)}</h3>
           <ul class="event-col" role="list">
-            ${groups[k].map(ev => \`<li>${makeCard(ev)}</li>\`).join('')}
+            \${groups[k].map(ev => \`<li>\${makeCard(ev)}</li>\`).join('')}
           </ul>
         </section>
       \`).join('');
     } else {
       WRAP.innerHTML = \`
         <ul class="event-col" role="list">
-          ${rows.map(ev => \`<li>${makeCard(ev)}</li>\`).join('')}
+          \${rows.map(ev => \`<li>\${makeCard(ev)}</li>\`).join('')}
         </ul>
       \`;
     }
@@ -6364,7 +6364,7 @@ function openLivePresenterModal() {
     ? normaliseName(presenterName)
     : presenterName.toLowerCase().replace(/[^\\w\\s-]/g, '').trim().replace(/\\s+/g, '-');
 
-  const modalId = \`presenter-${slug}\`;
+  const modalId = \`presenter-\${slug}\`;
   const modalEl = document.getElementById(modalId);
   if (modalEl) {
     openPresenterModal(modalId);
@@ -7167,9 +7167,9 @@ function closePresenterModal(presenterId) {
       .replace(/[^a-z0-9]+/g, '-');
 
     const candidateIds = [
-      \`presenter-${slug}\`,                 // e.g. presenter-stephen-howie
-      \`presenter-${slug.replace(/^with-/, '')}\`, // if "with " is included
-      \`presenter-${slug.replace(/^with-/, '').replace(/^and-/, '')}\`,
+      \`presenter-\${slug}\`,                 // e.g. presenter-stephen-howie
+      \`presenter-\${slug.replace(/^with-/, '')}\`, // if "with " is included
+      \`presenter-\${slug.replace(/^with-/, '').replace(/^and-/, '')}\`,
     ];
 
     for (const id of candidateIds) {
@@ -7269,7 +7269,7 @@ function closePresenterModal(presenterId) {
 async function fetchRNHNews() {
   // Use a public RSS-to-JSON proxy (CORS-safe)
   const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
-  const api = \`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}\`;
+  const api = \`https://api.rss2json.com/v1/api.json?rss_url=\${encodeURIComponent(feedUrl)}\`;
   try {
     const res = await fetch(api);
     const data = await res.json();
@@ -7277,11 +7277,11 @@ async function fetchRNHNews() {
     const top2 = data.items.slice(0,2);
     document.getElementById('rnh-news-list').innerHTML = top2.map(item => \`
       <div style="margin-bottom:18px;">
-        <a href="${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
-          ${item.title}
+        <a href="\${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
+          \${item.title}
         </a>
         <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
-          ${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}
+          \${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}
         </div>
       </div>
     \`).join('');
@@ -7318,7 +7318,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 </script><script>
 (async function fetchRNHModalNews(){
   const feedUrl = "https://www.radionewshub.com/sitemaps/news.php?feed=H2lujdhEZ3";
-  const api = \`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}\`;
+  const api = \`https://api.rss2json.com/v1/api.json?rss_url=\${encodeURIComponent(feedUrl)}\`;
   const wrap = document.getElementById("rnh-modal-list");
   if(!wrap) return;
 
@@ -7339,10 +7339,10 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
         { day:"numeric", month:"short" }) : "";
       return \`
         <article class="rnh-card">
-          <a href="${it.link}" target="_blank" rel="noopener">
-            ${img ? \`<img src="${img}" alt="${it.title}" loading="lazy">\` : ""}
-            <div class="rnh-title">${it.title}</div>
-            ${date ? \`<div class="rnh-meta">${date}</div>\` : ""}
+          <a href="\${it.link}" target="_blank" rel="noopener">
+            \${img ? \`<img src="\${img}" alt="\${it.title}" loading="lazy">\` : ""}
+            <div class="rnh-title">\${it.title}</div>
+            \${date ? \`<div class="rnh-meta">\${date}</div>\` : ""}
           </a>
         </article>\`;
     }).join("");
@@ -7601,7 +7601,7 @@ const liveBox = document.querySelector(".live-indicator");
 
   const buildShareText = () => {
     const t = getNowText();
-    return t ? \`I'm Listening to ${t} on Essential Radio\` : \`I'm Listening to Essential Radio\`;
+    return t ? \`I'm Listening to \${t} on Essential Radio\` : \`I'm Listening to Essential Radio\`;
   };
 
   btn.addEventListener("click", async () => {
@@ -7612,7 +7612,7 @@ const liveBox = document.querySelector(".live-indicator");
       } else {
         const txt = encodeURIComponent(buildShareText());
         const url = encodeURIComponent(location.href);
-        window.open(\`https://twitter.com/intent/tweet?text=${txt}&url=${url}\`, "_blank", "noopener");
+        window.open(\`https://twitter.com/intent/tweet?text=\${txt}&url=\${url}\`, "_blank", "noopener");
       }
     } catch (e) {
       try {
@@ -7644,14 +7644,14 @@ const liveBox = document.querySelector(".live-indicator");
     const np = document.querySelector("#nowPlaying") || document.querySelector("#now-playing-card");
     const el = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
     const baseText = el ? (el.innerText || el.textContent || "").trim() : "";
-    const text = encodeURIComponent(baseText ? \`I'm Listening to ${baseText} on Essential Radio\` : \`I'm Listening to Essential Radio\`);
+    const text = encodeURIComponent(baseText ? \`I'm Listening to \${baseText} on Essential Radio\` : \`I'm Listening to Essential Radio\`);
 
     const platforms = document.createElement("div");
     platforms.id = "share-platforms";
     platforms.innerHTML = \`
-      <a href="https://twitter.com/intent/tweet?text=${text}&url=${url}" target="_blank" rel="noopener" title="Share on X/Twitter" aria-label="Share on X/Twitter">🐦</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=${url}" target="_blank" rel="noopener" title="Share on Facebook" aria-label="Share on Facebook">📘</a>
-      <a href="https://api.whatsapp.com/send?text=${text}%20${url}" target="_blank" rel="noopener" title="Share on WhatsApp" aria-label="Share on WhatsApp">💬</a>
+      <a href="https://twitter.com/intent/tweet?text=\${text}&url=\${url}" target="_blank" rel="noopener" title="Share on X/Twitter" aria-label="Share on X/Twitter">🐦</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=\${url}" target="_blank" rel="noopener" title="Share on Facebook" aria-label="Share on Facebook">📘</a>
+      <a href="https://api.whatsapp.com/send?text=\${text}%20\${url}" target="_blank" rel="noopener" title="Share on WhatsApp" aria-label="Share on WhatsApp">💬</a>
     \`;
     btn.appendChild(platforms);
 
@@ -7660,13 +7660,13 @@ const liveBox = document.querySelector(".live-indicator");
       const obs = new MutationObserver(() => {
         const el2 = np && (np.querySelector(".np-text,.title,.song,.np-artist,.np-title") || np);
         const base2 = el2 ? (el2.innerText || el2.textContent || "").trim() : "";
-        const t2 = encodeURIComponent(base2 ? \`I'm Listening to ${base2} on Essential Radio\` : \`I'm Listening to Essential Radio\`);
+        const t2 = encodeURIComponent(base2 ? \`I'm Listening to \${base2} on Essential Radio\` : \`I'm Listening to Essential Radio\`);
         platforms.querySelectorAll("a").forEach(a => {
           const href = a.getAttribute("href");
           if (href.includes("twitter.com/intent/tweet")) {
-            a.setAttribute("href", \`https://twitter.com/intent/tweet?text=${t2}&url=${url}\`);
+            a.setAttribute("href", \`https://twitter.com/intent/tweet?text=\${t2}&url=\${url}\`);
           } else if (href.includes("api.whatsapp.com")) {
-            a.setAttribute("href", \`https://api.whatsapp.com/send?text=${t2}%20${url}\`);
+            a.setAttribute("href", \`https://api.whatsapp.com/send?text=\${t2}%20\${url}\`);
           }
         });
       });
@@ -7810,7 +7810,7 @@ const liveBox = document.querySelector(".live-indicator");
   const LONDON_TZ = 'Europe/London';
   const DASH = '[\\-–—]'; // hyphen, en-dash, em-dash
   const TIME_RX = new RegExp(
-    String.raw\`(\\d{1,2}):(\\d{2})\\s*(am|pm|AM|PM)?\\s*${DASH}\\s*(\\d{1,2}):(\\d{2})\\s*(am|pm|AM|PM)?\`
+    String.raw\`(\\d{1,2}):(\\d{2})\\s*(am|pm|AM|PM)?\\s*\${DASH}\\s*(\\d{1,2}):(\\d{2})\\s*(am|pm|AM|PM)?\`
   );
 
   function nowMinutesLondon() {
@@ -7929,7 +7929,7 @@ const liveBox = document.querySelector(".live-indicator");
     if (winner) {
       winner.classList.add('show--current');
       // Auto-scroll on first detection only (avoid fighting user scroll)
-      const id = winner.getAttribute('data-id') || winner.id || \`${Array.from(entryNodes(container)).indexOf(winner)
+      const id = winner.getAttribute('data-id') || winner.id || \`\${Array.from(entryNodes(container)).indexOf(winner)
       // Ensure unified styling and badge text on current show
       winner.classList.add('show--current','current-show','current','live-now');
       try { winner.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch(e) {}
@@ -8375,7 +8375,7 @@ const liveBox = document.querySelector(".live-indicator");
   }
   function buildSentence() {
     const t = extractNowPlayingText();
-    let sentence = t ? \`I'm listening to ${t} on Essential Radio\`
+    let sentence = t ? \`I'm listening to \${t} on Essential Radio\`
                      : \`I'm listening to Essential Radio\`;
     sentence = sentence.replace(/(?:\\s*on Essential Radio){2,}/gi, " on Essential Radio").trim();
     return sentence;
@@ -8388,11 +8388,11 @@ const liveBox = document.querySelector(".live-indicator");
     links.forEach(a => {
       const href = a.getAttribute("href") || "";
       if (href.includes("facebook.com/sharer")) {
-        a.setAttribute("href", \`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}\`);
+        a.setAttribute("href", \`https://www.facebook.com/sharer/sharer.php?u=\${url}&quote=\${text}\`);
       } else if (href.includes("twitter.com/intent/tweet")) {
-        a.setAttribute("href", \`https://twitter.com/intent/tweet?text=${text}&url=${url}\`);
+        a.setAttribute("href", \`https://twitter.com/intent/tweet?text=\${text}&url=\${url}\`);
       } else if (href.includes("api.whatsapp.com/send")) {
-        a.setAttribute("href", \`https://api.whatsapp.com/send?text=${text}%20${url}\`);
+        a.setAttribute("href", \`https://api.whatsapp.com/send?text=\${text}%20\${url}\`);
       }
       if (!a.getAttribute("aria-label")) a.setAttribute("aria-label", "Share the current track");
       a.setAttribute("rel","noopener");
@@ -8577,6 +8577,7 @@ const liveBox = document.querySelector(".live-indicator");
   });
 })();
 </script>
+
 <script>
   // --- Auto-refresh when specific modals are open ---
 
@@ -8604,7 +8605,7 @@ const liveBox = document.querySelector(".live-indicator");
     // cache-bust every iframe in the travel modal
     modal.querySelectorAll('iframe').forEach((ifr) => {
       const base = (ifr.getAttribute('src') || '').split('?')[0];
-      ifr.src = \`${base}?ts=${Date.now()}\`;
+      ifr.src = \`\${base}?ts=\${Date.now()}\`;
     });
   }
   function startTravelAuto() {
@@ -8742,7 +8743,7 @@ const liveBox = document.querySelector(".live-indicator");
     const username = modal.getAttribute('data-mixcloud-username') || 'essentialradio';
     const limit = parseInt(modal.getAttribute('data-limit') || '12', 10);
 
-    const url = new URL(\`https://api.mixcloud.com/${encodeURIComponent(username)}/cloudcasts/\`);
+    const url = new URL(\`https://api.mixcloud.com/\${encodeURIComponent(username)}/cloudcasts/\`);
     url.searchParams.set('limit', String(limit));
     url.searchParams.set('ts', Date.now()); // cache-bust so today's uploads appear
 
@@ -8764,21 +8765,21 @@ const liveBox = document.querySelector(".live-indicator");
     if (!items.length) return \`<p>No shows yet — check back soon.</p>\`;
     return \`
       <div class="la-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
-        ${items.map(it => {
+        \${items.map(it => {
           const title = escapeHTML(it?.name || 'Untitled');
-          const mcUrl = \`https://www.mixcloud.com${it?.key || ''}\`;
+          const mcUrl = \`https://www.mixcloud.com\${it?.key || ''}\`;
           const img = it?.pictures?.medium || it?.pictures?.thumbnail || '';
           const when = it?.created_time ? new Date(it.created_time).toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: 'short' }) : '';
           return \`
-            <article class="la-card" data-mc-url="${mcUrl}" style="background:var(--panel,#111);border:1px solid var(--border,#333);border-radius:12px;overflow:hidden;">
+            <article class="la-card" data-mc-url="\${mcUrl}" style="background:var(--panel,#111);border:1px solid var(--border,#333);border-radius:12px;overflow:hidden;">
               <div class="la-thumb" style="aspect-ratio:1.6/1;background:#000;">
-                ${img ? \`<img src="${img}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">\` : \`\`}
+                \${img ? \`<img src="\${img}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">\` : \`\`}
               </div>
               <div class="la-meta" style="padding:10px;">
-                <div class="la-title" style="font-weight:600;line-height:1.3;">${title}</div>
-                ${when ? \`<div class="la-time" style="opacity:.8;font-size:.9em;margin-top:4px;">${when}</div>\` : \`\`}
+                <div class="la-title" style="font-weight:600;line-height:1.3;">\${title}</div>
+                \${when ? \`<div class="la-time" style="opacity:.8;font-size:.9em;margin-top:4px;">\${when}</div>\` : \`\`}
                 <button class="la-play" style="margin-top:8px;">Play</button>
-                <a class="la-open" href="${mcUrl}" target="_blank" rel="noopener" style="margin-left:8px;">Open</a>
+                <a class="la-open" href="\${mcUrl}" target="_blank" rel="noopener" style="margin-left:8px;">Open</a>
               </div>
             </article>\`;
         }).join('')}
@@ -8791,11 +8792,11 @@ const liveBox = document.querySelector(".live-indicator");
         const card = e.currentTarget.closest('.la-card');
         const url = card?.getAttribute('data-mc-url');
         if (!url) return;
-        const embed = \`${url}/embed\`;
+        const embed = \`\${url}/embed\`;
         card.innerHTML = \`
           <div style="position:relative; padding-top:120px;">
             <iframe title="Mixcloud player" width="100%" height="180" frameborder="0" allow="autoplay"
-              src="${embed}?hide_cover=1&mini=1&ts=${Date.now()}"></iframe>
+              src="\${embed}?hide_cover=1&mini=1&ts=\${Date.now()}"></iframe>
           </div>\`;
       });
     });
@@ -8921,9 +8922,9 @@ const liveBox = document.querySelector(".live-indicator");
 
     // 1) Common id patterns
     const idCandidates = [
-      \`presenter-${s}\`,
-      \`modal-presenter-${s}\`,
-      \`modal-${s}\`,
+      \`presenter-\${s}\`,
+      \`modal-presenter-\${s}\`,
+      \`modal-\${s}\`,
       s // just in case ids are already slugs (e.g., "brian-woolfson")
     ];
     for (const id of idCandidates){
@@ -8933,12 +8934,12 @@ const liveBox = document.querySelector(".live-indicator");
 
     // 2) Any .modal with a matching data attribute
     const dataSelectors = [
-      \`[data-presenter='${s}']\`,
-      \`[data-presenter*='${s}']\`,
-      \`[data-presenter-slug='${s}']\`
+      \`[data-presenter='\${s}']\`,
+      \`[data-presenter*='\${s}']\`,
+      \`[data-presenter-slug='\${s}']\`
     ];
     for (const sel of dataSelectors){
-      const el = document.querySelector(\`.modal${sel}\`);
+      const el = document.querySelector(\`.modal\${sel}\`);
       if (el) return el;
     }
 
@@ -9289,7 +9290,7 @@ const liveBox = document.querySelector(".live-indicator");
     if (!mobileText) return;
     const a = (artist || '').replace(/\\s+on\\s+Essential\\s+Radio\\s*$/i,'').trim();
     const t = (title  || '').replace(/\\s+on\\s+Essential\\s+Radio\\s*$/i,'').trim();
-    const line = (a && t) ? \`${a} – ${t}\` : (a || t || 'Essential Radio');
+    const line = (a && t) ? \`\${a} – \${t}\` : (a || t || 'Essential Radio');
     mobileText.textContent = line;
     mobileText.title = line;
   }
@@ -9435,8 +9436,6 @@ const liveBox = document.querySelector(".live-indicator");
 })();
 </script>
 <!-- Now Playing refresher -->
-<!-- Service Worker Registration -->
-<!-- Now Playing refresher (served from /public) -->
 <!-- Service Worker Registration -->
 
 `
