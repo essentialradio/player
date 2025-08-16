@@ -12,7 +12,7 @@ export default function Page() {
     <>
       <Head>
         <title>Essential Radio Player</title>
-        <div suppressHydrationWarning dangerouslySetInnerHTML={ __html: `<meta charset="utf-8"/>
+        <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
@@ -4113,10 +4113,10 @@ html[data-theme="light"] #mobileNowBar {
   transform: translateY(1px);
 }
 
-</style>` } />
+</style>` }} />
       </Head>
 
-      <div suppressHydrationWarning dangerouslySetInnerHTML={ __html: `
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
@@ -9437,7 +9437,7 @@ const liveBox = document.querySelector(".live-indicator");
       });
     }
   </script>
-` } />
+` )} />
 
       <Script src="/nowplaying-refresh.js" strategy="afterInteractive" />
       <Script id="sw-register" strategy="afterInteractive">{
