@@ -8684,17 +8684,7 @@ const liveBox = document.querySelector(".live-indicator");
   });
 })();
 </script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then(reg => {
-      console.log('Service worker registered', reg);
-    }).catch(err => {
-      console.error('Service worker registration failed', err);
-    });
-  });
-}
-</script>
+
 <script>
   // --- Auto-refresh when specific modals are open ---
 
@@ -9572,12 +9562,18 @@ if ('serviceWorker' in navigator) {
 
 
   <!-- Now Playing refresher -->
-  <script src="/public/nowplaying-refresh.js"></script>
+<!-- Service Worker Registration -->
+  
+
+  <!-- Now Playing refresher (served from /public) -->
+  <script src="/nowplaying-refresh.js"></script>
 
   <!-- Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(console.error);
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(console.error);
+      });
     }
   </script>
 </body><style>
