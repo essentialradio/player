@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:01",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 172,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:05",
-    "Displayed Time": "",
-    "Artist": "The Proclaimers",
-    "Title": "Letter From America",
-    "Duration (s)": 233,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:09",
-    "Displayed Time": "",
-    "Artist": "Tate McRae",
-    "Title": "Just Keep Watching",
-    "Duration (s)": 141,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:11",
-    "Displayed Time": "",
-    "Artist": "Eminem",
-    "Title": "Houdini",
-    "Duration (s)": 217,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:19",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Kiss Me",
-    "Duration (s)": 215,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:23",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 218,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:26",
-    "Displayed Time": "",
-    "Artist": "Max Dean x Luke Dean x Locky",
-    "Title": "Can't Decide",
-    "Duration (s)": 168,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:29",
-    "Displayed Time": "",
-    "Artist": "Sia",
-    "Title": "Cheap Thrills",
-    "Duration (s)": 201,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:36",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Bed Chem",
-    "Duration (s)": 162,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:40",
-    "Displayed Time": "",
-    "Artist": "Roxette",
-    "Title": "Dressed for Success",
-    "Duration (s)": 236,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:44",
-    "Displayed Time": "",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 182,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:47",
-    "Displayed Time": "",
-    "Artist": "Meghan Trainor",
-    "Title": "Mother",
-    "Duration (s)": 144,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:50",
-    "Displayed Time": "",
-    "Artist": "Shanice",
-    "Title": "I Love Your Smile (Driza Bone Remix)",
-    "Duration (s)": 222,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-01T11:00:00Z",
-    "Scheduled Time": "12:53",
-    "Displayed Time": "",
-    "Artist": "The Kooks",
-    "Title": "She Moves in Her Own Way",
-    "Duration (s)": 163,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-01T12:00:00Z",
     "Scheduled Time": "13:02",
     "Displayed Time": "",
@@ -44746,5 +44592,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-16T06:00:00Z",
+    "Scheduled Time": "07:01",
+    "Displayed Time": "",
+    "Artist": "Katy Perry",
+    "Title": "Woman's World",
+    "Duration (s)": 160,
+    "Full Duration (s)": 163,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
