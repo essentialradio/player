@@ -1,6 +1,5 @@
 // api/metadata.js
 export default async function handler(req, res) {
-  // Allow CORS + no cache
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'no-store');
   if (req.method === 'OPTIONS') {
@@ -11,22 +10,6 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method Not Allowed' });
 
   const H = { 'Content-Type': 'application/json' };
-
-  async function upstashGetJSON(key) {
-    const base  = process.env.UPSTASH_REDIS_REST_URL;
-    const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-    if (!base || !token) return null;
-    try {
-      const r = await fetch(`${base}/get/${encodeURIComponent(key)}`, {
-        headers: { Authorization: `Bearer ${token}` },
-        cache: 'no-store'
-      });
-      if (!r.ok) return null;
-      const j = await r.json().catch(() => null);
-      return j?.result ? JSON.parse(j.result) : null;
-    } catch { return null; }
-  }
-
   const decode = (s) => String(s ?? '')
     .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
     .replace(/&quot;/g,'"').replace(/&#039;/g,"'").replace(/&nbsp;/g,' ');
@@ -43,11 +26,11 @@ export default async function handler(req, res) {
   };
   function splitCombined(s) {
     const line = clean(s);
-    if (!line) return { artist:'', title:'' };
+    if (!line) return { artist: '', title: '' };
     let m = line.match(/^(.*?)\s+[–—-]\s+(.*)$/); if (m) return { artist: clean(m[1]), title: clean(m[2]) };
     m = line.match(/^(.*?)\s*:\s*(.*)$/);          if (m) return { artist: clean(m[1]), title: clean(m[2]) };
     m = line.match(/^(.*?)\s+by\s+(.*)$/i);        if (m) return { artist: clean(m[2]), title: clean(m[1]) };
-    return { artist:'', title: line };
+    return { artist: '', title: line };
   }
   function glueLivebox(html) {
     const plain = html.replace(/<[^>]*>/g, '');
@@ -86,8 +69,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 0) Redis (preferred)
-    const rec = await upstashGetJSON('np:latest');
+    // 0) Prefer Redis (set by /api/ingest)
+    const base  = process.env.UPSTASH_REDIS_REST_URL;
+    const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+    let rec = null;
+    if (base && token) {
+      const r = await fetch(`${base}/get/${encodeURIComponent('np:latest')}`, {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: 'no-store'
+      }).catch(() => null);
+      if (r?.ok) {
+        const j = await r.json().catch(() => null);
+        try { rec = j?.result ? JSON.parse(j.result) : null; } catch {}
+      }
+    }
     if (rec?.artist && rec?.title) {
       return res.status(200).json({
         artist: clean(decode(rec.artist)),
@@ -100,7 +95,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // 1) Fallbacks (optional; keep if you want)
+    // 1) Fallbacks (optional)
     const [ltResp, lbResp] = await Promise.allSettled([
       fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now(), { cache: 'no-store' }),
       fetch('https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html', { cache: 'no-store' })
