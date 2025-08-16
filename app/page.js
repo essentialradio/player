@@ -1,7 +1,7 @@
 /**
- * Converted from your index.html to Next.js App Router.
+ * Auto-generated from index.html → Next.js App Router page.
  * Place this file at: app/page.js
- * Ensures ${...} in your HTML are escaped so Next doesn't try to interpolate them.
+ * Requires: public/nowplaying-refresh.js and public/sw.js
  */
 "use client";
 
@@ -8577,7 +8577,6 @@ const liveBox = document.querySelector(".live-indicator");
   });
 })();
 </script>
-
 <script>
   // --- Auto-refresh when specific modals are open ---
 
@@ -9436,6 +9435,8 @@ const liveBox = document.querySelector(".live-indicator");
 })();
 </script>
 <!-- Now Playing refresher -->
+<!-- Service Worker Registration -->
+<!-- Now Playing refresher (served from /public) -->
 <!-- Service Worker Registration -->
 
 `
