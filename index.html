@@ -2866,6 +2866,9 @@ nav + div {
   }
 </style>
 <style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
+  // Cross-origin API base for essential.radio -> Vercel
+  const API_BASE = 'https://player-green.vercel.app';
+
 (function() {
   function setNavOffset(){
     const nav = document.querySelector('.navbar');
@@ -5733,7 +5736,7 @@ group.forEach(show => {
     });
     async function fetchDurationAndStartTime(artist, title) {
       try {
-        const logUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+        const logUrl = 'https://raw.githubusercontent.com/essentialradio/player/main/playout_log_rolling.json?ts=${Date.now()}';
         const res = await fetch(`${logUrl}?_=${Date.now()}`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
@@ -5829,7 +5832,7 @@ async function fetchNowPlaying() {
       fetchArtwork(`${artist} - ${title}`);
     }
 
-    const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+    const latestRes = await fetch('${API_BASE}/api/latestTrack?_=${Date.now()}?_=' + Date.now());
     const latest = await latestRes.json();
 
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) return;
@@ -9568,7 +9571,7 @@ if ('serviceWorker' in navigator) {
         await window.refreshSongSearch();
       } else {
         // Fallback fetch — matches earlier working endpoint
-        var url = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+        var url = 'https://raw.githubusercontent.com/essentialradio/player/main/playout_log_rolling.json?ts=${Date.now()}';
         url += (url.indexOf('?')===-1?'?':'&') + 'ts=' + Date.now();
         var res = await fetch(url, { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
