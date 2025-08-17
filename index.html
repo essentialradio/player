@@ -5881,28 +5881,26 @@ async function fetchNowPlaying() {
 
 
 
-    async function fetchRecentFromGitHub() {
+    
+async function fetchRecentFromGitHub() {
   try {
-    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
+    const res = await fetch('/api/recent?limit=10&_=' + Date.now(), { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const recentItems = data
-      .filter(item => {
-        const name = `${item.Artist} – ${item.Title}`;
-        return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
-      })
-      .slice(-5)
-      .reverse();
+
+    const recentItems = (data.items || []).filter(item => {
+      const name = `${item.artist} – ${item.title}`;
+      return item.artist && item.title && (songHasEnded || name !== currentTrackID);
+    });
+
     const entries = await Promise.all(recentItems.map(async item => {
-      const time = item['Scheduled Time'] || item.time || '';
-      const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
-      // --- New: Last.fm icon link ---
-      const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
+      const time = item.time || item['Scheduled Time'] || '';
+      const name = `${item.artist} – ${item.title}`;
+      const art  = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+      const lastfmUrl  = `https://www.last.fm/music/${encodeURIComponent(item.artist.replace(/\s+/g, '+'))}`;
       const lastfmIcon = `
         <a href="${lastfmUrl}" target="_blank" rel="noopener"
-          title="More about ${item.Artist} on Last.fm"
+          title="More about ${item.artist} on Last.fm"
           style="margin-left:7px;vertical-align:middle;display:inline-block;">
           <svg width="19" height="19" viewBox="0 0 32 32" style="display:inline-block;vertical-align:middle;">
             <circle cx="16" cy="16" r="16" fill="#fed351"/>
@@ -5912,18 +5910,18 @@ async function fetchNowPlaying() {
               fill="#222"/>
           </svg>
         </a>`;
+
       return `
         <li>
           <span class="time">${time}</span>
-          <img src="${art}"
-               alt="Cover for ${name}"
-               loading="lazy" />
+          <img src="${art}" alt="Cover for ${name}" loading="lazy" />
           <span class="info">
             ${name}
             ${lastfmIcon}
           </span>
         </li>`;
     }));
+
     const list = document.getElementById('recent-list');
     list.innerHTML = entries.join('');
     document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
@@ -5931,6 +5929,7 @@ async function fetchNowPlaying() {
     console.error('Recent fetch failed:', e);
   }
 }
+
 
     async function fetchArtwork(trackName) {
       artworkImg.src = 'Essential Radio Logo.png';
