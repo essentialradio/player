@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-02T19:00:00Z",
-    "Scheduled Time": "20:00",
-    "Displayed Time": "",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3479,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-02T20:00:00Z",
     "Scheduled Time": "21:00",
     "Displayed Time": "",
@@ -44504,5 +44493,16 @@
     "Full Duration (s)": 3591,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-08-17T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "",
+    "Artist": "Kevin McCallum",
+    "Title": "Mr Rocks Show",
+    "Duration (s)": 7196,
+    "Full Duration (s)": 7202,
+    "Duration (mins)": 120,
+    "Full Duration (mins)": 120
   }
 ]
