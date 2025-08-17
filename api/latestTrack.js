@@ -3,18 +3,25 @@ import { Redis } from "@upstash/redis";
 
 const redis = new Redis({
   url: process.env.KV_REST_API_URL,
-  token: process.env.KV_REST_API_TOKEN,
+  token: process.env.KV_REST_API_TOKEN, // same vars as ingest.js
 });
 
 export default async function handler(req, res) {
   try {
-    // Match the key used in ingest.js
-    const track = await redis.get("nowplaying");
-    const parsed = track ? JSON.parse(track) : {};
+    const val = await redis.get("nowplaying");
 
-    res.status(200).json(parsed);
+    let track = null;
+    if (typeof val === "string") {
+      try { track = JSON.parse(val); } catch { track = null; }
+    } else if (val && typeof val === "object") {
+      track = val;
+    }
+
+    // Always return a well-shaped object
+    const out = track || { artist: "", title: "", startTime: null, duration: 0 };
+    return res.status(200).json(out);
   } catch (err) {
-    console.error("Error fetching track:", err);
-    res.status(500).json({ error: "Failed to fetch latest track" });
+    // Don’t 500 the player—return safe fallback
+    return res.status(200).json({ artist: "", title: "", startTime: null, duration: 0 });
   }
 }
