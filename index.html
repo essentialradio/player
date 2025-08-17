@@ -2866,9 +2866,6 @@ nav + div {
   }
 </style>
 <style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
-  // Cross-origin API base for essential.radio -> Vercel
-  const API_BASE = 'https://player-green.vercel.app';
-
 (function() {
   function setNavOffset(){
     const nav = document.querySelector('.navbar');
@@ -5736,7 +5733,7 @@ group.forEach(show => {
     });
     async function fetchDurationAndStartTime(artist, title) {
       try {
-        const logUrl = 'https://raw.githubusercontent.com/essentialradio/player/main/playout_log_rolling.json?ts=${Date.now()}';
+        const logUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
         const res = await fetch(`${logUrl}?_=${Date.now()}`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
@@ -5832,7 +5829,7 @@ async function fetchNowPlaying() {
       fetchArtwork(`${artist} - ${title}`);
     }
 
-    const latestRes = await fetch('${API_BASE}/api/latestTrack?_=${Date.now()}?_=' + Date.now());
+    const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
     const latest = await latestRes.json();
 
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) return;
@@ -5884,103 +5881,56 @@ async function fetchNowPlaying() {
 
 
 
-    
-async function fetchRecentFromGitHub() {
+    async function fetchRecentFromGitHub() {
   try {
-    // Primary: live API from Redis
-    const res = await fetch('/api/recent?limit=5&_=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('API HTTP ' + res.status);
+    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const recentItemsRaw = Array.isArray(data.items) ? data.items : [];
-
-    const recentItems = recentItemsRaw.filter(item => {
-      const name = `${item.artist ?? ''} – ${item.title ?? ''}`.trim();
-      return (item.artist && item.title) && (typeof songHasEnded === 'undefined' || songHasEnded || name !== (window.currentTrackID || ''));
-    });
-
+    const recentItems = data
+      .filter(item => {
+        const name = `${item.Artist} – ${item.Title}`;
+        return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
+      })
+      .slice(-5)
+      .reverse();
     const entries = await Promise.all(recentItems.map(async item => {
-      const time = item.time || item['Scheduled Time'] || '';
-      const name = `${item.artist} – ${item.title}`;
-      let art = '';
-      try { art = await getTrackArtwork(name); } catch (e) {}
-      if (!art) art = 'Essential Radio Logo.png';
-      const lastfmUrl  = `https://www.last.fm/music/${encodeURIComponent((item.artist || '').replace(/\s+/g, '+'))}`;
+      const time = item['Scheduled Time'] || item.time || '';
+      const name = `${item.Artist} – ${item.Title}`;
+      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+      // --- New: Last.fm icon link ---
+      const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
+      const lastfmIcon = `
+        <a href="${lastfmUrl}" target="_blank" rel="noopener"
+          title="More about ${item.Artist} on Last.fm"
+          style="margin-left:7px;vertical-align:middle;display:inline-block;">
+          <svg width="19" height="19" viewBox="0 0 32 32" style="display:inline-block;vertical-align:middle;">
+            <circle cx="16" cy="16" r="16" fill="#fed351"/>
+            <path d="M24.6,19.9c-2.2,1.8-5.1,2.4-7.8,2.1c-2.6-0.3-5.3-1.7-6.7-4c-0.7-1.2-1.1-2.7-1-4.1c0.1-2.6,2.4-4.8,5.2-4.8
+              c3.4,0,5,2.4,5.4,4.6c0.2,1-0.5,1.7-1.5,1.7c-1.1,0-1.4-0.8-1.5-1.4c-0.2-1.3-1-2.1-2.3-2.1c-1.2,0-2,0.9-2,2
+              c0,0.6,0.2,1.1,0.4,1.5c0.8,1.4,2.4,2.1,4,2.3c2.6,0.3,4.2-0.7,5-1.4c0.8-0.8,1.8-0.6,2.3,0.1C25.1,18.4,25.3,19.2,24.6,19.9z"
+              fill="#222"/>
+          </svg>
+        </a>`;
       return `
         <li>
           <span class="time">${time}</span>
-          <img src="${art}" alt="Cover for ${name}" loading="lazy" />
+          <img src="${art}"
+               alt="Cover for ${name}"
+               loading="lazy" />
           <span class="info">
             ${name}
-            <a href="${lastfmUrl}" target="_blank" rel="noopener" title="More about ${item.artist} on Last.fm" style="margin-left:7px;vertical-align:middle;display:inline-block;">
-              <svg width="19" height="19" viewBox="0 0 32 32" style="display:inline-block;vertical-align:middle;">
-                <circle cx="16" cy="16" r="16" fill="#fed351"></circle>
-                <path d="M24.6,19.9c-2.2,1.8-5.1,2.4-7.8,2.1c-2.6-0.3-5.3-1.7-6.7-4c-0.7-1.2-1.1-2.7-1-4.1c0.1-2.6,2.4-4.8,5.2-4.8
-                  c3.4,0,5,2.4,5.4,4.6c0.2,1-0.5,1.7-1.5,1.7c-1.1,0-1.4-0.8-1.5-1.4c-0.2-1.3-1-2.1-2.3-2.1c-1.2,0-2,0.9-2,2
-                  c0,0.6,0.2,1.1,0.4,1.5c0.8,1.4,2.4,2.1,4,2.3c2.6,0.3,4.2-0.7,5-1.4c0.8-0.8,1.8-0.6, 2.3,0.1C25.1,18.4,25.3,19.2,24.6,19.9z"
-                  fill="#222"></path>
-              </svg>
-            </a>
+            ${lastfmIcon}
           </span>
         </li>`;
     }));
-
     const list = document.getElementById('recent-list');
-    if (list) {
-      list.innerHTML = entries.join('');
-      (document.querySelectorAll('#recent-list img') || []).forEach(img => observer && observer.observe && observer.observe(img));
-    }
-  } catch (apiErr) {
-    console.warn('API recent failed, falling back to GitHub raw JSON:', apiErr);
-    try {
-      const gh = await fetch('https://raw.githubusercontent.com/essentialradio/player/main/playout_log_rolling.json?ts=' + Date.now());
-      if (!gh.ok) throw new Error('RAW HTTP ' + gh.status);
-      const arr = await gh.json();
-const recentItems = (Array.isArray(arr) ? arr : [])
-  .slice(-5)
-  .reverse()
-  .map(it => ({
-    artist: it.Artist || '',
-    title:  it.Title || '',
-    time:   it['Scheduled Time'] || it.time || ''
-  }))
-  .filter(it => it.artist && it.title);
-
-      const entries = await Promise.all(recentItems.map(async item => {
-        const name = `${item.artist} – ${item.title}`;
-        let art = '';
-        try { art = await getTrackArtwork(name); } catch (e) {}
-        if (!art) art = 'Essential Radio Logo.png';
-        const lastfmUrl  = `https://www.last.fm/music/${encodeURIComponent((item.artist || '').replace(/\s+/g, '+'))}`;
-        return `
-          <li>
-            <span class="time">${item.time || ''}</span>
-            <img src="${art}" alt="Cover for ${name}" loading="lazy" />
-            <span class="info">
-              ${name}
-              <a href="${lastfmUrl}" target="_blank" rel="noopener" title="More about ${item.artist} on Last.fm" style="margin-left:7px;vertical-align:middle;display:inline-block;">
-                <svg width="19" height="19" viewBox="0 0 32 32" style="display:inline-block;vertical-align:middle;">
-                  <circle cx="16" cy="16" r="16" fill="#fed351"></circle>
-                  <path d="M24.6,19.9c-2.2,1.8-5.1,2.4-7.8,2.1c-2.6-0.3-5.3-1.7-6.7-4c-0.7-1.2-1.1-2.7-1-4.1c0.1-2.6,2.4-4.8,5.2-4.8
-                    c3.4,0,5,2.4,5.4,4.6c0.2,1-0.5,1.7-1.5,1.7c-1.1,0-1.4-0.8-1.5-1.4c-0.2-1.3-1-2.1-2.3-2.1c-1.2,0-2,0.9-2,2
-                    c0,0.6,0.2,1.1,0.4,1.5c0.8,1.4,2.4,2.1,4,2.3c2.6,0.3,4.2-0.7,5-1.4c0.8-0.8,1.8-0.6,2.3,0.1C25.1,18.4,25.3,19.2,24.6,19.9z"
-                    fill="#222"></path>
-                </svg>
-              </a>
-            </span>
-          </li>`;
-      }));
-
-      const list = document.getElementById('recent-list');
-      if (list) {
-        list.innerHTML = entries.join('');
-        (document.querySelectorAll('#recent-list img') || []).forEach(img => observer && observer.observe && observer.observe(img));
-      }
-    } catch (ghErr) {
-      console.error('GitHub raw fallback also failed:', ghErr);
-    }
+    list.innerHTML = entries.join('');
+    document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+  } catch (e) {
+    console.error('Recent fetch failed:', e);
   }
 }
-
 
     async function fetchArtwork(trackName) {
       artworkImg.src = 'Essential Radio Logo.png';
@@ -9571,7 +9521,7 @@ if ('serviceWorker' in navigator) {
         await window.refreshSongSearch();
       } else {
         // Fallback fetch — matches earlier working endpoint
-        var url = 'https://raw.githubusercontent.com/essentialradio/player/main/playout_log_rolling.json?ts=${Date.now()}';
+        var url = 'https://essentialradio.github.io/player/playout_log_rolling.json';
         url += (url.indexOf('?')===-1?'?':'&') + 'ts=' + Date.now();
         var res = await fetch(url, { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
