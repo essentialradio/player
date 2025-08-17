@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-02T20:00:00Z",
-    "Scheduled Time": "21:00",
-    "Displayed Time": "",
-    "Artist": "Big Tommy",
-    "Title": "Big Fat  Party Anthems",
-    "Duration (s)": 10796,
-    "Full Duration (s)": 10800,
-    "Duration (mins)": 180,
-    "Full Duration (mins)": 180
-  },
-  {
     "Hour": "2025-08-02T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "",
@@ -44504,5 +44493,16 @@
     "Full Duration (s)": 7202,
     "Duration (mins)": 120,
     "Full Duration (mins)": 120
+  },
+  {
+    "Hour": "2025-08-17T20:00:00Z",
+    "Scheduled Time": "21:03",
+    "Displayed Time": "",
+    "Artist": "Emma Scott",
+    "Title": "The Pluggin' Baby Radio Show",
+    "Duration (s)": 3482,
+    "Full Duration (s)": 3484,
+    "Duration (mins)": 58,
+    "Full Duration (mins)": 58
   }
 ]
