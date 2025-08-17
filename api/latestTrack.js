@@ -8,8 +8,10 @@ const redis = new Redis({
 
 export default async function handler(req, res) {
   try {
-    const track = await redis.get("nowplaying");
+    // Match ingest.js key
+    const track = await redis.get("track:latest");
     const parsed = track ? JSON.parse(track) : {};
+
     res.status(200).json(parsed);
   } catch (err) {
     console.error("Error fetching track:", err);
