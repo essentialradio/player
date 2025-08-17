@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-08-02T17:00:00Z",
-    "Scheduled Time": "18:01",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1220,
-    "Full Duration (s)": 1225,
-    "Duration (mins)": 20,
-    "Full Duration (mins)": 20
-  },
-  {
-    "Hour": "2025-08-02T17:00:00Z",
-    "Scheduled Time": "18:23",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 927,
-    "Full Duration (s)": 932,
-    "Duration (mins)": 15,
-    "Full Duration (mins)": 16
-  },
-  {
-    "Hour": "2025-08-02T17:00:00Z",
-    "Scheduled Time": "18:40",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1008,
-    "Full Duration (s)": 1010,
-    "Duration (mins)": 17,
-    "Full Duration (mins)": 17
-  },
-  {
     "Hour": "2025-08-02T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "",
@@ -44526,5 +44493,16 @@
     "Full Duration (s)": 3551,
     "Duration (mins)": 59,
     "Full Duration (mins)": 59
+  },
+  {
+    "Hour": "2025-08-17T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3480,
+    "Full Duration (s)": 3481,
+    "Duration (mins)": 58,
+    "Full Duration (mins)": 58
   }
 ]
