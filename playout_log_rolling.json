@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:02",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 172,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:05",
-    "Displayed Time": "",
-    "Artist": "Haddaway",
-    "Title": "What Is Love",
-    "Duration (s)": 232,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:09",
-    "Displayed Time": "",
-    "Artist": "Ariana Grande",
-    "Title": "Into You",
-    "Duration (s)": 236,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:13",
-    "Displayed Time": "",
-    "Artist": "Zach Bryan, Kacey Musgraves",
-    "Title": "I Remember Everything",
-    "Duration (s)": 217,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:17",
-    "Displayed Time": "",
-    "Artist": "Michael Buble",
-    "Title": "Everything",
-    "Duration (s)": 200,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:24",
-    "Displayed Time": "",
-    "Artist": "Supermen Lovers & OneRepublic",
-    "Title": "Starlight (The Fame)",
-    "Duration (s)": 179,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:27",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Bad Dreams",
-    "Duration (s)": 177,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:30",
-    "Displayed Time": "",
-    "Artist": "Michael Jackson",
-    "Title": "The Way You Make Me Feel",
-    "Duration (s)": 250,
-    "Full Duration (s)": 266,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:34",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 206,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:41",
-    "Displayed Time": "",
-    "Artist": "Maroon 5",
-    "Title": "Sugar",
-    "Duration (s)": 230,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:45",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga & Bruno Mars",
-    "Title": "Die With A Smile",
-    "Duration (s)": 243,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:49",
-    "Displayed Time": "",
-    "Artist": "S Club 7",
-    "Title": "Bring It All Back",
-    "Duration (s)": 202,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 220,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-03T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44504,5 +44361,16 @@
     "Full Duration (s)": 3484,
     "Duration (mins)": 58,
     "Full Duration (mins)": 58
+  },
+  {
+    "Hour": "2025-08-17T22:00:00Z",
+    "Scheduled Time": "23:00",
+    "Displayed Time": "",
+    "Artist": "Dave Watkins",
+    "Title": "The Country Mile",
+    "Duration (s)": 3599,
+    "Full Duration (s)": 3602,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
