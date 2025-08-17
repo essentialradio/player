@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-01T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 1",
-    "Duration (s)": 3585,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-08-02T00:00:00Z",
     "Scheduled Time": "01:00",
     "Displayed Time": "",
@@ -44163,5 +44152,16 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-08-17T00:00:00Z",
+    "Scheduled Time": "01:02",
+    "Displayed Time": "",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 250,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
