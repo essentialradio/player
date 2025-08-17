@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "",
-    "Artist": "Sam Fender & Olivia Dean",
-    "Title": "Rein Me In",
-    "Duration (s)": 236,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:06",
-    "Displayed Time": "",
-    "Artist": "Marshmello & Bastille",
-    "Title": "Happier",
-    "Duration (s)": 204,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:09",
-    "Displayed Time": "",
-    "Artist": "Ariana Grande",
-    "Title": "We Can't Be Friends (Wait For Your Love)",
-    "Duration (s)": 215,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:13",
-    "Displayed Time": "",
-    "Artist": "The B-52's",
-    "Title": "Love Shack",
-    "Duration (s)": 199,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:16",
-    "Displayed Time": "",
-    "Artist": "Suede",
-    "Title": "Disintegrate",
-    "Duration (s)": 198,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:24",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Something To Someone",
-    "Duration (s)": 185,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:27",
-    "Displayed Time": "",
-    "Artist": "Becky Hill & David Guetta",
-    "Title": "Remember",
-    "Duration (s)": 152,
-    "Full Duration (s)": 161,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:29",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:33",
-    "Displayed Time": "",
-    "Artist": "The Cranberries",
-    "Title": "Linger",
-    "Duration (s)": 257,
-    "Full Duration (s)": 272,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:37",
-    "Displayed Time": "",
-    "Artist": "Taio Cruz",
-    "Title": "Dynamite",
-    "Duration (s)": 184,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:44",
-    "Displayed Time": "",
-    "Artist": "Fontaines D.C.",
-    "Title": "It's Amazing To Be Young",
-    "Duration (s)": 204,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:47",
-    "Displayed Time": "",
-    "Artist": "Nena",
-    "Title": "99 Red Balloons",
-    "Duration (s)": 219,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:51",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "How Does It Feel",
-    "Duration (s)": 133,
-    "Full Duration (s)": 144,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-02T05:00:00Z",
-    "Scheduled Time": "06:53",
-    "Displayed Time": "",
-    "Artist": "Kim Appleby",
-    "Title": "Don't Worry",
-    "Duration (s)": 197,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-02T06:00:00Z",
     "Scheduled Time": "07:01",
     "Displayed Time": "",
@@ -44482,5 +44328,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-17T06:00:00Z",
+    "Scheduled Time": "07:01",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "American Town",
+    "Duration (s)": 196,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
