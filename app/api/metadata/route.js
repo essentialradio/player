@@ -1,19 +1,20 @@
-// Returns the latest now-playing JSON from Upstash Redis
-// Response shape your frontend expects:
-// { artist, title, nowPlaying, duration?, startTime?, endTime?, source }
+// Reads the latest now playing JSON from Upstash Redis
+// Returns { artist, title, nowPlaying, duration?, startTime?, endTime?, source }
 
 import { NextResponse } from "next/server";
 
+function hdrs() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Cache-Control": "no-store",
+    "Content-Type": "application/json",
+  };
+}
+
 export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Cache-Control": "no-store",
-    },
-  });
+  return new NextResponse(null, { status: 204, headers: hdrs() });
 }
 
 export async function GET() {
@@ -21,9 +22,10 @@ export async function GET() {
     const base = process.env.UPSTASH_REDIS_REST_URL;
     const token = process.env.UPSTASH_REDIS_REST_TOKEN;
     if (!base || !token) {
+      // stay graceful if env missing to avoid frontend breaking
       return NextResponse.json(
         { artist: "", title: "", nowPlaying: "" },
-        { status: 200, headers: hdrs() } // stay graceful if env missing
+        { status: 200, headers: hdrs() }
       );
     }
 
@@ -71,12 +73,4 @@ export async function GET() {
       { status: 200, headers: hdrs() }
     );
   }
-}
-
-function hdrs() {
-  return {
-    "Access-Control-Allow-Origin": "*",
-    "Cache-Control": "no-store",
-    "Content-Type": "application/json",
-  };
 }

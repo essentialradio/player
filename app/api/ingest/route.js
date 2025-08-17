@@ -1,10 +1,10 @@
 // Accepts POST JSON from playout:
 // { artist, title, duration?, startTime? }
-// Stores latest record in Upstash Redis under key "np:latest" (with TTL)
+// Stores under Redis key "np:latest" with a TTL to avoid stale data.
 
 import { NextResponse } from "next/server";
 
-const TTL_SECONDS = 15 * 60; // 15 minutes
+const TTL_SECONDS = 15 * 60; // 15 min
 
 const decode = (s) =>
   String(s ?? "")
@@ -22,16 +22,17 @@ const clean = (s) =>
     .replace(/\s+/g, " ")
     .trim();
 
+function cors() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Cache-Control": "no-store",
+  };
+}
+
 export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Cache-Control": "no-store",
-    },
-  });
+  return new NextResponse(null, { status: 204, headers: cors() });
 }
 
 export async function POST(req) {
@@ -43,11 +44,11 @@ export async function POST(req) {
     if (!artist || !title) {
       return NextResponse.json(
         { error: "artist and title are required" },
-        { status: 400, headers: corsHeaders() }
+        { status: 400, headers: { ...cors(), "Content-Type": "application/json" } }
       );
     }
 
-    // optional fields
+    // Optional fields
     let duration = null;
     if (body.duration !== undefined && body.duration !== null) {
       const n = Number(body.duration);
@@ -67,23 +68,23 @@ export async function POST(req) {
       title,
       nowPlaying: `${artist} - ${title}`,
       duration,           // seconds or null
-      startTime,          // ISO
+      startTime,          // ISO if provided, else server time
       endTime,            // ISO or null
       ts: serverNowISO,   // server receipt time
       source: "ingest",
       v: 2,
     };
 
-    // Upstash Redis (REST)
     const base = process.env.UPSTASH_REDIS_REST_URL;
     const token = process.env.UPSTASH_REDIS_REST_TOKEN;
     if (!base || !token) {
       return NextResponse.json(
         { error: "Upstash env missing" },
-        { status: 500, headers: corsHeaders() }
+        { status: 500, headers: { ...cors(), "Content-Type": "application/json" } }
       );
     }
 
+    // Upstash REST SET with TTL (EX)
     const form = new URLSearchParams({
       key: "np:latest",
       value: JSON.stringify(record),
@@ -100,23 +101,17 @@ export async function POST(req) {
     if (!r.ok) {
       return NextResponse.json(
         { error: `Upstash SET failed ${r.status}` },
-        { status: 502, headers: corsHeaders() }
+        { status: 502, headers: { ...cors(), "Content-Type": "application/json" } }
       );
     }
 
-    return NextResponse.json({ ok: true, saved: record }, { headers: corsHeaders() });
+    return NextResponse.json({ ok: true, saved: record }, {
+      headers: { ...cors(), "Content-Type": "application/json" }
+    });
   } catch (e) {
     return NextResponse.json(
       { error: "Server error" },
-      { status: 500, headers: corsHeaders() }
+      { status: 500, headers: { ...cors(), "Content-Type": "application/json" } }
     );
   }
-}
-
-function corsHeaders() {
-  return {
-    "Access-Control-Allow-Origin": "*",
-    "Cache-Control": "no-store",
-    "Content-Type": "application/json",
-  };
 }
