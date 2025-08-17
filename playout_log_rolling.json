@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-02T00:00:00Z",
-    "Scheduled Time": "01:00",
-    "Displayed Time": "",
-    "Artist": "Davy Sims",
-    "Title": "Around the World - Part 2",
-    "Duration (s)": 3585,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-08-02T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "",
@@ -44306,5 +44295,16 @@
     "Full Duration (s)": 279,
     "Duration (mins)": 4,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-08-17T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Lady Gaga with Ariana Grande",
+    "Title": "Rain on Me",
+    "Duration (s)": 182,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
