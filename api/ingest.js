@@ -1,116 +1,91 @@
-// api/ingest.js
-// Accepts JSON from playout: { artist, title, duration?, startTime? }
-// Saves a canonical record to Upstash Redis (key: np:latest) with a TTL.
+// /api/ingest.js
+import { Redis } from '@upstash/redis';
+
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN
+});
+
+const HDRS = {
+  'content-type': 'application/json; charset=utf-8',
+  'access-control-allow-origin': '*',
+  'access-control-allow-methods': 'POST, GET, OPTIONS',
+  'access-control-allow-headers': 'content-type'
+};
+
+const RECENT_KEY = 'player:recent';
+const LATEST_KEY = 'player:latest';
+const LASTTS_KEY = 'player:last_ingest_ts';
+const RECENT_MAX = 100;
+const MIN_INTERVAL_MS = 750;
 
 export default async function handler(req, res) {
-  // CORS + no-cache
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Cache-Control", "no-store");
-  if (req.method === "OPTIONS") {
-    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
-    return res.status(204).end();
-  }
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
+  if (req.method === 'OPTIONS') return send(res, null, 204);
+
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  const token = url.searchParams.get('token') || '';
+  if (!process.env.INGEST_TOKEN || token !== process.env.INGEST_TOKEN) {
+    return send(res, { error: 'Unauthorized' }, 401);
   }
 
-  const TTL_SECONDS = 15 * 60; // keep it fresh; playout will refresh often
+  // Read payload
+  let payload = {};
+  try {
+    if (req.method === 'POST') {
+      payload = await readBodySmart(req);
+      if (!payload.artist && !payload.title) payload = { ...payload, ...qsToObj(url.searchParams) };
+    } else if (req.method === 'GET') {
+      payload = qsToObj(url.searchParams);
+    } else {
+      return send(res, { error: 'Method not allowed' }, 405);
+    }
+  } catch {
+    return send(res, { error: 'Bad request' }, 400);
+  }
 
-  const decode = (s) =>
-    String(s ?? "")
-      .replace(/&amp;/g, "&")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
-      .replace(/&quot;/g, '"')
-      .replace(/&#039;/g, "'")
-      .replace(/&nbsp;/g, " ");
-
-  const clean = (s) =>
-    decode(s)
-      .replace(/[\u200B-\u200D\uFEFF]/g, "")
-      .replace(/\s*[–—-]\s*/g, " – ")
-      .replace(/\s+/g, " ")
-      .trim();
+  const item = normaliseItem(payload);
+  if (!item.artist || !item.title) return send(res, { error: 'artist and title are required' }, 400);
 
   try {
-    // Body (works for PlayIt Live posting JSON)
-    const body =
-      req.body ||
-      (await new Promise((resolve, reject) => {
-        let data = "";
-        req.on("data", (c) => (data += c));
-        req.on("end", () => {
-          try {
-            resolve(JSON.parse(data || "{}"));
-          } catch (e) {
-            reject(e);
-          }
-        });
-      }));
+    // Soft rate limit
+    const now = Date.now();
+    const lastTs = Number(await redis.get(LASTTS_KEY)) || 0;
+    if (now - lastTs < MIN_INTERVAL_MS) return send(res, { ok: true, skipped: 'rate' });
 
-    const artist = clean(body.artist);
-    const title = clean(body.title);
-    if (!artist || !title) {
-      return res.status(400).json({ error: "artist and title are required" });
+    // Deduplicate consecutive
+    const latest = await redis.get(LATEST_KEY);
+    if (latest && latest.artist === item.artist && latest.title === item.title) {
+      await redis.set(LATEST_KEY, { ...latest, ...patchNonEmpty(latest, item) });
+      await redis.set(LASTTS_KEY, String(now));
+      return send(res, { ok: true, skipped: 'duplicate' });
     }
 
-    // duration (seconds, optional)
-    let duration = null;
-    if (body.duration !== undefined && body.duration !== null) {
-      const n = Number(body.duration);
-      if (Number.isFinite(n) && n >= 0) duration = Math.round(n);
-    }
-
-    // times
-    const serverNowISO = new Date().toISOString();
-    const startTime = body.startTime ? String(body.startTime) : serverNowISO;
-    let endTime = null;
-    if (duration != null) {
-      const t0 = new Date(startTime).getTime();
-      if (Number.isFinite(t0)) endTime = new Date(t0 + duration * 1000).toISOString();
-    }
-
-    const record = {
-      artist,
-      title,
-      nowPlaying: `${artist} - ${title}`,
-      duration,            // seconds or null
-      startTime,           // ISO
-      endTime,             // ISO or null
-      ts: serverNowISO,    // server-receipt timestamp
-      source: "ingest",
-      v: 2
-    };
-
-    // Save to Upstash Redis
-    const base = process.env.UPSTASH_REDIS_REST_URL;
-    const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-    if (!base || !token) {
-      return res.status(500).json({ error: "Upstash env missing" });
-    }
-
-    // Use REST "SET" with expiry
-    const form = new URLSearchParams({
-      key: "np:latest",
-      value: JSON.stringify(record),
-      EX: String(TTL_SECONDS),
-    });
-
-    const r = await fetch(`${base}/set`, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-      body: form,
-    });
-
-    if (!r.ok) {
-      return res
-        .status(502)
-        .json({ error: `Upstash SET failed ${r.status}` });
-    }
-
-    return res.status(200).json({ ok: true, saved: record });
-  } catch (e) {
-    return res.status(500).json({ error: "Server error" });
+    await redis.set(LATEST_KEY, item);
+    await redis.lpush(RECENT_KEY, JSON.stringify(item));
+    await redis.ltrim(RECENT_KEY, 0, RECENT_MAX - 1);
+    await redis.set(LASTTS_KEY, String(now));
+    return send(res, { ok: true });
+  } catch {
+    return send(res, { error: 'Storage error' }, 500);
   }
 }
+
+/* helpers */
+function send(res, body, status = 200) { res.writeHead(status, HDRS); res.end(body == null ? '' : JSON.stringify(body)); }
+function qsToObj(sp) { const o={}; for (const [k,v] of sp.entries()) o[k]=v; return o; }
+function patchNonEmpty(oldObj, newObj) { const out={...oldObj}; if (newObj.startTime) out.startTime=newObj.startTime; if (Number.isFinite(newObj.duration)&&newObj.duration>0) out.duration=newObj.duration; if (newObj.meta!=null) out.meta=newObj.meta; return out; }
+function normaliseItem(src={}) {
+  const artist=String(src.artist||'').trim(); const title=String(src.title||'').trim();
+  let duration=Number(src.duration); if (!Number.isFinite(duration)||duration<0) duration=0;
+  const startTime=src.startTime ? toISO(String(src.startTime)) : new Date().toISOString();
+  const meta = src.meta ?? null; return { artist, title, startTime, duration, meta };
+}
+function toISO(x){ const d=new Date(x); return isNaN(d)?new Date().toISOString():d.toISOString(); }
+function readBodySmart(req){ return new Promise((resolve,reject)=>{ let raw=''; req.on('data',c=>raw+=c); req.on('end',()=>{ try{ const ct=(req.headers['content-type']||'').toLowerCase();
+  if (ct.includes('application/json')) return resolve(raw?JSON.parse(raw):{});
+  if (ct.includes('application/x-www-form-urlencoded')) return resolve(parseForm(raw));
+  const s=raw.trim(); if (!s) return resolve({}); if (s.startsWith('{')&&s.endsWith('}')) { try { return resolve(JSON.parse(s)); } catch {} }
+  if (s.includes('=')&&(s.includes('&')||s.includes('='))) return resolve(parseForm(s));
+  try { return resolve(JSON.parse(s)); } catch { return resolve({}); } } catch(e){ reject(e); }});
+  req.on('error', reject); });}
+function parseForm(s){ const p=new URLSearchParams(s); const o={}; for (const [k,v] of p.entries()) o[k]=v; return o; }
