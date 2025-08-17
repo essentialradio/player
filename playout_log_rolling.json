@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-02T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3438,
-    "Full Duration (s)": 3446,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-08-02T17:00:00Z",
     "Scheduled Time": "18:01",
     "Displayed Time": "",
@@ -44526,5 +44515,16 @@
     "Full Duration (s)": 201,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-17T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3549,
+    "Full Duration (s)": 3551,
+    "Duration (mins)": 59,
+    "Full Duration (mins)": 59
   }
 ]
