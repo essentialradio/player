@@ -1,4 +1,7 @@
 // /api/ingest.js
+// Accepts POST (form or JSON) and GET. Token in query (?token=...).
+// Stores latest + recent in Upstash Redis. Skips dupes + soft rate limit.
+
 import { Redis } from '@upstash/redis';
 
 const redis = new Redis({
@@ -28,12 +31,15 @@ export default async function handler(req, res) {
     return send(res, { error: 'Unauthorized' }, 401);
   }
 
-  // Read payload
   let payload = {};
   try {
     if (req.method === 'POST') {
+      // Works with PlayIt Live (form body) and JSON
       payload = await readBodySmart(req);
-      if (!payload.artist && !payload.title) payload = { ...payload, ...qsToObj(url.searchParams) };
+      // also allow query params to supplement/mix
+      if (!payload.artist && !payload.title) {
+        payload = { ...qsToObj(url.searchParams), ...payload };
+      }
     } else if (req.method === 'GET') {
       payload = qsToObj(url.searchParams);
     } else {
@@ -44,7 +50,9 @@ export default async function handler(req, res) {
   }
 
   const item = normaliseItem(payload);
-  if (!item.artist || !item.title) return send(res, { error: 'artist and title are required' }, 400);
+  if (!item.artist || !item.title) {
+    return send(res, { error: 'artist and title are required' }, 400);
+  }
 
   try {
     // Soft rate limit
@@ -52,7 +60,7 @@ export default async function handler(req, res) {
     const lastTs = Number(await redis.get(LASTTS_KEY)) || 0;
     if (now - lastTs < MIN_INTERVAL_MS) return send(res, { ok: true, skipped: 'rate' });
 
-    // Deduplicate consecutive
+    // Skip consecutive duplicates
     const latest = await redis.get(LATEST_KEY);
     if (latest && latest.artist === item.artist && latest.title === item.title) {
       await redis.set(LATEST_KEY, { ...latest, ...patchNonEmpty(latest, item) });
@@ -64,28 +72,67 @@ export default async function handler(req, res) {
     await redis.lpush(RECENT_KEY, JSON.stringify(item));
     await redis.ltrim(RECENT_KEY, 0, RECENT_MAX - 1);
     await redis.set(LASTTS_KEY, String(now));
+
     return send(res, { ok: true });
   } catch {
     return send(res, { error: 'Storage error' }, 500);
   }
 }
 
-/* helpers */
-function send(res, body, status = 200) { res.writeHead(status, HDRS); res.end(body == null ? '' : JSON.stringify(body)); }
-function qsToObj(sp) { const o={}; for (const [k,v] of sp.entries()) o[k]=v; return o; }
-function patchNonEmpty(oldObj, newObj) { const out={...oldObj}; if (newObj.startTime) out.startTime=newObj.startTime; if (Number.isFinite(newObj.duration)&&newObj.duration>0) out.duration=newObj.duration; if (newObj.meta!=null) out.meta=newObj.meta; return out; }
-function normaliseItem(src={}) {
-  const artist=String(src.artist||'').trim(); const title=String(src.title||'').trim();
-  let duration=Number(src.duration); if (!Number.isFinite(duration)||duration<0) duration=0;
-  const startTime=src.startTime ? toISO(String(src.startTime)) : new Date().toISOString();
-  const meta = src.meta ?? null; return { artist, title, startTime, duration, meta };
+/* ---------- helpers ---------- */
+function send(res, body, status = 200) {
+  res.writeHead(status, HDRS);
+  res.end(body == null ? '' : JSON.stringify(body));
 }
-function toISO(x){ const d=new Date(x); return isNaN(d)?new Date().toISOString():d.toISOString(); }
-function readBodySmart(req){ return new Promise((resolve,reject)=>{ let raw=''; req.on('data',c=>raw+=c); req.on('end',()=>{ try{ const ct=(req.headers['content-type']||'').toLowerCase();
-  if (ct.includes('application/json')) return resolve(raw?JSON.parse(raw):{});
-  if (ct.includes('application/x-www-form-urlencoded')) return resolve(parseForm(raw));
-  const s=raw.trim(); if (!s) return resolve({}); if (s.startsWith('{')&&s.endsWith('}')) { try { return resolve(JSON.parse(s)); } catch {} }
-  if (s.includes('=')&&(s.includes('&')||s.includes('='))) return resolve(parseForm(s));
-  try { return resolve(JSON.parse(s)); } catch { return resolve({}); } } catch(e){ reject(e); }});
-  req.on('error', reject); });}
-function parseForm(s){ const p=new URLSearchParams(s); const o={}; for (const [k,v] of p.entries()) o[k]=v; return o; }
+function qsToObj(sp) { const o = {}; for (const [k, v] of sp.entries()) o[k] = v; return o; }
+function normaliseItem(src = {}) {
+  // Accepts PlayIt field names too (Artist/Title/Duration (s)/Hour)
+  const artist = String(src.artist ?? src.Artist ?? '').trim();
+  const title  = String(src.title  ?? src.Title  ?? '').trim();
+
+  let duration = Number(src.duration ?? src['Duration (s)']);
+  if (!Number.isFinite(duration) || duration < 0) duration = 0;
+
+  const rawStart = src.startTime ?? src['Hour'];
+  const startTime = rawStart ? toISO(String(rawStart)) : new Date().toISOString();
+
+  const meta = src.meta ?? null;
+  return { artist, title, startTime, duration, meta };
+}
+function toISO(x) { const d = new Date(x); return isNaN(d) ? new Date().toISOString() : d.toISOString(); }
+function patchNonEmpty(oldObj, newObj) {
+  const out = { ...oldObj };
+  if (newObj.startTime) out.startTime = newObj.startTime;
+  if (Number.isFinite(newObj.duration) && newObj.duration > 0) out.duration = newObj.duration;
+  if (newObj.meta != null) out.meta = newObj.meta;
+  return out;
+}
+
+// Robust body reader: handles JSON or application/x-www-form-urlencoded,
+// and even no/unknown Content-Type (PlayIt Live compatible).
+function readBodySmart(req) {
+  return new Promise((resolve, reject) => {
+    let raw = '';
+    req.on('data', c => { raw += c; });
+    req.on('end', () => {
+      try {
+        const ct = (req.headers['content-type'] || '').toLowerCase();
+        if (ct.includes('application/json')) return resolve(raw ? JSON.parse(raw) : {});
+        if (ct.includes('application/x-www-form-urlencoded')) return resolve(parseForm(raw));
+
+        const s = raw.trim();
+        if (!s) return resolve({});
+        if (s.startsWith('{') && s.endsWith('}')) { try { return resolve(JSON.parse(s)); } catch {} }
+        if (s.includes('=') && (s.includes('&') || s.includes('='))) return resolve(parseForm(s));
+        try { return resolve(JSON.parse(s)); } catch { return resolve({}); }
+      } catch (e) { reject(e); }
+    });
+    req.on('error', reject);
+  });
+}
+function parseForm(s) {
+  const p = new URLSearchParams(s);
+  const obj = {};
+  for (const [k, v] of p.entries()) obj[k] = v;
+  return obj;
+}
