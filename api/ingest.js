@@ -1,13 +1,14 @@
 // /api/ingest.js
 // Accepts POST (form or JSON) and GET. Token in query (?token=...).
-// Stores latest + recent in Upstash Redis. Skips dupes + soft rate limit.
+// Stores latest + recent in Upstash if env vars exist; otherwise no-ops (still returns ok).
+// Logs inputs to Vercel logs to help debug 500s.
 
 import { Redis } from '@upstash/redis';
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN
-});
+const HAS_UPSTASH = !!process.env.UPSTASH_REDIS_REST_URL && !!process.env.UPSTASH_REDIS_REST_TOKEN;
+const redis = HAS_UPSTASH
+  ? new Redis({ url: process.env.UPSTASH_REDIS_REST_URL, token: process.env.UPSTASH_REDIS_REST_TOKEN })
+  : null;
 
 const HDRS = {
   'content-type': 'application/json; charset=utf-8',
@@ -34,31 +35,45 @@ export default async function handler(req, res) {
   let payload = {};
   try {
     if (req.method === 'POST') {
-      // Works with PlayIt Live (form body) and JSON
       payload = await readBodySmart(req);
-      // also allow query params to supplement/mix
-      if (!payload.artist && !payload.title) {
-        payload = { ...qsToObj(url.searchParams), ...payload };
-      }
+      if (!payload.artist && !payload.title) payload = { ...qsToObj(url.searchParams), ...payload };
     } else if (req.method === 'GET') {
       payload = qsToObj(url.searchParams);
     } else {
       return send(res, { error: 'Method not allowed' }, 405);
     }
-  } catch {
+  } catch (e) {
+    console.error('INGEST read error:', e);
     return send(res, { error: 'Bad request' }, 400);
   }
 
   const item = normaliseItem(payload);
+
+  // Helpful logging (visible in Vercel → Logs)
+  console.log('INGEST received:', {
+    method: req.method,
+    hasUpstash: HAS_UPSTASH,
+    rawPayload: payload,
+    normalised: item
+  });
+
   if (!item.artist || !item.title) {
     return send(res, { error: 'artist and title are required' }, 400);
+  }
+
+  // If no Upstash configured, return ok (no-ops), but keep logs so you know it worked.
+  if (!HAS_UPSTASH) {
+    return send(res, { ok: true, stored: false, note: 'Upstash not configured' });
   }
 
   try {
     // Soft rate limit
     const now = Date.now();
     const lastTs = Number(await redis.get(LASTTS_KEY)) || 0;
-    if (now - lastTs < MIN_INTERVAL_MS) return send(res, { ok: true, skipped: 'rate' });
+    if (now - lastTs < MIN_INTERVAL_MS) {
+      await redis.set(LASTTS_KEY, String(now));
+      return send(res, { ok: true, skipped: 'rate' });
+    }
 
     // Skip consecutive duplicates
     const latest = await redis.get(LATEST_KEY);
@@ -72,10 +87,11 @@ export default async function handler(req, res) {
     await redis.lpush(RECENT_KEY, JSON.stringify(item));
     await redis.ltrim(RECENT_KEY, 0, RECENT_MAX - 1);
     await redis.set(LASTTS_KEY, String(now));
-
-    return send(res, { ok: true });
-  } catch {
-    return send(res, { error: 'Storage error' }, 500);
+    return send(res, { ok: true, stored: true });
+  } catch (e) {
+    console.error('INGEST storage error:', e);
+    // Don’t 500 — return ok:false with message so your playout doesn’t keep retrying blindly
+    return send(res, { ok: false, error: 'Storage error' }, 200);
   }
 }
 
@@ -85,15 +101,16 @@ function send(res, body, status = 200) {
   res.end(body == null ? '' : JSON.stringify(body));
 }
 function qsToObj(sp) { const o = {}; for (const [k, v] of sp.entries()) o[k] = v; return o; }
+
+// Accepts your playout raw names too (Artist/Title/Duration (s)/Hour)
 function normaliseItem(src = {}) {
-  // Accepts PlayIt field names too (Artist/Title/Duration (s)/Hour)
   const artist = String(src.artist ?? src.Artist ?? '').trim();
   const title  = String(src.title  ?? src.Title  ?? '').trim();
 
   let duration = Number(src.duration ?? src['Duration (s)']);
   if (!Number.isFinite(duration) || duration < 0) duration = 0;
 
-  const rawStart = src.startTime ?? src['Hour'];
+  const rawStart = src.startTime ?? src['Hour'] ?? src.start;
   const startTime = rawStart ? toISO(String(rawStart)) : new Date().toISOString();
 
   const meta = src.meta ?? null;
@@ -108,8 +125,7 @@ function patchNonEmpty(oldObj, newObj) {
   return out;
 }
 
-// Robust body reader: handles JSON or application/x-www-form-urlencoded,
-// and even no/unknown Content-Type (PlayIt Live compatible).
+// Robust body reader: handles JSON, x-www-form-urlencoded, or unknown (PlayIt Live friendly)
 function readBodySmart(req) {
   return new Promise((resolve, reject) => {
     let raw = '';
