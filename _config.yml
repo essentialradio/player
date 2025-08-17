@@ -1,0 +1,12 @@
+exclude:
+  - node_modules
+  - vendor
+  - tmp
+  - log
+  - package.json
+  - package-lock.json
+  - yarn.lock
+  - "*.config.js"
+  - "*.config.ts"
+  - "*.lock"
+  - README.md

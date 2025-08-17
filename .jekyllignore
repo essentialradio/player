@@ -1,0 +1,16 @@
+# Ignore dependency folders
+node_modules
+vendor
+tmp
+log
+
+# Ignore build / package files
+package.json
+package-lock.json
+yarn.lock
+*.config.js
+*.config.ts
+*.lock
+
+# Ignore misc dev files
+README.md
