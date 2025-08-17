@@ -1,0 +1,19 @@
+{
+  "name": "essential-radio-capacitor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Place your built web assets in ./web (or wire up your build to output here).';",
+    "cap:sync": "cap sync",
+    "ios": "cap open ios",
+    "android": "cap open android"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.0"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.1.0",
+    "@capacitor/ios": "^6.1.0",
+    "@capacitor/android": "^6.1.0"
+  }
+}

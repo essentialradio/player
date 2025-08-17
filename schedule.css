@@ -1,0 +1,30 @@
+
+/* Unified highlight styles */
+.show-entry, .show, .schedule-item { position: relative; }
+
+.show--current, .current-show, .show-entry.current, .show.current, .schedule-item.current, .live-now {
+  border-left: 4px solid var(--brand, #fed351);
+  background: linear-gradient(90deg, rgba(254,211,81,.12), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(254,211,81,.18) inset, 0 0 22px rgba(254,211,81,.18);
+  border-radius: 10px;
+  padding-left: 12px;
+}
+
+.show--current::after, .current-show::after, .show-entry.current::after,
+.show.current::after, .schedule-item.current::after, .live-now::after {
+  content: var(--now-flag, "ON AIR NOW");
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e0322f;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(224,50,47,.35);
+  z-index: 2;
+  line-height: 1;
+  white-space: nowrap;
+}

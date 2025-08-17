@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Essential Radio",
+    "slug": "essential-radio",
+    "scheme": "essentialradio",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0b0c0f"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0b0c0f"
+      },
+      "permissions": []
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

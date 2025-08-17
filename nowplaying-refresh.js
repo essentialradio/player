@@ -1,43 +1,21 @@
 async function refreshNowPlaying() {
   try {
-    const res = await fetch(`https://www.essential.radio/api/metadata?ts=${Date.now()}`, {
-      cache: 'no-store'
-    });
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await fetch('/api/metadata');
     const data = await res.json();
 
-    const nowPlayingContainer = document.getElementById("nowPlaying");
-    if (!nowPlayingContainer) return;
-
-    let nowPlayingText = "";
-    if (data.nowPlaying && data.nowPlaying.trim() !== "") {
-      // Preserve the LIVE + flashing dot at the start
-      nowPlayingText = `<span class="live-indicator">NOW PLAYING <span class="dot"></span></span> ${data.nowPlaying} on Essential Radio`;
-
-      // Schedule "More Music Soon" once track ends
-      if (data.duration && Number.isFinite(data.duration)) {
-        clearTimeout(window._moreMusicSoonTimeout);
-        window._moreMusicSoonTimeout = setTimeout(() => {
-          nowPlayingContainer.innerHTML = `<span class="live-indicator">NOW PLAYING <span class="dot"></span></span> More Music Soon on Essential Radio`;
-        }, data.duration * 1000);
-      }
-    } else {
-      nowPlayingText = `<span class="live-indicator">NOW PLAYING <span class="dot"></span></span> More Music Soon on Essential Radio`;
+    if (data.artist && data.title) {
+      document.getElementById('np-artist').textContent = data.artist;
+      document.getElementById('np-title').textContent = data.title;
+    } else if (data.nowPlaying) {
+      // fallback: split if combined
+      const [artist, title] = data.nowPlaying.split(' - ');
+      document.getElementById('np-artist').textContent = artist || '';
+      document.getElementById('np-title').textContent = title || '';
     }
-
-    nowPlayingContainer.innerHTML = nowPlayingText;
-
   } catch (err) {
-    console.error("Error refreshing now playing:", err);
+    console.error('NowPlaying refresh failed', err);
   }
 }
 
-// Initial load
+setInterval(refreshNowPlaying, 15000); // every 15s
 refreshNowPlaying();
-
-// Poll every 30 seconds
-setInterval(refreshNowPlaying, 30000);
-
-// Update immediately when window regains focus
-window.addEventListener("focus", refreshNowPlaying);
