@@ -9851,6 +9851,45 @@ if (npProgress) npProgress.style.display = 'none';
     obs.observe(target, { characterData: true, childList: true, subtree: true });
   } catch (_) {}
 })();
+
+  // --- Resilience: watchdog refresher so the bar returns after breaks ---
+  let lastFetchAt = 0;
+  function shouldFetch() {
+    const now = Date.now();
+    // Don't spam: max every 5s
+    if (now - lastFetchAt < 5000) return false;
+    lastFetchAt = now;
+    return true;
+  }
+
+  function checkAndRefresh() {
+    try {
+      const now = Date.now();
+      const npProgress = document.getElementById('np-progress');
+      const barHidden = npProgress && getComputedStyle(npProgress).display === 'none';
+
+      const endedByClock = (startMs && durationMs && now > (startMs + durationMs + 1500));
+
+      // If the track appears ended by wall clock (even if RAF didn't tick), refetch
+      if (endedByClock && shouldFetch()) {
+        initFromAPI();
+        return;
+      }
+
+      // If the bar is hidden (placeholder suppression or other), periodically try to re-init
+      if (barHidden && shouldFetch()) {
+        initFromAPI();
+        return;
+      }
+    } catch (e) {}
+  }
+
+  // Heartbeat every 5 seconds
+  setInterval(checkAndRefresh, 5000);
+
+  // Extra wake-ups
+  window.addEventListener('focus', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
+  window.addEventListener('pageshow', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
 </script>
 </body><style>
 /* === Desktop modal centring fix === */
