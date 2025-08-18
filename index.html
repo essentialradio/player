@@ -1061,6 +1061,39 @@ body.modal-open {
   }
 }
 
+
+
+/* === Now Playing – progress bar === */
+#np-progress-wrap{
+  position: relative;
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0 6px;
+}
+#np-progress-bar{
+  width: 0%;
+  height: 100%;
+  background: var(--brand);
+  transition: width 0.2s linear;
+}
+#np-progress-meta{
+  display:flex; gap:8px; font-size:.92em; color: var(--muted);
+}
+#np-progress-wrap.indeterminate #np-progress-bar{
+  width: 35%;
+  animation: npIndeterminate 1.2s infinite linear;
+}
+@keyframes npIndeterminate{
+  0%{ transform: translateX(-100%); }
+  100%{ transform: translateX(300%); }
+}
+@media (prefers-reduced-motion: reduce){
+  #np-progress-bar{ transition: none; }
+  #np-progress-wrap.indeterminate #np-progress-bar{ animation: none; width: 0; }
+}
+
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -4310,7 +4343,15 @@ html[data-theme="light"] #mobileNowBar {
 <button id="mute-toggle">🔊</button>
 </div>
 <div id="now-playing-card" style="position: relative;">
-<div id="now-playing">Loading current track…</div>
+<!-- Track progress -->
+<div id="np-progress-wrap" aria-label="Track progress" title="Track progress">
+  <div id="np-progress-bar"></div>
+</div>
+<div id="np-progress-meta" aria-live="polite">
+  <span id="np-elapsed">0:00</span>
+  <span aria-hidden="true"> • </span>
+  <span id="np-remaining">–0:00</span>
+</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -5835,6 +5876,7 @@ group.forEach(show => {
         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
         <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
         <span style="color:white;">on Essential Radio</span>`;
+      if (window.bindTrackProgress) bindTrackProgress(latest.startTime, latest.duration);
       document.title = `Essential Radio: Essential listening for Ayrshire College`;
       applyFallbackImmediate();
     }
@@ -9624,6 +9666,91 @@ if ('serviceWorker' in navigator) {
   } else {
     init();
   }
+})();
+</script>
+
+
+
+<script>
+(() => {
+  let rafId = null;
+  let lastKey = '';
+
+  const $bar = () => document.getElementById('np-progress-bar');
+  const $wrap = () => document.getElementById('np-progress-wrap');
+  const $elapsed = () => document.getElementById('np-elapsed');
+  const $remaining = () => document.getElementById('np-remaining');
+
+  function fmtTime(s){
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s / 60);
+    const ss = Math.floor(s % 60).toString().padStart(2,'0');
+    return `${m}:${ss}`;
+  }
+
+  function tick(startMs, durMs){
+    const now = Date.now();
+    const end = startMs + durMs;
+    const clampedNow = Math.min(Math.max(now, startMs), end);
+    const elapsed = (clampedNow - startMs) / 1000;
+    const remaining = Math.max(0, (end - clampedNow) / 1000);
+    const pct = durMs > 0 ? ((clampedNow - startMs) / durMs) * 100 : 0;
+
+    const bar = $bar();
+    if (bar) bar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+    if ($elapsed())   $elapsed().textContent = fmtTime(elapsed);
+    if ($remaining()) $remaining().textContent = `–${fmtTime(remaining)}`;
+
+    if (clampedNow < end) rafId = requestAnimationFrame(() => tick(startMs, durMs));
+  }
+
+  function clearTick(){
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  window.bindTrackProgress = function(startISO, durationSeconds){
+    try {
+      clearTick();
+
+      const key = `${startISO}|${durationSeconds}`;
+      if (key === lastKey) return;
+      lastKey = key;
+
+      const wrap = $wrap();
+      const bar = $bar();
+      if (!wrap || !bar) return;
+
+      if (!durationSeconds || !isFinite(durationSeconds) || durationSeconds <= 0){
+        wrap.classList.add('indeterminate');
+        bar.style.width = '0%';
+        if ($elapsed()) $elapsed().textContent = '0:00';
+        if ($remaining()) $remaining().textContent = '–0:00';
+        return;
+      }
+
+      wrap.classList.remove('indeterminate');
+
+      const startMs = new Date(startISO).getTime();
+      const durMs = Math.max(0, durationSeconds * 1000);
+      const startForCalc = isFinite(startMs) ? startMs : (Date.now() - 1);
+
+      tick(startForCalc, durMs);
+    } catch(e){
+      console.warn('bindTrackProgress error', e);
+    }
+  };
+
+  window.resetTrackProgress = function(){
+    clearTick();
+    const bar = $bar();
+    if (bar) bar.style.width = '0%';
+    const wrap = $wrap();
+    if (wrap) wrap.classList.remove('indeterminate');
+    if ($elapsed()) $elapsed().textContent = '0:00';
+    if ($remaining()) $remaining().textContent = '–0:00';
+    lastKey = '';
+  };
 })();
 </script>
 
