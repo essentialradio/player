@@ -238,21 +238,110 @@
       return txt.value;
     }
 
-    // Helper to apply NP UI without triggering polling
+    // ===== Index-style Now Playing integration =====
+    // We keep original UI and CSS intact. We only enhance the integration layer
+    // to accept pushes from the same nowplaying.js used on index, plus fallbacks.
+
+    // Helper to apply UI updates
     function applyNowPlaying(obj){
-      const artist = (obj && (obj.artist||obj.Artist)) || "";
-      const title  = (obj && (obj.title||obj.Title))  || "";
-      const artUrl = (obj && (obj.artworkUrl||obj.artwork)) || "";
-      const npEl = document.getElementById('now-playing');
-      const arEl = document.getElementById('now-playing-artist');
+      var artist = (obj && (obj.artist||obj.Artist)) || "";
+      var title  = (obj && (obj.title||obj.Title))   || "";
+      var artUrl = (obj && (obj.artworkUrl||obj.artwork)) || "";
+      var npEl = document.getElementById('now-playing');
+      var arEl = document.getElementById('now-playing-artist');
       if (npEl) npEl.textContent = decodeHtmlEntities(title);
       if (arEl) arEl.textContent = artist ? ("by " + decodeHtmlEntities(artist)) : "";
-      const img = document.getElementById('artwork');
+      var img = document.getElementById('artwork');
       if (img && artUrl) img.src = artUrl;
     }
-    var __ER_externalActive = false;
-    var __ER_npTimer = null, __ER_recentTimer = null, __ER_onTimer = null;
-    
+
+    // Track timers so we can stop polling when external feed connects
+    var __ER_started = false;
+    var __ER_externalNP = false;
+    var __ER_externalRecent = false;
+    var __ER_npTimerRef = null;
+    var __ER_recentTimerRef = null;
+    var __ER_onTimerRef = null;
+
+    // Wrap existing functions to let us stop their timers
+    function __ER_startPolling(){
+      if (__ER_started) return;
+      __ER_started = true; // mark started once
+      try {
+        if (typeof updateOnAirNow === 'function') {
+          updateOnAirNow();
+          __ER_onTimerRef = setInterval(updateOnAirNow, 60*1000);
+        }
+        if (typeof updateNowPlaying === 'function') {
+          updateNowPlaying();
+          __ER_npTimerRef = setInterval(updateNowPlaying, 12*1000);
+        }
+        if (typeof updateRecent === 'function') {
+          // Don't render immediately; wait briefly to allow external feed to attach
+          __ER_recentTimerRef = setInterval(updateRecent, 18*1000);
+          setTimeout(function(){ if (!__ER_externalRecent) updateRecent(); }, 2000);
+        }
+      } catch(e){ /* silent */ }
+    }
+
+    function __ER_stopNP(){ if(__ER_npTimerRef){ clearInterval(__ER_npTimerRef); __ER_npTimerRef = null; } }
+    function __ER_stopRecent(){ if(__ER_recentTimerRef){ clearInterval(__ER_recentTimerRef); __ER_recentTimerRef = null; } }
+
+    // Public hooks so index's nowplaying.js can push directly (same as index)
+    window.ERWidget = window.ERWidget || {};
+    window.ERWidget.receiveNowPlaying = function(payload){
+      __ER_externalNP = true;
+      __ER_stopNP();
+      applyNowPlaying(payload||{});
+    };
+    window.ERWidget.receiveRecent = function(items){
+      __ER_externalRecent = true;
+      __ER_externalRecent = true;
+      __ER_stopRecent();
+      try {
+        var ul = document.getElementById('recent-list');
+        if (!ul) return;
+        ul.innerHTML = "";
+        (items||[]).slice(0,3).forEach(function(x){
+          var li = document.createElement('li');
+          var img = (x && x.artworkUrl) || "Essential Radio Logo.png";
+          li.innerHTML =
+            '<img src="'+img+'" alt=""/>' +
+            '<span class="info">'+ decodeHtmlEntities((x&&x.artist)||"") +' \u2013 '+ decodeHtmlEntities((x&&x.title)||"") +'</span>' +
+            '<span class="time">'+ ((x&&x.time)||"") +'</span>';
+          ul.appendChild(li);
+        });
+      } catch(e){ /* silent */ }
+    };
+
+    // Event-based adapters (cover common patterns)
+    window.addEventListener('er-nowplaying', function(e){
+      if(e && e.detail) window.ERWidget.receiveNowPlaying(e.detail);
+    });
+    window.addEventListener('er-recent', function(e){
+      if(e && e.detail) window.ERWidget.receiveRecent(e.detail);
+    });
+
+    // Extra compatibility: listen for a few popular event names used by index builds
+    ['nowplaying','now-playing','np:update','np-update'].forEach(function(evt){
+      window.addEventListener(evt, function(e){
+        if (e && e.detail) window.ERWidget.receiveNowPlaying(e.detail);
+      });
+    });
+
+    // Bus-style adapter (if index exposes a NowPlayingBus with .on/.subscribe)
+    (function attachBus(){
+      try {
+        if (window.NowPlayingBus && (typeof window.NowPlayingBus.on==='function' || typeof window.NowPlayingBus.subscribe==='function')){
+          var sub = window.NowPlayingBus.on || window.NowPlayingBus.subscribe;
+          sub.call(window.NowPlayingBus, function(payload){ window.ERWidget.receiveNowPlaying(payload); });
+        }
+      } catch(e){}
+    })();
+
+    // Start original polling immediately; external pushes will stop it on first update
+    __ER_startPolling();
+
 
     // AUDIO CONTROLS
     const audio = new Audio("https://streaming06.liveboxstream.uk/proxy/ayrshire/stream");
@@ -364,7 +453,8 @@
     }
 
     // RECENTLY PLAYED WITH ITUNES ARTWORK
-    async function updateRecent() {
+    async function updateRecent(){
+      if (typeof __ER_externalRecent !== 'undefined' && __ER_externalRecent) return;
       try {
         const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now());
         const data = await res.json();
@@ -400,44 +490,7 @@
       }
     }
 
-    
-    // REFRESH INTERVALS (timer handles so we can stop them when external feed is active)
-    updateOnAirNow();
-    updateNowPlaying();
-    updateRecent();
-    __ER_onTimer    = setInterval(updateOnAirNow, 60_000);
-    __ER_npTimer    = setInterval(updateNowPlaying, 12_000);
-    __ER_recentTimer= setInterval(updateRecent, 18_000);
-
-    // External integration for nowplaying.js
-    window.ERWidget = {
-      receiveNowPlaying: function(payload){
-        __ER_externalActive = true;
-        if (__ER_npTimer){ clearInterval(__ER_npTimer); __ER_npTimer = null; }
-        applyNowPlaying(payload || {});
-      },
-      receiveRecent: function(list){
-        __ER_externalActive = true;
-        if (__ER_recentTimer){ clearInterval(__ER_recentTimer); __ER_recentTimer = null; }
-        try{
-          const ul = document.getElementById('recent-list');
-          if (ul){
-            ul.innerHTML = "";
-            (list||[]).slice(0,3).forEach(function(item){
-              var li = document.createElement('li');
-              var img = item.artworkUrl || "Essential Radio Logo.png";
-              li.innerHTML = '<img src="'+img+'" alt=""/>' +
-                             '<span class="info">'+ decodeHtmlEntities(item.artist||"") +' – '+ decodeHtmlEntities(item.title||"") +'</span>' +
-                             '<span class="time">'+ (item.time||"") +'</span>';
-              ul.appendChild(li);
-            });
-          }
-        }catch(e){}
-      }
-    };
-    // Also support push via CustomEvent
-    window.addEventListener('er-nowplaying', function(e){ if(e && e.detail) window.ERWidget.receiveNowPlaying(e.detail); });
-    window.addEventListener('er-recent',     function(e){ if(e && e.detail) window.ERWidget.receiveRecent(e.detail); });
+    __ER_startPolling();
 </script>
 </body>
 </html>
