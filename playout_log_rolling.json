@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T18:00:00Z",
-    "Scheduled Time": "19:00",
-    "Displayed Time": "",
-    "Artist": "Kevin McCallum",
-    "Title": "Mr Rocks Show",
-    "Duration (s)": 7201,
-    "Full Duration (s)": 7206,
-    "Duration (mins)": 120,
-    "Full Duration (mins)": 120
-  },
-  {
     "Hour": "2025-08-03T20:00:00Z",
     "Scheduled Time": "21:02",
     "Displayed Time": "",
@@ -44524,6 +44513,17 @@
     "Title": "Sucker",
     "Duration (s)": 173,
     "Full Duration (s)": 181,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-18T14:00:00Z",
+    "Scheduled Time": "15:01",
+    "Displayed Time": "",
+    "Artist": "Callum Beattie",
+    "Title": "Let Me Fall",
+    "Duration (s)": 198,
+    "Full Duration (s)": 203,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
