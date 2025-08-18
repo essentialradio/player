@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-04T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3406,
-    "Full Duration (s)": 3408,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-08-04T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -45263,5 +45252,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-18T19:00:00Z",
+    "Scheduled Time": "20:02",
+    "Displayed Time": "",
+    "Artist": "Billy Joel",
+    "Title": "Uptown Girl",
+    "Duration (s)": 186,
+    "Full Duration (s)": 196,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
