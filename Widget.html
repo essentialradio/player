@@ -238,6 +238,22 @@
       return txt.value;
     }
 
+    // Helper to apply NP UI without triggering polling
+    function applyNowPlaying(obj){
+      const artist = (obj && (obj.artist||obj.Artist)) || "";
+      const title  = (obj && (obj.title||obj.Title))  || "";
+      const artUrl = (obj && (obj.artworkUrl||obj.artwork)) || "";
+      const npEl = document.getElementById('now-playing');
+      const arEl = document.getElementById('now-playing-artist');
+      if (npEl) npEl.textContent = decodeHtmlEntities(title);
+      if (arEl) arEl.textContent = artist ? ("by " + decodeHtmlEntities(artist)) : "";
+      const img = document.getElementById('artwork');
+      if (img && artUrl) img.src = artUrl;
+    }
+    var __ER_externalActive = false;
+    var __ER_npTimer = null, __ER_recentTimer = null, __ER_onTimer = null;
+    
+
     // AUDIO CONTROLS
     const audio = new Audio("https://streaming06.liveboxstream.uk/proxy/ayrshire/stream");
     audio.volume = 0.8;
@@ -384,13 +400,44 @@
       }
     }
 
-    // REFRESH INTERVALS
+    
+    // REFRESH INTERVALS (timer handles so we can stop them when external feed is active)
     updateOnAirNow();
     updateNowPlaying();
     updateRecent();
-    setInterval(updateOnAirNow, 60_000);
-    setInterval(updateNowPlaying, 12_000);
-    setInterval(updateRecent, 18_000);
-  </script>
+    __ER_onTimer    = setInterval(updateOnAirNow, 60_000);
+    __ER_npTimer    = setInterval(updateNowPlaying, 12_000);
+    __ER_recentTimer= setInterval(updateRecent, 18_000);
+
+    // External integration for nowplaying.js
+    window.ERWidget = {
+      receiveNowPlaying: function(payload){
+        __ER_externalActive = true;
+        if (__ER_npTimer){ clearInterval(__ER_npTimer); __ER_npTimer = null; }
+        applyNowPlaying(payload || {});
+      },
+      receiveRecent: function(list){
+        __ER_externalActive = true;
+        if (__ER_recentTimer){ clearInterval(__ER_recentTimer); __ER_recentTimer = null; }
+        try{
+          const ul = document.getElementById('recent-list');
+          if (ul){
+            ul.innerHTML = "";
+            (list||[]).slice(0,3).forEach(function(item){
+              var li = document.createElement('li');
+              var img = item.artworkUrl || "Essential Radio Logo.png";
+              li.innerHTML = '<img src="'+img+'" alt=""/>' +
+                             '<span class="info">'+ decodeHtmlEntities(item.artist||"") +' – '+ decodeHtmlEntities(item.title||"") +'</span>' +
+                             '<span class="time">'+ (item.time||"") +'</span>';
+              ul.appendChild(li);
+            });
+          }
+        }catch(e){}
+      }
+    };
+    // Also support push via CustomEvent
+    window.addEventListener('er-nowplaying', function(e){ if(e && e.detail) window.ERWidget.receiveNowPlaying(e.detail); });
+    window.addEventListener('er-recent',     function(e){ if(e && e.detail) window.ERWidget.receiveRecent(e.detail); });
+</script>
 </body>
 </html>
