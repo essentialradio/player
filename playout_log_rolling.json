@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:01",
-    "Displayed Time": "",
-    "Artist": "Fleetwood Mac",
-    "Title": "Little Lies",
-    "Duration (s)": 202,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:05",
-    "Displayed Time": "",
-    "Artist": "Ike & Tina Turner",
-    "Title": "Nutbush City Limits",
-    "Duration (s)": 160,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:07",
-    "Displayed Time": "",
-    "Artist": "Travis",
-    "Title": "Why Does It Always Rain on Me?",
-    "Duration (s)": 244,
-    "Full Duration (s)": 266,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:11",
-    "Displayed Time": "",
-    "Artist": "Sly & The Family Stone",
-    "Title": "Dance to the Music",
-    "Duration (s)": 168,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:18",
-    "Displayed Time": "",
-    "Artist": "ABC",
-    "Title": "Poison Arrow",
-    "Duration (s)": 195,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:21",
-    "Displayed Time": "",
-    "Artist": "Incognito Feat. Jocelyn Brown",
-    "Title": "Always There",
-    "Duration (s)": 198,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:24",
-    "Displayed Time": "",
-    "Artist": "Kylie Minogue",
-    "Title": "Got To Be Certain",
-    "Duration (s)": 183,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:27",
-    "Displayed Time": "",
-    "Artist": "West End Feat. Sybil",
-    "Title": "The Love I Lost",
-    "Duration (s)": 192,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:32",
-    "Displayed Time": "",
-    "Artist": "The Sugarhill Gang",
-    "Title": "Rapper's Delight",
-    "Duration (s)": 234,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:36",
-    "Displayed Time": "",
-    "Artist": "Billy Ocean",
-    "Title": "Caribbean Queen (No More Love on the Run)",
-    "Duration (s)": 206,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:43",
-    "Displayed Time": "",
-    "Artist": "Tears for Fears",
-    "Title": "Sowing the Seeds of Love",
-    "Duration (s)": 221,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:47",
-    "Displayed Time": "",
-    "Artist": "Brian May",
-    "Title": "Driven by You",
-    "Duration (s)": 241,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:51",
-    "Displayed Time": "",
-    "Artist": "Temptations",
-    "Title": "Ain't Too Proud To Beg",
-    "Duration (s)": 140,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-03T09:00:00Z",
-    "Scheduled Time": "10:53",
-    "Displayed Time": "",
-    "Artist": "Level 42",
-    "Title": "Running in the Family",
-    "Duration (s)": 223,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-03T10:00:00Z",
     "Scheduled Time": "11:01",
     "Displayed Time": "",
@@ -44161,6 +44007,17 @@
     "Title": "Plastic Box",
     "Duration (s)": 199,
     "Full Duration (s)": 201,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-18T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
