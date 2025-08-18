@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T23:00:00Z",
-    "Scheduled Time": "00:02",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3403,
-    "Full Duration (s)": 3406,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-08-04T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -45131,5 +45120,16 @@
     "Full Duration (s)": 216,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-18T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "",
+    "Artist": "Queen",
+    "Title": "You're My Best Friend",
+    "Duration (s)": 162,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
