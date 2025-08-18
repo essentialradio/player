@@ -4250,9 +4250,6 @@ html[data-theme="light"] #mobileNowBar {
 
 
 <style id="np-progress-styles">
-/* initial hide for progress bar */
-#np-progress{display:none;}
-
 /* === Now Playing progress (countdown bar) === */
 #np-progress {
   margin-top: 10px;
@@ -9720,47 +9717,37 @@ if ('serviceWorker' in navigator) {
   }
 
   window.updateNowPlayingProgress = function (startISO, durationSec, opts = {}) {
-    try {
-      startMs    = new Date(startISO).getTime();
-      durationMs = Math.max(0, Math.round(durationSec * 1000));
-      onFinish   = opts.onFinish || null;
-      if (!isFinite(startMs) || !durationMs) return;
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(tick);
-    } catch (e) {
-      console.warn('NP progress init failed:', e);
+  try {
+    // Hide bar if "More Music Soon" placeholder is showing
+    const npDiv = document.getElementById('now-playing');
+    const npProgress = document.getElementById('np-progress');
+    if (npDiv && /more music soon/i.test(npDiv.textContent)) {
+      if (npProgress) npProgress.style.display = 'none';
+      return;
+    } else {
+      if (npProgress) npProgress.style.display = '';
     }
-  };
+
+    startMs    = new Date(startISO).getTime();
+    durationMs = Math.max(0, Math.round(durationSec * 1000));
+    onFinish   = opts.onFinish || null;
+    if (!isFinite(startMs) || !durationMs) return;
+
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(tick);
+  } catch (e) {
+    console.warn('NP progress init failed:', e);
+  }
+};
 
   async function initFromAPI() {
     try {
       const res = await fetch('/api/latestTrack?_=' + Date.now());
       const j = await res.json();
-      const bar = document.getElementById('np-progress');
-
-      // Hide the bar if we don't have a proper track || during 'More music soon'
-      const isFiller = /more music soon/i.test((j && j.title) || '') || /more music soon/i.test((j && j.artist) || '');
-      const noTrack = !j || !j.startTime || !j.duration || j.duration <= 0;
-      if (bar && (isFiller || noTrack)) {
-        bar.style.display = "none";
-        // Also reset any visible values
-        const fill = bar.querySelector('.np-bar-fill'); 
-        const el = bar.querySelector('#np-elapsed');
-        const rm = bar.querySelector('#np-remaining');
-        if (fill) fill.style.width = '0%';
-        if (el) el.textContent = '0:00';
-        if (rm) rm.textContent = '-0:00';
-        return;
-      }
-
-      // Show + run the progress bar for a real track
-      if (bar) bar.style.display = "block";
+      if (!j || !j.startTime || !j.duration) return;
       window.updateNowPlayingProgress(j.startTime, j.duration, {
         onFinish: () => { initFromAPI(); }
       });
-    } catch (_) {}
-  }
-});
     } catch (_) {}
   }
 
