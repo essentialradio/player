@@ -2876,8 +2876,20 @@ nav + div {
   window.addEventListener('load', setNavOffset, {once:true});
   window.addEventListener('resize', setNavOffset);
   setTimeout(setNavOffset, 250);
-})();
-</script><style id="mobile-toggle-fixed">
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script><style id="mobile-toggle-fixed">
 @media (max-width: 750px){
   /* Show the same toggle button on mobile, positioned beside the burger */
   #themeToggleBtn.theme-navbtn {
@@ -3990,8 +4002,20 @@ body.dark-mode .modal-content::after {
       updateShadows(mc);
     });
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <style id="mobile-now-bar-css">
 /* Sticky Now Playing bar (mobile only) */
@@ -4339,6 +4363,7 @@ html[data-theme="light"] #mobileNowBar {
     <span id="np-current">0:00</span>
     <span id="np-remaining" title="Time remaining">-0:00</span>
   </div>
+  <div id="np-status" style="display:none;margin-top:4px;font-size:0.8em;opacity:0.8;"></div>
   <div class="np-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Track progress">
     <div class="np-progress-fill" id="np-progress-fill"></div>
   </div>
@@ -4682,8 +4707,20 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   locSel.addEventListener('change', update);
   update();
   setInterval(update, 900000);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <!-- === END WEATHER WIDGET SCRIPT === -->
 <!-- Recently Played fills the rest of the panel -->
 <div class="recently-played-container" style="flex:1;display:flex;flex-direction:column;min-height:0;">
@@ -6453,8 +6490,20 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   TO?.addEventListener('change', render);
   SEARCH?.addEventListener('input', render);
   document.addEventListener('DOMContentLoaded', load);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 </div></div></div><script>
 
   setTimeout(() => {
@@ -7190,8 +7239,20 @@ function closePresenterModal(presenterId) {
 
   // Initial sync in case page loaded with a modal already open
   document.addEventListener('DOMContentLoaded', sync);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <!-- === Modal Behavior Overrides (Injected) === -->
 <script id="modal-behavior-overrides">
 (function(){
@@ -7343,8 +7404,20 @@ function closePresenterModal(presenterId) {
   window.closePresenterModal = closePresenterModal;
   window.openLivePresenterModal = openLivePresenterModal;
   window.openModalAndCloseBurger = openModalAndCloseBurger;
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <script id="presenter-stack-shim">
 (function(){
   const $$ = (s, c=document)=>Array.from(c.querySelectorAll(s));
@@ -7356,8 +7429,20 @@ function closePresenterModal(presenterId) {
     // no-op; we only want the function loaded so others can call setBodyModalState if needed
   });
   window._syncModalBodyState = setBodyModalState;
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <div class="modal" id="newsModal" data-refresh-fn="fetchRNHNews">
 <div class="modal-content" style="max-width:900px;width:97vw;">
 <span class="close" onclick="closeModal('newsModal')">×</span>
@@ -7504,8 +7589,20 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   }catch(e){
     wrap.innerHTML = '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
   }
-})();
-</script><script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script><script>
 (function(){
   function applyTheme(t){
     var root = document.documentElement;
@@ -7540,8 +7637,20 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   } else {
     init();
   }
-})();
-</script><script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script><script>
 (function(){
   function applyTheme(t){
     var root = document.documentElement;
@@ -7570,8 +7679,20 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
     }, true);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-})();
-</script><script id="theme-mode-script">
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script><script id="theme-mode-script">
 (function(){
   const root = document.documentElement;
   const saved = localStorage.getItem('theme');
@@ -7606,8 +7727,20 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
       });
     }
   });
-})();
-</script><script id="theme-toggle-mover">
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script><script id="theme-toggle-mover">
 (function(){
   function placeThemeBtn(){
     const btn = document.getElementById('themeToggleBtn');
@@ -7627,8 +7760,20 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   }
   window.addEventListener('resize', placeThemeBtn);
   window.addEventListener('DOMContentLoaded', placeThemeBtn);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <!-- Enhancements JS: marquee, live highlight, share -->
 <script>
 (() => {
@@ -7925,8 +8070,20 @@ const liveBox = document.querySelector(".live-indicator");
       }
     });
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 <!-- Robustness patch: keep Share button from disappearing if Now Playing re-renders -->
@@ -7956,8 +8113,20 @@ const liveBox = document.querySelector(".live-indicator");
   // Initial mount + periodic belt-and-braces
   ensureShareMounted();
   setInterval(ensureShareMounted, 4000);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 
@@ -8138,8 +8307,20 @@ const liveBox = document.querySelector(".live-indicator");
   // If pages use custom events
   window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
   window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 <script id="np-share-binder">
@@ -8165,8 +8346,20 @@ const liveBox = document.querySelector(".live-indicator");
     var obs = new MutationObserver(function(){ bindShareButtons(); });
     obs.observe(tb, {childList:true, subtree:true});
   }
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 
@@ -8224,8 +8417,20 @@ const liveBox = document.querySelector(".live-indicator");
   else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 60); }); }
   setInterval(updateHrefs, 3000);
   window.addEventListener('essential:nowplaying:update', updateHrefs);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 
@@ -8255,8 +8460,20 @@ const liveBox = document.querySelector(".live-indicator");
     var obs = new MutationObserver(function(){ moveToolbar(); });
     obs.observe(card, {childList:true, subtree:true});
   }
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 <script id="np-share-click-clean">
@@ -8335,8 +8552,20 @@ const liveBox = document.querySelector(".live-indicator");
   }
   setInterval(updateHrefs, 3000);
   window.addEventListener('essential:nowplaying:update', updateHrefs);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 
@@ -8451,8 +8680,20 @@ const liveBox = document.querySelector(".live-indicator");
 
   // Trigger an update for share hrefs
   try { window.dispatchEvent(new Event('essential:nowplaying:update')); } catch(e){}
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 
@@ -8541,8 +8782,20 @@ const liveBox = document.querySelector(".live-indicator");
   else{ document.addEventListener('DOMContentLoaded', function(){ setTimeout(observeNP,60); }); }
   window.addEventListener('essential:nowplaying:update', refreshAnchors);
   setInterval(refreshAnchors,5000);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 <script>
@@ -8604,8 +8857,20 @@ const liveBox = document.querySelector(".live-indicator");
     const obs2 = new MutationObserver(() => rewriteShareLinks(platforms));
     obs2.observe(platforms, { childList: true, subtree: true, characterData: true });
   }
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <!-- MIXCLOUD COMPACT: JS -->
 <script id="mixcloud-compact-js">
@@ -8645,8 +8910,20 @@ const liveBox = document.querySelector(".live-indicator");
     });
     obs.observe(document.body, { childList: true, subtree: true });
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <style>
   /* Minimal style so it sits like a compact utility button */
@@ -8743,8 +9020,20 @@ const liveBox = document.querySelector(".live-indicator");
   if (window.matchMedia('(display-mode: standalone)').matches) {
     installBtn.style.display = 'none';
   }
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <script>
 (function(){
@@ -8770,8 +9059,20 @@ const liveBox = document.querySelector(".live-indicator");
       if (isIOS && !isStandalone && !promptSeen) showHint();
     }, 1800);
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -8936,8 +9237,20 @@ if ('serviceWorker' in navigator) {
     if (document.visibilityState === 'visible') resumeRefresh();
     else { stopNewsAuto(); stopTravelAuto(); }
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <script>
 // ==== Listen Again (Mixcloud) — auto-refresh on open/resume ====
 (function(){
@@ -9037,8 +9350,20 @@ if ('serviceWorker' in navigator) {
       if (m && isOpen(m)) refreshListenAgain();
     }
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 
 <script id="modal-refresh-on-open">
@@ -9113,8 +9438,20 @@ if ('serviceWorker' in navigator) {
     });
   });
   obs.observe(document.body, { attributes:true, childList:true, subtree:true, attributeFilter:['style','class'] });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 <script id="presenter-click-hijack">
 // Hijack ON AIR NOW presenter click to open the specific presenter modal if we can find it.
 // Fallback to the big Presenters list if there's no match.
@@ -9202,8 +9539,20 @@ if ('serviceWorker' in navigator) {
       window.openModal('presentersModal');
     }
   }, { capture: true });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <script id="modal-a11y-focus-trap">
 // === Modal accessibility + focus trap + Escape close =====================
@@ -9331,8 +9680,20 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.modal').forEach(ensureHeadingLabel);
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <!-- Sticky Mobile Now Playing Bar -->
 
@@ -9421,8 +9782,20 @@ if ('serviceWorker' in navigator) {
   // If your existing code dispatches a custom event when now-playing changes,
   // you can listen here for instant updates. Example:
   // document.addEventListener('nowPlayingUpdated', updateBar);
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <script id="mobile-now-bar-visibility">
 (() => {
@@ -9462,8 +9835,20 @@ if ('serviceWorker' in navigator) {
     const inView = rect.top < window.innerHeight && rect.bottom > 0;
     applyVisibility(inView);
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <!-- Mobile mini-player (single-line "Artist – Title") -->
 
@@ -9588,8 +9973,20 @@ if ('serviceWorker' in navigator) {
     }, { threshold: 0.2 });
     io.observe(playerBox);
   }
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <script id="wire-refresh-yellow-both">
 (function(){
@@ -9659,8 +10056,20 @@ if ('serviceWorker' in navigator) {
   } else {
     init();
   }
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 
 <script>
 (() => {
@@ -9715,6 +10124,8 @@ if ('serviceWorker' in navigator) {
   window.startNowPlayingTimer = function(latest) {
     try {
       if (!latest || !latest.duration || !latest.startTime) {
+        const st = document.getElementById('np-status');
+        if (st) { st.textContent = 'No duration/startTime from latestTrack'; st.style.display='block'; }
         const el = document.getElementById('np-timer');
         if (el) el.style.display = 'none';
         stopNowPlayingTimer();
@@ -9746,8 +10157,20 @@ if ('serviceWorker' in navigator) {
       npRAF = requestAnimationFrame(tick);
     }
   });
-})();
-</script>
+  // DEMO: click the Now Playing card to preview a 3:00 timer if API is empty
+  window.addEventListener('DOMContentLoaded', () => {
+    const card = document.getElementById('now-playing-card');
+    if (card) {
+      card.addEventListener('click', (ev) => {
+        const st = document.getElementById('np-status');
+        const now = new Date();
+        const demo = { artist:'Demo', title:'Demo', duration:180, startTime:new Date(Date.now()-15000).toISOString() };
+        if (window.startNowPlayingTimer) window.startNowPlayingTimer(demo);
+        if (st) { st.textContent = 'Demo timer started (click to test).'; st.style.display='block'; }
+      }, { once: true });
+    }
+  });
+})();\n</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
