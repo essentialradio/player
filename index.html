@@ -9708,6 +9708,61 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+
+<script id="np-progress-ensure">
+(function(){
+  // Create (or return) the progress node
+  function buildProgress(){
+    var wrap = document.createElement('div');
+    wrap.id = 'np-progress';
+    wrap.setAttribute('role','progressbar');
+    wrap.setAttribute('aria-valuemin','0');
+    wrap.setAttribute('aria-valuemax','100');
+    wrap.setAttribute('aria-valuenow','0');
+    wrap.innerHTML = '<div class="bar"></div><span id="countdown" class="label" aria-live="polite"></span>';
+    return wrap;
+  }
+
+  // Insert bar directly under the title/artist block
+  function ensureProgress(){
+    // Find the most likely title element
+    var title = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title, .np-title, .song-title');
+    if (!title) return;
+
+    // If a bar already exists and is positioned right after title, we're done
+    var existing = document.getElementById('np-progress');
+    if (existing && existing.previousElementSibling === title) return;
+
+    // Otherwise, (re)insert after title
+    var bar = existing || buildProgress();
+    try{
+      title.parentNode.insertBefore(bar, title.nextSibling);
+    }catch(e){}
+  }
+
+  function mountObserver(){
+    var target = document.getElementById('now-playing-card') || document.getElementById('now-playing') || document;
+    var obs = new MutationObserver(function(muts){
+      for (var i=0;i<muts.length;i++){
+        if (muts[i].type === 'childList' || muts[i].type === 'subtree' || muts[i].addedNodes.length){
+          ensureProgress();
+          break;
+        }
+      }
+    });
+    obs.observe(target, { childList: true, subtree: true });
+    // Run immediately too
+    ensureProgress();
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', mountObserver);
+  } else {
+    mountObserver();
+  }
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
