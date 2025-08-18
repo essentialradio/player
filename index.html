@@ -4249,13 +4249,15 @@ html[data-theme="light"] #mobileNowBar {
 </style>
 
 <style>
-/* === Now Playing countdown bar === */
+/* === Now Playing countdown bar === (contrast-tuned) */
 #np-timer { margin-top: 10px; }
 .np-timer-row {
   display:flex; align-items:center; justify-content:space-between;
   font-variant-numeric: tabular-nums;
-  font-size: 0.95em; color: var(--muted, #c8d1dc);
+  font-size: 0.95em; color: inherit;
 }
+[data-theme="light"] .np-timer-row { color: #334155; }
+[data-theme="dark"]  .np-timer-row { color: #cbd5e1; }
 .np-progress {
   position: relative; height: 8px; border-radius: 999px;
   background: rgba(255,255,255,.12); margin-top: 6px; overflow: hidden;
