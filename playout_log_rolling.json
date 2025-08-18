@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T15:00:00Z",
-    "Scheduled Time": "16:01",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3590,
-    "Full Duration (s)": 3590,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-08-03T18:00:00Z",
     "Scheduled Time": "19:00",
     "Displayed Time": "",
@@ -44370,6 +44359,17 @@
     "Title": "Breakeven",
     "Duration (s)": 225,
     "Full Duration (s)": 228,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-18T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 236,
+    "Full Duration (s)": 243,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
