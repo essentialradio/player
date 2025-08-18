@@ -4248,6 +4248,26 @@ html[data-theme="light"] #mobileNowBar {
 }
 </style>
 
+<style>
+/* === Now Playing countdown bar === */
+#np-timer { margin-top: 10px; }
+.np-timer-row {
+  display:flex; align-items:center; justify-content:space-between;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95em; color: var(--muted, #c8d1dc);
+}
+.np-progress {
+  position: relative; height: 8px; border-radius: 999px;
+  background: rgba(255,255,255,.12); margin-top: 6px; overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+[data-theme="light"] .np-progress { background: #edf2f7; border-color: #e2e8f0; }
+.np-progress-fill {
+  position:absolute; left:0; top:0; bottom:0; width:0%;
+  background: var(--brand, #1d9bf0); /* Essential blue; falls back if --brand unset */
+  transition: width .12s linear;
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4311,6 +4331,16 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
+<!-- Now Playing timer UI -->
+<div id="np-timer" style="display:none" aria-live="polite">
+  <div class="np-timer-row">
+    <span id="np-current">0:00</span>
+    <span id="np-remaining" title="Time remaining">-0:00</span>
+  </div>
+  <div class="np-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Track progress">
+    <div class="np-progress-fill" id="np-progress-fill"></div>
+  </div>
+</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -5882,6 +5912,9 @@ async function fetchNowPlaying() {
     const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
     if (titleEl) titleEl.textContent = title;
     if (artistEl) artistEl.textContent = artist;
+
+    // Start/refresh the progress countdown bar
+    if (window.startNowPlayingTimer) window.startNowPlayingTimer(latest);
 
     // Countdown updater uses UTC-safe milliseconds
     function updateCountdown() {
@@ -9627,6 +9660,92 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+<script>
+(() => {
+  let npRAF = null;
+  let _timerState = null;  // {startMs, durationMs, endsMs}
+
+  function mmss(totalSeconds) {
+    totalSeconds = Math.max(0, Math.floor(totalSeconds));
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  function stopNowPlayingTimer() {
+    if (npRAF) cancelAnimationFrame(npRAF);
+    npRAF = null;
+    _timerState = null;
+  }
+
+  function tick() {
+    if (!_timerState) return;
+    const now = Date.now();
+    const { startMs, durationMs, endsMs } = _timerState;
+
+    const elapsedMs = now - startMs;
+    const remainingMs = Math.max(0, endsMs - now);
+
+    let pct = Math.min(1, Math.max(0, elapsedMs / durationMs || 0));
+
+    const elapsedEl   = document.getElementById('np-current');
+    const remainingEl = document.getElementById('np-remaining');
+    const barEl       = document.getElementById('np-progress-fill');
+    const wrap        = document.getElementById('np-timer');
+
+    if (wrap) wrap.style.display = 'block';
+    if (barEl) {
+      const pct100 = Math.round(pct * 100);
+      barEl.style.width = pct100 + '%';
+      const bar = barEl.parentElement;
+      if (bar) bar.setAttribute('aria-valuenow', String(pct100));
+    }
+    if (elapsedEl)   elapsedEl.textContent   = mmss(elapsedMs / 1000);
+    if (remainingEl) remainingEl.textContent = '-' + mmss(remainingMs / 1000);
+
+    if (now >= endsMs - 50) {
+      if (barEl) barEl.style.width = '100%';
+      return;
+    }
+    npRAF = requestAnimationFrame(tick);
+  }
+
+  window.startNowPlayingTimer = function(latest) {
+    try {
+      if (!latest || !latest.duration || !latest.startTime) {
+        const el = document.getElementById('np-timer');
+        if (el) el.style.display = 'none';
+        stopNowPlayingTimer();
+        return;
+      }
+
+      const durationMs = Math.max(0, Math.round(Number(latest.duration) * 1000));
+      const startMs = new Date(latest.startTime).getTime();
+      const endsMs  = startMs + durationMs;
+
+      if (Date.now() >= endsMs) {
+        const el = document.getElementById('np-timer');
+        if (el) el.style.display = 'none';
+        stopNowPlayingTimer();
+        return;
+      }
+
+      _timerState = { startMs, durationMs, endsMs };
+      stopNowPlayingTimer();
+      npRAF = requestAnimationFrame(tick);
+    } catch (e) {
+      console.warn('startNowPlayingTimer error', e);
+    }
+  };
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && _timerState) {
+      if (npRAF) cancelAnimationFrame(npRAF);
+      npRAF = requestAnimationFrame(tick);
+    }
+  });
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
