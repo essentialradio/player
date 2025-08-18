@@ -1086,6 +1086,16 @@ body.modal-open {
 }
 [data-theme="light"] #np-progress-meta{ color: #334155; }
 
+
+/* Desktop hardening for Now Playing progress */
+#np-progress{ display:block; margin-top:10px; width:100%; }
+#np-progress-rail{ display:block; width:100%; min-width:220px; flex:1 1 auto; position:relative; z-index:1; }
+#now-playing-card #np-progress-rail{ box-sizing:border-box; }
+@media (min-width: 768px){
+  #np-progress-meta{ font-size: .95em; }
+  #np-progress-rail{ height:12px; }
+}
+
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
