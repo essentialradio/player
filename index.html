@@ -4249,7 +4249,7 @@ html[data-theme="light"] #mobileNowBar {
 </style>
 
 <style>
-/* NOW PLAYING PROGRESS – enforced visibility */
+/* NOW PLAYING PROGRESS (injected) */
 #np-timer{ display:block !important; }
 .np-progress{
   width:100% !important;
@@ -4258,7 +4258,6 @@ html[data-theme="light"] #mobileNowBar {
   background: var(--border, rgba(0,0,0,0.12)) !important;
   overflow:hidden !important;
   position: relative !important;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06) !important;
 }
 .np-progress__bar{
   height:100% !important;
@@ -4335,14 +4334,15 @@ html[data-theme="light"] #mobileNowBar {
 <button id="mute-toggle">🔊</button>
 </div>
 <div id="now-playing-card" style="position: relative;">
-<div id="now-playing">Loading current track…</div>
-<div id="np-timer" role="group" aria-label="Track progress" style="margin-top:10px;display:none">
-  <div class="np-progress">
-    <div class="np-progress__bar" id="npProgressBar"></div>
+<div id="now-playing">
+<!-- Progress bar + countdown -->
+  <div id="np-timer" role="group" aria-label="Track progress" style="margin-top:10px;">
+    <div class="np-progress">
+      <div class="np-progress__bar" id="npProgressBar"></div>
+    </div>
+    <div class="np-time" id="npTime">–:–– / –:––</div>
   </div>
-  <div class="np-time" id="npTime">–:–– / –:––</div>
-</div>
-
+Loading current track…</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -5880,7 +5880,9 @@ async function fetchNowPlaying() {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
-    // Validate payload
+    
+try { if (typeof setTrackForCountdown==="function") setTrackForCountdown(latest); } catch {}
+// Validate payload
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
@@ -5901,8 +5903,7 @@ async function fetchNowPlaying() {
     if (nowPlaying) {
       nowPlaying.innerHTML = `
         <span style="color:#fed351;">Now Playing:</span>
- try { if (typeof setTrackForCountdown==="function") setTrackForCountdown(latest); } catch {}
-       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
@@ -9625,84 +9626,7 @@ if ('serviceWorker' in navigator) {
         var opts = Array.from(hourEl.options).map(function(o){ return o.value; });
         if (opts.indexOf(prevHour) !== -1){
           hourEl.value = prevHour;
-        } else if (typeof updateHourDropdown ==<script>
-(function(){
-  let rafId = null;
-  let currentKey = null;
-  let startMs = 0, endMs = 0, durSec = 0;
-
-  const bar  = () => document.getElementById('npProgressBar');
-  const time = () => document.getElementById('npTime');
-  const wrap = () => document.getElementById('np-timer');
-
-  function fmt(s){
-    if (!isFinite(s) || s < 0) s = 0;
-    const m = Math.floor(s/60);
-    const ss = Math.floor(s%60);
-    return m + ':' + String(ss).padStart(2,'0');
-  }
-
-  function stopLoop(){
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = null;
-  }
-
-  function tick(){
-    const now = Date.now();
-    const denom = (endMs - startMs);
-    const pct = denom > 0 ? Math.max(0, Math.min(1, (now - startMs) / denom)) : 0;
-    if (bar()) bar().style.width = (pct*100).toFixed(2) + '%';
-
-    const elapsed = ((now - startMs)/1000);
-    if (time()) time().textContent = `${fmt(elapsed)} / ${fmt(durSec)}`;
-
-    if (now >= endMs - 250) {
-      if (bar()) bar().style.width = '100%';
-      stopLoop();
-      return;
-    }
-    rafId = requestAnimationFrame(tick);
-  }
-
-  window.setTrackForCountdown = function(latest){
-    try{
-      if (!latest || !latest.startTime || !latest.duration || latest.duration <= 0) {
-        stopLoop();
-        if (wrap()) wrap().style.display = 'none';
-        return;
-      }
-      const key = [latest.artist, latest.title, latest.startTime, latest.duration].join('||');
-      if (key === currentKey && rafId) return;
-      currentKey = key;
-
-      const start = new Date(latest.startTime).getTime();
-      if (!isFinite(start)) {
-        if (wrap()) wrap().style.display = 'none';
-        return;
-      }
-      startMs = start;
-      durSec  = Number(latest.duration);
-      endMs   = startMs + durSec*1000;
-
-      stopLoop();
-      if (Date.now() < startMs) {
-        if (bar()) bar().style.width = '0%';
-        if (time()) time().textContent = `0:00 / ${fmt(durSec)}`;
-        if (wrap()) wrap().style.display = 'block';
-        const delay = startMs - Date.now();
-        setTimeout(()=> { rafId = requestAnimationFrame(tick); }, Math.min(delay, 2000));
-      } else {
-        if (wrap()) wrap().style.display = 'block';
-        rafId = requestAnimationFrame(tick);
-      }
-    } catch(e){
-      stopLoop();
-      if (wrap()) wrap().style.display = 'none';
-    }
-  };
-})();
-</script>
-= 'function'){
+        } else if (typeof updateHourDropdown === 'function'){
           try { updateHourDropdown(dateEl.value, null); } catch(_) {}
         }
       }
@@ -9737,6 +9661,75 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+<script>
+(function(){
+  let rafId = null;
+  let currentKey = null;
+  let startMs = 0, endMs = 0, durSec = 0;
+
+  const bar  = () => document.getElementById('npProgressBar');
+  const time = () => document.getElementById('npTime');
+  const wrap = () => document.getElementById('np-timer');
+
+  function fmt(s){
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s/60);
+    const ss = Math.floor(s%60);
+    return m + ':' + String(ss).padStart(2,'0');
+  }
+  function stopLoop(){ if (rafId) cancelAnimationFrame(rafId); rafId = null; }
+  function tick(){
+    const now = Date.now();
+    const span = (endMs - startMs);
+    const pct = span > 0 ? Math.max(0, Math.min(1, (now - startMs) / span)) : 0;
+    if (bar()) bar().style.width = (pct*100).toFixed(2) + '%';
+    const elapsed = ((now - startMs)/1000);
+    if (time()) time().textContent = `${fmt(elapsed)} / ${fmt(durSec)}`;
+    if (now >= endMs - 250) {
+      if (bar()) bar().style.width = '100%';
+      stopLoop();
+      return;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // Public API: call this whenever you have the latestTrack object
+  window.setTrackForCountdown = function(latest){
+    try{
+      if (!latest || !latest.startTime || !latest.duration || latest.duration <= 0) {
+        stopLoop();
+        if (wrap()) wrap().style.display = 'none';
+        return;
+      }
+      const key = [latest.artist, latest.title, latest.startTime, latest.duration].join('||');
+      if (key === currentKey && rafId) return; // don't reset if nothing changed
+      currentKey = key;
+
+      const start = new Date(latest.startTime).getTime();
+      if (!isFinite(start)) { if (wrap()) wrap().style.display = 'none'; return; }
+      startMs = start;
+      durSec  = Number(latest.duration);
+      endMs   = startMs + durSec*1000;
+
+      if (bar()) bar().style.width = '0%';
+      if (time()) time().textContent = `0:00 / ${fmt(durSec)}`;
+      if (wrap()) wrap().style.display = 'block';
+
+      stopLoop();
+      const now = Date.now();
+      if (now < startMs) {
+        const delay = startMs - now;
+        setTimeout(()=> { rafId = requestAnimationFrame(tick); }, Math.min(delay, 2000));
+      } else {
+        rafId = requestAnimationFrame(tick);
+      }
+    } catch(e){
+      stopLoop();
+      if (wrap()) wrap().style.display = 'none';
+    }
+  };
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
