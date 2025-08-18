@@ -1,82 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T07:00:00Z",
-    "Scheduled Time": "08:01",
-    "Displayed Time": "",
-    "Artist": "The Weeknd ft Daft Punk",
-    "Title": "Starboy",
-    "Duration (s)": 222,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T07:00:00Z",
-    "Scheduled Time": "08:06",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 169,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T07:00:00Z",
-    "Scheduled Time": "08:09",
-    "Displayed Time": "",
-    "Artist": "Franz Ferdinand",
-    "Title": "Take Me Out",
-    "Duration (s)": 195,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T07:00:00Z",
-    "Scheduled Time": "08:12",
-    "Displayed Time": "",
-    "Artist": "Hall & Oates",
-    "Title": "Maneater",
-    "Duration (s)": 189,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T07:00:00Z",
-    "Scheduled Time": "08:20",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T07:00:00Z",
-    "Scheduled Time": "08:23",
-    "Displayed Time": "",
-    "Artist": "Justin Bieber ft Ludacris",
-    "Title": "Baby",
-    "Duration (s)": 201,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T07:00:00Z",
-    "Scheduled Time": "08:26",
-    "Displayed Time": "",
-    "Artist": "Pulp",
-    "Title": "Disco 2000",
-    "Duration (s)": 276,
-    "Full Duration (s)": 290,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
     "Hour": "2025-08-03T08:00:00Z",
     "Scheduled Time": "09:02",
     "Displayed Time": "",
@@ -44107,6 +44030,17 @@
     "Duration (s)": 223,
     "Full Duration (s)": 240,
     "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-18T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "",
+    "Artist": "Post Malone",
+    "Title": "Circles",
+    "Duration (s)": 209,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
 ]
