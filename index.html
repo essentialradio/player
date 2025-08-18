@@ -9669,30 +9669,42 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<script id="np-progress-override">
+
+
+
+<script id="np-progress-driver">
 (function(){
-  if (typeof updateCountdown !== 'function') return;
-  var _origUpdate = updateCountdown;
-  window.updateCountdown = function(){
-    try {
-      // Call existing logic (updates #countdown etc.)
-      _origUpdate();
-    } catch(e){ /* ignore */ }
-    // Now apply progress updates using existing globals: startMs, endMs, durationMs
-    try {
+  function setProgress(){
+    try{
       var bar = document.querySelector('#np-progress .bar');
       var prog = document.getElementById('np-progress');
       if (!bar || !prog) return;
-      var nowMs = Date.now();
       if (typeof startMs === 'undefined' || typeof endMs === 'undefined') return;
       var total = (typeof durationMs !== 'undefined' && durationMs) ? durationMs : (endMs - startMs);
       if (!total || total <= 0) return;
+      var nowMs = Date.now();
       var played = Math.max(0, Math.min(total, nowMs - startMs));
       var pct = Math.round((played / total) * 100);
       bar.style.width = pct + '%';
       prog.setAttribute('aria-valuenow', String(pct));
-    } catch(e){ /* ignore */ }
-  };
+    }catch(e){}
+  }
+
+  // Drive progress smoothly without extra network/polling
+  var lastTick = 0;
+  function tick(ts){
+    if (!lastTick || ts - lastTick > 180){ // ~5–6 updates/sec
+      setProgress();
+      lastTick = ts;
+    }
+    window.requestAnimationFrame(tick);
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ requestAnimationFrame(tick); });
+  } else {
+    requestAnimationFrame(tick);
+  }
 })();
 </script>
 
