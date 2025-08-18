@@ -1061,8 +1061,6 @@ body.modal-open {
   }
 }
 
-
-#np-progress.hidden { display: none; }
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -4252,6 +4250,9 @@ html[data-theme="light"] #mobileNowBar {
 
 
 <style id="np-progress-styles">
+/* Hide progress container when no track */
+#np-progress.hidden { display: none !important; }
+
 /* === Now Playing progress (countdown bar) === */
 #np-progress {
   margin-top: 10px;
@@ -9698,27 +9699,6 @@ if ('serviceWorker' in navigator) {
     const rEl  = elRemain();
     if (!fill || !eEl || !rEl || !durationMs) { return; }
 
-    // Compute time with optional skew
-    const now = Date.now();
-    const elapsed = Math.max(0, (now - startMs) / 1000);
-    const remaining = Math.max(0, durationMs/1000 - elapsed);
-    const pct = Math.max(0, Math.min(1, elapsed / (durationMs/1000)));
-
-    fill.style.width = (pct * 100).toFixed(3) + '%';
-    eEl.textContent = mmss(elapsed);
-    rEl.textContent = '-' + mmss(remaining);
-
-    if (pct >= 1) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
-      if (typeof onFinish === 'function') {
-        onFinish();
-      }
-      return;
-    }
-    rafId = requestAnimationFrame(tick);
-  }
-
     const now = Date.now();
     const elapsed = Math.max(0, (now - startMs) / 1000);
     const remaining = Math.max(0, durationMs/1000 - elapsed);
@@ -9741,32 +9721,10 @@ if ('serviceWorker' in navigator) {
 
   window.updateNowPlayingProgress = function (startISO, durationSec, opts = {}) {
     try {
-      // Accept ISO with or without timezone. If no Z/offset, assume UTC.
-      let iso = String(startISO || '').trim();
-      if (iso && !/[zZ]|[+\-]\d{2}:\d{2}$/.test(iso) && /^\d{4}-\d{2}-\d{2}T/.test(iso)) {
-        iso += 'Z';
-      }
-      let parsed = new Date(iso);
-      let parsedMs = parsed.getTime();
-
-      // If still invalid, bail
-      if (!isFinite(parsedMs)) return;
-
-      // Time skew correction (from opts.skewMs, default 0)
-      const skewMs = Number.isFinite(opts.skewMs) ? opts.skewMs : 0;
-
-      startMs    = parsedMs;
-      durationMs = Math.max(0, Math.round((+durationSec || 0) * 1000));
-      onFinish   = typeof opts.onFinish === 'function' ? opts.onFinish : null;
-      if (!durationMs) return;
-
-      // If start time looks slightly in the future due to skew, clamp
-      const clientNow = Date.now();
-      const nowSkewed = clientNow + skewMs;
-      if (startMs - nowSkewed > 0 && startMs - nowSkewed < 5 * 60 * 1000) {
-        startMs = nowSkewed; // treat as started now
-      }
-
+      startMs    = new Date(startISO).getTime();
+      durationMs = Math.max(0, Math.round(durationSec * 1000));
+      onFinish   = opts.onFinish || null;
+      if (!isFinite(startMs) || !durationMs) return;
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
     } catch (e) {
@@ -9775,51 +9733,29 @@ if ('serviceWorker' in navigator) {
   };
 
   async function initFromAPI() {
-    try {
-      const res = await fetch('/api/latestTrack?_=' + Date.now());
-      const j = await res.json();
-      const npProg = document.getElementById('np-progress');
+  try {
+    const res = await fetch('/api/latestTrack?_=' + Date.now());
+    const j = await res.json();
+    const npDiv = document.getElementById('np-progress');
 
-      // Hide if not a real track
-      if (!j || !j.artist || !j.title || !j.startTime || !j.duration) {
-        if (npProg) npProg.classList.add('hidden');
-        return;
-      }
+    // Hide if "more music soon" or invalid track metadata
+    const isInvalid = !j || !j.startTime || !j.duration || !j.artist || !j.title;
+    const isFiller  = !isInvalid && typeof j.title === 'string' && j.title.toLowerCase().includes('more music soon');
 
-      // Estimate server/client skew
-      let skewMs = 0;
-      try {
-        const srvDate = res.headers.get('Date');
-        if (srvDate) {
-          const serverNow = new Date(srvDate).getTime();
-          const clientNow = Date.now();
-          if (isFinite(serverNow)) skewMs = serverNow - clientNow;
-        }
-      } catch (_) {}
-
-      if (npProg) npProg.classList.remove('hidden');
-      window.updateNowPlayingProgress(j.startTime, j.duration, {
-        skewMs,
-        onFinish: () => { initFromAPI(); }
-      });
-    } catch (_) {
-      const npProg = document.getElementById('np-progress');
-      if (npProg) npProg.classList.add('hidden');
+    if (isInvalid || isFiller) {
+      if (npDiv) npDiv.classList.add('hidden');
+      return;
     }
-  }
 
-      // Show the bar and run the countdown
-      if (npProg) npProg.classList.remove('hidden');
-      window.updateNowPlayingProgress(j.startTime, j.duration, {
-        onFinish: () => { initFromAPI(); }
-      });
-    } catch (_) {
-      // In case of error, hide to avoid a stuck/empty bar
-      const npProg = document.getElementById('np-progress');
-      if (npProg) npProg.classList.add('hidden');
-    }
+    if (npDiv) npDiv.classList.remove('hidden');
+    window.updateNowPlayingProgress(j.startTime, j.duration, {
+      onFinish: () => { initFromAPI(); }
+    });
+  } catch (_) {
+    const npDiv = document.getElementById('np-progress');
+    if (npDiv) npDiv.classList.add('hidden');
   }
-      });
+}});
     } catch (_) {}
   }
 
