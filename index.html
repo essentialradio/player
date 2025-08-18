@@ -1061,31 +1061,6 @@ body.modal-open {
   }
 }
 
-
-/* === Now Playing Countdown Bar + Timer === */
-#trackProgressContainer {
-  position: relative;
-  width: 100%;
-  height: 8px;
-  background: #333;
-  border-radius: 4px;
-  margin-top: 6px;
-}
-#trackProgressBar {
-  height: 100%;
-  width: 100%;
-  background: #00818a;
-  transition: width 1s linear;
-}
-#trackTimeRemaining {
-  position: absolute;
-  right: 6px;
-  top: -18px;
-  font-size: 0.8em;
-  font-family: 'Consolas','Courier New',monospace;
-  color: #fed351;
-}
-
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -9650,37 +9625,6 @@ if ('serviceWorker' in navigator) {
     init();
   }
 })();
-</script>
-
-
-<script>
-function updateProgressBar(startTime, duration) {
-  const bar = document.getElementById("trackProgressBar");
-  const timer = document.getElementById("trackTimeRemaining");
-  if (!bar || !timer) return;
-
-  function formatTime(secs) {
-    const m = Math.floor(secs / 60);
-    const s = Math.floor(secs % 60);
-    return m + ":" + (s < 10 ? "0" + s : s);
-  }
-
-  function tick() {
-    const elapsed = (Date.now() - new Date(startTime).getTime()) / 1000;
-    const remaining = Math.max(duration - elapsed, 0);
-    bar.style.width = (remaining / duration) * 100 + "%";
-    timer.textContent = formatTime(remaining);
-    if (remaining > 0) requestAnimationFrame(tick);
-  }
-  tick();
-}
-
-window.addEventListener("latestTrackUpdated", function(e) {
-  const latest = e.detail;
-  if (latest.startTime && latest.duration) {
-    updateProgressBar(latest.startTime, latest.duration);
-  }
-});
 </script>
 
 </body><style>
