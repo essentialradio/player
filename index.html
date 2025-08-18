@@ -4248,42 +4248,6 @@ html[data-theme="light"] #mobileNowBar {
 }
 </style>
 
-
-
-<style id="np-progress-styles">
-/* Now Playing progress */
-#np-progress{
-  position: relative;
-  height: 6px;
-  border-radius: 9999px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.18);
-  margin-top: 8px;       /* space below artist/title */
-  margin-bottom: 2px;    /* gentle breathing room */
-}
-[data-theme="light"] #np-progress{ background: rgba(0,0,0,0.12) }
-
-#np-progress .bar{
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 0%;
-  background: var(--brand, #0e65f2);  /* Essential blue */
-  transition: width .25s linear;
-}
-
-#np-progress .label{
-  position: absolute;
-  right: 6px;
-  top: -18px;            /* floats just above bar */
-  font-size: 11px;       /* a little smaller than body text */
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  color: var(--text, #fff);
-}
-[data-theme="light"] #np-progress .label{ color:#0b1220 }
-</style>
-
-
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4346,12 +4310,7 @@ html[data-theme="light"] #mobileNowBar {
 <button id="mute-toggle">🔊</button>
 </div>
 <div id="now-playing-card" style="position: relative;">
-<div id="now-playing">Loading current track…
-<div id="np-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-  <div class="bar"></div>
-  <span id="countdown" class="label" aria-live="polite"></span>
-</div>
-</div>
+<div id="now-playing">Loading current track…</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -9664,101 +9623,6 @@ if ('serviceWorker' in navigator) {
     document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
     init();
-  }
-})();
-</script>
-
-
-
-
-
-<script id="np-progress-driver">
-(function(){
-  function setProgress(){
-    try{
-      var bar = document.querySelector('#np-progress .bar');
-      var prog = document.getElementById('np-progress');
-      if (!bar || !prog) return;
-      if (typeof startMs === 'undefined' || typeof endMs === 'undefined') return;
-      var total = (typeof durationMs !== 'undefined' && durationMs) ? durationMs : (endMs - startMs);
-      if (!total || total <= 0) return;
-      var nowMs = Date.now();
-      var played = Math.max(0, Math.min(total, nowMs - startMs));
-      var pct = Math.round((played / total) * 100);
-      bar.style.width = pct + '%';
-      prog.setAttribute('aria-valuenow', String(pct));
-    }catch(e){}
-  }
-
-  // Drive progress smoothly without extra network/polling
-  var lastTick = 0;
-  function tick(ts){
-    if (!lastTick || ts - lastTick > 180){ // ~5–6 updates/sec
-      setProgress();
-      lastTick = ts;
-    }
-    window.requestAnimationFrame(tick);
-  }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ requestAnimationFrame(tick); });
-  } else {
-    requestAnimationFrame(tick);
-  }
-})();
-</script>
-
-
-<script id="np-progress-ensure">
-(function(){
-  // Create (or return) the progress node
-  function buildProgress(){
-    var wrap = document.createElement('div');
-    wrap.id = 'np-progress';
-    wrap.setAttribute('role','progressbar');
-    wrap.setAttribute('aria-valuemin','0');
-    wrap.setAttribute('aria-valuemax','100');
-    wrap.setAttribute('aria-valuenow','0');
-    wrap.innerHTML = '<div class="bar"></div><span id="countdown" class="label" aria-live="polite"></span>';
-    return wrap;
-  }
-
-  // Insert bar directly under the title/artist block
-  function ensureProgress(){
-    // Find the most likely title element
-    var title = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title, .np-title, .song-title');
-    if (!title) return;
-
-    // If a bar already exists and is positioned right after title, we're done
-    var existing = document.getElementById('np-progress');
-    if (existing && existing.previousElementSibling === title) return;
-
-    // Otherwise, (re)insert after title
-    var bar = existing || buildProgress();
-    try{
-      title.parentNode.insertBefore(bar, title.nextSibling);
-    }catch(e){}
-  }
-
-  function mountObserver(){
-    var target = document.getElementById('now-playing-card') || document.getElementById('now-playing') || document;
-    var obs = new MutationObserver(function(muts){
-      for (var i=0;i<muts.length;i++){
-        if (muts[i].type === 'childList' || muts[i].type === 'subtree' || muts[i].addedNodes.length){
-          ensureProgress();
-          break;
-        }
-      }
-    });
-    obs.observe(target, { childList: true, subtree: true });
-    // Run immediately too
-    ensureProgress();
-  }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', mountObserver);
-  } else {
-    mountObserver();
   }
 })();
 </script>
