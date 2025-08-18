@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "",
-    "Artist": "The Hues Corporation",
-    "Title": "Rock the Boat",
-    "Duration (s)": 179,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:04",
-    "Displayed Time": "",
-    "Artist": "Starship",
-    "Title": "We Built This City",
-    "Duration (s)": 285,
-    "Full Duration (s)": 293,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:09",
-    "Displayed Time": "",
-    "Artist": "Crash Test Dummies",
-    "Title": "Mmm Mmm Mmm Mmm",
-    "Duration (s)": 216,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:13",
-    "Displayed Time": "",
-    "Artist": "Elvis Presley",
-    "Title": "Can't Help Falling In Love",
-    "Duration (s)": 176,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:19",
-    "Displayed Time": "",
-    "Artist": "Duran Duran",
-    "Title": "Girls On Film",
-    "Duration (s)": 200,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:23",
-    "Displayed Time": "",
-    "Artist": "The Charlatans",
-    "Title": "The Only One I Know",
-    "Duration (s)": 232,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:27",
-    "Displayed Time": "",
-    "Artist": "Squeeze",
-    "Title": "Up the Junction",
-    "Duration (s)": 180,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:31",
-    "Displayed Time": "",
-    "Artist": "Midnight Oil",
-    "Title": "Beds Are Burning",
-    "Duration (s)": 253,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:35",
-    "Displayed Time": "",
-    "Artist": "T.Rex",
-    "Title": "I Love to Boogie",
-    "Duration (s)": 120,
-    "Full Duration (s)": 135,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:37",
-    "Displayed Time": "",
-    "Artist": "The Lovin' Spoonful",
-    "Title": "Daydream",
-    "Duration (s)": 128,
-    "Full Duration (s)": 137,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:44",
-    "Displayed Time": "",
-    "Artist": "Bryan Adams",
-    "Title": "Please Forgive Me",
-    "Duration (s)": 253,
-    "Full Duration (s)": 272,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:49",
-    "Displayed Time": "",
-    "Artist": "Heaven 17",
-    "Title": "Temptation",
-    "Duration (s)": 198,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-03T10:00:00Z",
-    "Scheduled Time": "11:52",
-    "Displayed Time": "",
-    "Artist": "Iggy Pop",
-    "Title": "The Passenger",
-    "Duration (s)": 265,
-    "Full Duration (s)": 283,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
     "Hour": "2025-08-03T11:00:00Z",
     "Scheduled Time": "12:02",
     "Displayed Time": "",
@@ -44130,5 +43987,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-18T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "",
+    "Artist": "Tate McRae",
+    "Title": "Greedy",
+    "Duration (s)": 129,
+    "Full Duration (s)": 132,
+    "Duration (mins)": 2,
+    "Full Duration (mins)": 2
   }
 ]
