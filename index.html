@@ -9678,9 +9678,10 @@ if ('serviceWorker' in navigator) {
   const elElapsed = () => document.getElementById('np-elapsed');
   const elRemain  = () => document.getElementById('np-remaining');
 
-  \1
-  let lastTrackEndTime = 0;   // timestamp in ms
-  const GRACE_PERIOD = 10000; // 10s
+  let rafId = null;
+  let startMs = 0;
+  let durationMs = 0;
+  let onFinish = null;
 
   function mmss(sec) {
     sec = Math.max(0, Math.floor(sec));
@@ -9689,7 +9690,6 @@ if ('serviceWorker' in navigator) {
     return m + ':' + String(s).padStart(2, '0');
   }
 
-  
   function tick() {
     const fill = barFill();
     const eEl  = elElapsed();
@@ -9708,7 +9708,6 @@ if ('serviceWorker' in navigator) {
     if (pct >= 1) {
       cancelAnimationFrame(rafId);
       rafId = null;
-      lastTrackEndTime = Date.now();
       if (typeof onFinish === 'function') {
         onFinish();
       }
@@ -9717,42 +9716,14 @@ if ('serviceWorker' in navigator) {
     rafId = requestAnimationFrame(tick);
   }
 
-    const now = Date.now();
-    const elapsed = Math.max(0, (now - startMs) / 1000);
-    const remaining = Math.max(0, durationMs/1000 - elapsed);
-    const pct = Math.max(0, Math.min(1, elapsed / (durationMs/1000)));
-
-    fill.style.width = (pct * 100).toFixed(3) + '%';
-    eEl.textContent = mmss(elapsed);
-    rEl.textContent = '-' + mmss(remaining);
-
-    if (pct >= 1) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
-      if (typeof onFinish === 'function') {
-        onFinish();
-      }
-      return;
-    }
-    rafId = requestAnimationFrame(tick);
-  }
-
-  
-window.updateNowPlayingProgress = function (startISO, durationSec, opts = {}) {
+  window.updateNowPlayingProgress = function (startISO, durationSec, opts = {}) {
   try {
+    // Hide bar if "More Music Soon" placeholder is showing
     const npDiv = document.getElementById('now-playing');
     const npProgress = document.getElementById('np-progress');
-
-    // Handle "More Music Soon" placeholder with a 10s grace period after a track ends
     if (npDiv && /more music soon/i.test(npDiv.textContent)) {
-      if (Date.now() - lastTrackEndTime < GRACE_PERIOD) {
-        // Within grace window → keep old details visible, do nothing
-        return;
-      } else {
-        // Past grace window → hide progress
-        if (npProgress) npProgress.style.display = 'none';
-        return;
-      }
+      if (npProgress) npProgress.style.display = 'none';
+      return;
     } else {
       if (npProgress) npProgress.style.display = '';
     }
@@ -9768,7 +9739,6 @@ window.updateNowPlayingProgress = function (startISO, durationSec, opts = {}) {
     console.warn('NP progress init failed:', e);
   }
 };
-
 
   async function initFromAPI() {
     try {
