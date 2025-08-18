@@ -9746,6 +9746,12 @@ if ('serviceWorker' in navigator) {
         lastMetaKey  = metaKey;
         lastEndTime  = 0;
 
+        // Cache last good metadata for placeholder suppression
+        if (!/more music soon/i.test(String(metaArtist||'') + ' ' + String(metaTitle||''))) {
+          lastGoodArtist = metaArtist || lastGoodArtist;
+          lastGoodTitle  = metaTitle  || lastGoodTitle;
+        }
+
         // Ensure the progress UI is visible
         if (npProgress) npProgress.style.display = '';
 
@@ -9772,7 +9778,11 @@ if ('serviceWorker' in navigator) {
       // Not a new song: apply grace-period placeholder suppression
       if (isPlaceholder) {
         if (Date.now() - lastEndTime < 20000) {
-          if (npProgress) npProgress.style.display = 'none';
+          // Try to keep the last known song visible (prevent 'More Music Soon' flash)
+          if (npDiv && lastGoodArtist && lastGoodTitle) {
+            npDiv.textContent = lastGoodArtist + ' – ' + lastGoodTitle;
+          }
+if (npProgress) npProgress.style.display = 'none';
           return;
         } else {
           if (npProgress) npProgress.style.display = 'none';
@@ -9782,6 +9792,12 @@ if ('serviceWorker' in navigator) {
         if (npProgress) npProgress.style.display = '';
       }
 
+      // Normal update (same song continuing)
+      // Cache last good metadata if present
+      if (!/more music soon/i.test(String(metaArtist||'') + ' ' + String(metaTitle||''))) {
+        lastGoodArtist = metaArtist || lastGoodArtist;
+        lastGoodTitle  = metaTitle  || lastGoodTitle;
+      }
       // Normal update (same song continuing)
       startMs    = new Date(startISO).getTime();
       durationMs = Math.max(0, Math.round(durationSec * 1000));
