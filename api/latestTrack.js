@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(204).end();
 
   try {
-    const val = await redis.get("nowplaying");
+    const val = await redis.get("nowPlaying");
     let track = null;
     if (typeof val === "string") {
       try { track = JSON.parse(val); } catch { track = null; }
