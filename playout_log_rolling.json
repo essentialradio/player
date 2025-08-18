@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T20:00:00Z",
-    "Scheduled Time": "21:02",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3475,
-    "Full Duration (s)": 3477,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-03T21:00:00Z",
     "Scheduled Time": "22:02",
     "Displayed Time": "",
@@ -44680,5 +44669,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-18T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "",
+    "Artist": "Mimi Webb",
+    "Title": "Red Flags",
+    "Duration (s)": 139,
+    "Full Duration (s)": 142,
+    "Duration (mins)": 2,
+    "Full Duration (mins)": 2
   }
 ]
