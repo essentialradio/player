@@ -43,13 +43,12 @@
       justify-content: flex-start;
     }
     .logo {
-  width: 125px;          /* Increase size as desired */
-  border-radius: 18px;  /* Optional: round edges if your logo is square */
-  margin-bottom: 18px;
-  box-shadow: none;     /* Remove box-shadow */
-  background: none;     /* No background color */
-}
-
+      width: 125px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      box-shadow: none;
+      background: none;
+    }
     #artwork {
       width: 120px;
       height: 120px;
@@ -309,14 +308,14 @@
         el.textContent = decodeHtmlEntities(show);
       }
     }
-    // NOW PLAYING (from ingest) WITH ITUNES ARTWORK
+
+    // NOW PLAYING — use ingest-driven /api/latestTrack metadata (same as index)
     async function updateNowPlaying() {
       try {
-        // Fetch the latest track from the ingest-powered endpoint (same as index)
         const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
         const latest = await latestRes.json();
 
-        // Validate payload
+        // Validate payload shape from /api/latestTrack
         if (!latest || !latest.artist || !latest.title) {
           document.getElementById("now-playing").textContent = "Loading…";
           document.getElementById("now-playing-artist").textContent = "";
@@ -324,14 +323,15 @@
           return;
         }
 
-        const artist = latest.artist;
-        const title = latest.title;
+        // Decode & assign
+        const artist = decodeHtmlEntities(latest.artist);
+        const title = decodeHtmlEntities(latest.title);
 
-        // Update DOM (keep existing widget structure)
+        // Update UI
         document.getElementById("now-playing").textContent = title;
         document.getElementById("now-playing-artist").textContent = artist ? `by ${artist}` : "";
 
-        // Artwork – keep existing iTunes-first approach used by the widget
+        // Artwork: iTunes lookup (keep existing approach)
         const searchTerm = encodeURIComponent(`${artist} ${title}`);
         let artwork = "Essential Radio Logo.png";
         try {
@@ -339,32 +339,6 @@
           const iTunesData = await iTunesRes.json();
           artwork = iTunesData.results?.[0]?.artworkUrl100?.replace('100x100', '300x300') || artwork;
         } catch {}
-
-        document.getElementById("artwork").src = artwork;
-      } catch (err) {
-        document.getElementById("now-playing").textContent = "Loading…";
-        document.getElementById("now-playing-artist").textContent = "";
-        document.getElementById("artwork").src = "Essential Radio Logo.png";
-      }
-    }
-else {
-          artist = data.artist || data.Artist || "";
-          title = data.title || data.Title || "Loading…";
-        }
-        artist = decodeHtmlEntities(artist);
-        title = decodeHtmlEntities(title);
-
-        const searchTerm = encodeURIComponent(`${artist} ${title}`);
-        let artwork = "Essential Radio Logo.png";
-
-        try {
-          const iTunesRes = await fetch(`https://itunes.apple.com/search?term=${searchTerm}&media=music&limit=1`);
-          const iTunesData = await iTunesRes.json();
-          artwork = iTunesData.results?.[0]?.artworkUrl100?.replace('100x100', '300x300') || artwork;
-        } catch {}
-
-        document.getElementById("now-playing").textContent = title;
-        document.getElementById("now-playing-artist").textContent = artist ? `by ${artist}` : "";
         document.getElementById("artwork").src = artwork;
       } catch (err) {
         document.getElementById("now-playing").textContent = "Loading…";
@@ -373,7 +347,7 @@ else {
       }
     }
 
-    // RECENTLY PLAYED WITH ITUNES ARTWORK
+    // RECENTLY PLAYED WITH ITUNES ARTWORK (unchanged)
     async function updateRecent() {
       try {
         const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now());
@@ -381,11 +355,6 @@ else {
         const list = document.getElementById('recent-list');
         list.innerHTML = "";
         const recentItems = data.slice(-3).reverse();
-
-
-
-
-
 
         for (const item of recentItems) {
           const artist = decodeHtmlEntities(item.Artist);
