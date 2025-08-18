@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T22:00:00Z",
-    "Scheduled Time": "23:00",
-    "Displayed Time": "",
-    "Artist": "Dave Watkins",
-    "Title": "The Country Mile",
-    "Duration (s)": 3600,
-    "Full Duration (s)": 3602,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-08-03T23:00:00Z",
     "Scheduled Time": "00:02",
     "Displayed Time": "",
@@ -44964,6 +44953,17 @@
     "Title": "Houdini",
     "Duration (s)": 220,
     "Full Duration (s)": 244,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-18T17:00:00Z",
+    "Scheduled Time": "18:02",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
