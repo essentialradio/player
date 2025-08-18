@@ -1061,29 +1061,6 @@ body.modal-open {
   }
 }
 
-/* Safari/WebKit fixes for range input so the blue track shows */
-#volume {
-  -webkit-appearance: none; /* Safari */
-  background: transparent;  /* allow track pseudo to be visible */
-  height: 24px;             /* give the control enough box height to render the track */
-  width: 100%;
-}
-#volume:focus {
-  outline: none;
-}
-/* Ensure WebKit track renders our gradient */
-#volume::-webkit-slider-runnable-track {
-  background: linear-gradient(90deg, #1e90ff, #005bbb);
-  height: 6px;
-  border-radius: 3px;
-}
-#volume::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  margin-top: -6px; /* centers thumb on a 6px track in Safari */
-}
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -5786,8 +5763,7 @@ group.forEach(show => {
       return null;
     }
     function showMoreMusicSoon() {
-      if (window.__hasNowPlaying) return;
-nowPlaying.innerHTML = `
+      nowPlaying.innerHTML = `
         <span style="color:#fed351;">Now Playing:</span>
         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
         <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
@@ -5805,16 +5781,21 @@ async function fetchNowPlaying() {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
+    // Validate payload
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
-      console.warn("No valid latest track data received");
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
 
     const artist = latest.artist;
     const title = latest.title;
-    const startMs = new Date(latest.startTime).getTime();
+    const startMs = new Date(latest.startTime).getTime(); // UTC ms
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
+
+    // Track identity (to detect when a NEW track arrives)
+    const trackKey = `${artist}||${title}||${startMs}`;
+    window._npLastKey = trackKey;
 
     // Update main Now Playing block
     const nowPlaying = document.getElementById('now-playing');
@@ -5825,20 +5806,17 @@ async function fetchNowPlaying() {
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
-    // mark we successfully drew NP to avoid fallbacks overwriting
-    try { window.__hasNowPlaying = true; } catch {}
-
-    // Update document title and artwork
+    // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
     try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
-    // Also support alternate selectors
+    // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
     const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
     if (titleEl) titleEl.textContent = title;
     if (artistEl) artistEl.textContent = artist;
 
-    // Countdown
+    // Countdown updater uses UTC-safe milliseconds
     function updateCountdown() {
       const nowMs = Date.now();
       const remaining = endMs - nowMs;
@@ -5851,13 +5829,39 @@ async function fetchNowPlaying() {
       } else {
         if (countdownEl) countdownEl.textContent = '0:00';
         clearInterval(timer);
-        fetchNowPlaying();
+
+        // Immediately show fallback while we wait for the next ingest
+        if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+
+        // Poll every 5s for a *different* track; when found, refresh NP
+        if (window._npPollTimer) {
+          clearInterval(window._npPollTimer);
+          window._npPollTimer = null;
+        }
+        window._npPollTimer = setInterval(async () => {
+          try {
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const j = await r.json();
+            const newKey = (j && j.artist && j.title && j.startTime)
+              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
+              : null;
+            if (newKey && newKey !== window._npLastKey) {
+              clearInterval(window._npPollTimer);
+              window._npPollTimer = null;
+              fetchNowPlaying();
+            }
+          } catch (e) {
+            // swallow and keep polling
+          }
+        }, 5000);
       }
     }
+
     updateCountdown();
     const timer = setInterval(updateCountdown, 1000);
   } catch (err) {
     console.error('Error fetching now playing:', err);
+    if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
 }
 
