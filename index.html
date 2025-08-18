@@ -1065,21 +1065,24 @@ body.modal-open {
 /* Now Playing progress bar */
 #np-progress { user-select:none; }
 #np-progress-rail{
-  width:100%; height:8px; border-radius:999px; overflow:hidden;
-  background: rgba(255,255,255,.15);
-  border: 1px solid var(--border, #333);
+  width:100%; height:10px; border-radius:999px; overflow:hidden;
+  background: rgba(0,0,0,.25); /* solid fallback so rail is always visible */
+  outline: 1px solid rgba(0,0,0,.35);
 }
 [data-theme="light"] #np-progress-rail{
-  background: rgba(0,0,0,.08);
+  background: rgba(0,0,0,.10);
+  outline-color: rgba(0,0,0,.20);
 }
 #np-progress-bar{
+  display:block;
   height:100%; width:0%;
-  background: var(--accent, #00818a);
+  background:#00818a;  /* force Essential blue so it can't be transparent */
   transition: width .2s linear;
 }
 #np-progress-meta{
   display:flex; justify-content:space-between; gap:12px;
-  font-size:.92em; margin-top:6px; color: var(--muted, #c8d1dc);
+  font-size:.92em; margin:8px 0 8px 0;
+  color: var(--muted, #c8d1dc);
 }
 [data-theme="light"] #np-progress-meta{ color: #334155; }
 
@@ -4335,12 +4338,12 @@ html[data-theme="light"] #mobileNowBar {
 <div id="now-playing">Loading current track…</div>
 <!-- Now Playing progress -->
 <div id="np-progress" aria-label="Track progress" style="margin-top:10px;">
-  <div id="np-progress-rail">
-    <div id="np-progress-bar"></div>
-  </div>
   <div id="np-progress-meta">
     <span id="np-elapsed">0:00</span>
     <span id="np-remaining" title="Time remaining">–0:00</span>
+  </div>
+  <div id="np-progress-rail">
+    <div id="np-progress-bar"></div>
   </div>
 </div>
 
@@ -9746,6 +9749,7 @@ if ('serviceWorker' in navigator) {
     trackEnd = start + durMs;
     lastSig = latest.artist + '|' + latest.title + '|' + latest.startTime;
     cancelAnim();
+    bar.style.width = '0%';
     tick();
     scheduleNextRefresh();
   }
