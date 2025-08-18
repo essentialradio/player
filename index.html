@@ -4248,6 +4248,27 @@ html[data-theme="light"] #mobileNowBar {
 }
 </style>
 
+
+<style id="np-progress-styles">
+/* Now Playing progress */
+#np-progress{
+  position:relative; height:6px; border-radius:9999px; overflow:hidden;
+  background: rgba(255,255,255,0.18);
+  margin-top:6px
+}
+[data-theme="light"] #np-progress{ background: rgba(0,0,0,0.12) }
+#np-progress .bar{
+  position:absolute; inset:0 auto 0 0; width:0%;
+  background: var(--brand, #0e65f2);
+  transition: width .25s linear;
+}
+#np-progress .label{
+  position:absolute; right:6px; top:-18px; font-size:12px;
+  color: var(--text, #fff);
+}
+[data-theme="light"] #np-progress .label{ color:#0b1220 }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4310,7 +4331,12 @@ html[data-theme="light"] #mobileNowBar {
 <button id="mute-toggle">🔊</button>
 </div>
 <div id="now-playing-card" style="position: relative;">
-<div id="now-playing">Loading current track…</div>
+<div id="now-playing">Loading current track…
+<div id="np-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+  <div class="bar"></div>
+  <span id="countdown" class="label" aria-live="polite"></span>
+</div>
+</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -9624,6 +9650,34 @@ if ('serviceWorker' in navigator) {
   } else {
     init();
   }
+})();
+</script>
+
+
+<script id="np-progress-override">
+(function(){
+  if (typeof updateCountdown !== 'function') return;
+  var _origUpdate = updateCountdown;
+  window.updateCountdown = function(){
+    try {
+      // Call existing logic (updates #countdown etc.)
+      _origUpdate();
+    } catch(e){ /* ignore */ }
+    // Now apply progress updates using existing globals: startMs, endMs, durationMs
+    try {
+      var bar = document.querySelector('#np-progress .bar');
+      var prog = document.getElementById('np-progress');
+      if (!bar || !prog) return;
+      var nowMs = Date.now();
+      if (typeof startMs === 'undefined' || typeof endMs === 'undefined') return;
+      var total = (typeof durationMs !== 'undefined' && durationMs) ? durationMs : (endMs - startMs);
+      if (!total || total <= 0) return;
+      var played = Math.max(0, Math.min(total, nowMs - startMs));
+      var pct = Math.round((played / total) * 100);
+      bar.style.width = pct + '%';
+      prog.setAttribute('aria-valuenow', String(pct));
+    } catch(e){ /* ignore */ }
+  };
 })();
 </script>
 
