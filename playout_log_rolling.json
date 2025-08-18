@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:01",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 201,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "",
-    "Artist": "Depeche Mode",
-    "Title": "Enjoy the Silence",
-    "Duration (s)": 245,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:09",
-    "Displayed Time": "",
-    "Artist": "Silk City & Dua Lipa",
-    "Title": "Electricity",
-    "Duration (s)": 218,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:13",
-    "Displayed Time": "",
-    "Artist": "Joel Corry & Tom Grennan",
-    "Title": "Lionheart (Fearless)",
-    "Duration (s)": 184,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:16",
-    "Displayed Time": "",
-    "Artist": "Kings of Leon",
-    "Title": "Sex on Fire",
-    "Duration (s)": 202,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:23",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 203,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:26",
-    "Displayed Time": "",
-    "Artist": "Anne-Marie ft Shania Twain",
-    "Title": "Unhealthy",
-    "Duration (s)": 145,
-    "Full Duration (s)": 150,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:29",
-    "Displayed Time": "",
-    "Artist": "Dolly Parton",
-    "Title": "9 To 5",
-    "Duration (s)": 153,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:32",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:38",
-    "Displayed Time": "",
-    "Artist": "Cee-Lo Green",
-    "Title": "Forget You",
-    "Duration (s)": 219,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:41",
-    "Displayed Time": "",
-    "Artist": "Lola Young",
-    "Title": "One Thing",
-    "Duration (s)": 206,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:45",
-    "Displayed Time": "",
-    "Artist": "The La's",
-    "Title": "There She Goes",
-    "Duration (s)": 156,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:47",
-    "Displayed Time": "",
-    "Artist": "Noah Kahan",
-    "Title": "Stick Season",
-    "Duration (s)": 175,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:50",
-    "Displayed Time": "",
-    "Artist": "Gym Class Heroes",
-    "Title": "Cupid's Chokehold",
-    "Duration (s)": 231,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T04:00:00Z",
-    "Scheduled Time": "05:54",
-    "Displayed Time": "",
-    "Artist": "Bananarama",
-    "Title": "Cruel Summer",
-    "Duration (s)": 203,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-04T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "",
@@ -45271,6 +45106,17 @@
     "Artist": "Ace of Base",
     "Title": "Cruel Summer",
     "Duration (s)": 204,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-18T23:00:00Z",
+    "Scheduled Time": "00:01",
+    "Displayed Time": "",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 201,
     "Full Duration (s)": 214,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
