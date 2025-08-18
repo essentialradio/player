@@ -4272,6 +4272,31 @@ html[data-theme="light"] #mobileNowBar {
   text-align:right !important;
 }
 </style>
+<style>
+
+/* NOW PLAYING PROGRESS – forced visible overrides */
+#np-timer { display:block !important; margin-top:10px !important; }
+.np-progress {
+  width:100% !important;
+  height:10px !important;
+  border-radius:5px !important;
+  background:#ccc !important;
+  overflow:hidden !important;
+}
+.np-progress__bar {
+  height:100% !important;
+  width:0% !important;
+  background:#0a84ff !important;
+  transition:width 0.1s linear !important;
+}
+#npTime {
+  margin-top:6px !important;
+  font-size:0.9em !important;
+  color:#333 !important;
+  text-align:right !important;
+}
+
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
