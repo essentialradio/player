@@ -4181,6 +4181,73 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
+
+
+
+
+
+
+
+<style id="safari-volume-fix">
+/* === Cross-browser, theme-aware volume slider (DESKTOP/TABLET ONLY) === */
+#volume-slider{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 180px;
+  height: 16px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+#volume-slider::-webkit-slider-runnable-track{
+  height: 6px;
+  background: var(--accent, #00818a);
+  border-radius: 4px;
+  border: none;
+}
+#volume-slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--brand, #fed351);
+  border: 2px solid #111;
+  box-sizing: border-box;
+}
+#volume-slider::-moz-range-track{
+  height: 6px;
+  background: var(--accent, #00818a);
+  border-radius: 4px;
+  border: none;
+}
+#volume-slider::-moz-range-progress{
+  height: 6px;
+  background: var(--accent, #00818a);
+  border-radius: 4px 0 0 4px;
+}
+#volume-slider::-moz-range-thumb{
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--brand, #fed351);
+  border: 2px solid #111;
+  box-sizing: border-box;
+}
+[data-theme="light"] #volume-slider::-webkit-slider-runnable-track,
+[data-theme="light"] #volume-slider::-moz-range-track,
+[data-theme="light"] #volume-slider::-moz-range-progress{
+  background: var(--accent, #0b6b73);
+}
+#volume-display { color: var(--text, #f7f8fb); }
+
+/* === Hide volume on small screens === */
+@media (max-width: 768px){
+  #volume-container { display: none !important; }
+}
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
