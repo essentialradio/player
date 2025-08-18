@@ -1061,6 +1061,8 @@ body.modal-open {
   }
 }
 
+
+#np-progress.hidden { display: none; }
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -9733,9 +9735,25 @@ if ('serviceWorker' in navigator) {
     try {
       const res = await fetch('/api/latestTrack?_=' + Date.now());
       const j = await res.json();
-      if (!j || !j.startTime || !j.duration) return;
+      const npProg = document.getElementById('np-progress');
+
+      // Hide the bar if we don't have a real playable track
+      if (!j || !j.artist || !j.title || !j.startTime || !j.duration) {
+        if (npProg) npProg.classList.add('hidden');
+        return;
+      }
+
+      // Show the bar and run the countdown
+      if (npProg) npProg.classList.remove('hidden');
       window.updateNowPlayingProgress(j.startTime, j.duration, {
         onFinish: () => { initFromAPI(); }
+      });
+    } catch (_) {
+      // In case of error, hide to avoid a stuck/empty bar
+      const npProg = document.getElementById('np-progress');
+      if (npProg) npProg.classList.add('hidden');
+    }
+  }
       });
     } catch (_) {}
   }
