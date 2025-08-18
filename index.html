@@ -5778,104 +5778,49 @@ let trackEndTime = null; // NEW
 
 async function fetchNowPlaying() {
   try {
-    const res = await fetch('/api/metadata', { cache: 'no-store' });
-    const data = await res.json();
-
-    const decode = str => {
-      const t = document.createElement('textarea');
-      t.innerHTML = str;
-      return t.value;
-    };
-    const raw = decode(data.nowPlaying || '').trim();
-
-    let artist = '', title = '';
-    const sep = raw.includes(' – ') ? ' – ' : raw.includes(' - ') ? ' - ' : null;
-
-    if (sep) {
-      const idx = raw.indexOf(sep); // ✅ FIX: was lastIndexOf
-      artist = raw.substring(0, idx).trim();
-      title  = raw.substring(idx + sep.length).trim();
-    
-    } else {
-      // Fallback: try simple "Artist, Title" (split on the FIRST comma)
-      const c = raw.indexOf(',');
-      if (c > 0) {
-        artist = raw.slice(0, c).trim();
-        title  = raw.slice(c + 1).trim();
-        if (!artist || !title) {
-          showMoreMusicSoon(); // missing parts after split
-          return;
-        }
-      } else {
-        // No valid title/artist format
-        showMoreMusicSoon();
-        return;
-      }
-    }
-
-
-    const newTrackID = `${artist} – ${title}`;
-
-    if (songHasEnded || currentTrackID !== newTrackID) {
-      songHasEnded = false;
-      currentTrackID = newTrackID;
-
-      nowPlaying.innerHTML = `
-        <span style="color:#fed351;">Now Playing:</span>
-        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-        <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-        <span style="color:white;">by ${artist}</span>`;
-      document.title = `Essential Radio: ${artist} – ${title}`;
-      fetchArtwork(`${artist} - ${title}`);
-    }
-
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
-    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) return;
-
-    if (
-      latest.artist.toLowerCase() !== artist.toLowerCase() ||
-      latest.title.toLowerCase() !== title.toLowerCase()
-    ) {
+    // Validate payload
+    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+      console.warn("No valid latest track data received");
       return;
     }
 
-    const startTime = new Date(latest.startTime);
+    const artist = latest.artist;
+    const title = latest.title;
+    const startMs = new Date(latest.startTime).getTime(); // UTC ms
     const durationMs = latest.duration * 1000;
-    const endTime = new Date(startTime.getTime() + durationMs);
-    const now = new Date();
-    const timeRemaining = endTime - now;
+    const endMs = startMs + durationMs;
 
-    if (trackEndTime && now < trackEndTime && startTime < trackEndTime) {
-      console.log("Stale metadata ignored — track already ended.");
-      return;
+    // Update display (support multiple selectors as in your existing code)
+    const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
+    const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
+    if (titleEl) titleEl.textContent = title;
+    if (artistEl) artistEl.textContent = artist;
+
+    // Countdown updater uses UTC-safe milliseconds
+    function updateCountdown() {
+      const nowMs = Date.now();
+      const remaining = endMs - nowMs;
+      const countdownEl = document.getElementById('countdown');
+
+      if (remaining > 0) {
+        const mins = Math.floor(remaining / 60000);
+        const secs = Math.floor((remaining % 60000) / 1000);
+        if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+      } else {
+        if (countdownEl) countdownEl.textContent = '0:00';
+        clearInterval(timer);
+        // Trigger refresh for the next track
+        fetchNowPlaying();
+      }
     }
 
-    trackEndTime = endTime;
-
-    if (trackEndTimeout) clearTimeout(trackEndTimeout);
-
-    if (timeRemaining <= 500) {
-      showMoreMusicSoon();
-      songHasEnded = true;
-      currentTrackID = null;
-      trackEndTime = null;
-    } else {
-      trackEndTimeout = setTimeout(() => {
-        showMoreMusicSoon();
-        songHasEnded = true;
-        currentTrackID = null;
-        trackEndTime = null;
-      }, timeRemaining);
-    }
-
-  } catch (e) {
-    console.error("Now playing error:", e);
-    showMoreMusicSoon();
-    currentTrackID = null;
-    songHasEnded = false;
-    trackEndTime = null;
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  } catch (err) {
+    console.error('Error fetching now playing:', err);
   }
 }
 
