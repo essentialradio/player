@@ -1062,37 +1062,26 @@ body.modal-open {
 }
 
 
-
-/* === Now Playing – progress bar === */
-#np-progress-wrap{
-  position: relative;
-  height: 8px;
-  background: var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-  margin: 8px 0 6px;
+/* Now Playing progress bar */
+#np-progress { user-select:none; }
+#np-progress-rail{
+  width:100%; height:8px; border-radius:999px; overflow:hidden;
+  background: rgba(255,255,255,.15);
+  border: 1px solid var(--border, #333);
+}
+[data-theme="light"] #np-progress-rail{
+  background: rgba(0,0,0,.08);
 }
 #np-progress-bar{
-  width: 0%;
-  height: 100%;
-  background: var(--brand);
-  transition: width 0.2s linear;
+  height:100%; width:0%;
+  background: var(--accent, #00818a);
+  transition: width .2s linear;
 }
 #np-progress-meta{
-  display:flex; gap:8px; font-size:.92em; color: var(--muted);
+  display:flex; justify-content:space-between; gap:12px;
+  font-size:.92em; margin-top:6px; color: var(--muted, #c8d1dc);
 }
-#np-progress-wrap.indeterminate #np-progress-bar{
-  width: 35%;
-  animation: npIndeterminate 1.2s infinite linear;
-}
-@keyframes npIndeterminate{
-  0%{ transform: translateX(-100%); }
-  100%{ transform: translateX(300%); }
-}
-@media (prefers-reduced-motion: reduce){
-  #np-progress-bar{ transition: none; }
-  #np-progress-wrap.indeterminate #np-progress-bar{ animation: none; width: 0; }
-}
+[data-theme="light"] #np-progress-meta{ color: #334155; }
 
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
@@ -4343,14 +4332,16 @@ html[data-theme="light"] #mobileNowBar {
 <button id="mute-toggle">🔊</button>
 </div>
 <div id="now-playing-card" style="position: relative;">
-<!-- Track progress -->
-<div id="np-progress-wrap" aria-label="Track progress" title="Track progress">
-  <div id="np-progress-bar"></div>
-</div>
-<div id="np-progress-meta" aria-live="polite">
-  <span id="np-elapsed">0:00</span>
-  <span aria-hidden="true"> • </span>
-  <span id="np-remaining">–0:00</span>
+<div id="now-playing">Loading current track…</div>
+<!-- Now Playing progress -->
+<div id="np-progress" aria-label="Track progress" style="margin-top:10px;">
+  <div id="np-progress-rail">
+    <div id="np-progress-bar"></div>
+  </div>
+  <div id="np-progress-meta">
+    <span id="np-elapsed">0:00</span>
+    <span id="np-remaining" title="Time remaining">–0:00</span>
+  </div>
 </div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
@@ -5876,7 +5867,6 @@ group.forEach(show => {
         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
         <span style="color:white;font-weight:600;font-size:1.2em;">More music soon</span><br/>
         <span style="color:white;">on Essential Radio</span>`;
-      if (window.bindTrackProgress) bindTrackProgress(latest.startTime, latest.duration);
       document.title = `Essential Radio: Essential listening for Ayrshire College`;
       applyFallbackImmediate();
     }
@@ -9670,87 +9660,105 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-
 <script>
 (() => {
+  const rail = document.getElementById('np-progress-rail');
+  const bar  = document.getElementById('np-progress-bar');
+  const elp  = document.getElementById('np-elapsed');
+  const rem  = document.getElementById('np-remaining');
+
   let rafId = null;
-  let lastKey = '';
+  let trackStart = 0;
+  let trackDurMs = 0;
+  let trackEnd = 0;
+  let nextRefreshTimer = null;
+  let lastSig = "";
 
-  const $bar = () => document.getElementById('np-progress-bar');
-  const $wrap = () => document.getElementById('np-progress-wrap');
-  const $elapsed = () => document.getElementById('np-elapsed');
-  const $remaining = () => document.getElementById('np-remaining');
-
-  function fmtTime(s){
-    if (!isFinite(s) || s < 0) s = 0;
-    const m = Math.floor(s / 60);
-    const ss = Math.floor(s % 60).toString().padStart(2,'0');
-    return `${m}:${ss}`;
+  function toClock(secs){
+    secs = Math.max(0, Math.floor(secs));
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return m + ':' + String(s).padStart(2,'0');
   }
 
-  function tick(startMs, durMs){
+  function tick(){
     const now = Date.now();
-    const end = startMs + durMs;
-    const clampedNow = Math.min(Math.max(now, startMs), end);
-    const elapsed = (clampedNow - startMs) / 1000;
-    const remaining = Math.max(0, (end - clampedNow) / 1000);
-    const pct = durMs > 0 ? ((clampedNow - startMs) / durMs) * 100 : 0;
-
-    const bar = $bar();
-    if (bar) bar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
-    if ($elapsed())   $elapsed().textContent = fmtTime(elapsed);
-    if ($remaining()) $remaining().textContent = `–${fmtTime(remaining)}`;
-
-    if (clampedNow < end) rafId = requestAnimationFrame(() => tick(startMs, durMs));
+    const elapsed = Math.max(0, now - trackStart);
+    const pct = trackDurMs ? Math.min(1, elapsed / trackDurMs) : 0;
+    bar.style.width = (pct * 100).toFixed(2) + '%';
+    elp.textContent = toClock(elapsed / 1000);
+    const remaining = Math.max(0, trackEnd - now) / 1000;
+    rem.textContent = '–' + toClock(remaining);
+    if (pct < 1) rafId = requestAnimationFrame(tick);
   }
 
-  function clearTick(){
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = null;
+  function cancelAnim(){
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
   }
 
-  window.bindTrackProgress = function(startISO, durationSeconds){
+  function scheduleNextRefresh(){
+    if (nextRefreshTimer) clearTimeout(nextRefreshTimer);
+    const now = Date.now();
+    const msLeft = Math.max(0, trackEnd - now);
+    const wait = Math.min(Math.max(msLeft + 400, 1500), 15 * 60 * 1000);
+    nextRefreshTimer = setTimeout(fetchLatestIfChanged, wait);
+  }
+
+  async function fetchLatest(){
     try {
-      clearTick();
-
-      const key = `${startISO}|${durationSeconds}`;
-      if (key === lastKey) return;
-      lastKey = key;
-
-      const wrap = $wrap();
-      const bar = $bar();
-      if (!wrap || !bar) return;
-
-      if (!durationSeconds || !isFinite(durationSeconds) || durationSeconds <= 0){
-        wrap.classList.add('indeterminate');
-        bar.style.width = '0%';
-        if ($elapsed()) $elapsed().textContent = '0:00';
-        if ($remaining()) $remaining().textContent = '–0:00';
-        return;
-      }
-
-      wrap.classList.remove('indeterminate');
-
-      const startMs = new Date(startISO).getTime();
-      const durMs = Math.max(0, durationSeconds * 1000);
-      const startForCalc = isFinite(startMs) ? startMs : (Date.now() - 1);
-
-      tick(startForCalc, durMs);
+      const res = await fetch('/api/latestTrack?_=' + Date.now(), { cache:'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const latest = await res.json();
+      if (!latest || !latest.artist || !latest.title) return;
+      applyLatestTrack(latest);
     } catch(e){
-      console.warn('bindTrackProgress error', e);
+      nextRefreshTimer = setTimeout(fetchLatest, 10000);
     }
-  };
+  }
 
-  window.resetTrackProgress = function(){
-    clearTick();
-    const bar = $bar();
-    if (bar) bar.style.width = '0%';
-    const wrap = $wrap();
-    if (wrap) wrap.classList.remove('indeterminate');
-    if ($elapsed()) $elapsed().textContent = '0:00';
-    if ($remaining()) $remaining().textContent = '–0:00';
-    lastKey = '';
-  };
+  async function fetchLatestIfChanged(){
+    try {
+      const res = await fetch('/api/latestTrack?_=' + Date.now(), { cache:'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const latest = await res.json();
+      const sig = latest && latest.startTime ? (latest.artist+'|'+latest.title+'|'+latest.startTime) : '';
+      if (sig && sig !== lastSig) applyLatestTrack(latest);
+      else scheduleNextRefresh();
+    } catch(e){
+      nextRefreshTimer = setTimeout(fetchLatestIfChanged, 10000);
+    }
+  }
+
+  function applyLatestTrack(latest){
+    const start = Date.parse(latest.startTime);
+    const durMs = Math.max(0, Math.round((+latest.duration || 0) * 1000));
+    if (!isFinite(start) || !durMs) {
+      cancelAnim();
+      bar.style.width = '0%';
+      elp.textContent = '0:00';
+      rem.textContent = '–0:00';
+      rail.style.opacity = .35;
+      return;
+    }
+    rail.style.opacity = 1;
+    trackStart = start;
+    trackDurMs = durMs;
+    trackEnd = start + durMs;
+    lastSig = latest.artist + '|' + latest.title + '|' + latest.startTime;
+    cancelAnim();
+    tick();
+    scheduleNextRefresh();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnim();
+    } else {
+      if (trackDurMs) tick();
+    }
+  });
+
+  fetchLatest();
 })();
 </script>
 
