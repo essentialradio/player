@@ -1061,27 +1061,6 @@ body.modal-open {
   }
 }
 
-/* --- Now Playing progress bar --- */
-.np-progress{
-  width:100%;
-  height:6px;
-  border-radius:999px;
-  background: var(--border);
-  overflow:hidden;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
-}
-.np-progress__bar{
-  height:100%;
-  width:0%;
-  background: var(--accent);
-  transition: width 0.08s linear;
-}
-#npTime{
-  margin-top:6px;
-  font-size: 0.9em;
-  color: var(--muted);
-  text-align:right;
-}
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -4269,6 +4248,31 @@ html[data-theme="light"] #mobileNowBar {
 }
 </style>
 
+<style>
+/* NOW PLAYING PROGRESS – enforced visibility */
+#np-timer{ display:block !important; }
+.np-progress{
+  width:100% !important;
+  height:8px !important;
+  border-radius:999px !important;
+  background: var(--border, rgba(0,0,0,0.12)) !important;
+  overflow:hidden !important;
+  position: relative !important;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06) !important;
+}
+.np-progress__bar{
+  height:100% !important;
+  width:0% !important;
+  background: var(--accent, #0a84ff) !important;
+  transition: width 0.08s linear !important;
+}
+#npTime{
+  margin-top:6px !important;
+  font-size: 0.9em !important;
+  color: var(--muted, #666) !important;
+  text-align:right !important;
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4332,14 +4336,12 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
-
 <div id="np-timer" role="group" aria-label="Track progress" style="margin-top:10px;display:none">
-  <div class="np-progress" aria-hidden="true">
+  <div class="np-progress">
     <div class="np-progress__bar" id="npProgressBar"></div>
   </div>
-  <div class="np-time" id="npTime" aria-live="off">–:–– / –:––</div>
+  <div class="np-time" id="npTime">–:–– / –:––</div>
 </div>
-
 
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
@@ -5890,8 +5892,6 @@ async function fetchNowPlaying() {
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
 
-    try { if (typeof setTrackForCountdown === "function") setTrackForCountdown(latest); } catch {}
-
     // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
@@ -5901,7 +5901,8 @@ async function fetchNowPlaying() {
     if (nowPlaying) {
       nowPlaying.innerHTML = `
         <span style="color:#fed351;">Now Playing:</span>
-        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+ try { if (typeof setTrackForCountdown==="function") setTrackForCountdown(latest); } catch {}
+       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
@@ -9624,42 +9625,7 @@ if ('serviceWorker' in navigator) {
         var opts = Array.from(hourEl.options).map(function(o){ return o.value; });
         if (opts.indexOf(prevHour) !== -1){
           hourEl.value = prevHour;
-        } else if (typeof updateHourDropdown === 'function'){
-          try { updateHourDropdown(dateEl.value, null); } catch(_) {}
-        }
-      }
-
-      // Restore search
-      if (searchEl) searchEl.value = prevSearch;
-
-      if (typeof renderTable === 'function'){
-        try { renderTable((typeof fullData!=='undefined'&&fullData) || (window.fullData||[])); } catch(_){}
-      }
-    }catch(e){
-      console.warn('[SongSearch] Refresh failed:', e);
-    }finally{
-      var btn = document.getElementById('songsearchRefreshBtn');
-      if (btn){ btn.disabled = false; btn.textContent = 'Refresh'; }
-    }
-  }
-
-  function init(){
-    var btn = document.getElementById('songsearchRefreshBtn');
-    if (btn && !btn.__wired){
-      btn.addEventListener('click', function(){ unifiedRefresh(); });
-      btn.__wired = true;
-    }
-  }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-})();
-</script>
-
-<script>
+        } else if (typeof updateHourDropdown ==<script>
 (function(){
   let rafId = null;
   let currentKey = null;
@@ -9683,7 +9649,8 @@ if ('serviceWorker' in navigator) {
 
   function tick(){
     const now = Date.now();
-    const pct = Math.max(0, Math.min(1, (now - startMs) / (endMs - startMs)));
+    const denom = (endMs - startMs);
+    const pct = denom > 0 ? Math.max(0, Math.min(1, (now - startMs) / denom)) : 0;
     if (bar()) bar().style.width = (pct*100).toFixed(2) + '%';
 
     const elapsed = ((now - startMs)/1000);
@@ -9735,6 +9702,41 @@ if ('serviceWorker' in navigator) {
   };
 })();
 </script>
+= 'function'){
+          try { updateHourDropdown(dateEl.value, null); } catch(_) {}
+        }
+      }
+
+      // Restore search
+      if (searchEl) searchEl.value = prevSearch;
+
+      if (typeof renderTable === 'function'){
+        try { renderTable((typeof fullData!=='undefined'&&fullData) || (window.fullData||[])); } catch(_){}
+      }
+    }catch(e){
+      console.warn('[SongSearch] Refresh failed:', e);
+    }finally{
+      var btn = document.getElementById('songsearchRefreshBtn');
+      if (btn){ btn.disabled = false; btn.textContent = 'Refresh'; }
+    }
+  }
+
+  function init(){
+    var btn = document.getElementById('songsearchRefreshBtn');
+    if (btn && !btn.__wired){
+      btn.addEventListener('click', function(){ unifiedRefresh(); });
+      btn.__wired = true;
+    }
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
