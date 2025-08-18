@@ -5829,7 +5829,7 @@ async function fetchNowPlaying() {
       fetchArtwork(`${artist} - ${title}`);
     }
 
-    const latestRes = await fetch('https://essentialradio.github.io/player/latestTrack.json?_=' + Date.now());
+    const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) return;
