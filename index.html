@@ -9698,6 +9698,27 @@ if ('serviceWorker' in navigator) {
     const rEl  = elRemain();
     if (!fill || !eEl || !rEl || !durationMs) { return; }
 
+    // Compute time with optional skew
+    const now = Date.now();
+    const elapsed = Math.max(0, (now - startMs) / 1000);
+    const remaining = Math.max(0, durationMs/1000 - elapsed);
+    const pct = Math.max(0, Math.min(1, elapsed / (durationMs/1000)));
+
+    fill.style.width = (pct * 100).toFixed(3) + '%';
+    eEl.textContent = mmss(elapsed);
+    rEl.textContent = '-' + mmss(remaining);
+
+    if (pct >= 1) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+      if (typeof onFinish === 'function') {
+        onFinish();
+      }
+      return;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
     const now = Date.now();
     const elapsed = Math.max(0, (now - startMs) / 1000);
     const remaining = Math.max(0, durationMs/1000 - elapsed);
@@ -9720,10 +9741,32 @@ if ('serviceWorker' in navigator) {
 
   window.updateNowPlayingProgress = function (startISO, durationSec, opts = {}) {
     try {
-      startMs    = new Date(startISO).getTime();
-      durationMs = Math.max(0, Math.round(durationSec * 1000));
-      onFinish   = opts.onFinish || null;
-      if (!isFinite(startMs) || !durationMs) return;
+      // Accept ISO with or without timezone. If no Z/offset, assume UTC.
+      let iso = String(startISO || '').trim();
+      if (iso && !/[zZ]|[+\-]\d{2}:\d{2}$/.test(iso) && /^\d{4}-\d{2}-\d{2}T/.test(iso)) {
+        iso += 'Z';
+      }
+      let parsed = new Date(iso);
+      let parsedMs = parsed.getTime();
+
+      // If still invalid, bail
+      if (!isFinite(parsedMs)) return;
+
+      // Time skew correction (from opts.skewMs, default 0)
+      const skewMs = Number.isFinite(opts.skewMs) ? opts.skewMs : 0;
+
+      startMs    = parsedMs;
+      durationMs = Math.max(0, Math.round((+durationSec || 0) * 1000));
+      onFinish   = typeof opts.onFinish === 'function' ? opts.onFinish : null;
+      if (!durationMs) return;
+
+      // If start time looks slightly in the future due to skew, clamp
+      const clientNow = Date.now();
+      const nowSkewed = clientNow + skewMs;
+      if (startMs - nowSkewed > 0 && startMs - nowSkewed < 5 * 60 * 1000) {
+        startMs = nowSkewed; // treat as started now
+      }
+
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
     } catch (e) {
@@ -9737,11 +9780,33 @@ if ('serviceWorker' in navigator) {
       const j = await res.json();
       const npProg = document.getElementById('np-progress');
 
-      // Hide the bar if we don't have a real playable track
+      // Hide if not a real track
       if (!j || !j.artist || !j.title || !j.startTime || !j.duration) {
         if (npProg) npProg.classList.add('hidden');
         return;
       }
+
+      // Estimate server/client skew
+      let skewMs = 0;
+      try {
+        const srvDate = res.headers.get('Date');
+        if (srvDate) {
+          const serverNow = new Date(srvDate).getTime();
+          const clientNow = Date.now();
+          if (isFinite(serverNow)) skewMs = serverNow - clientNow;
+        }
+      } catch (_) {}
+
+      if (npProg) npProg.classList.remove('hidden');
+      window.updateNowPlayingProgress(j.startTime, j.duration, {
+        skewMs,
+        onFinish: () => { initFromAPI(); }
+      });
+    } catch (_) {
+      const npProg = document.getElementById('np-progress');
+      if (npProg) npProg.classList.add('hidden');
+    }
+  }
 
       // Show the bar and run the countdown
       if (npProg) npProg.classList.remove('hidden');
