@@ -9828,6 +9828,29 @@ if (npProgress) npProgress.style.display = 'none';
 
   window.addEventListener('load', initFromAPI, { once: true, passive: true });
 })();
+
+// Observe #now-playing text and suppress placeholder within the grace window
+(function() {
+  try {
+    const target = document.getElementById('now-playing');
+    if (!target || typeof MutationObserver === 'undefined') return;
+    const obs = new MutationObserver(() => {
+      try {
+        const txt = (target.textContent || '').trim();
+        if (/more music soon/i.test(txt)) {
+          if (Date.now() - lastEndTime < 20000) {
+            if (lastGoodArtist && lastGoodTitle) {
+              target.textContent = lastGoodArtist + ' – ' + lastGoodTitle;
+            }
+            const npProgress = document.getElementById('np-progress');
+            if (npProgress) npProgress.style.display = 'none';
+          }
+        }
+      } catch (_) {}
+    });
+    obs.observe(target, { characterData: true, childList: true, subtree: true });
+  } catch (_) {}
+})();
 </script>
 </body><style>
 /* === Desktop modal centring fix === */
