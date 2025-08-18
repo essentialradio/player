@@ -4250,8 +4250,8 @@ html[data-theme="light"] #mobileNowBar {
 
 
 <style id="np-progress-styles">
-/* Hide progress container when no track */
-#np-progress.hidden { display: none !important; }
+/* initial hide for progress bar */
+#np-progress{display:none;}
 
 /* === Now Playing progress (countdown bar) === */
 #np-progress {
@@ -9733,29 +9733,34 @@ if ('serviceWorker' in navigator) {
   };
 
   async function initFromAPI() {
-  try {
-    const res = await fetch('/api/latestTrack?_=' + Date.now());
-    const j = await res.json();
-    const npDiv = document.getElementById('np-progress');
+    try {
+      const res = await fetch('/api/latestTrack?_=' + Date.now());
+      const j = await res.json();
+      const bar = document.getElementById('np-progress');
 
-    // Hide if "more music soon" or invalid track metadata
-    const isInvalid = !j || !j.startTime || !j.duration || !j.artist || !j.title;
-    const isFiller  = !isInvalid && typeof j.title === 'string' && j.title.toLowerCase().includes('more music soon');
+      // Hide the bar if we don't have a proper track || during 'More music soon'
+      const isFiller = /more music soon/i.test((j && j.title) || '') || /more music soon/i.test((j && j.artist) || '');
+      const noTrack = !j || !j.startTime || !j.duration || j.duration <= 0;
+      if (bar && (isFiller || noTrack)) {
+        bar.style.display = "none";
+        // Also reset any visible values
+        const fill = bar.querySelector('.np-bar-fill'); 
+        const el = bar.querySelector('#np-elapsed');
+        const rm = bar.querySelector('#np-remaining');
+        if (fill) fill.style.width = '0%';
+        if (el) el.textContent = '0:00';
+        if (rm) rm.textContent = '-0:00';
+        return;
+      }
 
-    if (isInvalid || isFiller) {
-      if (npDiv) npDiv.classList.add('hidden');
-      return;
-    }
-
-    if (npDiv) npDiv.classList.remove('hidden');
-    window.updateNowPlayingProgress(j.startTime, j.duration, {
-      onFinish: () => { initFromAPI(); }
-    });
-  } catch (_) {
-    const npDiv = document.getElementById('np-progress');
-    if (npDiv) npDiv.classList.add('hidden');
+      // Show + run the progress bar for a real track
+      if (bar) bar.style.display = "block";
+      window.updateNowPlayingProgress(j.startTime, j.duration, {
+        onFinish: () => { initFromAPI(); }
+      });
+    } catch (_) {}
   }
-}});
+});
     } catch (_) {}
   }
 
