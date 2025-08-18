@@ -5793,7 +5793,20 @@ async function fetchNowPlaying() {
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
 
-    // Update display (support multiple selectors as in your existing code)
+    // Update main Now Playing block
+    const nowPlaying = document.getElementById('now-playing');
+    if (nowPlaying) {
+      nowPlaying.innerHTML = `
+        <span style="color:#fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
+        <span style="color:white;">by ${artist}</span>`;
+    }
+    // Update document title and artwork (if helper exists)
+    try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
+    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+
+    // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
     const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
     if (titleEl) titleEl.textContent = title;
