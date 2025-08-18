@@ -9701,7 +9701,8 @@ if ('serviceWorker' in navigator) {
     const remaining = Math.max(0, durationMs/1000 - elapsed);
     const pct = Math.max(0, Math.min(1, elapsed / (durationMs/1000)));
 
-    fill.style.width = (pct * 100).toFixed(3) + '%';
+    
+    try { if (remaining <= 5 && remaining > 0) { startRapidPolling(15000, 500); } } catch (e) {}fill.style.width = (pct * 100).toFixed(3) + '%';
     eEl.textContent = mmss(elapsed);
     rEl.textContent = '-' + mmss(remaining);
 
@@ -9783,6 +9784,7 @@ if ('serviceWorker' in navigator) {
             npDiv.textContent = lastGoodArtist + ' – ' + lastGoodTitle;
           }
 if (npProgress) npProgress.style.display = 'none';
+          try { startRapidPolling(15000, 500); } catch (e) {}
           return;
         } else {
           if (npProgress) npProgress.style.display = 'none';
@@ -9890,6 +9892,59 @@ if (npProgress) npProgress.style.display = 'none';
   // Extra wake-ups
   window.addEventListener('focus', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
   window.addEventListener('pageshow', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
+
+  // --- Adaptive burst polling: reset immediately when new metadata arrives ---
+  let rapidTimer = null;
+  let rapidUntil = 0;
+
+  function stopRapidPolling() {
+    if (rapidTimer) {
+      clearInterval(rapidTimer);
+      rapidTimer = null;
+    }
+    rapidUntil = 0;
+  }
+
+  async function fetchLatestAndApply() {
+    try {
+      const res = await fetch('/api/latestTrack?_=' + Date.now());
+      const j = await res.json();
+      if (!j || !j.startTime || !j.duration) return false;
+
+      const metaArtist = j.artist || '';
+      const metaTitle  = j.title  || '';
+      const metaKey    = metaArtist + '|' + metaTitle;
+
+      const sameStart = (typeof lastStartISO !== 'undefined' && lastStartISO) ? (j.startTime === lastStartISO) : false;
+      const sameMeta  = (typeof lastMetaKey  !== 'undefined' && lastMetaKey)  ? (metaKey === lastMetaKey)     : false;
+
+      if (!sameStart || !sameMeta) {
+        window.updateNowPlayingProgress(j.startTime, j.duration, {
+          onFinish: () => { initFromAPI(); },
+          metaArtist: j.artist,
+          metaTitle: j.title
+        });
+        stopRapidPolling();
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  function startRapidPolling(msWindow = 15000, interval = 500) {
+    const now = Date.now();
+    rapidUntil = now + msWindow;
+    if (rapidTimer) return;
+    rapidTimer = setInterval(async () => {
+      const now = Date.now();
+      if (now > rapidUntil) {
+        stopRapidPolling();
+        return;
+      }
+      const changed = await fetchLatestAndApply();
+      if (changed) return;
+    }, interval);
+  }
 </script>
 </body><style>
 /* === Desktop modal centring fix === */
