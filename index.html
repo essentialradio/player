@@ -1061,6 +1061,27 @@ body.modal-open {
   }
 }
 
+/* --- Now Playing progress bar --- */
+.np-progress{
+  width:100%;
+  height:6px;
+  border-radius:999px;
+  background: var(--border);
+  overflow:hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+}
+.np-progress__bar{
+  height:100%;
+  width:0%;
+  background: var(--accent);
+  transition: width 0.08s linear;
+}
+#npTime{
+  margin-top:6px;
+  font-size: 0.9em;
+  color: var(--muted);
+  text-align:right;
+}
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -4312,6 +4333,15 @@ html[data-theme="light"] #mobileNowBar {
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
 
+<div id="np-timer" role="group" aria-label="Track progress" style="margin-top:10px;display:none">
+  <div class="np-progress" aria-hidden="true">
+    <div class="np-progress__bar" id="npProgressBar"></div>
+  </div>
+  <div class="np-time" id="npTime" aria-live="off">–:–– / –:––</div>
+</div>
+
+
+
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
   
@@ -5859,6 +5889,8 @@ async function fetchNowPlaying() {
     const startMs = new Date(latest.startTime).getTime(); // UTC ms
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
+
+    try { if (typeof setTrackForCountdown === "function") setTrackForCountdown(latest); } catch {}
 
     // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
@@ -9627,6 +9659,82 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+<script>
+(function(){
+  let rafId = null;
+  let currentKey = null;
+  let startMs = 0, endMs = 0, durSec = 0;
+
+  const bar  = () => document.getElementById('npProgressBar');
+  const time = () => document.getElementById('npTime');
+  const wrap = () => document.getElementById('np-timer');
+
+  function fmt(s){
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s/60);
+    const ss = Math.floor(s%60);
+    return m + ':' + String(ss).padStart(2,'0');
+  }
+
+  function stopLoop(){
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  function tick(){
+    const now = Date.now();
+    const pct = Math.max(0, Math.min(1, (now - startMs) / (endMs - startMs)));
+    if (bar()) bar().style.width = (pct*100).toFixed(2) + '%';
+
+    const elapsed = ((now - startMs)/1000);
+    if (time()) time().textContent = `${fmt(elapsed)} / ${fmt(durSec)}`;
+
+    if (now >= endMs - 250) {
+      if (bar()) bar().style.width = '100%';
+      stopLoop();
+      return;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  window.setTrackForCountdown = function(latest){
+    try{
+      if (!latest || !latest.startTime || !latest.duration || latest.duration <= 0) {
+        stopLoop();
+        if (wrap()) wrap().style.display = 'none';
+        return;
+      }
+      const key = [latest.artist, latest.title, latest.startTime, latest.duration].join('||');
+      if (key === currentKey && rafId) return;
+      currentKey = key;
+
+      const start = new Date(latest.startTime).getTime();
+      if (!isFinite(start)) {
+        if (wrap()) wrap().style.display = 'none';
+        return;
+      }
+      startMs = start;
+      durSec  = Number(latest.duration);
+      endMs   = startMs + durSec*1000;
+
+      stopLoop();
+      if (Date.now() < startMs) {
+        if (bar()) bar().style.width = '0%';
+        if (time()) time().textContent = `0:00 / ${fmt(durSec)}`;
+        if (wrap()) wrap().style.display = 'block';
+        const delay = startMs - Date.now();
+        setTimeout(()=> { rafId = requestAnimationFrame(tick); }, Math.min(delay, 2000));
+      } else {
+        if (wrap()) wrap().style.display = 'block';
+        rafId = requestAnimationFrame(tick);
+      }
+    } catch(e){
+      stopLoop();
+      if (wrap()) wrap().style.display = 'none';
+    }
+  };
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
