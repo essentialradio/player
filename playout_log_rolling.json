@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T21:00:00Z",
-    "Scheduled Time": "22:02",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3474,
-    "Full Duration (s)": 3477,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-03T22:00:00Z",
     "Scheduled Time": "23:00",
     "Displayed Time": "",
@@ -44821,6 +44810,17 @@
     "Title": "A Little More Lost",
     "Duration (s)": 159,
     "Full Duration (s)": 162,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-18T16:00:00Z",
+    "Scheduled Time": "17:02",
+    "Displayed Time": "",
+    "Artist": "Charlie Puth",
+    "Title": "Light Switch",
+    "Duration (s)": 180,
+    "Full Duration (s)": 186,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
