@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-03T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3549,
-    "Full Duration (s)": 3550,
-    "Duration (mins)": 59,
-    "Full Duration (mins)": 59
-  },
-  {
     "Hour": "2025-08-03T14:00:00Z",
     "Scheduled Time": "14:59",
     "Displayed Time": "",
@@ -44073,6 +44062,17 @@
     "Title": "Paparazzi",
     "Duration (s)": 195,
     "Full Duration (s)": 206,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-18T11:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 164,
+    "Full Duration (s)": 168,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
