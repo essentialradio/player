@@ -4351,7 +4351,7 @@ html[data-theme="light"] #mobileNowBar {
 </svg></a></div>
 
 </div>
-<img alt="Artwork" class="loaded" id="artwork" src="ERLogo2.png"/>
+<img alt="Artwork" class="loaded" id="artwork" src="Essential Radio Logo.png"/>
 </div>
 </div>
 <!-- RIGHT PANEL -->
@@ -5904,7 +5904,7 @@ function prependRecentFromTrack(track) {
     const img = document.createElement('img');
     img.alt = `Cover for ${name}`;
     img.loading = 'lazy';
-    img.src = 'ERLogo2.png';
+    img.src = 'Essential Radio Logo.png';
 
     const info = document.createElement('span');
     info.className = 'info';
@@ -6107,7 +6107,7 @@ if (remaining > 0) {
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
       const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'ERLogo2.png';
+      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
       const lastfmIcon = `
@@ -6143,7 +6143,7 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
-      artworkImg.src = 'ERLogo2.png';
+      artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
         const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
@@ -6176,29 +6176,15 @@ if (remaining > 0) {
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
-      artworkImg.src = 'ERLogo2.png';
+      artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded');
       artworkImg.classList.add('fallback');
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
+      if (artworkCache[query]) return artworkCache[query];
       try {
-        if (artworkCache[query]) return artworkCache[query];
-      } catch(e) {}
-      try {
-        const url = `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1&country=gb`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("iTunes HTTP " + res.status);
-        const d = await res.json();
-        const raw = d && d.results && d.results[0] && (d.results[0].artworkUrl100 || d.results[0].artworkUrl60 || d.results[0].artworkUrl30);
-        const art = raw ? raw.replace(/\/(\d+x\d+)bb\//, "/600x600bb/") : "";
-        if (art) {
-          try { artworkCache[query] = art; } catch {}
-          return art;
-        }
-      } catch(e) { /* ignore */ }
-      return "";
-    }&limit=1`);
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
         const d = await res.json();
         if (d.results[0]?.artworkUrl100) {
           return d.results[0].artworkUrl100.replace('100x100', '300x300');
@@ -9795,6 +9781,121 @@ if ('serviceWorker' in navigator) {
   } else {
     init();
   }
+})();
+</script>
+
+
+<script>
+// === Override getTrackArtwork for stronger matches (country=gb, entity=song) ===
+(function(){
+  const originalGet = window.getTrackArtwork;
+  const cache = {};
+  window.getTrackArtwork = async function(query){
+    const q = String(query || '').replace(/\s+–\s+/g, ' ').trim();
+    if (!q) return null;
+    if (cache[q]) return cache[q];
+    try {
+      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=1&country=gb`);
+      if (res.ok) {
+        const js = await res.json();
+        if (js && js.results && js.results[0] && (js.results[0].artworkUrl100 || js.results[0].artworkUrl60)) {
+          const raw = js.results[0].artworkUrl100 || js.results[0].artworkUrl60;
+          const url = raw.replace(/\/(\d+x\d+)bb\//, '/300x300bb/');
+          cache[q] = url;
+          return url;
+        }
+      }
+    } catch(e){ /* ignore and fall back */ }
+    if (typeof originalGet === 'function') {
+      try { const u = await originalGet(query); if (u) { cache[q] = u; return u; } } catch {}
+    }
+    return null;
+  };
+})();
+
+// === Seed latest 5 recent items from rolling log using existing renderer ===
+(function(){
+  const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+  const MAX = 5;
+  const STORAGE_KEY = 'recentSeed5_v1';
+
+  const norm = s => (s || '').toString().trim();
+  function toTrack(it){
+    // Build endMs from Hour + Scheduled Time + Duration (s) if available; else use startMs
+    let startMs = Date.now();
+    try {
+      if (it["Hour"] && it["Scheduled Time"]) {
+        const hourDate = new Date(it["Hour"]);
+        const parts = String(it["Scheduled Time"]).split(':').map(Number);
+        const sh = parts[0] || 0, sm = parts[1] || 0;
+        const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh, sm, 0, 0);
+        startMs = d.getTime();
+      }
+    } catch {}
+    const durMs = (Number(it["Duration (s)"]) || 0) * 1000;
+    const endMs = startMs + durMs;
+    return {
+      artist: norm(it.Artist),
+      title: norm(it.Title),
+      startMs,
+      endMs,
+      endedAt: endMs || startMs
+    };
+  }
+
+  function clearRecent(){
+    const list = document.getElementById('recent-list');
+    if (list) list.innerHTML = '';
+  }
+
+  function replay(list){
+    if (typeof window.prependRecentFromTrack !== 'function') return;
+    // Prepend each item so newest ends up on top; insert oldest first
+    const last5 = list.slice(0, MAX).reverse();
+    for (const t of last5) {
+      window.prependRecentFromTrack(t);
+    }
+    // Trim to MAX if the page logic uses a different cap
+    const ul = document.getElementById('recent-list');
+    if (ul) { while (ul.children.length > MAX) ul.lastElementChild?.remove(); }
+  }
+
+  function loadCache(){
+    try { const raw = localStorage.getItem(STORAGE_KEY); const arr = raw?JSON.parse(raw):[]; return Array.isArray(arr)?arr:[]; } catch { return []; }
+  }
+  function saveCache(items){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, MAX))); } catch {}
+  }
+
+  async function fetchLog(){
+    const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }
+
+  async function seed(){
+    // 1) Quick paint from cache via your renderer
+    const cached = loadCache();
+    if (cached.length) { clearRecent(); replay(cached); }
+
+    // 2) Authoritative fetch from rolling log
+    try {
+      const data = await fetchLog();
+      const parsed = Array.isArray(data) ? data.slice(-50).reverse() : [];
+      const tracks = parsed
+        .map(toTrack)
+        .filter(t => t.artist && t.title)
+        .sort((a,b) => (b.endMs||b.endedAt||0) - (a.endMs||a.endedAt||0))
+        .slice(0, MAX);
+      if (tracks.length) {
+        clearRecent();
+        replay(tracks);
+        saveCache(tracks);
+      }
+    } catch(e){ /* keep cached view if log fails */ }
+  }
+
+  document.addEventListener('DOMContentLoaded', seed);
 })();
 </script>
 
