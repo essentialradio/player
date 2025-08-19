@@ -5950,12 +5950,6 @@ if (remaining > 0) {
         if (countdownEl) countdownEl.textContent = '0:00';
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
-        // Reset to placeholder after hitting zero
-        setTimeout(() => {
-          const cd = document.getElementById('countdown');
-          if (cd) cd.textContent = '--:--';
-        }, 1000)
-
         // Grace window before showing fallback to avoid micro-flash between sweepers and next track
         const GRACE_MS = 2500;
         const graceUntil = Date.now() + GRACE_MS;
