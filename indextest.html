@@ -5880,8 +5880,6 @@ window._npActiveKey = window._npActiveKey || null;
 window._npActiveTrack = window._npActiveTrack || null;
 window._npEndHook = window._npEndHook || null;
 
-// Build a card matching existing markup (time badge, cover, Artist – Title, Last.fm icon).
-// Non-async to avoid parser issues; artwork swapped in later if available.
 function prependRecentFromTrack(track) {
   try {
     if (!track || !track.artist || !track.title) return;
@@ -5906,7 +5904,7 @@ function prependRecentFromTrack(track) {
     const img = document.createElement('img');
     img.alt = `Cover for ${name}`;
     img.loading = 'lazy';
-    img.src = 'Essential Radio Logo.png'; // instant fallback
+    img.src = 'Essential Radio Logo.png';
 
     const info = document.createElement('span');
     info.className = 'info';
@@ -5932,22 +5930,19 @@ function prependRecentFromTrack(track) {
     const MAX = 8;
     while (list.children.length > MAX) list.lastElementChild?.remove();
 
-    // Non-blocking artwork fetch (only if helper exists)
     if (typeof getTrackArtwork === 'function') {
       Promise.resolve(getTrackArtwork(name))
         .then(url => { if (url) img.src = url; })
         .catch(() => {});
     }
-  } catch (e) {
-    console.error('prependRecentFromTrack error', e);
-  }
+  } catch (e) { console.error('prependRecentFromTrack error', e); }
 }
 
-// Seed recent list from API (shared log)
 async function seedRecentFromServer() {
   try {
     const r = await fetch('/api/recent?_=' + Date.now(), { cache: 'no-store' });
     const items = await r.json();
+    if (!Array.isArray(items) || items.length === 0) return; // don't wipe out instant items
     const list = document.getElementById('recent-list');
     if (!list) return;
     list.innerHTML = '';
@@ -5972,7 +5967,7 @@ async function fetchNowPlaying() {
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
 
-    // If this track already ended, treat as break (prevents last-track ghost during refresh)
+    // If this track already ended, it's a break: avoid ghosting and don't touch recent UI
     if (Date.now() > endMs) {
       try { if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon(); } catch(e){}
       return;
@@ -5983,18 +5978,14 @@ async function fetchNowPlaying() {
     const trackKey = `${artist}||${title}||${startMs}`;
 window._npLastKey = trackKey;
 
-// Only handle transitions if the track actually changed
+// === Recently Played flow (no GitHub) ===
 if (window._npActiveKey !== trackKey) {
-  // If there WAS a previous active track, move it to Recently Played now
   if (window._npActiveTrack) {
     prependRecentFromTrack(window._npActiveTrack);
   }
-
-  // Set new active track
   window._npActiveKey = trackKey;
   window._npActiveTrack = { artist, title, startMs, endMs };
 
-  // Schedule a one-shot hook for the exact end time
   try { if (window._npEndHook) clearTimeout(window._npEndHook); } catch(e){}
   window._npEndHook = setTimeout(() => {
     if (window._npActiveKey === trackKey) {
@@ -6004,9 +5995,7 @@ if (window._npActiveKey !== trackKey) {
         duration: Math.round((endMs - startMs)/1000),
         endedAt: Date.now()
       };
-      // UI update first
       prependRecentFromTrack(finished);
-      // Persist to API (best-effort)
       try {
         fetch('/api/recent', {
           method: 'POST',
@@ -6014,16 +6003,13 @@ if (window._npActiveKey !== trackKey) {
           body: JSON.stringify(finished)
         }).catch(()=>{});
       } catch {}
-      // Clear active; we’re between tracks now
       window._npActiveKey = null;
       window._npActiveTrack = null;
     }
   }, Math.max(0, endMs - Date.now()));
 } else {
-  // Same track; keep any timing state fresh, but do not touch Recently Played
-  window._npLastTiming = { startMs, endMs };
+  // Same track; do not touch Recently Played
 }
-
     // Update main Now Playing block
     const nowPlaying = document.getElementById('now-playing');
     if (nowPlaying) {
@@ -6062,13 +6048,9 @@ if (remaining > 0) {
         const mins = Math.floor(remaining / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-      } 
-        const tr = document.getElementById('track-remaining');
-        if (tr) tr.textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
-else {
-        if (countdownEl) countdownEl.textContent = '0:00';
-        const tr = document.getElementById('track-remaining');
-        if (tr) { tr.textContent = '0:00'; setTimeout(()=>{ const el=document.getElementById('track-remaining'); if (el) el.textContent='--:--'; }, 1000); }
+        const tr=document.getElementById('track-remaining'); if (tr) tr.textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
+      } else {
+        if (countdownEl) countdownEl.textContent = '0:00'; const tr=document.getElementById('track-remaining'); if (tr) { tr.textContent = '0:00'; setTimeout(()=>{ const el=document.getElementById('track-remaining'); if (el) el.textContent='--:--'; }, 1000);}
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
         // Immediately show fallback while we wait for the next ingest
@@ -6109,7 +6091,7 @@ else {
 
 
 
-    async function fetchRecentFromGitHub() {
+    async function fetchRecentFromGitHub_DISABLED() {
   try {
     const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
     const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
@@ -6224,14 +6206,14 @@ function stopIntervals() {
 
 // Always fetch once on page load
 fetchNowPlaying();
-fetchRecentFromGitHub();
+// fetchRecentFromGitHub disabled; using /api/recent only;
 startIntervals();
 
 // On tab visibility change, only run when visible
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
     fetchNowPlaying();
-    fetchRecentFromGitHub();
+    // fetchRecentFromGitHub disabled; using /api/recent only;
     startIntervals();
   } else {
     stopIntervals();
@@ -6428,12 +6410,12 @@ window.addEventListener('keydown', function(e) {
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
     fetchNowPlaying();
-    fetchRecentFromGitHub();
+    // fetchRecentFromGitHub disabled; using /api/recent only;
   }
 });
 window.addEventListener('focus', () => {
   fetchNowPlaying();
-  fetchRecentFromGitHub();
+  // fetchRecentFromGitHub disabled; using /api/recent only;
 });
 
 // === Now Playing Manual Refresh ===
@@ -6442,7 +6424,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   // Immediately fetch the latest now playing info
   fetchNowPlaying();
   // Also refresh the recent songs list
-  fetchRecentFromGitHub();
+  // fetchRecentFromGitHub disabled; using /api/recent only;
 });
 </script>
 <script>
