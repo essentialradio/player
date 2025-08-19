@@ -5891,6 +5891,12 @@ async function fetchNowPlaying() {
     const startMs = new Date(latest.startTime).getTime(); // UTC ms
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
+
+    // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
+    if (Date.now() > endMs) {
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+      return;
+    }
     // Show progress bar while a valid track is playing
     try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
 // Track identity (to detect when a NEW track arrives)
@@ -9729,15 +9735,6 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-// Attempt to reconstruct on load from sessionStorage
-(function(){
-  try {
-    const cached = JSON.parse(sessionStorage.getItem('npLast')||'null');
-    if (!cached) return;
-    window._npLastTiming = { startMs: cached.startMs, endMs: cached.endMs };
-    startBarAnimation(cached.startMs, cached.endMs);
-  } catch(e){}
-})();
 </script>
 </body><style>
 /* === Desktop modal centring fix === */
