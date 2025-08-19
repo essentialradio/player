@@ -9786,152 +9786,113 @@ if ('serviceWorker' in navigator) {
 
 
 <script>
-// === Recently Played: Latest 5 with time + artwork ===
+// === Recent 5 seeded via existing renderer (prependRecentFromTrack) ===
 (function(){
-  const MAX_ITEMS = 5;
   const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-  const STORAGE_KEY = 'recentTracks_v2_5'; // cache key for this 5-item variant
+  const MAX_ITEMS = 5;
+  const CACHE_KEY = 'recent5_seed_v1';
 
-  const norm = s => (s || '').toString().trim();
-  const toKey = t => `${norm(t.artist).toLowerCase()}||${norm(t.title).toLowerCase()}||${t.startMs||''}`;
-
-  function formatTime(ms){
-    try {
-      return new Date(ms).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } catch { return ''; }
-  }
-
-  function renderSkeletons(){
-    const container = document.getElementById('recent-list');
-    if (!container) return;
-    container.innerHTML = '';
-    for (let i=0;i<MAX_ITEMS;i++){
-      const row = document.createElement('div');
-      row.className = 'recent-item';
-      row.innerHTML = `
-        <div class="recent-art" style="width:40px;height:40px;border-radius:6px;background:#222;opacity:.5;"></div>
-        <div class="recent-meta" style="flex:1;">
-          <div class="artist" style="height:12px;background:#2a2a2a;border-radius:4px;margin-bottom:6px;opacity:.6;"></div>
-          <div class="title" style="height:12px;background:#2a2a2a;border-radius:4px;width:70%;opacity:.6;"></div>
-        </div>
-        <div class="recent-time" style="width:54px;height:12px;background:#2a2a2a;border-radius:4px;opacity:.6;margin-left:8px;"></div>
-      `;
-      container.appendChild(row);
-    }
-  }
-
-  function render(list){
-    const container = document.getElementById('recent-list');
-    if (!container) return;
-    container.innerHTML = '';
-    list.slice(0, MAX_ITEMS).forEach(t => {
-      const art = t.artwork || 'ERLogo2.png';
-      const row = document.createElement('div');
-      row.className = 'recent-item';
-      row.innerHTML = `
-        <img class="recent-art" src="${art}" alt="Album artwork" referrerpolicy="no-referrer">
-        <div class="recent-meta">
-          <div class="artist">${norm(t.artist)}</div>
-          <div class="title">${norm(t.title)}</div>
-        </div>
-        <div class="recent-time" style="margin-left:auto;opacity:.9;">${formatTime(t.startMs)}</div>
-      `;
-      container.appendChild(row);
-    });
-  }
-
-  async function itunesArt(artist, title){
-    const q = encodeURIComponent(`${artist} ${title}`.trim());
-    if (!q) return null;
-    try {
-      const r = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`);
-      if (!r.ok) return null;
-      const j = await r.json();
-      if (j && j.results && j.results.length){
-        const raw = j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30 || '';
-        return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : null;
-      }
-    } catch {}
-    return null;
-  }
-
-  function parseLog(data){
-    const items = [];
-    if (!Array.isArray(data)) return items;
-    for (const it of data){
-      const artist = norm(it.Artist);
-      const title = norm(it.Title);
-      if (!artist || !title) continue;
-      let startMs = Date.now();
-      try {
-        if (it["Hour"] && it["Scheduled Time"]) {
-          const hourDate = new Date(it["Hour"]);
-          const [sh, sm] = String(it["Scheduled Time"]).split(':').map(Number);
-          const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh||0, sm||0, 0, 0);
-          startMs = d.getTime();
-        }
-      } catch {}
-      items.push({ artist, title, startMs });
-    }
-    // latest first
-    return items.sort((a,b) => (b.startMs||0) - (a.startMs||0));
-  }
+  const norm = s => (s||'').toString().trim();
 
   function loadCache(){
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(CACHE_KEY);
       const arr = raw ? JSON.parse(raw) : [];
       return Array.isArray(arr) ? arr : [];
     } catch { return []; }
   }
   function saveCache(list){
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(0, MAX_ITEMS))); } catch {}
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify(list.slice(0, MAX_ITEMS))); } catch {}
   }
 
-  async function fetchLog(){
-    const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache:'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
+  function clearList(){
+    const list = document.getElementById('recent-list');
+    if (list) list.innerHTML = '';
   }
 
-  async function buildFromLog(){
-    const data = await fetchLog();
-    const parsed = parseLog(data).slice(0, MAX_ITEMS);
-    // Enrich with artwork in parallel
-    const arts = await Promise.all(parsed.map(t => itunesArt(t.artist, t.title)));
-    return parsed.map((t,i) => ({ ...t, artwork: arts[i] || 'ERLogo2.png' }));
-  }
-
-  async function initialFill(){
-    renderSkeletons();
+  function replay(items){
+    // items should be oldest -> newest; we prepend so newest ends up on top
+    for (const t of items){
+      try { if (typeof window.prependRecentFromTrack === 'function') window.prependRecentFromTrack(t); } catch {}
+    }
+    // hard-cap the rendered list to MAX_ITEMS
     try {
-      const list = await buildFromLog();
-      if (list.length){
-        render(list);
-        saveCache(list);
-        return;
+      const list = document.getElementById('recent-list');
+      if (list) {
+        const li = list.querySelectorAll('li');
+        for (let i = MAX_ITEMS; i < li.length; i++) {
+          li[i].remove();
+        }
       }
     } catch {}
+  }
+
+  function parseLogToRecentItems(data){
+    if (!Array.isArray(data)) return [];
+    const out = [];
+    for (const it of data){
+      const artist = norm(it.Artist);
+      const title = norm(it.Title);
+      if (!artist || !title) continue;
+
+      // Build startMs from Hour + Scheduled Time
+      let startMs = Date.now();
+      try {
+        if (it["Hour"] && it["Scheduled Time"]) {
+          const hourDate = new Date(it["Hour"]);
+          const parts = String(it["Scheduled Time"]).split(':').map(Number);
+          const sh = parts[0] || 0, sm = parts[1] || 0;
+          const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh, sm, 0, 0);
+          startMs = d.getTime();
+        }
+      } catch {}
+
+      // Compute endMs from Duration (s) if available; else assume +3 min
+      let endMs = startMs + 180000;
+      if (it["Duration (s)"]) {
+        const durMs = Number(it["Duration (s)"]) * 1000;
+        if (!Number.isNaN(durMs) && durMs > 0) endMs = startMs + durMs;
+      }
+
+      out.push({ artist, title, startMs, endMs, endedAt: endMs });
+    }
+    // Sort newest first by endMs
+    out.sort((a,b) => (b.endMs||0) - (a.endMs||0));
+    // Take last MAX_ITEMS (newest N), but return oldest->newest for replay order
+    const slice = out.slice(0, MAX_ITEMS).reverse();
+    return slice;
+  }
+
+  async function seedFromLog(){
+    const res = await fetch(LOG_URL + '?_=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    const items = parseLogToRecentItems(data);
+    return items;
+  }
+
+  async function initRecent(){
     const cached = loadCache();
     if (cached.length){
-      render(cached);
+      clearList();
+      replay(cached);
+    }
+
+    try {
+      const items = await seedFromLog();
+      if (items.length){
+        clearList();
+        replay(items);
+        saveCache(items);
+      }
+    } catch(e){
+      // if fetch fails and no cache, leave as-is
+      console.warn('Recent seed from log failed:', e);
     }
   }
 
-  async function periodicSync(){
-    try {
-      const list = await buildFromLog();
-      if (list.length){
-        render(list);
-        saveCache(list);
-      }
-    } catch {}
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    initialFill();
-    setInterval(periodicSync, 180000); // 3 minutes
-  });
+  // Run after DOM ready
+  document.addEventListener('DOMContentLoaded', initRecent);
 })();
 </script>
 
