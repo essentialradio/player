@@ -1,7 +1,6 @@
 {
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "artist": "Kevin McCallum",
+  "title": "Mr Rocks Show",
+  "duration": 7196,
+  "startTime": "2025-08-17T19:01:00+01:00"
 }
