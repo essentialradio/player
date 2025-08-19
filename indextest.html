@@ -5964,8 +5964,7 @@ async function fetchNowPlaying() {
         const bar = document.querySelector('#np-progress .bar');
         if (bar) {
           const pct = Math.max(0, Math.min(100, (remaining / durationMs) * 100));
-          \1
-      // Update remaining time label and ARIA
+          // Update remaining time label and ARIA
       try {
         const t = document.getElementById('np-remaining');
         if (t) {
