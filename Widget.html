@@ -3,85 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget (Relative API + Mobile + Audio + ARTWORKFIX)</title>
+  <title>Essential Radio Widget (Artwork Match+)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0b0d14;
-      margin: 0; padding: 0;
-      display: flex; min-height: 100vh;
-      align-items: center; justify-content: center;
-      color: #fff;
-    }
-    .widget-container {
-      width: 100%; max-width: 600px; height: auto;
-      background: #191c29; border-radius: 20px; box-shadow: 0 4px 24px #0005;
-      display: flex; flex-direction: row; overflow: hidden;
-    }
-    .left {
-      width: 240px; min-width: 180px;
-      background: #21233c;
-      display: flex; flex-direction: column; align-items: center;
-      padding: 20px 14px; border-right: 2px solid #fed35144;
-    }
-    .logo { width: 110px; border-radius: 14px; margin-bottom: 14px; }
-    #artwork {
-      width: 110px; height: 110px; border-radius: 10px; border: 3px solid #fed351;
-      object-fit: cover; background: #222; margin-bottom: 10px;
-      transition: opacity .2s ease;
-    }
-    .now-playing-info { text-align: center; width: 100%; }
-    #now-playing {
-      font-weight: 700; color: #fed351; margin-bottom: 2px;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    #now-playing-artist {
-      opacity: 0.9; font-size: 0.95em;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .right { flex: 1; display: flex; flex-direction: column; padding: 20px; }
-    .on-air-now { color: #fed351; font-weight: 700; margin-bottom: 3px; }
-    #currentShow { font-weight: 600; margin-bottom: 10px; line-height: 1.3; }
-    .audio-controls { display: flex; gap: 10px; align-items: center; margin: 6px 0 12px; }
-    #play-toggle, #mute-toggle {
-      background: #fed351; color: #111; border: 0; border-radius: 6px;
-      padding: 6px 12px; font-weight: 700; cursor: pointer;
-    }
-    #volume-slider { width: 90px; }
-    .recent-title { color: #fed351; font-weight: 600; margin: 5px 0; }
-    ul#recent-list { list-style: none; margin: 0; padding: 0; width: 100%; max-height: 150px; overflow-y: auto; }
-    ul#recent-list li { display: flex; align-items: center; gap: 6px; padding: 5px 0; border-bottom: 1px solid #28284b; }
-    ul#recent-list li:last-child { border-bottom: none; }
-    ul#recent-list img { width: 30px; height: 30px; border-radius: 6px; border: 2px solid #fed351; object-fit: cover; }
-    ul#recent-list span.info { flex: 1; font-size: 0.9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    ul#recent-list span.time { width: 40px; text-align: right; font-size: 0.85em; color: #fed351; }
-
-    /* MOBILE tweaks */
-    @media (max-width: 700px) {
-      .widget-container { flex-direction: column; border-radius: 14px; }
-      .left, .right { width: 100%; border-right: none; padding: 12px; }
-      .left { flex-direction: row; align-items: center; gap: 10px; border-bottom: 2px solid #fed35133; }
-      .logo { width: 70px; margin: 0; }
-      #artwork { width: 64px; height: 64px; border-width: 2px; }
-      #now-playing { font-size: 0.9em; }
-      #now-playing-artist { font-size: 0.8em; }
-      .on-air-now { font-size: 0.85em; }
-      #currentShow { font-size: 0.85em; }
-      #play-toggle, #mute-toggle { padding: 5px 10px; font-size: 0.85em; }
-      #volume-slider { width: 70px; }
-      ul#recent-list img { width: 26px; height: 26px; }
-      ul#recent-list span.info { font-size: 0.8em; }
-      ul#recent-list span.time { font-size: 0.75em; }
-    }
+    body { font-family: 'Inter', sans-serif; background: #0b0d14; margin: 0; color: #fff; display:flex; min-height:100vh; align-items:center; justify-content:center;}
+    .widget-container { width:100%; max-width:600px; background:#191c29; border-radius:20px; box-shadow:0 4px 24px #0005; overflow:hidden; display:flex; }
+    .left { width:240px; min-width:180px; background:#21233c; display:flex; flex-direction:column; align-items:center; padding:20px 14px; border-right:2px solid #fed35144;}
+    .logo { width:110px; border-radius:14px; margin-bottom:14px; }
+    #artwork { width:110px; height:110px; border-radius:10px; border:3px solid #fed351; object-fit:cover; background:#222; margin-bottom:10px; transition:opacity .2s ease; }
+    .now-playing-info{ text-align:center; width:100%; }
+    #now-playing{ font-weight:700; color:#fed351; margin-bottom:2px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+    #now-playing-artist{ opacity:.9; font-size:.95em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .right{ flex:1; display:flex; flex-direction:column; padding:20px;}
+    .on-air-now{ color:#fed351; font-weight:700; margin-bottom:3px;}
+    #currentShow{ font-weight:600; margin-bottom:10px; line-height:1.3;}
+    .audio-controls{ display:flex; gap:10px; align-items:center; margin:6px 0 12px;}
+    #play-toggle,#mute-toggle{ background:#fed351; color:#111; border:0; border-radius:6px; padding:6px 12px; font-weight:700; cursor:pointer;}
+    #volume-slider{ width:90px;}
+    .recent-title{ color:#fed351; font-weight:600; margin:5px 0;}
+    ul#recent-list{ list-style:none; margin:0; padding:0; max-height:150px; overflow:auto;}
+    ul#recent-list li{ display:flex; align-items:center; gap:6px; padding:5px 0; border-bottom:1px solid #28284b;}
+    ul#recent-list li:last-child{ border-bottom:none;}
+    ul#recent-list img{ width:30px; height:30px; border-radius:6px; border:2px solid #fed351; object-fit:cover;}
+    ul#recent-list span.info{ flex:1; font-size:.9em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+    ul#recent-list span.time{ width:40px; text-align:right; font-size:.85em; color:#fed351;}
+    @media (max-width:700px){ .widget-container{ flex-direction:column; border-radius:14px;} .left,.right{ width:100%; padding:12px; border-right:none;} .left{ flex-direction:row; gap:10px; align-items:center; border-bottom:2px solid #fed35133;} .logo{ width:70px; margin:0;} #artwork{ width:64px; height:64px; border-width:2px;} #now-playing{ font-size:.9em;} #now-playing-artist{ font-size:.8em;} .on-air-now,#currentShow{ font-size:.85em;} #play-toggle,#mute-toggle{ padding:5px 10px; font-size:.85em;} #volume-slider{ width:70px;} ul#recent-list img{ width:26px; height:26px;} ul#recent-list span.info{ font-size:.8em;} ul#recent-list span.time{ font-size:.75em;} }
   </style>
 </head>
 <body>
   <div class="widget-container">
     <div class="left">
       <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
-      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" />
+      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" crossorigin="anonymous" referrerpolicy="no-referrer"/>
       <div class="now-playing-info">
         <div id="now-playing">Loading…</div>
         <div id="now-playing-artist"></div>
@@ -106,209 +60,149 @@
 
   <script>
     // === SAME-ORIGIN RELATIVE API ===
-    const LATEST_TRACK_URL = "/api/latestTrack"; // works when hosted on same domain as your API
+    const LATEST_TRACK_URL = "/api/latestTrack";
     const RECENT_URL = "https://essentialradio.github.io/player/playout_log_rolling.json";
     const SCHEDULE_URL = "https://essentialradio.github.io/player/schedule.json";
-
-    // === STREAM AUDIO ===
     const STREAM_URL = "https://streaming06.liveboxstream.uk/proxy/ayrshire/stream";
 
-    let audio;
-    let isPlaying = false;
-    let lastVolume = 0.8;
-    let lastTrackKey = "";           // remember last track to avoid artwork flashing
-    let lastArtworkURL = "Essential Radio Logo.png";
-
+    // ---- Audio ----
+    let audio, isPlaying=false, lastVolume=0.8;
     const playBtn = document.getElementById("play-toggle");
     const muteBtn = document.getElementById("mute-toggle");
     const volumeSlider = document.getElementById("volume-slider");
-    const artworkEl = document.getElementById("artwork");
+    function ensureAudio(){ if(!audio){ audio=new Audio(STREAM_URL); audio.preload="none"; audio.crossOrigin="anonymous"; audio.volume=lastVolume; audio.addEventListener("playing",()=>setPlayUi(true)); audio.addEventListener("pause",()=>setPlayUi(false)); audio.addEventListener("ended",()=>setPlayUi(false)); audio.addEventListener("error",()=>setPlayUi(false)); } }
+    function setPlayUi(p){ isPlaying=p; playBtn.textContent=p?"⏸":"▶️"; playBtn.setAttribute("aria-pressed", p?"true":"false"); }
+    playBtn.onclick=async()=>{ ensureAudio(); try{ if(!isPlaying){ await audio.play(); setPlayUi(true);} else { audio.pause(); setPlayUi(false);} }catch(e){ console.warn("play failed",e); setPlayUi(false);} };
+    volumeSlider.oninput=()=>{ ensureAudio(); const v=Number(volumeSlider.value)/100; audio.volume=v; lastVolume=v; audio.muted=v===0; muteBtn.textContent=audio.muted?"🔇":(v<0.5?"🔈":"🔊"); muteBtn.setAttribute("aria-pressed", audio.muted?"true":"false"); };
+    muteBtn.onclick=()=>{ ensureAudio(); audio.muted=!audio.muted; muteBtn.textContent=audio.muted?"🔇":(audio.volume<0.5?"🔈":"🔊"); muteBtn.setAttribute("aria-pressed", audio.muted?"true":"false"); volumeSlider.value=audio.muted?0:Math.round(audio.volume*100); };
 
-    function ensureAudio() {
-      if (!audio) {
-        audio = new Audio(STREAM_URL);
-        audio.preload = "none";
-        audio.crossOrigin = "anonymous";
-        audio.volume = lastVolume;
-        audio.addEventListener("ended", () => setPlayUi(false));
-        audio.addEventListener("pause", () => setPlayUi(false));
-        audio.addEventListener("playing", () => setPlayUi(true));
-        audio.addEventListener("error", () => {
-          setPlayUi(false);
-          console.warn("Audio error state:", audio.error);
-        });
+    // ---- Helpers ----
+    function decodeHtmlEntities(str){ if(!str) return ""; const txt=document.createElement("textarea"); txt.innerHTML=str; return txt.value;}
+    function norm(s){ return (s||"").toLowerCase()
+      .replace(/[‘’'’"]/g,"")
+      .replace(/\s*(feat|ft)\.?[^-–()\[\]]*/g,"")
+      .replace(/\s*[\(\[].*?[\)\]]/g,"")  // remove (radio edit), [remix], etc.
+      .replace(/[-–]/g," ")
+      .replace(/[^a-z0-9 ]/g,"")
+      .replace(/\s+/g," ").trim(); }
+    function scoreMatch(a,b){ // simple token overlap score 0..1
+      const ta=new Set(norm(a).split(" ")); const tb=new Set(norm(b).split(" "));
+      if(!ta.size || !tb.size) return 0;
+      let overlap=0; ta.forEach(t=>{ if(tb.has(t)) overlap++; });
+      return overlap/Math.max(ta.size,tb.size);
+    }
+    function timeoutFetch(resource, options={}, ms=6000){
+      const c=new AbortController(); const id=setTimeout(()=>c.abort(),ms);
+      return fetch(resource,{...options,signal:c.signal}).finally(()=>clearTimeout(id));
+    }
+
+    // ---- Artwork resolver (Apple Music with country variations + scoring) ----
+    let lastTrackKey="", lastArtworkURL="Essential Radio Logo.png";
+    const artworkEl=document.getElementById("artwork");
+
+    async function appleSearch(query, country){
+      const url = "https://itunes.apple.com/search?term="+encodeURIComponent(query)+"&media=music&entity=song&limit=5"+(country?("&country="+country):"");
+      const res = await timeoutFetch(url, {cache:"no-store"}, 7000);
+      if(!res.ok) throw new Error("itunes "+res.status);
+      return res.json();
+    }
+
+    function pickBestArtwork(results, artist, title){
+      if(!results || !results.results) return null;
+      const target = norm(artist+" "+title);
+      let best=null, bestScore=0;
+      for(const r of results.results){
+        const cand = norm((r.artistName||"")+" "+(r.trackName||""));
+        const s = scoreMatch(target, cand);
+        if(s>bestScore && r.artworkUrl100){ bestScore=s; best=r; }
       }
+      return best && best.artworkUrl100 ? best.artworkUrl100.replace("100x100","300x300") : null;
     }
 
-    function setPlayUi(playing) {
-      isPlaying = playing;
-      playBtn.textContent = playing ? "⏸" : "▶️";
-      playBtn.setAttribute("aria-pressed", playing ? "true" : "false");
-    }
-
-    playBtn.addEventListener("click", async () => {
-      ensureAudio();
-      try {
-        if (!isPlaying) {
-          await audio.play();
-          setPlayUi(true);
-        } else {
-          audio.pause();
-          setPlayUi(false);
+    async function resolveArtwork(artist, title){
+      const q1 = artist+" "+title;
+      try{
+        let data = await appleSearch(q1, "gb");
+        let art = pickBestArtwork(data, artist, title);
+        if(art) return art;
+        data = await appleSearch(q1, "us");
+        art = pickBestArtwork(data, artist, title);
+        if(art) return art;
+        // Try stripped-down title only
+        const tOnly = norm(title);
+        if(tOnly){
+          data = await appleSearch(tOnly, "gb");
+          art = pickBestArtwork(data, artist, title);
+          if(art) return art;
+          data = await appleSearch(tOnly, "us");
+          art = pickBestArtwork(data, artist, title);
+          if(art) return art;
         }
-      } catch (e) {
-        console.warn("Play attempt failed:", e);
-        setPlayUi(false);
-      }
-    });
-
-    volumeSlider.addEventListener("input", () => {
-      ensureAudio();
-      const v = Number(volumeSlider.value) / 100;
-      audio.volume = v;
-      lastVolume = v;
-      audio.muted = v === 0;
-      muteBtn.textContent = audio.muted ? "🔇" : (v < 0.5 ? "🔈" : "🔊");
-      muteBtn.setAttribute("aria-pressed", audio.muted ? "true" : "false");
-    });
-
-    muteBtn.addEventListener("click", () => {
-      ensureAudio();
-      audio.muted = !audio.muted;
-      muteBtn.textContent = audio.muted ? "🔇" : (audio.volume < 0.5 ? "🔈" : "🔊");
-      muteBtn.setAttribute("aria-pressed", audio.muted ? "true" : "false");
-      volumeSlider.value = audio.muted ? 0 : Math.round(audio.volume * 100);
-    });
-
-    function decodeHtmlEntities(str) {
-      if (!str) return "";
-      var txt = document.createElement("textarea");
-      txt.innerHTML = str;
-      return txt.value;
-    }
-
-    function timeoutFetch(resource, options = {}, ms = 6000) {
-      const controller = new AbortController();
-      const id = setTimeout(() => controller.abort(), ms);
-      return fetch(resource, { ...options, signal: controller.signal })
-        .finally(() => clearTimeout(id));
-    }
-
-    // --- Robust artwork resolver (iTunes with fallbacks and no flashing) ---
-    async function resolveArtwork(artist, title) {
-      const q = encodeURIComponent((artist + " " + title).replace(/["'’]/g, ""));
-      // 1) Try iTunes search
-      try {
-        const res = await timeoutFetch("https://itunes.apple.com/search?term=" + q + "&media=music&limit=1", { cache: "no-store" }, 7000);
-        if (res.ok) {
-          const data = await res.json();
-          const url = data?.results?.[0]?.artworkUrl100;
-          if (url) return url.replace("100x100", "300x300");
-        }
-      } catch(e) { /* fall through */ }
-
-      // 2) Try search by just title (handles “feat.” etc.)
-      try {
-        const res2 = await timeoutFetch("https://itunes.apple.com/search?term=" + encodeURIComponent(title) + "&media=music&limit=1", { cache: "no-store" }, 7000);
-        if (res2.ok) {
-          const data2 = await res2.json();
-          const url2 = data2?.results?.[0]?.artworkUrl100;
-          if (url2) return url2.replace("100x100", "300x300");
-        }
-      } catch(e) { /* fall through */ }
-
-      // 3) Fallback to last known artwork or station logo
+      }catch(e){ /* ignore, we'll fall back */ }
       return lastArtworkURL || "Essential Radio Logo.png";
     }
 
-    async function updateNowPlaying() {
-      try {
-        const latestRes = await fetch(LATEST_TRACK_URL + "?_=" + Date.now(), { cache: "no-store" });
-        if (!latestRes.ok) throw new Error("latestTrack status " + latestRes.status);
+    // ---- Data fetch ----
+    async function updateNowPlaying(){
+      try{
+        const latestRes = await fetch(LATEST_TRACK_URL+"?_="+Date.now(), {cache:"no-store"});
+        if(!latestRes.ok) throw new Error("latestTrack "+latestRes.status);
         const latest = await latestRes.json();
-        if (!latest || !latest.artist || !latest.title) throw new Error("latestTrack missing fields");
+        const artist = decodeHtmlEntities(latest.artist||"");
+        const title  = decodeHtmlEntities(latest.title||"");
+        const key = (artist+" — "+title).toLowerCase();
 
-        const artist = decodeHtmlEntities(latest.artist);
-        const title = decodeHtmlEntities(latest.title);
-        const trackKey = (artist + " — " + title).toLowerCase();
+        document.getElementById("now-playing").textContent = title || "—";
+        document.getElementById("now-playing-artist").textContent = artist ? ("by "+artist) : "";
 
-        document.getElementById("now-playing").textContent = title;
-        document.getElementById("now-playing-artist").textContent = artist ? "by " + artist : "";
-
-        // Only refetch artwork if the track actually changed
-        if (trackKey !== lastTrackKey) {
-          lastTrackKey = trackKey;
-          artworkEl.style.opacity = 0.6;
-          const newArt = await resolveArtwork(artist, title);
-          if (newArt && newArt !== lastArtworkURL) {
-            lastArtworkURL = newArt;
-            artworkEl.src = newArt;
+        if(key!==lastTrackKey && artist && title){
+          lastTrackKey = key;
+          artworkEl.style.opacity = .6;
+          const art = await resolveArtwork(artist, title);
+          if(art && art!==lastArtworkURL){
+            lastArtworkURL = art;
+            artworkEl.src = art;
           }
           artworkEl.style.opacity = 1;
         }
-      } catch (e) {
+      }catch(e){
         console.warn(e);
         document.getElementById("now-playing").textContent = "More music soon";
         document.getElementById("now-playing-artist").textContent = "";
-        lastTrackKey = ""; // allow refresh next time
-        artworkEl.src = "Essential Radio Logo.png";
-        lastArtworkURL = "Essential Radio Logo.png";
+        lastTrackKey=""; lastArtworkURL="Essential Radio Logo.png"; artworkEl.src=lastArtworkURL;
       }
     }
 
-    // ---- RECENTLY PLAYED ----
-    async function updateRecent() {
-      try {
-        const res = await fetch(RECENT_URL + "?_=" + Date.now(), { cache: "no-store" });
-        if (!res.ok) throw new Error("recent status " + res.status);
+    async function updateRecent(){
+      try{
+        const res = await fetch(RECENT_URL+"?_="+Date.now(), {cache:"no-store"});
         const data = await res.json();
         const list = document.getElementById("recent-list");
-        list.innerHTML = "";
-        const recentItems = data.slice(-3).reverse();
-        for (const item of recentItems) {
-          const artist = decodeHtmlEntities(item.Artist || "");
-          const title = decodeHtmlEntities(item.Title || "");
+        list.innerHTML="";
+        data.slice(-3).reverse().forEach(item=>{
+          const artist = decodeHtmlEntities(item.Artist||"");
+          const title  = decodeHtmlEntities(item.Title||"");
           const li = document.createElement("li");
-          li.innerHTML = '<img src="Essential Radio Logo.png" alt="" />' +
-                         '<span class="info">' + artist + ' – ' + title + '</span>' +
-                         '<span class="time">' + ((item["Displayed Time"] || item["Scheduled Time"] || "").slice(0, 5)) + '</span>';
+          li.innerHTML = '<img src="Essential Radio Logo.png" alt=""/>' +
+                         '<span class="info">'+artist+' – '+title+'</span>' +
+                         '<span class="time">'+((item["Displayed Time"]||item["Scheduled Time"]||"").slice(0,5))+'</span>';
           list.appendChild(li);
-        }
-      } catch (e) {
-        console.warn(e);
-        document.getElementById("recent-list").innerHTML = '<li><span class="info">Unavailable</span></li>';
-      }
+        });
+      }catch(e){ document.getElementById("recent-list").innerHTML='<li><span class="info">Unavailable</span></li>'; }
     }
 
-    // ---- ON AIR NOW ----
-    async function fetchSchedule() {
-      try { const res = await fetch(SCHEDULE_URL, { cache: "no-store" }); return await res.json(); }
-      catch { return null; }
-    }
-    function getCurrentShow(schedule) {
-      const now = new Date();
-      const day = now.toLocaleString("en-GB", { weekday: "long" });
-      const shows = (schedule && schedule[day]) || [];
-      const nowMins = now.getHours() * 60 + now.getMinutes();
-      for (const show of shows) {
-        const [sh, sm] = show.start.split(":").map(Number);
-        const [eh, em] = show.end.split(":").map(Number);
-        let start = sh * 60 + sm, end = eh * 60 + em;
-        if (end === 0 && start > 0) end = 1440; // midnight wrap
-        if (nowMins >= start && nowMins < end) return show.title;
-      }
+    async function fetchSchedule(){ try{ const r=await fetch(SCHEDULE_URL,{cache:"no-store"}); return r.json(); }catch{ return null; } }
+    function getCurrentShow(schedule){
+      const now=new Date(); const day=now.toLocaleString("en-GB",{weekday:"long"});
+      const shows=(schedule&&schedule[day])||[]; const m=now.getHours()*60+now.getMinutes();
+      for(const s of shows){ const [sh,sm]=s.start.split(":").map(Number); const [eh,em]=s.end.split(":").map(Number);
+        let st=sh*60+sm,en=eh*60+em; if(en===0&&st>0) en=1440; if(m>=st&&m<en) return s.title; }
       return "Off Air";
     }
-    async function updateOnAirNow() {
-      const schedule = await fetchSchedule();
-      const show = schedule ? getCurrentShow(schedule) : "Off Air";
-      document.getElementById("currentShow").textContent = show;
-    }
+    async function updateOnAirNow(){ const sched=await fetchSchedule(); document.getElementById("currentShow").textContent = sched?getCurrentShow(sched):"Off Air"; }
 
-    // ---- INIT ----
-    updateOnAirNow();
-    updateNowPlaying();
-    updateRecent();
+    // Init
+    updateOnAirNow(); updateNowPlaying(); updateRecent();
     setInterval(updateOnAirNow, 60000);
     setInterval(updateNowPlaying, 12000);
     setInterval(updateRecent, 18000);
