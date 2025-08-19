@@ -4271,6 +4271,36 @@ html[data-theme="light"] #mobileNowBar {
 }
 </style>
 
+
+<style id="np-progress-css-upgrade">
+/* === Now Playing progress bar upgrades === */
+#np-progress{
+  /* switch to animated visibility */
+  display:block;
+  opacity:0;
+  max-height:0;
+  transition: opacity 200ms ease, max-height 200ms ease, margin-top 200ms ease;
+  border-radius:8px;
+  margin-top:0;
+  pointer-events:none;
+}
+#np-progress.visible{
+  opacity:1;
+  max-height:40px;
+  margin-top:10px;
+  pointer-events:auto;
+}
+#np-progress .time{
+  font-size:0.85rem;
+  line-height:1.2;
+  margin-bottom:6px;
+  opacity:0.9;
+}
+#np-progress .bar{
+  border-radius:8px;
+}
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4334,7 +4364,7 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
-<div id="np-progress" aria-hidden="true"><div class="bar"></div></div>
+<div id="np-progress" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><div class="time" id="np-remaining" aria-live="polite"></div><div class="bar"></div></div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -5865,7 +5895,15 @@ group.forEach(show => {
       try {
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
         const prog = document.getElementById('np-progress');
-        if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; }
+        if (prog) {
+          prog.classList.remove('visible');
+          prog.setAttribute('aria-hidden','true');
+          const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%';
+          const t = prog.querySelector('#np-remaining'); if (t) t.textContent = '';
+          prog.setAttribute('aria-valuemin','0');
+          prog.setAttribute('aria-valuemax','0');
+          prog.setAttribute('aria-valuenow','0');
+        }
       } catch(e) {}
 }
     let currentTrackID = null;
@@ -5890,7 +5928,7 @@ async function fetchNowPlaying() {
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
     // Show progress bar while a valid track is playing
-    try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
+    try { const prog = document.getElementById('np-progress'); if (prog) { prog.classList.add('visible'); prog.setAttribute('aria-hidden','false'); } } catch(e) {}
 // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
@@ -5926,10 +5964,25 @@ async function fetchNowPlaying() {
         const bar = document.querySelector('#np-progress .bar');
         if (bar) {
           const pct = Math.max(0, Math.min(100, (remaining / durationMs) * 100));
-          bar.style.width = pct + '%';
+          \1
+      // Update remaining time label and ARIA
+      try {
+        const t = document.getElementById('np-remaining');
+        if (t) {
+          const total = Math.max(1, durationMs);
+          const sec = Math.max(0, Math.ceil(remaining/1000));
+          const mm = Math.floor(sec/60);
+          const ss = String(sec % 60).padStart(2,'0');
+          t.textContent = mm + ':' + ss + ' left';
+          const prog = document.getElementById('np-progress');
+          if (prog) {
+            const elapsed = total - Math.max(0, remaining);
+            prog.setAttribute('aria-valuemin','0');
+            prog.setAttribute('aria-valuemax', String(total));
+            prog.setAttribute('aria-valuenow', String(elapsed));
+          }
         }
-      } catch(e) {}
-if (remaining > 0) {
+      } catch(e) {}if (remaining > 0) {
         const mins = Math.floor(remaining / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
