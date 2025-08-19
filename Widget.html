@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=600, initial-scale=1" />
+  <!-- IMPORTANT: make it responsive on mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Essential Radio Widget</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    * { box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #00818a 0%, #7e1974 100%);
@@ -17,11 +19,14 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* Scales to container but caps at 600 like your desktop design */
     .widget-container {
       background: #191c29;
       border-radius: 20px;
       box-shadow: 0 4px 24px #0005;
-      width: 600px;
+      width: 100%;
+      max-width: 600px;
       height: 400px;
       display: flex;
       flex-direction: row;
@@ -29,6 +34,7 @@
       overflow: hidden;
       padding: 0;
     }
+
     .left {
       width: 240px;
       min-width: 180px;
@@ -37,18 +43,18 @@
       flex-direction: column;
       align-items: center;
       padding: 26px 18px 18px 18px;
-      box-sizing: border-box;
       border-right: 2px solid #fed35144;
       height: 100%;
       justify-content: flex-start;
     }
+
     .logo {
       width: 125px;
       border-radius: 18px;
       margin-bottom: 18px;
-      box-shadow: none;
       background: none;
     }
+
     #artwork {
       width: 120px;
       height: 120px;
@@ -60,9 +66,12 @@
       margin-bottom: 14px;
       transition: box-shadow 0.3s;
     }
+
     .now-playing-info {
       text-align: center;
       margin-bottom: 8px;
+      width: 100%;
+      min-width: 0; /* allow clamping */
     }
     #now-playing {
       font-size: 1.09em;
@@ -70,6 +79,11 @@
       color: #fed351;
       letter-spacing: 0.01em;
       margin-bottom: 2px;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;     /* clamp long titles to 2 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     #now-playing-artist {
       font-size: 0.98em;
@@ -77,16 +91,21 @@
       font-weight: 400;
       opacity: 0.95;
       margin-bottom: 3px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
     .right {
       flex: 1;
       display: flex;
       flex-direction: column;
       padding: 24px 24px 16px 26px;
       justify-content: space-between;
-      box-sizing: border-box;
       min-width: 240px;
     }
+
     .on-air-now {
       color: #fed351;
       font-weight: 700;
@@ -102,31 +121,37 @@
       margin-bottom: 13px;
       text-align: left;
       line-height: 1.3;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+
     .audio-controls {
       display: flex;
       gap: 12px;
       align-items: center;
       margin-bottom: 13px;
       margin-top: 6px;
+      flex-wrap: nowrap;
+      min-width: 0;
     }
     #play-toggle, #mute-toggle {
       background: #fed351;
       color: #111;
       border: none;
       border-radius: 7px;
-      padding: 7px 16px;
+      padding: 7px 14px;
       font-size: 1.03em;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
       transition: background 0.2s;
+      flex-shrink: 0;
     }
-    #play-toggle:hover, #mute-toggle:hover {
-      background: #ffe67c;
-    }
-    #volume-slider {
-      width: 74px;
-    }
+    #play-toggle:hover, #mute-toggle:hover { background: #ffe67c; }
+    #volume-slider { width: 90px; }
+
     .recent-title {
       font-size: 1.07em;
       font-weight: 600;
@@ -148,13 +173,12 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 0 7px 0;
+      padding: 7px 0;
       border-bottom: 1px solid #28284b;
       font-size: 0.97em;
+      min-width: 0;
     }
-    ul#recent-list li:last-child {
-      border-bottom: none;
-    }
+    ul#recent-list li:last-child { border-bottom: none; }
     ul#recent-list img {
       width: 34px;
       height: 34px;
@@ -163,11 +187,13 @@
       border: 2px solid #fed351;
       background: #222;
       margin-right: 2px;
+      flex-shrink: 0;
     }
     ul#recent-list span.info {
       color: #fff;
       font-size: 0.99em;
       flex: 1;
+      min-width: 0;               /* let text truncate */
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -182,23 +208,51 @@
       text-align: right;
       flex-shrink: 0;
     }
+
+    /* MOBILE */
     @media (max-width: 700px) {
       .widget-container {
         flex-direction: column;
-        width: 99vw;
-        height: auto;
-        min-width: 0;
+        height: auto;           /* grow naturally */
+        border-radius: 16px;
       }
       .left, .right {
         width: 100% !important;
         min-width: 0 !important;
         border-right: none;
         border-bottom: 2px solid #fed35133;
-        padding: 18px 7vw 16px 7vw;
+        padding: 14px 16px;
       }
-      .left { flex-direction: row; justify-content: flex-start; align-items: flex-start; gap: 20px;}
-      .now-playing-info { text-align: left;}
-      #artwork { margin-bottom: 0; }
+
+      /* Compact header row: logo | artwork | text */
+      .left {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo { width: 92px; margin: 0; }
+      #artwork { width: 84px; height: 84px; margin: 0; border-width: 2px; }
+      .now-playing-info { text-align: left; }
+
+      /* Slightly smaller typography */
+      #now-playing { font-size: 1.0em; }
+      #now-playing-artist { font-size: 0.95em; }
+
+      .right { padding: 16px; }
+      .on-air-now { font-size: 1em; }
+      #currentShow { font-size: 1.02em; }
+
+      .audio-controls {
+        gap: 10px;
+      }
+      #play-toggle, #mute-toggle {
+        padding: 6px 12px;
+        font-size: 1em;
+      }
+      #volume-slider { width: 80px; }
+
+      .recent-title { margin-top: 4px; }
+      ul#recent-list { max-height: 140px; }
     }
   </style>
 </head>
@@ -212,6 +266,7 @@
         <div id="now-playing-artist"></div>
       </div>
     </div>
+
     <div class="right">
       <div>
         <div class="on-air-now">ON AIR NOW</div>
@@ -222,12 +277,14 @@
           <button id="mute-toggle">🔊</button>
         </div>
       </div>
+
       <div>
         <div class="recent-title">Recently Played</div>
         <ul id="recent-list"></ul>
       </div>
     </div>
   </div>
+
   <script>
     // HTML entity decoding utility
     function decodeHtmlEntities(str) {
@@ -309,13 +366,12 @@
       }
     }
 
-    // NOW PLAYING — use ingest-driven /api/latestTrack metadata (same as index)
+    // NOW PLAYING — /api/latestTrack (same as index)
     async function updateNowPlaying() {
       try {
         const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
         const latest = await latestRes.json();
 
-        // Validate payload shape from /api/latestTrack
         if (!latest || !latest.artist || !latest.title) {
           document.getElementById("now-playing").textContent = "Loading…";
           document.getElementById("now-playing-artist").textContent = "";
@@ -323,15 +379,13 @@
           return;
         }
 
-        // Decode & assign
         const artist = decodeHtmlEntities(latest.artist);
         const title = decodeHtmlEntities(latest.title);
 
-        // Update UI
         document.getElementById("now-playing").textContent = title;
         document.getElementById("now-playing-artist").textContent = artist ? `by ${artist}` : "";
 
-        // Artwork: iTunes lookup (keep existing approach)
+        // iTunes artwork lookup
         const searchTerm = encodeURIComponent(`${artist} ${title}`);
         let artwork = "Essential Radio Logo.png";
         try {
@@ -347,7 +401,7 @@
       }
     }
 
-    // RECENTLY PLAYED WITH ITUNES ARTWORK (unchanged)
+    // RECENTLY PLAYED (with iTunes artwork)
     async function updateRecent() {
       try {
         const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now());
