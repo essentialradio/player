@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget (Fixed API + Smaller Mobile)</title>
+  <title>Essential Radio Widget (Relative API + Smaller Mobile)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -104,9 +104,8 @@
   </div>
 
   <script>
-    // === FIXED API ORIGINS ===
-    const BASE_URL = "https://player-green.vercel.app"; // your confirmed API origin
-    const LATEST_TRACK_URL = BASE_URL + "/api/latestTrack";
+    // === SAME-ORIGIN RELATIVE API ===
+    const LATEST_TRACK_URL = "/api/latestTrack"; // works when this file is served from player-green.vercel.app
     const RECENT_URL = "https://essentialradio.github.io/player/playout_log_rolling.json";
     const SCHEDULE_URL = "https://essentialradio.github.io/player/schedule.json";
 
@@ -117,7 +116,7 @@
       return txt.value;
     }
 
-    // ---- NOW PLAYING (absolute URL) ----
+    // ---- NOW PLAYING (relative) ----
     async function updateNowPlaying() {
       try {
         const latestRes = await fetch(LATEST_TRACK_URL + "?_=" + Date.now(), { cache: "no-store" });
@@ -131,15 +130,15 @@
         document.getElementById("now-playing").textContent = title;
         document.getElementById("now-playing-artist").textContent = artist ? "by " + artist : "";
 
-        // optional: iTunes artwork lookup (best-effort)
+        // Optional iTunes artwork lookup
         const searchTerm = encodeURIComponent(artist + " " + title);
         let artwork = "Essential Radio Logo.png";
         try {
           const iTunesRes = await fetch("https://itunes.apple.com/search?term=" + searchTerm + "&media=music&limit=1");
           const iTunesData = await iTunesRes.json();
-          artwork = (iTunesData.results && iTunesData.results[0] && iTunesData.results[0].artworkUrl100
-                    ? iTunesData.results[0].artworkUrl100.replace("100x100", "300x300")
-                    : artwork);
+          if (iTunesData.results && iTunesData.results[0] && iTunesData.results[0].artworkUrl100) {
+            artwork = iTunesData.results[0].artworkUrl100.replace("100x100", "300x300");
+          }
         } catch(e) {}
         document.getElementById("artwork").src = artwork;
       } catch (e) {
@@ -195,17 +194,8 @@
     }
     async function updateOnAirNow() {
       const schedule = await fetchSchedule();
-      const show = schedule ? getCurrentShow(schedule) : "Loading…";
-      const el = document.getElementById("currentShow");
-      if (show.includes(" with ")) {
-        const parts = show.split(" with ");
-        const title = decodeHtmlEntities(parts[0].trim());
-        const presenter = decodeHtmlEntities(parts.slice(1).join(" with ").trim());
-        el.innerHTML = '<span style="display:block">' + title + '</span>' +
-                       '<span style="font-weight:400;font-size:0.97em;font-style:italic;opacity:0.9;">with ' + presenter + '</span>';
-      } else {
-        el.textContent = decodeHtmlEntities(show);
-      }
+      const show = schedule ? getCurrentShow(schedule) : "Off Air";
+      document.getElementById("currentShow").textContent = show;
     }
 
     // ---- INIT ----
