@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:01",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 160,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:05",
-    "Displayed Time": "",
-    "Artist": "Ace of Base",
-    "Title": "The Sign",
-    "Duration (s)": 181,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:08",
-    "Displayed Time": "",
-    "Artist": "Jamie Lawson",
-    "Title": "Wasn't Expecting That",
-    "Duration (s)": 190,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:11",
-    "Displayed Time": "",
-    "Artist": "JADE",
-    "Title": "Angel Of My Dreams",
-    "Duration (s)": 188,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:14",
-    "Displayed Time": "",
-    "Artist": "Maroon 5",
-    "Title": "This Love",
-    "Duration (s)": 189,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:21",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga & Bruno Mars",
-    "Title": "Die With A Smile",
-    "Duration (s)": 238,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:25",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Lose Control",
-    "Duration (s)": 200,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:28",
-    "Displayed Time": "",
-    "Artist": "Bonnie Tyler",
-    "Title": "Total Eclipse of the Heart",
-    "Duration (s)": 254,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:33",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:39",
-    "Displayed Time": "",
-    "Artist": "Pink",
-    "Title": "A Million Dreams",
-    "Duration (s)": 254,
-    "Full Duration (s)": 274,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:43",
-    "Displayed Time": "",
-    "Artist": "Fontaines D.C.",
-    "Title": "It's Amazing To Be Young",
-    "Duration (s)": 204,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:47",
-    "Displayed Time": "",
-    "Artist": "Mariah Carey",
-    "Title": "Dreamlover",
-    "Duration (s)": 224,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:50",
-    "Displayed Time": "",
-    "Artist": "The Weeknd",
-    "Title": "Blinding Lights",
-    "Duration (s)": 191,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T23:00:00Z",
-    "Scheduled Time": "00:54",
-    "Displayed Time": "",
-    "Artist": "Kelly Rowland",
-    "Title": "Work",
-    "Duration (s)": 181,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-05T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -45329,5 +45175,16 @@
     "Full Duration (s)": 250,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-19T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "",
+    "Artist": "Kool & The Gang",
+    "Title": "Ladies Night",
+    "Duration (s)": 191,
+    "Full Duration (s)": 202,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
