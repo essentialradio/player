@@ -9901,13 +9901,29 @@ if ('serviceWorker' in navigator) {
     lastEndAt = endAt;
     const now = Date.now();
 
-    // Special case: on first run/page refresh, if we're already past end, show placeholder immediately.
+    
+    // Special case: on first run/page refresh, if we're already past end,
+    // DO NOT show placeholder immediately. Freeze and start the 30s grace timer.
     if (firstRun && now >= endAt) {
       const k = getKey(latest);
       if (k) lastKey = k; // set lastKey so comparisons work
-      showPlaceholderOncePerGap();
+      // Freeze at 0:00 so users don't see negative/old progress
+      freezeCountdownDisplay();
+      // Start grace; only show placeholder if key hasn't changed within GRACE_MS
+      (function(){
+        try {
+          const keyAtStart = lastKey;
+          const GRACE = (typeof GRACE_MS !== 'undefined' ? GRACE_MS : 30000);
+          moreSoonTimer = setTimeout(() => {
+            if (lastKey && lastKey === keyAtStart) {
+              showPlaceholderOncePerGap();
+            }
+          }, GRACE);
+        } catch(e){}
+      })();
       firstRun = false;
       return;
+    }
     }
     firstRun = false;
 
@@ -9939,6 +9955,18 @@ if ('serviceWorker' in navigator) {
 
   function resetProgress(latest) {
     if (!latest || !latest.startTime || !latest.duration) return;
+    // If the track is already over (e.g., page refreshed during a break), don't repaint the last track.
+    const __np_startMs = Date.parse(latest.startTime) || 0;
+    const __np_durMs = Math.max(0, Math.round(Number(latest.duration) * 1000));
+    const __np_endAt = __np_startMs + __np_durMs;
+    const __np_grace = 3000; // 3s grace
+    if (Date.now() >= __np_endAt + __np_grace) {
+      // Enter placeholder mode immediately for this gap
+      showPlaceholderOncePerGap();
+      return;
+    }
+    }
+
     // New track: clear placeholder mode
     placeholderActive = false;
     placeholderShownThisGap = false;
@@ -9951,6 +9979,10 @@ if ('serviceWorker' in navigator) {
       if (original.updateNowPlayingProgress) {
         original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
       }
+      try {
+        const npProgress = document.getElementById('np-progress');
+        if (npProgress) npProgress.style.display = '';
+      } catch(e){}
     } finally {
       allowDuringPlaceholder = false;
     }
@@ -9977,11 +10009,8 @@ if ('serviceWorker' in navigator) {
       scheduleEndAndGrace(latest);
     } else {
       // Same track
-      if (now >= endAt) {
-        // We are in a non-metadata gap for this track: ensure placeholder shows once
-        showPlaceholderOncePerGap();
-      }
-      // (Re)schedule timers to keep state consistent
+      // We might be in a brief gap (sweeper). Do NOT show placeholder yet.
+      // Let scheduleEndAndGrace handle the 30s grace timer.
       scheduleEndAndGrace(latest);
     }
   }
