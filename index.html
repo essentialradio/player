@@ -9939,6 +9939,18 @@ if ('serviceWorker' in navigator) {
 
   function resetProgress(latest) {
     if (!latest || !latest.startTime || !latest.duration) return;
+    // If the track is already over (e.g., page refreshed during a break), don't repaint the last track.
+    const __np_startMs = Date.parse(latest.startTime) || 0;
+    const __np_durMs = Math.max(0, Math.round(Number(latest.duration) * 1000));
+    const __np_endAt = __np_startMs + __np_durMs;
+    const __np_grace = 3000; // 3s grace
+    if (Date.now() >= __np_endAt + __np_grace) {
+      // Enter placeholder mode immediately for this gap
+      showPlaceholderOncePerGap();
+      return;
+    }
+    }
+
     // New track: clear placeholder mode
     placeholderActive = false;
     placeholderShownThisGap = false;
