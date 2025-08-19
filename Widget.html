@@ -2,139 +2,390 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Essential Radio Widget (Simple iTunes Lookup)</title>
+  <meta name="viewport" content="width=600, initial-scale=1" />
+  <title>Essential Radio Widget</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#111; --fg:#fff; --muted:#cfcfcf; }
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    h2 { margin: 10px; font-size: 16px; font-weight: 700; }
-    #now-playing, #recently-played { padding: 8px; }
-    .track { display: flex; align-items: center; gap: 10px; padding: 8px;
-      border-radius: 8px; background: #1b1b1b; }
-    .art { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; background:#222; }
-    .meta { display: grid; gap: 2px; }
-    .artist { font-weight: 700; font-size: 14px; }
-    .title { font-size: 13px; color: var(--muted); }
-    .recent-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px;
-      border-radius: 8px; background: #151515; margin-bottom: 6px; }
-    .recent-art { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; background:#222; }
-    .recent-meta { display: grid; gap: 1px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #00818a 0%, #7e1974 100%);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .widget-container {
+      background: #191c29;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px #0005;
+      width: 600px;
+      height: 400px;
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+    .left {
+      width: 240px;
+      min-width: 180px;
+      background: #21233c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 26px 18px 18px 18px;
+      box-sizing: border-box;
+      border-right: 2px solid #fed35144;
+      height: 100%;
+      justify-content: flex-start;
+    }
+    .logo {
+      width: 125px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      box-shadow: none;
+      background: none;
+    }
+    #artwork {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      border: 3px solid #fed351;
+      object-fit: cover;
+      background: #222;
+      box-shadow: 0 2px 16px #fed35133;
+      margin-bottom: 14px;
+      transition: box-shadow 0.3s;
+    }
+    .now-playing-info {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    #now-playing {
+      font-size: 1.09em;
+      font-weight: 700;
+      color: #fed351;
+      letter-spacing: 0.01em;
+      margin-bottom: 2px;
+    }
+    #now-playing-artist {
+      font-size: 0.98em;
+      color: #fff;
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 3px;
+    }
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 24px 16px 26px;
+      justify-content: space-between;
+      box-sizing: border-box;
+      min-width: 240px;
+    }
+    .on-air-now {
+      color: #fed351;
+      font-weight: 700;
+      font-size: 1.04em;
+      letter-spacing: 0.03em;
+      margin-bottom: 3px;
+      text-align: left;
+    }
+    #currentShow {
+      font-size: 1.08em;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 13px;
+      text-align: left;
+      line-height: 1.3;
+    }
+    .audio-controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 13px;
+      margin-top: 6px;
+    }
+    #play-toggle, #mute-toggle {
+      background: #fed351;
+      color: #111;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 16px;
+      font-size: 1.03em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #play-toggle:hover, #mute-toggle:hover {
+      background: #ffe67c;
+    }
+    #volume-slider {
+      width: 74px;
+    }
+    .recent-title {
+      font-size: 1.07em;
+      font-weight: 600;
+      margin: 7px 0 7px 0;
+      color: #fed351;
+      letter-spacing: 0.01em;
+    }
+    ul#recent-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-height: 166px;
+      overflow-y: auto;
+      border-radius: 0 0 9px 9px;
+      background: none;
+    }
+    ul#recent-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 0 7px 0;
+      border-bottom: 1px solid #28284b;
+      font-size: 0.97em;
+    }
+    ul#recent-list li:last-child {
+      border-bottom: none;
+    }
+    ul#recent-list img {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      object-fit: cover;
+      border: 2px solid #fed351;
+      background: #222;
+      margin-right: 2px;
+    }
+    ul#recent-list span.info {
+      color: #fff;
+      font-size: 0.99em;
+      flex: 1;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      white-space: normal;
+      text-overflow: ellipsis;
+    }
+    ul#recent-list span.time {
+      color: #fed351;
+      font-size: 0.94em;
+      width: 44px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    @media (max-width: 700px) {
+      .widget-container {
+        flex-direction: column;
+        width: 99vw;
+        height: auto;
+        min-width: 0;
+      }
+      .left, .right {
+        width: 100% !important;
+        min-width: 0 !important;
+        border-right: none;
+        border-bottom: 2px solid #fed35133;
+        padding: 18px 7vw 16px 7vw;
+      }
+      .left { flex-direction: row; justify-content: flex-start; align-items: flex-start; gap: 20px;}
+      .now-playing-info { text-align: left;}
+      #artwork { margin-bottom: 0; }
+    }
   </style>
 </head>
 <body>
-  <div id="now-playing" aria-live="polite" aria-atomic="true">
-    <h2>Now Playing</h2>
-    <div class="track" id="current-track">
-      <img class="art" src="ERLogo2.png" alt="Album artwork" referrerpolicy="no-referrer" />
-      <div class="meta">
-        <div class="artist" id="np-artist">Loading…</div>
-        <div class="title" id="np-title"></div>
+  <div class="widget-container">
+    <div class="left">
+      <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
+      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" />
+      <div class="now-playing-info">
+        <div id="now-playing">Loading…</div>
+        <div id="now-playing-artist"></div>
+      </div>
+    </div>
+    <div class="right">
+      <div>
+        <div class="on-air-now">ON AIR NOW</div>
+        <div id="currentShow">Loading…</div>
+        <div class="audio-controls">
+          <button id="play-toggle">▶️</button>
+          <input id="volume-slider" type="range" min="0" max="100" value="80" />
+          <button id="mute-toggle">🔊</button>
+        </div>
+      </div>
+      <div>
+        <div class="recent-title">Recently Played</div>
+        <ul id="recent-list"></ul>
       </div>
     </div>
   </div>
-
-  <div id="recently-played">
-    <h2>Recently Played</h2>
-    <div id="recent-list" aria-live="polite" aria-atomic="false"></div>
-  </div>
-
   <script>
-    const FALLBACK_IMG = "ERLogo2.png"; // station logo fallback
+    // HTML entity decoding utility
+    function decodeHtmlEntities(str) {
+      if (!str) return "";
+      var txt = document.createElement("textarea");
+      txt.innerHTML = str;
+      return txt.value;
+    }
 
-    // Single shared lookup used by both sections
-    async function fetchArtworkFromItunes(artist, title) {
-      const queryText = `${artist || ""} ${title || ""}`.trim();
-      if (!queryText) return FALLBACK_IMG;
-      const q = encodeURIComponent(queryText);
+    // AUDIO CONTROLS
+    const audio = new Audio("https://streaming06.liveboxstream.uk/proxy/ayrshire/stream");
+    audio.volume = 0.8;
+    let isPlaying = false;
+    let lastVolume = 0.8;
+    const playBtn = document.getElementById('play-toggle');
+    const muteBtn = document.getElementById('mute-toggle');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    playBtn.onclick = () => {
+      if (!isPlaying) {
+        audio.play();
+        playBtn.textContent = '⏸';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️';
+        isPlaying = false;
+      }
+    };
+    volumeSlider.oninput = function () {
+      audio.volume = this.value / 100;
+      lastVolume = audio.volume;
+      muteBtn.textContent = audio.volume === 0 ? '🔇' : audio.volume < 0.5 ? '🔈' : '🔊';
+    };
+    muteBtn.onclick = function () {
+      if (!audio.muted && audio.volume > 0) {
+        audio.muted = true;
+        muteBtn.textContent = '🔇';
+        volumeSlider.value = 0;
+      } else {
+        audio.muted = false;
+        muteBtn.textContent = lastVolume < 0.5 ? '🔈' : '🔊';
+        volumeSlider.value = lastVolume * 100;
+      }
+    };
+
+    // ON AIR NOW
+    async function fetchSchedule() {
       try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`);
-        if (!res.ok) throw new Error("iTunes HTTP " + res.status);
-        const data = await res.json();
-        if (data.results && data.results.length) {
-          const raw = data.results[0].artworkUrl100 || data.results[0].artworkUrl60 || data.results[0].artworkUrl30 || "";
-          return raw ? raw.replace(/\/(\d+x\d+)bb\//, "/600x600bb/") : FALLBACK_IMG;
+        const res = await fetch("https://essentialradio.github.io/player/schedule.json");
+        return await res.json();
+      } catch {
+        return null;
+      }
+    }
+    function getCurrentShow(schedule) {
+      const now = new Date();
+      const day = now.toLocaleString("en-GB", { weekday: "long" });
+      const shows = schedule?.[day] || [];
+      const nowMins = now.getHours() * 60 + now.getMinutes();
+      for (const show of shows) {
+        const [sh, sm] = show.start.split(":").map(Number);
+        const [eh, em] = show.end.split(":").map(Number);
+        let start = sh * 60 + sm, end = eh * 60 + em;
+        if (end === 0 && start > 0) end = 1440;
+        if (nowMins >= start && nowMins < end) return show.title;
+      }
+      return "Off Air";
+    }
+    async function updateOnAirNow() {
+      const schedule = await fetchSchedule();
+      const show = schedule ? getCurrentShow(schedule) : "Loading…";
+      const el = document.getElementById("currentShow");
+      if (show.includes(" with ")) {
+        const [title, presenter] = show.split(" with ");
+        el.innerHTML = `<span style="display:block">${decodeHtmlEntities(title.trim())}</span><span style="font-weight:400;font-size:0.97em;font-style:italic;opacity:0.9;">with ${decodeHtmlEntities(presenter.trim())}</span>`;
+      } else {
+        el.textContent = decodeHtmlEntities(show);
+      }
+    }
+
+    // NOW PLAYING — use ingest-driven /api/latestTrack metadata (same as index)
+    async function updateNowPlaying() {
+      try {
+        const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+        const latest = await latestRes.json();
+
+        // Validate payload shape from /api/latestTrack
+        if (!latest || !latest.artist || !latest.title) {
+          document.getElementById("now-playing").textContent = "Loading…";
+          document.getElementById("now-playing-artist").textContent = "";
+          document.getElementById("artwork").src = "Essential Radio Logo.png";
+          return;
         }
-      } catch (_) {}
-      return FALLBACK_IMG;
-    }
 
-    const norm = s => (s || "").toString().trim().toLowerCase();
+        // Decode & assign
+        const artist = decodeHtmlEntities(latest.artist);
+        const title = decodeHtmlEntities(latest.title);
 
-    async function getLatestTrack() {
-      const r = await fetch(`/api/latestTrack?_=${Date.now()}`);
-      if (!r.ok) throw new Error("latestTrack fetch failed " + r.status);
-      return r.json();
-    }
+        // Update UI
+        document.getElementById("now-playing").textContent = title;
+        document.getElementById("now-playing-artist").textContent = artist ? `by ${artist}` : "";
 
-    async function loadNowPlaying() {
-      try {
-        const t = await getLatestTrack();
-        const artist = t?.artist || "";
-        const title = t?.title || "";
-        const art = await fetchArtworkFromItunes(artist, title);
-        document.querySelector("#current-track .art").src = art;
-        document.getElementById("np-artist").textContent = artist || "Unknown Artist";
-        document.getElementById("np-title").textContent = title || "Unknown Title";
-      } catch {
-        document.querySelector("#current-track .art").src = FALLBACK_IMG;
-        document.getElementById("np-artist").textContent = "Unavailable";
-        document.getElementById("np-title").textContent = "";
+        // Artwork: iTunes lookup (keep existing approach)
+        const searchTerm = encodeURIComponent(`${artist} ${title}`);
+        let artwork = "Essential Radio Logo.png";
+        try {
+          const iTunesRes = await fetch(`https://itunes.apple.com/search?term=${searchTerm}&media=music&limit=1`);
+          const iTunesData = await iTunesRes.json();
+          artwork = iTunesData.results?.[0]?.artworkUrl100?.replace('100x100', '300x300') || artwork;
+        } catch {}
+        document.getElementById("artwork").src = artwork;
+      } catch (err) {
+        document.getElementById("now-playing").textContent = "Loading…";
+        document.getElementById("now-playing-artist").textContent = "";
+        document.getElementById("artwork").src = "Essential Radio Logo.png";
       }
     }
 
-    async function loadRecentlyPlayed(limit = 5) {
+    // RECENTLY PLAYED WITH ITUNES ARTWORK (unchanged)
+    async function updateRecent() {
       try {
-        // Get current track to filter it out (kept as per your earlier request)
-        let current = null;
-        try { current = await getLatestTrack(); } catch {}
-        const ca = norm(current?.artist), ct = norm(current?.title);
+        const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now());
+        const data = await res.json();
+        const list = document.getElementById('recent-list');
+        list.innerHTML = "";
+        const recentItems = data.slice(-3).reverse();
 
-        const res = await fetch(`/api/recentlyPlayed?_=${Date.now()}`);
-        if (!res.ok) throw new Error("recentlyPlayed fetch failed " + res.status);
-        let items = await res.json();
-        if (!Array.isArray(items)) items = [];
-
-        // Exclude the current track if present
-        if (ca || ct) items = items.filter(x => !(norm(x?.artist) === ca && norm(x?.title) === ct));
-
-        // Cap list
-        items = items.slice(0, limit);
-
-        const container = document.getElementById("recent-list");
-        container.innerHTML = "";
-
-        // Use the SAME lookup helper as Now Playing
-        const arts = await Promise.all(items.map(x => fetchArtworkFromItunes(x?.artist || "", x?.title || "")));
-
-        items.forEach((x, i) => {
-          const art = arts[i] || FALLBACK_IMG;
-          const artist = x?.artist || "Unknown Artist";
-          const title = x?.title || "Unknown Title";
-          const row = document.createElement("div");
-          row.className = "recent-item";
-          row.innerHTML = `
-            <img class="recent-art" src="${art}" alt="Album artwork" referrerpolicy="no-referrer">
-            <div class="recent-meta">
-              <div class="artist">${artist}</div>
-              <div class="title">${title}</div>
-            </div>
+        for (const item of recentItems) {
+          const artist = decodeHtmlEntities(item.Artist);
+          const title = decodeHtmlEntities(item.Title);
+          const searchTerm = encodeURIComponent(`${artist} ${title}`);
+          let artwork = "Essential Radio Logo.png";
+          try {
+            const iTunesRes = await fetch(`https://itunes.apple.com/search?term=${searchTerm}&media=music&limit=1`);
+            const iTunesData = await iTunesRes.json();
+            artwork = iTunesData.results?.[0]?.artworkUrl100?.replace('100x100', '100x100') || artwork;
+          } catch {}
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <img src="${artwork}" alt="" />
+            <span class="info">${artist} – ${title}</span>
+            <span class="time">${(item["Displayed Time"] || item["Scheduled Time"] || "").slice(0, 5)}</span>
           `;
-          container.appendChild(row);
-        });
-      } catch {
-        document.getElementById("recent-list").innerHTML = "<div class='title'>No recent tracks available.</div>";
+          list.appendChild(li);
+        }
+      } catch (err) {
+        document.getElementById('recent-list').innerHTML = '<li><span class="info">Unavailable</span></li>';
       }
     }
 
-    // Initial loads
-    loadNowPlaying();
-    loadRecentlyPlayed(5);
-
-    // Polling
-    setInterval(loadNowPlaying, 20000);
-    setInterval(() => loadRecentlyPlayed(5), 60000);
+    // REFRESH INTERVALS
+    updateOnAirNow();
+    updateNowPlaying();
+    updateRecent();
+    setInterval(updateOnAirNow, 60_000);
+    setInterval(updateNowPlaying, 12_000);
+    setInterval(updateRecent, 18_000);
   </script>
 </body>
 </html>
