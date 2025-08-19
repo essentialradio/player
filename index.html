@@ -9777,12 +9777,17 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
+
 <!-- Injected NP countdown + fallback guard (Aug 19, 2025) -->
 <script>
 (function () {
   const LATEST_URL = '/api/latestTrack';
   const POLL_MS = 2000;
   const GRACE_MS = 30000;
+
+  // Targeted elements
+  const ELAPSED_SEL = '#np-elapsed';
+  const PROGRESS_BAR_SEL = '#np-progress';
 
   let lastKey = null;
   let pollTimer = null;
@@ -9791,12 +9796,15 @@ if ('serviceWorker' in navigator) {
   let lastEndKey = null;
   let placeholderActive = false;
   let freezeTick = null;
+  let firstRun = true;
 
   const original = {
     fetchNowPlaying: (typeof window.fetchNowPlaying === 'function') ? window.fetchNowPlaying : null,
     showMoreMusicSoon: (typeof window.showMoreMusicSoon === 'function') ? window.showMoreMusicSoon : function(){},
     updateNowPlayingProgress: (typeof window.updateNowPlayingProgress === 'function') ? window.updateNowPlayingProgress : null
   };
+
+  function qs(sel){ return document.querySelector(sel); }
 
   window.__NP_PATCH_STATE__ = {
     get lastKey(){return lastKey;},
@@ -9823,26 +9831,25 @@ if ('serviceWorker' in navigator) {
   function cancelTimer(ref) { if (ref) clearTimeout(ref); return null; }
   function cancelInterval(ref) { if (ref) clearInterval(ref); return null; }
 
-  // --- Freeze countdown display helpers ---
-  function findCountdownEls() {
-    const selectors = ['#countdown','.countdown','.np-countdown','[data-countdown]','.now-playing-countdown','.np-elapsed'];
-    const set = new Set();
-    selectors.forEach(sel => document.querySelectorAll(sel).forEach(n => set.add(n)));
-    return Array.from(set);
-  }
+  // --- Freeze countdown display (#np-elapsed) ---
   function freezeCountdownDisplay() {
-    // mark frozen and keep it clamped to 0:00 so legacy rAF doesn't keep ticking
-    const els = findCountdownEls();
-    els.forEach(el => { el.setAttribute('data-frozen','1'); el.textContent = '0:00'; });
-    if (freezeTick) cancelInterval(freezeTick);
+    const el = qs(ELAPSED_SEL);
+    if (el) {
+      el.setAttribute('data-frozen','1');
+      el.textContent = '0:00';
+    }
+    if (freezeTick) clearInterval(freezeTick);
     freezeTick = setInterval(() => {
-      const els2 = findCountdownEls();
-      els2.forEach(el => { if (el.getAttribute('data-frozen') === '1') el.textContent = '0:00'; });
+      const el2 = qs(ELAPSED_SEL);
+      if (el2 && el2.getAttribute('data-frozen') === '1') el2.textContent = '0:00';
     }, 500);
+    // Hide progress bar when frozen/ended
+    const bar = qs(PROGRESS_BAR_SEL);
+    if (bar) bar.style.width = '0%';
   }
   function unfreezeCountdownDisplay() {
-    const els = findCountdownEls();
-    els.forEach(el => el.removeAttribute('data-frozen'));
+    const el = qs(ELAPSED_SEL);
+    if (el) el.removeAttribute('data-frozen');
     if (freezeTick) { clearInterval(freezeTick); freezeTick = null; }
   }
 
@@ -9851,6 +9858,13 @@ if ('serviceWorker' in navigator) {
     if (placeholderActive && !force) return;
     if (original.fetchNowPlaying) try { return original.fetchNowPlaying(); } catch(e){}
   };
+
+  function showPlaceholderNow() {
+    placeholderActive = true;
+    // freeze timer & hide progress
+    freezeCountdownDisplay();
+    try { original.showMoreMusicSoon(); } catch(e){}
+  }
 
   function scheduleEndAndGrace(latest) {
     endTimer = cancelTimer(endTimer);
@@ -9861,7 +9875,17 @@ if ('serviceWorker' in navigator) {
     const startMs = Date.parse(latest.startTime) || 0;
     const durMs = Math.max(0, Math.round(Number(latest.duration) * 1000));
     const endAt = startMs + durMs;
-    const waitMs = Math.max(0, endAt - Date.now());
+    const now = Date.now();
+
+    // Special case: on first run/page refresh, if we're already past end, show placeholder immediately.
+    if (firstRun && now >= endAt) {
+      showPlaceholderNow();
+      firstRun = false;
+      return;
+    }
+    firstRun = false;
+
+    const waitMs = Math.max(0, endAt - now);
 
     endTimer = setTimeout(() => {
       lastEndKey = lastKey;
@@ -9872,8 +9896,7 @@ if ('serviceWorker' in navigator) {
       // Start 30s grace; only show placeholder if key hasn't changed
       moreSoonTimer = setTimeout(() => {
         if (lastEndKey && lastEndKey === lastKey) {
-          placeholderActive = true;
-          try { original.showMoreMusicSoon(); } catch(e){}
+          showPlaceholderNow();
         }
       }, GRACE_MS);
     }, waitMs);
@@ -9885,15 +9908,16 @@ if ('serviceWorker' in navigator) {
     if (moreSoonTimer) return;
     // If track already changed, ignore
     if (lastEndKey && lastEndKey !== lastKey) return;
-    // Otherwise allow and mark placeholder active
-    placeholderActive = true;
-    try { original.showMoreMusicSoon(); } catch(e){}
+    showPlaceholderNow();
   };
 
   function resetProgress(latest) {
     if (!latest || !latest.startTime || !latest.duration) return;
     // Unfreeze (new track)
     unfreezeCountdownDisplay();
+    // Ensure progress bar is visible again (width will be set by original updater)
+    const bar = qs(PROGRESS_BAR_SEL);
+    if (bar) bar.style.removeProperty('display');
     if (typeof original.updateNowPlayingProgress === 'function') {
       try {
         original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
@@ -9906,7 +9930,9 @@ if ('serviceWorker' in navigator) {
     if (!latest) return;
 
     const key = getKey(latest);
-    if (key && key !== lastKey) {
+    if (!key) return;
+
+    if (key !== lastKey) {
       // New track detected
       lastKey = key;
       placeholderActive = false;
@@ -9919,6 +9945,9 @@ if ('serviceWorker' in navigator) {
       resetProgress(latest);
 
       // Reschedule end & grace
+      scheduleEndAndGrace(latest);
+    } else {
+      // Same track; still ensure timers/grace are scheduled appropriately
       scheduleEndAndGrace(latest);
     }
   }
