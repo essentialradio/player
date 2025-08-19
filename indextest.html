@@ -5906,11 +5906,17 @@ async function fetchNowPlaying() {
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
 
-    // Reset & run the smooth bar animation
-    try { hardResetBar(); } catch(e){}
-    window._npLastTiming = { startMs, endMs };
-    try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
-    try { startBarAnimation(startMs, endMs); } catch(e){}
+// Only (re)start the bar if this is a NEW track.
+if (window._npActiveKey !== trackKey) {
+  window._npActiveKey = trackKey;
+  try { hardResetBar(); } catch(e){}
+  window._npLastTiming = { startMs, endMs };
+  try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
+  try { startBarAnimation(startMs, endMs); } catch(e){}
+} else {
+  // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
+  window._npLastTiming = { startMs, endMs };
+}
 
     // Update main Now Playing block
     const nowPlaying = document.getElementById('now-playing');
