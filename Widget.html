@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget (Smaller Mobile)</title>
+  <title>Essential Radio Widget (Fixed API + Smaller Mobile)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -32,8 +32,14 @@
       object-fit: cover; background: #222; margin-bottom: 10px;
     }
     .now-playing-info { text-align: center; width: 100%; }
-    #now-playing { font-weight: 700; color: #fed351; margin-bottom: 2px; }
-    #now-playing-artist { opacity: 0.9; font-size: 0.95em; }
+    #now-playing {
+      font-weight: 700; color: #fed351; margin-bottom: 2px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    #now-playing-artist {
+      opacity: 0.9; font-size: 0.95em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
     .right { flex: 1; display: flex; flex-direction: column; padding: 20px; }
     .on-air-now { color: #fed351; font-weight: 700; margin-bottom: 3px; }
     #currentShow { font-weight: 600; margin-bottom: 10px; line-height: 1.3; }
@@ -48,7 +54,7 @@
     ul#recent-list li { display: flex; align-items: center; gap: 6px; padding: 5px 0; border-bottom: 1px solid #28284b; }
     ul#recent-list li:last-child { border-bottom: none; }
     ul#recent-list img { width: 30px; height: 30px; border-radius: 6px; border: 2px solid #fed351; object-fit: cover; }
-    ul#recent-list span.info { flex: 1; font-size: 0.9em; overflow: hidden; text-overflow: ellipsis; }
+    ul#recent-list span.info { flex: 1; font-size: 0.9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     ul#recent-list span.time { width: 40px; text-align: right; font-size: 0.85em; color: #fed351; }
 
     /* MOBILE tweaks */
@@ -96,5 +102,119 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // === FIXED API ORIGINS ===
+    const BASE_URL = "https://player-green.vercel.app"; // your confirmed API origin
+    const LATEST_TRACK_URL = BASE_URL + "/api/latestTrack";
+    const RECENT_URL = "https://essentialradio.github.io/player/playout_log_rolling.json";
+    const SCHEDULE_URL = "https://essentialradio.github.io/player/schedule.json";
+
+    function decodeHtmlEntities(str) {
+      if (!str) return "";
+      var txt = document.createElement("textarea");
+      txt.innerHTML = str;
+      return txt.value;
+    }
+
+    // ---- NOW PLAYING (absolute URL) ----
+    async function updateNowPlaying() {
+      try {
+        const latestRes = await fetch(LATEST_TRACK_URL + "?_=" + Date.now(), { cache: "no-store" });
+        if (!latestRes.ok) throw new Error("latestTrack status " + latestRes.status);
+        const latest = await latestRes.json();
+        if (!latest || !latest.artist || !latest.title) throw new Error("latestTrack missing fields");
+
+        const artist = decodeHtmlEntities(latest.artist);
+        const title = decodeHtmlEntities(latest.title);
+
+        document.getElementById("now-playing").textContent = title;
+        document.getElementById("now-playing-artist").textContent = artist ? "by " + artist : "";
+
+        // optional: iTunes artwork lookup (best-effort)
+        const searchTerm = encodeURIComponent(artist + " " + title);
+        let artwork = "Essential Radio Logo.png";
+        try {
+          const iTunesRes = await fetch("https://itunes.apple.com/search?term=" + searchTerm + "&media=music&limit=1");
+          const iTunesData = await iTunesRes.json();
+          artwork = (iTunesData.results && iTunesData.results[0] && iTunesData.results[0].artworkUrl100
+                    ? iTunesData.results[0].artworkUrl100.replace("100x100", "300x300")
+                    : artwork);
+        } catch(e) {}
+        document.getElementById("artwork").src = artwork;
+      } catch (e) {
+        console.warn(e);
+        document.getElementById("now-playing").textContent = "More music soon";
+        document.getElementById("now-playing-artist").textContent = "";
+        document.getElementById("artwork").src = "Essential Radio Logo.png";
+      }
+    }
+
+    // ---- RECENTLY PLAYED ----
+    async function updateRecent() {
+      try {
+        const res = await fetch(RECENT_URL + "?_=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) throw new Error("recent status " + res.status);
+        const data = await res.json();
+        const list = document.getElementById("recent-list");
+        list.innerHTML = "";
+        const recentItems = data.slice(-3).reverse();
+        for (const item of recentItems) {
+          const artist = decodeHtmlEntities(item.Artist);
+          const title = decodeHtmlEntities(item.Title);
+          const li = document.createElement("li");
+          li.innerHTML = '<img src="Essential Radio Logo.png" alt="" />' +
+                         '<span class="info">' + artist + ' – ' + title + '</span>' +
+                         '<span class="time">' + ((item["Displayed Time"] || item["Scheduled Time"] || "").slice(0, 5)) + '</span>';
+          list.appendChild(li);
+        }
+      } catch (e) {
+        console.warn(e);
+        document.getElementById("recent-list").innerHTML = '<li><span class="info">Unavailable</span></li>';
+      }
+    }
+
+    // ---- ON AIR NOW ----
+    async function fetchSchedule() {
+      try { const res = await fetch(SCHEDULE_URL, { cache: "no-store" }); return await res.json(); }
+      catch { return null; }
+    }
+    function getCurrentShow(schedule) {
+      const now = new Date();
+      const day = now.toLocaleString("en-GB", { weekday: "long" });
+      const shows = (schedule && schedule[day]) || [];
+      const nowMins = now.getHours() * 60 + now.getMinutes();
+      for (const show of shows) {
+        const [sh, sm] = show.start.split(":").map(Number);
+        const [eh, em] = show.end.split(":").map(Number);
+        let start = sh * 60 + sm, end = eh * 60 + em;
+        if (end === 0 && start > 0) end = 1440; // midnight wrap
+        if (nowMins >= start && nowMins < end) return show.title;
+      }
+      return "Off Air";
+    }
+    async function updateOnAirNow() {
+      const schedule = await fetchSchedule();
+      const show = schedule ? getCurrentShow(schedule) : "Loading…";
+      const el = document.getElementById("currentShow");
+      if (show.includes(" with ")) {
+        const parts = show.split(" with ");
+        const title = decodeHtmlEntities(parts[0].trim());
+        const presenter = decodeHtmlEntities(parts.slice(1).join(" with ").trim());
+        el.innerHTML = '<span style="display:block">' + title + '</span>' +
+                       '<span style="font-weight:400;font-size:0.97em;font-style:italic;opacity:0.9;">with ' + presenter + '</span>';
+      } else {
+        el.textContent = decodeHtmlEntities(show);
+      }
+    }
+
+    // ---- INIT ----
+    updateOnAirNow();
+    updateNowPlaying();
+    updateRecent();
+    setInterval(updateOnAirNow, 60000);
+    setInterval(updateNowPlaying, 12000);
+    setInterval(updateRecent, 18000);
+  </script>
 </body>
 </html>
