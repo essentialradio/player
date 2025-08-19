@@ -3,39 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget (Artwork Match+)</title>
+  <title>Essential Radio Widget (Online Artwork Search — iTunes + Deezer + Proxy)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #0b0d14; margin: 0; color: #fff; display:flex; min-height:100vh; align-items:center; justify-content:center;}
+    body { font-family: 'Inter', sans-serif; background:#0b0d14; margin:0; color:#fff; display:flex; min-height:100vh; align-items:center; justify-content:center; }
     .widget-container { width:100%; max-width:600px; background:#191c29; border-radius:20px; box-shadow:0 4px 24px #0005; overflow:hidden; display:flex; }
-    .left { width:240px; min-width:180px; background:#21233c; display:flex; flex-direction:column; align-items:center; padding:20px 14px; border-right:2px solid #fed35144;}
+    .left { width:240px; min-width:180px; background:#21233c; display:flex; flex-direction:column; align-items:center; padding:20px 14px; border-right:2px solid #fed35144; }
     .logo { width:110px; border-radius:14px; margin-bottom:14px; }
     #artwork { width:110px; height:110px; border-radius:10px; border:3px solid #fed351; object-fit:cover; background:#222; margin-bottom:10px; transition:opacity .2s ease; }
-    .now-playing-info{ text-align:center; width:100%; }
-    #now-playing{ font-weight:700; color:#fed351; margin-bottom:2px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
-    #now-playing-artist{ opacity:.9; font-size:.95em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-    .right{ flex:1; display:flex; flex-direction:column; padding:20px;}
-    .on-air-now{ color:#fed351; font-weight:700; margin-bottom:3px;}
-    #currentShow{ font-weight:600; margin-bottom:10px; line-height:1.3;}
-    .audio-controls{ display:flex; gap:10px; align-items:center; margin:6px 0 12px;}
-    #play-toggle,#mute-toggle{ background:#fed351; color:#111; border:0; border-radius:6px; padding:6px 12px; font-weight:700; cursor:pointer;}
-    #volume-slider{ width:90px;}
-    .recent-title{ color:#fed351; font-weight:600; margin:5px 0;}
-    ul#recent-list{ list-style:none; margin:0; padding:0; max-height:150px; overflow:auto;}
-    ul#recent-list li{ display:flex; align-items:center; gap:6px; padding:5px 0; border-bottom:1px solid #28284b;}
-    ul#recent-list li:last-child{ border-bottom:none;}
-    ul#recent-list img{ width:30px; height:30px; border-radius:6px; border:2px solid #fed351; object-fit:cover;}
-    ul#recent-list span.info{ flex:1; font-size:.9em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-    ul#recent-list span.time{ width:40px; text-align:right; font-size:.85em; color:#fed351;}
-    @media (max-width:700px){ .widget-container{ flex-direction:column; border-radius:14px;} .left,.right{ width:100%; padding:12px; border-right:none;} .left{ flex-direction:row; gap:10px; align-items:center; border-bottom:2px solid #fed35133;} .logo{ width:70px; margin:0;} #artwork{ width:64px; height:64px; border-width:2px;} #now-playing{ font-size:.9em;} #now-playing-artist{ font-size:.8em;} .on-air-now,#currentShow{ font-size:.85em;} #play-toggle,#mute-toggle{ padding:5px 10px; font-size:.85em;} #volume-slider{ width:70px;} ul#recent-list img{ width:26px; height:26px;} ul#recent-list span.info{ font-size:.8em;} ul#recent-list span.time{ font-size:.75em;} }
+    .now-playing-info { text-align:center; width:100%; }
+    #now-playing { font-weight:700; color:#fed351; margin-bottom:2px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    #now-playing-artist { opacity:.9; font-size:.95em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .right { flex:1; display:flex; flex-direction:column; padding:20px; }
+    .on-air-now { color:#fed351; font-weight:700; margin-bottom:3px; }
+    #currentShow { font-weight:600; margin-bottom:10px; line-height:1.3; }
+    .audio-controls { display:flex; gap:10px; align-items:center; margin:6px 0 12px; }
+    #play-toggle,#mute-toggle { background:#fed351; color:#111; border:0; border-radius:6px; padding:6px 12px; font-weight:700; cursor:pointer; }
+    #volume-slider { width:90px; }
+    .recent-title { color:#fed351; font-weight:600; margin:5px 0; }
+    ul#recent-list { list-style:none; margin:0; padding:0; max-height:150px; overflow:auto; }
+    ul#recent-list li { display:flex; align-items:center; gap:6px; padding:5px 0; border-bottom:1px solid #28284b; }
+    ul#recent-list li:last-child { border-bottom:none; }
+    ul#recent-list img { width:30px; height:30px; border-radius:6px; border:2px solid #fed351; object-fit:cover; }
+    ul#recent-list span.info { flex:1; font-size:.9em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    ul#recent-list span.time { width:40px; text-align:right; font-size:.85em; color:#fed351; }
+    @media (max-width:700px){ .widget-container{ flex-direction:column; border-radius:14px;} .left,.right{ width:100%; padding:12px; border-right:none;} .left{ flex-direction:row; gap:10px; align-items:center; border-bottom:2px solid #fed35133;} .logo{ width:70px; margin:0;} #artwork{ width:64px; height:64px; border-width:2px;} #now-playing{ font-size:.9em;} #now-playing-artist{ font-size:.8em;} .on-air-now,#currentShow{ font-size:.85em;} #play-toggle,#mute-toggle{ padding:5px 10px; font-size:.85em;} #volume-slider{ width:70px;} ul#recent-list img{ width:26px; height:26px;} ul#recent-list .info{ font-size:.8em;} ul#recent-list .time{ font-size:.75em;}}
   </style>
 </head>
 <body>
   <div class="widget-container">
     <div class="left">
       <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
-      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" />
       <div class="now-playing-info">
         <div id="now-playing">Loading…</div>
         <div id="now-playing-artist"></div>
@@ -60,7 +60,7 @@
 
   <script>
     // === SAME-ORIGIN RELATIVE API ===
-    const LATEST_TRACK_URL = "/api/latestTrack";
+    const LATEST_TRACK_URL = "/api/latestTrack"; // your API (relative)
     const RECENT_URL = "https://essentialradio.github.io/player/playout_log_rolling.json";
     const SCHEDULE_URL = "https://essentialradio.github.io/player/schedule.json";
     const STREAM_URL = "https://streaming06.liveboxstream.uk/proxy/ayrshire/stream";
@@ -78,75 +78,64 @@
 
     // ---- Helpers ----
     function decodeHtmlEntities(str){ if(!str) return ""; const txt=document.createElement("textarea"); txt.innerHTML=str; return txt.value;}
-    function norm(s){ return (s||"").toLowerCase()
-      .replace(/[‘’'’"]/g,"")
-      .replace(/\s*(feat|ft)\.?[^-–()\[\]]*/g,"")
-      .replace(/\s*[\(\[].*?[\)\]]/g,"")  // remove (radio edit), [remix], etc.
-      .replace(/[-–]/g," ")
-      .replace(/[^a-z0-9 ]/g,"")
-      .replace(/\s+/g," ").trim(); }
-    function scoreMatch(a,b){ // simple token overlap score 0..1
-      const ta=new Set(norm(a).split(" ")); const tb=new Set(norm(b).split(" "));
-      if(!ta.size || !tb.size) return 0;
-      let overlap=0; ta.forEach(t=>{ if(tb.has(t)) overlap++; });
-      return overlap/Math.max(ta.size,tb.size);
-    }
-    function timeoutFetch(resource, options={}, ms=6000){
-      const c=new AbortController(); const id=setTimeout(()=>c.abort(),ms);
-      return fetch(resource,{...options,signal:c.signal}).finally(()=>clearTimeout(id));
+    function timeoutFetch(resource, options={}, ms=7000){ const c=new AbortController(); const id=setTimeout(()=>c.abort(),ms); return fetch(resource,{...options,signal:c.signal}).finally(()=>clearTimeout(id)); }
+    function prox(url){
+      // Proxy external images to improve CSP compatibility (uses images.weserv.nl)
+      try{
+        const u = new URL(url);
+        const hostpath = u.host + u.pathname + (u.search||"");
+        return "https://images.weserv.nl/?url=" + encodeURIComponent(hostpath) + "&w=300&h=300&fit=cover&we";
+      }catch{ return url; }
     }
 
-    // ---- Artwork resolver (Apple Music with country variations + scoring) ----
-    let lastTrackKey="", lastArtworkURL="Essential Radio Logo.png";
-    const artworkEl=document.getElementById("artwork");
-
-    async function appleSearch(query, country){
-      const url = "https://itunes.apple.com/search?term="+encodeURIComponent(query)+"&media=music&entity=song&limit=5"+(country?("&country="+country):"");
-      const res = await timeoutFetch(url, {cache:"no-store"}, 7000);
-      if(!res.ok) throw new Error("itunes "+res.status);
-      return res.json();
-    }
-
-    function pickBestArtwork(results, artist, title){
-      if(!results || !results.results) return null;
-      const target = norm(artist+" "+title);
-      let best=null, bestScore=0;
-      for(const r of results.results){
-        const cand = norm((r.artistName||"")+" "+(r.trackName||""));
-        const s = scoreMatch(target, cand);
-        if(s>bestScore && r.artworkUrl100){ bestScore=s; best=r; }
+    // ---- Online Artwork Search: Apple (GB/US) → Deezer → fallback ----
+    async function searchApple(artist, title){
+      const q = encodeURIComponent((artist + " " + title).replace(/["'’]/g, ""));
+      for(const country of ["gb","us"]){
+        const url = "https://itunes.apple.com/search?term="+q+"&media=music&entity=song&limit=3&country="+country;
+        const res = await timeoutFetch(url, { cache:"no-store" }, 7000);
+        if(res.ok){
+          const data = await res.json();
+          const hit = data.results && data.results.find(r => r.artworkUrl100);
+          if(hit) return prox(hit.artworkUrl100.replace("100x100","300x300"));
+        }
       }
-      return best && best.artworkUrl100 ? best.artworkUrl100.replace("100x100","300x300") : null;
+      return null;
     }
+    async function searchDeezer(artist, title){
+      const q = encodeURIComponent(`artist:"${artist}" track:"${title}"`);
+      const url = "https://api.deezer.com/search?q=" + q + "&limit=1";
+      const res = await timeoutFetch(url, { cache:"no-store" }, 7000);
+      if(!res.ok) return null;
+      const data = await res.json();
+      const hit = data && data.data && data.data[0];
+      const art = hit && hit.album && (hit.album.cover_xl || hit.album.cover_big || hit.album.cover_medium);
+      return art || null;
+    }
+
+    let lastTrackKey="", lastArtworkURL="Essential Radio Logo.png";
+    const artworkEl = document.getElementById("artwork");
 
     async function resolveArtwork(artist, title){
-      const q1 = artist+" "+title;
+      // 1) Apple Music (GB/US)
       try{
-        let data = await appleSearch(q1, "gb");
-        let art = pickBestArtwork(data, artist, title);
-        if(art) return art;
-        data = await appleSearch(q1, "us");
-        art = pickBestArtwork(data, artist, title);
-        if(art) return art;
-        // Try stripped-down title only
-        const tOnly = norm(title);
-        if(tOnly){
-          data = await appleSearch(tOnly, "gb");
-          art = pickBestArtwork(data, artist, title);
-          if(art) return art;
-          data = await appleSearch(tOnly, "us");
-          art = pickBestArtwork(data, artist, title);
-          if(art) return art;
-        }
-      }catch(e){ /* ignore, we'll fall back */ }
+        const apple = await searchApple(artist, title);
+        if(apple) return apple;
+      }catch(e){ /* ignore */ }
+      // 2) Deezer
+      try{
+        const dz = await searchDeezer(artist, title);
+        if(dz) return dz;
+      }catch(e){ /* ignore */ }
+      // 3) Fallback
       return lastArtworkURL || "Essential Radio Logo.png";
     }
 
     // ---- Data fetch ----
     async function updateNowPlaying(){
       try{
-        const latestRes = await fetch(LATEST_TRACK_URL+"?_="+Date.now(), {cache:"no-store"});
-        if(!latestRes.ok) throw new Error("latestTrack "+latestRes.status);
+        const latestRes = await fetch(LATEST_TRACK_URL+"?_="+Date.now(), { cache:"no-store" });
+        if(!latestRes.ok) throw new Error("latestTrack status "+latestRes.status);
         const latest = await latestRes.json();
         const artist = decodeHtmlEntities(latest.artist||"");
         const title  = decodeHtmlEntities(latest.title||"");
@@ -175,33 +164,24 @@
 
     async function updateRecent(){
       try{
-        const res = await fetch(RECENT_URL+"?_="+Date.now(), {cache:"no-store"});
+        const res = await fetch(RECENT_URL+"?_="+Date.now(), { cache:"no-store" });
         const data = await res.json();
         const list = document.getElementById("recent-list");
         list.innerHTML="";
         data.slice(-3).reverse().forEach(item=>{
-          const artist = decodeHtmlEntities(item.Artist||"");
-          const title  = decodeHtmlEntities(item.Title||"");
-          const li = document.createElement("li");
-          li.innerHTML = '<img src="Essential Radio Logo.png" alt=""/>' +
-                         '<span class="info">'+artist+' – '+title+'</span>' +
-                         '<span class="time">'+((item["Displayed Time"]||item["Scheduled Time"]||"").slice(0,5))+'</span>';
+          const li=document.createElement("li");
+          li.innerHTML='<img src="Essential Radio Logo.png" alt=""/>' +
+                       '<span class="info">'+decodeHtmlEntities(item.Artist||"")+' – '+decodeHtmlEntities(item.Title||"")+'</span>' +
+                       '<span class="time">'+((item["Displayed Time"]||item["Scheduled Time"]||"").slice(0,5))+'</span>';
           list.appendChild(li);
         });
       }catch(e){ document.getElementById("recent-list").innerHTML='<li><span class="info">Unavailable</span></li>'; }
     }
 
     async function fetchSchedule(){ try{ const r=await fetch(SCHEDULE_URL,{cache:"no-store"}); return r.json(); }catch{ return null; } }
-    function getCurrentShow(schedule){
-      const now=new Date(); const day=now.toLocaleString("en-GB",{weekday:"long"});
-      const shows=(schedule&&schedule[day])||[]; const m=now.getHours()*60+now.getMinutes();
-      for(const s of shows){ const [sh,sm]=s.start.split(":").map(Number); const [eh,em]=s.end.split(":").map(Number);
-        let st=sh*60+sm,en=eh*60+em; if(en===0&&st>0) en=1440; if(m>=st&&m<en) return s.title; }
-      return "Off Air";
-    }
-    async function updateOnAirNow(){ const sched=await fetchSchedule(); document.getElementById("currentShow").textContent = sched?getCurrentShow(sched):"Off Air"; }
+    function getCurrentShow(s){ const n=new Date(); const d=n.toLocaleString("en-GB",{weekday:"long"}); const a=(s&&s[d])||[]; const m=n.getHours()*60+n.getMinutes(); for(const x of a){ const [sh,sm]=x.start.split(":").map(Number); const [eh,em]=x.end.split(":").map(Number); let st=sh*60+sm,en=eh*60+em; if(en===0&&st>0) en=1440; if(m>=st&&m<en) return x.title;} return "Off Air"; }
+    async function updateOnAirNow(){ const s=await fetchSchedule(); document.getElementById("currentShow").textContent=s?getCurrentShow(s):"Off Air"; }
 
-    // Init
     updateOnAirNow(); updateNowPlaying(); updateRecent();
     setInterval(updateOnAirNow, 60000);
     setInterval(updateNowPlaying, 12000);
