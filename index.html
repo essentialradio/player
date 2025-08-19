@@ -5926,7 +5926,7 @@ async function fetchNowPlaying(force = false) {
     }
     // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+    /* artwork fetch skipped here (handled on new track only) */
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
@@ -9972,10 +9972,26 @@ if ('serviceWorker' in navigator) {
     placeholderShownThisGap = false;
     // Unfreeze (new track)
     unfreezeCountdownDisplay();
+
+    // --- Immediate UI overwrite on new track ---
+    try {
+      const tEl = document.getElementById('npTitle');
+      const aEl = document.getElementById('npArtist');
+      if (tEl) tEl.textContent = String(latest.title || '').trim();
+      if (aEl) aEl.textContent = String(latest.artist || '').trim();
+    } catch(e){}
+
+    // Clear any pending placeholder timers so nothing flips back
+    try {
+      if (typeof moreSoonTimer !== 'undefined' && moreSoonTimer) { clearTimeout(moreSoonTimer); moreSoonTimer = null; }
+      if (typeof endTimer !== 'undefined' && endTimer) { clearTimeout(endTimer); endTimer = null; }
+    } catch(e){}
+
     // Allow one render/update during this transition
     allowDuringPlaceholder = true;
     try {
       if (original.fetchNowPlaying) original.fetchNowPlaying(true);
+            try { if (typeof fetchArtwork === 'function') fetchArtwork(`${latest.artist} - ${latest.title}`); } catch {}
       if (original.updateNowPlayingProgress) {
         original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
       }
@@ -10005,6 +10021,7 @@ if ('serviceWorker' in navigator) {
       lastKey = key;
       // Reset and run progress immediately
       resetProgress(latest);
+      try { if (typeof fetchNowPlaying === 'function') fetchNowPlaying(true); } catch(e){}
       // Reschedule end & grace
       scheduleEndAndGrace(latest);
     } else {
