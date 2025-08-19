@@ -9786,30 +9786,115 @@ if ('serviceWorker' in navigator) {
 
 
 <script>
-// Fix getTrackArtwork: make it async + robust and return a usable URL or fallback.
+// === Safe Recent5 seeding: waits for renderer, never clears until data ready ===
 (function(){
-  const FALLBACK = 'ERLogo2.png';
-  // Ensure cache exists
-  if (!window.artworkCache) window.artworkCache = {};
+  const MAX_ITEMS = 5;
+  const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+  const API_RECENT = '/api/recent';
 
-  window.getTrackArtwork = async function(query){
-    try {
-      if (!query) return FALLBACK;
-      if (window.artworkCache[query]) return window.artworkCache[query];
-      // Normalise "artist – title" (various dash chars)
-      const q = encodeURIComponent(String(query).replace(/[–—−]/g, '-').trim());
-      const url = `https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`;
-      const res = await fetch(url);
-      if (!res.ok) return FALLBACK;
-      const data = await res.json();
-      const raw = data && data.results && data.results[0] && (data.results[0].artworkUrl100 || data.results[0].artworkUrl60 || data.results[0].artworkUrl30);
-      const art = raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
-      window.artworkCache[query] = art || FALLBACK;
-      return window.artworkCache[query];
-    } catch(e){
-      return FALLBACK;
+  const norm = s => (s||'').toString().trim();
+  function parseLog(data){
+    const out = [];
+    if (!Array.isArray(data)) return out;
+    for (const it of data){
+      const artist = norm(it && (it.Artist || it.artist));
+      const title  = norm(it && (it.Title  || it.title));
+      if (!artist || !title) continue;
+      let startMs = Date.now();
+      try {
+        if (it["Hour"] && it["Scheduled Time"]) {
+          const hourDate = new Date(it["Hour"]);
+          const [sh, sm] = String(it["Scheduled Time"]).split(':').map(Number);
+          const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh||0, sm||0, 0, 0);
+          startMs = d.getTime();
+        } else if (it.startTime) {
+          startMs = new Date(it.startTime).getTime();
+        }
+      } catch {}
+      out.push({ artist, title, startMs });
     }
-  };
+    // newest first
+    out.sort((a,b) => (b.startMs||0) - (a.startMs||0));
+    return out.slice(0, MAX_ITEMS);
+  }
+
+  function waitFor(fn, timeoutMs){
+    return new Promise((resolve, reject) => {
+      const t0 = Date.now();
+      (function loop(){
+        try {
+          const v = fn();
+          if (v) return resolve(v);
+        } catch {}
+        if (Date.now() - t0 > timeoutMs) return reject(new Error('timeout'));
+        setTimeout(loop, 50);
+      })();
+    });
+  }
+
+  async function fetchJSON(url){
+    const r = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }
+
+  async function getRecent5(){
+    // Try rolling log first
+    try {
+      const data = await fetchJSON(LOG_URL);
+      const list = parseLog(data);
+      if (list && list.length) return list;
+    } catch(e) { /* fall through */ }
+    // Fallback to API recent, if available
+    try {
+      const data = await fetchJSON(API_RECENT);
+      const list = parseLog(Array.isArray(data) ? data : (data.items || []));
+      if (list && list.length) return list;
+    } catch(e) { /* ignore */ }
+    return [];
+  }
+
+  async function seed(){
+    // Wait until DOM ready and renderer function exists
+    try { await new Promise(r => (document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', r, {once:true}) : r())); } catch{}
+    let prependFn = null;
+    try {
+      prependFn = await waitFor(() => window.prependRecentFromTrack, 5000);
+    } catch(e) {
+      console.warn('Recent seeding: renderer not found; aborting.');
+      return;
+    }
+
+    const container = document.getElementById('recent-list');
+    if (!container) return;
+
+    let list = [];
+    try { list = await getRecent5(); } catch{}
+
+    if (!list.length) {
+      console.warn('Recent seeding: no items available from log or API; leaving existing UI untouched.');
+      return;
+    }
+
+    // Only now clear and repopulate to avoid blank state
+    try { container.innerHTML = ''; } catch {}
+
+    // Insert oldest -> newest so newest ends on top (your prepend behavior)
+    const ordered = [...list].sort((a,b) => (a.startMs||0) - (b.startMs||0));
+    for (const t of ordered) {
+      try {
+        prependFn({
+          artist: t.artist,
+          title: t.title,
+          startedAt: t.startMs ? new Date(t.startMs).toISOString() : undefined,
+          startMs: t.startMs
+        });
+      } catch(e) { /* continue */ }
+    }
+  }
+
+  // Kick off (but do not interfere with existing code)
+  seed();
 })();
 </script>
 
