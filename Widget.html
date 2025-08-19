@@ -30,7 +30,6 @@
     }
     .recent-art { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; background:#222; }
     .recent-meta { display: grid; gap: 1px; }
-    .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
   </style>
 </head>
 <body>
@@ -53,6 +52,10 @@
   <script>
     const FALLBACK_IMG = "ERLogo2.png"; // station logo fallback
 
+    function norm(s) {
+      return (s || "").toString().trim().toLowerCase();
+    }
+
     async function fetchArtworkFromItunes(artist, title) {
       const q = encodeURIComponent(`${artist || ""} ${title || ""}`.trim());
       if (!q) return FALLBACK_IMG;
@@ -69,11 +72,15 @@
       return FALLBACK_IMG;
     }
 
+    async function getLatestTrack() {
+      const res = await fetch(`/api/latestTrack?_=${Date.now()}`);
+      if (!res.ok) throw new Error("latestTrack fetch failed " + res.status);
+      return res.json();
+    }
+
     async function loadNowPlaying() {
       try {
-        const res = await fetch(`/api/latestTrack?_=${Date.now()}`);
-        if (!res.ok) throw new Error("latestTrack fetch failed " + res.status);
-        const track = await res.json();
+        const track = await getLatestTrack();
         const artist = track?.artist || "";
         const title = track?.title || "";
         const art = await fetchArtworkFromItunes(artist, title);
@@ -91,10 +98,25 @@
 
     async function loadRecentlyPlayed(limit = 5) {
       try {
+        // get current track first for filtering
+        let current = null;
+        try { current = await getLatestTrack(); } catch (e) { /* ignore, still render recent */ }
+        const ca = norm(current?.artist);
+        const ct = norm(current?.title);
+
         const res = await fetch(`/api/recentlyPlayed?_=${Date.now()}`);
         if (!res.ok) throw new Error("recentlyPlayed fetch failed " + res.status);
         const recent = await res.json();
-        const items = Array.isArray(recent) ? recent.slice(0, limit) : [];
+        let items = Array.isArray(recent) ? recent : [];
+
+        // exclude the current song if it's present
+        if (ca || ct) {
+          items = items.filter(t => !(norm(t?.artist) === ca && norm(t?.title) === ct));
+        }
+
+        // cap list
+        items = items.slice(0, limit);
+
         const container = document.getElementById("recent-list");
         container.innerHTML = "";
 
