@@ -4248,6 +4248,31 @@ html[data-theme="light"] #mobileNowBar {
 }
 </style>
 
+
+<style id="np-progress-css">
+/* === Now Playing progress bar (only visible during tracks) === */
+#np-progress{
+  display:none;
+  width:100%;
+  height:8px;
+  background: rgba(255,255,255,0.2);
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:10px;
+}
+#np-progress .bar{
+  height:100%;
+  width:0%;
+  background: var(--er-accent, #fed351);
+  transition: width 0.4s linear;
+}
+:root[data-theme="light"] #np-progress{
+  background: rgba(0,0,0,0.15);
+}
+#np-progress.ending-soon .bar { animation: npPulse 1s infinite; }
+@keyframes npPulse { 50% { opacity: .6 } }
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4311,6 +4336,10 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
+<div id="np-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-hidden="true"><div class="bar"></div></div>
+
+  <!-- mm:ss remaining -->
+  <div id="countdown" style="margin-top:6px;font-size:0.95em;color:#ccc;text-align:right;">--:--</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -5837,7 +5866,13 @@ group.forEach(show => {
         <span style="color:white;">on Essential Radio</span>`;
       document.title = `Essential Radio: Essential listening for Ayrshire College`;
       applyFallbackImmediate();
-    }
+    
+      try {
+        if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
+        const prog = document.getElementById('np-progress');
+        if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); } cancelAnimationFrame(_npRafId);
+      } catch(e) {}
+}
     let currentTrackID = null;
 let songHasEnded = false;
 let trackEndTimeout = null;
@@ -5860,9 +5895,28 @@ async function fetchNowPlaying() {
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
 
-    // Track identity (to detect when a NEW track arrives)
+    // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
+    if (Date.now() > endMs) {
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+      return;
+    }
+    // Show progress bar while a valid track is playing
+    try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
+// Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
+
+// Only (re)start the bar if this is a NEW track.
+if (window._npActiveKey !== trackKey) {
+  window._npActiveKey = trackKey;
+  try { hardResetBar(); } catch(e){}
+  window._npLastTiming = { startMs, endMs };
+  try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
+  try { startBarAnimation(startMs, endMs); } catch(e){}
+} else {
+  // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
+  window._npLastTiming = { startMs, endMs };
+}
 
     // Update main Now Playing block
     const nowPlaying = document.getElementById('now-playing');
@@ -5888,17 +5942,40 @@ async function fetchNowPlaying() {
       const nowMs = Date.now();
       const remaining = endMs - nowMs;
       const countdownEl = document.getElementById('countdown');
-
-      if (remaining > 0) {
+if (remaining > 0) {
         const mins = Math.floor(remaining / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
       } else {
         if (countdownEl) countdownEl.textContent = '0:00';
-        clearInterval(timer);
+        if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
-        // Immediately show fallback while we wait for the next ingest
-        if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+        // Reset to placeholder after hitting zero
+        setTimeout(() => {
+          const cd = document.getElementById('countdown');
+          if (cd) cd.textContent = '--:--';
+        }, 1000)
+
+        // Grace window before showing fallback to avoid micro-flash between sweepers and next track
+        const GRACE_MS = 2500;
+        const graceUntil = Date.now() + GRACE_MS;
+        const pollDelay = 400;
+        let _gracePoll;
+        const _pollForNew = async () => {
+          try {
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const j = await r.json();
+            const newKey = (j && j.artist && j.title && j.startTime)
+              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
+            if (newKey && newKey !== window._npLastKey) { fetchNowPlaying(); return; }
+          } catch(e){}
+          if (Date.now() >= graceUntil) {
+            if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+          } else {
+            _gracePoll = setTimeout(_pollForNew, pollDelay);
+          }
+        };
+        _pollForNew();
 
         // Poll every 5s for a *different* track; when found, refresh NP
         if (window._npPollTimer) {
@@ -5925,7 +6002,8 @@ async function fetchNowPlaying() {
     }
 
     updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
+    if (window._npTimer) { clearInterval(window._npTimer); }
+    window._npTimer = setInterval(updateCountdown, 1000);
   } catch (err) {
     console.error('Error fetching now playing:', err);
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
@@ -9627,6 +9705,52 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+<script id="np-enhancements">
+// === Smooth rAF bar animation & robust resets ===
+let _npRafId = null;
+function hardResetBar(){
+  try {
+    const prog = document.getElementById('np-progress');
+    const bar = prog && prog.querySelector ? prog.querySelector('.bar') : null;
+    if (!bar || !prog) return;
+    prog.classList.remove('ending-soon');
+    bar.style.transition = 'none';
+    bar.style.width = '100%';
+    void bar.offsetWidth; // reflow
+    bar.style.transition = 'width 0.4s linear';
+  } catch(e){}
+}
+
+function startBarAnimation(startMs, endMs){
+  try {
+    const prog = document.getElementById('np-progress');
+    const bar = prog && prog.querySelector ? prog.querySelector('.bar') : null;
+    if (!bar || !prog) return;
+    prog.style.display = 'block';
+    cancelAnimationFrame(_npRafId);
+    function frame(){
+      const now = Date.now();
+      const total = Math.max(0, endMs - startMs);
+      const remaining = Math.max(0, endMs - now);
+      const pct = total > 0 ? (remaining / total) * 100 : 0;
+      bar.style.width = (pct > 100 ? 100 : (pct < 0 ? 0 : pct)) + '%';
+      prog.setAttribute('aria-valuenow', Math.round(pct));
+      if (remaining <= 10000) prog.classList.add('ending-soon'); else prog.classList.remove('ending-soon');
+      if (remaining > 0) { _npRafId = requestAnimationFrame(frame); }
+    }
+    _npRafId = requestAnimationFrame(frame);
+  } catch(e){}
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && window._npLastTiming) {
+    startBarAnimation(window._npLastTiming.startMs, window._npLastTiming.endMs);
+  } else if (document.hidden) {
+    cancelAnimationFrame(_npRafId);
+  }
+});
+
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
