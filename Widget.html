@@ -57,7 +57,7 @@
   </div>
 
   <script>
-    async function fetchArtwork(artist, title) {
+    async function fetchArtworkFromItunes(artist, title) {
       const query = encodeURIComponent(`${artist} ${title}`);
       try {
         const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
@@ -71,43 +71,62 @@
       return "fallback.png";
     }
 
-    async function loadNowPlaying() {
-      const res = await fetch("/api/latestTrack");
-      const track = await res.json();
-      const artwork = track.artwork || await fetchArtwork(track.artist, track.title);
-      const container = document.getElementById("current-track");
-      container.innerHTML = `
-        <img src="${artwork}" alt="artwork">
-        <div>
-          <div class="artist">${track.artist}</div>
-          <div class="title">${track.title}</div>
-        </div>
-      `;
+    async function getArtwork(track) {
+      if (track && track.artwork) return track.artwork;
+      return fetchArtworkFromItunes(track.artist, track.title);
     }
 
-    async function loadRecentlyPlayed() {
-      const res = await fetch("/api/recentlyPlayed");
-      const recent = await res.json();
-      const container = document.getElementById("recently-played");
-      container.innerHTML = "<h2>Recently Played</h2>";
-
-      for (const track of recent) {
-        const artwork = await fetchArtwork(track.artist, track.title);
-        const item = document.createElement("div");
-        item.className = "recent-track";
-        item.innerHTML = `
-          <img src="${artwork}" alt="artwork" class="recent-artwork">
-          <div class="recent-meta">
-            <span class="artist">${track.artist}</span><br>
-            <span class="title">${track.title}</span>
+    async function loadNowPlaying() {
+      try {
+        const res = await fetch(`/api/latestTrack?_=${Date.now()}`);
+        if (!res.ok) throw new Error("latestTrack fetch failed");
+        const track = await res.json();
+        const artwork = await getArtwork(track);
+        const container = document.getElementById("current-track");
+        container.innerHTML = `
+          <img src="${artwork}" alt="artwork">
+          <div>
+            <div class="artist">${track.artist ?? ""}</div>
+            <div class="title">${track.title ?? ""}</div>
           </div>
         `;
-        container.appendChild(item);
+      } catch (err) {
+        console.error(err);
       }
     }
 
+    async function loadRecentlyPlayed(limit = 5) {
+      try {
+        const res = await fetch(`/api/recentlyPlayed?_=${Date.now()}`);
+        if (!res.ok) throw new Error("recentlyPlayed fetch failed");
+        const recent = await res.json();
+        const container = document.getElementById("recently-played");
+        container.innerHTML = "<h2>Recently Played</h2>";
+
+        const items = Array.isArray(recent) ? recent.slice(0, limit) : [];
+        for (const track of items) {
+          const artwork = await getArtwork(track);
+          const item = document.createElement("div");
+          item.className = "recent-track";
+          item.innerHTML = `
+            <img src="${artwork}" alt="artwork" class="recent-artwork">
+            <div class="recent-meta">
+              <span class="artist">${track.artist ?? ""}</span><br>
+              <span class="title">${track.title ?? ""}</span>
+            </div>
+          `;
+          container.appendChild(item);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    // Initial loads
     loadNowPlaying();
     loadRecentlyPlayed();
+
+    // Polling
     setInterval(loadNowPlaying, 20000);
     setInterval(loadRecentlyPlayed, 60000);
   </script>
