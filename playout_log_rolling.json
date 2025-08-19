@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:00",
-    "Displayed Time": "",
-    "Artist": "Post Malone & Morgan Wallen",
-    "Title": "I Had Some Help",
-    "Duration (s)": 174,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:03",
-    "Displayed Time": "",
-    "Artist": "Enrique Iglesias",
-    "Title": "Escape",
-    "Duration (s)": 206,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:08",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:10",
-    "Displayed Time": "",
-    "Artist": "Carly Rae Jepsen",
-    "Title": "Call Me Maybe",
-    "Duration (s)": 185,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:14",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga & Bruno Mars",
-    "Title": "Die With A Smile",
-    "Duration (s)": 245,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:23",
-    "Displayed Time": "",
-    "Artist": "Shed Seven",
-    "Title": "Disco Down",
-    "Duration (s)": 227,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:27",
-    "Displayed Time": "",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:29",
-    "Displayed Time": "",
-    "Artist": "Gloria Estefan & Miami Sound Machine",
-    "Title": "1,2,3",
-    "Duration (s)": 203,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:33",
-    "Displayed Time": "",
-    "Artist": "Jungle",
-    "Title": "Back On 74",
-    "Duration (s)": 167,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:36",
-    "Displayed Time": "",
-    "Artist": "Fontaines D.C.",
-    "Title": "It's Amazing To Be Young",
-    "Duration (s)": 210,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:39",
-    "Displayed Time": "",
-    "Artist": "LF System",
-    "Title": "Afraid To Feel",
-    "Duration (s)": 174,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:47",
-    "Displayed Time": "",
-    "Artist": "Razorlight",
-    "Title": "America",
-    "Duration (s)": 193,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:51",
-    "Displayed Time": "",
-    "Artist": "Taylor Swift",
-    "Title": "Look What You Made Me Do",
-    "Duration (s)": 210,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-04T08:00:00Z",
-    "Scheduled Time": "09:55",
-    "Displayed Time": "",
-    "Artist": "Elton John",
-    "Title": "Goodbye Yellow Brick Road",
-    "Duration (s)": 190,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-04T09:00:00Z",
     "Scheduled Time": "10:01",
     "Displayed Time": "",
@@ -45316,6 +45162,17 @@
     "Title": "So Am I",
     "Duration (s)": 174,
     "Full Duration (s)": 184,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-19T03:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
