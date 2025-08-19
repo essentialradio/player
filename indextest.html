@@ -9786,116 +9786,86 @@ if ('serviceWorker' in navigator) {
 
 
 <script>
-// === Override getTrackArtwork for stronger matches (country=gb, entity=song) ===
+// === Recently Played artwork harden: wrap renderer and backfill ===
 (function(){
-  const originalGet = window.getTrackArtwork;
-  const cache = {};
-  window.getTrackArtwork = async function(query){
-    const q = String(query || '').replace(/\s+–\s+/g, ' ').trim();
-    if (!q) return null;
-    if (cache[q]) return cache[q];
+  const FALLBACK = 'ERLogo2.png';
+  const RECENT_CONTAINER_ID = 'recent-list';
+
+  async function itunesArt(artist, title){
     try {
-      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=1&country=gb`);
-      if (res.ok) {
-        const js = await res.json();
-        if (js && js.results && js.results[0] && (js.results[0].artworkUrl100 || js.results[0].artworkUrl60)) {
-          const raw = js.results[0].artworkUrl100 || js.results[0].artworkUrl60;
-          const url = raw.replace(/\/(\d+x\d+)bb\//, '/300x300bb/');
-          cache[q] = url;
-          return url;
-        }
+      const q = encodeURIComponent(`${artist||''} ${title||''}`.trim());
+      if (!q) return null;
+      const url = `https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`;
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data && data.results && data.results.length){
+        const raw = data.results[0].artworkUrl100 || data.results[0].artworkUrl60 || data.results[0].artworkUrl30 || '';
+        return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : null;
       }
-    } catch(e){ /* ignore and fall back */ }
-    if (typeof originalGet === 'function') {
-      try { const u = await originalGet(query); if (u) { cache[q] = u; return u; } } catch {}
-    }
+    } catch(e){}
     return null;
-  };
-})();
+  }
 
-// === Seed latest 5 recent items from rolling log using existing renderer ===
-(function(){
-  const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-  const MAX = 5;
-  const STORAGE_KEY = 'recentSeed5_v1';
+  function setImg(el, src){
+    if (!el) return;
+    try { el.src = src || FALLBACK; } catch {}
+  }
 
-  const norm = s => (s || '').toString().trim();
-  function toTrack(it){
-    // Build endMs from Hour + Scheduled Time + Duration (s) if available; else use startMs
-    let startMs = Date.now();
-    try {
-      if (it["Hour"] && it["Scheduled Time"]) {
-        const hourDate = new Date(it["Hour"]);
-        const parts = String(it["Scheduled Time"]).split(':').map(Number);
-        const sh = parts[0] || 0, sm = parts[1] || 0;
-        const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh, sm, 0, 0);
-        startMs = d.getTime();
-      }
-    } catch {}
-    const durMs = (Number(it["Duration (s)"]) || 0) * 1000;
-    const endMs = startMs + durMs;
-    return {
-      artist: norm(it.Artist),
-      title: norm(it.Title),
-      startMs,
-      endMs,
-      endedAt: endMs || startMs
+  async function enrichRow(row){
+    try{
+      const artist = row.querySelector('.artist')?.textContent?.trim() || '';
+      const title  = row.querySelector('.title')?.textContent?.trim() || '';
+      const img = row.querySelector('img.recent-art, .recent-art img, img');
+      const art = await itunesArt(artist, title);
+      setImg(img, art || FALLBACK);
+    } catch(e){ /* ignore */ }
+  }
+
+  // Wrap the site's renderer so any newly prepended row gets artwork set explicitly
+  const originalPrepend = window.prependRecentFromTrack;
+  if (typeof originalPrepend === 'function'){
+    window.prependRecentFromTrack = function(track){
+      const before = document.getElementById(RECENT_CONTAINER_ID)?.firstElementChild || null;
+      // Call original to render
+      originalPrepend(track);
+      // Find the new first row (renderer prepends)
+      const container = document.getElementById(RECENT_CONTAINER_ID);
+      const newRow = container ? container.firstElementChild : null;
+      // If same as before, try lastElementChild fallback
+      const row = (newRow && newRow !== before) ? newRow : (container ? container.lastElementChild : null);
+      if (row) { enrichRow(row); }
     };
   }
 
-  function clearRecent(){
-    const list = document.getElementById('recent-list');
-    if (list) list.innerHTML = '';
-  }
-
-  function replay(list){
-    if (typeof window.prependRecentFromTrack !== 'function') return;
-    // Prepend each item so newest ends up on top; insert oldest first
-    const last5 = list.slice(0, MAX).reverse();
-    for (const t of last5) {
-      window.prependRecentFromTrack(t);
-    }
-    // Trim to MAX if the page logic uses a different cap
-    const ul = document.getElementById('recent-list');
-    if (ul) { while (ul.children.length > MAX) ul.lastElementChild?.remove(); }
-  }
-
-  function loadCache(){
-    try { const raw = localStorage.getItem(STORAGE_KEY); const arr = raw?JSON.parse(raw):[]; return Array.isArray(arr)?arr:[]; } catch { return []; }
-  }
-  function saveCache(items){
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, MAX))); } catch {}
-  }
-
-  async function fetchLog(){
-    const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
-  }
-
-  async function seed(){
-    // 1) Quick paint from cache via your renderer
-    const cached = loadCache();
-    if (cached.length) { clearRecent(); replay(cached); }
-
-    // 2) Authoritative fetch from rolling log
-    try {
-      const data = await fetchLog();
-      const parsed = Array.isArray(data) ? data.slice(-50).reverse() : [];
-      const tracks = parsed
-        .map(toTrack)
-        .filter(t => t.artist && t.title)
-        .sort((a,b) => (b.endMs||b.endedAt||0) - (a.endMs||a.endedAt||0))
-        .slice(0, MAX);
-      if (tracks.length) {
-        clearRecent();
-        replay(tracks);
-        saveCache(tracks);
+  // Backfill any existing rows on load (in case they were seeded earlier)
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById(RECENT_CONTAINER_ID);
+    if (!container) return;
+    const rows = Array.from(container.children);
+    rows.forEach(r => {
+      const img = r.querySelector('img');
+      const src = img && img.getAttribute('src') || '';
+      // Re-enrich if it's empty or looks like a logo / placeholder
+      if (!src || /logo|ERLogo2\.png|fallback/i.test(src)) {
+        enrichRow(r);
       }
-    } catch(e){ /* keep cached view if log fails */ }
-  }
+    });
+  });
 
-  document.addEventListener('DOMContentLoaded', seed);
+  // As a safety net, observe future additions and enrich
+  try{
+    const container = document.getElementById(RECENT_CONTAINER_ID);
+    if (container && window.MutationObserver){
+      const mo = new MutationObserver(mutations => {
+        for (const m of mutations){
+          m.addedNodes && m.addedNodes.forEach(node => {
+            if (node.nodeType === 1) enrichRow(node);
+          });
+        }
+      });
+      mo.observe(container, { childList: true });
+    }
+  } catch(e){}
 })();
 </script>
 
