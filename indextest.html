@@ -9786,14 +9786,20 @@ if ('serviceWorker' in navigator) {
 
 
 <script>
-// === Recently Played: Always Full on First Run (Log-first + Skeletons) ===
+// === Recently Played: Latest 5 with time + artwork ===
 (function(){
-  const MAX_ITEMS = 12;
+  const MAX_ITEMS = 5;
   const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-  const STORAGE_KEY = 'recentTracks_v2'; // still used as a fallback only
+  const STORAGE_KEY = 'recentTracks_v2_5'; // cache key for this 5-item variant
 
   const norm = s => (s || '').toString().trim();
   const toKey = t => `${norm(t.artist).toLowerCase()}||${norm(t.title).toLowerCase()}||${t.startMs||''}`;
+
+  function formatTime(ms){
+    try {
+      return new Date(ms).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch { return ''; }
+  }
 
   function renderSkeletons(){
     const container = document.getElementById('recent-list');
@@ -9808,6 +9814,7 @@ if ('serviceWorker' in navigator) {
           <div class="artist" style="height:12px;background:#2a2a2a;border-radius:4px;margin-bottom:6px;opacity:.6;"></div>
           <div class="title" style="height:12px;background:#2a2a2a;border-radius:4px;width:70%;opacity:.6;"></div>
         </div>
+        <div class="recent-time" style="width:54px;height:12px;background:#2a2a2a;border-radius:4px;opacity:.6;margin-left:8px;"></div>
       `;
       container.appendChild(row);
     }
@@ -9827,6 +9834,7 @@ if ('serviceWorker' in navigator) {
           <div class="artist">${norm(t.artist)}</div>
           <div class="title">${norm(t.title)}</div>
         </div>
+        <div class="recent-time" style="margin-left:auto;opacity:.9;">${formatTime(t.startMs)}</div>
       `;
       container.appendChild(row);
     });
@@ -9865,6 +9873,7 @@ if ('serviceWorker' in navigator) {
       } catch {}
       items.push({ artist, title, startMs });
     }
+    // latest first
     return items.sort((a,b) => (b.startMs||0) - (a.startMs||0));
   }
 
@@ -9888,33 +9897,24 @@ if ('serviceWorker' in navigator) {
   async function buildFromLog(){
     const data = await fetchLog();
     const parsed = parseLog(data).slice(0, MAX_ITEMS);
-    // Enrich with artwork (parallel)
+    // Enrich with artwork in parallel
     const arts = await Promise.all(parsed.map(t => itunesArt(t.artist, t.title)));
     return parsed.map((t,i) => ({ ...t, artwork: arts[i] || 'ERLogo2.png' }));
   }
 
   async function initialFill(){
-    // Always show skeletons first so it's never empty
     renderSkeletons();
-
     try {
-      // Prefer the rolling log for the first paint
       const list = await buildFromLog();
       if (list.length){
         render(list);
         saveCache(list);
         return;
       }
-    } catch (e) {
-      // ignore, we'll use cache fallback
-    }
-
-    // Fallback to cache if log not available or empty
+    } catch {}
     const cached = loadCache();
     if (cached.length){
       render(cached);
-    } else {
-      // keep skeletons if truly nothing available
     }
   }
 
