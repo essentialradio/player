@@ -9974,12 +9974,36 @@ if ('serviceWorker' in navigator) {
     unfreezeCountdownDisplay();
 
     // --- Immediate UI overwrite on new track ---
+
+    try {
+      const np = document.getElementById('now-playing');
+      if (np) {
+        np.innerHTML = `<span style="color:#fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span id="npTitle" class="track-title"></span><br/>
+        <span id="npArtist" class="track-artist"></span>`;
+      }
+    } catch(e){}
+
     try {
       const tEl = document.getElementById('npTitle');
       const aEl = document.getElementById('npArtist');
       if (tEl) tEl.textContent = String(latest.title || '').trim();
       if (aEl) aEl.textContent = String(latest.artist || '').trim();
     } catch(e){}
+    // Double RAF repaint to eliminate any single-frame 'More music soon' artefact
+    try {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          try {
+            const npProgress = document.getElementById('np-progress');
+            if (npProgress) npProgress.style.display = '';
+            if (typeof fetchNowPlaying === 'function') fetchNowPlaying(true);
+          } catch(e){}
+        });
+      });
+    } catch(e) {}
+
 
     // Clear any pending placeholder timers so nothing flips back
     try {
