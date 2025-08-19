@@ -3,31 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Essential Radio Widget (iTunes Artwork Only – Fixed)</title>
+  <title>Essential Radio Widget (Simple iTunes Lookup)</title>
   <style>
     :root { --bg:#111; --fg:#fff; --muted:#cfcfcf; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0; padding: 0; background: var(--bg); color: var(--fg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
+    body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     h2 { margin: 10px; font-size: 16px; font-weight: 700; }
     #now-playing, #recently-played { padding: 8px; }
-    .track {
-      display: flex; align-items: center; gap: 10px;
-      padding: 8px; border-radius: 8px; background: #1b1b1b;
-    }
-    .art {
-      width: 60px; height: 60px; border-radius: 8px; flex: 0 0 60px; object-fit: cover;
-      background: #222;
-    }
+    .track { display: flex; align-items: center; gap: 10px; padding: 8px;
+      border-radius: 8px; background: #1b1b1b; }
+    .art { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; background:#222; }
     .meta { display: grid; gap: 2px; }
     .artist { font-weight: 700; font-size: 14px; }
     .title { font-size: 13px; color: var(--muted); }
-    .recent-item {
-      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
-      border-radius: 8px; background: #151515; margin-bottom: 6px;
-    }
+    .recent-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+      border-radius: 8px; background: #151515; margin-bottom: 6px; }
     .recent-art { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; background:#222; }
     .recent-meta { display: grid; gap: 1px; }
   </style>
@@ -52,53 +43,41 @@
   <script>
     const FALLBACK_IMG = "ERLogo2.png"; // station logo fallback
 
-    function upscaleArtwork(url) {
-      if (!url) return FALLBACK_IMG;
-      return url.replace(/\/(\d+x\d+)bb\//, "/600x600bb/");
-    }
-
+    // Single shared lookup used by both sections
     async function fetchArtworkFromItunes(artist, title) {
-      const qStr = `${artist || ""} ${title || ""}`.trim();
-      const q = encodeURIComponent(qStr);
-      if (!q) return FALLBACK_IMG;
-      const url = `https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`;
+      const queryText = `${artist || ""} ${title || ""}`.trim();
+      if (!queryText) return FALLBACK_IMG;
+      const q = encodeURIComponent(queryText);
       try {
-        const res = await fetch(url);
+        const res = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`);
         if (!res.ok) throw new Error("iTunes HTTP " + res.status);
         const data = await res.json();
-        if (data && data.results && data.results.length) {
-          const best = data.results[0];
-          const raw = best.artworkUrl100 || best.artworkUrl60 || best.artworkUrl30 || "";
-          return upscaleArtwork(raw) || FALLBACK_IMG;
+        if (data.results && data.results.length) {
+          const raw = data.results[0].artworkUrl100 || data.results[0].artworkUrl60 || data.results[0].artworkUrl30 || "";
+          return raw ? raw.replace(/\/(\d+x\d+)bb\//, "/600x600bb/") : FALLBACK_IMG;
         }
-      } catch (e) {
-        console.error("iTunes artwork fetch failed:", e);
-      }
+      } catch (_) {}
       return FALLBACK_IMG;
     }
 
-    function norm(s) {
-      return (s || "").toString().trim().toLowerCase();
-    }
+    const norm = s => (s || "").toString().trim().toLowerCase();
 
     async function getLatestTrack() {
-      const res = await fetch(`/api/latestTrack?_=${Date.now()}`);
-      if (!res.ok) throw new Error("latestTrack fetch failed " + res.status);
-      return res.json();
+      const r = await fetch(`/api/latestTrack?_=${Date.now()}`);
+      if (!r.ok) throw new Error("latestTrack fetch failed " + r.status);
+      return r.json();
     }
 
     async function loadNowPlaying() {
       try {
-        const track = await getLatestTrack();
-        const artist = track?.artist || "";
-        const title = track?.title || "";
+        const t = await getLatestTrack();
+        const artist = t?.artist || "";
+        const title = t?.title || "";
         const art = await fetchArtworkFromItunes(artist, title);
-
         document.querySelector("#current-track .art").src = art;
         document.getElementById("np-artist").textContent = artist || "Unknown Artist";
         document.getElementById("np-title").textContent = title || "Unknown Title";
-      } catch (err) {
-        console.error(err);
+      } catch {
         document.querySelector("#current-track .art").src = FALLBACK_IMG;
         document.getElementById("np-artist").textContent = "Unavailable";
         document.getElementById("np-title").textContent = "";
@@ -107,40 +86,32 @@
 
     async function loadRecentlyPlayed(limit = 5) {
       try {
-        // Get current to filter
+        // Get current track to filter it out (kept as per your earlier request)
         let current = null;
         try { current = await getLatestTrack(); } catch {}
-        const ca = norm(current?.artist);
-        const ct = norm(current?.title);
+        const ca = norm(current?.artist), ct = norm(current?.title);
 
         const res = await fetch(`/api/recentlyPlayed?_=${Date.now()}`);
         if (!res.ok) throw new Error("recentlyPlayed fetch failed " + res.status);
         let items = await res.json();
         if (!Array.isArray(items)) items = [];
 
-        // exclude current
-        if (ca || ct) {
-          items = items.filter(t => !(norm(t?.artist) === ca && norm(t?.title) === ct));
-        }
+        // Exclude the current track if present
+        if (ca || ct) items = items.filter(x => !(norm(x?.artist) === ca && norm(x?.title) === ct));
 
-        // optional: dedupe identical (artist+title)
-        const seen = new Set();
-        const unique = [];
-        for (const t of items) {
-          const key = norm(t?.artist) + "||" + norm(t?.title);
-          if (!seen.has(key)) { seen.add(key); unique.push(t); }
-          if (unique.length >= limit) break;
-        }
-
-        // Fetch all artwork in parallel
-        const arts = await Promise.all(unique.map(t => fetchArtworkFromItunes(t?.artist || "", t?.title || "")));
+        // Cap list
+        items = items.slice(0, limit);
 
         const container = document.getElementById("recent-list");
         container.innerHTML = "";
-        unique.forEach((t, i) => {
-          const artist = t?.artist || "Unknown Artist";
-          const title = t?.title || "Unknown Title";
+
+        // Use the SAME lookup helper as Now Playing
+        const arts = await Promise.all(items.map(x => fetchArtworkFromItunes(x?.artist || "", x?.title || "")));
+
+        items.forEach((x, i) => {
           const art = arts[i] || FALLBACK_IMG;
+          const artist = x?.artist || "Unknown Artist";
+          const title = x?.title || "Unknown Title";
           const row = document.createElement("div");
           row.className = "recent-item";
           row.innerHTML = `
@@ -152,8 +123,7 @@
           `;
           container.appendChild(row);
         });
-      } catch (err) {
-        console.error(err);
+      } catch {
         document.getElementById("recent-list").innerHTML = "<div class='title'>No recent tracks available.</div>";
       }
     }
