@@ -1,134 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Essential Radio Widget</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Essential Radio Widget (iTunes Artwork Only)</title>
   <style>
+    :root { --bg:#111; --fg:#fff; --muted:#cfcfcf; }
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #111;
-      color: #fff;
+      margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    #now-playing, #recently-played {
-      padding: 10px;
-    }
+    h2 { margin: 10px; font-size: 16px; font-weight: 700; }
+    #now-playing, #recently-played { padding: 8px; }
     .track {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px; border-radius: 8px; background: #1b1b1b;
     }
-    .track img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      margin-right: 10px;
+    .art {
+      width: 60px; height: 60px; border-radius: 8px; flex: 0 0 60px; object-fit: cover;
+      background: #222;
     }
-    .recent-track {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
+    .meta { display: grid; gap: 2px; }
+    .artist { font-weight: 700; font-size: 14px; }
+    .title { font-size: 13px; color: var(--muted); }
+    .recent-item {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+      border-radius: 8px; background: #151515; margin-bottom: 6px;
     }
-    .recent-artwork {
-      width: 40px;
-      height: 40px;
-      border-radius: 6px;
-      margin-right: 8px;
-    }
-    .recent-meta {
-      font-size: 14px;
-      line-height: 1.2;
-    }
-    .artist {
-      font-weight: bold;
-    }
+    .recent-art { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; background:#222; }
+    .recent-meta { display: grid; gap: 1px; }
+    .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
   </style>
 </head>
 <body>
-  <div id="now-playing">
+  <div id="now-playing" aria-live="polite" aria-atomic="true">
     <h2>Now Playing</h2>
-    <div class="track" id="current-track"></div>
+    <div class="track" id="current-track">
+      <img class="art" src="ERLogo2.png" alt="Album artwork" />
+      <div class="meta">
+        <div class="artist" id="np-artist">Loading…</div>
+        <div class="title" id="np-title"></div>
+      </div>
+    </div>
   </div>
 
   <div id="recently-played">
     <h2>Recently Played</h2>
+    <div id="recent-list" aria-live="polite" aria-atomic="false"></div>
   </div>
 
   <script>
+    const FALLBACK_IMG = "ERLogo2.png"; // station logo fallback
+
     async function fetchArtworkFromItunes(artist, title) {
-      const query = encodeURIComponent(`${artist} ${title}`);
+      const q = encodeURIComponent(`${artist || ""} ${title || ""}`.trim());
+      if (!q) return FALLBACK_IMG;
       try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+        const res = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=1`);
+        if (!res.ok) throw new Error("iTunes HTTP " + res.status);
         const data = await res.json();
-        if (data.results && data.results.length > 0) {
-          return data.results[0].artworkUrl100.replace("100x100bb", "600x600bb");
+        if (data && data.results && data.results.length) {
+          return (data.results[0].artworkUrl100 || "").replace("100x100bb", "600x600bb") || FALLBACK_IMG;
         }
       } catch (e) {
-        console.error("Artwork fetch failed:", e);
+        console.error("iTunes artwork fetch failed:", e);
       }
-      return "fallback.png";
-    }
-
-    async function getArtwork(track) {
-      if (track && track.artwork) return track.artwork;
-      return fetchArtworkFromItunes(track.artist, track.title);
+      return FALLBACK_IMG;
     }
 
     async function loadNowPlaying() {
       try {
         const res = await fetch(`/api/latestTrack?_=${Date.now()}`);
-        if (!res.ok) throw new Error("latestTrack fetch failed");
+        if (!res.ok) throw new Error("latestTrack fetch failed " + res.status);
         const track = await res.json();
-        const artwork = await getArtwork(track);
-        const container = document.getElementById("current-track");
-        container.innerHTML = `
-          <img src="${artwork}" alt="artwork">
-          <div>
-            <div class="artist">${track.artist ?? ""}</div>
-            <div class="title">${track.title ?? ""}</div>
-          </div>
-        `;
+        const artist = track?.artist || "";
+        const title = track?.title || "";
+        const art = await fetchArtworkFromItunes(artist, title);
+
+        document.querySelector("#current-track .art").src = art;
+        document.getElementById("np-artist").textContent = artist || "Unknown Artist";
+        document.getElementById("np-title").textContent = title || "Unknown Title";
       } catch (err) {
         console.error(err);
+        document.querySelector("#current-track .art").src = FALLBACK_IMG;
+        document.getElementById("np-artist").textContent = "Unavailable";
+        document.getElementById("np-title").textContent = "";
       }
     }
 
     async function loadRecentlyPlayed(limit = 5) {
       try {
         const res = await fetch(`/api/recentlyPlayed?_=${Date.now()}`);
-        if (!res.ok) throw new Error("recentlyPlayed fetch failed");
+        if (!res.ok) throw new Error("recentlyPlayed fetch failed " + res.status);
         const recent = await res.json();
-        const container = document.getElementById("recently-played");
-        container.innerHTML = "<h2>Recently Played</h2>";
-
         const items = Array.isArray(recent) ? recent.slice(0, limit) : [];
-        for (const track of items) {
-          const artwork = await getArtwork(track);
-          const item = document.createElement("div");
-          item.className = "recent-track";
-          item.innerHTML = `
-            <img src="${artwork}" alt="artwork" class="recent-artwork">
+        const container = document.getElementById("recent-list");
+        container.innerHTML = "";
+
+        for (const t of items) {
+          const artist = t?.artist || "";
+          const title = t?.title || "";
+          const art = await fetchArtworkFromItunes(artist, title);
+
+          const row = document.createElement("div");
+          row.className = "recent-item";
+          row.innerHTML = `
+            <img class="recent-art" src="${art}" alt="Album artwork">
             <div class="recent-meta">
-              <span class="artist">${track.artist ?? ""}</span><br>
-              <span class="title">${track.title ?? ""}</span>
+              <div class="artist">${artist || "Unknown Artist"}</div>
+              <div class="title">${title || "Unknown Title"}</div>
             </div>
           `;
-          container.appendChild(item);
+          container.appendChild(row);
         }
       } catch (err) {
         console.error(err);
+        document.getElementById("recent-list").innerHTML = "<div class='title'>No recent tracks available.</div>";
       }
     }
 
     // Initial loads
     loadNowPlaying();
-    loadRecentlyPlayed();
+    loadRecentlyPlayed(5);
 
     // Polling
     setInterval(loadNowPlaying, 20000);
-    setInterval(loadRecentlyPlayed, 60000);
+    setInterval(() => loadRecentlyPlayed(5), 60000);
   </script>
 </body>
 </html>
