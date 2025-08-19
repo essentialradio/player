@@ -4250,12 +4250,37 @@ html[data-theme="light"] #mobileNowBar {
 
 
 <style id="np-progress-styles">
-#np-progress{margin-top:10px;user-select:none}
-#np-progress .np-bar{position:relative;height:6px;background:var(--border);border-radius:999px;overflow:hidden}
-#np-progress .np-bar .np-bar-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--accent);box-shadow:0 0 10px rgba(0,0,0,.15) inset;transition:width .12s linear}
-#np-progress .np-times{display:flex;justify-content:space-between;margin-top:6px;font-size:.92em;color:var(--muted)}
-#np-progress .np-t{font-variant-numeric:tabular-nums}
-@media (max-width:768px){#np-progress .np-times{font-size:.86em}}
+/* === Now Playing progress (countdown bar) === */
+#np-progress {
+  margin-top: 10px;
+  user-select: none;
+}
+#np-progress .np-bar {
+  position: relative;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+#np-progress .np-bar .np-bar-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0,0,0,.15) inset;
+  transition: width .12s linear;
+}
+#np-progress .np-times {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 0.92em;
+  color: var(--muted);
+}
+#np-progress .np-t { font-variant-numeric: tabular-nums; }
+@media (max-width: 768px) {
+  #np-progress .np-times { font-size: 0.86em; }
+}
 </style>
 </head>
 <body>
@@ -4320,7 +4345,6 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
-
 
 <!-- Now Playing progress -->
 <div id="np-progress">
@@ -9658,12 +9682,6 @@ if ('serviceWorker' in navigator) {
   let startMs = 0;
   let durationMs = 0;
   let onFinish = null;
-  let lastEndTime = 0;
-  let lastStartISO = null;
-  let lastMetaKey  = null;
-  let lastGoodArtist = null;
-  let lastGoodTitle  = null;
-  let transitionLockUntil = 0;
 
   function mmss(sec) {
     sec = Math.max(0, Math.floor(sec));
@@ -9673,11 +9691,6 @@ if ('serviceWorker' in navigator) {
   }
 
   function tick() {
-    if (Date.now() < transitionLockUntil) {
-      rafId = requestAnimationFrame(tick);
-      return;
-    }
-
     const fill = barFill();
     const eEl  = elElapsed();
     const rEl  = elRemain();
@@ -9692,91 +9705,57 @@ if ('serviceWorker' in navigator) {
     eEl.textContent = mmss(elapsed);
     rEl.textContent = '-' + mmss(remaining);
 
-    // Begin rapid polling in last 5s to catch metadata as soon as it's posted
-    try { if (remaining <= 5 && remaining > 0) { startRapidPolling(15000, 500); } } catch (e) {}
-
     if (pct >= 1) {
       cancelAnimationFrame(rafId);
       rafId = null;
-      lastEndTime = Date.now();
-      if (typeof onFinish === 'function') onFinish();
+      if (typeof onFinish === 'function') {
+        onFinish();
+      }
       return;
     }
     rafId = requestAnimationFrame(tick);
   }
 
   window.updateNowPlayingProgress = (function () {
-    return function (startISO, durationSec, opts = {}) {
-      try {
-        const npDiv = document.getElementById('now-playing');
-        const npProgress = document.getElementById('np-progress');
-        const metaArtist = opts.metaArtist || null;
-        const metaTitle  = opts.metaTitle  || null;
-        const metaKey    = (metaArtist || '') + '|' + (metaTitle || '');
-        const isPlaceholder = npDiv && /more music/i.test(npDiv.textContent || '');
+  let lastStartISO = null;
 
-        // NEW SONG detection
-        let isNewSong = false;
-        if (startISO && startISO !== lastStartISO) isNewSong = true;
-        if (!isNewSong && metaKey && lastMetaKey !== null && metaKey !== lastMetaKey) isNewSong = true;
+  return function (startISO, durationSec, opts = {}) {
+    try {
+      const npDiv = document.getElementById('now-playing');
+      const npProgress = document.getElementById('np-progress');
+      const isPlaceholder = npDiv && /more music soon/i.test(npDiv.textContent);
 
-        if (isNewSong) {
-          lastStartISO = startISO;
-          lastMetaKey  = metaKey;
-          lastEndTime  = 0;
-          transitionLockUntil = Date.now() + 2000;
+      // If a new song has started, reset grace timer
+      if (startISO && startISO !== lastStartISO) {
+        lastStartISO = startISO;
+        lastEndTime = 0;   // reset grace window
+      }
 
-          // Immediately reflect title text
-          if (npDiv && metaArtist && metaTitle) npDiv.textContent = metaArtist + ' – ' + metaTitle;
-
-          // Cache last good meta
-          if (metaArtist) lastGoodArtist = metaArtist;
-          if (metaTitle)  lastGoodTitle  = metaTitle;
-
-          if (npProgress) npProgress.style.display = '';
-
-          startMs    = new Date(startISO).getTime();
-          durationMs = Math.max(0, Math.round(durationSec * 1000));
-          onFinish   = opts.onFinish || null;
-          if (isFinite(startMs) && durationMs) {
-            cancelAnimationFrame(rafId);
-            rafId = requestAnimationFrame(tick);
-          }
+      // Grace period: suppress "More Music Soon" for 20s after last track ended
+      if (isPlaceholder) {
+        if (Date.now() - lastEndTime < 20000) {
+          if (npProgress) npProgress.style.display = 'none';
+          return;
+        } else {
+          if (npProgress) npProgress.style.display = 'none';
           return;
         }
-
-        // Not a new song: apply 20s placeholder suppression (and honor transition lock)
-        if (isPlaceholder) {
-          if (Date.now() < transitionLockUntil) { if (npProgress) npProgress.style.display = 'none'; return; }
-          if (Date.now() - lastEndTime < 20000) {
-            if (npDiv && lastGoodArtist && lastGoodTitle) npDiv.textContent = lastGoodArtist + ' – ' + lastGoodTitle;
-            if (npProgress) npProgress.style.display = 'none';
-            try { startRapidPolling(15000, 500); } catch (e) {}
-            return;
-          } else {
-            if (npProgress) npProgress.style.display = 'none';
-            return;
-          }
-        } else {
-          if (npProgress) npProgress.style.display = '';
-        }
-
-        // Normal update; cache last good meta
-        if (metaArtist) lastGoodArtist = metaArtist;
-        if (metaTitle)  lastGoodTitle  = metaTitle;
-
-        startMs    = new Date(startISO).getTime();
-        durationMs = Math.max(0, Math.round(durationSec * 1000));
-        onFinish   = opts.onFinish || null;
-        if (!isFinite(startMs) || !durationMs) return;
-
-        cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(tick);
-      } catch (e) {
-        console.warn('NP progress init failed:', e);
+      } else {
+        if (npProgress) npProgress.style.display = '';
       }
-    };
-  })();
+
+      startMs    = new Date(startISO).getTime();
+      durationMs = Math.max(0, Math.round(durationSec * 1000));
+      onFinish   = opts.onFinish || null;
+      if (!isFinite(startMs) || !durationMs) return;
+
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(tick);
+    } catch (e) {
+      console.warn('NP progress init failed:', e);
+    }
+  };
+})();
 
   async function initFromAPI() {
     try {
@@ -9784,9 +9763,7 @@ if ('serviceWorker' in navigator) {
       const j = await res.json();
       if (!j || !j.startTime || !j.duration) return;
       window.updateNowPlayingProgress(j.startTime, j.duration, {
-        onFinish: () => { initFromAPI(); },
-        metaArtist: j.artist,
-        metaTitle: j.title
+        onFinish: () => { initFromAPI(); }
       });
     } catch (_) {}
   }
@@ -9794,102 +9771,8 @@ if ('serviceWorker' in navigator) {
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') initFromAPI();
   }, { passive: true });
+
   window.addEventListener('load', initFromAPI, { once: true, passive: true });
-
-  // MutationObserver to revert placeholder during grace and honor transition lock
-  (function() {
-    try {
-      const target = document.getElementById('now-playing');
-      if (!target || typeof MutationObserver === 'undefined') return;
-      const obs = new MutationObserver(() => {
-        try {
-          const txt = (target.textContent || '').trim();
-          if (/more music/i.test(txt)) {
-            if (Date.now() < transitionLockUntil) return;
-            if (Date.now() - lastEndTime < 20000) {
-              if (lastGoodArtist && lastGoodTitle) {
-                target.textContent = lastGoodArtist + ' – ' + lastGoodTitle;
-              }
-              const npProgress = document.getElementById('np-progress');
-              if (npProgress) npProgress.style.display = 'none';
-            }
-          }
-        } catch (_) {}
-      });
-      obs.observe(target, { characterData: true, childList: true, subtree: true });
-    } catch (_) {}
-  })();
-
-  // Watchdog: revive after breaks
-  let lastFetchAt = 0;
-  function shouldFetch() {
-    const now = Date.now();
-    if (now - lastFetchAt < 5000) return false;
-    lastFetchAt = now;
-    return true;
-  }
-  function checkAndRefresh() {
-    try {
-      const now = Date.now();
-      const npProgress = document.getElementById('np-progress');
-      const barHidden = npProgress && getComputedStyle(npProgress).display === 'none';
-      const endedByClock = (startMs && durationMs && now > (startMs + durationMs + 1500));
-      if (endedByClock && shouldFetch()) { initFromAPI(); return; }
-      if (barHidden && shouldFetch()) { initFromAPI(); return; }
-    } catch (e) {}
-  }
-  setInterval(checkAndRefresh, 5000);
-  window.addEventListener('focus', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
-  window.addEventListener('pageshow', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
-
-  // Adaptive burst polling block
-  let rapidTimer = null;
-  let rapidUntil = 0;
-  function stopRapidPolling() {
-    if (rapidTimer) { clearInterval(rapidTimer); rapidTimer = null; }
-    rapidUntil = 0;
-  }
-  async function fetchLatestAndApply() {
-    try {
-      const res = await fetch('/api/latestTrack?_=' + Date.now());
-      const j = await res.json();
-      if (!j || !j.startTime || !j.duration) return false;
-      const metaArtist = j.artist || '';
-      const metaTitle  = j.title  || '';
-      const metaKey    = metaArtist + '|' + metaTitle;
-      const sameStart = lastStartISO ? (j.startTime === lastStartISO) : false;
-      const sameMeta  = lastMetaKey  ? (metaKey === lastMetaKey)     : false;
-      if (!sameStart || !sameMeta) {
-        try {
-          const npDiv = document.getElementById('now-playing');
-          if (npDiv && j.artist && j.title) npDiv.textContent = j.artist + ' – ' + j.title;
-          lastGoodArtist = j.artist || lastGoodArtist;
-          lastGoodTitle  = j.title  || lastGoodTitle;
-          transitionLockUntil = Date.now() + 2000;
-        } catch (e) {}
-        try { cancelAnimationFrame(rafId); } catch (e) {}
-        window.updateNowPlayingProgress(j.startTime, j.duration, {
-          onFinish: () => { initFromAPI(); },
-          metaArtist: j.artist,
-          metaTitle: j.title
-        });
-        stopRapidPolling();
-        return true;
-      }
-    } catch (e) {}
-    return false;
-  }
-  function startRapidPolling(msWindow = 15000, interval = 500) {
-    const now = Date.now();
-    rapidUntil = now + msWindow;
-    if (rapidTimer) return;
-    rapidTimer = setInterval(async () => {
-      const now = Date.now();
-      if (now > rapidUntil) { stopRapidPolling(); return; }
-      const changed = await fetchLatestAndApply();
-      if (changed) return;
-    }, interval);
-  }
 })();
 </script>
 </body><style>
