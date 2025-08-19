@@ -9781,7 +9781,6 @@ if ('serviceWorker' in navigator) {
 
 
 
-
 <!-- Injected NP countdown + fallback guard (Aug 19, 2025) -->
 <script>
 (function () {
@@ -9799,9 +9798,11 @@ if ('serviceWorker' in navigator) {
   let moreSoonTimer = null;
   let lastEndKey = null;
   let lastEndAt = 0;
-  let placeholderActive = true;       // start in placeholder-safe mode until we confirm an active track
+  let placeholderActive = false;
   let placeholderShownThisGap = false;
   let freezeTick = null;
+  let firstRun = true;
+  let allowDuringPlaceholder = false; // only our code can toggle this true briefly
 
   const original = {
     fetchNowPlaying: (typeof window.fetchNowPlaying === 'function') ? window.fetchNowPlaying : null,
@@ -9858,22 +9859,25 @@ if ('serviceWorker' in navigator) {
     if (freezeTick) { clearInterval(freezeTick); freezeTick = null; }
   }
 
-  // Gate legacy fetch: BLOCK during placeholder
+  // Gate legacy fetch: BLOCK during placeholder unless we explicitly allow
   window.fetchNowPlaying = function(force) {
-    if (placeholderActive) return;
+    if (placeholderActive && !allowDuringPlaceholder) return;
     if (original.fetchNowPlaying) try { return original.fetchNowPlaying(force); } catch(e){}
   };
 
   // Gate progress updates during placeholder
   window.updateNowPlayingProgress = function(startISO, durationSec, opts) {
-    if (placeholderActive) return;
+    if (placeholderActive && !allowDuringPlaceholder) return;
     if (typeof original.updateNowPlayingProgress === 'function') {
       try { return original.updateNowPlayingProgress(startISO, durationSec, opts); } catch(e){}
     }
   };
 
-  function showPlaceholder() {
+  function showPlaceholderOncePerGap() {
+    if (placeholderShownThisGap) return;
+    placeholderShownThisGap = true;
     placeholderActive = true;
+    // Freeze timer & reset bar
     freezeCountdownDisplay();
     try { original.showMoreMusicSoon(); } catch(e){}
   }
@@ -9890,19 +9894,28 @@ if ('serviceWorker' in navigator) {
     lastEndAt = endAt;
     const now = Date.now();
 
-    // If already ended, do not schedule end/grace
-    if (now >= endAt) return;
+    // Special case: on first run/page refresh, if we're already past end, show placeholder immediately.
+    if (firstRun && now >= endAt) {
+      const k = getKey(latest);
+      if (k) lastKey = k; // set lastKey so comparisons work
+      showPlaceholderOncePerGap();
+      firstRun = false;
+      return;
+    }
+    firstRun = false;
 
-    const waitMs = endAt - now;
+    const waitMs = Math.max(0, endAt - now);
 
     endTimer = setTimeout(() => {
       lastEndKey = lastKey;
+
+      // Freeze countdown immediately at 0:00
       freezeCountdownDisplay();
 
+      // Start 30s grace; only show placeholder if key hasn't changed
       moreSoonTimer = setTimeout(() => {
-        // Only if the same track still
         if (lastEndKey && lastEndKey === lastKey) {
-          showPlaceholder();
+          showPlaceholderOncePerGap();
         }
       }, GRACE_MS);
     }, waitMs);
@@ -9910,19 +9923,29 @@ if ('serviceWorker' in navigator) {
 
   // Guard: prevent premature more-music-soon calls
   window.showMoreMusicSoon = function guardedMoreSoon() {
-    // Only allow if we are actually in placeholder mode or ended
-    // Otherwise the original will show it
-    showPlaceholder();
+    // If grace timer exists, ignore early calls
+    if (moreSoonTimer) return;
+    // If track already changed, ignore
+    if (lastEndKey && lastEndKey !== lastKey) return;
+    showPlaceholderOncePerGap();
   };
 
-  function activateTrack(latest) {
-    // Activate UI for a currently-playing track
+  function resetProgress(latest) {
+    if (!latest || !latest.startTime || !latest.duration) return;
+    // New track: clear placeholder mode
     placeholderActive = false;
     placeholderShownThisGap = false;
+    // Unfreeze (new track)
     unfreezeCountdownDisplay();
-    if (original.fetchNowPlaying) original.fetchNowPlaying(true);
-    if (original.updateNowPlayingProgress) {
-      original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
+    // Allow one render/update during this transition
+    allowDuringPlaceholder = true;
+    try {
+      if (original.fetchNowPlaying) original.fetchNowPlaying(true);
+      if (original.updateNowPlayingProgress) {
+        original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
+      }
+    } finally {
+      allowDuringPlaceholder = false;
     }
   }
 
@@ -9937,27 +9960,29 @@ if ('serviceWorker' in navigator) {
     const durMs = Math.max(0, Math.round(Number(latest.duration) * 1000));
     const endAt = startMs + durMs;
     const now = Date.now();
-    const isActive = now < endAt;
 
-    if (isActive) {
-      // Only treat as "new" if it's actually active
-      if (key !== lastKey || placeholderActive) {
-        lastKey = key;
-        activateTrack(latest);
-      }
+    if (key !== lastKey) {
+      // New track detected
+      lastKey = key;
+      // Reset and run progress immediately
+      resetProgress(latest);
+      // Reschedule end & grace
       scheduleEndAndGrace(latest);
     } else {
-      // We're in a gap. Record the key (for equality checks) but stay in placeholder mode.
-      lastKey = key;
-      showPlaceholder();
-      // No end/grace scheduling for ended tracks
+      // Same track
+      if (now >= endAt) {
+        // We are in a non-metadata gap for this track: ensure placeholder shows once
+        showPlaceholderOncePerGap();
+      }
+      // (Re)schedule timers to keep state consistent
+      scheduleEndAndGrace(latest);
     }
   }
 
   // Kick off periodic watcher + immediate run
-  setInterval(refreshOnChange, POLL_MS);
-  // Run immediately
+  pollTimer = setInterval(refreshOnChange, POLL_MS);
   refreshOnChange();
+
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') refreshOnChange();
   });
