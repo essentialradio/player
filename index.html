@@ -9730,7 +9730,7 @@ if ('serviceWorker' in navigator) {
     try {
       const npDiv = document.getElementById('now-playing');
       const npProgress = document.getElementById('np-progress');
-      const isPlaceholder = npDiv && /more music soon/i.test(npDiv.textContent);
+      const isPlaceholder = (typeof placeholderActive !== 'undefined' ? placeholderActive : false) || (npDiv && /more music soon/i.test(npDiv.textContent));
 
       // If a new song has started, reset grace timer
       if (startISO && startISO !== lastStartISO) {
