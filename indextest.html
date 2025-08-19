@@ -9784,6 +9784,35 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+
+<script>
+// Fix getTrackArtwork: make it async + robust and return a usable URL or fallback.
+(function(){
+  const FALLBACK = 'ERLogo2.png';
+  // Ensure cache exists
+  if (!window.artworkCache) window.artworkCache = {};
+
+  window.getTrackArtwork = async function(query){
+    try {
+      if (!query) return FALLBACK;
+      if (window.artworkCache[query]) return window.artworkCache[query];
+      // Normalise "artist – title" (various dash chars)
+      const q = encodeURIComponent(String(query).replace(/[–—−]/g, '-').trim());
+      const url = `https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`;
+      const res = await fetch(url);
+      if (!res.ok) return FALLBACK;
+      const data = await res.json();
+      const raw = data && data.results && data.results[0] && (data.results[0].artworkUrl100 || data.results[0].artworkUrl60 || data.results[0].artworkUrl30);
+      const art = raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
+      window.artworkCache[query] = art || FALLBACK;
+      return window.artworkCache[query];
+    } catch(e){
+      return FALLBACK;
+    }
+  };
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
