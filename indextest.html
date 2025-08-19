@@ -9786,113 +9786,116 @@ if ('serviceWorker' in navigator) {
 
 
 <script>
-// === Recent 5 seeded via existing renderer (prependRecentFromTrack) ===
+// === Override getTrackArtwork for stronger matches (country=gb, entity=song) ===
+(function(){
+  const originalGet = window.getTrackArtwork;
+  const cache = {};
+  window.getTrackArtwork = async function(query){
+    const q = String(query || '').replace(/\s+–\s+/g, ' ').trim();
+    if (!q) return null;
+    if (cache[q]) return cache[q];
+    try {
+      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=1&country=gb`);
+      if (res.ok) {
+        const js = await res.json();
+        if (js && js.results && js.results[0] && (js.results[0].artworkUrl100 || js.results[0].artworkUrl60)) {
+          const raw = js.results[0].artworkUrl100 || js.results[0].artworkUrl60;
+          const url = raw.replace(/\/(\d+x\d+)bb\//, '/300x300bb/');
+          cache[q] = url;
+          return url;
+        }
+      }
+    } catch(e){ /* ignore and fall back */ }
+    if (typeof originalGet === 'function') {
+      try { const u = await originalGet(query); if (u) { cache[q] = u; return u; } } catch {}
+    }
+    return null;
+  };
+})();
+
+// === Seed latest 5 recent items from rolling log using existing renderer ===
 (function(){
   const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-  const MAX_ITEMS = 5;
-  const CACHE_KEY = 'recent5_seed_v1';
+  const MAX = 5;
+  const STORAGE_KEY = 'recentSeed5_v1';
 
-  const norm = s => (s||'').toString().trim();
-
-  function loadCache(){
+  const norm = s => (s || '').toString().trim();
+  function toTrack(it){
+    // Build endMs from Hour + Scheduled Time + Duration (s) if available; else use startMs
+    let startMs = Date.now();
     try {
-      const raw = localStorage.getItem(CACHE_KEY);
-      const arr = raw ? JSON.parse(raw) : [];
-      return Array.isArray(arr) ? arr : [];
-    } catch { return []; }
-  }
-  function saveCache(list){
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify(list.slice(0, MAX_ITEMS))); } catch {}
+      if (it["Hour"] && it["Scheduled Time"]) {
+        const hourDate = new Date(it["Hour"]);
+        const parts = String(it["Scheduled Time"]).split(':').map(Number);
+        const sh = parts[0] || 0, sm = parts[1] || 0;
+        const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh, sm, 0, 0);
+        startMs = d.getTime();
+      }
+    } catch {}
+    const durMs = (Number(it["Duration (s)"]) || 0) * 1000;
+    const endMs = startMs + durMs;
+    return {
+      artist: norm(it.Artist),
+      title: norm(it.Title),
+      startMs,
+      endMs,
+      endedAt: endMs || startMs
+    };
   }
 
-  function clearList(){
+  function clearRecent(){
     const list = document.getElementById('recent-list');
     if (list) list.innerHTML = '';
   }
 
-  function replay(items){
-    // items should be oldest -> newest; we prepend so newest ends up on top
-    for (const t of items){
-      try { if (typeof window.prependRecentFromTrack === 'function') window.prependRecentFromTrack(t); } catch {}
+  function replay(list){
+    if (typeof window.prependRecentFromTrack !== 'function') return;
+    // Prepend each item so newest ends up on top; insert oldest first
+    const last5 = list.slice(0, MAX).reverse();
+    for (const t of last5) {
+      window.prependRecentFromTrack(t);
     }
-    // hard-cap the rendered list to MAX_ITEMS
-    try {
-      const list = document.getElementById('recent-list');
-      if (list) {
-        const li = list.querySelectorAll('li');
-        for (let i = MAX_ITEMS; i < li.length; i++) {
-          li[i].remove();
-        }
-      }
-    } catch {}
+    // Trim to MAX if the page logic uses a different cap
+    const ul = document.getElementById('recent-list');
+    if (ul) { while (ul.children.length > MAX) ul.lastElementChild?.remove(); }
   }
 
-  function parseLogToRecentItems(data){
-    if (!Array.isArray(data)) return [];
-    const out = [];
-    for (const it of data){
-      const artist = norm(it.Artist);
-      const title = norm(it.Title);
-      if (!artist || !title) continue;
-
-      // Build startMs from Hour + Scheduled Time
-      let startMs = Date.now();
-      try {
-        if (it["Hour"] && it["Scheduled Time"]) {
-          const hourDate = new Date(it["Hour"]);
-          const parts = String(it["Scheduled Time"]).split(':').map(Number);
-          const sh = parts[0] || 0, sm = parts[1] || 0;
-          const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh, sm, 0, 0);
-          startMs = d.getTime();
-        }
-      } catch {}
-
-      // Compute endMs from Duration (s) if available; else assume +3 min
-      let endMs = startMs + 180000;
-      if (it["Duration (s)"]) {
-        const durMs = Number(it["Duration (s)"]) * 1000;
-        if (!Number.isNaN(durMs) && durMs > 0) endMs = startMs + durMs;
-      }
-
-      out.push({ artist, title, startMs, endMs, endedAt: endMs });
-    }
-    // Sort newest first by endMs
-    out.sort((a,b) => (b.endMs||0) - (a.endMs||0));
-    // Take last MAX_ITEMS (newest N), but return oldest->newest for replay order
-    const slice = out.slice(0, MAX_ITEMS).reverse();
-    return slice;
+  function loadCache(){
+    try { const raw = localStorage.getItem(STORAGE_KEY); const arr = raw?JSON.parse(raw):[]; return Array.isArray(arr)?arr:[]; } catch { return []; }
+  }
+  function saveCache(items){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, MAX))); } catch {}
   }
 
-  async function seedFromLog(){
-    const res = await fetch(LOG_URL + '?_=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    const items = parseLogToRecentItems(data);
-    return items;
+  async function fetchLog(){
+    const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
   }
 
-  async function initRecent(){
+  async function seed(){
+    // 1) Quick paint from cache via your renderer
     const cached = loadCache();
-    if (cached.length){
-      clearList();
-      replay(cached);
-    }
+    if (cached.length) { clearRecent(); replay(cached); }
 
+    // 2) Authoritative fetch from rolling log
     try {
-      const items = await seedFromLog();
-      if (items.length){
-        clearList();
-        replay(items);
-        saveCache(items);
+      const data = await fetchLog();
+      const parsed = Array.isArray(data) ? data.slice(-50).reverse() : [];
+      const tracks = parsed
+        .map(toTrack)
+        .filter(t => t.artist && t.title)
+        .sort((a,b) => (b.endMs||b.endedAt||0) - (a.endMs||a.endedAt||0))
+        .slice(0, MAX);
+      if (tracks.length) {
+        clearRecent();
+        replay(tracks);
+        saveCache(tracks);
       }
-    } catch(e){
-      // if fetch fails and no cache, leave as-is
-      console.warn('Recent seed from log failed:', e);
-    }
+    } catch(e){ /* keep cached view if log fails */ }
   }
 
-  // Run after DOM ready
-  document.addEventListener('DOMContentLoaded', initRecent);
+  document.addEventListener('DOMContentLoaded', seed);
 })();
 </script>
 
