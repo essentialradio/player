@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget (Relative API + Mobile + Audio Fix)</title>
+  <title>Essential Radio Widget (Relative API + Mobile + Audio + ARTWORKFIX)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -30,6 +30,7 @@
     #artwork {
       width: 110px; height: 110px; border-radius: 10px; border: 3px solid #fed351;
       object-fit: cover; background: #222; margin-bottom: 10px;
+      transition: opacity .2s ease;
     }
     .now-playing-info { text-align: center; width: 100%; }
     #now-playing {
@@ -105,7 +106,7 @@
 
   <script>
     // === SAME-ORIGIN RELATIVE API ===
-    const LATEST_TRACK_URL = "/api/latestTrack"; // works when hosted on the same domain as your API
+    const LATEST_TRACK_URL = "/api/latestTrack"; // works when hosted on same domain as your API
     const RECENT_URL = "https://essentialradio.github.io/player/playout_log_rolling.json";
     const SCHEDULE_URL = "https://essentialradio.github.io/player/schedule.json";
 
@@ -115,16 +116,19 @@
     let audio;
     let isPlaying = false;
     let lastVolume = 0.8;
+    let lastTrackKey = "";           // remember last track to avoid artwork flashing
+    let lastArtworkURL = "Essential Radio Logo.png";
 
     const playBtn = document.getElementById("play-toggle");
     const muteBtn = document.getElementById("mute-toggle");
     const volumeSlider = document.getElementById("volume-slider");
+    const artworkEl = document.getElementById("artwork");
 
     function ensureAudio() {
       if (!audio) {
         audio = new Audio(STREAM_URL);
-        audio.preload = "none";          // avoid auto-fetch before user gesture (iOS)
-        audio.crossOrigin = "anonymous"; // safe default
+        audio.preload = "none";
+        audio.crossOrigin = "anonymous";
         audio.volume = lastVolume;
         audio.addEventListener("ended", () => setPlayUi(false));
         audio.addEventListener("pause", () => setPlayUi(false));
@@ -146,7 +150,6 @@
       ensureAudio();
       try {
         if (!isPlaying) {
-          // iOS requires play() in direct click handler
           await audio.play();
           setPlayUi(true);
         } else {
@@ -174,7 +177,6 @@
       audio.muted = !audio.muted;
       muteBtn.textContent = audio.muted ? "🔇" : (audio.volume < 0.5 ? "🔈" : "🔊");
       muteBtn.setAttribute("aria-pressed", audio.muted ? "true" : "false");
-      // Reflect in slider without changing stored lastVolume
       volumeSlider.value = audio.muted ? 0 : Math.round(audio.volume * 100);
     });
 
@@ -185,7 +187,40 @@
       return txt.value;
     }
 
-    // ---- NOW PLAYING (relative) ----
+    function timeoutFetch(resource, options = {}, ms = 6000) {
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), ms);
+      return fetch(resource, { ...options, signal: controller.signal })
+        .finally(() => clearTimeout(id));
+    }
+
+    // --- Robust artwork resolver (iTunes with fallbacks and no flashing) ---
+    async function resolveArtwork(artist, title) {
+      const q = encodeURIComponent((artist + " " + title).replace(/["'’]/g, ""));
+      // 1) Try iTunes search
+      try {
+        const res = await timeoutFetch("https://itunes.apple.com/search?term=" + q + "&media=music&limit=1", { cache: "no-store" }, 7000);
+        if (res.ok) {
+          const data = await res.json();
+          const url = data?.results?.[0]?.artworkUrl100;
+          if (url) return url.replace("100x100", "300x300");
+        }
+      } catch(e) { /* fall through */ }
+
+      // 2) Try search by just title (handles “feat.” etc.)
+      try {
+        const res2 = await timeoutFetch("https://itunes.apple.com/search?term=" + encodeURIComponent(title) + "&media=music&limit=1", { cache: "no-store" }, 7000);
+        if (res2.ok) {
+          const data2 = await res2.json();
+          const url2 = data2?.results?.[0]?.artworkUrl100;
+          if (url2) return url2.replace("100x100", "300x300");
+        }
+      } catch(e) { /* fall through */ }
+
+      // 3) Fallback to last known artwork or station logo
+      return lastArtworkURL || "Essential Radio Logo.png";
+    }
+
     async function updateNowPlaying() {
       try {
         const latestRes = await fetch(LATEST_TRACK_URL + "?_=" + Date.now(), { cache: "no-store" });
@@ -195,26 +230,29 @@
 
         const artist = decodeHtmlEntities(latest.artist);
         const title = decodeHtmlEntities(latest.title);
+        const trackKey = (artist + " — " + title).toLowerCase();
 
         document.getElementById("now-playing").textContent = title;
         document.getElementById("now-playing-artist").textContent = artist ? "by " + artist : "";
 
-        // Optional iTunes artwork lookup
-        const searchTerm = encodeURIComponent(artist + " " + title);
-        let artwork = "Essential Radio Logo.png";
-        try {
-          const iTunesRes = await fetch("https://itunes.apple.com/search?term=" + searchTerm + "&media=music&limit=1");
-          const iTunesData = await iTunesRes.json();
-          if (iTunesData.results && iTunesData.results[0] && iTunesData.results[0].artworkUrl100) {
-            artwork = iTunesData.results[0].artworkUrl100.replace("100x100", "300x300");
+        // Only refetch artwork if the track actually changed
+        if (trackKey !== lastTrackKey) {
+          lastTrackKey = trackKey;
+          artworkEl.style.opacity = 0.6;
+          const newArt = await resolveArtwork(artist, title);
+          if (newArt && newArt !== lastArtworkURL) {
+            lastArtworkURL = newArt;
+            artworkEl.src = newArt;
           }
-        } catch(e) {}
-        document.getElementById("artwork").src = artwork;
+          artworkEl.style.opacity = 1;
+        }
       } catch (e) {
         console.warn(e);
         document.getElementById("now-playing").textContent = "More music soon";
         document.getElementById("now-playing-artist").textContent = "";
-        document.getElementById("artwork").src = "Essential Radio Logo.png";
+        lastTrackKey = ""; // allow refresh next time
+        artworkEl.src = "Essential Radio Logo.png";
+        lastArtworkURL = "Essential Radio Logo.png";
       }
     }
 
@@ -228,8 +266,8 @@
         list.innerHTML = "";
         const recentItems = data.slice(-3).reverse();
         for (const item of recentItems) {
-          const artist = decodeHtmlEntities(item.Artist);
-          const title = decodeHtmlEntities(item.Title);
+          const artist = decodeHtmlEntities(item.Artist || "");
+          const title = decodeHtmlEntities(item.Title || "");
           const li = document.createElement("li");
           li.innerHTML = '<img src="Essential Radio Logo.png" alt="" />' +
                          '<span class="info">' + artist + ' – ' + title + '</span>' +
