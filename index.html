@@ -9776,25 +9776,33 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+
 <!-- Injected NP countdown + fallback guard (Aug 19, 2025) -->
 <script>
 (function () {
-  // Config
   const LATEST_URL = '/api/latestTrack';
-  const POLL_MS = 2000;          // how often we poll for metadata changes
-  const GRACE_MS = 30000;        // 30s grace before showing "More music soon"
+  const POLL_MS = 2000;
+  const GRACE_MS = 30000;
 
-  // State
   let lastKey = null;
   let pollTimer = null;
   let endTimer = null;
   let moreSoonTimer = null;
   let lastEndKey = null;
-  let originalFetchNowPlaying = (typeof window.fetchNowPlaying === 'function') ? window.fetchNowPlaying : null;
-  let originalShowMoreMusicSoon = (typeof window.showMoreMusicSoon === 'function') ? window.showMoreMusicSoon : function(){};
-  const np = { };
-  // Expose for debugging
-  window.__NP_PATCH_STATE__ = { get lastKey(){return lastKey;}, get lastEndKey(){return lastEndKey;} };
+  let placeholderActive = false;
+  let freezeTick = null;
+
+  const original = {
+    fetchNowPlaying: (typeof window.fetchNowPlaying === 'function') ? window.fetchNowPlaying : null,
+    showMoreMusicSoon: (typeof window.showMoreMusicSoon === 'function') ? window.showMoreMusicSoon : function(){},
+    updateNowPlayingProgress: (typeof window.updateNowPlayingProgress === 'function') ? window.updateNowPlayingProgress : null
+  };
+
+  window.__NP_PATCH_STATE__ = {
+    get lastKey(){return lastKey;},
+    get lastEndKey(){return lastEndKey;},
+    get placeholderActive(){return placeholderActive;}
+  };
 
   function getKey(obj) {
     if (!obj || !obj.artist || !obj.title || !obj.startTime) return null;
@@ -9812,18 +9820,39 @@ if ('serviceWorker' in navigator) {
     }
   }
 
-  function cancelTimer(ref) {
-    if (ref) clearTimeout(ref);
-    return null;
+  function cancelTimer(ref) { if (ref) clearTimeout(ref); return null; }
+  function cancelInterval(ref) { if (ref) clearInterval(ref); return null; }
+
+  // --- Freeze countdown display helpers ---
+  function findCountdownEls() {
+    const selectors = ['#countdown','.countdown','.np-countdown','[data-countdown]','.now-playing-countdown','.np-elapsed'];
+    const set = new Set();
+    selectors.forEach(sel => document.querySelectorAll(sel).forEach(n => set.add(n)));
+    return Array.from(set);
+  }
+  function freezeCountdownDisplay() {
+    // mark frozen and keep it clamped to 0:00 so legacy rAF doesn't keep ticking
+    const els = findCountdownEls();
+    els.forEach(el => { el.setAttribute('data-frozen','1'); el.textContent = '0:00'; });
+    if (freezeTick) cancelInterval(freezeTick);
+    freezeTick = setInterval(() => {
+      const els2 = findCountdownEls();
+      els2.forEach(el => { if (el.getAttribute('data-frozen') === '1') el.textContent = '0:00'; });
+    }, 500);
+  }
+  function unfreezeCountdownDisplay() {
+    const els = findCountdownEls();
+    els.forEach(el => el.removeAttribute('data-frozen'));
+    if (freezeTick) { clearInterval(freezeTick); freezeTick = null; }
   }
 
-  function cancelInterval(ref) {
-    if (ref) clearInterval(ref);
-    return null;
-  }
+  // Gate legacy fetch to avoid repopulating during placeholder unless forced
+  window.fetchNowPlaying = function(force) {
+    if (placeholderActive && !force) return;
+    if (original.fetchNowPlaying) try { return original.fetchNowPlaying(); } catch(e){}
+  };
 
   function scheduleEndAndGrace(latest) {
-    // Cancel previous end/grace timers
     endTimer = cancelTimer(endTimer);
     moreSoonTimer = cancelTimer(moreSoonTimer);
 
@@ -9835,39 +9864,39 @@ if ('serviceWorker' in navigator) {
     const waitMs = Math.max(0, endAt - Date.now());
 
     endTimer = setTimeout(() => {
-      // Track ended now; record which key ended
       lastEndKey = lastKey;
 
-      // Start the 30s grace. Only show fallback if the key hasn't changed
+      // Freeze countdown immediately at 0:00
+      freezeCountdownDisplay();
+
+      // Start 30s grace; only show placeholder if key hasn't changed
       moreSoonTimer = setTimeout(() => {
         if (lastEndKey && lastEndKey === lastKey) {
-          try { originalShowMoreMusicSoon(); } catch(e){}
+          placeholderActive = true;
+          try { original.showMoreMusicSoon(); } catch(e){}
         }
       }, GRACE_MS);
     }, waitMs);
   }
 
-  // Guard: prevent any premature showMoreMusicSoon calls from legacy code
+  // Guard: prevent premature more-music-soon calls
   window.showMoreMusicSoon = function guardedMoreSoon() {
-    // If we have an active grace timer, ignore early calls
-    // Also ignore if track key has changed since the last end
-    if (moreSoonTimer) {
-      // still within grace — do nothing
-      return;
-    }
-    if (lastEndKey && lastEndKey !== lastKey) {
-      // a new track is already active — do nothing
-      return;
-    }
-    // If for some reason we get here with no timers, allow it as a safety
-    try { originalShowMoreMusicSoon(); } catch(e){}
+    // If grace timer exists, ignore early calls
+    if (moreSoonTimer) return;
+    // If track already changed, ignore
+    if (lastEndKey && lastEndKey !== lastKey) return;
+    // Otherwise allow and mark placeholder active
+    placeholderActive = true;
+    try { original.showMoreMusicSoon(); } catch(e){}
   };
 
   function resetProgress(latest) {
     if (!latest || !latest.startTime || !latest.duration) return;
-    if (typeof window.updateNowPlayingProgress === 'function') {
+    // Unfreeze (new track)
+    unfreezeCountdownDisplay();
+    if (typeof original.updateNowPlayingProgress === 'function') {
       try {
-        window.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
+        original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
       } catch(e){ /* no-op */ }
     }
   }
@@ -9880,35 +9909,29 @@ if ('serviceWorker' in navigator) {
     if (key && key !== lastKey) {
       // New track detected
       lastKey = key;
-
-      // Cancel any pending "more soon"
+      placeholderActive = false;
       moreSoonTimer = cancelTimer(moreSoonTimer);
 
-      // Update UI via original if available
-      if (originalFetchNowPlaying) {
-        try { originalFetchNowPlaying(); } catch(e){}
-      }
+      // Force a NP fetch render
+      try { window.fetchNowPlaying(true); } catch(e){}
 
-      // Reset progress immediately
+      // Reset and run progress immediately
       resetProgress(latest);
 
-      // Schedule end & grace fallback
+      // Reschedule end & grace
       scheduleEndAndGrace(latest);
     }
   }
 
-  // Kick off periodic metadata watcher
+  // Kick off periodic watcher + immediate run
   pollTimer = setInterval(refreshOnChange, POLL_MS);
-  // Also run immediately on inject
   refreshOnChange();
 
-  // If page visibility changes to visible, do an immediate refresh
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') refreshOnChange();
   });
 })();
 </script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
