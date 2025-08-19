@@ -4351,7 +4351,7 @@ html[data-theme="light"] #mobileNowBar {
 </svg></a></div>
 
 </div>
-<img alt="Artwork" class="loaded" id="artwork" src="Essential Radio Logo.png"/>
+<img alt="Artwork" class="loaded" id="artwork" src="ERLogo2.png"/>
 </div>
 </div>
 <!-- RIGHT PANEL -->
@@ -5904,7 +5904,7 @@ function prependRecentFromTrack(track) {
     const img = document.createElement('img');
     img.alt = `Cover for ${name}`;
     img.loading = 'lazy';
-    img.src = 'Essential Radio Logo.png';
+    img.src = 'ERLogo2.png';
 
     const info = document.createElement('span');
     info.className = 'info';
@@ -6107,7 +6107,7 @@ if (remaining > 0) {
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
       const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+      const art = await getTrackArtwork(name) || 'ERLogo2.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
       const lastfmIcon = `
@@ -6143,7 +6143,7 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
-      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.src = 'ERLogo2.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
         const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
@@ -6176,15 +6176,29 @@ if (remaining > 0) {
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
-      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.src = 'ERLogo2.png';
       artworkImg.classList.remove('loaded');
       artworkImg.classList.add('fallback');
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
-      if (artworkCache[query]) return artworkCache[query];
       try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
+        if (artworkCache[query]) return artworkCache[query];
+      } catch(e) {}
+      try {
+        const url = `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1&country=gb`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("iTunes HTTP " + res.status);
+        const d = await res.json();
+        const raw = d && d.results && d.results[0] && (d.results[0].artworkUrl100 || d.results[0].artworkUrl60 || d.results[0].artworkUrl30);
+        const art = raw ? raw.replace(/\/(\d+x\d+)bb\//, "/600x600bb/") : "";
+        if (art) {
+          try { artworkCache[query] = art; } catch {}
+          return art;
+        }
+      } catch(e) { /* ignore */ }
+      return "";
+    }&limit=1`);
         const d = await res.json();
         if (d.results[0]?.artworkUrl100) {
           return d.results[0].artworkUrl100.replace('100x100', '300x300');
@@ -9781,91 +9795,6 @@ if ('serviceWorker' in navigator) {
   } else {
     init();
   }
-})();
-</script>
-
-
-<script>
-// === Recently Played artwork harden: wrap renderer and backfill ===
-(function(){
-  const FALLBACK = 'ERLogo2.png';
-  const RECENT_CONTAINER_ID = 'recent-list';
-
-  async function itunesArt(artist, title){
-    try {
-      const q = encodeURIComponent(`${artist||''} ${title||''}`.trim());
-      if (!q) return null;
-      const url = `https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`;
-      const res = await fetch(url);
-      const data = await res.json();
-      if (data && data.results && data.results.length){
-        const raw = data.results[0].artworkUrl100 || data.results[0].artworkUrl60 || data.results[0].artworkUrl30 || '';
-        return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : null;
-      }
-    } catch(e){}
-    return null;
-  }
-
-  function setImg(el, src){
-    if (!el) return;
-    try { el.src = src || FALLBACK; } catch {}
-  }
-
-  async function enrichRow(row){
-    try{
-      const artist = row.querySelector('.artist')?.textContent?.trim() || '';
-      const title  = row.querySelector('.title')?.textContent?.trim() || '';
-      const img = row.querySelector('img.recent-art, .recent-art img, img');
-      const art = await itunesArt(artist, title);
-      setImg(img, art || FALLBACK);
-    } catch(e){ /* ignore */ }
-  }
-
-  // Wrap the site's renderer so any newly prepended row gets artwork set explicitly
-  const originalPrepend = window.prependRecentFromTrack;
-  if (typeof originalPrepend === 'function'){
-    window.prependRecentFromTrack = function(track){
-      const before = document.getElementById(RECENT_CONTAINER_ID)?.firstElementChild || null;
-      // Call original to render
-      originalPrepend(track);
-      // Find the new first row (renderer prepends)
-      const container = document.getElementById(RECENT_CONTAINER_ID);
-      const newRow = container ? container.firstElementChild : null;
-      // If same as before, try lastElementChild fallback
-      const row = (newRow && newRow !== before) ? newRow : (container ? container.lastElementChild : null);
-      if (row) { enrichRow(row); }
-    };
-  }
-
-  // Backfill any existing rows on load (in case they were seeded earlier)
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById(RECENT_CONTAINER_ID);
-    if (!container) return;
-    const rows = Array.from(container.children);
-    rows.forEach(r => {
-      const img = r.querySelector('img');
-      const src = img && img.getAttribute('src') || '';
-      // Re-enrich if it's empty or looks like a logo / placeholder
-      if (!src || /logo|ERLogo2\.png|fallback/i.test(src)) {
-        enrichRow(r);
-      }
-    });
-  });
-
-  // As a safety net, observe future additions and enrich
-  try{
-    const container = document.getElementById(RECENT_CONTAINER_ID);
-    if (container && window.MutationObserver){
-      const mo = new MutationObserver(mutations => {
-        for (const m of mutations){
-          m.addedNodes && m.addedNodes.forEach(node => {
-            if (node.nodeType === 1) enrichRow(node);
-          });
-        }
-      });
-      mo.observe(container, { childList: true });
-    }
-  } catch(e){}
 })();
 </script>
 
