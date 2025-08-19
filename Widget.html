@@ -1,115 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Essential Radio Widget</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Essential Radio Widget (Online Artwork Search — iTunes + Deezer + Proxy)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #111;
-      color: #fff;
-    }
-    #now-playing, #recently-played {
-      padding: 10px;
-    }
-    .track {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .track img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      margin-right: 10px;
-    }
-    .recent-track {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .recent-artwork {
-      width: 40px;
-      height: 40px;
-      border-radius: 6px;
-      margin-right: 8px;
-    }
-    .recent-meta {
-      font-size: 14px;
-      line-height: 1.2;
-    }
-    .artist {
-      font-weight: bold;
-    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background:#0b0d14; margin:0; color:#fff; display:flex; min-height:100vh; align-items:center; justify-content:center; }
+    .widget-container { width:100%; max-width:600px; background:#191c29; border-radius:20px; box-shadow:0 4px 24px #0005; overflow:hidden; display:flex; }
+    .left { width:240px; min-width:180px; background:#21233c; display:flex; flex-direction:column; align-items:center; padding:20px 14px; border-right:2px solid #fed35144; }
+    .logo { width:110px; border-radius:14px; margin-bottom:14px; }
+    #artwork { width:110px; height:110px; border-radius:10px; border:3px solid #fed351; object-fit:cover; background:#222; margin-bottom:10px; transition:opacity .2s ease; }
+    .now-playing-info { text-align:center; width:100%; }
+    #now-playing { font-weight:700; color:#fed351; margin-bottom:2px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    #now-playing-artist { opacity:.9; font-size:.95em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .right { flex:1; display:flex; flex-direction:column; padding:20px; }
+    .on-air-now { color:#fed351; font-weight:700; margin-bottom:3px; }
+    #currentShow { font-weight:600; margin-bottom:10px; line-height:1.3; }
+    .audio-controls { display:flex; gap:10px; align-items:center; margin:6px 0 12px; }
+    #play-toggle,#mute-toggle { background:#fed351; color:#111; border:0; border-radius:6px; padding:6px 12px; font-weight:700; cursor:pointer; }
+    #volume-slider { width:90px; }
+    .recent-title { color:#fed351; font-weight:600; margin:5px 0; }
+    ul#recent-list { list-style:none; margin:0; padding:0; max-height:150px; overflow:auto; }
+    ul#recent-list li { display:flex; align-items:center; gap:6px; padding:5px 0; border-bottom:1px solid #28284b; }
+    ul#recent-list li:last-child { border-bottom:none; }
+    ul#recent-list img { width:30px; height:30px; border-radius:6px; border:2px solid #fed351; object-fit:cover; }
+    ul#recent-list span.info { flex:1; font-size:.9em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    ul#recent-list span.time { width:40px; text-align:right; font-size:.85em; color:#fed351; }
+    @media (max-width:700px){ .widget-container{ flex-direction:column; border-radius:14px;} .left,.right{ width:100%; padding:12px; border-right:none;} .left{ flex-direction:row; gap:10px; align-items:center; border-bottom:2px solid #fed35133;} .logo{ width:70px; margin:0;} #artwork{ width:64px; height:64px; border-width:2px;} #now-playing{ font-size:.9em;} #now-playing-artist{ font-size:.8em;} .on-air-now,#currentShow{ font-size:.85em;} #play-toggle,#mute-toggle{ padding:5px 10px; font-size:.85em;} #volume-slider{ width:70px;} ul#recent-list img{ width:26px; height:26px;} ul#recent-list .info{ font-size:.8em;} ul#recent-list .time{ font-size:.75em;}}
   </style>
 </head>
 <body>
-  <div id="now-playing">
-    <h2>Now Playing</h2>
-    <div class="track" id="current-track"></div>
-  </div>
-
-  <div id="recently-played">
-    <h2>Recently Played</h2>
+  <div class="widget-container">
+    <div class="left">
+      <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
+      <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" />
+      <div class="now-playing-info">
+        <div id="now-playing">Loading…</div>
+        <div id="now-playing-artist"></div>
+      </div>
+    </div>
+    <div class="right">
+      <div>
+        <div class="on-air-now">ON AIR NOW</div>
+        <div id="currentShow">Loading…</div>
+        <div class="audio-controls">
+          <button id="play-toggle" aria-pressed="false" aria-label="Play stream">▶️</button>
+          <input id="volume-slider" type="range" min="0" max="100" value="80" aria-label="Volume" />
+          <button id="mute-toggle" aria-pressed="false" aria-label="Mute">🔊</button>
+        </div>
+      </div>
+      <div>
+        <div class="recent-title">Recently Played</div>
+        <ul id="recent-list"></ul>
+      </div>
+    </div>
   </div>
 
   <script>
-    async function fetchArtwork(artist, title) {
-      const query = encodeURIComponent(`${artist} ${title}`);
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
-        const data = await res.json();
-        if (data.results && data.results.length > 0) {
-          return data.results[0].artworkUrl100.replace("100x100bb", "600x600bb");
+    // === SAME-ORIGIN RELATIVE API ===
+    const LATEST_TRACK_URL = "/api/latestTrack"; // your API (relative)
+    const RECENT_URL = "https://essentialradio.github.io/player/playout_log_rolling.json";
+    const SCHEDULE_URL = "https://essentialradio.github.io/player/schedule.json";
+    const STREAM_URL = "https://streaming06.liveboxstream.uk/proxy/ayrshire/stream";
+
+    // ---- Audio ----
+    let audio, isPlaying=false, lastVolume=0.8;
+    const playBtn = document.getElementById("play-toggle");
+    const muteBtn = document.getElementById("mute-toggle");
+    const volumeSlider = document.getElementById("volume-slider");
+    function ensureAudio(){ if(!audio){ audio=new Audio(STREAM_URL); audio.preload="none"; audio.crossOrigin="anonymous"; audio.volume=lastVolume; audio.addEventListener("playing",()=>setPlayUi(true)); audio.addEventListener("pause",()=>setPlayUi(false)); audio.addEventListener("ended",()=>setPlayUi(false)); audio.addEventListener("error",()=>setPlayUi(false)); } }
+    function setPlayUi(p){ isPlaying=p; playBtn.textContent=p?"⏸":"▶️"; playBtn.setAttribute("aria-pressed", p?"true":"false"); }
+    playBtn.onclick=async()=>{ ensureAudio(); try{ if(!isPlaying){ await audio.play(); setPlayUi(true);} else { audio.pause(); setPlayUi(false);} }catch(e){ console.warn("play failed",e); setPlayUi(false);} };
+    volumeSlider.oninput=()=>{ ensureAudio(); const v=Number(volumeSlider.value)/100; audio.volume=v; lastVolume=v; audio.muted=v===0; muteBtn.textContent=audio.muted?"🔇":(v<0.5?"🔈":"🔊"); muteBtn.setAttribute("aria-pressed", audio.muted?"true":"false"); };
+    muteBtn.onclick=()=>{ ensureAudio(); audio.muted=!audio.muted; muteBtn.textContent=audio.muted?"🔇":(audio.volume<0.5?"🔈":"🔊"); muteBtn.setAttribute("aria-pressed", audio.muted?"true":"false"); volumeSlider.value=audio.muted?0:Math.round(audio.volume*100); };
+
+    // ---- Helpers ----
+    function decodeHtmlEntities(str){ if(!str) return ""; const txt=document.createElement("textarea"); txt.innerHTML=str; return txt.value;}
+    function timeoutFetch(resource, options={}, ms=7000){ const c=new AbortController(); const id=setTimeout(()=>c.abort(),ms); return fetch(resource,{...options,signal:c.signal}).finally(()=>clearTimeout(id)); }
+    function prox(url){
+      // Proxy external images to improve CSP compatibility (uses images.weserv.nl)
+      try{
+        const u = new URL(url);
+        const hostpath = u.host + u.pathname + (u.search||"");
+        return "https://images.weserv.nl/?url=" + encodeURIComponent(hostpath) + "&w=300&h=300&fit=cover&we";
+      }catch{ return url; }
+    }
+
+    // ---- Online Artwork Search: Apple (GB/US) → Deezer → fallback ----
+    async function searchApple(artist, title){
+      const q = encodeURIComponent((artist + " " + title).replace(/["'’]/g, ""));
+      for(const country of ["gb","us"]){
+        const url = "https://itunes.apple.com/search?term="+q+"&media=music&entity=song&limit=3&country="+country;
+        const res = await timeoutFetch(url, { cache:"no-store" }, 7000);
+        if(res.ok){
+          const data = await res.json();
+          const hit = data.results && data.results.find(r => r.artworkUrl100);
+          if(hit) return prox(hit.artworkUrl100.replace("100x100","300x300"));
         }
-      } catch (e) {
-        console.error("Artwork fetch failed:", e);
       }
-      return "fallback.png";
+      return null;
+    }
+    async function searchDeezer(artist, title){
+      const q = encodeURIComponent(`artist:"${artist}" track:"${title}"`);
+      const url = "https://api.deezer.com/search?q=" + q + "&limit=1";
+      const res = await timeoutFetch(url, { cache:"no-store" }, 7000);
+      if(!res.ok) return null;
+      const data = await res.json();
+      const hit = data && data.data && data.data[0];
+      const art = hit && hit.album && (hit.album.cover_xl || hit.album.cover_big || hit.album.cover_medium);
+      return art || null;
     }
 
-    async function loadNowPlaying() {
-      const res = await fetch("/api/latestTrack");
-      const track = await res.json();
-      const artwork = track.artwork || await fetchArtwork(track.artist, track.title);
-      const container = document.getElementById("current-track");
-      container.innerHTML = `
-        <img src="${artwork}" alt="artwork">
-        <div>
-          <div class="artist">${track.artist}</div>
-          <div class="title">${track.title}</div>
-        </div>
-      `;
+    let lastTrackKey="", lastArtworkURL="Essential Radio Logo.png";
+    const artworkEl = document.getElementById("artwork");
+
+    async function resolveArtwork(artist, title){
+      // 1) Apple Music (GB/US)
+      try{
+        const apple = await searchApple(artist, title);
+        if(apple) return apple;
+      }catch(e){ /* ignore */ }
+      // 2) Deezer
+      try{
+        const dz = await searchDeezer(artist, title);
+        if(dz) return dz;
+      }catch(e){ /* ignore */ }
+      // 3) Fallback
+      return lastArtworkURL || "Essential Radio Logo.png";
     }
 
-    async function loadRecentlyPlayed() {
-      const res = await fetch("/api/recentlyPlayed");
-      const recent = await res.json();
-      const container = document.getElementById("recently-played");
-      container.innerHTML = "<h2>Recently Played</h2>";
+    // ---- Data fetch ----
+    async function updateNowPlaying(){
+      try{
+        const latestRes = await fetch(LATEST_TRACK_URL+"?_="+Date.now(), { cache:"no-store" });
+        if(!latestRes.ok) throw new Error("latestTrack status "+latestRes.status);
+        const latest = await latestRes.json();
+        const artist = decodeHtmlEntities(latest.artist||"");
+        const title  = decodeHtmlEntities(latest.title||"");
+        const key = (artist+" — "+title).toLowerCase();
 
-      for (const track of recent) {
-        const artwork = await fetchArtwork(track.artist, track.title);
-        const item = document.createElement("div");
-        item.className = "recent-track";
-        item.innerHTML = `
-          <img src="${artwork}" alt="artwork" class="recent-artwork">
-          <div class="recent-meta">
-            <span class="artist">${track.artist}</span><br>
-            <span class="title">${track.title}</span>
-          </div>
-        `;
-        container.appendChild(item);
+        document.getElementById("now-playing").textContent = title || "—";
+        document.getElementById("now-playing-artist").textContent = artist ? ("by "+artist) : "";
+
+        if(key!==lastTrackKey && artist && title){
+          lastTrackKey = key;
+          artworkEl.style.opacity = .6;
+          const art = await resolveArtwork(artist, title);
+          if(art && art!==lastArtworkURL){
+            lastArtworkURL = art;
+            artworkEl.src = art;
+          }
+          artworkEl.style.opacity = 1;
+        }
+      }catch(e){
+        console.warn(e);
+        document.getElementById("now-playing").textContent = "More music soon";
+        document.getElementById("now-playing-artist").textContent = "";
+        lastTrackKey=""; lastArtworkURL="Essential Radio Logo.png"; artworkEl.src=lastArtworkURL;
       }
     }
 
-    loadNowPlaying();
-    loadRecentlyPlayed();
-    setInterval(loadNowPlaying, 20000);
-    setInterval(loadRecentlyPlayed, 60000);
+    async function updateRecent(){
+      try{
+        const res = await fetch(RECENT_URL+"?_="+Date.now(), { cache:"no-store" });
+        const data = await res.json();
+        const list = document.getElementById("recent-list");
+        list.innerHTML="";
+        data.slice(-3).reverse().forEach(item=>{
+          const li=document.createElement("li");
+          li.innerHTML='<img src="Essential Radio Logo.png" alt=""/>' +
+                       '<span class="info">'+decodeHtmlEntities(item.Artist||"")+' – '+decodeHtmlEntities(item.Title||"")+'</span>' +
+                       '<span class="time">'+((item["Displayed Time"]||item["Scheduled Time"]||"").slice(0,5))+'</span>';
+          list.appendChild(li);
+        });
+      }catch(e){ document.getElementById("recent-list").innerHTML='<li><span class="info">Unavailable</span></li>'; }
+    }
+
+    async function fetchSchedule(){ try{ const r=await fetch(SCHEDULE_URL,{cache:"no-store"}); return r.json(); }catch{ return null; } }
+    function getCurrentShow(s){ const n=new Date(); const d=n.toLocaleString("en-GB",{weekday:"long"}); const a=(s&&s[d])||[]; const m=n.getHours()*60+n.getMinutes(); for(const x of a){ const [sh,sm]=x.start.split(":").map(Number); const [eh,em]=x.end.split(":").map(Number); let st=sh*60+sm,en=eh*60+em; if(en===0&&st>0) en=1440; if(m>=st&&m<en) return x.title;} return "Off Air"; }
+    async function updateOnAirNow(){ const s=await fetchSchedule(); document.getElementById("currentShow").textContent=s?getCurrentShow(s):"Off Air"; }
+
+    updateOnAirNow(); updateNowPlaying(); updateRecent();
+    setInterval(updateOnAirNow, 60000);
+    setInterval(updateNowPlaying, 12000);
+    setInterval(updateRecent, 18000);
   </script>
 </body>
 </html>
