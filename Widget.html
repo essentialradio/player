@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget (Relative API + Smaller Mobile)</title>
+  <title>Essential Radio Widget (Relative API + Mobile + Audio Fix)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -91,9 +91,9 @@
         <div class="on-air-now">ON AIR NOW</div>
         <div id="currentShow">Loading…</div>
         <div class="audio-controls">
-          <button id="play-toggle">▶️</button>
-          <input id="volume-slider" type="range" min="0" max="100" value="80" />
-          <button id="mute-toggle">🔊</button>
+          <button id="play-toggle" aria-pressed="false" aria-label="Play stream">▶️</button>
+          <input id="volume-slider" type="range" min="0" max="100" value="80" aria-label="Volume" />
+          <button id="mute-toggle" aria-pressed="false" aria-label="Mute">🔊</button>
         </div>
       </div>
       <div>
@@ -105,9 +105,78 @@
 
   <script>
     // === SAME-ORIGIN RELATIVE API ===
-    const LATEST_TRACK_URL = "/api/latestTrack"; // works when this file is served from player-green.vercel.app
+    const LATEST_TRACK_URL = "/api/latestTrack"; // works when hosted on the same domain as your API
     const RECENT_URL = "https://essentialradio.github.io/player/playout_log_rolling.json";
     const SCHEDULE_URL = "https://essentialradio.github.io/player/schedule.json";
+
+    // === STREAM AUDIO ===
+    const STREAM_URL = "https://streaming06.liveboxstream.uk/proxy/ayrshire/stream";
+
+    let audio;
+    let isPlaying = false;
+    let lastVolume = 0.8;
+
+    const playBtn = document.getElementById("play-toggle");
+    const muteBtn = document.getElementById("mute-toggle");
+    const volumeSlider = document.getElementById("volume-slider");
+
+    function ensureAudio() {
+      if (!audio) {
+        audio = new Audio(STREAM_URL);
+        audio.preload = "none";          // avoid auto-fetch before user gesture (iOS)
+        audio.crossOrigin = "anonymous"; // safe default
+        audio.volume = lastVolume;
+        audio.addEventListener("ended", () => setPlayUi(false));
+        audio.addEventListener("pause", () => setPlayUi(false));
+        audio.addEventListener("playing", () => setPlayUi(true));
+        audio.addEventListener("error", () => {
+          setPlayUi(false);
+          console.warn("Audio error state:", audio.error);
+        });
+      }
+    }
+
+    function setPlayUi(playing) {
+      isPlaying = playing;
+      playBtn.textContent = playing ? "⏸" : "▶️";
+      playBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+    }
+
+    playBtn.addEventListener("click", async () => {
+      ensureAudio();
+      try {
+        if (!isPlaying) {
+          // iOS requires play() in direct click handler
+          await audio.play();
+          setPlayUi(true);
+        } else {
+          audio.pause();
+          setPlayUi(false);
+        }
+      } catch (e) {
+        console.warn("Play attempt failed:", e);
+        setPlayUi(false);
+      }
+    });
+
+    volumeSlider.addEventListener("input", () => {
+      ensureAudio();
+      const v = Number(volumeSlider.value) / 100;
+      audio.volume = v;
+      lastVolume = v;
+      audio.muted = v === 0;
+      muteBtn.textContent = audio.muted ? "🔇" : (v < 0.5 ? "🔈" : "🔊");
+      muteBtn.setAttribute("aria-pressed", audio.muted ? "true" : "false");
+    });
+
+    muteBtn.addEventListener("click", () => {
+      ensureAudio();
+      audio.muted = !audio.muted;
+      muteBtn.textContent = audio.muted ? "🔇" : (audio.volume < 0.5 ? "🔈" : "🔊");
+      muteBtn.setAttribute("aria-pressed", audio.muted ? "true" : "false");
+      // Reflect in slider without changing stored lastVolume
+      volumeSlider.value = audio.muted ? 0 : Math.round(audio.volume * 100);
+    });
 
     function decodeHtmlEntities(str) {
       if (!str) return "";
