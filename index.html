@@ -5926,7 +5926,7 @@ async function fetchNowPlaying(force = false) {
     }
     // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    /* artwork fetch skipped here (handled on new track only) */
+    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
@@ -9730,7 +9730,7 @@ if ('serviceWorker' in navigator) {
     try {
       const npDiv = document.getElementById('now-playing');
       const npProgress = document.getElementById('np-progress');
-      const isPlaceholder = (typeof placeholderActive !== 'undefined' ? placeholderActive : false) || (npDiv && /more music soon/i.test(npDiv.textContent));
+      const isPlaceholder = npDiv && /more music soon/i.test(npDiv.textContent);
 
       // If a new song has started, reset grace timer
       if (startISO && startISO !== lastStartISO) {
@@ -9901,29 +9901,13 @@ if ('serviceWorker' in navigator) {
     lastEndAt = endAt;
     const now = Date.now();
 
-    
-    // Special case: on first run/page refresh, if we're already past end,
-    // DO NOT show placeholder immediately. Freeze and start the 30s grace timer.
+    // Special case: on first run/page refresh, if we're already past end, show placeholder immediately.
     if (firstRun && now >= endAt) {
       const k = getKey(latest);
       if (k) lastKey = k; // set lastKey so comparisons work
-      // Freeze at 0:00 so users don't see negative/old progress
-      freezeCountdownDisplay();
-      // Start grace; only show placeholder if key hasn't changed within GRACE_MS
-      (function(){
-        try {
-          const keyAtStart = lastKey;
-          const GRACE = (typeof GRACE_MS !== 'undefined' ? GRACE_MS : 30000);
-          moreSoonTimer = setTimeout(() => {
-            if (lastKey && lastKey === keyAtStart) {
-              showPlaceholderOncePerGap();
-            }
-          }, GRACE);
-        } catch(e){}
-      })();
+      showPlaceholderOncePerGap();
       firstRun = false;
       return;
-    }
     }
     firstRun = false;
 
@@ -9955,74 +9939,18 @@ if ('serviceWorker' in navigator) {
 
   function resetProgress(latest) {
     if (!latest || !latest.startTime || !latest.duration) return;
-    // If the track is already over (e.g., page refreshed during a break), don't repaint the last track.
-    const __np_startMs = Date.parse(latest.startTime) || 0;
-    const __np_durMs = Math.max(0, Math.round(Number(latest.duration) * 1000));
-    const __np_endAt = __np_startMs + __np_durMs;
-    const __np_grace = 3000; // 3s grace
-    if (Date.now() >= __np_endAt + __np_grace) {
-      // Enter placeholder mode immediately for this gap
-      showPlaceholderOncePerGap();
-      return;
-    }
-    }
-
     // New track: clear placeholder mode
     placeholderActive = false;
     placeholderShownThisGap = false;
     // Unfreeze (new track)
     unfreezeCountdownDisplay();
-
-    // --- Immediate UI overwrite on new track ---
-
-    try {
-      const np = document.getElementById('now-playing');
-      if (np) {
-        np.innerHTML = `<span style="color:#fed351;">Now Playing:</span>
-        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-        <span id="npTitle" class="track-title"></span><br/>
-        <span id="npArtist" class="track-artist"></span>`;
-      }
-    } catch(e){}
-
-    try {
-      const tEl = document.getElementById('npTitle');
-      const aEl = document.getElementById('npArtist');
-      if (tEl) tEl.textContent = String(latest.title || '').trim();
-      if (aEl) aEl.textContent = String(latest.artist || '').trim();
-    } catch(e){}
-    // Double RAF repaint to eliminate any single-frame 'More music soon' artefact
-    try {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          try {
-            const npProgress = document.getElementById('np-progress');
-            if (npProgress) npProgress.style.display = '';
-            if (typeof fetchNowPlaying === 'function') fetchNowPlaying(true);
-          } catch(e){}
-        });
-      });
-    } catch(e) {}
-
-
-    // Clear any pending placeholder timers so nothing flips back
-    try {
-      if (typeof moreSoonTimer !== 'undefined' && moreSoonTimer) { clearTimeout(moreSoonTimer); moreSoonTimer = null; }
-      if (typeof endTimer !== 'undefined' && endTimer) { clearTimeout(endTimer); endTimer = null; }
-    } catch(e){}
-
     // Allow one render/update during this transition
     allowDuringPlaceholder = true;
     try {
       if (original.fetchNowPlaying) original.fetchNowPlaying(true);
-            try { if (typeof fetchArtwork === 'function') fetchArtwork(`${latest.artist} - ${latest.title}`); } catch {}
       if (original.updateNowPlayingProgress) {
         original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
       }
-      try {
-        const npProgress = document.getElementById('np-progress');
-        if (npProgress) npProgress.style.display = '';
-      } catch(e){}
     } finally {
       allowDuringPlaceholder = false;
     }
@@ -10045,13 +9973,15 @@ if ('serviceWorker' in navigator) {
       lastKey = key;
       // Reset and run progress immediately
       resetProgress(latest);
-      try { if (typeof fetchNowPlaying === 'function') fetchNowPlaying(true); } catch(e){}
       // Reschedule end & grace
       scheduleEndAndGrace(latest);
     } else {
       // Same track
-      // We might be in a brief gap (sweeper). Do NOT show placeholder yet.
-      // Let scheduleEndAndGrace handle the 30s grace timer.
+      if (now >= endAt) {
+        // We are in a non-metadata gap for this track: ensure placeholder shows once
+        showPlaceholderOncePerGap();
+      }
+      // (Re)schedule timers to keep state consistent
       scheduleEndAndGrace(latest);
     }
   }
