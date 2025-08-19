@@ -9839,63 +9839,6 @@ if ('serviceWorker' in navigator) {
     } catch (e) {}
   }
   setInterval(checkAndRefresh, 5000);
-  // --- Long-break monitor (resilient against background tab throttling) ---
-  let longBreakSince = 0;
-  function isPlaceholderText(txt) { return /more music/i.test(String(txt||'')); }
-
-  async function fetchAndMaybeApply(forceShow = false) {
-    try {
-      const res = await fetch('/api/latestTrack?_=' + Date.now());
-      const j = await res.json();
-      if (!j || !j.startTime || !j.duration) return false;
-      const isReal = !(isPlaceholderText(j.artist) || isPlaceholderText(j.title));
-      if (isReal || forceShow) {
-        window.updateNowPlayingProgress(j.startTime, j.duration, {
-          onFinish: () => { initFromAPI(); },
-          metaArtist: j.artist,
-          metaTitle: j.title
-        });
-        return true;
-      }
-    } catch (e) {}
-    return false;
-  }
-
-  // Poll every 10s if bar is hidden or we are showing a placeholder beyond 25s
-  setInterval(async () => {
-    try {
-      const npProgress = document.getElementById('np-progress');
-      const npDiv = document.getElementById('now-playing');
-      const hidden = npProgress && getComputedStyle(npProgress).display === 'none';
-      const placeholderShown = npDiv && isPlaceholderText(npDiv.textContent);
-      const beyondGrace = (Date.now() - lastEndTime) > 25000;
-
-      if ((hidden || placeholderShown) && beyondGrace) {
-        const updated = await fetchAndMaybeApply(false);
-        if (!updated) {
-          // keep trying; a real song hasn't landed yet
-        }
-      }
-    } catch (e) {}
-  }, 10000);
-
-  // Backoff loop to survive heavy throttling: 15s -> 30s -> 60s
-  (function longBreakBackoffLoop(delayMs = 15000) {
-    setTimeout(async () => {
-      try {
-        const npProgress = document.getElementById('np-progress');
-        const npDiv = document.getElementById('now-playing');
-        const hidden = npProgress && getComputedStyle(npProgress).display === 'none';
-        const placeholderShown = npDiv && isPlaceholderText(npDiv.textContent);
-        const beyondGrace = (Date.now() - lastEndTime) > 25000;
-        if ((hidden || placeholderShown) && beyondGrace) {
-          await fetchAndMaybeApply(false);
-        }
-      } catch (e) {}
-      longBreakBackoffLoop(Math.min(delayMs * 2, 60000));
-    }, delayMs);
-  })();
-
   window.addEventListener('focus', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
   window.addEventListener('pageshow', () => { checkAndRefresh(); initFromAPI(); }, { passive: true });
 
