@@ -5887,14 +5887,7 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-async function fetchNowPlaying(force = false) {
-  // Guard: do not repaint during placeholder unless forced
-  try {
-    if (!force && window.__NP_PATCH_STATE__ && window.__NP_PATCH_STATE__.placeholderActive) {
-      return;
-    }
-  } catch (e) {}
-
+async function fetchNowPlaying() {
   try {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
@@ -5966,7 +5959,7 @@ async function fetchNowPlaying(force = false) {
             if (newKey && newKey !== window._npLastKey) {
               clearInterval(window._npPollTimer);
               window._npPollTimer = null;
-              fetchNowPlaying(true);
+              fetchNowPlaying();
             }
           } catch (e) {
             // swallow and keep polling
