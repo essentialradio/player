@@ -4335,6 +4335,7 @@ html[data-theme="light"] #mobileNowBar {
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
 <div id="np-progress" aria-hidden="true"><div class="bar"></div></div>
+<div id="track-remaining" style="margin-top:6px;font-size:0.95em;color:#ccc;text-align:right;">--:--</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -6061,8 +6062,13 @@ if (remaining > 0) {
         const mins = Math.floor(remaining / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-      } else {
+      } 
+        const tr = document.getElementById('track-remaining');
+        if (tr) tr.textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
+else {
         if (countdownEl) countdownEl.textContent = '0:00';
+        const tr = document.getElementById('track-remaining');
+        if (tr) { tr.textContent = '0:00'; setTimeout(()=>{ const el=document.getElementById('track-remaining'); if (el) el.textContent='--:--'; }, 1000); }
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
         // Immediately show fallback while we wait for the next ingest
