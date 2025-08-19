@@ -9749,6 +9749,7 @@ if ('serviceWorker' in navigator) {
         }
       } else {
         if (npProgress) npProgress.style.display = '';
+            try { if (typeof fetchArtwork === 'function') fetchArtwork(`${latest.artist} - ${latest.title}`); } catch(e){}
       }
 
       startMs    = new Date(startISO).getTime();
@@ -9998,6 +9999,7 @@ if ('serviceWorker' in navigator) {
           try {
             const npProgress = document.getElementById('np-progress');
             if (npProgress) npProgress.style.display = '';
+            try { if (typeof fetchArtwork === 'function') fetchArtwork(`${latest.artist} - ${latest.title}`); } catch(e){}
             if (typeof fetchNowPlaying === 'function') fetchNowPlaying(true);
           } catch(e){}
         });
@@ -10016,12 +10018,15 @@ if ('serviceWorker' in navigator) {
     try {
       if (original.fetchNowPlaying) original.fetchNowPlaying(true);
             try { if (typeof fetchArtwork === 'function') fetchArtwork(`${latest.artist} - ${latest.title}`); } catch {}
+      // Retry artwork after DOM settles
+      try { setTimeout(() => { try { if (typeof fetchArtwork === 'function') fetchArtwork(`${latest.artist} - ${latest.title}`); } catch(e){} }, 250); } catch(e){}
       if (original.updateNowPlayingProgress) {
         original.updateNowPlayingProgress(latest.startTime, latest.duration, { onFinish: function(){} });
       }
       try {
         const npProgress = document.getElementById('np-progress');
         if (npProgress) npProgress.style.display = '';
+            try { if (typeof fetchArtwork === 'function') fetchArtwork(`${latest.artist} - ${latest.title}`); } catch(e){}
       } catch(e){}
     } finally {
       allowDuringPlaceholder = false;
