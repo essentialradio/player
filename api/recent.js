@@ -1,49 +1,55 @@
 // api/recent.js
-// GET the most recent N items (default 5).
-// Includes CORS for cross-origin reads from essential.radio
+import { put, get } from '@vercel/blob';
 
-import { Redis } from "@upstash/redis";
+const BLOB_PATH = 'recent.json';
+const MAX = 500;
 
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL,
-  token: process.env.KV_REST_API_TOKEN, // RO or RW token is fine
-});
-
-function setCORS(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-}
-
-export default async function handler(req, res) {
-  setCORS(res);
-  if (req.method === "OPTIONS") return res.status(204).end();
-
+async function readLog() {
   try {
-    const url = new URL(req.url, `http://${req.headers.host}`);
-    const n = clamp(toInt(url.searchParams.get("limit")) ?? 5, 1, 50);
-
-    // recentTracks is most-recent-first (LPUSH)
-    const raw = await redis.lrange("recentTracks", 0, n - 1);
-    const items = (raw || [])
-      .map((v) => {
-        if (typeof v === "object") return v;
-        try { return JSON.parse(v); } catch { return null; }
-      })
-      .filter(Boolean);
-
-    return res.status(200).json({ items });
-  } catch (e) {
-    console.error("RECENT error:", e);
-    return res.status(200).json({ items: [] }); // safe fallback
+    const info = await get(BLOB_PATH); // throws if not found
+    const res = await fetch(info.url, { cache: 'no-store' });
+    if (!res.ok) return [];
+    return await res.json();
+  } catch {
+    return []; // first run: no blob yet
   }
 }
 
-/* helpers */
-function toInt(x) {
-  const n = Number(x);
-  return Number.isInteger(n) ? n : null;
+async function writeLog(list) {
+  await put(BLOB_PATH, JSON.stringify(list), {
+    contentType: 'application/json',
+    access: 'public',
+  });
 }
-function clamp(x, lo, hi) {
-  return Math.max(lo, Math.min(hi, x));
+
+export default async function handler(req, res) {
+  try {
+    if (req.method === 'GET') {
+      const list = await readLog();
+      res.setHeader('Cache-Control', 'no-store, no-cache, max-age=0, s-maxage=0, must-revalidate');
+      return res.status(200).json(list.slice(0, 100)); // top 100
+    }
+
+    if (req.method === 'POST') {
+      const b = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+      const { artist, title, startMs, endMs, duration, endedAt } = b || {};
+      if (!artist || !title || !startMs || !endMs) {
+        return res.status(400).json({ error: 'invalid payload' });
+      }
+      const key = `${artist}||${title}||${startMs}`;
+      const list = await readLog();
+      if (!list.length || list[0].key !== key) {
+        list.unshift({ key, artist, title, startMs, endMs, duration, endedAt });
+      }
+      await writeLog(list.slice(0, MAX));
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json({ ok: true });
+    }
+
+    res.setHeader('Allow', 'GET, POST');
+    return res.status(405).end('Method Not Allowed');
+  } catch (e) {
+    console.error('recent api error', e);
+    return res.status(500).json({ error: 'server error' });
+  }
 }
