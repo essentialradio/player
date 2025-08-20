@@ -5947,7 +5947,7 @@ if (remaining > 0) {
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
       } else {
-        if (countdownEl) countdownEl.textContent = '0:00';
+        if (countdownEl) countdownEl.textContent = '—/—';
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
         // Grace window before showing fallback to avoid micro-flash between sweepers and next track
