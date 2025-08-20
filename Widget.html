@@ -6,82 +6,139 @@
   <title>Essential Radio Widget</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #00818a 0%, #7e1974 100%);
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
     #erw, #erw * { box-sizing: border-box; }
+    #erw body { margin: 0; }
+    #erw {
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+    }
     #erw .widget-shell {
       background: #191c29;
       border-radius: 20px;
       box-shadow: 0 4px 24px #0005;
       overflow: hidden;
     }
-    /* Fixed desktop size */
-    #erw .desktop { display: flex; width: 600px; height: 400px; }
-    #erw .left { width: 240px; min-width: 180px; background: #21233c;
-      display: flex; flex-direction: column; align-items: center;
-      padding: 26px 18px 18px 18px; border-right: 2px solid #fed35144; height: 100%; }
-    #erw .logo { width: 125px; border-radius: 18px; margin-bottom: 18px; }
-    #erw #artwork { width: 120px; height: 120px; border-radius: 12px; border: 3px solid #fed351;
-      object-fit: cover; background: #222; box-shadow: 0 2px 16px #fed35133; margin-bottom: 14px; }
+
+    /* ---------------- Desktop (original unchanged) ---------------- */
+    #erw .desktop { display: flex; width: 100%; height: 480px; }
+    #erw .left {
+      width: 240px;
+      min-width: 180px;
+      background: #21233c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 26px 18px 18px 18px;
+      border-right: 2px solid #fed35144;
+      height: 100%;
+    }
+    #erw .logo {
+      width: 125px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+    }
+    #erw #artwork {
+      width: 120px; height: 120px;
+      border-radius: 12px;
+      border: 3px solid #fed351;
+      object-fit: cover;
+      background: #222;
+      box-shadow: 0 2px 16px #fed35133;
+      margin-bottom: 14px;
+    }
     #erw .now-playing-info { text-align: center; margin-bottom: 8px; }
-    #erw #now-playing { font-size: 1.09em; font-weight: 700; color: #fed351; margin-bottom: 2px; }
-    #erw #now-playing-artist { font-size: 0.98em; color: #fff; opacity: 0.95; }
-    #erw .right { flex: 1; display: flex; flex-direction: column;
-      padding: 24px 24px 16px 26px; justify-content: space-between; }
-    #erw .on-air-now { color: #fed351; font-weight: 700; font-size: 1.04em; margin-bottom: 3px; }
-    #erw #currentShow { font-size: 1.08em; font-weight: 600; color: #fff; margin-bottom: 13px; }
-    #erw .audio-controls { display: flex; gap: 12px; align-items: center; margin-bottom: 13px; }
+    #erw #now-playing {
+      font-size: 1.09em; font-weight: 700; color: #fed351; margin-bottom: 2px;
+    }
+    #erw #now-playing-artist {
+      font-size: 0.98em; color: #fff; opacity: 0.95;
+    }
+    #erw .right {
+      flex: 1; display: flex; flex-direction: column;
+      padding: 24px 24px 16px 26px; justify-content: space-between;
+    }
+    #erw .on-air-now {
+      color: #fed351; font-weight: 700; font-size: 1.04em; margin-bottom: 3px;
+    }
+    #erw #currentShow {
+      font-size: 1.08em; font-weight: 600; color: #fff; margin-bottom: 13px;
+    }
+    #erw .audio-controls {
+      display: flex; gap: 12px; align-items: center; margin-bottom: 13px;
+    }
     #erw #play-toggle, #erw #mute-toggle,
     #erw #m-play-toggle, #erw #m-mute-toggle {
-      background: #fed351; color: #111; border: none; border-radius: 7px;
-      padding: 7px 16px; font-size: 1.03em; font-weight: bold; cursor: pointer;
-      transition: background 0.2s; }
+      background: #fed351; color: #111; border: none;
+      border-radius: 7px; padding: 7px 16px;
+      font-size: 1.03em; font-weight: bold; cursor: pointer;
+      transition: background 0.2s;
+    }
     #erw #play-toggle:hover, #erw #mute-toggle:hover,
-    #erw #m-play-toggle:hover, #erw #m-mute-toggle:hover { background: #ffe67c; }
+    #erw #m-play-toggle:hover, #erw #m-mute-toggle:hover {
+      background: #ffe67c;
+    }
     #erw #volume-slider, #erw #m-volume-slider { width: 100px; }
-    #erw .recent-title { font-size: 1.07em; font-weight: 600; margin: 7px 0; color: #fed351; }
-    #erw ul.recent { list-style: none; margin: 0; padding: 0; width: 100%; max-height: 166px; overflow-y: auto; }
-    #erw ul.recent li { display: flex; align-items: center; gap: 8px; padding: 7px 0;
-      border-bottom: 1px solid #28284b; font-size: 0.97em; }
+    #erw .recent-title {
+      font-size: 1.07em; font-weight: 600; margin: 7px 0; color: #fed351;
+    }
+    #erw ul.recent {
+      list-style: none; margin: 0; padding: 0; width: 100%; max-height: 166px; overflow-y: auto;
+    }
+    #erw ul.recent li {
+      display: flex; align-items: center; gap: 8px; padding: 7px 0;
+      border-bottom: 1px solid #28284b; font-size: 0.97em;
+    }
     #erw ul.recent li:last-child { border-bottom: none; }
-    #erw ul.recent img.thumb { width: 34px; height: 34px; border-radius: 7px;
-      object-fit: cover; border: 2px solid #fed351; background: #222; }
-    #erw ul.recent span.info { color: #fff; font-size: 0.99em; flex: 1; overflow: hidden;
-      white-space: nowrap; text-overflow: ellipsis; }
-    #erw ul.recent span.time { color: #fed351; font-size: 0.94em; width: 44px; text-align: right; }
+    #erw ul.recent img.thumb {
+      width: 34px; height: 34px; border-radius: 7px;
+      object-fit: cover; border: 2px solid #fed351; background: #222;
+    }
+    #erw ul.recent span.info {
+      color: #fff; font-size: 0.99em; flex: 1;
+      overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+    }
+    #erw ul.recent span.time {
+      color: #fed351; font-size: 0.94em; width: 44px; text-align: right;
+    }
 
-    /* Mobile layout */
+    /* ---------------- Mobile distinct layout ---------------- */
     #erw .mobile { display: none; width: 100%; max-width: 700px; }
     #erw .mobile .card { width: 100%; background: #191c29; border-radius: 20px; }
-    #erw .m-header { display: flex; align-items: center; gap: 12px; padding: 14px;
-      border-bottom: 2px solid #fed35133; }
+    #erw .m-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px; border-bottom: 2px solid #fed35133;
+    }
     #erw .m-logo { width: 88px; border-radius: 12px; }
     #erw .m-onair { margin-left: auto; text-align: right; }
     #erw .m-onair .label { color: #fed351; font-weight: 700; font-size: 0.95em; }
     #erw .m-onair #m-currentShow { font-weight: 600; color: #fff; font-size: 0.98em; }
-    #erw .m-now { display: flex; align-items: center; gap: 12px; padding: 14px; }
-    #erw #m-artwork { width: 96px; height: 96px; border-radius: 10px;
-      border: 3px solid #fed351; object-fit: cover; background: #222; }
+
+    #erw .m-now {
+      display: flex; align-items: center; gap: 12px; padding: 14px;
+    }
+    #erw #m-artwork {
+      width: 96px; height: 96px; border-radius: 10px;
+      border: 3px solid #fed351; object-fit: cover; background: #222;
+    }
     #erw .m-title { color: #fed351; font-weight: 700; font-size: 1.02em; }
     #erw .m-artist { opacity: 0.95; }
-    #erw .m-controls { display: flex; align-items: center; gap: 10px; padding: 10px 14px; }
+
+    #erw .m-controls {
+      display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+    }
     #erw #m-volume-slider { flex: 1; }
+
     #erw .m-recent { padding: 8px 14px 14px 14px; }
     #erw .m-recent .recent-title { margin: 6px 0; }
 
-    @media (max-width: 700px) { #erw .desktop { display: none; } #erw .mobile { display: block; } }
+    /* Layout switch */
+    @media (max-width: 700px) {
+      #erw .desktop { display: none; }
+      #erw .mobile  { display: block; }
+    }
   </style>
 </head>
-<body>
+<body style="margin:0; background: transparent;">
   <div id="erw">
     <!-- Desktop layout -->
     <div class="widget-shell desktop">
@@ -212,17 +269,6 @@
       });
     }
 
-    // Helper to fetch artwork via same-origin proxy (expects /api/artwork on your app)
-    async function getArtworkURL(artist, title, size='300x300') {
-      try {
-        const resp = await fetch(`/api/artwork?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`);
-        const data = await resp.json();
-        let url = data?.url || "";
-        url = url.replace(/100x100|200x200|300x300|600x600/g, size);
-        return url;
-      } catch { return ""; }
-    }
-
     async function updateNowPlaying() {
       try {
         const latest = await (await fetch('/api/latestTrack?_='+Date.now(),{cache:'no-store'})).json();
@@ -236,10 +282,8 @@
         document.getElementById("m-now-playing-artist").textContent = artist?`by ${artist}`:"";
 
         let artwork = "Essential Radio Logo.png";
-        if (artist && title) {
-          const url = await getArtworkURL(artist, title, '300x300');
-          if (url) artwork = url;
-        }
+        try { const d=await (await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&media=music&limit=1`)).json();
+          artwork=d.results?.[0]?.artworkUrl100?.replace('100x100','300x300')||artwork; } catch{}
         document.getElementById("artwork").src=artwork;
         document.getElementById("m-artwork").src=artwork;
       } catch {}
@@ -252,16 +296,14 @@
         async function render(listEl) {
           listEl.innerHTML=""; for(const item of items){
             const artist=decodeHtmlEntities(item.Artist), title=decodeHtmlEntities(item.Title);
-            let artwork="Essential Radio Logo.png";
-            const url = await getArtworkURL(artist, title, '100x100');
-            if (url) artwork = url;
+            let artwork="Essential Radio Logo.png"; try{const d=await (await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(`${artist} ${title}`)}&media=music&limit=1`)).json();
+              artwork=d.results?.[0]?.artworkUrl100||artwork;}catch{}
             const li=document.createElement('li');
-            li.innerHTML=`<img class="thumb" src="${artwork}" alt=""/><span class="info">${artist} – ${title}</span><span class="time">${(item["Displayed Time"]||item["Scheduled Time"]||"").slice(0,5)}</span>`;
+            li.innerHTML=`<img class="thumb" src="${artwork}"/><span class="info">${artist} – ${title}</span><span class="time">${(item["Displayed Time"]||item["Scheduled Time"]||"").slice(0,5)}</span>`;
             listEl.appendChild(li);
           }
         }
-        render(document.getElementById("recent-list"));
-        render(document.getElementById("m-recent-list"));
+        render(document.getElementById("recent-list")); render(document.getElementById("m-recent-list"));
       } catch {}
     }
 
