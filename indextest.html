@@ -10135,6 +10135,255 @@ document.addEventListener('visibilitychange', () => {
   }, { once: true });
 })();
 </script>
+<script>
+/*** ErrorReporter – show real messages instead of bare “Uncaught” ***/
+(function(){
+  if (window.__errReporter) return; window.__errReporter = true;
+  window.addEventListener('error', e=>{
+    const msg = e && e.message || 'Unknown error';
+    console.error('[Error]', msg, '@', (e && e.filename)||location.href, e && e.lineno, e && e.error);
+  });
+  window.addEventListener('unhandledrejection', e=>{
+    console.error('[Promise]', e && e.reason);
+  });
+})();
+
+/*** Artwork helper (string-in) – only if you don’t already have it ***/
+(function(){
+  if (typeof window.getTrackArtwork === 'function') return;
+  const FALLBACK = 'ERLogo2.png';
+  window.getTrackArtwork = async function(name){
+    const q = (name||'').toString().trim();
+    if (!q) return FALLBACK;
+    try {
+      const r = await fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(q) + '&entity=song&limit=1&country=gb');
+      if (!r.ok) return FALLBACK;
+      const j = await r.json();
+      const raw = j && j.results && j.results[0] && (j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30);
+      return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
+    } catch { return FALLBACK; }
+  };
+})();
+
+/*** Recent row stabiliser – start time + artwork + fallback image ***/
+(function(){
+  if (window.__recentRowFix) return; window.__recentRowFix = true;
+  const FALLBACK = 'ERLogo2.png';
+  const LIST_ID = 'recent-list';
+
+  function setStartTime(li, track){
+    const timeEl = li.querySelector('.time');
+    const ms = (track && (track.startMs || Date.parse(track.startTime||track.startedAt||''))) || 0;
+    if (timeEl && ms){
+      const d = new Date(ms);
+      timeEl.textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+      li.setAttribute('data-startms', String(ms));
+    }
+  }
+
+  async function setArtwork(li, track){
+    const img = li.querySelector('img');
+    const info = li.querySelector('span.info');
+    if (!img) return;
+    img.addEventListener('error', ()=>{ img.src = FALLBACK; }, { once:true });
+    const current = img.getAttribute('src') || '';
+    if (/^https?:\/\//.test(current) && !/ERLogo2\.png/i.test(current)) return; // already a cover
+    let artist = track?.artist || ''; let title = track?.title || '';
+    if ((!artist || !title) && info){
+      const s = (info.textContent||'').replace(/\s+/g,' ').trim();
+      const parts = s.split(' – ');
+      artist = artist || (parts[0]||'').trim();
+      title  = title  || (parts.slice(1).join(' – ')||'').trim();
+    }
+    const name = (artist + ' ' + title).trim();
+    if (!name) return;
+    try {
+      const url = await Promise.resolve(window.getTrackArtwork(name));
+      if (url) img.src = url;
+    } catch { img.src = FALLBACK; }
+  }
+
+  const orig = window.prependRecentFromTrack;
+  if (typeof orig === 'function' && !orig.__wrapped){
+    window.prependRecentFromTrack = function(track){
+      const list = document.getElementById(LIST_ID);
+      const res = orig.apply(this, arguments);
+      if (list && list.firstElementChild){
+        const li = list.firstElementChild;
+        setStartTime(li, track);
+        setArtwork(li, track);
+        // cap to 5
+        while (list.children.length > 5) list.removeChild(list.lastElementChild);
+      }
+      return res;
+    };
+    window.prependRecentFromTrack.__wrapped = true;
+  }
+})();
+
+/*** Combined recent loader – recent.js or /api/recent + rolling log (idempotent, no blanking) ***/
+(function(){
+  if (window.__combinedRecent) return; window.__combinedRecent = true;
+  const LIST_SEL = '#recent-list', MAX = 5;
+  const LOG_URL  = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+  const API_URL  = '/api/recent';
+  const norm = s => (s||'').toString().trim();
+  const lower = s => norm(s).toLowerCase();
+  const toMs = x => { if (!x) return 0; const n=+x; if(!Number.isNaN(n)&&n>1e10) return n; const t=Date.parse(x); return Number.isNaN(t)?0:t; };
+
+  async function fromRecentOrApi(){
+    try {
+      if (Array.isArray(window.recent)) return window.recent;
+      if (typeof window.getRecent === 'function'){ const r=await window.getRecent(); if (Array.isArray(r)) return r; }
+      if (typeof window.fetchRecentTracks === 'function'){ const r=await window.fetchRecentTracks(); if (Array.isArray(r)) return r; }
+    } catch {}
+    try {
+      const r = await fetch(API_URL + '?_=' + Date.now(), { cache:'no-store' });
+      return r.ok ? await r.json() : [];
+    } catch { return []; }
+  }
+  async function fromRollingLog(){
+    try {
+      const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache:'no-store' });
+      const j = r.ok ? await r.json() : [];
+      if (!Array.isArray(j)) return [];
+      return j.map(it=>{
+        let startMs=0;
+        try {
+          const base = new Date(it['Hour']);
+          const [h,m] = String(it['Scheduled Time']||'').split(':').map(v=>parseInt(v||'0',10));
+          const d = new Date(base.getFullYear(), base.getMonth(), base.getDate(), h||0, m||0, 0, 0);
+          startMs = d.getTime();
+        } catch {}
+        return { artist:norm(it.Artist), title:norm(it.Title), startMs, startTime: startMs?new Date(startMs).toISOString():'' };
+      }).filter(t=>t.artist&&t.title&&t.startMs);
+    } catch { return []; }
+  }
+  function normalize(arr){
+    return (arr||[]).map(x=>{
+      const artist=norm(x.artist), title=norm(x.title);
+      const startMs = x.startMs || toMs(x.startTime) || toMs(x.startedAt) || toMs(x.endMs) || toMs(x.endedAt);
+      const startTime = startMs ? new Date(startMs).toISOString() : (x.startTime||x.startedAt||'');
+      return { artist, title, startMs, startTime };
+    }).filter(t=>t.artist&&t.title&&t.startMs);
+  }
+  function mergeTop5(a,b){
+    const map=new Map();
+    for (const src of [a,b]){
+      for (const t of src){
+        const bucket=Math.floor((t.startMs||0)/60000);
+        const key=lower(t.artist)+'||'+lower(t.title)+'||'+bucket;
+        if (!map.has(key) || t.startMs>map.get(key).startMs) map.set(key,t);
+      }
+    }
+    return [...map.values()].sort((x,y)=>y.startMs-x.startMs).slice(0,MAX);
+  }
+  function curSig(list){
+    const li=list.querySelector('li'); if (!li) return '';
+    const ms=li.getAttribute('data-startms')||''; const info=(li.querySelector('.info')?.textContent||'').trim();
+    return ms+'|'+info;
+  }
+  function nextSig(tracks){
+    if (!tracks.length) return '';
+    const t=tracks[0]; return String(t.startMs||'')+'|'+(t.artist+' – '+t.title);
+  }
+
+  let busy=false;
+  async function seed(){
+    if (busy) return; busy=true;
+    try{
+      // wait for renderer
+      let tries=0; while (typeof window.prependRecentFromTrack!=='function' && tries++<200) await new Promise(r=>setTimeout(r,25));
+      const list=document.querySelector(LIST_SEL); if (!list) return;
+
+      const [p,log] = await Promise.all([fromRecentOrApi(), fromRollingLog()]);
+      const merged = mergeTop5(normalize(p), normalize(log));
+      if (!merged.length) return; // no-blanking
+
+      const ns = nextSig(merged), cs = curSig(list);
+      if (ns && cs && ns===cs) return; // idempotent
+
+      // render oldest->newest so newest ends up on top via prepend
+      const ordered = merged.slice().reverse();
+      list.innerHTML = '';
+      for (const t of ordered){
+        try {
+          window.prependRecentFromTrack({ artist:t.artist, title:t.title, startMs:t.startMs, startTime:t.startTime, startedAt:t.startTime });
+        } catch {}
+      }
+    } finally { busy=false; }
+  }
+  window.addEventListener('load', ()=>{ setTimeout(seed, 300); setInterval(seed, 30000); }, { once:true });
+})();
+
+/*** Instant handoff – push exiting NP to Recent the moment NP changes ***/
+(function(){
+  if (window.__handoff) return; window.__handoff = true;
+  const LIST_ID='recent-list', MAX=5, norm=s=>(s||'').toString().trim();
+
+  function captureNP(){
+    try{
+      const t = window._npLastTiming||{};
+      const startMs = t.startMs||0;
+      const np = document.getElementById('now-playing');
+      let artist='', title='';
+      if (np){
+        const spans = np.querySelectorAll('span');
+        const texts = Array.from(spans).map(s=>norm(s.textContent)).filter(Boolean);
+        const byIdx = texts.findIndex(x=>/^by\s+/i.test(x));
+        if (byIdx>=0){ artist = texts[byIdx].replace(/^by\s+/i,'').trim(); if (byIdx-1>=0) title=texts[byIdx-1]; }
+      }
+      if (!artist || !title || !startMs) return null;
+      const iso=new Date(startMs).toISOString();
+      return { artist, title, startMs, startTime:iso, startedAt:iso, endMs:startMs, endedAt:iso };
+    } catch { return null; }
+  }
+  function dedupeCap(list){
+    const seen=new Set(); const items=[...list.children];
+    for (const li of items){
+      const info=(li.querySelector('.info')?.textContent||'').trim().toLowerCase();
+      const ms=li.getAttribute('data-startms')||'';
+      const key=info+'|'+ms;
+      if (seen.has(key)) li.remove(); else seen.add(key);
+    }
+    while (list.children.length>MAX) list.removeChild(list.lastElementChild);
+  }
+  function push(track){
+    if (!track || typeof window.prependRecentFromTrack!=='function') return;
+    const list=document.getElementById(LIST_ID); if (!list) return;
+    const first=list.firstElementChild;
+    if (first){
+      const info=(first.querySelector('.info')?.textContent||'').trim().toLowerCase();
+      const ms=first.getAttribute('data-startms')||'';
+      const fk=info+'|'+ms, nk=(track.artist+' – '+track.title).toLowerCase()+'|'+String(track.startMs||'');
+      if (fk===nk) return;
+    }
+    window.prependRecentFromTrack(track);
+    dedupeCap(list);
+  }
+  function install(){
+    const orig = window.fetchNowPlaying;
+    if (typeof orig!=='function' || orig.__wrappedHand) return;
+    window.fetchNowPlaying = async function(){
+      const exiting = captureNP();
+      const before = window._npActiveKey||null;
+      const res = await orig.apply(this, arguments);
+      const after = window._npActiveKey||null;
+      if (before && after && after!==before && exiting) push(exiting);
+      return res;
+    };
+    window.fetchNowPlaying.__wrappedHand = true;
+  }
+  window.addEventListener('load', ()=>{
+    let tries=0;(function retry(){
+      install();
+      if (!window.fetchNowPlaying || !window.fetchNowPlaying.__wrappedHand){
+        if (tries++<120) setTimeout(retry,250);
+      }
+    })();
+  }, { once:true });
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
