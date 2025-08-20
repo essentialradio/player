@@ -9878,6 +9878,264 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
+
+<!-- Combined Recent (api + rolling log) v30b: idempotent + no-blanking -->
+<script>
+(function(){
+  if (window.__combinedRecentV30b) return; window.__combinedRecentV30b = true;
+
+  const LIST_SEL   = '#recent-list';
+  const MAX        = 5;
+  const LOG_URL    = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+  const API_URL    = '/api/recent';
+
+  const norm = s => (s||'').toString().trim();
+  const lower = s => norm(s).toLowerCase();
+  const toMs = x => { if (!x) return 0; const n=Number(x); if(!Number.isNaN(n)&&n>1e10) return n; const t=Date.parse(x); return Number.isNaN(t)?0:t; };
+
+  async function getFromRecentJsOrApi(){
+    try {
+      if (Array.isArray(window.recent)) return window.recent;
+      if (typeof window.getRecent === 'function') { const r = await Promise.resolve(window.getRecent()); if (Array.isArray(r)) return r; }
+      if (typeof window.fetchRecentTracks === 'function') { const r = await Promise.resolve(window.fetchRecentTracks()); if (Array.isArray(r)) return r; }
+    } catch {}
+    try {
+      const r = await fetch(API_URL + '?_=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return [];
+      const j = await r.json();
+      return Array.isArray(j) ? j : [];
+    } catch { return []; }
+  }
+
+  async function getFromRollingLog(){
+    try {
+      const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache: 'no-store' });
+      const j = r.ok ? await r.json() : [];
+      if (!Array.isArray(j)) return [];
+      return j.map(it => {
+        let startMs = 0;
+        try {
+          const base = new Date(it['Hour']);
+          const parts = String(it['Scheduled Time']||'').split(':');
+          const h = parseInt(parts[0]||'0',10), m = parseInt(parts[1]||'0',10);
+          const d = new Date(base.getFullYear(), base.getMonth(), base.getDate(), h||0, m||0, 0, 0);
+          startMs = d.getTime();
+        } catch { startMs = 0; }
+        return { artist: norm(it.Artist), title: norm(it.Title), startMs, startTime: startMs ? new Date(startMs).toISOString() : undefined };
+      }).filter(t => t.artist && t.title && t.startMs);
+    } catch { return []; }
+  }
+
+  function normalize(arr){
+    return (arr||[]).map(x => {
+      const artist = norm(x.artist);
+      const title  = norm(x.title);
+      const startMs = x.startMs || toMs(x.startTime) || toMs(x.startedAt) || toMs(x.endMs) || toMs(x.endedAt);
+      const startTime = startMs ? new Date(startMs).toISOString() : (x.startTime || x.startedAt || x.endedAt || '');
+      return { artist, title, startMs, startTime };
+    }).filter(t => t.artist && t.title && t.startMs);
+  }
+
+  function mergeTop5(a, b){
+    const map = new Map();
+    for (const src of [a,b]){
+      for (const t of src){
+        const bucket = Math.floor((t.startMs||0)/60000);
+        const key = lower(t.artist) + '||' + lower(t.title) + '||' + bucket;
+        if (!map.has(key) || (t.startMs||0) > (map.get(key).startMs||0)) map.set(key, t);
+      }
+    }
+    return Array.from(map.values()).sort((x,y) => (y.startMs||0) - (x.startMs||0)).slice(0, MAX);
+  }
+
+  function currentSignature(listEl){
+    try {
+      const first = listEl.querySelector('li');
+      if (!first) return '';
+      const ms = first.getAttribute('data-startms') || '';
+      const info = (first.querySelector('.info')?.textContent || '').trim();
+      return ms + '|' + info;
+    } catch { return ''; }
+  }
+
+  function calcSignature(tracks){
+    if (!tracks || !tracks.length) return '';
+    const t = tracks[0];
+    return String(t.startMs||'') + '|' + (t.artist + ' – ' + t.title);
+  }
+
+  let _busy = false;
+  async function seedRecentIdempotent(){
+    if (_busy) return; _busy = true;
+    try {
+      // Wait for your renderer
+      let tries = 0;
+      while (typeof window.prependRecentFromTrack !== 'function' && tries < 200){
+        await new Promise(r => setTimeout(r, 25));
+        tries++;
+      }
+      const list = document.querySelector(LIST_SEL);
+      if (!list) return;
+
+      const [primary, rolling] = await Promise.all([getFromRecentJsOrApi(), getFromRollingLog()]);
+      const merged = mergeTop5(normalize(primary), normalize(rolling));
+
+      // If nothing fetched, DO NOT clear the list. Leave existing UI intact.
+      if (!merged.length) return;
+
+      // If nothing changed (same first item sig), skip re-render to avoid flicker.
+      const nextSig = calcSignature(merged);
+      const curSig = currentSignature(list);
+      if (nextSig && curSig && nextSig === curSig) return;
+
+      // Render transactionally into a fragment, then swap content.
+      const frag = document.createDocumentFragment();
+      const ordered = merged.slice().reverse(); // oldest -> newest
+      const temp = document.createElement('div');
+      for (const t of ordered){
+        const track = { artist: t.artist, title: t.title, startMs: t.startMs, startTime: t.startTime, startedAt: t.startTime };
+        try { window.prependRecentFromTrack(track); } catch {}
+      }
+      // After calling renderer, the list has new items at the top; but we want atomic replace.
+      // Capture only the first MAX items and rebuild.
+      const items = Array.from(document.querySelectorAll(LIST_SEL + ' > li')).slice(0, MAX);
+      // Build a stable new list
+      const ul = document.createElement('ul');
+      ul.id = (list.id || 'recent-list');
+      items.forEach(li => ul.appendChild(li.cloneNode(true)));
+      // Swap only if we have at least one element
+      if (ul.children.length) {
+        list.replaceWith(ul);
+      }
+    } catch {} finally {
+      _busy = false;
+    }
+  }
+
+  window.addEventListener('load', function(){
+    setTimeout(seedRecentIdempotent, 300);
+    // Optional: if your app refreshes periodically, keep this gentle refresher:
+    setInterval(seedRecentIdempotent, 30000); // 30s soft refresh without blanking
+  }, { once:true });
+})();
+</script>
+
+
+<!-- Injected: Instant Recent Handoff v2 (hooks fetchNowPlaying, merges cleanly) -->
+<script>
+(function(){
+  if (window.__instantHandoffV2) return; window.__instantHandoffV2 = true;
+  const LIST_ID = 'recent-list';
+  const MAX = 5;
+  const norm = s => (s||'').toString().trim();
+
+  function captureCurrentNP(){
+    try {
+      const timing = window._npLastTiming || {};
+      const startMs = timing.startMs || 0;
+      // Try explicit selectors first
+      const titleEl = document.querySelector('#npTitle, #np-title, #nowPlaying .track-title, #now-playing-card .track-title');
+      const artistEl = document.querySelector('#npArtist, #np-artist, #nowPlaying .track-artist, #now-playing-card .track-artist');
+      let title = titleEl ? norm(titleEl.textContent) : '';
+      let artist = artistEl ? norm(artistEl.textContent) : '';
+
+      if (!artist || !title) {
+        // Fallback: parse the innerHTML we set on #now-playing ("...>${title}</span><br/>...>by ${artist}</span>")
+        const np = document.getElementById('now-playing');
+        if (np) {
+          const spans = np.querySelectorAll('span');
+          // Heuristic: last two spans likely contain title + "by artist"
+          const texts = Array.from(spans).map(s => norm(s.textContent)).filter(Boolean);
+          // Find pattern: a line starting with "by "
+          const byIdx = texts.findIndex(t => /^by\s+/i.test(t));
+          if (byIdx >= 0) {
+            artist = texts[byIdx].replace(/^by\s+/i, '').trim();
+            // Title is often just before that
+            if (byIdx - 1 >= 0) title = texts[byIdx - 1];
+          }
+        }
+      }
+      if (!artist || !title || !startMs) return null;
+      const iso = new Date(startMs).toISOString();
+      return { artist, title, startMs, startTime: iso, startedAt: iso, endMs: startMs, endedAt: iso };
+    } catch { return null; }
+  }
+
+  function dedupeCap(list){
+    if (!list) return;
+    const seen = new Set();
+    const items = Array.from(list.children);
+    for (const li of items) {
+      const info = norm(li.querySelector('.info')?.textContent || '').toLowerCase();
+      const ms = li.getAttribute('data-startms') || '';
+      const key = info + '|' + ms;
+      if (seen.has(key)) {
+        li.remove();
+      } else {
+        seen.add(key);
+      }
+    }
+    while (list.children.length > MAX) list.removeChild(list.lastElementChild);
+  }
+
+  function pushImmediate(prevTrack){
+    if (!prevTrack || typeof window.prependRecentFromTrack !== 'function') return;
+    const list = document.getElementById(LIST_ID);
+    if (!list) return;
+    // Avoid duplicate insert if already top
+    const first = list.firstElementChild;
+    if (first) {
+      const info = norm(first.querySelector('.info')?.textContent || '').toLowerCase();
+      const ms = first.getAttribute('data-startms') || '';
+      const firstKey = info + '|' + ms;
+      const newKey = (prevTrack.artist + ' – ' + prevTrack.title).toLowerCase() + '|' + String(prevTrack.startMs||'');
+      if (firstKey === newKey) return;
+    }
+    window.prependRecentFromTrack(prevTrack);
+    dedupeCap(list);
+  }
+
+  // Wrap fetchNowPlaying to detect track changes and push previous immediately
+  function install(){
+    const orig = window.fetchNowPlaying;
+    if (typeof orig !== 'function' || orig.__wrappedHandoffV2) return;
+    let lastSnapshot = null; // previous NP snapshot we captured after last successful run
+
+    window.fetchNowPlaying = async function(){
+      // Capture NP BEFORE update (this is the track that will exit)
+      const exiting = captureCurrentNP();
+      const prevKey = window._npActiveKey || null;
+
+      // Run original
+      const result = await orig.apply(this, arguments);
+
+      // After update, see if a new track activated
+      const newKey = window._npActiveKey || null;
+      const changed = prevKey && newKey && newKey !== prevKey;
+
+      // If changed: push the exiting track immediately
+      if (changed && exiting) pushImmediate(exiting);
+
+      // Refresh our last snapshot for the next cycle
+      lastSnapshot = captureCurrentNP();
+      return result;
+    };
+    window.fetchNowPlaying.__wrappedHandoffV2 = true;
+  }
+
+  window.addEventListener('load', function(){
+    // Try immediately; if not yet defined, retry a few times
+    let tries = 0;
+    (function retry(){
+      install();
+      if (!window.fetchNowPlaying || !window.fetchNowPlaying.__wrappedHandoffV2) {
+        if (tries++ < 120) setTimeout(retry, 250);
+      }
+    })();
+  }, { once: true });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
