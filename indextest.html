@@ -4269,82 +4269,9 @@ html[data-theme="light"] #mobileNowBar {
 :root[data-theme="light"] #np-progress{
   background: rgba(0,0,0,0.15);
 }
+#np-progress.ending-soon .bar { animation: npPulse 1s infinite; }
+@keyframes npPulse { 50% { opacity: .6 } }
 </style>
-
-
-<!-- Injected: LocalDevSafe v7 (CORS guard + missing helpers) -->
-<script>
-(function(){
-  if (window.__localDevSafeV7) return; window.__localDevSafeV7 = true;
-  const IS_FILE = location.protocol === 'file:';
-  const FALLBACK = 'ERLogo2.png';
-  const LOG_URL  = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-
-  // 1) Define fetchRecentFromGitHub if missing (used by your timers)
-  if (typeof window.fetchRecentFromGitHub !== 'function') {
-    window.fetchRecentFromGitHub = async function(){
-      try {
-        const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache:'no-store' });
-        const data = r.ok ? await r.json() : [];
-        if (!Array.isArray(data)) return [];
-        return data.map(it => {
-          // Compute startMs from Hour + Scheduled Time
-          let startMs = 0;
-          try {
-            const base = new Date(it['Hour']);
-            const parts = String(it['Scheduled Time']||'').split(':');
-            const h = parseInt(parts[0]||'0',10), m = parseInt(parts[1]||'0',10);
-            const d = new Date(base.getFullYear(), base.getMonth(), base.getDate(), h||0, m||0, 0, 0);
-            startMs = d.getTime();
-          } catch { startMs = 0; }
-          const iso = startMs ? new Date(startMs).toISOString() : undefined;
-          return {
-            artist: (it.Artist||'').toString().trim(),
-            title:  (it.Title||'').toString().trim(),
-            startMs, startTime: iso, startedAt: iso,
-            endMs: startMs, endedAt: iso
-          };
-        }).filter(t => t.artist && t.title && t.startMs);
-      } catch { return []; }
-    };
-  }
-
-  // 2) Define getTrackArtwork if missing (Now Playing expects a STRING)
-  if (typeof window.getTrackArtwork !== 'function') {
-    window.getTrackArtwork = async function(name){
-      const q = (name||'').toString().trim();
-      if (!q) return FALLBACK;
-      try {
-        const r = await fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(q) + '&entity=song&limit=1&country=gb');
-        if (!r.ok) return FALLBACK;
-        const j = await r.json();
-        const raw = j && j.results && j.results[0] && (j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30);
-        return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
-      } catch { return FALLBACK; }
-    };
-  }
-
-  // 3) If running from file://, guard calls to /api/* to avoid CORS errors
-  if (IS_FILE) {
-    // Simple shim: wrap fetch to short-circuit /api/* calls so they don't throw
-    const origFetch = window.fetch;
-    window.fetch = function(input, init){
-      try {
-        const url = (typeof input === 'string') ? input : (input && input.url) || '';
-        if (/^\/api\//.test(url) || /^file:\/\/.*\/api\//i.test(url)) {
-          // Return a fake Response with !ok to trigger any fallback paths in your code
-          const blob = new Blob([JSON.stringify({ error: 'local file mode' })], { type: 'application/json' });
-          const resp = new Response(blob, { status: 500, statusText: 'Local file mode: /api blocked' });
-          return Promise.resolve(resp);
-        }
-      } catch {}
-      return origFetch.apply(this, arguments);
-    };
-    // Also disable service worker registration in file mode to avoid failures
-    try { if ('serviceWorker' in navigator) { navigator.serviceWorker.register = () => Promise.reject('disabled in file mode'); } } catch {}
-  }
-})();
-</script>
 
 </head>
 <body>
@@ -4409,8 +4336,10 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="now-playing-card" style="position: relative;">
 <div id="now-playing">Loading current track…</div>
-<div id="np-progress" aria-hidden="true"><div class="bar"></div></div>
-<div id="track-remaining" style="margin-top:6px;font-size:0.95em;color:#ccc;text-align:right;">--:--</div>
+<div id="np-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-hidden="true"><div class="bar"></div></div>
+
+  <!-- mm:ss remaining -->
+  <div id="countdown" style="margin-top:6px;font-size:0.95em;color:#ccc;text-align:right;">--:--</div>
 
 <div id="np-share-toolbar" class="np-share-toolbar" aria-label="Share options">
   <span class="np-share-label">Share:</span>
@@ -5941,7 +5870,7 @@ group.forEach(show => {
       try {
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
         const prog = document.getElementById('np-progress');
-        if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; }
+        if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); } cancelAnimationFrame(_npRafId);
       } catch(e) {}
 }
     let currentTrackID = null;
@@ -5949,82 +5878,6 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-
-// === Recently Played state (API-backed) ===
-window._npActiveKey = window._npActiveKey || null;
-window._npActiveTrack = window._npActiveTrack || null;
-window._npEndHook = window._npEndHook || null;
-
-function prependRecentFromTrack(track) {
-  try {
-    if (!track || !track.artist || !track.title) return;
-    const list = document.getElementById('recent-list');
-    if (!list) return;
-
-    // HH:MM from endMs (fallback endedAt -> now)
-    const dt = new Date(track.endedAt || track.endMs || Date.now());
-    const hh = String(dt.getHours()).padStart(2, '0');
-    const mm = String(dt.getMinutes()).padStart(2, '0');
-    const time = `${hh}:${mm}`;
-
-    const name = `${track.artist} – ${track.title}`;
-    const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(String(track.artist).replace(/\s+/g,'+'))}`;
-
-    const li = document.createElement('li');
-
-    const timeSpan = document.createElement('span');
-    timeSpan.className = 'time';
-    timeSpan.textContent = time;
-
-    const img = document.createElement('img');
-    img.alt = `Cover for ${name}`;
-    img.loading = 'lazy';
-    img.src = 'Essential Radio Logo.png';
-
-    const info = document.createElement('span');
-    info.className = 'info';
-    info.innerHTML = `${name}
-      <a href="${lastfmUrl}" target="_blank" rel="noopener"
-         title="More about ${track.artist} on Last.fm"
-         style="margin-left:7px;vertical-align:middle;display:inline-block;">
-        <svg width="19" height="19" viewBox="0 0 32 32" style="display:inline-block;vertical-align:middle;">
-          <circle cx="16" cy="16" r="16" fill="#fed351"></circle>
-          <path d="M24.6,19.9c-2.2,1.8-5.1,2.4-7.8,2.1c-2.6-0.3-5.3-1.7-6.7-4c-0.7-1.2-1.1-2.7-1-4.1c0.1-2.6,2.4-4.8,5.2-4.8
-            c3.4,0,5,2.4,5.4,4.6c0.2,1-0.5,1.7-1.5,1.7c-1.1,0-1.4-0.8-1.5-1.4c-0.2-1.3-1-2.1-2.3-2.1c-1.2,0-2,0.9-2,2
-            c0,0.6,0.2,1.1,0.4,1.5c0.8,1.4,2.4,2.1,4,2.3c2.6,0.3,5.4-0.1,7.5-1.7c0.8-0.6,1.8-0.5,2.2,0.2C25.1,18.6,25,19.3,24.6,19.9z"
-            fill="#222"></path>
-        </svg>
-      </a>`;
-
-    li.appendChild(timeSpan);
-    li.appendChild(img);
-    li.appendChild(info);
-    list.prepend(li);
-
-    // Trim list
-    const MAX = 8;
-    while (list.children.length > MAX) list.lastElementChild?.remove();
-
-    if (typeof getTrackArtwork === 'function') {
-      Promise.resolve(getTrackArtwork(name))
-        .then(url => { if (url) img.src = url; })
-        .catch(() => {});
-    }
-  } catch (e) { console.error('prependRecentFromTrack error', e); }
-}
-
-async function seedRecentFromServer() {
-  try {
-    const r = await fetch('/api/recent?_=' + Date.now(), { cache: 'no-store' });
-    const items = await r.json();
-    if (!Array.isArray(items) || items.length === 0) return; // don't wipe out instant items
-    const list = document.getElementById('recent-list');
-    if (!list) return;
-    list.innerHTML = '';
-    items.forEach(prependRecentFromTrack);
-  } catch {}
-}
-document.addEventListener('DOMContentLoaded', seedRecentFromServer);
 async function fetchNowPlaying() {
   try {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
@@ -6042,49 +5895,29 @@ async function fetchNowPlaying() {
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
 
-    // If this track already ended, it's a break: avoid ghosting and don't touch recent UI
+    // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
     if (Date.now() > endMs) {
-      try { if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon(); } catch(e){}
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
     // Show progress bar while a valid track is playing
     try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
 // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
-window._npLastKey = trackKey;
+    window._npLastKey = trackKey;
 
-// === Recently Played flow (no GitHub) ===
+// Only (re)start the bar if this is a NEW track.
 if (window._npActiveKey !== trackKey) {
-  if (window._npActiveTrack) {
-    prependRecentFromTrack(window._npActiveTrack);
-  }
   window._npActiveKey = trackKey;
-  window._npActiveTrack = { artist, title, startMs, endMs };
-
-  try { if (window._npEndHook) clearTimeout(window._npEndHook); } catch(e){}
-  window._npEndHook = setTimeout(() => {
-    if (window._npActiveKey === trackKey) {
-      const finished = {
-        artist, title,
-        startMs, endMs,
-        duration: Math.round((endMs - startMs)/1000),
-        endedAt: Date.now()
-      };
-      prependRecentFromTrack(finished);
-      try {
-        fetch('/api/recent', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(finished)
-        }).catch(()=>{});
-      } catch {}
-      window._npActiveKey = null;
-      window._npActiveTrack = null;
-    }
-  }, Math.max(0, endMs - Date.now()));
+  try { hardResetBar(); } catch(e){}
+  window._npLastTiming = { startMs, endMs };
+  try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
+  try { startBarAnimation(startMs, endMs); } catch(e){}
 } else {
-  // Same track; do not touch Recently Played
+  // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
+  window._npLastTiming = { startMs, endMs };
 }
+
     // Update main Now Playing block
     const nowPlaying = document.getElementById('now-playing');
     if (nowPlaying) {
@@ -6109,27 +5942,34 @@ if (window._npActiveKey !== trackKey) {
       const nowMs = Date.now();
       const remaining = endMs - nowMs;
       const countdownEl = document.getElementById('countdown');
-
-      
-      // Update shrinking progress bar (100% ➝ 0%)
-      try {
-        const bar = document.querySelector('#np-progress .bar');
-        if (bar) {
-          const pct = Math.max(0, Math.min(100, (remaining / durationMs) * 100));
-          bar.style.width = pct + '%';
-        }
-      } catch(e) {}
 if (remaining > 0) {
         const mins = Math.floor(remaining / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-        const tr=document.getElementById('track-remaining'); if (tr) tr.textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
       } else {
-        if (countdownEl) countdownEl.textContent = '0:00'; const tr=document.getElementById('track-remaining'); if (tr) { tr.textContent = '0:00'; setTimeout(()=>{ const el=document.getElementById('track-remaining'); if (el) el.textContent='--:--'; }, 1000);}
+        if (countdownEl) countdownEl.textContent = '0:00';
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
-        // Immediately show fallback while we wait for the next ingest
-        if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+        // Grace window before showing fallback to avoid micro-flash between sweepers and next track
+        const GRACE_MS = 2500;
+        const graceUntil = Date.now() + GRACE_MS;
+        const pollDelay = 400;
+        let _gracePoll;
+        const _pollForNew = async () => {
+          try {
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const j = await r.json();
+            const newKey = (j && j.artist && j.title && j.startTime)
+              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
+            if (newKey && newKey !== window._npLastKey) { fetchNowPlaying(); return; }
+          } catch(e){}
+          if (Date.now() >= graceUntil) {
+            if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+          } else {
+            _gracePoll = setTimeout(_pollForNew, pollDelay);
+          }
+        };
+        _pollForNew();
 
         // Poll every 5s for a *different* track; when found, refresh NP
         if (window._npPollTimer) {
@@ -6166,7 +6006,7 @@ if (remaining > 0) {
 
 
 
-    async function fetchRecentFromGitHub_DISABLED() {
+    async function fetchRecentFromGitHub() {
   try {
     const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
     const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
@@ -6281,14 +6121,14 @@ function stopIntervals() {
 
 // Always fetch once on page load
 fetchNowPlaying();
-// fetchRecentFromGitHub disabled; using /api/recent only;
+fetchRecentFromGitHub();
 startIntervals();
 
 // On tab visibility change, only run when visible
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
     fetchNowPlaying();
-    // fetchRecentFromGitHub disabled; using /api/recent only;
+    fetchRecentFromGitHub();
     startIntervals();
   } else {
     stopIntervals();
@@ -6485,12 +6325,12 @@ window.addEventListener('keydown', function(e) {
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
     fetchNowPlaying();
-    // fetchRecentFromGitHub disabled; using /api/recent only;
+    fetchRecentFromGitHub();
   }
 });
 window.addEventListener('focus', () => {
   fetchNowPlaying();
-  // fetchRecentFromGitHub disabled; using /api/recent only;
+  fetchRecentFromGitHub();
 });
 
 // === Now Playing Manual Refresh ===
@@ -6499,7 +6339,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   // Immediately fetch the latest now playing info
   fetchNowPlaying();
   // Also refresh the recent songs list
-  // fetchRecentFromGitHub disabled; using /api/recent only;
+  fetchRecentFromGitHub();
 });
 </script>
 <script>
@@ -9859,217 +9699,181 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+<script id="np-enhancements">
+// === Smooth rAF bar animation & robust resets ===
+let _npRafId = null;
+function hardResetBar(){
+  try {
+    const prog = document.getElementById('np-progress');
+    const bar = prog && prog.querySelector ? prog.querySelector('.bar') : null;
+    if (!bar || !prog) return;
+    prog.classList.remove('ending-soon');
+    bar.style.transition = 'none';
+    bar.style.width = '100%';
+    void bar.offsetWidth; // reflow
+    bar.style.transition = 'width 0.4s linear';
+  } catch(e){}
+}
 
-<script>
-// === Safe Recent5 seeding: waits for renderer, never clears until data ready ===
-(function(){
-  const MAX_ITEMS = 5;
-  const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-  const API_RECENT = '/api/recent';
-
-  const norm = s => (s||'').toString().trim();
-  function parseLog(data){
-    const out = [];
-    if (!Array.isArray(data)) return out;
-    for (const it of data){
-      const artist = norm(it && (it.Artist || it.artist));
-      const title  = norm(it && (it.Title  || it.title));
-      if (!artist || !title) continue;
-      let startMs = Date.now();
-      try {
-        if (it["Hour"] && it["Scheduled Time"]) {
-          const hourDate = new Date(it["Hour"]);
-          const [sh, sm] = String(it["Scheduled Time"]).split(':').map(Number);
-          const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh||0, sm||0, 0, 0);
-          startMs = d.getTime();
-        } else if (it.startTime) {
-          startMs = new Date(it.startTime).getTime();
-        }
-      } catch {}
-      out.push({ artist, title, startMs });
+function startBarAnimation(startMs, endMs){
+  try {
+    const prog = document.getElementById('np-progress');
+    const bar = prog && prog.querySelector ? prog.querySelector('.bar') : null;
+    if (!bar || !prog) return;
+    prog.style.display = 'block';
+    cancelAnimationFrame(_npRafId);
+    function frame(){
+      const now = Date.now();
+      const total = Math.max(0, endMs - startMs);
+      const remaining = Math.max(0, endMs - now);
+      const pct = total > 0 ? (remaining / total) * 100 : 0;
+      bar.style.width = (pct > 100 ? 100 : (pct < 0 ? 0 : pct)) + '%';
+      prog.setAttribute('aria-valuenow', Math.round(pct));
+      if (remaining <= 10000) prog.classList.add('ending-soon'); else prog.classList.remove('ending-soon');
+      if (remaining > 0) { _npRafId = requestAnimationFrame(frame); }
     }
-    // newest first
-    out.sort((a,b) => (b.startMs||0) - (a.startMs||0));
-    return out.slice(0, MAX_ITEMS);
+    _npRafId = requestAnimationFrame(frame);
+  } catch(e){}
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && window._npLastTiming) {
+    startBarAnimation(window._npLastTiming.startMs, window._npLastTiming.endMs);
+  } else if (document.hidden) {
+    cancelAnimationFrame(_npRafId);
   }
+});
 
-  function waitFor(fn, timeoutMs){
-    return new Promise((resolve, reject) => {
-      const t0 = Date.now();
-      (function loop(){
-        try {
-          const v = fn();
-          if (v) return resolve(v);
-        } catch {}
-        if (Date.now() - t0 > timeoutMs) return reject(new Error('timeout'));
-        setTimeout(loop, 50);
-      })();
-    });
-  }
-
-  async function fetchJSON(url){
-    const r = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
-  }
-
-  async function getRecent5(){
-    // Try rolling log first
-    try {
-      const data = await fetchJSON(LOG_URL);
-      const list = parseLog(data);
-      if (list && list.length) return list;
-    } catch(e) { /* fall through */ }
-    // Fallback to API recent, if available
-    try {
-      const data = await fetchJSON(API_RECENT);
-      const list = parseLog(Array.isArray(data) ? data : (data.items || []));
-      if (list && list.length) return list;
-    } catch(e) { /* ignore */ }
-    return [];
-  }
-
-  async function seed(){
-    // Wait until DOM ready and renderer function exists
-    try { await new Promise(r => (document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', r, {once:true}) : r())); } catch{}
-    let prependFn = null;
-    try {
-      prependFn = await waitFor(() => window.prependRecentFromTrack, 5000);
-    } catch(e) {
-      console.warn('Recent seeding: renderer not found; aborting.');
-      return;
-    }
-
-    const container = document.getElementById('recent-list');
-    if (!container) return;
-
-    let list = [];
-    try { list = await getRecent5(); } catch{}
-
-    if (!list.length) {
-      console.warn('Recent seeding: no items available from log or API; leaving existing UI untouched.');
-      return;
-    }
-
-    // Only now clear and repopulate to avoid blank state
-    try { container.innerHTML = ''; } catch {}
-
-    // Insert oldest -> newest so newest ends on top (your prepend behavior)
-    const ordered = [...list].sort((a,b) => (a.startMs||0) - (b.startMs||0));
-    for (const t of ordered) {
-      try {
-        prependFn({
-          artist: t.artist,
-          title: t.title,
-          startedAt: t.startMs ? new Date(t.startMs).toISOString() : undefined,
-          startMs: t.startMs
-        });
-      } catch(e) { /* continue */ }
-    }
-  }
-
-  // Kick off (but do not interfere with existing code)
-  seed();
-})();
 </script>
 
-<!-- Injected: RecentStabilizer v7 (start-time + artwork + observer) -->
+<!-- Combined Recent (api + rolling log) v30a -->
 <script>
 (function(){
-  if (window.__recentStabV7) return; window.__recentStabV7 = true;
-  const LIST_SEL = '#recent-list';
-  const ROW_SEL  = 'li';
-  const INFO_SEL = 'span.info';
-  const FALLBACK = 'ERLogo2.png';
+  if (window.__combinedRecentV30a) return; window.__combinedRecentV30a = true;
 
-  function splitInfo(text){
-    const t = String(text||'').replace(/\s+/g,' ').replace(/[\u2013\u2014]/g,' - ').trim();
-    const parts = t.split(' - ');
-    return { artist: (parts[0]||'').trim(), title: (parts.slice(1).join(' - ')||'').trim() };
-    }
+  const LIST_SEL   = '#recent-list';
+  const MAX        = 5;
+  const LOG_URL    = 'https://essentialradio.github.io/player/playout_log_rolling.json'; // rolling log
+  const API_URL    = '/api/recent'; // backend recent endpoint (if available)
 
-  async function resolveArtwork(artist, title){
-    const name = ((artist||'') + ' ' + (title||'')).trim();
-    if (!name) return FALLBACK;
+  const norm = s => (s||'').toString().trim();
+  const lower = s => norm(s).toLowerCase();
+
+  function toMs(x){
+    if (!x) return 0;
+    const n = Number(x);
+    if (!Number.isNaN(n) && n > 10_000_000_000) return n; // looks like ms
+    const t = Date.parse(x);
+    return Number.isNaN(t) ? 0 : t;
+  }
+
+  // Prefer recent.js if it exists (common patterns), otherwise try /api/recent
+  async function getFromRecentJsOrApi(){
+    // 1) recent.js variants
     try {
-      if (typeof window.getTrackArtwork === 'function') {
-        const u = await Promise.resolve(window.getTrackArtwork(name));
-        if (u) return u;
+      if (Array.isArray(window.recent)) {
+        return window.recent;
+      }
+      if (typeof window.getRecent === 'function') {
+        const r = await Promise.resolve(window.getRecent());
+        if (Array.isArray(r)) return r;
+      }
+      if (typeof window.fetchRecentTracks === 'function') {
+        const r = await Promise.resolve(window.fetchRecentTracks());
+        if (Array.isArray(r)) return r;
       }
     } catch {}
+    // 2) /api/recent
     try {
-      const r = await fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(name) + '&entity=song&limit=1&country=gb');
-      if (!r.ok) return FALLBACK;
+      const r = await fetch(API_URL + '?_=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return [];
       const j = await r.json();
-      const raw = j && j.results && j.results[0] && (j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30);
-      return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
-    } catch { return FALLBACK; }
+      return Array.isArray(j) ? j : [];
+    } catch { return []; }
   }
 
-  function fixRow(li, track){
-    if (!li) return;
-    // Time
+  async function getFromRollingLog(){
     try {
-      const tEl = li.querySelector('.time');
-      const startMs = (track && (track.startMs || Date.parse(track.startTime || track.startedAt || ''))) || 0;
-      if (tEl && startMs) {
-        const d = new Date(startMs);
-        tEl.textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
-        li.setAttribute('data-startms', String(startMs));
+      const r = await fetch(LOG_URL + '?_=' + Date.now(), { cache: 'no-store' });
+      const j = r.ok ? await r.json() : [];
+      if (!Array.isArray(j)) return [];
+      return j.map(it => {
+        // Compute start from Hour + Scheduled Time
+        let startMs = 0;
+        try {
+          const base = new Date(it['Hour']);
+          const parts = String(it['Scheduled Time']||'').split(':');
+          const h = parseInt(parts[0]||'0',10), m = parseInt(parts[1]||'0',10);
+          const d = new Date(base.getFullYear(), base.getMonth(), base.getDate(), h||0, m||0, 0, 0);
+          startMs = d.getTime();
+        } catch { startMs = 0; }
+        return {
+          artist: norm(it.Artist),
+          title:  norm(it.Title),
+          startMs,
+          startTime: startMs ? new Date(startMs).toISOString() : undefined
+        };
+      }).filter(t => t.artist && t.title && t.startMs);
+    } catch { return []; }
+  }
+
+  function normalize(arr){
+    return (arr||[]).map(x => {
+      const artist = norm(x.artist);
+      const title  = norm(x.title);
+      const startMs = x.startMs || toMs(x.startTime) || toMs(x.startedAt) || toMs(x.endMs) || toMs(x.endedAt);
+      const startTime = startMs ? new Date(startMs).toISOString() : (x.startTime || x.startedAt || x.endedAt || '');
+      return { artist, title, startMs, startTime };
+    }).filter(t => t.artist && t.title && t.startMs);
+  }
+
+  function mergeTop5(a, b){
+    const map = new Map();
+    for (const src of [a,b]){
+      for (const t of src){
+        const bucket = Math.floor((t.startMs||0)/60000); // minute bucket to avoid dup spins
+        const key = lower(t.artist) + '||' + lower(t.title) + '||' + bucket;
+        if (!map.has(key) || (t.startMs||0) > (map.get(key).startMs||0)) map.set(key, t);
+      }
+    }
+    return Array.from(map.values()).sort((x,y) => (y.startMs||0) - (x.startMs||0)).slice(0, MAX);
+  }
+
+  async function seedRecent(){
+    try {
+      // Wait for your renderer to exist
+      let tries = 0;
+      while (typeof window.prependRecentFromTrack !== 'function' && tries < 200){
+        await new Promise(r => setTimeout(r, 25));
+        tries++;
+      }
+      const list = document.querySelector(LIST_SEL);
+      if (!list) return;
+
+      const [primary, rolling] = await Promise.all([getFromRecentJsOrApi(), getFromRollingLog()]);
+      const merged = mergeTop5(normalize(primary), normalize(rolling));
+      if (!merged.length) return;
+
+      // Clear and render oldest -> newest so newest ends up on top (prepend behavior)
+      list.innerHTML = '';
+      const ordered = merged.slice().reverse();
+      for (const t of ordered){
+        // Hand off to your existing renderer so styling/artwork logic remains consistent with V30
+        const track = {
+          artist: t.artist,
+          title:  t.title,
+          startMs: t.startMs,
+          startTime: t.startTime,
+          startedAt: t.startTime
+        };
+        try { window.prependRecentFromTrack(track); } catch {}
       }
     } catch {}
-    // Artwork
-    try {
-      const img = li.querySelector('img');
-      const info = li.querySelector(INFO_SEL);
-      if (!img) return;
-      const src = img.getAttribute('src') || '';
-      const isCover = /^https?:\/\//.test(src) && !/ERLogo2\.png|Essential Radio Logo\.png/i.test(src);
-      if (isCover) return;
-      let artist = '', title = '';
-      if (info) ({artist, title} = splitInfo(info.textContent));
-      if ((!artist && !title) && track) { artist = track.artist||''; title = track.title||''; }
-      if (!artist && !title) return;
-      img.addEventListener('error', () => { img.src = FALLBACK; }, { once:true });
-      resolveArtwork(artist, title).then(u => { if (u) img.src = u; }).catch(()=>{ img.src = FALLBACK; });
-    } catch {}
-  }
-
-  function wrapRenderer(){
-    const list = document.querySelector(LIST_SEL);
-    if (!list) return;
-    const orig = window.prependRecentFromTrack;
-    if (typeof orig !== 'function' || orig.__wrappedV7) return;
-    window.prependRecentFromTrack = function(track){
-      try {
-        const startMs = track.startMs || (track.startTime ? Date.parse(track.startTime) : 0) || (track.startedAt ? Date.parse(track.startedAt) : 0) || 0;
-        if (startMs) {
-          const iso = new Date(startMs).toISOString();
-          track.startMs = startMs; track.startTime = track.startTime || iso; track.startedAt = track.startedAt || iso;
-          track.endMs = startMs;   track.endedAt  = iso;
-        }
-        const res = orig.apply(this, [track]);
-        fixRow(list.firstElementChild, track);
-        return res;
-      } catch(e){ try { return orig.apply(this, [track]); } catch {} }
-    };
-    window.prependRecentFromTrack.__wrappedV7 = true;
-  }
-
-  function observe(){
-    const list = document.querySelector(LIST_SEL);
-    if (!list) return;
-    const moRecentV7 = new MutationObserver(muts => {
-      muts.forEach(m => m.addedNodes && m.addedNodes.forEach(n => {
-        if (n.nodeType === 1 && n.matches && n.matches(ROW_SEL)) fixRow(n, null);
-      }));
-    });
-    moRecentV7.observe(list, { childList: true });
   }
 
   window.addEventListener('load', function(){
-    wrapRenderer();
-    observe();
+    // Defer slightly to let any internal recent.js scripts run first
+    setTimeout(seedRecent, 300);
   }, { once:true });
 })();
 </script>
