@@ -10069,7 +10069,7 @@ window.getTrackArtwork = window.getTrackArtwork || (async function(name){
 </script>
 
 
-<!-- Injected: Recent artwork observer (continuous patch) -->
+<!-- Injected: Robust Recent artwork patcher v3 -->
 <script>
 (function(){
   const LIST_SEL = '#recent-list';
@@ -10077,76 +10077,84 @@ window.getTrackArtwork = window.getTrackArtwork || (async function(name){
   const INFO_SEL = 'span.info';
   const FALLBACK = 'ERLogo2.png';
 
-  // Use existing helper if present; otherwise define a minimal iTunes lookup
-  const getArt = (function(){
-    if (typeof window.getTrackArtwork === 'function') return window.getTrackArtwork;
-    return async function(input){
-      try {
-        const artist = (input && input.artist ? String(input.artist) : '').trim();
-        const title  = (input && input.title  ? String(input.title)  : '').trim();
-        const q = encodeURIComponent((artist + ' ' + title).trim());
-        if (!q) return FALLBACK;
-        const r = await fetch('https://itunes.apple.com/search?term=' + q + '&entity=song&limit=1&country=gb');
-        if (!r.ok) return FALLBACK;
-        const j = await r.json();
-        const raw = j && j.results && j.results[0] && (j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30);
-        return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
-      } catch { return FALLBACK; }
-    }
-  })();
-
-  function splitArtistTitle(text){
-    const t = String(text||'').trim().replace(/\s+/g,' ');
-    let parts = t.split(' – ');
-    if (parts.length < 2) parts = t.split(' - ');
-    return {
-      artist: (parts[0]||'').trim(),
-      title:  (parts.slice(1).join(' - ')||'').trim()
-    };
+  async function itunesLookup(qText){
+    if (!qText) return FALLBACK;
+    try {
+      const r = await fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(qText) + '&entity=song&limit=1&country=gb');
+      if (!r.ok) return FALLBACK;
+      const j = await r.json();
+      const raw = j && j.results && j.results[0] && (j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30);
+      return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
+    } catch { return FALLBACK; }
   }
 
-  async function patchArtwork(li){
+  async function resolveArtwork(artist, title){
+    const name = (String(artist||'').trim() + ' ' + String(title||'').trim()).trim();
+    // 1) Prefer your existing helper, but pass it the STRING it expects.
+    try {
+      if (typeof window.getTrackArtwork === 'function') {
+        const maybe = await Promise.resolve(window.getTrackArtwork(name));
+        if (maybe) return maybe;
+      }
+    } catch { /* fall through */ }
+    // 2) Fallback to internal iTunes lookup
+    return await itunesLookup(name);
+  }
+
+  function parseInfoText(text){
+    const t = String(text||'')
+      .replace(/\s+/g,' ')
+      .replace(/\u2014/g, ' - ')   // em dash → hyphen
+      .replace(/\u2013/g, ' - ');  // en dash → hyphen
+    const parts = t.split(' - ');
+    const artist = (parts[0]||'').trim();
+    const title  = (parts.slice(1).join(' - ')||'').trim();
+    return { artist, title };
+  }
+
+  async function patchOne(li){
     try {
       const img  = li.querySelector('img');
       const info = li.querySelector(INFO_SEL);
       if (!img || !info) return;
       const src = img.getAttribute('src') || '';
-      // If already non-logo remote image, skip
+      // If already a remote image and not the logo, leave it
       if (/^https?:\/\//.test(src) && !src.includes('ERLogo2.png') && !src.includes('Essential Radio Logo.png')) return;
-      const { artist, title } = splitArtistTitle(info.textContent);
+
+      const { artist, title } = parseInfoText(info.textContent);
       if (!(artist || title)) return;
-      img.addEventListener('error', () => { img.src = FALLBACK; }, { once: true });
-      const url = await Promise.resolve(getArt({ artist, title }));
-      if (url) img.src = url;
+
+      img.addEventListener('error', () => { img.src = FALLBACK; }, { once:true });
+
+      const url = await resolveArtwork(artist, title);
+      if (url && img.getAttribute('src') === src) { // only swap if still unchanged
+        img.src = url;
+      }
     } catch { }
   }
 
   function patchAll(){
     const list = document.querySelector(LIST_SEL);
     if (!list) return;
-    const rows = list.querySelectorAll(ROW_SEL);
-    rows.forEach(patchArtwork);
+    list.querySelectorAll(ROW_SEL).forEach(patchOne);
   }
 
   function observe(){
     const list = document.querySelector(LIST_SEL);
     if (!list) return;
     const mo = new MutationObserver(muts => {
-      muts.forEach(m => {
-        m.addedNodes && m.addedNodes.forEach(n => {
-          if (n.nodeType === 1 && n.matches && n.matches(ROW_SEL)) patchArtwork(n);
-        });
-      });
+      muts.forEach(m => m.addedNodes && m.addedNodes.forEach(n => {
+        if (n.nodeType === 1 && n.matches && n.matches(ROW_SEL)) patchOne(n);
+      }));
     });
     mo.observe(list, { childList: true });
   }
 
   window.addEventListener('load', function(){
-    // Initial pass after load (after your seeding)
-    setTimeout(patchAll, 400);
-    // Keep watching for any further inserts
-    observe();
-  }, { once: true });
+    setTimeout(patchAll, 400);     // after your seeding
+    setTimeout(patchAll, 1200);    // second pass in case images/render lag
+    observe();                     // keep fixing new rows
+  }, { once:true });
 })();
 </script>
 
