@@ -9786,115 +9786,91 @@ if ('serviceWorker' in navigator) {
 
 
 <script>
-// === Safe Recent5 seeding: waits for renderer, never clears until data ready ===
+// === Recently Played Artwork Patch (non-invasive) ===
 (function(){
-  const MAX_ITEMS = 5;
-  const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-  const API_RECENT = '/api/recent';
+  const LIST_SEL = '#recent-list';
+  const ROW_SEL = '.recent-item';
+  const IMG_SEL = '.recent-art, img';
+  const ARTIST_SEL = '.artist';
+  const TITLE_SEL = '.title';
+  const FALLBACK = 'ERLogo2.png';
 
-  const norm = s => (s||'').toString().trim();
-  function parseLog(data){
-    const out = [];
-    if (!Array.isArray(data)) return out;
-    for (const it of data){
-      const artist = norm(it && (it.Artist || it.artist));
-      const title  = norm(it && (it.Title  || it.title));
-      if (!artist || !title) continue;
-      let startMs = Date.now();
-      try {
-        if (it["Hour"] && it["Scheduled Time"]) {
-          const hourDate = new Date(it["Hour"]);
-          const [sh, sm] = String(it["Scheduled Time"]).split(':').map(Number);
-          const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh||0, sm||0, 0, 0);
-          startMs = d.getTime();
-        } else if (it.startTime) {
-          startMs = new Date(it.startTime).getTime();
-        }
-      } catch {}
-      out.push({ artist, title, startMs });
-    }
-    // newest first
-    out.sort((a,b) => (b.startMs||0) - (a.startMs||0));
-    return out.slice(0, MAX_ITEMS);
+  // iTunes lookup (UK-focused), upscales artwork
+  async function lookupArtwork(artist, title){
+    const q = encodeURIComponent(`${artist || ''} ${title || ''}`.trim());
+    if (!q) return null;
+    try {
+      const r = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`);
+      if (!r.ok) return null;
+      const j = await r.json();
+      if (j && j.results && j.results.length){
+        const raw = j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30 || '';
+        return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : null;
+      }
+    } catch(e){ /* ignore */ }
+    return null;
   }
 
-  function waitFor(fn, timeoutMs){
-    return new Promise((resolve, reject) => {
-      const t0 = Date.now();
-      (function loop(){
-        try {
-          const v = fn();
-          if (v) return resolve(v);
-        } catch {}
-        if (Date.now() - t0 > timeoutMs) return reject(new Error('timeout'));
-        setTimeout(loop, 50);
-      })();
+  function isMissingOrPlaceholder(src){
+    if (!src) return true;
+    const s = src.toLowerCase();
+    return s.endsWith('erlogo2.png'.toLowerCase()) ||
+           s.includes('essential') && s.includes('logo') ||
+           s.startsWith('data:') && s.length < 64; // tiny inline placeholder
+  }
+
+  async function patchRow(row){
+    try {
+      const img = row.querySelector(IMG_SEL);
+      if (!img) return;
+      const src = img.getAttribute('src') || '';
+      if (!isMissingOrPlaceholder(src)) return; // already has artwork
+
+      const artist = (row.querySelector(ARTIST_SEL)?.textContent || '').trim();
+      const title  = (row.querySelector(TITLE_SEL)?.textContent  || '').trim();
+      if (!artist && !title) return;
+
+      // Try iTunes
+      const art = await lookupArtwork(artist, title);
+      img.setAttribute('referrerpolicy', 'no-referrer');
+      img.src = art || FALLBACK;
+    } catch(e){ /* silent */ }
+  }
+
+  function patchAll(){
+    const list = document.querySelector(LIST_SEL);
+    if (!list) return;
+    const rows = list.querySelectorAll(ROW_SEL);
+    rows.forEach(patchRow);
+  }
+
+  // Debounce helper for observer
+  let t = null;
+  function schedulePatch(){
+    if (t) cancelAnimationFrame(t);
+    t = requestAnimationFrame(() => {
+      t = null;
+      patchAll();
     });
   }
 
-  async function fetchJSON(url){
-    const r = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
+  function init(){
+    patchAll();           // initial pass
+    // Watch for new recent rows being inserted by existing JS
+    const list = document.querySelector(LIST_SEL);
+    if (!list) return;
+    const mo = new MutationObserver(schedulePatch);
+    mo.observe(list, { childList: true, subtree: true });
+    // Also re-run after short delays to catch late text updates
+    setTimeout(patchAll, 800);
+    setTimeout(patchAll, 1800);
   }
 
-  async function getRecent5(){
-    // Try rolling log first
-    try {
-      const data = await fetchJSON(LOG_URL);
-      const list = parseLog(data);
-      if (list && list.length) return list;
-    } catch(e) { /* fall through */ }
-    // Fallback to API recent, if available
-    try {
-      const data = await fetchJSON(API_RECENT);
-      const list = parseLog(Array.isArray(data) ? data : (data.items || []));
-      if (list && list.length) return list;
-    } catch(e) { /* ignore */ }
-    return [];
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
-
-  async function seed(){
-    // Wait until DOM ready and renderer function exists
-    try { await new Promise(r => (document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', r, {once:true}) : r())); } catch{}
-    let prependFn = null;
-    try {
-      prependFn = await waitFor(() => window.prependRecentFromTrack, 5000);
-    } catch(e) {
-      console.warn('Recent seeding: renderer not found; aborting.');
-      return;
-    }
-
-    const container = document.getElementById('recent-list');
-    if (!container) return;
-
-    let list = [];
-    try { list = await getRecent5(); } catch{}
-
-    if (!list.length) {
-      console.warn('Recent seeding: no items available from log or API; leaving existing UI untouched.');
-      return;
-    }
-
-    // Only now clear and repopulate to avoid blank state
-    try { container.innerHTML = ''; } catch {}
-
-    // Insert oldest -> newest so newest ends on top (your prepend behavior)
-    const ordered = [...list].sort((a,b) => (a.startMs||0) - (b.startMs||0));
-    for (const t of ordered) {
-      try {
-        prependFn({
-          artist: t.artist,
-          title: t.title,
-          startedAt: t.startMs ? new Date(t.startMs).toISOString() : undefined,
-          startMs: t.startMs
-        });
-      } catch(e) { /* continue */ }
-    }
-  }
-
-  // Kick off (but do not interfere with existing code)
-  seed();
 })();
 </script>
 
