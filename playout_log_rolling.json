@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "",
-    "Artist": "Owl City",
-    "Title": "Fireflies",
-    "Duration (s)": 178,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:07",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 214,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:11",
-    "Displayed Time": "",
-    "Artist": "Counting Crows ft Vanessa Carlton",
-    "Title": "Big Yellow Taxi",
-    "Duration (s)": 204,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:14",
-    "Displayed Time": "",
-    "Artist": "Natasha Bedingfield",
-    "Title": "Unwritten",
-    "Duration (s)": 196,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:22",
-    "Displayed Time": "",
-    "Artist": "Zara Larsson ft David Guetta",
-    "Title": "On My Love",
-    "Duration (s)": 182,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:25",
-    "Displayed Time": "",
-    "Artist": "Bangles",
-    "Title": "Walk Like an Egyptian",
-    "Duration (s)": 185,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:28",
-    "Displayed Time": "",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 175,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:31",
-    "Displayed Time": "",
-    "Artist": "Cian Ducrot",
-    "Title": "Heaven",
-    "Duration (s)": 221,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:35",
-    "Displayed Time": "",
-    "Artist": "Richard Ashcroft",
-    "Title": "Lover",
-    "Duration (s)": 203,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:41",
-    "Displayed Time": "",
-    "Artist": "Aretha Franklin",
-    "Title": "I Say a Little Prayer",
-    "Duration (s)": 199,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:45",
-    "Displayed Time": "",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 176,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:48",
-    "Displayed Time": "",
-    "Artist": "Mumford & Sons",
-    "Title": "Rushmere",
-    "Duration (s)": 179,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:51",
-    "Displayed Time": "",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Bed Chem",
-    "Duration (s)": 160,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T12:00:00Z",
-    "Scheduled Time": "13:54",
-    "Displayed Time": "",
-    "Artist": "John Legend",
-    "Title": "All of Me",
-    "Duration (s)": 175,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-05T13:00:00Z",
     "Scheduled Time": "14:01",
     "Displayed Time": "",
@@ -45350,6 +45196,17 @@
     "Duration (s)": 208,
     "Full Duration (s)": 216,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-20T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
