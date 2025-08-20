@@ -4351,7 +4351,7 @@ html[data-theme="light"] #mobileNowBar {
 </svg></a></div>
 
 </div>
-<img alt="Artwork" class="loaded" id="artwork" src="Essential Radio Logo.png"/>
+<img alt="Artwork" class="loaded" id="artwork" src="ERLogo2.png"/>
 </div>
 </div>
 <!-- RIGHT PANEL -->
@@ -5887,7 +5887,17 @@ function prependRecentFromTrack(track) {
     if (!list) return;
 
     // HH:MM from endMs (fallback endedAt -> now)
-    const dt = new Date(track.endedAt || track.endMs || Date.now());
+    const startPref =
+  track.startMs ||
+  Date.parse(track.startTime || track.startedAt || '') ||
+  null;
+
+const endFallback =
+  (track.endedAt ? Date.parse(track.endedAt) : null) ||
+  track.endMs ||
+  null;
+
+const dt = new Date(startPref || endFallback || Date.now());
     const hh = String(dt.getHours()).padStart(2, '0');
     const mm = String(dt.getMinutes()).padStart(2, '0');
     const time = `${hh}:${mm}`;
@@ -5904,7 +5914,7 @@ function prependRecentFromTrack(track) {
     const img = document.createElement('img');
     img.alt = `Cover for ${name}`;
     img.loading = 'lazy';
-    img.src = 'Essential Radio Logo.png';
+    img.src = 'ERLogo2.png';
 
     const info = document.createElement('span');
     info.className = 'info';
@@ -5927,7 +5937,7 @@ function prependRecentFromTrack(track) {
     list.prepend(li);
 
     // Trim list
-    const MAX = 8;
+    const MAX = 5;
     while (list.children.length > MAX) list.lastElementChild?.remove();
 
     if (typeof getTrackArtwork === 'function') {
@@ -6107,7 +6117,7 @@ if (remaining > 0) {
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
       const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+      const art = await getTrackArtwork(name) || 'ERLogo2.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
       const lastfmIcon = `
@@ -6143,7 +6153,7 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
-      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.src = 'ERLogo2.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
         const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
@@ -6176,7 +6186,7 @@ if (remaining > 0) {
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
-      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.src = 'ERLogo2.png';
       artworkImg.classList.remove('loaded');
       artworkImg.classList.add('fallback');
     }
