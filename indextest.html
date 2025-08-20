@@ -10384,6 +10384,189 @@ document.addEventListener('visibilitychange', () => {
   }, { once:true });
 })();
 </script>
+<script>
+/* ==== CRASH-FIRST-AID for Recent (API+Log) + Artwork + Handoff ==== */
+(function(){
+  if (window.__recentFirstAid) return; window.__recentFirstAid = true;
+  const LIST_ID='recent-list', MAX=5, FALLBACK='ERLogo2.png';
+  const LOG_URL='https://essentialradio.github.io/player/playout_log_rolling.json';
+  const API_URL='/api/recent';
+  const norm=s=>(s||'').toString().trim();
+  const toMs=x=>{ if(!x) return 0; const n=+x; if(!Number.isNaN(n)&&n>1e10) return n; const t=Date.parse(x); return Number.isNaN(t)?0:t; };
+
+  /* 0) Always show real errors (helps find those “Uncaught” line numbers) */
+  window.addEventListener('error',e=>{ console.error('[Error]', e.message, e.filename, e.lineno, e.error); });
+  window.addEventListener('unhandledrejection',e=>{ console.error('[Promise]', e.reason); });
+
+  /* 1) Artwork helper (only if you don’t already have one) */
+  if (typeof window.getTrackArtwork!=='function'){
+    window.getTrackArtwork = async function(name){
+      const q = norm(name); if(!q) return FALLBACK;
+      try{
+        const r = await fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(q) + '&entity=song&limit=1&country=gb');
+        if(!r.ok) return FALLBACK;
+        const j = await r.json();
+        const raw = j?.results?.[0]?.artworkUrl100 || j?.results?.[0]?.artworkUrl60 || j?.results?.[0]?.artworkUrl30;
+        return raw ? raw.replace(/\/(\d+x\d+)bb\//,'/600x600bb/') : FALLBACK;
+      }catch{ return FALLBACK; }
+    };
+  }
+
+  /* 2) Wrap your renderer so each new recent row gets START TIME + ART */
+  (function wrapRenderer(){
+    const orig = window.prependRecentFromTrack;
+    if (typeof orig!=='function' || orig.__wrappedRecentAid) return;
+    window.prependRecentFromTrack = function(track){
+      const res = orig.apply(this, arguments);
+      try{
+        const ul = document.getElementById(LIST_ID); if (!ul) return res;
+        const li = ul.firstElementChild; if (!li) return res;
+        // time
+        const ms = track.startMs || toMs(track.startTime||track.startedAt);
+        if (ms){
+          const tEl = li.querySelector('.time');
+          if (tEl){ const d=new Date(ms); tEl.textContent = String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+          li.setAttribute('data-startms', String(ms));
+        }
+        // artwork
+        const img = li.querySelector('img');
+        if (img){
+          img.addEventListener('error', ()=>{ img.src = FALLBACK; }, { once:true });
+          const info = li.querySelector('.info');
+          const artist = norm(track.artist) || norm(info?.textContent.split(' – ')[0] || '');
+          const title  = norm(track.title)  || norm((info?.textContent.split(' – ').slice(1).join(' – ')) || '');
+          if (artist || title){
+            window.getTrackArtwork((artist+' '+title).trim()).then(u=>{ if(u) img.src=u; }).catch(()=>{ img.src=FALLBACK; });
+          }
+        }
+        // cap
+        while (ul.children.length>MAX) ul.removeChild(ul.lastElementChild);
+      }catch{}
+      return res;
+    };
+    window.prependRecentFromTrack.__wrappedRecentAid = true;
+  })();
+
+  /* 3) Safe loader: recent.js or /api/recent + rolling log (no-blanking) */
+  async function fromRecentOrApi(){
+    try{
+      if (Array.isArray(window.recent)) return window.recent;
+      if (typeof window.getRecent==='function'){ const r=await window.getRecent(); if(Array.isArray(r)) return r; }
+      if (typeof window.fetchRecentTracks==='function'){ const r=await window.fetchRecentTracks(); if(Array.isArray(r)) return r; }
+    }catch{}
+    try{
+      const r = await fetch(API_URL+'?_='+Date.now(), { cache:'no-store' });
+      return r.ok ? await r.json() : [];
+    }catch{ return []; }
+  }
+  async function fromRollingLog(){
+    try{
+      const r = await fetch(LOG_URL+'?_='+Date.now(), { cache:'no-store' });
+      const j = r.ok ? await r.json() : [];
+      if(!Array.isArray(j)) return [];
+      return j.map(it=>{
+        let startMs=0; try{
+          const base=new Date(it['Hour']); const [h,m]=String(it['Scheduled Time']||'').split(':').map(v=>parseInt(v||'0',10));
+          startMs=new Date(base.getFullYear(),base.getMonth(),base.getDate(),h||0,m||0,0,0).getTime();
+        }catch{}
+        return { artist:norm(it.Artist), title:norm(it.Title), startMs, startTime:startMs?new Date(startMs).toISOString():'' };
+      }).filter(t=>t.artist&&t.title&&t.startMs);
+    }catch{ return []; }
+  }
+  const lower=s=>norm(s).toLowerCase();
+  function normalize(arr){
+    return (arr||[]).map(x=>{
+      const artist=norm(x.artist), title=norm(x.title);
+      const startMs = x.startMs || toMs(x.startTime) || toMs(x.startedAt) || toMs(x.endMs) || toMs(x.endedAt);
+      const startTime = startMs ? new Date(startMs).toISOString() : (x.startTime||x.startedAt||'');
+      return { artist, title, startMs, startTime };
+    }).filter(t=>t.artist&&t.title&&t.startMs);
+  }
+  function mergeTop5(a,b){
+    const map=new Map();
+    for (const src of [a,b]){
+      for (const t of src){
+        const bucket=Math.floor((t.startMs||0)/60000);
+        const key=lower(t.artist)+'||'+lower(t.title)+'||'+bucket;
+        if (!map.has(key) || t.startMs>map.get(key).startMs) map.set(key,t);
+      }
+    }
+    return [...map.values()].sort((x,y)=>y.startMs-x.startMs).slice(0,MAX);
+  }
+  function curSig(ul){ const li=ul.firstElementChild; if(!li) return ''; const ms=li.getAttribute('data-startms')||''; const info=(li.querySelector('.info')?.textContent||'').trim(); return ms+'|'+info; }
+  function nextSig(list){ if(!list.length) return ''; const t=list[0]; return String(t.startMs||'')+'|'+(t.artist+' – '+t.title); }
+
+  let busy=false;
+  async function refreshRecent(){
+    if (busy) return; busy=true;
+    try{
+      // wait for renderer
+      let tries=0; while (typeof window.prependRecentFromTrack!=='function' && tries++<200) await new Promise(r=>setTimeout(r,25));
+      const ul=document.getElementById(LIST_ID); if(!ul) return;
+      const [p,log] = await Promise.all([fromRecentOrApi(), fromRollingLog()]);
+      const merged = mergeTop5(normalize(p), normalize(log));
+      if (!merged.length) return; // no-blanking on failure
+      const ns = nextSig(merged), cs = curSig(ul);
+      if (ns && cs && ns===cs) return; // idempotent (no flicker)
+      // render oldest->newest
+      const ordered = merged.slice().reverse();
+      ul.innerHTML='';
+      for (const t of ordered){
+        try { window.prependRecentFromTrack({artist:t.artist,title:t.title,startMs:t.startMs,startTime:t.startTime,startedAt:t.startTime}); } catch {}
+      }
+    } finally { busy=false; }
+  }
+  window.addEventListener('load', ()=>{ setTimeout(refreshRecent, 300); setInterval(refreshRecent, 30000); }, { once:true });
+
+  /* 4) Instant handoff: when NP changes, push the previous track immediately */
+  function captureNP(){
+    try{
+      const timing=window._npLastTiming||{}; const startMs=timing.startMs||0;
+      const np=document.getElementById('now-playing'); if(!np||!startMs) return null;
+      const spans=[...np.querySelectorAll('span')].map(s=>norm(s.textContent)).filter(Boolean);
+      const i=spans.findIndex(t=>/^by\s+/i.test(t)); if(i<0) return null;
+      const artist=spans[i].replace(/^by\s+/i,'').trim(); const title=(i>0?spans[i-1]:'');
+      if(!artist||!title) return null;
+      const iso=new Date(startMs).toISOString();
+      return { artist, title, startMs, startTime:iso, startedAt:iso, endMs:startMs, endedAt:iso };
+    }catch{ return null; }
+  }
+  function pushImmediate(track){
+    if (!track || typeof window.prependRecentFromTrack!=='function') return;
+    const ul=document.getElementById(LIST_ID); if(!ul) return;
+    const first=ul.firstElementChild;
+    if(first){
+      const info=(first.querySelector('.info')?.textContent||'').trim().toLowerCase();
+      const ms=first.getAttribute('data-startms')||'';
+      const fk=info+'|'+ms, nk=(track.artist+' – '+track.title).toLowerCase()+'|'+String(track.startMs||'');
+      if (fk===nk) return;
+    }
+    window.prependRecentFromTrack(track);
+    // dedupe & cap
+    const seen=new Set();
+    [...ul.children].forEach(li=>{
+      const info=(li.querySelector('.info')?.textContent||'').trim().toLowerCase();
+      const ms=li.getAttribute('data-startms')||'';
+      const key=info+'|'+ms;
+      if(seen.has(key)) li.remove(); else seen.add(key);
+    });
+    while (ul.children.length>MAX) ul.removeChild(ul.lastElementChild);
+  }
+  (function installHandoff(){
+    const orig = window.fetchNowPlaying;
+    if (typeof orig!=='function' || orig.__wrappedAid) return;
+    window.fetchNowPlaying = async function(){
+      const exiting = captureNP();
+      const before = window._npActiveKey||null;
+      const res = await orig.apply(this, arguments);
+      const after = window._npActiveKey||null;
+      if (before && after && after!==before && exiting) pushImmediate(exiting);
+      return res;
+    };
+    window.fetchNowPlaying.__wrappedAid = true;
+  })();
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
