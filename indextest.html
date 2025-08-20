@@ -10157,6 +10157,164 @@ window.getTrackArtwork = window.getTrackArtwork || (async function(name){
   }, { once:true });
 })();
 </script>
+<script>
+/* === Recently Played: ultimate stabilizer (start time + artwork) ===
+   - Wraps your existing prependRecentFromTrack without changing its body.
+   - Forces time = START time (if available), preventing "all rows = now".
+   - Ensures every row triggers the same iTunes lookup as Now Playing.
+   - Also patches existing rows on load and any future additions.
+*/
+(function(){
+  const LIST_SEL = '#recent-list';
+  const ROW_SEL  = 'li';
+  const INFO_SEL = 'span.info';
+  const FALLBACK = 'ERLogo2.png';
+
+  // Robust dash-normalizer: “Artist – Title” or "Artist - Title"
+  function splitArtistTitle(text){
+    const t = String(text||'')
+      .replace(/\s+/g,' ')
+      .replace(/\u2014|\u2013/g, ' - ') // em/en dash → hyphen
+      .trim();
+    const parts = t.split(' - ');
+    return {
+      artist: (parts[0]||'').trim(),
+      title:  (parts.slice(1).join(' - ')||'').trim()
+    };
+  }
+
+  // Call your helper the way Now Playing expects (single string).
+  // Fall back to iTunes if your helper is missing.
+  async function resolveArtwork(artist, title){
+    const name = (String(artist||'').trim() + ' ' + String(title||'').trim()).trim();
+    try {
+      if (typeof window.getTrackArtwork === 'function') {
+        const maybe = await Promise.resolve(window.getTrackArtwork(name));
+        if (maybe) return maybe;
+      }
+    } catch {}
+    // Fallback direct iTunes
+    try {
+      if (!name) return FALLBACK;
+      const r = await fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(name) + '&entity=song&limit=1&country=gb');
+      if (!r.ok) return FALLBACK;
+      const j = await r.json();
+      const raw = j && j.results && j.results[0] && (j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30);
+      return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
+    } catch { return FALLBACK; }
+  }
+
+  function fixRowTimeAndArt(li, srcTrack){
+    if (!li) return;
+    // TIME — force to START
+    try {
+      const timeEl = li.querySelector('.time');
+      const startMs =
+        (srcTrack && (srcTrack.startMs ||
+                      Date.parse(srcTrack.startTime || srcTrack.startedAt || ''))) ||
+        0;
+      if (timeEl && startMs) {
+        const dt = new Date(startMs);
+        const hh = String(dt.getHours()).padStart(2,'0');
+        const mm = String(dt.getMinutes()).padStart(2,'0');
+        timeEl.textContent = hh + ':' + mm;
+        li.setAttribute('data-startms', String(startMs));
+      }
+    } catch {}
+
+    // ARTWORK — trigger lookup if still logo/local
+    try {
+      const img  = li.querySelector('img');
+      const info = li.querySelector(INFO_SEL);
+      if (!img) return;
+      const current = img.getAttribute('src') || '';
+      const isCustomRemote = /^https?:\/\//.test(current) && !current.includes('ERLogo2.png') && !current.includes('Essential Radio Logo.png');
+      if (isCustomRemote) return; // already a real cover
+
+      let artist = '', title = '';
+      if (info) ({artist, title} = splitArtistTitle(info.textContent));
+      if ((!artist && !title) && srcTrack) { artist = srcTrack.artist||''; title = srcTrack.title||''; }
+
+      if (artist || title) {
+        img.addEventListener('error', () => { img.src = FALLBACK; }, { once: true });
+        resolveArtwork(artist, title).then(url => { if (url) img.src = url; }).catch(()=>{ img.src = FALLBACK; });
+      }
+    } catch {}
+  }
+
+  function observeList(){
+    const list = document.querySelector(LIST_SEL);
+    if (!list) return;
+    const mo = new MutationObserver(muts => {
+      muts.forEach(m => m.addedNodes && m.addedNodes.forEach(n => {
+        if (n.nodeType === 1 && n.matches && n.matches(ROW_SEL)) {
+          // No srcTrack here; post-fix from DOM content
+          fixRowTimeAndArt(n, null);
+        }
+      }));
+    });
+    mo.observe(list, { childList: true });
+  }
+
+  function patchExistingOnce(){
+    const list = document.querySelector(LIST_SEL);
+    if (!list) return;
+    list.querySelectorAll(ROW_SEL).forEach(li => fixRowTimeAndArt(li, null));
+  }
+
+  function wrapRenderer(){
+    const list = document.querySelector(LIST_SEL);
+    if (!list) return;
+
+    const orig = window.prependRecentFromTrack;
+    if (typeof orig !== 'function') return;
+
+    // Avoid double-wrapping
+    if (orig.__wrappedForStartAndArt) return;
+
+    window.prependRecentFromTrack = function(track){
+      try {
+        // Normalize START time and mirror to legacy fields to prevent "now" fallback.
+        const startMs =
+          track.startMs ||
+          (track.startTime ? Date.parse(track.startTime) : 0) ||
+          (track.startedAt ? Date.parse(track.startedAt) : 0) || 0;
+
+        if (startMs) {
+          const iso = new Date(startMs).toISOString();
+          track.startMs  = startMs;
+          track.startTime = track.startTime || iso;
+          track.startedAt = track.startedAt || iso;
+          track.endMs    = startMs;
+          track.endedAt  = iso;
+        }
+
+        // Call original renderer
+        const res = orig.apply(this, [track]);
+
+        // Newly prepended row should be the first child; fix it in place
+        const li = list.firstElementChild;
+        fixRowTimeAndArt(li, track);
+
+        return res;
+      } catch (e) {
+        try { return orig.apply(this, [track]); } catch {}
+      }
+    };
+    window.prependRecentFromTrack.__wrappedForStartAndArt = true;
+  }
+
+  // Run after everything else so we override late refresh logic
+  window.addEventListener('load', function(){
+    // Wrap renderer and patch existing rows
+    wrapRenderer();
+    // Give your own seeding a moment to finish, then patch the DOM
+    setTimeout(patchExistingOnce, 300);
+    // Keep patching anything added afterwards
+    observeList();
+  }, { once: true });
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
