@@ -10261,6 +10261,81 @@ window.getTrackArtwork = window.getTrackArtwork || (async function(name){
 })();
 </script>
 
+
+<!-- Injected: override for prependRecentFromTrack (start time + artwork + cap 5) -->
+<script>
+(function(){
+  const LIST_ID = 'recent-list';
+  const FALLBACK = 'ERLogo2.png';
+
+  function formatTimeFromTrack(track){
+    try{
+      const ms = track.startMs
+        || (track.startTime ? Date.parse(track.startTime) : 0)
+        || (track.startedAt ? Date.parse(track.startedAt) : 0);
+      const d = ms ? new Date(ms) : new Date();
+      const hh = String(d.getHours()).padStart(2,'0');
+      const mm = String(d.getMinutes()).padStart(2,'0');
+      return { text: hh + ':' + mm, ms: ms || d.getTime() };
+    }catch(e){ return { text: '', ms: 0 }; }
+  }
+
+  // Override (without deleting your original): define after load to ensure it wins
+  window.addEventListener('load', function(){
+    const original = window.prependRecentFromTrack;
+    window.prependRecentFromTrack = function(track){
+      const list = document.getElementById(LIST_ID);
+      if (!list) return;
+
+      // Build elements
+      const li = document.createElement('li');
+
+      // time span (start time preferred)
+      const t = formatTimeFromTrack(track);
+      const timeEl = document.createElement('span');
+      timeEl.className = 'time';
+      timeEl.textContent = t.text;
+      li.appendChild(timeEl);
+
+      // image (fallback first, then iTunes/NP helper)
+      const img = document.createElement('img');
+      img.alt = 'artwork';
+      img.src = FALLBACK;
+      img.addEventListener('error', () => { img.src = FALLBACK; }, { once: true });
+      li.appendChild(img);
+
+      // info span (Artist – Title)
+      const artist = (track && track.artist) ? String(track.artist).trim() : '';
+      const title  = (track && track.title)  ? String(track.title).trim()  : '';
+      const info = document.createElement('span');
+      info.className = 'info';
+      info.textContent = (artist || title) ? (artist + ' – ' + title) : '';
+      li.appendChild(info);
+
+      // Prepend
+      list.prepend(li);
+
+      // Cap to 5
+      while (list.children.length > 5) {
+        list.removeChild(list.lastElementChild);
+      }
+
+      // Trigger the same artwork lookup as Now Playing: pass STRING
+      const name = (artist + ' ' + title).trim();
+      try {
+        if (name && typeof window.getTrackArtwork === 'function') {
+          Promise.resolve(window.getTrackArtwork(name))
+            .then(url => { if (url) img.src = url; })
+            .catch(() => { img.src = FALLBACK; });
+        }
+      } catch(e) {}
+
+      return li;
+    };
+  }, { once: true });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
