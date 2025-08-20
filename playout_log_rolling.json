@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 214,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:05",
-    "Displayed Time": "",
-    "Artist": "Livin' Joy",
-    "Title": "Dreamer",
-    "Duration (s)": 205,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:09",
-    "Displayed Time": "",
-    "Artist": "Freya Ridings",
-    "Title": "Weekends",
-    "Duration (s)": 189,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:12",
-    "Displayed Time": "",
-    "Artist": "RAYE",
-    "Title": "Escapism",
-    "Duration (s)": 199,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:15",
-    "Displayed Time": "",
-    "Artist": "Dido",
-    "Title": "Here With Me",
-    "Duration (s)": 236,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:23",
-    "Displayed Time": "",
-    "Artist": "Fontaines D.C.",
-    "Title": "It's Amazing To Be Young",
-    "Duration (s)": 204,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:26",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Good Luck, Babe!",
-    "Duration (s)": 204,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:30",
-    "Displayed Time": "",
-    "Artist": "Bruce Springsteen",
-    "Title": "Dancing in the Dark",
-    "Duration (s)": 221,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:34",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 169,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:40",
-    "Displayed Time": "",
-    "Artist": "Labrinth Ft Emeli Sande",
-    "Title": "Beneath Your Beautiful",
-    "Duration (s)": 228,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:44",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga & Bruno Mars",
-    "Title": "Die With A Smile",
-    "Duration (s)": 238,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:48",
-    "Displayed Time": "",
-    "Artist": "Republica",
-    "Title": "Ready to Go",
-    "Duration (s)": 211,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:52",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Austin (Boots Stop Workin')",
-    "Duration (s)": 162,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-06T00:00:00Z",
-    "Scheduled Time": "01:55",
-    "Displayed Time": "",
-    "Artist": "Enrique Iglesias",
-    "Title": "Do You Know? (The Ping Pong Song)",
-    "Duration (s)": 205,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-06T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -45427,6 +45273,17 @@
     "Duration (s)": 204,
     "Full Duration (s)": 212,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-20T19:00:00Z",
+    "Scheduled Time": "20:01",
+    "Displayed Time": "",
+    "Artist": "Soul II Soul",
+    "Title": "Back To Life (However Do You Want Me)",
+    "Duration (s)": 213,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
