@@ -1,71 +1,5 @@
 [
   {
-    "Hour": "2025-08-05T21:00:00Z",
-    "Scheduled Time": "22:02",
-    "Displayed Time": "",
-    "Artist": "Tears For Fears",
-    "Title": "Woman in Chains",
-    "Duration (s)": 293,
-    "Full Duration (s)": 300,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-05T21:00:00Z",
-    "Scheduled Time": "22:07",
-    "Displayed Time": "",
-    "Artist": "Toto",
-    "Title": "I Won't Hold You Back",
-    "Duration (s)": 278,
-    "Full Duration (s)": 290,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-05T21:00:00Z",
-    "Scheduled Time": "22:11",
-    "Displayed Time": "",
-    "Artist": "Gloria Estefan & Miami Sound Machine",
-    "Title": "Can't Stay Away From You",
-    "Duration (s)": 231,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-05T21:00:00Z",
-    "Scheduled Time": "22:15",
-    "Displayed Time": "",
-    "Artist": "Sting",
-    "Title": "If I Ever Lose My Faith in You",
-    "Duration (s)": 252,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-05T21:00:00Z",
-    "Scheduled Time": "22:23",
-    "Displayed Time": "",
-    "Artist": "Heaven 17",
-    "Title": "Come Live With Me",
-    "Duration (s)": 191,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-05T21:00:00Z",
-    "Scheduled Time": "22:26",
-    "Displayed Time": "",
-    "Artist": "Freddie Jackson",
-    "Title": "You Are My Lady",
-    "Duration (s)": 269,
-    "Full Duration (s)": 281,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
     "Hour": "2025-08-05T22:00:00Z",
     "Scheduled Time": "23:01",
     "Displayed Time": "",
@@ -45373,5 +45307,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2,
     "Full Duration (mins)": 2
+  },
+  {
+    "Hour": "2025-08-20T16:00:00Z",
+    "Scheduled Time": "17:03",
+    "Displayed Time": "",
+    "Artist": "Christina Perri",
+    "Title": "Jar of Hearts",
+    "Duration (s)": 203,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
   }
 ]
