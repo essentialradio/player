@@ -4351,7 +4351,7 @@ html[data-theme="light"] #mobileNowBar {
 </svg></a></div>
 
 </div>
-<img alt="Artwork" class="loaded" id="artwork" src="ERLogo2.png"/>
+<img alt="Artwork" class="loaded" id="artwork" src="Essential Radio Logo.png"/>
 </div>
 </div>
 <!-- RIGHT PANEL -->
@@ -5887,17 +5887,7 @@ function prependRecentFromTrack(track) {
     if (!list) return;
 
     // HH:MM from endMs (fallback endedAt -> now)
-    const startPref =
-  track.startMs ||
-  Date.parse(track.startTime || track.startedAt || '') ||
-  null;
-
-const endFallback =
-  (track.endedAt ? Date.parse(track.endedAt) : null) ||
-  track.endMs ||
-  null;
-
-const dt = new Date(startPref || endFallback || Date.now());
+    const dt = new Date(track.endedAt || track.endMs || Date.now());
     const hh = String(dt.getHours()).padStart(2, '0');
     const mm = String(dt.getMinutes()).padStart(2, '0');
     const time = `${hh}:${mm}`;
@@ -5914,7 +5904,7 @@ const dt = new Date(startPref || endFallback || Date.now());
     const img = document.createElement('img');
     img.alt = `Cover for ${name}`;
     img.loading = 'lazy';
-    img.src = 'ERLogo2.png';
+    img.src = 'Essential Radio Logo.png';
 
     const info = document.createElement('span');
     info.className = 'info';
@@ -5937,7 +5927,7 @@ const dt = new Date(startPref || endFallback || Date.now());
     list.prepend(li);
 
     // Trim list
-    const MAX = 5;
+    const MAX = 8;
     while (list.children.length > MAX) list.lastElementChild?.remove();
 
     if (typeof getTrackArtwork === 'function') {
@@ -6117,7 +6107,7 @@ if (remaining > 0) {
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
       const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'ERLogo2.png';
+      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
       const lastfmIcon = `
@@ -6153,7 +6143,7 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
-      artworkImg.src = 'ERLogo2.png';
+      artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
         const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
@@ -6186,7 +6176,7 @@ if (remaining > 0) {
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
-      artworkImg.src = 'ERLogo2.png';
+      artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded');
       artworkImg.classList.add('fallback');
     }
@@ -9795,216 +9785,59 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<script>
-// === Safe Recent5 seeding: waits for renderer, never clears until data ready ===
-(function(){
-  const MAX_ITEMS = 5;
-  const LOG_URL = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-  const API_RECENT = '/api/recent';
-
-  const norm = s => (s||'').toString().trim();
-  function parseLog(data){
-    const out = [];
-    if (!Array.isArray(data)) return out;
-    for (const it of data){
-      const artist = norm(it && (it.Artist || it.artist));
-      const title  = norm(it && (it.Title  || it.title));
-      if (!artist || !title) continue;
-      let startMs = Date.now();
-      try {
-        if (it["Hour"] && it["Scheduled Time"]) {
-          const hourDate = new Date(it["Hour"]);
-          const [sh, sm] = String(it["Scheduled Time"]).split(':').map(Number);
-          const d = new Date(hourDate.getFullYear(), hourDate.getMonth(), hourDate.getDate(), sh||0, sm||0, 0, 0);
-          startMs = d.getTime();
-        } else if (it.startTime) {
-          startMs = new Date(it.startTime).getTime();
-        }
-      } catch {}
-      out.push({ artist, title, startMs });
-    }
-    // newest first
-    out.sort((a,b) => (b.startMs||0) - (a.startMs||0));
-    return out.slice(0, MAX_ITEMS);
-  }
-
-  function waitFor(fn, timeoutMs){
-    return new Promise((resolve, reject) => {
-      const t0 = Date.now();
-      (function loop(){
-        try {
-          const v = fn();
-          if (v) return resolve(v);
-        } catch {}
-        if (Date.now() - t0 > timeoutMs) return reject(new Error('timeout'));
-        setTimeout(loop, 50);
-      })();
-    });
-  }
-
-  async function fetchJSON(url){
-    const r = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
-  }
-
-  async function getRecent5(){
-    // Try rolling log first
-    try {
-      const data = await fetchJSON(LOG_URL);
-      const list = parseLog(data);
-      if (list && list.length) return list;
-    } catch(e) { /* fall through */ }
-    // Fallback to API recent, if available
-    try {
-      const data = await fetchJSON(API_RECENT);
-      const list = parseLog(Array.isArray(data) ? data : (data.items || []));
-      if (list && list.length) return list;
-    } catch(e) { /* ignore */ }
-    return [];
-  }
-
-  async function seed(){
-    // Wait until DOM ready and renderer function exists
-    try { await new Promise(r => (document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', r, {once:true}) : r())); } catch{}
-    let prependFn = null;
-    try {
-      prependFn = await waitFor(() => window.prependRecentFromTrack, 5000);
-    } catch(e) {
-      console.warn('Recent seeding: renderer not found; aborting.');
-      return;
-    }
-
-    const container = document.getElementById('recent-list');
-    if (!container) return;
-
-    let list = [];
-    try { list = await getRecent5(); } catch{}
-
-    if (!list.length) {
-      console.warn('Recent seeding: no items available from log or API; leaving existing UI untouched.');
-      return;
-    }
-
-    // Only now clear and repopulate to avoid blank state
-    try { container.innerHTML = ''; } catch {}
-
-    // Insert oldest -> newest so newest ends on top (your prepend behavior)
-    const ordered = [...list].sort((a,b) => (a.startMs||0) - (b.startMs||0));
-    for (const t of ordered) {
-      try {
-        prependFn({
-          artist: t.artist,
-          title: t.title,
-          startedAt: t.startMs ? new Date(t.startMs).toISOString() : undefined,
-          startMs: t.startMs
-        });
-      } catch(e) { /* continue */ }
-    }
-  }
-
-  // Kick off (but do not interfere with existing code)
-  seed();
-})();
-</script>
-<script src="recent_combined_ultrasafe.js"></script>
-<script src="recent_time_from_start.js"></script>
-
-<!-- Injected: Start-time seeding for Recently Played + iTunes artwork patch (one-shot) -->
+<!-- Injected: Recent artwork fix using span.info text (Artist – Title) -->
 <script>
 (function(){
-  const LIST_ID = 'recent-list';
-  const SEED_ATTR = 'data-seeded-starttime-v2';
-  const API_RECENT = '/api/recent';
   const FALLBACK = 'ERLogo2.png';
 
-  // iTunes helper (if not already defined)
-  window.getTrackArtwork = window.getTrackArtwork || (async function(input){
+  async function itunesArt(artist, title){
+    const qText = (String(artist||'').trim() + ' ' + String(title||'').trim()).trim();
+    if (!qText) return FALLBACK;
     try {
-      const a = (input && input.artist) ? String(input.artist).trim() : '';
-      const t = (input && input.title)  ? String(input.title).trim()  : '';
-      const qText = (a + ' ' + t).trim();
-      if (!qText) return FALLBACK;
       const r = await fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(qText) + '&entity=song&limit=1&country=gb');
       if (!r.ok) return FALLBACK;
       const j = await r.json();
       const raw = j && j.results && j.results[0] && (j.results[0].artworkUrl100 || j.results[0].artworkUrl60 || j.results[0].artworkUrl30);
       return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
     } catch { return FALLBACK; }
-  });
+  }
 
-  async function ensureStartMs(item){
-    let startMs = item.startMs
-      || (item.startTime ? Date.parse(item.startTime) : 0)
-      || (item.startedAt ? Date.parse(item.startedAt) : 0);
+  function splitName(text){
+    if (!text) return {artist:'', title:''};
+    const t = String(text).trim().replace(/\s+/g,' ');
+    // Prefer ' – ' (en dash), then plain hyphen
+    let parts = t.split(' – ');
+    if (parts.length < 2) parts = t.split(' - ');
+    const artist = parts[0] ? parts[0].trim() : '';
+    const title  = parts[1] ? parts.slice(1).join(' - ').trim() : '';
+    return { artist, title };
+  }
 
-    if (!startMs && item.artist && item.title && typeof fetchDurationAndStartTime === 'function'){
+  async function patchOnce(){
+    const list = document.getElementById('recent-list');
+    if (!list) return;
+    const rows = Array.from(list.querySelectorAll('li')).slice(0,5);
+
+    await Promise.all(rows.map(async (li) => {
       try {
-        const info = await fetchDurationAndStartTime(item.artist, item.title);
-        if (info && info.startTime) startMs = new Date(info.startTime).getTime();
+        const img = li.querySelector('img');
+        const info = li.querySelector('span.info');
+        if (!img || !info) return;
+        const src = img.getAttribute('src') || '';
+        // If already custom artwork (http/https and not fallback), skip
+        if (/^https?:\/\//.test(src) && !src.includes('ERLogo2.png') && !src.includes('Essential Radio Logo.png')) return;
+
+        const { artist, title } = splitName(info.textContent || '');
+        if (!(artist || title)) return;
+        img.addEventListener('error', () => { img.src = FALLBACK; }, { once:true });
+        const url = await itunesArt(artist, title);
+        if (url) img.src = url;
       } catch {}
-    }
-    return startMs || 0;
+    }));
   }
 
-  async function seedRecentFromStartTime(){
-    const list = document.getElementById(LIST_ID);
-    if (!list || list.getAttribute(SEED_ATTR) === '1') return;
-    list.setAttribute(SEED_ATTR, '1');
-
-    // Wait for your renderer
-    let tries = 0;
-    while (typeof window.prependRecentFromTrack !== 'function' && tries < 120){
-      await new Promise(r => setTimeout(r, 50));
-      tries++;
-    }
-    if (typeof window.prependRecentFromTrack !== 'function') return;
-
-    try {
-      const r = await fetch(API_RECENT + '?_=' + Date.now(), { cache: 'no-store' });
-      if (!r.ok) return;
-      const items = await r.json();
-      if (!Array.isArray(items) || items.length === 0) return;
-
-      const enriched = await Promise.all(items.map(async it => {
-        const startMs = await ensureStartMs(it);
-        const startIso = startMs ? new Date(startMs).toISOString() : undefined;
-        return Object.assign({}, it, {
-          startMs,
-          startedAt: startIso,
-          startTime: startIso,
-          // Force legacy time consumers to use START (avoids 'now' fallback):
-          endedAt:  startIso,
-          endMs:    startMs
-        });
-      }));
-
-      // Clear and render via your own renderer so formatting + logic match
-      list.innerHTML = '';
-      enriched.forEach(window.prependRecentFromTrack);
-
-      // After your renderer has inserted rows, patch any missing artwork
-      setTimeout(() => {
-        try {
-          const rows = list.querySelectorAll('.recent-item');
-          rows.forEach(row => {
-            const img = row.querySelector('img') || row.querySelector('img.recent-art');
-            const artist = row.querySelector('.artist')?.textContent?.trim() || '';
-            const title  = row.querySelector('.title')?.textContent?.trim()  || '';
-            if (!img || !(artist || title)) return;
-            const src = img.getAttribute('src') || '';
-            const looksCustom = /^https?:\/\//.test(src) && !src.includes('ERLogo2.png');
-            if (looksCustom) return;
-            Promise.resolve(window.getTrackArtwork({ artist, title })).then(url => {
-              if (url) img.src = url;
-            }).catch(()=>{});
-          });
-        } catch {}
-      }, 300);
-    } catch {}
-  }
-
-  window.addEventListener('load', () => { seedRecentFromStartTime(); }, { once: true });
+  // Run after load + slight delay to allow seeding to complete
+  window.addEventListener('load', () => { setTimeout(patchOnce, 500); }, { once:true });
 })();
 </script>
 
