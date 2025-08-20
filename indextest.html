@@ -9897,8 +9897,88 @@ if ('serviceWorker' in navigator) {
   seed();
 })();
 </script>
-<script src="recent_combined_ultrasafe.js"></script>
-<script src="recent_time_from_start.js"></script>
+<!-- Injected: iTunes artwork helper (GB) with fallback -->
+<script>
+window.getTrackArtwork = window.getTrackArtwork || (async function(name){
+  const FALLBACK = 'ERLogo2.png';
+  try {
+    const q = encodeURIComponent((name || '').trim());
+    if (!q) return FALLBACK;
+    const r = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`);
+    if (!r.ok) return FALLBACK;
+    const j = await r.json();
+    const raw = j?.results?.[0]?.artworkUrl100 || j?.results?.[0]?.artworkUrl60 || j?.results?.[0]?.artworkUrl30 || '';
+    return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
+  } catch { return FALLBACK; }
+});
+</script>
+<!-- Injected: Start-time seeding for Recently Played -->
+<script>
+(function(){
+  const LIST_ID = 'recent-list';
+  const SEED_ATTR = 'data-seeded-starttime';
+  const API_RECENT = '/api/recent';
+
+  // Try to produce a start time for each item
+  async function ensureStartMs(item){
+    let startMs = item.startMs
+      || (item.startTime ? Date.parse(item.startTime) : 0)
+      || (item.startedAt ? Date.parse(item.startedAt) : 0);
+
+    // Fallback: use your existing helper to look up start time from the rolling log
+    if (!startMs && item.artist && item.title && typeof fetchDurationAndStartTime === 'function'){
+      try {
+        const info = await fetchDurationAndStartTime(item.artist, item.title);
+        if (info && info.startTime) startMs = new Date(info.startTime).getTime();
+      } catch {}
+    }
+    return startMs || 0;
+  }
+
+  async function seedRecentFromStartTime(){
+    const list = document.getElementById(LIST_ID);
+    if (!list || list.getAttribute(SEED_ATTR) === '1') return;
+    list.setAttribute(SEED_ATTR, '1');
+
+    // Wait until your renderer exists
+    let tries = 0;
+    while (typeof window.prependRecentFromTrack !== 'function' && tries < 120){
+      await new Promise(r => setTimeout(r, 50)); // up to ~6s
+      tries++;
+    }
+    if (typeof window.prependRecentFromTrack !== 'function') return;
+
+    try {
+      const r = await fetch(API_RECENT + '?_=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return;
+      const items = await r.json();
+      if (!Array.isArray(items) || items.length === 0) return;
+
+      // Enrich with start times (in parallel)
+      const enriched = await Promise.all(items.map(async it => {
+        const startMs = await ensureStartMs(it);
+        const startIso = startMs ? new Date(startMs).toISOString() : undefined;
+        return Object.assign({}, it, {
+          startMs,
+          startedAt: startIso,
+          startTime: startIso,
+          // Force your renderer (which reads endedAt || endMs || now) to show START time:
+          endedAt:  startIso,
+          endMs:    startMs
+        });
+      }));
+
+      // Clear and re-render using your own renderer so formatting/artwork stay identical
+      list.innerHTML = '';
+      enriched.forEach(window.prependRecentFromTrack);
+    } catch {}
+  }
+
+  // Run after full load so it wins over any earlier seeding
+  window.addEventListener('load', () => { seedRecentFromStartTime(); }, { once: true });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
