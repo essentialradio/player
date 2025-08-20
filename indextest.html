@@ -4351,7 +4351,7 @@ html[data-theme="light"] #mobileNowBar {
 </svg></a></div>
 
 </div>
-<img alt="Artwork" class="loaded" id="artwork" src="ERLogo2.png"/>
+<img alt="Artwork" class="loaded" id="artwork" src="Essential Radio Logo.png"/>
 </div>
 </div>
 <!-- RIGHT PANEL -->
@@ -5887,17 +5887,7 @@ function prependRecentFromTrack(track) {
     if (!list) return;
 
     // HH:MM from endMs (fallback endedAt -> now)
-    const startPref =
-  track.startMs ||
-  Date.parse(track.startTime || track.startedAt || '') ||
-  null;
-
-const endFallback =
-  (track.endedAt ? Date.parse(track.endedAt) : null) ||
-  track.endMs ||
-  null;
-
-const dt = new Date(startPref || endFallback || Date.now());
+    const dt = new Date(track.endedAt || track.endMs || Date.now());
     const hh = String(dt.getHours()).padStart(2, '0');
     const mm = String(dt.getMinutes()).padStart(2, '0');
     const time = `${hh}:${mm}`;
@@ -5914,7 +5904,7 @@ const dt = new Date(startPref || endFallback || Date.now());
     const img = document.createElement('img');
     img.alt = `Cover for ${name}`;
     img.loading = 'lazy';
-    img.src = 'ERLogo2.png';
+    img.src = 'Essential Radio Logo.png';
 
     const info = document.createElement('span');
     info.className = 'info';
@@ -5937,7 +5927,7 @@ const dt = new Date(startPref || endFallback || Date.now());
     list.prepend(li);
 
     // Trim list
-    const MAX = 5;
+    const MAX = 8;
     while (list.children.length > MAX) list.lastElementChild?.remove();
 
     if (typeof getTrackArtwork === 'function') {
@@ -6117,7 +6107,7 @@ if (remaining > 0) {
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
       const name = `${item.Artist} – ${item.Title}`;
-      const art = await getTrackArtwork(name) || 'ERLogo2.png';
+      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
       const lastfmIcon = `
@@ -6153,7 +6143,7 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
-      artworkImg.src = 'ERLogo2.png';
+      artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
         const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
@@ -6186,7 +6176,7 @@ if (remaining > 0) {
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
-      artworkImg.src = 'ERLogo2.png';
+      artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded');
       artworkImg.classList.add('fallback');
     }
@@ -9987,6 +9977,54 @@ window.getTrackArtwork = window.getTrackArtwork || (async function(name){
   // Run after full load so it wins over any earlier seeding
   window.addEventListener('load', () => { seedRecentFromStartTime(); }, { once: true });
 })();
+</script>
+
+
+<!-- Injected: Recently Played artwork helper + one-shot patch -->
+<script>
+// Define iTunes artwork helper if missing
+window.getTrackArtwork = window.getTrackArtwork || (async function(input){
+  const FALLBACK = 'ERLogo2.png';
+  try {
+    let qText = '';
+    if (typeof input === 'string') {
+      qText = input.trim();
+    } else if (input && typeof input === 'object') {
+      const a = (input.artist || '').trim();
+      const t = (input.title  || '').trim();
+      qText = (a + ' ' + t).trim();
+    }
+    if (!qText) return FALLBACK;
+    const q = encodeURIComponent(qText);
+    const r = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=1&country=gb`);
+    if (!r.ok) return FALLBACK;
+    const j = await r.json();
+    const raw = j?.results?.[0]?.artworkUrl100 || j?.results?.[0]?.artworkUrl60 || j?.results?.[0]?.artworkUrl30 || '';
+    return raw ? raw.replace(/\/(\d+x\d+)bb\//, '/600x600bb/') : FALLBACK;
+  } catch {
+    return FALLBACK;
+  }
+});
+
+// After load, patch any recent rows still showing the fallback/logo
+window.addEventListener('load', () => {
+  try {
+    const rows = document.querySelectorAll('#recent-list .recent-item');
+    rows.forEach(row => {
+      const img = row.querySelector('img');
+      const artist = row.querySelector('.artist')?.textContent?.trim() || '';
+      const title  = row.querySelector('.title')?.textContent?.trim() || '';
+      if (!img || !(artist || title)) return;
+      const src = img.getAttribute('src') || '';
+      const looksCustom = /^https?:\/\//.test(src) && !src.includes('ERLogo2.png');
+      if (looksCustom) return; // already has artwork
+      const name = `${artist} ${title}`.trim();
+      Promise.resolve(window.getTrackArtwork({ artist, title: title || '' })).then(url => {
+        if (url) img.src = url;
+      }).catch(()=>{});
+    });
+  } catch {}
+});
 </script>
 
 </body><style>
