@@ -4332,6 +4332,15 @@ html[data-theme="light"] #mobileNowBar {
   background: #ffffff;
 }
 </style>
+<style id="presenters-modal-tune">
+@media (min-width: 751px) {
+  #presentersModal .modal-content {
+    margin: 6% auto !important;   /* was closer to 8%, so this drops it slightly */
+    max-width: 1100px !important; /* wider than the default 920px */
+    width: 90vw !important;       /* responsive scaling */
+  }
+}
+</style>
 
 </head>
 <body>
@@ -4816,7 +4825,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 <!-- Group 3 -->
 <div class="listen-group">
-<div class="listen-group-title">Via the My Ayrshire College app</div>
+<div class="listen-group-title">Get the My Ayrshire College app</div>
 <div class="tile-row">
 <a aria-label="Open My Ayrshire College on the Apple App Store" class="tile" href="https://apps.apple.com/gb/app/my-ayrshire-college/id1521950988" rel="noopener" target="_blank">
 <span class="tile-icon">
