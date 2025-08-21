@@ -2972,54 +2972,53 @@ nav + div {
 
 
 <style id="contact-modal-fullscreen-override">
-/* ===== Contact modal: force true fullscreen on DESKTOP, prevent bottom cut ===== */
+/* ===== Contact & Requests: true fullscreen-style modals ===== */
 
-/* Base: let the modal backdrop fill the viewport and not crop content */
+/* Backdrop always covers the viewport */
 .modal {
   position: fixed !important;
   left: 0 !important;
   top: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  overflow: hidden !important;           /* background doesn't scroll */
+  overflow: hidden !important;
 }
 
-/* Generic modal-content rules are already present; raise the cap for desktop */
+/* DESKTOP: big, near-fullscreen card with the form visible */
 @media (min-width: 751px) {
-  /* Target Contact + Requests if present */
   #contactModal .modal-content,
   #requestsModal .modal-content {
     margin: 0 auto !important;
     width: 96vw !important;
     max-width: 1200px !important;
-    height: 94vh !important;             /* nearly fullscreen */
+    height: 94vh !important;
     max-height: 94vh !important;
-    padding: 16px !important;
-    overflow: hidden !important;         /* inner wrapper/iframe will scroll */
+    padding: 0 !important;               /* remove inner padding so iframe can fill */
     border-radius: 16px !important;
+    overflow: hidden !important;
   }
 
-  /* Inner scrolling area (iframe or wrapper) */
-  #contactModal .modal-content .embed-wrap,
-  #requestsModal .modal-content .embed-wrap {
+  /* If you keep a small top bar in your HTML, let content fill below it */
+  #contactModal .embed-wrap,
+  #requestsModal .embed-wrap {
     height: 100% !important;
     overflow: hidden !important;
   }
 
-  /* Make the iframe fill the available height */
+  /* Make the embedded form fill the modal on desktop */
   #contactModal iframe,
   #requestsModal iframe,
   #contactModal .embed-wrap iframe,
   #requestsModal .embed-wrap iframe {
     display: block !important;
     width: 100% !important;
-    height: calc(94vh - 48px) !important; /* subtract padding/close button */
+    height: 100% !important;             /* fill the modal */
     border: 0 !important;
     overflow: auto !important;
   }
 }
 
-/* MOBILE already handles 56px top offset elsewhere; ensure contact/request iframes fill */
+/* MOBILE: use the full height minus the fixed navbar space */
 @media (max-width: 750px) {
   #contactModal .modal-content,
   #requestsModal .modal-content {
@@ -3038,7 +3037,7 @@ nav + div {
   }
 }
 
-/* Keep close button above the iframe and clickable */
+/* Keep close buttons above iframes */
 #contactModal .close,
 #requestsModal .close {
   position: absolute !important;
