@@ -1060,15 +1060,6 @@ body.modal-open {
     margin-top: 12px !important;
   }
 }
-<style id="presenters-modal-tune">
-@media (min-width: 751px) {
-  #presentersModal .modal-content {
-    margin: 6% auto !important;   /* was closer to 8%, so this drops it slightly */
-    max-width: 1100px !important; /* wider than the default 920px */
-    width: 90vw !important;       /* responsive scaling */
-  }
-}
-</style>
 
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
@@ -2981,53 +2972,54 @@ nav + div {
 
 
 <style id="contact-modal-fullscreen-override">
-/* ===== Contact & Requests: true fullscreen-style modals ===== */
+/* ===== Contact modal: force true fullscreen on DESKTOP, prevent bottom cut ===== */
 
-/* Backdrop always covers the viewport */
+/* Base: let the modal backdrop fill the viewport and not crop content */
 .modal {
   position: fixed !important;
   left: 0 !important;
   top: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  overflow: hidden !important;
+  overflow: hidden !important;           /* background doesn't scroll */
 }
 
-/* DESKTOP: big, near-fullscreen card with the form visible */
+/* Generic modal-content rules are already present; raise the cap for desktop */
 @media (min-width: 751px) {
+  /* Target Contact + Requests if present */
   #contactModal .modal-content,
   #requestsModal .modal-content {
     margin: 0 auto !important;
     width: 96vw !important;
     max-width: 1200px !important;
-    height: 94vh !important;
+    height: 94vh !important;             /* nearly fullscreen */
     max-height: 94vh !important;
-    padding: 0 !important;               /* remove inner padding so iframe can fill */
+    padding: 16px !important;
+    overflow: hidden !important;         /* inner wrapper/iframe will scroll */
     border-radius: 16px !important;
-    overflow: hidden !important;
   }
 
-  /* If you keep a small top bar in your HTML, let content fill below it */
-  #contactModal .embed-wrap,
-  #requestsModal .embed-wrap {
+  /* Inner scrolling area (iframe or wrapper) */
+  #contactModal .modal-content .embed-wrap,
+  #requestsModal .modal-content .embed-wrap {
     height: 100% !important;
     overflow: hidden !important;
   }
 
-  /* Make the embedded form fill the modal on desktop */
+  /* Make the iframe fill the available height */
   #contactModal iframe,
   #requestsModal iframe,
   #contactModal .embed-wrap iframe,
   #requestsModal .embed-wrap iframe {
     display: block !important;
     width: 100% !important;
-    height: 100% !important;             /* fill the modal */
+    height: calc(94vh - 48px) !important; /* subtract padding/close button */
     border: 0 !important;
     overflow: auto !important;
   }
 }
 
-/* MOBILE: use the full height minus the fixed navbar space */
+/* MOBILE already handles 56px top offset elsewhere; ensure contact/request iframes fill */
 @media (max-width: 750px) {
   #contactModal .modal-content,
   #requestsModal .modal-content {
@@ -3046,7 +3038,7 @@ nav + div {
   }
 }
 
-/* Keep close buttons above iframes */
+/* Keep close button above the iframe and clickable */
 #contactModal .close,
 #requestsModal .close {
   position: absolute !important;
@@ -4280,21 +4272,64 @@ html[data-theme="light"] #mobileNowBar {
 #np-progress.ending-soon .bar { animation: npPulse 1s infinite; }
 @keyframes npPulse { 50% { opacity: .6 } }
 </style>
-<style id="modal-vertical-tune">
-/* General vertical positioning fix for standard modals */
-@media (min-width: 751px) {
-  #eventsModal .modal-content,
-  #listenAgainModal .modal-content {
-    margin: 5% auto !important;   /* was 8%, lowers it slightly */
+
+
+<style id="requests-contact-placement-fix">
+/* Bring Requests & Contact modals fully into view on desktop and above everything */
+@media (min-width: 751px){
+  #contactModal, #requestsModal {
+    z-index: 12000 !important; /* ensure above any presenter/detail modals */
+  }
+  #contactModal .modal-content,
+  #requestsModal .modal-content {
+    /* override inline absolute fullscreen that was causing off-screen positioning */
+    position: relative !important;
+    inset: auto !important;
+    width: 96vw !important;
+    max-width: 1200px !important;
+    height: 94vh !important;
+    margin: 3vh auto !important;   /* drop it slightly from very top */
+    overflow: hidden !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+    box-shadow: 0 0 34px #00818a99;
+  }
+  /* The internal scrolling region & iframe should fill the remaining space under the 48px top bar */
+  #contactModal .embed-wrap,
+  #requestsModal .embed-wrap {
+    height: calc(94vh - 48px) !important;
+    max-height: calc(94vh - 48px) !important;
+    overflow: hidden !important;
+  }
+  #contactModal iframe,
+  #requestsModal iframe {
+    display: block !important;
+    width: 100% !important;
+    height: calc(94vh - 48px) !important;
+    min-height: 0 !important; /* kill any rogue min-height like 300% */
+    border: 0 !important;
   }
 }
-
-/* On very tall screens, keep them centered */
-@media (min-height: 900px) and (min-width: 751px) {
-  #eventsModal .modal-content,
-  #listenAgainModal .modal-content {
-    margin: 6% auto !important;
-  }
+/* Close button must be visible above iframe */
+#contactModal .close,
+#requestsModal .close {
+  position: absolute !important;
+  top: 12px !important;
+  right: 16px !important;
+  font-size: 32px !important;
+  font-weight: bold;
+  color: #00818a;
+  cursor: pointer;
+  z-index: 5000 !important;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  padding: 4px 10px;
+  line-height: 1;
+}
+#contactModal .close:hover,
+#requestsModal .close:hover {
+  color: #ff4d4d;
+  background: #ffffff;
 }
 </style>
 
@@ -4781,7 +4816,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 <!-- Group 3 -->
 <div class="listen-group">
-<div class="listen-group-title">Get the My Ayrshire College app</div>
+<div class="listen-group-title">Via the My Ayrshire College app</div>
 <div class="tile-row">
 <a aria-label="Open My Ayrshire College on the Apple App Store" class="tile" href="https://apps.apple.com/gb/app/my-ayrshire-college/id1521950988" rel="noopener" target="_blank">
 <span class="tile-icon">
@@ -4790,7 +4825,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <path d="M12 3 2 8l10 5 10-5-10-5zM6 11v4.5c0 1.7 3 3.5 6 3.5s6-1.8 6-3.5V11l-6 3-6-3z"></path>
 </svg>
 </span>
-<span class="tile-caption">Apple</span>
+<span class="tile-caption">iOS</span>
 </a>
 <a aria-label="Open My Ayrshire College on Google Play" class="tile" href="https://play.google.com/store/apps/details?id=cloud.myday.ayrshire" rel="noopener" target="_blank">
 <span class="tile-icon">
@@ -5021,6 +5056,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
    z-index:9999">
 <div class="modal-content" style="margin:0;padding:0;border-radius:0;
        position:absolute;inset:0;width:100vw;height:100vh;max-width:none;overflow:hidden">
+    <span class="close" onclick="closeModal('requestsModal')">×</span>
+
 <!-- Top bar -->
 <div style="height:48px;display:flex;align-items:center;
          justify-content:space-between;padding:0 12px;
@@ -5500,6 +5537,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
    z-index:9999">
 <div class="modal-content" style="margin:0;padding:0;border-radius:0;
        position:absolute;inset:0;width:100vw;height:100vh;max-width:none;overflow:hidden">
+    <span class="close" onclick="closeModal('contactModal')">×</span>
+
 <!-- Top bar -->
 <div style="height:48px;display:flex;align-items:center;
          justify-content:space-between;padding:0 12px;
@@ -9770,6 +9809,44 @@ document.addEventListener('visibilitychange', () => {
 });
 
 </script>
+
+<script id="global-modal-close-helpers">
+(function(){
+  function closeAllModals(){
+    document.querySelectorAll('.modal').forEach(function(m){
+      m.style.display = 'none';
+      m.classList && m.classList.remove('active');
+    });
+    document.body.classList.remove('modal-open');
+    if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
+  }
+  // Backdrop click closes any open modal
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.classList && e.target.classList.contains('modal')) {
+      closeAllModals();
+    }
+  }, true);
+  // ESC closes
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { closeAllModals(); }
+  });
+  // Close button inside a modal
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.close');
+    if (!btn) return;
+    var modal = btn.closest('.modal');
+    if (modal){
+      modal.style.display = 'none';
+      modal.classList && modal.classList.remove('active');
+      if (!document.querySelector('.modal.active')) {
+        document.body.classList.remove('modal-open');
+      }
+      if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
+    }
+  });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
