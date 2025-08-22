@@ -299,7 +299,7 @@
     async function updateRecent() {
       try {
         const data = await (await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_='+Date.now())).json();
-        let items = data.slice(-6).reverse();
+        let items = data.slice(-3).reverse();
         // Filter out the current Now Playing from the recent list
         try {
           const npArtistEl = document.getElementById("now-playing-artist") || document.getElementById("m-now-playing-artist");
