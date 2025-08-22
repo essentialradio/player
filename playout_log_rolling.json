@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 172,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:05",
-    "Displayed Time": "",
-    "Artist": "U2",
-    "Title": "One",
-    "Duration (s)": 259,
-    "Full Duration (s)": 274,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:09",
-    "Displayed Time": "",
-    "Artist": "Keith Urban",
-    "Title": "Chuck Taylors",
-    "Duration (s)": 205,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:13",
-    "Displayed Time": "",
-    "Artist": "Peggy Gou",
-    "Title": "(It Goes Like) Nanana",
-    "Duration (s)": 222,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:16",
-    "Displayed Time": "",
-    "Artist": "Green Day",
-    "Title": "American Idiot",
-    "Duration (s)": 168,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:23",
-    "Displayed Time": "",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:25",
-    "Displayed Time": "",
-    "Artist": "Harry Styles",
-    "Title": "As It Was",
-    "Duration (s)": 153,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:28",
-    "Displayed Time": "",
-    "Artist": "Dexys Midnight Runners & the Emerald Express",
-    "Title": "Come on Eileen",
-    "Duration (s)": 228,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:32",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:38",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Something To Someone",
-    "Duration (s)": 185,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:41",
-    "Displayed Time": "",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 175,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:44",
-    "Displayed Time": "",
-    "Artist": "Oasis",
-    "Title": "Wonderwall",
-    "Duration (s)": 246,
-    "Full Duration (s)": 259,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:48",
-    "Displayed Time": "",
-    "Artist": "Post Malone & Morgan Wallen",
-    "Title": "I Had Some Help",
-    "Duration (s)": 168,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T00:00:00Z",
-    "Scheduled Time": "01:51",
-    "Displayed Time": "",
-    "Artist": "James Blunt",
-    "Title": "Wisemen",
-    "Duration (s)": 183,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-08T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "",
@@ -45329,5 +45175,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-22T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "",
+    "Artist": "Lee Everest",
+    "Title": "Ready for the Weekend",
+    "Duration (s)": 1208,
+    "Full Duration (s)": 1211,
+    "Duration (mins)": 20,
+    "Full Duration (mins)": 20
   }
 ]
