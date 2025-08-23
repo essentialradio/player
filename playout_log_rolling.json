@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-08-08T18:00:00Z",
-    "Scheduled Time": "19:01",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1077,
-    "Full Duration (s)": 1082,
-    "Duration (mins)": 18,
-    "Full Duration (mins)": 18
-  },
-  {
-    "Hour": "2025-08-08T18:00:00Z",
-    "Scheduled Time": "19:20",
-    "Displayed Time": "",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1364,
-    "Full Duration (s)": 1368,
-    "Duration (mins)": 23,
-    "Full Duration (mins)": 23
-  },
-  {
     "Hour": "2025-08-08T19:00:00Z",
     "Scheduled Time": "20:03",
     "Displayed Time": "",
@@ -44911,5 +44889,16 @@
     "Full Duration (s)": 286,
     "Duration (mins)": 5,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-08-23T16:00:00Z",
+    "Scheduled Time": "17:02",
+    "Displayed Time": "",
+    "Artist": "Jan Gow",
+    "Title": "The JanCave 70s Jukebox",
+    "Duration (s)": 3544,
+    "Full Duration (s)": 3546,
+    "Duration (mins)": 59,
+    "Full Duration (mins)": 59
   }
 ]
