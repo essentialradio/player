@@ -1,170 +1,5 @@
 [
   {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "",
-    "Artist": "Sonique",
-    "Title": "Sky",
-    "Duration (s)": 231,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:05",
-    "Displayed Time": "",
-    "Artist": "Ken Doh",
-    "Title": "Nakasaki (I Need a Lover Tonight)",
-    "Duration (s)": 217,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:09",
-    "Displayed Time": "",
-    "Artist": "Samantha Fox",
-    "Title": "Nothing's Gonna Stop Me Now",
-    "Duration (s)": 206,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:13",
-    "Displayed Time": "",
-    "Artist": "The Meyers Bros ft Livvy Lauren",
-    "Title": "Give A Little Love",
-    "Duration (s)": 159,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:15",
-    "Displayed Time": "",
-    "Artist": "Todd Terry Feat. Martha Wash & Jocelyn Brown",
-    "Title": "Keep on Jumpin'",
-    "Duration (s)": 192,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:19",
-    "Displayed Time": "",
-    "Artist": "Anita Ward",
-    "Title": "Ring My Bell",
-    "Duration (s)": 200,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:26",
-    "Displayed Time": "",
-    "Artist": "Hed Boys",
-    "Title": "Girls & Boys",
-    "Duration (s)": 226,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:30",
-    "Displayed Time": "",
-    "Artist": "Hannah Laing feat. Rhys From The Sticks",
-    "Title": "4am In A Rave",
-    "Duration (s)": 141,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:32",
-    "Displayed Time": "",
-    "Artist": "Sinitta",
-    "Title": "So Macho",
-    "Duration (s)": 166,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:35",
-    "Displayed Time": "",
-    "Artist": "N-Trance Feat. Ricardo Da Force",
-    "Title": "Stayin' Alive",
-    "Duration (s)": 230,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:39",
-    "Displayed Time": "",
-    "Artist": "Infernal",
-    "Title": "From Paris to Berlin",
-    "Duration (s)": 173,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:42",
-    "Displayed Time": "",
-    "Artist": "The KLF ft Tammy Wynette",
-    "Title": "Justified and Ancient (Stand By The Jams)",
-    "Duration (s)": 211,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:45",
-    "Displayed Time": "",
-    "Artist": "Alison Goldfrapp",
-    "Title": "Find Xanadu",
-    "Duration (s)": 181,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:49",
-    "Displayed Time": "",
-    "Artist": "Robin Thicke ft Pharrell & TI",
-    "Title": "Blurred Lines",
-    "Duration (s)": 250,
-    "Full Duration (s)": 260,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T20:00:00Z",
-    "Scheduled Time": "21:53",
-    "Displayed Time": "",
-    "Artist": "The Shamen",
-    "Title": "Phorever People",
-    "Duration (s)": 214,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-08T21:00:00Z",
     "Scheduled Time": "22:01",
     "Displayed Time": "",
@@ -44757,5 +44592,16 @@
     "Full Duration (s)": 1050,
     "Duration (mins)": 17,
     "Full Duration (mins)": 18
+  },
+  {
+    "Hour": "2025-08-23T18:00:00Z",
+    "Scheduled Time": "19:02",
+    "Displayed Time": "",
+    "Artist": "Stephen Howie",
+    "Title": "Grooveline",
+    "Duration (s)": 3479,
+    "Full Duration (s)": 3480,
+    "Duration (mins)": 58,
+    "Full Duration (mins)": 58
   }
 ]
