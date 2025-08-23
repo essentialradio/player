@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:01",
-    "Displayed Time": "",
-    "Artist": "Jax Jones & Zoe Weiss",
-    "Title": "Never Be Lonely",
-    "Duration (s)": 132,
-    "Full Duration (s)": 135,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:04",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 216,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:08",
-    "Displayed Time": "",
-    "Artist": "Gabriella Cilmi",
-    "Title": "Sweet About Me",
-    "Duration (s)": 192,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:12",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga & Bruno Mars",
-    "Title": "Die With A Smile",
-    "Duration (s)": 239,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:16",
-    "Displayed Time": "",
-    "Artist": "Stardust",
-    "Title": "Music Sounds Better With You",
-    "Duration (s)": 246,
-    "Full Duration (s)": 262,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:24",
-    "Displayed Time": "",
-    "Artist": "Anne-Marie",
-    "Title": "2002",
-    "Duration (s)": 179,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:27",
-    "Displayed Time": "",
-    "Artist": "Pink",
-    "Title": "All Out Of Fight",
-    "Duration (s)": 202,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:30",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 168,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:34",
-    "Displayed Time": "",
-    "Artist": "ABC",
-    "Title": "The Look of Love",
-    "Duration (s)": 204,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:40",
-    "Displayed Time": "",
-    "Artist": "Sam Fender",
-    "Title": "Seventeen Going Under",
-    "Duration (s)": 225,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:43",
-    "Displayed Time": "",
-    "Artist": "Atomic Kitten",
-    "Title": "The Tide Is High (Get the Feeling)",
-    "Duration (s)": 198,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:47",
-    "Displayed Time": "",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 204,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:50",
-    "Displayed Time": "",
-    "Artist": "Yazoo",
-    "Title": "Only You",
-    "Duration (s)": 174,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T14:00:00Z",
-    "Scheduled Time": "15:53",
-    "Displayed Time": "",
-    "Artist": "Sam Smith",
-    "Title": "How Do You Sleep?",
-    "Duration (s)": 193,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-08T15:00:00Z",
     "Scheduled Time": "16:01",
     "Displayed Time": "",
@@ -44889,5 +44735,16 @@
     "Full Duration (s)": 295,
     "Duration (mins)": 5,
     "Full Duration (mins)": 5
+  },
+  {
+    "Hour": "2025-08-23T08:00:00Z",
+    "Scheduled Time": "09:01",
+    "Displayed Time": "",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
