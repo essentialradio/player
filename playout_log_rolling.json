@@ -1,181 +1,5 @@
 [
   {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:02",
-    "Displayed Time": "",
-    "Artist": "Kelly Clarkson",
-    "Title": "Heartbeat Song",
-    "Duration (s)": 192,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:05",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 210,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:09",
-    "Displayed Time": "",
-    "Artist": "Jennifer Lopez",
-    "Title": "Jenny From the Block",
-    "Duration (s)": 164,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:12",
-    "Displayed Time": "",
-    "Artist": "Marshmello & Jonas Brothers",
-    "Title": "Leave Before You Love Me",
-    "Duration (s)": 149,
-    "Full Duration (s)": 155,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:17",
-    "Displayed Time": "",
-    "Artist": "Tate McRae",
-    "Title": "Sports Car",
-    "Duration (s)": 159,
-    "Full Duration (s)": 165,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:20",
-    "Displayed Time": "",
-    "Artist": "Wilson Phillips",
-    "Title": "Hold On",
-    "Duration (s)": 202,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:23",
-    "Displayed Time": "",
-    "Artist": "Noah Kahan",
-    "Title": "Stick Season",
-    "Duration (s)": 172,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:26",
-    "Displayed Time": "",
-    "Artist": "Jason Derulo",
-    "Title": "The Other Side",
-    "Duration (s)": 216,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:30",
-    "Displayed Time": "",
-    "Artist": "Caity Baser",
-    "Title": "Running From Myself",
-    "Duration (s)": 150,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:35",
-    "Displayed Time": "",
-    "Artist": "Eternal",
-    "Title": "Just a Step From Heaven",
-    "Duration (s)": 214,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:39",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 169,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:42",
-    "Displayed Time": "",
-    "Artist": "Perrie",
-    "Title": "You Go Your Way",
-    "Duration (s)": 199,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:45",
-    "Displayed Time": "",
-    "Artist": "Rita Ora",
-    "Title": "Heat",
-    "Duration (s)": 167,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:48",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "All These Nights",
-    "Duration (s)": 148,
-    "Full Duration (s)": 154,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:51",
-    "Displayed Time": "",
-    "Artist": "The Monkees",
-    "Title": "Daydream Believer",
-    "Duration (s)": 172,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-08T13:00:00Z",
-    "Scheduled Time": "14:54",
-    "Displayed Time": "",
-    "Artist": "Weezer",
-    "Title": "Buddy Holly",
-    "Duration (s)": 155,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-08T14:00:00Z",
     "Scheduled Time": "15:01",
     "Displayed Time": "",
@@ -44911,5 +44735,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-23T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 181,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
