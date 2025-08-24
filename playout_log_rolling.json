@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Bill Grainger",
-    "Title": "Fire Island Hi-NRG",
-    "Duration (s)": 3596,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-08-10T00:00:00Z",
     "Scheduled Time": "01:02",
     "Displayed Time": "",
@@ -44339,5 +44328,16 @@
     "Full Duration (s)": 3591,
     "Duration (mins)": 60,
     "Full Duration (mins)": 60
+  },
+  {
+    "Hour": "2025-08-24T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "",
+    "Artist": "Kevin McCallum",
+    "Title": "Mr Rocks Show",
+    "Duration (s)": 7199,
+    "Full Duration (s)": 7205,
+    "Duration (mins)": 120,
+    "Full Duration (mins)": 120
   }
 ]
