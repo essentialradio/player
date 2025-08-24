@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:01",
-    "Displayed Time": "",
-    "Artist": "The Script",
-    "Title": "For the First Time",
-    "Duration (s)": 244,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:06",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 208,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:10",
-    "Displayed Time": "",
-    "Artist": "Sam Fender",
-    "Title": "Arm's Length",
-    "Duration (s)": 213,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:14",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "The Subway",
-    "Duration (s)": 238,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:18",
-    "Displayed Time": "",
-    "Artist": "Timbaland Feat. OneRepublic",
-    "Title": "Apologize",
-    "Duration (s)": 176,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:24",
-    "Displayed Time": "",
-    "Artist": "Starship",
-    "Title": "Nothing's Gonna Stop Us Now",
-    "Duration (s)": 223,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:28",
-    "Displayed Time": "",
-    "Artist": "Olivia Rodrigo",
-    "Title": "Vampire",
-    "Duration (s)": 211,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:32",
-    "Displayed Time": "",
-    "Artist": "Eiffel 65",
-    "Title": "Blue (Da Ba Dee)",
-    "Duration (s)": 197,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:35",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 169,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:38",
-    "Displayed Time": "",
-    "Artist": "Freemasons Feat. Bailey Tzuke",
-    "Title": "Uninvited",
-    "Duration (s)": 171,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:45",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 197,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:48",
-    "Displayed Time": "",
-    "Artist": "Nicki Minaj",
-    "Title": "Starships",
-    "Duration (s)": 202,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:51",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "It Isn't Perfect But It Might Be (From \"Bridget Jones: Mad About The Boy\")",
-    "Duration (s)": 206,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T02:00:00Z",
-    "Scheduled Time": "03:55",
-    "Displayed Time": "",
-    "Artist": "Will Smith",
-    "Title": "Miami",
-    "Duration (s)": 192,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-09T03:00:00Z",
     "Scheduled Time": "04:01",
     "Displayed Time": "",
@@ -44095,6 +43941,17 @@
     "Title": "Fly By",
     "Duration (s)": 218,
     "Full Duration (s)": 230,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-24T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "",
+    "Artist": "Taylor Swift",
+    "Title": "22",
+    "Duration (s)": 227,
+    "Full Duration (s)": 228,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
