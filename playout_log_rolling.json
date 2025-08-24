@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3380,
-    "Full Duration (s)": 3386,
-    "Duration (mins)": 56,
-    "Full Duration (mins)": 56
-  },
-  {
     "Hour": "2025-08-09T17:00:00Z",
     "Scheduled Time": "18:01",
     "Displayed Time": "",
@@ -44053,5 +44042,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-24T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
