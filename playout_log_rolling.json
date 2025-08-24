@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T18:00:00Z",
-    "Scheduled Time": "19:01",
-    "Displayed Time": "",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3479,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-09T19:00:00Z",
     "Scheduled Time": "20:00",
     "Displayed Time": "",
@@ -44339,5 +44328,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-24T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3549,
+    "Full Duration (s)": 3550,
+    "Duration (mins)": 59,
+    "Full Duration (mins)": 59
   }
 ]
