@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 160,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:04",
-    "Displayed Time": "",
-    "Artist": "Emeli Sande",
-    "Title": "Next to Me",
-    "Duration (s)": 189,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:08",
-    "Displayed Time": "",
-    "Artist": "Lorde",
-    "Title": "What Was That",
-    "Duration (s)": 204,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:11",
-    "Displayed Time": "",
-    "Artist": "Oasis",
-    "Title": "Live Forever",
-    "Duration (s)": 265,
-    "Full Duration (s)": 277,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:16",
-    "Displayed Time": "",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 182,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:22",
-    "Displayed Time": "",
-    "Artist": "Omi",
-    "Title": "Cheerleader",
-    "Duration (s)": 175,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:26",
-    "Displayed Time": "",
-    "Artist": "Mark Ambor",
-    "Title": "Belong Together",
-    "Duration (s)": 142,
-    "Full Duration (s)": 148,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:28",
-    "Displayed Time": "",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 204,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:31",
-    "Displayed Time": "",
-    "Artist": "Seal",
-    "Title": "Kiss From A Rose",
-    "Duration (s)": 279,
-    "Full Duration (s)": 284,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:36",
-    "Displayed Time": "",
-    "Artist": "Jason Mraz",
-    "Title": "I'm Yours",
-    "Duration (s)": 206,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:43",
-    "Displayed Time": "",
-    "Artist": "Rita Ora",
-    "Title": "Heat",
-    "Duration (s)": 168,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:46",
-    "Displayed Time": "",
-    "Artist": "Black Box",
-    "Title": "Ride on Time",
-    "Duration (s)": 257,
-    "Full Duration (s)": 274,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:50",
-    "Displayed Time": "",
-    "Artist": "Ravyn Lanae",
-    "Title": "Love Me Not",
-    "Duration (s)": 161,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T05:00:00Z",
-    "Scheduled Time": "06:53",
-    "Displayed Time": "",
-    "Artist": "Smash Mouth",
-    "Title": "All Star",
-    "Duration (s)": 189,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-09T06:00:00Z",
     "Scheduled Time": "07:01",
     "Displayed Time": "",
@@ -44107,6 +43953,17 @@
     "Duration (s)": 208,
     "Full Duration (s)": 218,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-24T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 250,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
