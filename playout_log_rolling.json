@@ -1,148 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:01",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:05",
-    "Displayed Time": "",
-    "Artist": "DNCE",
-    "Title": "Cake by the Ocean",
-    "Duration (s)": 214,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:08",
-    "Displayed Time": "",
-    "Artist": "Jennifer Lopez",
-    "Title": "Waiting for Tonight",
-    "Duration (s)": 241,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:12",
-    "Displayed Time": "",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 221,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:19",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga",
-    "Title": "Paparazzi",
-    "Duration (s)": 200,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:23",
-    "Displayed Time": "",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 228,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:27",
-    "Displayed Time": "",
-    "Artist": "Labrinth",
-    "Title": "Let The Sun Shine",
-    "Duration (s)": 176,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:31",
-    "Displayed Time": "",
-    "Artist": "Blur",
-    "Title": "Girls & Boys",
-    "Duration (s)": 245,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:35",
-    "Displayed Time": "",
-    "Artist": "Ella Eyre",
-    "Title": "Space",
-    "Duration (s)": 160,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:38",
-    "Displayed Time": "",
-    "Artist": "Pink",
-    "Title": "Beautiful Trauma",
-    "Duration (s)": 239,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:46",
-    "Displayed Time": "",
-    "Artist": "Jessie J",
-    "Title": "Living My Best Life",
-    "Duration (s)": 173,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:49",
-    "Displayed Time": "",
-    "Artist": "Bruce Springsteen",
-    "Title": "Born in the USA",
-    "Duration (s)": 267,
-    "Full Duration (s)": 279,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-09T08:00:00Z",
-    "Scheduled Time": "09:53",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Gold",
-    "Duration (s)": 160,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
     "Hour": "2025-08-09T09:00:00Z",
     "Scheduled Time": "10:01",
     "Displayed Time": "",
@@ -44108,5 +43965,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-24T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 164,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
