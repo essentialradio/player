@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T17:00:00Z",
-    "Scheduled Time": "18:01",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1377,
-    "Full Duration (s)": 1381,
-    "Duration (mins)": 23,
-    "Full Duration (mins)": 23
-  },
-  {
-    "Hour": "2025-08-09T17:00:00Z",
-    "Scheduled Time": "18:26",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 853,
-    "Full Duration (s)": 858,
-    "Duration (mins)": 14,
-    "Full Duration (mins)": 14
-  },
-  {
-    "Hour": "2025-08-09T17:00:00Z",
-    "Scheduled Time": "18:41",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1056,
-    "Full Duration (s)": 1058,
-    "Duration (mins)": 18,
-    "Full Duration (mins)": 18
-  },
-  {
     "Hour": "2025-08-09T18:00:00Z",
     "Scheduled Time": "19:01",
     "Displayed Time": "",
@@ -44196,5 +44163,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-24T12:00:00Z",
+    "Scheduled Time": "13:01",
+    "Displayed Time": "",
+    "Artist": "Post Malone & Morgan Wallen",
+    "Title": "I Had Some Help",
+    "Duration (s)": 174,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
