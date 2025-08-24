@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:01",
-    "Displayed Time": "",
-    "Artist": "John Legend",
-    "Title": "All of Me",
-    "Duration (s)": 175,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:05",
-    "Displayed Time": "",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 156,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:07",
-    "Displayed Time": "",
-    "Artist": "The Human League",
-    "Title": "(Keep Feeling) Fascination",
-    "Duration (s)": 209,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:11",
-    "Displayed Time": "",
-    "Artist": "Daft Punk",
-    "Title": "One More Time",
-    "Duration (s)": 228,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:19",
-    "Displayed Time": "",
-    "Artist": "Lady Gaga",
-    "Title": "Abracadabra",
-    "Duration (s)": 213,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:23",
-    "Displayed Time": "",
-    "Artist": "PinkPantheress",
-    "Title": "Illegal",
-    "Duration (s)": 146,
-    "Full Duration (s)": 150,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:26",
-    "Displayed Time": "",
-    "Artist": "Robbie Williams",
-    "Title": "Let Me Entertain You",
-    "Duration (s)": 210,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:29",
-    "Displayed Time": "",
-    "Artist": "Darius",
-    "Title": "Colourblind",
-    "Duration (s)": 200,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:33",
-    "Displayed Time": "",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 215,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:41",
-    "Displayed Time": "",
-    "Artist": "The Commodores",
-    "Title": "Easy",
-    "Duration (s)": 228,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:44",
-    "Displayed Time": "",
-    "Artist": "Lola Young",
-    "Title": "Messy",
-    "Duration (s)": 191,
-    "Full Duration (s)": 284,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:49",
-    "Displayed Time": "",
-    "Artist": "Razorlight",
-    "Title": "In the Morning",
-    "Duration (s)": 211,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:52",
-    "Displayed Time": "",
-    "Artist": "CeCe Peniston",
-    "Title": "Finally",
-    "Duration (s)": 232,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-09T11:00:00Z",
-    "Scheduled Time": "12:56",
-    "Displayed Time": "",
-    "Artist": "The Rolling Stones",
-    "Title": "Start Me Up",
-    "Duration (s)": 202,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-09T16:00:00Z",
     "Scheduled Time": "17:02",
     "Displayed Time": "",
@@ -44052,6 +43898,17 @@
     "Duration (s)": 228,
     "Full Duration (s)": 240,
     "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-24T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "",
+    "Artist": "Chic",
+    "Title": "Le Freak",
+    "Duration (s)": 206,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3,
     "Full Duration (mins)": 4
   }
 ]
