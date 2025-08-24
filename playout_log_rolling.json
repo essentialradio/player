@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-09T20:00:00Z",
-    "Scheduled Time": "21:00",
-    "Displayed Time": "",
-    "Artist": "Big Tommy",
-    "Title": "Big Fat  Party Anthems",
-    "Duration (s)": 10796,
-    "Full Duration (s)": 10801,
-    "Duration (mins)": 180,
-    "Full Duration (mins)": 180
-  },
-  {
     "Hour": "2025-08-09T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "",
@@ -44339,5 +44328,16 @@
     "Full Duration (s)": 3481,
     "Duration (mins)": 58,
     "Full Duration (mins)": 58
+  },
+  {
+    "Hour": "2025-08-24T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3590,
+    "Full Duration (s)": 3591,
+    "Duration (mins)": 60,
+    "Full Duration (mins)": 60
   }
 ]
