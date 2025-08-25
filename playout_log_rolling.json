@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-11T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3399,
-    "Full Duration (s)": 3403,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-08-11T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -44920,6 +44909,17 @@
     "Title": "Lovers In A Past Life",
     "Duration (s)": 151,
     "Full Duration (s)": 161,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-25T18:00:00Z",
+    "Scheduled Time": "19:02",
+    "Displayed Time": "",
+    "Artist": "Wild Cherry",
+    "Title": "Play That Funky Music",
+    "Duration (s)": 180,
+    "Full Duration (s)": 192,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
