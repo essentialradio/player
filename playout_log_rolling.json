@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-10T21:00:00Z",
-    "Scheduled Time": "22:03",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3472,
-    "Full Duration (s)": 3475,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-10T22:00:00Z",
     "Scheduled Time": "23:00",
     "Displayed Time": "",
@@ -44480,6 +44469,17 @@
     "Title": "Last Night's Mascara",
     "Duration (s)": 174,
     "Full Duration (s)": 177,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-25T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "",
+    "Artist": "Olivia Rodrigo",
+    "Title": "Good 4 U",
+    "Duration (s)": 171,
+    "Full Duration (s)": 178,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
