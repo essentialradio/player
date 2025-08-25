@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-10T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3549,
-    "Full Duration (s)": 3550,
-    "Duration (mins)": 59,
-    "Full Duration (mins)": 59
-  },
-  {
     "Hour": "2025-08-10T14:00:00Z",
     "Scheduled Time": "15:00",
     "Displayed Time": "",
@@ -43655,6 +43644,17 @@
     "Title": "A Little Bit More",
     "Duration (s)": 166,
     "Full Duration (s)": 170,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-25T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
