@@ -203,6 +203,66 @@
       "desc": "5 km dog walk with a dog show\u2014fun family day out supporting Ayrshire Hospice.",
       "link": "https://www.ayrshirehospice.org/event/waggy-tail-walk-and-dog-show/",
       "source": "Ayrshire Hospice"
+    },
+    {
+      "title": "Tidelines Book Festival",
+      "start_date": "2025-09-25",
+      "end_date": "2025-09-28",
+      "start_time": "00:00",
+      "end_time": "23:59",
+      "venue": "Harbour Arts Centre and venues",
+      "town": "Irvine",
+      "desc": "Multi-day literary festival with storytelling, author talks, and family activities.",
+      "link": "https://www.tidelinesbookfestival.com/",
+      "source": "Tidelines / North Ayrshire"
+    },
+    {
+      "title": "Largs Regatta Festival",
+      "start_date": "2025-08-30",
+      "end_date": "2025-09-07",
+      "start_time": "00:00",
+      "end_time": "23:59",
+      "venue": "Largs Yacht Haven",
+      "town": "Largs",
+      "desc": "Regatta racing on the Firth of Clyde with onshore entertainment and family activities.",
+      "link": "https://www.largsregattafestival.com/",
+      "source": "Largs Regatta Festival"
+    },
+    {
+      "title": "Dalry Motor Show",
+      "start_date": "2025-08-31",
+      "end_date": "2025-08-31",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "venue": "Dalry Show Fields",
+      "town": "Dalry",
+      "desc": "Classic and performance cars, stalls and family entertainment.",
+      "link": "https://www.facebook.com/dalrymotorshow/",
+      "source": "Dalry Motor Show"
+    },
+    {
+      "title": "Circus Zyair at Eglinton Country Park",
+      "start_date": "2025-09-03",
+      "end_date": "2025-09-07",
+      "start_time": "11:00",
+      "end_time": "21:00",
+      "venue": "Eglinton Country Park",
+      "town": "Irvine/Kilwinning",
+      "desc": "Travelling circus with acrobats and stunt acts; multiple daily shows.",
+      "link": "https://www.circuszyair.co.uk/",
+      "source": "Circus Zyair"
+    },
+    {
+      "title": "Monster Halloween Fun \u2013 Scottish Maritime Museum",
+      "start_date": "2025-10-30",
+      "end_date": "2025-10-30",
+      "start_time": "10:00",
+      "end_time": "16:30",
+      "venue": "Scottish Maritime Museum",
+      "town": "Irvine",
+      "desc": "Spooky Halloween fun day with free entry for kids, craft activities and family games.",
+      "link": "https://www.scottishmaritimemuseum.org/",
+      "source": "Scottish Maritime Museum"
     }
   ],
   "south": [
@@ -433,6 +493,66 @@
       "desc": "Community gala with family activities, stalls, stage and amusements.",
       "link": "https://destinationsouthayrshire.co.uk/whats-on/",
       "source": "Destination South Ayrshire"
+    },
+    {
+      "title": "Dunure Festival of the Sea",
+      "start_date": "2025-08-23",
+      "end_date": "2025-08-23",
+      "start_time": "13:00",
+      "end_time": "23:00",
+      "venue": "Harbour Area",
+      "town": "Dunure",
+      "desc": "Family-friendly seaside festival with live music, stalls and activities on the harbourfront.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/dunure-festival-of-the-sea/",
+      "source": "Destination South Ayrshire"
+    },
+    {
+      "title": "Auld Kirk of Ayr \u2013 Open to Visitors",
+      "start_date": "2025-08-26",
+      "end_date": "2025-09-04",
+      "start_time": "00:00",
+      "end_time": "23:59",
+      "venue": "Auld Kirk of Ayr",
+      "town": "Ayr",
+      "desc": "Historic church open days; family-friendly heritage visit. Check listing for opening times.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/",
+      "source": "Destination South Ayrshire"
+    },
+    {
+      "title": "Family Crafting Event \u2013 Forehill Library, Ayr",
+      "start_date": "2025-10-15",
+      "end_date": "2025-10-15",
+      "start_time": "10:00",
+      "end_time": "12:00",
+      "venue": "Forehill Library",
+      "town": "Ayr",
+      "desc": "Half-term family craft sessions for children and parents.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/",
+      "source": "Destination South Ayrshire"
+    },
+    {
+      "title": "The McDougalls: Halloween Party",
+      "start_date": "2025-10-25",
+      "end_date": "2025-10-25",
+      "start_time": "14:00",
+      "end_time": "15:30",
+      "venue": "Gaiety Theatre",
+      "town": "Ayr",
+      "desc": "Musical Halloween theatre show for young children and families.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/the-mcdougalls-halloween-party/",
+      "source": "Destination South Ayrshire"
+    },
+    {
+      "title": "Tamfest \u2013 Halloween with a Tam O\u2019Shanter Twist",
+      "start_date": "2025-10-26",
+      "end_date": "2025-10-26",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "venue": "Town Centre",
+      "town": "Ayr",
+      "desc": "Halloween festival in Ayr with spooky performances, market stalls and family fun.",
+      "link": "https://www.south-ayrshire.gov.uk/",
+      "source": "South Ayrshire Council"
     }
   ],
   "east": [
@@ -483,6 +603,18 @@
       "desc": "Community fun day with stalls, kids\u2019 activities and live entertainment.",
       "link": "https://www.facebook.com/photo.php?fbid=1134698112012402&id=100064166704021",
       "source": "Facebook (Cumnock)"
+    },
+    {
+      "title": "Fun Interactive Family Show \u2013 Cumnock Town Hall",
+      "start_date": "2025-10-18",
+      "end_date": "2025-10-18",
+      "start_time": "13:00",
+      "end_time": "14:00",
+      "venue": "Cumnock Town Hall",
+      "town": "Cumnock",
+      "desc": "Interactive children\u2019s theatre performance, based on a picture book story.",
+      "link": "https://eastayrshireleisure.com/whats-on/",
+      "source": "East Ayrshire Leisure"
     }
   ]
 }
