@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-10T20:00:00Z",
-    "Scheduled Time": "21:03",
-    "Displayed Time": "",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3472,
-    "Full Duration (s)": 3474,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-10T21:00:00Z",
     "Scheduled Time": "22:03",
     "Displayed Time": "",
@@ -44337,6 +44326,17 @@
     "Title": "She's a Star",
     "Duration (s)": 213,
     "Full Duration (s)": 221,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-25T14:00:00Z",
+    "Scheduled Time": "15:01",
+    "Displayed Time": "",
+    "Artist": "Rema ft Selena Gomez",
+    "Title": "Calm Down",
+    "Duration (s)": 233,
+    "Full Duration (s)": 239,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
