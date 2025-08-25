@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-10T14:00:00Z",
-    "Scheduled Time": "15:00",
-    "Displayed Time": "",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3480,
-    "Full Duration (s)": 3481,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-10T15:00:00Z",
     "Scheduled Time": "16:03",
     "Displayed Time": "",
@@ -43789,5 +43778,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-25T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "",
+    "Artist": "Elvis vs JXL",
+    "Title": "A Little Less Conversation",
+    "Duration (s)": 210,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
