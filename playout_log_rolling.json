@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:02",
-    "Displayed Time": "",
-    "Artist": "Dolly Parton",
-    "Title": "9 To 5",
-    "Duration (s)": 153,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:05",
-    "Displayed Time": "",
-    "Artist": "Frankie Goes to Hollywood",
-    "Title": "Two Tribes",
-    "Duration (s)": 223,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:09",
-    "Displayed Time": "",
-    "Artist": "Shakin' Stevens & Bonnie Tyler",
-    "Title": "A Rockin' Good Way (To Mess Around and Fall in Love)",
-    "Duration (s)": 160,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:11",
-    "Displayed Time": "",
-    "Artist": "Madness",
-    "Title": "House of Fun",
-    "Duration (s)": 153,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:14",
-    "Displayed Time": "",
-    "Artist": "Bruce Springsteen",
-    "Title": "Cover Me",
-    "Duration (s)": 194,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:20",
-    "Displayed Time": "",
-    "Artist": "Shalamar",
-    "Title": "A Night to Remember",
-    "Duration (s)": 193,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:24",
-    "Displayed Time": "",
-    "Artist": "Blancmange",
-    "Title": "Blind Vision",
-    "Duration (s)": 223,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:28",
-    "Displayed Time": "",
-    "Artist": "Irene Cara",
-    "Title": "Fame",
-    "Duration (s)": 210,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:31",
-    "Displayed Time": "",
-    "Artist": "The Smiths",
-    "Title": "There is a Light That Never Goes Out",
-    "Duration (s)": 221,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:39",
-    "Displayed Time": "",
-    "Artist": "New Order",
-    "Title": "Blue Monday '88",
-    "Duration (s)": 232,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:43",
-    "Displayed Time": "",
-    "Artist": "ZZ Top",
-    "Title": "Sharp Dressed Man",
-    "Duration (s)": 168,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:46",
-    "Displayed Time": "",
-    "Artist": "The Cure",
-    "Title": "Close to Me",
-    "Duration (s)": 205,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:49",
-    "Displayed Time": "",
-    "Artist": "The Jam",
-    "Title": "That's Entertainment",
-    "Duration (s)": 191,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T19:00:00Z",
-    "Scheduled Time": "20:53",
-    "Displayed Time": "",
-    "Artist": "Rick Astley",
-    "Title": "Never Gonna Give You Up",
-    "Duration (s)": 197,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-11T20:00:00Z",
     "Scheduled Time": "21:01",
     "Displayed Time": "",
@@ -45075,6 +44921,17 @@
     "Duration (s)": 201,
     "Full Duration (s)": 210,
     "Duration (mins)": 3,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-26T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "",
+    "Artist": "Eminem",
+    "Title": "Houdini",
+    "Duration (s)": 220,
+    "Full Duration (s)": 244,
+    "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
 ]
