@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:01",
-    "Displayed Time": "",
-    "Artist": "Maroon 5",
-    "Title": "Sunday Morning",
-    "Duration (s)": 233,
-    "Full Duration (s)": 241,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:05",
-    "Displayed Time": "",
-    "Artist": "Soft Cell",
-    "Title": "Say Hello, Wave Goodbye",
-    "Duration (s)": 302,
-    "Full Duration (s)": 325,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 5
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:10",
-    "Displayed Time": "",
-    "Artist": "Chris Rea",
-    "Title": "Josephine",
-    "Duration (s)": 220,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:14",
-    "Displayed Time": "",
-    "Artist": "Sting",
-    "Title": "If I Ever Lose My Faith in You",
-    "Duration (s)": 248,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:21",
-    "Displayed Time": "",
-    "Artist": "Gabrielle",
-    "Title": "Rise",
-    "Duration (s)": 201,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:24",
-    "Displayed Time": "",
-    "Artist": "Chris de Burgh",
-    "Title": "The Lady in Red",
-    "Duration (s)": 234,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:29",
-    "Displayed Time": "",
-    "Artist": "Matchbox Twenty",
-    "Title": "Push",
-    "Duration (s)": 225,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:32",
-    "Displayed Time": "",
-    "Artist": "Elton John",
-    "Title": "Don't Let the Sun Go Down on Me",
-    "Duration (s)": 321,
-    "Full Duration (s)": 339,
-    "Duration (mins)": 5,
-    "Full Duration (mins)": 6
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:42",
-    "Displayed Time": "",
-    "Artist": "Ace of Base",
-    "Title": "All That She Wants",
-    "Duration (s)": 196,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:46",
-    "Displayed Time": "",
-    "Artist": "Snow Patrol",
-    "Title": "Run",
-    "Duration (s)": 248,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:50",
-    "Displayed Time": "",
-    "Artist": "Pink",
-    "Title": "What About Us",
-    "Duration (s)": 225,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-11T22:00:00Z",
-    "Scheduled Time": "23:54",
-    "Displayed Time": "",
-    "Artist": "The Commodores",
-    "Title": "Sail On",
-    "Duration (s)": 222,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-11T23:00:00Z",
     "Scheduled Time": "00:01",
     "Displayed Time": "",
@@ -45118,6 +44986,17 @@
     "Title": "Hand in My Pocket",
     "Duration (s)": 213,
     "Full Duration (s)": 216,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-26T16:00:00Z",
+    "Scheduled Time": "17:03",
+    "Displayed Time": "",
+    "Artist": "Jess Glynne",
+    "Title": "Hold My Hand",
+    "Duration (s)": 216,
+    "Full Duration (s)": 227,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
   }
