@@ -1,115 +1,5 @@
 [
   {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:02",
-    "Displayed Time": "",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 174,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:05",
-    "Displayed Time": "",
-    "Artist": "Chappell Roan",
-    "Title": "Good Luck, Babe!",
-    "Duration (s)": 210,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:11",
-    "Displayed Time": "",
-    "Artist": "Natalie Imbruglia",
-    "Title": "Torn",
-    "Duration (s)": 233,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:19",
-    "Displayed Time": "",
-    "Artist": "Fleetwood Mac",
-    "Title": "Little Lies",
-    "Duration (s)": 202,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:27",
-    "Displayed Time": "",
-    "Artist": "Tunde",
-    "Title": "Rain To A Rainbow",
-    "Duration (s)": 195,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:33",
-    "Displayed Time": "",
-    "Artist": "Sam Fender",
-    "Title": "Seventeen Going Under",
-    "Duration (s)": 230,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:37",
-    "Displayed Time": "",
-    "Artist": "The Corrs",
-    "Title": "What Can I Do",
-    "Duration (s)": 252,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:42",
-    "Displayed Time": "",
-    "Artist": "Green Day",
-    "Title": "Good Riddance (Time of Your Life)",
-    "Duration (s)": 143,
-    "Full Duration (s)": 149,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:50",
-    "Displayed Time": "",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 214,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-12T07:00:00Z",
-    "Scheduled Time": "08:56",
-    "Displayed Time": "",
-    "Artist": "Olly Murs Feat. Demi Lovato",
-    "Title": "Up",
-    "Duration (s)": 220,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-12T08:00:00Z",
     "Scheduled Time": "09:03",
     "Displayed Time": "",
@@ -45043,5 +44933,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-27T01:00:00Z",
+    "Scheduled Time": "02:02",
+    "Displayed Time": "",
+    "Artist": "Lady Gaga",
+    "Title": "Born This Way",
+    "Duration (s)": 212,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
