@@ -4383,12 +4383,19 @@ html[data-theme="light"] #mobileNowBar {
 <div class="header-spacer"></div>
 <div style="width:100%;display:flex;justify-content:center;">
 <div class="player-wrapper">
-<img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png"/>
+    <!--
+      The Essential Radio logo has been removed because the original asset
+      referenced a missing file (ERLogo2.png). Displaying a large placeholder
+      distorted the layout and overlapped the navigation bar. If you have the
+      official logo file available, you can reintroduce it here with the
+      original class="logo-overhang" styles. Otherwise, leaving this empty
+      keeps the header clean and uncluttered.
+    -->
 <!-- ✅ MAIN PLAYER WRAPPER -->
 <div class="strip-container three-panel"><div class="strip-topbar"></div>
 <!-- LEFT PANEL -->
 <div class="left-panel">
-<div id="onAirNow" style="text-align:right">
+<div id="onAirNow" style="text-align:center">
 <span class="pulsing-label">ON AIR NOW</span>
 <span id="currentShow" style="font-weight:600">Loading…</span>
 </div>
@@ -7110,6 +7117,17 @@ function openLivePresenterModal() {
 <p>Retro Charts</p>
 </a>
 
+
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-keelin-mckenna');return false;" aria-label="Open profile for Keelin McKenna">
+  <img src="Keelin-McKenna.jpg" alt="Keelin McKenna" loading="lazy"/>
+  <h3>Keelin McKenna</h3>
+  <p>Feelgood Lunch</p>
+</a>
+      <a class="presenter-card" href="#" onclick="openPresenterModal('presenter-holly-nelson');return false;" aria-label="Open profile for Holly Nelson">
+  <img src="Holly-Nelson.jpg" alt="Holly Nelson" loading="lazy"/>
+  <h3>Holly Nelson</h3>
+  <p>Feelgood Lunch</p>
+</a>
 </div>
 <!-- PRESENTERS MODAL STYLES -->
 <style>
@@ -9862,6 +9880,26 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
+
+<div id="presenter-keelin-mckenna" class="modal presenter-modal" role="dialog" aria-modal="true" aria-label="Keelin McKenna profile">
+  <div class="modal-content">
+    <span class="close" aria-label="Close" onclick="closeModal('presenter-keelin-mckenna')">&times;</span>
+    <h2>Keelin McKenna</h2>
+    <img src="Keelin-McKenna.jpg" alt="Keelin McKenna" style="width:140px;height:140px;border-radius:50%;border:2px solid #fed351;object-fit:cover;margin:6px 0 10px 0"/>
+    <p>Join Keelin for your Feelgood Lunch every Wednesday between 12 and 2.</p>
+    <p><em>Tap outside this window or press Esc to close.</em></p>
+  </div>
+</div>
+
+<div id="presenter-holly-nelson" class="modal presenter-modal" role="dialog" aria-modal="true" aria-label="Holly Nelson profile">
+  <div class="modal-content">
+    <span class="close" aria-label="Close" onclick="closeModal('presenter-holly-nelson')">&times;</span>
+    <h2>Holly Nelson</h2>
+    <img src="Holly-Nelson.jpg" alt="Holly Nelson" style="width:140px;height:140px;border-radius:50%;border:2px solid #fed351;object-fit:cover;margin:6px 0 10px 0"/>
+    <p>Join Holly for your Feelgood Lunch every Thursday between 12 and 2.</p>
+    <p><em>Tap outside this window or press Esc to close.</em></p>
+  </div>
+</div>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
