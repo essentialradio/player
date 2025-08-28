@@ -4383,12 +4383,19 @@ html[data-theme="light"] #mobileNowBar {
 <div class="header-spacer"></div>
 <div style="width:100%;display:flex;justify-content:center;">
 <div class="player-wrapper">
-<img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png"/>
+    <!--
+      The Essential Radio logo has been removed because the original asset
+      referenced a missing file (ERLogo2.png). Displaying a large placeholder
+      distorted the layout and overlapped the navigation bar. If you have the
+      official logo file available, you can reintroduce it here with the
+      original class="logo-overhang" styles. Otherwise, leaving this empty
+      keeps the header clean and uncluttered.
+    -->
 <!-- ✅ MAIN PLAYER WRAPPER -->
 <div class="strip-container three-panel"><div class="strip-topbar"></div>
 <!-- LEFT PANEL -->
 <div class="left-panel">
-<div id="onAirNow" style="text-align:right">
+<div id="onAirNow" style="text-align:center">
 <span class="pulsing-label">ON AIR NOW</span>
 <span id="currentShow" style="font-weight:600">Loading…</span>
 </div>
@@ -4834,7 +4841,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <path d="M12 3 2 8l10 5 10-5-10-5zM6 11v4.5c0 1.7 3 3.5 6 3.5s6-1.8 6-3.5V11l-6 3-6-3z"></path>
 </svg>
 </span>
-<span class="tile-caption">Apple</span>
+<span class="tile-caption">iOS</span>
 </a>
 <a aria-label="Open My Ayrshire College on Google Play" class="tile" href="https://play.google.com/store/apps/details?id=cloud.myday.ayrshire" rel="noopener" target="_blank">
 <span class="tile-icon">
@@ -5740,7 +5747,6 @@ group.forEach(show => {
 "Tim Graham": "Tim-Graham.jpeg",
     "Bex McNamee": "Bex-Mcnamee.jpg",
 	"Kevin McCallum": "Kevin-Mccallum.jpg"
-"Keelin McKenna": "Keelin-Mckenna.jpg"
   };
 
   // ✅ Use override if available, else fall back to slug
@@ -6653,7 +6659,7 @@ function openLivePresenterModal() {
 <span class="close" onclick="closePresenterModal('presenter-bex-mcnamee')">×</span>
 <h2>Bex McNamee</h2>
 <!-- Presenter Image -->
-<img alt="Bex McNamee" src="Bex-Mcnamee.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
+<img alt="Bex NcNamee" src="Bex-Mcnamee.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
 <p>Bex brings fun, energy and student buzz to <strong>Feelgood Lunch</strong> and <strong>The Midweek Mash-Up</strong>.</p>
 <p>She describes her life as a daily cartoon episode – full of unpredictability and humour. A lover of 2000s pop culture, Bex is big on Buffy, Scooby-Doo, 80s hip-hop and anything with nostalgia and chaos mixed in.</p>
 <h3>Get to know Bex</h3>
@@ -6677,23 +6683,7 @@ function openLivePresenterModal() {
 <img alt="Scott O'Hare" src="Scott-OHare.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
 <p>Oh yes! Scott eases you out of the workday on <strong>Essential Hometime</strong>, with upbeat tunes, campus updates and his trademark dry wit. OHH YESSSSS!!!!</p>
 </div>
-<div class="modal presenter-modal" id="presenter-keelin-mckenna" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closePresenterModal('presenter-keelin-mckenna')">×</span>
-<h2>Keelin McKenna</h2>
-<!-- Presenter Image -->
-<img alt="Keelin McKenna" src="Keelin-McKenna.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
-<p>Join Keelin for your Feelgood Lunch every Wednesday between 12 and 2.</p>
-</div>
-<div class="modal presenter-modal" id="presenter-holly-nelson" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
-<span class="close" onclick="closePresenterModal('presenter-holly-nelson')">×</span>
-<h2>Holly Nelson</h2>
-<!-- Presenter Image -->
-<img alt="Holly Nelson" src="Holly-Nelson.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
-<p>Join Holly for your Feelgood Lunch every Thursday between 12 and 2.</p>
-</div>
-<div class="modal presenter-modal" id="presenter-faith-montgomery" style="z-index: 10001">
+</div><div class="modal presenter-modal" id="presenter-faith-montgomery" style="z-index: 10001">
 <div class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-faith-montgomery')">×</span>
 <h2>Faith Montgomery</h2>
@@ -7046,15 +7036,7 @@ function openLivePresenterModal() {
 <h3>Scott O'Hare</h3>
 <p>Essential Hometime</p>
 </a>
-<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-keelin-mckenna');return false;">
-<img alt="Keelin McKenna" src="Keelin-Mckenna.jpg"/>
-<h3>Keelin McKenna</h3>
-<p>Feelgood Lunch</p>
-</a><a class="presenter-card" href="#" onclick="openPresenterModal('presenter-holly-nelson');return false;">
-<img alt="Holly Nelson" src="Holly-Nelson.jpg"/>
-<h3>Holly Nelson</h3>
-<p>Feelgood Lunch</p>
-</a><a class="presenter-card" href="#" onclick="openPresenterModal('presenter-faith-montgomery');return false;">
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-faith-montgomery');return false;">
 <img alt="Faith Montgomery" src="Faith-Montgomery.jpg"/>
 <h3>Faith Montgomery</h3>
 <p>Feelgood Lunch</p>
@@ -7135,6 +7117,17 @@ function openLivePresenterModal() {
 <p>Retro Charts</p>
 </a>
 
+
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-keelin-mckenna');return false;" aria-label="Open profile for Keelin McKenna">
+  <img src="Keelin-McKenna.jpg" alt="Keelin McKenna" loading="lazy"/>
+  <h3>Keelin McKenna</h3>
+  <p>Feelgood Lunch</p>
+</a>
+      <a class="presenter-card" href="#" onclick="openPresenterModal('presenter-holly-nelson');return false;" aria-label="Open profile for Holly Nelson">
+  <img src="Holly-Nelson.jpg" alt="Holly Nelson" loading="lazy"/>
+  <h3>Holly Nelson</h3>
+  <p>Feelgood Lunch</p>
+</a>
 </div>
 <!-- PRESENTERS MODAL STYLES -->
 <style>
@@ -9886,53 +9879,27 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
-<script>
-// Travel modal: make the 5 list items open in normal popup windows
-document.addEventListener("DOMContentLoaded", () => {
-  const travelModal = document.getElementById("travelModal");
-  if (!travelModal) return;
 
-  // Find each <details> block (each list entry)
-  const sections = travelModal.querySelectorAll("details");
-  sections.forEach(detailsEl => {
-    const summary = detailsEl.querySelector("summary");
-    const iframe = detailsEl.querySelector("iframe");
-    if (!summary || !iframe) return;
 
-    const url = iframe.getAttribute("src");
-    // Make it look clickable
-    summary.style.cursor = "pointer";
+<div id="presenter-keelin-mckenna" class="modal presenter-modal" role="dialog" aria-modal="true" aria-label="Keelin McKenna profile">
+  <div class="modal-content">
+    <span class="close" aria-label="Close" onclick="closeModal('presenter-keelin-mckenna')">&times;</span>
+    <h2>Keelin McKenna</h2>
+    <img src="Keelin-McKenna.jpg" alt="Keelin McKenna" style="width:140px;height:140px;border-radius:50%;border:2px solid #fed351;object-fit:cover;margin:6px 0 10px 0"/>
+    <p>Join Keelin for your Feelgood Lunch every Wednesday between 12 and 2.</p>
+    <p><em>Tap outside this window or press Esc to close.</em></p>
+  </div>
+</div>
 
-    // Click (mouse/touch)
-    summary.addEventListener("click", (e) => {
-      e.preventDefault();             // stop native toggle
-      e.stopPropagation();
-      window.open(
-        url,
-        "travelPopup",
-        "width=900,height=700,scrollbars=yes,resizable=yes"
-      );
-      // ensure the section doesn't remain open
-      detailsEl.open = false;
-    });
-
-    // Keyboard: Enter/Space should also open popup
-    summary.addEventListener("keydown", (e) => {
-      const key = e.key || e.code;
-      if (key === "Enter" || key === " " || key === "Spacebar") {
-        e.preventDefault();
-        window.open(
-          url,
-          "travelPopup",
-          "width=900,height=700,scrollbars=yes,resizable=yes"
-        );
-        detailsEl.open = false;
-      }
-    });
-  });
-});
-</script>
-
+<div id="presenter-holly-nelson" class="modal presenter-modal" role="dialog" aria-modal="true" aria-label="Holly Nelson profile">
+  <div class="modal-content">
+    <span class="close" aria-label="Close" onclick="closeModal('presenter-holly-nelson')">&times;</span>
+    <h2>Holly Nelson</h2>
+    <img src="Holly-Nelson.jpg" alt="Holly Nelson" style="width:140px;height:140px;border-radius:50%;border:2px solid #fed351;object-fit:cover;margin:6px 0 10px 0"/>
+    <p>Join Holly for your Feelgood Lunch every Thursday between 12 and 2.</p>
+    <p><em>Tap outside this window or press Esc to close.</em></p>
+  </div>
+</div>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
