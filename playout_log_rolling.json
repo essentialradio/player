@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "",
-    "Artist": "Dermot Kennedy",
-    "Title": "Something To Someone",
-    "Duration (s)": 190,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:05",
-    "Displayed Time": "",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 161,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:08",
-    "Displayed Time": "",
-    "Artist": "Tom Grennan",
-    "Title": "Little Bit of Love",
-    "Duration (s)": 199,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:11",
-    "Displayed Time": "",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 199,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:15",
-    "Displayed Time": "",
-    "Artist": "Amy Winehouse",
-    "Title": "Back to Black",
-    "Duration (s)": 233,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:22",
-    "Displayed Time": "",
-    "Artist": "Duran Duran",
-    "Title": "Hungry Like the Wolf",
-    "Duration (s)": 196,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:25",
-    "Displayed Time": "",
-    "Artist": "The Weeknd",
-    "Title": "Blinding Lights",
-    "Duration (s)": 193,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:29",
-    "Displayed Time": "",
-    "Artist": "White Town",
-    "Title": "Your Woman",
-    "Duration (s)": 251,
-    "Full Duration (s)": 257,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:33",
-    "Displayed Time": "",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 169,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:36",
-    "Displayed Time": "",
-    "Artist": "MGMT",
-    "Title": "Kids",
-    "Duration (s)": 224,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:44",
-    "Displayed Time": "",
-    "Artist": "Rita Ora",
-    "Title": "Heat",
-    "Duration (s)": 168,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:47",
-    "Displayed Time": "",
-    "Artist": "Hozier",
-    "Title": "Take Me To Church",
-    "Duration (s)": 233,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:50",
-    "Displayed Time": "",
-    "Artist": "Tate McRae",
-    "Title": "Greedy",
-    "Duration (s)": 127,
-    "Full Duration (s)": 132,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
-    "Hour": "2025-08-14T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "",
-    "Artist": "Gin Blossoms",
-    "Title": "Hey Jealousy",
-    "Duration (s)": 221,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-14T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "",
@@ -45175,5 +45021,16 @@
     "Full Duration (s)": 169,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-28T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "",
+    "Artist": "Sister Sledge",
+    "Title": "Lost in Music",
+    "Duration (s)": 205,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
   }
 ]
