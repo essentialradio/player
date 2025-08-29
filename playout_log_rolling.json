@@ -1,159 +1,5 @@
 [
   {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "",
-    "Artist": "Alanis Morissette",
-    "Title": "Hand in My Pocket",
-    "Duration (s)": 213,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:05",
-    "Displayed Time": "",
-    "Artist": "Kula Shaker",
-    "Title": "Hush",
-    "Duration (s)": 169,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:08",
-    "Displayed Time": "",
-    "Artist": "Blur",
-    "Title": "Girls & Boys",
-    "Duration (s)": 239,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:12",
-    "Displayed Time": "",
-    "Artist": "Lightning Seeds",
-    "Title": "Sugar Coated Iceberg",
-    "Duration (s)": 208,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:18",
-    "Displayed Time": "",
-    "Artist": "M People",
-    "Title": "Moving on Up",
-    "Duration (s)": 203,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:22",
-    "Displayed Time": "",
-    "Artist": "Ash",
-    "Title": "Shining Light",
-    "Duration (s)": 236,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:26",
-    "Displayed Time": "",
-    "Artist": "Robson & Jerome",
-    "Title": "Unchained Melody",
-    "Duration (s)": 189,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:29",
-    "Displayed Time": "",
-    "Artist": "Bryan Adams",
-    "Title": "Cloud Number Nine",
-    "Duration (s)": 241,
-    "Full Duration (s)": 253,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:33",
-    "Displayed Time": "",
-    "Artist": "Manic Street Preachers",
-    "Title": "A Design for Life",
-    "Duration (s)": 248,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:41",
-    "Displayed Time": "",
-    "Artist": "James",
-    "Title": "Laid",
-    "Duration (s)": 146,
-    "Full Duration (s)": 158,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:44",
-    "Displayed Time": "",
-    "Artist": "911",
-    "Title": "A Little Bit More",
-    "Duration (s)": 213,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:48",
-    "Displayed Time": "",
-    "Artist": "The Stone Roses",
-    "Title": "Fools Gold",
-    "Duration (s)": 241,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:52",
-    "Displayed Time": "",
-    "Artist": "Alisha's Attic",
-    "Title": "I Am, I Feel",
-    "Duration (s)": 234,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-14T20:00:00Z",
-    "Scheduled Time": "21:56",
-    "Displayed Time": "",
-    "Artist": "Kenny Thomas",
-    "Title": "Thinking About Your Love",
-    "Duration (s)": 200,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
     "Hour": "2025-08-14T21:00:00Z",
     "Scheduled Time": "22:01",
     "Displayed Time": "",
@@ -45186,5 +45032,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3,
     "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-29T14:00:00Z",
+    "Scheduled Time": "15:01",
+    "Displayed Time": "",
+    "Artist": "Lewis Capaldi",
+    "Title": "Strangers",
+    "Duration (s)": 212,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
