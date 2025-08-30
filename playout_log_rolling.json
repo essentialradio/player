@@ -1,137 +1,5 @@
 [
   {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:03",
-    "Displayed Time": "",
-    "Artist": "Hazell Dean",
-    "Title": "Whatever I Do, Wherever I Go",
-    "Duration (s)": 213,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:07",
-    "Displayed Time": "",
-    "Artist": "Angel City",
-    "Title": "Do You Know (I Go Crazy)",
-    "Duration (s)": 172,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:10",
-    "Displayed Time": "",
-    "Artist": "Kon Kan",
-    "Title": "I Beg Your Pardon",
-    "Duration (s)": 236,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:14",
-    "Displayed Time": "",
-    "Artist": "The Pogues & The Dubliners",
-    "Title": "The Irish Rover",
-    "Duration (s)": 211,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:22",
-    "Displayed Time": "",
-    "Artist": "Joe Dolce Musical Theatre",
-    "Title": "Shaddup You Face",
-    "Duration (s)": 188,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:26",
-    "Displayed Time": "",
-    "Artist": "Damian",
-    "Title": "The Time Warp",
-    "Duration (s)": 235,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:33",
-    "Displayed Time": "",
-    "Artist": "Geri Halliwell",
-    "Title": "Look At Me",
-    "Duration (s)": 239,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:37",
-    "Displayed Time": "",
-    "Artist": "East Side Beat",
-    "Title": "Ride Like the Wind",
-    "Duration (s)": 214,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:45",
-    "Displayed Time": "",
-    "Artist": "The Vengaboys",
-    "Title": "Boom, Boom, Boom, Boom!!",
-    "Duration (s)": 194,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:48",
-    "Displayed Time": "",
-    "Artist": "Sash!",
-    "Title": "Encore Une Fois",
-    "Duration (s)": 218,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:52",
-    "Displayed Time": "",
-    "Artist": "Supersister",
-    "Title": "Coffee",
-    "Duration (s)": 200,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4
-  },
-  {
-    "Hour": "2025-08-15T16:00:00Z",
-    "Scheduled Time": "17:55",
-    "Displayed Time": "",
-    "Artist": "Piero Umliani",
-    "Title": "Ma Nah Ma Nah",
-    "Duration (s)": 142,
-    "Full Duration (s)": 146,
-    "Duration (mins)": 2,
-    "Full Duration (mins)": 2
-  },
-  {
     "Hour": "2025-08-15T17:00:00Z",
     "Scheduled Time": "18:01",
     "Displayed Time": "",
@@ -44702,5 +44570,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 4,
     "Full Duration (mins)": 4
+  },
+  {
+    "Hour": "2025-08-30T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "",
+    "Artist": "Dua Lipa",
+    "Title": "Houdini",
+    "Duration (s)": 181,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
