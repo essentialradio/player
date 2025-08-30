@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-06-29T23:00:00Z",
-    "Scheduled Time": "00:02",
-    "Displayed Time": "",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3399,
-    "Full Duration (s)": 3406,
-    "Duration (mins)": 57,
-    "Full Duration (mins)": 57
-  },
-  {
     "Hour": "2025-06-30T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "",
@@ -44526,5 +44515,16 @@
     "Full Duration (s)": 3546,
     "Duration (mins)": 59,
     "Full Duration (mins)": 59
+  },
+  {
+    "Hour": "2025-08-30T17:00:00Z",
+    "Scheduled Time": "18:03",
+    "Displayed Time": "",
+    "Artist": "Tim Graham",
+    "Title": "The LGBTQ Music Chart",
+    "Duration (s)": 1250,
+    "Full Duration (s)": 1254,
+    "Duration (mins)": 21,
+    "Full Duration (mins)": 21
   }
 ]
