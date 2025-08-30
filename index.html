@@ -4278,6 +4278,70 @@ html[data-theme="light"] #mobileNowBar {
   color: #ffe67c !important;
 }
 </style>
+<style id="modal-offset-responsive">
+/* Base: ensure relative positioning so 'top' works */
+#presentersModal .modal-content,
+#listenAgainModal .modal-content {
+  position: relative !important;
+  margin-top: 0 !important;
+}
+
+/* Mobile default (≤ 599px) */
+@media (max-width: 599px) {
+  #presentersModal .modal-content,
+  #listenAgainModal .modal-content {
+    top: 36px !important;
+  }
+}
+
+/* Tablets / small laptops */
+@media (min-width: 600px) and (max-width: 899px) {
+  #presentersModal .modal-content,
+  #listenAgainModal .modal-content {
+    top: 48px !important;
+  }
+}
+
+/* Desktop (≥ 900px) */
+@media (min-width: 900px) {
+  #presentersModal .modal-content,
+  #listenAgainModal .modal-content {
+    top: 64px !important;
+  }
+}
+
+/* Extra: nudge down a bit more on very tall screens */
+@media (min-height: 900px) and (min-width: 900px) {
+  #presentersModal .modal-content,
+  #listenAgainModal .modal-content {
+    top: 72px !important;
+  }
+}
+
+/* iOS notch/safe area: add a little extra if present */
+@supports (padding: max(0px)) {
+  @media (max-width: 599px) {
+    #presentersModal .modal-content,
+    #listenAgainModal .modal-content {
+      top: calc(36px + env(safe-area-inset-top)) !important;
+    }
+  }
+}
+</style>
+
+<style id="listen-modal-offset-fix">
+/* Responsive fix for Listen Again modal */
+#listenModal .modal-content {
+  position: relative !important;
+  margin-top: 0 !important;
+  top: 60px !important; /* Desktop offset */
+}
+@media (max-width: 599px) {
+  #listenModal .modal-content {
+    top: 36px !important; /* Smaller bump for phones */
+  }
+}
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
