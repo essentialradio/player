@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-16T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3491,
-    "Full Duration (s)": 3498,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-16T17:00:00Z",
     "Scheduled Time": "18:02",
     "Displayed Time": "",
@@ -44074,6 +44063,17 @@
     "Duration (s)": 149,
     "Full Duration (s)": 169,
     "Duration (mins)": 2,
+    "Full Duration (mins)": 3
+  },
+  {
+    "Hour": "2025-08-31T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 172,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 3,
     "Full Duration (mins)": 3
   }
 ]
