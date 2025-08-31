@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T13:00:00Z",
-    "Scheduled Time": "14:53",
-    "Displayed Time": "14:53",
-    "Artist": "The Gap Band",
-    "Title": "Oops Upside Your Head",
-    "Duration (s)": 201,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-08-29T13:00:00Z",
     "Scheduled Time": "14:58",
     "Displayed Time": "14:58",
     "Artist": "",
@@ -5492,6 +5481,17 @@
     "Hour": "2025-08-31T19:00:00Z",
     "Scheduled Time": "20:54",
     "Displayed Time": "20:54",
+    "Artist": "Ayrshire Radio",
+    "Title": "The Mr Rocks Show with Kevin McCallum",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-08-31T19:00:00Z",
+    "Scheduled Time": "20:55",
+    "Displayed Time": "20:55",
     "Artist": "Ayrshire Radio",
     "Title": "The Mr Rocks Show with Kevin McCallum",
     "Duration (s)": 180,
