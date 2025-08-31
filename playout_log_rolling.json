@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-16T18:00:00Z",
-    "Scheduled Time": "19:02",
-    "Displayed Time": "",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3478,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-16T19:00:00Z",
     "Scheduled Time": "20:00",
     "Displayed Time": "",
@@ -44199,6 +44188,17 @@
   },
   {
     "Hour": "2025-08-31T12:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "14:00",
+    "Artist": "Avicii",
+    "Title": "Hey Brother</body></html>",
+    "Duration (s)": null,
+    "Full Duration (s)": null,
+    "Duration (mins)": null,
+    "Full Duration (mins)": null
+  },
+  {
+    "Hour": "2025-08-31T13:00:00Z",
     "Scheduled Time": "14:00",
     "Displayed Time": "14:00",
     "Artist": "Avicii",
