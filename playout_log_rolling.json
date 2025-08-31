@@ -5479,10 +5479,21 @@
   },
   {
     "Hour": "2025-08-31T22:00:00Z",
-    "Scheduled Time": "23:58",
-    "Displayed Time": "23:58",
+    "Scheduled Time": "23:59",
+    "Displayed Time": "23:59",
     "Artist": "Ayrshire Radio",
     "Title": "On Air",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-08-31T23:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "00:00",
+    "Artist": "David Southway",
+    "Title": "Soul Vaults",
     "Duration (s)": 180,
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
