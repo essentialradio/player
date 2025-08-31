@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T14:00:00Z",
-    "Scheduled Time": "15:48",
-    "Displayed Time": "15:48",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 157,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.62,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-08-29T14:00:00Z",
     "Scheduled Time": "15:51",
     "Displayed Time": "15:51",
     "Artist": "ABC",
@@ -5487,6 +5476,17 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-08-31T23:00:00Z",
+    "Scheduled Time": "00:02",
+    "Displayed Time": "00:02",
+    "Artist": "David Southway",
+    "Title": "Soul Vaults",
+    "Duration (s)": 3403,
+    "Full Duration (s)": 3407,
+    "Duration (mins)": 56.72,
+    "Full Duration (mins)": 56.78
   },
   {
     "Hour": "2025-08-31T23:00:00Z",
