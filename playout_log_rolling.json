@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-16T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "",
-    "Artist": "Bill Grainger",
-    "Title": "Fire Island Hi-NRG",
-    "Duration (s)": 3597,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 60,
-    "Full Duration (mins)": 60
-  },
-  {
     "Hour": "2025-08-17T00:00:00Z",
     "Scheduled Time": "01:02",
     "Displayed Time": "",
@@ -44201,6 +44190,17 @@
     "Hour": "2025-08-31T15:00:00Z",
     "Scheduled Time": "16:59",
     "Displayed Time": "16:59",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire</body></html>",
+    "Duration (s)": null,
+    "Full Duration (s)": null,
+    "Duration (mins)": null,
+    "Full Duration (mins)": null
+  },
+  {
+    "Hour": "2025-08-31T16:00:00Z",
+    "Scheduled Time": "17:00",
+    "Displayed Time": "17:00",
     "Artist": "Ed Sheeran",
     "Title": "Sapphire</body></html>",
     "Duration (s)": null,
