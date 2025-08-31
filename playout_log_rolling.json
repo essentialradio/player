@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-16T19:00:00Z",
-    "Scheduled Time": "20:00",
-    "Displayed Time": "",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3478,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58
-  },
-  {
     "Hour": "2025-08-16T20:00:00Z",
     "Scheduled Time": "21:00",
     "Displayed Time": "",
@@ -44203,6 +44192,17 @@
     "Displayed Time": "14:52",
     "Artist": "Justin Beiber",
     "Title": "GO BABY</body></html>",
+    "Duration (s)": null,
+    "Full Duration (s)": null,
+    "Duration (mins)": null,
+    "Full Duration (mins)": null
+  },
+  {
+    "Hour": "2025-08-31T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40</body></html>",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
