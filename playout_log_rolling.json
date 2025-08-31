@@ -1,38 +1,5 @@
 [
   {
-    "Hour": "2025-08-16T17:00:00Z",
-    "Scheduled Time": "18:02",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1437,
-    "Full Duration (s)": 1442,
-    "Duration (mins)": 24,
-    "Full Duration (mins)": 24
-  },
-  {
-    "Hour": "2025-08-16T17:00:00Z",
-    "Scheduled Time": "18:27",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 925,
-    "Full Duration (s)": 928,
-    "Duration (mins)": 15,
-    "Full Duration (mins)": 15
-  },
-  {
-    "Hour": "2025-08-16T17:00:00Z",
-    "Scheduled Time": "18:44",
-    "Displayed Time": "",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 964,
-    "Full Duration (s)": 966,
-    "Duration (mins)": 16,
-    "Full Duration (mins)": 16
-  },
-  {
     "Hour": "2025-08-16T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "",
@@ -44229,5 +44196,16 @@
     "Full Duration (s)": 136,
     "Duration (mins)": 2,
     "Full Duration (mins)": 2
+  },
+  {
+    "Hour": "2025-08-31T12:00:00Z",
+    "Scheduled Time": "13:01",
+    "Displayed Time": "",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Bed Chem",
+    "Duration (s)": 165,
+    "Full Duration (s)": 172,
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   }
 ]
