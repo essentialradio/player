@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:15",
-    "Displayed Time": "08:15",
-    "Artist": "Mark Ronson & RAYE",
-    "Title": "Suzanne",
-    "Duration (s)": 223,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.92
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:19",
     "Displayed Time": "08:19",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.03,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-01T17:00:00Z",
+    "Scheduled Time": "18:23",
+    "Displayed Time": "18:23",
+    "Artist": "Lizzo",
+    "Title": "2 Be Loved (Am I Ready)",
+    "Duration (s)": 180,
+    "Full Duration (s)": 188,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.13
   }
 ]
