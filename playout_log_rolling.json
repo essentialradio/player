@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "21:01",
-    "Artist": "Freemasons",
-    "Title": "Love on My Mind",
-    "Duration (s)": 178,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:04",
     "Displayed Time": "21:04",
     "Artist": "D:Ream",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 257,
     "Duration (mins)": 4.2,
     "Full Duration (mins)": 4.28
+  },
+  {
+    "Hour": "2025-09-01T06:00:00Z",
+    "Scheduled Time": "07:11",
+    "Displayed Time": "07:11",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 181,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.12
   }
 ]
