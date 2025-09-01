@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T16:00:00Z",
-    "Scheduled Time": "17:17",
-    "Displayed Time": "17:17",
-    "Artist": "Four Tops",
-    "Title": "Loco in Acapulco",
-    "Duration (s)": 190,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.17,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-08-29T16:00:00Z",
     "Scheduled Time": "17:23",
     "Displayed Time": "17:23",
     "Artist": "The Tamperer ft Maya",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 194,
     "Duration (mins)": 3.02,
     "Full Duration (mins)": 3.23
+  },
+  {
+    "Hour": "2025-09-01T02:00:00Z",
+    "Scheduled Time": "03:32",
+    "Displayed Time": "03:32",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 159,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.8
   }
 ]
