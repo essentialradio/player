@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T04:00:00Z",
-    "Scheduled Time": "05:50",
-    "Displayed Time": "05:50",
-    "Artist": "Ella Henderson",
-    "Title": "Filthy Rich",
-    "Duration (s)": 165,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 2.75,
-    "Full Duration (mins)": 2.87
-  },
-  {
-    "Hour": "2025-08-30T04:00:00Z",
     "Scheduled Time": "05:53",
     "Displayed Time": "05:53",
     "Artist": "Gabrielle",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3.32,
     "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-01T14:00:00Z",
+    "Scheduled Time": "15:23",
+    "Displayed Time": "15:23",
+    "Artist": "Jess Glynne",
+    "Title": "Hold My Hand",
+    "Duration (s)": 216,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.78
   }
 ]
