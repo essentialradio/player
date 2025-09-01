@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T14:00:00Z",
-    "Scheduled Time": "15:58",
-    "Displayed Time": "15:58",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
     "Hour": "2025-08-29T15:00:00Z",
     "Scheduled Time": "16:02",
     "Displayed Time": "16:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-09-01T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Take That",
+    "Title": "Up All Night",
+    "Duration (s)": 193,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.32
   }
 ]
