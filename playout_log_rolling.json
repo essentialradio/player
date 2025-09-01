@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:05",
-    "Displayed Time": "10:05",
-    "Artist": "Fireboy DML",
-    "Title": "Peru",
-    "Duration (s)": 182,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3.03,
-    "Full Duration (mins)": 3.13
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:08",
     "Displayed Time": "10:08",
     "Artist": "Pulp",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 216,
     "Duration (mins)": 3.55,
     "Full Duration (mins)": 3.6
+  },
+  {
+    "Hour": "2025-09-01T20:00:00Z",
+    "Scheduled Time": "21:05",
+    "Displayed Time": "21:05",
+    "Artist": "R.E.M.",
+    "Title": "What's the Frequency, Kenneth?",
+    "Duration (s)": 228,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.98
   }
 ]
