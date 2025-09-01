@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T21:00:00Z",
-    "Scheduled Time": "22:14",
-    "Displayed Time": "22:14",
-    "Artist": "Binary Finary",
-    "Title": "1998",
-    "Duration (s)": 190,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3.17,
-    "Full Duration (mins)": 3.27
-  },
-  {
-    "Hour": "2025-08-29T21:00:00Z",
     "Scheduled Time": "22:18",
     "Displayed Time": "22:18",
     "Artist": "Barry White",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.5,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-01T08:00:00Z",
+    "Scheduled Time": "09:10",
+    "Displayed Time": "09:10",
+    "Artist": "Benson Boone",
+    "Title": "Sorry I'm Here For Someone Else",
+    "Duration (s)": 152,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.62
   }
 ]
