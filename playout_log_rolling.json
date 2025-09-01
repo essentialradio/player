@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:34",
-    "Displayed Time": "07:34",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:35",
     "Displayed Time": "07:35",
     "Artist": "Coldplay",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-01T16:00:00Z",
+    "Scheduled Time": "17:23",
+    "Displayed Time": "17:23",
+    "Artist": "Jamelia",
+    "Title": "Superstar",
+    "Duration (s)": 203,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.57
   }
 ]
