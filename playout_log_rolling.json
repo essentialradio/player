@@ -3,17 +3,6 @@
     "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:22",
     "Displayed Time": "04:22",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:22",
-    "Displayed Time": "04:22",
     "Artist": "Dasha",
     "Title": "Not At This Party",
     "Duration (s)": 203,
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 239,
     "Duration (mins)": 3.8,
     "Full Duration (mins)": 3.98
+  },
+  {
+    "Hour": "2025-09-01T12:00:00Z",
+    "Scheduled Time": "13:26",
+    "Displayed Time": "13:26",
+    "Artist": "Supermen Lovers & OneRepublic",
+    "Title": "Starlight (The Fame)",
+    "Duration (s)": 175,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.03
   }
 ]
