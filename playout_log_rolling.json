@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T04:00:00Z",
-    "Scheduled Time": "05:14",
-    "Displayed Time": "05:14",
-    "Artist": "Ne-Yo",
-    "Title": "Miss Independent",
-    "Duration (s)": 222,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.85
-  },
-  {
-    "Hour": "2025-08-30T04:00:00Z",
     "Scheduled Time": "05:21",
     "Displayed Time": "05:21",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-01T13:00:00Z",
+    "Scheduled Time": "14:33",
+    "Displayed Time": "14:33",
+    "Artist": "4 Non Blondes",
+    "Title": "What's Up?",
+    "Duration (s)": 241,
+    "Full Duration (s)": 254,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.23
   }
 ]
