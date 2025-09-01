@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:52",
-    "Displayed Time": "07:52",
-    "Artist": "Madonna",
-    "Title": "Beautiful Stranger",
-    "Duration (s)": 230,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 3.95
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:57",
     "Displayed Time": "07:57",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.25,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-01T16:00:00Z",
+    "Scheduled Time": "17:49",
+    "Displayed Time": "17:49",
+    "Artist": "Pulp",
+    "Title": "Common People",
+    "Duration (s)": 239,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.12
   }
 ]
