@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:28",
-    "Displayed Time": "11:28",
-    "Artist": "Blur",
-    "Title": "End of a Century",
-    "Duration (s)": 154,
-    "Full Duration (s)": 165,
-    "Duration (mins)": 2.57,
-    "Full Duration (mins)": 2.75
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:31",
     "Displayed Time": "11:31",
     "Artist": "Justin Bieber",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 279,
     "Duration (mins)": 4.38,
     "Full Duration (mins)": 4.65
+  },
+  {
+    "Hour": "2025-09-01T22:00:00Z",
+    "Scheduled Time": "23:02",
+    "Displayed Time": "23:02",
+    "Artist": "Youssou N'Dour ft Neneh Cherry",
+    "Title": "7 Seconds",
+    "Duration (s)": 232,
+    "Full Duration (s)": 253,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.22
   }
 ]
