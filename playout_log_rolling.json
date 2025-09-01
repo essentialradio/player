@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T02:00:00Z",
-    "Scheduled Time": "03:33",
-    "Displayed Time": "03:33",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 184,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-08-30T02:00:00Z",
     "Scheduled Time": "03:36",
     "Displayed Time": "03:36",
     "Artist": "Anastacia",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 160,
     "Duration (mins)": 2.58,
     "Full Duration (mins)": 2.67
+  },
+  {
+    "Hour": "2025-09-01T11:00:00Z",
+    "Scheduled Time": "12:13",
+    "Displayed Time": "12:13",
+    "Artist": "Nathan Dawe, Joel Corry, Ella Henderson",
+    "Title": "0800 Heaven",
+    "Duration (s)": 151,
+    "Full Duration (s)": 159,
+    "Duration (mins)": 2.52,
+    "Full Duration (mins)": 2.65
   }
 ]
