@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T21:00:00Z",
-    "Scheduled Time": "22:08",
-    "Displayed Time": "22:08",
-    "Artist": "Michael Zager Band",
-    "Title": "Let's All Chant",
-    "Duration (s)": 175,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.07
-  },
-  {
-    "Hour": "2025-08-29T21:00:00Z",
     "Scheduled Time": "22:11",
     "Displayed Time": "22:11",
     "Artist": "The Adventures Of Stevie V & PAWSA",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-01T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "09:03",
+    "Artist": "Ravyn Lanae",
+    "Title": "Love Me Not",
+    "Duration (s)": 164,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.77
   }
 ]
