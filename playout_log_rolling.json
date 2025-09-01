@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T21:00:00Z",
-    "Scheduled Time": "22:11",
-    "Displayed Time": "22:11",
-    "Artist": "The Adventures Of Stevie V & PAWSA",
-    "Title": "Dirty Cash (Money Talks)",
-    "Duration (s)": 216,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3.6,
-    "Full Duration (mins)": 3.68
-  },
-  {
-    "Hour": "2025-08-29T21:00:00Z",
     "Scheduled Time": "22:14",
     "Displayed Time": "22:14",
     "Artist": "Binary Finary",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-01T08:00:00Z",
+    "Scheduled Time": "09:05",
+    "Displayed Time": "09:05",
+    "Artist": "Jason Mraz",
+    "Title": "I'm Yours",
+    "Duration (s)": 210,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.55
   }
 ]
