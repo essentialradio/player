@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T05:00:00Z",
-    "Scheduled Time": "06:51",
-    "Displayed Time": "06:51",
-    "Artist": "Nena",
-    "Title": "99 Red Balloons",
-    "Duration (s)": 219,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-08-30T05:00:00Z",
     "Scheduled Time": "06:54",
     "Displayed Time": "06:54",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-01T15:00:00Z",
+    "Scheduled Time": "16:17",
+    "Displayed Time": "16:17",
+    "Artist": "Beyonce",
+    "Title": "Halo",
+    "Duration (s)": 216,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.73
   }
 ]
