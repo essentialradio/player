@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:54",
-    "Displayed Time": "08:54",
-    "Artist": "Gayle",
-    "Title": "ABCDEF",
-    "Duration (s)": 146,
-    "Full Duration (s)": 152,
-    "Duration (mins)": 2.43,
-    "Full Duration (mins)": 2.53
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:57",
     "Displayed Time": "08:57",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 328,
     "Duration (mins)": 5.4,
     "Full Duration (mins)": 5.47
+  },
+  {
+    "Hour": "2025-09-01T18:00:00Z",
+    "Scheduled Time": "19:21",
+    "Displayed Time": "19:21",
+    "Artist": "Fleetwood Mac",
+    "Title": "Dreams",
+    "Duration (s)": 246,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.28
   }
 ]
