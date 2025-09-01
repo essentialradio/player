@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:43",
-    "Displayed Time": "11:43",
-    "Artist": "Good Neighbours",
-    "Title": "Starry Eyed",
-    "Duration (s)": 132,
-    "Full Duration (s)": 137,
-    "Duration (mins)": 2.2,
-    "Full Duration (mins)": 2.28
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:45",
     "Displayed Time": "11:45",
     "Artist": "All Saints",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 290,
     "Duration (mins)": 4.57,
     "Full Duration (mins)": 4.83
+  },
+  {
+    "Hour": "2025-09-01T22:00:00Z",
+    "Scheduled Time": "23:24",
+    "Displayed Time": "23:24",
+    "Artist": "Five Star",
+    "Title": "Rain or Shine",
+    "Duration (s)": 220,
+    "Full Duration (s)": 236,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.93
   }
 ]
