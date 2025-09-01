@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T04:00:00Z",
-    "Scheduled Time": "05:30",
-    "Displayed Time": "05:30",
-    "Artist": "Moloko",
-    "Title": "Sing It Back",
-    "Duration (s)": 234,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 3.9,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-08-30T04:00:00Z",
     "Scheduled Time": "05:33",
     "Displayed Time": "05:33",
     "Artist": "Sam Fender & Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 244,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 4.07
+  },
+  {
+    "Hour": "2025-09-01T13:00:00Z",
+    "Scheduled Time": "14:50",
+    "Displayed Time": "14:50",
+    "Artist": "Billie Eilish",
+    "Title": "Birds of a Feather",
+    "Duration (s)": 200,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.58
   }
 ]
