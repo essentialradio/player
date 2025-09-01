@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "06:01",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 221,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-08-30T05:00:00Z",
     "Scheduled Time": "06:06",
     "Displayed Time": "06:06",
     "Artist": "Dermot Kennedy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.8,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-01T14:00:00Z",
+    "Scheduled Time": "15:29",
+    "Displayed Time": "15:29",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 195,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.57
   }
 ]
