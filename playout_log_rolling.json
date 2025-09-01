@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T01:00:00Z",
-    "Scheduled Time": "02:50",
-    "Displayed Time": "02:50",
-    "Artist": "Harry Styles",
-    "Title": "As It Was",
-    "Duration (s)": 153,
-    "Full Duration (s)": 167,
-    "Duration (mins)": 2.55,
-    "Full Duration (mins)": 2.78
-  },
-  {
-    "Hour": "2025-08-30T01:00:00Z",
     "Scheduled Time": "02:53",
     "Displayed Time": "02:53",
     "Artist": "Blue",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 275,
     "Duration (mins)": 4.42,
     "Full Duration (mins)": 4.58
+  },
+  {
+    "Hour": "2025-09-01T10:00:00Z",
+    "Scheduled Time": "11:26",
+    "Displayed Time": "11:26",
+    "Artist": "Adam and the Ants",
+    "Title": "Stand and Deliver",
+    "Duration (s)": 170,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.98
   }
 ]
