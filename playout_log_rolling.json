@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:06",
-    "Displayed Time": "07:06",
-    "Artist": "Justin Bieber",
-    "Title": "Daisies",
-    "Duration (s)": 174,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:08",
     "Displayed Time": "07:08",
     "Artist": "Green Day",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 284,
     "Duration (mins)": 4.58,
     "Full Duration (mins)": 4.73
+  },
+  {
+    "Hour": "2025-09-01T15:00:00Z",
+    "Scheduled Time": "16:34",
+    "Displayed Time": "16:34",
+    "Artist": "Alicia Keys",
+    "Title": "Girl on Fire",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.75
   }
 ]
