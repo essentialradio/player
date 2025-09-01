@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:27",
-    "Displayed Time": "08:27",
-    "Artist": "Tate McRae",
-    "Title": "Greedy",
-    "Duration (s)": 125,
-    "Full Duration (s)": 132,
-    "Duration (mins)": 2.08,
-    "Full Duration (mins)": 2.2
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:29",
     "Displayed Time": "08:29",
     "Artist": "Ella Henderson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.75,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-01T17:00:00Z",
+    "Scheduled Time": "18:35",
+    "Displayed Time": "18:35",
+    "Artist": "Anne-Marie ft Shania Twain",
+    "Title": "Unhealthy",
+    "Duration (s)": 141,
+    "Full Duration (s)": 150,
+    "Duration (mins)": 2.35,
+    "Full Duration (mins)": 2.5
   }
 ]
