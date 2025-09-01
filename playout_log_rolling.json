@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:18",
-    "Displayed Time": "07:18",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:22",
     "Displayed Time": "07:22",
     "Artist": "Lady Gaga with Ariana Grande",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-01T15:00:00Z",
+    "Scheduled Time": "16:52",
+    "Displayed Time": "16:52",
+    "Artist": "Harry Styles",
+    "Title": "Golden",
+    "Duration (s)": 205,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.48
   }
 ]
