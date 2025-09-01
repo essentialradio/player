@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:42",
-    "Displayed Time": "18:42",
-    "Artist": "Chappell Roan",
-    "Title": "The Subway",
-    "Duration (s)": 239,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 3.98,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:46",
     "Displayed Time": "18:46",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 171,
     "Duration (mins)": 2.78,
     "Full Duration (mins)": 2.85
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:11",
+    "Displayed Time": "05:11",
+    "Artist": "Lewis Capaldi",
+    "Title": "Strangers",
+    "Duration (s)": 209,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.57
   }
 ]
