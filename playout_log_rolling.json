@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:29",
-    "Displayed Time": "08:29",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:32",
     "Displayed Time": "08:32",
     "Artist": "Cher",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 150,
     "Duration (mins)": 2.35,
     "Full Duration (mins)": 2.5
+  },
+  {
+    "Hour": "2025-09-01T17:00:00Z",
+    "Scheduled Time": "18:42",
+    "Displayed Time": "18:42",
+    "Artist": "Lola Young",
+    "Title": "One Thing",
+    "Duration (s)": 200,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.47
   }
 ]
