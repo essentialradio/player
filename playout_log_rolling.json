@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T02:00:00Z",
-    "Scheduled Time": "03:06",
-    "Displayed Time": "03:06",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 172,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-08-30T02:00:00Z",
     "Scheduled Time": "03:09",
     "Displayed Time": "03:09",
     "Artist": "Coldplay X BTS",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 253,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.22
+  },
+  {
+    "Hour": "2025-09-01T10:00:00Z",
+    "Scheduled Time": "11:36",
+    "Displayed Time": "11:36",
+    "Artist": "Ike & Tina Turner",
+    "Title": "Nutbush City Limits",
+    "Duration (s)": 160,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.82
   }
 ]
