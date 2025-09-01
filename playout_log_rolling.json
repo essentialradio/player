@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T21:00:00Z",
-    "Scheduled Time": "22:53",
-    "Displayed Time": "22:53",
-    "Artist": "Clivilles & Cole",
-    "Title": "A Deeper Love",
-    "Duration (s)": 223,
-    "Full Duration (s)": 257,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 4.28
-  },
-  {
     "Hour": "2025-08-29T22:00:00Z",
     "Scheduled Time": "23:01",
     "Displayed Time": "23:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-01T08:00:00Z",
+    "Scheduled Time": "09:55",
+    "Displayed Time": "09:55",
+    "Artist": "Stevie Wonder",
+    "Title": "Sir Duke",
+    "Duration (s)": 232,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.08
   }
 ]
