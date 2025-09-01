@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "11:01",
-    "Artist": "Dua Lipa",
-    "Title": "Houdini",
-    "Duration (s)": 181,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.1
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:05",
     "Displayed Time": "11:05",
     "Artist": "Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 197,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.28
+  },
+  {
+    "Hour": "2025-09-01T21:00:00Z",
+    "Scheduled Time": "22:19",
+    "Displayed Time": "22:19",
+    "Artist": "Niall Horan",
+    "Title": "Heaven",
+    "Duration (s)": 176,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.1
   }
 ]
