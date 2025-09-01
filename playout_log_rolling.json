@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:28",
-    "Displayed Time": "07:28",
-    "Artist": "Fleetwood Mac",
-    "Title": "Everywhere",
-    "Duration (s)": 211,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:32",
     "Displayed Time": "07:32",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.65,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-01T16:00:00Z",
+    "Scheduled Time": "17:09",
+    "Displayed Time": "17:09",
+    "Artist": "Coldplay",
+    "Title": "Feels Like I'm Falling in Love",
+    "Duration (s)": 215,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.73
   }
 ]
