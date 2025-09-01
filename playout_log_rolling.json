@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:50",
-    "Displayed Time": "11:50",
-    "Artist": "JADE",
-    "Title": "Plastic Box",
-    "Duration (s)": 193,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:53",
     "Displayed Time": "11:53",
     "Artist": "Plan B",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 262,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.37
+  },
+  {
+    "Hour": "2025-09-01T22:00:00Z",
+    "Scheduled Time": "23:32",
+    "Displayed Time": "23:32",
+    "Artist": "Elton John",
+    "Title": "Don't Let the Sun Go Down on Me",
+    "Duration (s)": 322,
+    "Full Duration (s)": 339,
+    "Duration (mins)": 5.37,
+    "Full Duration (mins)": 5.65
   }
 ]
