@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:21",
-    "Displayed Time": "08:21",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:23",
     "Displayed Time": "08:23",
     "Artist": "Jason Derulo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-01T17:00:00Z",
+    "Scheduled Time": "18:29",
+    "Displayed Time": "18:29",
+    "Artist": "Wet Leg",
+    "Title": "Catch These Fists",
+    "Duration (s)": 179,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.15
   }
 ]
