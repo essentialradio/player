@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:57",
-    "Displayed Time": "21:57",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
     "Hour": "2025-08-29T21:00:00Z",
     "Scheduled Time": "22:01",
     "Displayed Time": "22:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 274,
     "Duration (mins)": 4.45,
     "Full Duration (mins)": 4.57
+  },
+  {
+    "Hour": "2025-09-01T07:00:00Z",
+    "Scheduled Time": "08:41",
+    "Displayed Time": "08:41",
+    "Artist": "Scissor Sisters",
+    "Title": "I Don't Feel Like Dancin'",
+    "Duration (s)": 246,
+    "Full Duration (s)": 248,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.13
   }
 ]
