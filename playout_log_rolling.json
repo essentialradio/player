@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T11:00:00Z",
-    "Scheduled Time": "12:25",
-    "Displayed Time": "12:25",
-    "Artist": "Jamiroquai",
-    "Title": "Virtual Insanity",
-    "Duration (s)": 216,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.6,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-08-30T11:00:00Z",
     "Scheduled Time": "12:29",
     "Displayed Time": "12:29",
     "Artist": "The Hoosiers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-01T23:00:00Z",
+    "Scheduled Time": "00:22",
+    "Displayed Time": "00:22",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 157,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.77
   }
 ]
