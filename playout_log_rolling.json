@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:11",
-    "Displayed Time": "21:11",
-    "Artist": "PinkPantheress",
-    "Title": "Tonight",
-    "Duration (s)": 173,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:14",
     "Displayed Time": "21:14",
     "Artist": "Bomfunk MCs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.6,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-01T06:00:00Z",
+    "Scheduled Time": "07:28",
+    "Displayed Time": "07:28",
+    "Artist": "Wet Leg",
+    "Title": "Catch These Fists",
+    "Duration (s)": 185,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.15
   }
 ]
