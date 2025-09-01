@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:39",
-    "Displayed Time": "11:39",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:41",
     "Displayed Time": "11:41",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 254,
     "Duration (mins)": 4.02,
     "Full Duration (mins)": 4.23
+  },
+  {
+    "Hour": "2025-09-01T22:00:00Z",
+    "Scheduled Time": "23:13",
+    "Displayed Time": "23:13",
+    "Artist": "Pearl Jam",
+    "Title": "Dissident",
+    "Duration (s)": 203,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.55
   }
 ]
