@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T21:00:00Z",
-    "Scheduled Time": "22:18",
-    "Displayed Time": "22:18",
-    "Artist": "Barry White",
-    "Title": "Can't Get Enough of Your Love, Babe",
-    "Duration (s)": 231,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 3.85,
-    "Full Duration (mins)": 4.05
-  },
-  {
-    "Hour": "2025-08-29T21:00:00Z",
     "Scheduled Time": "22:26",
     "Displayed Time": "22:26",
     "Artist": "The Chemical Brothers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.53,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-01T08:00:00Z",
+    "Scheduled Time": "09:13",
+    "Displayed Time": "09:13",
+    "Artist": "Jessie J",
+    "Title": "Price Tag",
+    "Duration (s)": 186,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 3.15
   }
 ]
