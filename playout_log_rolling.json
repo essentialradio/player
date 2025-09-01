@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:55",
-    "Displayed Time": "10:55",
-    "Artist": "No Doubt",
-    "Title": "It's My Life",
-    "Duration (s)": 225,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.75,
-    "Full Duration (mins)": 3.75
-  },
-  {
     "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:01",
     "Displayed Time": "11:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 239,
     "Duration (mins)": 3.67,
     "Full Duration (mins)": 3.98
+  },
+  {
+    "Hour": "2025-09-01T21:00:00Z",
+    "Scheduled Time": "22:12",
+    "Displayed Time": "22:12",
+    "Artist": "Norah Jones",
+    "Title": "Sunrise",
+    "Duration (s)": 188,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.28
   }
 ]
