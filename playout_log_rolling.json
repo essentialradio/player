@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:09",
-    "Displayed Time": "11:09",
-    "Artist": "Daniel Merriweather",
-    "Title": "Red",
-    "Duration (s)": 223,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:12",
     "Displayed Time": "11:12",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 255,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.25
+  },
+  {
+    "Hour": "2025-09-01T21:00:00Z",
+    "Scheduled Time": "22:26",
+    "Displayed Time": "22:26",
+    "Artist": "Peter Gabriel Feat. Kate Bush",
+    "Title": "Don't Give Up",
+    "Duration (s)": 313,
+    "Full Duration (s)": 340,
+    "Duration (mins)": 5.22,
+    "Full Duration (mins)": 5.67
   }
 ]
