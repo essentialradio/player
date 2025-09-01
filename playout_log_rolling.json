@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:20",
-    "Displayed Time": "10:20",
-    "Artist": "Shakira",
-    "Title": "Objection (Tango)",
-    "Duration (s)": 207,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.45,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:23",
     "Displayed Time": "10:23",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 197,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.28
+  },
+  {
+    "Hour": "2025-09-01T20:00:00Z",
+    "Scheduled Time": "21:28",
+    "Displayed Time": "21:28",
+    "Artist": "Jazzy Jeff & Fresh Prince",
+    "Title": "Boom! Shake the Room",
+    "Duration (s)": 212,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.75
   }
 ]
