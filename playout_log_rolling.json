@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:40",
-    "Displayed Time": "04:40",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:41",
     "Displayed Time": "04:41",
     "Artist": "Maroon 5",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 159,
     "Duration (mins)": 2.53,
     "Full Duration (mins)": 2.65
+  },
+  {
+    "Hour": "2025-09-01T12:00:00Z",
+    "Scheduled Time": "13:48",
+    "Displayed Time": "13:48",
+    "Artist": "David Kushner",
+    "Title": "Daylight",
+    "Duration (s)": 184,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.35
   }
 ]
