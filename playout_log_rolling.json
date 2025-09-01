@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:19",
-    "Displayed Time": "09:19",
-    "Artist": "Michael Buble",
-    "Title": "Home",
-    "Duration (s)": 215,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:22",
     "Displayed Time": "09:22",
     "Artist": "Alex Warren with Jelly Roll",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 314,
     "Duration (mins)": 5.1,
     "Full Duration (mins)": 5.23
+  },
+  {
+    "Hour": "2025-09-01T18:00:00Z",
+    "Scheduled Time": "19:52",
+    "Displayed Time": "19:52",
+    "Artist": "The Rolling Stones",
+    "Title": "Brown Sugar",
+    "Duration (s)": 221,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.85
   }
 ]
