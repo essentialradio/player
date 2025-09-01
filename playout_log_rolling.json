@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:58",
-    "Displayed Time": "08:58",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
     "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:01",
     "Displayed Time": "09:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 163,
     "Duration (mins)": 2.55,
     "Full Duration (mins)": 2.72
+  },
+  {
+    "Hour": "2025-09-01T18:00:00Z",
+    "Scheduled Time": "19:31",
+    "Displayed Time": "19:31",
+    "Artist": "Gloria Gaynor",
+    "Title": "I Will Survive",
+    "Duration (s)": 184,
+    "Full Duration (s)": 193,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.22
   }
 ]
