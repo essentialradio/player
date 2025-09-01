@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:21",
-    "Displayed Time": "04:21",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:22",
     "Displayed Time": "04:22",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2.28,
     "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-01T12:00:00Z",
+    "Scheduled Time": "13:22",
+    "Displayed Time": "13:22",
+    "Artist": "ZZ Top",
+    "Title": "Gimme All Your Lovin'",
+    "Duration (s)": 228,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.98
   }
 ]
