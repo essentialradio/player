@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T05:00:00Z",
-    "Scheduled Time": "06:17",
-    "Displayed Time": "06:17",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 179,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 2.98,
-    "Full Duration (mins)": 3.15
-  },
-  {
-    "Hour": "2025-08-30T05:00:00Z",
     "Scheduled Time": "06:24",
     "Displayed Time": "06:24",
     "Artist": "Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 2.77,
     "Full Duration (mins)": 2.88
+  },
+  {
+    "Hour": "2025-09-01T14:00:00Z",
+    "Scheduled Time": "15:45",
+    "Displayed Time": "15:45",
+    "Artist": "Ella Eyre",
+    "Title": "Space",
+    "Duration (s)": 155,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.7
   }
 ]
