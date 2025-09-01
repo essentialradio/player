@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:35",
-    "Displayed Time": "10:35",
-    "Artist": "Laufey",
-    "Title": "Lover Girl",
-    "Duration (s)": 161,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.68,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:38",
     "Displayed Time": "10:38",
     "Artist": "Jonas Blue Featuring William Singe",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-01T20:00:00Z",
+    "Scheduled Time": "21:46",
+    "Displayed Time": "21:46",
+    "Artist": "Bruce Springsteen",
+    "Title": "Human Touch",
+    "Duration (s)": 289,
+    "Full Duration (s)": 314,
+    "Duration (mins)": 4.82,
+    "Full Duration (mins)": 5.23
   }
 ]
