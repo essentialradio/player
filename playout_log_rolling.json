@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:53",
-    "Displayed Time": "04:53",
-    "Artist": "Fall Out Boy",
-    "Title": "Sugar, We're Goin Down",
-    "Duration (s)": 211,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:59",
     "Displayed Time": "04:59",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 194,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.23
+  },
+  {
+    "Hour": "2025-09-01T13:00:00Z",
+    "Scheduled Time": "14:09",
+    "Displayed Time": "14:09",
+    "Artist": "Take That",
+    "Title": "This Life",
+    "Duration (s)": 216,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.8
   }
 ]
