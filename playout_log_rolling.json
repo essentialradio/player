@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:41",
-    "Displayed Time": "04:41",
-    "Artist": "Maroon 5",
-    "Title": "Sugar",
-    "Duration (s)": 225,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 3.75,
-    "Full Duration (mins)": 3.92
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:45",
     "Displayed Time": "04:45",
     "Artist": "Tate McRae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 201,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.35
+  },
+  {
+    "Hour": "2025-09-01T12:00:00Z",
+    "Scheduled Time": "13:51",
+    "Displayed Time": "13:51",
+    "Artist": "Van Morrison",
+    "Title": "Brown Eyed Girl",
+    "Duration (s)": 168,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 3.07
   }
 ]
