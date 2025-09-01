@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:10",
-    "Displayed Time": "04:10",
-    "Artist": "OneRepublic",
-    "Title": "Runaway",
-    "Duration (s)": 136,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2.27,
-    "Full Duration (mins)": 2.38
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:12",
     "Displayed Time": "04:12",
     "Artist": "Miley Cyrus",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 193,
     "Duration (mins)": 3.18,
     "Full Duration (mins)": 3.22
+  },
+  {
+    "Hour": "2025-09-01T12:00:00Z",
+    "Scheduled Time": "13:07",
+    "Displayed Time": "13:07",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 214,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.75
   }
 ]
