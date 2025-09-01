@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T15:00:00Z",
-    "Scheduled Time": "16:12",
-    "Displayed Time": "16:12",
-    "Artist": "Ed Sheeran",
-    "Title": "Azizam",
-    "Duration (s)": 153,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.55,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-08-29T15:00:00Z",
     "Scheduled Time": "16:14",
     "Displayed Time": "16:14",
     "Artist": "Feeder",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.58,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-01T01:00:00Z",
+    "Scheduled Time": "02:15",
+    "Displayed Time": "02:15",
+    "Artist": "Coldplay",
+    "Title": "Yellow",
+    "Duration (s)": 255,
+    "Full Duration (s)": 269,
+    "Duration (mins)": 4.25,
+    "Full Duration (mins)": 4.48
   }
 ]
