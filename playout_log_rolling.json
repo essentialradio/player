@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T18:00:00Z",
-    "Scheduled Time": "19:47",
-    "Displayed Time": "19:47",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1123,
-    "Full Duration (s)": 1125,
-    "Duration (mins)": 18.72,
-    "Full Duration (mins)": 18.75
-  },
-  {
-    "Hour": "2025-08-29T19:00:00Z",
-    "Scheduled Time": "20:03",
-    "Displayed Time": "20:03",
-    "Artist": "Junior Jack",
-    "Title": "My Feeling",
-    "Duration (s)": 172,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.95
-  },
-  {
     "Hour": "2025-08-29T19:00:00Z",
     "Scheduled Time": "20:06",
     "Displayed Time": "20:06",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.18,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:45",
+    "Displayed Time": "05:45",
+    "Artist": "Depeche Mode",
+    "Title": "Enjoy the Silence",
+    "Duration (s)": 241,
+    "Full Duration (s)": 256,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.27
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:49",
+    "Displayed Time": "05:49",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Espresso",
+    "Duration (s)": 168,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.92
   }
 ]
