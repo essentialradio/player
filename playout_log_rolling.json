@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:53",
-    "Displayed Time": "18:53",
-    "Artist": "JADE",
-    "Title": "Plastic Box",
-    "Duration (s)": 194,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:58",
     "Displayed Time": "18:58",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.65,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:25",
+    "Displayed Time": "05:25",
+    "Artist": "Lola Young",
+    "Title": "Messy",
+    "Duration (s)": 192,
+    "Full Duration (s)": 284,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 4.73
   }
 ]
