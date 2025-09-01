@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:01",
-    "Displayed Time": "18:01",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:04",
     "Displayed Time": "18:04",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-01T03:00:00Z",
+    "Scheduled Time": "04:09",
+    "Displayed Time": "04:09",
+    "Artist": "WizTheMC, Bees & Honey",
+    "Title": "Show Me Love",
+    "Duration (s)": 167,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.95
   }
 ]
