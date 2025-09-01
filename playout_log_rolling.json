@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:46",
-    "Displayed Time": "18:46",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 215,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:50",
     "Displayed Time": "18:50",
     "Artist": "Wunderhorse",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:15",
+    "Displayed Time": "05:15",
+    "Artist": "Snow Patrol",
+    "Title": "Chasing Cars",
+    "Duration (s)": 240,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.1
   }
 ]
