@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:27",
-    "Displayed Time": "18:27",
-    "Artist": "Franz Ferdinand",
-    "Title": "Build It Up",
-    "Duration (s)": 177,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.95,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:30",
     "Displayed Time": "18:30",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-01T03:00:00Z",
+    "Scheduled Time": "04:48",
+    "Displayed Time": "04:48",
+    "Artist": "LMFAO Feat. Lauren Bennett & Goonrock",
+    "Title": "Party Rock Anthem",
+    "Duration (s)": 251,
+    "Full Duration (s)": 264,
+    "Duration (mins)": 4.18,
+    "Full Duration (mins)": 4.4
   }
 ]
