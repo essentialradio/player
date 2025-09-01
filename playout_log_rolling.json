@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T05:00:00Z",
-    "Scheduled Time": "06:47",
-    "Displayed Time": "06:47",
-    "Artist": "Tunde",
-    "Title": "Rain To A Rainbow",
-    "Duration (s)": 189,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3.15,
-    "Full Duration (mins)": 3.38
-  },
-  {
-    "Hour": "2025-08-30T05:00:00Z",
     "Scheduled Time": "06:51",
     "Displayed Time": "06:51",
     "Artist": "Nena",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 252,
     "Duration (mins)": 3.95,
     "Full Duration (mins)": 4.2
+  },
+  {
+    "Hour": "2025-09-01T15:00:00Z",
+    "Scheduled Time": "16:13",
+    "Displayed Time": "16:13",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 221,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.83
   }
 ]
