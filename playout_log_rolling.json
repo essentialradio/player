@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T02:00:00Z",
-    "Scheduled Time": "03:12",
-    "Displayed Time": "03:12",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 178,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-08-30T02:00:00Z",
     "Scheduled Time": "03:15",
     "Displayed Time": "03:15",
     "Artist": "Duffy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 246,
     "Duration (mins)": 3.88,
     "Full Duration (mins)": 4.1
+  },
+  {
+    "Hour": "2025-09-01T10:00:00Z",
+    "Scheduled Time": "11:46",
+    "Displayed Time": "11:46",
+    "Artist": "Shed Seven",
+    "Title": "Disco Down",
+    "Duration (s)": 220,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.85
   }
 ]
