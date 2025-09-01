@@ -3,17 +3,6 @@
     "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:24",
     "Displayed Time": "21:24",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:24",
-    "Displayed Time": "21:24",
     "Artist": "Anticappella",
     "Title": "2v231",
     "Duration (s)": 212,
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-01T06:00:00Z",
+    "Scheduled Time": "07:53",
+    "Displayed Time": "07:53",
+    "Artist": "Savage Garden",
+    "Title": "To the Moon and Back",
+    "Duration (s)": 244,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 4.07,
+    "Full Duration (mins)": 4.28
   }
 ]
