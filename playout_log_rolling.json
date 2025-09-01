@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:47",
-    "Displayed Time": "10:47",
-    "Artist": "Laura Branigan",
-    "Title": "Gloria",
-    "Duration (s)": 225,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 3.75,
-    "Full Duration (mins)": 3.85
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:51",
     "Displayed Time": "10:51",
     "Artist": "CMAT",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 238,
     "Duration (mins)": 3.85,
     "Full Duration (mins)": 3.97
+  },
+  {
+    "Hour": "2025-09-01T21:00:00Z",
+    "Scheduled Time": "22:05",
+    "Displayed Time": "22:05",
+    "Artist": "Peabo Bryson & Roberta Flack",
+    "Title": "Tonight, I Celebrate My Love",
+    "Duration (s)": 196,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.48
   }
 ]
