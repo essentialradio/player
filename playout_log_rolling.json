@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:01",
-    "Displayed Time": "08:01",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.53,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:04",
     "Displayed Time": "08:04",
     "Artist": "Joel Corry & MNEK",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-01T17:00:00Z",
+    "Scheduled Time": "18:08",
+    "Displayed Time": "18:08",
+    "Artist": "Good Neighbours",
+    "Title": "Starry Eyed",
+    "Duration (s)": 132,
+    "Full Duration (s)": 137,
+    "Duration (mins)": 2.2,
+    "Full Duration (mins)": 2.28
   }
 ]
