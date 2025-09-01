@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:01",
-    "Displayed Time": "04:01",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 250,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4.17,
-    "Full Duration (mins)": 4.3
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:06",
     "Displayed Time": "04:06",
     "Artist": "R.E.M.",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-01T11:00:00Z",
+    "Scheduled Time": "12:49",
+    "Displayed Time": "12:49",
+    "Artist": "Adele",
+    "Title": "Set Fire to the Rain",
+    "Duration (s)": 233,
+    "Full Duration (s)": 241,
+    "Duration (mins)": 3.88,
+    "Full Duration (mins)": 4.02
   }
 ]
