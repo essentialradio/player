@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:36",
-    "Displayed Time": "09:36",
-    "Artist": "Cerrone/Christine & The Queens",
-    "Title": "Catching Feelings",
-    "Duration (s)": 198,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.38
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:39",
     "Displayed Time": "09:39",
     "Artist": "Years & Years ft Galantis",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 235,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 3.92
+  },
+  {
+    "Hour": "2025-09-01T19:00:00Z",
+    "Scheduled Time": "20:14",
+    "Displayed Time": "20:14",
+    "Artist": "Eddy Grant",
+    "Title": "Electric Avenue",
+    "Duration (s)": 211,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.78
   }
 ]
