@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:11",
-    "Displayed Time": "18:11",
-    "Artist": "David Guetta & Bebe Rexha",
-    "Title": "I'm Good (Blue)",
-    "Duration (s)": 169,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 2.9
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:14",
     "Displayed Time": "18:14",
     "Artist": "CMAT",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 196,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.27
+  },
+  {
+    "Hour": "2025-09-01T03:00:00Z",
+    "Scheduled Time": "04:23",
+    "Displayed Time": "04:23",
+    "Artist": "Soft Cell",
+    "Title": "Tainted Love",
+    "Duration (s)": 149,
+    "Full Duration (s)": 159,
+    "Duration (mins)": 2.48,
+    "Full Duration (mins)": 2.65
   }
 ]
