@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:45",
-    "Displayed Time": "07:45",
-    "Artist": "Guns 'N' Roses",
-    "Title": "Sweet Child O' Mine",
-    "Duration (s)": 236,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 3.93,
-    "Full Duration (mins)": 3.95
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:49",
     "Displayed Time": "07:49",
     "Artist": "Keith Urban",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 132,
     "Duration (mins)": 2.15,
     "Full Duration (mins)": 2.2
+  },
+  {
+    "Hour": "2025-09-01T16:00:00Z",
+    "Scheduled Time": "17:42",
+    "Displayed Time": "17:42",
+    "Artist": "Huey Lewis & the News",
+    "Title": "The Power of Love",
+    "Duration (s)": 223,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.83
   }
 ]
