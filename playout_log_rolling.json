@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:32",
-    "Displayed Time": "08:32",
-    "Artist": "Cher",
-    "Title": "The Shoop Shoop Song (It's in His Kiss)",
-    "Duration (s)": 152,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.53,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:34",
     "Displayed Time": "08:34",
     "Artist": "Train",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-01T17:00:00Z",
+    "Scheduled Time": "18:45",
+    "Displayed Time": "18:45",
+    "Artist": "HUNTR/X, EJAE, Audrey Nuna, REI AMI",
+    "Title": "Golden",
+    "Duration (s)": 184,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.25
   }
 ]
