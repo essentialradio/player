@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:41",
-    "Displayed Time": "11:41",
-    "Artist": "Tom Grennan",
-    "Title": "How Does It Feel",
-    "Duration (s)": 133,
-    "Full Duration (s)": 144,
-    "Duration (mins)": 2.22,
-    "Full Duration (mins)": 2.4
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:43",
     "Displayed Time": "11:43",
     "Artist": "Good Neighbours",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-01T22:00:00Z",
+    "Scheduled Time": "23:20",
+    "Displayed Time": "23:20",
+    "Artist": "Toto",
+    "Title": "I Won't Hold You Back",
+    "Duration (s)": 274,
+    "Full Duration (s)": 290,
+    "Duration (mins)": 4.57,
+    "Full Duration (mins)": 4.83
   }
 ]
