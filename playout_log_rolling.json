@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T16:00:00Z",
-    "Scheduled Time": "17:53",
-    "Displayed Time": "17:53",
-    "Artist": "The Weather Girls",
-    "Title": "It's Raining Men",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.38,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-08-29T16:00:00Z",
     "Scheduled Time": "17:58",
     "Displayed Time": "17:58",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 237,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.95
+  },
+  {
+    "Hour": "2025-09-01T03:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "04:01",
+    "Artist": "Bruno Mars",
+    "Title": "24K Magic",
+    "Duration (s)": 223,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.77
   }
 ]
