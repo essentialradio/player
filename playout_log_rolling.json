@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:41",
-    "Displayed Time": "18:41",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:42",
     "Displayed Time": "18:42",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 226,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.77
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:08",
+    "Displayed Time": "05:08",
+    "Artist": "Nicki Minaj",
+    "Title": "Super Freaky Girl",
+    "Duration (s)": 167,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.85
   }
 ]
