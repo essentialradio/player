@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:44",
-    "Displayed Time": "10:44",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 221,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:47",
     "Displayed Time": "10:47",
     "Artist": "Laura Branigan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-01T21:00:00Z",
+    "Scheduled Time": "22:02",
+    "Displayed Time": "22:02",
+    "Artist": "Smokey Robinson",
+    "Title": "Being With You",
+    "Duration (s)": 231,
+    "Full Duration (s)": 238,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 3.97
   }
 ]
