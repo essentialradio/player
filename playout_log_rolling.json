@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-08-29T21:00:00Z",
-    "Scheduled Time": "22:32",
-    "Displayed Time": "22:32",
-    "Artist": "Boogie Box High",
-    "Title": "Jive Talkin'",
-    "Duration (s)": 208,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.65
-  },
-  {
-    "Hour": "2025-08-29T21:00:00Z",
-    "Scheduled Time": "22:36",
-    "Displayed Time": "22:36",
-    "Artist": "Billie Ray Martin",
-    "Title": "Your Loving Arms",
-    "Duration (s)": 243,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4.05,
-    "Full Duration (mins)": 4.27
-  },
-  {
-    "Hour": "2025-08-29T21:00:00Z",
     "Scheduled Time": "22:40",
     "Displayed Time": "22:40",
     "Artist": "Inaya Day",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 236,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 3.93
+  },
+  {
+    "Hour": "2025-09-01T08:00:00Z",
+    "Scheduled Time": "09:28",
+    "Displayed Time": "09:28",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 164,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-01T08:00:00Z",
+    "Scheduled Time": "09:31",
+    "Displayed Time": "09:31",
+    "Artist": "Aztec Camera",
+    "Title": "Somewhere in My Heart",
+    "Duration (s)": 227,
+    "Full Duration (s)": 242,
+    "Duration (mins)": 3.78,
+    "Full Duration (mins)": 4.03
   }
 ]
