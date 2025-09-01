@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:51",
-    "Displayed Time": "10:51",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 228,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.8,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:55",
     "Displayed Time": "10:55",
     "Artist": "No Doubt",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-01T21:00:00Z",
+    "Scheduled Time": "22:09",
+    "Displayed Time": "22:09",
+    "Artist": "Wet Wet Wet",
+    "Title": "Love Is All Around",
+    "Duration (s)": 220,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.98
   }
 ]
