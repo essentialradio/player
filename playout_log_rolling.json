@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T18:00:00Z",
-    "Scheduled Time": "19:24",
-    "Displayed Time": "19:24",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1230,
-    "Full Duration (s)": 1234,
-    "Duration (mins)": 20.5,
-    "Full Duration (mins)": 20.57
-  },
-  {
-    "Hour": "2025-08-29T18:00:00Z",
     "Scheduled Time": "19:47",
     "Displayed Time": "19:47",
     "Artist": "Lee Everest",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3.25,
     "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:42",
+    "Displayed Time": "05:42",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 191,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.3
   }
 ]
