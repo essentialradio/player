@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T15:00:00Z",
-    "Scheduled Time": "16:44",
-    "Displayed Time": "16:44",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-29T15:00:00Z",
     "Scheduled Time": "16:45",
     "Displayed Time": "16:45",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-01T01:00:00Z",
+    "Scheduled Time": "02:54",
+    "Displayed Time": "02:54",
+    "Artist": "Blur",
+    "Title": "Coffee & TV",
+    "Duration (s)": 283,
+    "Full Duration (s)": 305,
+    "Duration (mins)": 4.72,
+    "Full Duration (mins)": 5.08
   }
 ]
