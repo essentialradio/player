@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T01:00:00Z",
-    "Scheduled Time": "02:23",
-    "Displayed Time": "02:23",
-    "Artist": "Ella Eyre",
-    "Title": "Space",
-    "Duration (s)": 155,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-08-30T01:00:00Z",
     "Scheduled Time": "02:26",
     "Displayed Time": "02:26",
     "Artist": "Teddy Swims",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-01T09:00:00Z",
+    "Scheduled Time": "10:51",
+    "Displayed Time": "10:51",
+    "Artist": "Maroon 5",
+    "Title": "Girls Like You",
+    "Duration (s)": 212,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.58
   }
 ]
