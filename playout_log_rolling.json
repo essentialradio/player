@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T15:00:00Z",
-    "Scheduled Time": "16:35",
-    "Displayed Time": "16:35",
-    "Artist": "Christina Perri",
-    "Title": "Jar of Hearts",
-    "Duration (s)": 208,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-08-29T15:00:00Z",
     "Scheduled Time": "16:38",
     "Displayed Time": "16:38",
     "Artist": "Bob Marley & The Wailers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 245,
     "Duration (mins)": 3.1,
     "Full Duration (mins)": 4.08
+  },
+  {
+    "Hour": "2025-09-01T01:00:00Z",
+    "Scheduled Time": "02:47",
+    "Displayed Time": "02:47",
+    "Artist": "Calvin Harris + Disciples",
+    "Title": "How Deep Is Your Love",
+    "Duration (s)": 199,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.47
   }
 ]
