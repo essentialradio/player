@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:53",
-    "Displayed Time": "11:53",
-    "Artist": "Plan B",
-    "Title": "She Said",
-    "Duration (s)": 194,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.5
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:57",
     "Displayed Time": "11:57",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 339,
     "Duration (mins)": 5.37,
     "Full Duration (mins)": 5.65
+  },
+  {
+    "Hour": "2025-09-01T22:00:00Z",
+    "Scheduled Time": "23:42",
+    "Displayed Time": "23:42",
+    "Artist": "Crowded House",
+    "Title": "Don't Dream It's Over",
+    "Duration (s)": 212,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.77
   }
 ]
