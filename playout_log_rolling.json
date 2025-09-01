@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T19:00:00Z",
-    "Scheduled Time": "20:19",
-    "Displayed Time": "20:19",
-    "Artist": "The Isley Brothers",
-    "Title": "It's Your Thing",
-    "Duration (s)": 142,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 2.37,
-    "Full Duration (mins)": 2.67
-  },
-  {
-    "Hour": "2025-08-29T19:00:00Z",
     "Scheduled Time": "20:25",
     "Displayed Time": "20:25",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 258,
     "Duration (mins)": 4.12,
     "Full Duration (mins)": 4.3
+  },
+  {
+    "Hour": "2025-09-01T05:00:00Z",
+    "Scheduled Time": "06:13",
+    "Displayed Time": "06:13",
+    "Artist": "Ed Sheeran",
+    "Title": "American Town",
+    "Duration (s)": 194,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.3
   }
 ]
