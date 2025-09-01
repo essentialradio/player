@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T19:00:00Z",
-    "Scheduled Time": "20:43",
-    "Displayed Time": "20:43",
-    "Artist": "808 State",
-    "Title": "In Yer Face",
-    "Duration (s)": 222,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-08-29T19:00:00Z",
     "Scheduled Time": "20:47",
     "Displayed Time": "20:47",
     "Artist": "David Guetta ft Usher",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-01T05:00:00Z",
+    "Scheduled Time": "06:46",
+    "Displayed Time": "06:46",
+    "Artist": "Taylor Swift",
+    "Title": "Anti-Hero",
+    "Duration (s)": 197,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.35
   }
 ]
