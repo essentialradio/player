@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T01:00:00Z",
-    "Scheduled Time": "02:22",
-    "Displayed Time": "02:22",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T01:00:00Z",
     "Scheduled Time": "02:23",
     "Displayed Time": "02:23",
     "Artist": "Ella Eyre",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 165,
     "Duration (mins)": 2.7,
     "Full Duration (mins)": 2.75
+  },
+  {
+    "Hour": "2025-09-01T09:00:00Z",
+    "Scheduled Time": "10:44",
+    "Displayed Time": "10:44",
+    "Artist": "Christina Aguilera",
+    "Title": "Ain't No Other Man",
+    "Duration (s)": 222,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.73
   }
 ]
