@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:14",
-    "Displayed Time": "21:14",
-    "Artist": "Bomfunk MCs",
-    "Title": "Freestyler",
-    "Duration (s)": 164,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.9
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:17",
     "Displayed Time": "21:17",
     "Artist": "London Boys",
@@ -5497,6 +5486,17 @@
     "Duration (s)": 185,
     "Full Duration (s)": 189,
     "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.15
+  },
+  {
+    "Hour": "2025-09-01T06:00:00Z",
+    "Scheduled Time": "07:33",
+    "Displayed Time": "07:33",
+    "Artist": "Scouting for Girls",
+    "Title": "This Ain't a Love Song",
+    "Duration (s)": 184,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.15
   }
 ]
