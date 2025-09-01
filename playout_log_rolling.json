@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:58",
-    "Displayed Time": "09:58",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:59",
     "Displayed Time": "09:59",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 275,
     "Duration (mins)": 4.4,
     "Full Duration (mins)": 4.58
+  },
+  {
+    "Hour": "2025-09-01T19:00:00Z",
+    "Scheduled Time": "20:48",
+    "Displayed Time": "20:48",
+    "Artist": "Jason Donovan",
+    "Title": "Too Many Broken Hearts",
+    "Duration (s)": 193,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.45
   }
 ]
