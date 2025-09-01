@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T02:00:00Z",
-    "Scheduled Time": "03:42",
-    "Displayed Time": "03:42",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T02:00:00Z",
     "Scheduled Time": "03:43",
     "Displayed Time": "03:43",
     "Artist": "Fontaines D.C.",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-01T11:00:00Z",
+    "Scheduled Time": "12:27",
+    "Displayed Time": "12:27",
+    "Artist": "Cerrone/Christine & The Queens",
+    "Title": "Catching Feelings",
+    "Duration (s)": 195,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.38
   }
 ]
