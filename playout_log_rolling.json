@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T01:00:00Z",
-    "Scheduled Time": "02:02",
-    "Displayed Time": "02:02",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 214,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-08-30T01:00:00Z",
     "Scheduled Time": "02:06",
     "Displayed Time": "02:06",
     "Artist": "The Cranberries",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.08,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-01T09:00:00Z",
+    "Scheduled Time": "10:14",
+    "Displayed Time": "10:14",
+    "Artist": "MK ft Chrystal",
+    "Title": "Dior",
+    "Duration (s)": 166,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.82
   }
 ]
