@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T02:00:00Z",
-    "Scheduled Time": "03:20",
-    "Displayed Time": "03:20",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T02:00:00Z",
     "Scheduled Time": "03:22",
     "Displayed Time": "03:22",
     "Artist": "Def Leppard",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-01T10:00:00Z",
+    "Scheduled Time": "11:54",
+    "Displayed Time": "11:54",
+    "Artist": "Dido",
+    "Title": "White Flag",
+    "Duration (s)": 207,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.68
   }
 ]
