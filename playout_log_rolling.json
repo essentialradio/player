@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-08-30T11:00:00Z",
-    "Scheduled Time": "12:39",
-    "Displayed Time": "12:39",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 176,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 2.93,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-08-30T11:00:00Z",
-    "Scheduled Time": "12:44",
-    "Displayed Time": "12:44",
-    "Artist": "Bob Marley & The Wailers",
-    "Title": "No Woman No Cry",
-    "Duration (s)": 224,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 3.73,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-08-30T11:00:00Z",
     "Scheduled Time": "12:48",
     "Displayed Time": "12:48",
     "Artist": "Olivia Rodrigo",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.77,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-01T23:00:00Z",
+    "Scheduled Time": "00:28",
+    "Displayed Time": "00:28",
+    "Artist": "Level 42",
+    "Title": "Lessons in Love",
+    "Duration (s)": 223,
+    "Full Duration (s)": 240,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 4.0
+  },
+  {
+    "Hour": "2025-09-01T23:00:00Z",
+    "Scheduled Time": "00:32",
+    "Displayed Time": "00:32",
+    "Artist": "Olly Murs",
+    "Title": "Save Me",
+    "Duration (s)": 166,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.92
   }
 ]
