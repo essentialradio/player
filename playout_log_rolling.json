@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T02:00:00Z",
-    "Scheduled Time": "03:22",
-    "Displayed Time": "03:22",
-    "Artist": "Def Leppard",
-    "Title": "Pour Some Sugar on Me",
-    "Duration (s)": 285,
-    "Full Duration (s)": 293,
-    "Duration (mins)": 4.75,
-    "Full Duration (mins)": 4.88
-  },
-  {
-    "Hour": "2025-08-30T02:00:00Z",
     "Scheduled Time": "03:27",
     "Displayed Time": "03:27",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 221,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.68
+  },
+  {
+    "Hour": "2025-09-01T11:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "12:02",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 198,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.57
   }
 ]
