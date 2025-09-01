@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:44",
-    "Displayed Time": "09:44",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:45",
     "Displayed Time": "09:45",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 235,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.92
+  },
+  {
+    "Hour": "2025-09-01T19:00:00Z",
+    "Scheduled Time": "20:24",
+    "Displayed Time": "20:24",
+    "Artist": "Bruce Hornsby & The Range",
+    "Title": "The Way It Is",
+    "Duration (s)": 244,
+    "Full Duration (s)": 256,
+    "Duration (mins)": 4.07,
+    "Full Duration (mins)": 4.27
   }
 ]
