@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:35",
-    "Displayed Time": "21:35",
-    "Artist": "Heller And Farley Project",
-    "Title": "Ultra Flava",
-    "Duration (s)": 224,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 3.73,
-    "Full Duration (mins)": 3.93
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:39",
     "Displayed Time": "21:39",
     "Artist": "Booty Luv",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 144,
     "Duration (mins)": 2.32,
     "Full Duration (mins)": 2.4
+  },
+  {
+    "Hour": "2025-09-01T07:00:00Z",
+    "Scheduled Time": "08:11",
+    "Displayed Time": "08:11",
+    "Artist": "Cast",
+    "Title": "Alright",
+    "Duration (s)": 208,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.6
   }
 ]
