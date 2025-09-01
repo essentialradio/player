@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T07:00:00Z",
-    "Scheduled Time": "08:45",
-    "Displayed Time": "08:45",
-    "Artist": "Robert Palmer",
-    "Title": "Addicted to Love",
-    "Duration (s)": 224,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.73,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-08-30T07:00:00Z",
     "Scheduled Time": "08:48",
     "Displayed Time": "08:48",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 186,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 3.1
+  },
+  {
+    "Hour": "2025-09-01T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "19:10",
+    "Artist": "Chic",
+    "Title": "Le Freak",
+    "Duration (s)": 204,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.53
   }
 ]
