@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:17",
-    "Displayed Time": "10:17",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:18",
     "Displayed Time": "10:18",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.62
+  },
+  {
+    "Hour": "2025-09-01T20:00:00Z",
+    "Scheduled Time": "21:21",
+    "Displayed Time": "21:21",
+    "Artist": "CeCe Peniston",
+    "Title": "Finally",
+    "Duration (s)": 231,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 4.12
   }
 ]
