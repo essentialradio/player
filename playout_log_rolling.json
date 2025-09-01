@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T11:00:00Z",
-    "Scheduled Time": "12:22",
-    "Displayed Time": "12:22",
-    "Artist": "Ella Eyre",
-    "Title": "Space",
-    "Duration (s)": 155,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-08-30T11:00:00Z",
     "Scheduled Time": "12:25",
     "Displayed Time": "12:25",
     "Artist": "Jamiroquai",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-01T23:00:00Z",
+    "Scheduled Time": "00:15",
+    "Displayed Time": "00:15",
+    "Artist": "Lady Gaga",
+    "Title": "Paparazzi",
+    "Duration (s)": 194,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.43
   }
 ]
