@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:24",
-    "Displayed Time": "18:24",
-    "Artist": "Tiesto & Tate McRae",
-    "Title": "10:35",
-    "Duration (s)": 164,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.87
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:27",
     "Displayed Time": "18:27",
     "Artist": "Franz Ferdinand",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-01T03:00:00Z",
+    "Scheduled Time": "04:44",
+    "Displayed Time": "04:44",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 221,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.83
   }
 ]
