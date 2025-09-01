@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:04",
-    "Displayed Time": "18:04",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Busy Woman",
-    "Duration (s)": 177,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 2.95,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:07",
     "Displayed Time": "18:07",
     "Artist": "Laufey",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.78,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-01T03:00:00Z",
+    "Scheduled Time": "04:12",
+    "Displayed Time": "04:12",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 229,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.05
   }
 ]
