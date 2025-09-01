@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T22:00:00Z",
-    "Scheduled Time": "23:01",
-    "Displayed Time": "23:01",
-    "Artist": "with Ronny Costello",
-    "Title": "Club Classics Radio Show <24 - 28.08.25>",
-    "Duration (s)": 3489,
-    "Full Duration (s)": 3492,
-    "Duration (mins)": 58.15,
-    "Full Duration (mins)": 58.2
-  },
-  {
     "Hour": "2025-08-29T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "00:00",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 245,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 4.08
+  },
+  {
+    "Hour": "2025-09-01T09:00:00Z",
+    "Scheduled Time": "10:01",
+    "Displayed Time": "10:01",
+    "Artist": "Cee-Lo Green",
+    "Title": "Forget You",
+    "Duration (s)": 219,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.7
   }
 ]
