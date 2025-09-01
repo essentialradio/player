@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T14:00:00Z",
-    "Scheduled Time": "15:54",
-    "Displayed Time": "15:54",
-    "Artist": "Jack Harlow",
-    "Title": "Lovin On Me",
-    "Duration (s)": 134,
-    "Full Duration (s)": 138,
-    "Duration (mins)": 2.23,
-    "Full Duration (mins)": 2.3
-  },
-  {
-    "Hour": "2025-08-29T14:00:00Z",
     "Scheduled Time": "15:58",
     "Displayed Time": "15:58",
     "Artist": "",
@@ -5487,6 +5476,17 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-09-01T00:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "01:01",
+    "Artist": "David Southway",
+    "Title": "Soul Vaults",
+    "Duration (s)": 3402,
+    "Full Duration (s)": 3408,
+    "Duration (mins)": 56.7,
+    "Full Duration (mins)": 56.8
   },
   {
     "Hour": "2025-09-01T00:00:00Z",
