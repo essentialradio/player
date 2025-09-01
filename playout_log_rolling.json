@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:30",
-    "Displayed Time": "18:30",
-    "Artist": "Benson Boone",
-    "Title": "Mystical Magical",
-    "Duration (s)": 158,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.63,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:33",
     "Displayed Time": "18:33",
     "Artist": "Charlotte OC",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 264,
     "Duration (mins)": 4.18,
     "Full Duration (mins)": 4.4
+  },
+  {
+    "Hour": "2025-09-01T03:00:00Z",
+    "Scheduled Time": "04:52",
+    "Displayed Time": "04:52",
+    "Artist": "Nathan Evans",
+    "Title": "Heather On The Hill",
+    "Duration (s)": 134,
+    "Full Duration (s)": 140,
+    "Duration (mins)": 2.23,
+    "Full Duration (mins)": 2.33
   }
 ]
