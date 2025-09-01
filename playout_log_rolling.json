@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T11:00:00Z",
-    "Scheduled Time": "12:53",
-    "Displayed Time": "12:53",
-    "Artist": "Liberty X",
-    "Title": "Thinking It Over",
-    "Duration (s)": 306,
-    "Full Duration (s)": 318,
-    "Duration (mins)": 5.1,
-    "Full Duration (mins)": 5.3
-  },
-  {
-    "Hour": "2025-08-30T11:00:00Z",
-    "Scheduled Time": "12:58",
-    "Displayed Time": "12:58",
-    "Artist": "Alanis Morissette",
-    "Title": "Ironic",
-    "Duration (s)": 210,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.5,
-    "Full Duration (mins)": 3.8
-  },
-  {
     "Hour": "2025-08-30T16:00:00Z",
     "Scheduled Time": "17:02",
     "Displayed Time": "17:02",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 194,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.23
+  },
+  {
+    "Hour": "2025-09-01T23:00:00Z",
+    "Scheduled Time": "00:41",
+    "Displayed Time": "00:41",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 138,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.3,
+    "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-01T23:00:00Z",
+    "Scheduled Time": "00:44",
+    "Displayed Time": "00:44",
+    "Artist": "N-Trance",
+    "Title": "Set You Free",
+    "Duration (s)": 236,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 3.93,
+    "Full Duration (mins)": 4.17
   }
 ]
