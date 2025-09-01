@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T15:00:00Z",
-    "Scheduled Time": "16:02",
-    "Displayed Time": "16:02",
-    "Artist": "Olivia Rodrigo",
-    "Title": "Good 4 U",
-    "Duration (s)": 171,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 2.97
-  },
-  {
-    "Hour": "2025-08-29T15:00:00Z",
     "Scheduled Time": "16:05",
     "Displayed Time": "16:05",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-01T01:00:00Z",
+    "Scheduled Time": "02:05",
+    "Displayed Time": "02:05",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 176,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.12
   }
 ]
