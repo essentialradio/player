@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:49",
-    "Displayed Time": "07:49",
-    "Artist": "Keith Urban",
-    "Title": "Chuck Taylors",
-    "Duration (s)": 211,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:52",
     "Displayed Time": "07:52",
     "Artist": "Madonna",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.72,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-01T16:00:00Z",
+    "Scheduled Time": "17:46",
+    "Displayed Time": "17:46",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 195,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.3
   }
 ]
