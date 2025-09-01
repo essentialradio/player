@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T05:00:00Z",
-    "Scheduled Time": "06:42",
-    "Displayed Time": "06:42",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T05:00:00Z",
     "Scheduled Time": "06:47",
     "Displayed Time": "06:47",
     "Artist": "Tunde",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.47,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-01T15:00:00Z",
+    "Scheduled Time": "16:09",
+    "Displayed Time": "16:09",
+    "Artist": "Biffy Clyro",
+    "Title": "Many Of Horror (When We Collide)",
+    "Duration (s)": 237,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.2
   }
 ]
