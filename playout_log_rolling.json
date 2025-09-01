@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T03:00:00Z",
-    "Scheduled Time": "04:51",
-    "Displayed Time": "04:51",
-    "Artist": "Casso, Raye, D-Block Europe",
-    "Title": "Prada",
-    "Duration (s)": 125,
-    "Full Duration (s)": 132,
-    "Duration (mins)": 2.08,
-    "Full Duration (mins)": 2.2
-  },
-  {
-    "Hour": "2025-08-30T03:00:00Z",
     "Scheduled Time": "04:53",
     "Displayed Time": "04:53",
     "Artist": "Fall Out Boy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 258,
     "Duration (mins)": 4.17,
     "Full Duration (mins)": 4.3
+  },
+  {
+    "Hour": "2025-09-01T13:00:00Z",
+    "Scheduled Time": "14:06",
+    "Displayed Time": "14:06",
+    "Artist": "Carly Rae Jepsen",
+    "Title": "Call Me Maybe",
+    "Duration (s)": 180,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.23
   }
 ]
