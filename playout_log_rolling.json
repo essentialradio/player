@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T01:00:00Z",
-    "Scheduled Time": "02:33",
-    "Displayed Time": "02:33",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 201,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-08-30T01:00:00Z",
     "Scheduled Time": "02:40",
     "Displayed Time": "02:40",
     "Artist": "Camila Cabello",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.75,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-01T10:00:00Z",
+    "Scheduled Time": "11:06",
+    "Displayed Time": "11:06",
+    "Artist": "TLC",
+    "Title": "Creep",
+    "Duration (s)": 248,
+    "Full Duration (s)": 263,
+    "Duration (mins)": 4.13,
+    "Full Duration (mins)": 4.38
   }
 ]
