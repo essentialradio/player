@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T19:00:00Z",
-    "Scheduled Time": "20:58",
-    "Displayed Time": "20:58",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
     "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:01",
     "Displayed Time": "21:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 194,
     "Duration (mins)": 3.2,
     "Full Duration (mins)": 3.23
+  },
+  {
+    "Hour": "2025-09-01T06:00:00Z",
+    "Scheduled Time": "07:07",
+    "Displayed Time": "07:07",
+    "Artist": "Simple Minds",
+    "Title": "Don't You (Forget About Me)",
+    "Duration (s)": 252,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 4.2,
+    "Full Duration (mins)": 4.28
   }
 ]
