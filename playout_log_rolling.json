@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "05:05",
-    "Artist": "Olly Murs",
-    "Title": "Save Me",
-    "Duration (s)": 166,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-08-30T04:00:00Z",
     "Scheduled Time": "05:08",
     "Displayed Time": "05:08",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-01T13:00:00Z",
+    "Scheduled Time": "14:24",
+    "Displayed Time": "14:24",
+    "Artist": "JP Cooper",
+    "Title": "September Song",
+    "Duration (s)": 206,
+    "Full Duration (s)": 217,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.62
   }
 ]
