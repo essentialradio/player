@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:53",
-    "Displayed Time": "09:53",
-    "Artist": "Chappell Roan",
-    "Title": "The Subway",
-    "Duration (s)": 245,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4.08,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:58",
     "Displayed Time": "09:58",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-01T19:00:00Z",
+    "Scheduled Time": "20:44",
+    "Displayed Time": "20:44",
+    "Artist": "Paul Simon",
+    "Title": "You Can Call Me Al",
+    "Duration (s)": 264,
+    "Full Duration (s)": 275,
+    "Duration (mins)": 4.4,
+    "Full Duration (mins)": 4.58
   }
 ]
