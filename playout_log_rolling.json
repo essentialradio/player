@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:25",
-    "Displayed Time": "09:25",
-    "Artist": "5 Seconds Of Summer",
-    "Title": "Youngblood",
-    "Duration (s)": 201,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.38
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:31",
     "Displayed Time": "09:31",
     "Artist": "Red Hot Chili Peppers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 250,
     "Duration (mins)": 4.03,
     "Full Duration (mins)": 4.17
+  },
+  {
+    "Hour": "2025-09-01T19:00:00Z",
+    "Scheduled Time": "20:06",
+    "Displayed Time": "20:06",
+    "Artist": "Duran Duran",
+    "Title": "The Wild Boys",
+    "Duration (s)": 244,
+    "Full Duration (s)": 259,
+    "Duration (mins)": 4.07,
+    "Full Duration (mins)": 4.32
   }
 ]
