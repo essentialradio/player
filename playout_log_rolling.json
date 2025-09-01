@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:04",
-    "Displayed Time": "21:04",
-    "Artist": "D:Ream",
-    "Title": "Shoot Me With Your Love",
-    "Duration (s)": 218,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:08",
     "Displayed Time": "21:08",
     "Artist": "Viola Wills",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 3.02,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-01T06:00:00Z",
+    "Scheduled Time": "07:14",
+    "Displayed Time": "07:14",
+    "Artist": "Sam Fender",
+    "Title": "People Watching",
+    "Duration (s)": 238,
+    "Full Duration (s)": 311,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 5.18
   }
 ]
