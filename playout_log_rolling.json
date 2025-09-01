@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:08",
-    "Displayed Time": "09:08",
-    "Artist": "Duran Duran",
-    "Title": "Ordinary World",
-    "Duration (s)": 271,
-    "Full Duration (s)": 278,
-    "Duration (mins)": 4.52,
-    "Full Duration (mins)": 4.63
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:12",
-    "Displayed Time": "09:12",
-    "Artist": "Becky Hill & David Guetta",
-    "Title": "Remember",
-    "Duration (s)": 157,
-    "Full Duration (s)": 161,
-    "Duration (mins)": 2.62,
-    "Full Duration (mins)": 2.68
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:19",
     "Displayed Time": "09:19",
     "Artist": "Michael Buble",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.5,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-01T18:00:00Z",
+    "Scheduled Time": "19:42",
+    "Displayed Time": "19:42",
+    "Artist": "ABBA (ESC",
+    "Title": "1974 - Sweden - GF-1st) - Waterloo",
+    "Duration (s)": 150,
+    "Full Duration (s)": 163,
+    "Duration (mins)": 2.5,
+    "Full Duration (mins)": 2.72
+  },
+  {
+    "Hour": "2025-09-01T18:00:00Z",
+    "Scheduled Time": "19:47",
+    "Displayed Time": "19:47",
+    "Artist": "Tubeway Army",
+    "Title": "Are 'Friends' Electric?",
+    "Duration (s)": 306,
+    "Full Duration (s)": 314,
+    "Duration (mins)": 5.1,
+    "Full Duration (mins)": 5.23
   }
 ]
