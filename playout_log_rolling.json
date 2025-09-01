@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:08",
-    "Displayed Time": "21:08",
-    "Artist": "Viola Wills",
-    "Title": "Gonna Get Along Without You Now",
-    "Duration (s)": 188,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.25
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:11",
     "Displayed Time": "21:11",
     "Artist": "PinkPantheress",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 311,
     "Duration (mins)": 3.97,
     "Full Duration (mins)": 5.18
+  },
+  {
+    "Hour": "2025-09-01T06:00:00Z",
+    "Scheduled Time": "07:19",
+    "Displayed Time": "07:19",
+    "Artist": "Girls Aloud",
+    "Title": "Call the Shots",
+    "Duration (s)": 216,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.7
   }
 ]
