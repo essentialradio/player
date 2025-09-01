@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:31",
-    "Displayed Time": "11:31",
-    "Artist": "Justin Bieber",
-    "Title": "Daisies",
-    "Duration (s)": 174,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:34",
     "Displayed Time": "11:34",
     "Artist": "Bangles",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 253,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 4.22
+  },
+  {
+    "Hour": "2025-09-01T22:00:00Z",
+    "Scheduled Time": "23:06",
+    "Displayed Time": "23:06",
+    "Artist": "Johnny Hates Jazz",
+    "Title": "Shattered Dreams",
+    "Duration (s)": 187,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.43
   }
 ]
