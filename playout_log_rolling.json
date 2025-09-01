@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:35",
-    "Displayed Time": "07:35",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 221,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:39",
     "Displayed Time": "07:39",
     "Artist": "Eric Prydz",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-01T16:00:00Z",
+    "Scheduled Time": "17:26",
+    "Displayed Time": "17:26",
+    "Artist": "John Newman",
+    "Title": "Love Me Again",
+    "Duration (s)": 202,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.58
   }
 ]
