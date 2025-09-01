@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T17:00:00Z",
-    "Scheduled Time": "18:25",
-    "Displayed Time": "18:25",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 992,
-    "Full Duration (s)": 994,
-    "Duration (mins)": 16.53,
-    "Full Duration (mins)": 16.57
-  },
-  {
-    "Hour": "2025-08-30T17:00:00Z",
     "Scheduled Time": "18:43",
     "Displayed Time": "18:43",
     "Artist": "Tim Graham",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3.32,
     "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-01T23:00:00Z",
+    "Scheduled Time": "00:54",
+    "Displayed Time": "00:54",
+    "Artist": "A-Ha",
+    "Title": "Take on Me",
+    "Duration (s)": 202,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.6
   }
 ]
