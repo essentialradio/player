@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T08:00:00Z",
-    "Scheduled Time": "09:01",
-    "Displayed Time": "09:01",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 172,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-08-30T08:00:00Z",
     "Scheduled Time": "09:05",
     "Displayed Time": "09:05",
     "Artist": "Mabel",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 193,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.22
+  },
+  {
+    "Hour": "2025-09-01T18:00:00Z",
+    "Scheduled Time": "19:34",
+    "Displayed Time": "19:34",
+    "Artist": "Norman Greenbaum",
+    "Title": "Spirit in the Sky",
+    "Duration (s)": 228,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.98
   }
 ]
