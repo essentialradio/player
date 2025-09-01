@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T06:00:00Z",
-    "Scheduled Time": "07:22",
-    "Displayed Time": "07:22",
-    "Artist": "Lady Gaga with Ariana Grande",
-    "Title": "Rain on Me",
-    "Duration (s)": 181,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-08-30T06:00:00Z",
     "Scheduled Time": "07:25",
     "Displayed Time": "07:25",
     "Artist": "Jungle",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-01T16:00:00Z",
+    "Scheduled Time": "17:03",
+    "Displayed Time": "17:03",
+    "Artist": "Dermot Kennedy",
+    "Title": "Giants",
+    "Duration (s)": 165,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.95
   }
 ]
