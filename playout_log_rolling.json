@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T16:00:00Z",
-    "Scheduled Time": "17:23",
-    "Displayed Time": "17:23",
-    "Artist": "The Tamperer ft Maya",
-    "Title": "If You Buy This Record Your Life Will Be Better",
-    "Duration (s)": 199,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.45
-  },
-  {
-    "Hour": "2025-08-29T16:00:00Z",
     "Scheduled Time": "17:27",
     "Displayed Time": "17:27",
     "Artist": "Grace Jones",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.65,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-01T02:00:00Z",
+    "Scheduled Time": "03:39",
+    "Displayed Time": "03:39",
+    "Artist": "Taylor Swift",
+    "Title": "We Are Never Ever Getting Back Together",
+    "Duration (s)": 185,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.2
   }
 ]
