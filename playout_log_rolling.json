@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T20:00:00Z",
-    "Scheduled Time": "21:52",
-    "Displayed Time": "21:52",
-    "Artist": "N-Joi",
-    "Title": "Anthem",
-    "Duration (s)": 245,
-    "Full Duration (s)": 257,
-    "Duration (mins)": 4.08,
-    "Full Duration (mins)": 4.28
-  },
-  {
-    "Hour": "2025-08-29T20:00:00Z",
     "Scheduled Time": "21:57",
     "Displayed Time": "21:57",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.97,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-01T07:00:00Z",
+    "Scheduled Time": "08:36",
+    "Displayed Time": "08:36",
+    "Artist": "U2",
+    "Title": "One",
+    "Duration (s)": 267,
+    "Full Duration (s)": 274,
+    "Duration (mins)": 4.45,
+    "Full Duration (mins)": 4.57
   }
 ]
