@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T09:00:00Z",
-    "Scheduled Time": "10:43",
-    "Displayed Time": "10:43",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-30T09:00:00Z",
     "Scheduled Time": "10:44",
     "Displayed Time": "10:44",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 250,
     "Duration (mins)": 3.97,
     "Full Duration (mins)": 4.17
+  },
+  {
+    "Hour": "2025-09-01T20:00:00Z",
+    "Scheduled Time": "21:55",
+    "Displayed Time": "21:55",
+    "Artist": "Shara Nelson",
+    "Title": "Down That Road",
+    "Duration (s)": 212,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.75
   }
 ]
