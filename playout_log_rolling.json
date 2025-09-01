@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-30T10:00:00Z",
-    "Scheduled Time": "11:25",
-    "Displayed Time": "11:25",
-    "Artist": "Barenaked Ladies",
-    "Title": "One Week",
-    "Duration (s)": 160,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 2.67,
-    "Full Duration (mins)": 2.83
-  },
-  {
-    "Hour": "2025-08-30T10:00:00Z",
     "Scheduled Time": "11:28",
     "Displayed Time": "11:28",
     "Artist": "Blur",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 264,
     "Duration (mins)": 4.15,
     "Full Duration (mins)": 4.4
+  },
+  {
+    "Hour": "2025-09-01T21:00:00Z",
+    "Scheduled Time": "22:54",
+    "Displayed Time": "22:54",
+    "Artist": "Leona Lewis",
+    "Title": "Run",
+    "Duration (s)": 263,
+    "Full Duration (s)": 279,
+    "Duration (mins)": 4.38,
+    "Full Duration (mins)": 4.65
   }
 ]
