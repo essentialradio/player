@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T15:00:00Z",
-    "Scheduled Time": "16:05",
-    "Displayed Time": "16:05",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 167,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.78,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-08-29T15:00:00Z",
     "Scheduled Time": "16:08",
     "Displayed Time": "16:08",
     "Artist": "Kelly Clarkson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-01T01:00:00Z",
+    "Scheduled Time": "02:08",
+    "Displayed Time": "02:08",
+    "Artist": "Lewis Capaldi",
+    "Title": "Pointless",
+    "Duration (s)": 217,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.82
   }
 ]
