@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T04:00:00Z",
-    "Scheduled Time": "05:53",
-    "Displayed Time": "05:53",
-    "Artist": "Gabrielle",
-    "Title": "Rise",
-    "Duration (s)": 202,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.87
-  },
-  {
     "Hour": "2025-08-30T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "06:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.6,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-01T14:00:00Z",
+    "Scheduled Time": "15:26",
+    "Displayed Time": "15:26",
+    "Artist": "Joel Corry & Becky Hill",
+    "Title": "HISTORY",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95
   }
 ]
