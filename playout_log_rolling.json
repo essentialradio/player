@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:59",
-    "Displayed Time": "18:59",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
     "Hour": "2025-08-29T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "19:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 181,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 3.02
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:32",
+    "Displayed Time": "05:32",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 210,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.67
   }
 ]
