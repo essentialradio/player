@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-29T17:00:00Z",
-    "Scheduled Time": "18:58",
-    "Displayed Time": "18:58",
-    "Artist": "",
-    "Title": "<missing track>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-29T17:00:00Z",
     "Scheduled Time": "18:59",
     "Displayed Time": "18:59",
     "Artist": "",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 284,
     "Duration (mins)": 3.2,
     "Full Duration (mins)": 4.73
+  },
+  {
+    "Hour": "2025-09-01T04:00:00Z",
+    "Scheduled Time": "05:29",
+    "Displayed Time": "05:29",
+    "Artist": "Elton John",
+    "Title": "I'm Still Standing",
+    "Duration (s)": 172,
+    "Full Duration (s)": 181,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.02
   }
 ]
