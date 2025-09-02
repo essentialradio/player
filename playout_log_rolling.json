@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T01:00:00Z",
-    "Scheduled Time": "02:33",
-    "Displayed Time": "02:33",
-    "Artist": "Olly Murs",
-    "Title": "Save Me",
-    "Duration (s)": 166,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-01T01:00:00Z",
     "Scheduled Time": "02:35",
     "Displayed Time": "02:35",
     "Artist": "Justin Timberlake",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 160,
     "Duration (mins)": 2.53,
     "Full Duration (mins)": 2.67
+  },
+  {
+    "Hour": "2025-09-02T15:00:00Z",
+    "Scheduled Time": "16:15",
+    "Displayed Time": "16:15",
+    "Artist": "Mary Mary",
+    "Title": "Shackles (Praise You)",
+    "Duration (s)": 177,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.28
   }
 ]
