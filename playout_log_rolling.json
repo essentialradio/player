@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "05:05",
-    "Artist": "R.E.M.",
-    "Title": "Man on the Moon",
-    "Duration (s)": 266,
-    "Full Duration (s)": 281,
-    "Duration (mins)": 4.43,
-    "Full Duration (mins)": 4.68
-  },
-  {
-    "Hour": "2025-08-31T04:00:00Z",
     "Scheduled Time": "05:09",
     "Displayed Time": "05:09",
     "Artist": "The Weeknd",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 261,
     "Duration (mins)": 4.23,
     "Full Duration (mins)": 4.35
+  },
+  {
+    "Hour": "2025-09-02T04:00:00Z",
+    "Scheduled Time": "05:22",
+    "Displayed Time": "05:22",
+    "Artist": "The Human League",
+    "Title": "(Keep Feeling) Fascination",
+    "Duration (s)": 213,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.7
   }
 ]
