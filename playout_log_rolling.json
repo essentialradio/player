@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T03:00:00Z",
-    "Scheduled Time": "04:25",
-    "Displayed Time": "04:25",
-    "Artist": "The Weeknd",
-    "Title": "Blinding Lights",
-    "Duration (s)": 191,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3.18,
-    "Full Duration (mins)": 3.37
-  },
-  {
-    "Hour": "2025-09-01T03:00:00Z",
     "Scheduled Time": "04:28",
     "Displayed Time": "04:28",
     "Artist": "Luther Vandross & Janet Jackson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 137,
     "Duration (mins)": 2.25,
     "Full Duration (mins)": 2.28
+  },
+  {
+    "Hour": "2025-09-02T17:00:00Z",
+    "Scheduled Time": "18:09",
+    "Displayed Time": "18:09",
+    "Artist": "Billie Eilish",
+    "Title": "Birds of a Feather",
+    "Duration (s)": 204,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.58
   }
 ]
