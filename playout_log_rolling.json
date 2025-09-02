@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T08:00:00Z",
-    "Scheduled Time": "09:35",
-    "Displayed Time": "09:35",
-    "Artist": "David Guetta, OneRepublic",
-    "Title": "I Don't Wanna Wait",
-    "Duration (s)": 148,
-    "Full Duration (s)": 150,
-    "Duration (mins)": 2.47,
-    "Full Duration (mins)": 2.5
-  },
-  {
-    "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:38",
     "Displayed Time": "09:38",
     "Artist": "Addison Rae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 197,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.28
+  },
+  {
+    "Hour": "2025-09-02T22:00:00Z",
+    "Scheduled Time": "23:09",
+    "Displayed Time": "23:09",
+    "Artist": "Tears For Fears",
+    "Title": "Woman in Chains",
+    "Duration (s)": 285,
+    "Full Duration (s)": 300,
+    "Duration (mins)": 4.75,
+    "Full Duration (mins)": 5.0
   }
 ]
