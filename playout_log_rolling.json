@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T07:00:00Z",
-    "Scheduled Time": "08:41",
-    "Displayed Time": "08:41",
-    "Artist": "Scissor Sisters",
-    "Title": "I Don't Feel Like Dancin'",
-    "Duration (s)": 246,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 4.1,
-    "Full Duration (mins)": 4.13
-  },
-  {
-    "Hour": "2025-09-01T07:00:00Z",
     "Scheduled Time": "08:50",
     "Displayed Time": "08:50",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 238,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 3.97
+  },
+  {
+    "Hour": "2025-09-02T21:00:00Z",
+    "Scheduled Time": "22:20",
+    "Displayed Time": "22:20",
+    "Artist": "A Great Big World & Christina Aguilera",
+    "Title": "Say Something",
+    "Duration (s)": 216,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.82
   }
 ]
