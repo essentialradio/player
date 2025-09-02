@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T01:00:00Z",
-    "Scheduled Time": "02:10",
-    "Displayed Time": "02:10",
-    "Artist": "Myles Smith",
-    "Title": "Solo",
-    "Duration (s)": 188,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-08-31T01:00:00Z",
     "Scheduled Time": "02:13",
     "Displayed Time": "02:13",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 160,
     "Duration (mins)": 2.6,
     "Full Duration (mins)": 2.67
+  },
+  {
+    "Hour": "2025-09-02T01:00:00Z",
+    "Scheduled Time": "02:25",
+    "Displayed Time": "02:25",
+    "Artist": "Olivia Rodrigo",
+    "Title": "Vampire",
+    "Duration (s)": 215,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.67
   }
 ]
