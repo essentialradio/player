@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T18:00:00Z",
-    "Scheduled Time": "19:02",
-    "Displayed Time": "19:02",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3478,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 57.97,
-    "Full Duration (mins)": 58.0
-  },
-  {
     "Hour": "2025-08-30T19:00:00Z",
     "Scheduled Time": "20:00",
     "Displayed Time": "20:00",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.67,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-02T00:00:00Z",
+    "Scheduled Time": "01:06",
+    "Displayed Time": "01:06",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 242,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4.03,
+    "Full Duration (mins)": 4.3
   }
 ]
