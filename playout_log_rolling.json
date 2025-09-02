@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:42",
-    "Displayed Time": "13:42",
-    "Artist": "Kate Bush",
-    "Title": "Running Up That Hill",
-    "Duration (s)": 201,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:46",
     "Displayed Time": "13:46",
     "Artist": "Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-02T13:00:00Z",
+    "Scheduled Time": "14:08",
+    "Displayed Time": "14:08",
+    "Artist": "Santana Feat. Rob Thomas",
+    "Title": "Smooth",
+    "Duration (s)": 229,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.05
   }
 ]
