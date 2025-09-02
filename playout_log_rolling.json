@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T04:00:00Z",
-    "Scheduled Time": "05:01",
-    "Displayed Time": "05:01",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 172,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-01T04:00:00Z",
     "Scheduled Time": "05:05",
     "Displayed Time": "05:05",
     "Artist": "Deee-Lite",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.52
+  },
+  {
+    "Hour": "2025-09-02T17:00:00Z",
+    "Scheduled Time": "18:43",
+    "Displayed Time": "18:43",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 159,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.77
   }
 ]
