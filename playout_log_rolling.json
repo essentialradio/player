@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:49",
-    "Displayed Time": "13:49",
-    "Artist": "Kelly Marie",
-    "Title": "Feels Like I'm In Love",
-    "Duration (s)": 183,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3.05,
-    "Full Duration (mins)": 3.23
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:52",
     "Displayed Time": "13:52",
     "Artist": "Avicii",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-02T13:00:00Z",
+    "Scheduled Time": "14:15",
+    "Displayed Time": "14:15",
+    "Artist": "The Verve",
+    "Title": "Bitter Sweet Symphony",
+    "Duration (s)": 263,
+    "Full Duration (s)": 276,
+    "Duration (mins)": 4.38,
+    "Full Duration (mins)": 4.6
   }
 ]
