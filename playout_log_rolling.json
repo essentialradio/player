@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T08:00:00Z",
-    "Scheduled Time": "09:25",
-    "Displayed Time": "09:25",
-    "Artist": "MC Sar & The Real McCoy",
-    "Title": "Another Night",
-    "Duration (s)": 232,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 3.87,
-    "Full Duration (mins)": 3.93
-  },
-  {
-    "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:28",
     "Displayed Time": "09:28",
     "Artist": "Ella Henderson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-02T21:00:00Z",
+    "Scheduled Time": "22:54",
+    "Displayed Time": "22:54",
+    "Artist": "Force MD's",
+    "Title": "Tender Love",
+    "Duration (s)": 223,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.9
   }
 ]
