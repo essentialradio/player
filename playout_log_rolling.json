@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T04:00:00Z",
-    "Scheduled Time": "05:23",
-    "Displayed Time": "05:23",
-    "Artist": "Benson Boone",
-    "Title": "Mystical Magical",
-    "Duration (s)": 159,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-01T04:00:00Z",
     "Scheduled Time": "05:25",
     "Displayed Time": "05:25",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 254,
     "Duration (mins)": 4.03,
     "Full Duration (mins)": 4.23
+  },
+  {
+    "Hour": "2025-09-02T18:00:00Z",
+    "Scheduled Time": "19:14",
+    "Displayed Time": "19:14",
+    "Artist": "Elton John",
+    "Title": "Rocket Man",
+    "Duration (s)": 263,
+    "Full Duration (s)": 282,
+    "Duration (mins)": 4.38,
+    "Full Duration (mins)": 4.7
   }
 ]
