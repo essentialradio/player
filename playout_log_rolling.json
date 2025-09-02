@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T03:00:00Z",
-    "Scheduled Time": "04:21",
-    "Displayed Time": "04:21",
-    "Artist": "Prince",
-    "Title": "Raspberry Beret",
-    "Duration (s)": 193,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-08-31T03:00:00Z",
     "Scheduled Time": "04:24",
     "Displayed Time": "04:24",
     "Artist": "Shaboozey",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 2.55,
     "Full Duration (mins)": 2.88
+  },
+  {
+    "Hour": "2025-09-02T03:00:00Z",
+    "Scheduled Time": "04:34",
+    "Displayed Time": "04:34",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 195,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.57
   }
 ]
