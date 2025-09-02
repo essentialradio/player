@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T08:00:00Z",
-    "Scheduled Time": "09:48",
-    "Displayed Time": "09:48",
-    "Artist": "Otis Redding",
-    "Title": "(Sittin' On) The Dock of the Bay",
-    "Duration (s)": 152,
-    "Full Duration (s)": 158,
-    "Duration (mins)": 2.53,
-    "Full Duration (mins)": 2.63
-  },
-  {
-    "Hour": "2025-08-31T08:00:00Z",
     "Scheduled Time": "09:51",
     "Displayed Time": "09:51",
     "Artist": "Mike & The Mechanics",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-02T09:00:00Z",
+    "Scheduled Time": "10:15",
+    "Displayed Time": "10:15",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 142,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.37,
+    "Full Duration (mins)": 2.38
   }
 ]
