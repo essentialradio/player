@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T08:00:00Z",
-    "Scheduled Time": "09:49",
-    "Displayed Time": "09:49",
-    "Artist": "A.R. Rahman & the Pussycat Dolls Feat. Nicole Scherzinger",
-    "Title": "Jai Ho! (You Are My Destiny)",
-    "Duration (s)": 218,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.7
-  },
-  {
-    "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:55",
     "Displayed Time": "09:55",
     "Artist": "Stevie Wonder",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-02T22:00:00Z",
+    "Scheduled Time": "23:24",
+    "Displayed Time": "23:24",
+    "Artist": "Fergie",
+    "Title": "Big Girls Don't Cry",
+    "Duration (s)": 249,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 4.15,
+    "Full Duration (mins)": 4.28
   }
 ]
