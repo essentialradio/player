@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T04:00:00Z",
-    "Scheduled Time": "05:38",
-    "Displayed Time": "05:38",
-    "Artist": "Keith Urban with Pink",
-    "Title": "One Too Many",
-    "Duration (s)": 195,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.4
-  },
-  {
-    "Hour": "2025-09-01T04:00:00Z",
     "Scheduled Time": "05:42",
     "Displayed Time": "05:42",
     "Artist": "Perrie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-02T18:00:00Z",
+    "Scheduled Time": "19:30",
+    "Displayed Time": "19:30",
+    "Artist": "The Bellamy Brothers",
+    "Title": "Let Your Love Flow",
+    "Duration (s)": 181,
+    "Full Duration (s)": 193,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.22
   }
 ]
