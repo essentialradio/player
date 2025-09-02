@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T03:00:00Z",
-    "Scheduled Time": "04:48",
-    "Displayed Time": "04:48",
-    "Artist": "LMFAO Feat. Lauren Bennett & Goonrock",
-    "Title": "Party Rock Anthem",
-    "Duration (s)": 251,
-    "Full Duration (s)": 264,
-    "Duration (mins)": 4.18,
-    "Full Duration (mins)": 4.4
-  },
-  {
-    "Hour": "2025-09-01T03:00:00Z",
     "Scheduled Time": "04:52",
     "Displayed Time": "04:52",
     "Artist": "Nathan Evans",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.53,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-02T17:00:00Z",
+    "Scheduled Time": "18:30",
+    "Displayed Time": "18:30",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 193,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.3
   }
 ]
