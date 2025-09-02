@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T09:00:00Z",
-    "Scheduled Time": "10:17",
-    "Displayed Time": "10:17",
-    "Artist": "M People",
-    "Title": "Moving on Up",
-    "Duration (s)": 208,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.55
-  },
-  {
-    "Hour": "2025-09-01T09:00:00Z",
     "Scheduled Time": "10:27",
     "Displayed Time": "10:27",
     "Artist": "Alex Warren",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 260,
     "Duration (mins)": 4.12,
     "Full Duration (mins)": 4.33
+  },
+  {
+    "Hour": "2025-09-02T22:00:00Z",
+    "Scheduled Time": "23:53",
+    "Displayed Time": "23:53",
+    "Artist": "Chris Isaak",
+    "Title": "Wicked Game",
+    "Duration (s)": 232,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.15
   }
 ]
