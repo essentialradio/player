@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T05:00:00Z",
-    "Scheduled Time": "06:32",
-    "Displayed Time": "06:32",
-    "Artist": "Jennifer Lopez",
-    "Title": "Waiting for Tonight",
-    "Duration (s)": 238,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 3.97,
-    "Full Duration (mins)": 4.13
-  },
-  {
-    "Hour": "2025-08-31T05:00:00Z",
     "Scheduled Time": "06:36",
     "Displayed Time": "06:36",
     "Artist": "Outkast",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-02T06:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "07:04",
+    "Artist": "Bebe Rexha Feat Florida Georgia Line",
+    "Title": "Meant to Be",
+    "Duration (s)": 161,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.73
   }
 ]
