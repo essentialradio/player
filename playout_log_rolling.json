@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T08:00:00Z",
-    "Scheduled Time": "09:23",
-    "Displayed Time": "09:23",
-    "Artist": "La Bouche",
-    "Title": "Be My Lover",
-    "Duration (s)": 230,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-08-31T08:00:00Z",
     "Scheduled Time": "09:27",
     "Displayed Time": "09:27",
     "Artist": "Ultravox",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 216,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.6
+  },
+  {
+    "Hour": "2025-09-02T08:00:00Z",
+    "Scheduled Time": "09:42",
+    "Displayed Time": "09:42",
+    "Artist": "Taylor Swift",
+    "Title": "You Need To Calm Down",
+    "Duration (s)": 165,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.85
   }
 ]
