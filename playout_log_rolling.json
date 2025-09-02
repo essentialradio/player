@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:35",
-    "Displayed Time": "10:35",
-    "Artist": "The Cure",
-    "Title": "The Lovecats",
-    "Duration (s)": 215,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.63
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:42",
     "Displayed Time": "10:42",
     "Artist": "T'Pau",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:05",
+    "Displayed Time": "11:05",
+    "Artist": "Prince and the Revolution",
+    "Title": "Kiss",
+    "Duration (s)": 214,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.78
   }
 ]
