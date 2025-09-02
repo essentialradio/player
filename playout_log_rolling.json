@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T01:00:00Z",
-    "Scheduled Time": "02:22",
-    "Displayed Time": "02:22",
-    "Artist": "Elton John",
-    "Title": "I Guess That's Why They Call It the Blues",
-    "Duration (s)": 269,
-    "Full Duration (s)": 284,
-    "Duration (mins)": 4.48,
-    "Full Duration (mins)": 4.73
-  },
-  {
-    "Hour": "2025-08-31T01:00:00Z",
     "Scheduled Time": "02:27",
     "Displayed Time": "02:27",
     "Artist": "Lady Gaga & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.65,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-02T01:00:00Z",
+    "Scheduled Time": "02:39",
+    "Displayed Time": "02:39",
+    "Artist": "Marshmello & Bastille",
+    "Title": "Happier",
+    "Duration (s)": 208,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.57
   }
 ]
