@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T04:00:00Z",
-    "Scheduled Time": "05:23",
-    "Displayed Time": "05:23",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.38,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-08-31T04:00:00Z",
     "Scheduled Time": "05:26",
     "Displayed Time": "05:26",
     "Artist": "Ros\u00e9 & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-02T04:00:00Z",
+    "Scheduled Time": "05:36",
+    "Displayed Time": "05:36",
+    "Artist": "Nelly Furtado",
+    "Title": "Say It Right",
+    "Duration (s)": 204,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.53
   }
 ]
