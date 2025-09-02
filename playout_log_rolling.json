@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T02:00:00Z",
-    "Scheduled Time": "03:45",
-    "Displayed Time": "03:45",
-    "Artist": "Will Smith",
-    "Title": "Gettin' Jiggy Wit It",
-    "Duration (s)": 217,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-09-01T02:00:00Z",
     "Scheduled Time": "03:48",
     "Displayed Time": "03:48",
     "Artist": "Post Malone & Morgan Wallen",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 205,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.42
+  },
+  {
+    "Hour": "2025-09-02T16:00:00Z",
+    "Scheduled Time": "17:28",
+    "Displayed Time": "17:28",
+    "Artist": "Olivia Rodrigo",
+    "Title": "Bad Idea Right?",
+    "Duration (s)": 173,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.08
   }
 ]
