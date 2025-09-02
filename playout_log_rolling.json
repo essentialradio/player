@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T04:00:00Z",
-    "Scheduled Time": "05:52",
-    "Displayed Time": "05:52",
-    "Artist": "Red Hot Chili Peppers",
-    "Title": "Snow (Hey Oh)",
-    "Duration (s)": 273,
-    "Full Duration (s)": 283,
-    "Duration (mins)": 4.55,
-    "Full Duration (mins)": 4.72
-  },
-  {
     "Hour": "2025-09-01T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "06:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 231,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.85
+  },
+  {
+    "Hour": "2025-09-02T18:00:00Z",
+    "Scheduled Time": "19:47",
+    "Displayed Time": "19:47",
+    "Artist": "Carpenters",
+    "Title": "Jambalaya",
+    "Duration (s)": 211,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.67
   }
 ]
