@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:08",
-    "Displayed Time": "13:08",
-    "Artist": "M People",
-    "Title": "Renaissance",
-    "Duration (s)": 212,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:11",
     "Displayed Time": "13:11",
     "Artist": "Sam Fender",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-02T12:00:00Z",
+    "Scheduled Time": "13:32",
+    "Displayed Time": "13:32",
+    "Artist": "Wunderhorse",
+    "Title": "The Rope",
+    "Duration (s)": 176,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 2.98
   }
 ]
