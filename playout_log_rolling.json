@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T05:00:00Z",
-    "Scheduled Time": "06:10",
-    "Displayed Time": "06:10",
-    "Artist": "MOLIY, Silent Addy",
-    "Title": "Shake It To The Max (Fly)",
-    "Duration (s)": 121,
-    "Full Duration (s)": 127,
-    "Duration (mins)": 2.02,
-    "Full Duration (mins)": 2.12
-  },
-  {
-    "Hour": "2025-08-31T05:00:00Z",
     "Scheduled Time": "06:12",
     "Displayed Time": "06:12",
     "Artist": "Alanis Morissette",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.82,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-02T05:00:00Z",
+    "Scheduled Time": "06:32",
+    "Displayed Time": "06:32",
+    "Artist": "Shawn Mendes",
+    "Title": "There's Nothing Holdin' Me Back",
+    "Duration (s)": 192,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.32
   }
 ]
