@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T07:00:00Z",
-    "Scheduled Time": "08:11",
-    "Displayed Time": "08:11",
-    "Artist": "Cast",
-    "Title": "Alright",
-    "Duration (s)": 208,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.6
-  },
-  {
-    "Hour": "2025-09-01T07:00:00Z",
-    "Scheduled Time": "08:14",
-    "Displayed Time": "08:14",
-    "Artist": "Mark Ronson Feat. Miley Cyrus",
-    "Title": "Nothing Breaks Like a Heart",
-    "Duration (s)": 213,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.62
-  },
-  {
-    "Hour": "2025-09-01T07:00:00Z",
     "Scheduled Time": "08:18",
     "Displayed Time": "08:18",
     "Artist": "Roachford",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 254,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.23
+  },
+  {
+    "Hour": "2025-09-02T20:00:00Z",
+    "Scheduled Time": "21:53",
+    "Displayed Time": "21:53",
+    "Artist": "Mary Kiani",
+    "Title": "When I Call Your Name",
+    "Duration (s)": 202,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-02T20:00:00Z",
+    "Scheduled Time": "21:56",
+    "Displayed Time": "21:56",
+    "Artist": "Chumbawamba",
+    "Title": "Tubthumping",
+    "Duration (s)": 195,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.55
   }
 ]
