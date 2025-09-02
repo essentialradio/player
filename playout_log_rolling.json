@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T06:00:00Z",
-    "Scheduled Time": "07:18",
-    "Displayed Time": "07:18",
-    "Artist": "Gala",
-    "Title": "Freed From Desire",
-    "Duration (s)": 208,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-08-31T06:00:00Z",
     "Scheduled Time": "07:25",
     "Displayed Time": "07:25",
     "Artist": "George Ezra",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 258,
     "Duration (mins)": 4.17,
     "Full Duration (mins)": 4.3
+  },
+  {
+    "Hour": "2025-09-02T06:00:00Z",
+    "Scheduled Time": "07:49",
+    "Displayed Time": "07:49",
+    "Artist": "Aloe Blacc",
+    "Title": "I Need a Dollar",
+    "Duration (s)": 241,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.1
   }
 ]
