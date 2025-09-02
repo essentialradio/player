@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T03:00:00Z",
-    "Scheduled Time": "04:27",
-    "Displayed Time": "04:27",
-    "Artist": "MC Hammer",
-    "Title": "U Can't Touch This",
-    "Duration (s)": 241,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4.02,
-    "Full Duration (mins)": 4.23
-  },
-  {
-    "Hour": "2025-08-31T03:00:00Z",
     "Scheduled Time": "04:31",
     "Displayed Time": "04:31",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.55,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-02T03:00:00Z",
+    "Scheduled Time": "04:45",
+    "Displayed Time": "04:45",
+    "Artist": "Ella Eyre",
+    "Title": "Space",
+    "Duration (s)": 155,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.7
   }
 ]
