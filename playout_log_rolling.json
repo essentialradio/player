@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T05:00:00Z",
-    "Scheduled Time": "06:43",
-    "Displayed Time": "06:43",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Busy Woman",
-    "Duration (s)": 179,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 2.98,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-08-31T05:00:00Z",
     "Scheduled Time": "06:46",
     "Displayed Time": "06:46",
     "Artist": "Queen",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 234,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.9
+  },
+  {
+    "Hour": "2025-09-02T06:00:00Z",
+    "Scheduled Time": "07:10",
+    "Displayed Time": "07:10",
+    "Artist": "Olly Murs",
+    "Title": "Save Me",
+    "Duration (s)": 171,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.92
   }
 ]
