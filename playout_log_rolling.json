@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T07:00:00Z",
-    "Scheduled Time": "08:50",
-    "Displayed Time": "08:50",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 201,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-09-01T07:00:00Z",
     "Scheduled Time": "08:54",
     "Displayed Time": "08:54",
     "Artist": "Ariana Grande",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3.6,
     "Full Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-09-02T21:00:00Z",
+    "Scheduled Time": "22:24",
+    "Displayed Time": "22:24",
+    "Artist": "Massive Attack",
+    "Title": "Teardrop",
+    "Duration (s)": 264,
+    "Full Duration (s)": 282,
+    "Duration (mins)": 4.4,
+    "Full Duration (mins)": 4.7
   }
 ]
