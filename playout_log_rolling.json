@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T05:00:00Z",
-    "Scheduled Time": "06:13",
-    "Displayed Time": "06:13",
-    "Artist": "Ed Sheeran",
-    "Title": "American Town",
-    "Duration (s)": 194,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-01T05:00:00Z",
     "Scheduled Time": "06:16",
     "Displayed Time": "06:16",
     "Artist": "OneRepublic",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 274,
     "Duration (mins)": 4.4,
     "Full Duration (mins)": 4.57
+  },
+  {
+    "Hour": "2025-09-02T19:00:00Z",
+    "Scheduled Time": "20:06",
+    "Displayed Time": "20:06",
+    "Artist": "The Cure",
+    "Title": "Lovesong",
+    "Duration (s)": 196,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.43
   }
 ]
