@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T02:00:00Z",
-    "Scheduled Time": "03:51",
-    "Displayed Time": "03:51",
-    "Artist": "MGMT",
-    "Title": "Kids",
-    "Duration (s)": 222,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-01T02:00:00Z",
     "Scheduled Time": "03:55",
     "Displayed Time": "03:55",
     "Artist": "David Bowie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.47,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-02T16:00:00Z",
+    "Scheduled Time": "17:37",
+    "Displayed Time": "17:37",
+    "Artist": "Ravyn Lanae",
+    "Title": "Love Me Not",
+    "Duration (s)": 159,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.77
   }
 ]
