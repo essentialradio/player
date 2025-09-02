@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T04:00:00Z",
-    "Scheduled Time": "05:49",
-    "Displayed Time": "05:49",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Espresso",
-    "Duration (s)": 168,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.8,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-01T04:00:00Z",
     "Scheduled Time": "05:52",
     "Displayed Time": "05:52",
     "Artist": "Red Hot Chili Peppers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 239,
     "Duration (mins)": 3.8,
     "Full Duration (mins)": 3.98
+  },
+  {
+    "Hour": "2025-09-02T18:00:00Z",
+    "Scheduled Time": "19:41",
+    "Displayed Time": "19:41",
+    "Artist": "Amii Stewart",
+    "Title": "Knock on Wood",
+    "Duration (s)": 215,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.85
   }
 ]
