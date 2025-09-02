@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T07:00:00Z",
-    "Scheduled Time": "08:26",
-    "Displayed Time": "08:26",
-    "Artist": "Lola Young",
-    "Title": "One Thing",
-    "Duration (s)": 206,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.43,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-01T07:00:00Z",
     "Scheduled Time": "08:33",
     "Displayed Time": "08:33",
     "Artist": "sombr",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 251,
     "Duration (mins)": 4.05,
     "Full Duration (mins)": 4.18
+  },
+  {
+    "Hour": "2025-09-02T21:00:00Z",
+    "Scheduled Time": "22:06",
+    "Displayed Time": "22:06",
+    "Artist": "Sting Ft. Eric Clapton",
+    "Title": "It's Probably Me",
+    "Duration (s)": 276,
+    "Full Duration (s)": 301,
+    "Duration (mins)": 4.6,
+    "Full Duration (mins)": 5.02
   }
 ]
