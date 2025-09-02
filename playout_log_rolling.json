@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T11:00:00Z",
-    "Scheduled Time": "12:26",
-    "Displayed Time": "12:26",
-    "Artist": "Sekou",
-    "Title": "Catching Bodies",
-    "Duration (s)": 178,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.1
-  },
-  {
-    "Hour": "2025-08-31T11:00:00Z",
     "Scheduled Time": "12:29",
     "Displayed Time": "12:29",
     "Artist": "Ava Max",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-02T11:00:00Z",
+    "Scheduled Time": "12:47",
+    "Displayed Time": "12:47",
+    "Artist": "Tom Walker",
+    "Title": "Serotonin",
+    "Duration (s)": 176,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 2.93
   }
 ]
