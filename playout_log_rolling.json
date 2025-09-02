@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T06:00:00Z",
-    "Scheduled Time": "07:32",
-    "Displayed Time": "07:32",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 172,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-08-31T06:00:00Z",
     "Scheduled Time": "07:35",
     "Displayed Time": "07:35",
     "Artist": "Bryan Adams",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-02T07:00:00Z",
+    "Scheduled Time": "08:04",
+    "Displayed Time": "08:04",
+    "Artist": "Dermot Kennedy",
+    "Title": "Kiss Me",
+    "Duration (s)": 218,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.82
   }
 ]
