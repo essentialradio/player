@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T07:00:00Z",
-    "Scheduled Time": "08:20",
-    "Displayed Time": "08:20",
-    "Artist": "Lola Young",
-    "Title": "D\u00a3aler",
-    "Duration (s)": 157,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 2.62,
-    "Full Duration (mins)": 2.67
-  },
-  {
-    "Hour": "2025-08-31T07:00:00Z",
     "Scheduled Time": "08:23",
     "Displayed Time": "08:23",
     "Artist": "Ellie Goulding",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 186,
     "Duration (mins)": 3.1,
     "Full Duration (mins)": 3.1
+  },
+  {
+    "Hour": "2025-09-02T07:00:00Z",
+    "Scheduled Time": "08:55",
+    "Displayed Time": "08:55",
+    "Artist": "Ella Henderson x Switch Disco x Alok",
+    "Title": "Under The Sun",
+    "Duration (s)": 161,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.77
   }
 ]
