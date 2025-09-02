@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T03:00:00Z",
-    "Scheduled Time": "04:34",
-    "Displayed Time": "04:34",
-    "Artist": "Panic! At The Disco",
-    "Title": "I Write Sins Not Tragedies",
-    "Duration (s)": 176,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 2.93,
-    "Full Duration (mins)": 3.1
-  },
-  {
-    "Hour": "2025-08-31T03:00:00Z",
     "Scheduled Time": "04:41",
     "Displayed Time": "04:41",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 258,
     "Duration (mins)": 4.12,
     "Full Duration (mins)": 4.3
+  },
+  {
+    "Hour": "2025-09-02T03:00:00Z",
+    "Scheduled Time": "04:51",
+    "Displayed Time": "04:51",
+    "Artist": "Gigi Perez",
+    "Title": "Sailor Song",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53
   }
 ]
