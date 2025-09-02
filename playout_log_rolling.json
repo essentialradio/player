@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T08:00:00Z",
-    "Scheduled Time": "09:32",
-    "Displayed Time": "09:32",
-    "Artist": "M",
-    "Title": "Pop Muzik",
-    "Duration (s)": 193,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.37
-  },
-  {
-    "Hour": "2025-08-31T08:00:00Z",
     "Scheduled Time": "09:35",
     "Displayed Time": "09:35",
     "Artist": "Yazoo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-02T08:00:00Z",
+    "Scheduled Time": "09:53",
+    "Displayed Time": "09:53",
+    "Artist": "Hard-Fi",
+    "Title": "Suburban Knights",
+    "Duration (s)": 222,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.78
   }
 ]
