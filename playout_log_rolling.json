@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T06:00:00Z",
-    "Scheduled Time": "07:49",
-    "Displayed Time": "07:49",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 221,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-01T06:00:00Z",
     "Scheduled Time": "07:53",
     "Displayed Time": "07:53",
     "Artist": "Savage Garden",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 202,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.37
+  },
+  {
+    "Hour": "2025-09-02T20:00:00Z",
+    "Scheduled Time": "21:30",
+    "Displayed Time": "21:30",
+    "Artist": "Amy Grant",
+    "Title": "Baby Baby",
+    "Duration (s)": 193,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.52
   }
 ]
