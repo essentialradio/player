@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T04:00:00Z",
-    "Scheduled Time": "05:01",
-    "Displayed Time": "05:01",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 174,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-08-31T04:00:00Z",
     "Scheduled Time": "05:05",
     "Displayed Time": "05:05",
     "Artist": "R.E.M.",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-02T04:00:00Z",
+    "Scheduled Time": "05:14",
+    "Displayed Time": "05:14",
+    "Artist": "Snow Patrol",
+    "Title": "Run",
+    "Duration (s)": 254,
+    "Full Duration (s)": 261,
+    "Duration (mins)": 4.23,
+    "Full Duration (mins)": 4.35
   }
 ]
