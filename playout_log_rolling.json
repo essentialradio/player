@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:22",
-    "Displayed Time": "10:22",
-    "Artist": "Richard Marx",
-    "Title": "Hazard",
-    "Duration (s)": 270,
-    "Full Duration (s)": 288,
-    "Duration (mins)": 4.5,
-    "Full Duration (mins)": 4.8
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:27",
     "Displayed Time": "10:27",
     "Artist": "Neneh Cherry",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 254,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.23
+  },
+  {
+    "Hour": "2025-09-02T09:00:00Z",
+    "Scheduled Time": "10:52",
+    "Displayed Time": "10:52",
+    "Artist": "Sekou",
+    "Title": "Catching Bodies",
+    "Duration (s)": 179,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.1
   }
 ]
