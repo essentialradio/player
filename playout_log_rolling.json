@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:46",
-    "Displayed Time": "13:46",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 203,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.38,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:49",
     "Displayed Time": "13:49",
     "Artist": "Kelly Marie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 3.82,
     "Full Duration (mins)": 4.05
+  },
+  {
+    "Hour": "2025-09-02T13:00:00Z",
+    "Scheduled Time": "14:13",
+    "Displayed Time": "14:13",
+    "Artist": "Justin Bieber",
+    "Title": "Daisies",
+    "Duration (s)": 174,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.93
   }
 ]
