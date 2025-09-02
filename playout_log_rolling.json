@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T05:00:00Z",
-    "Scheduled Time": "06:50",
-    "Displayed Time": "06:50",
-    "Artist": "Noah Kahan",
-    "Title": "Stick Season",
-    "Duration (s)": 173,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-08-31T05:00:00Z",
     "Scheduled Time": "06:53",
     "Displayed Time": "06:53",
     "Artist": "Spice Girls",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3.2,
     "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-02T06:00:00Z",
+    "Scheduled Time": "07:16",
+    "Displayed Time": "07:16",
+    "Artist": "Keane",
+    "Title": "Everybody's Changing",
+    "Duration (s)": 208,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.53
   }
 ]
