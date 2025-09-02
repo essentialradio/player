@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T08:00:00Z",
-    "Scheduled Time": "09:41",
-    "Displayed Time": "09:41",
-    "Artist": "A-Ha",
-    "Title": "Hunting High and Low",
-    "Duration (s)": 217,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.7
-  },
-  {
-    "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:49",
     "Displayed Time": "09:49",
     "Artist": "A.R. Rahman & the Pussycat Dolls Feat. Nicole Scherzinger",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 238,
     "Duration (mins)": 3.75,
     "Full Duration (mins)": 3.97
+  },
+  {
+    "Hour": "2025-09-02T22:00:00Z",
+    "Scheduled Time": "23:21",
+    "Displayed Time": "23:21",
+    "Artist": "Corinne Bailey Rae",
+    "Title": "Put Your Records On",
+    "Duration (s)": 202,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.57
   }
 ]
