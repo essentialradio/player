@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T05:00:00Z",
-    "Scheduled Time": "06:50",
-    "Displayed Time": "06:50",
-    "Artist": "Yazoo",
-    "Title": "Only You",
-    "Duration (s)": 178,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.13
-  },
-  {
-    "Hour": "2025-09-01T05:00:00Z",
     "Scheduled Time": "06:53",
     "Displayed Time": "06:53",
     "Artist": "Dasha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 210,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.5
+  },
+  {
+    "Hour": "2025-09-02T19:00:00Z",
+    "Scheduled Time": "20:44",
+    "Displayed Time": "20:44",
+    "Artist": "Cher",
+    "Title": "If I Could Turn Back Time",
+    "Duration (s)": 221,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.95
   }
 ]
