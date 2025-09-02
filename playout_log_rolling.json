@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T08:00:00Z",
-    "Scheduled Time": "09:09",
-    "Displayed Time": "09:09",
-    "Artist": "George Michael",
-    "Title": "Freedom '90",
-    "Duration (s)": 227,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 3.78,
-    "Full Duration (mins)": 4.12
-  },
-  {
-    "Hour": "2025-08-31T08:00:00Z",
     "Scheduled Time": "09:12",
     "Displayed Time": "09:12",
     "Artist": "The Rolling Stones",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 189,
     "Duration (mins)": 3.08,
     "Full Duration (mins)": 3.15
+  },
+  {
+    "Hour": "2025-09-02T08:00:00Z",
+    "Scheduled Time": "09:31",
+    "Displayed Time": "09:31",
+    "Artist": "Brandy with Monica",
+    "Title": "The Boy Is Mine",
+    "Duration (s)": 239,
+    "Full Duration (s)": 240,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.0
   }
 ]
