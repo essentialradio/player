@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T02:00:00Z",
-    "Scheduled Time": "03:32",
-    "Displayed Time": "03:32",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-01T02:00:00Z",
     "Scheduled Time": "03:39",
     "Displayed Time": "03:39",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 162,
     "Duration (mins)": 2.58,
     "Full Duration (mins)": 2.7
+  },
+  {
+    "Hour": "2025-09-02T16:00:00Z",
+    "Scheduled Time": "17:15",
+    "Displayed Time": "17:15",
+    "Artist": "Eagle-Eye Cherry",
+    "Title": "Save Tonight",
+    "Duration (s)": 212,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.83
   }
 ]
