@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T04:00:00Z",
-    "Scheduled Time": "05:47",
-    "Displayed Time": "05:47",
-    "Artist": "Miley Cyrus",
-    "Title": "Flowers",
-    "Duration (s)": 186,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-08-31T04:00:00Z",
     "Scheduled Time": "05:51",
     "Displayed Time": "05:51",
     "Artist": "Linkin Park",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.55,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-02T05:00:00Z",
+    "Scheduled Time": "06:09",
+    "Displayed Time": "06:09",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 162,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.8
   }
 ]
