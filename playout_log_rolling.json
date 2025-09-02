@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T02:00:00Z",
-    "Scheduled Time": "03:43",
-    "Displayed Time": "03:43",
-    "Artist": "David Guetta, MistaJam & John Newman",
-    "Title": "If You Really Love Me (How Will I Know)",
-    "Duration (s)": 181,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.07
-  },
-  {
-    "Hour": "2025-08-31T02:00:00Z",
     "Scheduled Time": "03:46",
     "Displayed Time": "03:46",
     "Artist": "Wet Leg",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.32,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-02T02:00:00Z",
+    "Scheduled Time": "03:53",
+    "Displayed Time": "03:53",
+    "Artist": "Shola Ama",
+    "Title": "You Might Need Somebody",
+    "Duration (s)": 217,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.87
   }
 ]
