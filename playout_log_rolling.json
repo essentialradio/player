@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-08-31T02:00:00Z",
-    "Scheduled Time": "03:05",
-    "Displayed Time": "03:05",
-    "Artist": "Crystal Waters",
-    "Title": "Gypsy Woman (La Da Dee)",
-    "Duration (s)": 212,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.7
-  },
-  {
-    "Hour": "2025-08-31T02:00:00Z",
-    "Scheduled Time": "03:09",
-    "Displayed Time": "03:09",
-    "Artist": "Tate McRae",
-    "Title": "2 Hands",
-    "Duration (s)": 178,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-08-31T02:00:00Z",
     "Scheduled Time": "03:12",
     "Displayed Time": "03:12",
     "Artist": "Olivia Rodrigo",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-02T02:00:00Z",
+    "Scheduled Time": "03:22",
+    "Displayed Time": "03:22",
+    "Artist": "Cameo",
+    "Title": "Word Up",
+    "Duration (s)": 246,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.28
+  },
+  {
+    "Hour": "2025-09-02T02:00:00Z",
+    "Scheduled Time": "03:27",
+    "Displayed Time": "03:27",
+    "Artist": "Mark Ambor",
+    "Title": "Belong Together",
+    "Duration (s)": 140,
+    "Full Duration (s)": 148,
+    "Duration (mins)": 2.33,
+    "Full Duration (mins)": 2.47
   }
 ]
