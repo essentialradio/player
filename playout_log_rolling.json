@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T03:00:00Z",
-    "Scheduled Time": "04:47",
-    "Displayed Time": "04:47",
-    "Artist": "Taylor Swift",
-    "Title": "I Can Do It With a Broken Heart",
-    "Duration (s)": 208,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.63
-  },
-  {
-    "Hour": "2025-08-31T03:00:00Z",
     "Scheduled Time": "04:50",
     "Displayed Time": "04:50",
     "Artist": "The Prodigy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.03,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-02T04:00:00Z",
+    "Scheduled Time": "05:05",
+    "Displayed Time": "05:05",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 180,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.12
   }
 ]
