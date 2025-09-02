@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T04:00:00Z",
-    "Scheduled Time": "05:45",
-    "Displayed Time": "05:45",
-    "Artist": "Green Day",
-    "Title": "Basket Case",
-    "Duration (s)": 166,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.97
-  },
-  {
-    "Hour": "2025-08-31T04:00:00Z",
     "Scheduled Time": "05:47",
     "Displayed Time": "05:47",
     "Artist": "Miley Cyrus",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-02T05:00:00Z",
+    "Scheduled Time": "06:05",
+    "Displayed Time": "06:05",
+    "Artist": "Tina Turner",
+    "Title": "What's Love Got To Do With It?",
+    "Duration (s)": 213,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.8
   }
 ]
