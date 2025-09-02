@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T05:00:00Z",
-    "Scheduled Time": "06:43",
-    "Displayed Time": "06:43",
-    "Artist": "Olly Murs",
-    "Title": "Save Me",
-    "Duration (s)": 171,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-01T05:00:00Z",
-    "Scheduled Time": "06:46",
-    "Displayed Time": "06:46",
-    "Artist": "Taylor Swift",
-    "Title": "Anti-Hero",
-    "Duration (s)": 197,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.28,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-01T05:00:00Z",
     "Scheduled Time": "06:50",
     "Displayed Time": "06:50",
     "Artist": "Yazoo",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-02T19:00:00Z",
+    "Scheduled Time": "20:33",
+    "Displayed Time": "20:33",
+    "Artist": "Don McLean",
+    "Title": "Crying",
+    "Duration (s)": 213,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-02T19:00:00Z",
+    "Scheduled Time": "20:37",
+    "Displayed Time": "20:37",
+    "Artist": "Soul II Soul",
+    "Title": "Keep on Movin'",
+    "Duration (s)": 203,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.5
   }
 ]
