@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T08:00:00Z",
-    "Scheduled Time": "09:35",
-    "Displayed Time": "09:35",
-    "Artist": "Yazoo",
-    "Title": "Don't Go",
-    "Duration (s)": 162,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 2.7,
-    "Full Duration (mins)": 2.95
-  },
-  {
-    "Hour": "2025-08-31T08:00:00Z",
     "Scheduled Time": "09:42",
     "Displayed Time": "09:42",
     "Artist": "Bobby Brown",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-02T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "10:02",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.98
   }
 ]
