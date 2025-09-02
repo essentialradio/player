@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T08:00:00Z",
-    "Scheduled Time": "09:13",
-    "Displayed Time": "09:13",
-    "Artist": "Jessie J",
-    "Title": "Price Tag",
-    "Duration (s)": 186,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 3.15
-  },
-  {
-    "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:16",
     "Displayed Time": "09:16",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 256,
     "Duration (mins)": 3.83,
     "Full Duration (mins)": 4.27
+  },
+  {
+    "Hour": "2025-09-02T21:00:00Z",
+    "Scheduled Time": "22:47",
+    "Displayed Time": "22:47",
+    "Artist": "Emeli Sande",
+    "Title": "Read All About It (Pt III)",
+    "Duration (s)": 267,
+    "Full Duration (s)": 285,
+    "Duration (mins)": 4.45,
+    "Full Duration (mins)": 4.75
   }
 ]
