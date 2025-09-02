@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T03:00:00Z",
-    "Scheduled Time": "04:41",
-    "Displayed Time": "04:41",
-    "Artist": "Myles Smith",
-    "Title": "Gold",
-    "Duration (s)": 155,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-08-31T03:00:00Z",
     "Scheduled Time": "04:44",
     "Displayed Time": "04:44",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-02T03:00:00Z",
+    "Scheduled Time": "04:55",
+    "Displayed Time": "04:55",
+    "Artist": "Britney Spears",
+    "Title": "Stronger",
+    "Duration (s)": 194,
+    "Full Duration (s)": 202,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.37
   }
 ]
