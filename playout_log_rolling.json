@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:39",
-    "Displayed Time": "13:39",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 171,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:42",
     "Displayed Time": "13:42",
     "Artist": "Kate Bush",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.88
+  },
+  {
+    "Hour": "2025-09-02T13:00:00Z",
+    "Scheduled Time": "14:05",
+    "Displayed Time": "14:05",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 214,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.67
   }
 ]
