@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T11:00:00Z",
-    "Scheduled Time": "12:38",
-    "Displayed Time": "12:38",
-    "Artist": "Jackie Wilson",
-    "Title": "(Your Love Keeps Lifting Me) Higher and Higher",
-    "Duration (s)": 163,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.72,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-08-31T11:00:00Z",
     "Scheduled Time": "12:41",
     "Displayed Time": "12:41",
     "Artist": "Ella Henderson x Alex Warren",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-02T12:00:00Z",
+    "Scheduled Time": "13:03",
+    "Displayed Time": "13:03",
+    "Artist": "Rachel Platten",
+    "Title": "Fight Song",
+    "Duration (s)": 200,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.35
   }
 ]
