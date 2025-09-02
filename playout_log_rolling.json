@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T07:00:00Z",
-    "Scheduled Time": "08:31",
-    "Displayed Time": "08:31",
-    "Artist": "Healthspan",
-    "Title": "The Dr Hilary Show",
-    "Duration (s)": 1631,
-    "Full Duration (s)": 1681,
-    "Duration (mins)": 27.18,
-    "Full Duration (mins)": 28.02
-  },
-  {
     "Hour": "2025-08-31T08:00:00Z",
     "Scheduled Time": "09:01",
     "Displayed Time": "09:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 293,
     "Duration (mins)": 4.88,
     "Full Duration (mins)": 4.88
+  },
+  {
+    "Hour": "2025-09-02T08:00:00Z",
+    "Scheduled Time": "09:14",
+    "Displayed Time": "09:14",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 214,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.67
   }
 ]
