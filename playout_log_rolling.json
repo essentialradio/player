@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T10:00:00Z",
-    "Scheduled Time": "11:55",
-    "Displayed Time": "11:55",
-    "Artist": "Simon & Garfunkel",
-    "Title": "Cecilia",
-    "Duration (s)": 149,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.48,
-    "Full Duration (mins)": 2.82
-  },
-  {
     "Hour": "2025-08-31T11:00:00Z",
     "Scheduled Time": "12:01",
     "Displayed Time": "12:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.47,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-02T11:00:00Z",
+    "Scheduled Time": "12:20",
+    "Displayed Time": "12:20",
+    "Artist": "Ella Henderson x Alex Warren",
+    "Title": "Carry You Home",
+    "Duration (s)": 163,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.8
   }
 ]
