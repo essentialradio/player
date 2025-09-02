@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T16:00:00Z",
-    "Scheduled Time": "17:51",
-    "Displayed Time": "17:51",
-    "Artist": "The Style Council",
-    "Title": "Long Hot Summer</body></html>",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
     "Hour": "2025-08-31T17:00:00Z",
     "Scheduled Time": "19:00",
     "Displayed Time": "19:00",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 201,
     "Duration (mins)": 3.28,
     "Full Duration (mins)": 3.35
+  },
+  {
+    "Hour": "2025-09-02T13:00:00Z",
+    "Scheduled Time": "14:45",
+    "Displayed Time": "14:45",
+    "Artist": "A1",
+    "Title": "Same Old Brand New You",
+    "Duration (s)": 221,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.82
   }
 ]
