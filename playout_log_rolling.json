@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T05:00:00Z",
-    "Scheduled Time": "06:53",
-    "Displayed Time": "06:53",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 209,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.53
-  },
-  {
     "Hour": "2025-09-01T06:00:00Z",
     "Scheduled Time": "07:04",
     "Displayed Time": "07:04",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 237,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.95
+  },
+  {
+    "Hour": "2025-09-02T19:00:00Z",
+    "Scheduled Time": "20:48",
+    "Displayed Time": "20:48",
+    "Artist": "Orchestral Manoeuvres In The Dark",
+    "Title": "Tesla Girls",
+    "Duration (s)": 207,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.53
   }
 ]
