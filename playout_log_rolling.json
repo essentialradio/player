@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T03:00:00Z",
-    "Scheduled Time": "04:16",
-    "Displayed Time": "04:16",
-    "Artist": "Sophie Ellis-Bextor",
-    "Title": "Get Over You",
-    "Duration (s)": 184,
-    "Full Duration (s)": 196,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.27
-  },
-  {
-    "Hour": "2025-09-01T03:00:00Z",
     "Scheduled Time": "04:23",
     "Displayed Time": "04:23",
     "Artist": "Soft Cell",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 3.02,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-02T17:00:00Z",
+    "Scheduled Time": "18:04",
+    "Displayed Time": "18:04",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 158,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.73
   }
 ]
