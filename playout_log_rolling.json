@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:01",
-    "Displayed Time": "10:01",
-    "Artist": "Tina Turner",
-    "Title": "We Don't Need Another Hero (Thunderdome)",
-    "Duration (s)": 247,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4.12,
-    "Full Duration (mins)": 4.23
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:05",
     "Displayed Time": "10:05",
     "Artist": "Labelle",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-02T09:00:00Z",
+    "Scheduled Time": "10:29",
+    "Displayed Time": "10:29",
+    "Artist": "Westlife",
+    "Title": "Hello My Love",
+    "Duration (s)": 210,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.57
   }
 ]
