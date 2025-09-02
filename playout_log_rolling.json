@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T06:00:00Z",
-    "Scheduled Time": "07:35",
-    "Displayed Time": "07:35",
-    "Artist": "Bryan Adams",
-    "Title": "Summer of '69",
-    "Duration (s)": 198,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.6
-  },
-  {
-    "Hour": "2025-08-31T06:00:00Z",
     "Scheduled Time": "07:42",
     "Displayed Time": "07:42",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-09-02T07:00:00Z",
+    "Scheduled Time": "08:10",
+    "Displayed Time": "08:10",
+    "Artist": "Blink\u2010182",
+    "Title": "All the Small Things",
+    "Duration (s)": 163,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.9
   }
 ]
