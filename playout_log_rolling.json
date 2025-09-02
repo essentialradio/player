@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T10:00:00Z",
-    "Scheduled Time": "11:27",
-    "Displayed Time": "11:27",
-    "Artist": "Billy Ocean",
-    "Title": "Love Really Hurts Without You",
-    "Duration (s)": 175,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.02
-  },
-  {
-    "Hour": "2025-08-31T10:00:00Z",
     "Scheduled Time": "11:31",
     "Displayed Time": "11:31",
     "Artist": "A-Ha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:49",
+    "Displayed Time": "11:49",
+    "Artist": "Crash Test Dummies",
+    "Title": "Mmm Mmm Mmm Mmm",
+    "Duration (s)": 210,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.68
   }
 ]
