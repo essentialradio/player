@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:32",
-    "Displayed Time": "10:32",
-    "Artist": "Kate Bush",
-    "Title": "The Man With the Child in His Eyes",
-    "Duration (s)": 155,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:35",
     "Displayed Time": "10:35",
     "Artist": "The Cure",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:02",
+    "Displayed Time": "11:02",
+    "Artist": "Lenny Kravitz",
+    "Title": "Are You Gonna Go My Way",
+    "Duration (s)": 209,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.53
   }
 ]
