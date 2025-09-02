@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T11:00:00Z",
-    "Scheduled Time": "12:22",
-    "Displayed Time": "12:22",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 248,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4.13,
-    "Full Duration (mins)": 4.3
-  },
-  {
-    "Hour": "2025-08-31T11:00:00Z",
     "Scheduled Time": "12:26",
     "Displayed Time": "12:26",
     "Artist": "Sekou",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3.17,
     "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-02T11:00:00Z",
+    "Scheduled Time": "12:44",
+    "Displayed Time": "12:44",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 180,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.05
   }
 ]
