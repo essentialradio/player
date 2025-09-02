@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T00:00:00Z",
-    "Scheduled Time": "01:50",
-    "Displayed Time": "01:50",
-    "Artist": "Mark Ambor",
-    "Title": "Belong Together",
-    "Duration (s)": 142,
-    "Full Duration (s)": 148,
-    "Duration (mins)": 2.37,
-    "Full Duration (mins)": 2.47
-  },
-  {
-    "Hour": "2025-08-31T00:00:00Z",
     "Scheduled Time": "01:53",
     "Displayed Time": "01:53",
     "Artist": "Emma Bunton",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 256,
     "Duration (mins)": 4.17,
     "Full Duration (mins)": 4.27
+  },
+  {
+    "Hour": "2025-09-02T01:00:00Z",
+    "Scheduled Time": "02:09",
+    "Displayed Time": "02:09",
+    "Artist": "Post Malone ft Luke Combs",
+    "Title": "Guy For That",
+    "Duration (s)": 157,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.73
   }
 ]
