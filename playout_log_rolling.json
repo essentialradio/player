@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T10:00:00Z",
-    "Scheduled Time": "11:19",
-    "Displayed Time": "11:19",
-    "Artist": "Peter Gabriel",
-    "Title": "Sledgehammer",
-    "Duration (s)": 272,
-    "Full Duration (s)": 280,
-    "Duration (mins)": 4.53,
-    "Full Duration (mins)": 4.67
-  },
-  {
-    "Hour": "2025-08-31T10:00:00Z",
     "Scheduled Time": "11:23",
     "Displayed Time": "11:23",
     "Artist": "EMF",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 203,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.38
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:42",
+    "Displayed Time": "11:42",
+    "Artist": "Bloc Party",
+    "Title": "Banquet",
+    "Duration (s)": 184,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.25
   }
 ]
