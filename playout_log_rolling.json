@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "01:53",
-    "Artist": "Emma Bunton",
-    "Title": "What Took You So Long?",
-    "Duration (s)": 219,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.77
-  },
-  {
     "Hour": "2025-08-31T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "02:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.62,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-02T01:00:00Z",
+    "Scheduled Time": "02:12",
+    "Displayed Time": "02:12",
+    "Artist": "Clean Bandit x Anne-Marie x David Guetta",
+    "Title": "Cry Baby",
+    "Duration (s)": 153,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.55,
+    "Full Duration (mins)": 2.62
   }
 ]
