@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "11:05",
-    "Artist": "The Housemartins",
-    "Title": "Happy Hour",
-    "Duration (s)": 136,
-    "Full Duration (s)": 141,
-    "Duration (mins)": 2.27,
-    "Full Duration (mins)": 2.35
-  },
-  {
-    "Hour": "2025-08-31T10:00:00Z",
     "Scheduled Time": "11:08",
     "Displayed Time": "11:08",
     "Artist": "Foo Fighters",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3.1,
     "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:31",
+    "Displayed Time": "11:31",
+    "Artist": "Savage Garden",
+    "Title": "Truly Madly Deeply",
+    "Duration (s)": 257,
+    "Full Duration (s)": 277,
+    "Duration (mins)": 4.28,
+    "Full Duration (mins)": 4.62
   }
 ]
