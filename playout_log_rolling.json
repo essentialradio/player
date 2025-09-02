@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T04:00:00Z",
-    "Scheduled Time": "05:15",
-    "Displayed Time": "05:15",
-    "Artist": "Snow Patrol",
-    "Title": "Chasing Cars",
-    "Duration (s)": 240,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4.0,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-09-01T04:00:00Z",
     "Scheduled Time": "05:23",
     "Displayed Time": "05:23",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-02T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "19:10",
+    "Artist": "The Eagles",
+    "Title": "Lyin' Eyes",
+    "Duration (s)": 242,
+    "Full Duration (s)": 254,
+    "Duration (mins)": 4.03,
+    "Full Duration (mins)": 4.23
   }
 ]
