@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T01:00:00Z",
-    "Scheduled Time": "02:38",
-    "Displayed Time": "02:38",
-    "Artist": "Holly Valance",
-    "Title": "Kiss Kiss",
-    "Duration (s)": 197,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.28,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-08-31T01:00:00Z",
     "Scheduled Time": "02:46",
     "Displayed Time": "02:46",
     "Artist": "Gracie Abrams",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 252,
     "Duration (mins)": 4.05,
     "Full Duration (mins)": 4.2
+  },
+  {
+    "Hour": "2025-09-02T01:00:00Z",
+    "Scheduled Time": "02:53",
+    "Displayed Time": "02:53",
+    "Artist": "Enrique Iglesias",
+    "Title": "Do You Know? (The Ping Pong Song)",
+    "Duration (s)": 209,
+    "Full Duration (s)": 217,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.62
   }
 ]
