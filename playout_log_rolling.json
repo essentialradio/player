@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T01:00:00Z",
-    "Scheduled Time": "02:47",
-    "Displayed Time": "02:47",
-    "Artist": "Calvin Harris + Disciples",
-    "Title": "How Deep Is Your Love",
-    "Duration (s)": 199,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-01T01:00:00Z",
     "Scheduled Time": "02:51",
     "Displayed Time": "02:51",
     "Artist": "Amy Macdonald",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 265,
     "Duration (mins)": 4.25,
     "Full Duration (mins)": 4.42
+  },
+  {
+    "Hour": "2025-09-02T15:00:00Z",
+    "Scheduled Time": "16:28",
+    "Displayed Time": "16:28",
+    "Artist": "Jessie J",
+    "Title": "Living My Best Life",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95
   }
 ]
