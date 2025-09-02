@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T22:00:00Z",
-    "Scheduled Time": "23:59",
-    "Displayed Time": "23:59",
-    "Artist": "Ayrshire Radio",
-    "Title": "On Air",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-08-31T23:00:00Z",
-    "Scheduled Time": "00:02",
-    "Displayed Time": "00:02",
-    "Artist": "David Southway",
-    "Title": "Soul Vaults",
-    "Duration (s)": 3403,
-    "Full Duration (s)": 3407,
-    "Duration (mins)": 56.72,
-    "Full Duration (mins)": 56.78
-  },
-  {
     "Hour": "2025-08-31T23:00:00Z",
     "Scheduled Time": "00:59",
     "Displayed Time": "00:59",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 268,
     "Duration (mins)": 4.18,
     "Full Duration (mins)": 4.47
+  },
+  {
+    "Hour": "2025-09-02T14:00:00Z",
+    "Scheduled Time": "15:16",
+    "Displayed Time": "15:16",
+    "Artist": "Olivia Dean",
+    "Title": "Nice To Each Other",
+    "Duration (s)": 205,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-02T14:00:00Z",
+    "Scheduled Time": "15:24",
+    "Displayed Time": "15:24",
+    "Artist": "Taio Cruz",
+    "Title": "Higher",
+    "Duration (s)": 178,
+    "Full Duration (s)": 188,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.13
   }
 ]
