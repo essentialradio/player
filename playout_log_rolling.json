@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:28",
-    "Displayed Time": "13:28",
-    "Artist": "John Legend",
-    "Title": "All of Me",
-    "Duration (s)": 171,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 2.97
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:31",
-    "Displayed Time": "13:31",
-    "Artist": "Max Dean x Luke Dean x Locky",
-    "Title": "Can't Decide",
-    "Duration (s)": 167,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.78,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:36",
     "Displayed Time": "13:36",
     "Artist": "The Dandy Warhols",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 284,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 4.73
+  },
+  {
+    "Hour": "2025-09-02T12:00:00Z",
+    "Scheduled Time": "13:50",
+    "Displayed Time": "13:50",
+    "Artist": "Lemar",
+    "Title": "Dance (With U)",
+    "Duration (s)": 221,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.68
+  },
+  {
+    "Hour": "2025-09-02T12:00:00Z",
+    "Scheduled Time": "13:53",
+    "Displayed Time": "13:53",
+    "Artist": "Jubel ft Neimy",
+    "Title": "Dancing in the Moonlight",
+    "Duration (s)": 157,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.73
   }
 ]
