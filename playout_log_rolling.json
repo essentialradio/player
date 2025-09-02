@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:46",
-    "Displayed Time": "10:46",
-    "Artist": "Eternal",
-    "Title": "Angel of Mine",
-    "Duration (s)": 211,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.62
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:50",
     "Displayed Time": "10:50",
     "Artist": "The Kinks",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.47,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:13",
+    "Displayed Time": "11:13",
+    "Artist": "Faithless",
+    "Title": "Insomnia",
+    "Duration (s)": 200,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.52
   }
 ]
