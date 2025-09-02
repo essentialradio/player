@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T12:00:00Z",
-    "Scheduled Time": "13:36",
-    "Displayed Time": "13:36",
-    "Artist": "The Dandy Warhols",
-    "Title": "Bohemian Like You",
-    "Duration (s)": 204,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:39",
     "Displayed Time": "13:39",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.62,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-02T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "14:01",
+    "Artist": "Cian Ducrot",
+    "Title": "I'll Be Waiting",
+    "Duration (s)": 171,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.88
   }
 ]
