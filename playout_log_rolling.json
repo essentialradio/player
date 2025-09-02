@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T04:00:00Z",
-    "Scheduled Time": "05:42",
-    "Displayed Time": "05:42",
-    "Artist": "Tate McRae",
-    "Title": "Just Keep Watching",
-    "Duration (s)": 138,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2.3,
-    "Full Duration (mins)": 2.38
-  },
-  {
-    "Hour": "2025-08-31T04:00:00Z",
     "Scheduled Time": "05:45",
     "Displayed Time": "05:45",
     "Artist": "Green Day",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.5,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-02T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "06:01",
+    "Artist": "Swedish House Mafia Feat. John Martin",
+    "Title": "Don't You Worry Child",
+    "Duration (s)": 206,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.55
   }
 ]
