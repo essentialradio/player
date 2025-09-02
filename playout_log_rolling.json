@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T03:00:00Z",
-    "Scheduled Time": "04:12",
-    "Displayed Time": "04:12",
-    "Artist": "Sam Fender & Olivia Dean",
-    "Title": "Rein Me In",
-    "Duration (s)": 229,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 3.82,
-    "Full Duration (mins)": 4.05
-  },
-  {
-    "Hour": "2025-09-01T03:00:00Z",
     "Scheduled Time": "04:16",
     "Displayed Time": "04:16",
     "Artist": "Sophie Ellis-Bextor",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-02T17:00:00Z",
+    "Scheduled Time": "18:01",
+    "Displayed Time": "18:01",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 181,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.12
   }
 ]
