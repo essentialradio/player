@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T08:00:00Z",
-    "Scheduled Time": "09:19",
-    "Displayed Time": "09:19",
-    "Artist": "Echo & The Bunnymen",
-    "Title": "Bring on the Dancing Horses",
-    "Duration (s)": 223,
-    "Full Duration (s)": 263,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 4.38
-  },
-  {
-    "Hour": "2025-08-31T08:00:00Z",
     "Scheduled Time": "09:23",
     "Displayed Time": "09:23",
     "Artist": "La Bouche",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-02T08:00:00Z",
+    "Scheduled Time": "09:38",
+    "Displayed Time": "09:38",
+    "Artist": "Eurythmics",
+    "Title": "Sweet Dreams (Are Made of This)",
+    "Duration (s)": 206,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.6
   }
 ]
