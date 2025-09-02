@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T11:00:00Z",
-    "Scheduled Time": "12:18",
-    "Displayed Time": "12:18",
-    "Artist": "Stealers Wheel",
-    "Title": "Stuck in the Middle With You",
-    "Duration (s)": 198,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.4
-  },
-  {
-    "Hour": "2025-08-31T11:00:00Z",
     "Scheduled Time": "12:22",
     "Displayed Time": "12:22",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 231,
     "Duration (mins)": 3.72,
     "Full Duration (mins)": 3.85
+  },
+  {
+    "Hour": "2025-09-02T11:00:00Z",
+    "Scheduled Time": "12:41",
+    "Displayed Time": "12:41",
+    "Artist": "Phil Collins",
+    "Title": "Two Hearts",
+    "Duration (s)": 190,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 3.4
   }
 ]
