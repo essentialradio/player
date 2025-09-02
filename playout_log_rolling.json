@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "14:00",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3516,
-    "Full Duration (s)": 3518,
-    "Duration (mins)": 58.6,
-    "Full Duration (mins)": 58.63
-  },
-  {
     "Hour": "2025-08-31T14:00:00Z",
     "Scheduled Time": "15:00",
     "Displayed Time": "15:00",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-02T13:00:00Z",
+    "Scheduled Time": "14:28",
+    "Displayed Time": "14:28",
+    "Artist": "Coldplay",
+    "Title": "All My Love",
+    "Duration (s)": 214,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.72
   }
 ]
