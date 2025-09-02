@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T05:00:00Z",
-    "Scheduled Time": "06:05",
-    "Displayed Time": "06:05",
-    "Artist": "Bryan Adams",
-    "Title": "Run to You",
-    "Duration (s)": 215,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-01T05:00:00Z",
     "Scheduled Time": "06:09",
     "Displayed Time": "06:09",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-02T18:00:00Z",
+    "Scheduled Time": "19:54",
+    "Displayed Time": "19:54",
+    "Artist": "Simon & Garfunkel",
+    "Title": "Homeward Bound",
+    "Duration (s)": 133,
+    "Full Duration (s)": 147,
+    "Duration (mins)": 2.22,
+    "Full Duration (mins)": 2.45
   }
 ]
