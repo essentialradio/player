@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T07:00:00Z",
-    "Scheduled Time": "08:54",
-    "Displayed Time": "08:54",
-    "Artist": "Ariana Grande",
-    "Title": "No Tears Left to Cry",
-    "Duration (s)": 202,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.43
-  },
-  {
     "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:03",
     "Displayed Time": "09:03",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 282,
     "Duration (mins)": 4.4,
     "Full Duration (mins)": 4.7
+  },
+  {
+    "Hour": "2025-09-02T21:00:00Z",
+    "Scheduled Time": "22:28",
+    "Displayed Time": "22:28",
+    "Artist": "Echo & The Bunnymen",
+    "Title": "The Killing Moon",
+    "Duration (s)": 254,
+    "Full Duration (s)": 266,
+    "Duration (mins)": 4.23,
+    "Full Duration (mins)": 4.43
   }
 ]
