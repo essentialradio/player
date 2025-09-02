@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T07:00:00Z",
-    "Scheduled Time": "08:02",
-    "Displayed Time": "08:02",
-    "Artist": "HUNTR/X, EJAE, Audrey Nuna, REI AMI",
-    "Title": "Golden",
-    "Duration (s)": 189,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3.15,
-    "Full Duration (mins)": 3.25
-  },
-  {
-    "Hour": "2025-09-01T07:00:00Z",
     "Scheduled Time": "08:07",
     "Displayed Time": "08:07",
     "Artist": "Luke Holloway",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.65,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-02T20:00:00Z",
+    "Scheduled Time": "21:44",
+    "Displayed Time": "21:44",
+    "Artist": "Michael Bolton",
+    "Title": "Can I Touch You...There?",
+    "Duration (s)": 273,
+    "Full Duration (s)": 289,
+    "Duration (mins)": 4.55,
+    "Full Duration (mins)": 4.82
   }
 ]
