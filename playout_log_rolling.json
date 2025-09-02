@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T10:00:00Z",
-    "Scheduled Time": "11:23",
-    "Displayed Time": "11:23",
-    "Artist": "EMF",
-    "Title": "Unbelievable",
-    "Duration (s)": 208,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.5
-  },
-  {
-    "Hour": "2025-08-31T10:00:00Z",
     "Scheduled Time": "11:27",
     "Displayed Time": "11:27",
     "Artist": "Billy Ocean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:45",
+    "Displayed Time": "11:45",
+    "Artist": "Abba",
+    "Title": "Mamma Mia",
+    "Duration (s)": 201,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.55
   }
 ]
