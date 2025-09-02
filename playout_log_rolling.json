@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:19",
-    "Displayed Time": "10:19",
-    "Artist": "Fine Young Cannibals",
-    "Title": "Good Thing",
-    "Duration (s)": 184,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:22",
     "Displayed Time": "10:22",
     "Artist": "Richard Marx",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-02T09:00:00Z",
+    "Scheduled Time": "10:48",
+    "Displayed Time": "10:48",
+    "Artist": "Beyonce",
+    "Title": "Best Thing I Never Had",
+    "Duration (s)": 245,
+    "Full Duration (s)": 254,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.23
   }
 ]
