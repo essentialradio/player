@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T10:00:00Z",
-    "Scheduled Time": "11:17",
-    "Displayed Time": "11:17",
-    "Artist": "Lighthouse Family",
-    "Title": "High",
-    "Duration (s)": 265,
-    "Full Duration (s)": 275,
-    "Duration (mins)": 4.42,
-    "Full Duration (mins)": 4.58
-  },
-  {
-    "Hour": "2025-09-01T10:00:00Z",
     "Scheduled Time": "11:26",
     "Displayed Time": "11:26",
     "Artist": "Adam and the Ants",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-02T23:00:00Z",
+    "Scheduled Time": "00:49",
+    "Displayed Time": "00:49",
+    "Artist": "Clairo",
+    "Title": "Sexy To Someone",
+    "Duration (s)": 201,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.47
   }
 ]
