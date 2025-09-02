@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T01:00:00Z",
-    "Scheduled Time": "02:35",
-    "Displayed Time": "02:35",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-08-31T01:00:00Z",
     "Scheduled Time": "02:38",
     "Displayed Time": "02:38",
     "Artist": "Holly Valance",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.17,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-02T01:00:00Z",
+    "Scheduled Time": "02:49",
+    "Displayed Time": "02:49",
+    "Artist": "Lady Gaga & Bruno Mars",
+    "Title": "Die With A Smile",
+    "Duration (s)": 243,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.05,
+    "Full Duration (mins)": 4.2
   }
 ]
