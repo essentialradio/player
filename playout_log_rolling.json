@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:52",
-    "Displayed Time": "10:52",
-    "Artist": "Cyndi Lauper",
-    "Title": "I Drove All Night",
-    "Duration (s)": 240,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4.0,
-    "Full Duration (mins)": 4.18
-  },
-  {
     "Hour": "2025-08-31T10:00:00Z",
     "Scheduled Time": "11:01",
     "Displayed Time": "11:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:24",
+    "Displayed Time": "11:24",
+    "Artist": "Usher",
+    "Title": "Burn",
+    "Duration (s)": 215,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.82
   }
 ]
