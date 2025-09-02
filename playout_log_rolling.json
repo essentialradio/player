@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T09:00:00Z",
-    "Scheduled Time": "10:41",
-    "Displayed Time": "10:41",
-    "Artist": "Billy Gillies ft Hannah Boleyn",
-    "Title": "DNA (Loving You)",
-    "Duration (s)": 162,
-    "Full Duration (s)": 165,
-    "Duration (mins)": 2.7,
-    "Full Duration (mins)": 2.75
-  },
-  {
-    "Hour": "2025-09-01T09:00:00Z",
     "Scheduled Time": "10:44",
     "Displayed Time": "10:44",
     "Artist": "Christina Aguilera",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-02T23:00:00Z",
+    "Scheduled Time": "00:15",
+    "Displayed Time": "00:15",
+    "Artist": "Pink",
+    "Title": "So What",
+    "Duration (s)": 211,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.58
   }
 ]
