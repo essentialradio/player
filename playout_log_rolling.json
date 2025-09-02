@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T01:00:00Z",
-    "Scheduled Time": "02:23",
-    "Displayed Time": "02:23",
-    "Artist": "The Jam",
-    "Title": "Going Underground",
-    "Duration (s)": 164,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-09-01T01:00:00Z",
     "Scheduled Time": "02:26",
     "Displayed Time": "02:26",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3.25,
     "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-02T15:00:00Z",
+    "Scheduled Time": "16:05",
+    "Displayed Time": "16:05",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway",
+    "Duration (s)": 238,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.2
   }
 ]
