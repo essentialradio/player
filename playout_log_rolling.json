@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T10:00:00Z",
-    "Scheduled Time": "11:01",
-    "Displayed Time": "11:01",
-    "Artist": "Odyssey",
-    "Title": "Native New Yorker",
-    "Duration (s)": 200,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.33,
-    "Full Duration (mins)": 3.45
-  },
-  {
-    "Hour": "2025-08-31T10:00:00Z",
     "Scheduled Time": "11:05",
     "Displayed Time": "11:05",
     "Artist": "The Housemartins",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:28",
+    "Displayed Time": "11:28",
+    "Artist": "Bangles",
+    "Title": "Walk Like an Egyptian",
+    "Duration (s)": 186,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 3.4
   }
 ]
