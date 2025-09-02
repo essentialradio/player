@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T03:00:00Z",
-    "Scheduled Time": "04:10",
-    "Displayed Time": "04:10",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 175,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-08-31T03:00:00Z",
     "Scheduled Time": "04:13",
     "Displayed Time": "04:13",
     "Artist": "The Fray",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 245,
     "Duration (mins)": 3.1,
     "Full Duration (mins)": 4.08
+  },
+  {
+    "Hour": "2025-09-02T03:00:00Z",
+    "Scheduled Time": "04:27",
+    "Displayed Time": "04:27",
+    "Artist": "Hozier",
+    "Title": "Too Sweet",
+    "Duration (s)": 239,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.18
   }
 ]
