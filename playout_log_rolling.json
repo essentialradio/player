@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T09:00:00Z",
-    "Scheduled Time": "10:14",
-    "Displayed Time": "10:14",
-    "Artist": "MK ft Chrystal",
-    "Title": "Dior",
-    "Duration (s)": 166,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-09-01T09:00:00Z",
     "Scheduled Time": "10:17",
     "Displayed Time": "10:17",
     "Artist": "M People",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 251,
     "Duration (mins)": 3.97,
     "Full Duration (mins)": 4.18
+  },
+  {
+    "Hour": "2025-09-02T22:00:00Z",
+    "Scheduled Time": "23:49",
+    "Displayed Time": "23:49",
+    "Artist": "Calum Scott",
+    "Title": "Dancing On My Own",
+    "Duration (s)": 247,
+    "Full Duration (s)": 260,
+    "Duration (mins)": 4.12,
+    "Full Duration (mins)": 4.33
   }
 ]
