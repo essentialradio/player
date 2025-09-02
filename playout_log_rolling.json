@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T05:00:00Z",
-    "Scheduled Time": "06:06",
-    "Displayed Time": "06:06",
-    "Artist": "Doja Cat",
-    "Title": "Say So",
-    "Duration (s)": 231,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 3.85,
-    "Full Duration (mins)": 3.97
-  },
-  {
-    "Hour": "2025-08-31T05:00:00Z",
     "Scheduled Time": "06:10",
     "Displayed Time": "06:10",
     "Artist": "MOLIY, Silent Addy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 3.88,
     "Full Duration (mins)": 4.05
+  },
+  {
+    "Hour": "2025-09-02T05:00:00Z",
+    "Scheduled Time": "06:27",
+    "Displayed Time": "06:27",
+    "Artist": "Calvin Harris & Sam Smith",
+    "Title": "Desire",
+    "Duration (s)": 169,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.98
   }
 ]
