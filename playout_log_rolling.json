@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "06:01",
-    "Artist": "Chappell Roan",
-    "Title": "The Subway",
-    "Duration (s)": 245,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4.08,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-08-31T05:00:00Z",
     "Scheduled Time": "06:06",
     "Displayed Time": "06:06",
     "Artist": "Doja Cat",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 251,
     "Duration (mins)": 4.05,
     "Full Duration (mins)": 4.18
+  },
+  {
+    "Hour": "2025-09-02T05:00:00Z",
+    "Scheduled Time": "06:23",
+    "Displayed Time": "06:23",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 233,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.88,
+    "Full Duration (mins)": 4.05
   }
 ]
