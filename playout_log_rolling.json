@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-08-31T06:00:00Z",
-    "Scheduled Time": "07:25",
-    "Displayed Time": "07:25",
-    "Artist": "George Ezra",
-    "Title": "Budapest",
-    "Duration (s)": 199,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-08-31T06:00:00Z",
-    "Scheduled Time": "07:28",
-    "Displayed Time": "07:28",
-    "Artist": "Ariana Grande",
-    "Title": "We Can't Be Friends (Wait For Your Love)",
-    "Duration (s)": 221,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-08-31T06:00:00Z",
     "Scheduled Time": "07:32",
     "Displayed Time": "07:32",
     "Artist": "Myles Smith",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 246,
     "Duration (mins)": 4.02,
     "Full Duration (mins)": 4.1
+  },
+  {
+    "Hour": "2025-09-02T06:00:00Z",
+    "Scheduled Time": "07:54",
+    "Displayed Time": "07:54",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 182,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-02T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "08:01",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17
   }
 ]
