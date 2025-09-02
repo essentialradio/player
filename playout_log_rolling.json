@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T04:00:00Z",
-    "Scheduled Time": "05:29",
-    "Displayed Time": "05:29",
-    "Artist": "Elton John",
-    "Title": "I'm Still Standing",
-    "Duration (s)": 172,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 3.02
-  },
-  {
-    "Hour": "2025-09-01T04:00:00Z",
     "Scheduled Time": "05:32",
     "Displayed Time": "05:32",
     "Artist": "Calvin Harris & Clementine Douglas",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.08,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-02T18:00:00Z",
+    "Scheduled Time": "19:22",
+    "Displayed Time": "19:22",
+    "Artist": "Fleetwood Mac",
+    "Title": "Don't Stop",
+    "Duration (s)": 180,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.25
   }
 ]
