@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T07:00:00Z",
-    "Scheduled Time": "08:13",
-    "Displayed Time": "08:13",
-    "Artist": "U2",
-    "Title": "Pride (In the Name of Love)",
-    "Duration (s)": 218,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.78
-  },
-  {
-    "Hour": "2025-08-31T07:00:00Z",
     "Scheduled Time": "08:20",
     "Displayed Time": "08:20",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.53,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-02T07:00:00Z",
+    "Scheduled Time": "08:52",
+    "Displayed Time": "08:52",
+    "Artist": "Charlie Puth",
+    "Title": "Light Switch",
+    "Duration (s)": 186,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 3.1
   }
 ]
