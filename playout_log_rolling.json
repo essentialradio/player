@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T01:00:00Z",
-    "Scheduled Time": "02:29",
-    "Displayed Time": "02:29",
-    "Artist": "Whitney Houston",
-    "Title": "My Love Is Your Love",
-    "Duration (s)": 233,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 3.88,
-    "Full Duration (mins)": 4.08
-  },
-  {
-    "Hour": "2025-09-01T01:00:00Z",
     "Scheduled Time": "02:33",
     "Displayed Time": "02:33",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 174,
     "Duration (mins)": 2.8,
     "Full Duration (mins)": 2.9
+  },
+  {
+    "Hour": "2025-09-02T15:00:00Z",
+    "Scheduled Time": "16:12",
+    "Displayed Time": "16:12",
+    "Artist": "Lola Young",
+    "Title": "D\u00a3aler",
+    "Duration (s)": 152,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.67
   }
 ]
