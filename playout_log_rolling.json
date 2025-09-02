@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T11:00:00Z",
-    "Scheduled Time": "12:29",
-    "Displayed Time": "12:29",
-    "Artist": "Ava Max",
-    "Title": "So Am I",
-    "Duration (s)": 178,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.07
-  },
-  {
-    "Hour": "2025-08-31T11:00:00Z",
     "Scheduled Time": "12:35",
     "Displayed Time": "12:35",
     "Artist": "BLACKPINK",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-02T11:00:00Z",
+    "Scheduled Time": "12:50",
+    "Displayed Time": "12:50",
+    "Artist": "Aretha Franklin",
+    "Title": "Respect",
+    "Duration (s)": 140,
+    "Full Duration (s)": 141,
+    "Duration (mins)": 2.33,
+    "Full Duration (mins)": 2.35
   }
 ]
