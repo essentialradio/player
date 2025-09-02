@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T01:00:00Z",
-    "Scheduled Time": "02:05",
-    "Displayed Time": "02:05",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 176,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 2.93,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-01T01:00:00Z",
     "Scheduled Time": "02:08",
     "Displayed Time": "02:08",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 226,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 3.77
+  },
+  {
+    "Hour": "2025-09-02T14:00:00Z",
+    "Scheduled Time": "15:47",
+    "Displayed Time": "15:47",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 226,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.77,
+    "Full Duration (mins)": 3.83
   }
 ]
