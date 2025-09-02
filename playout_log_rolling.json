@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T00:00:00Z",
-    "Scheduled Time": "01:16",
-    "Displayed Time": "01:16",
-    "Artist": "Girls Aloud",
-    "Title": "Love Machine",
-    "Duration (s)": 195,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-08-31T00:00:00Z",
     "Scheduled Time": "01:23",
     "Displayed Time": "01:23",
     "Artist": "Florence + The Machine",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.47,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-02T00:00:00Z",
+    "Scheduled Time": "01:36",
+    "Displayed Time": "01:36",
+    "Artist": "Kylie Minogue",
+    "Title": "Wow",
+    "Duration (s)": 183,
+    "Full Duration (s)": 191,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.18
   }
 ]
