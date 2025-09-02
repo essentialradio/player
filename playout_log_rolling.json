@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:42",
-    "Displayed Time": "10:42",
-    "Artist": "T'Pau",
-    "Title": "Heart and Soul",
-    "Duration (s)": 230,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 4.25
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:46",
     "Displayed Time": "10:46",
     "Artist": "Eternal",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-02T10:00:00Z",
+    "Scheduled Time": "11:09",
+    "Displayed Time": "11:09",
+    "Artist": "Paolo Nutini",
+    "Title": "Last Request",
+    "Duration (s)": 208,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.73
   }
 ]
