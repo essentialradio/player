@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T08:00:00Z",
-    "Scheduled Time": "09:55",
-    "Displayed Time": "09:55",
-    "Artist": "James Taylor",
-    "Title": "You've Got a Friend",
-    "Duration (s)": 255,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4.25,
-    "Full Duration (mins)": 4.47
-  },
-  {
     "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:01",
     "Displayed Time": "10:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-02T09:00:00Z",
+    "Scheduled Time": "10:26",
+    "Displayed Time": "10:26",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 172,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 2.93
   }
 ]
