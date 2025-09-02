@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T03:00:00Z",
-    "Scheduled Time": "04:44",
-    "Displayed Time": "04:44",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 221,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-01T03:00:00Z",
     "Scheduled Time": "04:48",
     "Displayed Time": "04:48",
     "Artist": "LMFAO Feat. Lauren Bennett & Goonrock",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 172,
     "Duration (mins)": 2.77,
     "Full Duration (mins)": 2.87
+  },
+  {
+    "Hour": "2025-09-02T17:00:00Z",
+    "Scheduled Time": "18:27",
+    "Displayed Time": "18:27",
+    "Artist": "Caity Baser",
+    "Title": "Running From Myself",
+    "Duration (s)": 152,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.62
   }
 ]
