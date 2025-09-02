@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T01:00:00Z",
-    "Scheduled Time": "02:08",
-    "Displayed Time": "02:08",
-    "Artist": "Lewis Capaldi",
-    "Title": "Pointless",
-    "Duration (s)": 217,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-01T01:00:00Z",
-    "Scheduled Time": "02:12",
-    "Displayed Time": "02:12",
-    "Artist": "Myles Smith",
-    "Title": "Gold",
-    "Duration (s)": 155,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-09-01T01:00:00Z",
     "Scheduled Time": "02:15",
     "Displayed Time": "02:15",
     "Artist": "Coldplay",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-02T14:00:00Z",
+    "Scheduled Time": "15:51",
+    "Displayed Time": "15:51",
+    "Artist": "Paul Young",
+    "Title": "Love of the Common People",
+    "Duration (s)": 199,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.68
+  },
+  {
+    "Hour": "2025-09-02T14:00:00Z",
+    "Scheduled Time": "15:54",
+    "Displayed Time": "15:54",
+    "Artist": "Luke Holloway",
+    "Title": "I Have One Daughter (Viral TikTok Song 2025)",
+    "Duration (s)": 138,
+    "Full Duration (s)": 144,
+    "Duration (mins)": 2.3,
+    "Full Duration (mins)": 2.4
   }
 ]
