@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T20:00:00Z",
-    "Scheduled Time": "21:59",
-    "Displayed Time": "21:59",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0
-  },
-  {
     "Hour": "2025-08-31T21:00:00Z",
     "Scheduled Time": "22:05",
     "Displayed Time": "22:05",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-02T14:00:00Z",
+    "Scheduled Time": "15:05",
+    "Displayed Time": "15:05",
+    "Artist": "Nicki Minaj",
+    "Title": "Starships",
+    "Duration (s)": 206,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.5
   }
 ]
