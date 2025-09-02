@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T09:00:00Z",
-    "Scheduled Time": "10:13",
-    "Displayed Time": "10:13",
-    "Artist": "Four Tops",
-    "Title": "It's the Same Old Song",
-    "Duration (s)": 156,
-    "Full Duration (s)": 165,
-    "Duration (mins)": 2.6,
-    "Full Duration (mins)": 2.75
-  },
-  {
-    "Hour": "2025-08-31T09:00:00Z",
     "Scheduled Time": "10:19",
     "Displayed Time": "10:19",
     "Artist": "Fine Young Cannibals",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-02T09:00:00Z",
+    "Scheduled Time": "10:41",
+    "Displayed Time": "10:41",
+    "Artist": "Toploader",
+    "Title": "Dancing in the Moonlight (Stargate Mix)",
+    "Duration (s)": 201,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.57
   }
 ]
