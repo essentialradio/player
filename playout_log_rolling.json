@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T08:00:00Z",
-    "Scheduled Time": "09:05",
-    "Displayed Time": "09:05",
-    "Artist": "Jason Mraz",
-    "Title": "I'm Yours",
-    "Duration (s)": 210,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3.5,
-    "Full Duration (mins)": 3.55
-  },
-  {
-    "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:10",
     "Displayed Time": "09:10",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 2.82,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-02T21:00:00Z",
+    "Scheduled Time": "22:39",
+    "Displayed Time": "22:39",
+    "Artist": "The S.O.S. Band",
+    "Title": "Just Be Good to Me",
+    "Duration (s)": 220,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.95
   }
 ]
