@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T03:00:00Z",
-    "Scheduled Time": "04:44",
-    "Displayed Time": "04:44",
-    "Artist": "Lewis Capaldi",
-    "Title": "Someone You Loved (Madism Radio Mix)",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.47,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-08-31T03:00:00Z",
     "Scheduled Time": "04:47",
     "Displayed Time": "04:47",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 202,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.37
+  },
+  {
+    "Hour": "2025-09-02T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "05:01",
+    "Artist": "Maroon 5",
+    "Title": "Memories",
+    "Duration (s)": 182,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.17
   }
 ]
