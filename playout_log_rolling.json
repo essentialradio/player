@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T08:00:00Z",
-    "Scheduled Time": "09:28",
-    "Displayed Time": "09:28",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-01T08:00:00Z",
     "Scheduled Time": "09:31",
     "Displayed Time": "09:31",
     "Artist": "Aztec Camera",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 234,
     "Duration (mins)": 3.72,
     "Full Duration (mins)": 3.9
+  },
+  {
+    "Hour": "2025-09-02T22:00:00Z",
+    "Scheduled Time": "23:01",
+    "Displayed Time": "23:01",
+    "Artist": "Mr Mister",
+    "Title": "Broken Wings",
+    "Duration (s)": 267,
+    "Full Duration (s)": 279,
+    "Duration (mins)": 4.45,
+    "Full Duration (mins)": 4.65
   }
 ]
