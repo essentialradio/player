@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T07:00:00Z",
-    "Scheduled Time": "08:09",
-    "Displayed Time": "08:09",
-    "Artist": "Gwen Stefani Featuring Akon",
-    "Title": "The Sweet Escape",
-    "Duration (s)": 237,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 3.95,
-    "Full Duration (mins)": 4.03
-  },
-  {
-    "Hour": "2025-08-31T07:00:00Z",
     "Scheduled Time": "08:13",
     "Displayed Time": "08:13",
     "Artist": "U2",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-02T07:00:00Z",
+    "Scheduled Time": "08:47",
+    "Displayed Time": "08:47",
+    "Artist": "Benson Boone",
+    "Title": "Sorry I'm Here For Someone Else",
+    "Duration (s)": 152,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.62
   }
 ]
