@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T04:00:00Z",
-    "Scheduled Time": "05:09",
-    "Displayed Time": "05:09",
-    "Artist": "The Weeknd",
-    "Title": "Can't Feel My Face",
-    "Duration (s)": 201,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.6
-  },
-  {
-    "Hour": "2025-08-31T04:00:00Z",
     "Scheduled Time": "05:13",
     "Displayed Time": "05:13",
     "Artist": "Portugal. The Man",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.55,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-02T04:00:00Z",
+    "Scheduled Time": "05:26",
+    "Displayed Time": "05:26",
+    "Artist": "Shaboozey",
+    "Title": "A Bar Song (Tipsy)",
+    "Duration (s)": 167,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.85
   }
 ]
