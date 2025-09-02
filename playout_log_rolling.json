@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T06:00:00Z",
-    "Scheduled Time": "07:46",
-    "Displayed Time": "07:46",
-    "Artist": "Travis",
-    "Title": "Sing",
-    "Duration (s)": 212,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-08-31T06:00:00Z",
     "Scheduled Time": "07:49",
     "Displayed Time": "07:49",
     "Artist": "CMAT",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.75,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-02T07:00:00Z",
+    "Scheduled Time": "08:16",
+    "Displayed Time": "08:16",
+    "Artist": "Bananarama",
+    "Title": "Venus",
+    "Duration (s)": 207,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.72
   }
 ]
