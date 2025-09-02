@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T07:00:00Z",
-    "Scheduled Time": "08:23",
-    "Displayed Time": "08:23",
-    "Artist": "Ellie Goulding",
-    "Title": "Starry Eyed",
-    "Duration (s)": 175,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 2.95
-  },
-  {
-    "Hour": "2025-08-31T07:00:00Z",
     "Scheduled Time": "08:26",
     "Displayed Time": "08:26",
     "Artist": "Backstreet Boys",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.68,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-02T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "09:03",
+    "Artist": "Sam Fender",
+    "Title": "Seventeen Going Under",
+    "Duration (s)": 230,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.9
   }
 ]
