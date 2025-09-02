@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T06:00:00Z",
-    "Scheduled Time": "07:04",
-    "Displayed Time": "07:04",
-    "Artist": "Clean Bandit Feat. Julia Michaels",
-    "Title": "I Miss You",
-    "Duration (s)": 192,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.23
-  },
-  {
-    "Hour": "2025-09-01T06:00:00Z",
     "Scheduled Time": "07:07",
     "Displayed Time": "07:07",
     "Artist": "Simple Minds",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-02T19:00:00Z",
+    "Scheduled Time": "20:52",
+    "Displayed Time": "20:52",
+    "Artist": "Talking Heads",
+    "Title": "Psycho Killer",
+    "Duration (s)": 249,
+    "Full Duration (s)": 260,
+    "Duration (mins)": 4.15,
+    "Full Duration (mins)": 4.33
   }
 ]
