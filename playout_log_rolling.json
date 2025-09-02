@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T06:00:00Z",
-    "Scheduled Time": "07:33",
-    "Displayed Time": "07:33",
-    "Artist": "Scouting for Girls",
-    "Title": "This Ain't a Love Song",
-    "Duration (s)": 184,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.15
-  },
-  {
-    "Hour": "2025-09-01T06:00:00Z",
     "Scheduled Time": "07:40",
     "Displayed Time": "07:40",
     "Artist": "Marshmello & Jonas Brothers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 123,
     "Duration (mins)": 1.93,
     "Full Duration (mins)": 2.05
+  },
+  {
+    "Hour": "2025-09-02T20:00:00Z",
+    "Scheduled Time": "21:23",
+    "Displayed Time": "21:23",
+    "Artist": "Cast",
+    "Title": "Walkaway",
+    "Duration (s)": 202,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.57
   }
 ]
