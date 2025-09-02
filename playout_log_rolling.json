@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-08-31T06:00:00Z",
-    "Scheduled Time": "07:06",
-    "Displayed Time": "07:06",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 187,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.12,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-08-31T06:00:00Z",
     "Scheduled Time": "07:10",
     "Displayed Time": "07:10",
     "Artist": "Wheatus",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 174,
     "Duration (mins)": 2.78,
     "Full Duration (mins)": 2.9
+  },
+  {
+    "Hour": "2025-09-02T06:00:00Z",
+    "Scheduled Time": "07:33",
+    "Displayed Time": "07:33",
+    "Artist": "Sigala ft Talia Mar",
+    "Title": "Stay the Night",
+    "Duration (s)": 170,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.85
   }
 ]
