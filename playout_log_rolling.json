@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T11:00:00Z",
-    "Scheduled Time": "12:54",
-    "Displayed Time": "12:54",
-    "Artist": "Elastica",
-    "Title": "Connection",
-    "Duration (s)": 134,
-    "Full Duration (s)": 136,
-    "Duration (mins)": 2.23,
-    "Full Duration (mins)": 2.27
-  },
-  {
     "Hour": "2025-08-31T12:00:00Z",
     "Scheduled Time": "13:01",
     "Displayed Time": "13:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 131,
     "Duration (mins)": 2.17,
     "Full Duration (mins)": 2.18
+  },
+  {
+    "Hour": "2025-09-02T12:00:00Z",
+    "Scheduled Time": "13:22",
+    "Displayed Time": "13:22",
+    "Artist": "Christine And The Queens",
+    "Title": "Tilted",
+    "Duration (s)": 230,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.88
   }
 ]
