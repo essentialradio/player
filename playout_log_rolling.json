@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T08:00:00Z",
-    "Scheduled Time": "09:03",
-    "Displayed Time": "09:03",
-    "Artist": "Sam Fender",
-    "Title": "Seventeen Going Under",
-    "Duration (s)": 230,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-09-02T08:00:00Z",
     "Scheduled Time": "09:07",
     "Displayed Time": "09:07",
     "Artist": "Oasis",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 239,
     "Duration (mins)": 3.85,
     "Full Duration (mins)": 3.98
+  },
+  {
+    "Hour": "2025-09-03T21:00:00Z",
+    "Scheduled Time": "22:41",
+    "Displayed Time": "22:41",
+    "Artist": "Billie Eilish",
+    "Title": "Ocean Eyes",
+    "Duration (s)": 190,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 3.33
   }
 ]
