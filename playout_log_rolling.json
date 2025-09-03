@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T04:00:00Z",
-    "Scheduled Time": "05:53",
-    "Displayed Time": "05:53",
-    "Artist": "The Chemical Brothers",
-    "Title": "Hey Boy Hey Girl",
-    "Duration (s)": 210,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.5,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-09-02T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "06:01",
-    "Artist": "Swedish House Mafia Feat. John Martin",
-    "Title": "Don't You Worry Child",
-    "Duration (s)": 206,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3.43,
-    "Full Duration (mins)": 3.55
-  },
-  {
     "Hour": "2025-09-02T05:00:00Z",
     "Scheduled Time": "06:05",
     "Displayed Time": "06:05",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 234,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.9
+  },
+  {
+    "Hour": "2025-09-03T18:00:00Z",
+    "Scheduled Time": "19:42",
+    "Displayed Time": "19:42",
+    "Artist": "Gloria Gaynor",
+    "Title": "Never Can Say Goodbye",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-03T18:00:00Z",
+    "Scheduled Time": "19:47",
+    "Displayed Time": "19:47",
+    "Artist": "England Dan & John Ford Coley",
+    "Title": "I'd Really Love to See You Tonight",
+    "Duration (s)": 144,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.4,
+    "Full Duration (mins)": 2.63
   }
 ]
