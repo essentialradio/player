@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T00:00:00Z",
-    "Scheduled Time": "01:45",
-    "Displayed Time": "01:45",
-    "Artist": "Jonas Brothers",
-    "Title": "What a Man Gotta Do",
-    "Duration (s)": 169,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 3.02
-  },
-  {
-    "Hour": "2025-09-02T00:00:00Z",
     "Scheduled Time": "01:48",
     "Displayed Time": "01:48",
     "Artist": "Mimi Webb",
@@ -5497,6 +5486,17 @@
     "Duration (s)": 139,
     "Full Duration (s)": 143,
     "Duration (mins)": 2.32,
+    "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-03T14:00:00Z",
+    "Scheduled Time": "15:22",
+    "Displayed Time": "15:22",
+    "Artist": "Jake Bugg",
+    "Title": "Lightning Bolt",
+    "Duration (s)": 138,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.3,
     "Full Duration (mins)": 2.38
   }
 ]
