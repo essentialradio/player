@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T19:00:00Z",
-    "Scheduled Time": "20:17",
-    "Displayed Time": "20:17",
-    "Artist": "Big Country",
-    "Title": "In a Big Country",
-    "Duration (s)": 217,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.92
-  },
-  {
-    "Hour": "2025-09-01T19:00:00Z",
     "Scheduled Time": "20:24",
     "Displayed Time": "20:24",
     "Artist": "Bruce Hornsby & The Range",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.88,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-03T08:00:00Z",
+    "Scheduled Time": "09:53",
+    "Displayed Time": "09:53",
+    "Artist": "Meat Loaf",
+    "Title": "Two Out Of Three Ain't Bad",
+    "Duration (s)": 319,
+    "Full Duration (s)": 323,
+    "Duration (mins)": 5.32,
+    "Full Duration (mins)": 5.38
   }
 ]
