@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T08:00:00Z",
-    "Scheduled Time": "09:53",
-    "Displayed Time": "09:53",
-    "Artist": "Hard-Fi",
-    "Title": "Suburban Knights",
-    "Duration (s)": 222,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.78
-  },
-  {
     "Hour": "2025-09-02T09:00:00Z",
     "Scheduled Time": "10:02",
     "Displayed Time": "10:02",
@@ -5497,6 +5486,17 @@
     "Duration (s)": 247,
     "Full Duration (s)": 258,
     "Duration (mins)": 4.12,
+    "Full Duration (mins)": 4.3
+  },
+  {
+    "Hour": "2025-09-03T22:00:00Z",
+    "Scheduled Time": "23:29",
+    "Displayed Time": "23:29",
+    "Artist": "The Commodores",
+    "Title": "Nightshift",
+    "Duration (s)": 243,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4.05,
     "Full Duration (mins)": 4.3
   }
 ]
