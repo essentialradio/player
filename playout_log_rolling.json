@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T21:00:00Z",
-    "Scheduled Time": "22:43",
-    "Displayed Time": "22:43",
-    "Artist": "Heaven 17",
-    "Title": "Come Live With Me",
-    "Duration (s)": 188,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.42
-  },
-  {
-    "Hour": "2025-09-01T21:00:00Z",
     "Scheduled Time": "22:46",
     "Displayed Time": "22:46",
     "Artist": "Sade",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 2.98,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-03T11:00:00Z",
+    "Scheduled Time": "12:12",
+    "Displayed Time": "12:12",
+    "Artist": "Sam Ryder (ESC",
+    "Title": "2022 - United Kingdom - GF - 2nd) - Space Man",
+    "Duration (s)": 204,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.63
   }
 ]
