@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T05:00:00Z",
-    "Scheduled Time": "06:05",
-    "Displayed Time": "06:05",
-    "Artist": "Tina Turner",
-    "Title": "What's Love Got To Do With It?",
-    "Duration (s)": 213,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-09-02T05:00:00Z",
     "Scheduled Time": "06:09",
     "Displayed Time": "06:09",
     "Artist": "Ella Henderson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 158,
     "Duration (mins)": 2.4,
     "Full Duration (mins)": 2.63
+  },
+  {
+    "Hour": "2025-09-03T18:00:00Z",
+    "Scheduled Time": "19:49",
+    "Displayed Time": "19:49",
+    "Artist": "The Cars",
+    "Title": "My Best Friend's Girl",
+    "Duration (s)": 207,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.68
   }
 ]
