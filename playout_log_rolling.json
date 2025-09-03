@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T21:00:00Z",
-    "Scheduled Time": "22:50",
-    "Displayed Time": "22:50",
-    "Artist": "Prefab Sprout",
-    "Title": "When Love Breaks Down",
-    "Duration (s)": 249,
-    "Full Duration (s)": 264,
-    "Duration (mins)": 4.15,
-    "Full Duration (mins)": 4.4
-  },
-  {
-    "Hour": "2025-09-01T21:00:00Z",
-    "Scheduled Time": "22:54",
-    "Displayed Time": "22:54",
-    "Artist": "Leona Lewis",
-    "Title": "Run",
-    "Duration (s)": 263,
-    "Full Duration (s)": 279,
-    "Duration (mins)": 4.38,
-    "Full Duration (mins)": 4.65
-  },
-  {
     "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:02",
     "Displayed Time": "23:02",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 148,
     "Duration (mins)": 2.37,
     "Full Duration (mins)": 2.47
+  },
+  {
+    "Hour": "2025-09-03T11:00:00Z",
+    "Scheduled Time": "12:23",
+    "Displayed Time": "12:23",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 211,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-03T11:00:00Z",
+    "Scheduled Time": "12:27",
+    "Displayed Time": "12:27",
+    "Artist": "Sonny Fodera, Jazzy",
+    "Title": "All This Time",
+    "Duration (s)": 214,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.73
   }
 ]
