@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T02:00:00Z",
-    "Scheduled Time": "03:50",
-    "Displayed Time": "03:50",
-    "Artist": "Sophie Ellis-Bextor",
-    "Title": "Murder on the Dancefloor",
-    "Duration (s)": 199,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-02T02:00:00Z",
     "Scheduled Time": "03:53",
     "Displayed Time": "03:53",
     "Artist": "Shola Ama",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 205,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.42
+  },
+  {
+    "Hour": "2025-09-03T16:00:00Z",
+    "Scheduled Time": "17:34",
+    "Displayed Time": "17:34",
+    "Artist": "Noah Kahan",
+    "Title": "Stick Season",
+    "Duration (s)": 172,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.03
   }
 ]
