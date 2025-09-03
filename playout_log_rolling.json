@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T19:00:00Z",
-    "Scheduled Time": "20:29",
-    "Displayed Time": "20:29",
-    "Artist": "Thompson Twins",
-    "Title": "Sister of Mercy",
-    "Duration (s)": 280,
-    "Full Duration (s)": 295,
-    "Duration (mins)": 4.67,
-    "Full Duration (mins)": 4.92
-  },
-  {
-    "Hour": "2025-09-01T19:00:00Z",
     "Scheduled Time": "20:33",
     "Displayed Time": "20:33",
     "Artist": "Tight Fit",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-03T09:00:00Z",
+    "Scheduled Time": "10:05",
+    "Displayed Time": "10:05",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 250,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4.17,
+    "Full Duration (mins)": 4.3
   }
 ]
