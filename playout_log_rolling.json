@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:54",
-    "Displayed Time": "18:54",
-    "Artist": "Calvin Harris, Ellie Goulding",
-    "Title": "Miracle",
-    "Duration (s)": 171,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 3.1
-  },
-  {
     "Hour": "2025-09-01T18:00:00Z",
     "Scheduled Time": "19:10",
     "Displayed Time": "19:10",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-03T07:00:00Z",
+    "Scheduled Time": "08:35",
+    "Displayed Time": "08:35",
+    "Artist": "Garbage",
+    "Title": "Stupid Girl",
+    "Duration (s)": 257,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 4.28,
+    "Full Duration (mins)": 4.28
   }
 ]
