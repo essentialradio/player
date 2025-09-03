@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T07:00:00Z",
-    "Scheduled Time": "08:31",
-    "Displayed Time": "08:31",
-    "Artist": "Noah Kahan",
-    "Title": "Stick Season",
-    "Duration (s)": 175,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-09-02T07:00:00Z",
     "Scheduled Time": "08:34",
     "Displayed Time": "08:34",
     "Artist": "TLC",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-03T21:00:00Z",
+    "Scheduled Time": "22:09",
+    "Displayed Time": "22:09",
+    "Artist": "Atlantic Starr",
+    "Title": "Always",
+    "Duration (s)": 230,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.9
   }
 ]
