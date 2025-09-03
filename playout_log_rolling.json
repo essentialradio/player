@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T18:00:00Z",
-    "Scheduled Time": "19:25",
-    "Displayed Time": "19:25",
-    "Artist": "Supertramp",
-    "Title": "Breakfast in America",
-    "Duration (s)": 153,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 2.55,
-    "Full Duration (mins)": 2.72
-  },
-  {
-    "Hour": "2025-09-01T18:00:00Z",
     "Scheduled Time": "19:31",
     "Displayed Time": "19:31",
     "Artist": "Gloria Gaynor",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 2.88
+  },
+  {
+    "Hour": "2025-09-03T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "09:03",
+    "Artist": "Tom Grennan",
+    "Title": "How Does It Feel",
+    "Duration (s)": 137,
+    "Full Duration (s)": 144,
+    "Duration (mins)": 2.28,
+    "Full Duration (mins)": 2.4
   }
 ]
