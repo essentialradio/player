@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:01",
-    "Displayed Time": "00:01",
-    "Artist": "HUNTR/X, EJAE, Audrey Nuna, REI AMI",
-    "Title": "Golden",
-    "Duration (s)": 189,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3.15,
-    "Full Duration (mins)": 3.25
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:05",
     "Displayed Time": "00:05",
     "Artist": "Lightning Seeds",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:28",
+    "Displayed Time": "13:28",
+    "Artist": "Justin Bieber",
+    "Title": "Daisies",
+    "Duration (s)": 169,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.93
   }
 ]
