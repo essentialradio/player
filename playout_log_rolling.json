@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T21:00:00Z",
-    "Scheduled Time": "22:22",
-    "Displayed Time": "22:22",
-    "Artist": "Pebbles",
-    "Title": "Girlfriend",
-    "Duration (s)": 239,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 3.98,
-    "Full Duration (mins)": 4.25
-  },
-  {
-    "Hour": "2025-09-01T21:00:00Z",
-    "Scheduled Time": "22:26",
-    "Displayed Time": "22:26",
-    "Artist": "Peter Gabriel Feat. Kate Bush",
-    "Title": "Don't Give Up",
-    "Duration (s)": 313,
-    "Full Duration (s)": 340,
-    "Duration (mins)": 5.22,
-    "Full Duration (mins)": 5.67
-  },
-  {
-    "Hour": "2025-09-01T21:00:00Z",
     "Scheduled Time": "22:31",
     "Displayed Time": "22:31",
     "Artist": "Michael Jackson",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 4.05
+  },
+  {
+    "Hour": "2025-09-03T10:00:00Z",
+    "Scheduled Time": "11:54",
+    "Displayed Time": "11:54",
+    "Artist": "Vanessa Carlton",
+    "Title": "A Thousand Miles",
+    "Duration (s)": 226,
+    "Full Duration (s)": 236,
+    "Duration (mins)": 3.77,
+    "Full Duration (mins)": 3.93
+  },
+  {
+    "Hour": "2025-09-03T11:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "12:02",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 184,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.17
   }
 ]
