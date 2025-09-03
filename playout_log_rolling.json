@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:48",
-    "Displayed Time": "18:48",
-    "Artist": "Sonny Fodera, Jazzy",
-    "Title": "All This Time",
-    "Duration (s)": 211,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-09-01T17:00:00Z",
     "Scheduled Time": "18:52",
     "Displayed Time": "18:52",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 242,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 4.03
+  },
+  {
+    "Hour": "2025-09-03T07:00:00Z",
+    "Scheduled Time": "08:25",
+    "Displayed Time": "08:25",
+    "Artist": "Ed Sheeran",
+    "Title": "Azizam",
+    "Duration (s)": 158,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.7
   }
 ]
