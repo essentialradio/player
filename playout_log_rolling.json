@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:52",
-    "Displayed Time": "16:52",
-    "Artist": "Harry Styles",
-    "Title": "Golden",
-    "Duration (s)": 205,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.42,
-    "Full Duration (mins)": 3.48
-  },
-  {
     "Hour": "2025-09-01T16:00:00Z",
     "Scheduled Time": "17:03",
     "Displayed Time": "17:03",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 161,
     "Duration (mins)": 2.63,
     "Full Duration (mins)": 2.68
+  },
+  {
+    "Hour": "2025-09-03T05:00:00Z",
+    "Scheduled Time": "06:17",
+    "Displayed Time": "06:17",
+    "Artist": "Paolo Nutini",
+    "Title": "Pencil Full Of Lead",
+    "Duration (s)": 142,
+    "Full Duration (s)": 147,
+    "Duration (mins)": 2.37,
+    "Full Duration (mins)": 2.45
   }
 ]
