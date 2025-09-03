@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T03:00:00Z",
-    "Scheduled Time": "04:45",
-    "Displayed Time": "04:45",
-    "Artist": "Ella Eyre",
-    "Title": "Space",
-    "Duration (s)": 155,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-09-02T03:00:00Z",
     "Scheduled Time": "04:47",
     "Displayed Time": "04:47",
     "Artist": "Manic Street Preachers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 127,
     "Duration (mins)": 2.02,
     "Full Duration (mins)": 2.12
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:27",
+    "Displayed Time": "18:27",
+    "Artist": "Caity Baser",
+    "Title": "Running From Myself",
+    "Duration (s)": 152,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.62
   }
 ]
