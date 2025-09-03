@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T20:00:00Z",
-    "Scheduled Time": "21:28",
-    "Displayed Time": "21:28",
-    "Artist": "Jazzy Jeff & Fresh Prince",
-    "Title": "Boom! Shake the Room",
-    "Duration (s)": 212,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-01T20:00:00Z",
     "Scheduled Time": "21:32",
     "Displayed Time": "21:32",
     "Artist": "New Kids on the Block",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 252,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.2
+  },
+  {
+    "Hour": "2025-09-03T10:00:00Z",
+    "Scheduled Time": "11:02",
+    "Displayed Time": "11:02",
+    "Artist": "Nickelback",
+    "Title": "How You Remind Me",
+    "Duration (s)": 215,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.68
   }
 ]
