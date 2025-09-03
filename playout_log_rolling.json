@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:08",
-    "Displayed Time": "18:08",
-    "Artist": "Good Neighbours",
-    "Title": "Starry Eyed",
-    "Duration (s)": 132,
-    "Full Duration (s)": 137,
-    "Duration (mins)": 2.2,
-    "Full Duration (mins)": 2.28
-  },
-  {
-    "Hour": "2025-09-01T17:00:00Z",
     "Scheduled Time": "18:11",
     "Displayed Time": "18:11",
     "Artist": "Becky Hill & David Guetta",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.67,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-03T06:00:00Z",
+    "Scheduled Time": "07:31",
+    "Displayed Time": "07:31",
+    "Artist": "Rita Ora",
+    "Title": "Anywhere",
+    "Duration (s)": 208,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.58
   }
 ]
