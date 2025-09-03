@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T09:00:00Z",
-    "Scheduled Time": "10:33",
-    "Displayed Time": "10:33",
-    "Artist": "Hall & Oates",
-    "Title": "Maneater",
-    "Duration (s)": 195,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.42
-  },
-  {
-    "Hour": "2025-09-02T09:00:00Z",
     "Scheduled Time": "10:37",
     "Displayed Time": "10:37",
     "Artist": "Tones and I",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:09",
+    "Displayed Time": "00:09",
+    "Artist": "Katy Perry ft Doechii",
+    "Title": "I'm His, He's Mine",
+    "Duration (s)": 193,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.3
   }
 ]
