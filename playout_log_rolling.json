@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T18:00:00Z",
-    "Scheduled Time": "19:31",
-    "Displayed Time": "19:31",
-    "Artist": "Gloria Gaynor",
-    "Title": "I Will Survive",
-    "Duration (s)": 184,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.22
-  },
-  {
-    "Hour": "2025-09-01T18:00:00Z",
     "Scheduled Time": "19:34",
     "Displayed Time": "19:34",
     "Artist": "Norman Greenbaum",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 144,
     "Duration (mins)": 2.28,
     "Full Duration (mins)": 2.4
+  },
+  {
+    "Hour": "2025-09-03T08:00:00Z",
+    "Scheduled Time": "09:05",
+    "Displayed Time": "09:05",
+    "Artist": "Stereophonics",
+    "Title": "Have a Nice Day",
+    "Duration (s)": 196,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.45
   }
 ]
