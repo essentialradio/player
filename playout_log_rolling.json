@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-02T09:00:00Z",
-    "Scheduled Time": "10:06",
-    "Displayed Time": "10:06",
-    "Artist": "Ten Sharp",
-    "Title": "You",
-    "Duration (s)": 235,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 3.92,
-    "Full Duration (mins)": 4.13
-  },
-  {
-    "Hour": "2025-09-02T09:00:00Z",
-    "Scheduled Time": "10:12",
-    "Displayed Time": "10:12",
-    "Artist": "Nathan Evans",
-    "Title": "Highland Girl",
-    "Duration (s)": 174,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-02T09:00:00Z",
     "Scheduled Time": "10:15",
     "Displayed Time": "10:15",
     "Artist": "Tate McRae",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-03T22:00:00Z",
+    "Scheduled Time": "23:40",
+    "Displayed Time": "23:40",
+    "Artist": "The Stylistics",
+    "Title": "You Make Me Feel Brand New",
+    "Duration (s)": 312,
+    "Full Duration (s)": 328,
+    "Duration (mins)": 5.2,
+    "Full Duration (mins)": 5.47
+  },
+  {
+    "Hour": "2025-09-03T22:00:00Z",
+    "Scheduled Time": "23:45",
+    "Displayed Time": "23:45",
+    "Artist": "Shakespears Sister",
+    "Title": "Stay",
+    "Duration (s)": 208,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.8
   }
 ]
