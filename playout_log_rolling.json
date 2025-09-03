@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T16:00:00Z",
-    "Scheduled Time": "17:03",
-    "Displayed Time": "17:03",
-    "Artist": "Dermot Kennedy",
-    "Title": "Giants",
-    "Duration (s)": 165,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 2.75,
-    "Full Duration (mins)": 2.95
-  },
-  {
-    "Hour": "2025-09-01T16:00:00Z",
-    "Scheduled Time": "17:06",
-    "Displayed Time": "17:06",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 159,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-01T16:00:00Z",
     "Scheduled Time": "17:09",
     "Displayed Time": "17:09",
     "Artist": "Coldplay",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 147,
     "Duration (mins)": 2.37,
     "Full Duration (mins)": 2.45
+  },
+  {
+    "Hour": "2025-09-03T05:00:00Z",
+    "Scheduled Time": "06:23",
+    "Displayed Time": "06:23",
+    "Artist": "Florence + The Machine",
+    "Title": "Everybody Scream",
+    "Duration (s)": 192,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 4.08
+  },
+  {
+    "Hour": "2025-09-03T05:00:00Z",
+    "Scheduled Time": "06:26",
+    "Displayed Time": "06:26",
+    "Artist": "Ella Henderson",
+    "Title": "Filthy Rich",
+    "Duration (s)": 170,
+    "Full Duration (s)": 172,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.87
   }
 ]
