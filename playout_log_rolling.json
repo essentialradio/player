@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:09",
-    "Displayed Time": "00:09",
-    "Artist": "Pink",
-    "Title": "Runaway",
-    "Duration (s)": 155,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.72
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:12",
     "Displayed Time": "00:12",
     "Artist": "Rag'N'Bone Man",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.3,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:35",
+    "Displayed Time": "13:35",
+    "Artist": "Laufey",
+    "Title": "Lover Girl",
+    "Duration (s)": 156,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.6,
+    "Full Duration (mins)": 2.73
   }
 ]
