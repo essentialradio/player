@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T06:00:00Z",
-    "Scheduled Time": "07:10",
-    "Displayed Time": "07:10",
-    "Artist": "Olly Murs",
-    "Title": "Save Me",
-    "Duration (s)": 171,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-02T06:00:00Z",
     "Scheduled Time": "07:13",
     "Displayed Time": "07:13",
     "Artist": "Miley Cyrus",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.6,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-03T19:00:00Z",
+    "Scheduled Time": "20:53",
+    "Displayed Time": "20:53",
+    "Artist": "Alphaville",
+    "Title": "Big in Japan",
+    "Duration (s)": 218,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.87
   }
 ]
