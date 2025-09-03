@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T11:00:00Z",
-    "Scheduled Time": "12:06",
-    "Displayed Time": "12:06",
-    "Artist": "Lionel Richie",
-    "Title": "Dancing on the Ceiling",
-    "Duration (s)": 252,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4.2,
-    "Full Duration (mins)": 4.35
-  },
-  {
-    "Hour": "2025-09-01T11:00:00Z",
     "Scheduled Time": "12:10",
     "Displayed Time": "12:10",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 247,
     "Duration (mins)": 3.95,
     "Full Duration (mins)": 4.12
+  },
+  {
+    "Hour": "2025-09-03T00:00:00Z",
+    "Scheduled Time": "01:34",
+    "Displayed Time": "01:34",
+    "Artist": "Olly Murs",
+    "Title": "Save Me",
+    "Duration (s)": 170,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.92
   }
 ]
