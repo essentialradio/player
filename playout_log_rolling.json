@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T18:00:00Z",
-    "Scheduled Time": "19:34",
-    "Displayed Time": "19:34",
-    "Artist": "Norman Greenbaum",
-    "Title": "Spirit in the Sky",
-    "Duration (s)": 228,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.8,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-01T18:00:00Z",
     "Scheduled Time": "19:39",
     "Displayed Time": "19:39",
     "Artist": "Earth, Wind & Fire",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 207,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.45
+  },
+  {
+    "Hour": "2025-09-03T08:00:00Z",
+    "Scheduled Time": "09:10",
+    "Displayed Time": "09:10",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.75
   }
 ]
