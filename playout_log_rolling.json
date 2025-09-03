@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T02:00:00Z",
-    "Scheduled Time": "03:53",
-    "Displayed Time": "03:53",
-    "Artist": "Shola Ama",
-    "Title": "You Might Need Somebody",
-    "Duration (s)": 217,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.87
-  },
-  {
     "Hour": "2025-09-02T03:00:00Z",
     "Scheduled Time": "04:01",
     "Displayed Time": "04:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-03T16:00:00Z",
+    "Scheduled Time": "17:41",
+    "Displayed Time": "17:41",
+    "Artist": "The Communards",
+    "Title": "Don't Leave Me This Way",
+    "Duration (s)": 255,
+    "Full Duration (s)": 265,
+    "Duration (mins)": 4.25,
+    "Full Duration (mins)": 4.42
   }
 ]
