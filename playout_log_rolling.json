@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T18:00:00Z",
-    "Scheduled Time": "19:52",
-    "Displayed Time": "19:52",
-    "Artist": "The Rolling Stones",
-    "Title": "Brown Sugar",
-    "Duration (s)": 221,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.85
-  },
-  {
     "Hour": "2025-09-01T19:00:00Z",
     "Scheduled Time": "20:01",
     "Displayed Time": "20:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-03T08:00:00Z",
+    "Scheduled Time": "09:30",
+    "Displayed Time": "09:30",
+    "Artist": "Olly Murs",
+    "Title": "Save Me",
+    "Duration (s)": 171,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.92
   }
 ]
