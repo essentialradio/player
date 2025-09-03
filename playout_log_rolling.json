@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:46",
-    "Displayed Time": "16:46",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.53,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-09-01T15:00:00Z",
     "Scheduled Time": "16:48",
     "Displayed Time": "16:48",
     "Artist": "Jason Derulo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 343,
     "Duration (mins)": 5.58,
     "Full Duration (mins)": 5.72
+  },
+  {
+    "Hour": "2025-09-03T05:00:00Z",
+    "Scheduled Time": "06:11",
+    "Displayed Time": "06:11",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17
   }
 ]
