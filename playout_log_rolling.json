@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-02T04:00:00Z",
-    "Scheduled Time": "05:08",
-    "Displayed Time": "05:08",
-    "Artist": "Nathan Evans",
-    "Title": "Flowers In The Water",
-    "Duration (s)": 139,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2.32,
-    "Full Duration (mins)": 2.38
-  },
-  {
-    "Hour": "2025-09-02T04:00:00Z",
-    "Scheduled Time": "05:11",
-    "Displayed Time": "05:11",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 226,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-02T04:00:00Z",
     "Scheduled Time": "05:14",
     "Displayed Time": "05:14",
     "Artist": "Snow Patrol",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.7,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:48",
+    "Displayed Time": "18:48",
+    "Artist": "Laufey",
+    "Title": "Lover Girl",
+    "Duration (s)": 159,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:51",
+    "Displayed Time": "18:51",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 159,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.77
   }
 ]
