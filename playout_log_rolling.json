@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:32",
-    "Displayed Time": "23:32",
-    "Artist": "Elton John",
-    "Title": "Don't Let the Sun Go Down on Me",
-    "Duration (s)": 322,
-    "Full Duration (s)": 339,
-    "Duration (mins)": 5.37,
-    "Full Duration (mins)": 5.65
-  },
-  {
-    "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:42",
     "Displayed Time": "23:42",
     "Artist": "Crowded House",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 189,
     "Duration (mins)": 3.03,
     "Full Duration (mins)": 3.15
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:07",
+    "Displayed Time": "13:07",
+    "Artist": "Benson Boone",
+    "Title": "Sorry I'm Here For Someone Else",
+    "Duration (s)": 148,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.47,
+    "Full Duration (mins)": 2.62
   }
 ]
