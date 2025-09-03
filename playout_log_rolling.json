@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T11:00:00Z",
-    "Scheduled Time": "12:27",
-    "Displayed Time": "12:27",
-    "Artist": "Cerrone/Christine & The Queens",
-    "Title": "Catching Feelings",
-    "Duration (s)": 195,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.38
-  },
-  {
-    "Hour": "2025-09-01T11:00:00Z",
     "Scheduled Time": "12:30",
     "Displayed Time": "12:30",
     "Artist": "Pharrell Williams",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 249,
     "Duration (mins)": 4.02,
     "Full Duration (mins)": 4.15
+  },
+  {
+    "Hour": "2025-09-03T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Anne-Marie",
+    "Title": "2002",
+    "Duration (s)": 183,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.12
   }
 ]
