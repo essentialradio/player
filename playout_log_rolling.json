@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T09:00:00Z",
-    "Scheduled Time": "10:55",
-    "Displayed Time": "10:55",
-    "Artist": "Post Malone & Morgan Wallen",
-    "Title": "I Had Some Help",
-    "Duration (s)": 174,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 2.97
-  },
-  {
     "Hour": "2025-09-02T10:00:00Z",
     "Scheduled Time": "11:02",
     "Displayed Time": "11:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.63,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:28",
+    "Displayed Time": "00:28",
+    "Artist": "Hall & Oates",
+    "Title": "You Make My Dreams",
+    "Duration (s)": 173,
+    "Full Duration (s)": 191,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.18
   }
 ]
