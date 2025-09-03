@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T12:00:00Z",
-    "Scheduled Time": "13:26",
-    "Displayed Time": "13:26",
-    "Artist": "Supermen Lovers & OneRepublic",
-    "Title": "Starlight (The Fame)",
-    "Duration (s)": 175,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-09-01T12:00:00Z",
     "Scheduled Time": "13:30",
     "Displayed Time": "13:30",
     "Artist": "Charlie Puth",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-03T01:00:00Z",
+    "Scheduled Time": "02:50",
+    "Displayed Time": "02:50",
+    "Artist": "Natasha Bedingfield",
+    "Title": "Unwritten",
+    "Duration (s)": 201,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.47
   }
 ]
