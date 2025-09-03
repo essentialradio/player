@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T04:00:00Z",
-    "Scheduled Time": "05:22",
-    "Displayed Time": "05:22",
-    "Artist": "The Human League",
-    "Title": "(Keep Feeling) Fascination",
-    "Duration (s)": 213,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.7
-  },
-  {
-    "Hour": "2025-09-02T04:00:00Z",
     "Scheduled Time": "05:26",
     "Displayed Time": "05:26",
     "Artist": "Shaboozey",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.55,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-03T18:00:00Z",
+    "Scheduled Time": "19:10",
+    "Displayed Time": "19:10",
+    "Artist": "Wild Cherry",
+    "Title": "Play That Funky Music",
+    "Duration (s)": 182,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.2
   }
 ]
