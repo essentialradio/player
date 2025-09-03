@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:54",
-    "Displayed Time": "00:54",
-    "Artist": "A-Ha",
-    "Title": "Take on Me",
-    "Duration (s)": 202,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.6
-  },
-  {
     "Hour": "2025-09-02T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "01:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-03T13:00:00Z",
+    "Scheduled Time": "14:27",
+    "Displayed Time": "14:27",
+    "Artist": "Hozier",
+    "Title": "Too Sweet",
+    "Duration (s)": 244,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.07,
+    "Full Duration (mins)": 4.18
   }
 ]
