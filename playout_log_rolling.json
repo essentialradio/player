@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:53",
-    "Displayed Time": "23:53",
-    "Artist": "Rihanna ft. Mikky Ekko",
-    "Title": "Stay",
-    "Duration (s)": 225,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 3.75,
-    "Full Duration (mins)": 4.0
-  },
-  {
     "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:01",
     "Displayed Time": "00:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:24",
+    "Displayed Time": "13:24",
+    "Artist": "Wilson Phillips",
+    "Title": "Hold On",
+    "Duration (s)": 200,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.63
   }
 ]
