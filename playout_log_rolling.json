@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:12",
-    "Displayed Time": "00:12",
-    "Artist": "Rag'N'Bone Man",
-    "Title": "What Do You Believe In",
-    "Duration (s)": 184,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:15",
     "Displayed Time": "00:15",
     "Artist": "Lady Gaga",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.6,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:40",
+    "Displayed Time": "13:40",
+    "Artist": "Curtis Mayfield",
+    "Title": "Move On Up",
+    "Duration (s)": 196,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.52
   }
 ]
