@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T13:00:00Z",
-    "Scheduled Time": "14:37",
-    "Displayed Time": "14:37",
-    "Artist": "Kings of Leon",
-    "Title": "Sex on Fire",
-    "Duration (s)": 196,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3.27,
-    "Full Duration (mins)": 3.42
-  },
-  {
-    "Hour": "2025-09-01T13:00:00Z",
     "Scheduled Time": "14:44",
     "Displayed Time": "14:44",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.78,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-03T03:00:00Z",
+    "Scheduled Time": "04:07",
+    "Displayed Time": "04:07",
+    "Artist": "Elton John & Dua Lipa",
+    "Title": "Cold Heart",
+    "Duration (s)": 185,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.2
   }
 ]
