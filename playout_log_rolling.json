@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T06:00:00Z",
-    "Scheduled Time": "07:16",
-    "Displayed Time": "07:16",
-    "Artist": "Keane",
-    "Title": "Everybody's Changing",
-    "Duration (s)": 208,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-02T06:00:00Z",
     "Scheduled Time": "07:25",
     "Displayed Time": "07:25",
     "Artist": "Gracie Abrams",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 237,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 3.95
+  },
+  {
+    "Hour": "2025-09-03T20:00:00Z",
+    "Scheduled Time": "21:06",
+    "Displayed Time": "21:06",
+    "Artist": "James",
+    "Title": "Laid",
+    "Duration (s)": 145,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.42,
+    "Full Duration (mins)": 2.63
   }
 ]
