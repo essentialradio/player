@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T14:00:00Z",
-    "Scheduled Time": "15:15",
-    "Displayed Time": "15:15",
-    "Artist": "The B-52's",
-    "Title": "Love Shack",
-    "Duration (s)": 199,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-01T14:00:00Z",
     "Scheduled Time": "15:23",
     "Displayed Time": "15:23",
     "Artist": "Jess Glynne",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-03T03:00:00Z",
+    "Scheduled Time": "04:44",
+    "Displayed Time": "04:44",
+    "Artist": "Marshmello Ft. Chvrches",
+    "Title": "Here With Me",
+    "Duration (s)": 148,
+    "Full Duration (s)": 156,
+    "Duration (mins)": 2.47,
+    "Full Duration (mins)": 2.6
   }
 ]
