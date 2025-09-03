@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T14:00:00Z",
-    "Scheduled Time": "15:45",
-    "Displayed Time": "15:45",
-    "Artist": "Ella Eyre",
-    "Title": "Space",
-    "Duration (s)": 155,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-09-01T14:00:00Z",
     "Scheduled Time": "15:48",
     "Displayed Time": "15:48",
     "Artist": "Rufus & Chaka Khan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-03T04:00:00Z",
+    "Scheduled Time": "05:12",
+    "Displayed Time": "05:12",
+    "Artist": "Cian Ducrot",
+    "Title": "Who's Making You Feel It",
+    "Duration (s)": 203,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.6
   }
 ]
