@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T10:00:00Z",
-    "Scheduled Time": "11:54",
-    "Displayed Time": "11:54",
-    "Artist": "Dido",
-    "Title": "White Flag",
-    "Duration (s)": 207,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3.45,
-    "Full Duration (mins)": 3.68
-  },
-  {
     "Hour": "2025-09-01T11:00:00Z",
     "Scheduled Time": "12:02",
     "Displayed Time": "12:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.88,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-03T00:00:00Z",
+    "Scheduled Time": "01:27",
+    "Displayed Time": "01:27",
+    "Artist": "Becky Hill/Chase & Status",
+    "Title": "Disconnect",
+    "Duration (s)": 158,
+    "Full Duration (s)": 165,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.75
   }
 ]
