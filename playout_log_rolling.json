@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T09:00:00Z",
-    "Scheduled Time": "10:17",
-    "Displayed Time": "10:17",
-    "Artist": "Jennifer Lopez",
-    "Title": "If You Had My Love",
-    "Duration (s)": 221,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-09-02T09:00:00Z",
     "Scheduled Time": "10:26",
     "Displayed Time": "10:26",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 247,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 4.12
+  },
+  {
+    "Hour": "2025-09-03T22:00:00Z",
+    "Scheduled Time": "23:52",
+    "Displayed Time": "23:52",
+    "Artist": "Coldplay",
+    "Title": "Fix You",
+    "Duration (s)": 234,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.9,
+    "Full Duration (mins)": 4.08
   }
 ]
