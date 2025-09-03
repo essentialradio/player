@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-02T05:00:00Z",
-    "Scheduled Time": "06:09",
-    "Displayed Time": "06:09",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 162,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.7,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-02T05:00:00Z",
-    "Scheduled Time": "06:12",
-    "Displayed Time": "06:12",
-    "Artist": "Pink",
-    "Title": "All Out Of Fight",
-    "Duration (s)": 204,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-02T05:00:00Z",
     "Scheduled Time": "06:15",
     "Displayed Time": "06:15",
     "Artist": "Nickelback",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 221,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.68
+  },
+  {
+    "Hour": "2025-09-03T18:00:00Z",
+    "Scheduled Time": "19:53",
+    "Displayed Time": "19:53",
+    "Artist": "Peter Frampton",
+    "Title": "Show Me The Way",
+    "Duration (s)": 186,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-03T19:00:00Z",
+    "Scheduled Time": "20:01",
+    "Displayed Time": "20:01",
+    "Artist": "Toto",
+    "Title": "Rosanna",
+    "Duration (s)": 248,
+    "Full Duration (s)": 253,
+    "Duration (mins)": 4.13,
+    "Full Duration (mins)": 4.22
   }
 ]
