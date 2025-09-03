@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:26",
-    "Displayed Time": "18:26",
-    "Artist": "Wunderhorse",
-    "Title": "The Rope",
-    "Duration (s)": 171,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-09-01T17:00:00Z",
     "Scheduled Time": "18:29",
     "Displayed Time": "18:29",
     "Artist": "Wet Leg",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 251,
     "Duration (mins)": 4.07,
     "Full Duration (mins)": 4.18
+  },
+  {
+    "Hour": "2025-09-03T06:00:00Z",
+    "Scheduled Time": "07:54",
+    "Displayed Time": "07:54",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 195,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.3
   }
 ]
