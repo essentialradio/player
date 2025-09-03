@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T14:00:00Z",
-    "Scheduled Time": "15:33",
-    "Displayed Time": "15:33",
-    "Artist": "Roxette",
-    "Title": "The Look",
-    "Duration (s)": 214,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-01T14:00:00Z",
     "Scheduled Time": "15:40",
     "Displayed Time": "15:40",
     "Artist": "Casso, Raye, D-Block Europe",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-03T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "05:01",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 201,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.57
   }
 ]
