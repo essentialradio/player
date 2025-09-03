@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T02:00:00Z",
-    "Scheduled Time": "03:46",
-    "Displayed Time": "03:46",
-    "Artist": "Doja Cat",
-    "Title": "Paint The Town Red",
-    "Duration (s)": 224,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.73,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-02T02:00:00Z",
     "Scheduled Time": "03:50",
     "Displayed Time": "03:50",
     "Artist": "Sophie Ellis-Bextor",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-03T16:00:00Z",
+    "Scheduled Time": "17:28",
+    "Displayed Time": "17:28",
+    "Artist": "Taio Cruz",
+    "Title": "Dynamite",
+    "Duration (s)": 184,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.42
   }
 ]
