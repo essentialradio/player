@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T01:00:00Z",
-    "Scheduled Time": "02:31",
-    "Displayed Time": "02:31",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 219,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-02T01:00:00Z",
     "Scheduled Time": "02:39",
     "Displayed Time": "02:39",
     "Artist": "Marshmello & Bastille",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3.2,
     "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-03T15:00:00Z",
+    "Scheduled Time": "16:12",
+    "Displayed Time": "16:12",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 175,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.05
   }
 ]
