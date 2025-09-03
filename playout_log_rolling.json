@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:02",
-    "Displayed Time": "23:02",
-    "Artist": "Youssou N'Dour ft Neneh Cherry",
-    "Title": "7 Seconds",
-    "Duration (s)": 232,
-    "Full Duration (s)": 253,
-    "Duration (mins)": 3.87,
-    "Full Duration (mins)": 4.22
-  },
-  {
-    "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:06",
     "Displayed Time": "23:06",
     "Artist": "Johnny Hates Jazz",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-03T11:00:00Z",
+    "Scheduled Time": "12:31",
+    "Displayed Time": "12:31",
+    "Artist": "Olivia Rodrigo",
+    "Title": "Drivers License",
+    "Duration (s)": 235,
+    "Full Duration (s)": 242,
+    "Duration (mins)": 3.92,
+    "Full Duration (mins)": 4.03
   }
 ]
