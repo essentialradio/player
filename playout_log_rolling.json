@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T01:00:00Z",
-    "Scheduled Time": "02:15",
-    "Displayed Time": "02:15",
-    "Artist": "Mark Ronson ft Daniel Merriweather",
-    "Title": "Stop Me",
-    "Duration (s)": 205,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3.42,
-    "Full Duration (mins)": 3.72
-  },
-  {
-    "Hour": "2025-09-02T01:00:00Z",
     "Scheduled Time": "02:22",
     "Displayed Time": "02:22",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 234,
     "Duration (mins)": 3.72,
     "Full Duration (mins)": 3.9
+  },
+  {
+    "Hour": "2025-09-03T14:00:00Z",
+    "Scheduled Time": "15:53",
+    "Displayed Time": "15:53",
+    "Artist": "Mr Probz",
+    "Title": "Waves",
+    "Duration (s)": 200,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.38
   }
 ]
