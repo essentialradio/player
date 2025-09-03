@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T10:00:00Z",
-    "Scheduled Time": "11:28",
-    "Displayed Time": "11:28",
-    "Artist": "Bangles",
-    "Title": "Walk Like an Egyptian",
-    "Duration (s)": 186,
-    "Full Duration (s)": 204,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 3.4
-  },
-  {
-    "Hour": "2025-09-02T10:00:00Z",
     "Scheduled Time": "11:31",
     "Displayed Time": "11:31",
     "Artist": "Savage Garden",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 172,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.87
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:54",
+    "Displayed Time": "00:54",
+    "Artist": "Fleetwood Mac",
+    "Title": "Little Lies",
+    "Duration (s)": 196,
+    "Full Duration (s)": 219,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.65
   }
 ]
