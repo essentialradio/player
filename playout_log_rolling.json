@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T05:00:00Z",
-    "Scheduled Time": "06:23",
-    "Displayed Time": "06:23",
-    "Artist": "Sam Fender & Olivia Dean",
-    "Title": "Rein Me In",
-    "Duration (s)": 233,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 3.88,
-    "Full Duration (mins)": 4.05
-  },
-  {
-    "Hour": "2025-09-02T05:00:00Z",
     "Scheduled Time": "06:27",
     "Displayed Time": "06:27",
     "Artist": "Calvin Harris & Sam Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 256,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.27
+  },
+  {
+    "Hour": "2025-09-03T19:00:00Z",
+    "Scheduled Time": "20:10",
+    "Displayed Time": "20:10",
+    "Artist": "Curiosity Killed the Cat",
+    "Title": "Misfit",
+    "Duration (s)": 225,
+    "Full Duration (s)": 240,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 4.0
   }
 ]
