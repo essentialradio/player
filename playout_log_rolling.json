@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T03:00:00Z",
-    "Scheduled Time": "04:06",
-    "Displayed Time": "04:06",
-    "Artist": "Travis",
-    "Title": "Why Does It Always Rain on Me?",
-    "Duration (s)": 244,
-    "Full Duration (s)": 266,
-    "Duration (mins)": 4.07,
-    "Full Duration (mins)": 4.43
-  },
-  {
-    "Hour": "2025-09-02T03:00:00Z",
     "Scheduled Time": "04:10",
     "Displayed Time": "04:10",
     "Artist": "Pixie Lott",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-03T16:00:00Z",
+    "Scheduled Time": "17:49",
+    "Displayed Time": "17:49",
+    "Artist": "Simply Red",
+    "Title": "Stars",
+    "Duration (s)": 238,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.1
   }
 ]
