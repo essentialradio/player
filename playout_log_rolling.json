@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T01:00:00Z",
-    "Scheduled Time": "02:29",
-    "Displayed Time": "02:29",
-    "Artist": "Madness",
-    "Title": "House of Fun",
-    "Duration (s)": 156,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.6,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-09-02T01:00:00Z",
     "Scheduled Time": "02:31",
     "Displayed Time": "02:31",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.25,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-03T15:00:00Z",
+    "Scheduled Time": "16:08",
+    "Displayed Time": "16:08",
+    "Artist": "Vance Joy",
+    "Title": "Riptide",
+    "Duration (s)": 192,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.33
   }
 ]
