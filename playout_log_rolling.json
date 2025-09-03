@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T09:00:00Z",
-    "Scheduled Time": "10:37",
-    "Displayed Time": "10:37",
-    "Artist": "Tones and I",
-    "Title": "Dance Monkey",
-    "Duration (s)": 206,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.43,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-02T09:00:00Z",
     "Scheduled Time": "10:41",
     "Displayed Time": "10:41",
     "Artist": "Toploader",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:13",
+    "Displayed Time": "00:13",
+    "Artist": "Fontaines D.C.",
+    "Title": "It's Amazing To Be Young",
+    "Duration (s)": 204,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.52
   }
 ]
