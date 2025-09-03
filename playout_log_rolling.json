@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:42",
-    "Displayed Time": "23:42",
-    "Artist": "Crowded House",
-    "Title": "Don't Dream It's Over",
-    "Duration (s)": 212,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:45",
     "Displayed Time": "23:45",
     "Artist": "Simply Red",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.47,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:10",
+    "Displayed Time": "13:10",
+    "Artist": "The Eagles",
+    "Title": "Take It Easy",
+    "Duration (s)": 199,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.48
   }
 ]
