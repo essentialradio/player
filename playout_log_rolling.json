@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T11:00:00Z",
-    "Scheduled Time": "12:30",
-    "Displayed Time": "12:30",
-    "Artist": "Pharrell Williams",
-    "Title": "Happy",
-    "Duration (s)": 203,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.38,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-01T11:00:00Z",
     "Scheduled Time": "12:37",
     "Displayed Time": "12:37",
     "Artist": "Doechii",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 3.05,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-03T01:00:00Z",
+    "Scheduled Time": "02:05",
+    "Displayed Time": "02:05",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway",
+    "Duration (s)": 244,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.07,
+    "Full Duration (mins)": 4.2
   }
 ]
