@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T14:00:00Z",
-    "Scheduled Time": "15:40",
-    "Displayed Time": "15:40",
-    "Artist": "Casso, Raye, D-Block Europe",
-    "Title": "Prada",
-    "Duration (s)": 125,
-    "Full Duration (s)": 132,
-    "Duration (mins)": 2.08,
-    "Full Duration (mins)": 2.2
-  },
-  {
-    "Hour": "2025-09-01T14:00:00Z",
     "Scheduled Time": "15:42",
     "Displayed Time": "15:42",
     "Artist": "Paolo Nutini",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-03T04:00:00Z",
+    "Scheduled Time": "05:05",
+    "Displayed Time": "05:05",
+    "Artist": "Destiny's Child",
+    "Title": "Bills, Bills, Bills",
+    "Duration (s)": 232,
+    "Full Duration (s)": 242,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.03
   }
 ]
