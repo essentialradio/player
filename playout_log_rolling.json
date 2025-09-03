@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T08:00:00Z",
-    "Scheduled Time": "09:38",
-    "Displayed Time": "09:38",
-    "Artist": "Eurythmics",
-    "Title": "Sweet Dreams (Are Made of This)",
-    "Duration (s)": 206,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3.43,
-    "Full Duration (mins)": 3.6
-  },
-  {
-    "Hour": "2025-09-02T08:00:00Z",
     "Scheduled Time": "09:42",
     "Displayed Time": "09:42",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 238,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.97
+  },
+  {
+    "Hour": "2025-09-03T22:00:00Z",
+    "Scheduled Time": "23:13",
+    "Displayed Time": "23:13",
+    "Artist": "Ace of Base",
+    "Title": "All That She Wants",
+    "Duration (s)": 196,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.53
   }
 ]
