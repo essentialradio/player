@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T01:00:00Z",
-    "Scheduled Time": "02:53",
-    "Displayed Time": "02:53",
-    "Artist": "Enrique Iglesias",
-    "Title": "Do You Know? (The Ping Pong Song)",
-    "Duration (s)": 209,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.62
-  },
-  {
-    "Hour": "2025-09-02T02:00:00Z",
-    "Scheduled Time": "03:02",
-    "Displayed Time": "03:02",
-    "Artist": "Ariana Grande",
-    "Title": "Thank U, Next",
-    "Duration (s)": 201,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.45
-  },
-  {
     "Hour": "2025-09-02T02:00:00Z",
     "Scheduled Time": "03:06",
     "Displayed Time": "03:06",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-03T15:00:00Z",
+    "Scheduled Time": "16:33",
+    "Displayed Time": "16:33",
+    "Artist": "Imagine Dragons",
+    "Title": "Believer",
+    "Duration (s)": 194,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-03T15:00:00Z",
+    "Scheduled Time": "16:36",
+    "Displayed Time": "16:36",
+    "Artist": "U2",
+    "Title": "With or Without You",
+    "Duration (s)": 270,
+    "Full Duration (s)": 292,
+    "Duration (mins)": 4.5,
+    "Full Duration (mins)": 4.87
   }
 ]
