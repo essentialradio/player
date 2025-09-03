@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T13:00:00Z",
-    "Scheduled Time": "14:33",
-    "Displayed Time": "14:33",
-    "Artist": "4 Non Blondes",
-    "Title": "What's Up?",
-    "Duration (s)": 241,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4.02,
-    "Full Duration (mins)": 4.23
-  },
-  {
-    "Hour": "2025-09-01T13:00:00Z",
     "Scheduled Time": "14:37",
     "Displayed Time": "14:37",
     "Artist": "Kings of Leon",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 137,
     "Duration (mins)": 2.23,
     "Full Duration (mins)": 2.28
+  },
+  {
+    "Hour": "2025-09-03T03:00:00Z",
+    "Scheduled Time": "04:04",
+    "Displayed Time": "04:04",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 167,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.93
   }
 ]
