@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T18:00:00Z",
-    "Scheduled Time": "19:16",
-    "Displayed Time": "19:16",
-    "Artist": "The Isley Brothers",
-    "Title": "That Lady, Parts 1 & 2",
-    "Duration (s)": 324,
-    "Full Duration (s)": 328,
-    "Duration (mins)": 5.4,
-    "Full Duration (mins)": 5.47
-  },
-  {
-    "Hour": "2025-09-01T18:00:00Z",
     "Scheduled Time": "19:21",
     "Displayed Time": "19:21",
     "Artist": "Fleetwood Mac",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 3.02,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-03T07:00:00Z",
+    "Scheduled Time": "08:53",
+    "Displayed Time": "08:53",
+    "Artist": "Tom Odell",
+    "Title": "Another Love (Tiesto Remix)",
+    "Duration (s)": 183,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.08
   }
 ]
