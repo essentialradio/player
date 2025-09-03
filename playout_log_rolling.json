@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:44",
-    "Displayed Time": "00:44",
-    "Artist": "N-Trance",
-    "Title": "Set You Free",
-    "Duration (s)": 236,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 3.93,
-    "Full Duration (mins)": 4.17
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:48",
     "Displayed Time": "00:48",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 246,
     "Duration (mins)": 4.02,
     "Full Duration (mins)": 4.1
+  },
+  {
+    "Hour": "2025-09-03T13:00:00Z",
+    "Scheduled Time": "14:12",
+    "Displayed Time": "14:12",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 226,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.77,
+    "Full Duration (mins)": 3.83
   }
 ]
