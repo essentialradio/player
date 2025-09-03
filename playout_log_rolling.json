@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:15",
-    "Displayed Time": "00:15",
-    "Artist": "Lady Gaga",
-    "Title": "Paparazzi",
-    "Duration (s)": 194,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:22",
     "Displayed Time": "00:22",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.52
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:44",
+    "Displayed Time": "13:44",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 167,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.93
   }
 ]
