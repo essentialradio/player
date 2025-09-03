@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T21:00:00Z",
-    "Scheduled Time": "22:09",
-    "Displayed Time": "22:09",
-    "Artist": "Wet Wet Wet",
-    "Title": "Love Is All Around",
-    "Duration (s)": 220,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.67,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-01T21:00:00Z",
     "Scheduled Time": "22:12",
     "Displayed Time": "22:12",
     "Artist": "Norah Jones",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 216,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.6
+  },
+  {
+    "Hour": "2025-09-03T10:00:00Z",
+    "Scheduled Time": "11:43",
+    "Displayed Time": "11:43",
+    "Artist": "Charlotte Church",
+    "Title": "Crazy Chick",
+    "Duration (s)": 175,
+    "Full Duration (s)": 181,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.02
   }
 ]
