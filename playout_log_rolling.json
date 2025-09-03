@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T03:00:00Z",
-    "Scheduled Time": "04:27",
-    "Displayed Time": "04:27",
-    "Artist": "Hozier",
-    "Title": "Too Sweet",
-    "Duration (s)": 239,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 3.98,
-    "Full Duration (mins)": 4.18
-  },
-  {
-    "Hour": "2025-09-02T03:00:00Z",
     "Scheduled Time": "04:31",
     "Displayed Time": "04:31",
     "Artist": "Bob Marley & The Wailers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 203,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.38
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:12",
+    "Displayed Time": "18:12",
+    "Artist": "Post Malone & Morgan Wallen",
+    "Title": "I Had Some Help",
+    "Duration (s)": 172,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 2.97
   }
 ]
