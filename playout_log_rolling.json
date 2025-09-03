@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T04:00:00Z",
-    "Scheduled Time": "05:01",
-    "Displayed Time": "05:01",
-    "Artist": "Maroon 5",
-    "Title": "Memories",
-    "Duration (s)": 182,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.03,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-02T04:00:00Z",
     "Scheduled Time": "05:05",
     "Displayed Time": "05:05",
     "Artist": "Alex Warren",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 172,
     "Duration (mins)": 2.72,
     "Full Duration (mins)": 2.87
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:42",
+    "Displayed Time": "18:42",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 193,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.3
   }
 ]
