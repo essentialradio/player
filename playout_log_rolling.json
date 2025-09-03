@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T12:00:00Z",
-    "Scheduled Time": "13:51",
-    "Displayed Time": "13:51",
-    "Artist": "Van Morrison",
-    "Title": "Brown Eyed Girl",
-    "Duration (s)": 168,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 2.8,
-    "Full Duration (mins)": 3.07
-  },
-  {
-    "Hour": "2025-09-01T12:00:00Z",
     "Scheduled Time": "13:54",
     "Displayed Time": "13:54",
     "Artist": "Paloma Faith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 219,
     "Duration (mins)": 3.17,
     "Full Duration (mins)": 3.65
+  },
+  {
+    "Hour": "2025-09-03T02:00:00Z",
+    "Scheduled Time": "03:23",
+    "Displayed Time": "03:23",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.77
   }
 ]
