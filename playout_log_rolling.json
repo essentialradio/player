@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T10:00:00Z",
-    "Scheduled Time": "11:02",
-    "Displayed Time": "11:02",
-    "Artist": "Lenny Kravitz",
-    "Title": "Are You Gonna Go My Way",
-    "Duration (s)": 209,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-02T10:00:00Z",
     "Scheduled Time": "11:05",
     "Displayed Time": "11:05",
     "Artist": "Prince and the Revolution",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 191,
     "Duration (mins)": 2.88,
     "Full Duration (mins)": 3.18
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:31",
+    "Displayed Time": "00:31",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 208,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.67
   }
 ]
