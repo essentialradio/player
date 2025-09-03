@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "05:05",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 180,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-02T04:00:00Z",
     "Scheduled Time": "05:08",
     "Displayed Time": "05:08",
     "Artist": "Nathan Evans",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:46",
+    "Displayed Time": "18:46",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 162,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.8
   }
 ]
