@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T10:00:00Z",
-    "Scheduled Time": "11:05",
-    "Displayed Time": "11:05",
-    "Artist": "Prince and the Revolution",
-    "Title": "Kiss",
-    "Duration (s)": 214,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.78
-  },
-  {
-    "Hour": "2025-09-02T10:00:00Z",
     "Scheduled Time": "11:09",
     "Displayed Time": "11:09",
     "Artist": "Paolo Nutini",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.47,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:38",
+    "Displayed Time": "00:38",
+    "Artist": "Jonas Brothers",
+    "Title": "Sucker",
+    "Duration (s)": 173,
+    "Full Duration (s)": 181,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.02
   }
 ]
