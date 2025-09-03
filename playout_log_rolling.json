@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T13:00:00Z",
-    "Scheduled Time": "14:54",
-    "Displayed Time": "14:54",
-    "Artist": "Oasis",
-    "Title": "Cigarettes & Alcohol",
-    "Duration (s)": 270,
-    "Full Duration (s)": 279,
-    "Duration (mins)": 4.5,
-    "Full Duration (mins)": 4.65
-  },
-  {
     "Hour": "2025-09-01T14:00:00Z",
     "Scheduled Time": "15:01",
     "Displayed Time": "15:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.28,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-03T03:00:00Z",
+    "Scheduled Time": "04:24",
+    "Displayed Time": "04:24",
+    "Artist": "David Guetta & Bebe Rexha",
+    "Title": "I'm Good (Blue)",
+    "Duration (s)": 168,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.9
   }
 ]
