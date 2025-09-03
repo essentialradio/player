@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T18:00:00Z",
-    "Scheduled Time": "19:42",
-    "Displayed Time": "19:42",
-    "Artist": "ABBA (ESC",
-    "Title": "1974 - Sweden - GF-1st) - Waterloo",
-    "Duration (s)": 150,
-    "Full Duration (s)": 163,
-    "Duration (mins)": 2.5,
-    "Full Duration (mins)": 2.72
-  },
-  {
-    "Hour": "2025-09-01T18:00:00Z",
     "Scheduled Time": "19:47",
     "Displayed Time": "19:47",
     "Artist": "Tubeway Army",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-03T08:00:00Z",
+    "Scheduled Time": "09:17",
+    "Displayed Time": "09:17",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 236,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.93,
+    "Full Duration (mins)": 4.05
   }
 ]
