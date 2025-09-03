@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T06:00:00Z",
-    "Scheduled Time": "07:49",
-    "Displayed Time": "07:49",
-    "Artist": "Aloe Blacc",
-    "Title": "I Need a Dollar",
-    "Duration (s)": 241,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 4.02,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-09-02T06:00:00Z",
     "Scheduled Time": "07:54",
     "Displayed Time": "07:54",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 191,
     "Duration (mins)": 3.05,
     "Full Duration (mins)": 3.18
+  },
+  {
+    "Hour": "2025-09-03T20:00:00Z",
+    "Scheduled Time": "21:30",
+    "Displayed Time": "21:30",
+    "Artist": "Robert Palmer",
+    "Title": "Know By Now",
+    "Duration (s)": 221,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.98
   }
 ]
