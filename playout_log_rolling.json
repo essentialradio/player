@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:45",
-    "Displayed Time": "23:45",
-    "Artist": "Simply Red",
-    "Title": "Holding Back the Years",
-    "Duration (s)": 229,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 3.82,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:49",
     "Displayed Time": "23:49",
     "Artist": "Natasha Bedingfield",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.32,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:13",
+    "Displayed Time": "13:13",
+    "Artist": "Tom Grennan",
+    "Title": "Little Bit of Love",
+    "Duration (s)": 197,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.42
   }
 ]
