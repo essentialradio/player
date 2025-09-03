@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:24",
-    "Displayed Time": "16:24",
-    "Artist": "Ed Sheeran",
-    "Title": "Shivers",
-    "Duration (s)": 198,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.45
-  },
-  {
-    "Hour": "2025-09-01T15:00:00Z",
     "Scheduled Time": "16:28",
     "Displayed Time": "16:28",
     "Artist": "Seal",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-03T04:00:00Z",
+    "Scheduled Time": "05:50",
+    "Displayed Time": "05:50",
+    "Artist": "Coldplay",
+    "Title": "Feels Like I'm Falling in Love",
+    "Duration (s)": 215,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.73
   }
 ]
