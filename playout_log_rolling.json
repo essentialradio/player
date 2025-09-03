@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T03:00:00Z",
-    "Scheduled Time": "04:24",
-    "Displayed Time": "04:24",
-    "Artist": "Florence + The Machine",
-    "Title": "Everybody Scream",
-    "Duration (s)": 186,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 4.08
-  },
-  {
-    "Hour": "2025-09-02T03:00:00Z",
     "Scheduled Time": "04:27",
     "Displayed Time": "04:27",
     "Artist": "Hozier",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 160,
     "Duration (mins)": 2.58,
     "Full Duration (mins)": 2.67
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:08",
+    "Displayed Time": "18:08",
+    "Artist": "Cerrone/Christine & The Queens",
+    "Title": "Catching Feelings",
+    "Duration (s)": 196,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.38
   }
 ]
