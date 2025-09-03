@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T00:00:00Z",
-    "Scheduled Time": "01:48",
-    "Displayed Time": "01:48",
-    "Artist": "Mimi Webb",
-    "Title": "House on Fire",
-    "Duration (s)": 131,
-    "Full Duration (s)": 141,
-    "Duration (mins)": 2.18,
-    "Full Duration (mins)": 2.35
-  },
-  {
-    "Hour": "2025-09-02T00:00:00Z",
     "Scheduled Time": "01:50",
     "Displayed Time": "01:50",
     "Artist": "Stereophonics",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2.3,
     "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-03T14:00:00Z",
+    "Scheduled Time": "15:24",
+    "Displayed Time": "15:24",
+    "Artist": "Mumford & Sons",
+    "Title": "Rushmere",
+    "Duration (s)": 180,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.2
   }
 ]
