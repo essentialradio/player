@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:06",
-    "Displayed Time": "23:06",
-    "Artist": "Johnny Hates Jazz",
-    "Title": "Shattered Dreams",
-    "Duration (s)": 187,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.12,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:09",
     "Displayed Time": "23:09",
     "Artist": "James Bay",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 242,
     "Duration (mins)": 3.92,
     "Full Duration (mins)": 4.03
+  },
+  {
+    "Hour": "2025-09-03T11:00:00Z",
+    "Scheduled Time": "12:39",
+    "Displayed Time": "12:39",
+    "Artist": "Teddy Swims",
+    "Title": "Bad Dreams",
+    "Duration (s)": 175,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.08
   }
 ]
