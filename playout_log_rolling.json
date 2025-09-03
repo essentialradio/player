@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:06",
-    "Displayed Time": "16:06",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 208,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-01T15:00:00Z",
     "Scheduled Time": "16:09",
     "Displayed Time": "16:09",
     "Artist": "Biffy Clyro",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 244,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 4.07
+  },
+  {
+    "Hour": "2025-09-03T04:00:00Z",
+    "Scheduled Time": "05:33",
+    "Displayed Time": "05:33",
+    "Artist": "Olly Murs",
+    "Title": "Save Me",
+    "Duration (s)": 166,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.92
   }
 ]
