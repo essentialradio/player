@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T12:00:00Z",
-    "Scheduled Time": "13:22",
-    "Displayed Time": "13:22",
-    "Artist": "ZZ Top",
-    "Title": "Gimme All Your Lovin'",
-    "Duration (s)": 228,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.8,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-01T12:00:00Z",
     "Scheduled Time": "13:26",
     "Displayed Time": "13:26",
     "Artist": "Supermen Lovers & OneRepublic",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2.37,
     "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-03T01:00:00Z",
+    "Scheduled Time": "02:47",
+    "Displayed Time": "02:47",
+    "Artist": "Rag'N'Bone Man",
+    "Title": "Human",
+    "Duration (s)": 193,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.32
   }
 ]
