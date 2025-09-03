@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T14:00:00Z",
-    "Scheduled Time": "15:01",
-    "Displayed Time": "15:01",
-    "Artist": "JADE",
-    "Title": "Plastic Box",
-    "Duration (s)": 199,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-01T14:00:00Z",
     "Scheduled Time": "15:05",
     "Displayed Time": "15:05",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 174,
     "Duration (mins)": 2.8,
     "Full Duration (mins)": 2.9
+  },
+  {
+    "Hour": "2025-09-03T03:00:00Z",
+    "Scheduled Time": "04:27",
+    "Displayed Time": "04:27",
+    "Artist": "Stereo MCs",
+    "Title": "Connected",
+    "Duration (s)": 209,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.8
   }
 ]
