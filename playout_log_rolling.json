@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:48",
-    "Displayed Time": "16:48",
-    "Artist": "Jason Derulo",
-    "Title": "Take You Dancing",
-    "Duration (s)": 188,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-01T15:00:00Z",
     "Scheduled Time": "16:52",
     "Displayed Time": "16:52",
     "Artist": "Harry Styles",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-03T05:00:00Z",
+    "Scheduled Time": "06:14",
+    "Displayed Time": "06:14",
+    "Artist": "KSI ft Trippie Redd",
+    "Title": "Thick Of It",
+    "Duration (s)": 158,
+    "Full Duration (s)": 161,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.68
   }
 ]
