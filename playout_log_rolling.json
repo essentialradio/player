@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:38",
-    "Displayed Time": "16:38",
-    "Artist": "Prince",
-    "Title": "When Doves Cry",
-    "Duration (s)": 218,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-01T15:00:00Z",
     "Scheduled Time": "16:46",
     "Displayed Time": "16:46",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-03T05:00:00Z",
+    "Scheduled Time": "06:05",
+    "Displayed Time": "06:05",
+    "Artist": "Queen",
+    "Title": "Radio Ga Ga",
+    "Duration (s)": 335,
+    "Full Duration (s)": 343,
+    "Duration (mins)": 5.58,
+    "Full Duration (mins)": 5.72
   }
 ]
