@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T01:00:00Z",
-    "Scheduled Time": "02:25",
-    "Displayed Time": "02:25",
-    "Artist": "Olivia Rodrigo",
-    "Title": "Vampire",
-    "Duration (s)": 215,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-02T01:00:00Z",
     "Scheduled Time": "02:29",
     "Displayed Time": "02:29",
     "Artist": "Madness",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 186,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 3.1
+  },
+  {
+    "Hour": "2025-09-03T15:00:00Z",
+    "Scheduled Time": "16:05",
+    "Displayed Time": "16:05",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 195,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.57
   }
 ]
