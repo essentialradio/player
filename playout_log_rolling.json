@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T05:00:00Z",
-    "Scheduled Time": "06:32",
-    "Displayed Time": "06:32",
-    "Artist": "Shawn Mendes",
-    "Title": "There's Nothing Holdin' Me Back",
-    "Duration (s)": 192,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.32
-  },
-  {
-    "Hour": "2025-09-02T05:00:00Z",
     "Scheduled Time": "06:35",
     "Displayed Time": "06:35",
     "Artist": "New Radicals",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.52,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-03T19:00:00Z",
+    "Scheduled Time": "20:17",
+    "Displayed Time": "20:17",
+    "Artist": "INXS",
+    "Title": "Devil Inside",
+    "Duration (s)": 217,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.88
   }
 ]
