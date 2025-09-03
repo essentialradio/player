@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:14",
-    "Displayed Time": "18:14",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.38,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:20",
-    "Displayed Time": "18:20",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 182,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.03,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-01T17:00:00Z",
     "Scheduled Time": "18:23",
     "Displayed Time": "18:23",
     "Artist": "Lizzo",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 134,
     "Duration (mins)": 2.2,
     "Full Duration (mins)": 2.23
+  },
+  {
+    "Hour": "2025-09-03T06:00:00Z",
+    "Scheduled Time": "07:37",
+    "Displayed Time": "07:37",
+    "Artist": "Robin S",
+    "Title": "Show Me Love",
+    "Duration (s)": 191,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-03T06:00:00Z",
+    "Scheduled Time": "07:47",
+    "Displayed Time": "07:47",
+    "Artist": "HUNTR/X, EJAE, Audrey Nuna, REI AMI",
+    "Title": "Golden",
+    "Duration (s)": 189,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.25
   }
 ]
