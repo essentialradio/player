@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T16:00:00Z",
-    "Scheduled Time": "17:42",
-    "Displayed Time": "17:42",
-    "Artist": "Huey Lewis & the News",
-    "Title": "The Power of Love",
-    "Duration (s)": 223,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-01T16:00:00Z",
     "Scheduled Time": "17:46",
     "Displayed Time": "17:46",
     "Artist": "Perrie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 201,
     "Duration (mins)": 3.17,
     "Full Duration (mins)": 3.35
+  },
+  {
+    "Hour": "2025-09-03T06:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "07:04",
+    "Artist": "Joel Corry & MNEK",
+    "Title": "Head & Heart",
+    "Duration (s)": 164,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.77
   }
 ]
