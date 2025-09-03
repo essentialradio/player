@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T12:00:00Z",
-    "Scheduled Time": "13:48",
-    "Displayed Time": "13:48",
-    "Artist": "David Kushner",
-    "Title": "Daylight",
-    "Duration (s)": 184,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-01T12:00:00Z",
     "Scheduled Time": "13:51",
     "Displayed Time": "13:51",
     "Artist": "Van Morrison",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 207,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.45
+  },
+  {
+    "Hour": "2025-09-03T02:00:00Z",
+    "Scheduled Time": "03:16",
+    "Displayed Time": "03:16",
+    "Artist": "Madcon",
+    "Title": "Beggin'",
+    "Duration (s)": 190,
+    "Full Duration (s)": 219,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 3.65
   }
 ]
