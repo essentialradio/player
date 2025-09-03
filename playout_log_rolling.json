@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T07:00:00Z",
-    "Scheduled Time": "08:55",
-    "Displayed Time": "08:55",
-    "Artist": "Ella Henderson x Switch Disco x Alok",
-    "Title": "Under The Sun",
-    "Duration (s)": 161,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.68,
-    "Full Duration (mins)": 2.77
-  },
-  {
     "Hour": "2025-09-02T08:00:00Z",
     "Scheduled Time": "09:03",
     "Displayed Time": "09:03",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 278,
     "Duration (mins)": 4.43,
     "Full Duration (mins)": 4.63
+  },
+  {
+    "Hour": "2025-09-03T21:00:00Z",
+    "Scheduled Time": "22:34",
+    "Displayed Time": "22:34",
+    "Artist": "Sade",
+    "Title": "No Ordinary Love",
+    "Duration (s)": 231,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 3.98
   }
 ]
