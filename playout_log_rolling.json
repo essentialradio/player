@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T07:00:00Z",
-    "Scheduled Time": "08:38",
-    "Displayed Time": "08:38",
-    "Artist": "Take That",
-    "Title": "Shine",
-    "Duration (s)": 207,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.45,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-02T07:00:00Z",
     "Scheduled Time": "08:47",
     "Displayed Time": "08:47",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 288,
     "Duration (mins)": 4.68,
     "Full Duration (mins)": 4.8
+  },
+  {
+    "Hour": "2025-09-03T21:00:00Z",
+    "Scheduled Time": "22:22",
+    "Displayed Time": "22:22",
+    "Artist": "James Morrison",
+    "Title": "I Won't Let You Go",
+    "Duration (s)": 219,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.68
   }
 ]
