@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:09",
-    "Displayed Time": "23:09",
-    "Artist": "James Bay",
-    "Title": "Let It Go",
-    "Duration (s)": 241,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4.02,
-    "Full Duration (mins)": 4.23
-  },
-  {
-    "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:13",
     "Displayed Time": "23:13",
     "Artist": "Pearl Jam",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 185,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.08
+  },
+  {
+    "Hour": "2025-09-03T11:00:00Z",
+    "Scheduled Time": "12:43",
+    "Displayed Time": "12:43",
+    "Artist": "Len",
+    "Title": "Steal My Sunshine",
+    "Duration (s)": 200,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.55
   }
 ]
