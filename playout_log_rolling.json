@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:29",
-    "Displayed Time": "18:29",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 179,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 2.98,
-    "Full Duration (mins)": 3.15
-  },
-  {
-    "Hour": "2025-09-01T17:00:00Z",
     "Scheduled Time": "18:32",
     "Displayed Time": "18:32",
     "Artist": "Max Dean x Luke Dean x Locky",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.25,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-03T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "08:01",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 214,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.67
   }
 ]
