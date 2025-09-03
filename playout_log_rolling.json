@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T20:00:00Z",
-    "Scheduled Time": "21:05",
-    "Displayed Time": "21:05",
-    "Artist": "R.E.M.",
-    "Title": "What's the Frequency, Kenneth?",
-    "Duration (s)": 228,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.8,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-01T20:00:00Z",
     "Scheduled Time": "21:09",
     "Displayed Time": "21:09",
     "Artist": "The Stone Roses",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-03T09:00:00Z",
+    "Scheduled Time": "10:36",
+    "Displayed Time": "10:36",
+    "Artist": "Thin Lizzy",
+    "Title": "The Boys Are Back in Town",
+    "Duration (s)": 182,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.12
   }
 ]
