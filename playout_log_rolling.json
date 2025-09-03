@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T01:00:00Z",
-    "Scheduled Time": "02:45",
-    "Displayed Time": "02:45",
-    "Artist": "Sixpence None the Richer",
-    "Title": "Kiss Me",
-    "Duration (s)": 190,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.17,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-02T01:00:00Z",
     "Scheduled Time": "02:49",
     "Displayed Time": "02:49",
     "Artist": "Lady Gaga & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 170,
     "Duration (mins)": 2.72,
     "Full Duration (mins)": 2.83
+  },
+  {
+    "Hour": "2025-09-03T15:00:00Z",
+    "Scheduled Time": "16:24",
+    "Displayed Time": "16:24",
+    "Artist": "Reef",
+    "Title": "Place Your Hands",
+    "Duration (s)": 208,
+    "Full Duration (s)": 219,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.65
   }
 ]
