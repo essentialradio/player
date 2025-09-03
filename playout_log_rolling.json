@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T11:00:00Z",
-    "Scheduled Time": "12:23",
-    "Displayed Time": "12:23",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 172,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-09-01T11:00:00Z",
     "Scheduled Time": "12:27",
     "Displayed Time": "12:27",
     "Artist": "Cerrone/Christine & The Queens",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 236,
     "Duration (mins)": 3.85,
     "Full Duration (mins)": 3.93
+  },
+  {
+    "Hour": "2025-09-03T00:00:00Z",
+    "Scheduled Time": "01:52",
+    "Displayed Time": "01:52",
+    "Artist": "Doechii",
+    "Title": "Anxiety",
+    "Duration (s)": 241,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.15
   }
 ]
