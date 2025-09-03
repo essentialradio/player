@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T07:00:00Z",
-    "Scheduled Time": "08:34",
-    "Displayed Time": "08:34",
-    "Artist": "TLC",
-    "Title": "No Scrubs",
-    "Duration (s)": 210,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 3.5,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-09-02T07:00:00Z",
     "Scheduled Time": "08:38",
     "Displayed Time": "08:38",
     "Artist": "Take That",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 234,
     "Duration (mins)": 3.83,
     "Full Duration (mins)": 3.9
+  },
+  {
+    "Hour": "2025-09-03T21:00:00Z",
+    "Scheduled Time": "22:13",
+    "Displayed Time": "22:13",
+    "Artist": "Elton John",
+    "Title": "Nikita",
+    "Duration (s)": 281,
+    "Full Duration (s)": 288,
+    "Duration (mins)": 4.68,
+    "Full Duration (mins)": 4.8
   }
 ]
