@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T11:00:00Z",
-    "Scheduled Time": "12:20",
-    "Displayed Time": "12:20",
-    "Artist": "David Guetta & Bebe Rexha",
-    "Title": "I'm Good (Blue)",
-    "Duration (s)": 170,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 2.83,
-    "Full Duration (mins)": 2.9
-  },
-  {
-    "Hour": "2025-09-01T11:00:00Z",
     "Scheduled Time": "12:23",
     "Displayed Time": "12:23",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-03T00:00:00Z",
+    "Scheduled Time": "01:48",
+    "Displayed Time": "01:48",
+    "Artist": "Shania Twain",
+    "Title": "Man! I Feel Like a Woman",
+    "Duration (s)": 231,
+    "Full Duration (s)": 236,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 3.93
   }
 ]
