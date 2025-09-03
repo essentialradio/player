@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T16:00:00Z",
-    "Scheduled Time": "17:46",
-    "Displayed Time": "17:46",
-    "Artist": "Perrie",
-    "Title": "If He Wanted To He Would",
-    "Duration (s)": 195,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-01T16:00:00Z",
     "Scheduled Time": "17:49",
     "Displayed Time": "17:49",
     "Artist": "Pulp",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-03T06:00:00Z",
+    "Scheduled Time": "07:07",
+    "Displayed Time": "07:07",
+    "Artist": "Mental as Anything",
+    "Title": "Live It Up",
+    "Duration (s)": 219,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.82
   }
 ]
