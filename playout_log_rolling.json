@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T08:00:00Z",
-    "Scheduled Time": "09:31",
-    "Displayed Time": "09:31",
-    "Artist": "Brandy with Monica",
-    "Title": "The Boy Is Mine",
-    "Duration (s)": 239,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 3.98,
-    "Full Duration (mins)": 4.0
-  },
-  {
-    "Hour": "2025-09-02T08:00:00Z",
     "Scheduled Time": "09:35",
     "Displayed Time": "09:35",
     "Artist": "HUNTR/X, EJAE, Audrey Nuna, REI AMI",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.8,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-03T22:00:00Z",
+    "Scheduled Time": "23:05",
+    "Displayed Time": "23:05",
+    "Artist": "James Ingram",
+    "Title": "Just Once",
+    "Duration (s)": 258,
+    "Full Duration (s)": 269,
+    "Duration (mins)": 4.3,
+    "Full Duration (mins)": 4.48
   }
 ]
