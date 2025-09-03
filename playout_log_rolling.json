@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T19:00:00Z",
-    "Scheduled Time": "20:36",
-    "Displayed Time": "20:36",
-    "Artist": "The Specials",
-    "Title": "Ghost Town",
-    "Duration (s)": 212,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-01T19:00:00Z",
     "Scheduled Time": "20:44",
     "Displayed Time": "20:44",
     "Artist": "Paul Simon",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.97,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-03T09:00:00Z",
+    "Scheduled Time": "10:14",
+    "Displayed Time": "10:14",
+    "Artist": "Dasha",
+    "Title": "Not At This Party",
+    "Duration (s)": 209,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.53
   }
 ]
