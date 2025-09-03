@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T12:00:00Z",
-    "Scheduled Time": "13:11",
-    "Displayed Time": "13:11",
-    "Artist": "The Monkees",
-    "Title": "I'm a Believer",
-    "Duration (s)": 151,
-    "Full Duration (s)": 161,
-    "Duration (mins)": 2.52,
-    "Full Duration (mins)": 2.68
-  },
-  {
-    "Hour": "2025-09-01T12:00:00Z",
-    "Scheduled Time": "13:14",
-    "Displayed Time": "13:14",
-    "Artist": "Tate McRae",
-    "Title": "Sports Car",
-    "Duration (s)": 158,
-    "Full Duration (s)": 165,
-    "Duration (mins)": 2.63,
-    "Full Duration (mins)": 2.75
-  },
-  {
-    "Hour": "2025-09-01T12:00:00Z",
     "Scheduled Time": "13:20",
     "Displayed Time": "13:20",
     "Artist": "Artemas",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-03T01:00:00Z",
+    "Scheduled Time": "02:34",
+    "Displayed Time": "02:34",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 214,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-03T01:00:00Z",
+    "Scheduled Time": "02:38",
+    "Displayed Time": "02:38",
+    "Artist": "Duffy",
+    "Title": "Well, Well, Well",
+    "Duration (s)": 158,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.67
   }
 ]
