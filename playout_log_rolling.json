@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-01T19:00:00Z",
-    "Scheduled Time": "20:52",
-    "Displayed Time": "20:52",
-    "Artist": "Aerosmith",
-    "Title": "Dude (Looks Like a Lady)",
-    "Duration (s)": 246,
-    "Full Duration (s)": 265,
-    "Duration (mins)": 4.1,
-    "Full Duration (mins)": 4.42
-  },
-  {
     "Hour": "2025-09-01T20:00:00Z",
     "Scheduled Time": "21:01",
     "Displayed Time": "21:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-03T09:00:00Z",
+    "Scheduled Time": "10:30",
+    "Displayed Time": "10:30",
+    "Artist": "Mae Stephens",
+    "Title": "If We Ever Broke Up",
+    "Duration (s)": 141,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.35,
+    "Full Duration (mins)": 2.38
   }
 ]
