@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:28",
-    "Displayed Time": "00:28",
-    "Artist": "Level 42",
-    "Title": "Lessons in Love",
-    "Duration (s)": 223,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 4.0
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:32",
     "Displayed Time": "00:32",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:54",
+    "Displayed Time": "13:54",
+    "Artist": "Glass Animals",
+    "Title": "Heat Waves",
+    "Duration (s)": 217,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.98
   }
 ]
