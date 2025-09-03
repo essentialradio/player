@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T11:00:00Z",
-    "Scheduled Time": "12:46",
-    "Displayed Time": "12:46",
-    "Artist": "Justin Bieber",
-    "Title": "Daisies",
-    "Duration (s)": 172,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-01T11:00:00Z",
     "Scheduled Time": "12:49",
     "Displayed Time": "12:49",
     "Artist": "Adele",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-03T01:00:00Z",
+    "Scheduled Time": "02:16",
+    "Displayed Time": "02:16",
+    "Artist": "Katy Perry",
+    "Title": "Hot N Cold",
+    "Duration (s)": 213,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.67
   }
 ]
