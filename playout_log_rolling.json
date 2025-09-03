@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:51",
-    "Displayed Time": "00:51",
-    "Artist": "Busted",
-    "Title": "What I Go to School For",
-    "Duration (s)": 199,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:54",
     "Displayed Time": "00:54",
     "Artist": "A-Ha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-03T13:00:00Z",
+    "Scheduled Time": "14:24",
+    "Displayed Time": "14:24",
+    "Artist": "Jess Glynne",
+    "Title": "Right Here",
+    "Duration (s)": 214,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.73
   }
 ]
