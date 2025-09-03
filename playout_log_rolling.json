@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T16:00:00Z",
-    "Scheduled Time": "17:13",
-    "Displayed Time": "17:13",
-    "Artist": "Gracie Abrams",
-    "Title": "That's So True",
-    "Duration (s)": 156,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.6,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-01T16:00:00Z",
     "Scheduled Time": "17:16",
     "Displayed Time": "17:16",
     "Artist": "Suede",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-03T05:00:00Z",
+    "Scheduled Time": "06:35",
+    "Displayed Time": "06:35",
+    "Artist": "Bryan Adams Feat. Melanie C",
+    "Title": "When You're Gone",
+    "Duration (s)": 195,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.43
   }
 ]
