@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T01:00:00Z",
-    "Scheduled Time": "02:22",
-    "Displayed Time": "02:22",
-    "Artist": "Lola Young",
-    "Title": "D\u00a3aler",
-    "Duration (s)": 156,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 2.6,
-    "Full Duration (mins)": 2.67
-  },
-  {
-    "Hour": "2025-09-02T01:00:00Z",
     "Scheduled Time": "02:25",
     "Displayed Time": "02:25",
     "Artist": "Olivia Rodrigo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 203,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.38
+  },
+  {
+    "Hour": "2025-09-03T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "16:02",
+    "Artist": "Calvin Harris, Ellie Goulding",
+    "Title": "Miracle",
+    "Duration (s)": 171,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 3.1
   }
 ]
