@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T23:00:00Z",
-    "Scheduled Time": "00:25",
-    "Displayed Time": "00:25",
-    "Artist": "Teddy Swims",
-    "Title": "Guilty",
-    "Duration (s)": 166,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-01T23:00:00Z",
     "Scheduled Time": "00:28",
     "Displayed Time": "00:28",
     "Artist": "Level 42",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 250,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.17
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:51",
+    "Displayed Time": "13:51",
+    "Artist": "Billie Eilish",
+    "Title": "Birds of a Feather",
+    "Duration (s)": 200,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.58
   }
 ]
