@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T19:00:00Z",
-    "Scheduled Time": "20:44",
-    "Displayed Time": "20:44",
-    "Artist": "Paul Simon",
-    "Title": "You Can Call Me Al",
-    "Duration (s)": 264,
-    "Full Duration (s)": 275,
-    "Duration (mins)": 4.4,
-    "Full Duration (mins)": 4.58
-  },
-  {
-    "Hour": "2025-09-01T19:00:00Z",
     "Scheduled Time": "20:48",
     "Displayed Time": "20:48",
     "Artist": "Jason Donovan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-03T09:00:00Z",
+    "Scheduled Time": "10:18",
+    "Displayed Time": "10:18",
+    "Artist": "Run-DMC vs Jason Nevins",
+    "Title": "It's Like That",
+    "Duration (s)": 246,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.17
   }
 ]
