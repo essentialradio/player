@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T08:00:00Z",
-    "Scheduled Time": "09:07",
-    "Displayed Time": "09:07",
-    "Artist": "Oasis",
-    "Title": "Stop Crying Your Heart Out",
-    "Duration (s)": 293,
-    "Full Duration (s)": 293,
-    "Duration (mins)": 4.88,
-    "Full Duration (mins)": 4.88
-  },
-  {
-    "Hour": "2025-09-02T08:00:00Z",
     "Scheduled Time": "09:14",
     "Displayed Time": "09:14",
     "Artist": "Calvin Harris & Clementine Douglas",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3.17,
     "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-03T21:00:00Z",
+    "Scheduled Time": "22:44",
+    "Displayed Time": "22:44",
+    "Artist": "Katie Melua",
+    "Title": "The Closest Thing to Crazy",
+    "Duration (s)": 246,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.17
   }
 ]
