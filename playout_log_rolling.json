@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T06:00:00Z",
-    "Scheduled Time": "07:06",
-    "Displayed Time": "07:06",
-    "Artist": "Cyndi Lauper",
-    "Title": "Girls Just Want to Have Fun",
-    "Duration (s)": 218,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-09-02T06:00:00Z",
     "Scheduled Time": "07:10",
     "Displayed Time": "07:10",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 219,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.65
+  },
+  {
+    "Hour": "2025-09-03T19:00:00Z",
+    "Scheduled Time": "20:50",
+    "Displayed Time": "20:50",
+    "Artist": "Los Lobos",
+    "Title": "La Bamba",
+    "Duration (s)": 156,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.6,
+    "Full Duration (mins)": 2.8
   }
 ]
