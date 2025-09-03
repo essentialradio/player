@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T05:00:00Z",
-    "Scheduled Time": "06:44",
-    "Displayed Time": "06:44",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 169,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-09-02T05:00:00Z",
     "Scheduled Time": "06:47",
     "Displayed Time": "06:47",
     "Artist": "Ros\u00e9 & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.28,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-03T19:00:00Z",
+    "Scheduled Time": "20:29",
+    "Displayed Time": "20:29",
+    "Artist": "A-Ha",
+    "Title": "Cry Wolf",
+    "Duration (s)": 223,
+    "Full Duration (s)": 244,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 4.07
   }
 ]
