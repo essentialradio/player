@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "21:01",
-    "Artist": "Alanis Morissette",
-    "Title": "Hand in My Pocket",
-    "Duration (s)": 213,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.6
-  },
-  {
-    "Hour": "2025-09-01T20:00:00Z",
     "Scheduled Time": "21:05",
     "Displayed Time": "21:05",
     "Artist": "R.E.M.",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2.35,
     "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-03T09:00:00Z",
+    "Scheduled Time": "10:32",
+    "Displayed Time": "10:32",
+    "Artist": "The Proclaimers",
+    "Title": "I'm Gonna Be (500 Miles)",
+    "Duration (s)": 209,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.58
   }
 ]
