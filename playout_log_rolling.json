@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T17:00:00Z",
-    "Scheduled Time": "18:35",
-    "Displayed Time": "18:35",
-    "Artist": "Anne-Marie ft Shania Twain",
-    "Title": "Unhealthy",
-    "Duration (s)": 141,
-    "Full Duration (s)": 150,
-    "Duration (mins)": 2.35,
-    "Full Duration (mins)": 2.5
-  },
-  {
-    "Hour": "2025-09-01T17:00:00Z",
     "Scheduled Time": "18:42",
     "Displayed Time": "18:42",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 150,
     "Duration (mins)": 2.42,
     "Full Duration (mins)": 2.5
+  },
+  {
+    "Hour": "2025-09-03T07:00:00Z",
+    "Scheduled Time": "08:09",
+    "Displayed Time": "08:09",
+    "Artist": "Madonna",
+    "Title": "Ray of Light",
+    "Duration (s)": 265,
+    "Full Duration (s)": 274,
+    "Duration (mins)": 4.42,
+    "Full Duration (mins)": 4.57
   }
 ]
