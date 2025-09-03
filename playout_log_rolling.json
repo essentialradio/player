@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:09",
-    "Displayed Time": "16:09",
-    "Artist": "Biffy Clyro",
-    "Title": "Many Of Horror (When We Collide)",
-    "Duration (s)": 237,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 3.95,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-09-01T15:00:00Z",
-    "Scheduled Time": "16:13",
-    "Displayed Time": "16:13",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 221,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-01T15:00:00Z",
     "Scheduled Time": "16:17",
     "Displayed Time": "16:17",
     "Artist": "Beyonce",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.77,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-03T04:00:00Z",
+    "Scheduled Time": "05:40",
+    "Displayed Time": "05:40",
+    "Artist": "Sigala Feat. John Newman & Nile Rodgers",
+    "Title": "Give Me Your Love",
+    "Duration (s)": 196,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-03T04:00:00Z",
+    "Scheduled Time": "05:43",
+    "Displayed Time": "05:43",
+    "Artist": "Lola Young",
+    "Title": "D\u00a3aler",
+    "Duration (s)": 152,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.67
   }
 ]
