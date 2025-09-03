@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T18:00:00Z",
-    "Scheduled Time": "19:39",
-    "Displayed Time": "19:39",
-    "Artist": "Earth, Wind & Fire",
-    "Title": "After the Love Has Gone",
-    "Duration (s)": 210,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3.5,
-    "Full Duration (mins)": 3.63
-  },
-  {
-    "Hour": "2025-09-01T18:00:00Z",
     "Scheduled Time": "19:42",
     "Displayed Time": "19:42",
     "Artist": "ABBA (ESC",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-03T08:00:00Z",
+    "Scheduled Time": "09:14",
+    "Displayed Time": "09:14",
+    "Artist": "James Bay",
+    "Title": "Hold Back the River",
+    "Duration (s)": 218,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.73
   }
 ]
