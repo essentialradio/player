@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T20:00:00Z",
-    "Scheduled Time": "21:43",
-    "Displayed Time": "21:43",
-    "Artist": "Smash Mouth",
-    "Title": "All Star",
-    "Duration (s)": 187,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.12,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-09-01T20:00:00Z",
     "Scheduled Time": "21:46",
     "Displayed Time": "21:46",
     "Artist": "Bruce Springsteen",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 223,
     "Duration (mins)": 3.5,
     "Full Duration (mins)": 3.72
+  },
+  {
+    "Hour": "2025-09-03T10:00:00Z",
+    "Scheduled Time": "11:12",
+    "Displayed Time": "11:12",
+    "Artist": "Michael Jackson",
+    "Title": "Man in the Mirror",
+    "Duration (s)": 303,
+    "Full Duration (s)": 313,
+    "Duration (mins)": 5.05,
+    "Full Duration (mins)": 5.22
   }
 ]
