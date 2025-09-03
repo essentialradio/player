@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T03:00:00Z",
-    "Scheduled Time": "04:31",
-    "Displayed Time": "04:31",
-    "Artist": "Bob Marley & The Wailers",
-    "Title": "One Love / People Get Ready",
-    "Duration (s)": 153,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 2.55,
-    "Full Duration (mins)": 2.88
-  },
-  {
-    "Hour": "2025-09-02T03:00:00Z",
     "Scheduled Time": "04:34",
     "Displayed Time": "04:34",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-03T17:00:00Z",
+    "Scheduled Time": "18:15",
+    "Displayed Time": "18:15",
+    "Artist": "Florence + The Machine",
+    "Title": "Everybody Scream",
+    "Duration (s)": 190,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 4.08
   }
 ]
