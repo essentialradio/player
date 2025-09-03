@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T14:00:00Z",
-    "Scheduled Time": "15:11",
-    "Displayed Time": "15:11",
-    "Artist": "Florence + The Machine",
-    "Title": "Everybody Scream",
-    "Duration (s)": 186,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 4.08
-  },
-  {
-    "Hour": "2025-09-01T14:00:00Z",
     "Scheduled Time": "15:15",
     "Displayed Time": "15:15",
     "Artist": "The B-52's",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-03T03:00:00Z",
+    "Scheduled Time": "04:41",
+    "Displayed Time": "04:41",
+    "Artist": "Supermen Lovers & OneRepublic",
+    "Title": "Starlight (The Fame)",
+    "Duration (s)": 175,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.03
   }
 ]
