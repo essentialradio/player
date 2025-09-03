@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T21:00:00Z",
-    "Scheduled Time": "22:02",
-    "Displayed Time": "22:02",
-    "Artist": "Smokey Robinson",
-    "Title": "Being With You",
-    "Duration (s)": 231,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 3.85,
-    "Full Duration (mins)": 3.97
-  },
-  {
-    "Hour": "2025-09-01T21:00:00Z",
     "Scheduled Time": "22:05",
     "Displayed Time": "22:05",
     "Artist": "Peabo Bryson & Roberta Flack",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-03T10:00:00Z",
+    "Scheduled Time": "11:33",
+    "Displayed Time": "11:33",
+    "Artist": "Backstreet Boys",
+    "Title": "As Long as You Love Me",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53
   }
 ]
