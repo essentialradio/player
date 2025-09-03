@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-01T22:00:00Z",
-    "Scheduled Time": "23:49",
-    "Displayed Time": "23:49",
-    "Artist": "Natasha Bedingfield",
-    "Title": "I Bruise Easily",
-    "Duration (s)": 212,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.72
-  },
-  {
-    "Hour": "2025-09-01T22:00:00Z",
     "Scheduled Time": "23:53",
     "Displayed Time": "23:53",
     "Artist": "Rihanna ft. Mikky Ekko",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 205,
     "Duration (mins)": 3.28,
     "Full Duration (mins)": 3.42
+  },
+  {
+    "Hour": "2025-09-03T12:00:00Z",
+    "Scheduled Time": "13:21",
+    "Displayed Time": "13:21",
+    "Artist": "Taylor Swift",
+    "Title": "Love Story",
+    "Duration (s)": 224,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.87
   }
 ]
