@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-02T10:00:00Z",
-    "Scheduled Time": "11:13",
-    "Displayed Time": "11:13",
-    "Artist": "Faithless",
-    "Title": "Insomnia",
-    "Duration (s)": 200,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3.33,
-    "Full Duration (mins)": 3.52
-  },
-  {
-    "Hour": "2025-09-02T10:00:00Z",
-    "Scheduled Time": "11:16",
-    "Displayed Time": "11:16",
-    "Artist": "Kings Of Leon",
-    "Title": "Use Somebody",
-    "Duration (s)": 221,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-02T10:00:00Z",
     "Scheduled Time": "11:24",
     "Displayed Time": "11:24",
     "Artist": "Usher",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 162,
     "Duration (mins)": 2.55,
     "Full Duration (mins)": 2.7
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:43",
+    "Displayed Time": "00:43",
+    "Artist": "Happy Mondays",
+    "Title": "Step On",
+    "Duration (s)": 261,
+    "Full Duration (s)": 271,
+    "Duration (mins)": 4.35,
+    "Full Duration (mins)": 4.52
+  },
+  {
+    "Hour": "2025-09-03T23:00:00Z",
+    "Scheduled Time": "00:48",
+    "Displayed Time": "00:48",
+    "Artist": "Lola Young",
+    "Title": "Messy",
+    "Duration (s)": 190,
+    "Full Duration (s)": 284,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 4.73
   }
 ]
