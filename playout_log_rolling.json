@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T13:00:00Z",
-    "Scheduled Time": "14:45",
-    "Displayed Time": "14:45",
-    "Artist": "A1",
-    "Title": "Same Old Brand New You",
-    "Duration (s)": 221,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-02T13:00:00Z",
     "Scheduled Time": "14:49",
     "Displayed Time": "14:49",
     "Artist": "Supermen Lovers & OneRepublic",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:14",
+    "Displayed Time": "04:14",
+    "Artist": "Pink",
+    "Title": "All Out Of Fight",
+    "Duration (s)": 202,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.53
   }
 ]
