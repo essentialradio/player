@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T00:00:00Z",
-    "Scheduled Time": "01:42",
-    "Displayed Time": "01:42",
-    "Artist": "Kylie Minogue ft Bebe Rexha & Tove Lo",
-    "Title": "My Oh My",
-    "Duration (s)": 175,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.02
-  },
-  {
-    "Hour": "2025-09-03T00:00:00Z",
     "Scheduled Time": "01:45",
     "Displayed Time": "01:45",
     "Artist": "CMAT",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.52
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:15",
+    "Displayed Time": "15:15",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 176,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.12
   }
 ]
