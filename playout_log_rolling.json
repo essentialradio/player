@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T10:00:00Z",
-    "Scheduled Time": "11:35",
-    "Displayed Time": "11:35",
-    "Artist": "Sam Sparro",
-    "Title": "Black and Gold",
-    "Duration (s)": 193,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.38
-  },
-  {
-    "Hour": "2025-09-02T10:00:00Z",
     "Scheduled Time": "11:42",
     "Displayed Time": "11:42",
     "Artist": "Bloc Party",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-04T00:00:00Z",
+    "Scheduled Time": "01:05",
+    "Displayed Time": "01:05",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 195,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.57
   }
 ]
