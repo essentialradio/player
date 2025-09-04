@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:16",
-    "Displayed Time": "15:16",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 205,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.42,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:24",
     "Displayed Time": "15:24",
     "Artist": "Taio Cruz",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:48",
+    "Displayed Time": "04:48",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 139,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.32,
+    "Full Duration (mins)": 2.38
   }
 ]
