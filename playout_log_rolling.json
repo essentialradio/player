@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T19:00:00Z",
-    "Scheduled Time": "20:37",
-    "Displayed Time": "20:37",
-    "Artist": "Soul II Soul",
-    "Title": "Keep on Movin'",
-    "Duration (s)": 203,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3.38,
-    "Full Duration (mins)": 3.5
-  },
-  {
-    "Hour": "2025-09-02T19:00:00Z",
     "Scheduled Time": "20:44",
     "Displayed Time": "20:44",
     "Artist": "Cher",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.67,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-04T09:00:00Z",
+    "Scheduled Time": "10:26",
+    "Displayed Time": "10:26",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 201,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.57
   }
 ]
