@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T09:00:00Z",
-    "Scheduled Time": "10:11",
-    "Displayed Time": "10:11",
-    "Artist": "Jax Jones, Calum Scott",
-    "Title": "Whistle",
-    "Duration (s)": 178,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-09-03T09:00:00Z",
     "Scheduled Time": "10:14",
     "Displayed Time": "10:14",
     "Artist": "Dasha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-04T23:00:00Z",
+    "Scheduled Time": "00:06",
+    "Displayed Time": "00:06",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway",
+    "Duration (s)": 243,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.05,
+    "Full Duration (mins)": 4.2
   }
 ]
