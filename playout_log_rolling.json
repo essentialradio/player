@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T02:00:00Z",
-    "Scheduled Time": "03:01",
-    "Displayed Time": "03:01",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-03T02:00:00Z",
     "Scheduled Time": "03:05",
     "Displayed Time": "03:05",
     "Artist": "Third Eye Blind",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:33",
+    "Displayed Time": "16:33",
+    "Artist": "The Lumineers",
+    "Title": "Ho Hey",
+    "Duration (s)": 144,
+    "Full Duration (s)": 163,
+    "Duration (mins)": 2.4,
+    "Full Duration (mins)": 2.72
   }
 ]
