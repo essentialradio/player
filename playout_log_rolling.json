@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T02:00:00Z",
-    "Scheduled Time": "03:45",
-    "Displayed Time": "03:45",
-    "Artist": "Oasis",
-    "Title": "Wonderwall",
-    "Duration (s)": 251,
-    "Full Duration (s)": 259,
-    "Duration (mins)": 4.18,
-    "Full Duration (mins)": 4.32
-  },
-  {
-    "Hour": "2025-09-03T02:00:00Z",
     "Scheduled Time": "03:49",
     "Displayed Time": "03:49",
     "Artist": "Casso, Raye, D-Block Europe",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 246,
     "Duration (mins)": 3.9,
     "Full Duration (mins)": 4.1
+  },
+  {
+    "Hour": "2025-09-04T16:00:00Z",
+    "Scheduled Time": "17:22",
+    "Displayed Time": "17:22",
+    "Artist": "Kelly Rowland",
+    "Title": "Stole",
+    "Duration (s)": 226,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.77,
+    "Full Duration (mins)": 3.92
   }
 ]
