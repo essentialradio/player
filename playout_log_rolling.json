@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T20:00:00Z",
-    "Scheduled Time": "21:44",
-    "Displayed Time": "21:44",
-    "Artist": "Michael Bolton",
-    "Title": "Can I Touch You...There?",
-    "Duration (s)": 273,
-    "Full Duration (s)": 289,
-    "Duration (mins)": 4.55,
-    "Full Duration (mins)": 4.82
-  },
-  {
-    "Hour": "2025-09-02T20:00:00Z",
     "Scheduled Time": "21:49",
     "Displayed Time": "21:49",
     "Artist": "Mariah Carey",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 288,
     "Duration (mins)": 4.4,
     "Full Duration (mins)": 4.8
+  },
+  {
+    "Hour": "2025-09-04T10:00:00Z",
+    "Scheduled Time": "11:33",
+    "Displayed Time": "11:33",
+    "Artist": "Texas",
+    "Title": "Black Eyed Boy",
+    "Duration (s)": 178,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.23
   }
 ]
