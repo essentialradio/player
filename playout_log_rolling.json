@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:44",
-    "Displayed Time": "04:44",
-    "Artist": "Marshmello Ft. Chvrches",
-    "Title": "Here With Me",
-    "Duration (s)": 148,
-    "Full Duration (s)": 156,
-    "Duration (mins)": 2.47,
-    "Full Duration (mins)": 2.6
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:47",
     "Displayed Time": "04:47",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.68,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-04T17:00:00Z",
+    "Scheduled Time": "18:25",
+    "Displayed Time": "18:25",
+    "Artist": "Kylie Minogue",
+    "Title": "Padam Padam",
+    "Duration (s)": 158,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.77
   }
 ]
