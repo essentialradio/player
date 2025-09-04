@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "17:02",
-    "Artist": "Omi",
-    "Title": "Cheerleader",
-    "Duration (s)": 173,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 3.0
-  },
-  {
-    "Hour": "2025-09-02T16:00:00Z",
     "Scheduled Time": "17:06",
     "Displayed Time": "17:06",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 169,
     "Duration (mins)": 2.77,
     "Full Duration (mins)": 2.82
+  },
+  {
+    "Hour": "2025-09-04T05:00:00Z",
+    "Scheduled Time": "06:26",
+    "Displayed Time": "06:26",
+    "Artist": "Jonas Brothers",
+    "Title": "Waffle House",
+    "Duration (s)": 139,
+    "Full Duration (s)": 145,
+    "Duration (mins)": 2.32,
+    "Full Duration (mins)": 2.42
   }
 ]
