@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T13:00:00Z",
-    "Scheduled Time": "14:42",
-    "Displayed Time": "14:42",
-    "Artist": "Taylor Swift",
-    "Title": "Anti-Hero",
-    "Duration (s)": 197,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.28,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-02T13:00:00Z",
     "Scheduled Time": "14:45",
     "Displayed Time": "14:45",
     "Artist": "A1",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 294,
     "Duration (mins)": 4.52,
     "Full Duration (mins)": 4.9
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:10",
+    "Displayed Time": "04:10",
+    "Artist": "Rihanna",
+    "Title": "What's My Name?",
+    "Duration (s)": 206,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.57
   }
 ]
