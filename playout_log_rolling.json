@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T05:00:00Z",
-    "Scheduled Time": "06:17",
-    "Displayed Time": "06:17",
-    "Artist": "Paolo Nutini",
-    "Title": "Pencil Full Of Lead",
-    "Duration (s)": 142,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2.37,
-    "Full Duration (mins)": 2.45
-  },
-  {
-    "Hour": "2025-09-03T05:00:00Z",
     "Scheduled Time": "06:23",
     "Displayed Time": "06:23",
     "Artist": "Florence + The Machine",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 271,
     "Duration (mins)": 4.22,
     "Full Duration (mins)": 4.52
+  },
+  {
+    "Hour": "2025-09-04T19:00:00Z",
+    "Scheduled Time": "20:10",
+    "Displayed Time": "20:10",
+    "Artist": "Paul Hardcastle",
+    "Title": "19",
+    "Duration (s)": 208,
+    "Full Duration (s)": 219,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.65
   }
 ]
