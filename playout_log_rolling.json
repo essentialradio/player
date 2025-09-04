@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:20",
-    "Displayed Time": "22:20",
-    "Artist": "A Great Big World & Christina Aguilera",
-    "Title": "Say Something",
-    "Duration (s)": 216,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.6,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-02T21:00:00Z",
     "Scheduled Time": "22:24",
     "Displayed Time": "22:24",
     "Artist": "Massive Attack",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.3,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:08",
+    "Displayed Time": "12:08",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 158,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.73
   }
 ]
