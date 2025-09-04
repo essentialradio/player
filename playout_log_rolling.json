@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:01",
-    "Displayed Time": "15:01",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:05",
     "Displayed Time": "15:05",
     "Artist": "Nicki Minaj",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:28",
+    "Displayed Time": "04:28",
+    "Artist": "Sam Fender",
+    "Title": "People Watching",
+    "Duration (s)": 232,
+    "Full Duration (s)": 311,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 5.18
   }
 ]
