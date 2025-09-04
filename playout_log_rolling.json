@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:01",
-    "Displayed Time": "00:01",
-    "Artist": "Lady Gaga",
-    "Title": "Born This Way",
-    "Duration (s)": 212,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.72
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:05",
     "Displayed Time": "00:05",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:39",
+    "Displayed Time": "13:39",
+    "Artist": "Taylor Dayne",
+    "Title": "Tell It to My Heart",
+    "Duration (s)": 207,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.63
   }
 ]
