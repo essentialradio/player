@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:38",
-    "Displayed Time": "02:38",
-    "Artist": "Duffy",
-    "Title": "Well, Well, Well",
-    "Duration (s)": 158,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 2.63,
-    "Full Duration (mins)": 2.67
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:44",
-    "Displayed Time": "02:44",
-    "Artist": "Tate McRae",
-    "Title": "Just Keep Watching",
-    "Duration (s)": 142,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2.37,
-    "Full Duration (mins)": 2.38
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:47",
     "Displayed Time": "02:47",
     "Artist": "Rag'N'Bone Man",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.62
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:12",
+    "Displayed Time": "16:12",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 138,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.3,
+    "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:14",
+    "Displayed Time": "16:14",
+    "Artist": "Christina Aguilera",
+    "Title": "Fighter",
+    "Duration (s)": 202,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.5
   }
 ]
