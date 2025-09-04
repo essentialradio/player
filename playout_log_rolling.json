@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T07:00:00Z",
-    "Scheduled Time": "08:32",
-    "Displayed Time": "08:32",
-    "Artist": "Taylor Swift",
-    "Title": "Cruel Summer",
-    "Duration (s)": 175,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 2.97
-  },
-  {
-    "Hour": "2025-09-03T07:00:00Z",
     "Scheduled Time": "08:35",
     "Displayed Time": "08:35",
     "Artist": "Garbage",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 281,
     "Duration (mins)": 4.52,
     "Full Duration (mins)": 4.68
+  },
+  {
+    "Hour": "2025-09-04T21:00:00Z",
+    "Scheduled Time": "22:25",
+    "Displayed Time": "22:25",
+    "Artist": "Randy Crawford",
+    "Title": "You Might Need Somebody",
+    "Duration (s)": 227,
+    "Full Duration (s)": 236,
+    "Duration (mins)": 3.78,
+    "Full Duration (mins)": 3.93
   }
 ]
