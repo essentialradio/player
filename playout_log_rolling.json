@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T22:00:00Z",
-    "Scheduled Time": "23:42",
-    "Displayed Time": "23:42",
-    "Artist": "Chris Rea",
-    "Title": "Josephine",
-    "Duration (s)": 220,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 3.67,
-    "Full Duration (mins)": 3.88
-  },
-  {
-    "Hour": "2025-09-02T22:00:00Z",
     "Scheduled Time": "23:45",
     "Displayed Time": "23:45",
     "Artist": "M People",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:23",
+    "Displayed Time": "13:23",
+    "Artist": "JX",
+    "Title": "Son of a Gun",
+    "Duration (s)": 189,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.23
   }
 ]
