@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:36",
-    "Displayed Time": "00:36",
-    "Artist": "Modjo",
-    "Title": "Lady (Hear Me Tonight)",
-    "Duration (s)": 213,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.7
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:43",
     "Displayed Time": "00:43",
     "Artist": "Wet Leg",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:15",
+    "Displayed Time": "14:15",
+    "Artist": "Mariah Carey",
+    "Title": "Fantasy",
+    "Duration (s)": 239,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.08
   }
 ]
