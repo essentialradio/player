@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:46",
-    "Displayed Time": "00:46",
-    "Artist": "Bruno Mars",
-    "Title": "Treasure",
-    "Duration (s)": 164,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.95
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:49",
     "Displayed Time": "00:49",
     "Artist": "Clairo",
@@ -5497,6 +5486,17 @@
     "Duration (s)": 203,
     "Full Duration (s)": 208,
     "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:27",
+    "Displayed Time": "14:27",
+    "Artist": "Joel Corry & MNEK",
+    "Title": "Head & Heart (Acoustic Mix)",
+    "Duration (s)": 204,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.47
   }
 ]
