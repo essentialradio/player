@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T09:00:00Z",
-    "Scheduled Time": "10:18",
-    "Displayed Time": "10:18",
-    "Artist": "Run-DMC vs Jason Nevins",
-    "Title": "It's Like That",
-    "Duration (s)": 246,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4.1,
-    "Full Duration (mins)": 4.17
-  },
-  {
-    "Hour": "2025-09-03T09:00:00Z",
     "Scheduled Time": "10:27",
     "Displayed Time": "10:27",
     "Artist": "Ella Henderson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-04T23:00:00Z",
+    "Scheduled Time": "00:12",
+    "Displayed Time": "00:12",
+    "Artist": "Florence + The Machine",
+    "Title": "Everybody Scream",
+    "Duration (s)": 190,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 4.08
   }
 ]
