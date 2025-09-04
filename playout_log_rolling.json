@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T11:00:00Z",
-    "Scheduled Time": "12:50",
-    "Displayed Time": "12:50",
-    "Artist": "Aretha Franklin",
-    "Title": "Respect",
-    "Duration (s)": 140,
-    "Full Duration (s)": 141,
-    "Duration (mins)": 2.33,
-    "Full Duration (mins)": 2.35
-  },
-  {
-    "Hour": "2025-09-02T11:00:00Z",
     "Scheduled Time": "12:52",
     "Displayed Time": "12:52",
     "Artist": "Scissor Sisters",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 184,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 3.07
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:15",
+    "Displayed Time": "02:15",
+    "Artist": "Kylie Minogue",
+    "Title": "In Your Eyes",
+    "Duration (s)": 188,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.32
   }
 ]
