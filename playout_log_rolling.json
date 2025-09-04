@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T20:00:00Z",
-    "Scheduled Time": "21:49",
-    "Displayed Time": "21:49",
-    "Artist": "Mariah Carey",
-    "Title": "Hero",
-    "Duration (s)": 245,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4.08,
-    "Full Duration (mins)": 4.23
-  },
-  {
-    "Hour": "2025-09-02T20:00:00Z",
     "Scheduled Time": "21:53",
     "Displayed Time": "21:53",
     "Artist": "Mary Kiani",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 194,
     "Duration (mins)": 2.97,
     "Full Duration (mins)": 3.23
+  },
+  {
+    "Hour": "2025-09-04T10:00:00Z",
+    "Scheduled Time": "11:36",
+    "Displayed Time": "11:36",
+    "Artist": "Avril Lavigne",
+    "Title": "I'm With You",
+    "Duration (s)": 214,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.7
   }
 ]
