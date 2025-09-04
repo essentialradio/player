@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:49",
-    "Displayed Time": "00:49",
-    "Artist": "Clairo",
-    "Title": "Sexy To Someone",
-    "Duration (s)": 201,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:53",
     "Displayed Time": "00:53",
     "Artist": "Lighthouse Family",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:30",
+    "Displayed Time": "14:30",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17
   }
 ]
