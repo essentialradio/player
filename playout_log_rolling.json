@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:01",
-    "Displayed Time": "22:01",
-    "Artist": "Duran Duran",
-    "Title": "Save a Prayer",
-    "Duration (s)": 243,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4.05,
-    "Full Duration (mins)": 4.18
-  },
-  {
-    "Hour": "2025-09-02T21:00:00Z",
     "Scheduled Time": "22:06",
     "Displayed Time": "22:06",
     "Artist": "Sting Ft. Eric Clapton",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 165,
     "Duration (mins)": 2.45,
     "Full Duration (mins)": 2.75
+  },
+  {
+    "Hour": "2025-09-04T10:00:00Z",
+    "Scheduled Time": "11:49",
+    "Displayed Time": "11:49",
+    "Artist": "The Notorious BIG",
+    "Title": "Juicy",
+    "Duration (s)": 239,
+    "Full Duration (s)": 259,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.32
   }
 ]
