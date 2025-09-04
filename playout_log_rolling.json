@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:13",
-    "Displayed Time": "22:13",
-    "Artist": "Sade",
-    "Title": "Your Love Is King",
-    "Duration (s)": 224,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 3.73,
-    "Full Duration (mins)": 3.97
-  },
-  {
-    "Hour": "2025-09-02T21:00:00Z",
     "Scheduled Time": "22:20",
     "Displayed Time": "22:20",
     "Artist": "A Great Big World & Christina Aguilera",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.7,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "K-Klass",
+    "Title": "Let Me Show You",
+    "Duration (s)": 198,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.53
   }
 ]
