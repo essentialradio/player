@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-03T00:00:00Z",
-    "Scheduled Time": "01:52",
-    "Displayed Time": "01:52",
-    "Artist": "Doechii",
-    "Title": "Anxiety",
-    "Duration (s)": 241,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 4.02,
-    "Full Duration (mins)": 4.15
-  },
-  {
     "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:01",
     "Displayed Time": "02:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 251,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.18
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:30",
+    "Displayed Time": "15:30",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 214,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.75
   }
 ]
