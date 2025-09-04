@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T15:00:00Z",
-    "Scheduled Time": "16:15",
-    "Displayed Time": "16:15",
-    "Artist": "Mary Mary",
-    "Title": "Shackles (Praise You)",
-    "Duration (s)": 177,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 2.95,
-    "Full Duration (mins)": 3.28
-  },
-  {
-    "Hour": "2025-09-02T15:00:00Z",
     "Scheduled Time": "16:21",
     "Displayed Time": "16:21",
     "Artist": "Harry Styles",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.65,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-04T04:00:00Z",
+    "Scheduled Time": "05:44",
+    "Displayed Time": "05:44",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 157,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.77
   }
 ]
