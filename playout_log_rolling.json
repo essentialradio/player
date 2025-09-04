@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T18:00:00Z",
-    "Scheduled Time": "19:18",
-    "Displayed Time": "19:18",
-    "Artist": "Gallagher & Lyle",
-    "Title": "Heart On My Sleeve",
-    "Duration (s)": 185,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.08,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-02T18:00:00Z",
     "Scheduled Time": "19:22",
     "Displayed Time": "19:22",
     "Artist": "Fleetwood Mac",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-04T07:00:00Z",
+    "Scheduled Time": "08:55",
+    "Displayed Time": "08:55",
+    "Artist": "Hozier",
+    "Title": "Take Me To Church",
+    "Duration (s)": 238,
+    "Full Duration (s)": 240,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.0
   }
 ]
