@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T07:00:00Z",
-    "Scheduled Time": "08:09",
-    "Displayed Time": "08:09",
-    "Artist": "Madonna",
-    "Title": "Ray of Light",
-    "Duration (s)": 265,
-    "Full Duration (s)": 274,
-    "Duration (mins)": 4.42,
-    "Full Duration (mins)": 4.57
-  },
-  {
-    "Hour": "2025-09-03T07:00:00Z",
     "Scheduled Time": "08:13",
     "Displayed Time": "08:13",
     "Artist": "DNCE",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 276,
     "Duration (mins)": 4.45,
     "Full Duration (mins)": 4.6
+  },
+  {
+    "Hour": "2025-09-04T21:00:00Z",
+    "Scheduled Time": "22:06",
+    "Displayed Time": "22:06",
+    "Artist": "The S.O.S. Band",
+    "Title": "Just Be Good to Me",
+    "Duration (s)": 225,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 3.95
   }
 ]
