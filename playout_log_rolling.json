@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T11:00:00Z",
-    "Scheduled Time": "12:36",
-    "Displayed Time": "12:36",
-    "Artist": "Ed Sheeran",
-    "Title": "Bad Habits",
-    "Duration (s)": 223,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.85
-  },
-  {
-    "Hour": "2025-09-02T11:00:00Z",
     "Scheduled Time": "12:41",
     "Displayed Time": "12:41",
     "Artist": "Phil Collins",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 223,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.72
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:02",
+    "Displayed Time": "02:02",
+    "Artist": "K-Pop Demon Hunters",
+    "Title": "Golden",
+    "Duration (s)": 189,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.25
   }
 ]
