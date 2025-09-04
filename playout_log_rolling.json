@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:54",
-    "Displayed Time": "22:54",
-    "Artist": "Force MD's",
-    "Title": "Tender Love",
-    "Duration (s)": 223,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.9
-  },
-  {
     "Hour": "2025-09-02T22:00:00Z",
     "Scheduled Time": "23:01",
     "Displayed Time": "23:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 268,
     "Duration (mins)": 4.25,
     "Full Duration (mins)": 4.47
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:45",
+    "Displayed Time": "12:45",
+    "Artist": "Post Malone",
+    "Title": "Chemical",
+    "Duration (s)": 174,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 3.07
   }
 ]
