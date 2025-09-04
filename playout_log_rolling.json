@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T05:00:00Z",
-    "Scheduled Time": "06:45",
-    "Displayed Time": "06:45",
-    "Artist": "Tate McRae",
-    "Title": "Greedy",
-    "Duration (s)": 125,
-    "Full Duration (s)": 132,
-    "Duration (mins)": 2.08,
-    "Full Duration (mins)": 2.2
-  },
-  {
-    "Hour": "2025-09-03T05:00:00Z",
     "Scheduled Time": "06:47",
     "Displayed Time": "06:47",
     "Artist": "Billy Joel",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 249,
     "Duration (mins)": 3.83,
     "Full Duration (mins)": 4.15
+  },
+  {
+    "Hour": "2025-09-04T19:00:00Z",
+    "Scheduled Time": "20:35",
+    "Displayed Time": "20:35",
+    "Artist": "The Human League",
+    "Title": "Love Action (I Believe in Love)",
+    "Duration (s)": 215,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.87
   }
 ]
