@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T06:00:00Z",
-    "Scheduled Time": "07:27",
-    "Displayed Time": "07:27",
-    "Artist": "Myles Smith",
-    "Title": "Gold",
-    "Duration (s)": 160,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.67,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-09-03T06:00:00Z",
     "Scheduled Time": "07:31",
     "Displayed Time": "07:31",
     "Artist": "Rita Ora",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 197,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.28
+  },
+  {
+    "Hour": "2025-09-04T20:00:00Z",
+    "Scheduled Time": "21:21",
+    "Displayed Time": "21:21",
+    "Artist": "Roxette",
+    "Title": "Joyride",
+    "Duration (s)": 229,
+    "Full Duration (s)": 238,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 3.97
   }
 ]
