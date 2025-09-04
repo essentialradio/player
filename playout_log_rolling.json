@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:41",
-    "Displayed Time": "04:41",
-    "Artist": "Supermen Lovers & OneRepublic",
-    "Title": "Starlight (The Fame)",
-    "Duration (s)": 175,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:44",
     "Displayed Time": "04:44",
     "Artist": "Marshmello Ft. Chvrches",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 169,
     "Duration (mins)": 2.72,
     "Full Duration (mins)": 2.82
+  },
+  {
+    "Hour": "2025-09-04T17:00:00Z",
+    "Scheduled Time": "18:22",
+    "Displayed Time": "18:22",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 161,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.8
   }
 ]
