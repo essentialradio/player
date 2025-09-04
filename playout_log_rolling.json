@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:32",
-    "Displayed Time": "22:32",
-    "Artist": "Lisa Loeb & Nine Stories",
-    "Title": "Stay (I Missed You)",
-    "Duration (s)": 169,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-02T21:00:00Z",
     "Scheduled Time": "22:39",
     "Displayed Time": "22:39",
     "Artist": "The S.O.S. Band",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 249,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.15
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:22",
+    "Displayed Time": "12:22",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 246,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.3
   }
 ]
