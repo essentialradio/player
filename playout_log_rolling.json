@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T11:00:00Z",
-    "Scheduled Time": "12:20",
-    "Displayed Time": "12:20",
-    "Artist": "Ella Henderson x Alex Warren",
-    "Title": "Carry You Home",
-    "Duration (s)": 163,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.72,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-02T11:00:00Z",
     "Scheduled Time": "12:23",
     "Displayed Time": "12:23",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 233,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.88
+  },
+  {
+    "Hour": "2025-09-04T00:00:00Z",
+    "Scheduled Time": "01:43",
+    "Displayed Time": "01:43",
+    "Artist": "Dasha",
+    "Title": "Not At This Party",
+    "Duration (s)": 203,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.53
   }
 ]
