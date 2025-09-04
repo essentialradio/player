@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T02:00:00Z",
-    "Scheduled Time": "03:23",
-    "Displayed Time": "03:23",
-    "Artist": "Benson Boone",
-    "Title": "Mystical Magical",
-    "Duration (s)": 160,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.67,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-03T02:00:00Z",
     "Scheduled Time": "03:26",
     "Displayed Time": "03:26",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:53",
+    "Displayed Time": "16:53",
+    "Artist": "Annie Lennox",
+    "Title": "Walking on Broken Glass",
+    "Duration (s)": 229,
+    "Full Duration (s)": 241,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.02
   }
 ]
