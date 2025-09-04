@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T05:00:00Z",
-    "Scheduled Time": "06:47",
-    "Displayed Time": "06:47",
-    "Artist": "Billy Joel",
-    "Title": "We Didn't Start the Fire",
-    "Duration (s)": 245,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4.08,
-    "Full Duration (mins)": 4.47
-  },
-  {
-    "Hour": "2025-09-03T05:00:00Z",
     "Scheduled Time": "06:52",
     "Displayed Time": "06:52",
     "Artist": "Ella Eyre",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-04T19:00:00Z",
+    "Scheduled Time": "20:42",
+    "Displayed Time": "20:42",
+    "Artist": "Duran Duran",
+    "Title": "Hungry Like the Wolf",
+    "Duration (s)": 194,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.42
   }
 ]
