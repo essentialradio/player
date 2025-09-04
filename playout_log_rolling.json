@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T20:00:00Z",
-    "Scheduled Time": "21:13",
-    "Displayed Time": "21:13",
-    "Artist": "3T",
-    "Title": "Anything",
-    "Duration (s)": 243,
-    "Full Duration (s)": 264,
-    "Duration (mins)": 4.05,
-    "Full Duration (mins)": 4.4
-  },
-  {
-    "Hour": "2025-09-02T20:00:00Z",
     "Scheduled Time": "21:21",
     "Displayed Time": "21:21",
     "Artist": "Blur",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.68,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-04T10:00:00Z",
+    "Scheduled Time": "11:02",
+    "Displayed Time": "11:02",
+    "Artist": "Sheryl Crow",
+    "Title": "All I Wanna Do",
+    "Duration (s)": 242,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 4.03,
+    "Full Duration (mins)": 4.15
   }
 ]
