@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:30",
-    "Displayed Time": "18:30",
-    "Artist": "Perrie",
-    "Title": "If He Wanted To He Would",
-    "Duration (s)": 193,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
     "Scheduled Time": "18:33",
     "Displayed Time": "18:33",
     "Artist": "Max Dean x Luke Dean x Locky",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.73,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-04T07:00:00Z",
+    "Scheduled Time": "08:04",
+    "Displayed Time": "08:04",
+    "Artist": "Teddy Swims",
+    "Title": "The Door",
+    "Duration (s)": 210,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.55
   }
 ]
