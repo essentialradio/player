@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T16:00:00Z",
-    "Scheduled Time": "17:37",
-    "Displayed Time": "17:37",
-    "Artist": "Ravyn Lanae",
-    "Title": "Love Me Not",
-    "Duration (s)": 159,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-02T16:00:00Z",
     "Scheduled Time": "17:43",
     "Displayed Time": "17:43",
     "Artist": "Heaven 17",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.62
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:08",
+    "Displayed Time": "07:08",
+    "Artist": "Thompson Twins",
+    "Title": "Hold Me Now",
+    "Duration (s)": 219,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.78
   }
 ]
