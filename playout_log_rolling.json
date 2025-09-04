@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T11:00:00Z",
-    "Scheduled Time": "12:47",
-    "Displayed Time": "12:47",
-    "Artist": "Tom Walker",
-    "Title": "Serotonin",
-    "Duration (s)": 176,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.93,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-02T11:00:00Z",
     "Scheduled Time": "12:50",
     "Displayed Time": "12:50",
     "Artist": "Aretha Franklin",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 188,
     "Duration (mins)": 3.02,
     "Full Duration (mins)": 3.13
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:12",
+    "Displayed Time": "02:12",
+    "Artist": "Tom Grennan",
+    "Title": "Full Attention",
+    "Duration (s)": 172,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.07
   }
 ]
