@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T00:00:00Z",
-    "Scheduled Time": "01:45",
-    "Displayed Time": "01:45",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 226,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-03T00:00:00Z",
     "Scheduled Time": "01:48",
     "Displayed Time": "01:48",
     "Artist": "Shania Twain",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:22",
+    "Displayed Time": "15:22",
+    "Artist": "Take That",
+    "Title": "The Flood",
+    "Duration (s)": 241,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.18
   }
 ]
