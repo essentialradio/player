@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T00:00:00Z",
-    "Scheduled Time": "01:34",
-    "Displayed Time": "01:34",
-    "Artist": "Olly Murs",
-    "Title": "Save Me",
-    "Duration (s)": 170,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.83,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-03T00:00:00Z",
     "Scheduled Time": "01:42",
     "Displayed Time": "01:42",
     "Artist": "Kylie Minogue ft Bebe Rexha & Tove Lo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3.6,
     "Full Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:12",
+    "Displayed Time": "15:12",
+    "Artist": "The Goo Goo Dolls",
+    "Title": "Iris",
+    "Duration (s)": 196,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.52
   }
 ]
