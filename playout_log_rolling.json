@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T00:00:00Z",
-    "Scheduled Time": "01:16",
-    "Displayed Time": "01:16",
-    "Artist": "Justin Timberlake",
-    "Title": "Rock Your Body",
-    "Duration (s)": 259,
-    "Full Duration (s)": 267,
-    "Duration (mins)": 4.32,
-    "Full Duration (mins)": 4.45
-  },
-  {
-    "Hour": "2025-09-03T00:00:00Z",
     "Scheduled Time": "01:24",
     "Displayed Time": "01:24",
     "Artist": "Justin Bieber",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:53",
+    "Displayed Time": "14:53",
+    "Artist": "Ariana Grande",
+    "Title": "Yes, And?",
+    "Duration (s)": 178,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.58
   }
 ]
