@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-02T12:00:00Z",
-    "Scheduled Time": "13:25",
-    "Displayed Time": "13:25",
-    "Artist": "MK ft Chrystal",
-    "Title": "Dior",
-    "Duration (s)": 166,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-09-02T12:00:00Z",
-    "Scheduled Time": "13:28",
-    "Displayed Time": "13:28",
-    "Artist": "Kelly Clarkson",
-    "Title": "Heartbeat Song",
-    "Duration (s)": 196,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3.27,
-    "Full Duration (mins)": 3.32
-  },
-  {
-    "Hour": "2025-09-02T12:00:00Z",
     "Scheduled Time": "13:32",
     "Displayed Time": "13:32",
     "Artist": "Wunderhorse",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 144,
     "Duration (mins)": 2.25,
     "Full Duration (mins)": 2.4
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:50",
+    "Displayed Time": "02:50",
+    "Artist": "Amy Studt",
+    "Title": "Misfit",
+    "Duration (s)": 192,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:53",
+    "Displayed Time": "02:53",
+    "Artist": "Journey",
+    "Title": "Don't Stop Believin'",
+    "Duration (s)": 232,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.17
   }
 ]
