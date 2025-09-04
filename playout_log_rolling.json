@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:15",
-    "Displayed Time": "00:15",
-    "Artist": "Pink",
-    "Title": "So What",
-    "Duration (s)": 211,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:22",
     "Displayed Time": "00:22",
     "Artist": "Shalamar",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 154,
     "Duration (mins)": 2.5,
     "Full Duration (mins)": 2.57
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:53",
+    "Displayed Time": "13:53",
+    "Artist": "Mabel",
+    "Title": "Don't Call Me Up",
+    "Duration (s)": 175,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 2.98
   }
 ]
