@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:34",
-    "Displayed Time": "02:34",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 214,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:38",
     "Displayed Time": "02:38",
     "Artist": "Duffy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.82,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:08",
+    "Displayed Time": "16:08",
+    "Artist": "One Direction",
+    "Title": "Story of My Life",
+    "Duration (s)": 209,
+    "Full Duration (s)": 217,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.62
   }
 ]
