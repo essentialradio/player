@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T15:00:00Z",
-    "Scheduled Time": "16:50",
-    "Displayed Time": "16:50",
-    "Artist": "Florence + The Machine",
-    "Title": "Everybody Scream",
-    "Duration (s)": 186,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 4.08
-  },
-  {
-    "Hour": "2025-09-02T15:00:00Z",
     "Scheduled Time": "16:54",
     "Displayed Time": "16:54",
     "Artist": "Toni Braxton",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 171,
     "Duration (mins)": 2.8,
     "Full Duration (mins)": 2.85
+  },
+  {
+    "Hour": "2025-09-04T05:00:00Z",
+    "Scheduled Time": "06:15",
+    "Displayed Time": "06:15",
+    "Artist": "Justin Timberlake",
+    "Title": "Like I Love You",
+    "Duration (s)": 275,
+    "Full Duration (s)": 283,
+    "Duration (mins)": 4.58,
+    "Full Duration (mins)": 4.72
   }
 ]
