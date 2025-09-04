@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T18:00:00Z",
-    "Scheduled Time": "19:37",
-    "Displayed Time": "19:37",
-    "Artist": "David Bowie",
-    "Title": "Golden Years",
-    "Duration (s)": 228,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.8,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-02T18:00:00Z",
     "Scheduled Time": "19:41",
     "Displayed Time": "19:41",
     "Artist": "Amii Stewart",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-04T08:00:00Z",
+    "Scheduled Time": "09:17",
+    "Displayed Time": "09:17",
+    "Artist": "Ella Eyre",
+    "Title": "Space",
+    "Duration (s)": 160,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.7
   }
 ]
