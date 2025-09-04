@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T12:00:00Z",
-    "Scheduled Time": "13:19",
-    "Displayed Time": "13:19",
-    "Artist": "PinkPantheress",
-    "Title": "Boy's A Liar",
-    "Duration (s)": 130,
-    "Full Duration (s)": 131,
-    "Duration (mins)": 2.17,
-    "Full Duration (mins)": 2.18
-  },
-  {
-    "Hour": "2025-09-02T12:00:00Z",
     "Scheduled Time": "13:22",
     "Displayed Time": "13:22",
     "Artist": "Christine And The Queens",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:44",
+    "Displayed Time": "02:44",
+    "Artist": "Shampoo",
+    "Title": "Trouble",
+    "Duration (s)": 181,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.3
   }
 ]
