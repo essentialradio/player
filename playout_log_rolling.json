@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T08:00:00Z",
-    "Scheduled Time": "09:10",
-    "Displayed Time": "09:10",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 221,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-03T08:00:00Z",
     "Scheduled Time": "09:14",
     "Displayed Time": "09:14",
     "Artist": "James Bay",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.62
+  },
+  {
+    "Hour": "2025-09-04T22:00:00Z",
+    "Scheduled Time": "23:05",
+    "Displayed Time": "23:05",
+    "Artist": "Phil Collins",
+    "Title": "Against All Odds (Take a Look at Me Now)",
+    "Duration (s)": 197,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.4
   }
 ]
