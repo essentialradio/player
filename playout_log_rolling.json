@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T11:00:00Z",
-    "Scheduled Time": "12:30",
-    "Displayed Time": "12:30",
-    "Artist": "Becky Hill ft Topic",
-    "Title": "My Heart Goes (La Di Da)",
-    "Duration (s)": 147,
-    "Full Duration (s)": 149,
-    "Duration (mins)": 2.45,
-    "Full Duration (mins)": 2.48
-  },
-  {
-    "Hour": "2025-09-02T11:00:00Z",
     "Scheduled Time": "12:36",
     "Displayed Time": "12:36",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 148,
     "Duration (mins)": 2.37,
     "Full Duration (mins)": 2.47
+  },
+  {
+    "Hour": "2025-09-04T00:00:00Z",
+    "Scheduled Time": "01:53",
+    "Displayed Time": "01:53",
+    "Artist": "Babybird",
+    "Title": "You're Gorgeous",
+    "Duration (s)": 205,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.72
   }
 ]
