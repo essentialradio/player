@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T18:00:00Z",
-    "Scheduled Time": "19:54",
-    "Displayed Time": "19:54",
-    "Artist": "Simon & Garfunkel",
-    "Title": "Homeward Bound",
-    "Duration (s)": 133,
-    "Full Duration (s)": 147,
-    "Duration (mins)": 2.22,
-    "Full Duration (mins)": 2.45
-  },
-  {
     "Hour": "2025-09-02T19:00:00Z",
     "Scheduled Time": "20:01",
     "Displayed Time": "20:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3.72,
     "Full Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-09-04T08:00:00Z",
+    "Scheduled Time": "09:36",
+    "Displayed Time": "09:36",
+    "Artist": "Chappell Roan",
+    "Title": "The Giver",
+    "Duration (s)": 198,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.38
   }
 ]
