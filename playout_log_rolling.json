@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T16:00:00Z",
-    "Scheduled Time": "17:49",
-    "Displayed Time": "17:49",
-    "Artist": "UB40",
-    "Title": "Kingston Town",
-    "Duration (s)": 206,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.43,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-09-02T16:00:00Z",
     "Scheduled Time": "17:53",
     "Displayed Time": "17:53",
     "Artist": "Zach Bryan, Kacey Musgraves",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:17",
+    "Displayed Time": "07:17",
+    "Artist": "Nelly Furtado",
+    "Title": "I'm Like a Bird",
+    "Duration (s)": 230,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 4.08
   }
 ]
