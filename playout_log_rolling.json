@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:12",
-    "Displayed Time": "00:12",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Busy Woman",
-    "Duration (s)": 180,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:15",
     "Displayed Time": "00:15",
     "Artist": "Pink",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 188,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.13
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:51",
+    "Displayed Time": "13:51",
+    "Artist": "Tom Grennan",
+    "Title": "All These Nights",
+    "Duration (s)": 150,
+    "Full Duration (s)": 154,
+    "Duration (mins)": 2.5,
+    "Full Duration (mins)": 2.57
   }
 ]
