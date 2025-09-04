@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "13:03",
-    "Artist": "Rachel Platten",
-    "Title": "Fight Song",
-    "Duration (s)": 200,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.33,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-02T12:00:00Z",
     "Scheduled Time": "13:07",
     "Displayed Time": "13:07",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 189,
     "Duration (mins)": 2.98,
     "Full Duration (mins)": 3.15
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:25",
+    "Displayed Time": "02:25",
+    "Artist": "Taylor Swift",
+    "Title": "Anti-Hero",
+    "Duration (s)": 191,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.35
   }
 ]
