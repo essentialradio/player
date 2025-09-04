@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T06:00:00Z",
-    "Scheduled Time": "07:47",
-    "Displayed Time": "07:47",
-    "Artist": "HUNTR/X, EJAE, Audrey Nuna, REI AMI",
-    "Title": "Golden",
-    "Duration (s)": 189,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3.15,
-    "Full Duration (mins)": 3.25
-  },
-  {
-    "Hour": "2025-09-03T06:00:00Z",
     "Scheduled Time": "07:50",
     "Displayed Time": "07:50",
     "Artist": "The Script",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 252,
     "Duration (mins)": 4.02,
     "Full Duration (mins)": 4.2
+  },
+  {
+    "Hour": "2025-09-04T20:00:00Z",
+    "Scheduled Time": "21:37",
+    "Displayed Time": "21:37",
+    "Artist": "Red Hot Chili Peppers",
+    "Title": "Under the Bridge",
+    "Duration (s)": 257,
+    "Full Duration (s)": 273,
+    "Duration (mins)": 4.28,
+    "Full Duration (mins)": 4.55
   }
 ]
