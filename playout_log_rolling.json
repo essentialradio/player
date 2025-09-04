@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T10:00:00Z",
-    "Scheduled Time": "11:52",
-    "Displayed Time": "11:52",
-    "Artist": "Green Day",
-    "Title": "Wake Me Up When September Ends",
-    "Duration (s)": 240,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 4.0,
-    "Full Duration (mins)": 4.25
-  },
-  {
     "Hour": "2025-09-02T11:00:00Z",
     "Scheduled Time": "12:01",
     "Displayed Time": "12:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 197,
     "Duration (mins)": 3.08,
     "Full Duration (mins)": 3.28
+  },
+  {
+    "Hour": "2025-09-04T00:00:00Z",
+    "Scheduled Time": "01:23",
+    "Displayed Time": "01:23",
+    "Artist": "Rod Stewart",
+    "Title": "Baby Jane",
+    "Duration (s)": 266,
+    "Full Duration (s)": 285,
+    "Duration (mins)": 4.43,
+    "Full Duration (mins)": 4.75
   }
 ]
