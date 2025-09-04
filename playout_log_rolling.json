@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "21:01",
-    "Artist": "The Vengaboys",
-    "Title": "We Like to Party (The Vengabus)",
-    "Duration (s)": 219,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.7
-  },
-  {
-    "Hour": "2025-09-02T20:00:00Z",
     "Scheduled Time": "21:05",
     "Displayed Time": "21:05",
     "Artist": "U2",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.62
+  },
+  {
+    "Hour": "2025-09-04T09:00:00Z",
+    "Scheduled Time": "10:42",
+    "Displayed Time": "10:42",
+    "Artist": "Bruno Mars",
+    "Title": "Locked Out of Heaven",
+    "Duration (s)": 227,
+    "Full Duration (s)": 238,
+    "Duration (mins)": 3.78,
+    "Full Duration (mins)": 3.97
   }
 ]
