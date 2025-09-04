@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T04:00:00Z",
-    "Scheduled Time": "05:33",
-    "Displayed Time": "05:33",
-    "Artist": "Olly Murs",
-    "Title": "Save Me",
-    "Duration (s)": 166,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-03T04:00:00Z",
     "Scheduled Time": "05:40",
     "Displayed Time": "05:40",
     "Artist": "Sigala Feat. John Newman & Nile Rodgers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 235,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 3.92
+  },
+  {
+    "Hour": "2025-09-04T18:00:00Z",
+    "Scheduled Time": "19:19",
+    "Displayed Time": "19:19",
+    "Artist": "David Bowie",
+    "Title": "Heroes",
+    "Duration (s)": 197,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.52
   }
 ]
