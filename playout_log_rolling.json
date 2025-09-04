@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T18:00:00Z",
-    "Scheduled Time": "19:22",
-    "Displayed Time": "19:22",
-    "Artist": "Fleetwood Mac",
-    "Title": "Don't Stop",
-    "Duration (s)": 180,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.25
-  },
-  {
-    "Hour": "2025-09-02T18:00:00Z",
     "Scheduled Time": "19:25",
     "Displayed Time": "19:25",
     "Artist": "Neil Diamond",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 240,
     "Duration (mins)": 3.97,
     "Full Duration (mins)": 4.0
+  },
+  {
+    "Hour": "2025-09-04T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "09:03",
+    "Artist": "Billie Eilish",
+    "Title": "Birds of a Feather",
+    "Duration (s)": 206,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.58
   }
 ]
