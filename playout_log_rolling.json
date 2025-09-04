@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T20:00:00Z",
-    "Scheduled Time": "21:53",
-    "Displayed Time": "21:53",
-    "Artist": "Mary Kiani",
-    "Title": "When I Call Your Name",
-    "Duration (s)": 202,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-09-02T20:00:00Z",
     "Scheduled Time": "21:56",
     "Displayed Time": "21:56",
     "Artist": "Chumbawamba",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-04T10:00:00Z",
+    "Scheduled Time": "11:43",
+    "Displayed Time": "11:43",
+    "Artist": "Bodyrockers",
+    "Title": "I Like the Way",
+    "Duration (s)": 190,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 3.32
   }
 ]
