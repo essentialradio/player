@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T11:00:00Z",
-    "Scheduled Time": "12:23",
-    "Displayed Time": "12:23",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 221,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-02T11:00:00Z",
     "Scheduled Time": "12:27",
     "Displayed Time": "12:27",
     "Artist": "Laufey",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-04T00:00:00Z",
+    "Scheduled Time": "01:47",
+    "Displayed Time": "01:47",
+    "Artist": "Kelly Clarkson",
+    "Title": "Stronger (What Doesn't Kill You)",
+    "Duration (s)": 211,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.7
   }
 ]
