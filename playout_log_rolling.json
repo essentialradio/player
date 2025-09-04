@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T04:00:00Z",
-    "Scheduled Time": "05:40",
-    "Displayed Time": "05:40",
-    "Artist": "Sigala Feat. John Newman & Nile Rodgers",
-    "Title": "Give Me Your Love",
-    "Duration (s)": 196,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.27,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-03T04:00:00Z",
     "Scheduled Time": "05:43",
     "Displayed Time": "05:43",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3.28,
     "Full Duration (mins)": 3.52
+  },
+  {
+    "Hour": "2025-09-04T18:00:00Z",
+    "Scheduled Time": "19:22",
+    "Displayed Time": "19:22",
+    "Artist": "Dire Straits",
+    "Title": "Sultans of Swing",
+    "Duration (s)": 334,
+    "Full Duration (s)": 348,
+    "Duration (mins)": 5.57,
+    "Full Duration (mins)": 5.8
   }
 ]
