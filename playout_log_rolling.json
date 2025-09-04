@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T12:00:00Z",
-    "Scheduled Time": "13:10",
-    "Displayed Time": "13:10",
-    "Artist": "The Source Feat. Candi Staton",
-    "Title": "You Got the Love (New Voyager Edit)",
-    "Duration (s)": 188,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.22
-  },
-  {
-    "Hour": "2025-09-02T12:00:00Z",
     "Scheduled Time": "13:13",
     "Displayed Time": "13:13",
     "Artist": "Zara Larsson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 261,
     "Duration (mins)": 4.18,
     "Full Duration (mins)": 4.35
+  },
+  {
+    "Hour": "2025-09-04T01:00:00Z",
+    "Scheduled Time": "02:36",
+    "Displayed Time": "02:36",
+    "Artist": "Ne-Yo",
+    "Title": "Beautiful Monster",
+    "Duration (s)": 238,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.15
   }
 ]
