@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T08:00:00Z",
-    "Scheduled Time": "09:14",
-    "Displayed Time": "09:14",
-    "Artist": "James Bay",
-    "Title": "Hold Back the River",
-    "Duration (s)": 218,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-09-03T08:00:00Z",
     "Scheduled Time": "09:17",
     "Displayed Time": "09:17",
     "Artist": "Sam Fender & Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3.28,
     "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-04T22:00:00Z",
+    "Scheduled Time": "23:08",
+    "Displayed Time": "23:08",
+    "Artist": "Leona Lewis",
+    "Title": "Better in Time",
+    "Duration (s)": 218,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 4.05
   }
 ]
