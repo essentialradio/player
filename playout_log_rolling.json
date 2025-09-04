@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:43",
-    "Displayed Time": "22:43",
-    "Artist": "Talk Talk",
-    "Title": "Life's What You Make It",
-    "Duration (s)": 230,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 4.27
-  },
-  {
-    "Hour": "2025-09-02T21:00:00Z",
     "Scheduled Time": "22:47",
     "Displayed Time": "22:47",
     "Artist": "Emeli Sande",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 137,
     "Duration (mins)": 2.23,
     "Full Duration (mins)": 2.28
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:28",
+    "Displayed Time": "12:28",
+    "Artist": "Magic!",
+    "Title": "Rude",
+    "Duration (s)": 217,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.73
   }
 ]
