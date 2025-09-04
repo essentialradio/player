@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T04:00:00Z",
-    "Scheduled Time": "05:46",
-    "Displayed Time": "05:46",
-    "Artist": "Jamiroquai",
-    "Title": "Canned Heat",
-    "Duration (s)": 214,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-09-03T04:00:00Z",
     "Scheduled Time": "05:50",
     "Displayed Time": "05:50",
     "Artist": "Coldplay",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 249,
     "Duration (mins)": 3.85,
     "Full Duration (mins)": 4.15
+  },
+  {
+    "Hour": "2025-09-04T18:00:00Z",
+    "Scheduled Time": "19:35",
+    "Displayed Time": "19:35",
+    "Artist": "Buggles",
+    "Title": "Video Killed the Radio Star",
+    "Duration (s)": 189,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.32
   }
 ]
