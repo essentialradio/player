@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T16:00:00Z",
-    "Scheduled Time": "17:34",
-    "Displayed Time": "17:34",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.47,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-09-02T16:00:00Z",
     "Scheduled Time": "17:37",
     "Displayed Time": "17:37",
     "Artist": "Ravyn Lanae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "07:04",
+    "Artist": "JP Cooper",
+    "Title": "September Song",
+    "Duration (s)": 212,
+    "Full Duration (s)": 217,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.62
   }
 ]
