@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T22:00:00Z",
-    "Scheduled Time": "23:49",
-    "Displayed Time": "23:49",
-    "Artist": "Calum Scott",
-    "Title": "Dancing On My Own",
-    "Duration (s)": 247,
-    "Full Duration (s)": 260,
-    "Duration (mins)": 4.12,
-    "Full Duration (mins)": 4.33
-  },
-  {
-    "Hour": "2025-09-02T22:00:00Z",
     "Scheduled Time": "23:53",
     "Displayed Time": "23:53",
     "Artist": "Chris Isaak",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 3.9,
     "Full Duration (mins)": 4.05
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:30",
+    "Displayed Time": "13:30",
+    "Artist": "Jason Derulo",
+    "Title": "The Other Side",
+    "Duration (s)": 219,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.78
   }
 ]
