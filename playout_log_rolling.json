@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T22:00:00Z",
-    "Scheduled Time": "23:01",
-    "Displayed Time": "23:01",
-    "Artist": "Mr Mister",
-    "Title": "Broken Wings",
-    "Duration (s)": 267,
-    "Full Duration (s)": 279,
-    "Duration (mins)": 4.45,
-    "Full Duration (mins)": 4.65
-  },
-  {
-    "Hour": "2025-09-02T22:00:00Z",
     "Scheduled Time": "23:06",
     "Displayed Time": "23:06",
     "Artist": "Rihanna",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 184,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 3.07
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:47",
+    "Displayed Time": "12:47",
+    "Artist": "Ed Sheeran",
+    "Title": "Azizam",
+    "Duration (s)": 156,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.6,
+    "Full Duration (mins)": 2.7
   }
 ]
