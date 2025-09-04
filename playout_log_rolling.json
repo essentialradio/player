@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T06:00:00Z",
-    "Scheduled Time": "07:04",
-    "Displayed Time": "07:04",
-    "Artist": "Joel Corry & MNEK",
-    "Title": "Head & Heart",
-    "Duration (s)": 164,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-03T06:00:00Z",
     "Scheduled Time": "07:07",
     "Displayed Time": "07:07",
     "Artist": "Mental as Anything",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 251,
     "Duration (mins)": 3.92,
     "Full Duration (mins)": 4.18
+  },
+  {
+    "Hour": "2025-09-04T19:00:00Z",
+    "Scheduled Time": "20:54",
+    "Displayed Time": "20:54",
+    "Artist": "The Damned",
+    "Title": "Eloise",
+    "Duration (s)": 292,
+    "Full Duration (s)": 311,
+    "Duration (mins)": 4.87,
+    "Full Duration (mins)": 5.18
   }
 ]
