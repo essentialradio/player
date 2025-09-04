@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:47",
-    "Displayed Time": "04:47",
-    "Artist": "Taylor Swift",
-    "Title": "I Knew You Were Trouble",
-    "Duration (s)": 210,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3.5,
-    "Full Duration (mins)": 3.63
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:50",
     "Displayed Time": "04:50",
     "Artist": "Beck",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.63,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-04T17:00:00Z",
+    "Scheduled Time": "18:28",
+    "Displayed Time": "18:28",
+    "Artist": "Wunderhorse",
+    "Title": "The Rope",
+    "Duration (s)": 173,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.98
   }
 ]
