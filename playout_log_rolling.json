@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:04",
-    "Displayed Time": "18:04",
-    "Artist": "Myles Smith",
-    "Title": "Gold",
-    "Duration (s)": 158,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.63,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
     "Scheduled Time": "18:07",
     "Displayed Time": "18:07",
     "Artist": "Good Neighbours",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 196,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.27
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:35",
+    "Displayed Time": "07:35",
+    "Artist": "Tommy Richman",
+    "Title": "Million Dollar Baby",
+    "Duration (s)": 153,
+    "Full Duration (s)": 155,
+    "Duration (mins)": 2.55,
+    "Full Duration (mins)": 2.58
   }
 ]
