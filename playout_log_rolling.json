@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T22:00:00Z",
-    "Scheduled Time": "23:21",
-    "Displayed Time": "23:21",
-    "Artist": "Corinne Bailey Rae",
-    "Title": "Put Your Records On",
-    "Duration (s)": 202,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-09-02T22:00:00Z",
     "Scheduled Time": "23:24",
     "Displayed Time": "23:24",
     "Artist": "Fergie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 196,
     "Duration (mins)": 3.18,
     "Full Duration (mins)": 3.27
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:07",
+    "Displayed Time": "13:07",
+    "Artist": "K-Pop Demon Hunters",
+    "Title": "Golden",
+    "Duration (s)": 187,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.25
   }
 ]
