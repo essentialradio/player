@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:43",
-    "Displayed Time": "00:43",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 183,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3.05,
-    "Full Duration (mins)": 3.15
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:46",
     "Displayed Time": "00:46",
     "Artist": "Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 245,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.08
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:23",
+    "Displayed Time": "14:23",
+    "Artist": "Kygo X Tina Turner",
+    "Title": "What's Love Got to Do With It",
+    "Duration (s)": 203,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.47
   }
 ]
