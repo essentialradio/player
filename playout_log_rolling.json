@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:01",
-    "Displayed Time": "02:01",
-    "Artist": "Anne-Marie",
-    "Title": "2002",
-    "Duration (s)": 183,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.05,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:05",
     "Displayed Time": "02:05",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:34",
+    "Displayed Time": "15:34",
+    "Artist": "The Cure",
+    "Title": "Friday I'm in Love",
+    "Duration (s)": 200,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.5
   }
 ]
