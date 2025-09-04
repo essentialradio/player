@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:47",
-    "Displayed Time": "15:47",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 226,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:51",
     "Displayed Time": "15:51",
     "Artist": "Paul Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 205,
     "Duration (mins)": 3.32,
     "Full Duration (mins)": 3.42
+  },
+  {
+    "Hour": "2025-09-04T04:00:00Z",
+    "Scheduled Time": "05:11",
+    "Displayed Time": "05:11",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 175,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.05
   }
 ]
