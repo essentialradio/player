@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:24",
-    "Displayed Time": "15:24",
-    "Artist": "Taio Cruz",
-    "Title": "Higher",
-    "Duration (s)": 178,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 2.97,
-    "Full Duration (mins)": 3.13
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:27",
     "Displayed Time": "15:27",
     "Artist": "Sam Fender",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2.32,
     "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:50",
+    "Displayed Time": "04:50",
+    "Artist": "Ash",
+    "Title": "Girl From Mars",
+    "Duration (s)": 192,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.38
   }
 ]
