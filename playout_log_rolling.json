@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:24",
-    "Displayed Time": "02:24",
-    "Artist": "Bananarama",
-    "Title": "Love in the First Degree",
-    "Duration (s)": 200,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.33,
-    "Full Duration (mins)": 3.45
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:27",
     "Displayed Time": "02:27",
     "Artist": "David Kushner",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:55",
+    "Displayed Time": "15:55",
+    "Artist": "The Cardigans",
+    "Title": "Erase/Rewind",
+    "Duration (s)": 207,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.55
   }
 ]
