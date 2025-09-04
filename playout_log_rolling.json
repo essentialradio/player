@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:47",
-    "Displayed Time": "22:47",
-    "Artist": "Emeli Sande",
-    "Title": "Read All About It (Pt III)",
-    "Duration (s)": 267,
-    "Full Duration (s)": 285,
-    "Duration (mins)": 4.45,
-    "Full Duration (mins)": 4.75
-  },
-  {
-    "Hour": "2025-09-02T21:00:00Z",
     "Scheduled Time": "22:51",
     "Displayed Time": "22:51",
     "Artist": "Grover Washington Jnr",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:36",
+    "Displayed Time": "12:36",
+    "Artist": "David Kushner",
+    "Title": "Daylight",
+    "Duration (s)": 187,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.35
   }
 ]
