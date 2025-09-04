@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:27",
-    "Displayed Time": "04:27",
-    "Artist": "Stereo MCs",
-    "Title": "Connected",
-    "Duration (s)": 209,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:30",
     "Displayed Time": "04:30",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.65,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-04T17:00:00Z",
+    "Scheduled Time": "18:08",
+    "Displayed Time": "18:08",
+    "Artist": "Sekou",
+    "Title": "Catching Bodies",
+    "Duration (s)": 176,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.1
   }
 ]
