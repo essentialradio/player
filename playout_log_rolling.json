@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T08:00:00Z",
-    "Scheduled Time": "09:49",
-    "Displayed Time": "09:49",
-    "Artist": "City High",
-    "Title": "What Would You Do",
-    "Duration (s)": 173,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-03T08:00:00Z",
     "Scheduled Time": "09:53",
     "Displayed Time": "09:53",
     "Artist": "Meat Loaf",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-04T22:00:00Z",
+    "Scheduled Time": "23:45",
+    "Displayed Time": "23:45",
+    "Artist": "Anita Baker",
+    "Title": "Sweet Love",
+    "Duration (s)": 237,
+    "Full Duration (s)": 259,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.32
   }
 ]
