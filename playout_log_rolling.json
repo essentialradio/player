@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:08",
-    "Displayed Time": "15:08",
-    "Artist": "Ed Sheeran",
-    "Title": "Old Phone",
-    "Duration (s)": 214,
-    "Full Duration (s)": 222,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.7
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:12",
     "Displayed Time": "15:12",
     "Artist": "Aerosmith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 301,
     "Duration (mins)": 4.85,
     "Full Duration (mins)": 5.02
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:37",
+    "Displayed Time": "04:37",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 177,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.12
   }
 ]
