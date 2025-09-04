@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:22",
-    "Displayed Time": "00:22",
-    "Artist": "Shalamar",
-    "Title": "A Night to Remember",
-    "Duration (s)": 198,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.45
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:26",
     "Displayed Time": "00:26",
     "Artist": "Dasha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "14:01",
+    "Artist": "Calvin Harris",
+    "Title": "Smoke the Pain Away",
+    "Duration (s)": 158,
+    "Full Duration (s)": 163,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.72
   }
 ]
