@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-09-03T08:00:00Z",
-    "Scheduled Time": "09:53",
-    "Displayed Time": "09:53",
-    "Artist": "Meat Loaf",
-    "Title": "Two Out Of Three Ain't Bad",
-    "Duration (s)": 319,
-    "Full Duration (s)": 323,
-    "Duration (mins)": 5.32,
-    "Full Duration (mins)": 5.38
-  },
-  {
-    "Hour": "2025-09-03T09:00:00Z",
-    "Scheduled Time": "10:02",
-    "Displayed Time": "10:02",
-    "Artist": "Years & Years",
-    "Title": "King",
-    "Duration (s)": 209,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.57
-  },
-  {
     "Hour": "2025-09-03T09:00:00Z",
     "Scheduled Time": "10:05",
     "Displayed Time": "10:05",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 259,
     "Duration (mins)": 3.95,
     "Full Duration (mins)": 4.32
+  },
+  {
+    "Hour": "2025-09-04T22:00:00Z",
+    "Scheduled Time": "23:49",
+    "Displayed Time": "23:49",
+    "Artist": "The Stranglers",
+    "Title": "Golden Brown",
+    "Duration (s)": 192,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-04T22:00:00Z",
+    "Scheduled Time": "23:53",
+    "Displayed Time": "23:53",
+    "Artist": "Kenny Rogers & Sheena Easton",
+    "Title": "We've Got Tonight",
+    "Duration (s)": 218,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.82
   }
 ]
