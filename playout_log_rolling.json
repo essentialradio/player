@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:16",
-    "Displayed Time": "02:16",
-    "Artist": "Katy Perry",
-    "Title": "Hot N Cold",
-    "Duration (s)": 213,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:24",
     "Displayed Time": "02:24",
     "Artist": "Bananarama",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.52
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:51",
+    "Displayed Time": "15:51",
+    "Artist": "Coldplay",
+    "Title": "Feels Like I'm Falling in Love",
+    "Duration (s)": 215,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.73
   }
 ]
