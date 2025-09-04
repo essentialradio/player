@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:27",
-    "Displayed Time": "02:27",
-    "Artist": "David Kushner",
-    "Title": "Daylight",
-    "Duration (s)": 189,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.15,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:30",
     "Displayed Time": "02:30",
     "Artist": "The Cardigans",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "16:02",
+    "Artist": "Dua Lipa",
+    "Title": "Houdini",
+    "Duration (s)": 175,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.1
   }
 ]
