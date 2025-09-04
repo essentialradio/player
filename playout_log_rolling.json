@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:47",
-    "Displayed Time": "02:47",
-    "Artist": "Rag'N'Bone Man",
-    "Title": "Human",
-    "Duration (s)": 193,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.32
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:50",
     "Displayed Time": "02:50",
     "Artist": "Natasha Bedingfield",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 210,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.5
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:20",
+    "Displayed Time": "16:20",
+    "Artist": "David Guetta & Bebe Rexha",
+    "Title": "I'm Good (Blue)",
+    "Duration (s)": 168,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.9
   }
 ]
