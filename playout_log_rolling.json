@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T04:00:00Z",
-    "Scheduled Time": "05:50",
-    "Displayed Time": "05:50",
-    "Artist": "Coldplay",
-    "Title": "Feels Like I'm Falling in Love",
-    "Duration (s)": 215,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-09-03T04:00:00Z",
     "Scheduled Time": "05:53",
     "Displayed Time": "05:53",
     "Artist": "Kaiser Chiefs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-04T18:00:00Z",
+    "Scheduled Time": "19:38",
+    "Displayed Time": "19:38",
+    "Artist": "Madness",
+    "Title": "One Step Beyond",
+    "Duration (s)": 135,
+    "Full Duration (s)": 142,
+    "Duration (mins)": 2.25,
+    "Full Duration (mins)": 2.37
   }
 ]
