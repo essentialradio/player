@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T18:00:00Z",
-    "Scheduled Time": "19:41",
-    "Displayed Time": "19:41",
-    "Artist": "Amii Stewart",
-    "Title": "Knock on Wood",
-    "Duration (s)": 215,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.85
-  },
-  {
-    "Hour": "2025-09-02T18:00:00Z",
     "Scheduled Time": "19:47",
     "Displayed Time": "19:47",
     "Artist": "Carpenters",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 162,
     "Duration (mins)": 2.67,
     "Full Duration (mins)": 2.7
+  },
+  {
+    "Hour": "2025-09-04T08:00:00Z",
+    "Scheduled Time": "09:25",
+    "Displayed Time": "09:25",
+    "Artist": "Shania Twain",
+    "Title": "That Don't Impress Me Much",
+    "Duration (s)": 229,
+    "Full Duration (s)": 240,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.0
   }
 ]
