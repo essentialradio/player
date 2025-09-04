@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T09:00:00Z",
-    "Scheduled Time": "10:36",
-    "Displayed Time": "10:36",
-    "Artist": "Thin Lizzy",
-    "Title": "The Boys Are Back in Town",
-    "Duration (s)": 182,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.03,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-03T09:00:00Z",
     "Scheduled Time": "10:40",
     "Displayed Time": "10:40",
     "Artist": "The Weeknd",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 161,
     "Duration (mins)": 2.58,
     "Full Duration (mins)": 2.68
+  },
+  {
+    "Hour": "2025-09-04T23:00:00Z",
+    "Scheduled Time": "00:29",
+    "Displayed Time": "00:29",
+    "Artist": "Urban Cookie Collective",
+    "Title": "The Key, the Secret",
+    "Duration (s)": 210,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.7
   }
 ]
