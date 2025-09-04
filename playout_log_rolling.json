@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T07:00:00Z",
-    "Scheduled Time": "08:13",
-    "Displayed Time": "08:13",
-    "Artist": "DNCE",
-    "Title": "Cake by the Ocean",
-    "Duration (s)": 214,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.62
-  },
-  {
-    "Hour": "2025-09-03T07:00:00Z",
     "Scheduled Time": "08:17",
     "Displayed Time": "08:17",
     "Artist": "Cyndi Lauper",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 237,
     "Duration (mins)": 3.75,
     "Full Duration (mins)": 3.95
+  },
+  {
+    "Hour": "2025-09-04T21:00:00Z",
+    "Scheduled Time": "22:09",
+    "Displayed Time": "22:09",
+    "Artist": "Amy Macdonald",
+    "Title": "Run",
+    "Duration (s)": 167,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.82
   }
 ]
