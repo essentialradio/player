@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T13:00:00Z",
-    "Scheduled Time": "14:52",
-    "Displayed Time": "14:52",
-    "Artist": "Jermaine Stewart",
-    "Title": "We Don't Have to Take Our Clothes Off",
-    "Duration (s)": 236,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 3.93,
-    "Full Duration (mins)": 4.08
-  },
-  {
     "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:01",
     "Displayed Time": "15:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 201,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.35
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:25",
+    "Displayed Time": "04:25",
+    "Artist": "Lola Young",
+    "Title": "One Thing",
+    "Duration (s)": 201,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.47
   }
 ]
