@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T18:00:00Z",
-    "Scheduled Time": "19:10",
-    "Displayed Time": "19:10",
-    "Artist": "The Eagles",
-    "Title": "Lyin' Eyes",
-    "Duration (s)": 242,
-    "Full Duration (s)": 254,
-    "Duration (mins)": 4.03,
-    "Full Duration (mins)": 4.23
-  },
-  {
-    "Hour": "2025-09-02T18:00:00Z",
     "Scheduled Time": "19:14",
     "Displayed Time": "19:14",
     "Artist": "Elton John",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 234,
     "Duration (mins)": 3.88,
     "Full Duration (mins)": 3.9
+  },
+  {
+    "Hour": "2025-09-04T07:00:00Z",
+    "Scheduled Time": "08:41",
+    "Displayed Time": "08:41",
+    "Artist": "Beyonce",
+    "Title": "Irreplaceable",
+    "Duration (s)": 222,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.77
   }
 ]
