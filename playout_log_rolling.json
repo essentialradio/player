@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T15:00:00Z",
-    "Scheduled Time": "16:05",
-    "Displayed Time": "16:05",
-    "Artist": "Chappell Roan",
-    "Title": "The Subway",
-    "Duration (s)": 238,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 3.97,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-09-02T15:00:00Z",
     "Scheduled Time": "16:09",
     "Displayed Time": "16:09",
     "Artist": "Thomas Headon",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.65,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-04T04:00:00Z",
+    "Scheduled Time": "05:29",
+    "Displayed Time": "05:29",
+    "Artist": "Janet Jackson",
+    "Title": "Together Again",
+    "Duration (s)": 234,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 3.9,
+    "Full Duration (mins)": 4.12
   }
 ]
