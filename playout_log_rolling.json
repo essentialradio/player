@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:24",
-    "Displayed Time": "04:24",
-    "Artist": "David Guetta & Bebe Rexha",
-    "Title": "I'm Good (Blue)",
-    "Duration (s)": 168,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 2.8,
-    "Full Duration (mins)": 2.9
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:27",
     "Displayed Time": "04:27",
     "Artist": "Stereo MCs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 252,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.2
+  },
+  {
+    "Hour": "2025-09-04T17:00:00Z",
+    "Scheduled Time": "18:06",
+    "Displayed Time": "18:06",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 159,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.77
   }
 ]
