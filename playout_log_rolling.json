@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T04:00:00Z",
-    "Scheduled Time": "05:15",
-    "Displayed Time": "05:15",
-    "Artist": "Ne-Yo",
-    "Title": "So Sick",
-    "Duration (s)": 200,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.33,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-03T04:00:00Z",
     "Scheduled Time": "05:23",
     "Displayed Time": "05:23",
     "Artist": "Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.8,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-04T17:00:00Z",
+    "Scheduled Time": "18:54",
+    "Displayed Time": "18:54",
+    "Artist": "Lola Young",
+    "Title": "D\u00a3aler",
+    "Duration (s)": 155,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.67
   }
 ]
