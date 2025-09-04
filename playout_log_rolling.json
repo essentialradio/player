@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:01",
-    "Displayed Time": "04:01",
-    "Artist": "Lost Frequencies",
-    "Title": "Are You With Me",
-    "Duration (s)": 134,
-    "Full Duration (s)": 137,
-    "Duration (mins)": 2.23,
-    "Full Duration (mins)": 2.28
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:04",
     "Displayed Time": "04:04",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-04T16:00:00Z",
+    "Scheduled Time": "17:36",
+    "Displayed Time": "17:36",
+    "Artist": "Taylor Swift",
+    "Title": "Cruel Summer",
+    "Duration (s)": 170,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.97
   }
 ]
