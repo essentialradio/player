@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T00:00:00Z",
-    "Scheduled Time": "01:12",
-    "Displayed Time": "01:12",
-    "Artist": "Black Country, New Road",
-    "Title": "Besties",
-    "Duration (s)": 209,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.62
-  },
-  {
-    "Hour": "2025-09-03T00:00:00Z",
     "Scheduled Time": "01:16",
     "Displayed Time": "01:16",
     "Artist": "Justin Timberlake",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 189,
     "Duration (mins)": 3.08,
     "Full Duration (mins)": 3.15
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:50",
+    "Displayed Time": "14:50",
+    "Artist": "John Waite",
+    "Title": "Missing You",
+    "Duration (s)": 202,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.47
   }
 ]
