@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T06:00:00Z",
-    "Scheduled Time": "07:50",
-    "Displayed Time": "07:50",
-    "Artist": "The Script",
-    "Title": "For the First Time",
-    "Duration (s)": 244,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4.07,
-    "Full Duration (mins)": 4.18
-  },
-  {
-    "Hour": "2025-09-03T06:00:00Z",
     "Scheduled Time": "07:54",
     "Displayed Time": "07:54",
     "Artist": "Perrie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 273,
     "Duration (mins)": 4.28,
     "Full Duration (mins)": 4.55
+  },
+  {
+    "Hour": "2025-09-04T20:00:00Z",
+    "Scheduled Time": "21:46",
+    "Displayed Time": "21:46",
+    "Artist": "New Order",
+    "Title": "Regret",
+    "Duration (s)": 231,
+    "Full Duration (s)": 248,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 4.13
   }
 ]
