@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T01:00:00Z",
-    "Scheduled Time": "02:30",
-    "Displayed Time": "02:30",
-    "Artist": "The Cardigans",
-    "Title": "My Favourite Game",
-    "Duration (s)": 215,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.63
-  },
-  {
-    "Hour": "2025-09-03T01:00:00Z",
     "Scheduled Time": "02:34",
     "Displayed Time": "02:34",
     "Artist": "Calvin Harris & Clementine Douglas",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 186,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.1
+  },
+  {
+    "Hour": "2025-09-04T15:00:00Z",
+    "Scheduled Time": "16:05",
+    "Displayed Time": "16:05",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 169,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.98
   }
 ]
