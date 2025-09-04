@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T13:00:00Z",
-    "Scheduled Time": "14:35",
-    "Displayed Time": "14:35",
-    "Artist": "Deacon Blue",
-    "Title": "Dignity",
-    "Duration (s)": 225,
-    "Full Duration (s)": 241,
-    "Duration (mins)": 3.75,
-    "Full Duration (mins)": 4.02
-  },
-  {
-    "Hour": "2025-09-02T13:00:00Z",
     "Scheduled Time": "14:42",
     "Displayed Time": "14:42",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:06",
+    "Displayed Time": "04:06",
+    "Artist": "The Verve",
+    "Title": "Lucky Man",
+    "Duration (s)": 271,
+    "Full Duration (s)": 294,
+    "Duration (mins)": 4.52,
+    "Full Duration (mins)": 4.9
   }
 ]
