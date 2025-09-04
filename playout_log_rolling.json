@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:21",
-    "Displayed Time": "18:21",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 219,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
     "Scheduled Time": "18:24",
     "Displayed Time": "18:24",
     "Artist": "Tiesto & Tate McRae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 3.48,
     "Full Duration (mins)": 3.62
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:52",
+    "Displayed Time": "07:52",
+    "Artist": "Lola Young",
+    "Title": "D\u00a3aler",
+    "Duration (s)": 157,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.67
   }
 ]
