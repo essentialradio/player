@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:36",
-    "Displayed Time": "18:36",
-    "Artist": "Teddy Swims",
-    "Title": "Lose Control",
-    "Duration (s)": 204,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.52
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
     "Scheduled Time": "18:43",
     "Displayed Time": "18:43",
     "Artist": "Gracie Abrams",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 240,
     "Duration (mins)": 3.83,
     "Full Duration (mins)": 4.0
+  },
+  {
+    "Hour": "2025-09-04T07:00:00Z",
+    "Scheduled Time": "08:13",
+    "Displayed Time": "08:13",
+    "Artist": "Keala Settle & The Greatest Showman Ensemble",
+    "Title": "This is Me",
+    "Duration (s)": 229,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 3.92
   }
 ]
