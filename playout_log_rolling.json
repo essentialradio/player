@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T22:00:00Z",
-    "Scheduled Time": "23:24",
-    "Displayed Time": "23:24",
-    "Artist": "Fergie",
-    "Title": "Big Girls Don't Cry",
-    "Duration (s)": 249,
-    "Full Duration (s)": 257,
-    "Duration (mins)": 4.15,
-    "Full Duration (mins)": 4.28
-  },
-  {
-    "Hour": "2025-09-02T22:00:00Z",
     "Scheduled Time": "23:29",
     "Displayed Time": "23:29",
     "Artist": "Maroon 5",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:10",
+    "Displayed Time": "13:10",
+    "Artist": "Katrina & The Waves",
+    "Title": "Walking on Sunshine",
+    "Duration (s)": 223,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.98
   }
 ]
