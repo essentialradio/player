@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T09:00:00Z",
-    "Scheduled Time": "10:32",
-    "Displayed Time": "10:32",
-    "Artist": "The Proclaimers",
-    "Title": "I'm Gonna Be (500 Miles)",
-    "Duration (s)": 209,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-09-03T09:00:00Z",
     "Scheduled Time": "10:36",
     "Displayed Time": "10:36",
     "Artist": "Thin Lizzy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 3.75,
     "Full Duration (mins)": 4.05
+  },
+  {
+    "Hour": "2025-09-04T23:00:00Z",
+    "Scheduled Time": "00:26",
+    "Displayed Time": "00:26",
+    "Artist": "Becky Hill & David Guetta",
+    "Title": "Remember",
+    "Duration (s)": 155,
+    "Full Duration (s)": 161,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.68
   }
 ]
