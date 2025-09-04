@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T19:00:00Z",
-    "Scheduled Time": "20:33",
-    "Displayed Time": "20:33",
-    "Artist": "Don McLean",
-    "Title": "Crying",
-    "Duration (s)": 213,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-02T19:00:00Z",
     "Scheduled Time": "20:37",
     "Displayed Time": "20:37",
     "Artist": "Soul II Soul",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 149,
     "Duration (mins)": 2.42,
     "Full Duration (mins)": 2.48
+  },
+  {
+    "Hour": "2025-09-04T09:00:00Z",
+    "Scheduled Time": "10:12",
+    "Displayed Time": "10:12",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.77
   }
 ]
