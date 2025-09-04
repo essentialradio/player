@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T00:00:00Z",
-    "Scheduled Time": "01:27",
-    "Displayed Time": "01:27",
-    "Artist": "Becky Hill/Chase & Status",
-    "Title": "Disconnect",
-    "Duration (s)": 158,
-    "Full Duration (s)": 165,
-    "Duration (mins)": 2.63,
-    "Full Duration (mins)": 2.75
-  },
-  {
-    "Hour": "2025-09-03T00:00:00Z",
     "Scheduled Time": "01:30",
     "Displayed Time": "01:30",
     "Artist": "New Order",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-04T14:00:00Z",
+    "Scheduled Time": "15:05",
+    "Displayed Time": "15:05",
+    "Artist": "Fireboy DML",
+    "Title": "Peru",
+    "Duration (s)": 177,
+    "Full Duration (s)": 188,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.13
   }
 ]
