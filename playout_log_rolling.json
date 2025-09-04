@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T05:00:00Z",
-    "Scheduled Time": "06:35",
-    "Displayed Time": "06:35",
-    "Artist": "Bryan Adams Feat. Melanie C",
-    "Title": "When You're Gone",
-    "Duration (s)": 195,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-03T05:00:00Z",
     "Scheduled Time": "06:43",
     "Displayed Time": "06:43",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 259,
     "Duration (mins)": 4.0,
     "Full Duration (mins)": 4.32
+  },
+  {
+    "Hour": "2025-09-04T19:00:00Z",
+    "Scheduled Time": "20:28",
+    "Displayed Time": "20:28",
+    "Artist": "Ultravox",
+    "Title": "Reap the Wild Wind",
+    "Duration (s)": 205,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.7
   }
 ]
