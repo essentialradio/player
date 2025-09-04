@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:27",
-    "Displayed Time": "18:27",
-    "Artist": "Caity Baser",
-    "Title": "Running From Myself",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.53,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
     "Scheduled Time": "18:30",
     "Displayed Time": "18:30",
     "Artist": "Perrie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 241,
     "Duration (mins)": 3.82,
     "Full Duration (mins)": 4.02
+  },
+  {
+    "Hour": "2025-09-04T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "08:02",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 164,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.8
   }
 ]
