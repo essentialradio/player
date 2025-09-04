@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:01",
-    "Displayed Time": "18:01",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
     "Scheduled Time": "18:04",
     "Displayed Time": "18:04",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:32",
+    "Displayed Time": "07:32",
+    "Artist": "Callum Beattie",
+    "Title": "Salamander Street",
+    "Duration (s)": 189,
+    "Full Duration (s)": 196,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.27
   }
 ]
