@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T09:00:00Z",
-    "Scheduled Time": "10:40",
-    "Displayed Time": "10:40",
-    "Artist": "The Weeknd",
-    "Title": "Blinding Lights",
-    "Duration (s)": 197,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3.28,
-    "Full Duration (mins)": 3.37
-  },
-  {
-    "Hour": "2025-09-03T09:00:00Z",
     "Scheduled Time": "10:43",
     "Displayed Time": "10:43",
     "Artist": "Daft Punk",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.5,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-04T23:00:00Z",
+    "Scheduled Time": "00:32",
+    "Displayed Time": "00:32",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 173,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.98
   }
 ]
