@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T06:00:00Z",
-    "Scheduled Time": "07:31",
-    "Displayed Time": "07:31",
-    "Artist": "Rita Ora",
-    "Title": "Anywhere",
-    "Duration (s)": 208,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-09-03T06:00:00Z",
     "Scheduled Time": "07:35",
     "Displayed Time": "07:35",
     "Artist": "Meghan Trainor",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 238,
     "Duration (mins)": 3.82,
     "Full Duration (mins)": 3.97
+  },
+  {
+    "Hour": "2025-09-04T20:00:00Z",
+    "Scheduled Time": "21:24",
+    "Displayed Time": "21:24",
+    "Artist": "East 17",
+    "Title": "It's Alright",
+    "Duration (s)": 266,
+    "Full Duration (s)": 281,
+    "Duration (mins)": 4.43,
+    "Full Duration (mins)": 4.68
   }
 ]
