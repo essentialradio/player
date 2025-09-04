@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T21:00:00Z",
-    "Scheduled Time": "22:24",
-    "Displayed Time": "22:24",
-    "Artist": "Massive Attack",
-    "Title": "Teardrop",
-    "Duration (s)": 264,
-    "Full Duration (s)": 282,
-    "Duration (mins)": 4.4,
-    "Full Duration (mins)": 4.7
-  },
-  {
-    "Hour": "2025-09-02T21:00:00Z",
     "Scheduled Time": "22:28",
     "Displayed Time": "22:28",
     "Artist": "Echo & The Bunnymen",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.63,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-04T11:00:00Z",
+    "Scheduled Time": "12:11",
+    "Displayed Time": "12:11",
+    "Artist": "Beyonce",
+    "Title": "BREAK MY SOUL",
+    "Duration (s)": 158,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.77
   }
 ]
