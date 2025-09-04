@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T05:00:00Z",
-    "Scheduled Time": "06:05",
-    "Displayed Time": "06:05",
-    "Artist": "Queen",
-    "Title": "Radio Ga Ga",
-    "Duration (s)": 335,
-    "Full Duration (s)": 343,
-    "Duration (mins)": 5.58,
-    "Full Duration (mins)": 5.72
-  },
-  {
-    "Hour": "2025-09-03T05:00:00Z",
     "Scheduled Time": "06:11",
     "Displayed Time": "06:11",
     "Artist": "Alex Warren",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 282,
     "Duration (mins)": 4.4,
     "Full Duration (mins)": 4.7
+  },
+  {
+    "Hour": "2025-09-04T18:00:00Z",
+    "Scheduled Time": "19:52",
+    "Displayed Time": "19:52",
+    "Artist": "Stevie Wonder",
+    "Title": "I Wish",
+    "Duration (s)": 243,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 4.05,
+    "Full Duration (mins)": 4.15
   }
 ]
