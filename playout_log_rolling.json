@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T18:00:00Z",
-    "Scheduled Time": "19:30",
-    "Displayed Time": "19:30",
-    "Artist": "The Bellamy Brothers",
-    "Title": "Let Your Love Flow",
-    "Duration (s)": 181,
-    "Full Duration (s)": 193,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.22
-  },
-  {
-    "Hour": "2025-09-02T18:00:00Z",
     "Scheduled Time": "19:33",
     "Displayed Time": "19:33",
     "Artist": "J.J. Barrie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 167,
     "Duration (mins)": 2.72,
     "Full Duration (mins)": 2.78
+  },
+  {
+    "Hour": "2025-09-04T08:00:00Z",
+    "Scheduled Time": "09:10",
+    "Displayed Time": "09:10",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 172,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 2.93
   }
 ]
