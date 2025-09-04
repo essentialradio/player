@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T15:00:00Z",
-    "Scheduled Time": "16:09",
-    "Displayed Time": "16:09",
-    "Artist": "Thomas Headon",
-    "Title": "Georgia",
-    "Duration (s)": 168,
-    "Full Duration (s)": 174,
-    "Duration (mins)": 2.8,
-    "Full Duration (mins)": 2.9
-  },
-  {
-    "Hour": "2025-09-02T15:00:00Z",
     "Scheduled Time": "16:12",
     "Displayed Time": "16:12",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 247,
     "Duration (mins)": 3.9,
     "Full Duration (mins)": 4.12
+  },
+  {
+    "Hour": "2025-09-04T04:00:00Z",
+    "Scheduled Time": "05:33",
+    "Displayed Time": "05:33",
+    "Artist": "Calvin Harris & Clementine Douglas",
+    "Title": "Blessings",
+    "Duration (s)": 208,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.67
   }
 ]
