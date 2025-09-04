@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:50",
-    "Displayed Time": "04:50",
-    "Artist": "Beck",
-    "Title": "Loser",
-    "Duration (s)": 218,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.93
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:54",
     "Displayed Time": "04:54",
     "Artist": "Post Malone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.88,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-04T17:00:00Z",
+    "Scheduled Time": "18:31",
+    "Displayed Time": "18:31",
+    "Artist": "Supermen Lovers & OneRepublic",
+    "Title": "Starlight (The Fame)",
+    "Duration (s)": 178,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.03
   }
 ]
