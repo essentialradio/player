@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T06:00:00Z",
-    "Scheduled Time": "07:10",
-    "Displayed Time": "07:10",
-    "Artist": "Chappell Roan",
-    "Title": "The Subway",
-    "Duration (s)": 245,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4.08,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-09-03T06:00:00Z",
     "Scheduled Time": "07:14",
     "Displayed Time": "07:14",
     "Artist": "Becky Hill & David Guetta",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 221,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.68
+  },
+  {
+    "Hour": "2025-09-04T20:00:00Z",
+    "Scheduled Time": "21:06",
+    "Displayed Time": "21:06",
+    "Artist": "Embrace",
+    "Title": "Come Back to What You Know",
+    "Duration (s)": 236,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 3.93,
+    "Full Duration (mins)": 4.17
   }
 ]
