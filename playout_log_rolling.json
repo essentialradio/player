@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:05",
-    "Displayed Time": "15:05",
-    "Artist": "Nicki Minaj",
-    "Title": "Starships",
-    "Duration (s)": 206,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3.43,
-    "Full Duration (mins)": 3.5
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:08",
     "Displayed Time": "15:08",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 311,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 5.18
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:32",
+    "Displayed Time": "04:32",
+    "Artist": "The Waterboys",
+    "Title": "The Whole of the Moon",
+    "Duration (s)": 291,
+    "Full Duration (s)": 301,
+    "Duration (mins)": 4.85,
+    "Full Duration (mins)": 5.02
   }
 ]
