@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T16:00:00Z",
-    "Scheduled Time": "17:28",
-    "Displayed Time": "17:28",
-    "Artist": "Olivia Rodrigo",
-    "Title": "Bad Idea Right?",
-    "Duration (s)": 173,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 3.08
-  },
-  {
-    "Hour": "2025-09-02T16:00:00Z",
     "Scheduled Time": "17:34",
     "Displayed Time": "17:34",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-04T05:00:00Z",
+    "Scheduled Time": "06:54",
+    "Displayed Time": "06:54",
+    "Artist": "Chic",
+    "Title": "Everybody Dance",
+    "Duration (s)": 194,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.55
   }
 ]
