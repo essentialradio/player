@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:09",
-    "Displayed Time": "18:09",
-    "Artist": "Billie Eilish",
-    "Title": "Birds of a Feather",
-    "Duration (s)": 204,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
-    "Scheduled Time": "18:13",
-    "Displayed Time": "18:13",
-    "Artist": "Sam Fender & Olivia Dean",
-    "Title": "Rein Me In",
-    "Duration (s)": 234,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 3.9,
-    "Full Duration (mins)": 4.05
-  },
-  {
-    "Hour": "2025-09-02T17:00:00Z",
     "Scheduled Time": "18:21",
     "Displayed Time": "18:21",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 181,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 3.02
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:46",
+    "Displayed Time": "07:46",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-04T06:00:00Z",
+    "Scheduled Time": "07:49",
+    "Displayed Time": "07:49",
+    "Artist": "Train",
+    "Title": "Hey, Soul Sister",
+    "Duration (s)": 209,
+    "Full Duration (s)": 217,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.62
   }
 ]
