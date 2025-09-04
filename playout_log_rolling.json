@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T07:00:00Z",
-    "Scheduled Time": "08:48",
-    "Displayed Time": "08:48",
-    "Artist": "Alex Warren",
-    "Title": "Ordinary",
-    "Duration (s)": 181,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-03T07:00:00Z",
-    "Scheduled Time": "08:53",
-    "Displayed Time": "08:53",
-    "Artist": "Tom Odell",
-    "Title": "Another Love (Tiesto Remix)",
-    "Duration (s)": 183,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 3.05,
-    "Full Duration (mins)": 3.08
-  },
-  {
-    "Hour": "2025-09-03T07:00:00Z",
     "Scheduled Time": "08:56",
     "Displayed Time": "08:56",
     "Artist": "Kenya Grace",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 253,
     "Duration (mins)": 4.03,
     "Full Duration (mins)": 4.22
+  },
+  {
+    "Hour": "2025-09-04T21:00:00Z",
+    "Scheduled Time": "22:41",
+    "Displayed Time": "22:41",
+    "Artist": "David Gray",
+    "Title": "This Year's Love",
+    "Duration (s)": 236,
+    "Full Duration (s)": 241,
+    "Duration (mins)": 3.93,
+    "Full Duration (mins)": 4.02
+  },
+  {
+    "Hour": "2025-09-04T21:00:00Z",
+    "Scheduled Time": "22:45",
+    "Displayed Time": "22:45",
+    "Artist": "Sydney Youngblood",
+    "Title": "If Only I Could",
+    "Duration (s)": 198,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.5
   }
 ]
