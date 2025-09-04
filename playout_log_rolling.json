@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T09:00:00Z",
-    "Scheduled Time": "10:50",
-    "Displayed Time": "10:50",
-    "Artist": "Mike Posner",
-    "Title": "Cooler Than Me",
-    "Duration (s)": 209,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-09-03T09:00:00Z",
     "Scheduled Time": "10:54",
     "Displayed Time": "10:54",
     "Artist": "Lady Gaga & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 236,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 3.93
+  },
+  {
+    "Hour": "2025-09-04T23:00:00Z",
+    "Scheduled Time": "00:43",
+    "Displayed Time": "00:43",
+    "Artist": "Ella Eyre",
+    "Title": "Space",
+    "Duration (s)": 159,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.7
   }
 ]
