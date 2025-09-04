@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:12",
-    "Displayed Time": "15:12",
-    "Artist": "Aerosmith",
-    "Title": "I Don't Want to Miss a Thing",
-    "Duration (s)": 251,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4.18,
-    "Full Duration (mins)": 4.47
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:16",
     "Displayed Time": "15:16",
     "Artist": "Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 2.95,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:44",
+    "Displayed Time": "04:44",
+    "Artist": "The Weeknd ft Daft Punk",
+    "Title": "Starboy",
+    "Duration (s)": 217,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.78
   }
 ]
