@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T20:00:00Z",
-    "Scheduled Time": "21:09",
-    "Displayed Time": "21:09",
-    "Artist": "Republica",
-    "Title": "Ready to Go",
-    "Duration (s)": 211,
-    "Full Duration (s)": 218,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.63
-  },
-  {
-    "Hour": "2025-09-02T20:00:00Z",
     "Scheduled Time": "21:13",
     "Displayed Time": "21:13",
     "Artist": "3T",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 244,
     "Duration (mins)": 3.98,
     "Full Duration (mins)": 4.07
+  },
+  {
+    "Hour": "2025-09-04T09:00:00Z",
+    "Scheduled Time": "10:55",
+    "Displayed Time": "10:55",
+    "Artist": "Laufey",
+    "Title": "Lover Girl",
+    "Duration (s)": 161,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.73
   }
 ]
