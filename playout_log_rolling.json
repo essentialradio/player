@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T15:00:00Z",
-    "Scheduled Time": "16:33",
-    "Displayed Time": "16:33",
-    "Artist": "Passenger",
-    "Title": "Let Her Go",
-    "Duration (s)": 208,
-    "Full Duration (s)": 216,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.6
-  },
-  {
-    "Hour": "2025-09-02T15:00:00Z",
     "Scheduled Time": "16:37",
     "Displayed Time": "16:37",
     "Artist": "John Farnham",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 217,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.62
+  },
+  {
+    "Hour": "2025-09-04T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "06:01",
+    "Artist": "Jonas Blue Featuring William Singe",
+    "Title": "Mama",
+    "Duration (s)": 176,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.03
   }
 ]
