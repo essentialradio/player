@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:10",
-    "Displayed Time": "04:10",
-    "Artist": "MK ft Chrystal",
-    "Title": "Dior",
-    "Duration (s)": 161,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.68,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:13",
     "Displayed Time": "04:13",
     "Artist": "Gwen Stefani",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-04T16:00:00Z",
+    "Scheduled Time": "17:50",
+    "Displayed Time": "17:50",
+    "Artist": "The Mavericks",
+    "Title": "Dance the Night Away",
+    "Duration (s)": 251,
+    "Full Duration (s)": 262,
+    "Duration (mins)": 4.18,
+    "Full Duration (mins)": 4.37
   }
 ]
