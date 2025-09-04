@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "06:01",
-    "Artist": "Dermot Kennedy",
-    "Title": "Outnumbered",
-    "Duration (s)": 196,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.27,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-09-03T05:00:00Z",
     "Scheduled Time": "06:05",
     "Displayed Time": "06:05",
     "Artist": "Queen",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 248,
     "Duration (mins)": 3.93,
     "Full Duration (mins)": 4.13
+  },
+  {
+    "Hour": "2025-09-04T18:00:00Z",
+    "Scheduled Time": "19:48",
+    "Displayed Time": "19:48",
+    "Artist": "Gerry Rafferty",
+    "Title": "Get It Right Next Time",
+    "Duration (s)": 264,
+    "Full Duration (s)": 282,
+    "Duration (mins)": 4.4,
+    "Full Duration (mins)": 4.7
   }
 ]
