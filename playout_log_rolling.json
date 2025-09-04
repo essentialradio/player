@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T16:00:00Z",
-    "Scheduled Time": "17:21",
-    "Displayed Time": "17:21",
-    "Artist": "Shakira",
-    "Title": "Underneath Your Clothes",
-    "Duration (s)": 211,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.65
-  },
-  {
-    "Hour": "2025-09-02T16:00:00Z",
     "Scheduled Time": "17:25",
     "Displayed Time": "17:25",
     "Artist": "Train",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.52,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-04T05:00:00Z",
+    "Scheduled Time": "06:48",
+    "Displayed Time": "06:48",
+    "Artist": "Erasure",
+    "Title": "A Little Respect",
+    "Duration (s)": 194,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.47
   }
 ]
