@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T19:00:00Z",
-    "Scheduled Time": "20:13",
-    "Displayed Time": "20:13",
-    "Artist": "Whitney Houston",
-    "Title": "So Emotional",
-    "Duration (s)": 258,
-    "Full Duration (s)": 272,
-    "Duration (mins)": 4.3,
-    "Full Duration (mins)": 4.53
-  },
-  {
-    "Hour": "2025-09-02T19:00:00Z",
     "Scheduled Time": "20:18",
     "Displayed Time": "20:18",
     "Artist": "The Pointer Sisters",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.88,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-04T08:00:00Z",
+    "Scheduled Time": "09:54",
+    "Displayed Time": "09:54",
+    "Artist": "The Weeknd",
+    "Title": "Save Your Tears",
+    "Duration (s)": 212,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.6
   }
 ]
