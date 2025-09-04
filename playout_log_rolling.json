@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T19:00:00Z",
-    "Scheduled Time": "20:30",
-    "Displayed Time": "20:30",
-    "Artist": "The Jam",
-    "Title": "That's Entertainment",
-    "Duration (s)": 193,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-09-02T19:00:00Z",
     "Scheduled Time": "20:33",
     "Displayed Time": "20:33",
     "Artist": "Don McLean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 188,
     "Duration (mins)": 3.05,
     "Full Duration (mins)": 3.13
+  },
+  {
+    "Hour": "2025-09-04T09:00:00Z",
+    "Scheduled Time": "10:10",
+    "Displayed Time": "10:10",
+    "Artist": "Jonas Brothers, Bailey Zimmerman",
+    "Title": "Strong Enough",
+    "Duration (s)": 145,
+    "Full Duration (s)": 149,
+    "Duration (mins)": 2.42,
+    "Full Duration (mins)": 2.48
   }
 ]
