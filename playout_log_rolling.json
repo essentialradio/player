@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T14:00:00Z",
-    "Scheduled Time": "15:31",
-    "Displayed Time": "15:31",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 186,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-02T14:00:00Z",
     "Scheduled Time": "15:35",
     "Displayed Time": "15:35",
     "Artist": "Culture Beat",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-04T04:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "05:01",
+    "Artist": "Years & Years",
+    "Title": "If You're Over Me",
+    "Duration (s)": 185,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.15
   }
 ]
