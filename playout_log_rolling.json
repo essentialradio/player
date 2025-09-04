@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T20:00:00Z",
-    "Scheduled Time": "21:40",
-    "Displayed Time": "21:40",
-    "Artist": "Gin Blossoms",
-    "Title": "Hey Jealousy",
-    "Duration (s)": 219,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-02T20:00:00Z",
     "Scheduled Time": "21:44",
     "Displayed Time": "21:44",
     "Artist": "Michael Bolton",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 236,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.93
+  },
+  {
+    "Hour": "2025-09-04T10:00:00Z",
+    "Scheduled Time": "11:28",
+    "Displayed Time": "11:28",
+    "Artist": "Bill Medley & Jennifer Warnes",
+    "Title": "(I've Had) The Time of My Life",
+    "Duration (s)": 264,
+    "Full Duration (s)": 288,
+    "Duration (mins)": 4.4,
+    "Full Duration (mins)": 4.8
   }
 ]
