@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T19:00:00Z",
-    "Scheduled Time": "20:10",
-    "Displayed Time": "20:10",
-    "Artist": "Yazoo",
-    "Title": "Nobody's Diary",
-    "Duration (s)": 235,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 3.92,
-    "Full Duration (mins)": 4.47
-  },
-  {
-    "Hour": "2025-09-02T19:00:00Z",
     "Scheduled Time": "20:13",
     "Displayed Time": "20:13",
     "Artist": "Whitney Houston",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 155,
     "Duration (mins)": 2.53,
     "Full Duration (mins)": 2.58
+  },
+  {
+    "Hour": "2025-09-04T08:00:00Z",
+    "Scheduled Time": "09:50",
+    "Displayed Time": "09:50",
+    "Artist": "Bob Sinclar Feat. Gary 'Nesta' Pine",
+    "Title": "Love Generation",
+    "Duration (s)": 173,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.95
   }
 ]
