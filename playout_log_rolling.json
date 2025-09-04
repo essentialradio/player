@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T23:00:00Z",
-    "Scheduled Time": "00:33",
-    "Displayed Time": "00:33",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 186,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-02T23:00:00Z",
     "Scheduled Time": "00:36",
     "Displayed Time": "00:36",
     "Artist": "Modjo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.83,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-04T13:00:00Z",
+    "Scheduled Time": "14:11",
+    "Displayed Time": "14:11",
+    "Artist": "Dasha",
+    "Title": "Not At This Party",
+    "Duration (s)": 209,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.53
   }
 ]
