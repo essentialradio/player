@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-02T15:00:00Z",
-    "Scheduled Time": "16:54",
-    "Displayed Time": "16:54",
-    "Artist": "Toni Braxton",
-    "Title": "Unbreak My Heart (Remix)",
-    "Duration (s)": 265,
-    "Full Duration (s)": 267,
-    "Duration (mins)": 4.42,
-    "Full Duration (mins)": 4.45
-  },
-  {
     "Hour": "2025-09-02T16:00:00Z",
     "Scheduled Time": "17:02",
     "Displayed Time": "17:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 283,
     "Duration (mins)": 4.58,
     "Full Duration (mins)": 4.72
+  },
+  {
+    "Hour": "2025-09-04T05:00:00Z",
+    "Scheduled Time": "06:23",
+    "Displayed Time": "06:23",
+    "Artist": "MK ft Chrystal",
+    "Title": "Dior",
+    "Duration (s)": 166,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.82
   }
 ]
