@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T08:00:00Z",
-    "Scheduled Time": "09:33",
-    "Displayed Time": "09:33",
-    "Artist": "Wet Wet Wet",
-    "Title": "Sweet Little Mystery",
-    "Duration (s)": 214,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-03T08:00:00Z",
     "Scheduled Time": "09:37",
     "Displayed Time": "09:37",
     "Artist": "Jamie XX, Romy, Oliver Sim, The XX",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 240,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 4.0
+  },
+  {
+    "Hour": "2025-09-04T22:00:00Z",
+    "Scheduled Time": "23:28",
+    "Displayed Time": "23:28",
+    "Artist": "Hootie And The Blowfish",
+    "Title": "Let Her Cry",
+    "Duration (s)": 294,
+    "Full Duration (s)": 307,
+    "Duration (mins)": 4.9,
+    "Full Duration (mins)": 5.12
   }
 ]
