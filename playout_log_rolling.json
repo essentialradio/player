@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T13:00:00Z",
-    "Scheduled Time": "14:32",
-    "Displayed Time": "14:32",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 172,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-02T13:00:00Z",
     "Scheduled Time": "14:35",
     "Displayed Time": "14:35",
     "Artist": "Deacon Blue",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 219,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.65
+  },
+  {
+    "Hour": "2025-09-04T03:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "04:01",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.75
   }
 ]
