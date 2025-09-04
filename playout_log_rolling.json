@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T04:00:00Z",
-    "Scheduled Time": "05:29",
-    "Displayed Time": "05:29",
-    "Artist": "Belinda Carlisle",
-    "Title": "Heaven Is a Place on Earth",
-    "Duration (s)": 226,
-    "Full Duration (s)": 244,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 4.07
-  },
-  {
-    "Hour": "2025-09-03T04:00:00Z",
     "Scheduled Time": "05:33",
     "Displayed Time": "05:33",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 158,
     "Duration (mins)": 2.5,
     "Full Duration (mins)": 2.63
+  },
+  {
+    "Hour": "2025-09-04T18:00:00Z",
+    "Scheduled Time": "19:15",
+    "Displayed Time": "19:15",
+    "Artist": "Mary Mason",
+    "Title": "Angel Of The Morning/Any Way You Want Me",
+    "Duration (s)": 222,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.92
   }
 ]
