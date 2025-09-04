@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:04",
-    "Displayed Time": "04:04",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 167,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.78,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
-    "Scheduled Time": "04:07",
-    "Displayed Time": "04:07",
-    "Artist": "Elton John & Dua Lipa",
-    "Title": "Cold Heart",
-    "Duration (s)": 185,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3.08,
-    "Full Duration (mins)": 3.2
-  },
-  {
-    "Hour": "2025-09-03T03:00:00Z",
     "Scheduled Time": "04:10",
     "Displayed Time": "04:10",
     "Artist": "MK ft Chrystal",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-04T16:00:00Z",
+    "Scheduled Time": "17:43",
+    "Displayed Time": "17:43",
+    "Artist": "Kenny Loggins",
+    "Title": "Footloose",
+    "Duration (s)": 217,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.77
+  },
+  {
+    "Hour": "2025-09-04T16:00:00Z",
+    "Scheduled Time": "17:47",
+    "Displayed Time": "17:47",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 175,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.05
   }
 ]
