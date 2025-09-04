@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-02T22:00:00Z",
-    "Scheduled Time": "23:32",
-    "Displayed Time": "23:32",
-    "Artist": "Soft Cell",
-    "Title": "Say Hello, Wave Goodbye",
-    "Duration (s)": 302,
-    "Full Duration (s)": 325,
-    "Duration (mins)": 5.03,
-    "Full Duration (mins)": 5.42
-  },
-  {
-    "Hour": "2025-09-02T22:00:00Z",
     "Scheduled Time": "23:42",
     "Displayed Time": "23:42",
     "Artist": "Chris Rea",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 163,
     "Duration (mins)": 2.63,
     "Full Duration (mins)": 2.72
+  },
+  {
+    "Hour": "2025-09-04T12:00:00Z",
+    "Scheduled Time": "13:20",
+    "Displayed Time": "13:20",
+    "Artist": "Sia",
+    "Title": "Gimme Love",
+    "Duration (s)": 170,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.97
   }
 ]
