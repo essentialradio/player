@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T08:00:00Z",
-    "Scheduled Time": "09:26",
-    "Displayed Time": "09:26",
-    "Artist": "George Michael",
-    "Title": "Too Funky",
-    "Duration (s)": 224,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3.73,
-    "Full Duration (mins)": 3.78
-  },
-  {
-    "Hour": "2025-09-03T08:00:00Z",
     "Scheduled Time": "09:30",
     "Displayed Time": "09:30",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 329,
     "Duration (mins)": 4.97,
     "Full Duration (mins)": 5.48
+  },
+  {
+    "Hour": "2025-09-04T22:00:00Z",
+    "Scheduled Time": "23:21",
+    "Displayed Time": "23:21",
+    "Artist": "Simply Red",
+    "Title": "If You Don't Know Me By Now",
+    "Duration (s)": 184,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.28
   }
 ]
