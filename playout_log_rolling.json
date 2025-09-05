@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T23:00:00Z",
-    "Scheduled Time": "00:16",
-    "Displayed Time": "00:16",
-    "Artist": "McFly",
-    "Title": "All About You",
-    "Duration (s)": 173,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 3.07
-  },
-  {
-    "Hour": "2025-09-03T23:00:00Z",
     "Scheduled Time": "00:22",
     "Displayed Time": "00:22",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 2.75,
     "Full Duration (mins)": 2.88
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:10",
+    "Displayed Time": "14:10",
+    "Artist": "Take That",
+    "Title": "You And Me",
+    "Duration (s)": 207,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.57
   }
 ]
