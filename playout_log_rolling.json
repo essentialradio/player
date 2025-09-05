@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-04T04:00:00Z",
-    "Scheduled Time": "05:53",
-    "Displayed Time": "05:53",
-    "Artist": "Travis",
-    "Title": "Driftwood",
-    "Duration (s)": 204,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.62
-  },
-  {
     "Hour": "2025-09-04T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "06:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:29",
+    "Displayed Time": "21:29",
+    "Artist": "PAWSA",
+    "Title": "Too Cool To Be Careless",
+    "Duration (s)": 215,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.67
   }
 ]
