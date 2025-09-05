@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T04:00:00Z",
-    "Scheduled Time": "05:05",
-    "Displayed Time": "05:05",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 167,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.78,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-04T04:00:00Z",
     "Scheduled Time": "05:08",
     "Displayed Time": "05:08",
     "Artist": "RAYE",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 184,
     "Duration (mins)": 2.97,
     "Full Duration (mins)": 3.07
+  },
+  {
+    "Hour": "2025-09-05T19:00:00Z",
+    "Scheduled Time": "20:40",
+    "Displayed Time": "20:40",
+    "Artist": "Dannii Minogue",
+    "Title": "Put the Needle on It",
+    "Duration (s)": 202,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.47
   }
 ]
