@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:53",
-    "Displayed Time": "20:53",
-    "Artist": "Alphaville",
-    "Title": "Big in Japan",
-    "Duration (s)": 218,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.63,
-    "Full Duration (mins)": 3.87
-  },
-  {
     "Hour": "2025-09-03T20:00:00Z",
     "Scheduled Time": "21:01",
     "Displayed Time": "21:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 2.75,
     "Full Duration (mins)": 2.88
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:09",
+    "Displayed Time": "11:09",
+    "Artist": "James Morrison ft Nelly Furtado",
+    "Title": "Broken Strings",
+    "Duration (s)": 240,
+    "Full Duration (s)": 256,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.27
   }
 ]
