@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:27",
-    "Displayed Time": "18:27",
-    "Artist": "Caity Baser",
-    "Title": "Running From Myself",
-    "Duration (s)": 152,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.53,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:30",
     "Displayed Time": "18:30",
     "Artist": "Ella Eyre",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 247,
     "Duration (mins)": 3.9,
     "Full Duration (mins)": 4.12
+  },
+  {
+    "Hour": "2025-09-05T07:00:00Z",
+    "Scheduled Time": "08:14",
+    "Displayed Time": "08:14",
+    "Artist": "Paloma Faith",
+    "Title": "Only Love Can Hurt Like This",
+    "Duration (s)": 214,
+    "Full Duration (s)": 217,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.62
   }
 ]
