@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T18:00:00Z",
-    "Scheduled Time": "19:35",
-    "Displayed Time": "19:35",
-    "Artist": "Dawn",
-    "Title": "Knock Three Times",
-    "Duration (s)": 161,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 2.68,
-    "Full Duration (mins)": 2.87
-  },
-  {
-    "Hour": "2025-09-03T18:00:00Z",
     "Scheduled Time": "19:38",
     "Displayed Time": "19:38",
     "Artist": "Harold Melvin & The Blue Notes",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-05T08:00:00Z",
+    "Scheduled Time": "09:34",
+    "Displayed Time": "09:34",
+    "Artist": "Bob Marley & The Wailers",
+    "Title": "Could You Be Loved",
+    "Duration (s)": 222,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.9
   }
 ]
