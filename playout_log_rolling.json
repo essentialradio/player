@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:47",
-    "Displayed Time": "20:47",
-    "Artist": "Kraftwerk",
-    "Title": "The Model",
-    "Duration (s)": 209,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.65
-  },
-  {
-    "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:50",
     "Displayed Time": "20:50",
     "Artist": "Los Lobos",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:03",
+    "Displayed Time": "11:03",
+    "Artist": "Ne-Yo",
+    "Title": "Miss Independent",
+    "Duration (s)": 228,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.85
   }
 ]
