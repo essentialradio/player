@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T03:00:00Z",
-    "Scheduled Time": "04:01",
-    "Displayed Time": "04:01",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 221,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-04T03:00:00Z",
     "Scheduled Time": "04:06",
     "Displayed Time": "04:06",
     "Artist": "The Verve",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2.3,
     "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-05T17:00:00Z",
+    "Scheduled Time": "18:54",
+    "Displayed Time": "18:54",
+    "Artist": "Taylor Swift",
+    "Title": "Blank Space (Taylor's Version)",
+    "Duration (s)": 224,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.87
   }
 ]
