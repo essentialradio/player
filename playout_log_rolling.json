@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T05:00:00Z",
-    "Scheduled Time": "06:48",
-    "Displayed Time": "06:48",
-    "Artist": "Erasure",
-    "Title": "A Little Respect",
-    "Duration (s)": 194,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-04T05:00:00Z",
     "Scheduled Time": "06:51",
     "Displayed Time": "06:51",
     "Artist": "Supermen Lovers & OneRepublic",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-05T21:00:00Z",
+    "Scheduled Time": "22:16",
+    "Displayed Time": "22:16",
+    "Artist": "Tony Di Bart",
+    "Title": "The Real Thing",
+    "Duration (s)": 222,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.8
   }
 ]
