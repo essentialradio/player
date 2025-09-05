@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:46",
-    "Displayed Time": "14:46",
-    "Artist": "Jorja Smith",
-    "Title": "With You",
-    "Duration (s)": 195,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:49",
     "Displayed Time": "14:49",
     "Artist": "Franz Ferdinand",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:25",
+    "Displayed Time": "04:25",
+    "Artist": "Ros\u00e9 & Bruno Mars",
+    "Title": "APT.",
+    "Duration (s)": 163,
+    "Full Duration (s)": 170,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.83
   }
 ]
