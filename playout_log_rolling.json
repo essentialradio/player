@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:25",
-    "Displayed Time": "20:25",
-    "Artist": "Bananarama",
-    "Title": "Cruel Summer",
-    "Duration (s)": 197,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.28,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:29",
     "Displayed Time": "20:29",
     "Artist": "A-Ha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-05T09:00:00Z",
+    "Scheduled Time": "10:33",
+    "Displayed Time": "10:33",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Bed Chem",
+    "Duration (s)": 165,
+    "Full Duration (s)": 172,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.87
   }
 ]
