@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T10:00:00Z",
-    "Scheduled Time": "11:50",
-    "Displayed Time": "11:50",
-    "Artist": "Europe",
-    "Title": "The Final Countdown",
-    "Duration (s)": 226,
-    "Full Duration (s)": 243,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 4.05
-  },
-  {
-    "Hour": "2025-09-03T10:00:00Z",
     "Scheduled Time": "11:54",
     "Displayed Time": "11:54",
     "Artist": "Vanessa Carlton",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.82,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-05T00:00:00Z",
+    "Scheduled Time": "01:40",
+    "Displayed Time": "01:40",
+    "Artist": "Years & Years ft Galantis",
+    "Title": "Sweet Talker",
+    "Duration (s)": 170,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.95
   }
 ]
