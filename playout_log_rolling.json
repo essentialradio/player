@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T21:00:00Z",
-    "Scheduled Time": "22:44",
-    "Displayed Time": "22:44",
-    "Artist": "Katie Melua",
-    "Title": "The Closest Thing to Crazy",
-    "Duration (s)": 246,
-    "Full Duration (s)": 250,
-    "Duration (mins)": 4.1,
-    "Full Duration (mins)": 4.17
-  },
-  {
-    "Hour": "2025-09-03T21:00:00Z",
     "Scheduled Time": "22:49",
     "Displayed Time": "22:49",
     "Artist": "Jann Arden",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.67,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-05T11:00:00Z",
+    "Scheduled Time": "12:49",
+    "Displayed Time": "12:49",
+    "Artist": "Heather Small",
+    "Title": "Proud",
+    "Duration (s)": 220,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.92
   }
 ]
