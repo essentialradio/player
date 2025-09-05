@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T22:00:00Z",
-    "Scheduled Time": "23:40",
-    "Displayed Time": "23:40",
-    "Artist": "The Stylistics",
-    "Title": "You Make Me Feel Brand New",
-    "Duration (s)": 312,
-    "Full Duration (s)": 328,
-    "Duration (mins)": 5.2,
-    "Full Duration (mins)": 5.47
-  },
-  {
-    "Hour": "2025-09-03T22:00:00Z",
     "Scheduled Time": "23:45",
     "Displayed Time": "23:45",
     "Artist": "Shakespears Sister",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-05T12:00:00Z",
+    "Scheduled Time": "13:38",
+    "Displayed Time": "13:38",
+    "Artist": "Primal Scream",
+    "Title": "Movin' on Up",
+    "Duration (s)": 192,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.58
   }
 ]
