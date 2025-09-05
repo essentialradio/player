@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T18:00:00Z",
-    "Scheduled Time": "19:47",
-    "Displayed Time": "19:47",
-    "Artist": "England Dan & John Ford Coley",
-    "Title": "I'd Really Love to See You Tonight",
-    "Duration (s)": 144,
-    "Full Duration (s)": 158,
-    "Duration (mins)": 2.4,
-    "Full Duration (mins)": 2.63
-  },
-  {
-    "Hour": "2025-09-03T18:00:00Z",
-    "Scheduled Time": "19:49",
-    "Displayed Time": "19:49",
-    "Artist": "The Cars",
-    "Title": "My Best Friend's Girl",
-    "Duration (s)": 207,
-    "Full Duration (s)": 221,
-    "Duration (mins)": 3.45,
-    "Full Duration (mins)": 3.68
-  },
-  {
-    "Hour": "2025-09-03T18:00:00Z",
     "Scheduled Time": "19:53",
     "Displayed Time": "19:53",
     "Artist": "Peter Frampton",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.7,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-05T08:00:00Z",
+    "Scheduled Time": "09:50",
+    "Displayed Time": "09:50",
+    "Artist": "Heatwave",
+    "Title": "Boogie Nights",
+    "Duration (s)": 206,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-05T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "10:02",
+    "Artist": "K-Pop Demon Hunters",
+    "Title": "Golden",
+    "Duration (s)": 189,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.25
   }
 ]
