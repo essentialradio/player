@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T20:00:00Z",
-    "Scheduled Time": "21:34",
-    "Displayed Time": "21:34",
-    "Artist": "Natalie Imbruglia",
-    "Title": "Torn",
-    "Duration (s)": 227,
-    "Full Duration (s)": 242,
-    "Duration (mins)": 3.78,
-    "Full Duration (mins)": 4.03
-  },
-  {
-    "Hour": "2025-09-03T20:00:00Z",
     "Scheduled Time": "21:41",
     "Displayed Time": "21:41",
     "Artist": "Annie Lennox",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:50",
+    "Displayed Time": "11:50",
+    "Artist": "Lisa Stansfield",
+    "Title": "All Around the World",
+    "Duration (s)": 250,
+    "Full Duration (s)": 267,
+    "Duration (mins)": 4.17,
+    "Full Duration (mins)": 4.45
   }
 ]
