@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T12:00:00Z",
-    "Scheduled Time": "13:07",
-    "Displayed Time": "13:07",
-    "Artist": "Benson Boone",
-    "Title": "Sorry I'm Here For Someone Else",
-    "Duration (s)": 148,
-    "Full Duration (s)": 157,
-    "Duration (mins)": 2.47,
-    "Full Duration (mins)": 2.62
-  },
-  {
-    "Hour": "2025-09-03T12:00:00Z",
     "Scheduled Time": "13:10",
     "Displayed Time": "13:10",
     "Artist": "The Eagles",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.38,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-05T01:00:00Z",
+    "Scheduled Time": "02:45",
+    "Displayed Time": "02:45",
+    "Artist": "Kelly Clarkson",
+    "Title": "Mr Know It All",
+    "Duration (s)": 220,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.88
   }
 ]
