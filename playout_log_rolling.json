@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T02:00:00Z",
-    "Scheduled Time": "03:09",
-    "Displayed Time": "03:09",
-    "Artist": "David Guetta & Sia",
-    "Title": "Beautiful People",
-    "Duration (s)": 180,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-04T02:00:00Z",
     "Scheduled Time": "03:12",
     "Displayed Time": "03:12",
     "Artist": "Justin Bieber",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-05T17:00:00Z",
+    "Scheduled Time": "18:11",
+    "Displayed Time": "18:11",
+    "Artist": "Casso, Raye, D-Block Europe",
+    "Title": "Prada",
+    "Duration (s)": 125,
+    "Full Duration (s)": 132,
+    "Duration (mins)": 2.08,
+    "Full Duration (mins)": 2.2
   }
 ]
