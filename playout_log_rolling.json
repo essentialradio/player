@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T18:00:00Z",
-    "Scheduled Time": "19:42",
-    "Displayed Time": "19:42",
-    "Artist": "Gloria Gaynor",
-    "Title": "Never Can Say Goodbye",
-    "Duration (s)": 168,
-    "Full Duration (s)": 177,
-    "Duration (mins)": 2.8,
-    "Full Duration (mins)": 2.95
-  },
-  {
-    "Hour": "2025-09-03T18:00:00Z",
     "Scheduled Time": "19:47",
     "Displayed Time": "19:47",
     "Artist": "England Dan & John Ford Coley",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.47,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-05T08:00:00Z",
+    "Scheduled Time": "09:42",
+    "Displayed Time": "09:42",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 162,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.77
   }
 ]
