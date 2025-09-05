@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T12:00:00Z",
-    "Scheduled Time": "13:13",
-    "Displayed Time": "13:13",
-    "Artist": "Tom Grennan",
-    "Title": "Little Bit of Love",
-    "Duration (s)": 197,
-    "Full Duration (s)": 205,
-    "Duration (mins)": 3.28,
-    "Full Duration (mins)": 3.42
-  },
-  {
-    "Hour": "2025-09-03T12:00:00Z",
     "Scheduled Time": "13:21",
     "Displayed Time": "13:21",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 231,
     "Duration (mins)": 3.6,
     "Full Duration (mins)": 3.85
+  },
+  {
+    "Hour": "2025-09-05T01:00:00Z",
+    "Scheduled Time": "02:53",
+    "Displayed Time": "02:53",
+    "Artist": "Savage Garden",
+    "Title": "I Knew I Loved You",
+    "Duration (s)": 237,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.17
   }
 ]
