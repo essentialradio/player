@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-04T05:00:00Z",
-    "Scheduled Time": "06:54",
-    "Displayed Time": "06:54",
-    "Artist": "Chic",
-    "Title": "Everybody Dance",
-    "Duration (s)": 194,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.55
-  },
-  {
     "Hour": "2025-09-04T06:00:00Z",
     "Scheduled Time": "07:04",
     "Displayed Time": "07:04",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 173,
     "Duration (mins)": 2.67,
     "Full Duration (mins)": 2.88
+  },
+  {
+    "Hour": "2025-09-05T21:00:00Z",
+    "Scheduled Time": "22:26",
+    "Displayed Time": "22:26",
+    "Artist": "Gouryella",
+    "Title": "Walhalla",
+    "Duration (s)": 221,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.82
   }
 ]
