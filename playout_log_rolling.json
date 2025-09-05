@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T03:00:00Z",
-    "Scheduled Time": "04:32",
-    "Displayed Time": "04:32",
-    "Artist": "The Waterboys",
-    "Title": "The Whole of the Moon",
-    "Duration (s)": 291,
-    "Full Duration (s)": 301,
-    "Duration (mins)": 4.85,
-    "Full Duration (mins)": 5.02
-  },
-  {
-    "Hour": "2025-09-04T03:00:00Z",
     "Scheduled Time": "04:37",
     "Displayed Time": "04:37",
     "Artist": "Alex Warren",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 3.97,
     "Full Duration (mins)": 4.05
+  },
+  {
+    "Hour": "2025-09-05T19:00:00Z",
+    "Scheduled Time": "20:13",
+    "Displayed Time": "20:13",
+    "Artist": "Jazzy x KILIMANJARO",
+    "Title": "No Bad VIbes",
+    "Duration (s)": 159,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.7
   }
 ]
