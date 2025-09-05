@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:25",
-    "Displayed Time": "02:25",
-    "Artist": "Taylor Swift",
-    "Title": "Anti-Hero",
-    "Duration (s)": 191,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.18,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:28",
     "Displayed Time": "02:28",
     "Artist": "Culture Club",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 287,
     "Duration (mins)": 4.63,
     "Full Duration (mins)": 4.78
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:23",
+    "Displayed Time": "17:23",
+    "Artist": "Red Box",
+    "Title": "For America",
+    "Duration (s)": 215,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.73
   }
 ]
