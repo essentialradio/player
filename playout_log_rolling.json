@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:50",
-    "Displayed Time": "20:50",
-    "Artist": "Los Lobos",
-    "Title": "La Bamba",
-    "Duration (s)": 156,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.6,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:53",
     "Displayed Time": "20:53",
     "Artist": "Alphaville",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 231,
     "Duration (mins)": 3.8,
     "Full Duration (mins)": 3.85
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:07",
+    "Displayed Time": "11:07",
+    "Artist": "2 Unlimited",
+    "Title": "Get Ready For This",
+    "Duration (s)": 165,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.88
   }
 ]
