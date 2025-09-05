@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T00:00:00Z",
-    "Scheduled Time": "01:36",
-    "Displayed Time": "01:36",
-    "Artist": "Britney Spears",
-    "Title": "Gimme More",
-    "Duration (s)": 215,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.88
-  },
-  {
-    "Hour": "2025-09-04T00:00:00Z",
     "Scheduled Time": "01:43",
     "Displayed Time": "01:43",
     "Artist": "Dasha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-05T15:00:00Z",
+    "Scheduled Time": "16:31",
+    "Displayed Time": "16:31",
+    "Artist": "Marshmello & Bastille",
+    "Title": "Happier",
+    "Duration (s)": 204,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.57
   }
 ]
