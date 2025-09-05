@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:42",
-    "Displayed Time": "18:42",
-    "Artist": "Perrie",
-    "Title": "If He Wanted To He Would",
-    "Duration (s)": 193,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.22,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:46",
     "Displayed Time": "18:46",
     "Artist": "Ella Henderson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.72,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-05T07:00:00Z",
+    "Scheduled Time": "08:36",
+    "Displayed Time": "08:36",
+    "Artist": "OMC",
+    "Title": "How Bizarre",
+    "Duration (s)": 223,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.77
   }
 ]
