@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T10:00:00Z",
-    "Scheduled Time": "11:12",
-    "Displayed Time": "11:12",
-    "Artist": "Michael Jackson",
-    "Title": "Man in the Mirror",
-    "Duration (s)": 303,
-    "Full Duration (s)": 313,
-    "Duration (mins)": 5.05,
-    "Full Duration (mins)": 5.22
-  },
-  {
-    "Hour": "2025-09-03T10:00:00Z",
     "Scheduled Time": "11:17",
     "Displayed Time": "11:17",
     "Artist": "Crowded House",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-05T00:00:00Z",
+    "Scheduled Time": "01:06",
+    "Displayed Time": "01:06",
+    "Artist": "Barenaked Ladies",
+    "Title": "One Week",
+    "Duration (s)": 162,
+    "Full Duration (s)": 170,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.83
   }
 ]
