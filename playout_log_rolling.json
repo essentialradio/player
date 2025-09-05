@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-03T18:00:00Z",
-    "Scheduled Time": "19:53",
-    "Displayed Time": "19:53",
-    "Artist": "Peter Frampton",
-    "Title": "Show Me The Way",
-    "Duration (s)": 186,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3.1,
-    "Full Duration (mins)": 3.32
-  },
-  {
     "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:01",
     "Displayed Time": "20:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-05T09:00:00Z",
+    "Scheduled Time": "10:05",
+    "Displayed Time": "10:05",
+    "Artist": "Coldplay",
+    "Title": "A Sky Full of Stars",
+    "Duration (s)": 230,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.95
   }
 ]
