@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-03T10:00:00Z",
-    "Scheduled Time": "11:54",
-    "Displayed Time": "11:54",
-    "Artist": "Vanessa Carlton",
-    "Title": "A Thousand Miles",
-    "Duration (s)": 226,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 3.93
-  },
-  {
     "Hour": "2025-09-03T11:00:00Z",
     "Scheduled Time": "12:02",
     "Displayed Time": "12:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-05T00:00:00Z",
+    "Scheduled Time": "01:42",
+    "Displayed Time": "01:42",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 158,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.77
   }
 ]
