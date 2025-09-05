@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:27",
-    "Displayed Time": "16:27",
-    "Artist": "Peggy Gou",
-    "Title": "(It Goes Like) Nanana",
-    "Duration (s)": 222,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:33",
     "Displayed Time": "16:33",
     "Artist": "Imagine Dragons",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.68,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:09",
+    "Displayed Time": "06:09",
+    "Artist": "Disturbed",
+    "Title": "The Sound of Silence",
+    "Duration (s)": 243,
+    "Full Duration (s)": 248,
+    "Duration (mins)": 4.05,
+    "Full Duration (mins)": 4.13
   }
 ]
