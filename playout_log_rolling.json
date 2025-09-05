@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T21:00:00Z",
-    "Scheduled Time": "22:26",
-    "Displayed Time": "22:26",
-    "Artist": "Sting",
-    "Title": "Fields of Gold",
-    "Duration (s)": 212,
-    "Full Duration (s)": 219,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.65
-  },
-  {
-    "Hour": "2025-09-03T21:00:00Z",
     "Scheduled Time": "22:29",
     "Displayed Time": "22:29",
     "Artist": "Paul Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 250,
     "Duration (mins)": 3.85,
     "Full Duration (mins)": 4.17
+  },
+  {
+    "Hour": "2025-09-05T11:00:00Z",
+    "Scheduled Time": "12:36",
+    "Displayed Time": "12:36",
+    "Artist": "Luke Holloway",
+    "Title": "I Have One Daughter (Viral TikTok Song 2025)",
+    "Duration (s)": 137,
+    "Full Duration (s)": 144,
+    "Duration (mins)": 2.28,
+    "Full Duration (mins)": 2.4
   }
 ]
