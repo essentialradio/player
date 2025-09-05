@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:49",
-    "Displayed Time": "14:49",
-    "Artist": "Franz Ferdinand",
-    "Title": "Build It Up",
-    "Duration (s)": 180,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:53",
     "Displayed Time": "14:53",
     "Artist": "Jason Derulo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 170,
     "Duration (mins)": 2.72,
     "Full Duration (mins)": 2.83
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:28",
+    "Displayed Time": "04:28",
+    "Artist": "Alanis Morissette",
+    "Title": "Ironic",
+    "Duration (s)": 211,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.8
   }
 ]
