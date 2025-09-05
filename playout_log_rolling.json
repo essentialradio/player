@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T04:00:00Z",
-    "Scheduled Time": "05:36",
-    "Displayed Time": "05:36",
-    "Artist": "Liberty X",
-    "Title": "Got To Have Your Love",
-    "Duration (s)": 219,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-04T04:00:00Z",
     "Scheduled Time": "05:44",
     "Displayed Time": "05:44",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:12",
+    "Displayed Time": "21:12",
+    "Artist": "Interplanetary Criminal & Original Koffee",
+    "Title": "Slow Burner",
+    "Duration (s)": 206,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.55
   }
 ]
