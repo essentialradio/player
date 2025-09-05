@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:46",
-    "Displayed Time": "15:46",
-    "Artist": "Sekou",
-    "Title": "Catching Bodies",
-    "Duration (s)": 174,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 3.1
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:49",
     "Displayed Time": "15:49",
     "Artist": "Sugababes",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:26",
+    "Displayed Time": "05:26",
+    "Artist": "Dermot Kennedy",
+    "Title": "Kiss Me",
+    "Duration (s)": 212,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.82
   }
 ]
