@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:15",
-    "Displayed Time": "02:15",
-    "Artist": "Kylie Minogue",
-    "Title": "In Your Eyes",
-    "Duration (s)": 188,
-    "Full Duration (s)": 199,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.32
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:22",
     "Displayed Time": "02:22",
     "Artist": "Wet Leg",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 188,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.13
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:12",
+    "Displayed Time": "17:12",
+    "Artist": "Shabba Ranks with Chevelle Franklin",
+    "Title": "Mr Loverman",
+    "Duration (s)": 203,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.63
   }
 ]
