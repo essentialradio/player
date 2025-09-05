@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T12:00:00Z",
-    "Scheduled Time": "13:31",
-    "Displayed Time": "13:31",
-    "Artist": "Charlie Puth",
-    "Title": "Attention",
-    "Duration (s)": 198,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-03T12:00:00Z",
     "Scheduled Time": "13:35",
     "Displayed Time": "13:35",
     "Artist": "Laufey",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 210,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.5
+  },
+  {
+    "Hour": "2025-09-05T02:00:00Z",
+    "Scheduled Time": "03:12",
+    "Displayed Time": "03:12",
+    "Artist": "Chappell Roan",
+    "Title": "Hot To Go!",
+    "Duration (s)": 180,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.08
   }
 ]
