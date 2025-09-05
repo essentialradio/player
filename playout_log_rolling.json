@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:46",
-    "Displayed Time": "18:46",
-    "Artist": "Ella Henderson",
-    "Title": "Me and You",
-    "Duration (s)": 162,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.7,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:48",
-    "Displayed Time": "18:48",
-    "Artist": "Laufey",
-    "Title": "Lover Girl",
-    "Duration (s)": 159,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:51",
     "Displayed Time": "18:51",
     "Artist": "Gracie Abrams",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 226,
     "Duration (mins)": 3.72,
     "Full Duration (mins)": 3.77
+  },
+  {
+    "Hour": "2025-09-05T07:00:00Z",
+    "Scheduled Time": "08:41",
+    "Displayed Time": "08:41",
+    "Artist": "The Script",
+    "Title": "The Man Who Can't Be Moved",
+    "Duration (s)": 234,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.9,
+    "Full Duration (mins)": 3.98
+  },
+  {
+    "Hour": "2025-09-05T07:00:00Z",
+    "Scheduled Time": "08:50",
+    "Displayed Time": "08:50",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway",
+    "Duration (s)": 245,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.2
   }
 ]
