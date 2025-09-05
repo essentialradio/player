@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:12",
-    "Displayed Time": "14:12",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 226,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:16",
     "Displayed Time": "14:16",
     "Artist": "Wunderhorse",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 202,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.37
+  },
+  {
+    "Hour": "2025-09-05T02:00:00Z",
+    "Scheduled Time": "03:53",
+    "Displayed Time": "03:53",
+    "Artist": "Mya",
+    "Title": "Case of the Ex",
+    "Duration (s)": 191,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.28
   }
 ]
