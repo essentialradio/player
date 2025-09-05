@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T21:00:00Z",
-    "Scheduled Time": "22:06",
-    "Displayed Time": "22:06",
-    "Artist": "Harry Styles",
-    "Title": "Golden",
-    "Duration (s)": 204,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-03T21:00:00Z",
     "Scheduled Time": "22:09",
     "Displayed Time": "22:09",
     "Artist": "Atlantic Starr",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 186,
     "Duration (mins)": 3.03,
     "Full Duration (mins)": 3.1
+  },
+  {
+    "Hour": "2025-09-05T11:00:00Z",
+    "Scheduled Time": "12:19",
+    "Displayed Time": "12:19",
+    "Artist": "Taylor Swift",
+    "Title": "Anti-Hero",
+    "Duration (s)": 195,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.35
   }
 ]
