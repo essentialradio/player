@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T00:00:00Z",
-    "Scheduled Time": "01:30",
-    "Displayed Time": "01:30",
-    "Artist": "Phats & Small",
-    "Title": "Turn Around",
-    "Duration (s)": 198,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.55
-  },
-  {
-    "Hour": "2025-09-04T00:00:00Z",
     "Scheduled Time": "01:33",
     "Displayed Time": "01:33",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 216,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.6
+  },
+  {
+    "Hour": "2025-09-05T15:00:00Z",
+    "Scheduled Time": "16:21",
+    "Displayed Time": "16:21",
+    "Artist": "Ed Sheeran",
+    "Title": "Bad Habits",
+    "Duration (s)": 217,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.85
   }
 ]
