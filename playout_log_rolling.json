@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T22:00:00Z",
-    "Scheduled Time": "23:33",
-    "Displayed Time": "23:33",
-    "Artist": "Paul Weller",
-    "Title": "You Do Something to Me",
-    "Duration (s)": 201,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-03T22:00:00Z",
     "Scheduled Time": "23:40",
     "Displayed Time": "23:40",
     "Artist": "The Stylistics",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-05T12:00:00Z",
+    "Scheduled Time": "13:32",
+    "Displayed Time": "13:32",
+    "Artist": "Sonny Fodera, Jazzy",
+    "Title": "All This Time",
+    "Duration (s)": 212,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.73
   }
 ]
