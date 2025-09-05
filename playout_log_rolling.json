@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:17",
-    "Displayed Time": "20:17",
-    "Artist": "INXS",
-    "Title": "Devil Inside",
-    "Duration (s)": 217,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.88
-  },
-  {
-    "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:25",
     "Displayed Time": "20:25",
     "Artist": "Bananarama",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-05T09:00:00Z",
+    "Scheduled Time": "10:29",
+    "Displayed Time": "10:29",
+    "Artist": "One Direction",
+    "Title": "Steal My Girl",
+    "Duration (s)": 224,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.78
   }
 ]
