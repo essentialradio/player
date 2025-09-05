@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T05:00:00Z",
-    "Scheduled Time": "06:12",
-    "Displayed Time": "06:12",
-    "Artist": "The Lottery Winners",
-    "Title": "Turn Around",
-    "Duration (s)": 168,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 2.8,
-    "Full Duration (mins)": 2.85
-  },
-  {
-    "Hour": "2025-09-04T05:00:00Z",
     "Scheduled Time": "06:15",
     "Displayed Time": "06:15",
     "Artist": "Justin Timberlake",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:43",
+    "Displayed Time": "21:43",
+    "Artist": "Orbital",
+    "Title": "Chime",
+    "Duration (s)": 188,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.23
   }
 ]
