@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T11:00:00Z",
-    "Scheduled Time": "12:50",
-    "Displayed Time": "12:50",
-    "Artist": "Amy Macdonald",
-    "Title": "Can You Hear Me",
-    "Duration (s)": 200,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.33,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-03T11:00:00Z",
     "Scheduled Time": "12:53",
     "Displayed Time": "12:53",
     "Artist": "JLS",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-05T01:00:00Z",
+    "Scheduled Time": "02:32",
+    "Displayed Time": "02:32",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 176,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.12
   }
 ]
