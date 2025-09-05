@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:53",
-    "Displayed Time": "15:53",
-    "Artist": "Mr Probz",
-    "Title": "Waves",
-    "Duration (s)": 200,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3.33,
-    "Full Duration (mins)": 3.38
-  },
-  {
     "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:02",
     "Displayed Time": "16:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 185,
     "Duration (mins)": 2.95,
     "Full Duration (mins)": 3.08
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:33",
+    "Displayed Time": "05:33",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 214,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.75
   }
 ]
