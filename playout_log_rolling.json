@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T20:00:00Z",
-    "Scheduled Time": "21:27",
-    "Displayed Time": "21:27",
-    "Artist": "Shaggy",
-    "Title": "Oh Carolina",
-    "Duration (s)": 183,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 3.05,
-    "Full Duration (mins)": 3.18
-  },
-  {
-    "Hour": "2025-09-03T20:00:00Z",
-    "Scheduled Time": "21:30",
-    "Displayed Time": "21:30",
-    "Artist": "Robert Palmer",
-    "Title": "Know By Now",
-    "Duration (s)": 221,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-03T20:00:00Z",
     "Scheduled Time": "21:34",
     "Displayed Time": "21:34",
     "Artist": "Natalie Imbruglia",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 207,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.45
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:43",
+    "Displayed Time": "11:43",
+    "Artist": "Anastacia",
+    "Title": "Left Outside Alone",
+    "Duration (s)": 210,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:47",
+    "Displayed Time": "11:47",
+    "Artist": "Will Smith",
+    "Title": "Gettin' Jiggy Wit It",
+    "Duration (s)": 217,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.8
   }
 ]
