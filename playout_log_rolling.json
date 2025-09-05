@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:22",
-    "Displayed Time": "15:22",
-    "Artist": "Jake Bugg",
-    "Title": "Lightning Bolt",
-    "Duration (s)": 138,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2.3,
-    "Full Duration (mins)": 2.38
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:24",
     "Displayed Time": "15:24",
     "Artist": "Mumford & Sons",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 250,
     "Duration (mins)": 4.05,
     "Full Duration (mins)": 4.17
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:02",
+    "Displayed Time": "05:02",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17
   }
 ]
