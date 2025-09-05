@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:49",
-    "Displayed Time": "15:49",
-    "Artist": "Sugababes",
-    "Title": "Round Round",
-    "Duration (s)": 223,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:53",
     "Displayed Time": "15:53",
     "Artist": "Mr Probz",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 229,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:30",
+    "Displayed Time": "05:30",
+    "Artist": "RUN-DMC",
+    "Title": "It's Tricky",
+    "Duration (s)": 177,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.08
   }
 ]
