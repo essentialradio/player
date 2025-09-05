@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T11:00:00Z",
-    "Scheduled Time": "12:46",
-    "Displayed Time": "12:46",
-    "Artist": "Wet Leg",
-    "Title": "Catch These Fists",
-    "Duration (s)": 182,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3.03,
-    "Full Duration (mins)": 3.15
-  },
-  {
-    "Hour": "2025-09-03T11:00:00Z",
     "Scheduled Time": "12:50",
     "Displayed Time": "12:50",
     "Artist": "Amy Macdonald",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.77,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-05T01:00:00Z",
+    "Scheduled Time": "02:29",
+    "Displayed Time": "02:29",
+    "Artist": "The Bluetones",
+    "Title": "Slight Return",
+    "Duration (s)": 184,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.3
   }
 ]
