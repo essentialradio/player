@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T03:00:00Z",
-    "Scheduled Time": "04:10",
-    "Displayed Time": "04:10",
-    "Artist": "Rihanna",
-    "Title": "What's My Name?",
-    "Duration (s)": 206,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.43,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-09-04T03:00:00Z",
     "Scheduled Time": "04:14",
     "Displayed Time": "04:14",
     "Artist": "Pink",
@@ -5487,6 +5476,17 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.73,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-05T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "19:01",
+    "Artist": "Lee Everest",
+    "Title": "Ready for the Weekend",
+    "Duration (s)": 1129,
+    "Full Duration (s)": 1133,
+    "Duration (mins)": 18.82,
+    "Full Duration (mins)": 18.88
   },
   {
     "Hour": "2025-09-05T18:00:00Z",
