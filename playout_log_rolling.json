@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-03T16:00:00Z",
-    "Scheduled Time": "17:53",
-    "Displayed Time": "17:53",
-    "Artist": "Tom Grennan",
-    "Title": "Shadowboxing",
-    "Duration (s)": 168,
-    "Full Duration (s)": 173,
-    "Duration (mins)": 2.8,
-    "Full Duration (mins)": 2.88
-  },
-  {
     "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:01",
     "Displayed Time": "18:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 114,
     "Duration (mins)": 1.9,
     "Full Duration (mins)": 1.9
+  },
+  {
+    "Hour": "2025-09-05T06:00:00Z",
+    "Scheduled Time": "07:37",
+    "Displayed Time": "07:37",
+    "Artist": "Gala",
+    "Title": "Freed From Desire",
+    "Duration (s)": 208,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.58
   }
 ]
