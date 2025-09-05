@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:02",
-    "Displayed Time": "15:02",
-    "Artist": "HUNTR/X, EJAE, Audrey Nuna, REI AMI",
-    "Title": "Golden",
-    "Duration (s)": 184,
-    "Full Duration (s)": 195,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.25
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:05",
     "Displayed Time": "15:05",
     "Artist": "Toby Lee",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.78,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:34",
+    "Displayed Time": "04:34",
+    "Artist": "Jack McManus",
+    "Title": "Bang On The Piano",
+    "Duration (s)": 187,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.3
   }
 ]
