@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T00:00:00Z",
-    "Scheduled Time": "01:43",
-    "Displayed Time": "01:43",
-    "Artist": "Dasha",
-    "Title": "Not At This Party",
-    "Duration (s)": 203,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.38,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-04T00:00:00Z",
     "Scheduled Time": "01:47",
     "Displayed Time": "01:47",
     "Artist": "Kelly Clarkson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-05T15:00:00Z",
+    "Scheduled Time": "16:34",
+    "Displayed Time": "16:34",
+    "Artist": "Ultravox",
+    "Title": "Vienna",
+    "Duration (s)": 262,
+    "Full Duration (s)": 278,
+    "Duration (mins)": 4.37,
+    "Full Duration (mins)": 4.63
   }
 ]
