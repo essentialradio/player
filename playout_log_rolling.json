@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T21:00:00Z",
-    "Scheduled Time": "22:34",
-    "Displayed Time": "22:34",
-    "Artist": "Sade",
-    "Title": "No Ordinary Love",
-    "Duration (s)": 231,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.85,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-03T21:00:00Z",
     "Scheduled Time": "22:41",
     "Displayed Time": "22:41",
     "Artist": "Billie Eilish",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 194,
     "Duration (mins)": 2.95,
     "Full Duration (mins)": 3.23
+  },
+  {
+    "Hour": "2025-09-05T11:00:00Z",
+    "Scheduled Time": "12:42",
+    "Displayed Time": "12:42",
+    "Artist": "Ella Eyre",
+    "Title": "Space",
+    "Duration (s)": 158,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.7
   }
 ]
