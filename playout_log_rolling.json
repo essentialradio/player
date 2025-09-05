@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T18:00:00Z",
-    "Scheduled Time": "19:25",
-    "Displayed Time": "19:25",
-    "Artist": "The Beatles",
-    "Title": "Let It Be",
-    "Duration (s)": 220,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.67,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-03T18:00:00Z",
     "Scheduled Time": "19:32",
     "Displayed Time": "19:32",
     "Artist": "Andrew Gold",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-05T08:00:00Z",
+    "Scheduled Time": "09:27",
+    "Displayed Time": "09:27",
+    "Artist": "EMF",
+    "Title": "Unbelievable",
+    "Duration (s)": 208,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.5
   }
 ]
