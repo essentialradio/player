@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:05",
-    "Displayed Time": "15:05",
-    "Artist": "Toby Lee",
-    "Title": "Count On Me",
-    "Duration (s)": 184,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.28
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:08",
     "Displayed Time": "15:08",
     "Artist": "Gigi Perez",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:41",
+    "Displayed Time": "04:41",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 177,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.12
   }
 ]
