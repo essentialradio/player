@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T22:00:00Z",
-    "Scheduled Time": "23:10",
-    "Displayed Time": "23:10",
-    "Artist": "Macy Gray",
-    "Title": "I Try",
-    "Duration (s)": 217,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.97
-  },
-  {
-    "Hour": "2025-09-03T22:00:00Z",
     "Scheduled Time": "23:13",
     "Displayed Time": "23:13",
     "Artist": "Ace of Base",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-05T12:00:00Z",
+    "Scheduled Time": "13:14",
+    "Displayed Time": "13:14",
+    "Artist": "David Guetta, Anne-Marie, Coi Leray",
+    "Title": "Baby Don't Hurt Me",
+    "Duration (s)": 134,
+    "Full Duration (s)": 140,
+    "Duration (mins)": 2.23,
+    "Full Duration (mins)": 2.33
   }
 ]
