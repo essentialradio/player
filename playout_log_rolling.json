@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T23:00:00Z",
-    "Scheduled Time": "00:06",
-    "Displayed Time": "00:06",
-    "Artist": "Blur",
-    "Title": "Parklife",
-    "Duration (s)": 176,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.93,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-03T23:00:00Z",
     "Scheduled Time": "00:09",
     "Displayed Time": "00:09",
     "Artist": "Katy Perry ft Doechii",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:01",
+    "Displayed Time": "14:01",
+    "Artist": "John Newman",
+    "Title": "Love Me Again",
+    "Duration (s)": 206,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.58
   }
 ]
