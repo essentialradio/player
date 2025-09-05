@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T20:00:00Z",
-    "Scheduled Time": "21:01",
-    "Displayed Time": "21:01",
-    "Artist": "Ocean Colour Scene",
-    "Title": "The Riverboat Song",
-    "Duration (s)": 232,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 3.87,
-    "Full Duration (mins)": 3.95
-  },
-  {
-    "Hour": "2025-09-03T20:00:00Z",
     "Scheduled Time": "21:06",
     "Displayed Time": "21:06",
     "Artist": "James",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 256,
     "Duration (mins)": 4.0,
     "Full Duration (mins)": 4.27
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:14",
+    "Displayed Time": "11:14",
+    "Artist": "Eurythmics",
+    "Title": "Thorn in My Side",
+    "Duration (s)": 237,
+    "Full Duration (s)": 255,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.25
   }
 ]
