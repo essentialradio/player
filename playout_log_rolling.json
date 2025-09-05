@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:50",
-    "Displayed Time": "02:50",
-    "Artist": "Amy Studt",
-    "Title": "Misfit",
-    "Duration (s)": 192,
-    "Full Duration (s)": 206,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.43
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:53",
     "Displayed Time": "02:53",
     "Artist": "Journey",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 231,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.85
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:52",
+    "Displayed Time": "17:52",
+    "Artist": "Lene Marlin",
+    "Title": "Sitting Down Here",
+    "Duration (s)": 226,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 3.77,
+    "Full Duration (mins)": 3.88
   }
 ]
