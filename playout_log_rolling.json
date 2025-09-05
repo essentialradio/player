@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:02",
-    "Displayed Time": "16:02",
-    "Artist": "Calvin Harris, Ellie Goulding",
-    "Title": "Miracle",
-    "Duration (s)": 171,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 3.1
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:05",
     "Displayed Time": "16:05",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:41",
+    "Displayed Time": "05:41",
+    "Artist": "The Vamps ft Demi Lovato",
+    "Title": "Somebody to You",
+    "Duration (s)": 173,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.05
   }
 ]
