@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:08",
-    "Displayed Time": "16:08",
-    "Artist": "Vance Joy",
-    "Title": "Riptide",
-    "Duration (s)": 192,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:12",
     "Displayed Time": "16:12",
     "Artist": "Addison Rae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 143,
     "Duration (mins)": 2.3,
     "Full Duration (mins)": 2.38
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:46",
+    "Displayed Time": "05:46",
+    "Artist": "Texas",
+    "Title": "Say What You Want",
+    "Duration (s)": 212,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.85
   }
 ]
