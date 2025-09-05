@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:15",
-    "Displayed Time": "15:15",
-    "Artist": "Tate McRae",
-    "Title": "Just Keep Watching",
-    "Duration (s)": 139,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2.32,
-    "Full Duration (mins)": 2.38
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:22",
     "Displayed Time": "15:22",
     "Artist": "Jake Bugg",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:52",
+    "Displayed Time": "04:52",
+    "Artist": "Moby",
+    "Title": "Natural Blues",
+    "Duration (s)": 243,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 4.05,
+    "Full Duration (mins)": 4.17
   }
 ]
