@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T21:00:00Z",
-    "Scheduled Time": "22:29",
-    "Displayed Time": "22:29",
-    "Artist": "Paul Young",
-    "Title": "Everything Must Change",
-    "Duration (s)": 266,
-    "Full Duration (s)": 278,
-    "Duration (mins)": 4.43,
-    "Full Duration (mins)": 4.63
-  },
-  {
-    "Hour": "2025-09-03T21:00:00Z",
     "Scheduled Time": "22:34",
     "Displayed Time": "22:34",
     "Artist": "Sade",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 144,
     "Duration (mins)": 2.28,
     "Full Duration (mins)": 2.4
+  },
+  {
+    "Hour": "2025-09-05T11:00:00Z",
+    "Scheduled Time": "12:39",
+    "Displayed Time": "12:39",
+    "Artist": "Faith Hill",
+    "Title": "This Kiss",
+    "Duration (s)": 177,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.23
   }
 ]
