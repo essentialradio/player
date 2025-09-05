@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T04:00:00Z",
-    "Scheduled Time": "05:11",
-    "Displayed Time": "05:11",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 175,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-04T04:00:00Z",
     "Scheduled Time": "05:14",
     "Displayed Time": "05:14",
     "Artist": "Craig David",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-05T19:00:00Z",
+    "Scheduled Time": "20:47",
+    "Displayed Time": "20:47",
+    "Artist": "Aitch x Bou",
+    "Title": "Raving In The Studio",
+    "Duration (s)": 181,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.07
   }
 ]
