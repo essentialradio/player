@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T06:00:00Z",
-    "Scheduled Time": "07:35",
-    "Displayed Time": "07:35",
-    "Artist": "Tommy Richman",
-    "Title": "Million Dollar Baby",
-    "Duration (s)": 153,
-    "Full Duration (s)": 155,
-    "Duration (mins)": 2.55,
-    "Full Duration (mins)": 2.58
-  },
-  {
-    "Hour": "2025-09-04T06:00:00Z",
     "Scheduled Time": "07:38",
     "Displayed Time": "07:38",
     "Artist": "Supergrass",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 189,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.15
+  },
+  {
+    "Hour": "2025-09-05T21:00:00Z",
+    "Scheduled Time": "22:53",
+    "Displayed Time": "22:53",
+    "Artist": "Candy Girls",
+    "Title": "Fee Fi Fo Fum",
+    "Duration (s)": 197,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.32
   }
 ]
