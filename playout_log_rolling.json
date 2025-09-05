@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T00:00:00Z",
-    "Scheduled Time": "01:08",
-    "Displayed Time": "01:08",
-    "Artist": "Dermot Kennedy",
-    "Title": "Don't Forget Me",
-    "Duration (s)": 179,
-    "Full Duration (s)": 191,
-    "Duration (mins)": 2.98,
-    "Full Duration (mins)": 3.18
-  },
-  {
-    "Hour": "2025-09-04T00:00:00Z",
     "Scheduled Time": "01:12",
     "Displayed Time": "01:12",
     "Artist": "Sam Fender & Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 3420,
     "Duration (mins)": 56.65,
     "Full Duration (mins)": 57.0
+  },
+  {
+    "Hour": "2025-09-05T15:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "16:02",
+    "Artist": "Taylor Swift ft Post Malone",
+    "Title": "Fortnight",
+    "Duration (s)": 217,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.82
   }
 ]
