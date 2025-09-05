@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:09",
-    "Displayed Time": "02:09",
-    "Artist": "Dua Lipa",
-    "Title": "Illusion",
-    "Duration (s)": 181,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.13
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:12",
     "Displayed Time": "02:12",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.8,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:06",
+    "Displayed Time": "17:06",
+    "Artist": "Mel & Kim",
+    "Title": "That's the Way It Is",
+    "Duration (s)": 185,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.38
   }
 ]
