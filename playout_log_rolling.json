@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T12:00:00Z",
-    "Scheduled Time": "13:03",
-    "Displayed Time": "13:03",
-    "Artist": "Panic! At The Disco",
-    "Title": "High Hopes",
-    "Duration (s)": 182,
-    "Full Duration (s)": 189,
-    "Duration (mins)": 3.03,
-    "Full Duration (mins)": 3.15
-  },
-  {
-    "Hour": "2025-09-03T12:00:00Z",
     "Scheduled Time": "13:07",
     "Displayed Time": "13:07",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-05T01:00:00Z",
+    "Scheduled Time": "02:42",
+    "Displayed Time": "02:42",
+    "Artist": "Dasha",
+    "Title": "Not At This Party",
+    "Duration (s)": 203,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.53
   }
 ]
