@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:01",
-    "Displayed Time": "18:01",
-    "Artist": "Chappell Roan",
-    "Title": "Pink Pony Club",
-    "Duration (s)": 250,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4.17,
-    "Full Duration (mins)": 4.3
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:06",
     "Displayed Time": "18:06",
     "Artist": "Lola Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.47,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-05T06:00:00Z",
+    "Scheduled Time": "07:46",
+    "Displayed Time": "07:46",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 201,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.57
   }
 ]
