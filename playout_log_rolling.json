@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T23:00:00Z",
-    "Scheduled Time": "00:51",
-    "Displayed Time": "00:51",
-    "Artist": "Arctic Monkeys",
-    "Title": "Fluorescent Adolescent",
-    "Duration (s)": 164,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.87
-  },
-  {
-    "Hour": "2025-09-03T23:00:00Z",
     "Scheduled Time": "00:54",
     "Displayed Time": "00:54",
     "Artist": "Fleetwood Mac",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:46",
+    "Displayed Time": "14:46",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 193,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.3
   }
 ]
