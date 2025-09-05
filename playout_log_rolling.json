@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T05:00:00Z",
-    "Scheduled Time": "06:01",
-    "Displayed Time": "06:01",
-    "Artist": "Jonas Blue Featuring William Singe",
-    "Title": "Mama",
-    "Duration (s)": 176,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.93,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-09-04T05:00:00Z",
     "Scheduled Time": "06:05",
     "Displayed Time": "06:05",
     "Artist": "Madonna",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:33",
+    "Displayed Time": "21:33",
+    "Artist": "The Whispers",
+    "Title": "And the Beat Goes On",
+    "Duration (s)": 197,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.4
   }
 ]
