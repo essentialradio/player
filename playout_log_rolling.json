@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:24",
-    "Displayed Time": "15:24",
-    "Artist": "Mumford & Sons",
-    "Title": "Rushmere",
-    "Duration (s)": 180,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.2
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:28",
     "Displayed Time": "15:28",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:05",
+    "Displayed Time": "05:05",
+    "Artist": "House of Pain",
+    "Title": "Jump Around",
+    "Duration (s)": 199,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.63
   }
 ]
