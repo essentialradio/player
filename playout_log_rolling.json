@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:15",
-    "Displayed Time": "18:15",
-    "Artist": "Florence + The Machine",
-    "Title": "Everybody Scream",
-    "Duration (s)": 190,
-    "Full Duration (s)": 245,
-    "Duration (mins)": 3.17,
-    "Full Duration (mins)": 4.08
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:22",
     "Displayed Time": "18:22",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-05T07:00:00Z",
+    "Scheduled Time": "08:02",
+    "Displayed Time": "08:02",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.98
   }
 ]
