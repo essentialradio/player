@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T21:00:00Z",
-    "Scheduled Time": "22:13",
-    "Displayed Time": "22:13",
-    "Artist": "Elton John",
-    "Title": "Nikita",
-    "Duration (s)": 281,
-    "Full Duration (s)": 288,
-    "Duration (mins)": 4.68,
-    "Full Duration (mins)": 4.8
-  },
-  {
-    "Hour": "2025-09-03T21:00:00Z",
     "Scheduled Time": "22:22",
     "Displayed Time": "22:22",
     "Artist": "James Morrison",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-05T11:00:00Z",
+    "Scheduled Time": "12:26",
+    "Displayed Time": "12:26",
+    "Artist": "Caity Baser",
+    "Title": "Running From Myself",
+    "Duration (s)": 152,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.62
   }
 ]
