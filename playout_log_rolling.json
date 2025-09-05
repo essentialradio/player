@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:43",
-    "Displayed Time": "14:43",
-    "Artist": "David Guetta, Becky Hill & Ella Henderson",
-    "Title": "Crazy What Love Can Do",
-    "Duration (s)": 164,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.73,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:46",
     "Displayed Time": "14:46",
     "Artist": "Jorja Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 191,
     "Duration (mins)": 3.1,
     "Full Duration (mins)": 3.18
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:22",
+    "Displayed Time": "04:22",
+    "Artist": "The Pointer Sisters",
+    "Title": "I'm So Excited",
+    "Duration (s)": 215,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.82
   }
 ]
