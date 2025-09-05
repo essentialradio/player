@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:41",
-    "Displayed Time": "02:41",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 221,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:44",
     "Displayed Time": "02:44",
     "Artist": "Shampoo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 156,
     "Duration (mins)": 2.48,
     "Full Duration (mins)": 2.6
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:37",
+    "Displayed Time": "17:37",
+    "Artist": "Bomb the Bass",
+    "Title": "Beat Dis",
+    "Duration (s)": 194,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.4
   }
 ]
