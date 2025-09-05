@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:16",
-    "Displayed Time": "14:16",
-    "Artist": "Wunderhorse",
-    "Title": "The Rope",
-    "Duration (s)": 174,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:24",
     "Displayed Time": "14:24",
     "Artist": "Jess Glynne",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 197,
     "Duration (mins)": 3.18,
     "Full Duration (mins)": 3.28
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "04:01",
+    "Artist": "Sam Smith & Normani",
+    "Title": "Dancing With a Stranger",
+    "Duration (s)": 168,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.85
   }
 ]
