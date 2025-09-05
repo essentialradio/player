@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T20:00:00Z",
-    "Scheduled Time": "21:19",
-    "Displayed Time": "21:19",
-    "Artist": "Robbie Williams",
-    "Title": "Let Me Entertain You",
-    "Duration (s)": 209,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-09-03T20:00:00Z",
     "Scheduled Time": "21:23",
     "Displayed Time": "21:23",
     "Artist": "Pulp",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:33",
+    "Displayed Time": "11:33",
+    "Artist": "Christina Aguilera",
+    "Title": "What A Girl Wants",
+    "Duration (s)": 179,
+    "Full Duration (s)": 193,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.22
   }
 ]
