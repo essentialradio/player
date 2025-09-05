@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T22:00:00Z",
-    "Scheduled Time": "23:13",
-    "Displayed Time": "23:13",
-    "Artist": "Ace of Base",
-    "Title": "All That She Wants",
-    "Duration (s)": 196,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.27,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-03T22:00:00Z",
     "Scheduled Time": "23:21",
     "Displayed Time": "23:21",
     "Artist": "Roxy Music",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 140,
     "Duration (mins)": 2.23,
     "Full Duration (mins)": 2.33
+  },
+  {
+    "Hour": "2025-09-05T12:00:00Z",
+    "Scheduled Time": "13:20",
+    "Displayed Time": "13:20",
+    "Artist": "Benson Boone",
+    "Title": "Slow It Down",
+    "Duration (s)": 151,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.52,
+    "Full Duration (mins)": 2.7
   }
 ]
