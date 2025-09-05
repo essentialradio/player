@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T22:00:00Z",
-    "Scheduled Time": "23:05",
-    "Displayed Time": "23:05",
-    "Artist": "James Ingram",
-    "Title": "Just Once",
-    "Duration (s)": 258,
-    "Full Duration (s)": 269,
-    "Duration (mins)": 4.3,
-    "Full Duration (mins)": 4.48
-  },
-  {
-    "Hour": "2025-09-03T22:00:00Z",
     "Scheduled Time": "23:10",
     "Displayed Time": "23:10",
     "Artist": "Macy Gray",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-05T12:00:00Z",
+    "Scheduled Time": "13:11",
+    "Displayed Time": "13:11",
+    "Artist": "Blue",
+    "Title": "Too Close",
+    "Duration (s)": 218,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.78
   }
 ]
