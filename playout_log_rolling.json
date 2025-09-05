@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:12",
-    "Displayed Time": "02:12",
-    "Artist": "Tom Grennan",
-    "Title": "Full Attention",
-    "Duration (s)": 172,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 3.07
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:15",
     "Displayed Time": "02:15",
     "Artist": "Kylie Minogue",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 203,
     "Duration (mins)": 3.08,
     "Full Duration (mins)": 3.38
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:09",
+    "Displayed Time": "17:09",
+    "Artist": "S Club Juniors",
+    "Title": "One Step Closer",
+    "Duration (s)": 175,
+    "Full Duration (s)": 188,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.13
   }
 ]
