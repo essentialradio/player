@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:33",
-    "Displayed Time": "20:33",
-    "Artist": "Nick Berry",
-    "Title": "Every Loser Wins",
-    "Duration (s)": 181,
-    "Full Duration (s)": 192,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.2
-  },
-  {
-    "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:36",
     "Displayed Time": "20:36",
     "Artist": "Tom Petty",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 273,
     "Duration (mins)": 4.03,
     "Full Duration (mins)": 4.55
+  },
+  {
+    "Hour": "2025-09-05T09:00:00Z",
+    "Scheduled Time": "10:41",
+    "Displayed Time": "10:41",
+    "Artist": "Kate Bush",
+    "Title": "Running Up That Hill",
+    "Duration (s)": 205,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.58
   }
 ]
