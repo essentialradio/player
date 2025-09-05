@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T23:00:00Z",
-    "Scheduled Time": "00:41",
-    "Displayed Time": "00:41",
-    "Artist": "Ed Sheeran",
-    "Title": "Azizam",
-    "Duration (s)": 153,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.55,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-09-03T23:00:00Z",
     "Scheduled Time": "00:43",
     "Displayed Time": "00:43",
     "Artist": "Happy Mondays",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 137,
     "Duration (mins)": 2.23,
     "Full Duration (mins)": 2.28
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:35",
+    "Displayed Time": "14:35",
+    "Artist": "Girls Aloud",
+    "Title": "Whole Lotta History",
+    "Duration (s)": 214,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.77
   }
 ]
