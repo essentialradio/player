@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:12",
-    "Displayed Time": "18:12",
-    "Artist": "Post Malone & Morgan Wallen",
-    "Title": "I Had Some Help",
-    "Duration (s)": 172,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.97
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:15",
     "Displayed Time": "18:15",
     "Artist": "Florence + The Machine",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 169,
     "Duration (mins)": 2.77,
     "Full Duration (mins)": 2.82
+  },
+  {
+    "Hour": "2025-09-05T06:00:00Z",
+    "Scheduled Time": "07:55",
+    "Displayed Time": "07:55",
+    "Artist": "Kelly Clarkson",
+    "Title": "Stronger (What Doesn't Kill You)",
+    "Duration (s)": 217,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.7
   }
 ]
