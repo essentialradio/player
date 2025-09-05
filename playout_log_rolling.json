@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T23:00:00Z",
-    "Scheduled Time": "00:13",
-    "Displayed Time": "00:13",
-    "Artist": "Fontaines D.C.",
-    "Title": "It's Amazing To Be Young",
-    "Duration (s)": 204,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.52
-  },
-  {
-    "Hour": "2025-09-03T23:00:00Z",
     "Scheduled Time": "00:16",
     "Displayed Time": "00:16",
     "Artist": "McFly",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.7,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:07",
+    "Displayed Time": "14:07",
+    "Artist": "The Foundations",
+    "Title": "Build Me up Buttercup",
+    "Duration (s)": 165,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.88
   }
 ]
