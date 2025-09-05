@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:28",
-    "Displayed Time": "02:28",
-    "Artist": "Culture Club",
-    "Title": "Do You Really Want to Hurt Me",
-    "Duration (s)": 251,
-    "Full Duration (s)": 261,
-    "Duration (mins)": 4.18,
-    "Full Duration (mins)": 4.35
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:36",
     "Displayed Time": "02:36",
     "Artist": "Ne-Yo",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.58,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:27",
+    "Displayed Time": "17:27",
+    "Artist": "Faithless",
+    "Title": "Salva Mea",
+    "Duration (s)": 261,
+    "Full Duration (s)": 277,
+    "Duration (mins)": 4.35,
+    "Full Duration (mins)": 4.62
   }
 ]
