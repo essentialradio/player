@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T22:00:00Z",
-    "Scheduled Time": "23:24",
-    "Displayed Time": "23:24",
-    "Artist": "Maroon 5",
-    "Title": "She Will Be Loved",
-    "Duration (s)": 247,
-    "Full Duration (s)": 258,
-    "Duration (mins)": 4.12,
-    "Full Duration (mins)": 4.3
-  },
-  {
-    "Hour": "2025-09-03T22:00:00Z",
     "Scheduled Time": "23:29",
     "Displayed Time": "23:29",
     "Artist": "The Commodores",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-05T12:00:00Z",
+    "Scheduled Time": "13:26",
+    "Displayed Time": "13:26",
+    "Artist": "Ed Sheeran",
+    "Title": "Azizam",
+    "Duration (s)": 154,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.57,
+    "Full Duration (mins)": 2.7
   }
 ]
