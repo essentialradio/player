@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T16:00:00Z",
-    "Scheduled Time": "17:49",
-    "Displayed Time": "17:49",
-    "Artist": "Simply Red",
-    "Title": "Stars",
-    "Duration (s)": 238,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 3.97,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-09-03T16:00:00Z",
     "Scheduled Time": "17:53",
     "Displayed Time": "17:53",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 207,
     "Duration (mins)": 3.25,
     "Full Duration (mins)": 3.45
+  },
+  {
+    "Hour": "2025-09-05T06:00:00Z",
+    "Scheduled Time": "07:35",
+    "Displayed Time": "07:35",
+    "Artist": "Paul Russell",
+    "Title": "Lil Boo Thang",
+    "Duration (s)": 114,
+    "Full Duration (s)": 114,
+    "Duration (mins)": 1.9,
+    "Full Duration (mins)": 1.9
   }
 ]
