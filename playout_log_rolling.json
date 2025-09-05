@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T06:00:00Z",
-    "Scheduled Time": "07:46",
-    "Displayed Time": "07:46",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 187,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.12,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-04T06:00:00Z",
     "Scheduled Time": "07:49",
     "Displayed Time": "07:49",
     "Artist": "Train",
@@ -5494,6 +5483,17 @@
     "Displayed Time": "23:59",
     "Artist": "Ayrshire Radio",
     "Title": "On Air",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-09-05T23:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "00:00",
+    "Artist": "Davy Sims",
+    "Title": "Around the World",
     "Duration (s)": 180,
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
