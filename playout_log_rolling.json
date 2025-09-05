@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T00:00:00Z",
-    "Scheduled Time": "01:01",
-    "Displayed Time": "01:01",
-    "Artist": "Rag'N'Bone Man",
-    "Title": "All You Ever Wanted",
-    "Duration (s)": 184,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-04T00:00:00Z",
     "Scheduled Time": "01:05",
     "Displayed Time": "01:05",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.7,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:52",
+    "Displayed Time": "14:52",
+    "Artist": "Heavy D & The Boyz",
+    "Title": "Now That We Found Love",
+    "Duration (s)": 255,
+    "Full Duration (s)": 256,
+    "Duration (mins)": 4.25,
+    "Full Duration (mins)": 4.27
   }
 ]
