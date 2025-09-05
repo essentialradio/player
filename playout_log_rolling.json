@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:36",
-    "Displayed Time": "20:36",
-    "Artist": "Tom Petty",
-    "Title": "Free Fallin'",
-    "Duration (s)": 236,
-    "Full Duration (s)": 255,
-    "Duration (mins)": 3.93,
-    "Full Duration (mins)": 4.25
-  },
-  {
-    "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:43",
     "Displayed Time": "20:43",
     "Artist": "Billy Idol",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-05T09:00:00Z",
+    "Scheduled Time": "10:44",
+    "Displayed Time": "10:44",
+    "Artist": "Tate McRae",
+    "Title": "Greedy",
+    "Duration (s)": 129,
+    "Full Duration (s)": 132,
+    "Duration (mins)": 2.15,
+    "Full Duration (mins)": 2.2
   }
 ]
