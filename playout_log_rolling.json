@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T03:00:00Z",
-    "Scheduled Time": "04:14",
-    "Displayed Time": "04:14",
-    "Artist": "Pink",
-    "Title": "All Out Of Fight",
-    "Duration (s)": 202,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-04T03:00:00Z",
     "Scheduled Time": "04:18",
     "Displayed Time": "04:18",
     "Artist": "Mika",
@@ -5487,6 +5476,17 @@
     "Full Duration (s)": 1133,
     "Duration (mins)": 18.82,
     "Full Duration (mins)": 18.88
+  },
+  {
+    "Hour": "2025-09-05T18:00:00Z",
+    "Scheduled Time": "19:21",
+    "Displayed Time": "19:21",
+    "Artist": "Lee Everest",
+    "Title": "Ready for the Weekend",
+    "Duration (s)": 1230,
+    "Full Duration (s)": 1234,
+    "Duration (mins)": 20.5,
+    "Full Duration (mins)": 20.57
   },
   {
     "Hour": "2025-09-05T18:00:00Z",
