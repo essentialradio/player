@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:12",
-    "Displayed Time": "16:12",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 175,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:15",
     "Displayed Time": "16:15",
     "Artist": "Shapeshifters",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 231,
     "Duration (mins)": 3.53,
     "Full Duration (mins)": 3.85
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:50",
+    "Displayed Time": "05:50",
+    "Artist": "Chappell Roan",
+    "Title": "Good Luck, Babe!",
+    "Duration (s)": 204,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.63
   }
 ]
