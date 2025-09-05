@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:15",
-    "Displayed Time": "16:15",
-    "Artist": "Shapeshifters",
-    "Title": "Lola's Theme",
-    "Duration (s)": 195,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.45
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:21",
     "Displayed Time": "16:21",
     "Artist": "Ros\u00e9 & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:53",
+    "Displayed Time": "05:53",
+    "Artist": "The Fratellis",
+    "Title": "Whistle for the Choir",
+    "Duration (s)": 199,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.55
   }
 ]
