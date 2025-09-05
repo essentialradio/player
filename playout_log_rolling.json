@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T16:00:00Z",
-    "Scheduled Time": "17:09",
-    "Displayed Time": "17:09",
-    "Artist": "Sam Fender",
-    "Title": "Seventeen Going Under",
-    "Duration (s)": 224,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.73,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-09-03T16:00:00Z",
-    "Scheduled Time": "17:13",
-    "Displayed Time": "17:13",
-    "Artist": "Supermen Lovers & OneRepublic",
-    "Title": "Starlight (The Fame)",
-    "Duration (s)": 175,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-09-03T16:00:00Z",
     "Scheduled Time": "17:16",
     "Displayed Time": "17:16",
     "Artist": "TLC",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:50",
+    "Displayed Time": "06:50",
+    "Artist": "Womack & Womack",
+    "Title": "Teardrops",
+    "Duration (s)": 215,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.92
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:53",
+    "Displayed Time": "06:53",
+    "Artist": "Justin Bieber",
+    "Title": "Daisies",
+    "Duration (s)": 169,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.93
   }
 ]
