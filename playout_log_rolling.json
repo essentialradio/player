@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T11:00:00Z",
-    "Scheduled Time": "12:05",
-    "Displayed Time": "12:05",
-    "Artist": "Lou Bega",
-    "Title": "Mambo No. 5 (A Little Bit Of...)",
-    "Duration (s)": 211,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-03T11:00:00Z",
     "Scheduled Time": "12:09",
     "Displayed Time": "12:09",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 224,
     "Duration (mins)": 3.65,
     "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-05T00:00:00Z",
+    "Scheduled Time": "01:49",
+    "Displayed Time": "01:49",
+    "Artist": "Gigi Perez",
+    "Title": "Sailor Song",
+    "Duration (s)": 203,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.53
   }
 ]
