@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-04T05:00:00Z",
-    "Scheduled Time": "06:23",
-    "Displayed Time": "06:23",
-    "Artist": "MK ft Chrystal",
-    "Title": "Dior",
-    "Duration (s)": 166,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-09-04T05:00:00Z",
-    "Scheduled Time": "06:26",
-    "Displayed Time": "06:26",
-    "Artist": "Jonas Brothers",
-    "Title": "Waffle House",
-    "Duration (s)": 139,
-    "Full Duration (s)": 145,
-    "Duration (mins)": 2.32,
-    "Full Duration (mins)": 2.42
-  },
-  {
-    "Hour": "2025-09-04T05:00:00Z",
     "Scheduled Time": "06:31",
     "Displayed Time": "06:31",
     "Artist": "Meghan Trainor",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 166,
     "Duration (mins)": 2.68,
     "Full Duration (mins)": 2.77
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:49",
+    "Displayed Time": "21:49",
+    "Artist": "Basement Jaxx",
+    "Title": "Where's Your Head At",
+    "Duration (s)": 233,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.88,
+    "Full Duration (mins)": 3.98
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:53",
+    "Displayed Time": "21:53",
+    "Artist": "Kris Kross",
+    "Title": "Jump",
+    "Duration (s)": 183,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.28
   }
 ]
