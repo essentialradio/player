@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:36",
-    "Displayed Time": "18:36",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Bed Chem",
-    "Duration (s)": 163,
-    "Full Duration (s)": 172,
-    "Duration (mins)": 2.72,
-    "Full Duration (mins)": 2.87
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:42",
     "Displayed Time": "18:42",
     "Artist": "Perrie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-05T07:00:00Z",
+    "Scheduled Time": "08:34",
+    "Displayed Time": "08:34",
+    "Artist": "Ella Henderson x Alex Warren",
+    "Title": "Carry You Home",
+    "Duration (s)": 163,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.8
   }
 ]
