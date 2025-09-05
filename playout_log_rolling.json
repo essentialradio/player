@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T04:00:00Z",
-    "Scheduled Time": "05:33",
-    "Displayed Time": "05:33",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 208,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-04T04:00:00Z",
     "Scheduled Time": "05:36",
     "Displayed Time": "05:36",
     "Artist": "Liberty X",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 237,
     "Duration (mins)": 3.83,
     "Full Duration (mins)": 3.95
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:09",
+    "Displayed Time": "21:09",
+    "Artist": "Culture Club",
+    "Title": "It's a Miracle",
+    "Duration (s)": 187,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.4
   }
 ]
