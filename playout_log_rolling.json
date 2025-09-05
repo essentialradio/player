@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T03:00:00Z",
-    "Scheduled Time": "04:25",
-    "Displayed Time": "04:25",
-    "Artist": "Lola Young",
-    "Title": "One Thing",
-    "Duration (s)": 201,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-04T03:00:00Z",
     "Scheduled Time": "04:28",
     "Displayed Time": "04:28",
     "Artist": "Sam Fender",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.68,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-05T19:00:00Z",
+    "Scheduled Time": "20:05",
+    "Displayed Time": "20:05",
+    "Artist": "Doolally",
+    "Title": "Straight from the Heart",
+    "Duration (s)": 206,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.6
   }
 ]
