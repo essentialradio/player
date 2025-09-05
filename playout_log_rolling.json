@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T16:00:00Z",
-    "Scheduled Time": "17:03",
-    "Displayed Time": "17:03",
-    "Artist": "Ariana Grande",
-    "Title": "One Last Time",
-    "Duration (s)": 187,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3.12,
-    "Full Duration (mins)": 3.28
-  },
-  {
-    "Hour": "2025-09-03T16:00:00Z",
-    "Scheduled Time": "17:06",
-    "Displayed Time": "17:06",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 169,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-09-03T16:00:00Z",
     "Scheduled Time": "17:09",
     "Displayed Time": "17:09",
     "Artist": "Sam Fender",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 248,
     "Duration (mins)": 3.9,
     "Full Duration (mins)": 4.13
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:44",
+    "Displayed Time": "06:44",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 167,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:47",
+    "Displayed Time": "06:47",
+    "Artist": "Noah Kahan",
+    "Title": "Stick Season",
+    "Duration (s)": 171,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 3.03
   }
 ]
