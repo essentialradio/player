@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T11:00:00Z",
-    "Scheduled Time": "12:23",
-    "Displayed Time": "12:23",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 211,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-03T11:00:00Z",
     "Scheduled Time": "12:27",
     "Displayed Time": "12:27",
     "Artist": "Sonny Fodera, Jazzy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.47,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-05T01:00:00Z",
+    "Scheduled Time": "02:09",
+    "Displayed Time": "02:09",
+    "Artist": "BLACKPINK",
+    "Title": "How You Like That",
+    "Duration (s)": 170,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 3.05
   }
 ]
