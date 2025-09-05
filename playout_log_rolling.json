@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T04:00:00Z",
-    "Scheduled Time": "05:47",
-    "Displayed Time": "05:47",
-    "Artist": "Paloma Faith",
-    "Title": "Make Your Own Kind of Music",
-    "Duration (s)": 152,
-    "Full Duration (s)": 164,
-    "Duration (mins)": 2.53,
-    "Full Duration (mins)": 2.73
-  },
-  {
-    "Hour": "2025-09-04T04:00:00Z",
     "Scheduled Time": "05:50",
     "Displayed Time": "05:50",
     "Artist": "Lady Gaga",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3.32,
     "Full Duration (mins)": 3.52
+  },
+  {
+    "Hour": "2025-09-05T20:00:00Z",
+    "Scheduled Time": "21:19",
+    "Displayed Time": "21:19",
+    "Artist": "Double Trouble & The Rebel MC",
+    "Title": "Street Tuff",
+    "Duration (s)": 199,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.48
   }
 ]
