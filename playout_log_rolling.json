@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T21:00:00Z",
-    "Scheduled Time": "22:41",
-    "Displayed Time": "22:41",
-    "Artist": "Billie Eilish",
-    "Title": "Ocean Eyes",
-    "Duration (s)": 190,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.17,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-09-03T21:00:00Z",
     "Scheduled Time": "22:44",
     "Displayed Time": "22:44",
     "Artist": "Katie Melua",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 162,
     "Duration (mins)": 2.63,
     "Full Duration (mins)": 2.7
+  },
+  {
+    "Hour": "2025-09-05T11:00:00Z",
+    "Scheduled Time": "12:45",
+    "Displayed Time": "12:45",
+    "Artist": "Jess Glynne",
+    "Title": "Hold My Hand",
+    "Duration (s)": 220,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.78
   }
 ]
