@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T16:00:00Z",
-    "Scheduled Time": "17:16",
-    "Displayed Time": "17:16",
-    "Artist": "TLC",
-    "Title": "Waterfalls",
-    "Duration (s)": 194,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-09-03T16:00:00Z",
     "Scheduled Time": "17:23",
     "Displayed Time": "17:23",
     "Artist": "The Fratellis",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.82,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-05T06:00:00Z",
+    "Scheduled Time": "07:07",
+    "Displayed Time": "07:07",
+    "Artist": "ABC",
+    "Title": "The Look of Love",
+    "Duration (s)": 208,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.48
   }
 ]
