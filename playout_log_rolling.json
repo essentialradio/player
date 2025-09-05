@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:48",
-    "Displayed Time": "16:48",
-    "Artist": "Elle King",
-    "Title": "Ex's & Oh's",
-    "Duration (s)": 192,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.37
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:51",
     "Displayed Time": "16:51",
     "Artist": "MK ft Chrystal",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:27",
+    "Displayed Time": "06:27",
+    "Artist": "Blink-182",
+    "Title": "What's My Age Again",
+    "Duration (s)": 140,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.33,
+    "Full Duration (mins)": 2.92
   }
 ]
