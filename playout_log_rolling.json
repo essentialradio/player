@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:32",
-    "Displayed Time": "14:32",
-    "Artist": "Max Dean x Luke Dean x Locky",
-    "Title": "Can't Decide",
-    "Duration (s)": 169,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:35",
     "Displayed Time": "14:35",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.65,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:12",
+    "Displayed Time": "04:12",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 156,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.6,
+    "Full Duration (mins)": 2.73
   }
 ]
