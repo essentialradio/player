@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:05",
-    "Displayed Time": "16:05",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 195,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:08",
     "Displayed Time": "16:08",
     "Artist": "Vance Joy",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 2.88,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:44",
+    "Displayed Time": "05:44",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 138,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.3,
+    "Full Duration (mins)": 2.38
   }
 ]
