@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T23:00:00Z",
-    "Scheduled Time": "00:31",
-    "Displayed Time": "00:31",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 208,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-03T23:00:00Z",
-    "Scheduled Time": "00:38",
-    "Displayed Time": "00:38",
-    "Artist": "Jonas Brothers",
-    "Title": "Sucker",
-    "Duration (s)": 173,
-    "Full Duration (s)": 181,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 3.02
-  },
-  {
-    "Hour": "2025-09-03T23:00:00Z",
     "Scheduled Time": "00:41",
     "Displayed Time": "00:41",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:27",
+    "Displayed Time": "14:27",
+    "Artist": "Jonas Brothers",
+    "Title": "What a Man Gotta Do",
+    "Duration (s)": 172,
+    "Full Duration (s)": 181,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.02
+  },
+  {
+    "Hour": "2025-09-05T13:00:00Z",
+    "Scheduled Time": "14:30",
+    "Displayed Time": "14:30",
+    "Artist": "Good Neighbours",
+    "Title": "Starry Eyed",
+    "Duration (s)": 134,
+    "Full Duration (s)": 137,
+    "Duration (mins)": 2.23,
+    "Full Duration (mins)": 2.28
   }
 ]
