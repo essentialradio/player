@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T17:00:00Z",
-    "Scheduled Time": "18:06",
-    "Displayed Time": "18:06",
-    "Artist": "Lola Young",
-    "Title": "D\u00a3aler",
-    "Duration (s)": 155,
-    "Full Duration (s)": 160,
-    "Duration (mins)": 2.58,
-    "Full Duration (mins)": 2.67
-  },
-  {
-    "Hour": "2025-09-03T17:00:00Z",
     "Scheduled Time": "18:08",
     "Displayed Time": "18:08",
     "Artist": "Cerrone/Christine & The Queens",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-05T06:00:00Z",
+    "Scheduled Time": "07:49",
+    "Displayed Time": "07:49",
+    "Artist": "Charlie Puth",
+    "Title": "How Long",
+    "Duration (s)": 197,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.3
   }
 ]
