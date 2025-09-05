@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T19:00:00Z",
-    "Scheduled Time": "20:43",
-    "Displayed Time": "20:43",
-    "Artist": "Billy Idol",
-    "Title": "Rebel Yell",
-    "Duration (s)": 213,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3.55,
-    "Full Duration (mins)": 3.72
-  },
-  {
-    "Hour": "2025-09-03T19:00:00Z",
     "Scheduled Time": "20:47",
     "Displayed Time": "20:47",
     "Artist": "Kraftwerk",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 132,
     "Duration (mins)": 2.15,
     "Full Duration (mins)": 2.2
+  },
+  {
+    "Hour": "2025-09-05T09:00:00Z",
+    "Scheduled Time": "10:50",
+    "Displayed Time": "10:50",
+    "Artist": "Wunderhorse",
+    "Title": "The Rope",
+    "Duration (s)": 176,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 2.98
   }
 ]
