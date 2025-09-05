@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:27",
-    "Displayed Time": "14:27",
-    "Artist": "Hozier",
-    "Title": "Too Sweet",
-    "Duration (s)": 244,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 4.07,
-    "Full Duration (mins)": 4.18
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:32",
     "Displayed Time": "14:32",
     "Artist": "Max Dean x Luke Dean x Locky",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:08",
+    "Displayed Time": "04:08",
+    "Artist": "Adele",
+    "Title": "Rolling in the Deep",
+    "Duration (s)": 219,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.78
   }
 ]
