@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T20:00:00Z",
-    "Scheduled Time": "21:08",
-    "Displayed Time": "21:08",
-    "Artist": "Leann Rimes",
-    "Title": "How Do I Live",
-    "Duration (s)": 227,
-    "Full Duration (s)": 251,
-    "Duration (mins)": 3.78,
-    "Full Duration (mins)": 4.18
-  },
-  {
-    "Hour": "2025-09-03T20:00:00Z",
     "Scheduled Time": "21:12",
     "Displayed Time": "21:12",
     "Artist": "Mantronix ft Wondress",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 240,
     "Duration (mins)": 3.82,
     "Full Duration (mins)": 4.0
+  },
+  {
+    "Hour": "2025-09-05T10:00:00Z",
+    "Scheduled Time": "11:26",
+    "Displayed Time": "11:26",
+    "Artist": "Robert Palmer",
+    "Title": "Simply Irresistible",
+    "Duration (s)": 238,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.1
   }
 ]
