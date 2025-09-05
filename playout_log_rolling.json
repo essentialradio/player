@@ -1,27 +1,5 @@
 [
   {
-    "Hour": "2025-09-04T00:00:00Z",
-    "Scheduled Time": "01:50",
-    "Displayed Time": "01:50",
-    "Artist": "Lost Frequencies ft Calum Scott",
-    "Title": "Where Are You Now",
-    "Duration (s)": 142,
-    "Full Duration (s)": 148,
-    "Duration (mins)": 2.37,
-    "Full Duration (mins)": 2.47
-  },
-  {
-    "Hour": "2025-09-04T00:00:00Z",
-    "Scheduled Time": "01:53",
-    "Displayed Time": "01:53",
-    "Artist": "Babybird",
-    "Title": "You're Gorgeous",
-    "Duration (s)": 205,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3.42,
-    "Full Duration (mins)": 3.72
-  },
-  {
     "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "02:02",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 157,
     "Duration (mins)": 2.47,
     "Full Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-09-05T15:00:00Z",
+    "Scheduled Time": "16:45",
+    "Displayed Time": "16:45",
+    "Artist": "Calum Scott",
+    "Title": "Dancing on My Own (Tiesto Remix)",
+    "Duration (s)": 213,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-05T15:00:00Z",
+    "Scheduled Time": "16:49",
+    "Displayed Time": "16:49",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 229,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.05
   }
 ]
