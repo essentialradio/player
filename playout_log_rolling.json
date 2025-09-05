@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:36",
-    "Displayed Time": "16:36",
-    "Artist": "U2",
-    "Title": "With or Without You",
-    "Duration (s)": 270,
-    "Full Duration (s)": 292,
-    "Duration (mins)": 4.5,
-    "Full Duration (mins)": 4.87
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
-    "Scheduled Time": "16:45",
-    "Displayed Time": "16:45",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 182,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.03,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-03T15:00:00Z",
     "Scheduled Time": "16:48",
     "Displayed Time": "16:48",
     "Artist": "Elle King",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 201,
     "Duration (mins)": 3.22,
     "Full Duration (mins)": 3.35
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:21",
+    "Displayed Time": "06:21",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 227,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.78,
+    "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-05T05:00:00Z",
+    "Scheduled Time": "06:24",
+    "Displayed Time": "06:24",
+    "Artist": "Kygo & Ava Max",
+    "Title": "Whatever",
+    "Duration (s)": 172,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 2.97
   }
 ]
