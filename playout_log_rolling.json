@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T14:00:00Z",
-    "Scheduled Time": "15:28",
-    "Displayed Time": "15:28",
-    "Artist": "Chappell Roan",
-    "Title": "The Subway",
-    "Duration (s)": 239,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 3.98,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-09-03T14:00:00Z",
     "Scheduled Time": "15:32",
     "Displayed Time": "15:32",
     "Artist": "Lorde",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.32,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-05T04:00:00Z",
+    "Scheduled Time": "05:09",
+    "Displayed Time": "05:09",
+    "Artist": "Sia Feat. Kendrick Lamar",
+    "Title": "The Greatest",
+    "Duration (s)": 188,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.52
   }
 ]
