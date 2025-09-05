@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T03:00:00Z",
-    "Scheduled Time": "04:44",
-    "Displayed Time": "04:44",
-    "Artist": "The Weeknd ft Daft Punk",
-    "Title": "Starboy",
-    "Duration (s)": 217,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.78
-  },
-  {
-    "Hour": "2025-09-04T03:00:00Z",
     "Scheduled Time": "04:48",
     "Displayed Time": "04:48",
     "Artist": "Tate McRae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 231,
     "Duration (mins)": 3.75,
     "Full Duration (mins)": 3.85
+  },
+  {
+    "Hour": "2025-09-05T19:00:00Z",
+    "Scheduled Time": "20:19",
+    "Displayed Time": "20:19",
+    "Artist": "Sinitta",
+    "Title": "So Macho",
+    "Duration (s)": 168,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.9
   }
 ]
