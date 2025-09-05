@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-03T13:00:00Z",
-    "Scheduled Time": "14:35",
-    "Displayed Time": "14:35",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 219,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-03T13:00:00Z",
     "Scheduled Time": "14:43",
     "Displayed Time": "14:43",
     "Artist": "David Guetta, Becky Hill & Ella Henderson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.6,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-05T03:00:00Z",
+    "Scheduled Time": "04:15",
+    "Displayed Time": "04:15",
+    "Artist": "Feeder",
+    "Title": "Buck Rogers",
+    "Duration (s)": 186,
+    "Full Duration (s)": 191,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 3.18
   }
 ]
