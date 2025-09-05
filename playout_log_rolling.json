@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T01:00:00Z",
-    "Scheduled Time": "02:44",
-    "Displayed Time": "02:44",
-    "Artist": "Shampoo",
-    "Title": "Trouble",
-    "Duration (s)": 181,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.02,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-04T01:00:00Z",
     "Scheduled Time": "02:47",
     "Displayed Time": "02:47",
     "Artist": "Luke Holloway",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 204,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.4
+  },
+  {
+    "Hour": "2025-09-05T16:00:00Z",
+    "Scheduled Time": "17:45",
+    "Displayed Time": "17:45",
+    "Artist": "Alcazar",
+    "Title": "This is the World We Live In",
+    "Duration (s)": 208,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.55
   }
 ]
