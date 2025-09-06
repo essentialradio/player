@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:47",
-    "Displayed Time": "17:47",
-    "Artist": "Addison Rae",
-    "Title": "Fame Is A Gun",
-    "Duration (s)": 175,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
     "Scheduled Time": "17:50",
     "Displayed Time": "17:50",
     "Artist": "The Mavericks",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 234,
     "Duration (mins)": 3.62,
     "Full Duration (mins)": 3.9
+  },
+  {
+    "Hour": "2025-09-06T10:00:00Z",
+    "Scheduled Time": "11:23",
+    "Displayed Time": "11:23",
+    "Artist": "Rachel Platten",
+    "Title": "Fight Song",
+    "Duration (s)": 194,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.35
   }
 ]
