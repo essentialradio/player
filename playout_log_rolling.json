@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T18:00:00Z",
-    "Scheduled Time": "19:22",
-    "Displayed Time": "19:22",
-    "Artist": "Dire Straits",
-    "Title": "Sultans of Swing",
-    "Duration (s)": 334,
-    "Full Duration (s)": 348,
-    "Duration (mins)": 5.57,
-    "Full Duration (mins)": 5.8
-  },
-  {
-    "Hour": "2025-09-04T18:00:00Z",
     "Scheduled Time": "19:31",
     "Displayed Time": "19:31",
     "Artist": "Supertramp",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:56",
+    "Displayed Time": "12:56",
+    "Artist": "Alison Moyet",
+    "Title": "Love Resurrection",
+    "Duration (s)": 222,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.87
   }
 ]
