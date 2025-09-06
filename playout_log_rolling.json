@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T17:00:00Z",
-    "Scheduled Time": "18:44",
-    "Displayed Time": "18:44",
-    "Artist": "Olivia Dean",
-    "Title": "Nice To Each Other",
-    "Duration (s)": 204,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-04T17:00:00Z",
     "Scheduled Time": "18:48",
     "Displayed Time": "18:48",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:23",
+    "Displayed Time": "12:23",
+    "Artist": "Justin Bieber",
+    "Title": "Daisies",
+    "Duration (s)": 174,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.93
   }
 ]
