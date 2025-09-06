@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:03",
-    "Displayed Time": "17:03",
-    "Artist": "Tom Odell",
-    "Title": "Grow Old With Me",
-    "Duration (s)": 171,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.85,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:06",
-    "Displayed Time": "17:06",
-    "Artist": "Calvin Harris & Clementine Douglas",
-    "Title": "Blessings",
-    "Duration (s)": 208,
-    "Full Duration (s)": 220,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.67
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
     "Scheduled Time": "17:10",
     "Displayed Time": "17:10",
     "Artist": "Tom Grennan",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 275,
     "Duration (mins)": 4.55,
     "Full Duration (mins)": 4.58
+  },
+  {
+    "Hour": "2025-09-06T09:00:00Z",
+    "Scheduled Time": "10:36",
+    "Displayed Time": "10:36",
+    "Artist": "Sonny Fodera, Jazzy",
+    "Title": "All This Time",
+    "Duration (s)": 218,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.73
+  },
+  {
+    "Hour": "2025-09-06T09:00:00Z",
+    "Scheduled Time": "10:40",
+    "Displayed Time": "10:40",
+    "Artist": "Tom Walker",
+    "Title": "Serotonin",
+    "Duration (s)": 176,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 2.93
   }
 ]
