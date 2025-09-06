@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T11:00:00Z",
-    "Scheduled Time": "12:45",
-    "Displayed Time": "12:45",
-    "Artist": "Post Malone",
-    "Title": "Chemical",
-    "Duration (s)": 174,
-    "Full Duration (s)": 184,
-    "Duration (mins)": 2.9,
-    "Full Duration (mins)": 3.07
-  },
-  {
-    "Hour": "2025-09-04T11:00:00Z",
     "Scheduled Time": "12:47",
     "Displayed Time": "12:47",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 265,
     "Duration (mins)": 4.18,
     "Full Duration (mins)": 4.42
+  },
+  {
+    "Hour": "2025-09-06T05:00:00Z",
+    "Scheduled Time": "06:12",
+    "Displayed Time": "06:12",
+    "Artist": "Nirvana",
+    "Title": "Smells Like Teen Spirit",
+    "Duration (s)": 263,
+    "Full Duration (s)": 271,
+    "Duration (mins)": 4.38,
+    "Full Duration (mins)": 4.52
   }
 ]
