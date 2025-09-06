@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T07:00:00Z",
-    "Scheduled Time": "08:17",
-    "Displayed Time": "08:17",
-    "Artist": "Bon Jovi",
-    "Title": "Livin' on a Prayer",
-    "Duration (s)": 216,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.6,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-04T07:00:00Z",
     "Scheduled Time": "08:26",
     "Displayed Time": "08:26",
     "Artist": "Florence + The Machine",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 186,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.1
+  },
+  {
+    "Hour": "2025-09-06T01:00:00Z",
+    "Scheduled Time": "02:14",
+    "Displayed Time": "02:14",
+    "Artist": "Pink",
+    "Title": "Get the Party Started",
+    "Duration (s)": 185,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.17
   }
 ]
