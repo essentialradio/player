@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T13:00:00Z",
-    "Scheduled Time": "14:41",
-    "Displayed Time": "14:41",
-    "Artist": "Casso, Raye, D-Block Europe",
-    "Title": "Prada",
-    "Duration (s)": 129,
-    "Full Duration (s)": 132,
-    "Duration (mins)": 2.15,
-    "Full Duration (mins)": 2.2
-  },
-  {
-    "Hour": "2025-09-04T13:00:00Z",
     "Scheduled Time": "14:43",
     "Displayed Time": "14:43",
     "Artist": "Will Young",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 244,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 4.07
+  },
+  {
+    "Hour": "2025-09-06T07:00:00Z",
+    "Scheduled Time": "08:12",
+    "Displayed Time": "08:12",
+    "Artist": "Mariah Carey",
+    "Title": "Always Be My Baby",
+    "Duration (s)": 237,
+    "Full Duration (s)": 254,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.23
   }
 ]
