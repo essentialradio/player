@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T08:00:00Z",
-    "Scheduled Time": "09:32",
-    "Displayed Time": "09:32",
-    "Artist": "Cyndi Lauper",
-    "Title": "True Colors",
-    "Duration (s)": 223,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-04T08:00:00Z",
     "Scheduled Time": "09:36",
     "Displayed Time": "09:36",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 230,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 3.83
+  },
+  {
+    "Hour": "2025-09-06T02:00:00Z",
+    "Scheduled Time": "03:17",
+    "Displayed Time": "03:17",
+    "Artist": "Beyonce",
+    "Title": "Single Ladies (Put a Ring on It)",
+    "Duration (s)": 188,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.2
   }
 ]
