@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T15:00:00Z",
-    "Scheduled Time": "16:02",
-    "Displayed Time": "16:02",
-    "Artist": "Dua Lipa",
-    "Title": "Houdini",
-    "Duration (s)": 175,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 2.92,
-    "Full Duration (mins)": 3.1
-  },
-  {
-    "Hour": "2025-09-04T15:00:00Z",
     "Scheduled Time": "16:05",
     "Displayed Time": "16:05",
     "Artist": "Ed Sheeran",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 246,
     "Duration (mins)": 3.82,
     "Full Duration (mins)": 4.1
+  },
+  {
+    "Hour": "2025-09-06T08:00:00Z",
+    "Scheduled Time": "09:33",
+    "Displayed Time": "09:33",
+    "Artist": "Cast",
+    "Title": "Alright",
+    "Duration (s)": 208,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.6
   }
 ]
