@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T13:00:00Z",
-    "Scheduled Time": "14:34",
-    "Displayed Time": "14:34",
-    "Artist": "Blondie",
-    "Title": "Atomic",
-    "Duration (s)": 219,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3.65,
-    "Full Duration (mins)": 3.78
-  },
-  {
-    "Hour": "2025-09-04T13:00:00Z",
     "Scheduled Time": "14:41",
     "Displayed Time": "14:41",
     "Artist": "Casso, Raye, D-Block Europe",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 195,
     "Duration (mins)": 3.08,
     "Full Duration (mins)": 3.25
+  },
+  {
+    "Hour": "2025-09-06T07:00:00Z",
+    "Scheduled Time": "08:08",
+    "Displayed Time": "08:08",
+    "Artist": "Eminem",
+    "Title": "Houdini",
+    "Duration (s)": 214,
+    "Full Duration (s)": 244,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 4.07
   }
 ]
