@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T10:00:00Z",
-    "Scheduled Time": "11:12",
-    "Displayed Time": "11:12",
-    "Artist": "Spice Girls",
-    "Title": "Viva Forever",
-    "Duration (s)": 241,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4.02,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-09-04T10:00:00Z",
     "Scheduled Time": "11:16",
     "Displayed Time": "11:16",
     "Artist": "The Killers",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 169,
     "Duration (mins)": 2.72,
     "Full Duration (mins)": 2.82
+  },
+  {
+    "Hour": "2025-09-06T03:00:00Z",
+    "Scheduled Time": "04:49",
+    "Displayed Time": "04:49",
+    "Artist": "Charles & Eddie",
+    "Title": "Would I Lie to You?",
+    "Duration (s)": 207,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.7
   }
 ]
