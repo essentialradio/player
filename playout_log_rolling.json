@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T17:00:00Z",
-    "Scheduled Time": "18:25",
-    "Displayed Time": "18:25",
-    "Artist": "Kylie Minogue",
-    "Title": "Padam Padam",
-    "Duration (s)": 158,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.63,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-04T17:00:00Z",
     "Scheduled Time": "18:28",
     "Displayed Time": "18:28",
     "Artist": "Wunderhorse",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.17,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "12:01",
+    "Artist": "Jubel ft Neimy",
+    "Title": "Dancing in the Moonlight",
+    "Duration (s)": 157,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.73
   }
 ]
