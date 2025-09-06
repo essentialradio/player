@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:12",
-    "Displayed Time": "17:12",
-    "Artist": "Justin Bieber",
-    "Title": "Daisies",
-    "Duration (s)": 169,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
     "Scheduled Time": "17:15",
     "Displayed Time": "17:15",
     "Artist": "Moloko",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 252,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.2
+  },
+  {
+    "Hour": "2025-09-06T09:00:00Z",
+    "Scheduled Time": "10:51",
+    "Displayed Time": "10:51",
+    "Artist": "Robert Palmer",
+    "Title": "Addicted to Love",
+    "Duration (s)": 231,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 3.9
   }
 ]
