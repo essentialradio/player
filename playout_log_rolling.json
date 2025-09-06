@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T18:00:00Z",
-    "Scheduled Time": "19:10",
-    "Displayed Time": "19:10",
-    "Artist": "Elton John",
-    "Title": "Goodbye Yellow Brick Road",
-    "Duration (s)": 187,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3.12,
-    "Full Duration (mins)": 3.23
-  },
-  {
-    "Hour": "2025-09-04T18:00:00Z",
     "Scheduled Time": "19:13",
     "Displayed Time": "19:13",
     "Artist": "The Police",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 190,
     "Duration (mins)": 3.12,
     "Full Duration (mins)": 3.17
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:41",
+    "Displayed Time": "12:41",
+    "Artist": "Queen",
+    "Title": "Somebody to Love",
+    "Duration (s)": 287,
+    "Full Duration (s)": 294,
+    "Duration (mins)": 4.78,
+    "Full Duration (mins)": 4.9
   }
 ]
