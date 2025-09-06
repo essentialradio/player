@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T11:00:00Z",
-    "Scheduled Time": "12:28",
-    "Displayed Time": "12:28",
-    "Artist": "Magic!",
-    "Title": "Rude",
-    "Duration (s)": 217,
-    "Full Duration (s)": 224,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.73
-  },
-  {
-    "Hour": "2025-09-04T11:00:00Z",
     "Scheduled Time": "12:36",
     "Displayed Time": "12:36",
     "Artist": "David Kushner",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.55,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-06T05:00:00Z",
+    "Scheduled Time": "06:02",
+    "Displayed Time": "06:02",
+    "Artist": "Olly Murs",
+    "Title": "Save Me",
+    "Duration (s)": 171,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.92
   }
 ]
