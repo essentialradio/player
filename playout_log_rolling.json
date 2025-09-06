@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T11:00:00Z",
-    "Scheduled Time": "12:40",
-    "Displayed Time": "12:40",
-    "Artist": "Boy Meets Girl",
-    "Title": "Waiting for a Star to Fall",
-    "Duration (s)": 255,
-    "Full Duration (s)": 268,
-    "Duration (mins)": 4.25,
-    "Full Duration (mins)": 4.47
-  },
-  {
-    "Hour": "2025-09-04T11:00:00Z",
     "Scheduled Time": "12:45",
     "Displayed Time": "12:45",
     "Artist": "Post Malone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.75,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-06T05:00:00Z",
+    "Scheduled Time": "06:08",
+    "Displayed Time": "06:08",
+    "Artist": "Luke Combs",
+    "Title": "Fast Car",
+    "Duration (s)": 251,
+    "Full Duration (s)": 265,
+    "Duration (mins)": 4.18,
+    "Full Duration (mins)": 4.42
   }
 ]
