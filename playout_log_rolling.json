@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:50",
-    "Displayed Time": "17:50",
-    "Artist": "The Mavericks",
-    "Title": "Dance the Night Away",
-    "Duration (s)": 251,
-    "Full Duration (s)": 262,
-    "Duration (mins)": 4.18,
-    "Full Duration (mins)": 4.37
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
     "Scheduled Time": "17:54",
     "Displayed Time": "17:54",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 201,
     "Duration (mins)": 3.23,
     "Full Duration (mins)": 3.35
+  },
+  {
+    "Hour": "2025-09-06T10:00:00Z",
+    "Scheduled Time": "11:26",
+    "Displayed Time": "11:26",
+    "Artist": "Spin Doctors",
+    "Title": "Two Princes",
+    "Duration (s)": 239,
+    "Full Duration (s)": 253,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.22
   }
 ]
