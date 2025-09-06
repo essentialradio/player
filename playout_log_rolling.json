@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T15:00:00Z",
-    "Scheduled Time": "16:49",
-    "Displayed Time": "16:49",
-    "Artist": "CMAT",
-    "Title": "Take A Sexy Picture Of Me",
-    "Duration (s)": 221,
-    "Full Duration (s)": 230,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.83
-  },
-  {
-    "Hour": "2025-09-04T15:00:00Z",
     "Scheduled Time": "16:53",
     "Displayed Time": "16:53",
     "Artist": "Annie Lennox",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 198,
     "Duration (mins)": 3.2,
     "Full Duration (mins)": 3.3
+  },
+  {
+    "Hour": "2025-09-06T09:00:00Z",
+    "Scheduled Time": "10:26",
+    "Displayed Time": "10:26",
+    "Artist": "Lady Gaga",
+    "Title": "Disease",
+    "Duration (s)": 223,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.83
   }
 ]
