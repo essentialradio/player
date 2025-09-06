@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T07:00:00Z",
-    "Scheduled Time": "08:13",
-    "Displayed Time": "08:13",
-    "Artist": "Keala Settle & The Greatest Showman Ensemble",
-    "Title": "This is Me",
-    "Duration (s)": 229,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 3.82,
-    "Full Duration (mins)": 3.92
-  },
-  {
-    "Hour": "2025-09-04T07:00:00Z",
     "Scheduled Time": "08:17",
     "Displayed Time": "08:17",
     "Artist": "Bon Jovi",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 169,
     "Duration (mins)": 2.33,
     "Full Duration (mins)": 2.82
+  },
+  {
+    "Hour": "2025-09-06T01:00:00Z",
+    "Scheduled Time": "02:11",
+    "Displayed Time": "02:11",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Feather",
+    "Duration (s)": 175,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.1
   }
 ]
