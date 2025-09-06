@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T14:00:00Z",
-    "Scheduled Time": "15:30",
-    "Displayed Time": "15:30",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 214,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-04T14:00:00Z",
     "Scheduled Time": "15:34",
     "Displayed Time": "15:34",
     "Artist": "The Cure",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 187,
     "Duration (mins)": 3.02,
     "Full Duration (mins)": 3.12
+  },
+  {
+    "Hour": "2025-09-06T08:00:00Z",
+    "Scheduled Time": "09:05",
+    "Displayed Time": "09:05",
+    "Artist": "Drake",
+    "Title": "One Dance",
+    "Duration (s)": 162,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.9
   }
 ]
