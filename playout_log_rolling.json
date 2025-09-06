@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:22",
-    "Displayed Time": "17:22",
-    "Artist": "Kelly Rowland",
-    "Title": "Stole",
-    "Duration (s)": 226,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 3.92
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
     "Scheduled Time": "17:26",
     "Displayed Time": "17:26",
     "Artist": "Maroon 5",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.67,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-06T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "11:01",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Taste",
+    "Duration (s)": 153,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.55,
+    "Full Duration (mins)": 2.62
   }
 ]
