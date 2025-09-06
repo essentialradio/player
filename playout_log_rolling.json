@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T09:00:00Z",
-    "Scheduled Time": "10:42",
-    "Displayed Time": "10:42",
-    "Artist": "Bruno Mars",
-    "Title": "Locked Out of Heaven",
-    "Duration (s)": 227,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 3.78,
-    "Full Duration (mins)": 3.97
-  },
-  {
-    "Hour": "2025-09-04T09:00:00Z",
     "Scheduled Time": "10:49",
     "Displayed Time": "10:49",
     "Artist": "Avril Lavigne",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 227,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.78
+  },
+  {
+    "Hour": "2025-09-06T03:00:00Z",
+    "Scheduled Time": "04:24",
+    "Displayed Time": "04:24",
+    "Artist": "Olivia Dean",
+    "Title": "Nice To Each Other",
+    "Duration (s)": 204,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.48
   }
 ]
