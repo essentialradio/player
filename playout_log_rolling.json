@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T06:00:00Z",
-    "Scheduled Time": "07:49",
-    "Displayed Time": "07:49",
-    "Artist": "Train",
-    "Title": "Hey, Soul Sister",
-    "Duration (s)": 209,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.48,
-    "Full Duration (mins)": 3.62
-  },
-  {
-    "Hour": "2025-09-04T06:00:00Z",
     "Scheduled Time": "07:52",
     "Displayed Time": "07:52",
     "Artist": "Lola Young",
@@ -5487,6 +5476,17 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-09-05T23:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "00:00",
+    "Artist": "Davy Sims",
+    "Title": "Around the World - Part 1",
+    "Duration (s)": 3580,
+    "Full Duration (s)": 3590,
+    "Duration (mins)": 59.67,
+    "Full Duration (mins)": 59.83
   },
   {
     "Hour": "2025-09-05T23:00:00Z",
