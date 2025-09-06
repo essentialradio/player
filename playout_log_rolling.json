@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T08:00:00Z",
-    "Scheduled Time": "09:39",
-    "Displayed Time": "09:39",
-    "Artist": "Perrie",
-    "Title": "If He Wanted To He Would",
-    "Duration (s)": 195,
-    "Full Duration (s)": 198,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.3
-  },
-  {
-    "Hour": "2025-09-04T08:00:00Z",
     "Scheduled Time": "09:42",
     "Displayed Time": "09:42",
     "Artist": "Avicii Feat. Aloe Blacc",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 197,
     "Duration (mins)": 3.18,
     "Full Duration (mins)": 3.28
+  },
+  {
+    "Hour": "2025-09-06T02:00:00Z",
+    "Scheduled Time": "03:27",
+    "Displayed Time": "03:27",
+    "Artist": "Miley Cyrus",
+    "Title": "Flowers",
+    "Duration (s)": 191,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.33
   }
 ]
