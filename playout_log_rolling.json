@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T17:00:00Z",
-    "Scheduled Time": "18:16",
-    "Displayed Time": "18:16",
-    "Artist": "MK ft Chrystal",
-    "Title": "Dior",
-    "Duration (s)": 163,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.72,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-09-04T17:00:00Z",
     "Scheduled Time": "18:22",
     "Displayed Time": "18:22",
     "Artist": "Ella Henderson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-06T10:00:00Z",
+    "Scheduled Time": "11:52",
+    "Displayed Time": "11:52",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 138,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.3,
+    "Full Duration (mins)": 2.38
   }
 ]
