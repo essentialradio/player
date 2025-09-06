@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T13:00:00Z",
-    "Scheduled Time": "14:07",
-    "Displayed Time": "14:07",
-    "Artist": "Kaiser Chiefs",
-    "Title": "I Predict a Riot",
-    "Duration (s)": 230,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-04T13:00:00Z",
     "Scheduled Time": "14:11",
     "Displayed Time": "14:11",
     "Artist": "Dasha",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 233,
     "Duration (mins)": 3.55,
     "Full Duration (mins)": 3.88
+  },
+  {
+    "Hour": "2025-09-06T06:00:00Z",
+    "Scheduled Time": "07:43",
+    "Displayed Time": "07:43",
+    "Artist": "Hozier",
+    "Title": "Too Sweet",
+    "Duration (s)": 239,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.18
   }
 ]
