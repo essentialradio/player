@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T18:00:00Z",
-    "Scheduled Time": "19:31",
-    "Displayed Time": "19:31",
-    "Artist": "Supertramp",
-    "Title": "The Logical Song",
-    "Duration (s)": 231,
-    "Full Duration (s)": 249,
-    "Duration (mins)": 3.85,
-    "Full Duration (mins)": 4.15
-  },
-  {
-    "Hour": "2025-09-04T18:00:00Z",
     "Scheduled Time": "19:35",
     "Displayed Time": "19:35",
     "Artist": "Buggles",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 232,
     "Duration (mins)": 3.7,
     "Full Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-09-06T12:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "Alison Moyet",
+    "Title": "Love Resurrection</body></html>",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0
   }
 ]
