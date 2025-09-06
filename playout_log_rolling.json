@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:10",
-    "Displayed Time": "17:10",
-    "Artist": "Tom Grennan",
-    "Title": "How Does It Feel",
-    "Duration (s)": 133,
-    "Full Duration (s)": 144,
-    "Duration (mins)": 2.22,
-    "Full Duration (mins)": 2.4
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
     "Scheduled Time": "17:12",
     "Displayed Time": "17:12",
     "Artist": "Justin Bieber",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-06T09:00:00Z",
+    "Scheduled Time": "10:47",
+    "Displayed Time": "10:47",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway",
+    "Duration (s)": 245,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.2
   }
 ]
