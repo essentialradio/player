@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T12:00:00Z",
-    "Scheduled Time": "13:48",
-    "Displayed Time": "13:48",
-    "Artist": "George Ezra",
-    "Title": "Anyone For You",
-    "Duration (s)": 184,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.13
-  },
-  {
-    "Hour": "2025-09-04T12:00:00Z",
     "Scheduled Time": "13:51",
     "Displayed Time": "13:51",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 243,
     "Duration (mins)": 3.82,
     "Full Duration (mins)": 4.05
+  },
+  {
+    "Hour": "2025-09-06T06:00:00Z",
+    "Scheduled Time": "07:17",
+    "Displayed Time": "07:17",
+    "Artist": "Depeche Mode",
+    "Title": "Enjoy the Silence",
+    "Duration (s)": 238,
+    "Full Duration (s)": 256,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.27
   }
 ]
