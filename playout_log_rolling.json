@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T07:00:00Z",
-    "Scheduled Time": "08:41",
-    "Displayed Time": "08:41",
-    "Artist": "Beyonce",
-    "Title": "Irreplaceable",
-    "Duration (s)": 222,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-09-04T07:00:00Z",
     "Scheduled Time": "08:50",
     "Displayed Time": "08:50",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 257,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.28
+  },
+  {
+    "Hour": "2025-09-06T01:00:00Z",
+    "Scheduled Time": "02:32",
+    "Displayed Time": "02:32",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 171,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.98
   }
 ]
