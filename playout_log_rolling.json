@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T09:00:00Z",
-    "Scheduled Time": "10:33",
-    "Displayed Time": "10:33",
-    "Artist": "Pink",
-    "Title": "Never Gonna Not Dance Again",
-    "Duration (s)": 220,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.67,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-09-04T09:00:00Z",
     "Scheduled Time": "10:38",
     "Displayed Time": "10:38",
     "Artist": "Mark Ronson ft Amy Winehouse",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-06T03:00:00Z",
+    "Scheduled Time": "04:13",
+    "Displayed Time": "04:13",
+    "Artist": "Becky Hill",
+    "Title": "Outside Of Love",
+    "Duration (s)": 170,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.93
   }
 ]
