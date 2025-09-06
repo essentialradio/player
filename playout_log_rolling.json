@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T14:00:00Z",
-    "Scheduled Time": "15:08",
-    "Displayed Time": "15:08",
-    "Artist": "Taylor Swift",
-    "Title": "Is It Over Now? (Taylor's Version)",
-    "Duration (s)": 216,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.6,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-04T14:00:00Z",
     "Scheduled Time": "15:12",
     "Displayed Time": "15:12",
     "Artist": "The Goo Goo Dolls",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 240,
     "Duration (mins)": 3.72,
     "Full Duration (mins)": 4.0
+  },
+  {
+    "Hour": "2025-09-06T07:00:00Z",
+    "Scheduled Time": "08:45",
+    "Displayed Time": "08:45",
+    "Artist": "Ed Sheeran",
+    "Title": "Azizam",
+    "Duration (s)": 153,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.55,
+    "Full Duration (mins)": 2.7
   }
 ]
