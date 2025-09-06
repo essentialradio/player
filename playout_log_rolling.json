@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T07:00:00Z",
-    "Scheduled Time": "08:33",
-    "Displayed Time": "08:33",
-    "Artist": "Miley Cyrus",
-    "Title": "Flowers",
-    "Duration (s)": 192,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.33
-  },
-  {
-    "Hour": "2025-09-04T07:00:00Z",
     "Scheduled Time": "08:36",
     "Displayed Time": "08:36",
     "Artist": "The Charlatans",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-06T01:00:00Z",
+    "Scheduled Time": "02:24",
+    "Displayed Time": "02:24",
+    "Artist": "Teddy Swims",
+    "Title": "Lose Control",
+    "Duration (s)": 201,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.52
   }
 ]
