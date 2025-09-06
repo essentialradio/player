@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T13:00:00Z",
-    "Scheduled Time": "14:50",
-    "Displayed Time": "14:50",
-    "Artist": "John Waite",
-    "Title": "Missing You",
-    "Duration (s)": 202,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-04T13:00:00Z",
     "Scheduled Time": "14:53",
     "Displayed Time": "14:53",
     "Artist": "Ariana Grande",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 244,
     "Duration (mins)": 3.87,
     "Full Duration (mins)": 4.07
+  },
+  {
+    "Hour": "2025-09-06T07:00:00Z",
+    "Scheduled Time": "08:26",
+    "Displayed Time": "08:26",
+    "Artist": "David Guetta & Bebe Rexha",
+    "Title": "I'm Good (Blue)",
+    "Duration (s)": 168,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.9
   }
 ]
