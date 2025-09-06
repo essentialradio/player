@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T09:00:00Z",
-    "Scheduled Time": "10:38",
-    "Displayed Time": "10:38",
-    "Artist": "Mark Ronson ft Amy Winehouse",
-    "Title": "Valerie",
-    "Duration (s)": 214,
-    "Full Duration (s)": 217,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.62
-  },
-  {
-    "Hour": "2025-09-04T09:00:00Z",
     "Scheduled Time": "10:42",
     "Displayed Time": "10:42",
     "Artist": "Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-06T03:00:00Z",
+    "Scheduled Time": "04:16",
+    "Displayed Time": "04:16",
+    "Artist": "Spiller ft Sophie Ellis-Bextor",
+    "Title": "Groovejet (If This Ain't Love)",
+    "Duration (s)": 218,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.78
   }
 ]
