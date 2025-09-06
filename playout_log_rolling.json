@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T08:00:00Z",
-    "Scheduled Time": "09:36",
-    "Displayed Time": "09:36",
-    "Artist": "Chappell Roan",
-    "Title": "The Giver",
-    "Duration (s)": 198,
-    "Full Duration (s)": 203,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.38
-  },
-  {
-    "Hour": "2025-09-04T08:00:00Z",
     "Scheduled Time": "09:39",
     "Displayed Time": "09:39",
     "Artist": "Perrie",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 192,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.2
+  },
+  {
+    "Hour": "2025-09-06T02:00:00Z",
+    "Scheduled Time": "03:24",
+    "Displayed Time": "03:24",
+    "Artist": "Madness",
+    "Title": "It Must Be Love",
+    "Duration (s)": 191,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.28
   }
 ]
