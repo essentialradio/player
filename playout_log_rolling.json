@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T15:00:00Z",
-    "Scheduled Time": "16:46",
-    "Displayed Time": "16:46",
-    "Artist": "Georgia Ku",
-    "Title": "A Little More Lost",
-    "Duration (s)": 154,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.57,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-09-04T15:00:00Z",
     "Scheduled Time": "16:49",
     "Displayed Time": "16:49",
     "Artist": "CMAT",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 236,
     "Duration (mins)": 3.63,
     "Full Duration (mins)": 3.93
+  },
+  {
+    "Hour": "2025-09-06T09:00:00Z",
+    "Scheduled Time": "10:23",
+    "Displayed Time": "10:23",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 192,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.3
   }
 ]
