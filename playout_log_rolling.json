@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T11:00:00Z",
-    "Scheduled Time": "12:11",
-    "Displayed Time": "12:11",
-    "Artist": "Beyonce",
-    "Title": "BREAK MY SOUL",
-    "Duration (s)": 158,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.63,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-04T11:00:00Z",
     "Scheduled Time": "12:17",
     "Displayed Time": "12:17",
     "Artist": "Doechii",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 162,
     "Duration (mins)": 2.58,
     "Full Duration (mins)": 2.7
+  },
+  {
+    "Hour": "2025-09-06T04:00:00Z",
+    "Scheduled Time": "05:45",
+    "Displayed Time": "05:45",
+    "Artist": "Maroon 5 ft Christina Aguilera",
+    "Title": "Moves Like Jagger",
+    "Duration (s)": 193,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.35
   }
 ]
