@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T11:00:00Z",
-    "Scheduled Time": "12:05",
-    "Displayed Time": "12:05",
-    "Artist": "K-Klass",
-    "Title": "Let Me Show You",
-    "Duration (s)": 198,
-    "Full Duration (s)": 212,
-    "Duration (mins)": 3.3,
-    "Full Duration (mins)": 3.53
-  },
-  {
-    "Hour": "2025-09-04T11:00:00Z",
     "Scheduled Time": "12:08",
     "Displayed Time": "12:08",
     "Artist": "Myles Smith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.65,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-06T04:00:00Z",
+    "Scheduled Time": "05:35",
+    "Displayed Time": "05:35",
+    "Artist": "A1",
+    "Title": "Caught In The Middle",
+    "Duration (s)": 197,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.42
   }
 ]
