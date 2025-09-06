@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T16:00:00Z",
-    "Scheduled Time": "17:43",
-    "Displayed Time": "17:43",
-    "Artist": "Kenny Loggins",
-    "Title": "Footloose",
-    "Duration (s)": 217,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-09-04T16:00:00Z",
     "Scheduled Time": "17:47",
     "Displayed Time": "17:47",
     "Artist": "Addison Rae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-06T10:00:00Z",
+    "Scheduled Time": "11:15",
+    "Displayed Time": "11:15",
+    "Artist": "Bobby McFerrin",
+    "Title": "Don't Worry, Be Happy",
+    "Duration (s)": 217,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.9
   }
 ]
