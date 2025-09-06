@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T17:00:00Z",
-    "Scheduled Time": "18:48",
-    "Displayed Time": "18:48",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 169,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.82,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-04T17:00:00Z",
     "Scheduled Time": "18:51",
     "Displayed Time": "18:51",
     "Artist": "Max Dean x Luke Dean x Locky",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:26",
+    "Displayed Time": "12:26",
+    "Artist": "Shed Seven",
+    "Title": "Disco Down",
+    "Duration (s)": 227,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.78,
+    "Full Duration (mins)": 3.85
   }
 ]
