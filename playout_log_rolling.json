@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T17:00:00Z",
-    "Scheduled Time": "18:28",
-    "Displayed Time": "18:28",
-    "Artist": "Wunderhorse",
-    "Title": "The Rope",
-    "Duration (s)": 173,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-09-04T17:00:00Z",
     "Scheduled Time": "18:31",
     "Displayed Time": "18:31",
     "Artist": "Supermen Lovers & OneRepublic",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.62,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.98
   }
 ]
