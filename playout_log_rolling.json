@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T12:00:00Z",
-    "Scheduled Time": "13:23",
-    "Displayed Time": "13:23",
-    "Artist": "JX",
-    "Title": "Son of a Gun",
-    "Duration (s)": 189,
-    "Full Duration (s)": 194,
-    "Duration (mins)": 3.15,
-    "Full Duration (mins)": 3.23
-  },
-  {
-    "Hour": "2025-09-04T12:00:00Z",
     "Scheduled Time": "13:26",
     "Displayed Time": "13:26",
     "Artist": "Sam Fender & Olivia Dean",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 274,
     "Duration (mins)": 4.23,
     "Full Duration (mins)": 4.57
+  },
+  {
+    "Hour": "2025-09-06T05:00:00Z",
+    "Scheduled Time": "06:50",
+    "Displayed Time": "06:50",
+    "Artist": "Becky Hill/Chase & Status",
+    "Title": "Disconnect",
+    "Duration (s)": 155,
+    "Full Duration (s)": 165,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.75
   }
 ]
