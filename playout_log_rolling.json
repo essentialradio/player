@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T09:00:00Z",
-    "Scheduled Time": "10:05",
-    "Displayed Time": "10:05",
-    "Artist": "Abba",
-    "Title": "Money, Money, Money",
-    "Duration (s)": 183,
-    "Full Duration (s)": 188,
-    "Duration (mins)": 3.05,
-    "Full Duration (mins)": 3.13
-  },
-  {
-    "Hour": "2025-09-04T09:00:00Z",
     "Scheduled Time": "10:10",
     "Displayed Time": "10:10",
     "Artist": "Jonas Brothers, Bailey Zimmerman",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.98,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-06T02:00:00Z",
+    "Scheduled Time": "03:49",
+    "Displayed Time": "03:49",
+    "Artist": "Labrinth Ft Emeli Sande",
+    "Title": "Beneath Your Beautiful",
+    "Duration (s)": 233,
+    "Full Duration (s)": 236,
+    "Duration (mins)": 3.88,
+    "Full Duration (mins)": 3.93
   }
 ]
