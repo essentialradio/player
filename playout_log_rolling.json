@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T17:00:00Z",
-    "Scheduled Time": "18:08",
-    "Displayed Time": "18:08",
-    "Artist": "Sekou",
-    "Title": "Catching Bodies",
-    "Duration (s)": 176,
-    "Full Duration (s)": 186,
-    "Duration (mins)": 2.93,
-    "Full Duration (mins)": 3.1
-  },
-  {
-    "Hour": "2025-09-04T17:00:00Z",
     "Scheduled Time": "18:12",
     "Displayed Time": "18:12",
     "Artist": "Lady Gaga & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-06T10:00:00Z",
+    "Scheduled Time": "11:46",
+    "Displayed Time": "11:46",
+    "Artist": "Good Neighbours",
+    "Title": "Starry Eyed",
+    "Duration (s)": 132,
+    "Full Duration (s)": 137,
+    "Duration (mins)": 2.2,
+    "Full Duration (mins)": 2.28
   }
 ]
