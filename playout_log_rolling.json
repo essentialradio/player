@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T17:00:00Z",
-    "Scheduled Time": "18:12",
-    "Displayed Time": "18:12",
-    "Artist": "Lady Gaga & Bruno Mars",
-    "Title": "Die With A Smile",
-    "Duration (s)": 241,
-    "Full Duration (s)": 252,
-    "Duration (mins)": 4.02,
-    "Full Duration (mins)": 4.2
-  },
-  {
-    "Hour": "2025-09-04T17:00:00Z",
     "Scheduled Time": "18:16",
     "Displayed Time": "18:16",
     "Artist": "MK ft Chrystal",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 137,
     "Duration (mins)": 2.2,
     "Full Duration (mins)": 2.28
+  },
+  {
+    "Hour": "2025-09-06T10:00:00Z",
+    "Scheduled Time": "11:48",
+    "Displayed Time": "11:48",
+    "Artist": "Usher",
+    "Title": "You Make Me Wanna...",
+    "Duration (s)": 204,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.67
   }
 ]
