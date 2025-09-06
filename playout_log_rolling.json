@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-04T18:00:00Z",
-    "Scheduled Time": "19:13",
-    "Displayed Time": "19:13",
-    "Artist": "The Police",
-    "Title": "Can't Stand Losing You",
-    "Duration (s)": 150,
-    "Full Duration (s)": 158,
-    "Duration (mins)": 2.5,
-    "Full Duration (mins)": 2.63
-  },
-  {
-    "Hour": "2025-09-04T18:00:00Z",
-    "Scheduled Time": "19:15",
-    "Displayed Time": "19:15",
-    "Artist": "Mary Mason",
-    "Title": "Angel Of The Morning/Any Way You Want Me",
-    "Duration (s)": 222,
-    "Full Duration (s)": 235,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.92
-  },
-  {
-    "Hour": "2025-09-04T18:00:00Z",
     "Scheduled Time": "19:19",
     "Displayed Time": "19:19",
     "Artist": "David Bowie",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 294,
     "Duration (mins)": 4.78,
     "Full Duration (mins)": 4.9
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:45",
+    "Displayed Time": "12:45",
+    "Artist": "Becky Hill & David Guetta",
+    "Title": "Remember",
+    "Duration (s)": 156,
+    "Full Duration (s)": 161,
+    "Duration (mins)": 2.6,
+    "Full Duration (mins)": 2.68
+  },
+  {
+    "Hour": "2025-09-06T11:00:00Z",
+    "Scheduled Time": "12:49",
+    "Displayed Time": "12:49",
+    "Artist": "Sugababes",
+    "Title": "Girls",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17
   }
 ]
