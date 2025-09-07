@@ -9796,6 +9796,72 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
+<script>
+(function () {
+  const RECENT_URL = "playout_log_rolling.json";
+
+  // Build a usable ISO timestamp for rows that only have Hour + Scheduled Time
+  function rowISO(r) {
+    if (r["Start ISO"]) return r["Start ISO"];     // backend may add this later
+    if (r.Hour && r["Scheduled Time"]) {
+      const base = new Date(r.Hour);               // e.g. 2025-09-07T16:00:00Z
+      const [hh, mm] = r["Scheduled Time"].split(":").map(Number);
+      base.setUTCHours(hh, mm, 0, 0);              // place inside the hour
+      return base.toISOString();
+    }
+    return null;
+  }
+
+  function hhmm(localISO) {
+    if (!localISO) return "";
+    try {
+      const d = new Date(localISO);
+      return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    } catch { return ""; }
+  }
+
+  async function loadRecent() {
+    try {
+      // cache-bust to avoid stale CDN/browser copies
+      const url = `${RECENT_URL}?t=${Date.now()}`;
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      // take the last 30 items, newest first
+      const recent = data.slice(-30).reverse().map(r => ({
+        artist: r.Artist,
+        title: r.Title,
+        whenISO: rowISO(r),
+        duration: Number(r["Duration (s)"] ?? 180),
+        source: r.Source || "PLAYIT"   // ALT/FIXED if present
+      }));
+
+      const ul = document.getElementById("recent-list");
+      if (!ul) return;
+
+      ul.innerHTML = recent.map(item => `
+        <li>
+          <span class="time">${hhmm(item.whenISO)}</span>
+          <span class="info">
+            ${item.artist || ""} – ${item.title || ""}
+            ${item.source && item.source !== "PLAYIT" ? `<small style="opacity:.65">(${item.source})</small>` : ""}
+          </span>
+        </li>
+      `).join("");
+    } catch (e) {
+      console.error("Recent fetch failed:", e);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    loadRecent();
+    // optional: live refresh every 30s
+    setInterval(loadRecent, 30000);
+  });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
