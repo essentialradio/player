@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T03:00:00Z",
-    "Scheduled Time": "04:28",
-    "Displayed Time": "04:28",
-    "Artist": "Alanis Morissette",
-    "Title": "Ironic",
-    "Duration (s)": 211,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.52,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-09-05T03:00:00Z",
     "Scheduled Time": "04:32",
     "Displayed Time": "04:32",
     "Artist": "Olly Murs",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.3,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-07T07:00:00Z",
+    "Scheduled Time": "08:20",
+    "Displayed Time": "08:20",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would",
+    "Duration (s)": 194,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.3
   }
 ]
