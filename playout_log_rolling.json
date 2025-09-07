@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:53",
-    "Displayed Time": "05:53",
-    "Artist": "The Fratellis",
-    "Title": "Whistle for the Choir",
-    "Duration (s)": 199,
-    "Full Duration (s)": 213,
-    "Duration (mins)": 3.32,
-    "Full Duration (mins)": 3.55
-  },
-  {
     "Hour": "2025-09-05T05:00:00Z",
     "Scheduled Time": "06:01",
     "Displayed Time": "06:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 211,
     "Duration (mins)": 3.42,
     "Full Duration (mins)": 3.52
+  },
+  {
+    "Hour": "2025-09-07T10:00:00Z",
+    "Scheduled Time": "11:05",
+    "Displayed Time": "11:05",
+    "Artist": "Bryan Adams",
+    "Title": "Summer of '69",
+    "Duration (s)": 198,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.6
   }
 ]
