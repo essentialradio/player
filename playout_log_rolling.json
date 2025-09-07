@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T06:00:00Z",
-    "Scheduled Time": "07:46",
-    "Displayed Time": "07:46",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Manchild",
-    "Duration (s)": 201,
-    "Full Duration (s)": 214,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.57
-  },
-  {
-    "Hour": "2025-09-05T06:00:00Z",
     "Scheduled Time": "07:49",
     "Displayed Time": "07:49",
     "Artist": "Charlie Puth",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 142,
     "Duration (mins)": 2.25,
     "Full Duration (mins)": 2.37
+  },
+  {
+    "Hour": "2025-09-07T11:00:00Z",
+    "Scheduled Time": "12:38",
+    "Displayed Time": "12:38",
+    "Artist": "Robert Palmer",
+    "Title": "Bad Case of Loving You (Doctor, Doctor)",
+    "Duration (s)": 183,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.17
   }
 ]
