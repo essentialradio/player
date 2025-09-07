@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:02",
-    "Displayed Time": "05:02",
-    "Artist": "Alex Warren",
-    "Title": "Eternity",
-    "Duration (s)": 187,
-    "Full Duration (s)": 190,
-    "Duration (mins)": 3.12,
-    "Full Duration (mins)": 3.17
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
     "Scheduled Time": "05:05",
     "Displayed Time": "05:05",
     "Artist": "House of Pain",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 202,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.37
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:09",
+    "Displayed Time": "10:09",
+    "Artist": "CeCe Peniston",
+    "Title": "Finally",
+    "Duration (s)": 231,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 4.12
   }
 ]
