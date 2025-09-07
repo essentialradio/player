@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T07:00:00Z",
-    "Scheduled Time": "08:41",
-    "Displayed Time": "08:41",
-    "Artist": "The Script",
-    "Title": "The Man Who Can't Be Moved",
-    "Duration (s)": 234,
-    "Full Duration (s)": 239,
-    "Duration (mins)": 3.9,
-    "Full Duration (mins)": 3.98
-  },
-  {
-    "Hour": "2025-09-05T07:00:00Z",
     "Scheduled Time": "08:50",
     "Displayed Time": "08:50",
     "Artist": "Chappell Roan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 164,
     "Duration (mins)": 2.58,
     "Full Duration (mins)": 2.73
+  },
+  {
+    "Hour": "2025-09-07T12:00:00Z",
+    "Scheduled Time": "13:28",
+    "Displayed Time": "13:28",
+    "Artist": "Elle King",
+    "Title": "Ex's & Oh's",
+    "Duration (s)": 192,
+    "Full Duration (s)": 202,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.37
   }
 ]
