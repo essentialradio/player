@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T23:00:00Z",
-    "Scheduled Time": "00:32",
-    "Displayed Time": "00:32",
-    "Artist": "Ed Sheeran",
-    "Title": "Sapphire",
-    "Duration (s)": 173,
-    "Full Duration (s)": 179,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 2.98
-  },
-  {
-    "Hour": "2025-09-04T23:00:00Z",
     "Scheduled Time": "00:35",
     "Displayed Time": "00:35",
     "Artist": "Stereophonics",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 250,
     "Duration (mins)": 3.95,
     "Full Duration (mins)": 4.17
+  },
+  {
+    "Hour": "2025-09-07T03:00:00Z",
+    "Scheduled Time": "04:22",
+    "Displayed Time": "04:22",
+    "Artist": "Bangles",
+    "Title": "Manic Monday",
+    "Duration (s)": 172,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.07
   }
 ]
