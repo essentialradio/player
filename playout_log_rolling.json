@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T05:00:00Z",
-    "Scheduled Time": "06:44",
-    "Displayed Time": "06:44",
-    "Artist": "Myles Smith",
-    "Title": "Nice To Meet You",
-    "Duration (s)": 167,
-    "Full Duration (s)": 176,
-    "Duration (mins)": 2.78,
-    "Full Duration (mins)": 2.93
-  },
-  {
-    "Hour": "2025-09-05T05:00:00Z",
     "Scheduled Time": "06:47",
     "Displayed Time": "06:47",
     "Artist": "Noah Kahan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 258,
     "Duration (mins)": 3.93,
     "Full Duration (mins)": 4.3
+  },
+  {
+    "Hour": "2025-09-07T10:00:00Z",
+    "Scheduled Time": "11:47",
+    "Displayed Time": "11:47",
+    "Artist": "Yazoo",
+    "Title": "Don't Go",
+    "Duration (s)": 162,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.95
   }
 ]
