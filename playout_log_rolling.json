@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:12",
-    "Displayed Time": "05:12",
-    "Artist": "Tom Grennan",
-    "Title": "Higher",
-    "Duration (s)": 191,
-    "Full Duration (s)": 201,
-    "Duration (mins)": 3.18,
-    "Full Duration (mins)": 3.35
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
     "Scheduled Time": "05:15",
     "Displayed Time": "05:15",
     "Artist": "Daft Punk",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 193,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.22
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:23",
+    "Displayed Time": "10:23",
+    "Artist": "Ash",
+    "Title": "Shining Light",
+    "Duration (s)": 235,
+    "Full Duration (s)": 248,
+    "Duration (mins)": 3.92,
+    "Full Duration (mins)": 4.13
   }
 ]
