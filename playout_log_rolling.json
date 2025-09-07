@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T22:00:00Z",
-    "Scheduled Time": "23:28",
-    "Displayed Time": "23:28",
-    "Artist": "Hootie And The Blowfish",
-    "Title": "Let Her Cry",
-    "Duration (s)": 294,
-    "Full Duration (s)": 307,
-    "Duration (mins)": 4.9,
-    "Full Duration (mins)": 5.12
-  },
-  {
-    "Hour": "2025-09-04T22:00:00Z",
     "Scheduled Time": "23:33",
     "Displayed Time": "23:33",
     "Artist": "Janet Jackson",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 177,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.95
+  },
+  {
+    "Hour": "2025-09-07T02:00:00Z",
+    "Scheduled Time": "03:22",
+    "Displayed Time": "03:22",
+    "Artist": "MK ft Chrystal",
+    "Title": "Dior",
+    "Duration (s)": 165,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.82
   }
 ]
