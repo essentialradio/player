@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T02:00:00Z",
-    "Scheduled Time": "03:26",
-    "Displayed Time": "03:26",
-    "Artist": "Shaboozey",
-    "Title": "A Bar Song (Tipsy)",
-    "Duration (s)": 166,
-    "Full Duration (s)": 171,
-    "Duration (mins)": 2.77,
-    "Full Duration (mins)": 2.85
-  },
-  {
-    "Hour": "2025-09-05T02:00:00Z",
     "Scheduled Time": "03:29",
     "Displayed Time": "03:29",
     "Artist": "Belinda Carlisle",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 196,
     "Duration (mins)": 3.07,
     "Full Duration (mins)": 3.27
+  },
+  {
+    "Hour": "2025-09-07T06:00:00Z",
+    "Scheduled Time": "07:11",
+    "Displayed Time": "07:11",
+    "Artist": "Dasha",
+    "Title": "Not At This Party",
+    "Duration (s)": 203,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.53
   }
 ]
