@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T22:00:00Z",
-    "Scheduled Time": "23:24",
-    "Displayed Time": "23:24",
-    "Artist": "Boyz II Men",
-    "Title": "I'll Make Love to You",
-    "Duration (s)": 222,
-    "Full Duration (s)": 240,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 4.0
-  },
-  {
-    "Hour": "2025-09-04T22:00:00Z",
     "Scheduled Time": "23:28",
     "Displayed Time": "23:28",
     "Artist": "Hootie And The Blowfish",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 178,
     "Duration (mins)": 2.9,
     "Full Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-09-07T02:00:00Z",
+    "Scheduled Time": "03:15",
+    "Displayed Time": "03:15",
+    "Artist": "Green Day",
+    "Title": "American Idiot",
+    "Duration (s)": 172,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 2.95
   }
 ]
