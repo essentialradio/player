@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T21:00:00Z",
-    "Scheduled Time": "22:25",
-    "Displayed Time": "22:25",
-    "Artist": "Randy Crawford",
-    "Title": "You Might Need Somebody",
-    "Duration (s)": 227,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 3.78,
-    "Full Duration (mins)": 3.93
-  },
-  {
-    "Hour": "2025-09-04T21:00:00Z",
     "Scheduled Time": "22:29",
     "Displayed Time": "22:29",
     "Artist": "Bryan Adams",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 216,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.6
+  },
+  {
+    "Hour": "2025-09-07T01:00:00Z",
+    "Scheduled Time": "02:24",
+    "Displayed Time": "02:24",
+    "Artist": "sombr",
+    "Title": "Undressed",
+    "Duration (s)": 172,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.03
   }
 ]
