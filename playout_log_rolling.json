@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T01:00:00Z",
-    "Scheduled Time": "02:16",
-    "Displayed Time": "02:16",
-    "Artist": "Shaggy",
-    "Title": "It Wasn't Me",
-    "Duration (s)": 217,
-    "Full Duration (s)": 227,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.78
-  },
-  {
-    "Hour": "2025-09-05T01:00:00Z",
     "Scheduled Time": "02:23",
     "Displayed Time": "02:23",
     "Artist": "Matthew Wilder",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 214,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.57
+  },
+  {
+    "Hour": "2025-09-07T05:00:00Z",
+    "Scheduled Time": "06:05",
+    "Displayed Time": "06:05",
+    "Artist": "Dua Lipa",
+    "Title": "Physical",
+    "Duration (s)": 189,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.23
   }
 ]
