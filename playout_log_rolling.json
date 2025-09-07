@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T21:00:00Z",
-    "Scheduled Time": "22:29",
-    "Displayed Time": "22:29",
-    "Artist": "Bryan Adams",
-    "Title": "Heaven",
-    "Duration (s)": 229,
-    "Full Duration (s)": 246,
-    "Duration (mins)": 3.82,
-    "Full Duration (mins)": 4.1
-  },
-  {
-    "Hour": "2025-09-04T21:00:00Z",
     "Scheduled Time": "22:32",
     "Displayed Time": "22:32",
     "Artist": "Blackstreet Featuring Dr Dre",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-07T01:00:00Z",
+    "Scheduled Time": "02:27",
+    "Displayed Time": "02:27",
+    "Artist": "Luther Vandross & Janet Jackson",
+    "Title": "The Best Things in Life Are Free",
+    "Duration (s)": 253,
+    "Full Duration (s)": 266,
+    "Duration (mins)": 4.22,
+    "Full Duration (mins)": 4.43
   }
 ]
