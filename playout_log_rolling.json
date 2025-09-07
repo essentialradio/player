@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T08:00:00Z",
-    "Scheduled Time": "09:38",
-    "Displayed Time": "09:38",
-    "Artist": "Lorde",
-    "Title": "What Was That",
-    "Duration (s)": 208,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-05T08:00:00Z",
     "Scheduled Time": "09:42",
     "Displayed Time": "09:42",
     "Artist": "Benson Boone",
@@ -5487,6 +5476,17 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-09-07T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3480,
+    "Full Duration (s)": 3480,
+    "Duration (mins)": 58.0,
+    "Full Duration (mins)": 58.0
   },
   {
     "Hour": "2025-09-07T14:00:00Z",
