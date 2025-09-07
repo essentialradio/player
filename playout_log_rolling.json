@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:41",
-    "Displayed Time": "05:41",
-    "Artist": "The Vamps ft Demi Lovato",
-    "Title": "Somebody to You",
-    "Duration (s)": 173,
-    "Full Duration (s)": 183,
-    "Duration (mins)": 2.88,
-    "Full Duration (mins)": 3.05
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
     "Scheduled Time": "05:44",
     "Displayed Time": "05:44",
     "Artist": "Tate McRae",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 186,
     "Duration (mins)": 2.97,
     "Full Duration (mins)": 3.1
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:49",
+    "Displayed Time": "10:49",
+    "Artist": "Martha and the Vandellas",
+    "Title": "Jimmy Mack",
+    "Duration (s)": 160,
+    "Full Duration (s)": 170,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.83
   }
 ]
