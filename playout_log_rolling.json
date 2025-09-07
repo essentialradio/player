@@ -46233,6 +46233,17 @@
     "Full Duration (mins)": 60
   },
   {
+    "Hour": "2025-09-07T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Kevin McCallum",
+    "Title": "Mr Rocks Show",
+    "Duration (s)": 7192,
+    "Full Duration (s)": 7198,
+    "Duration (mins)": 119.87,
+    "Full Duration (mins)": 119.97
+  },
+  {
     "Hour": "2025-09-07T19:00:00Z",
     "Scheduled Time": "20:59",
     "Displayed Time": "20:59",
@@ -46255,7 +46266,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-07T21:23:38+01:00",
+    "Start ISO": "2025-09-07T21:23:42+01:00",
     "Source": "FIXED"
   }
 ]
