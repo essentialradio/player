@@ -9796,6 +9796,48 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
+<script>
+(function () {
+  const ENDPOINT = "/api/recent"; // unified backend that includes ALT/FIXED
+
+  function hhmm(ms) {
+    if (!Number.isFinite(ms)) return "";
+    try { return new Date(ms).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
+    catch { return ""; }
+  }
+
+  async function refreshRecent() {
+    const ul = document.getElementById("recent-list");
+    if (!ul) return;
+    try {
+      const res = await fetch(ENDPOINT, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const items = await res.json(); // [{artist, title, startMs, duration, source, ...}]
+
+      ul.innerHTML = items.map(it => `
+        <li>
+          <span class="time">${hhmm(it.startMs)}</span>
+          <span class="info">
+            ${it.artist || ""} – ${it.title || ""}
+            ${it.source && it.source !== "PLAYIT" ? `<small style="opacity:.65">(${it.source})</small>` : ""}
+          </span>
+        </li>
+      `).join("");
+    } catch (e) {
+      console.error("recent fetch failed:", e);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    refreshRecent();
+    setInterval(refreshRecent, 30000);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) refreshRecent();
+    });
+  });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
