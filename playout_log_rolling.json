@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T20:00:00Z",
-    "Scheduled Time": "21:24",
-    "Displayed Time": "21:24",
-    "Artist": "East 17",
-    "Title": "It's Alright",
-    "Duration (s)": 266,
-    "Full Duration (s)": 281,
-    "Duration (mins)": 4.43,
-    "Full Duration (mins)": 4.68
-  },
-  {
-    "Hour": "2025-09-04T20:00:00Z",
     "Scheduled Time": "21:29",
     "Displayed Time": "21:29",
     "Artist": "Stiltskin",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 185,
     "Duration (mins)": 2.93,
     "Full Duration (mins)": 3.08
+  },
+  {
+    "Hour": "2025-09-07T00:00:00Z",
+    "Scheduled Time": "01:31",
+    "Displayed Time": "01:31",
+    "Artist": "UB40",
+    "Title": "Red Red Wine",
+    "Duration (s)": 166,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 3.03
   }
 ]
