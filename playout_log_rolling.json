@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:44",
-    "Displayed Time": "05:44",
-    "Artist": "Tate McRae",
-    "Title": "Just Keep Watching",
-    "Duration (s)": 138,
-    "Full Duration (s)": 143,
-    "Duration (mins)": 2.3,
-    "Full Duration (mins)": 2.38
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
     "Scheduled Time": "05:46",
     "Displayed Time": "05:46",
     "Artist": "Texas",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 170,
     "Duration (mins)": 2.67,
     "Full Duration (mins)": 2.83
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:52",
+    "Displayed Time": "10:52",
+    "Artist": "Billy Idol",
+    "Title": "Hot in the City",
+    "Duration (s)": 201,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.58
   }
 ]
