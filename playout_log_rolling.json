@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T06:00:00Z",
-    "Scheduled Time": "07:31",
-    "Displayed Time": "07:31",
-    "Artist": "Naughty Boy Feat. Beyonce & Arrow Benjamin",
-    "Title": "Runnin' (Lose It All)",
-    "Duration (s)": 195,
-    "Full Duration (s)": 207,
-    "Duration (mins)": 3.25,
-    "Full Duration (mins)": 3.45
-  },
-  {
-    "Hour": "2025-09-05T06:00:00Z",
     "Scheduled Time": "07:35",
     "Displayed Time": "07:35",
     "Artist": "Paul Russell",
@@ -5497,6 +5486,17 @@
     "Duration (s)": 166,
     "Full Duration (s)": 175,
     "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-07T11:00:00Z",
+    "Scheduled Time": "12:26",
+    "Displayed Time": "12:26",
+    "Artist": "Max Dean x Luke Dean x Locky",
+    "Title": "Can't Decide",
+    "Duration (s)": 165,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.75,
     "Full Duration (mins)": 2.92
   }
 ]
