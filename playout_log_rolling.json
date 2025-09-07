@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T22:00:00Z",
-    "Scheduled Time": "23:49",
-    "Displayed Time": "23:49",
-    "Artist": "The Stranglers",
-    "Title": "Golden Brown",
-    "Duration (s)": 192,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-04T22:00:00Z",
     "Scheduled Time": "23:53",
     "Displayed Time": "23:53",
     "Artist": "Kenny Rogers & Sheena Easton",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-07T02:00:00Z",
+    "Scheduled Time": "03:40",
+    "Displayed Time": "03:40",
+    "Artist": "Tom Grennan",
+    "Title": "Remind Me",
+    "Duration (s)": 207,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.52
   }
 ]
