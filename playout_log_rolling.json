@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T23:00:00Z",
-    "Scheduled Time": "00:46",
-    "Displayed Time": "00:46",
-    "Artist": "Justin Timberlake",
-    "Title": "Can't Stop the Feeling",
-    "Duration (s)": 230,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 3.88
-  },
-  {
-    "Hour": "2025-09-04T23:00:00Z",
     "Scheduled Time": "00:50",
     "Displayed Time": "00:50",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 213,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.55
+  },
+  {
+    "Hour": "2025-09-07T03:00:00Z",
+    "Scheduled Time": "04:31",
+    "Displayed Time": "04:31",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 242,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4.03,
+    "Full Duration (mins)": 4.3
   }
 ]
