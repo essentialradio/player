@@ -1,6 +1,6 @@
 // api/recent.js
-// Unified "recently played" API.
-// GET: Pulls from playout_log_rolling.json (root or /public), normalises ALT/FIXED rows, returns top 100.
+// Unified "recently played" API with robust fallbacks and debug mode.
+// GET: Pulls from playout_log_rolling.json (root or /public), normalises rows, returns newest first.
 // POST: Preserved — writes to recent.json blob for any existing producers.
 
 import { put, get } from '@vercel/blob';
@@ -8,43 +8,37 @@ import { put, get } from '@vercel/blob';
 const BLOB_PATH = 'recent.json';
 const MAX = 500;
 
-/* ---------- helpers ---------- */
+// OPTIONAL: external fallback (uncomment if you still publish to GitHub Pages)
+// const GITHUB_FALLBACK = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+
+/* ----------------- helpers ----------------- */
 function toNumber(v, fallback = 0) {
-  const n = Number(v);
+  const n = typeof v === 'string' ? Number.parseFloat(v) : Number(v);
   return Number.isFinite(n) ? n : fallback;
 }
 
 // Parse Hour which might be ISO or "YYYY-MM-DD HH(:MM)?"
 function parseHourToDate(hourStr) {
   if (!hourStr) return null;
+  const d1 = new Date(hourStr);                // handles ISO w/ Z
+  if (!Number.isNaN(d1)) return d1;
 
-  // Try native first (ISO, with Z)
-  const d1 = new Date(hourStr);
-  if (!isNaN(d1)) return d1;
-
-  // Try "YYYY-MM-DD HH:MM" or "YYYY-MM-DD HH"
   const m = String(hourStr).match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2})(?::(\d{2}))?$/);
   if (m) {
     const [, Y, M, D, hh, mm = '00'] = m;
-    const d = new Date(Date.UTC(+Y, +M - 1, +D, +hh, +mm, 0, 0)); // treat as UTC
-    if (!isNaN(d)) return d;
+    const d = new Date(Date.UTC(+Y, +M - 1, +D, +hh, +mm, 0, 0)); // treat as UTC hour
+    if (!Number.isNaN(d)) return d;
   }
-
   return null;
 }
 
 function deriveISO(row) {
-  // Prefer backend-provided ISO if present
-  if (row['Start ISO']) return row['Start ISO'];
-
-  // Else build from Hour + Scheduled Time
+  if (row['Start ISO']) return row['Start ISO']; // provided by Python for ALT/FIXED
   if (row.Hour && row['Scheduled Time']) {
     const base = parseHourToDate(row.Hour);
     if (base) {
-      const parts = String(row['Scheduled Time']).split(':').map(Number);
-      const hh = Number.isFinite(parts[0]) ? parts[0] : 0;
-      const mm = Number.isFinite(parts[1]) ? parts[1] : 0;
-      base.setUTCHours(hh, mm, 0, 0);
+      const [hh, mm] = String(row['Scheduled Time']).split(':').map(Number);
+      base.setUTCHours(Number.isFinite(hh) ? hh : 0, Number.isFinite(mm) ? mm : 0, 0, 0);
       return base.toISOString();
     }
   }
@@ -56,7 +50,6 @@ function normaliseRow(r) {
   const title  = r.Title  || '';
   const source = r.Source || 'PLAYIT';
 
-  // Match Python normaliser default of 180s
   const durSec =
     toNumber(r['Full Duration (s)']) ||
     toNumber(r['Duration (s)']) ||
@@ -64,7 +57,7 @@ function normaliseRow(r) {
 
   const iso = deriveISO(r);
   const startMs = iso ? Date.parse(iso) : null;
-  const endMs = startMs ? startMs + durSec * 1000 : null;
+  const endMs   = startMs ? startMs + durSec * 1000 : null;
 
   return {
     key: startMs != null ? `${artist}||${title}||${startMs}` : `${artist}||${title}||0`,
@@ -78,34 +71,49 @@ function normaliseRow(r) {
   };
 }
 
-async function fetchJSON(url) {
+async function fetchText(url) {
   const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`GET ${url} -> ${res.status}`);
-  const text = await res.text(); // be tolerant if server serves text
-  try { return JSON.parse(text); } catch { throw new Error('Invalid JSON at ' + url); }
+  const status = res.status;
+  const ok = res.ok;
+  const text = ok ? await res.text() : '';
+  return { ok, status, text };
 }
 
-// Works if your app serves from repo root OR from /public
-async function fetchRollingJSON(req) {
+async function tryLocations(req) {
   const proto = req.headers['x-forwarded-proto'] || 'https';
   const host  = req.headers['x-forwarded-host'] || req.headers.host;
   const base  = `${proto}://${host}`;
-  const stamp = Date.now();
+  const ts    = Date.now();
 
-  const tries = [
-    `${base}/playout_log_rolling.json?ts=${stamp}`,        // repo root
-    `${base}/public/playout_log_rolling.json?ts=${stamp}`, // /public fallback
-  ];
+  const urls = [
+    `${base}/playout_log_rolling.json?ts=${ts}`,        // repo root
+    `${base}/public/playout_log_rolling.json?ts=${ts}`, // /public fallback
+    // GITHUB_FALLBACK && `${GITHUB_FALLBACK}?ts=${ts}`
+  ].filter(Boolean);
 
-  let lastErr;
-  for (const u of tries) {
-    try { return await fetchJSON(u); }
-    catch (e) { lastErr = e; }
+  const attempts = [];
+  for (const u of urls) {
+    try {
+      const { ok, status, text } = await fetchText(u);
+      attempts.push({ url: u, status, ok });
+      if (!ok) continue;
+      try {
+        const json = JSON.parse(text);
+        if (Array.isArray(json)) return { json, attempts, used: u };
+        // if server ever wraps, ignore
+      } catch {
+        // not JSON, try next
+      }
+    } catch (e) {
+      attempts.push({ url: u, status: 'FETCH_ERR', ok: false, error: String(e) });
+    }
   }
-  throw lastErr || new Error('rolling fetch failed');
+  const err = new Error('No rolling JSON found at any location');
+  err.attempts = attempts;
+  throw err;
 }
 
-/* ---------- existing blob helpers (POST preserved) ---------- */
+/* -------- existing blob helpers (POST preserved) -------- */
 async function readBlobLog() {
   try {
     const info = await get(BLOB_PATH); // throws if not found
@@ -124,19 +132,26 @@ async function writeBlobLog(list) {
   });
 }
 
-/* ---------- handler ---------- */
+/* ----------------- handler ----------------- */
 export default async function handler(req, res) {
+  const debug = req.query?.debug === '1' || req.query?.debug === 'true';
+
   try {
     if (req.method === 'GET') {
       let rows = [];
+      let attempts = [];
+      let usedUrl = null;
+
       try {
-        const rolling = await fetchRollingJSON(req);      // primary (includes ALT/FIXED)
-        rows = rolling.map(normaliseRow).filter(r => r.startMs != null);
+        const { json, attempts: atts, used } = await tryLocations(req); // primary: rolling JSON
+        attempts = atts;
+        usedUrl = used;
+        rows = json.map(normaliseRow).filter(r => r.startMs != null);
       } catch (e) {
-        console.warn('recent GET: rolling fetch failed, falling back to blob:', e?.message || e);
-        // fallback: existing blob, if you still post to it
-        const blobList = await readBlobLog();
-        rows = blobList.map(x => ({
+        // fallback to blob if you still POST to this API
+        attempts = e?.attempts || attempts;
+        const blob = await readBlobLog();
+        rows = blob.map(x => ({
           key: x.key,
           artist: x.artist,
           title: x.title,
@@ -149,12 +164,20 @@ export default async function handler(req, res) {
       }
 
       rows.sort((a, b) => b.startMs - a.startMs);
+      const out = rows.slice(0, 100);
+
       res.setHeader('Cache-Control', 'no-store, no-cache, max-age=0, s-maxage=0, must-revalidate');
-      return res.status(200).json(rows.slice(0, 100));
+      if (debug) {
+        const counts = out.reduce((acc, r) => {
+          acc[r.source] = (acc[r.source] || 0) + 1;
+          return acc;
+        }, {});
+        return res.status(200).json({ items: out, debug: { usedUrl, attempts, counts } });
+      }
+      return res.status(200).json(out);
     }
 
     if (req.method === 'POST') {
-      // Keep your original POST behaviour (write to recent.json blob)
       const b = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
       const { artist, title, startMs, endMs, duration, endedAt } = b || {};
       if (!artist || !title || !startMs || !endMs) {
@@ -175,6 +198,6 @@ export default async function handler(req, res) {
   } catch (e) {
     console.error('recent api error', e);
     res.setHeader('Cache-Control', 'no-store');
-    return res.status(200).json([]);
+    return res.status(200).json(debug ? { items: [], debug: { error: String(e), attempts: e?.attempts || [] } } : []);
   }
 }
