@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-04T19:00:00Z",
-    "Scheduled Time": "20:54",
-    "Displayed Time": "20:54",
-    "Artist": "The Damned",
-    "Title": "Eloise",
-    "Duration (s)": 292,
-    "Full Duration (s)": 311,
-    "Duration (mins)": 4.87,
-    "Full Duration (mins)": 5.18
-  },
-  {
     "Hour": "2025-09-04T20:00:00Z",
     "Scheduled Time": "21:02",
     "Displayed Time": "21:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 252,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.2
+  },
+  {
+    "Hour": "2025-09-07T00:00:00Z",
+    "Scheduled Time": "01:07",
+    "Displayed Time": "01:07",
+    "Artist": "Crystal Waters",
+    "Title": "Gypsy Woman (La Da Dee)",
+    "Duration (s)": 210,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.7
   }
 ]
