@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T05:00:00Z",
-    "Scheduled Time": "06:27",
-    "Displayed Time": "06:27",
-    "Artist": "Blink-182",
-    "Title": "What's My Age Again",
-    "Duration (s)": 140,
-    "Full Duration (s)": 175,
-    "Duration (mins)": 2.33,
-    "Full Duration (mins)": 2.92
-  },
-  {
-    "Hour": "2025-09-05T05:00:00Z",
     "Scheduled Time": "06:32",
     "Displayed Time": "06:32",
     "Artist": "Mark Ronson Feat. Miley Cyrus",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 145,
     "Duration (mins)": 2.37,
     "Full Duration (mins)": 2.42
+  },
+  {
+    "Hour": "2025-09-07T10:00:00Z",
+    "Scheduled Time": "11:33",
+    "Displayed Time": "11:33",
+    "Artist": "KC & The Sunshine Band",
+    "Title": "That's The Way (I Like It)",
+    "Duration (s)": 169,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 3.05
   }
 ]
