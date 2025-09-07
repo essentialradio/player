@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T03:00:00Z",
-    "Scheduled Time": "04:49",
-    "Displayed Time": "04:49",
-    "Artist": "Sam Fender",
-    "Title": "Arm's Length",
-    "Duration (s)": 214,
-    "Full Duration (s)": 228,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.8
-  },
-  {
-    "Hour": "2025-09-05T03:00:00Z",
     "Scheduled Time": "04:52",
     "Displayed Time": "04:52",
     "Artist": "Moby",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 3420,
     "Duration (mins)": 56.65,
     "Full Duration (mins)": 57.0
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:01",
+    "Displayed Time": "10:01",
+    "Artist": "Cutting Crew",
+    "Title": "(I Just) Died in Your Arms",
+    "Duration (s)": 256,
+    "Full Duration (s)": 279,
+    "Duration (mins)": 4.27,
+    "Full Duration (mins)": 4.65
   }
 ]
