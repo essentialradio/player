@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T05:00:00Z",
-    "Scheduled Time": "06:05",
-    "Displayed Time": "06:05",
-    "Artist": "Spandau Ballet",
-    "Title": "Gold",
-    "Duration (s)": 221,
-    "Full Duration (s)": 232,
-    "Duration (mins)": 3.68,
-    "Full Duration (mins)": 3.87
-  },
-  {
-    "Hour": "2025-09-05T05:00:00Z",
     "Scheduled Time": "06:09",
     "Displayed Time": "06:09",
     "Artist": "Disturbed",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 226,
     "Duration (mins)": 3.65,
     "Full Duration (mins)": 3.77
+  },
+  {
+    "Hour": "2025-09-07T10:00:00Z",
+    "Scheduled Time": "11:12",
+    "Displayed Time": "11:12",
+    "Artist": "Elvis Presley",
+    "Title": "Jailhouse Rock",
+    "Duration (s)": 136,
+    "Full Duration (s)": 146,
+    "Duration (mins)": 2.27,
+    "Full Duration (mins)": 2.43
   }
 ]
