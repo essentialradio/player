@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T21:00:00Z",
-    "Scheduled Time": "22:09",
-    "Displayed Time": "22:09",
-    "Artist": "Amy Macdonald",
-    "Title": "Run",
-    "Duration (s)": 167,
-    "Full Duration (s)": 169,
-    "Duration (mins)": 2.78,
-    "Full Duration (mins)": 2.82
-  },
-  {
-    "Hour": "2025-09-04T21:00:00Z",
     "Scheduled Time": "22:12",
     "Displayed Time": "22:12",
     "Artist": "R.E.M.",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 200,
     "Duration (mins)": 3.13,
     "Full Duration (mins)": 3.33
+  },
+  {
+    "Hour": "2025-09-07T01:00:00Z",
+    "Scheduled Time": "02:12",
+    "Displayed Time": "02:12",
+    "Artist": "Supermen Lovers & OneRepublic",
+    "Title": "Starlight (The Fame)",
+    "Duration (s)": 175,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.03
   }
 ]
