@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-08-24T20:00:00Z",
-    "Scheduled Time": "21:02",
-    "Displayed Time": "21:02",
-    "Artist": "Emma Scott",
-    "Title": "The Pluggin' Baby Radio Show",
-    "Duration (s)": 3471,
-    "Full Duration (s)": 3472,
-    "Duration (mins)": 57.85,
-    "Full Duration (mins)": 57.87
-  },
-  {
     "Hour": "2025-08-24T21:00:00Z",
     "Scheduled Time": "22:02",
     "Displayed Time": "22:02",
@@ -46254,6 +46243,19 @@
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-07T20:59:53+01:00",
+    "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-07T20:00:00Z",
+    "Scheduled Time": "21:00",
+    "Displayed Time": "21:00",
+    "Artist": "Emma Scott",
+    "Title": "The Pluggin' Baby Radio Show",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-07T21:00:00+01:00",
     "Source": "FIXED"
   }
 ]
