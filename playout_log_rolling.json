@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T21:00:00Z",
-    "Scheduled Time": "22:48",
-    "Displayed Time": "22:48",
-    "Artist": "Toni Braxton",
-    "Title": "Breathe Again",
-    "Duration (s)": 245,
-    "Full Duration (s)": 256,
-    "Duration (mins)": 4.08,
-    "Full Duration (mins)": 4.27
-  },
-  {
-    "Hour": "2025-09-04T21:00:00Z",
     "Scheduled Time": "22:52",
     "Displayed Time": "22:52",
     "Artist": "Joan Osborne",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.35,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-07T01:00:00Z",
+    "Scheduled Time": "02:46",
+    "Displayed Time": "02:46",
+    "Artist": "Train",
+    "Title": "Play That Song",
+    "Duration (s)": 194,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.42
   }
 ]
