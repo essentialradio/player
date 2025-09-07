@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T03:00:00Z",
-    "Scheduled Time": "04:25",
-    "Displayed Time": "04:25",
-    "Artist": "Ros\u00e9 & Bruno Mars",
-    "Title": "APT.",
-    "Duration (s)": 163,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 2.72,
-    "Full Duration (mins)": 2.83
-  },
-  {
-    "Hour": "2025-09-05T03:00:00Z",
     "Scheduled Time": "04:28",
     "Displayed Time": "04:28",
     "Artist": "Alanis Morissette",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 222,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.7
+  },
+  {
+    "Hour": "2025-09-07T07:00:00Z",
+    "Scheduled Time": "08:12",
+    "Displayed Time": "08:12",
+    "Artist": "Prince",
+    "Title": "Raspberry Beret",
+    "Duration (s)": 198,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.48
   }
 ]
