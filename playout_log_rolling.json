@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T03:00:00Z",
-    "Scheduled Time": "04:22",
-    "Displayed Time": "04:22",
-    "Artist": "The Pointer Sisters",
-    "Title": "I'm So Excited",
-    "Duration (s)": 215,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-05T03:00:00Z",
     "Scheduled Time": "04:25",
     "Displayed Time": "04:25",
     "Artist": "Ros\u00e9 & Bruno Mars",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 176,
     "Duration (mins)": 2.85,
     "Full Duration (mins)": 2.93
+  },
+  {
+    "Hour": "2025-09-07T07:00:00Z",
+    "Scheduled Time": "08:08",
+    "Displayed Time": "08:08",
+    "Artist": "Girls Aloud",
+    "Title": "Call the Shots",
+    "Duration (s)": 214,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.7
   }
 ]
