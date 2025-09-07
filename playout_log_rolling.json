@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T20:00:00Z",
-    "Scheduled Time": "21:14",
-    "Displayed Time": "21:14",
-    "Artist": "Lightning Seeds",
-    "Title": "What If...?",
-    "Duration (s)": 184,
-    "Full Duration (s)": 197,
-    "Duration (mins)": 3.07,
-    "Full Duration (mins)": 3.28
-  },
-  {
-    "Hour": "2025-09-04T20:00:00Z",
     "Scheduled Time": "21:21",
     "Displayed Time": "21:21",
     "Artist": "Roxette",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 209,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.48
+  },
+  {
+    "Hour": "2025-09-07T00:00:00Z",
+    "Scheduled Time": "01:25",
+    "Displayed Time": "01:25",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 179,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.05
   }
 ]
