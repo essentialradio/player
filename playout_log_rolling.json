@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T01:00:00Z",
-    "Scheduled Time": "02:23",
-    "Displayed Time": "02:23",
-    "Artist": "Matthew Wilder",
-    "Title": "Break My Stride",
-    "Duration (s)": 159,
-    "Full Duration (s)": 170,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.83
-  },
-  {
-    "Hour": "2025-09-05T01:00:00Z",
     "Scheduled Time": "02:26",
     "Displayed Time": "02:26",
     "Artist": "Teddy Swims",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 194,
     "Duration (mins)": 3.15,
     "Full Duration (mins)": 3.23
+  },
+  {
+    "Hour": "2025-09-07T05:00:00Z",
+    "Scheduled Time": "06:09",
+    "Displayed Time": "06:09",
+    "Artist": "Cian Ducrot",
+    "Title": "I'll Be Waiting",
+    "Duration (s)": 170,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.88
   }
 ]
