@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T06:00:00Z",
-    "Scheduled Time": "07:07",
-    "Displayed Time": "07:07",
-    "Artist": "ABC",
-    "Title": "The Look of Love",
-    "Duration (s)": 208,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-05T06:00:00Z",
     "Scheduled Time": "07:10",
     "Displayed Time": "07:10",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 168,
     "Duration (mins)": 2.65,
     "Full Duration (mins)": 2.8
+  },
+  {
+    "Hour": "2025-09-07T11:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "Geri Halliwell",
+    "Title": "It's Raining Men",
+    "Duration (s)": 234,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.9,
+    "Full Duration (mins)": 4.15
   }
 ]
