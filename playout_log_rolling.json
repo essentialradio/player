@@ -1,28 +1,6 @@
 [
   {
     "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:26",
-    "Displayed Time": "05:26",
-    "Artist": "Dermot Kennedy",
-    "Title": "Kiss Me",
-    "Duration (s)": 212,
-    "Full Duration (s)": 229,
-    "Duration (mins)": 3.53,
-    "Full Duration (mins)": 3.82
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:30",
-    "Displayed Time": "05:30",
-    "Artist": "RUN-DMC",
-    "Title": "It's Tricky",
-    "Duration (s)": 177,
-    "Full Duration (s)": 185,
-    "Duration (mins)": 2.95,
-    "Full Duration (mins)": 3.08
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
     "Scheduled Time": "05:33",
     "Displayed Time": "05:33",
     "Artist": "Lewis Capaldi",
@@ -5498,5 +5476,27 @@
     "Full Duration (s)": 239,
     "Duration (mins)": 3.85,
     "Full Duration (mins)": 3.98
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:36",
+    "Displayed Time": "10:36",
+    "Artist": "Status Quo",
+    "Title": "In The Army Now",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:43",
+    "Displayed Time": "10:43",
+    "Artist": "Kate Bush",
+    "Title": "Hounds Of Love",
+    "Duration (s)": 175,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.05
   }
 ]
