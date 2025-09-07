@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:33",
-    "Displayed Time": "05:33",
-    "Artist": "Lewis Capaldi",
-    "Title": "Survive",
-    "Duration (s)": 214,
-    "Full Duration (s)": 225,
-    "Duration (mins)": 3.57,
-    "Full Duration (mins)": 3.75
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
     "Scheduled Time": "05:41",
     "Displayed Time": "05:41",
     "Artist": "The Vamps ft Demi Lovato",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 183,
     "Duration (mins)": 2.92,
     "Full Duration (mins)": 3.05
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:46",
+    "Displayed Time": "10:46",
+    "Artist": "Sheryl Crow",
+    "Title": "Hard To Make A Stand",
+    "Duration (s)": 178,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.1
   }
 ]
