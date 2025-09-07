@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T04:00:00Z",
-    "Scheduled Time": "05:09",
-    "Displayed Time": "05:09",
-    "Artist": "Sia Feat. Kendrick Lamar",
-    "Title": "The Greatest",
-    "Duration (s)": 188,
-    "Full Duration (s)": 211,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.52
-  },
-  {
-    "Hour": "2025-09-05T04:00:00Z",
     "Scheduled Time": "05:12",
     "Displayed Time": "05:12",
     "Artist": "Tom Grennan",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 207,
     "Duration (mins)": 3.27,
     "Full Duration (mins)": 3.45
+  },
+  {
+    "Hour": "2025-09-07T09:00:00Z",
+    "Scheduled Time": "10:20",
+    "Displayed Time": "10:20",
+    "Artist": "Aztec Camera",
+    "Title": "Oblivious",
+    "Duration (s)": 180,
+    "Full Duration (s)": 193,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.22
   }
 ]
