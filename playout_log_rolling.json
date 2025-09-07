@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T06:00:00Z",
-    "Scheduled Time": "07:35",
-    "Displayed Time": "07:35",
-    "Artist": "Paul Russell",
-    "Title": "Lil Boo Thang",
-    "Duration (s)": 114,
-    "Full Duration (s)": 114,
-    "Duration (mins)": 1.9,
-    "Full Duration (mins)": 1.9
-  },
-  {
-    "Hour": "2025-09-05T06:00:00Z",
     "Scheduled Time": "07:37",
     "Displayed Time": "07:37",
     "Artist": "Gala",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 175,
     "Duration (mins)": 2.75,
     "Full Duration (mins)": 2.92
+  },
+  {
+    "Hour": "2025-09-07T11:00:00Z",
+    "Scheduled Time": "12:29",
+    "Displayed Time": "12:29",
+    "Artist": "Jess Glynne",
+    "Title": "All I Am",
+    "Duration (s)": 202,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.5
   }
 ]
