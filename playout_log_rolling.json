@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T09:00:00Z",
-    "Scheduled Time": "10:05",
-    "Displayed Time": "10:05",
-    "Artist": "Coldplay",
-    "Title": "A Sky Full of Stars",
-    "Duration (s)": 230,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 3.83,
-    "Full Duration (mins)": 3.95
-  },
-  {
-    "Hour": "2025-09-05T09:00:00Z",
     "Scheduled Time": "10:10",
     "Displayed Time": "10:10",
     "Artist": "Joel Corry & Tom Grennan",
@@ -5499,6 +5488,19 @@
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-07T19:59:47+01:00",
+    "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-07T19:00:00Z",
+    "Scheduled Time": "20:00",
+    "Displayed Time": "20:00",
+    "Artist": "Kevin McCallum",
+    "Title": "The Mr Rocks Show",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-07T20:00:00+01:00",
     "Source": "FIXED"
   }
 ]
