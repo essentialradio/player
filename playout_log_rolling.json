@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T08:00:00Z",
-    "Scheduled Time": "09:27",
-    "Displayed Time": "09:27",
-    "Artist": "EMF",
-    "Title": "Unbelievable",
-    "Duration (s)": 208,
-    "Full Duration (s)": 210,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.5
-  },
-  {
-    "Hour": "2025-09-05T08:00:00Z",
     "Scheduled Time": "09:30",
     "Displayed Time": "09:30",
     "Artist": "Calvin Harris & Clementine Douglas",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 149,
     "Duration (mins)": 2.45,
     "Full Duration (mins)": 2.48
+  },
+  {
+    "Hour": "2025-09-07T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "14:00",
+    "Artist": "Becky Hill ft Topic",
+    "Title": "My Heart Goes (La Di Da)</body></html>",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0
   }
 ]
