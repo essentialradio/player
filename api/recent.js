@@ -1,203 +1,123 @@
-// api/recent.js
-// Unified "recently played" API with robust fallbacks and debug mode.
-// GET: Pulls from playout_log_rolling.json (root or /public), normalises rows, returns newest first.
-// POST: Preserved — writes to recent.json blob for any existing producers.
 
-import { put, get } from '@vercel/blob';
+import fs from 'fs';
+import path from 'path';
 
-const BLOB_PATH = 'recent.json';
-const MAX = 500;
+// Location of your rolling log relative to the repo root (serverless runtime)
+const DATA_FILE = path.join(process.cwd(), 'playout_log_rolling.json');
 
-// OPTIONAL: external fallback (uncomment if you still publish to GitHub Pages)
-// const GITHUB_FALLBACK = 'https://essentialradio.github.io/player/playout_log_rolling.json';
-
-/* ----------------- helpers ----------------- */
-function toNumber(v, fallback = 0) {
-  const n = typeof v === 'string' ? Number.parseFloat(v) : Number(v);
-  return Number.isFinite(n) ? n : fallback;
-}
-
-// Parse Hour which might be ISO or "YYYY-MM-DD HH(:MM)?"
-function parseHourToDate(hourStr) {
-  if (!hourStr) return null;
-  const d1 = new Date(hourStr);                // handles ISO w/ Z
-  if (!Number.isNaN(d1)) return d1;
-
-  const m = String(hourStr).match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2})(?::(\d{2}))?$/);
-  if (m) {
-    const [, Y, M, D, hh, mm = '00'] = m;
-    const d = new Date(Date.UTC(+Y, +M - 1, +D, +hh, +mm, 0, 0)); // treat as UTC hour
-    if (!Number.isNaN(d)) return d;
-  }
-  return null;
-}
-
-function deriveISO(row) {
-  if (row['Start ISO']) return row['Start ISO']; // provided by Python for ALT/FIXED
-  if (row.Hour && row['Scheduled Time']) {
-    const base = parseHourToDate(row.Hour);
-    if (base) {
-      const [hh, mm] = String(row['Scheduled Time']).split(':').map(Number);
-      base.setUTCHours(Number.isFinite(hh) ? hh : 0, Number.isFinite(mm) ? mm : 0, 0, 0);
-      return base.toISOString();
-    }
-  }
-  return null;
-}
-
-function normaliseRow(r) {
-  const artist = r.Artist || '';
-  const title  = r.Title  || '';
-  const source = r.Source || 'PLAYIT';
-
-  const durSec =
-    toNumber(r['Full Duration (s)']) ||
-    toNumber(r['Duration (s)']) ||
-    180;
-
-  const iso = deriveISO(r);
-  const startMs = iso ? Date.parse(iso) : null;
-  const endMs   = startMs ? startMs + durSec * 1000 : null;
-
-  return {
-    key: startMs != null ? `${artist}||${title}||${startMs}` : `${artist}||${title}||0`,
-    artist,
-    title,
-    startMs,
-    endMs,
-    duration: durSec,
-    endedAt: endMs,
-    source
-  };
-}
-
-async function fetchText(url) {
-  const res = await fetch(url, { cache: 'no-store' });
-  const status = res.status;
-  const ok = res.ok;
-  const text = ok ? await res.text() : '';
-  return { ok, status, text };
-}
-
-async function tryLocations(req) {
-  const proto = req.headers['x-forwarded-proto'] || 'https';
-  const host  = req.headers['x-forwarded-host'] || req.headers.host;
-  const base  = `${proto}://${host}`;
-  const ts    = Date.now();
-
-  const urls = [
-    `${base}/playout_log_rolling.json?ts=${ts}`,        // repo root
-    `${base}/public/playout_log_rolling.json?ts=${ts}`, // /public fallback
-    // GITHUB_FALLBACK && `${GITHUB_FALLBACK}?ts=${ts}`
-  ].filter(Boolean);
-
-  const attempts = [];
-  for (const u of urls) {
-    try {
-      const { ok, status, text } = await fetchText(u);
-      attempts.push({ url: u, status, ok });
-      if (!ok) continue;
-      try {
-        const json = JSON.parse(text);
-        if (Array.isArray(json)) return { json, attempts, used: u };
-        // if server ever wraps, ignore
-      } catch {
-        // not JSON, try next
-      }
-    } catch (e) {
-      attempts.push({ url: u, status: 'FETCH_ERR', ok: false, error: String(e) });
-    }
-  }
-  const err = new Error('No rolling JSON found at any location');
-  err.attempts = attempts;
-  throw err;
-}
-
-/* -------- existing blob helpers (POST preserved) -------- */
-async function readBlobLog() {
+function safeReadJSON(filePath) {
   try {
-    const info = await get(BLOB_PATH); // throws if not found
-    const res  = await fetch(info.url, { cache: 'no-store' });
-    if (!res.ok) return [];
-    return await res.json();
+    const raw = fs.readFileSync(filePath, 'utf8');
+    const data = JSON.parse(raw);
+    return Array.isArray(data) ? data : [];
   } catch {
     return [];
   }
 }
 
-async function writeBlobLog(list) {
-  await put(BLOB_PATH, JSON.stringify(list), {
-    contentType: 'application/json',
-    access: 'public',
-  });
+// Normalise a single row from Python output into a UI-friendly object
+function normaliseRow(row) {
+  const artist = row.Artist ?? row.artist ?? '';
+  const title  = row.Title  ?? row.title  ?? '';
+  const source = row.Source ?? row.source ?? 'PLAYIT';
+
+  // Prefer 'Start ISO' when present — exact timestamp (Python wrote it)
+  let startISO = row['Start ISO'] || row['startISO'] || null;
+  let startMs = null;
+
+  if (startISO) {
+    const d = new Date(startISO);
+    if (!Number.isNaN(d.getTime())) {
+      startISO = d.toISOString();
+      startMs = d.getTime();
+    } else {
+      startISO = null;
+    }
+  }
+
+  // Fallback: derive from 'Hour' (UTC) + 'Scheduled Time' (HH:MM, local)
+  if (!startISO) {
+    const hourStr = row.Hour || row.hour;
+    const schedStr = row['Scheduled Time'] || row['Displayed Time'] || row.scheduled || null;
+
+    if (hourStr && schedStr && /^\d{2}:\d{2}$/.test(schedStr)) {
+      const base = new Date(hourStr); // UTC hour boundary e.g. "...T14:00:00Z"
+      if (!Number.isNaN(base.getTime())) {
+        const [hh, mm] = schedStr.split(':').map(n => parseInt(n, 10));
+        // Interpret Scheduled Time as hours/minutes to set ON the UTC base.
+        // This matches previous behaviour and avoids TZ libs in serverless.
+        base.setUTCHours(Number.isFinite(hh) ? hh : 0, Number.isFinite(mm) ? mm : 0, 0, 0);
+        startISO = base.toISOString();
+        startMs = base.getTime();
+      }
+    }
+  }
+
+  // Duration is optional; keep as number if provided
+  let durationSec = row['Duration (s)'] ?? row.duration ?? null;
+  if (durationSec != null) {
+    const n = Number(durationSec);
+    durationSec = Number.isFinite(n) ? n : null;
+  }
+
+  return {
+    artist,
+    title,
+    source,
+    startISO,
+    startMs,
+    duration: durationSec,
+  };
 }
 
-/* ----------------- handler ----------------- */
-export default async function handler(req, res) {
-  const debug = req.query?.debug === '1' || req.query?.debug === 'true';
+export default function handler(req, res) {
+  const debug = (req.query?.debug ?? '') === '1' || (req.query?.debug ?? '').toLowerCase() === 'true';
 
-  try {
-    if (req.method === 'GET') {
-      let rows = [];
-      let attempts = [];
-      let usedUrl = null;
+  // Load rows
+  const rowsRaw = safeReadJSON(DATA_FILE);
 
-      try {
-        const { json, attempts: atts, used } = await tryLocations(req); // primary: rolling JSON
-        attempts = atts;
-        usedUrl = used;
-        rows = json.map(normaliseRow).filter(r => r.startMs != null);
-      } catch (e) {
-        // fallback to blob if you still POST to this API
-        attempts = e?.attempts || attempts;
-        const blob = await readBlobLog();
-        rows = blob.map(x => ({
-          key: x.key,
-          artist: x.artist,
-          title: x.title,
-          startMs: toNumber(x.startMs, null),
-          endMs:   toNumber(x.endMs,   null),
-          duration: toNumber(x.duration, 0),
-          endedAt:  toNumber(x.endedAt,  null),
-          source: 'PLAYIT'
-        })).filter(r => r.startMs != null);
-      }
+  // Normalise and drop rows without any time
+  let rows = rowsRaw.map(normaliseRow).filter(r => Number.isFinite(r.startMs));
 
-      rows.sort((a, b) => b.startMs - a.startMs);
-      const out = rows.slice(0, 100);
+  // Sort newest first
+  rows.sort((a, b) => b.startMs - a.startMs);
 
-      res.setHeader('Cache-Control', 'no-store, no-cache, max-age=0, s-maxage=0, must-revalidate');
-      if (debug) {
-        const counts = out.reduce((acc, r) => {
-          acc[r.source] = (acc[r.source] || 0) + 1;
-          return acc;
-        }, {});
-        return res.status(200).json({ items: out, debug: { usedUrl, attempts, counts } });
-      }
-      return res.status(200).json(out);
-    }
+  // Query params
+  const qLimit = Number.parseInt(req.query?.limit ?? '', 10);
+  const qDays  = Number.parseInt(req.query?.days  ?? '', 10);
 
-    if (req.method === 'POST') {
-      const b = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-      const { artist, title, startMs, endMs, duration, endedAt } = b || {};
-      if (!artist || !title || !startMs || !endMs) {
-        return res.status(400).json({ error: 'invalid payload' });
-      }
-      const key = `${artist}||${title}||${startMs}`;
-      const list = await readBlobLog();
-      if (!list.length || list[0].key !== key) {
-        list.unshift({ key, artist, title, startMs, endMs, duration, endedAt });
-      }
-      await writeBlobLog(list.slice(0, MAX));
-      res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).json({ ok: true });
-    }
-
-    res.setHeader('Allow', 'GET, POST');
-    return res.status(405).end('Method Not Allowed');
-  } catch (e) {
-    console.error('recent api error', e);
-    res.setHeader('Cache-Control', 'no-store');
-    return res.status(200).json(debug ? { items: [], debug: { error: String(e), attempts: e?.attempts || [] } } : []);
+  // Optional filter by last N days (e.g., ?days=14)
+  if (Number.isFinite(qDays) && qDays > 0) {
+    const cutoffMs = Date.now() - qDays * 24 * 60 * 60 * 1000;
+    rows = rows.filter(r => r.startMs >= cutoffMs);
   }
+
+  // Apply limit (default high enough for ~two weeks)
+  const limit = Number.isFinite(qLimit) && qLimit > 0 ? qLimit : 3500;
+  const out = rows.slice(0, limit);
+
+  // Headers
+  res.setHeader('Cache-Control', 'no-store, no-cache, max-age=0, s-maxage=0, must-revalidate');
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+
+  if (debug) {
+    const counts = out.reduce((acc, r) => {
+      acc[r.source] = (acc[r.source] || 0) + 1;
+      return acc;
+    }, {});
+    return res.status(200).json({
+      items: out,
+      debug: {
+        totalRead: rowsRaw.length,
+        totalNormalised: rows.length,
+        returned: out.length,
+        counts,
+        limit,
+        days: Number.isFinite(qDays) && qDays > 0 ? qDays : null,
+        file: DATA_FILE,
+      }
+    });
+  }
+
+  return res.status(200).json(out);
 }
