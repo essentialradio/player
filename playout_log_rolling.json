@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T08:00:00Z",
-    "Scheduled Time": "09:42",
-    "Displayed Time": "09:42",
-    "Artist": "Benson Boone",
-    "Title": "Mystical Magical",
-    "Duration (s)": 162,
-    "Full Duration (s)": 166,
-    "Duration (mins)": 2.7,
-    "Full Duration (mins)": 2.77
-  },
-  {
-    "Hour": "2025-09-05T08:00:00Z",
     "Scheduled Time": "09:50",
     "Displayed Time": "09:50",
     "Artist": "Heatwave",
@@ -5492,6 +5481,17 @@
     "Hour": "2025-09-07T14:00:00Z",
     "Scheduled Time": "15:59",
     "Displayed Time": "15:59",
+    "Artist": "R.E.M.",
+    "Title": "Everybody Hurts</body></html>",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-09-07T15:00:00Z",
+    "Scheduled Time": "16:00",
+    "Displayed Time": "16:00",
     "Artist": "R.E.M.",
     "Title": "Everybody Hurts</body></html>",
     "Duration (s)": 180,
