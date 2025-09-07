@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-04T23:00:00Z",
-    "Scheduled Time": "00:53",
-    "Displayed Time": "00:53",
-    "Artist": "Gina G (ESC",
-    "Title": "1996 - United Kingdom - GF - 8th) - Ooh Aah... Just a Little Bit",
-    "Duration (s)": 192,
-    "Full Duration (s)": 202,
-    "Duration (mins)": 3.2,
-    "Full Duration (mins)": 3.37
-  },
-  {
     "Hour": "2025-09-05T00:00:00Z",
     "Scheduled Time": "01:01",
     "Displayed Time": "01:01",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 199,
     "Duration (mins)": 3.1,
     "Full Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-09-07T03:00:00Z",
+    "Scheduled Time": "04:42",
+    "Displayed Time": "04:42",
+    "Artist": "Justin Bieber",
+    "Title": "Daisies",
+    "Duration (s)": 169,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.93
   }
 ]
