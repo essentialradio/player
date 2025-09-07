@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T21:00:00Z",
-    "Scheduled Time": "22:06",
-    "Displayed Time": "22:06",
-    "Artist": "The S.O.S. Band",
-    "Title": "Just Be Good to Me",
-    "Duration (s)": 225,
-    "Full Duration (s)": 237,
-    "Duration (mins)": 3.75,
-    "Full Duration (mins)": 3.95
-  },
-  {
-    "Hour": "2025-09-04T21:00:00Z",
     "Scheduled Time": "22:09",
     "Displayed Time": "22:09",
     "Artist": "Amy Macdonald",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-07T01:00:00Z",
+    "Scheduled Time": "02:09",
+    "Displayed Time": "02:09",
+    "Artist": "Zara Larsson",
+    "Title": "Can't Tame Her",
+    "Duration (s)": 188,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.33
   }
 ]
