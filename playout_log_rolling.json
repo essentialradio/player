@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T23:00:00Z",
-    "Scheduled Time": "00:35",
-    "Displayed Time": "00:35",
-    "Artist": "Stereophonics",
-    "Title": "Maybe Tomorrow",
-    "Duration (s)": 226,
-    "Full Duration (s)": 236,
-    "Duration (mins)": 3.77,
-    "Full Duration (mins)": 3.93
-  },
-  {
-    "Hour": "2025-09-04T23:00:00Z",
     "Scheduled Time": "00:43",
     "Displayed Time": "00:43",
     "Artist": "Ella Eyre",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 184,
     "Duration (mins)": 2.87,
     "Full Duration (mins)": 3.07
+  },
+  {
+    "Hour": "2025-09-07T03:00:00Z",
+    "Scheduled Time": "04:24",
+    "Displayed Time": "04:24",
+    "Artist": "Gigi Perez",
+    "Title": "Sailor Song",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53
   }
 ]
