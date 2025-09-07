@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T08:00:00Z",
-    "Scheduled Time": "09:34",
-    "Displayed Time": "09:34",
-    "Artist": "Bob Marley & The Wailers",
-    "Title": "Could You Be Loved",
-    "Duration (s)": 222,
-    "Full Duration (s)": 234,
-    "Duration (mins)": 3.7,
-    "Full Duration (mins)": 3.9
-  },
-  {
-    "Hour": "2025-09-05T08:00:00Z",
     "Scheduled Time": "09:38",
     "Displayed Time": "09:38",
     "Artist": "Lorde",
@@ -5494,6 +5483,17 @@
     "Displayed Time": "14:59",
     "Artist": "sombr",
     "Title": "12 to 12</body></html>",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0
+  },
+  {
+    "Hour": "2025-09-07T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40</body></html>",
     "Duration (s)": 180,
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
