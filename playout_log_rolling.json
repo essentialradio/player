@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T07:00:00Z",
-    "Scheduled Time": "08:10",
-    "Displayed Time": "08:10",
-    "Artist": "George Michael",
-    "Title": "Freedom '90",
-    "Duration (s)": 234,
-    "Full Duration (s)": 247,
-    "Duration (mins)": 3.9,
-    "Full Duration (mins)": 4.12
-  },
-  {
-    "Hour": "2025-09-05T07:00:00Z",
     "Scheduled Time": "08:14",
     "Displayed Time": "08:14",
     "Artist": "Paloma Faith",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-07T12:00:00Z",
+    "Scheduled Time": "13:06",
+    "Displayed Time": "13:06",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 169,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.98
   }
 ]
