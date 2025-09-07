@@ -5619,7 +5619,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const todayIndex = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1;
 
-    const modalScheduleContainer = document.getElementById("modalDaySchedule");
+    const modalScheduleContainer = document.getElementById("modalScheduleContainer");
     const modalDaySelect = document.getElementById("modalDaySelect");
     let modalFullSchedule = null;
 
@@ -5658,7 +5658,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
 
 function renderDayScheduleModal(day, shows) {
-  modalScheduleContainer.innerHTML = `<div id="modalDaySchedule"><div class="day-card">
+  modalScheduleContainer.innerHTML = `<div class="day-card" id="modalDaySchedule">
     <h3>${getFullDate(day)}</h3>
     <div class="split-columns">
       <div class="column left-column" id="modalLeftCol"></div>
