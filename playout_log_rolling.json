@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T01:00:00Z",
-    "Scheduled Time": "02:49",
-    "Displayed Time": "02:49",
-    "Artist": "Taylor Swift",
-    "Title": "Style",
-    "Duration (s)": 216,
-    "Full Duration (s)": 231,
-    "Duration (mins)": 3.6,
-    "Full Duration (mins)": 3.85
-  },
-  {
-    "Hour": "2025-09-05T01:00:00Z",
     "Scheduled Time": "02:53",
     "Displayed Time": "02:53",
     "Artist": "Savage Garden",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 218,
     "Duration (mins)": 3.45,
     "Full Duration (mins)": 3.63
+  },
+  {
+    "Hour": "2025-09-07T05:00:00Z",
+    "Scheduled Time": "06:36",
+    "Displayed Time": "06:36",
+    "Artist": "Mary J Blige",
+    "Title": "Family Affair",
+    "Duration (s)": 194,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.43
   }
 ]
