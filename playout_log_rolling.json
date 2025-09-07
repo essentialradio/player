@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T07:00:00Z",
-    "Scheduled Time": "08:34",
-    "Displayed Time": "08:34",
-    "Artist": "Ella Henderson x Alex Warren",
-    "Title": "Carry You Home",
-    "Duration (s)": 163,
-    "Full Duration (s)": 168,
-    "Duration (mins)": 2.72,
-    "Full Duration (mins)": 2.8
-  },
-  {
-    "Hour": "2025-09-05T07:00:00Z",
     "Scheduled Time": "08:36",
     "Displayed Time": "08:36",
     "Artist": "OMC",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 235,
     "Duration (mins)": 3.8,
     "Full Duration (mins)": 3.92
+  },
+  {
+    "Hour": "2025-09-07T12:00:00Z",
+    "Scheduled Time": "13:21",
+    "Displayed Time": "13:21",
+    "Artist": "Ariana Grande ft Zedd",
+    "Title": "Break Free",
+    "Duration (s)": 206,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.58
   }
 ]
