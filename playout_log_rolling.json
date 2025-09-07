@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T05:00:00Z",
-    "Scheduled Time": "06:24",
-    "Displayed Time": "06:24",
-    "Artist": "Kygo & Ava Max",
-    "Title": "Whatever",
-    "Duration (s)": 172,
-    "Full Duration (s)": 178,
-    "Duration (mins)": 2.87,
-    "Full Duration (mins)": 2.97
-  },
-  {
-    "Hour": "2025-09-05T05:00:00Z",
     "Scheduled Time": "06:27",
     "Displayed Time": "06:27",
     "Artist": "Blink-182",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 208,
     "Duration (mins)": 3.3,
     "Full Duration (mins)": 3.47
+  },
+  {
+    "Hour": "2025-09-07T10:00:00Z",
+    "Scheduled Time": "11:30",
+    "Displayed Time": "11:30",
+    "Artist": "Violent Femmes",
+    "Title": "Blister In The Sun",
+    "Duration (s)": 142,
+    "Full Duration (s)": 145,
+    "Duration (mins)": 2.37,
+    "Full Duration (mins)": 2.42
   }
 ]
