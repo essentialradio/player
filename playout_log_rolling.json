@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T23:00:00Z",
-    "Scheduled Time": "00:43",
-    "Displayed Time": "00:43",
-    "Artist": "Ella Eyre",
-    "Title": "Space",
-    "Duration (s)": 159,
-    "Full Duration (s)": 162,
-    "Duration (mins)": 2.65,
-    "Full Duration (mins)": 2.7
-  },
-  {
-    "Hour": "2025-09-04T23:00:00Z",
     "Scheduled Time": "00:46",
     "Displayed Time": "00:46",
     "Artist": "Justin Timberlake",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 212,
     "Duration (mins)": 3.33,
     "Full Duration (mins)": 3.53
+  },
+  {
+    "Hour": "2025-09-07T03:00:00Z",
+    "Scheduled Time": "04:28",
+    "Displayed Time": "04:28",
+    "Artist": "M People",
+    "Title": "Moving on Up",
+    "Duration (s)": 202,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.55
   }
 ]
