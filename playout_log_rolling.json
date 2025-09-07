@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T23:00:00Z",
-    "Scheduled Time": "00:16",
-    "Displayed Time": "00:16",
-    "Artist": "Enrique Iglesias",
-    "Title": "Escape",
-    "Duration (s)": 204,
-    "Full Duration (s)": 208,
-    "Duration (mins)": 3.4,
-    "Full Duration (mins)": 3.47
-  },
-  {
-    "Hour": "2025-09-04T23:00:00Z",
     "Scheduled Time": "00:22",
     "Displayed Time": "00:22",
     "Artist": "Bruce Springsteen",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 206,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.43
+  },
+  {
+    "Hour": "2025-09-07T03:00:00Z",
+    "Scheduled Time": "04:05",
+    "Displayed Time": "04:05",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 182,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.17
   }
 ]
