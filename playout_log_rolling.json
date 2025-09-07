@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T07:00:00Z",
-    "Scheduled Time": "08:18",
-    "Displayed Time": "08:18",
-    "Artist": "Def Leppard",
-    "Title": "Pour Some Sugar on Me",
-    "Duration (s)": 289,
-    "Full Duration (s)": 293,
-    "Duration (mins)": 4.82,
-    "Full Duration (mins)": 4.88
-  },
-  {
-    "Hour": "2025-09-05T07:00:00Z",
     "Scheduled Time": "08:27",
     "Displayed Time": "08:27",
     "Artist": "Supermen Lovers & OneRepublic",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 262,
     "Duration (mins)": 4.08,
     "Full Duration (mins)": 4.37
+  },
+  {
+    "Hour": "2025-09-07T12:00:00Z",
+    "Scheduled Time": "13:13",
+    "Displayed Time": "13:13",
+    "Artist": "Noah Kahan",
+    "Title": "Stick Season",
+    "Duration (s)": 170,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 3.03
   }
 ]
