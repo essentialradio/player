@@ -3878,7 +3878,6 @@ html:not([data-theme="light"]) #volume-container #volume-display {
   #localModal .modal-content {
     max-width: 1300px !important;
     width: min(96vw, 1300px) !important;
-	margin-top: 60px !important;
     max-height: 95vh !important;
   }
 }
@@ -6157,6 +6156,8 @@ function stopIntervals() {
 
 // Always fetch once on page load
 fetchNowPlaying();
+fetchRecentFromGitHub();
+startIntervals();
 
 // On tab visibility change, only run when visible
 document.addEventListener("visibilitychange", () => {
@@ -9795,98 +9796,6 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
-<script>
-(function () {
-  const ENDPOINT = "/api/recent"; // unified backend that includes ALT/FIXED
-
-  function hhmm(ms) {
-    if (!Number.isFinite(ms)) return "";
-    try { return new Date(ms).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
-    catch { return ""; }
-  }
-
-  async function refreshRecent() {
-    const ul = document.getElementById("recent-list");
-    if (!ul) return;
-    try {
-      const res = await fetch(ENDPOINT, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const items = await res.json(); // [{artist, title, startMs, duration, source, ...}]
-
-      ul.innerHTML = items.map(it => `
-        <li>
-          <span class="time">${hhmm(it.startMs)}</span>
-          <span class="info">
-            ${it.artist || ""} – ${it.title || ""}
-            ${it.source && it.source !== "PLAYIT" ? `<small style="opacity:.65">(${it.source})</small>` : ""}
-          </span>
-        </li>
-      `).join("");
-    } catch (e) {
-      console.error("recent fetch failed:", e);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    refreshRecent();
-    setInterval(refreshRecent, 30000);
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) refreshRecent();
-    });
-  });
-})();
-</script>
-<script>
-(function () {
-  const ENDPOINT = "/api/recent"; // your serverless route
-
-  function hhmm(ms) {
-    try { return new Date(ms).toLocaleTimeString([], { hour:"2-digit", minute:"2-digit" }); }
-    catch { return ""; }
-  }
-
-  async function refreshRecent() {
-    const ul = document.getElementById("recent-list");
-    if (!ul) return;
-    const url = `${ENDPOINT}?t=${Date.now()}`; // cache-bust each request
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const items = await res.json(); // [{artist,title,startMs,source,...}]
-    ul.innerHTML = items.map(it => `
-      <li>
-        <span class="time">${hhmm(it.startMs)}</span>
-        <span class="info">
-          ${it.artist || ""} – ${it.title || ""}
-          ${it.source && it.source !== "PLAYIT" ? `<small style="opacity:.65">(${it.source})</small>` : ""}
-        </span>
-      </li>
-    `).join("");
-  }
-
-  // robust polling (avoids setInterval drift/throttling)
-  let timer = null;
-  async function tick() {
-    try { await refreshRecent(); } catch (e) { console.warn("recent refresh failed", e); }
-    timer = setTimeout(tick, 15000); // 15s cadence
-  }
-
-  function resume() {
-    if (timer) clearTimeout(timer);
-    tick();
-  }
-  function pause() {
-    if (timer) { clearTimeout(timer); timer = null; }
-  }
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) pause(); else resume();
-  });
-  window.addEventListener("focus", resume);
-
-  document.addEventListener("DOMContentLoaded", resume);
-})();
-</script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
