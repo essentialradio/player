@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T08:00:00Z",
-    "Scheduled Time": "09:06",
-    "Displayed Time": "09:06",
-    "Artist": "Daniel Powter",
-    "Title": "Bad Day",
-    "Duration (s)": 217,
-    "Full Duration (s)": 223,
-    "Duration (mins)": 3.62,
-    "Full Duration (mins)": 3.72
-  },
-  {
-    "Hour": "2025-09-05T08:00:00Z",
     "Scheduled Time": "09:11",
     "Displayed Time": "09:11",
     "Artist": "BLACKPINK",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 225,
     "Duration (mins)": 3.57,
     "Full Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-09-07T12:00:00Z",
+    "Scheduled Time": "13:44",
+    "Displayed Time": "13:44",
+    "Artist": "Calvin Harris & Rag'N'Bone Man",
+    "Title": "Lovers In A Past Life",
+    "Duration (s)": 151,
+    "Full Duration (s)": 161,
+    "Duration (mins)": 2.52,
+    "Full Duration (mins)": 2.68
   }
 ]
