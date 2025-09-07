@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T22:00:00Z",
-    "Scheduled Time": "23:42",
-    "Displayed Time": "23:42",
-    "Artist": "JVKE",
-    "Title": "Golden Hour",
-    "Duration (s)": 202,
-    "Full Duration (s)": 209,
-    "Duration (mins)": 3.37,
-    "Full Duration (mins)": 3.48
-  },
-  {
-    "Hour": "2025-09-04T22:00:00Z",
     "Scheduled Time": "23:45",
     "Displayed Time": "23:45",
     "Artist": "Anita Baker",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 207,
     "Duration (mins)": 3.4,
     "Full Duration (mins)": 3.45
+  },
+  {
+    "Hour": "2025-09-07T02:00:00Z",
+    "Scheduled Time": "03:29",
+    "Displayed Time": "03:29",
+    "Artist": "Starship",
+    "Title": "Nothing's Gonna Stop Us Now",
+    "Duration (s)": 229,
+    "Full Duration (s)": 244,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.07
   }
 ]
