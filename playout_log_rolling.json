@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-04T22:00:00Z",
-    "Scheduled Time": "23:12",
-    "Displayed Time": "23:12",
-    "Artist": "K-Ci And Jojo",
-    "Title": "All My Life",
-    "Duration (s)": 298,
-    "Full Duration (s)": 329,
-    "Duration (mins)": 4.97,
-    "Full Duration (mins)": 5.48
-  },
-  {
-    "Hour": "2025-09-04T22:00:00Z",
     "Scheduled Time": "23:21",
     "Displayed Time": "23:21",
     "Artist": "Simply Red",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 274,
     "Duration (mins)": 4.43,
     "Full Duration (mins)": 4.57
+  },
+  {
+    "Hour": "2025-09-07T02:00:00Z",
+    "Scheduled Time": "03:09",
+    "Displayed Time": "03:09",
+    "Artist": "Felix Jaehn Feat. Jasmine Thompson",
+    "Title": "Ain't Nobody",
+    "Duration (s)": 180,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.1
   }
 ]
