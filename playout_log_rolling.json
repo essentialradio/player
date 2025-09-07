@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T07:00:00Z",
-    "Scheduled Time": "08:36",
-    "Displayed Time": "08:36",
-    "Artist": "OMC",
-    "Title": "How Bizarre",
-    "Duration (s)": 223,
-    "Full Duration (s)": 226,
-    "Duration (mins)": 3.72,
-    "Full Duration (mins)": 3.77
-  },
-  {
-    "Hour": "2025-09-05T07:00:00Z",
     "Scheduled Time": "08:41",
     "Displayed Time": "08:41",
     "Artist": "The Script",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 215,
     "Duration (mins)": 3.43,
     "Full Duration (mins)": 3.58
+  },
+  {
+    "Hour": "2025-09-07T12:00:00Z",
+    "Scheduled Time": "13:25",
+    "Displayed Time": "13:25",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 155,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.73
   }
 ]
