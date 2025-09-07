@@ -1,16 +1,5 @@
 [
   {
-    "Hour": "2025-09-05T00:00:00Z",
-    "Scheduled Time": "01:52",
-    "Displayed Time": "01:52",
-    "Artist": "Nickelback",
-    "Title": "If Today Was Your Last Day",
-    "Duration (s)": 236,
-    "Full Duration (s)": 248,
-    "Duration (mins)": 3.93,
-    "Full Duration (mins)": 4.13
-  },
-  {
     "Hour": "2025-09-05T01:00:00Z",
     "Scheduled Time": "02:02",
     "Displayed Time": "02:02",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 220,
     "Duration (mins)": 3.55,
     "Full Duration (mins)": 3.67
+  },
+  {
+    "Hour": "2025-09-07T04:00:00Z",
+    "Scheduled Time": "05:43",
+    "Displayed Time": "05:43",
+    "Artist": "Taylor Swift",
+    "Title": "22",
+    "Duration (s)": 226,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.77,
+    "Full Duration (mins)": 3.8
   }
 ]
