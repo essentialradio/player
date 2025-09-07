@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T01:00:00Z",
-    "Scheduled Time": "02:02",
-    "Displayed Time": "02:02",
-    "Artist": "Doja Cat",
-    "Title": "Say So",
-    "Duration (s)": 234,
-    "Full Duration (s)": 238,
-    "Duration (mins)": 3.9,
-    "Full Duration (mins)": 3.97
-  },
-  {
-    "Hour": "2025-09-05T01:00:00Z",
     "Scheduled Time": "02:06",
     "Displayed Time": "02:06",
     "Artist": "Benson Boone",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 228,
     "Duration (mins)": 3.77,
     "Full Duration (mins)": 3.8
+  },
+  {
+    "Hour": "2025-09-07T04:00:00Z",
+    "Scheduled Time": "05:46",
+    "Displayed Time": "05:46",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 161,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.77
   }
 ]
