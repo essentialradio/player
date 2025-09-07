@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T03:00:00Z",
-    "Scheduled Time": "04:41",
-    "Displayed Time": "04:41",
-    "Artist": "Sabrina Carpenter",
-    "Title": "Busy Woman",
-    "Duration (s)": 177,
-    "Full Duration (s)": 187,
-    "Duration (mins)": 2.95,
-    "Full Duration (mins)": 3.12
-  },
-  {
-    "Hour": "2025-09-05T03:00:00Z",
     "Scheduled Time": "04:44",
     "Displayed Time": "04:44",
     "Artist": "Pink",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 255,
     "Duration (mins)": 4.1,
     "Full Duration (mins)": 4.25
+  },
+  {
+    "Hour": "2025-09-07T07:00:00Z",
+    "Scheduled Time": "08:32",
+    "Displayed Time": "08:32",
+    "Artist": "Healthspan",
+    "Title": "The Dr Hilary Show",
+    "Duration (s)": 1631,
+    "Full Duration (s)": 1681,
+    "Duration (mins)": 27.18,
+    "Full Duration (mins)": 28.02
   }
 ]
