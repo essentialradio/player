@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T06:00:00Z",
-    "Scheduled Time": "07:37",
-    "Displayed Time": "07:37",
-    "Artist": "Gala",
-    "Title": "Freed From Desire",
-    "Duration (s)": 208,
-    "Full Duration (s)": 215,
-    "Duration (mins)": 3.47,
-    "Full Duration (mins)": 3.58
-  },
-  {
-    "Hour": "2025-09-05T06:00:00Z",
     "Scheduled Time": "07:46",
     "Displayed Time": "07:46",
     "Artist": "Sabrina Carpenter",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 210,
     "Duration (mins)": 3.37,
     "Full Duration (mins)": 3.5
+  },
+  {
+    "Hour": "2025-09-07T11:00:00Z",
+    "Scheduled Time": "12:36",
+    "Displayed Time": "12:36",
+    "Artist": "Mimi Webb",
+    "Title": "Red Flags",
+    "Duration (s)": 135,
+    "Full Duration (s)": 142,
+    "Duration (mins)": 2.25,
+    "Full Duration (mins)": 2.37
   }
 ]
