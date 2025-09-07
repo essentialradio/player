@@ -9836,6 +9836,56 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
+<script>
+(function () {
+  const ENDPOINT = "/api/recent"; // your serverless route
+
+  function hhmm(ms) {
+    try { return new Date(ms).toLocaleTimeString([], { hour:"2-digit", minute:"2-digit" }); }
+    catch { return ""; }
+  }
+
+  async function refreshRecent() {
+    const ul = document.getElementById("recent-list");
+    if (!ul) return;
+    const url = `${ENDPOINT}?t=${Date.now()}`; // cache-bust each request
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const items = await res.json(); // [{artist,title,startMs,source,...}]
+    ul.innerHTML = items.map(it => `
+      <li>
+        <span class="time">${hhmm(it.startMs)}</span>
+        <span class="info">
+          ${it.artist || ""} – ${it.title || ""}
+          ${it.source && it.source !== "PLAYIT" ? `<small style="opacity:.65">(${it.source})</small>` : ""}
+        </span>
+      </li>
+    `).join("");
+  }
+
+  // robust polling (avoids setInterval drift/throttling)
+  let timer = null;
+  async function tick() {
+    try { await refreshRecent(); } catch (e) { console.warn("recent refresh failed", e); }
+    timer = setTimeout(tick, 15000); // 15s cadence
+  }
+
+  function resume() {
+    if (timer) clearTimeout(timer);
+    tick();
+  }
+  function pause() {
+    if (timer) { clearTimeout(timer); timer = null; }
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) pause(); else resume();
+  });
+  window.addEventListener("focus", resume);
+
+  document.addEventListener("DOMContentLoaded", resume);
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
