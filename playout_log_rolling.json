@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T07:00:00Z",
-    "Scheduled Time": "08:27",
-    "Displayed Time": "08:27",
-    "Artist": "Supermen Lovers & OneRepublic",
-    "Title": "Starlight (The Fame)",
-    "Duration (s)": 180,
-    "Full Duration (s)": 182,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.03
-  },
-  {
-    "Hour": "2025-09-05T07:00:00Z",
     "Scheduled Time": "08:34",
     "Displayed Time": "08:34",
     "Artist": "Ella Henderson x Alex Warren",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 182,
     "Duration (mins)": 2.83,
     "Full Duration (mins)": 3.03
+  },
+  {
+    "Hour": "2025-09-07T12:00:00Z",
+    "Scheduled Time": "13:17",
+    "Displayed Time": "13:17",
+    "Artist": "Sam Fender",
+    "Title": "Little Bit Closer",
+    "Duration (s)": 228,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.92
   }
 ]
