@@ -1,17 +1,6 @@
 [
   {
     "Hour": "2025-09-05T01:00:00Z",
-    "Scheduled Time": "02:45",
-    "Displayed Time": "02:45",
-    "Artist": "Kelly Clarkson",
-    "Title": "Mr Know It All",
-    "Duration (s)": 220,
-    "Full Duration (s)": 233,
-    "Duration (mins)": 3.67,
-    "Full Duration (mins)": 3.88
-  },
-  {
-    "Hour": "2025-09-05T01:00:00Z",
     "Scheduled Time": "02:49",
     "Displayed Time": "02:49",
     "Artist": "Taylor Swift",
@@ -5498,5 +5487,16 @@
     "Full Duration (s)": 179,
     "Duration (mins)": 2.88,
     "Full Duration (mins)": 2.98
+  },
+  {
+    "Hour": "2025-09-07T05:00:00Z",
+    "Scheduled Time": "06:33",
+    "Displayed Time": "06:33",
+    "Artist": "Suede",
+    "Title": "Beautiful Ones",
+    "Duration (s)": 207,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.63
   }
 ]
