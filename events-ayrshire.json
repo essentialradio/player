@@ -385,6 +385,45 @@
       "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
       "source": "North Ayrshire Libraries",
       "recurring": true
+    },
+    {
+      "title": "Garnock Valley Carves",
+      "start_date": "2025-09-13",
+      "end_date": "2025-09-13",
+      "start_time": "09:45",
+      "end_time": null,
+      "venue": "Exhibition Ground",
+      "town": "Dalry",
+      "desc": "Family day out with chainsaw carving, storytelling, face-painting, woodland crafts, games, and live music.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council",
+      "recurring": false
+    },
+    {
+      "title": "Tidelines Book Festival",
+      "start_date": "2025-09-25",
+      "end_date": "2025-09-28",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Various venues",
+      "town": "Irvine",
+      "desc": "A literary celebration with author talks, storytelling, and workshops across town venues.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council",
+      "recurring": false
+    },
+    {
+      "title": "Millport Fireworks",
+      "start_date": "2025-09-27",
+      "end_date": "2025-09-28",
+      "start_time": "20:00",
+      "end_time": null,
+      "venue": "Strathwherry Jetty",
+      "town": "Millport",
+      "desc": "Community fireworks display on the Isle of Cumbrae.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council",
+      "recurring": true
     }
   ],
   "south": [
@@ -770,6 +809,45 @@
       "desc": "Self-led Halloween audio trail and sculpture route, plus storytelling, crafts, music, and circus acts on 29 Oct.",
       "link": "https://www.south-ayrshire.gov.uk/article/60592/Get-in-the-Hallowe-en-spirit-with-Tamfest",
       "source": "Tamfest via South Ayrshire Council",
+      "recurring": false
+    },
+    {
+      "title": "ExplorAYR Festival",
+      "start_date": "2025-09-12",
+      "end_date": "2025-09-14",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Various locations",
+      "town": "Ayr",
+      "desc": "Festival celebrating active travel with archery, cycling, soapbox racing, and more outdoor adventures.",
+      "link": "https://destinationsouthayrshire.co.uk/whatson/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Myths & Legends Workshop with Zoolab",
+      "start_date": "2025-10-13",
+      "end_date": "2025-10-13",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Robert Burns Birthplace Museum",
+      "town": "Alloway",
+      "desc": "Halloween-themed animal mythology workshop with real creatures and crafts.",
+      "link": "https://destinationsouthayrshire.co.uk/whatson/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Alloween Pottery Painting",
+      "start_date": "2025-10-14",
+      "end_date": "2025-10-14",
+      "start_time": "10:30",
+      "end_time": "14:00",
+      "venue": "Alloway",
+      "town": "Alloway",
+      "desc": "Pottery painting workshop with spooky Halloween themes.",
+      "link": "https://destinationsouthayrshire.co.uk/whatson/",
+      "source": "Destination South Ayrshire",
       "recurring": false
     }
   ],
