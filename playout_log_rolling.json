@@ -53909,5 +53909,31 @@
     "Full Duration (mins)": 3.92,
     "Start ISO": "2025-09-08T16:53:12Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-08T17:00:00Z",
+    "Scheduled Time": "18:02",
+    "Displayed Time": "18:02",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 181,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.12,
+    "Start ISO": "2025-09-08T17:02:00Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-08T17:00:00Z",
+    "Scheduled Time": "18:05",
+    "Displayed Time": "18:05",
+    "Artist": "Justin Bieber",
+    "Title": "Daisies",
+    "Duration (s)": 174,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.93,
+    "Start ISO": "2025-09-08T17:05:07Z",
+    "Source": "PLAYIT"
   }
 ]
