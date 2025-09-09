@@ -7967,39 +7967,45 @@ const liveBox = document.querySelector(".live-indicator");
     return d;
   }
   function highlightLiveShows() {
-    const container = document.querySelector("#modalDaySchedule");
-    if (!container) return;
+  const container = document.querySelector("#modalDaySchedule");
+  if (!container) return;
 
-    // clear existing highlights
-    container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
+  // clear existing highlights
+  container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
 
-    const now = toLondon(new Date());
-    const today = todayName().toLowerCase();
+  const now = toLondon(new Date());
+  const today = todayName().toLowerCase();
 
-    container.querySelectorAll(".day-card").forEach(dayCard => {
-      const heading = (dayCard.querySelector("h2, h3")?.textContent || "").trim().toLowerCase();
-      const isToday = heading.includes(today);
+  // key change: include the container if it's already a .day-card
+  const dayCards = container.matches('.day-card')
+    ? [container]
+    : container.querySelectorAll('.day-card');
 
-      dayCard.querySelectorAll(".show-entry").forEach(entry => {
-        const timeEl = entry.querySelector("time");
-        if (!timeEl) return;
+  dayCards.forEach(dayCard => {
+    const heading = (dayCard.querySelector("h2, h3")?.textContent || "").trim().toLowerCase();
+    const isToday = heading.includes(today);
 
-        const range = parseRange(timeEl.textContent);
-        if (!range) return;
+    dayCard.querySelectorAll(".show-entry").forEach(entry => {
+      const timeEl = entry.querySelector("time");
+      if (!timeEl) return;
 
-        if (isToday) {
-          let start = nextByClock(now, range.start);
-          let end   = nextByClock(now, range.end);
-          if (end <= start) end = new Date(end.getTime() + 24 * 3600 * 1000);
+      const range = parseRange(timeEl.textContent);
+      if (!range) return;
 
-          if (now >= start && now < end) {
-            entry.classList.add("live-now");
-        try { entry.style.setProperty('--now-flag', '\"ON AIR NOW\"'); } catch(e) {}
-          }
+      if (isToday) {
+        let start = nextByClock(now, range.start);
+        let end   = nextByClock(now, range.end);
+        if (end <= start) end = new Date(end.getTime() + 86400000);
+
+        if (now >= start && now < end) {
+          entry.classList.add("live-now");
+          try { entry.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch(e) {}
         }
-      });
+      }
     });
-  }
+  });
+}
+
 
   // Recompute highlights periodically while the modal is open
   let liveTimer = null;
@@ -8176,43 +8182,44 @@ const liveBox = document.querySelector(".live-indicator");
   }
 
   let lastScrollId = null;
-  function highlightCurrentShow() {
-    const sched = document.getElementById("scheduleModal");
-    if (sched && (sched.style.display === "block" || sched.classList.contains("show"))) { return; }
+function highlightCurrentShow() {
+  const sched = document.getElementById("scheduleModal");
+  if (sched && (sched.style.display === "block" || sched.classList.contains("show"))) return;
 
-    const container = findScheduleContainer();
-    if (!container) return;
+  const container = findScheduleContainer();
+  if (!container) return;
 
-    const now = nowMinutesLondon();
-    let winner = null;
+  const now = nowMinutesLondon();
+  let winner = null;
 
-    entryNodes(container).forEach(node => {
-      const range = extractRange(node);
-      if (!range) return;
-      const [s,e] = range;
-      if (isNowWithin(s,e,now)) {
-        winner = node;
-      }
-    });
+  entryNodes(container).forEach(node => {
+    const range = extractRange(node);
+    if (!range) return;
+    const [s, e] = range;
+    if (isNowWithin(s, e, now)) winner = node;
+  });
 
-    clearHighlights(container);
+  clearHighlights(container);
 
-    if (winner) {
-      winner.classList.add('show--current');
-      // Auto-scroll on first detection only (avoid fighting user scroll)
-      const id = winner.getAttribute('data-id') || winner.id || `${Array.from(entryNodes(container)).indexOf(winner)
-      // Ensure unified styling and badge text on current show
-      winner.classList.add('show--current','current-show','current','live-now');
-      try { winner.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch(e) {}
-}`;
-      if (lastScrollId !== id) {
-        lastScrollId = id;
-        setTimeout(()=>{
-          try { winner.scrollIntoView({behavior:'smooth', block:'center'}); } catch(e) {}
-        }, 60);
-      }
+  if (winner) {
+    const id = winner.getAttribute('data-id')
+      || winner.id
+      || String(Array.from(entryNodes(container)).indexOf(winner));
+
+    winner.classList.add('show--current', 'current-show', 'current', 'live-now');
+    try { winner.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch (e) {}
+
+    if (typeof lastScrollId === 'undefined') window.lastScrollId = null;
+    if (lastScrollId !== id) {
+      lastScrollId = id;
+      setTimeout(() => {
+        try { winner.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+      }, 60);
     }
   }
+}
+
+
 
   // Run when modal opens
   function onModalToggle(e) {
