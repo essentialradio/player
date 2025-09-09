@@ -53558,5 +53558,31 @@
     "Full Duration (mins)": 3.85,
     "Start ISO": "2025-09-09T02:09:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-09T02:00:00Z",
+    "Scheduled Time": "03:12",
+    "Displayed Time": "03:12",
+    "Artist": "Justin Bieber",
+    "Title": "Daisies",
+    "Duration (s)": 169,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.93,
+    "Start ISO": "2025-09-09T02:12:53Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-09T02:00:00Z",
+    "Scheduled Time": "03:15",
+    "Displayed Time": "03:15",
+    "Artist": "Shaggy Featuring Rayvon",
+    "Title": "Angel",
+    "Duration (s)": 200,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.5,
+    "Start ISO": "2025-09-09T02:15:50Z",
+    "Source": "PLAYIT"
   }
 ]
