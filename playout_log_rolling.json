@@ -52921,5 +52921,18 @@
     "Full Duration (mins)": 2.78,
     "Start ISO": "2025-09-09T19:01:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-09T19:00:00Z",
+    "Scheduled Time": "20:04",
+    "Displayed Time": "20:04",
+    "Artist": "Foo Fighters",
+    "Title": "Learn to Fly",
+    "Duration (s)": 227,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.78,
+    "Full Duration (mins)": 3.92,
+    "Start ISO": "2025-09-09T19:04:26Z",
+    "Source": "PLAYIT"
   }
 ]
