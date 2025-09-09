@@ -53181,5 +53181,18 @@
     "Full Duration (mins)": 3.85,
     "Start ISO": "2025-09-09T12:11:15Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-09T12:00:00Z",
+    "Scheduled Time": "13:14",
+    "Displayed Time": "13:14",
+    "Artist": "*NSYNC",
+    "Title": "Bye Bye Bye",
+    "Duration (s)": 189,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-09-09T12:14:59Z",
+    "Source": "PLAYIT"
   }
 ]
