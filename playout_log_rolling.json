@@ -52856,5 +52856,18 @@
     "Full Duration (mins)": 3.5,
     "Start ISO": "2025-09-09T22:06:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-09T22:00:00Z",
+    "Scheduled Time": "23:09",
+    "Displayed Time": "23:09",
+    "Artist": "The Cars",
+    "Title": "Drive",
+    "Duration (s)": 220,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.88,
+    "Start ISO": "2025-09-09T22:09:42Z",
+    "Source": "PLAYIT"
   }
 ]
