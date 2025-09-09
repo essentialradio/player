@@ -7966,46 +7966,7 @@ const liveBox = document.querySelector(".live-indicator");
     d.setHours(h, m, 0, 0);
     return d;
   }
-  function highlightLiveShows() {
-  const container = document.querySelector("#modalDaySchedule");
-  if (!container) return;
-
-  // clear existing highlights
-  container.querySelectorAll(".live-now").forEach(el => el.classList.remove("live-now"));
-
-  const now = toLondon(new Date());
-  const today = todayName().toLowerCase();
-
-  // key change: include the container if it's already a .day-card
-  const dayCards = container.matches('.day-card')
-    ? [container]
-    : container.querySelectorAll('.day-card');
-
-  dayCards.forEach(dayCard => {
-    const heading = (dayCard.querySelector("h2, h3")?.textContent || "").trim().toLowerCase();
-    const isToday = heading.includes(today);
-
-    dayCard.querySelectorAll(".show-entry").forEach(entry => {
-      const timeEl = entry.querySelector("time");
-      if (!timeEl) return;
-
-      const range = parseRange(timeEl.textContent);
-      if (!range) return;
-
-      if (isToday) {
-        let start = nextByClock(now, range.start);
-        let end   = nextByClock(now, range.end);
-        if (end <= start) end = new Date(end.getTime() + 86400000);
-
-        if (now >= start && now < end) {
-          entry.classList.add("live-now");
-          try { entry.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch(e) {}
-        }
-      }
-    });
-  });
-}
-
+  /* removed highlightLiveShows */
 
   // Recompute highlights periodically while the modal is open
   let liveTimer = null;
@@ -8182,44 +8143,7 @@ const liveBox = document.querySelector(".live-indicator");
   }
 
   let lastScrollId = null;
-function highlightCurrentShow() {
-  const sched = document.getElementById("scheduleModal");
-  if (sched && (sched.style.display === "block" || sched.classList.contains("show"))) return;
-
-  const container = findScheduleContainer();
-  if (!container) return;
-
-  const now = nowMinutesLondon();
-  let winner = null;
-
-  entryNodes(container).forEach(node => {
-    const range = extractRange(node);
-    if (!range) return;
-    const [s, e] = range;
-    if (isNowWithin(s, e, now)) winner = node;
-  });
-
-  clearHighlights(container);
-
-  if (winner) {
-    const id = winner.getAttribute('data-id')
-      || winner.id
-      || String(Array.from(entryNodes(container)).indexOf(winner));
-
-    winner.classList.add('show--current', 'current-show', 'current', 'live-now');
-    try { winner.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch (e) {}
-
-    if (typeof lastScrollId === 'undefined') window.lastScrollId = null;
-    if (lastScrollId !== id) {
-      lastScrollId = id;
-      setTimeout(() => {
-        try { winner.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
-      }, 60);
-    }
-  }
-}
-
-
+  /* removed highlightCurrentShow */
 
   // Run when modal opens
   function onModalToggle(e) {
@@ -9802,6 +9726,234 @@ document.addEventListener('visibilitychange', () => {
       if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
     }
   });
+})();
+</script>
+
+<!-- ===== Schedule highlight polish (CSS) ===== -->
+<style id="schedule-highlight-polish">
+  /* Ensure badge anchor exists */
+  .show-entry { position: relative; }
+
+  /* Visual highlight */
+  .show-entry.live-now,
+  .show-entry.current,
+  .show-entry.current-show,
+  .show-entry.show--current {
+    background: color-mix(in srgb, #ffd000 16%, transparent);
+    box-shadow: 0 0 0 2px #ffd00022 inset;
+  }
+
+  /* Left bar */
+  .show-entry.live-now::before {
+    content: "";
+    position: absolute; inset: 0 auto 0 0; width: 6px; background: #ffd000;
+    border-radius: 6px;
+  }
+
+  /* “ON AIR NOW” pill */
+  .show-entry.live-now::after {
+    content: var(--now-flag, "ON AIR NOW");
+    position: absolute; top: 8px; right: 8px;
+    font: 600 12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    padding: 4px 8px; border-radius: 999px;
+    background: #d60000; color: #fff; letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html:focus-within { scroll-behavior: auto; }
+  }
+</style>
+
+
+<script>
+(() => {
+  const MS_DAY = 86400000;
+
+  function todayName() {
+    return new Date().toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'Europe/London' });
+  }
+
+  // normalise "HH:MM–HH:MM" with any dash and stray spaces
+  function parseRange(text) {
+    if (!text) return null;
+    const t = String(text).replace(/\s*/g, '').replace(/[–—-]/, '-');
+    const m = t.match(/^(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
+    if (!m) return null;
+    const [, h1, m1, h2, m2] = m.map(Number);
+    return { start: `${h1}:${String(m1).padStart(2,'0')}`, end: `${h2}:${String(m2).padStart(2,'0')}` };
+  }
+
+  function nextByClock(base, hhmm) {
+    const [H, M] = hhmm.split(':').map(Number);
+    const d = new Date(base);
+    d.setHours(H, M, 0, 0);
+    return d;
+  }
+
+  function clearHighlights(container) {
+    container.querySelectorAll('.live-now, .current, .current-show, .show--current')
+      .forEach(el => {
+        el.classList.remove('live-now','current','current-show','show--current');
+        el.removeAttribute('aria-live');
+        el.removeAttribute('aria-label');
+      });
+  }
+
+  // ========= Modal highlighter =========
+  function highlightLiveShows() {
+    const container = document.querySelector('#modalDaySchedule');
+    if (!container) return;
+
+    // treat the container as a day-card if it already is one
+    const dayCards = container.matches('.day-card')
+      ? [container]
+      : container.querySelectorAll('.day-card');
+
+    // clear any prior state within modal
+    container.querySelectorAll('.live-now, .current, .current-show, .show--current')
+      .forEach(el => el.classList.remove('live-now','current','current-show','show--current'));
+
+    const now = new Date();
+    const today = todayName().toLowerCase();
+
+    dayCards.forEach(dayCard => {
+      const heading = (dayCard.querySelector('h2, h3')?.textContent || '').trim().toLowerCase();
+      const isToday = heading.includes(today);
+
+      dayCard.querySelectorAll('.show-entry').forEach(entry => {
+        const t = entry.querySelector('time')?.textContent || entry.textContent;
+        const range = parseRange(t);
+        if (!range || !isToday) return;
+
+        let start = nextByClock(now, range.start);
+        let end   = nextByClock(now, range.end);
+        if (end <= start) end = new Date(end.getTime() + MS_DAY);
+
+        if (now >= start && now < end) {
+          entry.classList.add('live-now');
+          try { entry.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch {}
+          entry.setAttribute('aria-live', 'polite');
+          entry.setAttribute('aria-label', 'On air now');
+        }
+      });
+    });
+  }
+
+  // ========= Main page highlighter =========
+  let lastScrollId = null;
+
+  function findScheduleContainer() {
+    return document.querySelector('#mainSchedule, .schedule, .schedule-list, .day-card') || document.body;
+  }
+
+  function extractRange(node) {
+    const t = (node.querySelector?.('time')?.textContent || node.textContent || '').trim();
+    const r = parseRange(t);
+    if (!r) return null;
+    const now = new Date();
+    let s = nextByClock(now, r.start);
+    let e = nextByClock(now, r.end);
+    if (e <= s) e = new Date(e.getTime() + MS_DAY);
+    return [s, e];
+  }
+
+  function isNowWithin(s, e, now = new Date()) {
+    return now >= s && now < e;
+  }
+
+  function highlightCurrentShow() {
+    // If the modal is visible, let the modal highlighter do its thing
+    const schedModal = document.getElementById('scheduleModal');
+    if (schedModal && isVisible(schedModal)) return;
+
+    const container = findScheduleContainer();
+    if (!container) return;
+
+    const nodes = container.querySelectorAll('.show-entry, .show, .schedule-item, li');
+    let winner = null;
+
+    nodes.forEach(node => {
+      const range = extractRange(node);
+      if (!range) return;
+      const [s, e] = range;
+      if (isNowWithin(s, e)) winner = node;
+    });
+
+    clearHighlights(container);
+
+    if (winner) {
+      let id = winner.getAttribute('data-id') || winner.id ||
+               String(Array.from(nodes).indexOf(winner));
+
+      winner.classList.add('show--current', 'current-show', 'current', 'live-now');
+      try { winner.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch {}
+
+      // Smooth scroll respecting reduced motion
+      const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      const behavior = prefersReduced ? 'auto' : 'smooth';
+
+      if (lastScrollId !== id) {
+        lastScrollId = id;
+        setTimeout(() => {
+          try { winner.scrollIntoView({ behavior, block: 'center' }); } catch {}
+        }, 60);
+      }
+    }
+  }
+
+  // ========= Utilities =========
+  function isVisible(el) {
+    if (!el) return false;
+    const cs = getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
+    if (el.classList.contains('show')) return true;
+    return el.offsetParent !== null || cs.position === 'fixed';
+  }
+
+  // ========= Wiring =========
+  // 1) Keep main schedule highlight fresh
+  highlightCurrentShow();
+  setInterval(highlightCurrentShow, 60000);
+
+  // 2) Re-run when DOM changes significantly (e.g., schedule re-render)
+  new MutationObserver(() => highlightCurrentShow())
+    .observe(document.body, { childList: true, subtree: true });
+
+  // 3) When modal opens or its content changes, highlight inside
+  const modal = document.getElementById('scheduleModal');
+  const modalDay = document.getElementById('modalDaySchedule');
+
+  if (modal) {
+    // Observe visibility/class changes on the modal shell
+    new MutationObserver(() => {
+      if (isVisible(modal)) {
+        highlightLiveShows();
+        if (!window.__modalTick) {
+          window.__modalTick = setInterval(highlightLiveShows, 60000);
+        }
+      } else if (window.__modalTick) {
+        clearInterval(window.__modalTick);
+        window.__modalTick = null;
+      }
+    }).observe(modal, { attributes: true, attributeFilter: ['class', 'style'] });
+  }
+
+  if (modalDay) {
+    // Observe content changes within the modal day card
+    new MutationObserver(() => highlightLiveShows())
+      .observe(modalDay, { childList: true, subtree: true });
+  }
+
+  // 4) Also re-highlight on click of any known open buttons (best-effort)
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-open="schedule"], .schedule-open, #openSchedule, a[href="#scheduleModal"]');
+    if (t) setTimeout(highlightLiveShows, 50);
+  });
+
+  // expose for debugging
+  window.highlightCurrentShow = highlightCurrentShow;
+  window.highlightLiveShows = highlightLiveShows;
 })();
 </script>
 </body><style>
