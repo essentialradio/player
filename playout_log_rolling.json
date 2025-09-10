@@ -52323,5 +52323,31 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-09-10T11:30:17Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T11:00:00Z",
+    "Scheduled Time": "12:37",
+    "Displayed Time": "12:37",
+    "Artist": "Gigi Perez",
+    "Title": "Sailor Song",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-09-10T11:37:51Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T11:00:00Z",
+    "Scheduled Time": "12:42",
+    "Displayed Time": "12:42",
+    "Artist": "Calvin Harris ft Rihanna",
+    "Title": "This Is What You Came For",
+    "Duration (s)": 211,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-09-10T11:42:27Z",
+    "Source": "PLAYIT"
   }
 ]
