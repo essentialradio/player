@@ -52297,5 +52297,18 @@
     "Full Duration (mins)": 2.67,
     "Start ISO": "2025-09-10T12:34:59Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T12:00:00Z",
+    "Scheduled Time": "13:40",
+    "Displayed Time": "13:40",
+    "Artist": "U2",
+    "Title": "Sweetest Thing",
+    "Duration (s)": 172,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-09-10T12:40:46Z",
+    "Source": "PLAYIT"
   }
 ]
