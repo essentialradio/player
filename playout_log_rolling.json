@@ -51985,5 +51985,31 @@
     "Full Duration (mins)": 3.2,
     "Start ISO": "2025-09-10T18:06:08Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T18:00:00Z",
+    "Scheduled Time": "19:09",
+    "Displayed Time": "19:09",
+    "Artist": "Gym Class Heroes",
+    "Title": "Cupid's Chokehold",
+    "Duration (s)": 224,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.88,
+    "Start ISO": "2025-09-10T18:09:15Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T18:00:00Z",
+    "Scheduled Time": "19:12",
+    "Displayed Time": "19:12",
+    "Artist": "Red Hot Chili Peppers",
+    "Title": "Under the Bridge",
+    "Duration (s)": 257,
+    "Full Duration (s)": 273,
+    "Duration (mins)": 4.28,
+    "Full Duration (mins)": 4.55,
+    "Start ISO": "2025-09-10T18:12:59Z",
+    "Source": "PLAYIT"
   }
 ]
