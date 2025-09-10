@@ -52544,5 +52544,18 @@
     "Full Duration (mins)": 2.92,
     "Start ISO": "2025-09-10T04:01:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T04:00:00Z",
+    "Scheduled Time": "05:05",
+    "Displayed Time": "05:05",
+    "Artist": "Mariah Carey",
+    "Title": "Fantasy",
+    "Duration (s)": 238,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.08,
+    "Start ISO": "2025-09-10T04:05:06Z",
+    "Source": "PLAYIT"
   }
 ]
