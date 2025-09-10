@@ -52544,5 +52544,31 @@
     "Full Duration (mins)": 2.7,
     "Start ISO": "2025-09-10T05:21:32Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T05:00:00Z",
+    "Scheduled Time": "06:24",
+    "Displayed Time": "06:24",
+    "Artist": "Sophie Ellis-Bextor",
+    "Title": "Murder on the Dancefloor",
+    "Duration (s)": 199,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-09-10T05:24:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T05:00:00Z",
+    "Scheduled Time": "06:27",
+    "Displayed Time": "06:27",
+    "Artist": "Faithless",
+    "Title": "God is a DJ",
+    "Duration (s)": 203,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.58,
+    "Start ISO": "2025-09-10T05:27:36Z",
+    "Source": "PLAYIT"
   }
 ]
