@@ -51907,5 +51907,31 @@
     "Full Duration (mins)": 3.43,
     "Start ISO": "2025-09-10T22:39:46Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T22:00:00Z",
+    "Scheduled Time": "23:43",
+    "Displayed Time": "23:43",
+    "Artist": "Sam Ryder",
+    "Title": "Somebody",
+    "Duration (s)": 198,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-09-10T22:43:08Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T22:00:00Z",
+    "Scheduled Time": "23:46",
+    "Displayed Time": "23:46",
+    "Artist": "Peabo Bryson & Roberta Flack",
+    "Title": "Tonight, I Celebrate My Love",
+    "Duration (s)": 201,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.48,
+    "Start ISO": "2025-09-10T22:46:26Z",
+    "Source": "PLAYIT"
   }
 ]
