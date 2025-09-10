@@ -52102,5 +52102,31 @@
     "Full Duration (mins)": 2.77,
     "Start ISO": "2025-09-10T13:02:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T13:00:00Z",
+    "Scheduled Time": "14:05",
+    "Displayed Time": "14:05",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 159,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.8,
+    "Start ISO": "2025-09-10T13:05:19Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-10T13:00:00Z",
+    "Scheduled Time": "14:08",
+    "Displayed Time": "14:08",
+    "Artist": "Natasha Bedingfield",
+    "Title": "These Words",
+    "Duration (s)": 207,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-09-10T13:08:04Z",
+    "Source": "PLAYIT"
   }
 ]
