@@ -51556,5 +51556,31 @@
     "Full Duration (mins)": 2.73,
     "Start ISO": "2025-09-11T03:22:48Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-11T03:00:00Z",
+    "Scheduled Time": "04:25",
+    "Displayed Time": "04:25",
+    "Artist": "Tate McRae",
+    "Title": "Greedy",
+    "Duration (s)": 125,
+    "Full Duration (s)": 132,
+    "Duration (mins)": 2.08,
+    "Full Duration (mins)": 2.2,
+    "Start ISO": "2025-09-11T03:25:32Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-11T03:00:00Z",
+    "Scheduled Time": "04:27",
+    "Displayed Time": "04:27",
+    "Artist": "Cyndi Lauper",
+    "Title": "Girls Just Want to Have Fun",
+    "Duration (s)": 212,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.9,
+    "Start ISO": "2025-09-11T03:27:41Z",
+    "Source": "PLAYIT"
   }
 ]
