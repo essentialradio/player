@@ -1,44 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T18:00:00Z",
-    "Scheduled Time": "19:02",
-    "Displayed Time": "19:02",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1333,
-    "Full Duration (s)": 1337,
-    "Duration (mins)": 22.22,
-    "Full Duration (mins)": 22.28,
-    "Start ISO": "2025-08-29T18:02:00Z",
-    "Source": "PLAYIT"
-  },
-  {
-    "Hour": "2025-08-29T18:00:00Z",
-    "Scheduled Time": "19:24",
-    "Displayed Time": "19:24",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 1164,
-    "Full Duration (s)": 1168,
-    "Duration (mins)": 19.4,
-    "Full Duration (mins)": 19.47,
-    "Start ISO": "2025-08-29T18:24:56Z",
-    "Source": "PLAYIT"
-  },
-  {
-    "Hour": "2025-08-29T18:00:00Z",
-    "Scheduled Time": "19:47",
-    "Displayed Time": "19:47",
-    "Artist": "Lee Everest",
-    "Title": "Ready for the Weekend",
-    "Duration (s)": 983,
-    "Full Duration (s)": 986,
-    "Duration (mins)": 16.38,
-    "Full Duration (mins)": 16.43,
-    "Start ISO": "2025-08-29T18:47:08Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-29T19:00:00Z",
     "Scheduled Time": "20:03",
     "Displayed Time": "20:03",
@@ -49762,5 +49723,18 @@
     "Full Duration (mins)": 3.15,
     "Start ISO": "2025-09-12T17:53:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-12T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Wet Leg",
+    "Title": "Catch These Fists",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-12T19:00:05+01:00",
+    "Source": "ALT"
   }
 ]
