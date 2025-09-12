@@ -1,18 +1,5 @@
 [
   {
-    "Hour": "2025-08-29T22:00:00Z",
-    "Scheduled Time": "23:01",
-    "Displayed Time": "23:01",
-    "Artist": "with Ronny Costello",
-    "Title": "Club Classics Radio Show <25 - 04.09.25>",
-    "Duration (s)": 3482,
-    "Full Duration (s)": 3486,
-    "Duration (mins)": 58.03,
-    "Full Duration (mins)": 58.1,
-    "Start ISO": "2025-08-29T22:01:39Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-29T23:00:00Z",
     "Scheduled Time": "00:00",
     "Displayed Time": "00:00",
@@ -49710,5 +49697,18 @@
     "Full Duration (mins)": 3.72,
     "Start ISO": "2025-09-12T21:55:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-12T22:00:00Z",
+    "Scheduled Time": "23:00",
+    "Displayed Time": "23:00",
+    "Artist": "Ayrshire Radio",
+    "Title": "On Air",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-09-12T23:00:00+01:00",
+    "Source": "FIXED"
   }
 ]
