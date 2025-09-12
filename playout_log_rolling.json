@@ -49541,5 +49541,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-12T19:59:47+01:00",
     "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-12T19:00:00Z",
+    "Scheduled Time": "20:03",
+    "Displayed Time": "20:03",
+    "Artist": "Destiny's Child",
+    "Title": "Lose My Breath",
+    "Duration (s)": 204,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.52,
+    "Start ISO": "2025-09-12T19:03:16Z",
+    "Source": "PLAYIT"
   }
 ]
