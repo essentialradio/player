@@ -49476,5 +49476,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-09-13T00:00:00+01:00",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-13T01:00:00Z",
+    "Scheduled Time": "02:02",
+    "Displayed Time": "02:02",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 164,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.8,
+    "Start ISO": "2025-09-13T01:02:43Z",
+    "Source": "PLAYIT"
   }
 ]
