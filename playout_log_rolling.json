@@ -1,18 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T16:00:00Z",
-    "Scheduled Time": "17:02",
-    "Displayed Time": "17:02",
-    "Artist": "Jan Gow",
-    "Title": "The JanCave 70s Jukebox",
-    "Duration (s)": 3564,
-    "Full Duration (s)": 3582,
-    "Duration (mins)": 59.4,
-    "Full Duration (mins)": 59.7,
-    "Start ISO": "2025-08-30T16:02:02Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-30T17:00:00Z",
     "Scheduled Time": "18:03",
     "Displayed Time": "18:03",
@@ -49164,5 +49151,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-13T16:59:57+01:00",
     "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-13T16:00:00Z",
+    "Scheduled Time": "17:00",
+    "Displayed Time": "17:00",
+    "Artist": "Jan Gow",
+    "Title": "The Jan Cave 70s Jukebox",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-09-13T17:00:00+01:00",
+    "Source": "FIXED"
   }
 ]
