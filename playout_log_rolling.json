@@ -1,44 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T17:00:00Z",
-    "Scheduled Time": "18:03",
-    "Displayed Time": "18:03",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1134,
-    "Full Duration (s)": 1150,
-    "Duration (mins)": 18.9,
-    "Full Duration (mins)": 19.17,
-    "Start ISO": "2025-08-30T17:03:06Z",
-    "Source": "PLAYIT"
-  },
-  {
-    "Hour": "2025-08-30T17:00:00Z",
-    "Scheduled Time": "18:25",
-    "Displayed Time": "18:25",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 954,
-    "Full Duration (s)": 959,
-    "Duration (mins)": 15.9,
-    "Full Duration (mins)": 15.98,
-    "Start ISO": "2025-08-30T17:25:07Z",
-    "Source": "PLAYIT"
-  },
-  {
-    "Hour": "2025-08-30T17:00:00Z",
-    "Scheduled Time": "18:43",
-    "Displayed Time": "18:43",
-    "Artist": "Tim Graham",
-    "Title": "The LGBTQ Music Chart",
-    "Duration (s)": 1079,
-    "Full Duration (s)": 1081,
-    "Duration (mins)": 17.98,
-    "Full Duration (mins)": 18.02,
-    "Start ISO": "2025-08-30T17:43:22Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-30T18:00:00Z",
     "Scheduled Time": "19:02",
     "Displayed Time": "19:02",
@@ -49164,5 +49125,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-09-13T17:00:00+01:00",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-13T17:00:00Z",
+    "Scheduled Time": "18:00",
+    "Displayed Time": "18:00",
+    "Artist": "Jan Gow",
+    "Title": "The JanCave 70s Jukebox",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-13T18:00:07+01:00",
+    "Source": "ALT"
   }
 ]
