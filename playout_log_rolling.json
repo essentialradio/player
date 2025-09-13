@@ -49154,6 +49154,19 @@
   },
   {
     "Hour": "2025-09-13T17:00:00Z",
+    "Scheduled Time": "18:43",
+    "Displayed Time": "18:43",
+    "Artist": "Tim Graham",
+    "Title": "The LGBTQ Music Chart",
+    "Duration (s)": 945,
+    "Full Duration (s)": 947,
+    "Duration (mins)": 15.75,
+    "Full Duration (mins)": 15.78,
+    "Start ISO": "2025-09-13T17:43:13Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-13T17:00:00Z",
     "Scheduled Time": "18:58",
     "Displayed Time": "18:58",
     "Artist": "Tim Graham",
@@ -49162,7 +49175,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-13T18:58:33+01:00",
+    "Start ISO": "2025-09-13T18:58:47+01:00",
     "Source": "ALT"
   }
 ]
