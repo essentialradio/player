@@ -1,18 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T23:00:00Z",
-    "Scheduled Time": "00:00",
-    "Displayed Time": "00:00",
-    "Artist": "Bill Grainger",
-    "Title": "Fire Island Hi-NRG",
-    "Duration (s)": 3595,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 59.92,
-    "Full Duration (mins)": 60.0,
-    "Start ISO": "2025-08-30T23:00:35Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-31T00:00:00Z",
     "Scheduled Time": "01:02",
     "Displayed Time": "01:02",
@@ -49229,5 +49216,18 @@
     "Full Duration (mins)": 180.0,
     "Start ISO": "2025-09-13T21:00:00+01:00",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-13T23:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "00:00",
+    "Artist": "Big Tommy",
+    "Title": "Big Fat Party Anthems",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-14T00:00:05+01:00",
+    "Source": "ALT"
   }
 ]
