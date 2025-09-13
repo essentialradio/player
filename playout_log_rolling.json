@@ -1,18 +1,5 @@
 [
   {
-    "Hour": "2025-08-30T19:00:00Z",
-    "Scheduled Time": "20:00",
-    "Displayed Time": "20:00",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3478,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 57.97,
-    "Full Duration (mins)": 58.0,
-    "Start ISO": "2025-08-30T19:00:16Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-30T20:00:00Z",
     "Scheduled Time": "21:00",
     "Displayed Time": "21:00",
@@ -49190,5 +49177,18 @@
     "Full Duration (mins)": 58.0,
     "Start ISO": "2025-09-13T18:01:32Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-13T19:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Stephen Howie",
+    "Title": "Grooveline",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-09-13T19:00:00+01:00",
+    "Source": "FIXED"
   }
 ]
