@@ -49037,6 +49037,19 @@
   },
   {
     "Hour": "2025-09-14T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3480,
+    "Full Duration (s)": 3480,
+    "Duration (mins)": 58.0,
+    "Full Duration (mins)": 58.0,
+    "Start ISO": "2025-09-14T14:00:04Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-14T14:00:00Z",
     "Scheduled Time": "15:57",
     "Displayed Time": "15:57",
     "Artist": "Chainsmokers & Anna Sofia",
@@ -49045,7 +49058,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T15:57:44+01:00",
+    "Start ISO": "2025-09-14T15:57:57+01:00",
     "Source": "ALT"
   }
 ]
