@@ -44105,7 +44105,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-12T19:59:47+01:00",
+    "Start ISO": "2025-09-12T18:59:47Z",
     "Source": "ALT"
   },
   {
@@ -44716,7 +44716,7 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0,
-    "Start ISO": "2025-09-12T23:00:00+01:00",
+    "Start ISO": "2025-09-12T22:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -44729,7 +44729,7 @@
     "Full Duration (s)": 7200,
     "Duration (mins)": 120.0,
     "Full Duration (mins)": 120.0,
-    "Start ISO": "2025-09-13T00:00:00+01:00",
+    "Start ISO": "2025-09-12T23:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -44742,7 +44742,7 @@
     "Full Duration (s)": 7200,
     "Duration (mins)": 120.0,
     "Full Duration (mins)": 120.0,
-    "Start ISO": "2025-09-13T00:00:00+01:00",
+    "Start ISO": "2025-09-12T23:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -46692,7 +46692,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-13T13:59:49+01:00",
+    "Start ISO": "2025-09-13T12:59:49Z",
     "Source": "ALT"
   },
   {
@@ -46705,7 +46705,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-13T14:59:48+01:00",
+    "Start ISO": "2025-09-13T13:59:48Z",
     "Source": "ALT"
   },
   {
@@ -46718,7 +46718,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-13T15:59:50+01:00",
+    "Start ISO": "2025-09-13T14:59:50Z",
     "Source": "ALT"
   },
   {
@@ -46731,7 +46731,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-13T16:59:57+01:00",
+    "Start ISO": "2025-09-13T15:59:57Z",
     "Source": "ALT"
   },
   {
@@ -46744,7 +46744,7 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0,
-    "Start ISO": "2025-09-13T17:00:00+01:00",
+    "Start ISO": "2025-09-13T16:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -46796,7 +46796,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-13T18:59:56+01:00",
+    "Start ISO": "2025-09-13T17:59:56Z",
     "Source": "ALT"
   },
   {
@@ -46809,7 +46809,7 @@
     "Full Duration (s)": 7200,
     "Duration (mins)": 120.0,
     "Full Duration (mins)": 120.0,
-    "Start ISO": "2025-09-13T19:00:00+01:00",
+    "Start ISO": "2025-09-13T18:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -46835,7 +46835,7 @@
     "Full Duration (s)": 7200,
     "Duration (mins)": 120.0,
     "Full Duration (mins)": 120.0,
-    "Start ISO": "2025-09-13T19:00:00+01:00",
+    "Start ISO": "2025-09-13T18:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -46861,7 +46861,7 @@
     "Full Duration (s)": 10800,
     "Duration (mins)": 180.0,
     "Full Duration (mins)": 180.0,
-    "Start ISO": "2025-09-13T21:00:00+01:00",
+    "Start ISO": "2025-09-13T20:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -46874,7 +46874,7 @@
     "Full Duration (s)": 10800,
     "Duration (mins)": 180.0,
     "Full Duration (mins)": 180.0,
-    "Start ISO": "2025-09-13T21:00:00+01:00",
+    "Start ISO": "2025-09-13T20:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -46887,7 +46887,7 @@
     "Full Duration (s)": 10800,
     "Duration (mins)": 180.0,
     "Full Duration (mins)": 180.0,
-    "Start ISO": "2025-09-13T21:00:00+01:00",
+    "Start ISO": "2025-09-13T20:00:00Z",
     "Source": "FIXED"
   },
   {
@@ -46900,7 +46900,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T00:59:46+01:00",
+    "Start ISO": "2025-09-13T23:59:46Z",
     "Source": "ALT"
   },
   {
@@ -48282,6 +48282,19 @@
     "Source": "PLAYIT"
   },
   {
+    "Hour": "2025-09-14T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "09:03",
+    "Artist": "Caledonia Media",
+    "Title": "The Week in Holyrood with Charles Fletcher",
+    "Duration (s)": 3419,
+    "Full Duration (s)": 3420,
+    "Duration (mins)": 56.98,
+    "Full Duration (mins)": 57.0,
+    "Start ISO": "2025-09-14T08:03:33Z",
+    "Source": "PLAYIT"
+  },
+  {
     "Hour": "2025-09-14T09:00:00Z",
     "Scheduled Time": "10:02",
     "Displayed Time": "10:02",
@@ -49019,7 +49032,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T14:59:59+01:00",
+    "Start ISO": "2025-09-14T13:59:59Z",
     "Source": "ALT"
   },
   {
@@ -49045,7 +49058,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T15:59:47+01:00",
+    "Start ISO": "2025-09-14T14:59:47Z",
     "Source": "ALT"
   },
   {
@@ -49058,7 +49071,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T16:59:59+01:00",
+    "Start ISO": "2025-09-14T15:59:59Z",
     "Source": "ALT"
   },
   {
@@ -49071,7 +49084,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T17:15:44+01:00",
+    "Start ISO": "2025-09-14T17:15:49+01:00",
     "Source": "ALT"
   }
 ]
