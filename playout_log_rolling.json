@@ -1,18 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T15:00:00Z",
-    "Scheduled Time": "16:02",
-    "Displayed Time": "16:02",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3589,
-    "Full Duration (s)": 3591,
-    "Duration (mins)": 59.82,
-    "Full Duration (mins)": 59.85,
-    "Start ISO": "2025-08-31T15:02:41Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-31T18:00:00Z",
     "Scheduled Time": "19:03",
     "Displayed Time": "19:03",
@@ -49059,6 +49046,19 @@
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-14T15:59:47+01:00",
+    "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-14T15:00:00Z",
+    "Scheduled Time": "16:00",
+    "Displayed Time": "16:00",
+    "Artist": "Babybird",
+    "Title": "You're Gorgeous",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-14T16:00:01+01:00",
     "Source": "ALT"
   }
 ]
