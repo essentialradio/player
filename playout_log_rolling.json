@@ -1,31 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T14:00:00Z",
-    "Scheduled Time": "15:00",
-    "Displayed Time": "15:00",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3480,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58.0,
-    "Full Duration (mins)": 58.0,
-    "Start ISO": "2025-08-31T14:00:16Z",
-    "Source": "PLAYIT"
-  },
-  {
-    "Hour": "2025-08-31T14:00:00Z",
-    "Scheduled Time": "15:59",
-    "Displayed Time": "15:59",
-    "Artist": "Dawn Penn",
-    "Title": "You Don't Love Me (No, No, No)",
-    "Duration (s)": 188,
-    "Full Duration (s)": 200,
-    "Duration (mins)": 3.13,
-    "Full Duration (mins)": 3.33,
-    "Start ISO": "2025-08-31T14:59:15Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-31T15:00:00Z",
     "Scheduled Time": "16:02",
     "Displayed Time": "16:02",
@@ -49058,7 +49032,20 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T14:59:45+01:00",
+    "Start ISO": "2025-09-14T14:59:59+01:00",
+    "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-14T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-14T15:00:13+01:00",
     "Source": "ALT"
   }
 ]
