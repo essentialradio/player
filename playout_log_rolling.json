@@ -1,18 +1,5 @@
 [
   {
-    "Hour": "2025-08-31T13:00:00Z",
-    "Scheduled Time": "14:00",
-    "Displayed Time": "14:00",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3548,
-    "Full Duration (s)": 3549,
-    "Duration (mins)": 59.13,
-    "Full Duration (mins)": 59.15,
-    "Start ISO": "2025-08-31T13:00:39Z",
-    "Source": "PLAYIT"
-  },
-  {
     "Hour": "2025-08-31T14:00:00Z",
     "Scheduled Time": "15:00",
     "Displayed Time": "15:00",
@@ -49047,5 +49034,18 @@
     "Full Duration (mins)": 3.93,
     "Start ISO": "2025-09-14T12:54:46Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-14T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "14:00",
+    "Artist": "Alanis Morissette",
+    "Title": "You Learn",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-14T14:00:03+01:00",
+    "Source": "ALT"
   }
 ]
