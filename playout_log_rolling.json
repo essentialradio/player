@@ -49060,5 +49060,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-14T16:59:59+01:00",
     "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-14T16:00:00Z",
+    "Scheduled Time": "17:00",
+    "Displayed Time": "17:00",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-14T17:00:13+01:00",
+    "Source": "ALT"
   }
 ]
