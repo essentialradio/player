@@ -49528,5 +49528,31 @@
     "Full Duration (mins)": 3.57,
     "Start ISO": "2025-09-15T02:31:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-15T02:00:00Z",
+    "Scheduled Time": "03:39",
+    "Displayed Time": "03:39",
+    "Artist": "Sam Smith & Kim Petras",
+    "Title": "Unholy",
+    "Duration (s)": 149,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.48,
+    "Full Duration (mins)": 2.62,
+    "Start ISO": "2025-09-15T02:39:15Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-15T02:00:00Z",
+    "Scheduled Time": "03:41",
+    "Displayed Time": "03:41",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 155,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.73,
+    "Start ISO": "2025-09-15T02:41:50Z",
+    "Source": "PLAYIT"
   }
 ]
