@@ -50607,5 +50607,31 @@
     "Full Duration (mins)": 3.02,
     "Start ISO": "2025-09-15T08:57:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-15T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "10:02",
+    "Artist": "Ava Max",
+    "Title": "So Am I",
+    "Duration (s)": 179,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.07,
+    "Start ISO": "2025-09-15T09:02:26Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-15T09:00:00Z",
+    "Scheduled Time": "10:05",
+    "Displayed Time": "10:05",
+    "Artist": "Olivia Dean",
+    "Title": "Man I Need",
+    "Duration (s)": 181,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.07,
+    "Start ISO": "2025-09-15T09:05:26Z",
+    "Source": "PLAYIT"
   }
 ]
