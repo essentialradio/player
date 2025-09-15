@@ -53129,5 +53129,31 @@
     "Full Duration (mins)": 2.67,
     "Start ISO": "2025-09-15T23:23:15Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-15T23:00:00Z",
+    "Scheduled Time": "00:25",
+    "Displayed Time": "00:25",
+    "Artist": "Dasha",
+    "Title": "Austin (Boots Stop Workin')",
+    "Duration (s)": 163,
+    "Full Duration (s)": 172,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.87,
+    "Start ISO": "2025-09-15T23:25:47Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-15T23:00:00Z",
+    "Scheduled Time": "00:28",
+    "Displayed Time": "00:28",
+    "Artist": "The Cure",
+    "Title": "The Lovecats",
+    "Duration (s)": 211,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-09-15T23:28:30Z",
+    "Source": "PLAYIT"
   }
 ]
