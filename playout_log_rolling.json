@@ -49242,5 +49242,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-09-14T23:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-15T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Ariana Grande",
+    "Title": "No Tears Left to Cry",
+    "Duration (s)": 202,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.43,
+    "Start ISO": "2025-09-15T01:01:58Z",
+    "Source": "PLAYIT"
   }
 ]
