@@ -57198,5 +57198,31 @@
     "Full Duration (mins)": 4.1,
     "Start ISO": "2025-09-16T22:40:15Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-16T22:00:00Z",
+    "Scheduled Time": "23:44",
+    "Displayed Time": "23:44",
+    "Artist": "Kenny Rogers & Sheena Easton",
+    "Title": "We've Got Tonight",
+    "Duration (s)": 217,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-09-16T22:44:04Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-16T22:00:00Z",
+    "Scheduled Time": "23:47",
+    "Displayed Time": "23:47",
+    "Artist": "Mimi Webb",
+    "Title": "Ghost of You",
+    "Duration (s)": 150,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.5,
+    "Full Duration (mins)": 2.63,
+    "Start ISO": "2025-09-16T22:47:49Z",
+    "Source": "PLAYIT"
   }
 ]
