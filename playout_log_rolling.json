@@ -58472,5 +58472,31 @@
     "Full Duration (mins)": 2.78,
     "Start ISO": "2025-09-17T05:44:44Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T05:00:00Z",
+    "Scheduled Time": "06:47",
+    "Displayed Time": "06:47",
+    "Artist": "Mark Ambor",
+    "Title": "Belong Together",
+    "Duration (s)": 140,
+    "Full Duration (s)": 148,
+    "Duration (mins)": 2.33,
+    "Full Duration (mins)": 2.47,
+    "Start ISO": "2025-09-17T05:47:30Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T05:00:00Z",
+    "Scheduled Time": "06:49",
+    "Displayed Time": "06:49",
+    "Artist": "The Housemartins",
+    "Title": "Happy Hour",
+    "Duration (s)": 132,
+    "Full Duration (s)": 141,
+    "Duration (mins)": 2.2,
+    "Full Duration (mins)": 2.35,
+    "Start ISO": "2025-09-17T05:49:50Z",
+    "Source": "PLAYIT"
   }
 ]
