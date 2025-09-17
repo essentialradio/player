@@ -59200,5 +59200,18 @@
     "Full Duration (mins)": 3.7,
     "Start ISO": "2025-09-17T10:11:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T10:00:00Z",
+    "Scheduled Time": "11:15",
+    "Displayed Time": "11:15",
+    "Artist": "The Stone Roses",
+    "Title": "Fools Gold",
+    "Duration (s)": 240,
+    "Full Duration (s)": 255,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.25,
+    "Start ISO": "2025-09-17T10:15:23Z",
+    "Source": "PLAYIT"
   }
 ]
