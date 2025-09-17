@@ -58420,5 +58420,31 @@
     "Full Duration (mins)": 4.3,
     "Start ISO": "2025-09-17T05:22:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T05:00:00Z",
+    "Scheduled Time": "06:27",
+    "Displayed Time": "06:27",
+    "Artist": "Tommy Richman",
+    "Title": "Million Dollar Baby",
+    "Duration (s)": 153,
+    "Full Duration (s)": 155,
+    "Duration (mins)": 2.55,
+    "Full Duration (mins)": 2.58,
+    "Start ISO": "2025-09-17T05:27:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T05:00:00Z",
+    "Scheduled Time": "06:31",
+    "Displayed Time": "06:31",
+    "Artist": "Doja Cat",
+    "Title": "Paint The Town Red",
+    "Duration (s)": 224,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.87,
+    "Start ISO": "2025-09-17T05:31:56Z",
+    "Source": "PLAYIT"
   }
 ]
