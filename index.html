@@ -1057,6 +1057,45 @@ body.modal-open {
   }
 }
 
+
+
+
+#liveClockMobile {
+  display: none;
+}
+
+/* On mobile: swap them */
+@media (max-width: 768px) {
+  #liveClock {
+    display: none;
+  }
+  #liveClockMobile {
+    display: flex;
+  }
+}
+
+
+/* === Responsive Clock Placement (single clock) === */
+/* Default: desktop clock shows normally */
+#liveClock {
+  display: flex;
+}
+
+/* On mobile: move it inside the player box above Play button */
+@media (max-width: 768px) {
+  #liveClock {
+    order: -1;              /* appear before play button */
+    margin: 0 auto 12px auto;
+    max-width: 95vw;
+  }
+
+  #player-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
 <style id="stacking-overrides">
@@ -10093,3 +10132,24 @@ enter;       /* centre vertically */
 
 </style>
 </html>
+<script>
+function updateClock() {
+  const now = new Date();
+
+  const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const date = now.toLocaleDateString([], { weekday: 'short', day: 'numeric', month: 'short' });
+
+  // Desktop clock
+  const timeDesktop = document.getElementById("clockTime");
+  const dateDesktop = document.getElementById("clockDate");
+  if (timeDesktop && dateDesktop) {
+    timeDesktop.textContent = time;
+    dateDesktop.textContent = date;
+  }
+
+  }
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
