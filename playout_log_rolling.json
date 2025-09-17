@@ -57679,5 +57679,31 @@
     "Full Duration (mins)": 4.05,
     "Start ISO": "2025-09-17T01:22:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T01:00:00Z",
+    "Scheduled Time": "02:26",
+    "Displayed Time": "02:26",
+    "Artist": "Taylor Swift",
+    "Title": "Anti-Hero",
+    "Duration (s)": 191,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-09-17T01:26:28Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T01:00:00Z",
+    "Scheduled Time": "02:29",
+    "Displayed Time": "02:29",
+    "Artist": "Stardust",
+    "Title": "Music Sounds Better With You",
+    "Duration (s)": 244,
+    "Full Duration (s)": 262,
+    "Duration (mins)": 4.07,
+    "Full Duration (mins)": 4.37,
+    "Start ISO": "2025-09-17T01:29:48Z",
+    "Source": "PLAYIT"
   }
 ]
