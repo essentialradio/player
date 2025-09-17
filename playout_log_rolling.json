@@ -61540,5 +61540,18 @@
     "Full Duration (mins)": 2.5,
     "Start ISO": "2025-09-17T23:12:54Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T23:00:00Z",
+    "Scheduled Time": "00:15",
+    "Displayed Time": "00:15",
+    "Artist": "Daft Punk",
+    "Title": "Digital Love",
+    "Duration (s)": 260,
+    "Full Duration (s)": 298,
+    "Duration (mins)": 4.33,
+    "Full Duration (mins)": 4.97,
+    "Start ISO": "2025-09-17T23:15:18Z",
+    "Source": "PLAYIT"
   }
 ]
