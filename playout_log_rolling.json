@@ -60773,5 +60773,31 @@
     "Full Duration (mins)": 3.62,
     "Start ISO": "2025-09-17T18:52:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T18:00:00Z",
+    "Scheduled Time": "19:56",
+    "Displayed Time": "19:56",
+    "Artist": "Spin Doctors",
+    "Title": "Two Princes",
+    "Duration (s)": 239,
+    "Full Duration (s)": 253,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.22,
+    "Start ISO": "2025-09-17T18:56:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-17T19:00:00Z",
+    "Scheduled Time": "20:02",
+    "Displayed Time": "20:02",
+    "Artist": "West End Feat. Sybil",
+    "Title": "The Love I Lost",
+    "Duration (s)": 198,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.43,
+    "Start ISO": "2025-09-17T19:02:06Z",
+    "Source": "PLAYIT"
   }
 ]
