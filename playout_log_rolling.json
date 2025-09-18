@@ -63555,5 +63555,31 @@
     "Full Duration (mins)": 3.28,
     "Start ISO": "2025-09-18T10:53:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T11:00:00Z",
+    "Scheduled Time": "12:01",
+    "Displayed Time": "12:01",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 172,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 2.98,
+    "Start ISO": "2025-09-18T11:01:50Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T11:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "Glenn Frey",
+    "Title": "The Heat Is On",
+    "Duration (s)": 195,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-09-18T11:05:12Z",
+    "Source": "PLAYIT"
   }
 ]
