@@ -62437,5 +62437,31 @@
     "Full Duration (mins)": 2.73,
     "Start ISO": "2025-09-18T04:11:59Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T04:00:00Z",
+    "Scheduled Time": "05:14",
+    "Displayed Time": "05:14",
+    "Artist": "Sam Sparro",
+    "Title": "Black and Gold",
+    "Duration (s)": 196,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.38,
+    "Start ISO": "2025-09-18T04:14:42Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T04:00:00Z",
+    "Scheduled Time": "05:21",
+    "Displayed Time": "05:21",
+    "Artist": "Belinda Carlisle",
+    "Title": "Circle In The Sand",
+    "Duration (s)": 211,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-09-18T04:21:41Z",
+    "Source": "PLAYIT"
   }
 ]
