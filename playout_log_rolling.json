@@ -64647,5 +64647,31 @@
     "Full Duration (mins)": 3.12,
     "Start ISO": "2025-09-18T17:05:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T17:00:00Z",
+    "Scheduled Time": "18:08",
+    "Displayed Time": "18:08",
+    "Artist": "Tyla feat. Gunna",
+    "Title": "Jump",
+    "Duration (s)": 141,
+    "Full Duration (s)": 147,
+    "Duration (mins)": 2.35,
+    "Full Duration (mins)": 2.45,
+    "Start ISO": "2025-09-18T17:08:16Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T17:00:00Z",
+    "Scheduled Time": "18:10",
+    "Displayed Time": "18:10",
+    "Artist": "Hozier",
+    "Title": "Too Sweet",
+    "Duration (s)": 241,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-09-18T17:10:49Z",
+    "Source": "PLAYIT"
   }
 ]
