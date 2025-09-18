@@ -62788,5 +62788,31 @@
     "Full Duration (mins)": 2.87,
     "Start ISO": "2025-09-18T06:14:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T06:00:00Z",
+    "Scheduled Time": "07:17",
+    "Displayed Time": "07:17",
+    "Artist": "Beyonce",
+    "Title": "Halo",
+    "Duration (s)": 222,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.73,
+    "Start ISO": "2025-09-18T06:17:17Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-18T06:00:00Z",
+    "Scheduled Time": "07:26",
+    "Displayed Time": "07:26",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 228,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.83,
+    "Start ISO": "2025-09-18T06:26:50Z",
+    "Source": "PLAYIT"
   }
 ]
