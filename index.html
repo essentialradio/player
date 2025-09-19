@@ -4388,6 +4388,26 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
+<style>
+
+/* === Mobile logo/clock spacing fix === */
+@media (max-width: 600px) {
+  /* The logo sits absolutely in .player-wrapper; add top padding so content clears it */
+  .player-wrapper { padding-top: 84px !important; }
+
+  /* Nudge/scale the overhang logo slightly smaller for tight screens */
+  .logo-overhang {
+    width: 120px !important;
+    left: 6px !important;
+    top: 6px !important;
+    transform: translate(0, 0) !important;
+  }
+
+  /* Keep the clock comfortably below the logo */
+  #liveClock { margin-top: 4px !important; }
+}
+
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
