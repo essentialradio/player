@@ -67663,5 +67663,31 @@
     "Full Duration (mins)": 3.33,
     "Start ISO": "2025-09-19T10:26:18Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-19T10:00:00Z",
+    "Scheduled Time": "11:29",
+    "Displayed Time": "11:29",
+    "Artist": "Coldplay",
+    "Title": "Yellow",
+    "Duration (s)": 261,
+    "Full Duration (s)": 269,
+    "Duration (mins)": 4.35,
+    "Full Duration (mins)": 4.48,
+    "Start ISO": "2025-09-19T10:29:28Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-19T10:00:00Z",
+    "Scheduled Time": "11:33",
+    "Displayed Time": "11:33",
+    "Artist": "Garbage",
+    "Title": "Stupid Girl",
+    "Duration (s)": 256,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 4.27,
+    "Full Duration (mins)": 4.28,
+    "Start ISO": "2025-09-19T10:33:57Z",
+    "Source": "PLAYIT"
   }
 ]
