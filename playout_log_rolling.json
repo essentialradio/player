@@ -67936,5 +67936,31 @@
     "Full Duration (mins)": 3.87,
     "Start ISO": "2025-09-19T11:52:52Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-19T12:00:00Z",
+    "Scheduled Time": "13:03",
+    "Displayed Time": "13:03",
+    "Artist": "Hozier",
+    "Title": "Take Me To Church",
+    "Duration (s)": 231,
+    "Full Duration (s)": 240,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 4.0,
+    "Start ISO": "2025-09-19T12:03:24Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-19T12:00:00Z",
+    "Scheduled Time": "13:07",
+    "Displayed Time": "13:07",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 167,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.93,
+    "Start ISO": "2025-09-19T12:07:51Z",
+    "Source": "PLAYIT"
   }
 ]
