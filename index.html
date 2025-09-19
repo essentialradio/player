@@ -4378,6 +4378,16 @@ html[data-theme="light"] #mobileNowBar {
   /* If there is no embed-wrap in Requests modal, make sure any iframe still fills */
   #requestsModal iframe { width:100% !important; border:0 !important; }
 </style>
+<style>
+
+/* === Mobile: place clock above Play button by moving the element === */
+@media (max-width: 768px) {
+  #liveClock {
+    margin-bottom: 10px;
+  }
+}
+
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -9994,6 +10004,64 @@ document.addEventListener('visibilitychange', () => {
   window.highlightLiveShows = highlightLiveShows;
 })();
 </script>
+
+<script>
+(function() {
+  function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
+
+  ready(function() {
+    var clock = document.getElementById('liveClock');
+    if (!clock) return;
+
+    // Create a placeholder to return the clock to its original spot
+    var placeholderId = 'liveClock-return-anchor';
+    var placeholder = document.getElementById(placeholderId);
+    if (!placeholder) {
+      placeholder = document.createElement('div');
+      placeholder.id = placeholderId;
+      clock.parentNode.insertBefore(placeholder, clock.nextSibling);
+    }
+
+    // Helper to insert clock before play button inside #player-box
+    function moveClockToPlayerBox() {
+      var player = document.getElementById('player-box');
+      var playBtn = document.getElementById('play-toggle');
+      if (!player || !playBtn) return;
+      // Insert clock before play button
+      if (playBtn.parentNode === player) {
+        player.insertBefore(clock, playBtn);
+      } else {
+        // fallback: prepend to player-box
+        player.insertBefore(clock, player.firstChild);
+      }
+    }
+
+    function moveClockHome() {
+      if (placeholder && placeholder.parentNode) {
+        placeholder.parentNode.insertBefore(clock, placeholder);
+      }
+    }
+
+    var mq = window.matchMedia('(max-width: 768px)');
+    function apply() {
+      if (mq.matches) {
+        moveClockToPlayerBox();
+      } else {
+        moveClockHome();
+      }
+    }
+    apply();
+    mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+    window.addEventListener('orientationchange', apply);
+    window.addEventListener('resize', function(){
+      // debounce-ish
+      clearTimeout(window.__clockMoveTO);
+      window.__clockMoveTO = setTimeout(apply, 120);
+    });
+  });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
