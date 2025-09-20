@@ -69756,5 +69756,18 @@
     "Full Duration (mins)": 3.75,
     "Start ISO": "2025-09-20T01:02:30Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-20T01:00:00Z",
+    "Scheduled Time": "02:06",
+    "Displayed Time": "02:06",
+    "Artist": "George Michael",
+    "Title": "Too Funky",
+    "Duration (s)": 219,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.78,
+    "Start ISO": "2025-09-20T01:06:42Z",
+    "Source": "PLAYIT"
   }
 ]
