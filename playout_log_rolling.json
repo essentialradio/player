@@ -71355,5 +71355,31 @@
     "Full Duration (mins)": 3.72,
     "Start ISO": "2025-09-20T09:54:50Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-20T10:00:00Z",
+    "Scheduled Time": "11:01",
+    "Displayed Time": "11:01",
+    "Artist": "Tom Grennan",
+    "Title": "Shadowboxing",
+    "Duration (s)": 168,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.88,
+    "Start ISO": "2025-09-20T10:01:50Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-20T10:00:00Z",
+    "Scheduled Time": "11:05",
+    "Displayed Time": "11:05",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway",
+    "Duration (s)": 245,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.2,
+    "Start ISO": "2025-09-20T10:05:07Z",
+    "Source": "PLAYIT"
   }
 ]
