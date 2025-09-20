@@ -70237,5 +70237,18 @@
     "Full Duration (mins)": 2.7,
     "Start ISO": "2025-09-20T03:42:52Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-20T03:00:00Z",
+    "Scheduled Time": "04:45",
+    "Displayed Time": "04:45",
+    "Artist": "Blur",
+    "Title": "Song 2",
+    "Duration (s)": 116,
+    "Full Duration (s)": 123,
+    "Duration (mins)": 1.93,
+    "Full Duration (mins)": 2.05,
+    "Start ISO": "2025-09-20T03:45:34Z",
+    "Source": "PLAYIT"
   }
 ]
