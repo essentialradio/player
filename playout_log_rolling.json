@@ -72265,5 +72265,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-09-20T16:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-20T17:00:00Z",
+    "Scheduled Time": "18:00",
+    "Displayed Time": "18:00",
+    "Artist": "Jan Gow",
+    "Title": "The JanCave 70s Jukebox",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-20T18:00:09+01:00",
+    "Source": "ALT"
   }
 ]
