@@ -75554,5 +75554,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-09-21T20:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-21T22:00:00Z",
+    "Scheduled Time": "23:00",
+    "Displayed Time": "23:00",
+    "Artist": "Ayrshire Radio",
+    "Title": "On Air",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-09-21T22:00:00Z",
+    "Source": "FIXED"
   }
 ]
