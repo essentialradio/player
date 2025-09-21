@@ -424,6 +424,19 @@
       "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
       "source": "North Ayrshire Council",
       "recurring": true
+    },
+    {
+      "title": "October Holiday STEM Fun \u2013 Eglinton Country Park",
+      "start_date": "2025-10-15",
+      "end_date": "2025-10-20",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Visitor Centre, Eglinton Country Park",
+      "town": "Irvine",
+      "desc": "STEM fun days during the October school holidays with interactive science and craft activities.",
+      "link": "https://www.staffnews.north-ayrshire.gov.uk/october-holiday-stem-fun-tickets-going-fast/",
+      "source": "North Ayrshire Council",
+      "recurring": false
     }
   ],
   "south": [
@@ -849,6 +862,123 @@
       "link": "https://destinationsouthayrshire.co.uk/whatson/",
       "source": "Destination South Ayrshire",
       "recurring": false
+    },
+    {
+      "title": "Harbour Ayrshire Family Fun Day",
+      "start_date": "2025-10-16",
+      "end_date": "2025-10-16",
+      "start_time": "12:00",
+      "end_time": "16:00",
+      "venue": "Girvan Academy",
+      "town": "Girvan",
+      "desc": "Family fun day with stalls, activities, and entertainment hosted at Girvan Academy.",
+      "link": "https://connectsouthayrshire.org/news/harbour-ayrshire-family-fun-day/5971/",
+      "source": "Connect South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Creative Writing for Beginners \u2013 Carnegie Library",
+      "start_date": "2025-10-09",
+      "end_date": "2025-12-11",
+      "start_time": "16:45",
+      "end_time": "18:45",
+      "venue": "Carnegie Library",
+      "town": "Ayr",
+      "desc": "Weekly Thursday evening creative writing course for beginners at Carnegie Library.",
+      "link": "https://destinationsouthayrshire.co.uk/whatson/",
+      "source": "Destination South Ayrshire",
+      "recurring": true
+    },
+    {
+      "title": "Spookbug \u2013 Carnegie Library Bookbug Session",
+      "start_date": "2025-10-31",
+      "end_date": "2025-10-31",
+      "start_time": "10:30",
+      "end_time": "11:00",
+      "venue": "Carnegie Library",
+      "town": "Ayr",
+      "desc": "Special Halloween-themed Bookbug session for babies and toddlers.",
+      "link": "https://m.facebook.com/story.php?id=100064571177464&story_fbid=955096659986031",
+      "source": "South Ayrshire Libraries",
+      "recurring": false
+    },
+    {
+      "title": "Family Crafting Event \u2013 Forehill Library",
+      "start_date": "2025-10-14",
+      "end_date": "2025-10-14",
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "venue": "Forehill Library",
+      "town": "Ayr",
+      "desc": "Family crafting afternoon at Forehill Library with themed activities for all ages.",
+      "link": "https://www.connectsouthayrshire.org/news/family-crafting-event-forehill-library/4592/",
+      "source": "Connect South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Retro Gaming at Carnegie Library",
+      "start_date": "2025-10-21",
+      "end_date": "2025-10-21",
+      "start_time": "16:30",
+      "end_time": "18:30",
+      "venue": "Carnegie Library",
+      "town": "Ayr",
+      "desc": "Family friendly retro gaming afternoon at Carnegie Library.",
+      "link": "https://allevents.in/ayr/retro-gaming-at-carnegie-library/200028881969813",
+      "source": "South Ayrshire Libraries",
+      "recurring": false
+    },
+    {
+      "title": "Bookbug Sessions at John Rodie Library, Mossblown",
+      "start_date": "2025-09-19",
+      "end_date": "2025-09-19",
+      "start_time": "13:30",
+      "end_time": "14:00",
+      "venue": "John Rodie Library",
+      "town": "Mossblown",
+      "desc": "Weekly Bookbug story session at John Rodie Library for ages 0\u20115. Booking required.",
+      "link": "https://connectsouthayrshire.org/listing/bookbug-sessions-at-john-rodie-library/558/",
+      "source": "South Ayrshire Libraries",
+      "recurring": true
+    },
+    {
+      "title": "Bookbug Sessions at Troon Library",
+      "start_date": "2025-09-17",
+      "end_date": "2025-09-17",
+      "start_time": "09:15",
+      "end_time": "09:45",
+      "venue": "Troon Library",
+      "town": "Troon",
+      "desc": "Weekly Wednesday Bookbug sessions for ages 0-5 at Troon Library.",
+      "link": "https://connectsouthayrshire.org/listing/bookbug-sessions-at-troon-library-/1254/",
+      "source": "South Ayrshire Libraries",
+      "recurring": true
+    },
+    {
+      "title": "John Rodie Library LEGO Club",
+      "start_date": "2025-09-16",
+      "end_date": "2025-09-16",
+      "start_time": "15:00",
+      "end_time": "16:00",
+      "venue": "John Rodie Library",
+      "town": "Mossblown",
+      "desc": "Weekly LEGO building club at John Rodie Library for children and families.",
+      "link": "https://connectsouthayrshire.org/listing/john-rodie-library-lego-club/1055/",
+      "source": "South Ayrshire Libraries",
+      "recurring": true
+    },
+    {
+      "title": "Family Matters Drop-In at Girvan Library",
+      "start_date": "2025-10-02",
+      "end_date": "2025-10-02",
+      "start_time": "11:00",
+      "end_time": "13:00",
+      "venue": "Girvan Library",
+      "town": "Girvan",
+      "desc": "Drop-in support session at Girvan Library, part of Aberlour\u2019s Family Matters programme.",
+      "link": "https://connectsouthayrshire.org/news/family-matters-drop-in-at-girvan-library/5751/",
+      "source": "Connect South Ayrshire",
+      "recurring": true
     }
   ],
   "east": [
@@ -1028,6 +1158,19 @@
       "desc": "Interactive storytelling session of 'Room on the Broom', with crafts and activities. Perfect for families.",
       "link": "https://thehac.co.uk",
       "source": "East Ayrshire Leisure / HAC",
+      "recurring": false
+    },
+    {
+      "title": "You Choose \u2013 Interactive Musical Family Show",
+      "start_date": "2025-10-18",
+      "end_date": "2025-10-18",
+      "start_time": "13:00",
+      "end_time": "14:00",
+      "venue": "Cumnock Town Hall",
+      "town": "Cumnock",
+      "desc": "Interactive musical show for families, ages 2\u20117. YOU CHOOSE what happens in each show.",
+      "link": "https://eastayrshireleisure.com/events/you-choose/",
+      "source": "East Ayrshire Leisure",
       "recurring": false
     }
   ]
