@@ -75619,5 +75619,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-09-21T23:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-22T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Lewis Capaldi",
+    "Title": "Hold Me While You Wait (Remix)",
+    "Duration (s)": 171,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.88,
+    "Start ISO": "2025-09-22T01:01:57Z",
+    "Source": "PLAYIT"
   }
 ]
