@@ -83822,5 +83822,18 @@
     "Full Duration (mins)": 2.77,
     "Start ISO": "2025-09-23T23:12:21Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-23T23:00:00Z",
+    "Scheduled Time": "00:15",
+    "Displayed Time": "00:15",
+    "Artist": "Sara Bareilles",
+    "Title": "Love Song",
+    "Duration (s)": 225,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-09-23T23:15:07Z",
+    "Source": "PLAYIT"
   }
 ]
