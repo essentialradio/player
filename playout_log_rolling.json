@@ -84641,5 +84641,31 @@
     "Full Duration (mins)": 3.62,
     "Start ISO": "2025-09-24T03:36:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-24T03:00:00Z",
+    "Scheduled Time": "04:43",
+    "Displayed Time": "04:43",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 195,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.57,
+    "Start ISO": "2025-09-24T03:43:46Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-24T03:00:00Z",
+    "Scheduled Time": "04:47",
+    "Displayed Time": "04:47",
+    "Artist": "Dermot Kennedy",
+    "Title": "Giants",
+    "Duration (s)": 165,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-09-24T03:47:09Z",
+    "Source": "PLAYIT"
   }
 ]
