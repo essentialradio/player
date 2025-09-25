@@ -55417,5 +55417,31 @@
     "Full Duration (mins)": 4.18,
     "Start ISO": "2025-09-25T22:42:32Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T22:00:00Z",
+    "Scheduled Time": "23:46",
+    "Displayed Time": "23:46",
+    "Artist": "Simply Red",
+    "Title": "Holding Back the Years",
+    "Duration (s)": 229,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.1,
+    "Start ISO": "2025-09-25T22:46:34Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T22:00:00Z",
+    "Scheduled Time": "23:50",
+    "Displayed Time": "23:50",
+    "Artist": "Cyndi Lauper",
+    "Title": "Time After Time",
+    "Duration (s)": 218,
+    "Full Duration (s)": 242,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 4.03,
+    "Start ISO": "2025-09-25T22:50:23Z",
+    "Source": "PLAYIT"
   }
 ]
