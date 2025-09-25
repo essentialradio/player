@@ -52427,5 +52427,18 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-09-25T05:01:53Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T05:00:00Z",
+    "Scheduled Time": "06:05",
+    "Displayed Time": "06:05",
+    "Artist": "Michael Jackson",
+    "Title": "Man in the Mirror",
+    "Duration (s)": 303,
+    "Full Duration (s)": 313,
+    "Duration (mins)": 5.05,
+    "Full Duration (mins)": 5.22,
+    "Start ISO": "2025-09-25T05:05:41Z",
+    "Source": "PLAYIT"
   }
 ]
