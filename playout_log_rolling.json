@@ -54741,5 +54741,31 @@
     "Full Duration (mins)": 3.8,
     "Start ISO": "2025-09-25T18:41:19Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T18:00:00Z",
+    "Scheduled Time": "19:44",
+    "Displayed Time": "19:44",
+    "Artist": "Nelly Furtado",
+    "Title": "I'm Like a Bird",
+    "Duration (s)": 224,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 4.08,
+    "Start ISO": "2025-09-25T18:44:56Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T18:00:00Z",
+    "Scheduled Time": "19:48",
+    "Displayed Time": "19:48",
+    "Artist": "Des'ree",
+    "Title": "Life",
+    "Duration (s)": 180,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.23,
+    "Start ISO": "2025-09-25T18:48:40Z",
+    "Source": "PLAYIT"
   }
 ]
