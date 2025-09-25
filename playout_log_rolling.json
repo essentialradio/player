@@ -54052,5 +54052,31 @@
     "Full Duration (mins)": 3.7,
     "Start ISO": "2025-09-25T14:53:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T15:00:00Z",
+    "Scheduled Time": "16:01",
+    "Displayed Time": "16:01",
+    "Artist": "JADE",
+    "Title": "Plastic Box",
+    "Duration (s)": 193,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-09-25T15:01:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T15:00:00Z",
+    "Scheduled Time": "16:05",
+    "Displayed Time": "16:05",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 169,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.98,
+    "Start ISO": "2025-09-25T15:05:47Z",
+    "Source": "PLAYIT"
   }
 ]
