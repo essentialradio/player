@@ -52895,5 +52895,18 @@
     "Full Duration (mins)": 3.7,
     "Start ISO": "2025-09-25T08:03:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T08:00:00Z",
+    "Scheduled Time": "09:06",
+    "Displayed Time": "09:06",
+    "Artist": "The Beatles",
+    "Title": "Something",
+    "Duration (s)": 177,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-09-25T08:06:49Z",
+    "Source": "PLAYIT"
   }
 ]
