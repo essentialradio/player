@@ -51777,5 +51777,31 @@
     "Full Duration (mins)": 2.77,
     "Start ISO": "2025-09-25T01:25:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T01:00:00Z",
+    "Scheduled Time": "02:28",
+    "Displayed Time": "02:28",
+    "Artist": "Don Henley",
+    "Title": "The Boys of Summer",
+    "Duration (s)": 269,
+    "Full Duration (s)": 286,
+    "Duration (mins)": 4.48,
+    "Full Duration (mins)": 4.77,
+    "Start ISO": "2025-09-25T01:28:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T01:00:00Z",
+    "Scheduled Time": "02:32",
+    "Displayed Time": "02:32",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 182,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-09-25T01:32:47Z",
+    "Source": "PLAYIT"
   }
 ]
