@@ -53025,5 +53025,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-09-25T08:51:50Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T08:00:00Z",
+    "Scheduled Time": "09:56",
+    "Displayed Time": "09:56",
+    "Artist": "Camila Cabello & Ed Sheeran",
+    "Title": "Bam Bam",
+    "Duration (s)": 202,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.43,
+    "Start ISO": "2025-09-25T08:56:45Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "10:02",
+    "Artist": "Calum Scott",
+    "Title": "Dancing on My Own (Tiesto Remix)",
+    "Duration (s)": 219,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.73,
+    "Start ISO": "2025-09-25T09:02:28Z",
+    "Source": "PLAYIT"
   }
 ]
