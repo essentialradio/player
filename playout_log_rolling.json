@@ -53597,5 +53597,31 @@
     "Full Duration (mins)": 4.2,
     "Start ISO": "2025-09-25T12:31:59Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T12:00:00Z",
+    "Scheduled Time": "13:36",
+    "Displayed Time": "13:36",
+    "Artist": "Jessie J",
+    "Title": "Believe In Magic",
+    "Duration (s)": 174,
+    "Full Duration (s)": 181,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 3.02,
+    "Start ISO": "2025-09-25T12:36:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-25T12:00:00Z",
+    "Scheduled Time": "13:41",
+    "Displayed Time": "13:41",
+    "Artist": "Geri Halliwell",
+    "Title": "It's Raining Men",
+    "Duration (s)": 234,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.9,
+    "Full Duration (mins)": 4.15,
+    "Start ISO": "2025-09-25T12:41:47Z",
+    "Source": "PLAYIT"
   }
 ]
