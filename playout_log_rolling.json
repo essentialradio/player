@@ -57029,5 +57029,31 @@
     "Full Duration (mins)": 2.93,
     "Start ISO": "2025-09-26T07:47:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-26T07:00:00Z",
+    "Scheduled Time": "08:51",
+    "Displayed Time": "08:51",
+    "Artist": "Aloe Blacc",
+    "Title": "I Need a Dollar",
+    "Duration (s)": 241,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.1,
+    "Start ISO": "2025-09-26T07:51:25Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-26T07:00:00Z",
+    "Scheduled Time": "08:55",
+    "Displayed Time": "08:55",
+    "Artist": "Ariana Grande",
+    "Title": "We Can't Be Friends (Wait For Your Love)",
+    "Duration (s)": 221,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-09-26T07:55:26Z",
+    "Source": "PLAYIT"
   }
 ]
