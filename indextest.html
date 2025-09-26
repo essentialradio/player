@@ -3,256 +3,210 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio – Clean Now Playing</title>
+  <title>Essential Radio – Now Playing (DEBUG)</title>
   <style>
-    :root {
-      --bg: #0d0f14;
-      --panel: #161a22;
-      --text: #e9edf3;
-      --muted: #a7b1c2;
-      --brand: #fed351;
-      --teal: #00818a;
-      --danger: #e53935;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; padding: 0;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, #152033 0%, #0d0f14 60%);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      display: grid;
-      place-items: center;
-    }
-    .wrap {
-      width: min(880px, 92vw);
-      background: var(--panel);
-      border: 1px solid #1e2531;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      padding: 18px;
-    }
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; margin-bottom: 8px;
-    }
-    h1 { font-size: 1.1rem; margin: 0; letter-spacing: .2px; color: var(--brand); }
-    .badge { font-size: .85rem; padding: 4px 10px; border-radius: 999px; background: #202836; color: var(--muted); }
-    .player {
-      display: grid; gap: 12px;
-      grid-template-columns: 1fr;
-      padding: 10px; border-radius: 12px; background: #131823; border: 1px solid #1d2431;
-    }
-    .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-    button, .btn {
-      background: var(--brand); color: #111;
-      border: none; border-radius: 10px; padding: 10px 14px; font-weight: 700; cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,.2);
-    }
-    button:active { transform: translateY(1px); }
-    #now-playing {
-      line-height: 1.4;
-      font-size: .98rem;
-      background: #0f1420;
-      border: 1px solid #1a2130;
-      border-radius: 12px;
-      padding: 12px 14px;
-    }
-    .live-indicator { margin-left: 8px; color: var(--danger); font-weight: 700; font-size: .95rem; }
-    .live-indicator .dot { display: inline-block; width: .6em; height: .6em; border-radius: 50%; background: var(--danger); margin-right: 6px; box-shadow: 0 0 10px rgba(229,57,53,.7); }
-    #np-progress { display:none; height: 8px; border-radius: 999px; background: #0d1320; border: 1px solid #1a2130; overflow: hidden; margin-top: 10px; }
-    #np-progress .bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), #16b2bd); transition: width .15s linear; }
-    #np-progress.ending-soon .bar { background: linear-gradient(90deg, #ff7a13, #e53935); }
-    footer { margin-top: 10px; color: var(--muted); font-size: .85rem; }
-    .small { color: var(--muted); font-size: .9rem; }
+    :root { --bg:#0e1016; --panel:#151a23; --ink:#e9edf3; --muted:#9fb0c7; --brand:#fed351; --bad:#ff6b6b; --ok:#16b26b; }
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:linear-gradient(160deg,#111525,#0e1016);color:var(--ink);font-family:system-ui,Segoe UI,Inter,Roboto,Arial,sans-serif;display:grid;place-items:center}
+    .wrap{width:min(980px,95vw);background:var(--panel);border:1px solid #212938;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);padding:16px 16px 10px}
+    header{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px}
+    h1{font-size:1.05rem;margin:0;color:var(--brand)}
+    .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    label{font-size:.9rem;color:var(--muted)}
+    input[type=text]{width:380px;max-width:75vw;padding:8px 10px;border-radius:8px;border:1px solid #263246;background:#0f1420;color:var(--ink)}
+    button{background:var(--brand);border:none;border-radius:8px;font-weight:700;padding:9px 12px;color:#131313;cursor:pointer}
+    pre{background:#0b0f19;border:1px solid #1b2232;border-radius:10px;padding:10px;max-height:240px;overflow:auto}
+    code{color:#cde3ff}
+    .panel{background:#0f1420;border:1px solid #1b2232;border-radius:12px;padding:12px;margin:8px 0}
+    .bad{color:var(--bad)} .ok{color:var(--ok)}
+    #now-playing{line-height:1.4}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>Essential Radio – Now Playing</h1>
-      <span class="badge">Clean build</span>
+      <h1>Essential Radio – Now Playing (DEBUG)</h1>
+      <div>Origin: <code id="origin"></code></div>
     </header>
 
-    <div class="player">
-      <div class="controls">
-        <button id="play">▶️ Play</button>
-        <div class="small">If your stream auto-plays elsewhere, this stays off to keep browsers happy.</div>
+    <div class="panel">
+      <div class="row">
+        <label>API base URL (no trailing slash):</label>
+        <input id="apiBase" type="text" placeholder="https://yourdomain.example" />
+        <button id="saveBase">Use this</button>
+        <button id="resetBase" title="Reset to page origin">Reset</button>
       </div>
-
-      <div id="now-playing">
-        <span style="color:var(--brand);">Now Playing:</span>
-        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-        <span style="font-weight:700;">More music soon</span><br/>
-        <span class="small">on Essential Radio</span>
+      <div class="row" style="margin-top:6px">
+        <button id="probe">Probe endpoints</button>
+        <button id="poll">Start polling</button>
+        <button id="stop">Stop</button>
       </div>
-
-      <div id="np-progress"><div class="bar"></div></div>
-      <audio id="audio" preload="none"></audio>
+      <div style="margin-top:8px;font-size:.9rem;color:var(--muted)">
+        Tip: if you opened this file using <code>file://</code>, relative <code>/api/...</code> calls will FAIL due to origin/CORS. Set an absolute API base above.
+      </div>
     </div>
 
-    <footer>
-      Polling <code>/api/latestTrack</code> → fallback <code>/api/latestAlt</code>. Shows title/artist even when ALT lacks timing.
-    </footer>
+    <div class="panel">
+      <strong>Now Playing</strong>
+      <div id="now-playing">
+        <span style="color:var(--brand);">Now Playing:</span> LIVE<br/>
+        <span style="font-weight:700;">More music soon</span><br/>
+        <span style="color:var(--muted);">on Essential Radio</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <strong>Progress</strong>
+      <div id="np-progress" style="display:none;height:8px;border-radius:999px;background:#0b0f19;border:1px solid #1b2232;overflow:hidden;margin-top:6px">
+        <div class="bar" style="height:100%;width:0%;background:linear-gradient(90deg,#26d0ce,#1a9bd7)"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <strong>Fetch Log</strong>
+      <pre id="log"></pre>
+    </div>
+
+    <div class="panel">
+      <strong>Last JSON</strong>
+      <pre id="json"></pre>
+    </div>
   </div>
 
-  <script>
-    // --- Minimal audio for testing (leave src blank for your prod stream) ---
-    const audio = document.getElementById('audio');
-    const playBtn = document.getElementById('play');
-    playBtn.addEventListener('click', async () => {
-      try {
-        // Set your stream URL here if you want local testing
-        if (!audio.src) audio.src = '';
-        if (audio.paused) { await audio.play(); playBtn.textContent = '⏸ Pause'; }
-        else { audio.pause(); playBtn.textContent = '▶️ Play'; }
-      } catch {}
-    });
+<script>
+(function(){
+  const originEl = document.getElementById('origin');
+  originEl.textContent = window.location.origin || '(file://)';
 
-    // --- Progress bar helpers (safe no-ops if unused) ---
-    let _npRaf = 0;
-    function hardResetBar() {
-      try { cancelAnimationFrame(_npRaf); } catch {}
-      const prog = document.getElementById('np-progress');
-      if (prog) { prog.classList.remove('ending-soon'); prog.style.display = 'none'; }
-      const bar = prog?.querySelector('.bar');
-      if (bar) bar.style.width = '0%';
+  const $ = (id) => document.getElementById(id);
+  const logEl = $('log');
+  const jsonEl = $('json');
+  const npEl = $('now-playing');
+  const prog = $('np-progress');
+  const apiBaseInput = $('apiBase');
+
+  function log(msg) {
+    const t = new Date().toISOString().replace('T',' ').replace('Z','');
+    logEl.textContent += `[${t}] ${msg}\n`;
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  // store configurable base
+  const KEY = 'er_api_base';
+  function getBase() {
+    return localStorage.getItem(KEY) || window.location.origin || '';
+  }
+  function setBase(v) {
+    if (v) localStorage.setItem(KEY, v);
+    else localStorage.removeItem(KEY);
+  }
+  apiBaseInput.value = getBase();
+  $('saveBase').onclick = () => { setBase(apiBaseInput.value.trim()); log('API base set to ' + getBase()); };
+  $('resetBase').onclick = () => { setBase(''); apiBaseInput.value = getBase(); log('API base reset to origin'); };
+
+  let timer = null;
+  const POLL_MS = 7000;
+  const TIMEOUT_MS = 4500;
+
+  async function fetchJson(url) {
+    const ctl = new AbortController();
+    const id = setTimeout(() => ctl.abort(), TIMEOUT_MS);
+    try {
+      const r = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store', signal: ctl.signal });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const text = await r.text();
+      let data;
+      try { data = JSON.parse(text); } catch(e) { throw new Error('Bad JSON: ' + e.message + ' — body: ' + text.slice(0,300)); }
+      return { data, raw: text };
+    } finally { clearTimeout(id); }
+  }
+
+  function buildUrl(path) {
+    const base = getBase();
+    if (!base || base === 'null' || base === 'undefined' || base === 'file://') return path; // will fail if file://
+    return base.replace(/\/+$/,'') + path;
+  }
+
+  function renderNowPlaying(obj) {
+    const { artist, title, duration, startTime } = obj;
+    npEl.innerHTML = `<span style="color:#fed351;">Now Playing:</span> LIVE<br/>
+      <span style="font-weight:700;">${title || 'Live'}</span><br/>
+      <span style="color:#9fb0c7;">${artist ? 'by ' + artist : 'on Essential Radio'}</span>`;
+    try { document.title = (artist && title) ? `Essential Radio: ${artist} - ${title}` : 'Essential Radio'; } catch {}
+    if (!duration || !startTime) { prog.style.display='none'; return; }
+    const startMs = new Date(startTime).getTime();
+    const endMs = startMs + duration * 1000;
+    if (Date.now() > endMs) { prog.style.display='none'; return; }
+    prog.style.display='block';
+    const bar = prog.querySelector('.bar');
+    const span = endMs - startMs;
+    const tick = () => {
+      const now = Date.now();
+      const done = Math.min(Math.max((now - startMs) / span, 0), 1);
+      bar.style.width = (done * 100).toFixed(2) + '%';
+      if (now < endMs) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function normalise(raw) {
+    let artist = raw.artist ?? raw.artistName ?? raw.artists ?? '';
+    let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? '';
+    if (!artist && title && title.includes(' - ')) {
+      const [a, t] = title.split(' - ');
+      if (a && t) { artist = a.trim(); title = t.trim(); }
     }
-    function startBarAnimation(startMs, endMs) {
-      const prog = document.getElementById('np-progress');
-      const bar = prog?.querySelector('.bar');
-      if (!prog || !bar) return;
-
-      function tick() {
-        const now = Date.now();
-        const span = endMs - startMs;
-        const done = Math.min(Math.max((now - startMs) / span, 0), 1);
-        bar.style.width = (done * 100).toFixed(3) + '%';
-        if (endMs - now <= 10_000) prog.classList.add('ending-soon'); else prog.classList.remove('ending-soon');
-        if (now < endMs) { _npRaf = requestAnimationFrame(tick); }
-      }
-      try { cancelAnimationFrame(_npRaf); } catch {}
-      _npRaf = requestAnimationFrame(tick);
+    let duration = raw.duration ?? raw.length ?? null;
+    if (typeof duration === 'string') duration = parseInt(duration, 10);
+    if (Number.isNaN(duration)) duration = null;
+    let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
+    if (typeof startTime === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) {
+      startTime += 'Z';
     }
-    function showMoreMusicSoon() {
-      const el = document.getElementById('now-playing');
-      const prog = document.getElementById('np-progress');
-      if (el) {
-        el.innerHTML = '<span style="color:#fed351;">Now Playing:</span> <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>' +
-                       '<span style="font-weight:700;">More music soon</span><br/>' +
-                       '<span class="small">on Essential Radio</span>';
-      }
-      hardResetBar();
-      try { document.title = 'Essential Radio – Essential listening'; } catch {}
+    if ((artist && title) || (duration && startTime)) return { artist, title, duration, startTime };
+    return null;
+  }
+
+  async function tryEndpoint(pathLabel, path) {
+    const url = buildUrl(path);
+    try {
+      const { data, raw } = await fetchJson(url);
+      jsonEl.textContent = JSON.stringify(data, null, 2);
+      const norm = normalise(data);
+      if (norm) { renderNowPlaying(norm); log(`OK ${pathLabel} @ ${url}`); return true; }
+      log(`OK ${pathLabel} but unusable shape @ ${url}`);
+      return false;
+    } catch (e) {
+      log(`FAIL ${pathLabel} @ ${url} → ${e.message}`);
+      return false;
     }
-  </script>
+  }
 
-  <!-- --- Safe ALT-aware Now Playing override (standalone & clean) --- -->
-  <script>
-  (function () {
-    const POLL_MS = 7000;     // gentle polling
-    const TIMEOUT_MS = 4500;  // fetch timeout
-    let timer = null;
+  async function probeOnce() {
+    jsonEl.textContent = '';
+    // try main, then ALT
+    const okMain = await tryEndpoint('latestTrack', '/api/latestTrack');
+    if (okMain) return true;
+    const okAlt  = await tryEndpoint('latestAlt',   '/api/latestAlt');
+    return okAlt;
+  }
 
-    if (window.__npAltOverrideAttached) return;
-    window.__npAltOverrideAttached = true;
+  $('probe').onclick = () => { probeOnce(); };
+  $('poll').onclick  = () => {
+    if (timer) clearInterval(timer);
+    probeOnce();
+    timer = setInterval(probeOnce, POLL_MS);
+    log('Polling started.');
+  };
+  $('stop').onclick  = () => { if (timer) clearInterval(timer); log('Polling stopped.'); };
 
-    async function fetchJson(url) {
-      const ctl = new AbortController();
-      const id = setTimeout(() => ctl.abort(), TIMEOUT_MS);
-      try {
-        const r = await fetch(url + '?_=' + Date.now(), { cache: 'no-store', signal: ctl.signal });
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return await r.json();
-      } finally { clearTimeout(id); }
-    }
-
-    async function getLatestFrom(endpoints) {
-      for (const u of endpoints) {
-        try {
-          const raw = await fetchJson(u);
-          if (!raw) continue;
-
-          let artist = raw.artist ?? raw.artistName ?? raw.artists ?? '';
-          let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? '';
-
-          if (!artist && title && title.includes(' - ')) {
-            const [a, t] = title.split(' - ');
-            if (a && t) { artist = a.trim(); title = t.trim(); }
-          }
-
-          let duration = raw.duration ?? raw.length ?? null;
-          if (typeof duration === 'string') duration = parseInt(duration, 10);
-          if (Number.isNaN(duration)) duration = null;
-
-          let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
-          if (typeof startTime === 'string' &&
-              /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) {
-            startTime += 'Z';
-          }
-
-          if ((artist && title) || (duration && startTime)) {
-            return { artist, title, duration, startTime };
-          }
-        } catch { /* try next */ }
-      }
-      return null;
-    }
-
-    async function updateNowPlayingOnce() {
-      const npEl = document.getElementById('now-playing');
-      const prog = document.getElementById('np-progress');
-
-      const latest = await getLatestFrom(['/api/latestTrack', '/api/latestAlt']);
-      if (!latest) { showMoreMusicSoon(); return; }
-
-      const { artist, title, duration, startTime } = latest;
-
-      if (npEl) {
-        npEl.innerHTML = `
-          <span style="color:#fed351;">Now Playing:</span>
-          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-          <span style="color:white;font-weight:600;font-size:1.2em;">${title || 'Live'}</span><br/>
-          <span class="small">${artist ? 'by ' + artist : 'on Essential Radio'}</span>`;
-      }
-      try { document.title = (artist && title) ? \`Essential Radio: \${artist} - \${title}\` : 'Essential Radio'; } catch {}
-
-      if (!duration || !startTime) {
-        if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; }
-        return;
-      }
-
-      const startMs = new Date(startTime).getTime();
-      const endMs = startMs + duration * 1000;
-      if (Date.now() > endMs) { showMoreMusicSoon(); return; }
-
-      if (prog) prog.style.display = 'block';
-
-      const key = \`\${artist || ''}||\${title || ''}||\${startMs}\`;
-      if (window._npActiveKey !== key) {
-        window._npActiveKey = key;
-        try { hardResetBar(); } catch(e){}
-        window._npLastTiming = { startMs, endMs };
-        try { startBarAnimation(startMs, endMs); } catch(e){}
-      } else {
-        window._npLastTiming = { startMs, endMs };
-      }
-    }
-
-    function startPolling() {
-      if (timer) clearInterval(timer);
-      updateNowPlayingOnce().catch(()=>{});
-      timer = setInterval(() => updateNowPlayingOnce().catch(()=>{}), POLL_MS);
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', startPolling, { once: true });
-    } else {
-      startPolling();
-    }
-  })();
-  </script>
+  // First info line
+  if (window.location.protocol === 'file:') {
+    log('You are running from file:// — set an absolute API base URL above to avoid CORS/origin failures.');
+  } else {
+    log('Origin OK: ' + window.location.origin);
+  }
+})();
+</script>
 </body>
 </html>
