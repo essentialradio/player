@@ -5991,131 +5991,106 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-async function fetchNowPlaying() {
-  try {
-    const latestRes = await fetch('https://essential.radio/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
-    const latest = await latestRes.json();
 
-    // Validate payload
-    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
-      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
-      return;
-    }
 
-    const artist = latest.artist;
-    const title = latest.title;
-    const startMs = new Date(latest.startTime).getTime(); // UTC ms
-    const durationMs = latest.duration * 1000;
-    const endMs = startMs + durationMs;
+<script>
+async function getLatestFrom(endpoints) {
+  for (const url of endpoints) {
+    try {
+      const r = await fetch(url + '?_=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) continue;
+      const raw = await r.json();
+      if (!raw) continue;
 
-    // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
-    if (Date.now() > endMs) {
-      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
-      return;
-    }
-    // Show progress bar while a valid track is playing
-    try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
-// Track identity (to detect when a NEW track arrives)
-    const trackKey = `${artist}||${title}||${startMs}`;
-    window._npLastKey = trackKey;
+      // Normalise possible shapes from main and ALT feeds
+      let artist = raw.artist ?? raw.artistName ?? raw.artists ?? '';
+      let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? '';
 
-// Only (re)start the bar if this is a NEW track.
-if (window._npActiveKey !== trackKey) {
-  window._npActiveKey = trackKey;
-  try { hardResetBar(); } catch(e){}
-  window._npLastTiming = { startMs, endMs };
-  try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
-  try { startBarAnimation(startMs, endMs); } catch(e){}
-} else {
-  // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
-  window._npLastTiming = { startMs, endMs };
+      // Some ALT feeds send a combined string like "Artist - Title"
+      if (!artist && title && title.includes(' - ')) {
+        const [a, t] = title.split(' - ');
+        if (a && t) { artist = a.trim(); title = t.trim(); }
+      }
+
+      // Duration can be seconds, string, or missing
+      let duration = raw.duration ?? raw.length ?? null;
+      if (typeof duration === 'string') duration = parseInt(duration, 10);
+      if (Number.isNaN(duration)) duration = null;
+
+      // Start time can be ISO without timezone
+      let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
+      if (typeof startTime === 'string') {
+        // If looks like ISO without Z or offset, assume UTC
+        if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) {
+          startTime += 'Z';
+        }
+      }
+
+      // If we have at least artist+title, treat as a valid now-playing payload
+      if ((artist && title) || (duration && startTime)) {
+        return { artist, title, duration, startTime };
+      }
+    } catch { /* try next endpoint */ }
+  }
+  return null;
 }
 
-    // Update main Now Playing block
-    const nowPlaying = document.getElementById('now-playing');
-    if (nowPlaying) {
-      nowPlaying.innerHTML = `
-        <span style="color:#fed351;">Now Playing:</span>
-        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-        <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-        <span style="color:white;">by ${artist}</span>`;
-    }
-    // Update document title and artwork (if helper exists)
-    try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+async function fetchNowPlaying() {
+  const endpoints = ['/api/latestTrack', '/api/latestAlt']; // main then ALT
+  const latest = await getLatestFrom(endpoints);
 
-    // Also support alternate title/artist selectors if present
-    const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
-    const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
-    if (titleEl) titleEl.textContent = title;
-    if (artistEl) artistEl.textContent = artist;
+  const nowPlaying = document.getElementById('now-playing');
+  const prog = document.getElementById('np-progress');
 
-    // Countdown updater uses UTC-safe milliseconds
-    function updateCountdown() {
-      const nowMs = Date.now();
-      const remaining = endMs - nowMs;
-      const countdownEl = document.getElementById('countdown');
-if (remaining > 0) {
-        const mins = Math.floor(remaining / 60000);
-        const secs = Math.floor((remaining % 60000) / 1000);
-        if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-      } else {
-        if (countdownEl) countdownEl.textContent = '—/—';
-        if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
-
-        // Grace window before showing fallback to avoid micro-flash between sweepers and next track
-        const GRACE_MS = 2500;
-        const graceUntil = Date.now() + GRACE_MS;
-        const pollDelay = 400;
-        let _gracePoll;
-        const _pollForNew = async () => {
-          try {
-            const r = await fetch('https://essential.radio/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
-            const j = await r.json();
-            const newKey = (j && j.artist && j.title && j.startTime)
-              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
-            if (newKey && newKey !== window._npLastKey) { fetchNowPlaying(); return; }
-          } catch(e){}
-          if (Date.now() >= graceUntil) {
-            if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
-          } else {
-            _gracePoll = setTimeout(_pollForNew, pollDelay);
-          }
-        };
-        _pollForNew();
-
-        // Poll every 5s for a *different* track; when found, refresh NP
-        if (window._npPollTimer) {
-          clearInterval(window._npPollTimer);
-          window._npPollTimer = null;
-        }
-        window._npPollTimer = setInterval(async () => {
-          try {
-            const r = await fetch('https://essential.radio/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
-            const j = await r.json();
-            const newKey = (j && j.artist && j.title && j.startTime)
-              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
-              : null;
-            if (newKey && newKey !== window._npLastKey) {
-              clearInterval(window._npPollTimer);
-              window._npPollTimer = null;
-              fetchNowPlaying();
-            }
-          } catch (e) {
-            // swallow and keep polling
-          }
-        }, 5000);
-      }
-    }
-
-    updateCountdown();
-    if (window._npTimer) { clearInterval(window._npTimer); }
-    window._npTimer = setInterval(updateCountdown, 1000);
-  } catch (err) {
-    console.error('Error fetching now playing:', err);
+  if (!latest) {
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+    return;
+  }
+
+  const { artist, title, duration, startTime } = latest;
+
+  // Update visible block no matter what
+  if (nowPlaying) {
+    nowPlaying.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span style="color:white;font-weight:600;font-size:1.2em;">${title || 'Live'}</span><br/>
+      <span style="color:white;">${artist ? 'by ' + artist : 'on Essential Radio'}</span>`;
+  }
+  try { document.title = artist && title ? `Essential Radio: ${artist} - ${title}` : 'Essential Radio'; } catch {}
+
+  // Artwork request if you use it
+  try { if (typeof fetchArtwork === 'function' && artist && title) fetchArtwork(`${artist} - ${title}`); } catch {}
+
+  // Progress bar only if we have valid timing
+  if (!duration || !startTime) {
+    if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; }
+    return;
+  }
+
+  const startMs = new Date(startTime).getTime();
+  const endMs = startMs + duration * 1000;
+
+  // If this track already ended (clock skew or stale), show fallback
+  if (Date.now() > endMs) {
+    if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+    return;
+  }
+
+  if (prog) prog.style.display = 'block';
+
+  const trackKey = `${artist || ''}||${title || ''}||${startMs}`;
+  if (window._npActiveKey !== trackKey) {
+    window._npActiveKey = trackKey;
+    try { hardResetBar(); } catch(e){}
+    window._npLastTiming = { startMs, endMs };
+    try { startBarAnimation(startMs, endMs); } catch(e){}
+  } else {
+    window._npLastTiming = { startMs, endMs };
   }
 }
+</script>
+
 
 
 
