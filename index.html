@@ -10524,85 +10524,6 @@ document.addEventListener('visibilitychange', () => {
   setInterval(updateLock, CHECK_EVERY_MS);
 })();
 </script>
-<!-- ER: Lightweight NP stabiliser (no globals touched) -->
-<style id="er-np-lite-css">
-  /* Anti-flash + comfortable spacing */
-  #now-playing, #now-playing * { transition: none !important; animation: none !important; }
-  #now-playing { padding: 12px 14px !important; line-height: 1.35 !important; min-height: 4.2em !important;
-                 -webkit-font-smoothing: antialiased; backface-visibility: hidden; }
-
-  /* Title stays white, 1.2em */
-  #now-playing .np-title,
-  #now-playing .track-title { font-weight: 600 !important; font-size: 1.2em !important; color: #fff !important; }
-
-  /* Artist/strap line forced to muted grey + normal size */
-  #now-playing .np-artist,
-  #now-playing .track-artist,
-  #now-playing small, #now-playing .small { font-weight: 400 !important; font-size: 1rem !important; color: #9fb0c7 !important; }
-  #now-playing .np-artist *, #now-playing .track-artist * { color: #9fb0c7 !important; font: inherit !important; }
-
-  /* Live indicator colour */
-  #now-playing .live-indicator { color: #e53935 !important; }
-
-  /* Push any hidden measuring spans (left by marquee code) off-screen so they can't appear at the bottom */
-  body > span[style*="visibility:hidden"],
-  body > span[style*="visibility: hidden"] { position: absolute !important; left: -10000px !important; top: 0 !important; }
-</style>
-
-<script id="er-np-lite-js">
-(function(){
-  if (window.__ER_NP_LITE) return;
-  window.__ER_NP_LITE = true;
-
-  // Minimal artist-line normaliser: clamp classes/inline styles ONLY inside #now-playing
-  function enforceArtistStyle() {
-    try {
-      const els = document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small');
-      els.forEach(el => {
-        el.classList.remove('small','track-artist');
-        el.classList.add('np-artist');
-        if (el.hasAttribute('style')) el.removeAttribute('style');
-        el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
-      });
-    } catch(e) { /* no-op */ }
-  }
-
-  // Observe #now-playing safely (no global monkey-patching). Throttle via rAF to avoid loops.
-  const np = document.getElementById('now-playing');
-  if (np && window.MutationObserver) {
-    let ticking = false;
-    const mo = new MutationObserver(() => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(() => { enforceArtistStyle(); ticking = false; });
-      }
-    });
-    try { mo.observe(np, { childList: true, subtree: true, attributes: true, attributeFilter: ['style','class'] }); }
-    catch(_) {}
-  }
-  // Run once on load in case content already present
-  enforceArtistStyle();
-
-  // Safety: if a hidden measuring span slips into <body>, push it off-screen (no DOM reparenting, so zero risk).
-  if (window.MutationObserver) {
-    const bodyObs = new MutationObserver((muts) => {
-      for (const m of muts) {
-        m.addedNodes && m.addedNodes.forEach(n => {
-          if (n && n.nodeType === 1 && n.tagName === 'SPAN') {
-            const s = n.getAttribute('style') || '';
-            if (/visibility\s*:\s*hidden/i.test(s)) {
-              n.style.position = 'absolute';
-              n.style.left = '-10000px';
-              n.style.top = '0';
-            }
-          }
-        });
-      }
-    });
-    try { bodyObs.observe(document.body, { childList: true }); } catch(_) {}
-  }
-})();
-</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
@@ -10626,37 +10547,6 @@ enter;       /* centre vertically */
     overflow-y: auto !important;/* scroll inside if needed */
   }
 }
-<style id="er-np-artist-hardlock">
-  /* Force the artist/strap line ("by Tim Graham" / "on Essential Radio") to the normal look */
-  #now-playing .np-artist,
-  #now-playing .track-artist,
-  #now-playing [data-role="np-artist"],
-  #now-playing small,
-  #now-playing .small {
-    /* wipe conflicting styles (even inline) */
-    all: unset !important;
-    display: inline !important;
-
-    /* re-apply the normal styling */
-    font-family: inherit !important;
-    font-size: 1rem !important;
-    line-height: 1.35 !important;
-    font-weight: 400 !important;
-    color: #9fb0c7 !important;
-    letter-spacing: normal !important;
-    text-transform: none !important;
-  }
-
-  /* if anything is nested inside, keep it the same muted grey */
-  #now-playing .np-artist *, 
-  #now-playing .track-artist * {
-    all: unset !important;
-    display: inline !important;
-    color: #9fb0c7 !important;
-    font: inherit !important;
-  }
-</style>
-
 </style>
 <style>
 /* === Desktop modal centring fix (safe) ===
