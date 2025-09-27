@@ -10667,6 +10667,200 @@ document.addEventListener('visibilitychange', () => {
   }
 })();
 </script>
+
+<!-- === FIXED schedule handling (injected by ChatGPT) === -->
+<script>
+(function(){
+  const PREF_SCHEDULE_URLS = [
+    "https://player-green.vercel.app/schedule.json",
+    "https://www.essential.radio/schedule.json",
+    "/schedule.json"
+  ];
+  const WEEKDAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  function q(id){ return document.getElementById(id); }
+  function normaliseName(name){
+    return (name||"").toLowerCase().replace(/[’']/g,'').replace(/\s+/g,'-').replace(/[^a-z0-9\-]/g,'');
+  }
+
+  async function fetchScheduleMulti(){
+    let lastErr = null;
+    for (const u of PREF_SCHEDULE_URLS){
+      try{
+        const r = await fetch(u + (u.includes('?')?'&':'?') + '_ts=' + Date.now(), { cache:'no-store' });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return await r.json();
+      }catch(e){ lastErr = e; }
+    }
+    if (window.ER_SCHEDULE) return window.ER_SCHEDULE;
+    throw lastErr || new Error('All schedule URLs failed');
+  }
+
+  function parseScheduleShape(raw){
+    if (!raw) return [];
+    if (Array.isArray(raw)) return raw;
+    if (Array.isArray(raw.schedule)) return raw.schedule;
+    if (Array.isArray(raw.items)) return raw.items;
+    const days = raw.days || raw;
+    const today = WEEKDAYS[(new Date()).getDay()];
+    if (Array.isArray(days?.[today])) return days[today];
+    // Flatten all day arrays if nothing else matched
+    let acc = [];
+    for (const k in days){ if (Array.isArray(days[k])) acc = acc.concat(days[k]); }
+    return acc;
+  }
+
+  function isFixedSlot(entry){
+    if (!entry) return false;
+    if (entry.fixed === true) return true;
+    const mode = (entry.mode || entry.type || '').toString().toLowerCase();
+    if (mode === 'fixed') return true;
+    if (entry.nowPlayingOverride && entry.nowPlayingOverride.trim()) return true;
+    if (entry.template && /fixed/i.test(entry.template)) return true;
+    return false;
+  }
+
+  function getCurrentScheduleEntry(now, scheduleLike){
+    const list = parseScheduleShape(scheduleLike);
+    const toMins = t => { try{ const [h,m]=t.split(':').map(Number); return h*60+m; }catch(e){return -1;} };
+    const n = now.getHours()*60 + now.getMinutes();
+    let current = null;
+    for (const item of (list||[])){
+      if (!item || !item.start || !item.end) continue;
+      const s = toMins(item.start), e = toMins(item.end);
+      if (s<0 || e<0) continue;
+      const inSlot = (s <= e) ? (n >= s && n < e) : (n >= s || n < e); // cross-midnight
+      if (inSlot){ current = item; break; }
+    }
+    return current;
+  }
+
+  function pick(obj, paths){
+    for (const p of paths){
+      const v = p.split('.').reduce((acc, part)=> (acc && acc[part]!==undefined) ? acc[part] : undefined, obj);
+      if (typeof v === 'string' && v.trim()) return v.trim();
+    }
+    return '';
+  }
+
+  function extractSlot(entry){
+    if (!entry) return { title:'', presenter:'', raw:'' };
+    const override = pick(entry, ['nowPlayingOverride','strap','strapLine']);
+    if (override){
+      const m = override.match(/^(.*)\s+with\s+(.*)$/i);
+      if (m) return { title: m[1].trim(), presenter: m[2].trim(), raw: override };
+      return { title: override, presenter: pick(entry, ['presenter','host','dj','announcer','show.presenter','programme.presenter']), raw: override };
+    }
+    let title = pick(entry, ['show.title','programme.title','programme.name','show.name','title','name','label','display']);
+    let presenter = pick(entry, ['show.presenter','programme.presenter','presenter','host','dj','announcer','presenters.0.name','presenters[0].name']);
+    if (!presenter && / with /i.test(title||'')){
+      const m = title.match(/^(.*)\s+with\s+(.*)$/i);
+      if (m){ title = m[1].trim(); presenter = m[2].trim(); }
+    }
+    return { title: (title||'').trim(), presenter: (presenter||'').trim(), raw: title||'' };
+  }
+
+  function renderFixed(entry){
+    const box = q('now-playing') || q('nowPlaying');
+    const prog = q('np-progress');
+    if (!box) return;
+
+    const ex = extractSlot(entry||{});
+    const title = ex.title || 'On Essential Radio';
+    const presenter = ex.presenter || '';
+    const slug = normaliseName(presenter);
+
+    const presenterLine = presenter
+      ? `with <a href="#" class="presenter-link" onclick="if(window.openPresenterModal){openPresenterModal('presenter-${slug}');} return false;">${presenter}</a>`
+      : 'on Essential Radio';
+
+    box.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span class="np-title">${title}</span><br/>
+      <span class="np-artist">${presenterLine}</span>
+    `;
+    window.__ER_LAST_FIXED_HTML = box.innerHTML;
+
+    if (prog){ prog.style.display = 'none'; const b = prog.querySelector('.bar'); if (b) b.style.width = '0%'; }
+    try { document.title = presenter ? \`Essential Radio: \${title} with \${presenter}\` : \`Essential Radio: \${title}\`; } catch {}
+  }
+
+  // Guard common fallbacks from overwriting while locked
+  const _showFallback = window.showFallback;
+  window.showFallback = function(){
+    if (window.NP_SCHEDULE_LOCK === true) return;
+    if (typeof _showFallback === 'function') return _showFallback();
+    const el = q('now-playing'); if (!el) return;
+    el.innerHTML = `<span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span class="np-title">More music soon</span><br/>
+      <span class="np-artist">on Essential Radio</span>`;
+  };
+  const _showMoreMusicSoon = window.showMoreMusicSoon;
+  window.showMoreMusicSoon = function(){
+    if (window.NP_SCHEDULE_LOCK === true) return;
+    if (typeof _showMoreMusicSoon === 'function') return _showMoreMusicSoon();
+  };
+
+  async function updateFromSchedule(){
+    try{
+      const schedule = window.ER_SCHEDULE || await fetchScheduleMulti();
+      window.ER_SCHEDULE = schedule;
+      const now = new Date();
+      const current = getCurrentScheduleEntry(now, schedule);
+      const locked = isFixedSlot(current);
+      window.NP_SCHEDULE_LOCK = locked;
+      if (locked){ renderFixed(current||{}); }
+    }catch(e){
+      // silent
+    }
+  }
+
+  // Mutation observer: re-assert if other scripts change while locked
+  const box = q('now-playing') || q('nowPlaying');
+  if (box && window.MutationObserver){
+    const mo = new MutationObserver(()=>{
+      if (window.NP_SCHEDULE_LOCK === true && window.__ER_LAST_FIXED_HTML){
+        const cur = box.innerHTML||'';
+        if (cur !== window.__ER_LAST_FIXED_HTML){
+          box.innerHTML = window.__ER_LAST_FIXED_HTML;
+        }
+      }
+    });
+    mo.observe(box, { childList: true, subtree: true });
+  }
+
+  // Debug badge (bottom-right)
+  (function badge(){
+    try{
+      const b = document.createElement('div');
+      b.id = 'np-debug';
+      b.style.position = 'fixed'; b.style.right = '8px'; b.style.bottom = '8px';
+      b.style.zIndex = 99999; b.style.background = 'rgba(0,0,0,0.6)';
+      b.style.color = '#fff'; b.style.padding = '6px 8px'; b.style.borderRadius = '8px';
+      b.style.font = '12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial';
+      b.textContent = 'NP: (init)';
+      document.body.appendChild(b);
+      async function tick(){
+        try{
+          const schedule = window.ER_SCHEDULE || await fetchScheduleMulti();
+          const now = new Date();
+          const cur = getCurrentScheduleEntry(now, schedule);
+          const locked = isFixedSlot(cur);
+          const ex = extractSlot(cur||{});
+          b.textContent = `NP: ${locked ? 'FIXED' : 'free'} • ${ex.title || '(no title)'}${ex.presenter ? ' with ' + ex.presenter : ''}`;
+        }catch(e){ b.textContent = 'NP: error'; }
+      }
+      setInterval(tick, 5000); tick();
+    }catch{}
+  })();
+
+  // Kickoff
+  updateFromSchedule();
+  setInterval(updateFromSchedule, 30000);
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
