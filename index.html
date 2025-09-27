@@ -5770,7 +5770,7 @@ group.forEach(show => {
     "Scott O'Hare": "Scott-OHare.jpg",
 "Tim Graham": "Tim-Graham.jpeg",
     "Bex McNamee": "Bex-Mcnamee.jpg",
-    'Keelin McKenna": "Keelin-Mckenna.jpg",
+    "Keelin McKenna": "Keelin-Mckenna.jpg",
 	"Kevin McCallum": "Kevin-Mccallum.jpg"
   };
 
@@ -10082,70 +10082,375 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
+<!-- Now Playing paste-in patch: absolute API, ALT aware, stable fonts, no flicker -->
+<style id="np-patch-style">
+  /* consistent sizes for both real and fallback states */
+  #now-playing .np-title  { font-weight: 600; font-size: 1.2em; color: #ffffff; }
+  #now-playing .np-artist { font-size: 1rem; color: #9fb0c7; }
+</style>
 <script>
 (function(){
-  const API_BASE = "https://www.essential.radio"; // change if needed
-  const POLL_MS = 7000, TIMEOUT_MS = 4500;
+  if (window.__npPatchApplied) return;
+  window.__npPatchApplied = true;
+
+  const API_BASE  = "https://www.essential.radio"; // change if needed
+  const POLL_MS   = 7000;  // poll interval
+  const TIMEOUT_MS= 4500;  // fetch timeout
+  const GRACE_MS  = 30000; // keep last valid NP visible for up to 30s if feed blips
+  const SKEW_MS   = 8000;  // tolerate minor timing drift at end
+  const U = p => API_BASE.replace(/\/+$/,'') + p;
+
+  // fetch with timeout
+  async function j(url){
+    const ctl = new AbortController(), t = setTimeout(()=>ctl.abort(), TIMEOUT_MS);
+    try {
+      const r = await fetch(url + "?_=" + Date.now(), { cache:"no-store", signal: ctl.signal });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return await r.json();
+    } finally { clearTimeout(t); }
+  }
+
+  // normalise shapes from main and ALT; treat tiny or zero durations as unknown
+  function norm(raw){
+    let artist = raw.artist ?? raw.artistName ?? raw.artists ?? "";
+    let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? "";
+    if (!artist && title && title.includes(" - ")) {
+      const [a, t] = title.split(" - ");
+      if (a && t) { artist = a.trim(); title = t.trim(); }
+    }
+    let duration = raw.duration ?? raw.length ?? null;
+    if (typeof duration === "string") duration = parseInt(duration, 10);
+    if (Number.isNaN(duration) || duration <= 5) duration = null; // key: no bar but keep text
+    let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
+    if (typeof startTime === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) startTime += "Z";
+    return (artist && title) || (duration && startTime) ? { artist, title, duration, startTime } : null;
+  }
+
+  async function getLatest(){
+    const a = await j(U("/api/latestTrack")).catch(()=>null);
+    if (a) { const n = norm(a); if (n) return n; }
+    const b = await j(U("/api/latestAlt")).catch(()=>null);
+    if (b) { const n = norm(b); if (n) return n; }
+    return null;
+  }
+
+  function render(np){
+    const el = document.getElementById("now-playing");
+    if (!el) return;
+    el.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span class="np-title">${np.title || 'Live'}</span><br/>
+      <span class="np-artist">${np.artist ? 'by ' + np.artist : 'on Essential Radio'}</span>`;
+    try { document.title = (np.artist && np.title) ? `Essential Radio: ${np.artist} - ${np.title}` : "Essential Radio"; } catch {}
+  }
+
+  function showFallback(){
+    const el = document.getElementById("now-playing");
+    const p  = document.getElementById("np-progress");
+    if (el) {
+      el.innerHTML = `
+        <span style="color:#fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span class="np-title">More music soon</span><br/>
+        <span class="np-artist">on Essential Radio</span>`;
+    }
+    if (p) { p.style.display = "none"; const b = p.querySelector(".bar"); if (b) b.style.width = "0%"; }
+    document.title = "Essential Radio";
+  }
+
+  function startBar(startMs, endMs){
+    const prog = document.getElementById("np-progress");
+    const bar  = prog?.querySelector(".bar");
+    if (!prog || !bar) return;
+    prog.style.display = "block";
+    let raf = 0;
+    function tick(){
+      const now = Date.now();
+      const span = endMs - startMs;
+      const done = Math.min(Math.max((now - startMs) / span, 0), 1);
+      bar.style.width = (done * 100).toFixed(2) + "%";
+      if (now < endMs) raf = requestAnimationFrame(tick);
+    }
+    try { cancelAnimationFrame(window.__npBarRAF); } catch {}
+    window.__npBarRAF = requestAnimationFrame(tick);
+  }
+
+  let last = { key: null, at: 0, data: null };
+
+  async function updateOnce(){
+    const prog = document.getElementById("np-progress");
+    const latest = await getLatest();
+    const now = Date.now();
+
+    if (!latest) {
+      if (last.data && now - last.at < GRACE_MS) return; // keep showing last valid
+      showFallback();
+      return;
+    }
+
+    // Identity key. If your startTime jitters a lot, we can round seconds here.
+    const key = `${latest.artist || ''}||${latest.title || ''}||${latest.startTime || ''}`;
+
+    // Only re-render when changed to avoid flicker
+    if (key !== last.key) {
+      render(latest);
+      last = { key, at: now, data: latest };
+    } else {
+      last.at = now; // extend grace while same item persists
+    }
+
+    // Progress only if we have reliable timing
+    if (!latest.duration || !latest.startTime) {
+      if (prog) prog.style.display = "none";
+      return;
+    }
+
+    const startMs = new Date(latest.startTime).getTime();
+    const endMs   = startMs + latest.duration * 1000;
+    if (now > endMs + SKEW_MS) return; // do not nuke immediately, grace logic will cover
+    startBar(startMs, endMs);
+  }
+
+  function go(){
+    updateOnce().catch(()=>{});
+    clearInterval(window.__npTimer);
+    window.__npTimer = setInterval(()=>updateOnce().catch(()=>{}), POLL_MS);
+  }
+
+  document.readyState === "loading"
+    ? document.addEventListener("DOMContentLoaded", go, { once: true })
+    : go();
+})();
+</script>
+<!-- ER Now Playing: unified fix + schedule lock + visual lock -->
+<style id="er-np-visual-lock">
+  #now-playing, #now-playing * { transition: none !important; }
+  #now-playing .np-title,
+  #now-playing .track-title,
+  #nowPlaying .track-title {
+    font-weight: 600 !important;
+    font-size: 1.2em !important;
+    color: #ffffff !important;
+  }
+  #now-playing .np-artist,
+  #now-playing .track-artist,
+  #nowPlaying .track-artist,
+  #now-playing small,
+  #now-playing .small {
+    font-size: 1rem !important;
+    color: #9fb0c7 !important;
+  }
+  #now-playing .live-indicator { color: #e53935 !important; }
+</style>
+
+<script>
+(function(){
+  /* ===== CONFIG ===== */
+  const API_BASE   = "https://www.essential.radio";
+  const POLL_MS    = 7000;
+  const TIMEOUT_MS = 4500;
+  const GRACE_MS   = 30000;
+  const SKEW_MS    = 8000;
+
   if (window.__npAltOverrideAttached) return;
   window.__npAltOverrideAttached = true;
 
   const U = p => API_BASE.replace(/\/+$/,'') + p;
-  async function j(u){
-    const ctl = new AbortController(), t=setTimeout(()=>ctl.abort(),TIMEOUT_MS);
-    try{ const r=await fetch(u+"?_="+Date.now(),{cache:"no-store",signal:ctl.signal});
-         if(!r.ok) throw new Error("HTTP "+r.status);
-         return await r.json(); } finally{ clearTimeout(t); }
+
+  async function fetchJson(url){
+    const ctl = new AbortController();
+    const id = setTimeout(() => ctl.abort(), TIMEOUT_MS);
+    try {
+      const r = await fetch(url + "?_=" + Date.now(), { cache: "no-store", signal: ctl.signal });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return await r.json();
+    } finally { clearTimeout(id); }
   }
+
   function norm(raw){
     let artist = raw.artist ?? raw.artistName ?? raw.artists ?? "";
     let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? "";
-    if(!artist && title.includes(" - ")){ const [a,t]=title.split(" - "); if(a&&t){artist=a.trim();title=t.trim();}}
-    let duration = raw.duration ?? raw.length ?? null; if(typeof duration==="string") duration=parseInt(duration,10);
-    if(Number.isNaN(duration)) duration=null;
+    if (!artist && title && title.includes(" - ")) {
+      const [a, t] = title.split(" - ");
+      if (a && t) { artist = a.trim(); title = t.trim(); }
+    }
+    let duration = raw.duration ?? raw.length ?? null;
+    if (typeof duration === "string") duration = parseInt(duration, 10);
+    if (Number.isNaN(duration) || duration <= 5) duration = null; // short or 0 -> unknown timing
     let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
-    if (typeof startTime==="string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) startTime+="Z";
-    return (artist&&title) || (duration&&startTime) ? {artist,title,duration,startTime} : null;
+    if (typeof startTime === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) startTime += "Z";
+    return (artist && title) || (duration && startTime) ? { artist, title, duration, startTime } : null;
   }
-  async function latest(){
-    const a = await j(U("/api/latestTrack")).catch(()=>null); if(a){ const n=norm(a); if(n) return n; }
-    const b = await j(U("/api/latestAlt")).catch(()=>null);   if(b){ const n=norm(b); if(n) return n; }
+
+  async function getLatest(){
+    const a = await fetchJson(U("/api/latestTrack")).catch(()=>null); if (a) { const n = norm(a); if (n) return n; }
+    const b = await fetchJson(U("/api/latestAlt")).catch(()=>null);   if (b) { const n = norm(b); if (n) return n; }
     return null;
   }
-  function showFallback(){
-    const el=document.getElementById("now-playing"), p=document.getElementById("np-progress");
-    if(el){ el.innerHTML =
-      '<span style="color:#fed351;">Now Playing:</span> <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>'+
-      '<span style="font-weight:700;">More music soon</span><br/>'+
-      '<span style="color:#9fb0c7;">on Essential Radio</span>'; }
-    if(p){ p.style.display="none"; const b=p.querySelector(".bar"); if(b) b.style.width="0%"; }
-    document.title="Essential Radio";
+
+  function render(np){
+    const el = document.getElementById("now-playing");
+    if (!el) return;
+    el.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span class="np-title">${np.title || 'Live'}</span><br/>
+      <span class="np-artist">${np.artist ? 'by ' + np.artist : 'on Essential Radio'}</span>`;
+    try { document.title = (np.artist && np.title) ? \`Essential Radio: \${np.artist} - \${np.title}\` : "Essential Radio"; } catch {}
   }
-  function startBar(s,e){
-    const p=document.getElementById("np-progress"), b=p?.querySelector(".bar"); if(!p||!b) return;
-    p.style.display="block"; let raf=0;
-    function tick(){ const now=Date.now(), span=e-s, done=Math.min(Math.max((now-s)/span,0),1);
-      b.style.width=(done*100).toFixed(2)+"%"; if(now<e) raf=requestAnimationFrame(tick); }
-    try{ cancelAnimationFrame(window.__npBarRAF); }catch{}
+
+  function showFallback(){
+    const el = document.getElementById("now-playing");
+    const p  = document.getElementById("np-progress");
+    if (el) {
+      el.innerHTML = `
+        <span style="color:#fed351;">Now Playing:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span class="np-title">More music soon</span><br/>
+        <span class="np-artist">on Essential Radio</span>`;
+    }
+    if (p) { p.style.display = "none"; const b = p.querySelector(".bar"); if (b) b.style.width = "0%"; }
+    document.title = "Essential Radio";
+  }
+
+  function startBar(startMs, endMs){
+    const prog = document.getElementById("np-progress");
+    const bar  = prog?.querySelector(".bar");
+    if (!prog || !bar) return;
+    prog.style.display = "block";
+    let raf = 0;
+    function tick(){
+      const now  = Date.now();
+      const span = endMs - startMs;
+      const done = Math.min(Math.max((now - startMs) / span, 0), 1);
+      bar.style.width = (done * 100).toFixed(2) + "%";
+      if (now < endMs) raf = requestAnimationFrame(tick);
+    }
+    try { cancelAnimationFrame(window.__npBarRAF); } catch {}
     window.__npBarRAF = requestAnimationFrame(tick);
   }
+
+  let last = { key: null, at: 0, data: null };
+
   async function updateOnce(){
-    const el=document.getElementById("now-playing"), p=document.getElementById("np-progress");
-    const n = await latest(); if(!n){ showFallback(); return; }
-    const {artist,title,duration,startTime}=n;
-    if(el){ el.innerHTML =
-      `<span style="color:#fed351;">Now Playing:</span>
-       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-       <span style="color:white;font-weight:600;font-size:1.2em;">${title || 'Live'}</span><br/>
-       <span style="color:#9fb0c7;">${artist ? 'by '+artist : 'on Essential Radio'}</span>`; }
-    document.title = (artist&&title)? `Essential Radio: ${artist} - ${title}` : "Essential Radio";
-    if(!duration || !startTime){ if(p) p.style.display="none"; return; }
-    const s = new Date(startTime).getTime(), e = s + duration*1000;
-    if(Date.now()>e){ showFallback(); return; }
-    startBar(s,e);
+    // Respect schedule lock if active
+    if (window.NP_SCHEDULE_LOCK === true) return;
+
+    const prog   = document.getElementById("np-progress");
+    const latest = await getLatest();
+    const now    = Date.now();
+
+    if (!latest) {
+      if (last.data && now - last.at < GRACE_MS) return;
+      showFallback();
+      return;
+    }
+
+    const keyStart = latest.startTime ? new Date(latest.startTime).toISOString().slice(0,19) : '';
+    const key = `${latest.artist || ''}||${latest.title || ''}||${keyStart}`;
+
+    if (key !== last.key) { render(latest); last = { key, at: now, data: latest }; }
+    else { last.at = now; }
+
+    if (!latest.duration || !latest.startTime) { if (prog) prog.style.display = "none"; return; }
+
+    const startMs = new Date(latest.startTime).getTime();
+    const endMs   = startMs + latest.duration * 1000;
+    if (now > endMs + SKEW_MS) return;
+
+    startBar(startMs, endMs);
   }
-  function go(){ updateOnce().catch(showFallback); clearInterval(window.__npTimer);
-                 window.__npTimer=setInterval(()=>updateOnce().catch(showFallback),POLL_MS); }
-  document.readyState==="loading" ? document.addEventListener("DOMContentLoaded",go,{once:true}) : go();
+
+  function go(){
+    updateOnce().catch(()=>{});
+    clearInterval(window.__npTimer);
+    window.__npTimer = setInterval(() => updateOnce().catch(()=>{}), POLL_MS);
+  }
+
+  document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", go, { once: true }) : go();
+})();
+</script>
+
+<!-- Auto schedule lock using schedule.json -->
+<script>
+(function(){
+  const SCHEDULE_URL = "https://www.essential.radio/schedule.json";
+  const CHECK_EVERY_MS = 60000;
+
+  // Exact titles to treat as fixed
+  const FIXED_TITLES = new Set([
+    "The Jan Cave 70s Jukebox with Jan Gow"
+    // add more exact titles here
+  ]);
+
+  // Keyword patterns that imply fixed
+  const FIXED_KEYWORDS = [
+    /megamix/i,
+    /70s jukebox/i,
+    /80s hour/i,
+    /90s hour/i,
+    /throwback/i,
+    /retro recall/i,
+    /top 20/i,
+    /golden hour/i
+  ];
+
+  function isFixedByTitle(title){
+    if (!title) return false;
+    if (FIXED_TITLES.has(title)) return true;
+    return FIXED_KEYWORDS.some(rx => rx.test(title));
+  }
+
+  function parseHHMMLocal(hhmm){
+    const m = /^(\d{2}):(\d{2})$/.exec(hhmm || "");
+    if (!m) return null;
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), +m[1], +m[2], 0, 0);
+  }
+
+  function findCurrentItem(items){
+    if (!Array.isArray(items)) return null;
+    const todays = items.map(it => {
+      const start = parseHHMMLocal(it.start);
+      const end   = parseHHMMLocal(it.end);
+      return { raw: it, start, end };
+    }).filter(x => x.start instanceof Date);
+
+    todays.sort((a,b) => a.start - b.start);
+    for (let i=0;i<todays.length;i++){
+      if (!todays[i].end && todays[i+1]?.start) todays[i].end = new Date(todays[i+1].start);
+    }
+
+    const now = new Date();
+    return todays.find(x => now >= x.start && (!x.end || now < x.end))?.raw || null;
+  }
+
+  async function fetchSchedule(){
+    const r = await fetch(SCHEDULE_URL + "?_=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return await r.json();
+  }
+
+  async function updateLock(){
+    try{
+      const schedule = await fetchSchedule();
+      const items = Array.isArray(schedule) ? schedule : (schedule.items || schedule.schedule || []);
+      const current = findCurrentItem(items);
+
+      const fixed = !!current && (
+        current.fixed === true ||
+        isFixedByTitle(current.title || current.name)
+      );
+
+      window.NP_SCHEDULE_LOCK = fixed;
+    }catch(_e){
+      // ignore schedule failures to avoid flapping the lock
+    }
+  }
+
+  updateLock();
+  setInterval(updateLock, CHECK_EVERY_MS);
 })();
 </script>
 
