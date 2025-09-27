@@ -60214,5 +60214,31 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-09-27T04:33:44Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T04:00:00Z",
+    "Scheduled Time": "05:37",
+    "Displayed Time": "05:37",
+    "Artist": "Alicia Keys",
+    "Title": "Empire State of Mind (Part II) Broken Down",
+    "Duration (s)": 207,
+    "Full Duration (s)": 217,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.62,
+    "Start ISO": "2025-09-27T04:37:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T04:00:00Z",
+    "Scheduled Time": "05:44",
+    "Displayed Time": "05:44",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 159,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.73,
+    "Start ISO": "2025-09-27T04:44:50Z",
+    "Source": "PLAYIT"
   }
 ]
