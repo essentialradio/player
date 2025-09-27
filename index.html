@@ -10223,12 +10223,12 @@ document.addEventListener('visibilitychange', () => {
     : go();
 })();
 </script>
-<!-- ER Now Playing: ALT-aware + visual lock (paste-in) -->
+<!-- ER Now Playing: unified fix (ALT-aware + visual lock + schedule lock) -->
 <style id="er-np-visual-lock">
-  /* Prevent colour/size flicker inside Now Playing */
+  /* Stop any font/colour transitions inside Now Playing */
   #now-playing, #now-playing * { transition: none !important; }
 
-  /* Title line (stable size/colour) */
+  /* Title line - stable size/colour */
   #now-playing .np-title,
   #now-playing .track-title,
   #nowPlaying .track-title {
@@ -10237,14 +10237,14 @@ document.addEventListener('visibilitychange', () => {
     color: #ffffff !important;
   }
 
-  /* Artist / strap line (“on Essential Radio”) – keep muted grey + size */
+  /* Artist / strap line ("on Essential Radio") - stable grey + size */
   #now-playing .np-artist,
   #now-playing .track-artist,
   #nowPlaying .track-artist,
   #now-playing small,
   #now-playing .small {
     font-size: 1rem !important;
-    color: #9fb0c7 !important; /* ER muted grey */
+    color: #9fb0c7 !important;
   }
 
   /* Live indicator stays red */
@@ -10254,19 +10254,19 @@ document.addEventListener('visibilitychange', () => {
 <script>
 (function(){
   /* ===== CONFIG ===== */
-  const API_BASE = "https://www.essential.radio"; // your live API host
-  const POLL_MS  = 7000;   // poll interval
-  const TIMEOUT_MS = 4500; // fetch timeout
-  const GRACE_MS = 30000;  // keep last valid NP on screen if feed blips
-  const SKEW_MS  = 8000;   // tolerate slight end-time drift
+  const API_BASE   = "https://www.essential.radio"; // absolute API host
+  const POLL_MS    = 7000;   // poll interval
+  const TIMEOUT_MS = 4500;   // fetch timeout
+  const GRACE_MS   = 30000;  // keep last valid NP on screen if feed blips
+  const SKEW_MS    = 8000;   // tolerate a bit of end-time drift
 
-  /* Guard so we don’t double-attach */
+  /* Guard so we do not double attach */
   if (window.__npAltOverrideAttached) return;
   window.__npAltOverrideAttached = true;
 
   const U = p => API_BASE.replace(/\/+$/,'') + p;
 
-  async function fetchJson(url) {
+  async function fetchJson(url){
     const ctl = new AbortController();
     const id = setTimeout(() => ctl.abort(), TIMEOUT_MS);
     try {
@@ -10276,20 +10276,20 @@ document.addEventListener('visibilitychange', () => {
     } finally { clearTimeout(id); }
   }
 
-  // Normalise shapes from main/ALT; treat tiny/zero durations as unknown
-  function norm(raw) {
+  // Normalise shapes from main/ALT; treat very short/zero durations as unknown timing
+  function norm(raw){
     let artist = raw.artist ?? raw.artistName ?? raw.artists ?? "";
     let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? "";
 
-    // Combined "Artist - Title"
+    // Combined "Artist - Title" support
     if (!artist && title && title.includes(" - ")) {
       const [a, t] = title.split(" - ");
       if (a && t) { artist = a.trim(); title = t.trim(); }
     }
 
-    let duration = raw.duration ?? raw.length ?? null;
+    let duration  = raw.duration ?? raw.length ?? null;
     if (typeof duration === "string") duration = parseInt(duration, 10);
-    if (Number.isNaN(duration) || duration <= 5) duration = null; // key: don’t treat as ended
+    if (Number.isNaN(duration) || duration <= 5) duration = null; // <=5s -> unknown (no bar)
 
     let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
     // If ISO without timezone, assume UTC
@@ -10297,19 +10297,16 @@ document.addEventListener('visibilitychange', () => {
       startTime += "Z";
     }
 
-    // Accept if we at least have artist/title, or timing pair
     return (artist && title) || (duration && startTime) ? { artist, title, duration, startTime } : null;
   }
 
-  async function getLatest() {
-    const main = await fetchJson(U("/api/latestTrack")).catch(() => null);
-    if (main) { const n = norm(main); if (n) return n; }
-    const alt  = await fetchJson(U("/api/latestAlt")).catch(() => null);
-    if (alt)  { const n = norm(alt);  if (n) return n; }
+  async function getLatest(){
+    const a = await fetchJson(U("/api/latestTrack")).catch(()=>null); if (a) { const n = norm(a); if (n) return n; }
+    const b = await fetchJson(U("/api/latestAlt")).catch(()=>null);   if (b) { const n = norm(b); if (n) return n; }
     return null;
   }
 
-  function render(np) {
+  function render(np){
     const el = document.getElementById("now-playing");
     if (!el) return;
     el.innerHTML = `
@@ -10317,10 +10314,10 @@ document.addEventListener('visibilitychange', () => {
       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
       <span class="np-title">${np.title || 'Live'}</span><br/>
       <span class="np-artist">${np.artist ? 'by ' + np.artist : 'on Essential Radio'}</span>`;
-    try { document.title = (np.artist && np.title) ? `Essential Radio: ${np.artist} - ${np.title}` : "Essential Radio"; } catch {}
+    try { document.title = (np.artist && np.title) ? \`Essential Radio: \${np.artist} - \${np.title}\` : "Essential Radio"; } catch {}
   }
 
-  function showFallback() {
+  function showFallback(){
     const el = document.getElementById("now-playing");
     const p  = document.getElementById("np-progress");
     if (el) {
@@ -10334,14 +10331,14 @@ document.addEventListener('visibilitychange', () => {
     document.title = "Essential Radio";
   }
 
-  function startBar(startMs, endMs) {
+  function startBar(startMs, endMs){
     const prog = document.getElementById("np-progress");
     const bar  = prog?.querySelector(".bar");
     if (!prog || !bar) return;
     prog.style.display = "block";
     let raf = 0;
-    function tick() {
-      const now = Date.now();
+    function tick(){
+      const now  = Date.now();
       const span = endMs - startMs;
       const done = Math.min(Math.max((now - startMs) / span, 0), 1);
       bar.style.width = (done * 100).toFixed(2) + "%";
@@ -10354,18 +10351,21 @@ document.addEventListener('visibilitychange', () => {
   // Keep last good item to avoid flicker on empty polls
   let last = { key: null, at: 0, data: null };
 
-  async function updateOnce() {
-    const prog = document.getElementById("np-progress");
+  async function updateOnce(){
+    // Respect schedule lock: your schedule.json renderer should set window.NP_SCHEDULE_LOCK = true during FIXED eras
+    if (window.NP_SCHEDULE_LOCK === true) return;
+
+    const prog   = document.getElementById("np-progress");
     const latest = await getLatest();
-    const now = Date.now();
+    const now    = Date.now();
 
     if (!latest) {
-      if (last.data && now - last.at < GRACE_MS) return; // stick
+      if (last.data && now - last.at < GRACE_MS) return; // keep last
       showFallback();
       return;
     }
 
-    // Build identity; round startTime to seconds to avoid millisecond churn
+    // Stable identity (round startTime to seconds to avoid ms churn)
     const keyStart = latest.startTime ? new Date(latest.startTime).toISOString().slice(0,19) : '';
     const key = `${latest.artist || ''}||${latest.title || ''}||${keyStart}`;
 
@@ -10373,9 +10373,10 @@ document.addEventListener('visibilitychange', () => {
       render(latest);
       last = { key, at: now, data: latest };
     } else {
-      last.at = now; // extend grace while same item persists
+      last.at = now; // extend grace while item is unchanged
     }
 
+    // Progress bar only when timing is usable
     if (!latest.duration || !latest.startTime) {
       if (prog) prog.style.display = "none";
       return;
@@ -10384,13 +10385,13 @@ document.addEventListener('visibilitychange', () => {
     const startMs = new Date(latest.startTime).getTime();
     const endMs   = startMs + latest.duration * 1000;
 
-    // Don’t blank immediately at scheduled end; wait for SKEW_MS
+    // Do not blank immediately at end - wait for SKEW_MS
     if (now > endMs + SKEW_MS) return;
 
     startBar(startMs, endMs);
   }
 
-  function go() {
+  function go(){
     updateOnce().catch(()=>{});
     clearInterval(window.__npTimer);
     window.__npTimer = setInterval(() => updateOnce().catch(()=>{}), POLL_MS);
