@@ -10223,6 +10223,31 @@ document.addEventListener('visibilitychange', () => {
     : go();
 })();
 </script>
+<!-- ER Now Playing visual lock: sizes + colours + no transitions -->
+<style id="er-np-visual-lock">
+  /* Kill colour/size transitions inside NP to prevent flicker */
+  #now-playing, #now-playing * { transition: none !important; }
+
+  /* Title line: keep original size/weight/colour */
+  #now-playing .track-title,
+  #now-playing .np-title {
+    font-weight: 600 !important;
+    font-size: 1.2em !important;
+    color: #ffffff !important;
+  }
+
+  /* Artist/strap line (“on Essential Radio” etc): keep muted grey + stable size */
+  #now-playing .track-artist,
+  #now-playing .np-artist,
+  #now-playing small,
+  #now-playing .small {
+    font-size: 1rem !important;
+    color: #9fb0c7 !important; /* ER muted grey */
+  }
+
+  /* Live indicator stays red */
+  #now-playing .live-indicator { color: #e53935 !important; }
+</style>
 
 </body><style>
 /* === Desktop modal centring fix === */
