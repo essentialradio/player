@@ -1,6 +1,6 @@
 {
   "Monday": [
-    { "start": "00:00", "end": "02:00", "title": "Soul Vaults with David Southway" },
+    { "start": "00:00", "end": "02:00", "title": "Soul Vaults with David Southway", "fixed": true },
     { "start": "02:00", "end": "07:00", "title": "Essential Nights" },
     { "start": "07:00", "end": "11:00", "title": "Essential Breakfast with Paul Woodland" },
     { "start": "11:00", "end": "12:00", "title": "Coffee Break Classics" },
@@ -49,36 +49,36 @@
     { "start": "07:00", "end": "11:00", "title": "Essential Breakfast with Paul Woodland" },
     { "start": "11:00", "end": "12:00", "title": "Coffee Break Classics" },
     { "start": "12:00", "end": "15:00", "title": "Feelgood Lunch with Faith Montgomery" },
-    { "start": "15:00", "end": "16:00", "title": "The Week in Holyrood with Charles Fletcher" },
+    { "start": "15:00", "end": "16:00", "title": "The Week in Holyrood with Charles Fletcher", "fixed": true },
     { "start": "16:00", "end": "18:00", "title": "Essential Hometime with Scott O'Hare" },
     { "start": "18:00", "end": "19:00", "title": "Essential Hits" },
     { "start": "19:00", "end": "20:00", "title": "Ready for the Weekend with Lee Everest" },
     { "start": "20:00", "end": "23:00", "title": "Essential Party" },
-    { "start": "23:00", "end": "00:00", "title": "Club Classics with Ronny Costello" }
+    { "start": "23:00", "end": "00:00", "title": "Club Classics with Ronny Costello", "fixed": true }
   ],
   "Saturday": [
-    { "start": "00:00", "end": "02:00", "title": "Around the World with Davy Sims" },
+    { "start": "00:00", "end": "02:00", "title": "Around the World with Davy Sims", "fixed": true },
     { "start": "02:00", "end": "07:00", "title": "Essential Nights" },
     { "start": "07:00", "end": "10:00", "title": "Essential Breakfast" },
     { "start": "10:00", "end": "13:00", "title": "Essential Weekend" },
     { "start": "13:00", "end": "17:00", "title": "The Saturday Music Marathon with Big Tommy" },
-    { "start": "17:00", "end": "18:00", "title": "The Jan Cave 70s Jukebox with Jan Gow" },
+    { "start": "17:00", "end": "18:00", "title": "The Jan Cave 70s Jukebox with Jan Gow", "fixed": true },
     { "start": "18:00", "end": "19:00", "title": "The LGBTQ Music Chart with Tim Graham", "fixed": true },
-    { "start": "19:00", "end": "21:00", "title": "Grooveline with Stephen Howie" },
-    { "start": "21:00", "end": "00:00", "title": "Big Fat Party Anthems with Big Tommy" }
+    { "start": "19:00", "end": "21:00", "title": "Grooveline with Stephen Howie", "fixed": true },
+    { "start": "21:00", "end": "00:00", "title": "Big Fat Party Anthems with Big Tommy", "fixed": true }
   ],
   "Sunday": [
-    { "start": "00:00", "end": "01:00", "title": "Fire Island Hi-NRG with Bill Grainger" },
+    { "start": "00:00", "end": "01:00", "title": "Fire Island Hi-NRG with Bill Grainger", "fixed": true },
     { "start": "01:00", "end": "06:00", "title": "Essential Nights" },
     { "start": "06:00", "end": "08:30", "title": "Essential Breakfast" },
-    { "start": "08:30", "end": "09:00", "title": "The Dr Hilary Show with Dr Hilary Jones" },
-    { "start": "09:00", "end": "10:00", "title": "The Week in Holyrood with Charles Fletcher" },
+    { "start": "08:30", "end": "09:00", "title": "The Dr Hilary Show with Dr Hilary Jones", "fixed": true },
+    { "start": "09:00", "end": "10:00", "title": "The Week in Holyrood with Charles Fletcher", "fixed": true },
     { "start": "10:00", "end": "12:00", "title": "Essential Classic Hits" },
     { "start": "12:00", "end": "14:00", "title": "Feelgood Lunch with Finlay Campbell" },
     { "start": "14:00", "end": "17:00", "title": "Airplay 40 with Spencer James" },
     { "start": "17:00", "end": "19:00", "title": "Retro Charts (1981 & 1993) with Brian Woolfson" },
-    { "start": "19:00", "end": "21:00", "title": "The Mr Rocks Show with Kevin McCallum" },
-    { "start": "21:00", "end": "23:00", "title": "The Pluggin' Baby Radio Show with Emma Scott" },
-    { "start": "23:00", "end": "00:00", "title": "The Country Mile with Dave Watkins" }
+    { "start": "19:00", "end": "21:00", "title": "The Mr Rocks Show with Kevin McCallum", "fixed": true },
+    { "start": "21:00", "end": "23:00", "title": "The Pluggin' Baby Radio Show with Emma Scott", "fixed": true },
+    { "start": "23:00", "end": "00:00", "title": "The Country Mile with Dave Watkins", "fixed": true }
   ]
 }
