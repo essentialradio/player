@@ -10223,9 +10223,12 @@ document.addEventListener('visibilitychange', () => {
     : go();
 })();
 </script>
-<!-- ER Now Playing: unified fix + schedule lock + visual lock -->
+<!-- ER Now Playing: unified fix + ALT support + schedule lock + visual lock + anti-flash -->
 <style id="er-np-visual-lock">
-  #now-playing, #now-playing * { transition: none !important; }
+  /* Kill transitions/animations inside Now Playing to avoid flash */
+  #now-playing, #now-playing * { transition: none !important; animation: none !important; }
+
+  /* Stable sizes/colours */
   #now-playing .np-title,
   #now-playing .track-title,
   #nowPlaying .track-title {
@@ -10242,16 +10245,20 @@ document.addEventListener('visibilitychange', () => {
     color: #9fb0c7 !important;
   }
   #now-playing .live-indicator { color: #e53935 !important; }
+
+  /* Smoothing and stability to reduce re-raster flicker */
+  #now-playing { -webkit-font-smoothing: antialiased; backface-visibility: hidden; min-height: 3.6em; line-height: 1.2; }
 </style>
 
 <script>
 (function(){
   /* ===== CONFIG ===== */
-  const API_BASE   = "https://www.essential.radio";
+  const API_BASE   = "https://www.essential.radio"; // absolute API base
   const POLL_MS    = 7000;
   const TIMEOUT_MS = 4500;
-  const GRACE_MS   = 30000;
-  const SKEW_MS    = 8000;
+  const GRACE_MS   = 30000;  // hold last valid item if feed blips
+  const SKEW_MS    = 8000;   // tolerate small end-time drift
+  const RESUME_FREEZE_MS = 700; // pause DOM updates briefly after tab re-activates
 
   if (window.__npAltOverrideAttached) return;
   window.__npAltOverrideAttached = true;
@@ -10268,18 +10275,23 @@ document.addEventListener('visibilitychange', () => {
     } finally { clearTimeout(id); }
   }
 
+  // Normalise shapes from main and ALT; treat very short or zero durations as unknown
   function norm(raw){
     let artist = raw.artist ?? raw.artistName ?? raw.artists ?? "";
     let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? "";
+
     if (!artist && title && title.includes(" - ")) {
       const [a, t] = title.split(" - ");
       if (a && t) { artist = a.trim(); title = t.trim(); }
     }
+
     let duration = raw.duration ?? raw.length ?? null;
     if (typeof duration === "string") duration = parseInt(duration, 10);
-    if (Number.isNaN(duration) || duration <= 5) duration = null; // short or 0 -> unknown timing
+    if (Number.isNaN(duration) || duration <= 5) duration = null; // no progress bar, but keep text
+
     let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
     if (typeof startTime === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) startTime += "Z";
+
     return (artist && title) || (duration && startTime) ? { artist, title, duration, startTime } : null;
   }
 
@@ -10331,10 +10343,18 @@ document.addEventListener('visibilitychange', () => {
     window.__npBarRAF = requestAnimationFrame(tick);
   }
 
+  // De-dupe and grace handling
   let last = { key: null, at: 0, data: null };
+  let __npResumeUntil = 0;
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) __npResumeUntil = Date.now() + RESUME_FREEZE_MS;
+  });
 
   async function updateOnce(){
-    // Respect schedule lock if active
+    // Skip updates for a brief window after tab resumes to avoid visual blip
+    if (Date.now() < __npResumeUntil) return;
+
+    // Respect schedule lock
     if (window.NP_SCHEDULE_LOCK === true) return;
 
     const prog   = document.getElementById("np-progress");
@@ -10342,11 +10362,12 @@ document.addEventListener('visibilitychange', () => {
     const now    = Date.now();
 
     if (!latest) {
-      if (last.data && now - last.at < GRACE_MS) return;
+      if (last.data && now - last.at < GRACE_MS) return; // hold last
       showFallback();
       return;
     }
 
+    // Stable identity: round start to seconds to avoid ms churn
     const keyStart = latest.startTime ? new Date(latest.startTime).toISOString().slice(0,19) : '';
     const key = `${latest.artist || ''}||${latest.title || ''}||${keyStart}`;
 
@@ -10372,7 +10393,7 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
-<!-- Auto schedule lock using schedule.json -->
+<!-- Auto schedule lock using schedule.json (titles and keywords, also respects fixed:true) -->
 <script>
 (function(){
   const SCHEDULE_URL = "https://www.essential.radio/schedule.json";
@@ -10380,8 +10401,8 @@ document.addEventListener('visibilitychange', () => {
 
   // Exact titles to treat as fixed
   const FIXED_TITLES = new Set([
-    "The Jan Cave 70s Jukebox with Jan Gow"
-    // add more exact titles here
+    "The Jan Cave 70s Jukebox with Jan Gow",
+    "The LGBTQ Music Chart with Tim Graham"
   ]);
 
   // Keyword patterns that imply fixed
@@ -10437,15 +10458,13 @@ document.addEventListener('visibilitychange', () => {
       const schedule = await fetchSchedule();
       const items = Array.isArray(schedule) ? schedule : (schedule.items || schedule.schedule || []);
       const current = findCurrentItem(items);
-
       const fixed = !!current && (
         current.fixed === true ||
         isFixedByTitle(current.title || current.name)
       );
-
       window.NP_SCHEDULE_LOCK = fixed;
     }catch(_e){
-      // ignore schedule failures to avoid flapping the lock
+      // ignore errors to avoid flapping the lock
     }
   }
 
