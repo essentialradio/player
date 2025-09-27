@@ -10524,120 +10524,83 @@ document.addEventListener('visibilitychange', () => {
   setInterval(updateLock, CHECK_EVERY_MS);
 })();
 </script>
-<!-- === ER: Now Playing / Marquee STABILISER (drop-in) === -->
-<style id="er-np-stable-css">
-  /* Make #now-playing paint in isolation to prevent “flash” on repaint */
-  #now-playing { contain: content; will-change: contents; }
+<!-- ER: Lightweight NP stabiliser (no globals touched) -->
+<style id="er-np-lite-css">
+  /* Anti-flash + comfortable spacing */
+  #now-playing, #now-playing * { transition: none !important; animation: none !important; }
+  #now-playing { padding: 12px 14px !important; line-height: 1.35 !important; min-height: 4.2em !important;
+                 -webkit-font-smoothing: antialiased; backface-visibility: hidden; }
 
-  /* Force the strap/artist line to the normal look in both themes */
-  body #now-playing .np-artist,
-  body #now-playing .track-artist {
-    font: 400 1rem/1.35 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
-    color: #9fb0c7 !important;
-    letter-spacing: normal !important;
-    text-transform: none !important;
-  }
-  /* And any children inside it */
-  #now-playing .np-artist *, #now-playing .track-artist * {
-    color: #9fb0c7 !important; font: inherit !important;
-  }
+  /* Title stays white, 1.2em */
+  #now-playing .np-title,
+  #now-playing .track-title { font-weight: 600 !important; font-size: 1.2em !important; color: #fff !important; }
 
-  /* Light mode still uses the same strap style */
-  [data-theme="light"] #now-playing .np-artist,
-  [data-theme="light"] #now-playing .track-artist {
-    color: #6a778a !important;
-  }
+  /* Artist/strap line forced to muted grey + normal size */
+  #now-playing .np-artist,
+  #now-playing .track-artist,
+  #now-playing small, #now-playing .small { font-weight: 400 !important; font-size: 1rem !important; color: #9fb0c7 !important; }
+  #now-playing .np-artist *, #now-playing .track-artist * { color: #9fb0c7 !important; font: inherit !important; }
+
+  /* Live indicator colour */
+  #now-playing .live-indicator { color: #e53935 !important; }
+
+  /* Push any hidden measuring spans (left by marquee code) off-screen so they can't appear at the bottom */
+  body > span[style*="visibility:hidden"],
+  body > span[style*="visibility: hidden"] { position: absolute !important; left: -10000px !important; top: 0 !important; }
 </style>
 
-<script id="er-np-stable-js">
+<script id="er-np-lite-js">
 (function(){
-  /* 0) Single-instance guard so an older NP script can’t re-initialise */
-  if (window.__ER_NP_STABLE) return;
-  window.__ER_NP_STABLE = true;
+  if (window.__ER_NP_LITE) return;
+  window.__ER_NP_LITE = true;
 
-  /* 1) Clamp artist line on every mutation inside #now-playing */
-  function clampArtist(){
-    const list = document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small');
-    for (const el of list) {
-      // normalise role/class
-      el.classList.remove('small','track-artist');
-      el.classList.add('np-artist');
-      // strip inline styles that force white/odd sizes
-      if (el.hasAttribute('style')) el.removeAttribute('style');
-      el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
-    }
+  // Minimal artist-line normaliser: clamp classes/inline styles ONLY inside #now-playing
+  function enforceArtistStyle() {
+    try {
+      const els = document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small');
+      els.forEach(el => {
+        el.classList.remove('small','track-artist');
+        el.classList.add('np-artist');
+        if (el.hasAttribute('style')) el.removeAttribute('style');
+        el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
+      });
+    } catch(e) { /* no-op */ }
   }
-  const npEl = document.getElementById('now-playing');
-  if (npEl && 'MutationObserver' in window) {
-    new MutationObserver(clampArtist).observe(npEl, {
-      childList: true, subtree: true, characterData: true, attributes: true,
-      attributeFilter: ['style','class']
-    });
-  }
-  // Run once now too
-  clampArtist();
 
-  /* 2) Kill duplicate NP updaters:
-        If any later script tries to start another loop, we ignore it. */
-  const origSetInterval = window.setInterval;
-  const origAddEvent    = window.addEventListener;
-
-  // Block creating a second NP poller by name/shape
-  window.setInterval = function(fn, ms){
-    const txt = (fn && fn.toString && fn.toString()) || '';
-    // Heuristics: both older NP blocks contain these tokens near their poll/update
-    if (txt.includes('getLatest') && txt.includes('render(')) {
-      if (window.__ER_NP_POLL_ATTACHED) return 0;
-      window.__ER_NP_POLL_ATTACHED = true;
-    }
-    return origSetInterval.apply(this, arguments);
-  };
-
-  // Also prevent second “visibilitychange freeze” or similar double hooks
-  window.addEventListener = function(type, listener, opts){
-    if (type === 'visibilitychange' && window.__ER_NP_VIS_HOOKED) return;
-    if (type === 'visibilitychange') window.__ER_NP_VIS_HOOKED = true;
-    return origAddEvent.apply(this, arguments);
-  };
-
-  /* 3) Safe marquee: replace risky body-append measurements.
-        If a marquee measure span is ever appended to <body> hidden, remove it. */
-  const scrubHiddenSpans = new MutationObserver((muts) => {
-    for (const m of muts) for (const n of m.addedNodes) {
-      if (n && n.nodeType === 1 && n.tagName === 'SPAN') {
-        const cs = getComputedStyle(n);
-        // our heuristic: invisible span without id, used purely for measuring
-        if (cs.visibility === 'hidden' && !n.id && n.textContent && n.textContent.length < 300) {
-          // move measure off-screen inside the NP card instead (or remove)
-          n.style.position = 'absolute';
-          n.style.left = '-10000px';
-          n.style.top  = '0';
-          // if there’s a card, tuck it under there; otherwise just remove it
-          const card = document.getElementById('now-playing-card');
-          if (card) try { card.appendChild(n); } catch(_) { try{ n.remove(); }catch(e){} }
-          else try { n.remove(); } catch (e) {}
-        }
+  // Observe #now-playing safely (no global monkey-patching). Throttle via rAF to avoid loops.
+  const np = document.getElementById('now-playing');
+  if (np && window.MutationObserver) {
+    let ticking = false;
+    const mo = new MutationObserver(() => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { enforceArtistStyle(); ticking = false; });
       }
-    }
-  });
-  try { scrubHiddenSpans.observe(document.body, { childList: true }); } catch(_){}
+    });
+    try { mo.observe(np, { childList: true, subtree: true, attributes: true, attributeFilter: ['style','class'] }); }
+    catch(_) {}
+  }
+  // Run once on load in case content already present
+  enforceArtistStyle();
 
-  /* 4) Expose a helper for your own code to use a SAFE measure */
-  window.__ER_measureTextWidth = function(label, container){
-    const host = container || document.getElementById('now-playing-card') || document.body;
-    const tmp = document.createElement('span');
-    tmp.className = 'np-measure';
-    tmp.style.position = 'absolute';
-    tmp.style.left = '-10000px';
-    tmp.style.top = '0';
-    tmp.style.visibility = 'hidden';
-    tmp.style.whiteSpace = 'nowrap';
-    tmp.textContent = label || '';
-    host.appendChild(tmp);
-    const w = tmp.getBoundingClientRect().width;
-    tmp.remove();
-    return w;
-  };
+  // Safety: if a hidden measuring span slips into <body>, push it off-screen (no DOM reparenting, so zero risk).
+  if (window.MutationObserver) {
+    const bodyObs = new MutationObserver((muts) => {
+      for (const m of muts) {
+        m.addedNodes && m.addedNodes.forEach(n => {
+          if (n && n.nodeType === 1 && n.tagName === 'SPAN') {
+            const s = n.getAttribute('style') || '';
+            if (/visibility\s*:\s*hidden/i.test(s)) {
+              n.style.position = 'absolute';
+              n.style.left = '-10000px';
+              n.style.top = '0';
+            }
+          }
+        });
+      }
+    });
+    try { bodyObs.observe(document.body, { childList: true }); } catch(_) {}
+  }
 })();
 </script>
 
