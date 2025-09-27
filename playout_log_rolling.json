@@ -61059,5 +61059,31 @@
     "Full Duration (mins)": 3.33,
     "Start ISO": "2025-09-27T09:13:14Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T09:00:00Z",
+    "Scheduled Time": "10:20",
+    "Displayed Time": "10:20",
+    "Artist": "Beyonce",
+    "Title": "Halo",
+    "Duration (s)": 222,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.73,
+    "Start ISO": "2025-09-27T09:20:54Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T09:00:00Z",
+    "Scheduled Time": "10:24",
+    "Displayed Time": "10:24",
+    "Artist": "Lola Young",
+    "Title": "D\u00a3aler",
+    "Duration (s)": 157,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.67,
+    "Start ISO": "2025-09-27T09:24:36Z",
+    "Source": "PLAYIT"
   }
 ]
