@@ -60240,5 +60240,31 @@
     "Full Duration (mins)": 2.73,
     "Start ISO": "2025-09-27T04:44:50Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T04:00:00Z",
+    "Scheduled Time": "05:47",
+    "Displayed Time": "05:47",
+    "Artist": "Dua Lipa",
+    "Title": "Physical",
+    "Duration (s)": 189,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.23,
+    "Start ISO": "2025-09-27T04:47:34Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T04:00:00Z",
+    "Scheduled Time": "05:50",
+    "Displayed Time": "05:50",
+    "Artist": "George Ezra",
+    "Title": "Green Green Grass",
+    "Duration (s)": 165,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-09-27T04:50:43Z",
+    "Source": "PLAYIT"
   }
 ]
