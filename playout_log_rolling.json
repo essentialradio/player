@@ -61670,5 +61670,31 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-27T14:50:31+01:00",
     "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-27T13:00:00Z",
+    "Scheduled Time": "14:52",
+    "Displayed Time": "14:52",
+    "Artist": "2.50PM SMM",
+    "Title": "FERDINAND RENNIES DOUBLE PLAY",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-27T14:52:18+01:00",
+    "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-27T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "235d",
+    "Title": "SCOTLANDIA GUS BACKING BED",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-27T15:00:40+01:00",
+    "Source": "ALT"
   }
 ]
