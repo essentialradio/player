@@ -10524,6 +10524,122 @@ document.addEventListener('visibilitychange', () => {
   setInterval(updateLock, CHECK_EVERY_MS);
 })();
 </script>
+<!-- === ER: Now Playing / Marquee STABILISER (drop-in) === -->
+<style id="er-np-stable-css">
+  /* Make #now-playing paint in isolation to prevent “flash” on repaint */
+  #now-playing { contain: content; will-change: contents; }
+
+  /* Force the strap/artist line to the normal look in both themes */
+  body #now-playing .np-artist,
+  body #now-playing .track-artist {
+    font: 400 1rem/1.35 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    color: #9fb0c7 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+  }
+  /* And any children inside it */
+  #now-playing .np-artist *, #now-playing .track-artist * {
+    color: #9fb0c7 !important; font: inherit !important;
+  }
+
+  /* Light mode still uses the same strap style */
+  [data-theme="light"] #now-playing .np-artist,
+  [data-theme="light"] #now-playing .track-artist {
+    color: #6a778a !important;
+  }
+</style>
+
+<script id="er-np-stable-js">
+(function(){
+  /* 0) Single-instance guard so an older NP script can’t re-initialise */
+  if (window.__ER_NP_STABLE) return;
+  window.__ER_NP_STABLE = true;
+
+  /* 1) Clamp artist line on every mutation inside #now-playing */
+  function clampArtist(){
+    const list = document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small');
+    for (const el of list) {
+      // normalise role/class
+      el.classList.remove('small','track-artist');
+      el.classList.add('np-artist');
+      // strip inline styles that force white/odd sizes
+      if (el.hasAttribute('style')) el.removeAttribute('style');
+      el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
+    }
+  }
+  const npEl = document.getElementById('now-playing');
+  if (npEl && 'MutationObserver' in window) {
+    new MutationObserver(clampArtist).observe(npEl, {
+      childList: true, subtree: true, characterData: true, attributes: true,
+      attributeFilter: ['style','class']
+    });
+  }
+  // Run once now too
+  clampArtist();
+
+  /* 2) Kill duplicate NP updaters:
+        If any later script tries to start another loop, we ignore it. */
+  const origSetInterval = window.setInterval;
+  const origAddEvent    = window.addEventListener;
+
+  // Block creating a second NP poller by name/shape
+  window.setInterval = function(fn, ms){
+    const txt = (fn && fn.toString && fn.toString()) || '';
+    // Heuristics: both older NP blocks contain these tokens near their poll/update
+    if (txt.includes('getLatest') && txt.includes('render(')) {
+      if (window.__ER_NP_POLL_ATTACHED) return 0;
+      window.__ER_NP_POLL_ATTACHED = true;
+    }
+    return origSetInterval.apply(this, arguments);
+  };
+
+  // Also prevent second “visibilitychange freeze” or similar double hooks
+  window.addEventListener = function(type, listener, opts){
+    if (type === 'visibilitychange' && window.__ER_NP_VIS_HOOKED) return;
+    if (type === 'visibilitychange') window.__ER_NP_VIS_HOOKED = true;
+    return origAddEvent.apply(this, arguments);
+  };
+
+  /* 3) Safe marquee: replace risky body-append measurements.
+        If a marquee measure span is ever appended to <body> hidden, remove it. */
+  const scrubHiddenSpans = new MutationObserver((muts) => {
+    for (const m of muts) for (const n of m.addedNodes) {
+      if (n && n.nodeType === 1 && n.tagName === 'SPAN') {
+        const cs = getComputedStyle(n);
+        // our heuristic: invisible span without id, used purely for measuring
+        if (cs.visibility === 'hidden' && !n.id && n.textContent && n.textContent.length < 300) {
+          // move measure off-screen inside the NP card instead (or remove)
+          n.style.position = 'absolute';
+          n.style.left = '-10000px';
+          n.style.top  = '0';
+          // if there’s a card, tuck it under there; otherwise just remove it
+          const card = document.getElementById('now-playing-card');
+          if (card) try { card.appendChild(n); } catch(_) { try{ n.remove(); }catch(e){} }
+          else try { n.remove(); } catch (e) {}
+        }
+      }
+    }
+  });
+  try { scrubHiddenSpans.observe(document.body, { childList: true }); } catch(_){}
+
+  /* 4) Expose a helper for your own code to use a SAFE measure */
+  window.__ER_measureTextWidth = function(label, container){
+    const host = container || document.getElementById('now-playing-card') || document.body;
+    const tmp = document.createElement('span');
+    tmp.className = 'np-measure';
+    tmp.style.position = 'absolute';
+    tmp.style.left = '-10000px';
+    tmp.style.top = '0';
+    tmp.style.visibility = 'hidden';
+    tmp.style.whiteSpace = 'nowrap';
+    tmp.textContent = label || '';
+    host.appendChild(tmp);
+    const w = tmp.getBoundingClientRect().width;
+    tmp.remove();
+    return w;
+  };
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
@@ -10547,6 +10663,37 @@ enter;       /* centre vertically */
     overflow-y: auto !important;/* scroll inside if needed */
   }
 }
+<style id="er-np-artist-hardlock">
+  /* Force the artist/strap line ("by Tim Graham" / "on Essential Radio") to the normal look */
+  #now-playing .np-artist,
+  #now-playing .track-artist,
+  #now-playing [data-role="np-artist"],
+  #now-playing small,
+  #now-playing .small {
+    /* wipe conflicting styles (even inline) */
+    all: unset !important;
+    display: inline !important;
+
+    /* re-apply the normal styling */
+    font-family: inherit !important;
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+    font-weight: 400 !important;
+    color: #9fb0c7 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+  }
+
+  /* if anything is nested inside, keep it the same muted grey */
+  #now-playing .np-artist *, 
+  #now-playing .track-artist * {
+    all: unset !important;
+    display: inline !important;
+    color: #9fb0c7 !important;
+    font: inherit !important;
+  }
+</style>
+
 </style>
 <style>
 /* === Desktop modal centring fix (safe) ===
