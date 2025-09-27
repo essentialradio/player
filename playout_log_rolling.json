@@ -60630,5 +60630,31 @@
     "Full Duration (mins)": 3.68,
     "Start ISO": "2025-09-27T06:49:53Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T06:00:00Z",
+    "Scheduled Time": "07:53",
+    "Displayed Time": "07:53",
+    "Artist": "Keith Urban",
+    "Title": "Chuck Taylors",
+    "Duration (s)": 209,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.58,
+    "Start ISO": "2025-09-27T06:53:20Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T07:00:00Z",
+    "Scheduled Time": "08:01",
+    "Displayed Time": "08:01",
+    "Artist": "Lewis Capaldi",
+    "Title": "Something In The Heavens",
+    "Duration (s)": 192,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-09-27T07:01:47Z",
+    "Source": "PLAYIT"
   }
 ]
