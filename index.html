@@ -10547,6 +10547,37 @@ enter;       /* centre vertically */
     overflow-y: auto !important;/* scroll inside if needed */
   }
 }
+<style id="er-np-artist-hardlock">
+  /* Force the artist/strap line ("by Tim Graham" / "on Essential Radio") to the normal look */
+  #now-playing .np-artist,
+  #now-playing .track-artist,
+  #now-playing [data-role="np-artist"],
+  #now-playing small,
+  #now-playing .small {
+    /* wipe conflicting styles (even inline) */
+    all: unset !important;
+    display: inline !important;
+
+    /* re-apply the normal styling */
+    font-family: inherit !important;
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+    font-weight: 400 !important;
+    color: #9fb0c7 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+  }
+
+  /* if anything is nested inside, keep it the same muted grey */
+  #now-playing .np-artist *, 
+  #now-playing .track-artist * {
+    all: unset !important;
+    display: inline !important;
+    color: #9fb0c7 !important;
+    font: inherit !important;
+  }
+</style>
+
 </style>
 <style>
 /* === Desktop modal centring fix (safe) ===
