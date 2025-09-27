@@ -10524,6 +10524,189 @@ document.addEventListener('visibilitychange', () => {
   setInterval(updateLock, CHECK_EVERY_MS);
 })();
 </script>
+<script id="er-np-unified-js">
+(function(){
+  if (window.__ER_NP_UNIFIED) return; window.__ER_NP_UNIFIED = true;
+
+  const API_BASE        = "https://www.essential.radio";
+  const LATEST_ENDPOINT = "/api/latestTrack";
+  const ALT_ENDPOINT    = "/api/latestAlt";
+  const SCHEDULE_URL    = "https://www.essential.radio/schedule.json";
+  const POLL_MS         = 7000;
+  const TIMEOUT_MS      = 4500;
+  const GRACE_MS        = 30000;
+  const SKEW_MS         = 8000;
+  const CHECK_EVERY_MS  = 60000;
+  const RESUME_FREEZE_MS= 700;
+
+  function q(id){ return document.getElementById(id); }
+
+  function enforceArtistStyle(){
+    try {
+      document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small, #now-playing [data-role="np-artist"]').forEach(el=>{
+        el.classList.remove('small','track-artist');
+        el.classList.add('np-artist');
+        // strip inline styles that can flip fonts/colours
+        if (el.hasAttribute('style')) el.removeAttribute('style');
+        el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
+      });
+    } catch {}
+  }
+
+  function setHTML(html){
+    const box = q("now-playing") || q("nowPlaying"); if (!box) return;
+    box.innerHTML = html;
+    enforceArtistStyle();
+    window.__ER_LAST_FIXED_HTML = html;
+  }
+
+  function render(np){
+    setHTML(
+      `<span style="color:#fed351;">Now Playing:</span>
+       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+       <span class="np-title">${np.title || 'Live'}</span><br/>
+       <span class="np-artist">${np.artist ? 'by ' + np.artist : 'on Essential Radio'}</span>`
+    );
+    try { document.title = (np.artist && np.title) ? \`Essential Radio: \${np.artist} - \${np.title}\` : "Essential Radio"; } catch {}
+  }
+
+  function renderFixed(item){
+    const text = (item.nowPlayingOverride && item.nowPlayingOverride.trim())
+      ? item.nowPlayingOverride.trim()
+      : (item.title || "On Essential Radio");
+    setHTML(
+      `<span style="color:#fed351;">Now Playing:</span>
+       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+       <span class="np-title">${text}</span><br/>
+       <span class="np-artist">on Essential Radio</span>`
+    );
+    const p = q("np-progress"); if (p) { p.style.display="none"; const b=p.querySelector(".bar"); if (b) b.style.width="0%"; }
+    try { document.title = text ? "Essential Radio: " + text : "Essential Radio"; } catch {}
+  }
+
+  function showFallback(){
+    if (window.NP_SCHEDULE_LOCK === true) return; // never overwrite fixed
+    setHTML(
+      `<span style="color:#fed351;">Now Playing:</span>
+       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+       <span class="np-title">More music soon</span><br/>
+       <span class="np-artist">on Essential Radio</span>`
+    );
+    const p = q("np-progress"); if (p) { p.style.display="none"; const b=p.querySelector(".bar"); if (b) b.style.width="0%"; }
+    document.title = "Essential Radio";
+  }
+
+  function startBar(startMs, endMs){
+    const prog = q("np-progress"); const bar = prog?.querySelector(".bar"); if (!prog || !bar) return;
+    prog.style.display = "block";
+    try { cancelAnimationFrame(window.__npBarRAF); } catch {}
+    function tick(){
+      const now=Date.now(), span=endMs-startMs, done=Math.min(Math.max((now-startMs)/span,0),1);
+      bar.style.width = (done*100).toFixed(2)+"%";
+      if (now < endMs) window.__npBarRAF = requestAnimationFrame(tick);
+    }
+    window.__npBarRAF = requestAnimationFrame(tick);
+  }
+
+  async function fetchJSON(url){
+    const ctl = new AbortController(); const t = setTimeout(()=>ctl.abort(), TIMEOUT_MS);
+    try { const r = await fetch(url, {signal:ctl.signal, cache:"no-store"}); if (!r.ok) throw new Error("HTTP "+r.status); return await r.json(); }
+    finally { clearTimeout(t); }
+  }
+  async function getLatest(){
+    try { return await fetchJSON(API_BASE + LATEST_ENDPOINT); }
+    catch { try { return await fetchJSON(API_BASE + ALT_ENDPOINT); } catch { return null; } }
+  }
+
+  function parseHHMMLocal(hhmm){
+    const m = /^(\d{2}):(\d{2})$/.exec(hhmm||""); if (!m) return null;
+    const now = new Date(); return new Date(now.getFullYear(), now.getMonth(), now.getDate(), +m[1], +m[2], 0, 0);
+  }
+  function findCurrentItem(items){
+    if (!Array.isArray(items)) return null;
+    const todays = items.map(it => ({ raw:it, start:parseHHMMLocal(it.start), end:parseHHMMLocal(it.end) }))
+                        .filter(x => x.start instanceof Date)
+                        .sort((a,b)=>a.start-b.start);
+    for (let i=0;i<todays.length;i++){ if (!todays[i].end && todays[i+1]?.start) todays[i].end = new Date(todays[i+1].start); }
+    const now = new Date(); return todays.find(x => now >= x.start && (!x.end || now < x.end))?.raw || null;
+  }
+  function isFixedByTitle(title){
+    if (!title) return false;
+    return /70s jukebox|lgbtq music chart|megamix|throwback|top 20|golden hour|retro recall|80s hour|90s hour/i.test(title);
+  }
+
+  async function updateLock(){
+    try{
+      const schedule = await fetchJSON(SCHEDULE_URL + "?_=" + Date.now());
+      const items    = Array.isArray(schedule) ? schedule : (schedule.items || schedule.schedule || []);
+      const current  = findCurrentItem(items);
+      const fixed    = !!current && (current.fixed === true || isFixedByTitle(current.title || current.name));
+      window.NP_SCHEDULE_LOCK = fixed;
+      if (fixed) renderFixed(current);
+    }catch(e){}
+  }
+
+  let last = { key:null, at:0, data:null };
+  let __npResumeUntil = 0;
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) __npResumeUntil = Date.now() + RESUME_FREEZE_MS; });
+
+  async function updateOnce(){
+    if (Date.now() < __npResumeUntil) return;
+
+    // While locked, keep fixed HTML and hide progress
+    if (window.NP_SCHEDULE_LOCK === true){
+      const box = q("now-playing") || q("nowPlaying");
+      if (box && window.__ER_LAST_FIXED_HTML && box.innerHTML !== window.__ER_LAST_FIXED_HTML){
+        box.innerHTML = window.__ER_LAST_FIXED_HTML;
+        enforceArtistStyle();
+      }
+      const prog = q("np-progress"); if (prog) prog.style.display = "none";
+      return;
+    }
+
+    const prog   = q("np-progress");
+    const latest = await getLatest();
+    const now    = Date.now();
+
+    if (!latest){
+      if (last.data && now - last.at < GRACE_MS) return;
+      showFallback(); return;
+    }
+
+    const keyStart = latest.startTime ? new Date(latest.startTime).toISOString().slice(0,19) : '';
+    const key = `${latest.artist || ''}||${latest.title || ''}||${keyStart}`;
+
+    if (key !== last.key) { render(latest); last = { key, at: now, data: latest }; }
+    else { last.at = now; }
+
+    if (!latest.duration || !latest.startTime) { if (prog) prog.style.display = "none"; return; }
+    const startMs = new Date(latest.startTime).getTime();
+    const endMs   = startMs + latest.duration * 1000;
+    if (now > endMs + SKEW_MS) return;
+    startBar(startMs, endMs);
+  }
+
+  function go(){
+    updateLock();                              // establish lock asap
+    updateOnce().catch(()=>{});
+    clearInterval(window.__npTimer);
+    window.__npTimer = setInterval(()=>updateOnce().catch(()=>{}), POLL_MS);
+    clearInterval(window.__npLockTimer);
+    window.__npLockTimer = setInterval(()=>updateLock().catch(()=>{}), CHECK_EVERY_MS);
+  }
+
+  // SAFE observer: watch only childList changes (no attributes) to avoid feedback loops
+  const np = q('now-playing') || q('nowPlaying');
+  if (np && window.MutationObserver){
+    const mo = new MutationObserver(()=>{ enforceArtistStyle(); });
+    mo.observe(np, { childList:true, subtree:true }); // attributes: false (important!)
+  }
+
+  document.readyState === "loading"
+    ? document.addEventListener("DOMContentLoaded", go, {once:true})
+    : go();
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
@@ -10547,6 +10730,37 @@ enter;       /* centre vertically */
     overflow-y: auto !important;/* scroll inside if needed */
   }
 }
+<style id="er-np-artist-hardlock">
+  /* Force the artist/strap line ("by Tim Graham" / "on Essential Radio") to the normal look */
+  #now-playing .np-artist,
+  #now-playing .track-artist,
+  #now-playing [data-role="np-artist"],
+  #now-playing small,
+  #now-playing .small {
+    /* wipe conflicting styles (even inline) */
+    all: unset !important;
+    display: inline !important;
+
+    /* re-apply the normal styling */
+    font-family: inherit !important;
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+    font-weight: 400 !important;
+    color: #9fb0c7 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+  }
+
+  /* if anything is nested inside, keep it the same muted grey */
+  #now-playing .np-artist *, 
+  #now-playing .track-artist * {
+    all: unset !important;
+    display: inline !important;
+    color: #9fb0c7 !important;
+    font: inherit !important;
+  }
+</style>
+
 </style>
 <style>
 /* === Desktop modal centring fix (safe) ===
