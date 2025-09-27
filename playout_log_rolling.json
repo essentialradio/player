@@ -61332,5 +61332,31 @@
     "Full Duration (mins)": 3.37,
     "Start ISO": "2025-09-27T10:49:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T10:00:00Z",
+    "Scheduled Time": "11:52",
+    "Displayed Time": "11:52",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 176,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.12,
+    "Start ISO": "2025-09-27T10:52:10Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T10:00:00Z",
+    "Scheduled Time": "11:55",
+    "Displayed Time": "11:55",
+    "Artist": "Shawn Mendes",
+    "Title": "There's Nothing Holdin' Me Back",
+    "Duration (s)": 192,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-09-27T10:55:06Z",
+    "Source": "PLAYIT"
   }
 ]
