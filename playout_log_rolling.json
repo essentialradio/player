@@ -59733,5 +59733,31 @@
     "Full Duration (mins)": 3.18,
     "Start ISO": "2025-09-27T01:53:43Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T02:00:00Z",
+    "Scheduled Time": "03:01",
+    "Displayed Time": "03:01",
+    "Artist": "The Script",
+    "Title": "The Last Time",
+    "Duration (s)": 193,
+    "Full Duration (s)": 196,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.27,
+    "Start ISO": "2025-09-27T02:01:42Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-27T02:00:00Z",
+    "Scheduled Time": "03:05",
+    "Displayed Time": "03:05",
+    "Artist": "Alex Warren",
+    "Title": "Ordinary",
+    "Duration (s)": 176,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.12,
+    "Start ISO": "2025-09-27T02:05:28Z",
+    "Source": "PLAYIT"
   }
 ]
