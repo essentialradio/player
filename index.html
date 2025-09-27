@@ -10223,24 +10223,43 @@ document.addEventListener('visibilitychange', () => {
     : go();
 })();
 </script>
-<!-- ER Now Playing: COMPLETE unified patch (ALT support + absolute API + schedule lock/render + visual lock + anti-flash) -->
+<!-- ER Now Playing: COMPLETE one-paste patch -->
 <style id="er-np-visual-lock">
-  /* Stop any flicker on re-activation */
+  /* Kill flicker on re-activation */
   #now-playing, #now-playing * { transition: none !important; animation: none !important; }
 
-  /* Comfortable spacing (unsquash) */
-  #now-playing { padding: 12px 14px !important; line-height: 1.35 !important; min-height: 4.2em !important;
-                 -webkit-font-smoothing: antialiased; backface-visibility: hidden; }
+  /* Comfortable spacing + stability */
+  #now-playing {
+    padding: 12px 14px !important;
+    line-height: 1.35 !important;
+    min-height: 4.2em !important;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+  }
 
-  /* Stable sizes/colours */
+  /* Stable title sizing/colour */
   #now-playing .np-title,
   #now-playing .track-title,
-  #nowPlaying .track-title { font-weight: 600 !important; font-size: 1.2em !important; color: #ffffff !important; display: inline-block; margin-top: 2px; }
+  #nowPlaying .track-title {
+    font-weight: 600 !important;
+    font-size: 1.2em !important;
+    color: #ffffff !important;
+    display: inline-block;
+    margin-top: 2px;
+  }
 
+  /* Stable artist/strap line — aggressively override any inline size/colour */
   #now-playing .np-artist,
   #now-playing .track-artist,
   #nowPlaying .track-artist,
-  #now-playing small, #now-playing .small { font-size: 1rem !important; color: #9fb0c7 !important; }
+  #now-playing small, #now-playing .small,
+  #now-playing [data-role="np-artist"] {
+    font-size: 1rem !important;
+    color: #9fb0c7 !important;
+    font-weight: 400 !important;
+  }
+  /* Nested spans inherit muted grey */
+  #now-playing .np-artist *, #now-playing .track-artist * { color: #9fb0c7 !important; }
 
   /* Live indicator colour */
   #now-playing .live-indicator { color: #e53935 !important; }
@@ -10251,15 +10270,26 @@ document.addEventListener('visibilitychange', () => {
    A) Live Now Playing override (absolute API, ALT-aware, anti-flash)
    ========================= */
 (function(){
-  const API_BASE   = "https://www.essential.radio"; // <-- change if needed
+  const API_BASE   = "https://www.essential.radio";  // change if needed
   const POLL_MS    = 7000;
   const TIMEOUT_MS = 4500;
-  const GRACE_MS   = 30000; // keep last valid for short gaps
-  const SKEW_MS    = 8000;  // tolerate small end-time drift
+  const GRACE_MS   = 30000;  // keep last valid across brief gaps
+  const SKEW_MS    = 8000;   // tolerate small end drift
   const RESUME_FREEZE_MS = 700; // pause updates after tab resumes to avoid flash
 
   if (window.__npAltOverrideAttached) return;
   window.__npAltOverrideAttached = true;
+
+  /* --- artist-line sanitizer (forces size/colour, strips bad inline styles) --- */
+  function enforceArtistStyle() {
+    const list = document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small, #now-playing [data-role="np-artist"]');
+    for (const el of list) {
+      el.classList.remove('small','track-artist');
+      el.classList.add('np-artist');
+      if (el.hasAttribute('style')) el.removeAttribute('style');
+      el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
+    }
+  }
 
   const U = p => API_BASE.replace(/\/+$/,'') + p;
 
@@ -10278,7 +10308,7 @@ document.addEventListener('visibilitychange', () => {
 
     let duration = raw.duration ?? raw.length ?? null;
     if (typeof duration === "string") duration = parseInt(duration, 10);
-    if (Number.isNaN(duration) || duration <= 5) duration = null; // <=5s -> unknown timing (no bar)
+    if (Number.isNaN(duration) || duration <= 5) duration = null; // no bar, but keep text
 
     let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
     if (typeof startTime === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) startTime += "Z";
@@ -10299,6 +10329,7 @@ document.addEventListener('visibilitychange', () => {
       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
       <span class="np-title">${np.title || 'Live'}</span><br/>
       <span class="np-artist">${np.artist ? 'by ' + np.artist : 'on Essential Radio'}</span>`;
+    enforceArtistStyle();
     try { document.title = (np.artist && np.title) ? \`Essential Radio: \${np.artist} - \${np.title}\` : "Essential Radio"; } catch {}
   }
 
@@ -10311,6 +10342,7 @@ document.addEventListener('visibilitychange', () => {
         <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
         <span class="np-title">More music soon</span><br/>
         <span class="np-artist">on Essential Radio</span>`;
+      enforceArtistStyle();
     }
     if (p) { p.style.display = "none"; const b = p.querySelector(".bar"); if (b) b.style.width = "0%"; }
     document.title = "Essential Radio";
@@ -10373,24 +10405,31 @@ document.addEventListener('visibilitychange', () => {
   }
 
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", go, { once:true }) : go();
+
+  // Guard against late mutations from other scripts
+  const np = document.getElementById('now-playing');
+  if (np) {
+    const mo = new MutationObserver(() => enforceArtistStyle());
+    mo.observe(np, { childList: true, subtree: true, attributes: true, attributeFilter: ['style','class'] });
+  }
 })();
 </script>
 
 <script>
 /* =========================
-   B) Schedule locker + renderer (uses schedule.json; HH:MM local time)
+   B) Schedule locker + fixed renderer (schedule.json; HH:MM local)
    ========================= */
 (function(){
-  const SCHEDULE_URL   = "https://www.essential.radio/schedule.json"; // <-- change if needed
+  const SCHEDULE_URL   = "https://www.essential.radio/schedule.json"; // change if needed
   const CHECK_EVERY_MS = 60000;
 
-  // Exact titles you want treated as "fixed" (in addition to fixed:true)
+  // Exact titles treated as fixed (alongside fixed:true)
   const FIXED_TITLES = new Set([
     "The Jan Cave 70s Jukebox with Jan Gow",
     "The LGBTQ Music Chart with Tim Graham"
   ]);
 
-  // Optional keyword patterns that imply a fixed/themed block
+  // Optional keyword patterns implying a fixed/themed block
   const FIXED_KEYWORDS = [
     /megamix/i, /70s jukebox/i, /80s hour/i, /90s hour/i, /throwback/i, /retro recall/i, /top 20/i, /golden hour/i
   ];
@@ -10430,6 +10469,16 @@ document.addEventListener('visibilitychange', () => {
     return await r.json();
   }
 
+  function enforceArtistStyle() {
+    const list = document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small, #now-playing [data-role="np-artist"]');
+    for (const el of list) {
+      el.classList.remove('small','track-artist');
+      el.classList.add('np-artist');
+      if (el.hasAttribute('style')) el.removeAttribute('style');
+      el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
+    }
+  }
+
   function renderFixed(item){
     const el = document.getElementById("now-playing");
     const p  = document.getElementById("np-progress");
@@ -10444,6 +10493,7 @@ document.addEventListener('visibilitychange', () => {
       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
       <span class="np-title">${text}</span><br/>
       <span class="np-artist">on Essential Radio</span>`;
+    enforceArtistStyle();
 
     if (p) { p.style.display = "none"; const b = p.querySelector(".bar"); if (b) b.style.width = "0%"; }
     try { document.title = text ? "Essential Radio: " + text : "Essential Radio"; } catch {}
@@ -10461,12 +10511,12 @@ document.addEventListener('visibilitychange', () => {
 
       window.NP_SCHEDULE_LOCK = fixed;
 
-      // When locked, actively render the fixed copy; when unlocked, live NP will repaint on next tick
+      // When locked, actively render fixed copy.
       if (fixed) renderFixed(current);
 
       lastLock = fixed;
     }catch(_e){
-      // On errors, keep current lock state to avoid flapping
+      // Keep prior lock state on error.
     }
   }
 
