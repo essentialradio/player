@@ -63,7 +63,7 @@
     { "start": "10:00", "end": "13:00", "title": "Essential Weekend" },
     { "start": "13:00", "end": "17:00", "title": "The Saturday Music Marathon with Big Tommy" },
     { "start": "17:00", "end": "18:00", "title": "The Jan Cave 70s Jukebox with Jan Gow" },
-    { "start": "18:00", "end": "19:00", "title": "The LGBTQ Music Chart with Tim Graham" },
+    { "start": "18:00", "end": "19:00", "title": "The LGBTQ Music Chart with Tim Graham", "fixed": true },
     { "start": "19:00", "end": "21:00", "title": "Grooveline with Stephen Howie" },
     { "start": "21:00", "end": "00:00", "title": "Big Fat Party Anthems with Big Tommy" }
   ],
