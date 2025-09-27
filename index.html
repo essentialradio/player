@@ -10524,7 +10524,406 @@ document.addEventListener('visibilitychange', () => {
   setInterval(updateLock, CHECK_EVERY_MS);
 })();
 </script>
+<script id="er-np-unified-js">
+(function(){
+  if (window.__ER_NP_UNIFIED) return; window.__ER_NP_UNIFIED = true;
 
+  const API_BASE        = "https://www.essential.radio";
+  const LATEST_ENDPOINT = "/api/latestTrack";
+  const ALT_ENDPOINT    = "/api/latestAlt";
+  const SCHEDULE_URL    = "https://www.essential.radio/schedule.json";
+  const POLL_MS         = 7000;
+  const TIMEOUT_MS      = 4500;
+  const GRACE_MS        = 30000;
+  const SKEW_MS         = 8000;
+  const CHECK_EVERY_MS  = 60000;
+  const RESUME_FREEZE_MS= 700;
+
+  // Force these windows to be FIXED even if schedule.json is missing/late
+  const FIXED_FORCE_WINDOWS = [
+    { start:"17:00", end:"18:00", title:"The Jan Cave 70s Jukebox with Jan Gow" },
+    { start:"18:00", end:"19:00", title:"The LGBTQ Music Chart with Tim Graham" },
+  ];
+
+  function q(id){ return document.getElementById(id); }
+  function enforceArtistStyle(){
+    try {
+      document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small, #now-playing [data-role="np-artist"]').forEach(el=>{
+        el.classList.remove('small','track-artist'); el.classList.add('np-artist');
+        if (el.hasAttribute('style')) el.removeAttribute('style');
+        el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
+      });
+    } catch {}
+  }
+  function setHTML(html){
+    const box = q("now-playing") || q("nowPlaying"); if (!box) return;
+    box.innerHTML = html; enforceArtistStyle(); window.__ER_LAST_FIXED_HTML = html;
+  }
+
+  function render(np){
+    setHTML(
+      `<span style="color:#fed351;">Now Playing:</span>
+       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+       <span class="np-title">${np.title || 'Live'}</span><br/>
+       <span class="np-artist">${np.artist ? 'by ' + np.artist : 'on Essential Radio'}</span>`
+    );
+    try { document.title = (np.artist && np.title) ? \`Essential Radio: \${np.artist} - \${np.title}\` : "Essential Radio"; } catch {}
+  }
+  function renderFixed(item){
+    const text = (item.nowPlayingOverride && item.nowPlayingOverride.trim())
+      ? item.nowPlayingOverride.trim()
+      : (item.title || "On Essential Radio");
+    setHTML(
+      `<span style="color:#fed351;">Now Playing:</span>
+       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+       <span class="np-title">${text}</span><br/>
+       <span class="np-artist">on Essential Radio</span>`
+    );
+    const p = q("np-progress"); if (p) { p.style.display="none"; const b=p.querySelector(".bar"); if (b) b.style.width="0%"; }
+    try { document.title = text ? "Essential Radio: " + text : "Essential Radio"; } catch {}
+  }
+  function showFallback(){
+    if (window.NP_SCHEDULE_LOCK === true) return; // never overwrite fixed
+    setHTML(
+      `<span style="color:#fed351;">Now Playing:</span>
+       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+       <span class="np-title">More music soon</span><br/>
+       <span class="np-artist">on Essential Radio</span>`
+    );
+    const p = q("np-progress"); if (p) { p.style.display="none"; const b=p.querySelector(".bar"); if (b) b.style.width="0%"; }
+    document.title = "Essential Radio";
+  }
+
+  // ---- progress bar
+  function startBar(startMs, endMs){
+    const prog = q("np-progress"); const bar = prog?.querySelector(".bar"); if (!prog || !bar) return;
+    prog.style.display = "block";
+    try { cancelAnimationFrame(window.__npBarRAF); } catch {}
+    function tick(){ const now=Date.now(), span=endMs-startMs, done=Math.min(Math.max((now-startMs)/span,0),1);
+      bar.style.width = (done*100).toFixed(2)+"%"; if (now < endMs) window.__npBarRAF = requestAnimationFrame(tick); }
+    window.__npBarRAF = requestAnimationFrame(tick);
+  }
+
+  // ---- robust fetch & normalization
+  async function fetchJSON(url){
+    const ctl = new AbortController(); const t = setTimeout(()=>ctl.abort(), TIMEOUT_MS);
+    try { const r = await fetch(url, {signal:ctl.signal, cache:"no-store"}); if (!r.ok) throw new Error("HTTP "+r.status); return await r.json(); }
+    finally { clearTimeout(t); }
+  }
+  function unwrap(raw){
+    if (!raw) return null;
+    if (Array.isArray(raw)) return raw[0] || null;
+    if (raw.latest && typeof raw.latest === 'object') return raw.latest;
+    if (raw.data && typeof raw.data === 'object') return raw.data;
+    return raw;
+  }
+  function norm(raw){
+    const x = unwrap(raw); if (!x) return null;
+    let artist = x.artist ?? x.artistName ?? x.artists ?? x.dj ?? "";
+    let title  = x.title  ?? x.trackTitle ?? x.name    ?? x.show ?? "";
+    if (!artist && title && title.includes(" - ")) { const [a,t]=title.split(" - "); if (a&&t){ artist=a.trim(); title=t.trim(); } }
+    let duration = x.duration ?? x.length ?? x.runtime ?? null;
+    if (typeof duration === "string") duration = parseInt(duration, 10);
+    if (!Number.isFinite(duration) || duration <= 0) duration = null;
+    let startTime = x.startTime ?? x.startedAt ?? x.start ?? null;
+    if (typeof startTime === "number") startTime = new Date(startTime).toISOString();
+    if (typeof startTime === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) startTime += "Z";
+    if ((artist && title) || (duration && startTime)) return { artist, title, duration, startTime };
+    if (artist || title) return { artist: artist || "", title: title || "", duration: null, startTime: null };
+    return null;
+  }
+  async function getLatest(){
+    try { const main = await fetchJSON(API_BASE + LATEST_ENDPOINT); const n = norm(main); if (n) return n; } catch {}
+    try { const alt  = await fetchJSON(API_BASE + ALT_ENDPOINT);   const n = norm(alt);  if (n) return n; } catch {}
+    return null;
+  }
+
+  // ---- fixed windows + schedule lock
+  function hhmmToDateToday(hhmm, dayOffset=0){
+    const m = /^(\d{2}):(\d{2})$/.exec(hhmm||""); if (!m) return null;
+    const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()+dayOffset, +m[1], +m[2], 0, 0);
+  }
+  function isNowInWindow(startHHMM, endHHMM){
+    const s = hhmmToDateToday(startHHMM, 0);
+    let e   = hhmmToDateToday(endHHMM, 0);
+    if (!s || !e) return false;
+    if (e <= s) e = hhmmToDateToday(endHHMM, 1); // cross-midnight
+    const n = new Date(); return n >= s && n < e;
+  }
+  function maybeForceWindow(){
+    for (const w of FIXED_FORCE_WINDOWS){
+      if (w && isNowInWindow(w.start, w.end)) {
+        return { title: w.title || "On Essential Radio", fixed: true, nowPlayingOverride: w.title || null };
+      }
+    }
+    return null;
+  }
+  function parseHHMMLocal(hhmm){
+    const m = /^(\d{2}):(\d{2})$/.exec(hhmm||""); if (!m) return null;
+    const now = new Date(); return new Date(now.getFullYear(), now.getMonth(), now.getDate(), +m[1], +m[2], 0, 0);
+  }
+  function findCurrentItem(items){
+    if (!Array.isArray(items)) return null;
+    const todays = items.map(it => ({ raw:it, start:parseHHMMLocal(it.start), end:parseHHMMLocal(it.end) }))
+                        .filter(x => x.start instanceof Date)
+                        .sort((a,b)=>a.start-b.start);
+    for (let i=0;i<todays.length;i++){ if (!todays[i].end && todays[i+1]?.start) todays[i].end = new Date(todays[i+1].start); }
+    const now = new Date(); return todays.find(x => now >= x.start && (!x.end || now < x.end))?.raw || null;
+  }
+  function isFixedByTitle(title){
+    if (!title) return false;
+    return /70s jukebox|lgbtq music chart|megamix|throwback|top 20|golden hour|retro recall|80s hour|90s hour/i.test(title);
+  }
+  async function updateLock(){
+    try{
+      const forced = maybeForceWindow();
+      if (forced) { window.NP_SCHEDULE_LOCK = true; renderFixed(forced); return; }
+      const schedule = await fetchJSON(SCHEDULE_URL + "?_=" + Date.now());
+      const items    = Array.isArray(schedule) ? schedule : (schedule.items || schedule.schedule || []);
+      const current  = findCurrentItem(items);
+      const fixed    = !!current && (current.fixed === true || isFixedByTitle(current.title || current.name));
+      window.NP_SCHEDULE_LOCK = fixed;
+      if (fixed) renderFixed(current);
+    }catch(e){}
+  }
+
+  // ---- live updater (ALT also shown during FIXED)
+  let last = { key:null, at:0, data:null };
+  let __npResumeUntil = 0;
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) __npResumeUntil = Date.now() + RESUME_FREEZE_MS; });
+
+  async function updateOnce(){
+    if (Date.now() < __npResumeUntil) return;
+
+    // While locked, keep fixed title but try to show ALT/Latest artist+title in the strap line
+    if (window.NP_SCHEDULE_LOCK === true){
+      const box = q("now-playing") || q("nowPlaying");
+      try {
+        const latest = await getLatest();
+        if (box && latest && (latest.artist || latest.title)){
+          const strap = box.querySelector('.np-artist');
+          if (strap){
+            const line = latest.artist && latest.title ? ('by ' + latest.artist + ' — ' + latest.title)
+                        : latest.artist ? ('by ' + latest.artist)
+                        : latest.title;
+            strap.textContent = line || 'on Essential Radio';
+            window.__ER_LAST_FIXED_HTML = box.innerHTML;
+          }
+        }
+      } catch {}
+      if (box) enforceArtistStyle();
+      const prog = q("np-progress"); if (prog) prog.style.display = "none";
+      return;
+    }
+
+    const prog   = q("np-progress");
+    const latest = await getLatest();
+    const now    = Date.now();
+
+    if (!latest){
+      if (last.data && now - last.at < GRACE_MS) return;
+      showFallback(); return;
+    }
+
+    const keyStart = latest.startTime ? new Date(latest.startTime).toISOString().slice(0,19) : '';
+    const key = `${latest.artist || ''}||${latest.title || ''}||${keyStart}`;
+
+    if (key !== last.key) { render(latest); last = { key, at: now, data: latest }; }
+    else { last.at = now; }
+
+    if (!latest.duration || !latest.startTime) { if (prog) prog.style.display = "none"; return; }
+    const startMs = new Date(latest.startTime).getTime();
+    const endMs   = startMs + latest.duration * 1000;
+    if (now > endMs + SKEW_MS) return;
+    startBar(startMs, endMs);
+  }
+
+  function go(){
+    updateLock();
+    updateOnce().catch(()=>{});
+    clearInterval(window.__npTimer);
+    window.__npTimer = setInterval(()=>updateOnce().catch(()=>{}), POLL_MS);
+    clearInterval(window.__npLockTimer);
+    window.__npLockTimer = setInterval(()=>updateLock().catch(()=>{}), CHECK_EVERY_MS);
+  }
+
+  // Safe observer: childList only (avoid attribute loops)
+  const np = q('now-playing') || q('nowPlaying');
+  if (np && window.MutationObserver){
+    const mo = new MutationObserver(()=>{ enforceArtistStyle(); });
+    mo.observe(np, { childList:true, subtree:true }); // no attributes
+  }
+
+  document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", go, {once:true}) : go();
+})();
+</script>
+
+
+<!-- Presenter-aware FIXED overrides (inserted by ChatGPT 2025-09-27) -->
+<script>
+(function(){
+  // --- Utilities ---
+  function q(id){ return document.getElementById(id); }
+  function normaliseName(name){
+    return (name||"").toLowerCase()
+      .replace(/[’']/g,'')
+      .replace(/\s+/g,'-')
+      .replace(/[^a-z0-9\-]/g,'');
+  }
+
+  // Decide if a schedule entry is FIXED
+  window.isFixedSlot = function(entry){
+    if (!entry) return false;
+    if (entry.fixed === true) return true;
+    const mode = (entry.mode || entry.type || "").toString().toLowerCase();
+    if (mode === "fixed") return true;
+    if (entry.nowPlayingOverride && entry.nowPlayingOverride.trim()) return true;
+    if (entry.template && /fixed/i.test(entry.template)) return true;
+    return false;
+  };
+
+  // Return current schedule entry
+  window.getCurrentScheduleEntry = function(now, schedule){
+    const toMins = t => { try{ const [h,m]=t.split(":").map(Number); return h*60+m; }catch(e){return -1;} };
+    const n = now.getHours()*60 + now.getMinutes();
+    let current = null;
+    for (const item of (schedule||[])){
+      if (!item || !item.start || !item.end) continue;
+      const s = toMins(item.start), e = toMins(item.end);
+      if (s<0 || e<0) continue;
+      const inSlot = (s <= e) ? (n >= s && n < e) : (n >= s || n < e);
+      if (inSlot){ current = item; break; }
+    }
+    return current;
+  };
+
+  // Presenter-aware render for FIXED
+  window.renderFixed = function(item){
+    const box = document.getElementById("now-playing") || document.getElementById("nowPlaying");
+    const prog = document.getElementById("np-progress");
+    if (!box) return;
+
+    const raw = (item && item.nowPlayingOverride && item.nowPlayingOverride.trim())
+      ? item.nowPlayingOverride.trim()
+      : ((item && (item.title || item.name)) ? (item.title || item.name) : "On Essential Radio");
+
+    let title = raw, presenter = "", slug = "";
+    const m = raw.match(/^(.*)\s+with\s+(.*)$/i);
+    if (m) {
+      title = m[1].trim();
+      presenter = m[2].trim();
+      slug = normaliseName(presenter);
+    } else {
+      // If schedule provides presenter/name separately
+      if (item && item.presenter) { presenter = item.presenter; slug = normaliseName(presenter); }
+    }
+
+    const presenterLine = presenter
+      ? `with <a href="#" class="presenter-link" onclick="if(window.openPresenterModal){openPresenterModal('presenter-${slug}');} return false;">${presenter}</a>`
+      : "on Essential Radio";
+
+    function enforceArtistStyle(){
+      try {
+        document.querySelectorAll('#now-playing .np-artist, #now-playing .track-artist, #now-playing small, #now-playing .small, #now-playing [data-role="np-artist"]').forEach(el=>{
+          el.classList.remove('small','track-artist'); el.classList.add('np-artist');
+          if (el.hasAttribute('style')) el.removeAttribute('style');
+          el.querySelectorAll('[style]').forEach(n => n.removeAttribute('style'));
+        });
+      } catch {}
+    }
+
+    box.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span class="np-title">${title}</span><br/>
+      <span class="np-artist">${presenterLine}</span>
+    `;
+    enforceArtistStyle();
+    window.__ER_LAST_FIXED_HTML = box.innerHTML;
+
+    if (prog) { prog.style.display = "none"; const b = prog.querySelector(".bar"); if (b) b.style.width = "0%"; }
+    try { document.title = presenter ? `Essential Radio: ${title} with ${presenter}` : `Essential Radio: ${title}`; } catch {}
+  };
+
+  // Guarded fallbacks: do not overwrite during FIXED
+  window.showMoreMusicSoon = function(){
+    if (window.NP_SCHEDULE_LOCK === true) return;
+    const el = document.getElementById("now-playing");
+    if (!el) return;
+    el.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span class="np-title">More music soon</span><br/>
+      <span class="np-artist">on Essential Radio</span>`;
+    try { document.title = "Essential Radio"; } catch {}
+    const p = document.getElementById("np-progress");
+    if (p) { p.style.display = "none"; const b = p.querySelector(".bar"); if (b) b.style.width = "0%"; }
+  };
+
+  window.showFallback = function(){
+    if (window.NP_SCHEDULE_LOCK === true) return;
+    const el = document.getElementById("now-playing");
+    if (!el) return;
+    el.innerHTML = `
+      <span style="color:#fed351;">Now Playing:</span>
+      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+      <span class="np-title">More music soon</span><br/>
+      <span class="np-artist">on Essential Radio</span>`;
+    try { document.title = "Essential Radio"; } catch {}
+    const p = document.getElementById("np-progress");
+    if (p) { p.style.display = "none"; const b = p.querySelector(".bar"); if (b) b.style.width = "0%"; }
+  };
+
+  // Maintain a secondary track line while FIXED without touching presenter strap
+  async function maintainFixedTrackline(){
+    try {
+      if (window.NP_SCHEDULE_LOCK !== true) return;
+      const box = document.getElementById("now-playing") || document.getElementById("nowPlaying");
+      if (!box) return;
+      const hasPresenter = !!box.querySelector('.presenter-link') || /with\s+[A-Za-z]/i.test(box.textContent);
+      if (!hasPresenter) return;
+      const getLatest = (window.getLatest || window.fetchLatest || null);
+      if (!getLatest) return;
+      const latest = await getLatest();
+      if (!latest || (!latest.artist && !latest.title)) return;
+      const line = (latest.artist && latest.title) ? ('by ' + latest.artist + ' — ' + latest.title)
+                 : latest.artist ? ('by ' + latest.artist)
+                 : latest.title;
+      let track = box.querySelector('.np-trackline');
+      if (!track) {
+        track = document.createElement('span');
+        track.className = 'np-trackline';
+        track.style.display = 'block';
+        const strap = box.querySelector('.np-artist');
+        if (strap && strap.parentNode) strap.after(track);
+        else box.appendChild(track);
+      }
+      track.textContent = line || '';
+      window.__ER_LAST_FIXED_HTML = box.innerHTML;
+    } catch (e){ /* silent */ }
+  }
+
+  // Read schedule JSON and set lock, then render
+  async function updateFromSchedule(){
+    try {
+      const schedule = window.ER_SCHEDULE || await fetch('/schedule.json', {cache:'no-cache'}).then(r=>r.json());
+      const now = new Date();
+      const current = window.getCurrentScheduleEntry(now, schedule);
+      window.NP_SCHEDULE_LOCK = window.isFixedSlot(current);
+      if (window.NP_SCHEDULE_LOCK){
+        window.renderFixed(current || {});
+      }
+    } catch(e){
+      // ignore
+    }
+  }
+
+  // Kick off and poll
+  updateFromSchedule();
+  setInterval(updateFromSchedule, 30000); // 30s
+  setInterval(maintainFixedTrackline, 10000); // 10s while locked
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
