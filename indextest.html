@@ -20,6 +20,7 @@
   })();
 </script>
 <html data-theme="light" lang="en">
+\1
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -4502,7 +4503,7 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="player-box">
 <audio id="stream" preload="none">
-<source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg"/>
+<source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html" type="audio/mpeg"/>
 </audio>
 <button id="play-toggle">▶️ Play Essential Radio</button>
 <div id="volume-container">
@@ -5746,7 +5747,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
     async function fetchScheduleModal() {
       try {
-        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
+        const res = await fetch("https://player-green.vercel.app/schedule.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
@@ -5866,7 +5867,7 @@ group.forEach(show => {
 <script>
     async function fetchSchedule() {
       try {
-        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
+        const res = await fetch("https://player-green.vercel.app/schedule.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
