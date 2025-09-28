@@ -10311,6 +10311,49 @@ enter;       /* centre vertically */
 
   // Utility: clean a track string for searching
   
+  
+  const PLACEHOLDER_ART = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23333'/><stop offset='100%' stop-color='%23666'/></linearGradient></defs><rect width='600' height='600' fill='url(%23g)'/><circle cx='300' cy='300' r='220' fill='none' stroke='%23999' stroke-width='18'/><circle cx='300' cy='300' r='12' fill='%23bbb'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,Segoe UI,Roboto,Arial' font-size='44' fill='white' opacity='.9'>On air</text><text x='50%' y='64%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,Segoe UI,Roboto,Arial' font-size='20' fill='white' opacity='.7'>Music & shows</text></svg>";
+
+  async function fetchCurrentShowTitle(){
+    try{
+      const r = await fetch('https://player-green.vercel.app/api/recent?ts=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return null;
+      const js = await r.json();
+      const items = js.recent || js.items || (Array.isArray(js) ? js : []);
+      if (Array.isArray(items) && items.length){
+        const first = items[0];
+        if (first && String((first.source||'')).toUpperCase()==='FIXED'){
+          const t = String(first.title||'').trim();
+          const a = String(first.artist||'').trim();
+          if (t || a) return (t && a) ? (t + ' — ' + a) : (t || a);
+        }
+      }
+    }catch(e){}
+    return null;
+  }
+
+  function setNPText(artist, title, fallbackMsg){
+    const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
+    if (!npEl) return;
+    const hasTrack = !!(artist || title);
+    if (hasTrack){
+      npEl.textContent = [artist, title].filter(Boolean).join(' — ');
+      return;
+    }
+    if (fallbackMsg){
+      npEl.innerHTML = "<span class='np-muted'>" + fallbackMsg + "</span>";
+    } else {
+      npEl.innerHTML = "<span class='np-muted'>On air — music & shows</span>";
+    }
+  }
+
+  function setPlaceholderArtwork(){
+    const el = getArtworkImgEl();
+    if (!el) return;
+    el.onload = function(){ el.classList && el.classList.add('loaded'); };
+    el.src = PLACEHOLDER_ART;
+  }
+
   function debug(msg){
     try{
       const box = document.getElementById('np-debug');
