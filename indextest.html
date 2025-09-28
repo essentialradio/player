@@ -10697,4 +10697,196 @@ const js = JSON.parse(text);
       if (!window._travelTimer && travelUrl) window._travelTimer = setInterval(function(){ softReload('travel', travelUrl); }, 120000);
     }
   });
-})();</script>
+})();</script><script>
+(function(){
+  if (window.__ER_NP_ART_INSTALLED__) return;
+  window.__ER_NP_ART_INSTALLED__ = true;
+
+  // ---------- Utilities ----------
+  function $(sel){ return document.querySelector(sel); }
+  function cleanQuery(s){
+    if(!s) return "";
+    return String(s)
+      .replace(/\s*\([\s\S]*?\)\s*/g, " ")
+      .replace(/\s*\[[\s\S]*?\]\s*/g, " ")
+      .replace(/\s+feat\.?\s+.*$/i, " ")
+      .replace(/\s+ft\.?\s+.*$/i, " ")
+      .replace(/\s*&\s*/g, " ")
+      .replace(/\s{2,}/g, " ").trim();
+  }
+  function getArtworkImgEl(){
+    return document.getElementById('artwork') || document.getElementById('artworkEl') ||
+           document.querySelector('img.artwork, img#art, .np-artwork img, .artwork img');
+  }
+  function setNPText(artist, title, fallback){
+    const el = $('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
+    if(!el) return;
+    if (artist || title) el.textContent = [artist, title].filter(Boolean).join(' — ');
+    else el.textContent = fallback || 'On air — music & shows';
+  }
+
+  // ---------- Artwork Providers ----------
+  async function tryPlayerGreenArtwork(artist, title){
+    const base = 'https://player-green.vercel.app/api/artwork.js';
+    const params = [];
+    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' - '));
+    const qTitle = cleanQuery(title||'');
+    const qArtist = cleanQuery(artist||'');
+    if (artist || title) params.push(`artist=${encodeURIComponent(artist||'')}&title=${encodeURIComponent(title||'')}`);
+    if (qBoth) params.push(`q=${encodeURIComponent(qBoth)}`);
+    if (qTitle) params.push(`q=${encodeURIComponent(qTitle)}`);
+    if (qArtist) params.push(`q=${encodeURIComponent(qArtist)}`);
+    for (const qs of params){
+      const url = base + '?' + qs + '&ts=' + Date.now();
+      const r = await fetch(url, { cache: 'no-store' }).catch(()=>null);
+      if (!r || !r.ok) continue;
+      const js = await r.json().catch(()=>null);
+      const out = js && js.url && String(js.url).trim();
+      if (out) return out;
+    }
+    throw new Error('pg artwork empty');
+  }
+  async function tryItunes(term){
+    const url = 'https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=' + encodeURIComponent(term);
+    const r = await fetch(url, { cache:'no-store' });
+    if (!r.ok) throw new Error('itunes http ' + r.status);
+    const js = await r.json();
+    const hit = (js.results||[]).find(x => (x.kind==='song'||x.wrapperType==='track') && x.artworkUrl100);
+    if (hit) return String(hit.artworkUrl100).replace('100x100', '300x300');
+    throw new Error('itunes no hit');
+  }
+  async function tryDeezer(term){
+    const r = await fetch('https://r.jina.ai/http/api.deezer.com/search?q=' + encodeURIComponent(term), { cache:'no-store' });
+    if (!r.ok) throw new Error('deezer http ' + r.status);
+    const js = await r.json();
+    const hit = js && js.data && js.data[0];
+    if (hit && hit.album){
+      return hit.album.cover_xl || hit.album.cover_big || hit.album.cover_medium || hit.album.cover || null;
+    }
+    throw new Error('deezer no hit');
+  }
+  async function tryCoverArtArchive(artist, title){
+    const q = encodeURIComponent(`${artist||''} ${title||''}`.trim());
+    const r = await fetch('https://r.jina.ai/http/musicbrainz.org/ws/2/recording?query=' + q + '&fmt=json&limit=1', { cache:'no-store' });
+    if (!r.ok) throw new Error('mb http ' + r.status);
+    const js = await r.json();
+    const rec = js.recordings && js.recordings[0];
+    const rel = rec && rec.releases && rec.releases[0];
+    const id = rel && rel.id;
+    if (!id) throw new Error('no release id');
+    const r2 = await fetch('https://r.jina.ai/http/coverartarchive.org/release/' + id, { cache:'no-store' });
+    if (!r2.ok) throw new Error('caa http ' + r2.status);
+    const js2 = await r2.json();
+    const img = (js2.images||[]).find(x => x.front) || (js2.images||[])[0];
+    if (!img) throw new Error('no image');
+    return (img.thumbnails && (img.thumbnails.large || img.thumbnails.small)) || img.image || null;
+  }
+
+  // Public artwork function (shared with Recent list)
+  window.getTrackArtwork = async function(queryOrArtist, maybeTitle){
+    let artist = '', title = '';
+    if (typeof maybeTitle === 'string') { artist = queryOrArtist||''; title = maybeTitle||''; }
+    else { title = String(queryOrArtist||''); }
+    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' '));
+    const qTitle = cleanQuery(title);
+    const qArtist = cleanQuery(artist);
+    try { return await tryPlayerGreenArtwork(artist, title); } catch(e){}
+    try { if (qBoth) return await tryItunes(qBoth); } catch(e){}
+    try { if (qTitle) return await tryItunes(qTitle); } catch(e){}
+    try { if (qArtist) return await tryItunes(qArtist); } catch(e){}
+    try { if (qBoth) return await tryDeezer(qBoth); } catch(e){}
+    try { if (qTitle) return await tryDeezer(qTitle); } catch(e){}
+    try { if (qArtist) return await tryDeezer(qArtist); } catch(e){}
+    try { if (qBoth) return await tryCoverArtArchive(artist, title); } catch(e){}
+    try { if (qTitle) return await tryCoverArtArchive('', qTitle); } catch(e){}
+    try { if (qArtist) return await tryCoverArtArchive(qArtist, ''); } catch(e){}
+    return '';
+  };
+
+  // ---------- Latest/Recent helpers ----------
+  async function fetchJSON(url){
+    try{
+      const r = await fetch(url, { cache:'no-store' });
+      if (r.ok) return await r.json();
+    }catch(e){}
+    // CORS bypass
+    try{
+      const via = (url.startsWith('https://') ? 'https://r.jina.ai/http/' : 'https://r.jina.ai/http://') + url.replace(/^https?:\/\//,'');
+      const r2 = await fetch(via, { cache:'no-store' });
+      if (r2.ok){
+        const t = await r2.text();
+        try{ return JSON.parse(t); }catch(e){}
+      }
+    }catch(e){}
+    return null;
+  }
+
+  async function getLatestTrack(){
+    const js = await fetchJSON('https://player-green.vercel.app/api/latestTrack?_=' + Date.now());
+    const node = js && (js.latestTrack || js);
+    if (!node) return null;
+    const artist = String(node.artist||'').trim();
+    const title  = String(node.title ||'').trim();
+    const indet  = !!node.indeterminate;
+    const source = String(node.source||'').toUpperCase();
+    if (!indet && source !== 'FIXED' && (artist || title)){
+      return { artist, title, source };
+    }
+    return null;
+  }
+
+  async function getRecentFirst(){
+    const js = await fetchJSON('https://player-green.vercel.app/api/recent?_=' + Date.now());
+    const items = js && (js.recent || js.items) || (Array.isArray(js) ? js : []);
+    if (Array.isArray(items) && items.length){
+      const it = items[0];
+      return {
+        artist: String((it && (it.artist||it.Artist))||'').trim(),
+        title:  String((it && (it.title ||it.Title ))||'').trim(),
+        source: String((it && it.source)||'').toUpperCase(),
+        indeterminate: !!(it && it.indeterminate)
+      };
+    }
+    return null;
+  }
+
+  // ---------- Now Playing driver (single timer) ----------
+  async function _updateNowPlaying(){
+    // 1) Prefer latestTrack if valid
+    let curr = await getLatestTrack();
+    if (!curr){
+      // 2) else fall back to recent first item (show/presenter or last song)
+      curr = await getRecentFirst() || { artist:'', title:'', source:'' };
+    }
+
+    // Update text
+    setNPText(curr.artist, curr.title, 'On air — music & shows');
+
+    // Update artwork
+    const img = getArtworkImgEl();
+    if (img){
+      let url = '';
+      try { url = await window.getTrackArtwork(curr.artist, curr.title); } catch(e){ url=''; }
+      if (url){
+        img.classList.remove('fallback');
+        img.onload = function(){ img.classList.add('loaded'); };
+        img.onerror = function(){ img.classList.remove('loaded'); img.removeAttribute('src'); };
+        img.src = url;
+      } else {
+        // friendly placeholder (pure CSS state)
+        img.classList.add('fallback');
+        // optional: leave src untouched to avoid flicker
+      }
+    }
+  }
+
+  window.fetchNowPlaying = async function(){
+    try{ await _updateNowPlaying(); }catch(e){ console.warn('NP update failed', e); }
+  };
+
+  // Kick-off & schedule (guarded)
+  if (window.__NP_TIMER__) clearInterval(window.__NP_TIMER__);
+  window.fetchNowPlaying();
+  window.__NP_TIMER__ = setInterval(window.fetchNowPlaying, 15000);
+})();
+</script>
