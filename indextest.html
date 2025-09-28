@@ -6046,13 +6046,13 @@ const hasCoreFields = !!(latest && latest.artist && latest.title);
 if (hasCoreFields && (latest.indeterminate || latest.displayMode === 'show')) {
   const nowPlaying = document.getElementById('now-playing');
   if (nowPlaying) {
-    const showTitle = latest.title || 'On Air';
+    const showTitle = latest.title || '';
     const presenter  = latest.artist || '';
     nowPlaying.innerHTML = `
-      <span style="color:#fed351;">On Air:</span>
+      <span style="color:#fed351;">Now Playing:</span>
       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
       <span class="show-title" style="color:white;font-weight:600;font-size:1.2em;">${showTitle}</span><br/>
-      ${presenter ? `<span class="show-presenter" style="color:white;">with ${presenter}</span>` : ''}
+      ${presenter ? `<span class="show-presenter" style="color:white;">by ${presenter}</span>` : ''}
     `;
     try { document.title = presenter ? `Essential Radio: ${showTitle} with ${presenter}` : `Essential Radio: ${showTitle}`; } catch (e) {}
     try {
