@@ -20,6 +20,7 @@
   })();
 </script>
 <html data-theme="light" lang="en">
+\1
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -4451,8 +4452,9 @@ html[data-theme="light"] #mobileNowBar {
 
 </style>
 </head>
+\1
 <!-- Injected Now Playing hooks -->
-<section id="nowPlaying" style="display:block; padding:0.5rem 0;">
+<section id="nowPlaying" style="display:none; padding:0.5rem 0;">
   <div style="font-weight:600; font-size:1.1rem;">
     <span id="showTitle">Loading…</span>
   </div>
@@ -10187,7 +10189,7 @@ async function getLatest(){
     }).catch(err => console.warn('[ER] SW register failed', err));
   }
 </script>
-<script src="/nowplaying.js?v=20250928093717"></script>
+<script src="/js/nowplaying.js?v=20250928093717"></script>
 <script>
   // Initialise schedule-based FIXED/ALT handling + artwork
   NowPlaying.init({
