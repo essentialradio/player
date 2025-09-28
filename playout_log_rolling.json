@@ -1,31 +1,5 @@
 [
   {
-    "Hour": "2025-09-14T14:00:00Z",
-    "Scheduled Time": "15:00",
-    "Displayed Time": "15:00",
-    "Artist": "Spencer James",
-    "Title": "Airplay 40",
-    "Duration (s)": 3480,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58.0,
-    "Full Duration (mins)": 58.0,
-    "Start ISO": "2025-09-14T14:00:04Z",
-    "Source": "PLAYIT"
-  },
-  {
-    "Hour": "2025-09-14T14:00:00Z",
-    "Scheduled Time": "15:59",
-    "Displayed Time": "15:59",
-    "Artist": "Babybird",
-    "Title": "You're Gorgeous",
-    "Duration (s)": 180,
-    "Full Duration (s)": 180,
-    "Duration (mins)": 3.0,
-    "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-09-14T14:59:47Z",
-    "Source": "ALT"
-  },
-  {
     "Hour": "2025-09-14T15:00:00Z",
     "Scheduled Time": "16:59",
     "Displayed Time": "16:59",
@@ -51801,7 +51775,7 @@
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-09-28T14:59:49+01:00",
+    "Start ISO": "2025-09-28T13:59:49Z",
     "Source": "ALT"
   },
   {
@@ -51814,7 +51788,7 @@
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-09-28T15:00:13+01:00",
+    "Start ISO": "2025-09-28T14:00:13Z",
     "Source": "ALT"
   },
   {
@@ -51827,7 +51801,7 @@
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-09-28T15:03:13+01:00",
+    "Start ISO": "2025-09-28T14:03:13Z",
     "Source": "ALT"
   },
   {
@@ -51840,7 +51814,7 @@
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-09-28T15:06:34+01:00",
+    "Start ISO": "2025-09-28T14:06:34Z",
     "Source": "ALT"
   }
 ]
