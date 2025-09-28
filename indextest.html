@@ -24,10 +24,10 @@
 <meta content="no-store, no-cache, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
-<meta content="strict-origin-when-cross-origin" name="referrer">
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
     /* --- NAVBAR & MODALS ONLY --- */
@@ -4416,7 +4416,6 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
-
 <!-- Injected Now Playing hooks -->
 <section id="nowPlaying" style="display:none; padding:0.5rem 0;">
 <div style="font-weight:600; font-size:1.1rem;">
@@ -4468,7 +4467,7 @@ html[data-theme="light"] #mobileNowBar {
 <div class="header-spacer"></div>
 <div style="width:100%;display:flex;justify-content:center;">
 <div class="player-wrapper">
-<img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png">
+<img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png"/>
 <!-- ✅ MAIN PLAYER WRAPPER -->
 <div class="strip-container three-panel"><div class="strip-topbar"></div>
 <!-- LEFT PANEL -->
@@ -6600,7 +6599,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   document.addEventListener('DOMContentLoaded', load);
 })();
 </script>
-</div></img></div></div><script>
+</div></div></div><script>
 
   setTimeout(() => {
     try {
@@ -10296,58 +10295,219 @@ enter;       /* centre vertically */
 }
 
 </style>
-
-</meta></meta></meta></html><script>(function(){
-  if (window.__ER_SAFE_INIT__) return;
-  window.__ER_SAFE_INIT__ = true;
+</html><script>(function(){
+  if (window.__ER_SAFE_INIT_V2__) return;
+  window.__ER_SAFE_INIT_V2__ = true;
 
   // Shared holders
   window._npPollTimer = window._npPollTimer || null;
   window._newsTimer = window._newsTimer || null;
   window._travelTimer = window._travelTimer || null;
+  window.__NP_BUSY__ = false;
+  window.__CURRENT_ARTIST__ = "";
+  window.__CURRENT_TITLE__ = "";
 
   function $(sel){ return document.querySelector(sel); }
 
-  // Basic artwork fetch (guarded)
-  async function fetchArtworkSafe(trackName){
-    try{
-      if(!trackName) return;
-      const cleaned = trackName.replace(/\s*-\s*/g, ' ');
-      const url = 'https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=' + encodeURIComponent(cleaned);
-      const res = await fetch(url, { cache: 'no-store' });
-      const js = await res.json();
-      const hit = (js.results||[]).find(r => (r.kind==='song'||r.wrapperType==='track') && r.artworkUrl100);
-      if(hit){
-        const url300 = hit.artworkUrl100.replace('100x100','300x300');
-        const el = document.getElementById('artwork') || document.querySelector('.artwork, #artworkEl');
-        if(el){ el.src = url300; el.classList && el.classList.add('loaded'); }
-      }
-    }catch(e){ /* no-op in safe mode */ }
+  // Utility: clean a track string for searching
+  function cleanQuery(s){
+    if(!s) return "";
+    return s
+      .replace(/\s*\([\s\S]*?\)\s*/g, " ")      // remove (radio edit) etc.
+      .replace(/\s*\[[\s\S]*?\]\s*/g, " ")      // remove [Remaster] etc.
+      .replace(/\s+feat\.?\s+.*$/i, " ")        // strip feat.
+      .replace(/\s+ft\.?\s+.*$/i, " ")
+      .replace(/\s*&\s*/g, " ")
+      .replace(/\s{2,}/g, " ")
+      .trim();
   }
 
-  // Basic Now Playing poller (15s), with guard to prevent stacking
+  function getArtworkImgEl(){
+    return document.getElementById('artworkEl')
+        || document.getElementById('artwork')
+        || document.querySelector('img.artwork, img#art, .np-artwork img, .artwork img');
+  }
+
+  async function tryItunes(term){
+    const url = 'https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=' + encodeURIComponent(term);
+    const res = await fetch(url, { cache: 'no-store' });
+    if(!res.ok) throw new Error('itunes http ' + res.status);
+    const js = await res.json();
+    const hit = (js.results||[]).find(r => (r.kind==='song'||r.wrapperType==='track') && r.artworkUrl100);
+    if (hit) {
+      return hit.artworkUrl100.replace('100x100','300x300');
+    }
+    throw new Error('itunes no hit');
+  }
+
+  // Stronger artwork lookup: artist+title -> title only -> artist only
+  async function fetchArtworkStrong(artist, title){
+    const el = getArtworkImgEl();
+    if(!el) return; // nowhere to render
+    const q1 = cleanQuery([artist, title].filter(Boolean).join(" "));
+    const q2 = cleanQuery(title || "");
+    const q3 = cleanQuery(artist || "");
+
+    let art = null;
+    try { if(q1) art = await tryItunes(q1); } catch(e) {}
+    if(!art) { try { if(q2) art = await tryItunes(q2); } catch(e) {} }
+    if(!art) { try { if(q3) art = await tryItunes(q3); } catch(e) {} }
+
+    if(art){
+      el.onload = function(){ el.classList && el.classList.add('loaded'); };
+      el.onerror = function(){ el.removeAttribute('src'); el.classList && el.classList.remove('loaded'); };
+      el.src = art;
+    }
+  }
+
+  // Parse Shoutcast/Icecast-ish text/JSON forgivingly
+  function parseNowPlayingPayload(text){
+    // Try JSON title key first
+    try{
+      const js = JSON.parse(text);
+      if(js && (js.title || (js.songtitle))) {
+        const t = js.title || js.songtitle;
+        return String(t);
+      }
+    }catch(e){}
+    // Try to find "StreamTitle='Artist - Title';" style
+    let m = text.match(/StreamTitle=['"]([^'"]+)['"]/i);
+    if(m) return m[1];
+    // Generic try: <title>Artist - Title</title> or plain text
+    m = text.match(/<title>([^<]+)<\/title>/i);
+    if(m) return m[1];
+    m = text.match(/"title"\s*:\s*"([^"]+)"/i);
+    if(m) return m[1];
+    // Fallback: first non-empty line
+    const line = (text.split('\n').map(s=>s.trim()).find(Boolean)) || "";
+    return line;
+  }
+
+  function splitArtistTitle(s){
+    if(!s) return ["", ""];
+    // Prefer ' - ' split, but be gentle
+    const parts = s.split(" - ");
+    if(parts.length >= 2){
+      return [parts[0].trim(), parts.slice(1).join(" - ").trim()];
+    }
+    return ["", s.trim()];
+  }
+
+  // Basic Now Playing poller (15s), with guard
+
+  async function fetchWithBypass(url){
+    try {
+      const r = await fetch(url, { cache: 'no-store' });
+      if (r.ok) return await r.text();
+    } catch(e){}
+    // CORS-free text mirror via r.jina.ai (GET only)
+    try {
+      const via = (url.startsWith('https://') ? 'https://r.jina.ai/http/' : 'https://r.jina.ai/http://') + url.replace(/^https?:\/\//, '');
+      const r2 = await fetch(via, { cache: 'no-store' });
+      if (r2.ok) return await r2.text();
+    } catch(e){}
+    throw new Error('fetch failed for ' + url);
+  }
+
+  async function fetchLatestFromPlayout(){
+    const url = 'https://essentialradio.github.io/player/playout_log_rolling.json?ts=' + Date.now();
+    try{
+      const r = await fetch(url, { cache: 'no-store' });
+      if (!r.ok) throw new Error('HTTP '+r.status);
+      const data = await r.json();
+      // Try first item as latest; if array of objects with 'artist'/'title'
+      if (Array.isArray(data) && data.length){
+        const item = data[0];
+        // Some pipelines encode artist fields weirdly; coerce to string and strip numeric prefixes
+        const artist = String(item.artist || item.Artist || '').replace(/^[\d,]+,/, '').trim();
+        const title  = String(item.title  || item.Title  || '').trim();
+        if (artist || title) return { artist, title };
+      }
+    }catch(e){}
+    return null;
+  }
+
+  async function fetchFromPlayerGreen(){
+    const base = 'https://player-green.vercel.app';
+    const candidates = [
+      base + '/now.json',
+      base + '/nowplaying.json',
+      base + '/api/now',
+      base + '/api/nowplaying',
+      base + '/np.json'
+    ];
+    for (const url of candidates){
+      try{
+        const r = await fetch(url + '?ts=' + Date.now(), { cache: 'no-store' });
+        if(!r.ok) continue;
+        const js = await r.json();
+        // Normalize common shapes
+        let artist = js.artist || (js.now && js.now.artist) || (js.current && js.current.artist) || '';
+        let title  = js.title  || (js.now && js.now.title ) || (js.current && js.current.title ) || '';
+        if (!artist && js.Artist) artist = js.Artist;
+        if (!title  && js.Title ) title  = js.Title;
+        if (artist || title) return { artist: String(artist).trim(), title: String(title).trim() };
+      }catch(e){}
+      // Try CORS-free text mirror fallback (if endpoint returns text)
+      try{
+        const via = 'https://r.jina.ai/http/' + url.replace(/^https?:\/\//,'');
+        const r2 = await fetch(via + '?ts=' + Date.now(), { cache: 'no-store' });
+        if (!r2.ok) continue;
+        const text = await r2.text();
+        try{
+          const js = JSON.parse(text);
+          let artist = js.artist || (js.now && js.now.artist) || (js.current && js.current.artist) || '';
+          let title  = js.title  || (js.now && js.now.title ) || (js.current && js.current.title ) || '';
+          if (!artist && js.Artist) artist = js.Artist;
+          if (!title  && js.Title ) title  = js.Title;
+          if (artist || title) return { artist: String(artist).trim(), title: String(title).trim() };
+        }catch(e){ /* not JSON */ }
+      }catch(e){}
+    }
+    return null;
+  }
+
+
   async function pollNowPlaying(){
+
     if (window.__NP_BUSY__) return;
     window.__NP_BUSY__ = true;
     try{
-      // Find an endpoint from the DOM (fallback to known alt)
       const alt = "https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html";
-      const res = await fetch(alt, { cache: 'no-store' });
-      const text = await res.text();
-      // Very forgiving parse: try to extract "artist - title"
-      let artist = '', title = '';
-      const m = text.match(/"title"\s*:\s*"([^"]+)"/i) || text.match(/>([^<]+)</);
-      if(m){
-        const t = m[1] || m[0];
-        const parts = String(t).split(" - ");
-        if(parts.length>=2){ artist = parts[0].trim(); title = parts.slice(1).join(" - ").trim(); }
-        else { title = String(t).trim(); }
+      const text = await fetchWithBypass(alt);
+      let artist = ""; let title = ""; let raw = "";
+      // 1) Try player-green first
+      try{
+        const pg = await fetchFromPlayerGreen();
+        if (pg){ artist = pg.artist; title = pg.title; }
+      }catch(e){}
+      // 2) If still empty, try the stream payload
+      if (!artist && !title){
+        raw = parseNowPlayingPayload(text);
+        const pair = splitArtistTitle(raw);
+        artist = artist || pair[0]; title = title || pair[1];
       }
-      const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying');
+      // 3) If still weak, fall back to playout log
+      if ((!artist && !title) || (title && title.toLowerCase()==='live')){
+        try{
+          const latest = await fetchLatestFromPlayout();
+          if (latest){
+            artist = latest.artist || artist;
+            title  = latest.title  || title;
+            raw = [artist, title].filter(Boolean).join(' - ') || raw;
+          }
+        }catch(e){}
+      }
+      window.__CURRENT_ARTIST__ = artist; window.__CURRENT_TITLE__ = title;
+
+      const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
       if (npEl){
-        npEl.textContent = [artist, title].filter(Boolean).join(" — ") || (title || "Live");
+        const display = [artist, title].filter(Boolean).join(" — ") || raw || "Live";
+        npEl.textContent = display;
       }
-      await fetchArtworkSafe([artist, title].filter(Boolean).join(" "));
+
+      // Artwork after NP update
+      fetchArtworkStrong(artist, title);
     }catch(e){
       // Silent in safe mode
     }finally{
@@ -10364,7 +10524,7 @@ enter;       /* centre vertically */
   pollNowPlaying();
   safeInterval('_npPollTimer', pollNowPlaying, 15000);
 
-  // News / Travel very light refresh (2 mins) - content replaced only if element exists
+  // News / Travel light refresh (2 mins)
   async function softReload(id, url){
     const el = document.getElementById(id);
     if(!el || !url) return;
@@ -10381,7 +10541,7 @@ enter;       /* centre vertically */
   safeInterval('_newsTimer', function(){ softReload('news', newsUrl); }, 120000);
   safeInterval('_travelTimer', function(){ softReload('travel', travelUrl); }, 120000);
 
-  // Stop timers when hidden to reduce CPU
+  // Pause when hidden
   document.addEventListener('visibilitychange', function(){
     if (document.hidden){
       if (window._npPollTimer) { clearInterval(window._npPollTimer); window._npPollTimer = null; }
