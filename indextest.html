@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <script>
   // Cache/version guard to avoid stale service workers and cached assets
-  const APP_VERSION = '20250928042826+1';
+  const APP_VERSION = '20250928042826';
   (function() {
     try {
       const KEY = 'er_app_version';
@@ -25,7 +25,7 @@
 <meta http-equiv="Expires" content="0">
 <script>
   // Version + cache guard
-  const APP_VERSION = '20250928092045+1';
+  const APP_VERSION = '20250928092045';
   (function() {
     try {
       const KEY = 'er_app_version';
@@ -5987,7 +5987,7 @@ group.forEach(show => {
     });
     async function fetchDurationAndStartTime(artist, title) {
       try {
-        const logUrl = 'https://player-green.vercel.app/api/recent';
+        const logUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
         const res = await fetch(`${logUrl}?_=${Date.now()}`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
@@ -6188,6 +6188,10 @@ if (remaining > 0) {
 
 
 
+    async function fetchRecentFromGitHub() {
+  try {
+    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     const recentItems = data
@@ -6287,7 +6291,7 @@ let recentInterval = null;
 
 function startIntervals() {
   if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
-  if (!recentInterval) recentInterval = setInterval(fetchRecentlyPlayed, 15000);
+  if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
 }
 function stopIntervals() {
   clearInterval(nowPlayingInterval); nowPlayingInterval = null;
@@ -6296,14 +6300,14 @@ function stopIntervals() {
 
 // Always fetch once on page load
 fetchNowPlaying();
-fetchRecentlyPlayed();
+fetchRecentFromGitHub();
 startIntervals();
 
 // On tab visibility change, only run when visible
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
     fetchNowPlaying();
-    fetchRecentlyPlayed();
+    fetchRecentFromGitHub();
     startIntervals();
   } else {
     stopIntervals();
@@ -6500,12 +6504,12 @@ window.addEventListener('keydown', function(e) {
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
     fetchNowPlaying();
-    fetchRecentlyPlayed();
+    fetchRecentFromGitHub();
   }
 });
 window.addEventListener('focus', () => {
   fetchNowPlaying();
-  fetchRecentlyPlayed();
+  fetchRecentFromGitHub();
 });
 
 // === Now Playing Manual Refresh ===
@@ -6514,7 +6518,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   // Immediately fetch the latest now playing info
   fetchNowPlaying();
   // Also refresh the recent songs list
-  fetchRecentlyPlayed();
+  fetchRecentFromGitHub();
 });
 </script>
 <script>
@@ -9733,7 +9737,7 @@ if ('serviceWorker' in navigator) {
         await window.refreshSongSearch();
       } else {
         // Fallback fetch — matches earlier working endpoint
-        var url = 'https://player-green.vercel.app/api/recent';
+        var url = 'https://essentialradio.github.io/player/playout_log_rolling.json';
         url += (url.indexOf('?')===-1?'?':'&') + 'ts=' + Date.now();
         var res = await fetch(url, { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -10220,76 +10224,6 @@ async function getLatest(){
     appVersion: (window.APP_VERSION || 'v20250928093717')
   });
 </script>
-
-<script>
-(async function () {
-  async function fetchRecentlyPlayed() {
-    try {
-      const res = await fetch('https://player-green.vercel.app/api/recent?limit=10&_=' + Date.now(), { cache: 'no-store' });
-      if (!res.ok) throw new Error('recent API ' + res.status);
-      const data = await res.json();
-
-      const rows = Array.isArray(data) ? data : [];
-      const seen = new Set();
-      const items = rows
-        .map(it => ({
-          artist: it.Artist || it.artist || '',
-          title:  it.Title  || it.title  || '',
-          time:   it['Scheduled Time'] || it.startTime || it.startedAt || ''
-        }))
-        .filter(it => it.artist && it.title)
-        .filter(it => { const k = `${it.artist}—${it.title}—${it.time}`; if (seen.has(k)) return false; seen.add(k); return true; })
-        .filter(it => {
-          const name = `${it.artist} – ${it.title}`;
-          return (typeof window.currentTrackID === 'string') ? name !== window.currentTrackID : true;
-        })
-        .slice(0, 5);
-
-      const list = document.getElementById('recent-list');
-      if (!list) return;
-
-      const htmlItems = await Promise.all(items.map(async it => {
-        const name = `${it.artist} – ${it.title}`;
-        const art  = (typeof window.getTrackArtwork === 'function')
-          ? (await window.getTrackArtwork(name)) || 'Essential Radio Logo.png'
-          : 'Essential Radio Logo.png';
-        const hhmm = (it.time || '').toString().slice(11,16) || '';
-        const lastfm = `https://www.last.fm/music/${encodeURIComponent(it.artist.replace(/\s+/g, '+'))}`;
-        return `
-          <li>
-            <span class="time">${hhmm}</span>
-            <img src="${art}" alt="Cover for ${name}" loading="lazy" />
-            <span class="info">${name}
-              <a href="${lastfm}" target="_blank" rel="noopener" class="lastfm-link" title="More about ${it.artist} on Last.fm">↗</a>
-            </span>
-          </li>`;
-      }));
-
-      list.innerHTML = htmlItems.join('');
-      if (typeof window.observer !== 'undefined' && window.observer) {
-        list.querySelectorAll('img[loading="lazy"]').forEach(img => window.observer.observe(img));
-      }
-    } catch (e) {
-      console.error('Recently Played error:', e);
-    }
-  }
-
-  // Expose globally
-  window.fetchRecentlyPlayed = fetchRecentlyPlayed;
-
-  // Run initially and on a timer
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchRecentlyPlayed();
-      if (!window.recentInterval) window.recentInterval = setInterval(fetchRecentlyPlayed, 20000);
-    }, { once: true });
-  } else {
-    fetchRecentlyPlayed();
-    if (!window.recentInterval) window.recentInterval = setInterval(fetchRecentlyPlayed, 20000);
-  }
-})();
-</script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
