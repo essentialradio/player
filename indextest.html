@@ -10430,6 +10430,8 @@ enter;       /* centre vertically */
   async function fetchFromPlayerGreen(){
     const base = 'https://player-green.vercel.app';
     const candidates = [
+      base + '/api/latestTrack',
+      base + '/api/recent',
       base + '/now.json',
       base + '/nowplaying.json',
       base + '/api/now',
@@ -10441,9 +10443,21 @@ enter;       /* centre vertically */
         const r = await fetch(url + '?ts=' + Date.now(), { cache: 'no-store' });
         if(!r.ok) continue;
         const js = await r.json();
-        // Normalize common shapes
         let artist = js.artist || (js.now && js.now.artist) || (js.current && js.current.artist) || '';
         let title  = js.title  || (js.now && js.now.title ) || (js.current && js.current.title ) || '';
+
+        if ((!artist && !title) && js.latestTrack){
+          artist = js.latestTrack.artist || js.latestTrack.Artist || '';
+          title  = js.latestTrack.title  || js.latestTrack.Title  || '';
+        }
+        if ((!artist && !title) && Array.isArray(js.recent) && js.recent.length){
+          artist = js.recent[0].artist || js.recent[0].Artist || '';
+          title  = js.recent[0].title  || js.recent[0].Title  || '';
+        }
+        if ((!artist && !title) && Array.isArray(js.items) && js.items.length){
+          artist = js.items[0].artist || js.items[0].Artist || '';
+          title  = js.items[0].title  || js.items[0].Title  || '';
+        }
         if (!artist && js.Artist) artist = js.Artist;
         if (!title  && js.Title ) title  = js.Title;
         if (artist || title) return { artist: String(artist).trim(), title: String(title).trim() };
@@ -10455,12 +10469,26 @@ enter;       /* centre vertically */
         if (!r2.ok) continue;
         const text = await r2.text();
         try{
-          const js = JSON.parse(text);
-          let artist = js.artist || (js.now && js.now.artist) || (js.current && js.current.artist) || '';
-          let title  = js.title  || (js.now && js.now.title ) || (js.current && js.current.title ) || '';
-          if (!artist && js.Artist) artist = js.Artist;
-          if (!title  && js.Title ) title  = js.Title;
-          if (artist || title) return { artist: String(artist).trim(), title: String(title).trim() };
+const js = JSON.parse(text);
+        let artist = js.artist || (js.now && js.now.artist) || (js.current && js.current.artist) || '';
+        let title  = js.title  || (js.now && js.now.title ) || (js.current && js.current.title ) || '';
+
+        if ((!artist && !title) && js.latestTrack){
+          artist = js.latestTrack.artist || js.latestTrack.Artist || '';
+          title  = js.latestTrack.title  || js.latestTrack.Title  || '';
+        }
+        if ((!artist && !title) && Array.isArray(js.recent) && js.recent.length){
+          artist = js.recent[0].artist || js.recent[0].Artist || '';
+          title  = js.recent[0].title  || js.recent[0].Title  || '';
+        }
+        if ((!artist && !title) && Array.isArray(js.items) && js.items.length){
+          artist = js.items[0].artist || js.items[0].Artist || '';
+          title  = js.items[0].title  || js.items[0].Title  || '';
+        }
+        if (!artist && js.Artist) artist = js.Artist;
+        if (!title  && js.Title ) title  = js.Title;
+        if (artist || title) return { artist: String(artist).trim(), title: String(title).trim() };
+
         }catch(e){ /* not JSON */ }
       }catch(e){}
     }
