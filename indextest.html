@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <script>
   // Cache/version guard to avoid stale service workers and cached assets
   const APP_VERSION = '20250928042827';
@@ -20,13 +21,13 @@
   })();
 </script>
 <html data-theme="light" lang="en">
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="no-store, no-cache, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="no-cache" http-equiv="Pragma"/>
+<meta content="0" http-equiv="Expires"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
 <title>Essential Radio Player</title>
-<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="strict-origin-when-cross-origin" name="referrer">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
     /* --- NAVBAR & MODALS ONLY --- */
@@ -56,7 +57,6 @@
   background: #ffe67c;
   color: #191c29;
 }
-
 
 .navbar {
       position: fixed;
@@ -267,7 +267,6 @@ body {
   background: #222;
   border-left: 1px solid #333;
 }
-
 
 /* And let wheel / swipe bubble out when you hit the end */
 .right-panel { overscroll-behavior: contain; }
@@ -703,7 +702,6 @@ body {
   margin-bottom: 2px;
 }
 
-
   #now-playing-card {
     font-size: 15px !important;
     padding: 10px 4px !important;
@@ -790,9 +788,7 @@ body {
   box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
 }
 
-
 /* MOBILE TWEAKS */
-
 
 @media (max-width: 768px) {
   .right-panel {
@@ -963,7 +959,6 @@ body.modal-open {
   gap: 12px;
 }
 
-
 /* Banner image */
 .side-banner-img {
   width: 160px;
@@ -1033,7 +1028,6 @@ body.modal-open {
   margin-bottom: 4px;
   display: block;
 }
-
 
 @media (max-width: 768px) {
   .modal {
@@ -1942,8 +1936,6 @@ footer, .footer {
   color: var(--er-text) !important;
   border-top: 1px solid var(--er-border) !important;
 }
-
-
 
 /* === RNH story text to white === */
 #rnh-news-list,
@@ -3211,7 +3203,6 @@ border-left: 4px solid var(--brand, #fed351);
   #share-btn { width: 100%; margin-top: 10px; justify-content: center; }
 }
 
-
 /* Share button inside Now Playing card */
 #share-btn {
   display: inline-flex;
@@ -3273,8 +3264,6 @@ border-left: 4px solid var(--brand, #fed351);
     transform: translateX(-50%);
   }
 }
-
-
 
 /* --- Share button inside LIVE box --- */
 .live-indicator #share-btn {
@@ -3355,7 +3344,6 @@ border-left: 4px solid var(--brand, #fed351);
 /* Highlight for the current show inside the Schedule modal */
 .show--current,
 .current-show,
-
 
 /* If the entry already has a highlight class from older CSS, keep it visible */
 .show-entry.current, .show.current, .schedule-item.current { 
@@ -4347,7 +4335,6 @@ html[data-theme="light"] #mobileNowBar {
   }
 }
 </style>
-
 <style id="listen-modal-offset-fix">
 /* Responsive fix for Listen Again modal */
 #listenModal .modal-content {
@@ -4429,20 +4416,19 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
-</head>
+
 <!-- Injected Now Playing hooks -->
 <section id="nowPlaying" style="display:none; padding:0.5rem 0;">
-  <div style="font-weight:600; font-size:1.1rem;">
-    <span id="showTitle">Loading…</span>
-  </div>
-  <div style="opacity:0.85;">
-    <span id="showPresenter"></span>
-    <span id="showSource" style="margin-left:0.5rem; font-size:0.9rem; border:1px solid currentColor; padding:0 0.35rem; border-radius:0.4rem;"></span>
-  </div>
-  <img id="artwork" alt="" style="margin-top:0.4rem; max-width:160px; height:auto; display:none;" onload="this.style.display='inline-block'">
-  <small id="npStatus" style="display:none;"></small>
+<div style="font-weight:600; font-size:1.1rem;">
+<span id="showTitle">Loading…</span>
+</div>
+<div style="opacity:0.85;">
+<span id="showPresenter"></span>
+<span id="showSource" style="margin-left:0.5rem; font-size:0.9rem; border:1px solid currentColor; padding:0 0.35rem; border-radius:0.4rem;"></span>
+</div>
+<img alt="" id="artwork" onload="this.style.display='inline-block'" style="margin-top:0.4rem; max-width:160px; height:auto; display:none;"/>
+<small id="npStatus" style="display:none;"></small>
 </section>
-
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
@@ -4482,7 +4468,7 @@ html[data-theme="light"] #mobileNowBar {
 <div class="header-spacer"></div>
 <div style="width:100%;display:flex;justify-content:center;">
 <div class="player-wrapper">
-<img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png"/>
+<img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png">
 <!-- ✅ MAIN PLAYER WRAPPER -->
 <div class="strip-container three-panel"><div class="strip-topbar"></div>
 <!-- LEFT PANEL -->
@@ -5070,7 +5056,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   border-top:1px solid #2b2b2b; /* the line */
   box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
 }
-
 
   @media (max-width: 768px) {
     .strip-container {
@@ -6256,9 +6241,10 @@ async function fetchNowPlaying() {
     }
   });
 </script>
-
 <!-- Removed duplicate show title formatter script -->
-<script>
+<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
     function formatShowTitleMobileOnly(title) {
       if (window.innerWidth <= 600) {
         const match = title.match(/(.*)\s+with\s+(.*)/i);
@@ -6279,7 +6265,8 @@ async function fetchNowPlaying() {
       // initial format
       showSpan2.innerHTML = formatShowTitleMobileOnly(showSpan2.textContent);
     }
-  </script>
+  
+*/</script>
 <!-- Removed redundant modal open/close script; bounce handling moved to unified script -->
 <script>
 function refreshCombinedTravel() {
@@ -6613,7 +6600,7 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   document.addEventListener('DOMContentLoaded', load);
 })();
 </script>
-</div></div></div><script>
+</div></img></div></div><script>
 
   setTimeout(() => {
     try {
@@ -7362,7 +7349,9 @@ function closePresenterModal(presenterId) {
   toggleLogoVisibility();
 }
 </script>
-<script>
+<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 // Fallback observer: if modals’ display/style changes outside openModal/closeModal, keep logo in sync.
 (function() {
   const modalEls = Array.from(document.querySelectorAll('.modal'));
@@ -7396,7 +7385,8 @@ function closePresenterModal(presenterId) {
   // Initial sync in case page loaded with a modal already open
   document.addEventListener('DOMContentLoaded', sync);
 })();
-</script>
+
+*/</script>
 <!-- === Modal Behavior Overrides (Injected) === -->
 <script id="modal-behavior-overrides">
 (function(){
@@ -7604,7 +7594,6 @@ function closePresenterModal(presenterId) {
   color: #111 !important;
   border-color: rgba(0,0,0,0.08) !important;
 }
-
 
 /* Force black text for volume percentage in Now Playing */
 #volume-display {
@@ -7835,7 +7824,9 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 })();
 </script>
 <!-- Enhancements JS: marquee, live highlight, share -->
-<script>
+<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (() => {
   const TZ = "Europe/London";
 
@@ -8098,9 +8089,12 @@ const liveBox = document.querySelector(".live-indicator");
     });
   });
 })();
-</script>
+
+*/</script>
 <!-- Robustness patch: keep Share button from disappearing if Now Playing re-renders -->
-<script>
+<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function () {
   function ensureShareMounted() {
     var liveBox = document.querySelector(".live-indicator");
@@ -8127,8 +8121,11 @@ const liveBox = document.querySelector(".live-indicator");
   ensureShareMounted();
   setInterval(ensureShareMounted, 4000);
 })();
-</script>
-<script id="schedule-highlight-logic">
+
+*/</script>
+<script id="schedule-highlight-logic">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function() {
   const LONDON_TZ = 'Europe/London';
   const DASH = '[\-–—]'; // hyphen, en-dash, em-dash
@@ -8269,8 +8266,11 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
   window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
 })();
-</script>
-<script id="np-share-binder">
+
+*/</script>
+<script id="np-share-binder">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function(){
   function bindShareButtons(){
     var btns = document.querySelectorAll('#np-share-toolbar .np-share-btn');
@@ -8294,7 +8294,8 @@ const liveBox = document.querySelector(".live-indicator");
     obs.observe(tb, {childList:true, subtree:true});
   }
 })();
-</script>
+
+*/</script>
 <script id="np-share-href-enhancer">
 (function(){
   function s(){ try { return (window.shareSentence && window.shareSentence()) || ""; } catch(e){ return ""; } }
@@ -8349,7 +8350,9 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:nowplaying:update', updateHrefs);
 })();
 </script>
-<script id="np-share-move-to-front">
+<script id="np-share-move-to-front">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function(){
   function moveToolbar(){
     var card = document.getElementById('now-playing-card');
@@ -8374,7 +8377,8 @@ const liveBox = document.querySelector(".live-indicator");
     obs.observe(card, {childList:true, subtree:true});
   }
 })();
-</script>
+
+*/</script>
 <script id="np-share-click-clean">
 (function(){
   function norm(p){
@@ -8453,7 +8457,9 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:nowplaying:update', updateHrefs);
 })();
 </script>
-<script id="np-share-title-artist-extractor">
+<script id="np-share-title-artist-extractor">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function(){
   function txt(el){ return (el && (el.textContent||"").trim()) || ""; }
   function q(sel){ return document.querySelector(sel); }
@@ -8563,8 +8569,11 @@ const liveBox = document.querySelector(".live-indicator");
   // Trigger an update for share hrefs
   try { window.dispatchEvent(new Event('essential:nowplaying:update')); } catch(e){}
 })();
-</script>
-<script id="np-share-toolbar-js">
+
+*/</script>
+<script id="np-share-toolbar-js">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function(){
   function inToolbar(el){ while(el){ if (el.id==='np-share-toolbar') return true; el=el.parentElement; } return false; }
   function firstOutside(root, sel){
@@ -8639,8 +8648,11 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:nowplaying:update', refreshAnchors);
   setInterval(refreshAnchors,5000);
 })();
-</script>
-<script>
+
+*/</script>
+<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function(){
   function getCard() {
     return document.querySelector("#now-playing-card") || document.querySelector("#nowPlaying") || null;
@@ -8700,9 +8712,12 @@ const liveBox = document.querySelector(".live-indicator");
     obs2.observe(platforms, { childList: true, subtree: true, characterData: true });
   }
 })();
-</script>
+
+*/</script>
 <!-- MIXCLOUD COMPACT: JS -->
-<script id="mixcloud-compact-js">
+<script id="mixcloud-compact-js">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function () {
   function compact(el) {
     if (!el || !el.src || !/mixcloud\.com\/widget\/iframe/i.test(el.src)) return;
@@ -8740,7 +8755,8 @@ const liveBox = document.querySelector(".live-indicator");
     obs.observe(document.body, { childList: true, subtree: true });
   });
 })();
-</script>
+
+*/</script>
 <style>
   /* Minimal style so it sits like a compact utility button */
   .er-install-btn {
@@ -8942,7 +8958,9 @@ if ('serviceWorker' in navigator) {
   });
 </script>
 <!-- News & Travel auto-refresh -->
-<script>
+<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 // ===== News & Travel modal auto-refresh (inline) =====
 (function(){
   function isOpen(modal){
@@ -9022,7 +9040,8 @@ if ('serviceWorker' in navigator) {
     else { stopNewsAuto(); stopTravelAuto(); }
   });
 })();
-</script>
+
+*/</script>
 <script>
 // ==== Listen Again (Mixcloud) — auto-refresh on open/resume ====
 (function(){
@@ -9124,7 +9143,9 @@ if ('serviceWorker' in navigator) {
   });
 })();
 </script>
-<script id="modal-refresh-on-open">
+<script id="modal-refresh-on-open">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 // === Central modal refresh-on-open system ================================
 // Usage: add data-refresh-fn="yourFunctionName" to a .modal element.
 // When openModal('thatModalId') is called, we'll run window[yourFunctionName]()
@@ -9197,7 +9218,8 @@ if ('serviceWorker' in navigator) {
   });
   obs.observe(document.body, { attributes:true, childList:true, subtree:true, attributeFilter:['style','class'] });
 })();
-</script>
+
+*/</script>
 <script id="presenter-click-hijack">
 // Hijack ON AIR NOW presenter click to open the specific presenter modal if we can find it.
 // Fallback to the big Presenters list if there's no match.
@@ -9287,7 +9309,9 @@ if ('serviceWorker' in navigator) {
   }, { capture: true });
 })();
 </script>
-<script id="modal-a11y-focus-trap">
+<script id="modal-a11y-focus-trap">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 // === Modal accessibility + focus trap + Escape close =====================
 (function(){
   // Utility: find or create an id for a heading
@@ -9414,7 +9438,8 @@ if ('serviceWorker' in navigator) {
     document.querySelectorAll('.modal').forEach(ensureHeadingLabel);
   });
 })();
-</script>
+
+*/</script>
 <!-- Sticky Mobile Now Playing Bar -->
 <div class="artist" id="mobileNpArtist"></div>
 <script id="mobile-now-bar-js">
@@ -9500,7 +9525,9 @@ if ('serviceWorker' in navigator) {
   // document.addEventListener('nowPlayingUpdated', updateBar);
 })();
 </script>
-<script id="mobile-now-bar-visibility">
+<script id="mobile-now-bar-visibility">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (() => {
   const mobileBar = document.getElementById('mobileNowBar');
   const player = document.getElementById('player-box');
@@ -9539,7 +9566,8 @@ if ('serviceWorker' in navigator) {
     applyVisibility(inView);
   });
 })();
-</script>
+
+*/</script>
 <!-- Mobile mini-player (single-line "Artist – Title") -->
 <!-- Mobile mini-player (single-line "Artist – Title") -->
 <div aria-label="Mini player" id="mobileNowBar" role="region">
@@ -9548,7 +9576,9 @@ if ('serviceWorker' in navigator) {
 <div id="mobileNowText" title="Now Playing">Artist – Title</div>
 </div>
 </div>
-<script id="mobile-mini-player-script">
+<script id="mobile-mini-player-script">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 (function () {
   const $ = (sel, root=document) => root.querySelector(sel);
 
@@ -9660,7 +9690,8 @@ if ('serviceWorker' in navigator) {
     io.observe(playerBox);
   }
 })();
-</script>
+
+*/</script>
 <script id="wire-refresh-yellow-both">
 (function(){
   async function unifiedRefresh(){
@@ -9731,7 +9762,9 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script id="np-enhancements">
+<script id="np-enhancements">/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
+
 // === Smooth rAF bar animation & robust resets ===
 let _npRafId = null;
 function hardResetBar(){
@@ -9776,7 +9809,8 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-</script>
+
+*/</script>
 <script id="global-modal-close-helpers">
 (function(){
   function closeAllModals(){
@@ -9813,7 +9847,6 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
-
 <!-- ===== Schedule highlight polish (CSS) ===== -->
 <style id="schedule-highlight-polish">
   /* Ensure badge anchor exists */
@@ -9849,9 +9882,9 @@ document.addEventListener('visibilitychange', () => {
     html:focus-within { scroll-behavior: auto; }
   }
 </style>
+<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
+/*
 
-
-<script>
 (() => {
   const MS_DAY = 86400000;
 
@@ -10040,8 +10073,8 @@ document.addEventListener('visibilitychange', () => {
   window.highlightCurrentShow = highlightCurrentShow;
   window.highlightLiveShows = highlightLiveShows;
 })();
-</script>
 
+*/</script>
 <script>
 (function() {
   function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
@@ -10098,7 +10131,6 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
-
 <script>
 async function getLatest(){
   const NOWPLAYING_URL = "/api/nowPlaying";
@@ -10154,7 +10186,6 @@ async function getLatest(){
       .catch(err => console.warn('[ER] SW register failed', err));
   }
 </script>
-
 <!-- Now Playing (schedule banner) -->
 <script src="nowplaying.patched.js?v=20250928"></script>
 <script>
@@ -10168,25 +10199,17 @@ async function getLatest(){
     appVersion: (window.APP_VERSION || 'v20250928093718')
   });
 </script>
-
 <!-- Optional: dynamic track artwork helper for Recently Played -->
 <script src="https://player-green.vercel.app//api/artwork.js"></script>
 <script> window.DEFAULT_COVER_URL = 'essential-radio-logo.png'; </script>
-
 <!-- Recently Played -->
 <script src="recently-played.min.js?v=20250928"></script>
-
 <style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
   .modal {
     display: flex;
     align-items: c
-
-
-
-
-
 
 enter;       /* centre vertically */
     justify-content: center;   /* centre horizontally */
@@ -10254,7 +10277,6 @@ enter;       /* centre vertically */
   }
 }
 
-
 .show--current::after, .current-show::after, .show-entry.current::after, .show.current::after, .schedule-item.current::after, .live-now::after {
   content: var(--now-flag, "ON AIR NOW");
   position: absolute;
@@ -10274,5 +10296,102 @@ enter;       /* centre vertically */
 }
 
 </style>
-</body>
-</html>
+
+</meta></meta></meta></html><script>(function(){
+  if (window.__ER_SAFE_INIT__) return;
+  window.__ER_SAFE_INIT__ = true;
+
+  // Shared holders
+  window._npPollTimer = window._npPollTimer || null;
+  window._newsTimer = window._newsTimer || null;
+  window._travelTimer = window._travelTimer || null;
+
+  function $(sel){ return document.querySelector(sel); }
+
+  // Basic artwork fetch (guarded)
+  async function fetchArtworkSafe(trackName){
+    try{
+      if(!trackName) return;
+      const cleaned = trackName.replace(/\s*-\s*/g, ' ');
+      const url = 'https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=' + encodeURIComponent(cleaned);
+      const res = await fetch(url, { cache: 'no-store' });
+      const js = await res.json();
+      const hit = (js.results||[]).find(r => (r.kind==='song'||r.wrapperType==='track') && r.artworkUrl100);
+      if(hit){
+        const url300 = hit.artworkUrl100.replace('100x100','300x300');
+        const el = document.getElementById('artwork') || document.querySelector('.artwork, #artworkEl');
+        if(el){ el.src = url300; el.classList && el.classList.add('loaded'); }
+      }
+    }catch(e){ /* no-op in safe mode */ }
+  }
+
+  // Basic Now Playing poller (15s), with guard to prevent stacking
+  async function pollNowPlaying(){
+    if (window.__NP_BUSY__) return;
+    window.__NP_BUSY__ = true;
+    try{
+      // Find an endpoint from the DOM (fallback to known alt)
+      const alt = "https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html";
+      const res = await fetch(alt, { cache: 'no-store' });
+      const text = await res.text();
+      // Very forgiving parse: try to extract "artist - title"
+      let artist = '', title = '';
+      const m = text.match(/"title"\s*:\s*"([^"]+)"/i) || text.match(/>([^<]+)</);
+      if(m){
+        const t = m[1] || m[0];
+        const parts = String(t).split(" - ");
+        if(parts.length>=2){ artist = parts[0].trim(); title = parts.slice(1).join(" - ").trim(); }
+        else { title = String(t).trim(); }
+      }
+      const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying');
+      if (npEl){
+        npEl.textContent = [artist, title].filter(Boolean).join(" — ") || (title || "Live");
+      }
+      await fetchArtworkSafe([artist, title].filter(Boolean).join(" "));
+    }catch(e){
+      // Silent in safe mode
+    }finally{
+      window.__NP_BUSY__ = false;
+    }
+  }
+
+  function safeInterval(refName, fn, ms){
+    if (window[refName]) clearInterval(window[refName]);
+    window[refName] = setInterval(fn, ms);
+  }
+
+  // Kick off
+  pollNowPlaying();
+  safeInterval('_npPollTimer', pollNowPlaying, 15000);
+
+  // News / Travel very light refresh (2 mins) - content replaced only if element exists
+  async function softReload(id, url){
+    const el = document.getElementById(id);
+    if(!el || !url) return;
+    try{
+      const res = await fetch(url, { cache: 'no-store' });
+      const html = await res.text();
+      el.innerHTML = html;
+    }catch(e){}
+  }
+
+  const newsUrl = (document.getElementById('news') && document.getElementById('news').dataset && document.getElementById('news').dataset.src) || null;
+  const travelUrl = (document.getElementById('travel') && document.getElementById('travel').dataset && document.getElementById('travel').dataset.src) || null;
+
+  safeInterval('_newsTimer', function(){ softReload('news', newsUrl); }, 120000);
+  safeInterval('_travelTimer', function(){ softReload('travel', travelUrl); }, 120000);
+
+  // Stop timers when hidden to reduce CPU
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden){
+      if (window._npPollTimer) { clearInterval(window._npPollTimer); window._npPollTimer = null; }
+      if (window._newsTimer) { clearInterval(window._newsTimer); window._newsTimer = null; }
+      if (window._travelTimer) { clearInterval(window._travelTimer); window._travelTimer = null; }
+    } else {
+      pollNowPlaying();
+      if (!window._npPollTimer) window._npPollTimer = setInterval(pollNowPlaying, 15000);
+      if (!window._newsTimer && newsUrl) window._newsTimer = setInterval(function(){ softReload('news', newsUrl); }, 120000);
+      if (!window._travelTimer && travelUrl) window._travelTimer = setInterval(function(){ softReload('travel', travelUrl); }, 120000);
+    }
+  });
+})();</script>
