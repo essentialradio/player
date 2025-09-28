@@ -53454,5 +53454,31 @@
     "Full Duration (mins)": 3.43,
     "Start ISO": "2025-09-28T10:32:34Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-28T10:00:00Z",
+    "Scheduled Time": "11:35",
+    "Displayed Time": "11:35",
+    "Artist": "Diana Ross",
+    "Title": "Ain't No Mountain High Enough",
+    "Duration (s)": 199,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.48,
+    "Start ISO": "2025-09-28T10:35:47Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-28T10:00:00Z",
+    "Scheduled Time": "11:39",
+    "Displayed Time": "11:39",
+    "Artist": "Dusty Springfield",
+    "Title": "I Just Don't Know What To Do With Myself",
+    "Duration (s)": 168,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-09-28T10:39:11Z",
+    "Source": "PLAYIT"
   }
 ]
