@@ -52245,5 +52245,31 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-09-28T17:55:09+01:00",
     "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-28 18:00",
+    "Scheduled Time": "18:03",
+    "Displayed Time": "18:03",
+    "Artist": "Robbie Williams",
+    "Title": "Rock DJ</body></html>",
+    "Duration (s)": null,
+    "Full Duration (s)": null,
+    "Duration (mins)": null,
+    "Full Duration (mins)": null,
+    "Start ISO": "2025-09-28T18:03:16+01:00",
+    "Source": "ALT"
+  },
+  {
+    "Hour": "2025-09-28T17:00:00Z",
+    "Scheduled Time": "18:00",
+    "Displayed Time": "18:00",
+    "Artist": "Robbie Williams",
+    "Title": "Rock DJ",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-09-28T18:00:26+01:00",
+    "Source": "ALT"
   }
 ]
