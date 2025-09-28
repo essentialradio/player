@@ -1,7 +1,31 @@
 <!DOCTYPE html>
 
 <html data-theme="light" lang="en">
-<head>
+\1
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<script>
+  // Cache/version guard to avoid stale service workers and cached assets
+  const APP_VERSION = '20250928042825';
+  (function() {
+    try {
+      const KEY = 'er_app_version';
+      const prev = localStorage.getItem(KEY);
+      if (prev !== APP_VERSION) {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+        }
+        if (typeof caches !== 'undefined') {
+          caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k))));
+        }
+        localStorage.setItem(KEY, APP_VERSION);
+        console.log('App version changed to', APP_VERSION, '- cleared SW and caches');
+      }
+    } catch(e) { console.warn('Version/cache guard failed', e); }
+  })();
+</script>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
@@ -6166,7 +6190,7 @@ try {
     // Clean "Artist - Title" into "Artist Title" for better matching
     const cleaned = trackName.replace(/\s*-\s*/g, ' ');
     const res = await fetch(
-      `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(cleaned)}`
+      `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(cleaned)}&v=${encodeURIComponent(APP_VERSION)}`
     );
     const js = await res.json();
     const hit = (js.results || []).find(r =>
@@ -6194,7 +6218,7 @@ try {
     async function getTrackArtwork(query) {
 if (artworkCache[query]) return artworkCache[query];
   try {
-    const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(query)}`;
+    const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(query)}&v=${encodeURIComponent(APP_VERSION)}`;
     const res = await fetch(url);
     const d = await res.json();
     const hit = (d.results || []).find(r =>
