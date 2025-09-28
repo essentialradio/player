@@ -6041,6 +6041,37 @@ async function fetchNowPlaying() {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
+  // Validate + branch by determinacy
+  const hasCoreFields = !!(latest && latest.artist && latest.title);
+  if (hasCoreFields && (latest.indeterminate || latest.displayMode === 'show')) {
+    const nowPlaying = document.getElementById('now-playing');
+    if (nowPlaying) {
+      const showTitle = latest.title || 'On Air';
+      const presenter  = latest.artist || '';
+      nowPlaying.innerHTML = `
+        <span style="color:#fed351;">On Air:</span>
+        <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+        <span class="show-title" style="color:white;font-weight:600;font-size:1.2em;">${showTitle}</span><br/>
+        ${presenter ? `<span class="show-presenter" style="color:white;">with ${presenter}</span>` : ''}
+      `;
+      try { document.title = presenter ? `Essential Radio: ${showTitle} with ${presenter}` : `Essential Radio: ${showTitle}`; } catch {}
+      try {
+        const prog = document.getElementById('np-progress');
+        if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); }
+        const cd = document.getElementById('countdown'); if (cd) cd.textContent = '—/—';
+        if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
+      } catch(e){}
+    }
+    return;
+  }
+
+  // Otherwise we need timing for a track with countdown
+  if (!hasCoreFields || !latest.duration || !latest.startTime) {
+    if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+    return;
+  }
+
+
     // Validate payload
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
@@ -6156,6 +6187,11 @@ if (remaining > 0) {
     updateCountdown();
     if (window._npTimer) { clearInterval(window._npTimer); }
     window._npTimer = setInterval(updateCountdown, 1000);
+  } catch (err) {
+    console.error('Error fetching now playing:', err);
+    if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+  }
+}untdown, 1000);
   } catch (err) {
     console.error('Error fetching now playing:', err);
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
