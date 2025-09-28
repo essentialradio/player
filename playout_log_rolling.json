@@ -52531,5 +52531,31 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-09-28T04:05:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-28T04:00:00Z",
+    "Scheduled Time": "05:08",
+    "Displayed Time": "05:08",
+    "Artist": "Billie Eilish",
+    "Title": "What Was I Made For?",
+    "Duration (s)": 204,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.7,
+    "Start ISO": "2025-09-28T04:08:43Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-28T04:00:00Z",
+    "Scheduled Time": "05:12",
+    "Displayed Time": "05:12",
+    "Artist": "Pink",
+    "Title": "All Out Of Fight",
+    "Duration (s)": 201,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-09-28T04:12:29Z",
+    "Source": "PLAYIT"
   }
 ]
