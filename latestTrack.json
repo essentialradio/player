@@ -1,7 +1,9 @@
 {
-  "artist": "George Michael",
-  "title": "Careless Whisper",
-  "startTime": "2025-09-28T17:45:29+01:00",
+  "artist": "U2",
+  "title": "Pride (In The Name of Love)",
+  "startTime": "2025-09-28T17:45:33+01:00",
   "duration": 3600,
-  "source": "ALT"
+  "source": "ALT",
+  "indeterminate": true,
+  "displayMode": "unknown"
 }
