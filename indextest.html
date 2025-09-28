@@ -6174,82 +6174,89 @@ async function fetchNowPlaying() {
 
     
 
-    async function fetchArtwork(trackName) {
-try {
-    const cleaned = trackName.replace(/\s*-\s*/g, ' ');
-    const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(cleaned)}${typeof APP_VERSION !== 'undefined' ? `&v=${encodeURIComponent(APP_VERSION)}` : ''}`;
-    const res = await fetch(url);
-    const js = await res.json();
-    const hit = (js.results || []).find(r =>
-      (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100
-    );
-    if (hit) {
-      const url300 = hit.artworkUrl100.replace('100x100','300x300');
-      artwork.onload = () => artwork.classList.add('loaded');
-      artwork.onerror = applyFallbackImmediate;
-      artworkCache[trackName] = url300;
-      artwork.src = url300;
-      return;
-    }
-  } catch (e) {
-    console.warn('fetchArtwork iTunes fetch failed', e);
+    <script>
+  // --- Artwork helpers (uses #artwork image) ---
+  const artworkCache = {};
+  const artworkEl = document.getElementById('artwork');
+
+  function applyFallbackImmediate() {
+    if (!artworkEl) return;
+    artworkEl.src = (window.DEFAULT_COVER_URL || 'essential-radio-logo.png');
+    artworkEl.classList.remove('loaded');
+    artworkEl.classList.add('fallback');
   }
-  // Fallback handled elsewhere
-}
-    function applyFallbackImmediate() {
-      artwork.src = 'Essential Radio Logo.png';
-      artwork.classList.remove('loaded');
-      artwork.classList.add('fallback');
+
+  // Update the visible #artwork <img> for a given track name (Artist Title)
+  async function fetchArtwork(trackName) {
+    if (!artworkEl || !trackName) return;
+    try {
+      const cleaned = trackName.replace(/\s*-\s*/g, ' ');
+      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(cleaned)}${typeof APP_VERSION !== 'undefined' ? `&v=${encodeURIComponent(APP_VERSION)}` : ''}`;
+      const res = await fetch(url);
+      const js  = await res.json();
+      const hit = (js.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+      if (hit) {
+        const url300 = hit.artworkUrl100.replace('100x100','300x300');
+        artworkEl.onload  = () => artworkEl.classList.add('loaded');
+        artworkEl.onerror = applyFallbackImmediate;
+        artworkCache[trackName] = url300;
+        artworkEl.src = url300;
+        return;
+      }
+    } catch (e) {
+      console.warn('fetchArtwork iTunes fetch failed', e);
     }
-    const artworkCache = {};
-    async function getTrackArtwork(query) {
-if (artworkCache[query]) return artworkCache[query];
-  try {
-    const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(query)}${typeof APP_VERSION !== 'undefined' ? `&v=${encodeURIComponent(APP_VERSION)}` : ''}`;
-    const res = await fetch(url);
-    const d = await res.json();
-    const hit = (d.results || []).find(r =>
-      (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100
-    );
-    if (hit) {
-      const hi = hit.artworkUrl100.replace('100x100','300x300');
-      artworkCache[query] = hi;
-      return hi;
+    applyFallbackImmediate();
+  }
+
+  // Returns a URL string for use elsewhere (e.g., Recently Played)
+  async function getTrackArtwork(query) {
+    if (artworkCache[query]) return artworkCache[query];
+    try {
+      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(query)}${typeof APP_VERSION !== 'undefined' ? `&v=${encodeURIComponent(APP_VERSION)}` : ''}`;
+      const res = await fetch(url);
+      const d   = await res.json();
+      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+      if (hit) {
+        const hi = hit.artworkUrl100.replace('100x100','300x300');
+        artworkCache[query] = hi;
+        return hi;
+      }
+    } catch (e) {
+      console.warn('getTrackArtwork iTunes fetch failed', e);
     }
-  } catch (e) {
-    console.warn('getTrackArtwork iTunes fetch failed', e);
+    // Let caller fall back to DEFAULT_COVER_URL
+    return '';
   }
-  return '';
-}
-let nowPlayingInterval = null;
-let recentInterval = null;
 
-function startIntervals() {
-  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
-  if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
-}
-function stopIntervals() {
-  clearInterval(nowPlayingInterval); nowPlayingInterval = null;
-  clearInterval(recentInterval); recentInterval = null;
-}
+  // --- Intervals: only drive Now Playing here. Recently Played manages itself. ---
+  let nowPlayingInterval = null;
 
-// Always fetch once on page load
-fetchNowPlaying();
-fetchRecentFromGitHub();
-startIntervals();
-
-// On tab visibility change, only run when visible
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") {
-    fetchNowPlaying();
-    fetchRecentFromGitHub();
-    startIntervals();
-  } else {
-    stopIntervals();
+  function startIntervals() {
+    if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
   }
-});
+  function stopIntervals() {
+    if (nowPlayingInterval) clearInterval(nowPlayingInterval);
+    nowPlayingInterval = null;
+  }
 
-  </script>
+  // Initial fetches
+  fetchNowPlaying();
+  if (window.fetchRecentlyPlayed) window.fetchRecentlyPlayed(); // call once; its script manages its own 20s timer
+  startIntervals();
+
+  // Run only when tab is visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      fetchNowPlaying();
+      if (window.fetchRecentlyPlayed) window.fetchRecentlyPlayed();
+      startIntervals();
+    } else {
+      stopIntervals(); // don't duplicate recently-played timer; it’s self-managed
+    }
+  });
+</script>
+
 <!-- Removed duplicate show title formatter script -->
 <script>
     function formatShowTitleMobileOnly(title) {
