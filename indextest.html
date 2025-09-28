@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <script>
   // Cache/version guard to avoid stale service workers and cached assets
-  const APP_VERSION = '20250928042826';
+  const APP_VERSION = '20250928042827';
   (function() {
     try {
       const KEY = 'er_app_version';
@@ -6037,68 +6037,78 @@ let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
 async function fetchNowPlaying() {
+  const NOWPLAYING_URL = 'https://player-green.vercel.app/latestTrack'; // change to full URL if cross-origin
   try {
-    const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+    const latestRes = await fetch(NOWPLAYING_URL + '?_=' + Date.now(), { cache: 'no-store' });
+    if (!latestRes.ok) throw new Error('latestTrack HTTP ' + latestRes.status);
     const latest = await latestRes.json();
 
-    // Validate + branch by determinacy
-const hasCoreFields = !!(latest && latest.artist && latest.title);
-if (hasCoreFields && (latest.indeterminate || latest.displayMode === 'show')) {
-  const nowPlaying = document.getElementById('now-playing');
-  if (nowPlaying) {
-    const showTitle = latest.title || '';
-    const presenter  = latest.artist || '';
-    nowPlaying.innerHTML = `
-      <span style="color:#fed351;">Now Playing:</span>
-      <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-      <span class="show-title" style="color:white;font-weight:600;font-size:1.2em;">${showTitle}</span><br/>
-      ${presenter ? `<span class="show-presenter" style="color:white;">by ${presenter}</span>` : ''}
-    `;
-    try { document.title = presenter ? `Essential Radio: ${showTitle} with ${presenter}` : `Essential Radio: ${showTitle}`; } catch (e) {}
-    try {
-      const prog = document.getElementById('np-progress');
-      if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); }
-      const cd = document.getElementById('countdown'); if (cd) cd.textContent = '—/—';
-      if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
-    } catch(e){}
-  }
-  return;
-}
-if (!hasCoreFields || !latest.duration || !latest.startTime) {
-  if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
-  return;
-}
+    const hasCore = !!(latest && latest.artist && latest.title);
+    const isALT = (latest && typeof latest.source === 'string' && latest.source.toUpperCase() === 'ALT');
+    const isIndeterminate = isALT || latest?.indeterminate === true || latest?.duration == null;
+
+    // ---------- SHOW MODE (ALT / indeterminate) ----------
+    if (hasCore && isIndeterminate) {
+      const nowPlaying = document.getElementById('now-playing');
+      if (nowPlaying) {
+        const showTitle = latest.title || '';
+        const presenter = latest.artist || '';
+        nowPlaying.innerHTML = `
+          <span style="color:#fed351;">Now Playing:</span>
+          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+          <span class="show-title" style="color:white;font-weight:600;font-size:1.2em;">${showTitle}</span><br/>
+          ${presenter ? `<span class="show-presenter" style="color:white;">by ${presenter}</span>` : ''}
+        `;
+        // Title: use "by" (not "with")
+        try { document.title = presenter ? `Essential Radio: ${showTitle} by ${presenter}` : `Essential Radio: ${showTitle}`; } catch (e) {}
+        // Hide progress + countdown
+        try {
+          const prog = document.getElementById('np-progress');
+          if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); }
+          const cd = document.getElementById('countdown'); if (cd) cd.textContent = '—/—';
+          if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
+        } catch(e){}
+      }
+      return;
+    }
+
+    // If we get here, we expect a proper timed item (FIXED or PlayIt)
+    if (!hasCore || !latest?.duration || !latest?.startTime) {
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+      return;
+    }
 
     const artist = latest.artist;
     const title = latest.title;
-    const startMs = new Date(latest.startTime).getTime(); // UTC ms
+    const startMs = new Date(latest.startTime).getTime();
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
 
-    // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
+    // Already ended? fall back (prevents ghost)
     if (Date.now() > endMs) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
-    // Show progress bar while a valid track is playing
+
+    // Show progress bar
     try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
-// Track identity (to detect when a NEW track arrives)
+
+    // Track identity (to detect new item)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
 
-// Only (re)start the bar if this is a NEW track.
-if (window._npActiveKey !== trackKey) {
-  window._npActiveKey = trackKey;
-  try { hardResetBar(); } catch(e){}
-  window._npLastTiming = { startMs, endMs };
-  try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
-  try { startBarAnimation(startMs, endMs); } catch(e){}
-} else {
-  // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
-  window._npLastTiming = { startMs, endMs };
-}
+    if (window._npActiveKey !== trackKey) {
+      window._npActiveKey = trackKey;
+      try { hardResetBar(); } catch(e){}
+      window._npLastTiming = { startMs, endMs };
+      try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
+      try { startBarAnimation(startMs, endMs); } catch(e){}
+    } else {
+      // Same item; refresh timing
+      window._npLastTiming = { startMs, endMs };
+    }
 
-    // Update main Now Playing block
+    // Update main Now Playing block (use "by")
     const nowPlaying = document.getElementById('now-playing');
     if (nowPlaying) {
       nowPlaying.innerHTML = `
@@ -6107,22 +6117,21 @@ if (window._npActiveKey !== trackKey) {
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
-    // Update document title and artwork (if helper exists)
-    try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
+    try { document.title = `Essential Radio: ${title} by ${artist}`; } catch {}
     try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} ${title}`); } catch {}
 
-    // Also support alternate title/artist selectors if present
+    // Update alternate selectors (if present)
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
     const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
     if (titleEl) titleEl.textContent = title;
     if (artistEl) artistEl.textContent = artist;
 
-    // Countdown updater uses UTC-safe milliseconds
+    // Countdown (FIXED / timed)
     function updateCountdown() {
       const nowMs = Date.now();
       const remaining = endMs - nowMs;
       const countdownEl = document.getElementById('countdown');
-if (remaining > 0) {
+      if (remaining > 0) {
         const mins = Math.floor(remaining / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -6130,19 +6139,20 @@ if (remaining > 0) {
         if (countdownEl) countdownEl.textContent = '—/—';
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
-        // Grace window before showing fallback to avoid micro-flash between sweepers and next track
+        // graceful poll for next item
         const GRACE_MS = 2500;
         const graceUntil = Date.now() + GRACE_MS;
         const pollDelay = 400;
         let _gracePoll;
         const _pollForNew = async () => {
           try {
-            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch(NOWPLAYING_URL + '?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
-            // If backend reports indeterminate (show mode), refresh immediately
-            if (j && (j.indeterminate || j.displayMode === 'show')) { fetchNowPlaying(); return; }
+            const jIsALT = (j && typeof j.source === 'string' && j.source.toUpperCase() === 'ALT') || j?.indeterminate === true || j?.duration == null;
+            if (j && (jIsALT)) { fetchNowPlaying(); return; }
             const newKey = (j && j.artist && j.title && j.startTime)
-              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
+              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
+              : null;
             if (newKey && newKey !== window._npLastKey) { fetchNowPlaying(); return; }
           } catch(e){}
           if (Date.now() >= graceUntil) {
@@ -6153,14 +6163,10 @@ if (remaining > 0) {
         };
         _pollForNew();
 
-        // Poll every 5s for a *different* track; when found, refresh NP
-        if (window._npPollTimer) {
-          clearInterval(window._npPollTimer);
-          window._npPollTimer = null;
-        }
+        if (window._npPollTimer) { clearInterval(window._npPollTimer); window._npPollTimer = null; }
         window._npPollTimer = setInterval(async () => {
           try {
-            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch(NOWPLAYING_URL + '?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
@@ -6170,9 +6176,7 @@ if (remaining > 0) {
               window._npPollTimer = null;
               fetchNowPlaying();
             }
-          } catch (e) {
-            // swallow and keep polling
-          }
+          } catch (e) {}
         }, 5000);
       }
     }
@@ -6185,6 +6189,7 @@ if (remaining > 0) {
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
 }
+
 
 
 
