@@ -10310,6 +10310,113 @@ enter;       /* centre vertically */
   function $(sel){ return document.querySelector(sel); }
 
   // Utility: clean a track string for searching
+  
+  function debug(msg){
+    try{
+      const box = document.getElementById('np-debug');
+      if (!box) return;
+      const ts = new Date().toLocaleTimeString();
+      box.textContent = `[${ts}] ` + msg;
+    }catch(e){}
+  }
+
+  async function tryDeezer(term){
+    // Deezer free search API (JSONP disabled version via r.jina.ai proxy to avoid CORS)
+    const direct = 'https://api.deezer.com/search?q=' + encodeURIComponent(term);
+    try{
+      const via = 'https://r.jina.ai/http/' + direct.replace(/^https?:\/\//,'');
+      const r = await fetch(via, { cache: 'no-store' });
+      if (!r.ok) throw new Error('deezer http ' + r.status);
+      const js = await r.json();
+      if (js && js.data && js.data.length){
+        const hit = js.data[0];
+        // Prefer album cover if present
+        return hit.album && (hit.album.cover_xl || hit.album.cover_big || hit.album.cover_medium || hit.album.cover);
+      }
+    }catch(e){}
+    throw new Error('deezer no hit');
+  }
+
+  async function tryCoverArtArchive(artist, title){
+    // MusicBrainz + Cover Art Archive (CORS ok through r.jina.ai)
+    const q = encodeURIComponent(`${artist} ${title}`.trim());
+    try{
+      const mb = 'https://musicbrainz.org/ws/2/recording?query=' + q + '&fmt=json&limit=1';
+      const via = 'https://r.jina.ai/http/' + mb.replace(/^https?:\/\//,'');
+      const r = await fetch(via, { cache: 'no-store' });
+      if (!r.ok) throw new Error('mb http ' + r.status);
+      const js = await r.json();
+      const rec = (js.recordings && js.recordings[0]) || null;
+      const rel = rec && rec.releases && rec.releases[0];
+      const id = rel && rel.id;
+      if (!id) throw new Error('no release id');
+      const caa = 'https://coverartarchive.org/release/' + id;
+      const r2 = await fetch('https://r.jina.ai/http/coverartarchive.org/release/' + id, { cache: 'no-store' });
+      if (!r2.ok) throw new Error('caa http ' + r2.status);
+      const js2 = await r2.json();
+      if (js2.images && js2.images.length){
+        const img = js2.images.find(x => x.front) || js2.images[0];
+        return (img.thumbnails && (img.thumbnails.large || img.thumbnails.small)) || img.image;
+      }
+    }catch(e){}
+    throw new Error('caa no hit');
+  }
+
+  
+  async function tryPlayerGreenArtwork(artist, title){
+    const base = 'https://player-green.vercel.app/api/artwork.js';
+    const paramsList = [];
+    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' - '));
+    const qTitle = cleanQuery(title || '');
+    const qArtist = cleanQuery(artist || '');
+
+    // Common patterns this endpoint might accept
+    if (artist || title) paramsList.push(`artist=${encodeURIComponent(artist||'')}&title=${encodeURIComponent(title||'')}`);
+    if (qBoth) paramsList.push(`q=${encodeURIComponent(qBoth)}`);
+    if (qTitle) paramsList.push(`q=${encodeURIComponent(qTitle)}`);
+    if (qArtist) paramsList.push(`q=${encodeURIComponent(qArtist)}`);
+
+    for (const qs of paramsList){
+      try{
+        const url = base + '?' + qs + '&ts=' + Date.now();
+        const r = await fetch(url, { cache: 'no-store' });
+        if (!r.ok) continue;
+        const js = await r.json();
+        if (js && js.url){
+          const u = String(js.url).trim();
+          if (u) return u;
+        }
+      }catch(e){}
+    }
+    throw new Error('player-green artwork empty');
+  }
+
+  async function resolveArtwork(artist, title){
+    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' '));
+    const qTitle = cleanQuery(title || '');
+    const qArtist = cleanQuery(artist || '');
+
+    // Player-Green artwork API first
+    try{ return await tryPlayerGreenArtwork(artist, title); }catch(e){ debug('player-green artwork empty'); }
+
+    // iTunes next
+    try{ if(qBoth) return await tryItunes(qBoth); }catch(e){}
+    try{ if(qTitle) return await tryItunes(qTitle); }catch(e){}
+    try{ if(qArtist) return await tryItunes(qArtist); }catch(e){}
+
+    // Deezer next
+    try{ if(qBoth) return await tryDeezer(qBoth); }catch(e){}
+    try{ if(qTitle) return await tryDeezer(qTitle); }catch(e){}
+    try{ if(qArtist) return await tryDeezer(qArtist); }catch(e){}
+
+    // Cover Art Archive last
+    try{ if(qBoth) return await tryCoverArtArchive(artist, title); }catch(e){}
+    try{ if(qTitle) return await tryCoverArtArchive('', qTitle); }catch(e){}
+    try{ if(qArtist) return await tryCoverArtArchive(qArtist, ''); }catch(e){}
+
+    return null;
+  }
+
   function cleanQuery(s){
     if(!s) return "";
     return s
@@ -10427,29 +10534,46 @@ enter;       /* centre vertically */
     return null;
   }
 
+  
   async function fetchFromPlayerGreen(){
     const base = 'https://player-green.vercel.app';
-    const candidates = [
-      base + '/api/latestTrack',
-      base + '/api/recent',
-      base + '/now.json',
-      base + '/nowplaying.json',
-      base + '/api/now',
-      base + '/api/nowplaying',
-      base + '/np.json'
-    ];
-    for (const url of candidates){
-      try{
-        const r = await fetch(url + '?ts=' + Date.now(), { cache: 'no-store' });
-        if(!r.ok) continue;
+    // 1) Try /api/latestTrack
+    try{
+      const r = await fetch(base + '/api/latestTrack?ts=' + Date.now(), { cache: 'no-store' });
+      if (r.ok){
         const js = await r.json();
-        let artist = js.artist || (js.now && js.now.artist) || (js.current && js.current.artist) || '';
-        let title  = js.title  || (js.now && js.now.title ) || (js.current && js.current.title ) || '';
-
-        if ((!artist && !title) && js.latestTrack){
-          artist = js.latestTrack.artist || js.latestTrack.Artist || '';
-          title  = js.latestTrack.title  || js.latestTrack.Title  || '';
+        const node = js.latestTrack || js;
+        const artist = String((node && node.artist) || '').trim();
+        const title  = String((node && node.title)  || '').trim();
+        const indet  = !!(node && node.indeterminate);
+        const source = String((node && node.source) || '').toUpperCase();
+        if (!indet && (artist || title) && source !== 'FIXED'){
+          return { artist, title };
         }
+      }
+    }catch(e){}
+    // 2) Try /api/recent — pick first non-FIXED item with artist/title
+    try{
+      const r2 = await fetch(base + '/api/recent?ts=' + Date.now(), { cache: 'no-store' });
+      if (r2.ok){
+        const js2 = await r2.json();
+        const items = js2.recent || js2.items || (Array.isArray(js2) ? js2 : []);
+        if (Array.isArray(items)){
+          for (const it of items){
+            const artist = String((it && (it.artist || it.Artist)) || '').trim();
+            const title  = String((it && (it.title  || it.Title )) || '').trim();
+            const source = String((it && it.source) || '').toUpperCase();
+            const indet  = !!(it && it.indeterminate);
+            if (!indet && (artist || title) && source !== 'FIXED'){
+              return { artist, title };
+            }
+          }
+        }
+      }
+    }catch(e){}
+    return null;
+  }
+
         if ((!artist && !title) && Array.isArray(js.recent) && js.recent.length){
           artist = js.recent[0].artist || js.recent[0].Artist || '';
           title  = js.recent[0].title  || js.recent[0].Title  || '';
@@ -10496,7 +10620,7 @@ const js = JSON.parse(text);
   }
 
 
-  async function pollNowPlaying(){
+  async function pollNowPlaying(){ debug('Polling now playing…');
 
     if (window.__NP_BUSY__) return;
     window.__NP_BUSY__ = true;
@@ -10507,11 +10631,11 @@ const js = JSON.parse(text);
       // 1) Try player-green first
       try{
         const pg = await fetchFromPlayerGreen();
-        if (pg){ artist = pg.artist; title = pg.title; }
+        if (pg){ artist = pg.artist; title = pg.title; debug('player-green chose non-FIXED: ' + artist + ' — ' + title); }
       }catch(e){}
       // 2) If still empty, try the stream payload
       if (!artist && !title){
-        raw = parseNowPlayingPayload(text);
+        raw = parseNowPlayingPayload(text); debug('stream raw: ' + raw);
         const pair = splitArtistTitle(raw);
         artist = artist || pair[0]; title = title || pair[1];
       }
@@ -10519,7 +10643,7 @@ const js = JSON.parse(text);
       if ((!artist && !title) || (title && title.toLowerCase()==='live')){
         try{
           const latest = await fetchLatestFromPlayout();
-          if (latest){
+          if (latest){ debug('fallback playout json hit');
             artist = latest.artist || artist;
             title  = latest.title  || title;
             raw = [artist, title].filter(Boolean).join(' - ') || raw;
@@ -10528,14 +10652,14 @@ const js = JSON.parse(text);
       }
       window.__CURRENT_ARTIST__ = artist; window.__CURRENT_TITLE__ = title;
 
-      const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
+      const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title'); debug('display NP: ' + [artist,title].filter(Boolean).join(' — '));
       if (npEl){
         const display = [artist, title].filter(Boolean).join(" — ") || raw || "Live";
         npEl.textContent = display;
       }
 
       // Artwork after NP update
-      fetchArtworkStrong(artist, title);
+      resolveArtwork(artist, title).then(function(url){ if(url){ debug('artwork: ' + url); const el=getArtworkImgEl(); if(el){ el.onload=function(){ el.classList&&el.classList.add('loaded'); }; el.onerror=function(){ el.removeAttribute('src'); el.classList&&el.classList.remove('loaded'); }; el.src=url; el.style.opacity='1'; } } else { debug('no artwork found'); } });
     }catch(e){
       // Silent in safe mode
     }finally{
