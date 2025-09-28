@@ -1,7 +1,9 @@
 {
   "artist": "CMAT",
   "title": "Take A Sexy Picture Of Me",
-  "startTime": "2025-09-28T16:09:01+01:00",
+  "startTime": "2025-09-28T16:09:18+01:00",
   "duration": 3600,
-  "source": "ALT"
+  "source": "ALT",
+  "indeterminate": true,
+  "displayMode": "unknown"
 }
