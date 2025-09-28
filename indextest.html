@@ -5925,7 +5925,7 @@ group.forEach(show => {
     }
     const volumeDisplay = document.getElementById('volume-display');
     const nowPlaying = document.getElementById('now-playing');
-    const artworkImg = document.getElementById('artwork');
+    const artwork = document.getElementById('artwork');
     const observer = new IntersectionObserver(entries => {
       for (const e of entries) {
         if (e.isIntersecting) {
@@ -6185,10 +6185,10 @@ try {
     );
     if (hit) {
       const url300 = hit.artworkUrl100.replace('100x100','300x300');
-      artworkImg.onload = () => artworkImg.classList.add('loaded');
-      artworkImg.onerror = applyFallbackImmediate;
+      artwork.onload = () => artwork.classList.add('loaded');
+      artwork.onerror = applyFallbackImmediate;
       artworkCache[trackName] = url300;
-      artworkImg.src = url300;
+      artwork.src = url300;
       return;
     }
   } catch (e) {
@@ -6197,9 +6197,9 @@ try {
   // Fallback handled elsewhere
 }
     function applyFallbackImmediate() {
-      artworkImg.src = 'Essential Radio Logo.png';
-      artworkImg.classList.remove('loaded');
-      artworkImg.classList.add('fallback');
+      artwork.src = 'Essential Radio Logo.png';
+      artwork.classList.remove('loaded');
+      artwork.classList.add('fallback');
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
@@ -10170,7 +10170,6 @@ async function getLatest(){
 <script src="recently-played.min.js?v=20250928"></script>
 
 <style>
-</body>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
   .modal {
