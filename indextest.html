@@ -10148,29 +10148,27 @@ async function getLatest(){
   }
 </script>
 
-<!-- Now Playing -->
-<script src="nowplaying.js?v=20250928093718"></script>
+<!-- Now Playing (schedule banner) -->
+<script src="nowplaying.patched.js?v=20250928"></script>
 <script>
   NowPlaying.init({
     scheduleUrl: 'https://player-green.vercel.app/schedule.json',
     showTitleSel: '#showTitle',
     presenterSel: '#showPresenter',
     sourceSel: '#showSource',
-    artworkImgSel: '#artwork',
+    artworkImgSel: '#artwork',       // <- patched selector
     statusSel: '#npStatus',
     appVersion: (window.APP_VERSION || 'v20250928093718')
   });
 </script>
 
-<!-- OPTIONAL: dynamic artwork helper (must be before recently-played if you want art) -->
+<!-- Optional: dynamic track artwork helper for Recently Played -->
 <script src="https://player-green.vercel.app/artwork.js"></script>
-<script>
-  // set this BEFORE recently-played.min.js if you want a custom fallback logo
-  window.DEFAULT_COVER_URL = 'essential-radio-logo.png';
-</script>
+<script> window.DEFAULT_COVER_URL = 'essential-radio-logo.png'; </script>
 
-<!-- Recently Played (load ONCE, after artwork + DEFAULT_COVER_URL) -->
-<script src="recently-played.min.js"></script>
+<!-- Recently Played -->
+<script src="recently-played.min.js?v=20250928"></script>
+
 <style>
 </body>
 /* === Desktop modal centring fix === */
