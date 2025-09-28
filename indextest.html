@@ -4452,7 +4452,20 @@ html[data-theme="light"] #mobileNowBar {
 
 </style>
 </head>
-<body>
+\1
+<!-- Injected Now Playing hooks -->
+<section id="nowPlaying" style="display:block; padding:0.5rem 0;">
+  <div style="font-weight:600; font-size:1.1rem;">
+    <span id="showTitle">Loading…</span>
+  </div>
+  <div style="opacity:0.85;">
+    <span id="showPresenter"></span>
+    <span id="showSource" style="margin-left:0.5rem; font-size:0.9rem; border:1px solid currentColor; padding:0 0.35rem; border-radius:0.4rem;"></span>
+  </div>
+  <img id="artworkImg" alt="" style="margin-top:0.4rem; max-width:160px; height:auto; display:none;" onload="this.style.display='inline-block'">
+  <small id="npStatus" style="display:none;"></small>
+</section>
+
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
@@ -10175,6 +10188,19 @@ async function getLatest(){
       console.log('[ER] SW registered', url);
     }).catch(err => console.warn('[ER] SW register failed', err));
   }
+</script>
+<script src="/js/nowplaying.js?v=20250928093717"></script>
+<script>
+  // Initialise schedule-based FIXED/ALT handling + artwork
+  NowPlaying.init({
+    scheduleUrl: 'https://player-green.vercel.app/schedule.json',
+    showTitleSel: '#showTitle',
+    presenterSel: '#showPresenter',
+    sourceSel: '#showSource',
+    artworkImgSel: '#artworkImg',
+    statusSel: '#npStatus',
+    appVersion: (window.APP_VERSION || 'v20250928093717')
+  });
 </script>
 </body><style>
 /* === Desktop modal centring fix === */
