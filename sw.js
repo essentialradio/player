@@ -4,7 +4,7 @@
 const STATIC_CACHE = 'essential-radio-static-v4'; // bump to force update
 const STATIC_ASSETS = [
   // Only truly static, versioned files should go here (e.g., hashed bundles).
-  // Do NOT include '/' or '/index.html' to avoid stale shells.
+  // Do NOT include '/' or '/index.html' or '/indextest.html' to avoid stale shells.
   // '/assets/app.12345.js',
   // '/assets/app.12345.css',
 ];
@@ -62,20 +62,35 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // HTML navigations → network-first with cache:'reload' to force revalidation
-  const isNav = req.mode === 'navigate' || req.destination === 'document';
-  if (isNav) {
-    event.respondWith(
-      fetch(new Request(req, { cache: 'reload' })).then((resp) => {
-        if (resp && resp.ok && resp.type === 'basic') {
+// HTML navigations → network-first with cache:'reload' to force revalidation
+const isNav =
+  req.mode === 'navigate' ||
+  req.destination === 'document' ||
+  (req.headers.get('accept') || '').includes('text/html');
+
+if (isNav) {
+  event.respondWith(
+    fetch(new Request(req, { cache: 'reload' }))
+      .then((resp) => {
+        if (resp && resp.ok && (resp.type === 'basic' || resp.type === 'cors')) {
           const copy = resp.clone();
           caches.open(STATIC_CACHE).then((c) => c.put(req, copy));
         }
         return resp;
-      }).catch(() => caches.match('/index.html'))
-    );
-    return;
-  }
+      })
+      .catch(async () => {
+        const cache = await caches.open(STATIC_CACHE);
+        // Fallback chain: exact → /index.html → /indextest.html
+        return (
+          (await cache.match(req)) ||
+          (await cache.match('/index.html')) ||
+          (await cache.match('/indextest.html'))
+        );
+      })
+  );
+  return;
+}
+
 
   // Known static assets → cache-first
   const isStatic = STATIC_ASSETS.some((p) => url.pathname === p || url.pathname.endsWith(p));
