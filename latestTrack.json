@@ -1,7 +1,9 @@
 {
   "artist": "George Michael",
   "title": "Careless Whisper",
-  "startTime": "2025-09-28T17:43:19+01:00",
+  "startTime": "2025-09-28T17:43:23+01:00",
   "duration": 3600,
-  "source": "ALT"
+  "source": "ALT",
+  "indeterminate": true,
+  "displayMode": "unknown"
 }
