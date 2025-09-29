@@ -47255,5 +47255,44 @@
     "Full Duration (mins)": 3.28,
     "Start ISO": "2025-09-29T15:12:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T15:00:00Z",
+    "Scheduled Time": "16:15",
+    "Displayed Time": "16:15",
+    "Artist": "Wheatus",
+    "Title": "Teenage Dirtbag",
+    "Duration (s)": 225,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-09-29T15:15:14Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T15:00:00Z",
+    "Scheduled Time": "16:28",
+    "Displayed Time": "16:28",
+    "Artist": "Noah Kahan",
+    "Title": "Stick Season",
+    "Duration (s)": 170,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-09-29T15:28:40Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T15:00:00Z",
+    "Scheduled Time": "16:32",
+    "Displayed Time": "16:32",
+    "Artist": "Jason Derulo",
+    "Title": "Take You Dancing",
+    "Duration (s)": 182,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-09-29T15:32:35Z",
+    "Source": "PLAYIT"
   }
 ]
