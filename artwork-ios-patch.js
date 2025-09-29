@@ -5,11 +5,18 @@
    - No blobs, handlers first, eager load, cache-busted fetches.
 */
 (function () {
+  try {
+    var ua = navigator.userAgent || '';
+    var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (!isIOS) return;
+    window.__IOS_ARTWORK_PATCH_ACTIVE = true;
+  } catch(e) {}
+
   const IMG_SEL = '#artwork';
   const POLL_MS = 12000;
   const QUIET_MS_AFTER_SUCCESS = 3000;
   const CLEAR_GRACE_MS = 5000;
-  const CLEAR_PIXEL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
+  const CLEAR_PIXEL = 'Essential Radio Logo.png';
 
   let lastMeta = null;   // {artist,title,startTime,duration,source}
   let lastURL  = null;
@@ -89,7 +96,7 @@
     // 2) iTunes fallback
     try {
       const q = `${meta.title} ${meta.artist}`.trim();
-      const u = `https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&entity=musicTrack&country=GB&limit=5&_=${Date.now()}`;
+      const u = `/api/artwork?q=${encodeURIComponent(clean)}`;
       const d = await j(u);
       const hit = (d.results || []).find(h => (h.kind === 'song' || h.wrapperType === 'track') && h.artworkUrl100);
       if (hit) return hit.artworkUrl100.replace('100x100', '300x300');
