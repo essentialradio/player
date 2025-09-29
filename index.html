@@ -1056,6 +1056,38 @@ body.modal-open {
     margin-top: 12px !important;
   }
 }
+/* iOS crisp artwork override */
+#artwork {
+  display: block;
+  margin: 0 auto;
+  /* unify sizing (avoid fractional resizes) */
+  max-width: 300px;
+  width: clamp(160px, 60vw, 300px);
+  aspect-ratio: 1 / 1;
+  height: auto;
+
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #fed351;
+  box-shadow: 0 0 15px #fed351aa;
+  user-select: none;
+
+  /* IMPORTANT: no blur — fade with opacity only */
+  opacity: 0;
+  filter: none !important;
+  -webkit-filter: none !important;
+  transition: opacity .25s ease-in-out;
+}
+#artwork.loaded {
+  opacity: 1;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* If there are earlier #artwork rules, this keeps ours on top */
+@supports (-webkit-touch-callout: none) {
+  #artwork { transform: translateZ(0); }
+}
 
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
