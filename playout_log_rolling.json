@@ -47090,85 +47090,92 @@
   {
     "Hour": "2025-09-29T05:00:00Z",
     "Scheduled Time": "06:01",
-    "Displayed Time": "",
+    "Displayed Time": "06:01",
     "Artist": "Billie Eilish",
     "Title": "Bad Guy",
     "Duration (s)": 191,
     "Full Duration (s)": 194,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3,
-    "Start ISO": "2025-09-29T05:01:00Z"
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.23,
+    "Start ISO": "2025-09-29T05:01:36Z",
+    "Source": "PLAYIT"
   },
   {
     "Hour": "2025-09-29T05:00:00Z",
     "Scheduled Time": "06:04",
-    "Displayed Time": "",
+    "Displayed Time": "06:04",
     "Artist": "Eurythmics",
     "Title": "Sweet Dreams (Are Made of This)",
     "Duration (s)": 205,
     "Full Duration (s)": 216,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 4,
-    "Start ISO": "2025-09-29T05:04:00Z"
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-09-29T05:04:57Z",
+    "Source": "PLAYIT"
   },
   {
     "Hour": "2025-09-29T05:00:00Z",
     "Scheduled Time": "06:08",
-    "Displayed Time": "",
+    "Displayed Time": "06:08",
     "Artist": "Calvin Harris & Clementine Douglas",
     "Title": "Blessings",
     "Duration (s)": 213,
     "Full Duration (s)": 220,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4,
-    "Start ISO": "2025-09-29T05:08:00Z"
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-09-29T05:08:23Z",
+    "Source": "PLAYIT"
   },
   {
     "Hour": "2025-09-29T05:00:00Z",
     "Scheduled Time": "06:12",
-    "Displayed Time": "",
+    "Displayed Time": "06:12",
     "Artist": "Dua Lipa",
     "Title": "Houdini",
     "Duration (s)": 180,
     "Full Duration (s)": 186,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3,
-    "Start ISO": "2025-09-29T05:12:00Z"
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-09-29T05:12:02Z",
+    "Source": "PLAYIT"
   },
   {
     "Hour": "2025-09-29T05:00:00Z",
     "Scheduled Time": "06:15",
-    "Displayed Time": "",
+    "Displayed Time": "06:15",
     "Artist": "Green Day",
     "Title": "Wake Me Up When September Ends",
     "Duration (s)": 246,
     "Full Duration (s)": 255,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4,
-    "Start ISO": "2025-09-29T05:15:00Z"
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.25,
+    "Start ISO": "2025-09-29T05:15:11Z",
+    "Source": "PLAYIT"
   },
   {
     "Hour": "2025-09-29T05:00:00Z",
     "Scheduled Time": "06:23",
-    "Displayed Time": "",
+    "Displayed Time": "06:23",
     "Artist": "MK ft Chrystal",
     "Title": "Dior",
     "Duration (s)": 165,
     "Full Duration (s)": 169,
-    "Duration (mins)": 3,
-    "Full Duration (mins)": 3,
-    "Start ISO": "2025-09-29T05:23:00Z"
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 2.82,
+    "Start ISO": "2025-09-29T05:23:54Z",
+    "Source": "PLAYIT"
   },
   {
     "Hour": "2025-09-29T05:00:00Z",
     "Scheduled Time": "06:26",
-    "Displayed Time": "",
+    "Displayed Time": "06:26",
     "Artist": "Taylor Swift",
     "Title": "Shake It Off",
     "Duration (s)": 213,
     "Full Duration (s)": 219,
-    "Duration (mins)": 4,
-    "Full Duration (mins)": 4,
-    "Start ISO": "2025-09-29T05:26:00Z"
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.65,
+    "Start ISO": "2025-09-29T05:26:43Z",
+    "Source": "PLAYIT"
   }
 ]
