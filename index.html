@@ -5995,10 +5995,7 @@ async function fetchNowPlaying() {
     const latest = await latestRes.json();
 
     // Validate payload
-    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
-      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
-      return;
-    }
+    if (!latest || !latest.artist || !latest.title || latest.indeterminate === true) { if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon(); return; }
 
     const artist = latest.artist;
     const title = latest.title;
@@ -6040,7 +6037,7 @@ if (window._npActiveKey !== trackKey) {
     }
     // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+    try { if (typeof window !== 'undefined' && !window.__IOS_ARTWORK_PATCH_ACTIVE && typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
