@@ -1,14 +1,13 @@
 
-/*! Essential Radio: iOS-safe Artwork Patch (end-of-song clear) v1.2
-   - Keeps artwork stable during playback.
-   - Hides artwork once the song ends (using startTime + duration), with a grace window.
-   - Skips indeterminate/blank states without premature clears.
+/*! Essential Radio: iOS-safe Artwork Patch (end-of-song clear) v1.3
+   - Never clears during the same track.
+   - Clears only after (startTime + duration + grace) AND feed is blank/indeterminate.
 */
 (function () {
   const IMG_SEL = '#artwork';
   const POLL_MS = 12000;
   const QUIET_MS_AFTER_SUCCESS = 3000;   // debounce after swap
-  const CLEAR_GRACE_MS = 5000;           // wait this long after expected end before hiding
+  const CLEAR_GRACE_MS = 5000;           // wait after expected end before hiding
   const TRANSPARENT_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
 
   let lastMeta = null;     // {artist,title,source,startTime,duration}
@@ -53,18 +52,14 @@
 
   function showArt(img, url) {
     if (!img) return;
-    // Unhide
     img.classList.remove('hidden-art');
-    // iOS paint race guard
     requestAnimationFrame(() => { img.src = url; });
   }
 
   function hideArt(img) {
     if (!img) return;
-    // Visually hide, and replace with a transparent pixel to release memory
     img.classList.remove('loaded');
     img.classList.add('hidden-art');
-    // Don't set empty src (iOS quirk) — use 1x1 transparent PNG
     requestAnimationFrame(() => { img.src = TRANSPARENT_PNG; });
     lastURL = null;
   }
@@ -93,17 +88,14 @@
     return 0;
   }
 
-  function validMeta(latest) {
+  function getMetaOrNull(latest) {
     const artist = String(latest.artist || '').trim();
     const title  = String(latest.title  || '').trim();
     const source = String(latest.source || '').trim();
     const indeterminate = Boolean(latest.indeterminate);
     const startTime = latest.startTime || latest.started || null;
     const duration  = latest.duration;
-
-    // Ignore explicitly indeterminate/blank states (these often occur during segues)
     if (!artist || !title || indeterminate) return null;
-
     return { artist, title, source, startTime, duration };
   }
 
@@ -132,16 +124,18 @@
     return null;
   }
 
-  function maybeClearWhenEnded() {
-    const img = getImg();
-    if (!img) return;
-    if (!lastURL) return; // nothing visible anyway
-    if (!lastEndAt) return;
-
+  function shouldClear(latestRaw) {
+    // Clear only if: we know the previous track end time is in the past + grace,
+    // AND the feed is blank/indeterminate now (no new valid track yet).
+    if (!lastEndAt) return false;
     const now = Date.now();
-    if (now >= lastEndAt + CLEAR_GRACE_MS) {
-      hideArt(img);
-    }
+    if (now < lastEndAt + CLEAR_GRACE_MS) return false;
+
+    const artist = String(latestRaw.artist || '').trim();
+    const title  = String(latestRaw.title  || '').trim();
+    const indeterminate = Boolean(latestRaw.indeterminate);
+    if (indeterminate || !artist || !title) return true;
+    return false;
   }
 
   async function tick() {
@@ -152,23 +146,27 @@
       if (now - lastSwapAt < QUIET_MS_AFTER_SUCCESS) return;
 
       const latest = await fetchJSON(`/api/latestTrack?_=${now}`);
-      const meta = validMeta(latest);
 
-      // If we don't have a valid meta (blank/indeterminate), decide whether to clear AFTER the last track ends
-      if (!meta) {
-        maybeClearWhenEnded();
+      // Decide if we should clear because the previous track ended and nothing new is valid yet
+      if (shouldClear(latest)) {
+        const img = getImg();
+        hideArt(img);
+        // Do not reset lastMeta; we may still need it if the same song info reappears
         return;
       }
 
-      // If meta unchanged, keep current artwork and refresh our end time
+      const meta = getMetaOrNull(latest);
+
+      // If still no valid meta, keep whatever is shown (don't clear prematurely)
+      if (!meta) return;
+
+      // If the meta hasn't changed, NEVER clear; just refresh the end time
       if (sameMeta(meta, lastMeta)) {
         lastEndAt = parseEndAtISO(meta.startTime, meta.duration) || lastEndAt;
-        // Also check whether we passed end
-        maybeClearWhenEnded();
         return;
       }
 
-      // New track: resolve URL
+      // New track
       const img = getImg();
       if (!img) return;
 
@@ -180,7 +178,6 @@
 
       const artURL = await resolveArtworkURL(meta);
 
-      // Update end-time for new track
       lastEndAt = parseEndAtISO(meta.startTime, meta.duration);
 
       if (artURL) {
@@ -189,13 +186,12 @@
         lastMeta = meta;
         lastSwapAt = Date.now();
       } else {
-        // Can't find art yet — don't clear current art during the track; only clear after end
+        // No art found yet; leave the old art during the track if present; otherwise fallback once
         applyFallbackIfNeverHadArt(img);
-        lastMeta = meta; // keep meta so we can compute end time on next ticks
+        lastMeta = meta;
       }
     } catch {
-      // On error, keep current art and possibly clear after end
-      maybeClearWhenEnded();
+      // keep current art on error
     } finally {
       busy = false;
     }
