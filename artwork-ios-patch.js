@@ -1,3 +1,4 @@
+try{window.__IOS_ARTWORK_PATCH_ACTIVE=true;}catch(e){}
 
 /*! Essential Radio: iOS-safe Artwork Patch v1.4
    - Keeps artwork during the same track.
@@ -9,7 +10,7 @@
   const POLL_MS = 12000;
   const QUIET_MS_AFTER_SUCCESS = 3000;
   const CLEAR_GRACE_MS = 5000;
-  const CLEAR_PIXEL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
+  const CLEAR_PIXEL = 'Essential Radio Logo.png';
 
   let lastMeta = null;   // {artist,title,startTime,duration,source}
   let lastURL  = null;
@@ -28,7 +29,7 @@
   function bindOnce(img) {
     if (!img || img.__bound) return;
     img.addEventListener('load', () => img.classList.add('loaded'));
-    img.addEventListener('error', () => { if (!lastURL) img.src = CLEAR_PIXEL; });
+    img.addEventListener('error', () => { if (!lastURL) { img.src = CLEAR_PIXEL; img.classList.add('loaded'); } });
     img.__bound = true;
   }
 
@@ -123,7 +124,7 @@
 
       // Clear if last song finished and feed is blank/indeterminate
       if (shouldClear(latest)) {
-        requestAnimationFrame(() => { img.classList.remove('loaded'); img.src = CLEAR_PIXEL; });
+        requestAnimationFrame(() => { img.classList.remove('loaded'); img.src = CLEAR_PIXEL; img.classList.add('loaded'); });
         lastURL = null;
         return;
       }
@@ -157,7 +158,7 @@
         // No URL yet - keep whatever is currently displayed
         if (!lastURL) {
           // show a neutral pixel rather than broken image
-          requestAnimationFrame(() => { img.src = CLEAR_PIXEL; });
+          requestAnimationFrame(() => { img.src = CLEAR_PIXEL; img.classList.add('loaded'); });
         }
       }
     } catch {
