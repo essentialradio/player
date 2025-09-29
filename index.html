@@ -690,9 +690,7 @@ body {
     margin-top: 12px !important;
   }
 
-  #artwork {
-    width: 94vw !important;
-    max-width: 140px !important;
+  #artwork {!important;!important;
     height: auto !important;
     margin-top: 8px !important;
     margin-bottom: 8px !important;
@@ -4408,6 +4406,11 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
+
+    <style id="artwork-canonical-centering">
+      #artwork { display:block; margin:0 auto; }
+    </style>
+    
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6033,7 +6036,7 @@ if (window._npActiveKey !== trackKey) {
     }
     // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+    try { if (typeof window !== 'undefined' && !window.__IOS_ARTWORK_PATCH_ACTIVE && typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
