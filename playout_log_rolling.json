@@ -47993,5 +47993,31 @@
     "Full Duration (mins)": 3.88,
     "Start ISO": "2025-09-29T12:10:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T12:00:00Z",
+    "Scheduled Time": "13:14",
+    "Displayed Time": "13:14",
+    "Artist": "Taylor Swift",
+    "Title": "Style",
+    "Duration (s)": 217,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.85,
+    "Start ISO": "2025-09-29T12:14:30Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T12:00:00Z",
+    "Scheduled Time": "13:22",
+    "Displayed Time": "13:22",
+    "Artist": "Tommy Richman",
+    "Title": "Million Dollar Baby",
+    "Duration (s)": 149,
+    "Full Duration (s)": 155,
+    "Duration (mins)": 2.48,
+    "Full Duration (mins)": 2.58,
+    "Start ISO": "2025-09-29T12:22:24Z",
+    "Source": "PLAYIT"
   }
 ]
