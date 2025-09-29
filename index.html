@@ -6147,19 +6147,7 @@ if (remaining > 0) {
               fill="#222"/>
           </svg>
         </a>`;
-      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      const lazyAttr = isIOS ? '' : 'loading="lazy"';
-      return `
-        <li>
-          <span class="time">${time}</span>
-          <img src="${art}"
-               alt="Cover for ${name}" ${lazyAttr} />
-          <span class="info">
-            ${name}
-            ${lastfmIcon}
-          </span>
-        </li>`;
-    }));
+
     const list = document.getElementById('recent-list');
     list.innerHTML = entries.join('');
     document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
@@ -6169,6 +6157,8 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
+if (window.__IOS_ARTWORK_PATCH_ACTIVE) return; // iOS patch controls #artwork
+
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
@@ -6281,6 +6271,57 @@ document.addEventListener("visibilitychange", () => {
     stopIntervals();
   }
 });
+async function getTrackArtwork(query) {
+  const clean = String(query)
+    .replace(/[\u2013\u2014]/g, '-')     // fancy dashes → hyphen
+    .replace(/\s*-\s*/g, ' ')
+    .replace(/\s*\([^\)]*\)/g, ' ')
+    .replace(/\s*\[[^\]]*\]/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  async function tryFetch(term) {
+    try {
+      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}&v=${encodeURIComponent(typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1')}`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return '';
+      const d = await res.json();
+      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+      return hit && hit.artworkUrl100 ? hit.artworkUrl100.replace('100x100','300x300') : '';
+    } catch { return ''; }
+  }
+
+  function jsonp(url, timeout = 9000) {
+    return new Promise((resolve, reject) => {
+      const cb = 'itunesCB_' + Math.random().toString(36).slice(2);
+      const s = document.createElement('script');
+      let settled = false;
+      const done = (ok, data) => { if (settled) return; settled = true; delete window[cb]; s.remove(); ok ? resolve(data) : reject(new Error('jsonp')); };
+      window[cb] = (data) => done(true, data);
+      s.src = url + (url.includes('?') ? '&' : '?') + 'callback=' + cb;
+      s.onerror = () => done(false);
+      setTimeout(() => done(false), timeout);
+      document.head.appendChild(s);
+    });
+  }
+
+  async function tryJSONP(term) {
+    try {
+      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}&v=${encodeURIComponent(typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1')}`;
+      const d = await jsonp(url);
+      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+      return hit && hit.artworkUrl100 ? hit.artworkUrl100.replace('100x100','300x300') : '';
+    } catch { return ''; }
+  }
+
+  for (const t of [clean, clean.split(' ').reverse().join(' ')]) {
+    const viaFetch = await tryFetch(t);
+    if (viaFetch) return viaFetch;
+    const viaJSONP = await tryJSONP(t);
+    if (viaJSONP) return viaJSONP;
+  }
+  return '';
+}
 
   </script>
 <!-- Removed duplicate show title formatter script -->
