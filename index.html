@@ -5770,7 +5770,6 @@ group.forEach(show => {
     "Scott O'Hare": "Scott-OHare.jpg",
 "Tim Graham": "Tim-Graham.jpeg",
     "Bex McNamee": "Bex-Mcnamee.jpg",
-    'Keelin McKenna": "Keelin-Mckenna.jpg",
 	"Kevin McCallum": "Kevin-Mccallum.jpg"
   };
 
@@ -10080,72 +10079,6 @@ document.addEventListener('visibilitychange', () => {
       window.__clockMoveTO = setTimeout(apply, 120);
     });
   });
-})();
-</script>
-<script>
-(function(){
-  const API_BASE = "https://www.essential.radio"; // change if needed
-  const POLL_MS = 7000, TIMEOUT_MS = 4500;
-  if (window.__npAltOverrideAttached) return;
-  window.__npAltOverrideAttached = true;
-
-  const U = p => API_BASE.replace(/\/+$/,'') + p;
-  async function j(u){
-    const ctl = new AbortController(), t=setTimeout(()=>ctl.abort(),TIMEOUT_MS);
-    try{ const r=await fetch(u+"?_="+Date.now(),{cache:"no-store",signal:ctl.signal});
-         if(!r.ok) throw new Error("HTTP "+r.status);
-         return await r.json(); } finally{ clearTimeout(t); }
-  }
-  function norm(raw){
-    let artist = raw.artist ?? raw.artistName ?? raw.artists ?? "";
-    let title  = raw.title  ?? raw.trackTitle ?? raw.name    ?? "";
-    if(!artist && title.includes(" - ")){ const [a,t]=title.split(" - "); if(a&&t){artist=a.trim();title=t.trim();}}
-    let duration = raw.duration ?? raw.length ?? null; if(typeof duration==="string") duration=parseInt(duration,10);
-    if(Number.isNaN(duration)) duration=null;
-    let startTime = raw.startTime ?? raw.startedAt ?? raw.start ?? null;
-    if (typeof startTime==="string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(startTime)) startTime+="Z";
-    return (artist&&title) || (duration&&startTime) ? {artist,title,duration,startTime} : null;
-  }
-  async function latest(){
-    const a = await j(U("/api/latestTrack")).catch(()=>null); if(a){ const n=norm(a); if(n) return n; }
-    const b = await j(U("/api/latestAlt")).catch(()=>null);   if(b){ const n=norm(b); if(n) return n; }
-    return null;
-  }
-  function showFallback(){
-    const el=document.getElementById("now-playing"), p=document.getElementById("np-progress");
-    if(el){ el.innerHTML =
-      '<span style="color:#fed351;">Now Playing:</span> <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>'+
-      '<span style="font-weight:700;">More music soon</span><br/>'+
-      '<span style="color:#9fb0c7;">on Essential Radio</span>'; }
-    if(p){ p.style.display="none"; const b=p.querySelector(".bar"); if(b) b.style.width="0%"; }
-    document.title="Essential Radio";
-  }
-  function startBar(s,e){
-    const p=document.getElementById("np-progress"), b=p?.querySelector(".bar"); if(!p||!b) return;
-    p.style.display="block"; let raf=0;
-    function tick(){ const now=Date.now(), span=e-s, done=Math.min(Math.max((now-s)/span,0),1);
-      b.style.width=(done*100).toFixed(2)+"%"; if(now<e) raf=requestAnimationFrame(tick); }
-    try{ cancelAnimationFrame(window.__npBarRAF); }catch{}
-    window.__npBarRAF = requestAnimationFrame(tick);
-  }
-  async function updateOnce(){
-    const el=document.getElementById("now-playing"), p=document.getElementById("np-progress");
-    const n = await latest(); if(!n){ showFallback(); return; }
-    const {artist,title,duration,startTime}=n;
-    if(el){ el.innerHTML =
-      `<span style="color:#fed351;">Now Playing:</span>
-       <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-       <span style="color:white;font-weight:600;font-size:1.2em;">${title || 'Live'}</span><br/>
-       <span style="color:#9fb0c7;">${artist ? 'by '+artist : 'on Essential Radio'}</span>`; }
-    document.title = (artist&&title)? `Essential Radio: ${artist} - ${title}` : "Essential Radio";
-    if(!duration || !startTime){ if(p) p.style.display="none"; return; }
-    const s = new Date(startTime).getTime(), e = s + duration*1000;
-    if(Date.now()>e){ showFallback(); return; }
-    startBar(s,e);
-  }
-  function go(){ updateOnce().catch(showFallback); clearInterval(window.__npTimer);
-                 window.__npTimer=setInterval(()=>updateOnce().catch(showFallback),POLL_MS); }
-  document.readyState==="loading" ? document.addEventListener("DOMContentLoaded",go,{once:true}) : go();
 })();
 </script>
 
