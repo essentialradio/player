@@ -10181,6 +10181,15 @@ enter;       /* centre vertically */
   line-height: 1;
   white-space: nowrap;
 }
+/* Center #artwork on mobile (and generally) */
+#artwork{
+  display:block;               /* so margin auto works */
+  margin:0 auto;               /* center in block layout */
+  align-self:center;           /* center if parent is flex */
+  justify-self:center;         /* center if parent is grid */
+  max-width:300px;
+  width:clamp(160px, 60vw, 300px);
+}
 
 </style>
 </html>
