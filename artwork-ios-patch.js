@@ -5,6 +5,10 @@
    - No blobs, handlers first, eager load, cache-busted fetches.
 */
 (function () {
+ const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+ if (!IS_IOS) return;
+ window.__IOS_ARTWORK_PATCH_ACTIVE = true;
+
  const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   if (!IS_IOS) return;               // ⬅️ bail on desktop
