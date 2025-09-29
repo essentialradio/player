@@ -1,4 +1,3 @@
-try{window.__IOS_ARTWORK_PATCH_ACTIVE=true;}catch(e){}
 
 /*! Essential Radio: iOS-safe Artwork Patch v1.4
    - Keeps artwork during the same track.
@@ -6,6 +5,13 @@ try{window.__IOS_ARTWORK_PATCH_ACTIVE=true;}catch(e){}
    - No blobs, handlers first, eager load, cache-busted fetches.
 */
 (function () {
+  try {
+    var ua = navigator.userAgent || '';
+    var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (!isIOS) { return; }
+    window.__IOS_ARTWORK_PATCH_ACTIVE = true;
+  } catch(e) { /* if anything fails, keep running but do not claim ownership */ }
+
   const IMG_SEL = '#artwork';
   const POLL_MS = 12000;
   const QUIET_MS_AFTER_SUCCESS = 3000;
