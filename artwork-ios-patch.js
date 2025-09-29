@@ -5,18 +5,11 @@
    - No blobs, handlers first, eager load, cache-busted fetches.
 */
 (function () {
-  try {
-    var ua = navigator.userAgent || '';
-    var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    if (!isIOS) { return; }
-    window.__IOS_ARTWORK_PATCH_ACTIVE = true;
-  } catch(e) { /* if anything fails, keep running but do not claim ownership */ }
-
   const IMG_SEL = '#artwork';
   const POLL_MS = 12000;
   const QUIET_MS_AFTER_SUCCESS = 3000;
   const CLEAR_GRACE_MS = 5000;
-  const CLEAR_PIXEL = 'Essential Radio Logo.png';
+  const CLEAR_PIXEL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
 
   let lastMeta = null;   // {artist,title,startTime,duration,source}
   let lastURL  = null;
@@ -35,7 +28,7 @@
   function bindOnce(img) {
     if (!img || img.__bound) return;
     img.addEventListener('load', () => img.classList.add('loaded'));
-    img.addEventListener('error', () => { if (!lastURL) { img.src = CLEAR_PIXEL; img.classList.add('loaded'); } });
+    img.addEventListener('error', () => { if (!lastURL) img.src = CLEAR_PIXEL; });
     img.__bound = true;
   }
 
@@ -130,7 +123,7 @@
 
       // Clear if last song finished and feed is blank/indeterminate
       if (shouldClear(latest)) {
-        requestAnimationFrame(() => { img.classList.remove('loaded'); img.src = CLEAR_PIXEL; img.classList.add('loaded'); });
+        requestAnimationFrame(() => { img.classList.remove('loaded'); img.src = CLEAR_PIXEL; });
         lastURL = null;
         return;
       }
@@ -164,7 +157,7 @@
         // No URL yet - keep whatever is currently displayed
         if (!lastURL) {
           // show a neutral pixel rather than broken image
-          requestAnimationFrame(() => { img.src = CLEAR_PIXEL; img.classList.add('loaded'); });
+          requestAnimationFrame(() => { img.src = CLEAR_PIXEL; });
         }
       }
     } catch {
