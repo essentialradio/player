@@ -10080,6 +10080,64 @@ document.addEventListener('visibilitychange', () => {
     });
   });
 })();
+
+
+// --- Patched artwork helpers (music-only via /api/artwork.js) ---
+
+async function fetchArtwork(trackName) {
+  artworkImg.src = 'Essential Radio Logo.png';
+  artworkImg.classList.remove('loaded', 'fallback');
+
+  const parts = String(trackName).split(/\s+[-–]\s+/);
+  const artist = (parts[0] || '').trim();
+  const title  = (parts[1] || '').trim();
+
+  try {
+    const url = `/api/artwork.js?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}&_=${Date.now()}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    const js = await res.json();
+    if (js.url) {
+      artworkImg.onload = () => artworkImg.classList.add('loaded');
+      artworkImg.onerror = applyFallbackImmediate;
+      artworkCache[trackName] = js.url;
+      artworkImg.src = js.url;
+      return;
+    }
+  } catch (e) { /* swallow */ }
+
+  // Fallback to autopo.st if available
+  const safe = String(trackName)    .replace(/\s*\(.*?\)/g, '')    .replace(/[^a-zA-Z0-9\s-]/g, '')    .trim()    .replace(/\s+/g, '_');
+  const [a, t] = safe.split('_-_');
+  const autoUrl = `https://cdn.autopo.st/images/coverart/${a?.[0]?.toLowerCase()||'a'}/${a}_${t}.jpg`;
+  try {
+    const head = await fetch(autoUrl, { method: 'HEAD' });
+    if (head.ok) {
+      artworkImg.onload = () => artworkImg.classList.add('loaded');
+      artworkImg.onerror = applyFallbackImmediate;
+      artworkImg.src = autoUrl;
+      return;
+    }
+  } catch (e) { /* swallow */ }
+  applyFallbackImmediate();
+}
+
+
+const artworkCache = typeof artworkCache !== 'undefined' ? artworkCache : {};
+async function getTrackArtwork(query) {
+  if (artworkCache[query]) return artworkCache[query];
+  const [artist, title] = String(query).split(/\s+[-–]\s+/);
+  try {
+    const url = `/api/artwork.js?artist=${encodeURIComponent(artist||'')}&title=${encodeURIComponent(title||'')}&_=${Date.now()}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    const d = await res.json();
+    if (d.url) {
+      artworkCache[query] = d.url;
+      return d.url;
+    }
+  } catch (e) { /* swallow */ }
+  return '';
+}
+
 </script>
 
 </body><style>
