@@ -690,7 +690,14 @@ body {
     margin-top: 12px !important;
   }
 
-  
+  #artwork {
+    width: 94vw !important;
+    max-width: 140px !important;
+    height: auto !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    border-radius: 7px !important;
+  }
 
   
   .recent-title {
@@ -2855,6 +2862,9 @@ nav + div {
   }
 </style>
 <style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
+const APP_VERSION = '20250929-1104';
+</script>
+<script>
 (function() {
   function setNavOffset(){
     const nav = document.querySelector('.navbar');
@@ -5892,12 +5902,8 @@ group.forEach(show => {
     const img = e.target;
     const reveal = () => img.classList.add('loaded');
     const fail   = () => { img.src = 'Essential Radio Logo.png'; img.classList.add('loaded'); };
-    if (img.complete) {
-      if (img.naturalWidth > 0) reveal(); else fail();
-    } else {
-      img.addEventListener('load', reveal, { once: true });
-      img.addEventListener('error', fail, { once: true });
-    }
+    if (img.complete) { if (img.naturalWidth > 0) reveal(); else fail(); }
+    else { img.addEventListener('load', reveal, { once: true }); img.addEventListener('error', fail, { once: true }); }
     observer.unobserve(img);
   }
 }, { threshold: 0.1 });
@@ -5988,7 +5994,10 @@ async function fetchNowPlaying() {
     const latest = await latestRes.json();
 
     // Validate payload
-    if (!latest || !latest.artist || !latest.title || latest.indeterminate === true) { if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon(); return; }
+    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+      return;
+    }
 
     const artist = latest.artist;
     const title = latest.title;
@@ -6030,7 +6039,7 @@ if (window._npActiveKey !== trackKey) {
     }
     // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof window !== 'undefined' && !window.__IOS_ARTWORK_PATCH_ACTIVE && typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
@@ -6115,14 +6124,14 @@ if (remaining > 0) {
     const data = await res.json();
     const recentItems = data
       .filter(item => {
-        const name = `${item.Artist} – ${item.Title}`;
+        const name = `${item.Artist} - ${item.Title}`;
         return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
       })
       .slice(-5)
       .reverse();
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
-      const name = `${item.Artist} – ${item.Title}`;
+      const name = `${item.Artist} - ${item.Title}`;
       const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
@@ -6200,31 +6209,55 @@ if (remaining > 0) {
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
-  // Normalize query: strip video tags, punctuation, fancy dashes, extra spaces
+  // Normalize query: remove brackets, collapse spaces, strip fancy dashes
   const clean = String(query)
-    .replace(/[\u2013\u2014]/g, '-')               // en/em dash -> hyphen
-    .replace(/\s*-\s*/g, ' ')                      // hyphen separators -> space
-    .replace(/\s*\([^\)]*\)/g, ' ')              // remove (...) brackets
-    .replace(/\s*\[[^\]]*\]/g, ' ')              // remove [...] brackets
-    .replace(/\s{2,}/g, ' ')                        // collapse multiple spaces
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\s*-\s*/g, ' ')
+    .replace(/\s*\([^\)]*\)/g, ' ')
+    .replace(/\s*\[[^\]]*\]/g, ' ')
+    .replace(/\s{2,}/g, ' ')
     .trim();
-  const attempts = [
-    clean,                                            // Artist Title
-    clean.split(' ').reverse().join(' '),             // Title Artist (loose)
-  ];
-  for (const term of attempts) {
+
+  async function tryFetch(term) {
     try {
-      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}`;
-      const res = await fetch(url);
-      if (!res.ok) continue;
+      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}&v=${encodeURIComponent(typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1')}`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return '';
       const d = await res.json();
       const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
-      if (hit && hit.artworkUrl100) {
-        return hit.artworkUrl100.replace('100x100','300x300');
-      }
-    } catch (e) {
-      // swallow and try next variant
-    }
+      return hit && hit.artworkUrl100 ? hit.artworkUrl100.replace('100x100','300x300') : '';
+    } catch { return ''; }
+  }
+
+  function jsonp(url, timeout = 9000) {
+    return new Promise((resolve, reject) => {
+      const cb = 'itunesCB_' + Math.random().toString(36).slice(2);
+      const s = document.createElement('script');
+      let settled = false;
+      const done = (ok, data) => { if (settled) return; settled = true; delete window[cb]; s.remove(); ok ? resolve(data) : reject(new Error('jsonp')); };
+      window[cb] = (data) => done(true, data);
+      s.src = url + (url.includes('?') ? '&' : '?') + 'callback=' + cb;
+      s.onerror = () => done(false);
+      const t = setTimeout(() => done(false), timeout);
+      document.head.appendChild(s);
+    });
+  }
+
+  async function tryJSONP(term) {
+    try {
+      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}&v=${encodeURIComponent(typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1')}`;
+      const d = await jsonp(url);
+      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+      return hit && hit.artworkUrl100 ? hit.artworkUrl100.replace('100x100','300x300') : '';
+    } catch { return ''; }
+  }
+
+  const attempts = [ clean, clean.split(' ').reverse().join(' ') ];
+  for (const t of attempts) {
+    const viaFetch = await tryFetch(t);
+    if (viaFetch) return viaFetch;
+    const viaJSONP = await tryJSONP(t);
+    if (viaJSONP) return viaJSONP;
   }
   return '';
 }
@@ -10092,7 +10125,7 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
-<script src="/artwork-ios-patch.js"></script>
+<script src="/artwork-ios-patch.js?v=20250929-1104"></script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
