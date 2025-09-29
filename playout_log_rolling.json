@@ -48191,5 +48191,31 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-09-29T20:24:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T20:00:00Z",
+    "Scheduled Time": "21:28",
+    "Displayed Time": "21:28",
+    "Artist": "Republica",
+    "Title": "Ready to Go",
+    "Duration (s)": 211,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-09-29T20:28:03Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T20:00:00Z",
+    "Scheduled Time": "21:31",
+    "Displayed Time": "21:31",
+    "Artist": "Atomic Kitten ft Kool & The Gang",
+    "Title": "Ladies Night",
+    "Duration (s)": 178,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.08,
+    "Start ISO": "2025-09-29T20:31:41Z",
+    "Source": "PLAYIT"
   }
 ]
