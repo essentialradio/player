@@ -1,69 +1,123 @@
-// pages/api/recent.js
-export const config = { runtime: "edge" }; // fast + global
 
-const HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET,OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Cache-Control": "no-store, max-age=0, s-maxage=0, must-revalidate",
-  "content-type": "application/json; charset=utf-8",
-};
+import fs from 'fs';
+import path from 'path';
 
-// Your Dropbox rolling log (direct-download form)
-const DEFAULT_RECENT_URL =
-  "https://dl.dropboxusercontent.com/scl/fi/26wndol1tpgk2k50np6mb/playout_log_rolling.json?rlkey=q5nwa49bgk6wecsr63kawssu5&dl=1";
+// Location of your rolling log relative to the repo root (serverless runtime)
+const DATA_FILE = path.join(process.cwd(), 'playout_log_rolling.json');
 
-const normaliseRow = (row = {}) => {
-  const artist = row.Artist ?? row.artist ?? "";
-  const title  = row.Title  ?? row.title  ?? "";
-  const start  = row["Start ISO"] ?? row.startTime ?? row.startedAt ?? null;
-  const durS   = row["Duration (s)"] ?? row.duration ?? null;
-  const duration =
-    durS == null || durS === "" || Number.isNaN(Number(durS)) ? null : Number(durS);
+function safeReadJSON(filePath) {
+  try {
+    const raw = fs.readFileSync(filePath, 'utf8');
+    const data = JSON.parse(raw);
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
+}
+
+// Normalise a single row from Python output into a UI-friendly object
+function normaliseRow(row) {
+  const artist = row.Artist ?? row.artist ?? '';
+  const title  = row.Title  ?? row.title  ?? '';
+  const source = row.Source ?? row.source ?? 'PLAYIT';
+
+  // Prefer 'Start ISO' when present — exact timestamp (Python wrote it)
+  let startISO = row['Start ISO'] || row['startISO'] || null;
+  let startMs = null;
+
+  if (startISO) {
+    const d = new Date(startISO);
+    if (!Number.isNaN(d.getTime())) {
+      startISO = d.toISOString();
+      startMs = d.getTime();
+    } else {
+      startISO = null;
+    }
+  }
+
+  // Fallback: derive from 'Hour' (UTC) + 'Scheduled Time' (HH:MM, local)
+  if (!startISO) {
+    const hourStr = row.Hour || row.hour;
+    const schedStr = row['Scheduled Time'] || row['Displayed Time'] || row.scheduled || null;
+
+    if (hourStr && schedStr && /^\d{2}:\d{2}$/.test(schedStr)) {
+      const base = new Date(hourStr); // UTC hour boundary e.g. "...T14:00:00Z"
+      if (!Number.isNaN(base.getTime())) {
+        const [hh, mm] = schedStr.split(':').map(n => parseInt(n, 10));
+        // Interpret Scheduled Time as hours/minutes to set ON the UTC base.
+        // This matches previous behaviour and avoids TZ libs in serverless.
+        base.setUTCHours(Number.isFinite(hh) ? hh : 0, Number.isFinite(mm) ? mm : 0, 0, 0);
+        startISO = base.toISOString();
+        startMs = base.getTime();
+      }
+    }
+  }
+
+  // Duration is optional; keep as number if provided
+  let durationSec = row['Duration (s)'] ?? row.duration ?? null;
+  if (durationSec != null) {
+    const n = Number(durationSec);
+    durationSec = Number.isFinite(n) ? n : null;
+  }
 
   return {
     artist,
     title,
-    startTime: start,               // ISO string
-    duration,                       // seconds or null
-    source: row.Source ?? row.source ?? null,
+    source,
+    startISO,
+    startMs,
+    duration: durationSec,
   };
-};
+}
 
-export default async function handler(req) {
-  if (req.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: HEADERS });
+export default function handler(req, res) {
+  const debug = (req.query?.debug ?? '') === '1' || (req.query?.debug ?? '').toLowerCase() === 'true';
+
+  // Load rows
+  const rowsRaw = safeReadJSON(DATA_FILE);
+
+  // Normalise and drop rows without any time
+  let rows = rowsRaw.map(normaliseRow).filter(r => Number.isFinite(r.startMs));
+
+  // Sort newest first
+  rows.sort((a, b) => b.startMs - a.startMs);
+
+  // Query params
+  const qLimit = Number.parseInt(req.query?.limit ?? '', 10);
+  const qDays  = Number.parseInt(req.query?.days  ?? '', 10);
+
+  // Optional filter by last N days (e.g., ?days=14)
+  if (Number.isFinite(qDays) && qDays > 0) {
+    const cutoffMs = Date.now() - qDays * 24 * 60 * 60 * 1000;
+    rows = rows.filter(r => r.startMs >= cutoffMs);
   }
 
-  const urlFromEnv   = process.env.RECENT_URL; // optional Vercel env override
-  const urlFromQuery = new URL(req.url).searchParams.get("src"); // optional ?src= override
-  const RECENT_URL   = urlFromEnv || urlFromQuery || DEFAULT_RECENT_URL;
+  // Apply limit (default high enough for ~two weeks)
+  const limit = Number.isFinite(qLimit) && qLimit > 0 ? qLimit : 3500;
+  const out = rows.slice(0, limit);
 
-  // limit (newest first), defaults to 20, capped 1..100
-  const sp = new URL(req.url).searchParams;
-  const limitQ = Number(sp.get("limit"));
-  const LIMIT = Number.isFinite(limitQ) ? Math.max(1, Math.min(100, limitQ)) : 20;
+  // Headers
+  res.setHeader('Cache-Control', 'no-store, no-cache, max-age=0, s-maxage=0, must-revalidate');
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
 
-  try {
-    const r = await fetch(RECENT_URL, { cache: "no-store" });
-    if (!r.ok) {
-      return new Response(
-        JSON.stringify({ error: "Upstream failed", status: r.status }),
-        { status: 502, headers: HEADERS }
-      );
-    }
-
-    const data = await r.json().catch(() => []);
-    const list = Array.isArray(data) ? data : [];
-
-    // Take the last N entries and return newest-first
-    const recent = list.slice(-LIMIT).map(normaliseRow).reverse();
-
-    return new Response(JSON.stringify(recent), { status: 200, headers: HEADERS });
-  } catch (e) {
-    return new Response(
-      JSON.stringify({ error: "Fetch error", detail: String(e) }),
-      { status: 500, headers: HEADERS }
-    );
+  if (debug) {
+    const counts = out.reduce((acc, r) => {
+      acc[r.source] = (acc[r.source] || 0) + 1;
+      return acc;
+    }, {});
+    return res.status(200).json({
+      items: out,
+      debug: {
+        totalRead: rowsRaw.length,
+        totalNormalised: rows.length,
+        returned: out.length,
+        counts,
+        limit,
+        days: Number.isFinite(qDays) && qDays > 0 ? qDays : null,
+        file: DATA_FILE,
+      }
+    });
   }
+
+  return res.status(200).json(out);
 }
