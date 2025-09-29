@@ -6165,10 +6165,11 @@ if (remaining > 0) {
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
+        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(trackName)}&limit=5`);
         const js = await res.json();
-        if (js.results[0]?.artworkUrl100) {
-          const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
+        const hit = (js.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+        if (hit?.artworkUrl100) {
+          const url = hit.artworkUrl100.replace('100x100', '300x300');
           artworkImg.onload = () => artworkImg.classList.add('loaded');
           artworkImg.onerror = applyFallbackImmediate;
           artworkCache[trackName] = url;
@@ -6203,10 +6204,11 @@ if (remaining > 0) {
     async function getTrackArtwork(query) {
       if (artworkCache[query]) return artworkCache[query];
       try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
+        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(query)}&limit=5`);
         const d = await res.json();
-        if (d.results[0]?.artworkUrl100) {
-          return d.results[0].artworkUrl100.replace('100x100', '300x300');
+        const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+        if (hit?.artworkUrl100) {
+          return hit.artworkUrl100.replace('100x100', '300x300');
         }
       } catch {}
       return '';
@@ -10080,64 +10082,6 @@ document.addEventListener('visibilitychange', () => {
     });
   });
 })();
-
-
-// --- Patched artwork helpers (music-only via /api/artwork.js) ---
-
-async function fetchArtwork(trackName) {
-  artworkImg.src = 'Essential Radio Logo.png';
-  artworkImg.classList.remove('loaded', 'fallback');
-
-  const parts = String(trackName).split(/\s+[-–]\s+/);
-  const artist = (parts[0] || '').trim();
-  const title  = (parts[1] || '').trim();
-
-  try {
-    const url = `/api/artwork.js?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}&_=${Date.now()}`;
-    const res = await fetch(url, { cache: 'no-store' });
-    const js = await res.json();
-    if (js.url) {
-      artworkImg.onload = () => artworkImg.classList.add('loaded');
-      artworkImg.onerror = applyFallbackImmediate;
-      artworkCache[trackName] = js.url;
-      artworkImg.src = js.url;
-      return;
-    }
-  } catch (e) { /* swallow */ }
-
-  // Fallback to autopo.st if available
-  const safe = String(trackName)    .replace(/\s*\(.*?\)/g, '')    .replace(/[^a-zA-Z0-9\s-]/g, '')    .trim()    .replace(/\s+/g, '_');
-  const [a, t] = safe.split('_-_');
-  const autoUrl = `https://cdn.autopo.st/images/coverart/${a?.[0]?.toLowerCase()||'a'}/${a}_${t}.jpg`;
-  try {
-    const head = await fetch(autoUrl, { method: 'HEAD' });
-    if (head.ok) {
-      artworkImg.onload = () => artworkImg.classList.add('loaded');
-      artworkImg.onerror = applyFallbackImmediate;
-      artworkImg.src = autoUrl;
-      return;
-    }
-  } catch (e) { /* swallow */ }
-  applyFallbackImmediate();
-}
-
-
-const artworkCache = typeof artworkCache !== 'undefined' ? artworkCache : {};
-async function getTrackArtwork(query) {
-  if (artworkCache[query]) return artworkCache[query];
-  const [artist, title] = String(query).split(/\s+[-–]\s+/);
-  try {
-    const url = `/api/artwork.js?artist=${encodeURIComponent(artist||'')}&title=${encodeURIComponent(title||'')}&_=${Date.now()}`;
-    const res = await fetch(url, { cache: 'no-store' });
-    const d = await res.json();
-    if (d.url) {
-      artworkCache[query] = d.url;
-      return d.url;
-    }
-  } catch (e) { /* swallow */ }
-  return '';
-}
-
 </script>
 
 </body><style>
