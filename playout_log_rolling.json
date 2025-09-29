@@ -47697,5 +47697,31 @@
     "Full Duration (mins)": 2.93,
     "Start ISO": "2025-09-29T17:46:50Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T17:00:00Z",
+    "Scheduled Time": "18:49",
+    "Displayed Time": "18:49",
+    "Artist": "Gracie Abrams",
+    "Title": "Risk",
+    "Duration (s)": 182,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.2,
+    "Start ISO": "2025-09-29T17:49:42Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T17:00:00Z",
+    "Scheduled Time": "18:52",
+    "Displayed Time": "18:52",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 157,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-09-29T17:52:47Z",
+    "Source": "PLAYIT"
   }
 ]
