@@ -1,30 +1,7 @@
 <!DOCTYPE html>
 
 <html data-theme="light" lang="en">
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-<script>
-  // Cache/version guard to avoid stale service workers and cached assets
-  const APP_VERSION = '20250928042826';
-  (function() {
-    try {
-      const KEY = 'er_app_version';
-      const prev = localStorage.getItem(KEY);
-      if (prev !== APP_VERSION) {
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
-        }
-        if (typeof caches !== 'undefined') {
-          caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k))));
-        }
-        localStorage.setItem(KEY, APP_VERSION);
-        console.log('App version changed to', APP_VERSION, '- cleared SW and caches');
-      }
-    } catch(e) { console.warn('Version/cache guard failed', e); }
-  })();
-</script>
-
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
@@ -653,7 +630,7 @@ body {
 @media (max-width: 768px) {
 
   body {
-    padding: 12px 2vw 8vw 2vw !important;
+    padding: 48px 2vw 8vw 2vw !important;
   }
 
   .strip-container {
@@ -4401,36 +4378,6 @@ html[data-theme="light"] #mobileNowBar {
   /* If there is no embed-wrap in Requests modal, make sure any iframe still fills */
   #requestsModal iframe { width:100% !important; border:0 !important; }
 </style>
-<style>
-
-/* === Mobile: place clock above Play button by moving the element === */
-@media (max-width: 768px) {
-  #liveClock {
-    margin-bottom: 10px;
-  }
-}
-
-</style>
-<style>
-
-/* === Mobile logo/clock spacing fix === */
-@media (max-width: 600px) {
-  /* The logo sits absolutely in .player-wrapper; add top padding so content clears it */
-  .player-wrapper { padding-top: 24px !important; }
-
-  /* Nudge/scale the overhang logo slightly smaller for tight screens */
-  .logo-overhang {
-    width: 120px !important;
-    left: 6px !important;
-    top: 6px !important;
-    transform: translate(0, 0) !important;
-  }
-
-  /* Keep the clock comfortably below the logo */
-  #liveClock { margin-top: 4px !important; }
-}
-
-</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6056,7 +6003,7 @@ if (window._npActiveKey !== trackKey) {
     }
     // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} ${title}`); } catch {}
+    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
@@ -6185,29 +6132,38 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
-try {
-    // Clean "Artist - Title" into "Artist Title" for better matching
-    const cleaned = trackName.replace(/\s*-\s*/g, ' ');
-    const res = await fetch(
-      `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(cleaned)}&v=${encodeURIComponent(APP_VERSION)}`
-    );
-    const js = await res.json();
-    const hit = (js.results || []).find(r =>
-      (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100
-    );
-    if (hit) {
-      const url = hit.artworkUrl100.replace('100x100', '300x300');
-      artworkImg.onload = () => artworkImg.classList.add('loaded');
-      artworkImg.onerror = applyFallbackImmediate;
-      artworkCache[trackName] = url;
-      artworkImg.src = url;
-      return;
+      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.classList.remove('loaded', 'fallback');
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(trackName)}&limit=1`);
+        const js = await res.json();
+        if (js.results[0]?.artworkUrl100) {
+          const url = js.results[0].artworkUrl100.replace('100x100', '300x300');
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkCache[trackName] = url;
+          artworkImg.src = url;
+          return;
+        }
+      } catch {}
+      const safe = trackName
+        .replace(/\s*\(.*?\)/g, '')
+        .replace(/[^a-zA-Z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '_');
+      const [artist, title] = safe.split('_-_');
+      const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
+      try {
+        const head = await fetch(autoUrl, { method: 'HEAD' });
+        if (head.ok) {
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkImg.src = autoUrl;
+          return;
+        }
+      } catch {}
+      applyFallbackImmediate();
     }
-  } catch (e) {
-    console.warn('fetchArtwork iTunes fetch failed', e);
-  }
-  // fallback is handled elsewhere
-}
     function applyFallbackImmediate() {
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded');
@@ -6215,24 +6171,16 @@ try {
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
-if (artworkCache[query]) return artworkCache[query];
-  try {
-    const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(query)}&v=${encodeURIComponent(APP_VERSION)}`;
-    const res = await fetch(url);
-    const d = await res.json();
-    const hit = (d.results || []).find(r =>
-      (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100
-    );
-    if (hit) {
-      const hi = hit.artworkUrl100.replace('100x100','300x300');
-      artworkCache[query] = hi;
-      return hi;
+      if (artworkCache[query]) return artworkCache[query];
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=1`);
+        const d = await res.json();
+        if (d.results[0]?.artworkUrl100) {
+          return d.results[0].artworkUrl100.replace('100x100', '300x300');
+        }
+      } catch {}
+      return '';
     }
-  } catch (e) {
-    console.warn('getTrackArtwork iTunes fetch failed', e);
-  }
-  return '';
-}
 let nowPlayingInterval = null;
 let recentInterval = null;
 
@@ -10044,226 +9992,6 @@ document.addEventListener('visibilitychange', () => {
   // expose for debugging
   window.highlightCurrentShow = highlightCurrentShow;
   window.highlightLiveShows = highlightLiveShows;
-})();
-</script>
-
-<script>
-(function() {
-  function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
-
-  ready(function() {
-    var clock = document.getElementById('liveClock');
-    if (!clock) return;
-
-    // Create a placeholder to return the clock to its original spot
-    var placeholderId = 'liveClock-return-anchor';
-    var placeholder = document.getElementById(placeholderId);
-    if (!placeholder) {
-      placeholder = document.createElement('div');
-      placeholder.id = placeholderId;
-      clock.parentNode.insertBefore(placeholder, clock.nextSibling);
-    }
-
-    // Helper to insert clock before play button inside #player-box
-    function moveClockToPlayerBox() {
-      var player = document.getElementById('player-box');
-      var playBtn = document.getElementById('play-toggle');
-      if (!player || !playBtn) return;
-      // Insert clock before play button
-      if (playBtn.parentNode === player) {
-        player.insertBefore(clock, playBtn);
-      } else {
-        // fallback: prepend to player-box
-        player.insertBefore(clock, player.firstChild);
-      }
-    }
-
-    function moveClockHome() {
-      if (placeholder && placeholder.parentNode) {
-        placeholder.parentNode.insertBefore(clock, placeholder);
-      }
-    }
-
-    var mq = window.matchMedia('(max-width: 768px)');
-    function apply() {
-      if (mq.matches) {
-        moveClockToPlayerBox();
-      } else {
-        moveClockHome();
-      }
-    }
-    apply();
-    mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
-    window.addEventListener('orientationchange', apply);
-    window.addEventListener('resize', function(){
-      // debounce-ish
-      clearTimeout(window.__clockMoveTO);
-      window.__clockMoveTO = setTimeout(apply, 120);
-    });
-  });
-})();
-</script>
-<script>
-(function(){
-  if (window.__ER_NP_FIX__) return; window.__ER_NP_FIX__ = true;
-
-  // ---------- tiny utils ----------
-  const $ = s => document.querySelector(s);
-  const $all = s => Array.from(document.querySelectorAll(s));
-  const now = () => Date.now();
-  const clean = s => (s||"")
-    .replace(/\s*\([\s\S]*?\)\s*/g," ").replace(/\s*\[[\s\S]*?\]\s*/g," ")
-    .replace(/\s+feat\.?\s+.*$/i," ").replace(/\s+ft\.?\s+.*$/i," ")
-    .replace(/\s*&\s*/g," ").replace(/\s{2,}/g," ").trim();
-
-  // ---------- ensure NP UI exists ----------
-  function ensureNPEls(){
-    let textEl = $('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
-    if (!textEl) {
-      const wrap = document.createElement('div');
-      wrap.id = 'np-wrap';
-      wrap.style = 'max-width:680px;margin:1rem auto;text-align:center;font:16px/1.4 system-ui,Segoe UI,Roboto,Arial;';
-      const img = document.createElement('img'); img.id = 'artwork';
-      img.alt = 'Artwork';
-      img.style = 'max-width:220px;height:auto;display:block;margin:.25rem auto;opacity:.95;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.25);';
-      const title = document.createElement('div'); title.id = 'npTitle'; title.textContent = 'On air — music & shows';
-      wrap.append(img); wrap.append(title);
-      (document.body || document.documentElement).insertBefore(wrap, document.body.firstChild);
-      textEl = title;
-      // minimal CSS
-      const st = document.createElement('style');
-      st.textContent = '#artwork.loaded{opacity:1}.np-muted{opacity:.8}';
-      document.head && document.head.appendChild(st);
-    }
-    let artEl = $('#artwork') || $('#artworkEl') || $('img.artwork, img#art, .np-artwork img, .artwork img');
-    if (!artEl) {
-      artEl = document.createElement('img'); artEl.id = 'artwork'; artEl.alt = 'Artwork';
-      artEl.style = 'max-width:220px;height:auto;display:block;margin:.25rem auto;opacity:.95;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.25);';
-      textEl.parentNode.insertBefore(artEl, textEl);
-    }
-    return { textEl, artEl };
-  }
-
-  function setNPText(artist, title, fallback){
-    const els = $all('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
-    const line = (artist||title) ? [artist,title].filter(Boolean).join(' — ') : (fallback || 'On air — music & shows');
-    if (els.length) els.forEach(el => el.textContent = line);
-  }
-
-  // ---------- fetch helpers with CORS fallback ----------
-  async function fetchJSON(url){
-    try { const r = await fetch(url, {cache:'no-store'}); if (r.ok) return await r.json(); } catch(e){}
-    const via = (url.startsWith('https://') ? 'https://r.jina.ai/http/' : 'https://r.jina.ai/http://') + url.replace(/^https?:\/\//,'');
-    try { const r2 = await fetch(via, {cache:'no-store'}); if (r2.ok){ const t=await r2.text(); try{ return JSON.parse(t);}catch(e){} } } catch(e){}
-    return null;
-  }
-
-  async function getLatestTrack(){
-    const js = await fetchJSON('https://player-green.vercel.app/api/latestTrack?_=' + now());
-    const node = js && (js.latestTrack || js);
-    if (!node) return null;
-    const artist = String(node.artist||'').trim();
-    const title  = String(node.title ||'').trim();
-    const indet  = !!node.indeterminate;
-    const source = String(node.source||'').toUpperCase();
-    if (!indet && source !== 'FIXED' && (artist || title)) return { artist, title };
-    return null;
-  }
-
-  async function getRecentFirstLine(){
-    const js = await fetchJSON('https://player-green.vercel.app/api/recent?_=' + now());
-    const items = js && (js.recent || js.items) || (Array.isArray(js) ? js : []);
-    if (Array.isArray(items) && items.length){
-      const it = items[0];
-      const t = String((it && (it.title||it.Title))||'').trim();
-      const a = String((it && (it.artist||it.Artist))||'').trim();
-      if (t || a) return { artist:a, title:t };
-    }
-    return { artist:'', title:'' };
-  }
-
-  // ---------- artwork providers ----------
-  async function tryPlayerGreenArtwork(artist, title){
-    const base = 'https://player-green.vercel.app/api/artwork.js';
-    const qs = [];
-    const both = clean([artist,title].filter(Boolean).join(' - '));
-    const t = clean(title), a = clean(artist);
-    if (artist || title) qs.push(`artist=${encodeURIComponent(artist||'')}&title=${encodeURIComponent(title||'')}`);
-    if (both) qs.push(`q=${encodeURIComponent(both)}`); if (t) qs.push(`q=${encodeURIComponent(t)}`); if (a) qs.push(`q=${encodeURIComponent(a)}`);
-    for (const q of qs){
-      try {
-        const r = await fetch(`${base}?${q}&ts=${now()}`, {cache:'no-store'}); if (!r.ok) continue;
-        const js = await r.json(); const url = js && String(js.url||'').trim(); if (url) return url;
-      } catch(e){}
-    }
-    throw new Error('pg empty');
-  }
-  async function tryItunes(term){
-    const r = await fetch('https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=' + encodeURIComponent(term), {cache:'no-store'});
-    if (!r.ok) throw new Error('itunes'); const js = await r.json();
-    const hit = (js.results||[]).find(x => (x.kind==='song'||x.wrapperType==='track') && x.artworkUrl100);
-    if (hit) return hit.artworkUrl100.replace('100x100','300x300'); throw new Error('no itunes');
-  }
-  async function tryDeezer(term){
-    const r = await fetch('https://r.jina.ai/http/api.deezer.com/search?q=' + encodeURIComponent(term), {cache:'no-store'});
-    if (!r.ok) throw new Error('deezer'); const js = await r.json();
-    const hit = js && js.data && js.data[0]; if (hit && hit.album) return hit.album.cover_xl || hit.album.cover_big || hit.album.cover_medium || hit.album.cover || '';
-    throw new Error('no deezer');
-  }
-  async function tryCAA(artist,title){
-    const q = encodeURIComponent(`${artist||''} ${title||''}`.trim());
-    const r = await fetch('https://r.jina.ai/http/musicbrainz.org/ws/2/recording?query=' + q + '&fmt=json&limit=1', {cache:'no-store'});
-    if (!r.ok) throw new Error('mb'); const js = await r.json(); const rec = js.recordings && js.recordings[0];
-    const rel = rec && rec.releases && rec.releases[0]; const id = rel && rel.id; if (!id) throw new Error('no rel');
-    const r2 = await fetch('https://r.jina.ai/http/coverartarchive.org/release/' + id, {cache:'no-store'}); if (!r2.ok) throw new Error('caa');
-    const js2 = await r2.json(); const img = (js2.images||[]).find(x=>x.front) || (js2.images||[])[0];
-    return (img && ((img.thumbnails && (img.thumbnails.large || img.thumbnails.small)) || img.image)) || '';
-  }
-
-  async function getArtworkURL(artist, title){
-    const both = clean([artist,title].filter(Boolean).join(' ')), t = clean(title), a = clean(artist);
-    try { return await tryPlayerGreenArtwork(artist, title); } catch(e){}
-    try { if (both) return await tryItunes(both); } catch(e){}
-    try { if (t) return await tryItunes(t); } catch(e){}
-    try { if (a) return await tryItunes(a); } catch(e){}
-    try { if (both) return await tryDeezer(both); } catch(e){}
-    try { if (t) return await tryDeezer(t); } catch(e){}
-    try { if (a) return await tryDeezer(a); } catch(e){}
-    try { if (both) return await tryCAA(artist,title); } catch(e){}
-    try { if (t) return await tryCAA('',t); } catch(e){}
-    try { if (a) return await tryCAA(a,''); } catch(e){}
-    return '';
-  }
-
-  // ---------- single driver ----------
-  async function updateNP(){
-    const { textEl, artEl } = ensureNPEls();
-
-    // 1) Prefer latestTrack; else 2) /api/recent
-    let lt = await getLatestTrack();
-    let artist = lt?.artist || '', title = lt?.title || '';
-    if (!artist && !title) {
-      const rec = await getRecentFirstLine();
-      artist = rec.artist || ''; title = rec.title || '';
-    }
-
-    // write line
-    setNPText(artist, title, 'On air — music & shows');
-
-    // artwork
-    let url = '';
-    try { url = await getArtworkURL(artist, title); } catch(e){ url=''; }
-    if (url) {
-      artEl.onload = function(){ artEl.classList.add('loaded'); };
-      artEl.onerror = function(){ artEl.classList.remove('loaded'); artEl.removeAttribute('src'); };
-      artEl.src = url;
-    }
-  }
-
-  // kick + guard
-  if (window.__NP_TIMER__) clearInterval(window.__NP_TIMER__);
-  updateNP();
-  window.__NP_TIMER__ = setInterval(updateNP, 15000);
 })();
 </script>
 </body><style>
