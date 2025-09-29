@@ -6138,12 +6138,13 @@ if (remaining > 0) {
               fill="#222"/>
           </svg>
         </a>`;
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const lazyAttr = isIOS ? '' : 'loading="lazy"';
       return `
         <li>
           <span class="time">${time}</span>
           <img src="${art}"
-               alt="Cover for ${name}"
-               loading="lazy" />
+               alt="Cover for ${name}" ${lazyAttr} />
           <span class="info">
             ${name}
             ${lastfmIcon}
@@ -6199,23 +6200,33 @@ if (remaining > 0) {
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
-      if (artworkCache[query]) return artworkCache[query];
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(query)}&limit=5`);
-        const d = await res.json();
-        const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
-        if (hit?.artworkUrl100) {
-          return hit.artworkUrl100.replace('100x100', '300x300');
-        }
-      } catch {}
-      return '';
+  // Normalize query: strip video tags, punctuation, fancy dashes, extra spaces
+  const clean = String(query)
+    .replace(/[\u2013\u2014]/g, '-')               // en/em dash -> hyphen
+    .replace(/\s*-\s*/g, ' ')                      // hyphen separators -> space
+    .replace(/\s*\([^\)]*\)/g, ' ')              // remove (...) brackets
+    .replace(/\s*\[[^\]]*\]/g, ' ')              // remove [...] brackets
+    .replace(/\s{2,}/g, ' ')                        // collapse multiple spaces
+    .trim();
+  const attempts = [
+    clean,                                            // Artist Title
+    clean.split(' ').reverse().join(' '),             // Title Artist (loose)
+  ];
+  for (const term of attempts) {
+    try {
+      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}`;
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const d = await res.json();
+      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+      if (hit && hit.artworkUrl100) {
+        return hit.artworkUrl100.replace('100x100','300x300');
+      }
+    } catch (e) {
+      // swallow and try next variant
     }
-let nowPlayingInterval = null;
-let recentInterval = null;
-
-function startIntervals() {
-  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
-  if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
+  }
+  return '';
 }
 function stopIntervals() {
   clearInterval(nowPlayingInterval); nowPlayingInterval = null;
