@@ -1,29 +1,7 @@
 <!DOCTYPE html>
 
-<script>
-  // Cache/version guard to avoid stale service workers and cached assets
-  const APP_VERSION = '20250928042827';
-  (function() {
-    try {
-      const KEY = 'er_app_version';
-      const prev = localStorage.getItem(KEY);
-      if (prev !== APP_VERSION) {
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
-        }
-        if (typeof caches !== 'undefined') {
-          caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k))));
-        }
-        localStorage.setItem(KEY, APP_VERSION);
-        console.log('App version changed to', APP_VERSION, '- cleared SW and caches');
-      }
-    } catch(e) { console.warn('Version/cache guard failed', e); }
-  })();
-</script>
 <html data-theme="light" lang="en">
-<meta content="no-store, no-cache, must-revalidate" http-equiv="Cache-Control"/>
-<meta content="no-cache" http-equiv="Pragma"/>
-<meta content="0" http-equiv="Expires"/>
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
@@ -57,6 +35,7 @@
   background: #ffe67c;
   color: #191c29;
 }
+
 
 .navbar {
       position: fixed;
@@ -267,6 +246,7 @@ body {
   background: #222;
   border-left: 1px solid #333;
 }
+
 
 /* And let wheel / swipe bubble out when you hit the end */
 .right-panel { overscroll-behavior: contain; }
@@ -702,6 +682,7 @@ body {
   margin-bottom: 2px;
 }
 
+
   #now-playing-card {
     font-size: 15px !important;
     padding: 10px 4px !important;
@@ -788,7 +769,9 @@ body {
   box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
 }
 
+
 /* MOBILE TWEAKS */
+
 
 @media (max-width: 768px) {
   .right-panel {
@@ -959,6 +942,7 @@ body.modal-open {
   gap: 12px;
 }
 
+
 /* Banner image */
 .side-banner-img {
   width: 160px;
@@ -1028,6 +1012,7 @@ body.modal-open {
   margin-bottom: 4px;
   display: block;
 }
+
 
 @media (max-width: 768px) {
   .modal {
@@ -1936,6 +1921,8 @@ footer, .footer {
   color: var(--er-text) !important;
   border-top: 1px solid var(--er-border) !important;
 }
+
+
 
 /* === RNH story text to white === */
 #rnh-news-list,
@@ -3203,6 +3190,7 @@ border-left: 4px solid var(--brand, #fed351);
   #share-btn { width: 100%; margin-top: 10px; justify-content: center; }
 }
 
+
 /* Share button inside Now Playing card */
 #share-btn {
   display: inline-flex;
@@ -3264,6 +3252,8 @@ border-left: 4px solid var(--brand, #fed351);
     transform: translateX(-50%);
   }
 }
+
+
 
 /* --- Share button inside LIVE box --- */
 .live-indicator #share-btn {
@@ -3344,6 +3334,7 @@ border-left: 4px solid var(--brand, #fed351);
 /* Highlight for the current show inside the Schedule modal */
 .show--current,
 .current-show,
+
 
 /* If the entry already has a highlight class from older CSS, keep it visible */
 .show-entry.current, .show.current, .schedule-item.current { 
@@ -4335,6 +4326,7 @@ html[data-theme="light"] #mobileNowBar {
   }
 }
 </style>
+
 <style id="listen-modal-offset-fix">
 /* Responsive fix for Listen Again modal */
 #listenModal .modal-content {
@@ -4416,18 +4408,8 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
-<!-- Injected Now Playing hooks -->
-<section id="nowPlaying" style="display:none; padding:0.5rem 0;">
-<div style="font-weight:600; font-size:1.1rem;">
-<span id="showTitle">Loading…</span>
-</div>
-<div style="opacity:0.85;">
-<span id="showPresenter"></span>
-<span id="showSource" style="margin-left:0.5rem; font-size:0.9rem; border:1px solid currentColor; padding:0 0.35rem; border-radius:0.4rem;"></span>
-</div>
-<img alt="" id="artwork" onload="this.style.display='inline-block'" style="margin-top:0.4rem; max-width:160px; height:auto; display:none;"/>
-<small id="npStatus" style="display:none;"></small>
-</section>
+</head>
+<body>
 <!-- BURGER MENU (mobile only) -->
 <div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;">
 <span class="burger-bar"></span>
@@ -4478,7 +4460,7 @@ html[data-theme="light"] #mobileNowBar {
 </div>
 <div id="player-box">
 <audio id="stream" preload="none">
-<source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html" type="audio/mpeg"/>
+<source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg"/>
 </audio>
 <button id="play-toggle">▶️ Play Essential Radio</button>
 <div id="volume-container">
@@ -5055,6 +5037,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   border-top:1px solid #2b2b2b; /* the line */
   box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
 }
+
 
   @media (max-width: 768px) {
     .strip-container {
@@ -5721,7 +5704,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
     async function fetchScheduleModal() {
       try {
-        const res = await fetch("https://player-green.vercel.app/schedule.json");
+        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
@@ -5841,7 +5824,7 @@ group.forEach(show => {
 <script>
     async function fetchSchedule() {
       try {
-        const res = await fetch("https://player-green.vercel.app/schedule.json");
+        const res = await fetch("https://travel-ac.vercel.app/schedule.json");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
@@ -5909,7 +5892,7 @@ group.forEach(show => {
     }
     const volumeDisplay = document.getElementById('volume-display');
     const nowPlaying = document.getElementById('now-playing');
-    const artwork = document.getElementById('artwork');
+    const artworkImg = document.getElementById('artwork');
     const observer = new IntersectionObserver(entries => {
       for (const e of entries) {
         if (e.isIntersecting) {
@@ -6000,78 +5983,46 @@ let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
 async function fetchNowPlaying() {
-  const NOWPLAYING_URL = 'https://player-green.vercel.app/api/latestTrack'; // change to full URL if cross-origin
   try {
-    const latestRes = await fetch(NOWPLAYING_URL + '?_=' + Date.now(), { cache: 'no-store' });
-    if (!latestRes.ok) throw new Error('latestTrack HTTP ' + latestRes.status);
+    const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
-    const hasCore = !!(latest && latest.artist && latest.title);
-    const isALT = (latest && typeof latest.source === 'string' && latest.source.toUpperCase() === 'ALT');
-    const isIndeterminate = isALT || latest?.indeterminate === true || latest?.duration == null;
-
-    // ---------- SHOW MODE (ALT / indeterminate) ----------
-    if (hasCore && isIndeterminate) {
-      const nowPlaying = document.getElementById('now-playing');
-      if (nowPlaying) {
-        const showTitle = latest.title || '';
-        const presenter = latest.artist || '';
-        nowPlaying.innerHTML = `
-          <span style="color:#fed351;">Now Playing:</span>
-          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-          <span class="show-title" style="color:white;font-weight:600;font-size:1.2em;">${showTitle}</span><br/>
-          ${presenter ? `<span class="show-presenter" style="color:white;">by ${presenter}</span>` : ''}
-        `;
-        // Title: use "by" (not "with")
-        try { document.title = presenter ? `Essential Radio: ${showTitle} by ${presenter}` : `Essential Radio: ${showTitle}`; } catch (e) {}
-        // Hide progress + countdown
-        try {
-          const prog = document.getElementById('np-progress');
-          if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); }
-          const cd = document.getElementById('countdown'); if (cd) cd.textContent = '—/—';
-          if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
-        } catch(e){}
-      }
-      return;
-    }
-
-    // If we get here, we expect a proper timed item (FIXED or PlayIt)
-    if (!hasCore || !latest?.duration || !latest?.startTime) {
+    // Validate payload
+    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
 
     const artist = latest.artist;
     const title = latest.title;
-    const startMs = new Date(latest.startTime).getTime();
+    const startMs = new Date(latest.startTime).getTime(); // UTC ms
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
 
-    // Already ended? fall back (prevents ghost)
+    // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
     if (Date.now() > endMs) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
-
-    // Show progress bar
+    // Show progress bar while a valid track is playing
     try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
-
-    // Track identity (to detect new item)
+// Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
 
-    if (window._npActiveKey !== trackKey) {
-      window._npActiveKey = trackKey;
-      try { hardResetBar(); } catch(e){}
-      window._npLastTiming = { startMs, endMs };
-      try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
-      try { startBarAnimation(startMs, endMs); } catch(e){}
-    } else {
-      // Same item; refresh timing
-      window._npLastTiming = { startMs, endMs };
-    }
+// Only (re)start the bar if this is a NEW track.
+if (window._npActiveKey !== trackKey) {
+  window._npActiveKey = trackKey;
+  try { hardResetBar(); } catch(e){}
+  window._npLastTiming = { startMs, endMs };
+  try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
+  try { startBarAnimation(startMs, endMs); } catch(e){}
+} else {
+  // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
+  window._npLastTiming = { startMs, endMs };
+}
 
-    // Update main Now Playing block (use "by")
+    // Update main Now Playing block
     const nowPlaying = document.getElementById('now-playing');
     if (nowPlaying) {
       nowPlaying.innerHTML = `
@@ -6080,21 +6031,22 @@ async function fetchNowPlaying() {
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
-    try { document.title = `Essential Radio: ${title} by ${artist}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} ${title}`); } catch {}
+    // Update document title and artwork (if helper exists)
+    try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
+    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
-    // Update alternate selectors (if present)
+    // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
     const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
     if (titleEl) titleEl.textContent = title;
     if (artistEl) artistEl.textContent = artist;
 
-    // Countdown (FIXED / timed)
+    // Countdown updater uses UTC-safe milliseconds
     function updateCountdown() {
       const nowMs = Date.now();
       const remaining = endMs - nowMs;
       const countdownEl = document.getElementById('countdown');
-      if (remaining > 0) {
+if (remaining > 0) {
         const mins = Math.floor(remaining / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         if (countdownEl) countdownEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -6102,20 +6054,17 @@ async function fetchNowPlaying() {
         if (countdownEl) countdownEl.textContent = '—/—';
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
-        // graceful poll for next item
+        // Grace window before showing fallback to avoid micro-flash between sweepers and next track
         const GRACE_MS = 2500;
         const graceUntil = Date.now() + GRACE_MS;
         const pollDelay = 400;
         let _gracePoll;
         const _pollForNew = async () => {
           try {
-            const r = await fetch(NOWPLAYING_URL + '?_=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
-            const jIsALT = (j && typeof j.source === 'string' && j.source.toUpperCase() === 'ALT') || j?.indeterminate === true || j?.duration == null;
-            if (j && (jIsALT)) { fetchNowPlaying(); return; }
             const newKey = (j && j.artist && j.title && j.startTime)
-              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
-              : null;
+              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
             if (newKey && newKey !== window._npLastKey) { fetchNowPlaying(); return; }
           } catch(e){}
           if (Date.now() >= graceUntil) {
@@ -6126,10 +6075,14 @@ async function fetchNowPlaying() {
         };
         _pollForNew();
 
-        if (window._npPollTimer) { clearInterval(window._npPollTimer); window._npPollTimer = null; }
+        // Poll every 5s for a *different* track; when found, refresh NP
+        if (window._npPollTimer) {
+          clearInterval(window._npPollTimer);
+          window._npPollTimer = null;
+        }
         window._npPollTimer = setInterval(async () => {
           try {
-            const r = await fetch(NOWPLAYING_URL + '?_=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
@@ -6139,7 +6092,9 @@ async function fetchNowPlaying() {
               window._npPollTimer = null;
               fetchNowPlaying();
             }
-          } catch (e) {}
+          } catch (e) {
+            // swallow and keep polling
+          }
         }, 5000);
       }
     }
@@ -6155,43 +6110,140 @@ async function fetchNowPlaying() {
 
 
 
-
-    
-
-    <script>
-  
-
-  // --- Intervals: only drive Now Playing here. Recently Played manages itself. ---
-  let nowPlayingInterval = null;
-
-  function startIntervals() {
-    if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
+    async function fetchRecentFromGitHub() {
+  try {
+    const baseUrl = 'https://essentialradio.github.io/player/playout_log_rolling.json';
+    const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const recentItems = data
+      .filter(item => {
+        const name = `${item.Artist} – ${item.Title}`;
+        return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
+      })
+      .slice(-5)
+      .reverse();
+    const entries = await Promise.all(recentItems.map(async item => {
+      const time = item['Scheduled Time'] || item.time || '';
+      const name = `${item.Artist} – ${item.Title}`;
+      const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
+      // --- New: Last.fm icon link ---
+      const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
+      const lastfmIcon = `
+        <a href="${lastfmUrl}" target="_blank" rel="noopener"
+          title="More about ${item.Artist} on Last.fm"
+          style="margin-left:7px;vertical-align:middle;display:inline-block;">
+          <svg width="19" height="19" viewBox="0 0 32 32" style="display:inline-block;vertical-align:middle;">
+            <circle cx="16" cy="16" r="16" fill="#fed351"/>
+            <path d="M24.6,19.9c-2.2,1.8-5.1,2.4-7.8,2.1c-2.6-0.3-5.3-1.7-6.7-4c-0.7-1.2-1.1-2.7-1-4.1c0.1-2.6,2.4-4.8,5.2-4.8
+              c3.4,0,5,2.4,5.4,4.6c0.2,1-0.5,1.7-1.5,1.7c-1.1,0-1.4-0.8-1.5-1.4c-0.2-1.3-1-2.1-2.3-2.1c-1.2,0-2,0.9-2,2
+              c0,0.6,0.2,1.1,0.4,1.5c0.8,1.4,2.4,2.1,4,2.3c2.6,0.3,4.2-0.7,5-1.4c0.8-0.8,1.8-0.6,2.3,0.1C25.1,18.4,25.3,19.2,24.6,19.9z"
+              fill="#222"/>
+          </svg>
+        </a>`;
+      return `
+        <li>
+          <span class="time">${time}</span>
+          <img src="${art}"
+               alt="Cover for ${name}"
+               loading="lazy" />
+          <span class="info">
+            ${name}
+            ${lastfmIcon}
+          </span>
+        </li>`;
+    }));
+    const list = document.getElementById('recent-list');
+    list.innerHTML = entries.join('');
+    document.querySelectorAll('#recent-list img').forEach(img => observer.observe(img));
+  } catch (e) {
+    console.error('Recent fetch failed:', e);
   }
-  function stopIntervals() {
-    if (nowPlayingInterval) clearInterval(nowPlayingInterval);
-    nowPlayingInterval = null;
-  }
+}
 
-  // Initial fetches
-  fetchNowPlaying();
-  if (window.fetchRecentlyPlayed) window.fetchRecentlyPlayed(); // call once; its script manages its own 20s timer
-  startIntervals();
-
-  // Run only when tab is visible
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') {
-      fetchNowPlaying();
-      if (window.fetchRecentlyPlayed) window.fetchRecentlyPlayed();
-      startIntervals();
-    } else {
-      stopIntervals(); // don't duplicate recently-played timer; it’s self-managed
+    async function fetchArtwork(trackName) {
+      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.classList.remove('loaded', 'fallback');
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(trackName)}&limit=5`);
+        const js = await res.json();
+        const hit = (js.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+        if (hit?.artworkUrl100) {
+          const url = hit.artworkUrl100.replace('100x100', '300x300');
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkCache[trackName] = url;
+          artworkImg.src = url;
+          return;
+        }
+      } catch {}
+      const safe = trackName
+        .replace(/\s*\(.*?\)/g, '')
+        .replace(/[^a-zA-Z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '_');
+      const [artist, title] = safe.split('_-_');
+      const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
+      try {
+        const head = await fetch(autoUrl, { method: 'HEAD' });
+        if (head.ok) {
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkImg.src = autoUrl;
+          return;
+        }
+      } catch {}
+      applyFallbackImmediate();
     }
-  });
-</script>
-<!-- Removed duplicate show title formatter script -->
-<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
+    function applyFallbackImmediate() {
+      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.classList.remove('loaded');
+      artworkImg.classList.add('fallback');
+    }
+    const artworkCache = {};
+    async function getTrackArtwork(query) {
+      if (artworkCache[query]) return artworkCache[query];
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(query)}&limit=5`);
+        const d = await res.json();
+        const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+        if (hit?.artworkUrl100) {
+          return hit.artworkUrl100.replace('100x100', '300x300');
+        }
+      } catch {}
+      return '';
+    }
+let nowPlayingInterval = null;
+let recentInterval = null;
 
+function startIntervals() {
+  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
+  if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
+}
+function stopIntervals() {
+  clearInterval(nowPlayingInterval); nowPlayingInterval = null;
+  clearInterval(recentInterval); recentInterval = null;
+}
+
+// Always fetch once on page load
+fetchNowPlaying();
+fetchRecentFromGitHub();
+startIntervals();
+
+// On tab visibility change, only run when visible
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    fetchNowPlaying();
+    fetchRecentFromGitHub();
+    startIntervals();
+  } else {
+    stopIntervals();
+  }
+});
+
+  </script>
+<!-- Removed duplicate show title formatter script -->
+<script>
     function formatShowTitleMobileOnly(title) {
       if (window.innerWidth <= 600) {
         const match = title.match(/(.*)\s+with\s+(.*)/i);
@@ -6212,8 +6264,7 @@ async function fetchNowPlaying() {
       // initial format
       showSpan2.innerHTML = formatShowTitleMobileOnly(showSpan2.textContent);
     }
-  
-*/</script>
+  </script>
 <!-- Removed redundant modal open/close script; bounce handling moved to unified script -->
 <script>
 function refreshCombinedTravel() {
@@ -7296,9 +7347,7 @@ function closePresenterModal(presenterId) {
   toggleLogoVisibility();
 }
 </script>
-<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script>
 // Fallback observer: if modals’ display/style changes outside openModal/closeModal, keep logo in sync.
 (function() {
   const modalEls = Array.from(document.querySelectorAll('.modal'));
@@ -7332,8 +7381,7 @@ function closePresenterModal(presenterId) {
   // Initial sync in case page loaded with a modal already open
   document.addEventListener('DOMContentLoaded', sync);
 })();
-
-*/</script>
+</script>
 <!-- === Modal Behavior Overrides (Injected) === -->
 <script id="modal-behavior-overrides">
 (function(){
@@ -7541,6 +7589,7 @@ function closePresenterModal(presenterId) {
   color: #111 !important;
   border-color: rgba(0,0,0,0.08) !important;
 }
+
 
 /* Force black text for volume percentage in Now Playing */
 #volume-display {
@@ -7771,9 +7820,7 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
 })();
 </script>
 <!-- Enhancements JS: marquee, live highlight, share -->
-<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script>
 (() => {
   const TZ = "Europe/London";
 
@@ -8036,12 +8083,9 @@ const liveBox = document.querySelector(".live-indicator");
     });
   });
 })();
-
-*/</script>
+</script>
 <!-- Robustness patch: keep Share button from disappearing if Now Playing re-renders -->
-<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script>
 (function () {
   function ensureShareMounted() {
     var liveBox = document.querySelector(".live-indicator");
@@ -8068,11 +8112,8 @@ const liveBox = document.querySelector(".live-indicator");
   ensureShareMounted();
   setInterval(ensureShareMounted, 4000);
 })();
-
-*/</script>
-<script id="schedule-highlight-logic">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+</script>
+<script id="schedule-highlight-logic">
 (function() {
   const LONDON_TZ = 'Europe/London';
   const DASH = '[\-–—]'; // hyphen, en-dash, em-dash
@@ -8213,11 +8254,8 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:schedule:rendered', highlightCurrentShow);
   window.addEventListener('essential:schedule:loaded', highlightCurrentShow);
 })();
-
-*/</script>
-<script id="np-share-binder">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+</script>
+<script id="np-share-binder">
 (function(){
   function bindShareButtons(){
     var btns = document.querySelectorAll('#np-share-toolbar .np-share-btn');
@@ -8241,8 +8279,7 @@ const liveBox = document.querySelector(".live-indicator");
     obs.observe(tb, {childList:true, subtree:true});
   }
 })();
-
-*/</script>
+</script>
 <script id="np-share-href-enhancer">
 (function(){
   function s(){ try { return (window.shareSentence && window.shareSentence()) || ""; } catch(e){ return ""; } }
@@ -8297,9 +8334,7 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:nowplaying:update', updateHrefs);
 })();
 </script>
-<script id="np-share-move-to-front">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="np-share-move-to-front">
 (function(){
   function moveToolbar(){
     var card = document.getElementById('now-playing-card');
@@ -8324,8 +8359,7 @@ const liveBox = document.querySelector(".live-indicator");
     obs.observe(card, {childList:true, subtree:true});
   }
 })();
-
-*/</script>
+</script>
 <script id="np-share-click-clean">
 (function(){
   function norm(p){
@@ -8404,9 +8438,7 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:nowplaying:update', updateHrefs);
 })();
 </script>
-<script id="np-share-title-artist-extractor">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="np-share-title-artist-extractor">
 (function(){
   function txt(el){ return (el && (el.textContent||"").trim()) || ""; }
   function q(sel){ return document.querySelector(sel); }
@@ -8516,11 +8548,8 @@ const liveBox = document.querySelector(".live-indicator");
   // Trigger an update for share hrefs
   try { window.dispatchEvent(new Event('essential:nowplaying:update')); } catch(e){}
 })();
-
-*/</script>
-<script id="np-share-toolbar-js">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+</script>
+<script id="np-share-toolbar-js">
 (function(){
   function inToolbar(el){ while(el){ if (el.id==='np-share-toolbar') return true; el=el.parentElement; } return false; }
   function firstOutside(root, sel){
@@ -8595,11 +8624,8 @@ const liveBox = document.querySelector(".live-indicator");
   window.addEventListener('essential:nowplaying:update', refreshAnchors);
   setInterval(refreshAnchors,5000);
 })();
-
-*/</script>
-<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+</script>
+<script>
 (function(){
   function getCard() {
     return document.querySelector("#now-playing-card") || document.querySelector("#nowPlaying") || null;
@@ -8659,12 +8685,9 @@ const liveBox = document.querySelector(".live-indicator");
     obs2.observe(platforms, { childList: true, subtree: true, characterData: true });
   }
 })();
-
-*/</script>
+</script>
 <!-- MIXCLOUD COMPACT: JS -->
-<script id="mixcloud-compact-js">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="mixcloud-compact-js">
 (function () {
   function compact(el) {
     if (!el || !el.src || !/mixcloud\.com\/widget\/iframe/i.test(el.src)) return;
@@ -8702,8 +8725,7 @@ const liveBox = document.querySelector(".live-indicator");
     obs.observe(document.body, { childList: true, subtree: true });
   });
 })();
-
-*/</script>
+</script>
 <style>
   /* Minimal style so it sits like a compact utility button */
   .er-install-btn {
@@ -8726,7 +8748,7 @@ const liveBox = document.querySelector(".live-indicator");
   // Register service worker if supported
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      /* old SW register removed */.catch(()=>{});
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
     });
   }
 
@@ -8830,7 +8852,7 @@ const liveBox = document.querySelector(".live-indicator");
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    /* old SW register removed */.then(reg => {
+    navigator.serviceWorker.register('/sw.js').then(reg => {
       console.log('Service worker registered', reg);
     }).catch(err => {
       console.error('Service worker registration failed', err);
@@ -8905,9 +8927,7 @@ if ('serviceWorker' in navigator) {
   });
 </script>
 <!-- News & Travel auto-refresh -->
-<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script>
 // ===== News & Travel modal auto-refresh (inline) =====
 (function(){
   function isOpen(modal){
@@ -8987,8 +9007,7 @@ if ('serviceWorker' in navigator) {
     else { stopNewsAuto(); stopTravelAuto(); }
   });
 })();
-
-*/</script>
+</script>
 <script>
 // ==== Listen Again (Mixcloud) — auto-refresh on open/resume ====
 (function(){
@@ -9090,9 +9109,7 @@ if ('serviceWorker' in navigator) {
   });
 })();
 </script>
-<script id="modal-refresh-on-open">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="modal-refresh-on-open">
 // === Central modal refresh-on-open system ================================
 // Usage: add data-refresh-fn="yourFunctionName" to a .modal element.
 // When openModal('thatModalId') is called, we'll run window[yourFunctionName]()
@@ -9165,8 +9182,7 @@ if ('serviceWorker' in navigator) {
   });
   obs.observe(document.body, { attributes:true, childList:true, subtree:true, attributeFilter:['style','class'] });
 })();
-
-*/</script>
+</script>
 <script id="presenter-click-hijack">
 // Hijack ON AIR NOW presenter click to open the specific presenter modal if we can find it.
 // Fallback to the big Presenters list if there's no match.
@@ -9256,9 +9272,7 @@ if ('serviceWorker' in navigator) {
   }, { capture: true });
 })();
 </script>
-<script id="modal-a11y-focus-trap">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="modal-a11y-focus-trap">
 // === Modal accessibility + focus trap + Escape close =====================
 (function(){
   // Utility: find or create an id for a heading
@@ -9385,8 +9399,7 @@ if ('serviceWorker' in navigator) {
     document.querySelectorAll('.modal').forEach(ensureHeadingLabel);
   });
 })();
-
-*/</script>
+</script>
 <!-- Sticky Mobile Now Playing Bar -->
 <div class="artist" id="mobileNpArtist"></div>
 <script id="mobile-now-bar-js">
@@ -9472,9 +9485,7 @@ if ('serviceWorker' in navigator) {
   // document.addEventListener('nowPlayingUpdated', updateBar);
 })();
 </script>
-<script id="mobile-now-bar-visibility">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="mobile-now-bar-visibility">
 (() => {
   const mobileBar = document.getElementById('mobileNowBar');
   const player = document.getElementById('player-box');
@@ -9513,8 +9524,7 @@ if ('serviceWorker' in navigator) {
     applyVisibility(inView);
   });
 })();
-
-*/</script>
+</script>
 <!-- Mobile mini-player (single-line "Artist – Title") -->
 <!-- Mobile mini-player (single-line "Artist – Title") -->
 <div aria-label="Mini player" id="mobileNowBar" role="region">
@@ -9523,9 +9533,7 @@ if ('serviceWorker' in navigator) {
 <div id="mobileNowText" title="Now Playing">Artist – Title</div>
 </div>
 </div>
-<script id="mobile-mini-player-script">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="mobile-mini-player-script">
 (function () {
   const $ = (sel, root=document) => root.querySelector(sel);
 
@@ -9637,8 +9645,7 @@ if ('serviceWorker' in navigator) {
     io.observe(playerBox);
   }
 })();
-
-*/</script>
+</script>
 <script id="wire-refresh-yellow-both">
 (function(){
   async function unifiedRefresh(){
@@ -9709,9 +9716,7 @@ if ('serviceWorker' in navigator) {
   }
 })();
 </script>
-<script id="np-enhancements">/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
-
+<script id="np-enhancements">
 // === Smooth rAF bar animation & robust resets ===
 let _npRafId = null;
 function hardResetBar(){
@@ -9756,8 +9761,7 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-
-*/</script>
+</script>
 <script id="global-modal-close-helpers">
 (function(){
   function closeAllModals(){
@@ -9794,6 +9798,7 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
+
 <!-- ===== Schedule highlight polish (CSS) ===== -->
 <style id="schedule-highlight-polish">
   /* Ensure badge anchor exists */
@@ -9829,9 +9834,9 @@ document.addEventListener('visibilitychange', () => {
     html:focus-within { scroll-behavior: auto; }
   }
 </style>
-<script>/* SAFE-MODE: disabled heavy observers/animations for stability */
-/*
 
+
+<script>
 (() => {
   const MS_DAY = 86400000;
 
@@ -10020,8 +10025,8 @@ document.addEventListener('visibilitychange', () => {
   window.highlightCurrentShow = highlightCurrentShow;
   window.highlightLiveShows = highlightLiveShows;
 })();
+</script>
 
-*/</script>
 <script>
 (function() {
   function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
@@ -10079,84 +10084,36 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 <script>
-async function getLatest(){
-  const NOWPLAYING_URL = "/api/nowPlaying";
-  try{
-    const r = await fetch(NOWPLAYING_URL + "?_" + Date.now(), { cache:"no-store" });
-    const np = await r.json();
-
-    // Let the rest of the page know if we're in a fixed slot
-    window.NP_SCHEDULE_LOCK = (np && np.mode === "fixed");
-
-    if (window.NP_SCHEDULE_LOCK === true){
-      // Paint the fixed title (if your renderFixed exists)
-      try{
-        if (typeof renderFixed === "function") {
-          renderFixed({ title: np.displayTitle, nowPlayingOverride: np.displayTitle });
-        }
-      }catch{}
-
-      // Strap line: show ALT artist/title if present
-      try{
-        const box = document.getElementById("now-playing") || document.getElementById("nowPlaying");
-        const strap = box && box.querySelector(".np-artist, .track-artist, small, .small");
-        if (strap){
-          const parts = [];
-          if (np && np.artist) parts.push(np.artist);
-          if (np && np.title)  parts.push(np.title);
-          strap.textContent = parts.length ? ("by " + parts.join(" — ")) : "on Essential Radio";
-        }
-      }catch{}
-
-      // Return minimal shape so any progress bar logic stays off
-      return { artist: np?.artist || "", title: np?.title || "", duration: null, startTime: null };
-    }
-
-    // LIVE: adapt to existing caller shape
-    return {
-      artist: np?.artist || "",
-      title:  np?.title  || "",
-      duration: np?.duration ?? null,
-      startTime: np?.startTime ?? null
-    };
-  }catch(e){
-    return null;
-  }
-}
+(function(){const S=q=>document.querySelector(q);
+function badge(){if(S('#artwork-debug'))return;const s=document.createElement('style');s.textContent="#artwork-debug{position:fixed;right:8px;bottom:8px;z-index:99999;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+font-size:12px;line-height:1.2;padding:6px 8px;background:rgba(0,0,0,.7);
+color:#fff;border-radius:6px}#artwork-debug b{color:#7fd87f}";document.head.appendChild(s);const d=document.createElement('div');d.id='artwork-debug';d.textContent='artwork: init';document.body.appendChild(d)}
+function setB(t){const b=S('#artwork-debug');if(b)b.innerHTML='<b>artwork</b>: '+t}
+async function j(u){const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+function getImg(){let el=S('#artwork');if(!el){el=document.createElement('img');el.id='artwork';el.alt='Cover art';el.style.cssText='display:block;max-width:300px;width:100%;border-radius:12px;object-fit:cover;background:#111';document.body.insertBefore(el,document.body.firstChild)}try{el.loading='eager'}catch{}try{el.decoding='async'}catch{}return el}
+function endAt(i,d){try{const t=Date.parse(i);if(isFinite(t)&&isFinite(d)&&d>0)return t+Math.floor(Number(d)*1000)}catch{}return 0}
+let lastEnd=0,lastURL=null,lastMeta=null;
+async function resolve(m){try{const u=`/api/artwork.js?artist=${encodeURIComponent(m.artist)}&title=${encodeURIComponent(m.title)}&_=${Date.now()}`;const d=await j(u);if(d&&d.url){setB('server');return d.url}}catch(e){}
+try{const q=`${m.title} ${m.artist}`.trim();const u=`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&entity=musicTrack&country=GB&limit=5&_=${Date.now()}`;const d=await j(u);const h=(d.results||[]).find(x=>(x.kind==='song'||x.wrapperType==='track')&&x.artworkUrl100);if(h){setB('itunes');return h.artworkUrl100.replace('100x100','300x300')}}catch(e){}return null}
+function same(a,b){return !!a&&!!b&&a.artist===b.artist&&a.title===b.title}
+async function tick(){try{setB('latest');const L=await j(`/api/latestTrack?_=${Date.now()}`);const a=String(L.artist||'').trim(),t=String(L.title||'').trim(),ind=!!L.indeterminate;const st=L.startTime||L.started||null;const du=L.duration;if(!a||!t){if(lastEnd&&Date.now()>lastEnd+5000){setB('hide');getImg().src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='}else setB('blank-keep');return}if(ind){setB('ind-keep');return}
+const m={artist:a,title:t,start:st,dur:du};const e=endAt(st,du);if(e)lastEnd=e;if(same(m,lastMeta)){setB('same');return}
+setB('resolve');const url=await resolve(m);if(url){getImg().src=url;lastURL=url;lastMeta=m;setB('show')}else{setB('no-url-keep')} }catch(e){setB('error-keep')}}
+function start(){badge();const img=getImg();img.addEventListener('load',()=>img.classList.add('loaded'));img.addEventListener('error',()=>setB('img-error'));tick();setInterval(tick,12000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()})}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();})();
 </script>
-<!-- Service worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    const url = `/sw.js?v=${encodeURIComponent(window.APP_VERSION || Date.now())}`;
-    navigator.serviceWorker.register(url)
-      .then(reg => console.log('[ER] SW registered', url))
-      .catch(err => console.warn('[ER] SW register failed', err));
-  }
-</script>
-<!-- Now Playing (schedule banner) -->
-<script src="nowplaying.patched.js?v=20250928"></script>
-<script>
-  NowPlaying.init({
-    scheduleUrl: 'https://player-green.vercel.app/schedule.json',
-    showTitleSel: '#showTitle',
-    presenterSel: '#showPresenter',
-    sourceSel: '#showSource',
-    artworkImgSel: '#artwork',       // <- patched selector
-    statusSel: '#npStatus',
-    appVersion: (window.APP_VERSION || 'v20250928093718')
-  });
-</script>
-<!-- Optional: dynamic track artwork helper for Recently Played -->
-<script src="https://player-green.vercel.app//api/artwork.js"></script>
-<script> window.DEFAULT_COVER_URL = 'essential-radio-logo.png'; </script>
-<!-- Recently Played -->
-<script src="recently-played.min.js?v=20250928"></script>
-<style>
+</body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
   .modal {
     display: flex;
     align-items: c
+
+
+
+
+
 
 enter;       /* centre vertically */
     justify-content: center;   /* centre horizontally */
@@ -10224,6 +10181,7 @@ enter;       /* centre vertically */
   }
 }
 
+
 .show--current::after, .current-show::after, .show-entry.current::after, .show.current::after, .schedule-item.current::after, .live-now::after {
   content: var(--now-flag, "ON AIR NOW");
   position: absolute;
@@ -10243,650 +10201,4 @@ enter;       /* centre vertically */
 }
 
 </style>
-</html><script>(function(){
-  if (window.__ER_SAFE_INIT_V2__) return;
-  window.__ER_SAFE_INIT_V2__ = true;
-
-  // Shared holders
-  window._npPollTimer = window._npPollTimer || null;
-  window._newsTimer = window._newsTimer || null;
-  window._travelTimer = window._travelTimer || null;
-  window.__NP_BUSY__ = false;
-  window.__CURRENT_ARTIST__ = "";
-  window.__CURRENT_TITLE__ = "";
-
-  function $(sel){ return document.querySelector(sel); }
-
-  // Utility: clean a track string for searching
-  
-  
-  const PLACEHOLDER_ART = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23333'/><stop offset='100%' stop-color='%23666'/></linearGradient></defs><rect width='600' height='600' fill='url(%23g)'/><circle cx='300' cy='300' r='220' fill='none' stroke='%23999' stroke-width='18'/><circle cx='300' cy='300' r='12' fill='%23bbb'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,Segoe UI,Roboto,Arial' font-size='44' fill='white' opacity='.9'>On air</text><text x='50%' y='64%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,Segoe UI,Roboto,Arial' font-size='20' fill='white' opacity='.7'>Music & shows</text></svg>";
-
-  async function fetchCurrentShowTitle(){
-    try{
-      const r = await fetch('https://player-green.vercel.app/api/recent?ts=' + Date.now(), { cache: 'no-store' });
-      if (!r.ok) return null;
-      const js = await r.json();
-      const items = js.recent || js.items || (Array.isArray(js) ? js : []);
-      if (Array.isArray(items) && items.length){
-        const first = items[0];
-        if (first && String((first.source||'')).toUpperCase()==='FIXED'){
-          const t = String(first.title||'').trim();
-          const a = String(first.artist||'').trim();
-          if (t || a) return (t && a) ? (t + ' — ' + a) : (t || a);
-        }
-      }
-    }catch(e){}
-    return null;
-  }
-
-  function setNPText(artist, title, fallbackMsg){
-    const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
-    if (!npEl) return;
-    const hasTrack = !!(artist || title);
-    if (hasTrack){
-      npEl.textContent = [artist, title].filter(Boolean).join(' — ');
-      return;
-    }
-    if (fallbackMsg){
-      npEl.innerHTML = "<span class='np-muted'>" + fallbackMsg + "</span>";
-    } else {
-      npEl.innerHTML = "<span class='np-muted'>On air — music & shows</span>";
-    }
-  }
-
-  function setPlaceholderArtwork(){
-    const el = getArtworkImgEl();
-    if (!el) return;
-    el.onload = function(){ el.classList && el.classList.add('loaded'); };
-    el.src = PLACEHOLDER_ART;
-  }
-
-  function debug(msg){
-    try{
-      const box = document.getElementById('np-debug');
-      if (!box) return;
-      const ts = new Date().toLocaleTimeString();
-      box.textContent = `[${ts}] ` + msg;
-    }catch(e){}
-  }
-
-  async function tryDeezer(term){
-    // Deezer free search API (JSONP disabled version via r.jina.ai proxy to avoid CORS)
-    const direct = 'https://api.deezer.com/search?q=' + encodeURIComponent(term);
-    try{
-      const via = 'https://r.jina.ai/http/' + direct.replace(/^https?:\/\//,'');
-      const r = await fetch(via, { cache: 'no-store' });
-      if (!r.ok) throw new Error('deezer http ' + r.status);
-      const js = await r.json();
-      if (js && js.data && js.data.length){
-        const hit = js.data[0];
-        // Prefer album cover if present
-        return hit.album && (hit.album.cover_xl || hit.album.cover_big || hit.album.cover_medium || hit.album.cover);
-      }
-    }catch(e){}
-    throw new Error('deezer no hit');
-  }
-
-  async function tryCoverArtArchive(artist, title){
-    // MusicBrainz + Cover Art Archive (CORS ok through r.jina.ai)
-    const q = encodeURIComponent(`${artist} ${title}`.trim());
-    try{
-      const mb = 'https://musicbrainz.org/ws/2/recording?query=' + q + '&fmt=json&limit=1';
-      const via = 'https://r.jina.ai/http/' + mb.replace(/^https?:\/\//,'');
-      const r = await fetch(via, { cache: 'no-store' });
-      if (!r.ok) throw new Error('mb http ' + r.status);
-      const js = await r.json();
-      const rec = (js.recordings && js.recordings[0]) || null;
-      const rel = rec && rec.releases && rec.releases[0];
-      const id = rel && rel.id;
-      if (!id) throw new Error('no release id');
-      const caa = 'https://coverartarchive.org/release/' + id;
-      const r2 = await fetch('https://r.jina.ai/http/coverartarchive.org/release/' + id, { cache: 'no-store' });
-      if (!r2.ok) throw new Error('caa http ' + r2.status);
-      const js2 = await r2.json();
-      if (js2.images && js2.images.length){
-        const img = js2.images.find(x => x.front) || js2.images[0];
-        return (img.thumbnails && (img.thumbnails.large || img.thumbnails.small)) || img.image;
-      }
-    }catch(e){}
-    throw new Error('caa no hit');
-  }
-
-  
-  async function tryPlayerGreenArtwork(artist, title){
-    const base = 'https://player-green.vercel.app/api/artwork.js';
-    const paramsList = [];
-    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' - '));
-    const qTitle = cleanQuery(title || '');
-    const qArtist = cleanQuery(artist || '');
-
-    // Common patterns this endpoint might accept
-    if (artist || title) paramsList.push(`artist=${encodeURIComponent(artist||'')}&title=${encodeURIComponent(title||'')}`);
-    if (qBoth) paramsList.push(`q=${encodeURIComponent(qBoth)}`);
-    if (qTitle) paramsList.push(`q=${encodeURIComponent(qTitle)}`);
-    if (qArtist) paramsList.push(`q=${encodeURIComponent(qArtist)}`);
-
-    for (const qs of paramsList){
-      try{
-        const url = base + '?' + qs + '&ts=' + Date.now();
-        const r = await fetch(url, { cache: 'no-store' });
-        if (!r.ok) continue;
-        const js = await r.json();
-        if (js && js.url){
-          const u = String(js.url).trim();
-          if (u) return u;
-        }
-      }catch(e){}
-    }
-    throw new Error('player-green artwork empty');
-  }
-
-  async function resolveArtwork(artist, title){
-    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' '));
-    const qTitle = cleanQuery(title || '');
-    const qArtist = cleanQuery(artist || '');
-
-    // Player-Green artwork API first
-    try{ return await tryPlayerGreenArtwork(artist, title); }catch(e){ debug('player-green artwork empty'); }
-
-    // iTunes next
-    try{ if(qBoth) return await tryItunes(qBoth); }catch(e){}
-    try{ if(qTitle) return await tryItunes(qTitle); }catch(e){}
-    try{ if(qArtist) return await tryItunes(qArtist); }catch(e){}
-
-    // Deezer next
-    try{ if(qBoth) return await tryDeezer(qBoth); }catch(e){}
-    try{ if(qTitle) return await tryDeezer(qTitle); }catch(e){}
-    try{ if(qArtist) return await tryDeezer(qArtist); }catch(e){}
-
-    // Cover Art Archive last
-    try{ if(qBoth) return await tryCoverArtArchive(artist, title); }catch(e){}
-    try{ if(qTitle) return await tryCoverArtArchive('', qTitle); }catch(e){}
-    try{ if(qArtist) return await tryCoverArtArchive(qArtist, ''); }catch(e){}
-
-    return null;
-  }
-
-  function cleanQuery(s){
-    if(!s) return "";
-    return s
-      .replace(/\s*\([\s\S]*?\)\s*/g, " ")      // remove (radio edit) etc.
-      .replace(/\s*\[[\s\S]*?\]\s*/g, " ")      // remove [Remaster] etc.
-      .replace(/\s+feat\.?\s+.*$/i, " ")        // strip feat.
-      .replace(/\s+ft\.?\s+.*$/i, " ")
-      .replace(/\s*&\s*/g, " ")
-      .replace(/\s{2,}/g, " ")
-      .trim();
-  }
-
-  function getArtworkImgEl(){
-    return document.getElementById('artworkEl')
-        || document.getElementById('artwork')
-        || document.querySelector('img.artwork, img#art, .np-artwork img, .artwork img');
-  }
-
-  async function tryItunes(term){
-    const url = 'https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=' + encodeURIComponent(term);
-    const res = await fetch(url, { cache: 'no-store' });
-    if(!res.ok) throw new Error('itunes http ' + res.status);
-    const js = await res.json();
-    const hit = (js.results||[]).find(r => (r.kind==='song'||r.wrapperType==='track') && r.artworkUrl100);
-    if (hit) {
-      return hit.artworkUrl100.replace('100x100','300x300');
-    }
-    throw new Error('itunes no hit');
-  }
-
-  // Stronger artwork lookup: artist+title -> title only -> artist only
-  async function fetchArtworkStrong(artist, title){
-    const el = getArtworkImgEl();
-    if(!el) return; // nowhere to render
-    const q1 = cleanQuery([artist, title].filter(Boolean).join(" "));
-    const q2 = cleanQuery(title || "");
-    const q3 = cleanQuery(artist || "");
-
-    let art = null;
-    try { if(q1) art = await tryItunes(q1); } catch(e) {}
-    if(!art) { try { if(q2) art = await tryItunes(q2); } catch(e) {} }
-    if(!art) { try { if(q3) art = await tryItunes(q3); } catch(e) {} }
-
-    if(art){
-      el.onload = function(){ el.classList && el.classList.add('loaded'); };
-      el.onerror = function(){ el.removeAttribute('src'); el.classList && el.classList.remove('loaded'); };
-      el.src = art;
-    }
-  }
-
-  // Parse Shoutcast/Icecast-ish text/JSON forgivingly
-  function parseNowPlayingPayload(text){
-    // Try JSON title key first
-    try{
-      const js = JSON.parse(text);
-      if(js && (js.title || (js.songtitle))) {
-        const t = js.title || js.songtitle;
-        return String(t);
-      }
-    }catch(e){}
-    // Try to find "StreamTitle='Artist - Title';" style
-    let m = text.match(/StreamTitle=['"]([^'"]+)['"]/i);
-    if(m) return m[1];
-    // Generic try: <title>Artist - Title</title> or plain text
-    m = text.match(/<title>([^<]+)<\/title>/i);
-    if(m) return m[1];
-    m = text.match(/"title"\s*:\s*"([^"]+)"/i);
-    if(m) return m[1];
-    // Fallback: first non-empty line
-    const line = (text.split('\n').map(s=>s.trim()).find(Boolean)) || "";
-    return line;
-  }
-
-  function splitArtistTitle(s){
-    if(!s) return ["", ""];
-    // Prefer ' - ' split, but be gentle
-    const parts = s.split(" - ");
-    if(parts.length >= 2){
-      return [parts[0].trim(), parts.slice(1).join(" - ").trim()];
-    }
-    return ["", s.trim()];
-  }
-
-  // Basic Now Playing poller (15s), with guard
-
-  async function fetchWithBypass(url){
-    try {
-      const r = await fetch(url, { cache: 'no-store' });
-      if (r.ok) return await r.text();
-    } catch(e){}
-    // CORS-free text mirror via r.jina.ai (GET only)
-    try {
-      const via = (url.startsWith('https://') ? 'https://r.jina.ai/http/' : 'https://r.jina.ai/http://') + url.replace(/^https?:\/\//, '');
-      const r2 = await fetch(via, { cache: 'no-store' });
-      if (r2.ok) return await r2.text();
-    } catch(e){}
-    throw new Error('fetch failed for ' + url);
-  }
-
-  async function fetchLatestFromPlayout(){
-    const url = 'https://essentialradio.github.io/player/playout_log_rolling.json?ts=' + Date.now();
-    try{
-      const r = await fetch(url, { cache: 'no-store' });
-      if (!r.ok) throw new Error('HTTP '+r.status);
-      const data = await r.json();
-      // Try first item as latest; if array of objects with 'artist'/'title'
-      if (Array.isArray(data) && data.length){
-        const item = data[0];
-        // Some pipelines encode artist fields weirdly; coerce to string and strip numeric prefixes
-        const artist = String(item.artist || item.Artist || '').replace(/^[\d,]+,/, '').trim();
-        const title  = String(item.title  || item.Title  || '').trim();
-        if (artist || title) return { artist, title };
-      }
-    }catch(e){}
-    return null;
-  }
-
-  
-  async function fetchFromPlayerGreen(){
-    const base = 'https://player-green.vercel.app';
-    // 1) Try /api/latestTrack
-    try{
-      const r = await fetch(base + '/api/latestTrack?ts=' + Date.now(), { cache: 'no-store' });
-      if (r.ok){
-        const js = await r.json();
-        const node = js.latestTrack || js;
-        const artist = String((node && node.artist) || '').trim();
-        const title  = String((node && node.title)  || '').trim();
-        const indet  = !!(node && node.indeterminate);
-        const source = String((node && node.source) || '').toUpperCase();
-        if (!indet && (artist || title) && source !== 'FIXED'){
-          return { artist, title };
-        }
-      }
-    }catch(e){}
-    // 2) Try /api/recent — pick first non-FIXED item with artist/title
-    try{
-      const r2 = await fetch(base + '/api/recent?ts=' + Date.now(), { cache: 'no-store' });
-      if (r2.ok){
-        const js2 = await r2.json();
-        const items = js2.recent || js2.items || (Array.isArray(js2) ? js2 : []);
-        if (Array.isArray(items)){
-          for (const it of items){
-            const artist = String((it && (it.artist || it.Artist)) || '').trim();
-            const title  = String((it && (it.title  || it.Title )) || '').trim();
-            const source = String((it && it.source) || '').toUpperCase();
-            const indet  = !!(it && it.indeterminate);
-            if (!indet && (artist || title) && source !== 'FIXED'){
-              return { artist, title };
-            }
-          }
-        }
-      }
-    }catch(e){}
-    return null;
-  }
-
-        if ((!artist && !title) && Array.isArray(js.recent) && js.recent.length){
-          artist = js.recent[0].artist || js.recent[0].Artist || '';
-          title  = js.recent[0].title  || js.recent[0].Title  || '';
-        }
-        if ((!artist && !title) && Array.isArray(js.items) && js.items.length){
-          artist = js.items[0].artist || js.items[0].Artist || '';
-          title  = js.items[0].title  || js.items[0].Title  || '';
-        }
-        if (!artist && js.Artist) artist = js.Artist;
-        if (!title  && js.Title ) title  = js.Title;
-        if (artist || title) return { artist: String(artist).trim(), title: String(title).trim() };
-      }catch(e){}
-      // Try CORS-free text mirror fallback (if endpoint returns text)
-      try{
-        const via = 'https://r.jina.ai/http/' + url.replace(/^https?:\/\//,'');
-        const r2 = await fetch(via + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!r2.ok) continue;
-        const text = await r2.text();
-        try{
-const js = JSON.parse(text);
-        let artist = js.artist || (js.now && js.now.artist) || (js.current && js.current.artist) || '';
-        let title  = js.title  || (js.now && js.now.title ) || (js.current && js.current.title ) || '';
-
-        if ((!artist && !title) && js.latestTrack){
-          artist = js.latestTrack.artist || js.latestTrack.Artist || '';
-          title  = js.latestTrack.title  || js.latestTrack.Title  || '';
-        }
-        if ((!artist && !title) && Array.isArray(js.recent) && js.recent.length){
-          artist = js.recent[0].artist || js.recent[0].Artist || '';
-          title  = js.recent[0].title  || js.recent[0].Title  || '';
-        }
-        if ((!artist && !title) && Array.isArray(js.items) && js.items.length){
-          artist = js.items[0].artist || js.items[0].Artist || '';
-          title  = js.items[0].title  || js.items[0].Title  || '';
-        }
-        if (!artist && js.Artist) artist = js.Artist;
-        if (!title  && js.Title ) title  = js.Title;
-        if (artist || title) return { artist: String(artist).trim(), title: String(title).trim() };
-
-        }catch(e){ /* not JSON */ }
-      }catch(e){}
-    }
-    return null;
-  }
-
-
-  async function pollNowPlaying(){ debug('Polling now playing…');
-
-    if (window.__NP_BUSY__) return;
-    window.__NP_BUSY__ = true;
-    try{
-      const alt = "https://streaming06.liveboxstream.uk/proxy/ayrshire/7.html";
-      const text = await fetchWithBypass(alt);
-      let artist = ""; let title = ""; let raw = "";
-      // 1) Try player-green first
-      try{
-        const pg = await fetchFromPlayerGreen();
-        if (pg){ artist = pg.artist; title = pg.title; debug('player-green chose non-FIXED: ' + artist + ' — ' + title); }
-      }catch(e){}
-      // 2) If still empty, try the stream payload
-      if (!artist && !title){
-        raw = parseNowPlayingPayload(text); debug('stream raw: ' + raw);
-        const pair = splitArtistTitle(raw);
-        artist = artist || pair[0]; title = title || pair[1];
-      }
-      // 3) If still weak, fall back to playout log
-      if ((!artist && !title) || (title && title.toLowerCase()==='live')){
-        try{
-          const latest = await fetchLatestFromPlayout();
-          if (latest){ debug('fallback playout json hit');
-            artist = latest.artist || artist;
-            title  = latest.title  || title;
-            raw = [artist, title].filter(Boolean).join(' - ') || raw;
-          }
-        }catch(e){}
-      }
-      window.__CURRENT_ARTIST__ = artist; window.__CURRENT_TITLE__ = title;
-
-      const npEl = document.querySelector('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title'); debug('display NP: ' + [artist,title].filter(Boolean).join(' — '));
-      if (npEl){
-        const display = [artist, title].filter(Boolean).join(" — ") || raw || "Live";
-        npEl.textContent = display;
-      }
-
-      // Artwork after NP update
-      resolveArtwork(artist, title).then(function(url){ if(url){ debug('artwork: ' + url); const el=getArtworkImgEl(); if(el){ el.onload=function(){ el.classList&&el.classList.add('loaded'); }; el.onerror=function(){ el.removeAttribute('src'); el.classList&&el.classList.remove('loaded'); }; el.src=url; el.style.opacity='1'; } } else { debug('no artwork found'); } });
-    }catch(e){
-      // Silent in safe mode
-    }finally{
-      window.__NP_BUSY__ = false;
-    }
-  }
-
-  function safeInterval(refName, fn, ms){
-    if (window[refName]) clearInterval(window[refName]);
-    window[refName] = setInterval(fn, ms);
-  }
-
-  // Kick off
-  pollNowPlaying();
-  safeInterval('_npPollTimer', pollNowPlaying, 15000);
-
-  // News / Travel light refresh (2 mins)
-  async function softReload(id, url){
-    const el = document.getElementById(id);
-    if(!el || !url) return;
-    try{
-      const res = await fetch(url, { cache: 'no-store' });
-      const html = await res.text();
-      el.innerHTML = html;
-    }catch(e){}
-  }
-
-  const newsUrl = (document.getElementById('news') && document.getElementById('news').dataset && document.getElementById('news').dataset.src) || null;
-  const travelUrl = (document.getElementById('travel') && document.getElementById('travel').dataset && document.getElementById('travel').dataset.src) || null;
-
-  safeInterval('_newsTimer', function(){ softReload('news', newsUrl); }, 120000);
-  safeInterval('_travelTimer', function(){ softReload('travel', travelUrl); }, 120000);
-
-  // Pause when hidden
-  document.addEventListener('visibilitychange', function(){
-    if (document.hidden){
-      if (window._npPollTimer) { clearInterval(window._npPollTimer); window._npPollTimer = null; }
-      if (window._newsTimer) { clearInterval(window._newsTimer); window._newsTimer = null; }
-      if (window._travelTimer) { clearInterval(window._travelTimer); window._travelTimer = null; }
-    } else {
-      pollNowPlaying();
-      if (!window._npPollTimer) window._npPollTimer = setInterval(pollNowPlaying, 15000);
-      if (!window._newsTimer && newsUrl) window._newsTimer = setInterval(function(){ softReload('news', newsUrl); }, 120000);
-      if (!window._travelTimer && travelUrl) window._travelTimer = setInterval(function(){ softReload('travel', travelUrl); }, 120000);
-    }
-  });
-})();</script><script>
-(function(){
-  if (window.__ER_NP_ART_INSTALLED__) return;
-  window.__ER_NP_ART_INSTALLED__ = true;
-
-  // ---------- Utilities ----------
-  function $(sel){ return document.querySelector(sel); }
-  function cleanQuery(s){
-    if(!s) return "";
-    return String(s)
-      .replace(/\s*\([\s\S]*?\)\s*/g, " ")
-      .replace(/\s*\[[\s\S]*?\]\s*/g, " ")
-      .replace(/\s+feat\.?\s+.*$/i, " ")
-      .replace(/\s+ft\.?\s+.*$/i, " ")
-      .replace(/\s*&\s*/g, " ")
-      .replace(/\s{2,}/g, " ").trim();
-  }
-  function getArtworkImgEl(){
-    return document.getElementById('artwork') || document.getElementById('artworkEl') ||
-           document.querySelector('img.artwork, img#art, .np-artwork img, .artwork img');
-  }
-  function setNPText(artist, title, fallback){
-    const el = $('[data-nowplaying], #nowplaying, .nowplaying, #npTitle, .np-title');
-    if(!el) return;
-    if (artist || title) el.textContent = [artist, title].filter(Boolean).join(' — ');
-    else el.textContent = fallback || 'On air — music & shows';
-  }
-
-  // ---------- Artwork Providers ----------
-  async function tryPlayerGreenArtwork(artist, title){
-    const base = 'https://player-green.vercel.app/api/artwork.js';
-    const params = [];
-    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' - '));
-    const qTitle = cleanQuery(title||'');
-    const qArtist = cleanQuery(artist||'');
-    if (artist || title) params.push(`artist=${encodeURIComponent(artist||'')}&title=${encodeURIComponent(title||'')}`);
-    if (qBoth) params.push(`q=${encodeURIComponent(qBoth)}`);
-    if (qTitle) params.push(`q=${encodeURIComponent(qTitle)}`);
-    if (qArtist) params.push(`q=${encodeURIComponent(qArtist)}`);
-    for (const qs of params){
-      const url = base + '?' + qs + '&ts=' + Date.now();
-      const r = await fetch(url, { cache: 'no-store' }).catch(()=>null);
-      if (!r || !r.ok) continue;
-      const js = await r.json().catch(()=>null);
-      const out = js && js.url && String(js.url).trim();
-      if (out) return out;
-    }
-    throw new Error('pg artwork empty');
-  }
-  async function tryItunes(term){
-    const url = 'https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=' + encodeURIComponent(term);
-    const r = await fetch(url, { cache:'no-store' });
-    if (!r.ok) throw new Error('itunes http ' + r.status);
-    const js = await r.json();
-    const hit = (js.results||[]).find(x => (x.kind==='song'||x.wrapperType==='track') && x.artworkUrl100);
-    if (hit) return String(hit.artworkUrl100).replace('100x100', '300x300');
-    throw new Error('itunes no hit');
-  }
-  async function tryDeezer(term){
-    const r = await fetch('https://r.jina.ai/http/api.deezer.com/search?q=' + encodeURIComponent(term), { cache:'no-store' });
-    if (!r.ok) throw new Error('deezer http ' + r.status);
-    const js = await r.json();
-    const hit = js && js.data && js.data[0];
-    if (hit && hit.album){
-      return hit.album.cover_xl || hit.album.cover_big || hit.album.cover_medium || hit.album.cover || null;
-    }
-    throw new Error('deezer no hit');
-  }
-  async function tryCoverArtArchive(artist, title){
-    const q = encodeURIComponent(`${artist||''} ${title||''}`.trim());
-    const r = await fetch('https://r.jina.ai/http/musicbrainz.org/ws/2/recording?query=' + q + '&fmt=json&limit=1', { cache:'no-store' });
-    if (!r.ok) throw new Error('mb http ' + r.status);
-    const js = await r.json();
-    const rec = js.recordings && js.recordings[0];
-    const rel = rec && rec.releases && rec.releases[0];
-    const id = rel && rel.id;
-    if (!id) throw new Error('no release id');
-    const r2 = await fetch('https://r.jina.ai/http/coverartarchive.org/release/' + id, { cache:'no-store' });
-    if (!r2.ok) throw new Error('caa http ' + r2.status);
-    const js2 = await r2.json();
-    const img = (js2.images||[]).find(x => x.front) || (js2.images||[])[0];
-    if (!img) throw new Error('no image');
-    return (img.thumbnails && (img.thumbnails.large || img.thumbnails.small)) || img.image || null;
-  }
-
-  // Public artwork function (shared with Recent list)
-  window.getTrackArtwork = async function(queryOrArtist, maybeTitle){
-    let artist = '', title = '';
-    if (typeof maybeTitle === 'string') { artist = queryOrArtist||''; title = maybeTitle||''; }
-    else { title = String(queryOrArtist||''); }
-    const qBoth = cleanQuery([artist, title].filter(Boolean).join(' '));
-    const qTitle = cleanQuery(title);
-    const qArtist = cleanQuery(artist);
-    try { return await tryPlayerGreenArtwork(artist, title); } catch(e){}
-    try { if (qBoth) return await tryItunes(qBoth); } catch(e){}
-    try { if (qTitle) return await tryItunes(qTitle); } catch(e){}
-    try { if (qArtist) return await tryItunes(qArtist); } catch(e){}
-    try { if (qBoth) return await tryDeezer(qBoth); } catch(e){}
-    try { if (qTitle) return await tryDeezer(qTitle); } catch(e){}
-    try { if (qArtist) return await tryDeezer(qArtist); } catch(e){}
-    try { if (qBoth) return await tryCoverArtArchive(artist, title); } catch(e){}
-    try { if (qTitle) return await tryCoverArtArchive('', qTitle); } catch(e){}
-    try { if (qArtist) return await tryCoverArtArchive(qArtist, ''); } catch(e){}
-    return '';
-  };
-
-  // ---------- Latest/Recent helpers ----------
-  async function fetchJSON(url){
-    try{
-      const r = await fetch(url, { cache:'no-store' });
-      if (r.ok) return await r.json();
-    }catch(e){}
-    // CORS bypass
-    try{
-      const via = (url.startsWith('https://') ? 'https://r.jina.ai/http/' : 'https://r.jina.ai/http://') + url.replace(/^https?:\/\//,'');
-      const r2 = await fetch(via, { cache:'no-store' });
-      if (r2.ok){
-        const t = await r2.text();
-        try{ return JSON.parse(t); }catch(e){}
-      }
-    }catch(e){}
-    return null;
-  }
-
-  async function getLatestTrack(){
-    const js = await fetchJSON('https://player-green.vercel.app/api/latestTrack?_=' + Date.now());
-    const node = js && (js.latestTrack || js);
-    if (!node) return null;
-    const artist = String(node.artist||'').trim();
-    const title  = String(node.title ||'').trim();
-    const indet  = !!node.indeterminate;
-    const source = String(node.source||'').toUpperCase();
-    if (!indet && source !== 'FIXED' && (artist || title)){
-      return { artist, title, source };
-    }
-    return null;
-  }
-
-  async function getRecentFirst(){
-    const js = await fetchJSON('https://player-green.vercel.app/api/recent?_=' + Date.now());
-    const items = js && (js.recent || js.items) || (Array.isArray(js) ? js : []);
-    if (Array.isArray(items) && items.length){
-      const it = items[0];
-      return {
-        artist: String((it && (it.artist||it.Artist))||'').trim(),
-        title:  String((it && (it.title ||it.Title ))||'').trim(),
-        source: String((it && it.source)||'').toUpperCase(),
-        indeterminate: !!(it && it.indeterminate)
-      };
-    }
-    return null;
-  }
-
-  // ---------- Now Playing driver (single timer) ----------
-  async function _updateNowPlaying(){
-    // 1) Prefer latestTrack if valid
-    let curr = await getLatestTrack();
-    if (!curr){
-      // 2) else fall back to recent first item (show/presenter or last song)
-      curr = await getRecentFirst() || { artist:'', title:'', source:'' };
-    }
-
-    // Update text
-    setNPText(curr.artist, curr.title, 'On air — music & shows');
-
-    // Update artwork
-    const img = getArtworkImgEl();
-    if (img){
-      let url = '';
-      try { url = await window.getTrackArtwork(curr.artist, curr.title); } catch(e){ url=''; }
-      if (url){
-        img.classList.remove('fallback');
-        img.onload = function(){ img.classList.add('loaded'); };
-        img.onerror = function(){ img.classList.remove('loaded'); img.removeAttribute('src'); };
-        img.src = url;
-      } else {
-        // friendly placeholder (pure CSS state)
-        img.classList.add('fallback');
-        // optional: leave src untouched to avoid flicker
-      }
-    }
-  }
-
-  window.fetchNowPlaying = async function(){
-    try{ await _updateNowPlaying(); }catch(e){ console.warn('NP update failed', e); }
-  };
-
-  // Kick-off & schedule (guarded)
-  if (window.__NP_TIMER__) clearInterval(window.__NP_TIMER__);
-  window.fetchNowPlaying();
-  window.__NP_TIMER__ = setInterval(window.fetchNowPlaying, 15000);
-})();
-</script>
+</html>
