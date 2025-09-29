@@ -52830,5 +52830,31 @@
     "Full Duration (mins)": 2.62,
     "Start ISO": "2025-09-29T02:22:06Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T02:00:00Z",
+    "Scheduled Time": "03:24",
+    "Displayed Time": "03:24",
+    "Artist": "David Kushner",
+    "Title": "Daylight",
+    "Duration (s)": 184,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-09-29T02:24:34Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T02:00:00Z",
+    "Scheduled Time": "03:27",
+    "Displayed Time": "03:27",
+    "Artist": "Peter Gabriel",
+    "Title": "Sledgehammer",
+    "Duration (s)": 264,
+    "Full Duration (s)": 280,
+    "Duration (mins)": 4.4,
+    "Full Duration (mins)": 4.67,
+    "Start ISO": "2025-09-29T02:27:42Z",
+    "Source": "PLAYIT"
   }
 ]
