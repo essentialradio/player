@@ -1,196 +1,225 @@
 
-/*! Essential Radio: iOS-safe Artwork Patch v1.4
-   - Keeps artwork during the same track.
-   - Clears only after (startTime + duration + grace) when feed is blank/indeterminate.
-   - No blobs, handlers first, eager load, cache-busted fetches.
-*/
+/*! Essential Radio: iOS-safe Artwork Patch v1.6 (2025-09-29)
+   * Mobile Safari fixes for #artwork and, if available, recent thumbnails.
+   * - Keeps art during a track; clears only after (startTime + duration + grace) when feed is blank/indeterminate.
+   * - Avoids broken-image flashes; pre-binds handlers; cache-busts fetches and image URLs.
+   * - Does nothing on non‑iOS.
+   */
 (function () {
- const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
- if (!IS_IOS) return;
- window.__IOS_ARTWORK_PATCH_ACTIVE = true;
+  // --- iOS detection (real devices + iPadOS on Mac) ---
+  var UA = navigator.userAgent || "";
+  var IS_IOS = /iPhone|iPad|iPod/.test(UA) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (!IS_IOS) return;
+  try { window.__IOS_ARTWORK_PATCH_ACTIVE = true; } catch(e) {}
 
- const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
-                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  if (!IS_IOS) return;               // ⬅️ bail on desktop
-  window.__IOS_ARTWORK_PATCH_ACTIVE = true;
- try {
-    var ua = navigator.userAgent || '';
-    var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    if (!isIOS) return;
-    window.__IOS_ARTWORK_PATCH_ACTIVE = true;
-  } catch(e) {}
+  // --- Config ---
+  var IMG_SEL = "#artwork";
+  var POLL_MS = 12000;
+  var QUIET_MS_AFTER_SUCCESS = 3000;
+  var CLEAR_GRACE_MS = 5000;
+  // 1x1 transparent PNG
+  var CLEAR_PIXEL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAoMBgQW8vKQAAAAASUVORK5CYII=";
 
-  const IMG_SEL = '#artwork';
-  const POLL_MS = 12000;
-  const QUIET_MS_AFTER_SUCCESS = 3000;
-  const CLEAR_GRACE_MS = 5000;
-  const CLEAR_PIXEL = 'Essential Radio Logo.png';
+  var lastMeta = null;   // {artist,title}
+  var lastURL  = null;
+  var lastSwapAt = 0;
+  var lastEndAt = 0;
+  var busy = false;
 
-  let lastMeta = null;   // {artist,title,startTime,duration,source}
-  let lastURL  = null;
-  let lastSwapAt = 0;
-  let lastEndAt = 0;
-  let busy = false;
+  function $(sel){ return document.querySelector(sel); }
+  function $all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
-  function getImg() {
-    let el = document.querySelector(IMG_SEL);
-    if (!el) return null;
-    try { el.loading = 'eager'; } catch {}
-    try { el.decoding = 'async'; } catch {}
-    return el;
-  }
-
-  function bindOnce(img) {
-    if (!img || img.__bound) return;
-    img.addEventListener('load', () => img.classList.add('loaded'));
-    img.addEventListener('error', () => { if (!lastURL) img.src = CLEAR_PIXEL; });
-    img.__bound = true;
-  }
-
-  function applyStylesOnce() {
-    if (document.getElementById('artwork-ios-style')) return;
-    const css = `
-      ${IMG_SEL}{
-        aspect-ratio:1/1;
-        min-width:150px;min-height:150px;
-        display:block;max-width:300px;width:100%;
-        border-radius:12px;object-fit:cover;background:#111;
-        opacity:0;filter:blur(10px) brightness(.9);
-        transition:opacity .3s ease, filter .3s ease;
-      }
-      ${IMG_SEL}.loaded{opacity:1;filter:blur(0) brightness(1);}
-      @supports not (aspect-ratio:1/1){ ${IMG_SEL}{ width:150px;height:150px; } }
-    `;
-    const s = document.createElement('style');
-    s.id = 'artwork-ios-style';
-    s.textContent = css;
-    document.head.appendChild(s);
+  function bindImg(img) {
+    if (!img || img.__ios_art_bound) return;
+    try { img.loading = "eager"; } catch {}
+    try { img.decoding = "async"; } catch {}
+    img.addEventListener("load", function(){ img.classList.add("loaded"); }, {passive:true});
+    img.addEventListener("error", function(){
+      // If we don't have a valid URL yet, show a neutral pixel instead of a broken icon
+      if (!lastURL) requestAnimationFrame(function(){ img.src = CLEAR_PIXEL; });
+    }, {passive:true});
+    img.__ios_art_bound = true;
   }
 
   function parseEnd(startISO, durSec) {
     try {
-      const t = Date.parse(startISO);
-      if (isFinite(t) && isFinite(durSec) && durSec > 0) return t + Math.floor(Number(durSec) * 1000);
-    } catch {}
+      var t = Date.parse(startISO);
+      if (isFinite(t) && isFinite(durSec) && Number(durSec) > 0) return t + Math.floor(Number(durSec) * 1000);
+    } catch(e){}
     return 0;
   }
 
-  async function j(url) {
-    const r = await fetch(url, { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
+  function qs(obj) {
+    var s = [];
+    for (var k in obj) if (Object.prototype.hasOwnProperty.call(obj,k)) {
+      s.push(encodeURIComponent(k) + "=" + encodeURIComponent(String(obj[k])));
+    }
+    return s.join("&");
   }
 
-  function isValid(meta) {
-    const a = String(meta.artist || '').trim();
-    const t = String(meta.title  || '').trim();
+  function api(path, params) {
+    // support either /api/artwork or /api/artwork.js depending on deploy
+    var base = path;
+    if (base === "/api/artwork") {
+      base = (window.__ARTWORK_ROUTE_SUFFIX_JS ? "/api/artwork.js" : "/api/artwork");
+    }
+    var url = base + (params ? ("?" + qs(params)) : "");
+    // cache-bust all network requests for iOS
+    url += (url.indexOf("?") === -1 ? "?" : "&") + "_=" + Date.now();
+    return url;
+  }
+
+  function cleanTerm(s) {
+    return String(s||"")
+      .replace(/[\u2013\u2014]/g, "-")
+      .replace(/\s*-\s*/g, " ")
+      .replace(/\s*\([^)]*\)/g, " ")
+      .replace(/\s*\[[^\]]*\]/g, " ")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+  }
+
+  function validMeta(meta) {
+    var a = String(meta.artist||"").trim();
+    var t = String(meta.title||"").trim();
     if (!a || !t) return false;
     if (meta.indeterminate === true) return false;
     return true;
   }
 
-  function same(a, b) {
+  function sameMeta(a,b){
     if (!a || !b) return false;
     return a.artist === b.artist && a.title === b.title;
   }
 
-  async function resolveURL(meta) {
-    // 1) own endpoint
-    try {
-      const u = `/api/artwork.js?artist=${encodeURIComponent(meta.artist)}&title=${encodeURIComponent(meta.title)}&_=${Date.now()}`;
-      const d = await j(u);
-      if (d && d.url) return d.url;
-    } catch {}
-    // 2) iTunes fallback
-    try {
-      const q = `${meta.title} ${meta.artist}`.trim();
-      const u = `/api/artwork?q=${encodeURIComponent(clean)}`;
-      const d = await j(u);
-      const hit = (d.results || []).find(h => (h.kind === 'song' || h.wrapperType === 'track') && h.artworkUrl100);
-      if (hit) return hit.artworkUrl100.replace('100x100', '300x300');
-    } catch {}
-    return null;
-  }
-
   function shouldClear(latestRaw) {
     if (!lastEndAt) return false;
-    const now = Date.now();
+    var now = Date.now();
     if (now < lastEndAt + CLEAR_GRACE_MS) return false;
-    const artist = String(latestRaw.artist || '').trim();
-    const title  = String(latestRaw.title  || '').trim();
-    const inde   = !!latestRaw.indeterminate;
+    var artist = String(latestRaw.artist || "").trim();
+    var title  = String(latestRaw.title  || "").trim();
+    var inde   = !!latestRaw.indeterminate;
     return inde || !artist || !title;
   }
 
-  async function tick() {
-    if (busy) return;
-    busy = true;
-    try {
-      applyStylesOnce();
-      const img = getImg();
-      if (!img) return;
-      bindOnce(img);
+  function getJSON(url) {
+    return fetch(url, { cache: "no-store" }).then(function(r){
+      if (!r.ok) throw new Error("HTTP "+r.status);
+      return r.json();
+    });
+  }
 
-      const now = Date.now();
-      if (now - lastSwapAt < QUIET_MS_AFTER_SUCCESS) return;
+  function resolveArtworkURL(meta) {
+    // Query our proxy first (better CORS + scaling), fallback to iTunes via the same proxy.
+    var term = cleanTerm(meta.title + " " + meta.artist);
+    // Prefer /api/artwork(.js)?q=
+    var primary = api("/api/artwork", { q: term, country: "GB", limit: "5" });
+    // If site expects .js in path, set a hint
+    if (String(location.pathname).endsWith(".html")) { try { window.__ARTWORK_ROUTE_SUFFIX_JS = true; } catch(e){} }
+    return getJSON(primary).then(function(d){
+      if (d && d.url) return d.url;
+      return "";
+    }).catch(function(){
+      return "";
+    });
+  }
 
-      const latest = await j(`/api/latestTrack?_=${now}`);
-
-      // Clear if last song finished and feed is blank/indeterminate
-      if (shouldClear(latest)) {
-        requestAnimationFrame(() => { img.classList.remove('loaded'); img.src = CLEAR_PIXEL; });
-        lastURL = null;
-        return;
-      }
-
-      // Build meta
-      const meta = {
-        artist: String(latest.artist || '').trim(),
-        title:  String(latest.title  || '').trim(),
-        source: latest.source || '',
-        startTime: latest.startTime || latest.started || null,
-        duration: latest.duration,
-        indeterminate: !!latest.indeterminate
-      };
-
-      if (!isValid(meta)) return;
-
-      // Refresh end time even if same song
-      const end = parseEnd(meta.startTime, meta.duration);
-      if (end) lastEndAt = end;
-
-      if (same(meta, lastMeta)) return;
-
-      // New track - resolve art
-      const url = await resolveURL(meta);
-      if (url) {
-        requestAnimationFrame(() => { img.src = url; });
-        lastURL = url;
-        lastMeta = { artist: meta.artist, title: meta.title };
-        lastSwapAt = Date.now();
-      } else {
-        // No URL yet - keep whatever is currently displayed
-        if (!lastURL) {
-          // show a neutral pixel rather than broken image
-          requestAnimationFrame(() => { img.src = CLEAR_PIXEL; });
-        }
-      }
-    } catch {
-      // keep current on error
-    } finally {
-      busy = false;
+  function setImgSrc(img, url) {
+    if (!img) return;
+    // Rebind before swap (ensures load handler is active)
+    bindImg(img);
+    if (url) {
+      // cache-bust the image URL itself to force a repaint on iOS if same URL repeats
+      var busted = url + (url.indexOf("?") === -1 ? "?" : "&") + "_=" + Date.now();
+      requestAnimationFrame(function(){ img.src = busted; });
+    } else {
+      requestAnimationFrame(function(){ img.src = CLEAR_PIXEL; });
     }
   }
 
-  function start() {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', tick, { once: true });
+  function updateRecentThumbs() {
+    // Optional enhancement: look for recent list images that include data-artist/title
+    var nodes = $all("ul#recent-list img[data-artist][data-title]");
+    if (!nodes.length) return; // no compatible markup; skip
+    nodes.forEach(function(img){
+      if (img.__ios_recent_done) return;
+      var art = img.getAttribute("data-artist") || "";
+      var tit = img.getAttribute("data-title") || "";
+      var meta = { artist: art, title: tit };
+      if (!validMeta(meta)) return;
+      img.__ios_recent_done = true;
+      bindImg(img);
+      resolveArtworkURL(meta).then(function(url){
+        if (url) setImgSrc(img, url);
+      });
+    });
+  }
+
+  function tick() {
+    if (busy) return;
+    busy = true;
+    var img = $(IMG_SEL);
+    if (img) bindImg(img);
+
+    Promise.resolve().then(function(){
+      var now = Date.now();
+      if (now - lastSwapAt < QUIET_MS_AFTER_SUCCESS) return null;
+      // Pull latest track
+      return getJSON(api("/api/latestTrack")).then(function(latest){
+        if (!latest) return null;
+
+        // Compute clearing logic first
+        if (img && shouldClear(latest)) {
+          img.classList.remove("loaded");
+          setImgSrc(img, CLEAR_PIXEL);
+          lastURL = null;
+          return null;
+        }
+
+        // Build meta
+        var meta = {
+          artist: String(latest.artist || "").trim(),
+          title:  String(latest.title  || "").trim(),
+          source: latest.source || "",
+          startTime: latest.startTime || latest.started || null,
+          duration: latest.duration,
+          indeterminate: !!latest.indeterminate
+        };
+
+        if (!validMeta(meta)) return null;
+
+        // Refresh end time
+        var end = parseEnd(meta.startTime, meta.duration);
+        if (end) lastEndAt = end;
+
+        // Same track? nothing to do
+        if (sameMeta(meta, lastMeta)) return null;
+
+        // Resolve and swap
+        return resolveArtworkURL(meta).then(function(url){
+          if (img) setImgSrc(img, url || CLEAR_PIXEL);
+          if (url) lastURL = url;
+          lastMeta = { artist: meta.artist, title: meta.title };
+          lastSwapAt = Date.now();
+          return null;
+        });
+      });
+    }).catch(function(){ /* keep current art on error */ })
+      .finally(function(){
+        // Try to hydrate recent thumbnails opportunistically
+        try { updateRecentThumbs(); } catch(e){}
+        busy = false;
+      });
+  }
+
+  // Kick off
+  try {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", tick, { once: true });
     } else {
       tick();
     }
     setInterval(tick, POLL_MS);
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
-  }
-
-  try { start(); } catch {}
+    document.addEventListener("visibilitychange", function(){ if (!document.hidden) tick(); }, {passive:true});
+  } catch(e){}
 })();
