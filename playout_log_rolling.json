@@ -47304,5 +47304,31 @@
     "Full Duration (mins)": 3.78,
     "Start ISO": "2025-09-29T08:06:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T08:00:00Z",
+    "Scheduled Time": "09:12",
+    "Displayed Time": "09:12",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 180,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.05,
+    "Start ISO": "2025-09-29T08:12:23Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-29T08:00:00Z",
+    "Scheduled Time": "09:15",
+    "Displayed Time": "09:15",
+    "Artist": "Ariana Grande",
+    "Title": "One Last Time",
+    "Duration (s)": 193,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.28,
+    "Start ISO": "2025-09-29T08:15:23Z",
+    "Source": "PLAYIT"
   }
 ]
