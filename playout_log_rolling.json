@@ -52570,5 +52570,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-09-28T23:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-09-29T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Lewis Capaldi",
+    "Title": "Someone You Loved (Madism Radio Mix)",
+    "Duration (s)": 153,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.55,
+    "Full Duration (mins)": 2.62,
+    "Start ISO": "2025-09-29T01:01:59Z",
+    "Source": "PLAYIT"
   }
 ]
