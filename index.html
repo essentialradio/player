@@ -1056,38 +1056,6 @@ body.modal-open {
     margin-top: 12px !important;
   }
 }
-/* iOS crisp artwork override */
-#artwork {
-  display: block;
-  margin: 0 auto;
-  /* unify sizing (avoid fractional resizes) */
-  max-width: 300px;
-  width: clamp(160px, 60vw, 300px);
-  aspect-ratio: 1 / 1;
-  height: auto;
-
-  border-radius: 8px;
-  object-fit: cover;
-  border: 2px solid #fed351;
-  box-shadow: 0 0 15px #fed351aa;
-  user-select: none;
-
-  /* IMPORTANT: no blur — fade with opacity only */
-  opacity: 0;
-  filter: none !important;
-  -webkit-filter: none !important;
-  transition: opacity .25s ease-in-out;
-}
-#artwork.loaded {
-  opacity: 1;
-  filter: none !important;
-  -webkit-filter: none !important;
-}
-
-/* If there are earlier #artwork rules, this keeps ours on top */
-@supports (-webkit-touch-callout: none) {
-  #artwork { transform: translateZ(0); }
-}
 
 </style>
 <style>.no-scroll{overflow:hidden;}</style>
@@ -5803,7 +5771,6 @@ group.forEach(show => {
   // 🔁 Image filename override map
   const imageOverrides = {
     "Scott O'Hare": "Scott-OHare.jpg",
-"Keelin McKenna": "Keelin-mckenna.jpg",
 "Tim Graham": "Tim-Graham.jpeg",
     "Bex McNamee": "Bex-Mcnamee.jpg",
 	"Kevin McCallum": "Kevin-Mccallum.jpg"
@@ -6070,9 +6037,15 @@ if (window._npActiveKey !== trackKey) {
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
-    // Update document title and artwork (if helper exists)
+    // Update document title and artwork (preferring unified helper if available)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+    try {
+      if (window.applyArtwork) {
+        window.applyArtwork({ artist, title });
+      } else if (typeof fetchArtwork === 'function') {
+        fetchArtwork(`${artist} - ${title}`);
+      }
+    } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
@@ -6205,34 +6178,23 @@ if (remaining > 0) {
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
-        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(trackName)}&limit=5`);
-        const js = await res.json();
-        const hit = (js.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
-        if (hit?.artworkUrl100) {
-          const url = hit.artworkUrl100.replace('100x100', '300x300');
-          artworkImg.onload = () => artworkImg.classList.add('loaded');
-          artworkImg.onerror = applyFallbackImmediate;
-          artworkCache[trackName] = url;
-          artworkImg.src = url;
-          return;
+        // Use unified artwork proxy to look up this track
+        const res = await fetch(`/api/artwork?q=${encodeURIComponent(trackName)}&_=${Date.now()}`, { cache: 'no-store' });
+        if (res.ok) {
+          const d = await res.json();
+          if (d && d.url) {
+            const url = d.url;
+            artworkImg.onload = () => artworkImg.classList.add('loaded');
+            artworkImg.onerror = applyFallbackImmediate;
+            artworkCache[trackName] = url;
+            // Cache-bust the URL to ensure browsers repaint new art
+            const bust = url.includes('?') ? '&' : '?';
+            artworkImg.src = `${url}${bust}ts=${Date.now()}`;
+            return;
+          }
         }
       } catch {}
-      const safe = trackName
-        .replace(/\s*\(.*?\)/g, '')
-        .replace(/[^a-zA-Z0-9\s-]/g, '')
-        .trim()
-        .replace(/\s+/g, '_');
-      const [artist, title] = safe.split('_-_');
-      const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
-      try {
-        const head = await fetch(autoUrl, { method: 'HEAD' });
-        if (head.ok) {
-          artworkImg.onload = () => artworkImg.classList.add('loaded');
-          artworkImg.onerror = applyFallbackImmediate;
-          artworkImg.src = autoUrl;
-          return;
-        }
-      } catch {}
+      // If proxy fails or returns nothing, fallback to generic logo
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
@@ -6250,48 +6212,14 @@ if (remaining > 0) {
     .replace(/\s*\[[^\]]*\]/g, ' ')
     .replace(/\s{2,}/g, ' ')
     .trim();
-
-  async function tryFetch(term) {
-    try {
-      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}&v=${encodeURIComponent(typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1')}`;
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) return '';
+  // Use the server-side proxy to resolve artwork for recent items
+  try {
+    const res = await fetch(`/api/artwork?q=${encodeURIComponent(clean)}&_=${Date.now()}`, { cache: 'no-store' });
+    if (res.ok) {
       const d = await res.json();
-      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
-      return hit && hit.artworkUrl100 ? hit.artworkUrl100.replace('100x100','300x300') : '';
-    } catch { return ''; }
-  }
-
-  function jsonp(url, timeout = 9000) {
-    return new Promise((resolve, reject) => {
-      const cb = 'itunesCB_' + Math.random().toString(36).slice(2);
-      const s = document.createElement('script');
-      let settled = false;
-      const done = (ok, data) => { if (settled) return; settled = true; delete window[cb]; s.remove(); ok ? resolve(data) : reject(new Error('jsonp')); };
-      window[cb] = (data) => done(true, data);
-      s.src = url + (url.includes('?') ? '&' : '?') + 'callback=' + cb;
-      s.onerror = () => done(false);
-      const t = setTimeout(() => done(false), timeout);
-      document.head.appendChild(s);
-    });
-  }
-
-  async function tryJSONP(term) {
-    try {
-      const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=GB&limit=5&term=${encodeURIComponent(term)}&v=${encodeURIComponent(typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1')}`;
-      const d = await jsonp(url);
-      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
-      return hit && hit.artworkUrl100 ? hit.artworkUrl100.replace('100x100','300x300') : '';
-    } catch { return ''; }
-  }
-
-  const attempts = [ clean, clean.split(' ').reverse().join(' ') ];
-  for (const t of attempts) {
-    const viaFetch = await tryFetch(t);
-    if (viaFetch) return viaFetch;
-    const viaJSONP = await tryJSONP(t);
-    if (viaJSONP) return viaJSONP;
-  }
+      if (d && d.url) return d.url;
+    }
+  } catch {}
   return '';
 }
 function stopIntervals() {
@@ -10158,7 +10086,8 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
-<script src="artwork-ios-patch.js" defer></script>
+<script src="/artwork-unified.js?v=20250929"></script>
+<script src="/artwork-ios-patch.js?v=20250929-1104"></script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
