@@ -49712,5 +49712,31 @@
     "Full Duration (mins)": 2.85,
     "Start ISO": "2025-09-30T04:50:17Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-30T04:00:00Z",
+    "Scheduled Time": "05:53",
+    "Displayed Time": "05:53",
+    "Artist": "Billie",
+    "Title": "Because We Want To",
+    "Duration (s)": 216,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.8,
+    "Start ISO": "2025-09-30T04:53:12Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-30T05:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "06:01",
+    "Artist": "Rachel Platten",
+    "Title": "Fight Song",
+    "Duration (s)": 200,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-09-30T05:01:35Z",
+    "Source": "PLAYIT"
   }
 ]
