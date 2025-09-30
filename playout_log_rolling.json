@@ -51987,5 +51987,31 @@
     "Full Duration (mins)": 3.47,
     "Start ISO": "2025-09-30T18:08:28Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-30T18:00:00Z",
+    "Scheduled Time": "19:11",
+    "Displayed Time": "19:11",
+    "Artist": "Manic Street Preachers",
+    "Title": "A Design for Life",
+    "Duration (s)": 247,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4.12,
+    "Full Duration (mins)": 4.3,
+    "Start ISO": "2025-09-30T18:11:46Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-30T18:00:00Z",
+    "Scheduled Time": "19:19",
+    "Displayed Time": "19:19",
+    "Artist": "Take That",
+    "Title": "Shine",
+    "Duration (s)": 201,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-09-30T18:19:23Z",
+    "Source": "PLAYIT"
   }
 ]
