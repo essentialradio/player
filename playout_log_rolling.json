@@ -51155,5 +51155,31 @@
     "Full Duration (mins)": 3.05,
     "Start ISO": "2025-09-30T13:31:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-30T13:00:00Z",
+    "Scheduled Time": "14:38",
+    "Displayed Time": "14:38",
+    "Artist": "Sam Fender",
+    "Title": "People Watching",
+    "Duration (s)": 234,
+    "Full Duration (s)": 311,
+    "Duration (mins)": 3.9,
+    "Full Duration (mins)": 5.18,
+    "Start ISO": "2025-09-30T13:38:28Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-30T13:00:00Z",
+    "Scheduled Time": "14:42",
+    "Displayed Time": "14:42",
+    "Artist": "Blue",
+    "Title": "If You Come Back",
+    "Duration (s)": 189,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-09-30T13:42:22Z",
+    "Source": "PLAYIT"
   }
 ]
