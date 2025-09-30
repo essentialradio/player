@@ -2862,9 +2862,6 @@ nav + div {
   }
 </style>
 <style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
-const APP_VERSION = '20250929-1104';
-</script>
-<script>
 (function() {
   function setNavOffset(){
     const nav = document.querySelector('.navbar');
@@ -5773,8 +5770,7 @@ group.forEach(show => {
     "Scott O'Hare": "Scott-OHare.jpg",
 "Tim Graham": "Tim-Graham.jpeg",
     "Bex McNamee": "Bex-Mcnamee.jpg",
-	"Kevin McCallum": "Kevin-Mccallum.jpg",
-"Keelin McKenna": "Keelin-Mckenna.jpg"
+	"Kevin McCallum": "Kevin-Mccallum.jpg"
   };
 
   // ✅ Use override if available, else fall back to slug
@@ -5898,16 +5894,13 @@ group.forEach(show => {
     const nowPlaying = document.getElementById('now-playing');
     const artworkImg = document.getElementById('artwork');
     const observer = new IntersectionObserver(entries => {
-  for (const e of entries) {
-    if (!e.isIntersecting) continue;
-    const img = e.target;
-    const reveal = () => img.classList.add('loaded');
-    const fail   = () => { img.src = 'Essential Radio Logo.png'; img.classList.add('loaded'); };
-    if (img.complete) { if (img.naturalWidth > 0) reveal(); else fail(); }
-    else { img.addEventListener('load', reveal, { once: true }); img.addEventListener('error', fail, { once: true }); }
-    observer.unobserve(img);
-  }
-}, { threshold: 0.1 });
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('loaded');
+          observer.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.1 });
     let isPlaying = false, lastVolume = 1;
     playBtn.addEventListener('click', () => {
       if (!isPlaying) {
@@ -6038,15 +6031,9 @@ if (window._npActiveKey !== trackKey) {
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
-    // Update document title and artwork (preferring unified helper if available)
+    // Update document title and artwork (if helper exists)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try {
-      if (window.applyArtwork) {
-        window.applyArtwork({ artist, title });
-      } else if (typeof fetchArtwork === 'function') {
-        fetchArtwork(`${artist} - ${title}`);
-      }
-    } catch {}
+    try { if (!window.__IOS_ARTWORK_PATCH_ACTIVE && typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
@@ -6131,14 +6118,14 @@ if (remaining > 0) {
     const data = await res.json();
     const recentItems = data
       .filter(item => {
-        const name = `${item.Artist} - ${item.Title}`;
+        const name = `${item.Artist} – ${item.Title}`;
         return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
       })
       .slice(-5)
       .reverse();
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
-      const name = `${item.Artist} - ${item.Title}`;
+      const name = `${item.Artist} – ${item.Title}`;
       const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
@@ -6154,13 +6141,12 @@ if (remaining > 0) {
               fill="#222"/>
           </svg>
         </a>`;
-      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      const lazyAttr = isIOS ? '' : 'loading="lazy"';
       return `
         <li>
           <span class="time">${time}</span>
           <img src="${art}"
-               alt="Cover for ${name}" ${lazyAttr} />
+               alt="Cover for ${name}"
+               loading="lazy" />
           <span class="info">
             ${name}
             ${lastfmIcon}
@@ -6179,49 +6165,61 @@ if (remaining > 0) {
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
-        // Use unified artwork proxy to look up this track
-        const res = await fetch(`/api/artwork?q=${encodeURIComponent(trackName)}&_=${Date.now()}`, { cache: 'no-store' });
-        if (res.ok) {
-          const d = await res.json();
-          if (d && d.url) {
-            const url = d.url;
-            artworkImg.onload = () => artworkImg.classList.add('loaded');
-            artworkImg.onerror = applyFallbackImmediate;
-            artworkCache[trackName] = url;
-            // Cache-bust the URL to ensure browsers repaint new art
-            const bust = url.includes('?') ? '&' : '?';
-            artworkImg.src = `${url}${bust}ts=${Date.now()}`;
-            return;
-          }
+        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(trackName)}&limit=5`);
+        const js = await res.json();
+        const hit = (js.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+        if (hit?.artworkUrl100) {
+          const url = hit.artworkUrl100.replace('100x100', '300x300');
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkCache[trackName] = url;
+          artworkImg.src = url;
+          return;
         }
       } catch {}
-      // If proxy fails or returns nothing, fallback to generic logo
+      const safe = trackName
+        .replace(/\s*\(.*?\)/g, '')
+        .replace(/[^a-zA-Z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '_');
+      const [artist, title] = safe.split('_-_');
+      const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
+      try {
+        const head = await fetch(autoUrl, { method: 'HEAD' });
+        if (head.ok) {
+          artworkImg.onload = () => artworkImg.classList.add('loaded');
+          artworkImg.onerror = applyFallbackImmediate;
+          artworkImg.src = autoUrl;
+          return;
+        }
+      } catch {}
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
+  if (window.__IOS_ARTWORK_PATCH_ACTIVE) return; // iOS patch owns artwork
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded');
       artworkImg.classList.add('fallback');
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
-  // Normalize query: remove brackets, collapse spaces, strip fancy dashes
-  const clean = String(query)
-    .replace(/[\u2013\u2014]/g, '-')
-    .replace(/\s*-\s*/g, ' ')
-    .replace(/\s*\([^\)]*\)/g, ' ')
-    .replace(/\s*\[[^\]]*\]/g, ' ')
-    .replace(/\s{2,}/g, ' ')
-    .trim();
-  // Use the server-side proxy to resolve artwork for recent items
-  try {
-    const res = await fetch(`/api/artwork?q=${encodeURIComponent(clean)}&_=${Date.now()}`, { cache: 'no-store' });
-    if (res.ok) {
-      const d = await res.json();
-      if (d && d.url) return d.url;
+      if (artworkCache[query]) return artworkCache[query];
+      try {
+        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(query)}&limit=5`);
+        const d = await res.json();
+        const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
+        if (hit?.artworkUrl100) {
+          return hit.artworkUrl100.replace('100x100', '300x300');
+        }
+      } catch {}
+      return '';
     }
-  } catch {}
-  return '';
+let nowPlayingInterval = null;
+let recentInterval = null;
+
+function startIntervals() {
+  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
+  if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
 }
 function stopIntervals() {
   clearInterval(nowPlayingInterval); nowPlayingInterval = null;
@@ -10087,8 +10085,7 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
-<script src="/artwork-unified.js?v=20250929"></script>
-<script src="/artwork-ios-patch.js?v=20250929-1104"></script>
+<script src="/artwork-ios-patch.js"></script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
