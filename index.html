@@ -6044,7 +6044,7 @@ if (window._npActiveKey !== trackKey) {
       if (window.applyArtwork) {
         window.applyArtwork({ artist, title });
       } else if (typeof fetchArtwork === 'function') {
-        fetchArtwork(`${artist} - ${title}`);
+        (!window.__IOS_ARTWORK_PATCH_ACTIVE) && fetchArtwork(`${artist} - ${title}`);
       }
     } catch {}
 
@@ -6175,12 +6175,7 @@ if (remaining > 0) {
   }
 }
 
-    async function fetchArtwork(trackName) {
-      artworkImg.src = 'Essential Radio Logo.png';
-      artworkImg.classList.remove('loaded', 'fallback');
-      try {
-        // Use unified artwork proxy to look up this track
-        const res = await fetch(`/api/artwork?q=${encodeURIComponent(trackName)}&_=${Date.now()}`, { cache: 'no-store' });
+    &_=${Date.now()}`, { cache: 'no-store' });
         if (res.ok) {
           const d = await res.json();
           if (d && d.url) {
@@ -6199,6 +6194,7 @@ if (remaining > 0) {
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
+  if (window.__IOS_ARTWORK_PATCH_ACTIVE) return; // iOS owns artwork; don't force fade
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded');
       artworkImg.classList.add('fallback');
@@ -10197,3 +10193,13 @@ enter;       /* centre vertically */
 
 </style>
 </html>
+
+/* canonical fetchArtwork (desktop-only) */
+async function fetchArtwork(trackName) {
+  if (window.__IOS_ARTWORK_PATCH_ACTIVE) return; // iOS patch controls #artwork
+
+      artworkImg.src = 'Essential Radio Logo.png';
+      artworkImg.classList.remove('loaded', 'fallback');
+      try {
+        // Use unified artwork proxy to look up this track
+        const res = await fetch(`/api/artwork?q=${encodeURIComponent(trackName)}
