@@ -52182,5 +52182,18 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-09-30T19:20:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-09-30T19:00:00Z",
+    "Scheduled Time": "20:23",
+    "Displayed Time": "20:23",
+    "Artist": "No Doubt",
+    "Title": "Just a Girl",
+    "Duration (s)": 195,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.5,
+    "Start ISO": "2025-09-30T19:23:55Z",
+    "Source": "PLAYIT"
   }
 ]
