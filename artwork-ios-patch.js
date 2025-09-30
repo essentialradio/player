@@ -18,7 +18,7 @@
   var QUIET_MS_AFTER_SUCCESS = 3000;
   var CLEAR_GRACE_MS = 5000;
   // 1x1 transparent PNG
-  var CLEAR_PIXEL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAoMBgQW8vKQAAAAASUVORK5CYII=";
+  var CLEAR_PIXEL = 'Essential Radio Logo.png';
 
   var lastMeta = null;   // {artist,title}
   var lastURL  = null;
@@ -125,17 +125,21 @@
   }
 
   function setImgSrc(img, url) {
-    if (!img) return;
-    // Rebind before swap (ensures load handler is active)
-    bindImg(img);
-    if (url) {
-      // cache-bust the image URL itself to force a repaint on iOS if same URL repeats
-      var busted = url + (url.indexOf("?") === -1 ? "?" : "&") + "_=" + Date.now();
-      requestAnimationFrame(function(){ img.src = busted; });
-    } else {
-      requestAnimationFrame(function(){ img.src = CLEAR_PIXEL; });
-    }
+  if (!img) return;
+  bindImg(img);
+  if (url) {
+    img.classList.remove('fallback');
+    const _on = () => { img.classList.add('loaded'); img.removeEventListener('load', _on); };
+    img.addEventListener('load', _on);
+    var busted = url + (url.indexOf('?') === -1 ? '?' : '&') + '_=' + Date.now();
+    requestAnimationFrame(function(){ img.src = busted; });
+    if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); }
+  } else {
+    img.classList.remove('loaded');
+    img.classList.add('fallback');
+    requestAnimationFrame(function(){ img.src = CLEAR_PIXEL; });
   }
+}
 
   function updateRecentThumbs() {
     // Optional enhancement: look for recent list images that include data-artist/title
@@ -169,12 +173,7 @@
         if (!latest) return null;
 
         // Compute clearing logic first
-        if (img && shouldClear(latest)) {
-          img.classList.remove("loaded");
-          setImgSrc(img, CLEAR_PIXEL);
-          lastURL = null;
-          return null;
-        }
+        if (img && shouldClear(latest)) { img.classList.remove('loaded'); img.classList.add('fallback'); setImgSrc(img, CLEAR_PIXEL); lastURL = null; return null; }
 
         // Build meta
         var meta = {
