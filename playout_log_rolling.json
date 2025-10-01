@@ -54171,5 +54171,31 @@
     "Full Duration (mins)": 4.15,
     "Start ISO": "2025-10-01T06:37:41Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T06:00:00Z",
+    "Scheduled Time": "07:47",
+    "Displayed Time": "07:47",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Tears",
+    "Duration (s)": 155,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.67,
+    "Start ISO": "2025-10-01T06:47:30Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T06:00:00Z",
+    "Scheduled Time": "07:50",
+    "Displayed Time": "07:50",
+    "Artist": "Anne-Marie",
+    "Title": "Depressed",
+    "Duration (s)": 134,
+    "Full Duration (s)": 139,
+    "Duration (mins)": 2.23,
+    "Full Duration (mins)": 2.32,
+    "Start ISO": "2025-10-01T06:50:12Z",
+    "Source": "PLAYIT"
   }
 ]
