@@ -55107,5 +55107,31 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-10-01T12:43:37Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T12:00:00Z",
+    "Scheduled Time": "13:47",
+    "Displayed Time": "13:47",
+    "Artist": "Pink",
+    "Title": "Never Gonna Not Dance Again",
+    "Duration (s)": 213,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-10-01T12:47:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T12:00:00Z",
+    "Scheduled Time": "13:50",
+    "Displayed Time": "13:50",
+    "Artist": "Post Malone & Morgan Wallen",
+    "Title": "I Had Some Help",
+    "Duration (s)": 168,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-10-01T12:50:45Z",
+    "Source": "PLAYIT"
   }
 ]
