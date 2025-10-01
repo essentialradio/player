@@ -53898,5 +53898,18 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-10-01T05:01:51Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T05:00:00Z",
+    "Scheduled Time": "06:05",
+    "Displayed Time": "06:05",
+    "Artist": "Queen",
+    "Title": "Radio Ga Ga",
+    "Duration (s)": 335,
+    "Full Duration (s)": 343,
+    "Duration (mins)": 5.58,
+    "Full Duration (mins)": 5.72,
+    "Start ISO": "2025-10-01T05:05:16Z",
+    "Source": "PLAYIT"
   }
 ]
