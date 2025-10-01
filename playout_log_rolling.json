@@ -53625,5 +53625,31 @@
     "Full Duration (mins)": 4.62,
     "Start ISO": "2025-10-01T03:30:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T03:00:00Z",
+    "Scheduled Time": "04:35",
+    "Displayed Time": "04:35",
+    "Artist": "Olivia Dean",
+    "Title": "Man I Need",
+    "Duration (s)": 176,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.07,
+    "Start ISO": "2025-10-01T03:35:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T03:00:00Z",
+    "Scheduled Time": "04:38",
+    "Displayed Time": "04:38",
+    "Artist": "Robyn",
+    "Title": "Dancing On My Own",
+    "Duration (s)": 207,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-10-01T03:38:07Z",
+    "Source": "PLAYIT"
   }
 ]
