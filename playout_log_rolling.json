@@ -56212,5 +56212,31 @@
     "Full Duration (mins)": 3.87,
     "Start ISO": "2025-10-01T18:50:08Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T18:00:00Z",
+    "Scheduled Time": "19:53",
+    "Displayed Time": "19:53",
+    "Artist": "Blazin' Squad",
+    "Title": "We Just Be Dreamin'",
+    "Duration (s)": 199,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.47,
+    "Start ISO": "2025-10-01T18:53:53Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T19:00:00Z",
+    "Scheduled Time": "20:02",
+    "Displayed Time": "20:02",
+    "Artist": "Madonna",
+    "Title": "Ray of Light",
+    "Duration (s)": 265,
+    "Full Duration (s)": 274,
+    "Duration (mins)": 4.42,
+    "Full Duration (mins)": 4.57,
+    "Start ISO": "2025-10-01T19:02:54Z",
+    "Source": "PLAYIT"
   }
 ]
