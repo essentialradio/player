@@ -54028,5 +54028,31 @@
     "Full Duration (mins)": 3.53,
     "Start ISO": "2025-10-01T05:46:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T05:00:00Z",
+    "Scheduled Time": "06:49",
+    "Displayed Time": "06:49",
+    "Artist": "Billy Joel",
+    "Title": "We Didn't Start the Fire",
+    "Duration (s)": 245,
+    "Full Duration (s)": 268,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.47,
+    "Start ISO": "2025-10-01T05:49:56Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T05:00:00Z",
+    "Scheduled Time": "06:54",
+    "Displayed Time": "06:54",
+    "Artist": "Benson Boone",
+    "Title": "Sorry I'm Here For Someone Else",
+    "Duration (s)": 148,
+    "Full Duration (s)": 157,
+    "Duration (mins)": 2.47,
+    "Full Duration (mins)": 2.62,
+    "Start ISO": "2025-10-01T05:54:13Z",
+    "Source": "PLAYIT"
   }
 ]
