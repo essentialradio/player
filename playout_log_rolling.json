@@ -56355,5 +56355,31 @@
     "Full Duration (mins)": 3.27,
     "Start ISO": "2025-10-01T19:42:23Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T19:00:00Z",
+    "Scheduled Time": "20:45",
+    "Displayed Time": "20:45",
+    "Artist": "UB40",
+    "Title": "Kingston Town",
+    "Duration (s)": 206,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-10-01T19:45:26Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-01T19:00:00Z",
+    "Scheduled Time": "20:48",
+    "Displayed Time": "20:48",
+    "Artist": "Faith Hill",
+    "Title": "Breathe",
+    "Duration (s)": 233,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 3.88,
+    "Full Duration (mins)": 4.1,
+    "Start ISO": "2025-10-01T19:48:58Z",
+    "Source": "PLAYIT"
   }
 ]
