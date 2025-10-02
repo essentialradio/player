@@ -60255,5 +60255,31 @@
     "Full Duration (mins)": 3.12,
     "Start ISO": "2025-10-02T17:46:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T17:00:00Z",
+    "Scheduled Time": "18:49",
+    "Displayed Time": "18:49",
+    "Artist": "Sekou",
+    "Title": "Catching Bodies",
+    "Duration (s)": 174,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-10-02T17:49:12Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T17:00:00Z",
+    "Scheduled Time": "18:52",
+    "Displayed Time": "18:52",
+    "Artist": "Florence + The Machine",
+    "Title": "Everybody Scream",
+    "Duration (s)": 186,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 4.08,
+    "Start ISO": "2025-10-02T17:52:09Z",
+    "Source": "PLAYIT"
   }
 ]
