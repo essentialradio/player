@@ -60905,5 +60905,18 @@
     "Full Duration (mins)": 4.08,
     "Start ISO": "2025-10-02T21:27:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T21:00:00Z",
+    "Scheduled Time": "22:30",
+    "Displayed Time": "22:30",
+    "Artist": "Sam Ryder",
+    "Title": "Somebody",
+    "Duration (s)": 196,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-10-02T21:30:57Z",
+    "Source": "PLAYIT"
   }
 ]
