@@ -60632,5 +60632,31 @@
     "Full Duration (mins)": 3.72,
     "Start ISO": "2025-10-02T19:53:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T20:00:00Z",
+    "Scheduled Time": "21:02",
+    "Displayed Time": "21:02",
+    "Artist": "Will Smith",
+    "Title": "Gettin' Jiggy Wit It",
+    "Duration (s)": 223,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.8,
+    "Start ISO": "2025-10-02T20:02:16Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T20:00:00Z",
+    "Scheduled Time": "21:06",
+    "Displayed Time": "21:06",
+    "Artist": "Craig David",
+    "Title": "Walking Away",
+    "Duration (s)": 189,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.45,
+    "Start ISO": "2025-10-02T20:06:04Z",
+    "Source": "PLAYIT"
   }
 ]
