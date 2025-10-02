@@ -57655,5 +57655,18 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-10-02T03:01:32Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T03:00:00Z",
+    "Scheduled Time": "04:04",
+    "Displayed Time": "04:04",
+    "Artist": "The Cure",
+    "Title": "Friday I'm in Love",
+    "Duration (s)": 200,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.5,
+    "Start ISO": "2025-10-02T03:04:56Z",
+    "Source": "PLAYIT"
   }
 ]
