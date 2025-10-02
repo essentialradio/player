@@ -58474,5 +58474,31 @@
     "Full Duration (mins)": 3.12,
     "Start ISO": "2025-10-02T07:48:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T07:00:00Z",
+    "Scheduled Time": "08:53",
+    "Displayed Time": "08:53",
+    "Artist": "The Lottery Winners",
+    "Title": "Turn Around",
+    "Duration (s)": 168,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.85,
+    "Start ISO": "2025-10-02T07:53:13Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T07:00:00Z",
+    "Scheduled Time": "08:56",
+    "Displayed Time": "08:56",
+    "Artist": "Paul Russell",
+    "Title": "Lil Boo Thang",
+    "Duration (s)": 114,
+    "Full Duration (s)": 114,
+    "Duration (mins)": 1.9,
+    "Full Duration (mins)": 1.9,
+    "Start ISO": "2025-10-02T07:56:02Z",
+    "Source": "PLAYIT"
   }
 ]
