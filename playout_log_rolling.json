@@ -59358,5 +59358,31 @@
     "Full Duration (mins)": 2.2,
     "Start ISO": "2025-10-02T12:48:27Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T12:00:00Z",
+    "Scheduled Time": "13:50",
+    "Displayed Time": "13:50",
+    "Artist": "Robert Palmer",
+    "Title": "Bad Case of Loving You (Doctor, Doctor)",
+    "Duration (s)": 183,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-10-02T12:50:38Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T12:00:00Z",
+    "Scheduled Time": "13:53",
+    "Displayed Time": "13:53",
+    "Artist": "Rag'N'Bone Man",
+    "Title": "Human",
+    "Duration (s)": 193,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.22,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-10-02T12:53:42Z",
+    "Source": "PLAYIT"
   }
 ]
