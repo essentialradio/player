@@ -57850,5 +57850,18 @@
     "Full Duration (mins)": 3.23,
     "Start ISO": "2025-10-02T04:01:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T04:00:00Z",
+    "Scheduled Time": "05:05",
+    "Displayed Time": "05:05",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Tears",
+    "Duration (s)": 151,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.52,
+    "Full Duration (mins)": 2.67,
+    "Start ISO": "2025-10-02T04:05:09Z",
+    "Source": "PLAYIT"
   }
 ]
