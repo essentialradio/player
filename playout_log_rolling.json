@@ -57239,5 +57239,31 @@
     "Full Duration (mins)": 3.88,
     "Start ISO": "2025-10-02T00:49:14Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T00:00:00Z",
+    "Scheduled Time": "01:53",
+    "Displayed Time": "01:53",
+    "Artist": "Ariana Grande",
+    "Title": "We Can't Be Friends (Wait For Your Love)",
+    "Duration (s)": 221,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-10-02T00:53:08Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 174,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.98,
+    "Start ISO": "2025-10-02T01:01:44Z",
+    "Source": "PLAYIT"
   }
 ]
