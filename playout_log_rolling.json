@@ -58669,5 +58669,18 @@
     "Full Duration (mins)": 4.05,
     "Start ISO": "2025-10-02T08:55:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "10:02",
+    "Artist": "Steps",
+    "Title": "5, 6, 7, 8",
+    "Duration (s)": 199,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.38,
+    "Start ISO": "2025-10-02T09:02:07Z",
+    "Source": "PLAYIT"
   }
 ]
