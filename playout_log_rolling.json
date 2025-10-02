@@ -60970,5 +60970,31 @@
     "Full Duration (mins)": 4.75,
     "Start ISO": "2025-10-02T21:49:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T21:00:00Z",
+    "Scheduled Time": "22:53",
+    "Displayed Time": "22:53",
+    "Artist": "Lisa Loeb & Nine Stories",
+    "Title": "Stay (I Missed You)",
+    "Duration (s)": 172,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 3.05,
+    "Start ISO": "2025-10-02T21:53:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T22:00:00Z",
+    "Scheduled Time": "23:02",
+    "Displayed Time": "23:02",
+    "Artist": "Chris Isaak",
+    "Title": "Wicked Game",
+    "Duration (s)": 239,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.15,
+    "Start ISO": "2025-10-02T22:02:06Z",
+    "Source": "PLAYIT"
   }
 ]
