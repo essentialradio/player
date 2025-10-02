@@ -59813,5 +59813,31 @@
     "Full Duration (mins)": 3.35,
     "Start ISO": "2025-10-02T15:15:06Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T15:00:00Z",
+    "Scheduled Time": "16:21",
+    "Displayed Time": "16:21",
+    "Artist": "Gigi Perez",
+    "Title": "Sailor Song",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-10-02T15:21:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-02T15:00:00Z",
+    "Scheduled Time": "16:24",
+    "Displayed Time": "16:24",
+    "Artist": "Shed Seven",
+    "Title": "Disco Down",
+    "Duration (s)": 220,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.85,
+    "Start ISO": "2025-10-02T15:24:52Z",
+    "Source": "PLAYIT"
   }
 ]
