@@ -62920,5 +62920,18 @@
     "Full Duration (mins)": 3.25,
     "Start ISO": "2025-10-03T09:06:06Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T09:00:00Z",
+    "Scheduled Time": "10:10",
+    "Displayed Time": "10:10",
+    "Artist": "Beyonce",
+    "Title": "BREAK MY SOUL",
+    "Duration (s)": 161,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-10-03T09:10:37Z",
+    "Source": "PLAYIT"
   }
 ]
