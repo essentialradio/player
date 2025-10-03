@@ -63570,5 +63570,31 @@
     "Full Duration (mins)": 3.07,
     "Start ISO": "2025-10-03T12:43:28Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T12:00:00Z",
+    "Scheduled Time": "13:46",
+    "Displayed Time": "13:46",
+    "Artist": "Lizzo",
+    "Title": "About Damn Time",
+    "Duration (s)": 185,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-10-03T12:46:38Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T12:00:00Z",
+    "Scheduled Time": "13:49",
+    "Displayed Time": "13:49",
+    "Artist": "Olivia Rodrigo",
+    "Title": "Vampire",
+    "Duration (s)": 217,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-10-03T12:49:52Z",
+    "Source": "PLAYIT"
   }
 ]
