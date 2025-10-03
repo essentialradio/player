@@ -65250,6 +65250,19 @@
   },
   {
     "Hour": "2025-10-03T22:00:00Z",
+    "Scheduled Time": "23:23",
+    "Displayed Time": "23:23",
+    "Artist": "Fugees",
+    "Title": "Ready or Not",
+    "Duration (s)": 230,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.9,
+    "Start ISO": "2025-10-03T22:23:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T22:00:00Z",
     "Scheduled Time": "23:00",
     "Displayed Time": "23:00",
     "Artist": "Ayrshire Radio",
