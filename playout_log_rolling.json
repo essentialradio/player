@@ -65276,6 +65276,19 @@
   },
   {
     "Hour": "2025-10-03T22:00:00Z",
+    "Scheduled Time": "23:30",
+    "Displayed Time": "23:30",
+    "Artist": "Billy Paul",
+    "Title": "Me and Mrs Jones",
+    "Duration (s)": 204,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.68,
+    "Start ISO": "2025-10-03T22:30:37Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T22:00:00Z",
     "Scheduled Time": "23:00",
     "Displayed Time": "23:00",
     "Artist": "Ayrshire Radio",
