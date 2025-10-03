@@ -63791,5 +63791,18 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-10-03T13:51:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T13:00:00Z",
+    "Scheduled Time": "14:55",
+    "Displayed Time": "14:55",
+    "Artist": "Foo Fighters",
+    "Title": "Everlong",
+    "Duration (s)": 245,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.15,
+    "Start ISO": "2025-10-03T13:55:29Z",
+    "Source": "PLAYIT"
   }
 ]
