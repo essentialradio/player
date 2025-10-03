@@ -61594,5 +61594,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-10-03T01:28:23Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T01:00:00Z",
+    "Scheduled Time": "02:31",
+    "Displayed Time": "02:31",
+    "Artist": "Green Day",
+    "Title": "Basket Case",
+    "Duration (s)": 166,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-10-03T01:31:26Z",
+    "Source": "PLAYIT"
   }
 ]
