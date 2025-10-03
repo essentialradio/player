@@ -64350,5 +64350,31 @@
     "Full Duration (mins)": 4.05,
     "Start ISO": "2025-10-03T17:47:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T17:00:00Z",
+    "Scheduled Time": "18:51",
+    "Displayed Time": "18:51",
+    "Artist": "Sekou",
+    "Title": "Catching Bodies",
+    "Duration (s)": 177,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-10-03T17:51:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-03T17:00:00Z",
+    "Scheduled Time": "18:54",
+    "Displayed Time": "18:54",
+    "Artist": "Ella Henderson",
+    "Title": "Me and You",
+    "Duration (s)": 162,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.8,
+    "Start ISO": "2025-10-03T17:54:06Z",
+    "Source": "PLAYIT"
   }
 ]
