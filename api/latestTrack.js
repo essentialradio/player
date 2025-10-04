@@ -1,4 +1,4 @@
-// pages/api/latestTrack.js
+// pages/api/latestTrack.js  (Next.js pages router)
 import { Redis } from "@upstash/redis";
 
 const redis = new Redis({
@@ -6,30 +6,17 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN,
 });
 
-function setCORS(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Cache-Control", "no-store, no-cache, max-age=0, s-maxage=0, must-revalidate");
-}
-
-function normalize(input) {
-  const x = input || {};
+function normalize(x = {}) {
   const start = x.startTime || x.start || null;
   const dur = Number.isFinite(x.duration) ? x.duration : Number(x.duration || 0) || null;
-  const source = String(x.source || "").toUpperCase();
-  const artist = x.artist || "";
-  const title = x.title || "";
-
-  // Valid “now playing” when we know start + duration and it’s PLAYIT or FIXED.
-  const valid = Boolean(start) && Number.isFinite(dur) && dur > 0 && (source === "PLAYIT" || source === "FIXED");
-
+  const src = String(x.source || "").toUpperCase();
+  const valid = Boolean(start) && Number.isFinite(dur) && dur > 0 && (src === "PLAYIT" || src === "FIXED");
   return {
-    artist,
-    title,
+    artist: x.artist || "",
+    title: x.title || "",
     startTime: start,
     duration: dur,
-    source: valid ? source : (source || "ALT"),
+    source: valid ? src : (src || "ALT"),
     indeterminate: !valid,
   };
 }
@@ -39,37 +26,31 @@ function fallbackALT() {
 }
 
 export default async function handler(req, res) {
-  setCORS(res);
-  if (req.method === "OPTIONS") return res.status(204).end();
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Cache-Control", "no-store");
 
   try {
-    // 1) Try Redis
+    // 1) Redis first
     let track = null;
     try {
       const val = await redis.get("nowPlaying");
-      if (typeof val === "string") track = JSON.parse(val);
-      else if (val && typeof val === "object") track = val;
+      track = typeof val === "string" ? JSON.parse(val) : (val || null);
     } catch {}
 
-    // 2) If Redis empty/invalid, fetch latestTrack.json from your “depository”
-    if (!track || track.duration == null) {
-      const url = (process.env.LATEST_JSON_URL || "").trim();
-      if (url) {
-        const bust = Math.floor(Date.now() / 10000); // ~10s cache-bust
-        const r = await fetch(`${url}${url.includes("?") ? "&" : "?"}v=${bust}`, { cache: "no-store" });
-        if (r.ok) {
-          const fileJson = await r.json();
-          const norm = normalize(fileJson);
-          return res.status(200).json(norm);
-        }
+    // 2) File fallback if Redis empty/invalid
+    if ((!track || track.duration == null) && process.env.LATEST_JSON_URL) {
+      const bust = Math.floor(Date.now() / 10000); // ~10s cache-bust
+      const r = await fetch(`${process.env.LATEST_JSON_URL}${process.env.LATEST_JSON_URL.includes("?") ? "&" : "?"}v=${bust}`, { cache: "no-store" });
+      if (r.ok) {
+        const fileJson = await r.json();
+        return res.status(200).json(normalize(fileJson));
       }
     }
 
-    // 3) Return normalised Redis (or ALT fallback if still nothing)
-    const out = track ? normalize(track) : fallbackALT();
-    return res.status(200).json(out);
+    // 3) Normalize whatever we have (or ALT fallback)
+    return res.status(200).json(track ? normalize(track) : fallbackALT());
   } catch (e) {
-    console.error("LATEST error:", e);
+    console.error("latestTrack API error:", e);
     return res.status(200).json(fallbackALT());
   }
 }
