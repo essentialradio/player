@@ -66209,5 +66209,31 @@
     "Full Duration (mins)": 3.35,
     "Start ISO": "2025-10-04T05:24:50Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T05:00:00Z",
+    "Scheduled Time": "06:28",
+    "Displayed Time": "06:28",
+    "Artist": "Olivia Dean",
+    "Title": "Man I Need",
+    "Duration (s)": 176,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.07,
+    "Start ISO": "2025-10-04T05:28:09Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T05:00:00Z",
+    "Scheduled Time": "06:31",
+    "Displayed Time": "06:31",
+    "Artist": "Shampoo",
+    "Title": "Trouble",
+    "Duration (s)": 181,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-10-04T05:31:28Z",
+    "Source": "PLAYIT"
   }
 ]
