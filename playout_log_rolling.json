@@ -65533,5 +65533,31 @@
     "Full Duration (mins)": 3.62,
     "Start ISO": "2025-10-04T01:42:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T01:00:00Z",
+    "Scheduled Time": "02:46",
+    "Displayed Time": "02:46",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 159,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-10-04T01:46:07Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T01:00:00Z",
+    "Scheduled Time": "02:48",
+    "Displayed Time": "02:48",
+    "Artist": "Oasis",
+    "Title": "Live Forever",
+    "Duration (s)": 268,
+    "Full Duration (s)": 277,
+    "Duration (mins)": 4.47,
+    "Full Duration (mins)": 4.62,
+    "Start ISO": "2025-10-04T01:48:47Z",
+    "Source": "PLAYIT"
   }
 ]
