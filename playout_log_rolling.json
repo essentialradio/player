@@ -1,17 +1,5 @@
 [
   {
-    "Hour": "2025-09-20T18:00:00Z",
-    "Scheduled Time": "19:02",
-    "Displayed Time": "",
-    "Artist": "Stephen Howie",
-    "Title": "Grooveline",
-    "Duration (s)": 3478,
-    "Full Duration (s)": 3480,
-    "Duration (mins)": 58,
-    "Full Duration (mins)": 58,
-    "Start ISO": "2025-09-20T18:02:00Z"
-  },
-  {
     "Hour": "2025-09-20T19:00:00Z",
     "Scheduled Time": "20:00",
     "Displayed Time": "",
@@ -48911,5 +48899,31 @@
     "Full Duration (mins)": 16.47,
     "Start ISO": "2025-10-04T17:25:59Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T17:00:00Z",
+    "Scheduled Time": "18:44",
+    "Displayed Time": "18:44",
+    "Artist": "Tim Graham",
+    "Title": "The LGBTQ Music Chart",
+    "Duration (s)": 1029,
+    "Full Duration (s)": 1031,
+    "Duration (mins)": 17.15,
+    "Full Duration (mins)": 17.18,
+    "Start ISO": "2025-10-04T17:44:12Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Stephen Howie",
+    "Title": "Grooveline",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-10-04T18:00:00Z",
+    "Source": "FIXED"
   }
 ]
