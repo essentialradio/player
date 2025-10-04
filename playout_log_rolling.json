@@ -65468,5 +65468,31 @@
     "Full Duration (mins)": 2.78,
     "Start ISO": "2025-10-04T01:16:36Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T01:00:00Z",
+    "Scheduled Time": "02:23",
+    "Displayed Time": "02:23",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 141,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.35,
+    "Full Duration (mins)": 2.38,
+    "Start ISO": "2025-10-04T01:23:26Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T01:00:00Z",
+    "Scheduled Time": "02:25",
+    "Displayed Time": "02:25",
+    "Artist": "The Weeknd",
+    "Title": "Blinding Lights",
+    "Duration (s)": 195,
+    "Full Duration (s)": 202,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.37,
+    "Start ISO": "2025-10-04T01:25:51Z",
+    "Source": "PLAYIT"
   }
 ]
