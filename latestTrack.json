@@ -2,6 +2,9 @@
   "artist": "Stephen Howie",
   "title": "Grooveline",
   "startTime": "2025-10-04T18:00:00Z",
+  "start": "2025-10-04T18:00:00Z",
+  "endTime": "2025-10-04T20:00:00Z",
   "duration": 7200,
-  "source": "FIXED"
+  "source": "FIXED",
+  "indeterminate": false
 }
