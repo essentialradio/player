@@ -1,20 +1,21 @@
 // pages/api/latestTrack.js
+
 function isValidFixed(x = {}) {
   const start = x.startTime || x.start;
-  const dur = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
+  const d = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
   const src = String(x.source || "").toUpperCase();
-  return Boolean(start) && Number.isFinite(dur) && dur > 0 && src === "FIXED";
+  return !!start && Number.isFinite(d) && d > 0 && src === "FIXED";
 }
 function isValidTimed(x = {}) {
   const start = x.startTime || x.start;
-  const dur = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
+  const d = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
   const src = String(x.source || "").toUpperCase();
-  return Boolean(start) && Number.isFinite(dur) && dur > 0 && (src === "PLAYIT" || src === "FIXED");
+  return !!start && Number.isFinite(d) && d > 0 && (src === "PLAYIT" || src === "FIXED");
 }
 function normalize(x = {}) {
   const start = x.startTime || x.start || null;
-  const durNum = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
-  const dur = Number.isFinite(durNum) ? durNum : null;
+  const d = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
+  const dur = Number.isFinite(d) ? d : null;
   const src = String(x.source || "").toUpperCase();
   return {
     artist: x.artist || "",
@@ -33,28 +34,41 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Cache-Control", "no-store");
 
+  const debugMode =
+    (req.query && (req.query.debug === "1" || req.query.debug === "true")) ||
+    (typeof req.url === "string" && /\bdebug=(1|true)\b/i.test(req.url));
+
+  const debug = { from: "fallback", steps: [], env: {
+    LATEST_JSON_URL: process.env.LATEST_JSON_URL || null,
+    KV_REST_API_URL: !!process.env.KV_REST_API_URL,
+    KV_REST_API_TOKEN: !!process.env.KV_REST_API_TOKEN,
+  } };
+
   try {
-    const base = process.env.LATEST_JSON_URL?.trim();
-    const hasFile = Boolean(base);
-    const bust = Math.floor(Date.now() / 10000);
+    // --- 1) FILE FIRST (with a safe default) ---
+    const base =
+      (process.env.LATEST_JSON_URL && process.env.LATEST_JSON_URL.trim()) ||
+      "https://player-green.vercel.app/latestTrack.json"; // default so we can't fail on a missing env
 
-    // 1) Read FILE first (cheap and deterministic)
     let fromFile = null;
-    if (hasFile) {
-      try {
-        const r = await fetch(`${base}${base.includes("?") ? "&" : "?"}v=${bust}`, { cache: "no-store" });
-        if (r.ok) fromFile = await r.json();
-      } catch (e) {
-        console.error("File fetch failed:", e);
-      }
+    try {
+      const bust = Math.floor(Date.now() / 10000);
+      const url = `${base}${base.includes("?") ? "&" : "?"}v=${bust}`;
+      const r = await fetch(url, { cache: "no-store" });
+      debug.steps.push({ stage: "file-fetch", url, status: r.status });
+      if (r.ok) fromFile = await r.json();
+    } catch (e) {
+      debug.steps.push({ stage: "file-fetch", error: String(e) });
     }
 
-    // If the file says FIXED (valid timing), trust it immediately.
     if (fromFile && isValidFixed(fromFile)) {
-      return res.status(200).json(normalize(fromFile));
+      debug.from = "file(FIXED)";
+      const out = normalize(fromFile);
+      if (debugMode) out.debug = debug;
+      return res.status(200).json(out);
     }
 
-    // 2) Try REDIS (only if creds exist)
+    // --- 2) REDIS (only if creds exist) ---
     let fromRedis = null;
     const url = process.env.KV_REST_API_URL?.trim();
     const token = process.env.KV_REST_API_TOKEN?.trim();
@@ -64,23 +78,35 @@ export default async function handler(req, res) {
         const redis = new Redis({ url, token });
         const val = await redis.get("nowPlaying");
         fromRedis = typeof val === "string" ? JSON.parse(val) : (val || null);
+        debug.steps.push({ stage: "redis-get", ok: true, hasValue: !!fromRedis });
       } catch (e) {
-        console.error("Redis read failed:", e);
+        debug.steps.push({ stage: "redis-get", error: String(e) });
       }
+    } else {
+      debug.steps.push({ stage: "redis-get", error: "KV creds not set" });
     }
 
-    // 3) Prefer any valid timed item from Redis; otherwise fall back to the file (even if not FIXED)
     if (fromRedis && isValidTimed(fromRedis)) {
-      return res.status(200).json(normalize(fromRedis));
-    }
-    if (fromFile) {
-      return res.status(200).json(normalize(fromFile));
+      debug.from = "redis";
+      const out = normalize(fromRedis);
+      if (debugMode) out.debug = debug;
+      return res.status(200).json(out);
     }
 
-    // 4) Last-resort fallback
-    return res.status(200).json(fallbackALT());
+    // --- 3) Otherwise return the file (even if not FIXED), or fallback ---
+    if (fromFile) {
+      debug.from = "file";
+      const out = normalize(fromFile);
+      if (debugMode) out.debug = debug;
+      return res.status(200).json(out);
+    }
+
+    const out = fallbackALT();
+    if (debugMode) out.debug = debug;
+    return res.status(200).json(out);
   } catch (e) {
-    console.error("latestTrack API error:", e);
-    return res.status(200).json(fallbackALT());
+    const out = fallbackALT();
+    if (debugMode) out.debug = { ...debug, error: String(e) };
+    return res.status(200).json(out);
   }
 }
