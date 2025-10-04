@@ -67327,5 +67327,31 @@
     "Full Duration (mins)": 2.98,
     "Start ISO": "2025-10-04T11:32:04Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T11:00:00Z",
+    "Scheduled Time": "12:39",
+    "Displayed Time": "12:39",
+    "Artist": "The Police",
+    "Title": "Can't Stand Losing You",
+    "Duration (s)": 148,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.47,
+    "Full Duration (mins)": 2.63,
+    "Start ISO": "2025-10-04T11:39:19Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-04T11:00:00Z",
+    "Scheduled Time": "12:41",
+    "Displayed Time": "12:41",
+    "Artist": "Coldplay",
+    "Title": "Feels Like I'm Falling in Love",
+    "Duration (s)": 215,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.73,
+    "Start ISO": "2025-10-04T11:41:52Z",
+    "Source": "PLAYIT"
   }
 ]
