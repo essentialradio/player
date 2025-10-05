@@ -49772,5 +49772,18 @@
     "Full Duration (mins)": 2.65,
     "Start ISO": "2025-10-05T04:12:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-05T04:00:00Z",
+    "Scheduled Time": "05:15",
+    "Displayed Time": "05:15",
+    "Artist": "Daft Punk",
+    "Title": "One More Time",
+    "Duration (s)": 227,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.78,
+    "Full Duration (mins)": 3.92,
+    "Start ISO": "2025-10-05T04:15:10Z",
+    "Source": "PLAYIT"
   }
 ]
