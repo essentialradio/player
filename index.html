@@ -6005,7 +6005,7 @@ async function fetchNowPlaying() {
   if (__npBusy) return;
   __npBusy = true;
   try {
-    const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+    const latestRes = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
     
@@ -6115,7 +6115,7 @@ if (remaining > 0) {
         let _gracePoll;
         const _pollForNew = async () => {
           try {
-            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
@@ -6136,7 +6136,7 @@ if (remaining > 0) {
         }
         window._npPollTimer = setInterval(async () => {
           try {
-            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
