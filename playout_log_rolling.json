@@ -52342,11 +52342,27 @@
     "Displayed Time": "16:07",
     "Artist": "Addison Rae",
     "Title": "Fame Is A Gun",
+    "Duration (s)": 250,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 4.17,
+    "Full Duration (mins)": 4.17,
+    "Start ISO": "2025-10-05T15:07:25Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T15:11:35Z",
+    "Actual Duration (s)": 250,
+    "Actual Duration (mins)": 4.17
+  },
+  {
+    "Hour": "2025-10-05T15:00:00Z",
+    "Scheduled Time": "16:11",
+    "Displayed Time": "16:11",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T15:07:25Z",
+    "Start ISO": "2025-10-05T15:11:35Z",
     "Source": "ALT"
   }
 ]
