@@ -6014,6 +6014,7 @@ const __np_ind = !!(latest && (latest.indeterminate === true || latest.undetermi
 const __np_alt = (__np_src === 'ALT') || __np_ind;
 try {
   document.body.setAttribute('data-np-mode', __np_alt ? 'alt' : 'normal');
+document.body.setAttribute('data-mode', __np_alt ? 'alt' : 'normal');
   document.dispatchEvent(new CustomEvent('np-apply-mode'));
 } catch(e) {}
 // Validate payload
@@ -6045,17 +6046,17 @@ if (window._npActiveKey !== trackKey) {
   try { hardResetBar(); } catch(e){}
   window._npLastTiming = { startMs, endMs };
 
-  // === One-shot wake right after expected end ===
-  try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
-  try {
-    const eta = endMs - Date.now();
-    if (eta > 0 && eta < 3600*1000) {
-      window._npWake = setTimeout(() => {
-        window._npWake = null;
-        try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500);
-    }
-  } catch(e) {}
+// === One-shot wake right after expected end ===
+try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
+try {
+  const eta = endMs - Date.now();
+  if (eta > 0 && eta < 3600*1000) {
+    window._npWake = setTimeout(() => {
+      window._npWake = null;
+      try { fetchNowPlaying(); } catch(e){}
+    }, eta + 500);
+  }
+} catch(e) {}
 
   try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
   try { startBarAnimation(startMs, endMs); } catch(e){}
@@ -6082,17 +6083,17 @@ try {
   // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
   window._npLastTiming = { startMs, endMs };
 
-  // === One-shot wake right after expected end ===
-  try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
-  try {
-    const eta = endMs - Date.now();
-    if (eta > 0 && eta < 3600*1000) {
-      window._npWake = setTimeout(() => {
-        window._npWake = null;
-        try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500);
-    }
-  } catch(e) {}
+// === One-shot wake right after expected end ===
+try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
+try {
+  const eta = endMs - Date.now();
+  if (eta > 0 && eta < 3600*1000) {
+    window._npWake = setTimeout(() => {
+      window._npWake = null;
+      try { fetchNowPlaying(); } catch(e){}
+    }, eta + 500);
+  }
+} catch(e) {}
 
 }
 
@@ -6135,9 +6136,9 @@ if (remaining > 0) {
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
         // Grace window before showing fallback to avoid micro-flash between sweepers and next track
-        const GRACE_MS = 2500;
+        const GRACE_MS = 600;
         const graceUntil = Date.now() + GRACE_MS;
-        const pollDelay = 400;
+        const pollDelay = 200;
         let _gracePoll;
         const _pollForNew = async () => {
           try {
@@ -10248,6 +10249,19 @@ document.addEventListener('visibilitychange', () => {
   } catch(e) {}
 })();
 </script>
+
+<script>
+(function(){
+  try {
+    if (!window.__npSoftPoll) {
+      window.__npSoftPoll = setInterval(function(){
+        try { if (typeof fetchNowPlaying === 'function' && !window.__npBusy) fetchNowPlaying(); } catch(e){}
+      }, 12000);
+    }
+  } catch(e){}
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
