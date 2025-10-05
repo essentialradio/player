@@ -50855,11 +50855,27 @@
     "Displayed Time": "18:36",
     "Artist": "Chumbawamba",
     "Title": "Tubthumping",
+    "Duration (s)": 199,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-10-05T17:36:15Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:39:34Z",
+    "Actual Duration (s)": 199,
+    "Actual Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:39",
+    "Displayed Time": "18:39",
+    "Artist": "Louise",
+    "Title": "Arms Around the World",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:36:15Z",
+    "Start ISO": "2025-10-05T17:39:34Z",
     "Source": "ALT"
   }
 ]
