@@ -5999,7 +5999,7 @@ let trackEndTime = null; // NEW
 
 async function fetchNowPlaying() {
   try {
-    const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+    const latestRes = await fetch('/latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
     // Validate payload
