@@ -52271,5 +52271,31 @@
     "Full Duration (mins)": 4.0,
     "Start ISO": "2025-10-05T10:49:27Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-05T10:00:00Z",
+    "Scheduled Time": "11:53",
+    "Displayed Time": "11:53",
+    "Artist": "Bay City Rollers",
+    "Title": "Give A Little Love",
+    "Duration (s)": 185,
+    "Full Duration (s)": 194,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.23,
+    "Start ISO": "2025-10-05T10:53:21Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-05T11:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "12:02",
+    "Artist": "Ed Sheeran",
+    "Title": "Camera",
+    "Duration (s)": 207,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-10-05T11:02:13Z",
+    "Source": "PLAYIT"
   }
 ]
