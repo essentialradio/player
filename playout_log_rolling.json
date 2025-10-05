@@ -50591,5 +50591,18 @@
     "Duration (mins)": 60,
     "Full Duration (mins)": 60,
     "Start ISO": "2025-10-05T14:59:00Z"
+  },
+  {
+    "Hour": "2025-10-05T16:00:00Z",
+    "Scheduled Time": "17:19",
+    "Displayed Time": "17:19",
+    "Artist": "Nick Lowe",
+    "Title": "Cruel to Be Kind",
+    "Duration (s)": null,
+    "Full Duration (s)": null,
+    "Duration (mins)": null,
+    "Full Duration (mins)": null,
+    "Start ISO": "2025-10-05T16:19:32Z",
+    "Source": "ALT"
   }
 ]
