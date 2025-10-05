@@ -50752,11 +50752,25 @@
     "Displayed Time": "18:03",
     "Artist": "George Michael",
     "Title": "You Have Been Loved",
+    "Duration (s)": 358,
+    "Full Duration (s)": 358,
+    "Duration (mins)": 5.97,
+    "Full Duration (mins)": 5.97,
+    "Start ISO": "2025-10-05T17:03:48Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:09:46Z"
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:09",
+    "Displayed Time": "18:09",
+    "Artist": "",
+    "Title": "Tres) Maria",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:03:48Z",
+    "Start ISO": "2025-10-05T17:09:46Z",
     "Source": "ALT"
   }
 ]
