@@ -50682,11 +50682,25 @@
     "Displayed Time": "17:42",
     "Artist": "Status Quo",
     "Title": "Whatever You Want",
+    "Duration (s)": 232,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 3.87,
+    "Start ISO": "2025-10-05T16:42:41Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T16:46:33Z"
+  },
+  {
+    "Hour": "2025-10-05T16:00:00Z",
+    "Scheduled Time": "17:46",
+    "Displayed Time": "17:46",
+    "Artist": "Gary Numan",
+    "Title": "Cars",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T16:42:41Z",
+    "Start ISO": "2025-10-05T16:46:33Z",
     "Source": "ALT"
   }
 ]
