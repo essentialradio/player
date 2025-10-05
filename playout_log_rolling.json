@@ -52326,11 +52326,27 @@
     "Displayed Time": "16:04",
     "Artist": "Perrie",
     "Title": "If He Wanted To He Would (Clean)",
+    "Duration (s)": 199,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-10-05T15:04:06Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T15:07:25Z",
+    "Actual Duration (s)": 199,
+    "Actual Duration (mins)": 3.32
+  },
+  {
+    "Hour": "2025-10-05T15:00:00Z",
+    "Scheduled Time": "16:07",
+    "Displayed Time": "16:07",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T15:04:06Z",
+    "Start ISO": "2025-10-05T15:07:25Z",
     "Source": "ALT"
   }
 ]
