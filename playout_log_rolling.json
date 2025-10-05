@@ -52374,11 +52374,27 @@
     "Displayed Time": "16:13",
     "Artist": "CMAT",
     "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 237,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 3.95,
+    "Start ISO": "2025-10-05T15:13:48Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T15:17:45Z",
+    "Actual Duration (s)": 237,
+    "Actual Duration (mins)": 3.95
+  },
+  {
+    "Hour": "2025-10-05T15:00:00Z",
+    "Scheduled Time": "16:17",
+    "Displayed Time": "16:17",
+    "Artist": "Miley Cyrus",
+    "Title": "Easy Lover",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T15:13:48Z",
+    "Start ISO": "2025-10-05T15:17:45Z",
     "Source": "ALT"
   }
 ]
