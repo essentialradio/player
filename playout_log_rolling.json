@@ -50766,11 +50766,25 @@
     "Displayed Time": "18:09",
     "Artist": "",
     "Title": "Tres) Maria",
+    "Duration (s)": 251,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.18,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-10-05T17:09:46Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:13:57Z"
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:13",
+    "Displayed Time": "18:13",
+    "Artist": "Sly & Robbie ft Simply Red",
+    "Title": "Night Nurse",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:09:46Z",
+    "Start ISO": "2025-10-05T17:13:57Z",
     "Source": "ALT"
   }
 ]
