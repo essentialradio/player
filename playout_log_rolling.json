@@ -50780,11 +50780,25 @@
     "Displayed Time": "18:13",
     "Artist": "Sly & Robbie ft Simply Red",
     "Title": "Night Nurse",
+    "Duration (s)": 239,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 3.98,
+    "Start ISO": "2025-10-05T17:13:57Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:17:56Z"
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:17",
+    "Displayed Time": "18:17",
+    "Artist": "Bellini",
+    "Title": "Samba De Janeiro",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:13:57Z",
+    "Start ISO": "2025-10-05T17:17:56Z",
     "Source": "ALT"
   }
 ]
