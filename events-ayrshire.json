@@ -437,6 +437,28 @@
       "link": "https://www.staffnews.north-ayrshire.gov.uk/october-holiday-stem-fun-tickets-going-fast/",
       "source": "North Ayrshire Council",
       "recurring": false
+    },
+    {
+      "title": "Kilwinning Community Fireworks",
+      "start_date": "2025-11-05",
+      "end_date": "2025-11-05",
+      "venue": "McGavin Park",
+      "town": "Kilwinning",
+      "desc": "Community fireworks display at McGavin Park to mark Bonfire Night.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council",
+      "recurring": true
+    },
+    {
+      "title": "NASA Kids Christmas Party",
+      "start_date": "2025-12-13",
+      "end_date": "2025-12-13",
+      "venue": "Saltcoats",
+      "town": "Saltcoats",
+      "desc": "Annual kids Christmas party organised by the North Ayrshire Staff Association.",
+      "link": "https://www.staffnews.north-ayrshire.gov.uk/book-now-latest-nasa-events-2025-2/",
+      "source": "North Ayrshire Council",
+      "recurring": true
     }
   ],
   "south": [
@@ -979,6 +1001,96 @@
       "link": "https://connectsouthayrshire.org/news/family-matters-drop-in-at-girvan-library/5751/",
       "source": "Connect South Ayrshire",
       "recurring": true
+    },
+    {
+      "title": "Festive Family Fun Day \u2013 Ayr",
+      "start_date": "2025-11-17",
+      "end_date": "2025-11-17",
+      "start_time": "13:30",
+      "end_time": "17:30",
+      "venue": "Ayr Town Centre",
+      "town": "Ayr",
+      "desc": "Stage entertainment, Christmas markets, and festive attractions in Ayr town centre.",
+      "link": "https://www.south-ayrshire.gov.uk/article/79059/Festive-Family-Fun-day-set-to-kick-off-South-Ayrshire-s-seasonal-celebrations",
+      "source": "South Ayrshire Council",
+      "recurring": false
+    },
+    {
+      "title": "Troon Wintertainment",
+      "start_date": "2025-11-17",
+      "end_date": "2025-11-17",
+      "venue": "Troon Town Centre",
+      "town": "Troon",
+      "desc": "Annual festive lights switch-on event with markets, music, and entertainment.",
+      "link": "https://destinationsouthayrshire.co.uk/christmas/",
+      "source": "Destination South Ayrshire",
+      "recurring": true
+    },
+    {
+      "title": "PRESTmas \u2013 Prestwick Christmas Festival",
+      "start_date": "2025-11-24",
+      "end_date": "2025-11-24",
+      "venue": "Prestwick Town Centre",
+      "town": "Prestwick",
+      "desc": "Community-led Christmas celebration with music, stalls, and family fun.",
+      "link": "https://destinationsouthayrshire.co.uk/christmas/",
+      "source": "Destination South Ayrshire",
+      "recurring": true
+    },
+    {
+      "title": "Girvan Christmas Street Party",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-01",
+      "venue": "Girvan Town Centre",
+      "town": "Girvan",
+      "desc": "Community Christmas celebration with live entertainment, food, and crafts.",
+      "link": "https://destinationsouthayrshire.co.uk/christmas/",
+      "source": "Destination South Ayrshire",
+      "recurring": true
+    },
+    {
+      "title": "Festive North Carrick",
+      "start_date": "2025-12-08",
+      "end_date": "2025-12-08",
+      "venue": "Maybole Town Centre",
+      "town": "Maybole",
+      "desc": "Family-friendly festive event with entertainment and market stalls.",
+      "link": "https://destinationsouthayrshire.co.uk/christmas/",
+      "source": "Destination South Ayrshire",
+      "recurring": true
+    },
+    {
+      "title": "Santa\u2019s Cousin Bob!",
+      "start_date": "2025-12-18",
+      "end_date": "2025-12-31",
+      "venue": "Ayr Town Hall",
+      "town": "Ayr",
+      "desc": "Festive family theatre show running daily across the Christmas holidays.",
+      "link": "https://destinationsouthayrshire.co.uk/christmas/",
+      "source": "Destination South Ayrshire",
+      "recurring": true
+    },
+    {
+      "title": "Heads of Ayr Christmas Experience",
+      "start_date": "2025-11-23",
+      "end_date": "2025-12-24",
+      "venue": "Heads of Ayr Farm Park",
+      "town": "Alloway",
+      "desc": "Meet Santa, enjoy Christmas crafts, storytelling, and soft play in this festive attraction.",
+      "link": "https://www.headsofayrtickets.co.uk/christmas",
+      "source": "Heads of Ayr Farm Park",
+      "recurring": true
+    },
+    {
+      "title": "Festive Day Dancin\u2019 \u2013 Ayr Racecourse",
+      "start_date": "2025-12-06",
+      "end_date": "2025-12-06",
+      "venue": "Ayr Racecourse",
+      "town": "Ayr",
+      "desc": "A fun festive day event with live music and DJs playing Christmas favourites.",
+      "link": "https://www.ayr-racecourse.co.uk/events-occasions/festive-day-dancin/",
+      "source": "Ayr Racecourse",
+      "recurring": false
     }
   ],
   "east": [
