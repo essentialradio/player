@@ -6044,19 +6044,16 @@ if (window._npActiveKey !== trackKey) {
   window._npActiveKey = trackKey;
   try { hardResetBar(); } catch(e){}
   window._npLastTiming = { startMs, endMs };
+
   // === One-shot wake right after expected end ===
-  try {
-    // if a prior wake is armed, clear it
-    if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; }
-  } catch(e) {}
+  try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
   try {
     const eta = endMs - Date.now();
-    // ignore absurd times (>1h) and past items
     if (eta > 0 && eta < 3600*1000) {
       window._npWake = setTimeout(() => {
         window._npWake = null;
         try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500); // nudge beyond boundary to avoid overlap
+      }, eta + 500);
     }
   } catch(e) {}
 
@@ -6084,19 +6081,16 @@ try {
 } else {
   // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
   window._npLastTiming = { startMs, endMs };
+
   // === One-shot wake right after expected end ===
-  try {
-    // if a prior wake is armed, clear it
-    if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; }
-  } catch(e) {}
+  try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
   try {
     const eta = endMs - Date.now();
-    // ignore absurd times (>1h) and past items
     if (eta > 0 && eta < 3600*1000) {
       window._npWake = setTimeout(() => {
         window._npWake = null;
         try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500); // nudge beyond boundary to avoid overlap
+      }, eta + 500);
     }
   } catch(e) {}
 
@@ -6192,8 +6186,6 @@ if (remaining > 0) {
     console.error('Error fetching now playing:', err);
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
-
-  finally { __npBusy = false; }
 }
 
 
