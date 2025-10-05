@@ -39,9 +39,10 @@
     if (!url) return;
     // attach load/error handlers if not already present
     if (!img.__boundUnified) {
-      img.addEventListener('load', () => img.classList.add('loaded'));
+      img.addEventListener('load', () => { img.classList.add('loaded'); img.classList.remove('fallback'); });
       img.addEventListener('error', () => {
         img.classList.remove('loaded');
+    img.classList.remove('fallback');
         img.src = 'Essential Radio Logo.png';
       });
       img.__boundUnified = true;
