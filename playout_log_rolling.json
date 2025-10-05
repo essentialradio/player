@@ -50903,11 +50903,27 @@
     "Displayed Time": "18:47",
     "Artist": "Oasis",
     "Title": "Stand by Me",
+    "Duration (s)": 399,
+    "Full Duration (s)": 399,
+    "Duration (mins)": 6.65,
+    "Full Duration (mins)": 6.65,
+    "Start ISO": "2025-10-05T17:47:49Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:54:28Z",
+    "Actual Duration (s)": 399,
+    "Actual Duration (mins)": 6.65
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:54",
+    "Displayed Time": "18:54",
+    "Artist": "Elton John",
+    "Title": "Candle in the Wind 1997",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:47:49Z",
+    "Start ISO": "2025-10-05T17:54:28Z",
     "Source": "ALT"
   }
 ]
