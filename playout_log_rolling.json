@@ -50794,11 +50794,25 @@
     "Displayed Time": "18:17",
     "Artist": "Bellini",
     "Title": "Samba De Janeiro",
+    "Duration (s)": 173,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.88,
+    "Start ISO": "2025-10-05T17:17:56Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:20:49Z"
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:20",
+    "Displayed Time": "18:20",
+    "Artist": "The Verve",
+    "Title": "The Drugs Don't Work",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:17:56Z",
+    "Start ISO": "2025-10-05T17:20:49Z",
     "Source": "ALT"
   }
 ]
