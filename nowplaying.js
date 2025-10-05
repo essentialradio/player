@@ -12,6 +12,17 @@
 
   const DEFAULTS = {
     scheduleUrl: 'https://player-green.vercel.app/schedule.json',
+
+latestUrl: '/latestTrack.json',
+
+// Progress selectors
+progressSel: '[data-progress]',
+progressFillSel: '[data-progress-fill]',
+
+// Progress timings
+progressUpdateMs: 1000,       // repaint the bar every second
+fallbackRefreshMs: 15000,     // how often to refetch latest if timing unknown
+
     // Selectors
     showTitleSel: '#showTitle',
     presenterSel: '#showPresenter',
@@ -31,6 +42,11 @@
 
   const state = {
     schedule: [],
+
+latest: null,
+tickTimer: null,
+refreshTimer: null,
+
     artworkCache: Object.create(null),
     lastFixedKey: '',
     timer: null
@@ -133,7 +149,103 @@
     return '';
   }
 
-  // --- Core logic ----------------------------------------------------------
+  
+// --- Progress helpers ------------------------------------------------------
+
+function qsa(sel){ return sel ? Array.from(document.querySelectorAll(sel)) : []; }
+
+function computePct(item){
+  if (!item) return 0;
+  const startMs = Date.parse(item.startTime || item.start || 0) || 0;
+  const endMs = item.endTime ? Date.parse(item.endTime) : (startMs + ((item.duration || 0) * 1000));
+  const span = Math.max(1, endMs - startMs);
+  let pct = ((Date.now() - startMs) / span) * 100;
+  if (!Number.isFinite(pct)) pct = 0;
+  return Math.min(100, Math.max(0, pct));
+}
+
+function shouldShowProgress(item){
+  if (!item) return false;
+  const src = String(item.source || '').toUpperCase();
+  const ind = item.indeterminate === true;
+  // Hide only for ALT or explicit indeterminate
+  return src !== 'ALT' && !ind;
+}
+
+function renderProgress(cfg, item, instant=false){
+  const els = qsa(cfg.progressSel);
+  const fills = qsa(cfg.progressFillSel);
+  if (!els.length || !fills.length) return;
+
+  const show = shouldShowProgress(item);
+  els.forEach(el => el.toggleAttribute('hidden', !show));
+  if (!show) return;
+
+  const pct = computePct(item);
+  fills.forEach(fill => {
+    if (instant) fill.style.transition = 'none';
+    fill.style.width = pct + '%';
+    if (instant) requestAnimationFrame(() => { fill.style.transition = ''; });
+  });
+}
+
+async function loadLatest(cfg){
+  try{
+    const r = await fetch(cfg.latestUrl, { cache: 'no-store' });
+    state.latest = await r.json();
+    return state.latest;
+  }catch(e){
+    console.warn('[nowplaying] latest fetch failed', e);
+    return null;
+  }
+}
+
+function nextRefreshDelay(cfg, item){
+  if (!item) return cfg.fallbackRefreshMs;
+  const src = String(item.source || '').toUpperCase();
+  if (src === 'ALT') return cfg.fallbackRefreshMs; // avoid hammering
+  const startMs = Date.parse(item.startTime || item.start || 0) || 0;
+  const endMs = item.endTime ? Date.parse(item.endTime) : (startMs + ((item.duration || 0) * 1000));
+  const now = Date.now();
+  if (!endMs || endMs <= now) return 2000; // boundary soon or passed
+  return Math.max(2000, Math.min(30000, (endMs - now) + 500)); // ~0.5s after boundary
+}
+
+function startProgressLoops(cfg){
+  // Initial fetch + instant paint
+  loadLatest(cfg).then(()=>{
+    renderProgress(cfg, state.latest, /*instant*/true);
+    scheduleLatestRefresh(cfg, state.latest);
+  });
+
+  // 1s repaint loop
+  if (state.tickTimer) clearInterval(state.tickTimer);
+  state.tickTimer = setInterval(() => {
+    renderProgress(cfg, state.latest);
+  }, cfg.progressUpdateMs);
+
+  // Refresh again when tab becomes visible
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden){
+      loadLatest(cfg).then(()=>{
+        renderProgress(cfg, state.latest, /*instant*/true);
+        scheduleLatestRefresh(cfg, state.latest);
+      });
+    }
+  });
+}
+
+function scheduleLatestRefresh(cfg, item){
+  if (state.refreshTimer) clearTimeout(state.refreshTimer);
+  const delay = nextRefreshDelay(cfg, item);
+  state.refreshTimer = setTimeout(async () => {
+    await loadLatest(cfg);
+    renderProgress(cfg, state.latest, /*instant*/true);
+    scheduleLatestRefresh(cfg, state.latest);
+  }, delay);
+}
+
+// --- Core logic ----------------------------------------------------------
 
   async function loadSchedule(url) {
     const res = await fetch(url, { cache: 'no-store' });
@@ -164,7 +276,7 @@
         // Fixed: show show title/presenter and source label
         text(showEl, cur.title || 'On Air');
         text(djEl, cur.presenter || '');
-        text(srcEl, cur.source);
+        text(srcEl, (state.latest && state.latest.source) ? String(state.latest.source).toUpperCase() : cur.source);
         const key = cur.title + '|' + cur.presenter;
         if (key !== state.lastFixedKey) {
           state.lastFixedKey = key;
@@ -179,7 +291,7 @@
         // Not fixed: generic branding
         text(showEl, 'More music soon');
         text(djEl, '');
-        text(srcEl, 'MAIN');
+        text(srcEl, (state.latest && state.latest.source) ? String(state.latest.source).toUpperCase() : 'MAIN');
         state.lastFixedKey = '';
         if (statusEl) text(statusEl, 'non-fixed slot');
       }
@@ -205,6 +317,7 @@
         try { window.APP_VERSION = String(cfg.appVersion); } catch {}
       }
       startLoop(cfg);
+      startProgressLoops(cfg);
       return cfg;
     }
   };
