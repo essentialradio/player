@@ -50724,11 +50724,25 @@
     "Displayed Time": "17:55",
     "Artist": "The Police",
     "Title": "Message in a Bottle",
+    "Duration (s)": 314,
+    "Full Duration (s)": 314,
+    "Duration (mins)": 5.23,
+    "Full Duration (mins)": 5.23,
+    "Start ISO": "2025-10-05T16:55:17Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:00:31Z"
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:00",
+    "Displayed Time": "18:00",
+    "Artist": "Hanson",
+    "Title": "Where's the Love",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T16:55:17Z",
+    "Start ISO": "2025-10-05T17:00:31Z",
     "Source": "ALT"
   }
 ]
