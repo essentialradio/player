@@ -36,6 +36,8 @@ async function applyArtwork(meta) {
     const img = document.getElementById('artwork');
     if (!img) return;
 
+    // Ensure any fallback blur is dropped immediately
+    img.classList.remove('fallback');
     // Clear fallback immediately so blur doesn't persist into next track
     img.classList.remove('fallback');
 
@@ -76,12 +78,14 @@ async function applyArtwork(meta) {
     img.classList.remove('loaded');
     img.src = `${url}${bust}ts=${Date.now()}`;
 
-    // If image was instantly available from cache, 'load' may not fire
+    
+    // Safety: if the load event is missed (race/cached), force 'loaded' shortly after
+    setTimeout(() => { if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); img.classList.remove('fallback'); } }, 500);
+// If image was instantly available from cache, 'load' may not fire
     if (img.complete && img.naturalWidth > 0) {
       img.classList.add('loaded');
       img.classList.remove('fallback');
     }
-}
 }
 
   // Expose helpers globally

@@ -33,7 +33,7 @@
     if (!img || img.__ios_art_bound) return;
     try { img.loading = "eager"; } catch {}
     try { img.decoding = "async"; } catch {}
-    img.addEventListener("load", function(){ img.classList.add("loaded"); }, {passive:true});
+    img.addEventListener(\"load\", function(){ img.classList.add(\"loaded\"); img.classList.remove(\"fallback\"); }, {passive:true});
     img.addEventListener("error", function(){
       // If we don't have a valid URL yet, show a neutral pixel instead of a broken icon
       if (!lastURL) requestAnimationFrame(function(){ img.src = CLEAR_PIXEL; });
@@ -134,6 +134,8 @@
     var busted = url + (url.indexOf('?') === -1 ? '?' : '&') + '_=' + Date.now();
     requestAnimationFrame(function(){ img.src = busted; });
     if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); }
+  // Safety: if load event is missed, ensure loaded state applies
+  setTimeout(function(){ if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); img.classList.remove('fallback'); } }, 500);
   } else {
     img.classList.remove('loaded');
     img.classList.add('fallback');
