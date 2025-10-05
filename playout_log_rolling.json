@@ -50321,5 +50321,18 @@
     "Full Duration (mins)": 3.92,
     "Start ISO": "2025-10-05T10:09:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-05T10:00:00Z",
+    "Scheduled Time": "11:12",
+    "Displayed Time": "11:12",
+    "Artist": "Bob Dylan",
+    "Title": "Subterranean Homesick Blues",
+    "Duration (s)": 123,
+    "Full Duration (s)": 137,
+    "Duration (mins)": 2.05,
+    "Full Duration (mins)": 2.28,
+    "Start ISO": "2025-10-05T10:12:57Z",
+    "Source": "PLAYIT"
   }
 ]
