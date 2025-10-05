@@ -6160,6 +6160,8 @@ if (remaining > 0) {
     console.error('Error fetching now playing:', err);
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
+
+  finally { __npBusy = false; }
 }
 
 
@@ -10131,7 +10133,45 @@ document.addEventListener('visibilitychange', () => {
 <!-- swap to the patched file OR bump the version -->
 <script src="/artwork-unified.js?v=20251006"></script>
 <script src="/artwork-ios-js?v=20250929-1105"></script>
-
+<script>
+(() => {
+  const ALT_DEFAULT_DURATION = 3600, DEFAULT_DURATION = 180, URL = '/api/latestTrack';
+  const $ = (s) => document.querySelector(s);
+  const toIsoZ = (v) => v ? (String(v).endsWith('Z') ? v : new Date(v).toISOString()) : new Date().toISOString();
+  const normalize = (raw) => {
+    const src = String(raw?.source || '').toUpperCase();
+    const d = Number(raw?.duration);
+    const duration = Number.isFinite(d) && d > 0 ? Math.floor(d) : (src === 'ALT' ? ALT_DEFAULT_DURATION : DEFAULT_DURATION);
+    const startIso = toIsoZ(raw?.startTime || raw?.start);
+    const out = {
+      artist: String(raw?.artist || ''), title: String(raw?.title || ''), source: src,
+      duration, startTime: startIso, start: startIso, indeterminate: false
+    };
+    out.endTime = new Date(Date.parse(startIso) + duration * 1000).toISOString();
+    return out;
+  };
+  const render = (latest) => {
+    const a = $('[data-now-artist]'), t = $('[data-now-title]'), s = $('[data-now-source]'), p = $('[data-now-progress]');
+    if (a) a.textContent = latest.artist;
+    if (t) t.textContent = latest.title;
+    if (s) s.textContent = latest.source;
+    if (p) {
+      const elapsed = Math.max(0, Date.now() - Date.parse(latest.startTime));
+      const pct = Math.min(1, elapsed / (latest.duration * 1000));
+      p.style.width = (pct * 100).toFixed(2) + '%';
+      p.setAttribute('aria-valuenow', Math.round(pct * 100));
+    }
+  };
+  const tick = async () => {
+    try {
+      const res = await fetch(URL, { cache: 'no-store' });
+      render(normalize(await res.json()));
+    } catch {}
+    setTimeout(tick, 10000);
+  };
+  tick();
+})();
+</script>
 
 <script id="np-alt-hide-enforcer">
 (function(){
