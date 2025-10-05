@@ -1,4 +1,4 @@
-// pages/api/latestTrack.js (Node runtime)
+// pages/api/latestTrack.js (ALT-aware, Node runtime)
 export const config = { runtime: 'nodejs' };
 
 
@@ -14,7 +14,9 @@ function toIsoZ(input) {
 function coerceDuration(rawDuration, source) {
   const n = Number(rawDuration);
   if (Number.isFinite(n) && n > 0) return Math.floor(n);
-  return String(source || '').toUpperCase() === 'ALT' ? (Number(process.env.ALT_DEFAULT_DURATION || 3600)) : (Number(process.env.DEFAULT_DURATION || 180));
+  const altDur = Number(process.env.ALT_DEFAULT_DURATION || 3600);
+  const defDur = Number(process.env.DEFAULT_DURATION || 180);
+  return String(source || '').toUpperCase() === 'ALT' ? altDur : defDur;
 }
 
 function normalizeLatest(raw) {
@@ -25,7 +27,7 @@ function normalizeLatest(raw) {
   const out = {
     artist: String(raw?.artist || ''),
     title: String(raw?.title || ''),
-    source: src,
+    source: src || 'ALT',
     duration,
     startTime: startIso,
     start: startIso,
@@ -35,16 +37,51 @@ function normalizeLatest(raw) {
   return out;
 }
 
-async function readLatestJson() {
-  // 1) Try external URL (recommended for dynamic content)
-  const url = process.env.LATEST_TRACK_URL;
-  if (url) {
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`Upstream ${url} -> HTTP ${res.status}`);
-    return await res.json();
+function decodeEntities(s='') {
+  return s
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
+function stripTags(s='') {
+  return s.replace(/<[^>]*>/g, '');
+}
+
+function parseAlt7html(text='') {
+  const raw = decodeEntities(stripTags(String(text || ''))).replace(/\r/g, '').trim();
+  const line = raw.split('\n').map(x => x.trim()).filter(Boolean).pop() || '';
+  const parts = line.split(',');
+  const trackField = parts.length >= 7 ? parts.slice(6).join(',').trim() : (parts.pop() || '').trim();
+
+  let artist = '', title = '';
+  if (trackField.includes(' - ')) {
+    [artist, title] = trackField.split(' - ', 1).concat(trackField.split(' - ').slice(1).join(' - '));
+    artist = artist.trim(); title = title.trim();
+  } else if (trackField.includes(' – ')) {
+    [artist, title] = trackField.split(' – ', 1).concat(trackField.split(' – ').slice(1).join(' – '));
+    artist = artist.trim(); title = title.trim();
+  } else {
+    title = trackField.trim();
   }
 
-  // 2) Try reading from project files (bundled at build time)
+  if (!artist && !title) return null;
+  return { artist, title, source: 'ALT', duration: null, startTime: null, indeterminate: true };
+}
+
+async function fetchJson(url) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Upstream ${url} -> HTTP ${res.status}`);
+  return await res.json();
+}
+
+async function readPrimaryLatest() {
+  const url = process.env.LATEST_TRACK_URL;
+  if (url) return await fetchJson(url);
+
+  // file fallback
   const path = require('path');
   const fs = require('fs');
   const candidates = [
@@ -57,24 +94,32 @@ async function readLatestJson() {
       return JSON.parse(raw);
     }
   }
+  return { artist: '', title: '', source: 'ALT', duration: null, startTime: null, indeterminate: true };
+}
 
-  // 3) Last resort: safe placeholder
-  return {
-    artist: '',
-    title: '',
-    source: 'ALT',
-    duration: null,
-    startTime: new Date().toISOString(),
-    indeterminate: true,
-  };
+async function maybeFetchAltFallback(current) {
+  const hasNames = Boolean(current?.artist) || Boolean(current?.title);
+  if (hasNames) return current;
+  const altUrl = process.env.ALT_7HTML_URL;
+  if (!altUrl) return current;
+  try {
+    const res = await fetch(altUrl, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`ALT ${altUrl} -> HTTP ${res.status}`);
+    const text = await res.text();
+    const parsed = parseAlt7html(text);
+    return parsed ? Object.assign({}, current, parsed) : current;
+  } catch (e) {
+    console.error('[latestTrack ALT fallback] error:', e);
+    return current;
+  }
 }
 
 
 export default async function handler(req, res) {
   try {
-    const raw = await readLatestJson();
-    const obj = normalizeLatest(raw);
-
+    const primary = await readPrimaryLatest();
+    const merged = await maybeFetchAltFallback(primary);
+    const obj = normalizeLatest(merged);
     res.setHeader('Cache-Control', 'no-store, must-revalidate');
     res.status(200).json(obj);
   } catch (e) {
