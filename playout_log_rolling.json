@@ -50808,11 +50808,25 @@
     "Displayed Time": "18:20",
     "Artist": "The Verve",
     "Title": "The Drugs Don't Work",
+    "Duration (s)": 426,
+    "Full Duration (s)": 426,
+    "Duration (mins)": 7.1,
+    "Full Duration (mins)": 7.1,
+    "Start ISO": "2025-10-05T17:20:49Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:27:55Z"
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:27",
+    "Displayed Time": "18:27",
+    "Artist": "Will Smith",
+    "Title": "Men in Black",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:20:49Z",
+    "Start ISO": "2025-10-05T17:27:55Z",
     "Source": "ALT"
   }
 ]
