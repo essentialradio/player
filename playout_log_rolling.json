@@ -50839,11 +50839,27 @@
     "Displayed Time": "18:31",
     "Artist": "M People",
     "Title": "Just For You",
+    "Duration (s)": 289,
+    "Full Duration (s)": 289,
+    "Duration (mins)": 4.82,
+    "Full Duration (mins)": 4.82,
+    "Start ISO": "2025-10-05T17:31:26Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:36:15Z",
+    "Actual Duration (s)": 289,
+    "Actual Duration (mins)": 4.82
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:36",
+    "Displayed Time": "18:36",
+    "Artist": "Chumbawamba",
+    "Title": "Tubthumping",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:31:26Z",
+    "Start ISO": "2025-10-05T17:36:15Z",
     "Source": "ALT"
   }
 ]
