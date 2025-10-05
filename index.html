@@ -4411,17 +4411,6 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
-<style id="np-alt-hide-css-robust">
-/* Hide timer & progress in ALT, supporting both id/class + data attributes */
-[data-np-mode="alt"] #np-progress,
-[data-np-mode="alt"] .np-progress,
-[data-np-mode="alt"] #countdown,
-[data-np-mode="alt"] .np-timer,
-[data-mode="alt"]    #np-progress,
-[data-mode="alt"]    .np-progress,
-[data-mode="alt"]    #countdown,
-[data-mode="alt"]    .np-timer { display: none !important; }
-</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5604,7 +5593,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         }
       });
 
-      fetch("playout_log_rolling.json")
+      fetch("playout_log_rolling.json?ts=" + Date.now(), { cache: "no-store" })
         .then(res => res.json())
         .then(data => {
           fullData = data;
@@ -6000,23 +5989,12 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-let __npBusy = false;
 async function fetchNowPlaying() {
-  if (__npBusy) return;
-  __npBusy = true;
   try {
-    const latestRes = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
+    const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
-    
-const __np_src = ((latest && (latest.source ?? latest.Source)) || '').toString().toUpperCase();
-const __np_ind = !!(latest && (latest.indeterminate === true || latest.undetermined === true));
-const __np_alt = (__np_src === 'ALT') || __np_ind;
-try {
-  document.body.setAttribute('data-np-mode', __np_alt ? 'alt' : 'normal');
-  document.dispatchEvent(new CustomEvent('np-apply-mode'));
-} catch(e) {}
-// Validate payload
+    // Validate payload
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
@@ -6115,7 +6093,7 @@ if (remaining > 0) {
         let _gracePoll;
         const _pollForNew = async () => {
           try {
-            const r = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
@@ -6136,7 +6114,7 @@ if (remaining > 0) {
         }
         window._npPollTimer = setInterval(async () => {
           try {
-            const r = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
@@ -10171,57 +10149,6 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
-<script id="np-alt-hide-enforcer">
-(function(){
-  function applyMode(){
-    var isAlt = (document.body.getAttribute('data-np-mode') === 'alt');
-    var prog = document.getElementById('np-progress') || document.querySelector('.np-progress');
-    var timer = document.getElementById('countdown') || document.querySelector('.np-timer');
-    if (prog) {
-      if (isAlt) {
-        prog.style.display = 'none';
-        var bar = prog.querySelector('.bar');
-        if (bar) { bar.style.width = '0%'; }
-        prog.classList.remove('ending-soon');
-      } else {
-        prog.style.removeProperty('display');
-      }
-    }
-    if (timer) {
-      if (isAlt) {
-        timer.style.display = 'none';
-      } else {
-        timer.style.removeProperty('display');
-      }
-    }
-  }
-  document.addEventListener('np-apply-mode', applyMode);
-  if (document.readyState !== 'loading') applyMode();
-  else document.addEventListener('DOMContentLoaded', applyMode);
-})();
-</script>
-<script id="np-poll-bootstrap">
-(function(){
-  try {
-    var POLL_MS = 5000;
-    if (typeof window.fetchNowPlaying === 'function') {
-      try { window.fetchNowPlaying(); } catch(e) {}
-    }
-    if (!window.__npPoll) {
-      window.__npPoll = setInterval(function(){
-        if (typeof window.fetchNowPlaying === 'function') {
-          try { window.fetchNowPlaying(); } catch(e) {}
-        }
-      }, POLL_MS);
-    }
-    document.addEventListener('visibilitychange', function(){
-      if (document.visibilityState === 'visible' && typeof window.fetchNowPlaying === 'function') {
-        try { window.fetchNowPlaying(); } catch(e) {}
-      }
-    });
-  } catch(e) {}
-})();
-</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
