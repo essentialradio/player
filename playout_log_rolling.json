@@ -49330,5 +49330,31 @@
     "Full Duration (mins)": 3.72,
     "Start ISO": "2025-10-05T01:47:48Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-05T01:00:00Z",
+    "Scheduled Time": "02:51",
+    "Displayed Time": "02:51",
+    "Artist": "Cian Ducrot",
+    "Title": "I'll Be Waiting",
+    "Duration (s)": 166,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.88,
+    "Start ISO": "2025-10-05T01:51:16Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-05T01:00:00Z",
+    "Scheduled Time": "02:54",
+    "Displayed Time": "02:54",
+    "Artist": "TLC",
+    "Title": "Unpretty",
+    "Duration (s)": 234,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.9,
+    "Full Duration (mins)": 4.15,
+    "Start ISO": "2025-10-05T01:54:02Z",
+    "Source": "PLAYIT"
   }
 ]
