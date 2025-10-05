@@ -50887,11 +50887,27 @@
     "Displayed Time": "18:43",
     "Artist": "Dario G",
     "Title": "Sunchyme",
+    "Duration (s)": 266,
+    "Full Duration (s)": 266,
+    "Duration (mins)": 4.43,
+    "Full Duration (mins)": 4.43,
+    "Start ISO": "2025-10-05T17:43:23Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:47:49Z",
+    "Actual Duration (s)": 266,
+    "Actual Duration (mins)": 4.43
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:47",
+    "Displayed Time": "18:47",
+    "Artist": "Oasis",
+    "Title": "Stand by Me",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:43:23Z",
+    "Start ISO": "2025-10-05T17:47:49Z",
     "Source": "ALT"
   }
 ]
