@@ -52390,11 +52390,27 @@
     "Displayed Time": "16:17",
     "Artist": "Miley Cyrus",
     "Title": "Easy Lover",
+    "Duration (s)": 279,
+    "Full Duration (s)": 279,
+    "Duration (mins)": 4.65,
+    "Full Duration (mins)": 4.65,
+    "Start ISO": "2025-10-05T15:17:45Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T15:22:24Z",
+    "Actual Duration (s)": 279,
+    "Actual Duration (mins)": 4.65
+  },
+  {
+    "Hour": "2025-10-05T15:00:00Z",
+    "Scheduled Time": "16:22",
+    "Displayed Time": "16:22",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Tears",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T15:17:45Z",
+    "Start ISO": "2025-10-05T15:22:24Z",
     "Source": "ALT"
   }
 ]
