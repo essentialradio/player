@@ -52278,11 +52278,27 @@
     "Displayed Time": "15:59",
     "Artist": "Shaboozey & Stephen Wilson Jr",
     "Title": "Took A Walk (From 'The Long Walk')",
+    "Duration (s)": 40,
+    "Full Duration (s)": 40,
+    "Duration (mins)": 0.67,
+    "Full Duration (mins)": 0.67,
+    "Start ISO": "2025-10-05T14:59:14Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T14:59:54Z",
+    "Actual Duration (s)": 40,
+    "Actual Duration (mins)": 0.67
+  },
+  {
+    "Hour": "2025-10-05T14:00:00Z",
+    "Scheduled Time": "15:59",
+    "Displayed Time": "15:59",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T14:59:14Z",
+    "Start ISO": "2025-10-05T14:59:54Z",
     "Source": "ALT"
   }
 ]
