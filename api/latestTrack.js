@@ -98,12 +98,33 @@ async function readPrimaryLatest() {
 }
 
 async function maybeFetchAltFallback(current) {
+  const src = String(current?.source || '').toUpperCase();
   const hasNames = Boolean(current?.artist) || Boolean(current?.title);
-  if (hasNames) return current;
+
+  // By default, do NOT alter non-ALT items that already have artist/title.
+  if (src !== 'ALT' && hasNames) return current;
+
+  // Allow an override to use ALT even outside ALT periods (off by default).
+  const allowOutsideAlt = String(process.env.ALT_FALLBACK_OUTSIDE_ALT || '0').toLowerCase();
+  const outsideOk = ['1','true','yes','on'].includes(allowOutsideAlt);
+
+  // If this isn't ALT and we don't explicitly allow outside fallback, keep as-is.
+  if (src !== 'ALT' && !outsideOk) return current;
+
   const altUrl = process.env.ALT_7HTML_URL;
   if (!altUrl) return current;
   try {
     const res = await fetch(altUrl, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`ALT ${altUrl} -> HTTP ${res.status}`);
+    const text = await res.text();
+    const parsed = parseAlt7html(text);
+    return parsed ? Object.assign({}, current, parsed, { source: 'ALT' }) : current;
+  } catch (e) {
+    console.error('[latestTrack ALT fallback] error:', e);
+    return current;
+  }
+}
+);
     if (!res.ok) throw new Error(`ALT ${altUrl} -> HTTP ${res.status}`);
     const text = await res.text();
     const parsed = parseAlt7html(text);
