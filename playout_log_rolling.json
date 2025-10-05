@@ -50396,5 +50396,31 @@
     "Full Duration (mins)": 30.0,
     "Start ISO": "2025-10-05T07:30:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-05T08:00:00Z",
+    "Scheduled Time": "09:00",
+    "Displayed Time": "09:00",
+    "Artist": "Charles Fletcher",
+    "Title": "The Week in Holyrood",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-10-05T08:00:00Z",
+    "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-05T09:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "10:02",
+    "Artist": "INXS",
+    "Title": "Need You Tonight",
+    "Duration (s)": 180,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-10-05T09:02:20Z",
+    "Source": "PLAYIT"
   }
 ]
