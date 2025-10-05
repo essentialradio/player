@@ -50919,11 +50919,27 @@
     "Displayed Time": "18:54",
     "Artist": "Elton John",
     "Title": "Candle in the Wind 1997",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
+    "Duration (s)": 332,
+    "Full Duration (s)": 332,
+    "Duration (mins)": 5.53,
+    "Full Duration (mins)": 5.53,
     "Start ISO": "2025-10-05T17:54:28Z",
-    "Source": "ALT"
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T18:00:00Z",
+    "Actual Duration (s)": 332,
+    "Actual Duration (mins)": 5.53
+  },
+  {
+    "Hour": "2025-10-05T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Kevin McCallum",
+    "Title": "The Mr Rocks Show",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-10-05T18:00:00Z",
+    "Source": "FIXED"
   }
 ]
