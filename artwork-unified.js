@@ -30,28 +30,59 @@
    * src and ensures the 'loaded' class is added when it finishes loading.
    * @param {{artist: string, title: string}} meta
    */
-  async function applyArtwork(meta) {
+  
+async function applyArtwork(meta) {
     if (!meta || !meta.artist || !meta.title) return;
     const img = document.getElementById('artwork');
     if (!img) return;
-    // Attempt to fetch the unified artwork URL
+
+    // Clear fallback immediately so blur doesn't persist into next track
+    img.classList.remove('fallback');
+
+    // Build URL
     const url = await getArtworkURL(meta.artist, meta.title);
-    if (!url) return;
-    // attach load/error handlers if not already present
+
+    // If unified lookup failed, fall back to page helper if present
+    if (!url) {
+      try {
+        if (typeof fetchArtwork === 'function') {
+          fetchArtwork(`${meta.artist} - ${meta.title}`);
+          return;
+        }
+        if (typeof applyFallbackImmediate === 'function') {
+          applyFallbackImmediate();
+          return;
+        }
+      } catch(e){}
+      return;
+    }
+
+    // Bind handlers once
     if (!img.__boundUnified) {
-      img.addEventListener('load', () => { img.classList.add('loaded'); img.classList.remove('fallback'); });
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+        img.classList.remove('fallback');
+      });
       img.addEventListener('error', () => {
         img.classList.remove('loaded');
-    img.classList.remove('fallback');
+        img.classList.add('fallback');
         img.src = 'Essential Radio Logo.png';
       });
       img.__boundUnified = true;
     }
-    // cache-bust the URL so Mobile Safari and other browsers repaint the image
+
+    // Trigger load with cache-bust
     const bust = url.includes('?') ? '&' : '?';
     img.classList.remove('loaded');
     img.src = `${url}${bust}ts=${Date.now()}`;
-  }
+
+    // If image was instantly available from cache, 'load' may not fire
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('loaded');
+      img.classList.remove('fallback');
+    }
+}
+}
 
   // Expose helpers globally
   window.getArtworkURL = getArtworkURL;
