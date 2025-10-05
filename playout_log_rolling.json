@@ -50871,11 +50871,27 @@
     "Displayed Time": "18:39",
     "Artist": "Louise",
     "Title": "Arms Around the World",
+    "Duration (s)": 229,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-10-05T17:39:34Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:43:23Z",
+    "Actual Duration (s)": 229,
+    "Actual Duration (mins)": 3.82
+  },
+  {
+    "Hour": "2025-10-05T17:00:00Z",
+    "Scheduled Time": "18:43",
+    "Displayed Time": "18:43",
+    "Artist": "Dario G",
+    "Title": "Sunchyme",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T17:39:34Z",
+    "Start ISO": "2025-10-05T17:43:23Z",
     "Source": "ALT"
   }
 ]
