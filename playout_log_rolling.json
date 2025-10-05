@@ -50717,7 +50717,9 @@
     "Full Duration (mins)": 5.23,
     "Start ISO": "2025-10-05T16:55:17Z",
     "Source": "ALT",
-    "Actual End ISO": "2025-10-05T17:00:31Z"
+    "Actual End ISO": "2025-10-05T17:00:31Z",
+    "Actual Duration (s)": 314,
+    "Actual Duration (mins)": 5.23
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
@@ -50731,7 +50733,9 @@
     "Full Duration (mins)": 3.28,
     "Start ISO": "2025-10-05T17:00:31Z",
     "Source": "ALT",
-    "Actual End ISO": "2025-10-05T17:03:48Z"
+    "Actual End ISO": "2025-10-05T17:03:48Z",
+    "Actual Duration (s)": 197,
+    "Actual Duration (mins)": 3.28
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
@@ -50745,7 +50749,9 @@
     "Full Duration (mins)": 5.97,
     "Start ISO": "2025-10-05T17:03:48Z",
     "Source": "ALT",
-    "Actual End ISO": "2025-10-05T17:09:46Z"
+    "Actual End ISO": "2025-10-05T17:09:46Z",
+    "Actual Duration (s)": 358,
+    "Actual Duration (mins)": 5.97
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
@@ -50759,7 +50765,9 @@
     "Full Duration (mins)": 4.18,
     "Start ISO": "2025-10-05T17:09:46Z",
     "Source": "ALT",
-    "Actual End ISO": "2025-10-05T17:13:57Z"
+    "Actual End ISO": "2025-10-05T17:13:57Z",
+    "Actual Duration (s)": 251,
+    "Actual Duration (mins)": 4.18
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
@@ -50773,7 +50781,9 @@
     "Full Duration (mins)": 3.98,
     "Start ISO": "2025-10-05T17:13:57Z",
     "Source": "ALT",
-    "Actual End ISO": "2025-10-05T17:17:56Z"
+    "Actual End ISO": "2025-10-05T17:17:56Z",
+    "Actual Duration (s)": 239,
+    "Actual Duration (mins)": 3.98
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
@@ -50787,7 +50797,9 @@
     "Full Duration (mins)": 2.88,
     "Start ISO": "2025-10-05T17:17:56Z",
     "Source": "ALT",
-    "Actual End ISO": "2025-10-05T17:20:49Z"
+    "Actual End ISO": "2025-10-05T17:20:49Z",
+    "Actual Duration (s)": 173,
+    "Actual Duration (mins)": 2.88
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
@@ -50801,7 +50813,9 @@
     "Full Duration (mins)": 7.1,
     "Start ISO": "2025-10-05T17:20:49Z",
     "Source": "ALT",
-    "Actual End ISO": "2025-10-05T17:27:55Z"
+    "Actual End ISO": "2025-10-05T17:27:55Z",
+    "Actual Duration (s)": 426,
+    "Actual Duration (mins)": 7.1
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
@@ -50809,12 +50823,15 @@
     "Displayed Time": "18:27",
     "Artist": "Will Smith",
     "Title": "Men in Black",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
+    "Duration (s)": 211,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.52,
     "Start ISO": "2025-10-05T17:27:55Z",
-    "Source": "ALT"
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T17:31:26Z",
+    "Actual Duration (s)": 211,
+    "Actual Duration (mins)": 3.52
   },
   {
     "Hour": "2025-10-05T17:00:00Z",
