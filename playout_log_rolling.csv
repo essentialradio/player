@@ -31,7 +31,24 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-09-21T13:00:00Z,14:00,14:00,Spencer James,Airplay 40,3549,3550,59.15,59.17
 2025-09-21T14:00:00Z,15:00,15:00,Spencer James,Airplay 40,3480,3481,58.0,58.02
 2025-09-21T15:00:00Z,16:00,16:00,Spencer James,Airplay 40,3590,3590,59.83,59.83
+2025-09-21T17:00:00Z,19:00,19:00,Blur,End of a Century,159,165,2.65,2.75
 2025-09-21T18:00:00Z,19:00,19:00,Kevin McCallum,Mr Rocks Show,7197,7203,119.95,120.05
+2025-09-21T19:00:00Z,20:00,20:00,Alanis Morissette,Head Over Feet,251,265,4.18,4.42
+2025-09-21T19:00:00Z,20:04,20:04,U2,Where the Streets Have No Name,266,273,4.43,4.55
+2025-09-21T19:00:00Z,20:09,20:09,Edwin Starr,War,193,198,3.22,3.3
+2025-09-21T19:00:00Z,20:12,20:12,Duran Duran,(Reach up for The) Sunrise,196,205,3.27,3.42
+2025-09-21T19:00:00Z,20:15,20:15,En Vogue,Free Your Mind,244,250,4.07,4.17
+2025-09-21T19:00:00Z,20:20,20:20,Wham!,Everything She Wants,291,299,4.85,4.98
+2025-09-21T19:00:00Z,20:25,20:25,Tom Robinson Band,2-4-6-8 Motorway,190,198,3.17,3.3
+2025-09-21T19:00:00Z,20:28,20:28,Black Eyed Peas,Don't Phunk With My Heart,239,240,3.98,4.0
+2025-09-21T19:00:00Z,20:32,20:32,Suede,Animal Nitrate,186,209,3.1,3.48
+2025-09-21T19:00:00Z,20:35,20:35,Depeche Mode,Everything Counts,222,236,3.7,3.93
+2025-09-21T19:00:00Z,20:39,20:39,The Clash,Train In Vain,172,177,2.87,2.95
+2025-09-21T19:00:00Z,20:42,20:42,Savage Garden,Hold Me,229,240,3.82,4.0
+2025-09-21T19:00:00Z,20:46,20:46,Britney Spears,Sometimes,225,235,3.75,3.92
+2025-09-21T19:00:00Z,20:50,20:50,Frankie Goes to Hollywood,Two Tribes,229,235,3.82,3.92
+2025-09-21T19:00:00Z,20:54,20:54,Stevie Wonder,You Are the Sunshine of My Life,161,172,2.68,2.87
+2025-09-21T19:00:00Z,20:57,20:57,Liberty X,Thinking It Over,315,318,5.25,5.3
 2025-09-21T20:00:00Z,21:02,21:02,Emma Scott,The Pluggin' Baby Radio Show,3479,3480,57.98,58.0
 2025-09-21T21:00:00Z,22:02,22:02,Emma Scott,The Pluggin' Baby Radio Show,3482,3485,58.03,58.08
 2025-09-21T22:00:00Z,23:00,23:00,Dave Watkins,The Country Mile,3597,3600,59.95,60.0
@@ -1762,6 +1779,71 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-09-27T11:00:00Z,12:48,12:48,Gabrielle,Don't Need the Sun to Shine (To Make Me Smile),189,204,3.15,3.4
 2025-09-27T11:00:00Z,12:51,12:51,George Michael,Freedom '90,232,247,3.87,4.12
 2025-09-27T11:00:00Z,12:55,12:55,Abba,Lay All Your Love on Me,264,273,4.4,4.55
+2025-09-27T12:00:00Z,13:00,13:00,The Notorious BIG,Juicy,246,259,4.1,4.32
+2025-09-27T12:00:00Z,13:04,13:04,Eurythmics,Would I Lie To You?,258,266,4.3,4.43
+2025-09-27T12:00:00Z,13:09,13:09,Dionne Warwick,Walk On By,154,164,2.57,2.73
+2025-09-27T12:00:00Z,13:11,13:11,Red Hot Chili Peppers,Desecration Smile,251,262,4.18,4.37
+2025-09-27T12:00:00Z,13:16,13:16,Usher,You Make Me Wanna...,210,220,3.5,3.67
+2025-09-27T12:00:00Z,13:20,13:20,The Communards,Never Can Say Goodbye,254,268,4.23,4.47
+2025-09-27T12:00:00Z,13:24,13:24,Foreigner,Cold as Ice,187,201,3.12,3.35
+2025-09-27T12:00:00Z,13:27,13:27,Nelly Furtado,All Good Things (Come To An End),222,228,3.7,3.8
+2025-09-27T12:00:00Z,13:31,13:31,Guns 'N' Roses,Live And Let Die,174,179,2.9,2.98
+2025-09-27T12:00:00Z,13:34,13:34,Mike & The Mechanics,The Living Years,305,312,5.08,5.2
+2025-09-27T12:00:00Z,13:39,13:39,Kenny Rogers,"Ruby, Don't Take Your Love to Town",168,174,2.8,2.9
+2025-09-27T12:00:00Z,13:42,13:42,Anastacia,Paid My Dues,197,201,3.28,3.35
+2025-09-27T12:00:00Z,13:45,13:45,Fatboy Slim,The Rockafeller Skank,233,176,3.88,2.93
+2025-09-27T12:00:00Z,13:48,13:48,Tina Turner,Steamy Windows,234,245,3.9,4.08
+2025-09-27T12:00:00Z,13:53,13:53,Gilbert O'sullivan,Alone Again (Naturally),211,218,3.52,3.63
+2025-09-27T12:00:00Z,13:56,13:56,The Feeling,Never Be Lonely,209,210,3.48,3.5
+2025-09-27T13:00:00Z,14:00,14:00,The Stone Roses,Love Spreads,295,296,4.92,4.93
+2025-09-27T13:00:00Z,14:05,14:05,Kool & The Gang,Celebration,211,222,3.52,3.7
+2025-09-27T13:00:00Z,14:09,14:09,Alice Cooper,Schools Out,207,207,3.45,3.45
+2025-09-27T13:00:00Z,14:12,14:12,Lemar,Time To Grow,200,204,3.33,3.4
+2025-09-27T13:00:00Z,14:16,14:16,Natalie Imbruglia,Wrong Impression,188,201,3.13,3.35
+2025-09-27T13:00:00Z,14:19,14:19,Simple Minds,Sanctify Yourself,218,221,3.63,3.68
+2025-09-27T13:00:00Z,14:23,14:23,Slade,Mama Weer All Crazee Now,217,220,3.62,3.67
+2025-09-27T13:00:00Z,14:26,14:26,Moby,Porcelain,185,189,3.08,3.15
+2025-09-27T13:00:00Z,14:30,14:30,Weezer,Buddy Holly,158,160,2.63,2.67
+2025-09-27T13:00:00Z,14:32,14:32,Suzanne Vega,Luka,223,232,3.72,3.87
+2025-09-27T13:00:00Z,14:36,14:36,Blue Oyster Cult,(Don't Fear) The Reaper,219,231,3.65,3.85
+2025-09-27T13:00:00Z,14:40,14:40,U2,Walk On,238,251,3.97,4.18
+2025-09-27T13:00:00Z,14:44,14:44,Foo Fighters,Learn to Fly,232,235,3.87,3.92
+2025-09-27T13:00:00Z,14:48,14:48,A Flock Of Seagulls,I Ran (So Far Away),214,221,3.57,3.68
+2025-09-27T13:00:00Z,14:52,14:52,Roxy Music,Love Is the Drug,230,235,3.83,3.92
+2025-09-27T13:00:00Z,14:56,14:56,The Corrs,Irresistable,211,216,3.52,3.6
+2025-09-27T14:00:00Z,15:00,15:00,Manic Street Preachers,Everything Must Go,210,221,3.5,3.68
+2025-09-27T14:00:00Z,15:03,15:03,Blondie,Call Me,200,206,3.33,3.43
+2025-09-27T14:00:00Z,15:07,15:07,Donna Summer,Bad Girls,235,240,3.92,4.0
+2025-09-27T14:00:00Z,15:11,15:11,Sade,By Your Side,248,258,4.13,4.3
+2025-09-27T14:00:00Z,15:15,15:15,James,She's a Star,217,221,3.62,3.68
+2025-09-27T14:00:00Z,15:19,15:19,The Style Council,Shout to the Top!,192,204,3.2,3.4
+2025-09-27T14:00:00Z,15:22,15:22,Derek & The Dominos,Layla,159,167,2.65,2.78
+2025-09-27T14:00:00Z,15:25,15:25,Avril Lavigne,When You're Gone,233,235,3.88,3.92
+2025-09-27T14:00:00Z,15:29,15:29,All 4 One,I Swear,215,223,3.58,3.72
+2025-09-27T14:00:00Z,15:33,15:33,Joan Armatrading,Drop the Pilot,198,206,3.3,3.43
+2025-09-27T14:00:00Z,15:36,15:36,10cc,"I'm Mandy, Fly Me",287,291,4.78,4.85
+2025-09-27T14:00:00Z,15:41,15:41,Beverley Knight,Come as You Are,216,221,3.6,3.68
+2025-09-27T14:00:00Z,15:45,15:45,Sleeper,Sale of the Century,224,231,3.73,3.85
+2025-09-27T14:00:00Z,15:49,15:49,Hall & Oates,Kiss on My List,218,231,3.63,3.85
+2025-09-27T14:00:00Z,15:52,15:52,Carpenters,Rainy Days And Mondays,195,213,3.25,3.55
+2025-09-27T14:00:00Z,15:56,15:56,Rui Da Silva ft Cassandra,Touch Me,214,224,3.57,3.73
+2025-09-27T15:00:00Z,16:00,16:00,SWV,Right Here,214,224,3.57,3.73
+2025-09-27T15:00:00Z,16:03,16:03,Wang Chung,Dance Hall Days,223,232,3.72,3.87
+2025-09-27T15:00:00Z,16:07,16:07,Johnny Nash,I Can See Clearly Now,149,159,2.48,2.65
+2025-09-27T15:00:00Z,16:10,16:10,Sugababes,Overload,270,277,4.5,4.62
+2025-09-27T15:00:00Z,16:15,16:15,The KLF,3AM Eternal,207,218,3.45,3.63
+2025-09-27T15:00:00Z,16:18,16:18,Lionel Richie,Dancing on the Ceiling,256,261,4.27,4.35
+2025-09-27T15:00:00Z,16:23,16:23,Michael Zager Band,Let's All Chant,177,184,2.95,3.07
+2025-09-27T15:00:00Z,16:26,16:26,Kelly Rowland,Train On A Track,195,206,3.25,3.43
+2025-09-27T15:00:00Z,16:29,16:29,Lauryn Hill,Doo Wop (That Thing),229,235,3.82,3.92
+2025-09-27T15:00:00Z,16:33,16:33,Adam and the Ants,Stand and Deliver,175,179,2.92,2.98
+2025-09-27T15:00:00Z,16:36,16:36,Bread,The Guitar Man,206,216,3.43,3.6
+2025-09-27T15:00:00Z,16:40,16:40,Ronan Keating,The Way You Make Me Feel,207,213,3.45,3.55
+2025-09-27T15:00:00Z,16:43,16:43,Bryan Adams,The Only Thing That Looks Good on Me Is You,191,204,3.18,3.4
+2025-09-27T15:00:00Z,16:47,16:47,The Cure,In Between Days,171,177,2.85,2.95
+2025-09-27T15:00:00Z,16:49,16:49,Lynyrd Skynyrd,Freebird,251,258,4.18,4.3
+2025-09-27T15:00:00Z,16:54,16:54,Scouting for Girls,Famous,152,156,2.53,2.6
+2025-09-27T15:00:00Z,16:57,16:57,Shola Ama,You Might Need Somebody,223,232,3.72,3.87
 2025-09-27T16:00:00Z,17:02,17:02,Jan Gow,The JanCave 70s Jukebox,3581,3585,59.68,59.75
 2025-09-27T17:00:00Z,18:03,18:03,Tim Graham,The LGBTQ Music Chart,1254,1257,20.9,20.95
 2025-09-27T17:00:00Z,18:25,18:25,Tim Graham,The LGBTQ Music Chart,985,988,16.42,16.47
@@ -1769,6 +1851,39 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-09-27T18:00:00Z,19:02,19:02,Stephen Howie,Grooveline,3479,3480,57.98,58.0
 2025-09-27T19:00:00Z,20:00,20:00,Stephen Howie,Grooveline,3479,3480,57.98,58.0
 2025-09-27T20:00:00Z,21:00,21:00,Big Tommy,Big Fat Party Anthems,10795,10800,179.92,180.0
+2025-09-27T21:00:00Z,22:00,22:00,Madonna,Beautiful Stranger,231,237,3.85,3.95
+2025-09-27T21:00:00Z,22:04,22:04,Big Country,In a Big Country,222,235,3.7,3.92
+2025-09-27T21:00:00Z,22:08,22:08,Bay City Rollers,I Only Want To Be With You,204,216,3.4,3.6
+2025-09-27T21:00:00Z,22:11,22:11,Lucie Silvas,Breathe In,216,226,3.6,3.77
+2025-09-27T21:00:00Z,22:15,22:15,Faithless,God is a DJ,209,215,3.48,3.58
+2025-09-27T21:00:00Z,22:18,22:18,The Human League,Human,218,228,3.63,3.8
+2025-09-27T21:00:00Z,22:22,22:22,Paul McCartney & Wings,Jet,241,289,4.02,4.82
+2025-09-27T21:00:00Z,22:26,22:26,Ben Folds,Landed,257,269,4.28,4.48
+2025-09-27T21:00:00Z,22:31,22:31,Freak Power,"Turn on, Tune in, Cop Out",252,259,4.2,4.32
+2025-09-27T21:00:00Z,22:35,22:35,Queen,I Want it All,236,243,3.93,4.05
+2025-09-27T21:00:00Z,22:39,22:39,Carl Douglas,Kung Fu Fighting,179,184,2.98,3.07
+2025-09-27T21:00:00Z,22:42,22:42,Razorlight,In the Morning,216,217,3.6,3.62
+2025-09-27T21:00:00Z,22:47,22:47,Travis,Driftwood,210,217,3.5,3.62
+2025-09-27T21:00:00Z,22:50,22:50,Tom Petty,Free Fallin',243,255,4.05,4.25
+2025-09-27T21:00:00Z,22:54,22:54,Sheila & B Devotion,Spacer,208,214,3.47,3.57
+2025-09-27T21:00:00Z,22:58,22:58,Bob Sinclar Feat. Steve Edwards,"World, Hold On (Children of the Sky)",196,195,3.27,3.25
+2025-09-27T22:00:00Z,23:00,23:00,Lighthouse Family,High,273,275,4.55,4.58
+2025-09-27T22:00:00Z,23:04,23:04,Thompson Twins,Doctor! Doctor!,255,262,4.25,4.37
+2025-09-27T22:00:00Z,23:09,23:09,Edwin Starr,Contact,205,211,3.42,3.52
+2025-09-27T22:00:00Z,23:12,23:12,Faith Hill,The Way You Love Me,169,179,2.82,2.98
+2025-09-27T22:00:00Z,23:15,23:15,Supergrass,Pumping on Your Stereo,187,195,3.12,3.25
+2025-09-27T22:00:00Z,23:18,23:18,Def Leppard,Animal,241,247,4.02,4.12
+2025-09-27T22:00:00Z,23:22,23:22,Pilot,January,205,210,3.42,3.5
+2025-09-27T22:00:00Z,23:26,23:26,Sisqo,Thong Song,206,211,3.43,3.52
+2025-09-27T22:00:00Z,23:30,23:30,Will Smith,Miami,198,199,3.3,3.32
+2025-09-27T22:00:00Z,23:33,23:33,The Specials,Ghost Town,216,220,3.6,3.67
+2025-09-27T22:00:00Z,23:37,23:37,Smokie,Living Next Door to Alice,212,216,3.53,3.6
+2025-09-27T22:00:00Z,23:41,23:41,Atomic Kitten,If You Come to Me,216,225,3.6,3.75
+2025-09-27T22:00:00Z,23:44,23:44,West End Feat. Sybil,The Love I Lost,198,206,3.3,3.43
+2025-09-27T22:00:00Z,23:48,23:48,Yazoo,Situation,141,144,2.35,2.4
+2025-09-27T22:00:00Z,23:50,23:50,Neil Diamond,America,241,260,4.02,4.33
+2025-09-27T22:00:00Z,23:54,23:54,Black Eyed Peas,Don't Phunk With My Heart,239,240,3.98,4.0
+2025-09-27T22:00:00Z,23:59,23:59,Massive Attack,Unfinished Sympathy,265,273,4.42,4.55
 2025-09-27T23:00:00Z,00:00,00:00,Bill Grainger,Fire Island Hi-NRG,3590,3600,59.83,60.0
 2025-09-28T00:00:00Z,01:02,01:02,Alex Warren,Ordinary,181,187,3.02,3.12
 2025-09-28T00:00:00Z,01:06,01:06,Whitney Houston,It's Not Right But It's Okay,255,264,4.25,4.4
@@ -1940,6 +2055,22 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-09-28T14:00:00Z,15:00,15:00,Spencer James,Airplay 40,3480,3481,58.0,58.02
 2025-09-28T15:00:00Z,16:00,16:00,Spencer James,Airplay 40,3590,3590,59.83,59.83
 2025-09-28T18:00:00Z,19:00,19:00,Kevin McCallum,Mr Rocks Show,7197,7203,119.95,120.05
+2025-09-28T19:00:00Z,20:00,20:00,Alanis Morissette,Head Over Feet,251,265,4.18,4.42
+2025-09-28T19:00:00Z,20:04,20:04,Madness,Our House,185,191,3.08,3.18
+2025-09-28T19:00:00Z,20:07,20:07,Eruption,I Can't Stand the Rain,179,188,2.98,3.13
+2025-09-28T19:00:00Z,20:10,20:10,Duran Duran,(Reach up for The) Sunrise,196,205,3.27,3.42
+2025-09-28T19:00:00Z,20:13,20:13,En Vogue,Free Your Mind,244,250,4.07,4.17
+2025-09-28T19:00:00Z,20:18,20:18,Bryan Ferry,Slave to Love,249,266,4.15,4.43
+2025-09-28T19:00:00Z,20:22,20:22,England Dan & John Ford Coley,I'd Really Love to See You Tonight,147,158,2.45,2.63
+2025-09-28T19:00:00Z,20:24,20:24,Liberty X,Holding On For You,193,213,3.22,3.55
+2025-09-28T19:00:00Z,20:28,20:28,R.E.M.,Everybody Hurts,284,297,4.73,4.95
+2025-09-28T19:00:00Z,20:33,20:33,Kylie Minogue,The Loco-Motion,182,195,3.03,3.25
+2025-09-28T19:00:00Z,20:36,20:36,Fleetwood Mac,The Chain,247,260,4.12,4.33
+2025-09-28T19:00:00Z,20:40,20:40,Natasha Bedingfield,I Wanna Have Your Babies,207,217,3.45,3.62
+2025-09-28T19:00:00Z,20:44,20:44,Daft Punk,Around the World,233,240,3.88,4.0
+2025-09-28T19:00:00Z,20:48,20:48,Talking Heads,Psycho Killer,254,260,4.23,4.33
+2025-09-28T19:00:00Z,20:52,20:52,The Sugarhill Gang,Rapper's Delight,234,238,3.9,3.97
+2025-09-28T19:00:00Z,20:56,20:56,McFly,I'll Be OK,181,202,3.02,3.37
 2025-09-28T20:00:00Z,21:01,21:01,Emma Scott,The Pluggin' Baby Radio Show,3479,3480,57.98,58.0
 2025-09-28T21:00:00Z,22:01,22:01,Emma Scott,The Pluggin' Baby Radio Show,3482,3485,58.03,58.08
 2025-09-28T22:00:00Z,23:00,23:00,Dave Watkins,The Country Mile,3597,3600,59.95,60.0
@@ -3737,6 +3868,24 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-10-04T18:00:00Z,19:02,19:02,Stephen Howie,Grooveline,3479,3480,57.98,58.0
 2025-10-04T19:00:00Z,20:00,20:00,Stephen Howie,Grooveline,3479,3480,57.98,58.0
 2025-10-04T20:00:00Z,21:00,21:00,Big Tommy,Big Fat Party Anthems,10800,10800,180.0,180.0
+2025-10-04T21:00:00Z,22:00,22:00,Tina Turner,Golden Eye,204,208,3.4,3.47
+2025-10-04T21:00:00Z,22:03,22:03,Eurythmics,Love Is a Stranger,213,220,3.55,3.67
+2025-10-04T21:00:00Z,22:07,22:07,Lene Lovich,Lucky Number,161,164,2.68,2.73
+2025-10-04T21:00:00Z,22:10,22:10,Razorlight,In the Morning,216,217,3.6,3.62
+2025-10-04T21:00:00Z,22:14,22:14,Suede,Animal Nitrate,186,209,3.1,3.48
+2025-10-04T21:00:00Z,22:17,22:17,ABC,All of My Heart,234,240,3.9,4.0
+2025-10-04T21:00:00Z,22:21,22:21,Roxy Music,Angel Eyes,156,173,2.6,2.88
+2025-10-04T21:00:00Z,22:24,22:24,Shania Twain,Ka-Ching,200,200,3.33,3.33
+2025-10-04T21:00:00Z,22:27,22:27,Chumbawamba,Tubthumping,201,213,3.35,3.55
+2025-10-04T21:00:00Z,22:31,22:31,Alison Moyet,Is This Love?,225,241,3.75,4.02
+2025-10-04T21:00:00Z,22:35,22:35,Joe Jackson,It's Different for Girls,208,219,3.47,3.65
+2025-10-04T21:00:00Z,22:38,22:38,The Feeling,Love It When You Call,200,211,3.33,3.52
+2025-10-04T21:00:00Z,22:42,22:42,Crash Test Dummies,Mmm Mmm Mmm Mmm,216,221,3.6,3.68
+2025-10-04T21:00:00Z,22:46,22:46,Soul II Soul,Keep on Movin',206,210,3.43,3.5
+2025-10-04T21:00:00Z,22:49,22:49,Edwin Starr,War,193,198,3.22,3.3
+2025-10-04T21:00:00Z,22:53,22:53,Starsailor,Silence Is Easy,205,208,3.42,3.47
+2025-10-04T21:00:00Z,22:56,22:56,Bob Marley & The Wailers,Iron Lion Zion,181,202,3.02,3.37
+2025-10-04T21:00:00Z,22:59,22:59,Squeeze,Tempted,223,239,3.72,3.98
 2025-10-04T22:00:00Z,21:00,21:00,Ayrshire Radio,On Air,10800,10800,180.0,180.0
 2025-10-04T23:00:00Z,00:00,00:00,Bill Grainger,Fire Island Hi-NRG,3600,3600,60.0,60.0
 2025-10-05T00:00:00Z,01:02,01:02,Alex Warren,Eternity,187,190,3.12,3.17
