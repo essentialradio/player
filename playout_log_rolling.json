@@ -52310,11 +52310,27 @@
     "Displayed Time": "16:00",
     "Artist": "Lewis Capaldi",
     "Title": "Survive",
+    "Duration (s)": 225,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-10-05T15:00:21Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T15:04:06Z",
+    "Actual Duration (s)": 225,
+    "Actual Duration (mins)": 3.75
+  },
+  {
+    "Hour": "2025-10-05T15:00:00Z",
+    "Scheduled Time": "16:04",
+    "Displayed Time": "16:04",
+    "Artist": "Perrie",
+    "Title": "If He Wanted To He Would (Clean)",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T15:00:21Z",
+    "Start ISO": "2025-10-05T15:04:06Z",
     "Source": "ALT"
   }
 ]
