@@ -50598,12 +50598,15 @@
     "Displayed Time": "17:19",
     "Artist": "Nick Lowe",
     "Title": "Cruel to Be Kind",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
+    "Duration (s)": 184,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.07,
     "Start ISO": "2025-10-05T16:19:32Z",
-    "Source": "ALT"
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T16:22:36Z",
+    "Actual Duration (s)": 184,
+    "Actual Duration (mins)": 3.07
   },
   {
     "Hour": "2025-10-05T16:00:00Z",
@@ -50611,11 +50614,27 @@
     "Displayed Time": "17:22",
     "Artist": "Electric Light Orchestra",
     "Title": "Don't Bring Me Down",
+    "Duration (s)": 439,
+    "Full Duration (s)": 439,
+    "Duration (mins)": 7.32,
+    "Full Duration (mins)": 7.32,
+    "Start ISO": "2025-10-05T16:22:36Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T16:29:55Z",
+    "Actual Duration (s)": 439,
+    "Actual Duration (mins)": 7.32
+  },
+  {
+    "Hour": "2025-10-05T16:00:00Z",
+    "Scheduled Time": "17:29",
+    "Displayed Time": "17:29",
+    "Artist": "Dollar",
+    "Title": "Love's Gotta Hold on Me",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T16:22:36Z",
+    "Start ISO": "2025-10-05T16:29:55Z",
     "Source": "ALT"
   }
 ]
