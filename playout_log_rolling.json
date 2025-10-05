@@ -50630,11 +50630,27 @@
     "Displayed Time": "17:29",
     "Artist": "Dollar",
     "Title": "Love's Gotta Hold on Me",
+    "Duration (s)": 67,
+    "Full Duration (s)": 67,
+    "Duration (mins)": 1.12,
+    "Full Duration (mins)": 1.12,
+    "Start ISO": "2025-10-05T16:29:55Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T16:31:02Z",
+    "Actual Duration (s)": 67,
+    "Actual Duration (mins)": 1.12
+  },
+  {
+    "Hour": "2025-10-05T16:00:00Z",
+    "Scheduled Time": "17:31",
+    "Displayed Time": "17:31",
+    "Artist": "Rainbow",
+    "Title": "Since You Been Gone",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T16:29:55Z",
+    "Start ISO": "2025-10-05T16:31:02Z",
     "Source": "ALT"
   }
 ]
