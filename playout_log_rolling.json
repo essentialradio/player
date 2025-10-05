@@ -50696,11 +50696,25 @@
     "Displayed Time": "17:46",
     "Artist": "Gary Numan",
     "Title": "Cars",
+    "Duration (s)": 262,
+    "Full Duration (s)": 262,
+    "Duration (mins)": 4.37,
+    "Full Duration (mins)": 4.37,
+    "Start ISO": "2025-10-05T16:46:33Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-05T16:50:55Z"
+  },
+  {
+    "Hour": "2025-10-05T16:00:00Z",
+    "Scheduled Time": "17:50",
+    "Displayed Time": "17:50",
+    "Artist": "Blondie",
+    "Title": "Dreaming",
     "Duration (s)": null,
     "Full Duration (s)": null,
     "Duration (mins)": null,
     "Full Duration (mins)": null,
-    "Start ISO": "2025-10-05T16:46:33Z",
+    "Start ISO": "2025-10-05T16:50:55Z",
     "Source": "ALT"
   }
 ]
