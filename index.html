@@ -366,9 +366,9 @@ body {
       transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
     }
     #artwork.loaded {
-      opacity: 1 !important;
-filter: blur(0) brightness(1) !important;
-}
+      opacity: 1;
+      filter: blur(0) brightness(1);
+    }
     #artwork.fallback {
       filter: blur(5px) brightness(0.8);
       opacity: 0.7;
@@ -4411,17 +4411,6 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
-<style id="np-alt-hide-css-robust">
-/* Hide timer & progress in ALT, supporting both id/class + data attributes */
-[data-np-mode="alt"] #np-progress,
-[data-np-mode="alt"] .np-progress,
-[data-np-mode="alt"] #countdown,
-[data-np-mode="alt"] .np-timer,
-[data-mode="alt"]    #np-progress,
-[data-mode="alt"]    .np-progress,
-[data-mode="alt"]    #countdown,
-[data-mode="alt"]    .np-timer { display: none !important; }
-</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6000,23 +5989,12 @@ let songHasEnded = false;
 let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
-let __npBusy = false;
 async function fetchNowPlaying() {
-  if (__npBusy) return;
-  __npBusy = true;
   try {
-    const latestRes = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
+    const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
-    
-const __np_src = ((latest && (latest.source ?? latest.Source)) || '').toString().toUpperCase();
-const __np_ind = !!(latest && (latest.indeterminate === true || latest.undetermined === true));
-const __np_alt = (__np_src === 'ALT') || __np_ind;
-try {
-  document.body.setAttribute('data-np-mode', __np_alt ? 'alt' : 'normal');
-  document.dispatchEvent(new CustomEvent('np-apply-mode'));
-} catch(e) {}
-// Validate payload
+    // Validate payload
     if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
@@ -6044,62 +6022,11 @@ if (window._npActiveKey !== trackKey) {
   window._npActiveKey = trackKey;
   try { hardResetBar(); } catch(e){}
   window._npLastTiming = { startMs, endMs };
-  // === One-shot wake right after expected end ===
-  try {
-    // if a prior wake is armed, clear it
-    if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; }
-  } catch(e) {}
-  try {
-    const eta = endMs - Date.now();
-    // ignore absurd times (>1h) and past items
-    if (eta > 0 && eta < 3600*1000) {
-      window._npWake = setTimeout(() => {
-        window._npWake = null;
-        try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500); // nudge beyond boundary to avoid overlap
-    }
-  } catch(e) {}
-
   try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
   try { startBarAnimation(startMs, endMs); } catch(e){}
-
-
-// --- Deblur & cancel any pending fallback timers on NEW track ---
-try {
-  // Kill any grace/poll timers that might re-apply fallback
-  if (window._gracePoll) { clearTimeout(window._gracePoll); window._gracePoll = null; }
-  if (window._npPollTimer) { clearInterval(window._npPollTimer); window._npPollTimer = null; }
-} catch (e) {}
-try {
-  const _img = document.getElementById('artwork');
-  if (_img) {
-    _img.classList.remove('fallback');
-    // Safety: if image is already cached and complete, ensure loaded state applies
-    if (_img.complete && _img.naturalWidth > 0) {
-      _img.classList.add('loaded');
-    }
-  }
-} catch (e) {}
-
 } else {
   // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
   window._npLastTiming = { startMs, endMs };
-  // === One-shot wake right after expected end ===
-  try {
-    // if a prior wake is armed, clear it
-    if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; }
-  } catch(e) {}
-  try {
-    const eta = endMs - Date.now();
-    // ignore absurd times (>1h) and past items
-    if (eta > 0 && eta < 3600*1000) {
-      window._npWake = setTimeout(() => {
-        window._npWake = null;
-        try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500); // nudge beyond boundary to avoid overlap
-    }
-  } catch(e) {}
-
 }
 
     // Update main Now Playing block
@@ -6147,7 +6074,7 @@ if (remaining > 0) {
         let _gracePoll;
         const _pollForNew = async () => {
           try {
-            const r = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
@@ -6168,7 +6095,7 @@ if (remaining > 0) {
         }
         window._npPollTimer = setInterval(async () => {
           try {
-            const r = await fetch('./latestTrack.json?ts=' + Date.now(), { cache: 'no-store' });
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
             const newKey = (j && j.artist && j.title && j.startTime)
               ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
@@ -6192,8 +6119,6 @@ if (remaining > 0) {
     console.error('Error fetching now playing:', err);
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
-
-  finally { __npBusy = false; }
 }
 
 
@@ -10162,100 +10087,8 @@ document.addEventListener('visibilitychange', () => {
 })();
 </script>
 
-<!-- swap to the patched file OR bump the version -->
-<script src="/artwork-unified.js?v=20251006"></script>
-<script src="/artwork-ios-js?v=20250929-1105"></script>
-<script>
-(() => {
-  const ALT_DEFAULT_DURATION = 3600, DEFAULT_DURATION = 180, URL = '/api/latestTrack';
-  const $ = (s) => document.querySelector(s);
-  const toIsoZ = (v) => v ? (String(v).endsWith('Z') ? v : new Date(v).toISOString()) : new Date().toISOString();
-  const normalize = (raw) => {
-    const src = String(raw?.source || '').toUpperCase();
-    const d = Number(raw?.duration);
-    const duration = Number.isFinite(d) && d > 0 ? Math.floor(d) : (src === 'ALT' ? ALT_DEFAULT_DURATION : DEFAULT_DURATION);
-    const startIso = toIsoZ(raw?.startTime || raw?.start);
-    const out = {
-      artist: String(raw?.artist || ''), title: String(raw?.title || ''), source: src,
-      duration, startTime: startIso, start: startIso, indeterminate: false
-    };
-    out.endTime = new Date(Date.parse(startIso) + duration * 1000).toISOString();
-    return out;
-  };
-  const render = (latest) => {
-    const a = $('[data-now-artist]'), t = $('[data-now-title]'), s = $('[data-now-source]'), p = $('[data-now-progress]');
-    if (a) a.textContent = latest.artist;
-    if (t) t.textContent = latest.title;
-    if (s) s.textContent = latest.source;
-    if (p) {
-      const elapsed = Math.max(0, Date.now() - Date.parse(latest.startTime));
-      const pct = Math.min(1, elapsed / (latest.duration * 1000));
-      p.style.width = (pct * 100).toFixed(2) + '%';
-      p.setAttribute('aria-valuenow', Math.round(pct * 100));
-    }
-  };
-  const tick = async () => {
-    try {
-      const res = await fetch(URL, { cache: 'no-store' });
-      render(normalize(await res.json()));
-    } catch {}
-    setTimeout(tick, 10000);
-  };
-  tick();
-})();
-</script>
-
-<script id="np-alt-hide-enforcer">
-(function(){
-  function applyMode(){
-    var isAlt = (document.body.getAttribute('data-np-mode') === 'alt');
-    var prog = document.getElementById('np-progress') || document.querySelector('.np-progress');
-    var timer = document.getElementById('countdown') || document.querySelector('.np-timer');
-    if (prog) {
-      if (isAlt) {
-        prog.style.display = 'none';
-        var bar = prog.querySelector('.bar');
-        if (bar) { bar.style.width = '0%'; }
-        prog.classList.remove('ending-soon');
-      } else {
-        prog.style.removeProperty('display');
-      }
-    }
-    if (timer) {
-      if (isAlt) {
-        timer.style.display = 'none';
-      } else {
-        timer.style.removeProperty('display');
-      }
-    }
-  }
-  document.addEventListener('np-apply-mode', applyMode);
-  if (document.readyState !== 'loading') applyMode();
-  else document.addEventListener('DOMContentLoaded', applyMode);
-})();
-</script>
-<script id="np-poll-bootstrap">
-(function(){
-  try {
-    var POLL_MS = 5000;
-    if (typeof window.fetchNowPlaying === 'function') {
-      try { window.fetchNowPlaying(); } catch(e) {}
-    }
-    if (!window.__npPoll) {
-      window.__npPoll = setInterval(function(){
-        if (typeof window.fetchNowPlaying === 'function') {
-          try { window.fetchNowPlaying(); } catch(e) {}
-        }
-      }, POLL_MS);
-    }
-    document.addEventListener('visibilitychange', function(){
-      if (document.visibilityState === 'visible' && typeof window.fetchNowPlaying === 'function') {
-        try { window.fetchNowPlaying(); } catch(e) {}
-      }
-    });
-  } catch(e) {}
-})();
-</script>
+<script src="/artwork-unified.js?v=20250929"></script>
+<script src="/artwork-ios-patch.js?v=20250929-1104"></script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
