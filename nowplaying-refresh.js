@@ -1,76 +1,58 @@
-// nowplaying-refresh.js (merged: Now Playing + Recently Played)
-// Robust auto-refresh for both Now Playing and Recently Played.
-// Drop this file in your web root (e.g., /public) and include with:
-//   <script src="/nowplaying-refresh.js?v=20251006"></script>
-//
-// Exposes (on window):
-//   - startIntervals()
-//   - stopIntervals()
-//   - fetchNowPlaying()
-//   - fetchRecentFromGitHub()
-//
-// Assumptions:
-// - DOM contains #np-artist, #np-title for Now Playing
-// - DOM contains #recently-played container for the Recent list (HTML injected)
-//
-// Notes:
-// - Uses cache:'no-store' + cache-busting query to prevent stale mobile caches.
-// - Handles visibility changes (pauses when tab hidden, resumes on focus).
-// - Defensive: won't throw if elements are missing.
+
+// nowplaying-refresh.mobile-hardened.js
+// Stronger mobile auto-refresh for Now Playing + Recently Played
+// Drop-in replacement for nowplaying-refresh.js
 
 (() => {
   'use strict';
 
   // ---- Config --------------------------------------------------------------
-  const NP_IDS = {
-    artist: 'np-artist',
-    title:  'np-title',
-  };
-
+  const NP_IDS = { artist: 'np-artist', title: 'np-title' };
   const RECENT_CONTAINER_ID = 'recently-played';
 
-  const REFRESH_MS = 15000; // 15s
-  const TIMEOUT_MS = 8000;  // 8s per request
+  // Base refresh cadence
+  const FAST_MS = 12000;   // 12s when visible
+  const SLOW_MS = 30000;   // 30s when hidden (don't *stop* on mobile)
+  const HARD_TIMEOUT = 9000; // per-request timeout
 
-  // Endpoints (edit if your paths differ)
+  // Endpoints
   const NOWPLAYING_PRIMARY = '/api/latestTrack';
   const NOWPLAYING_FALLBACK = '/player/latestTrack.json';
-  // We'll try HTML first, then JSON; whichever returns OK we inject as text/HTML
   const RECENT_HTML_ENDPOINT = '/player/recently-played.html';
   const RECENT_JSON_ENDPOINT = '/player/recently-played.json';
 
   // ---- State ---------------------------------------------------------------
   let lastArtist = '';
-  let lastTitle  = '';
-
-  let nowPlayingInterval = null;
-  let recentInterval = null;
-  let started = false;
+  let lastTitle = '';
+  let schedulerNP = null;
+  let schedulerRECENT = null;
+  let failNP = 0;
+  let failRECENT = 0;
 
   // ---- Utils ---------------------------------------------------------------
-  function withTimeout(promise, ms) {
+  function nextDelay(fails) {
+    // Basic backoff: FAST -> x2 -> cap at 60s
+    const base = (document.visibilityState === 'visible') ? FAST_MS : SLOW_MS;
+    const mult = Math.min(4, Math.max(1, fails + 1));
+    return Math.min(60000, base * mult);
+  }
+
+  function abortableFetch(input, { timeout = HARD_TIMEOUT, ...init } = {}) {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), ms);
-    return {
-      fetch: (url, init={}) => {
-        const merged = { ...init, signal: ctrl.signal };
-        return fetch(url, merged).finally(() => clearTimeout(t));
-      }
-    };
-  }
-
-  async function fetchJSON(url, { timeoutMs = TIMEOUT_MS } = {}) {
-    const { fetch: f } = withTimeout(fetch, timeoutMs);
-    const res = await f(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
-  }
-
-  async function fetchTEXT(url, { timeoutMs = TIMEOUT_MS } = {}) {
-    const { fetch: f } = withTimeout(fetch, timeoutMs);
-    const res = await f(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.text();
+    const t = setTimeout(() => ctrl.abort(), timeout);
+    const headers = new Headers(init.headers || {});
+    // Extra cache busting
+    headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+    headers.set('Pragma', 'no-cache');
+    headers.set('Expires', '0');
+    const url = new URL(typeof input === 'string' ? input : input.url, location.origin);
+    url.searchParams.set('ts', Date.now().toString());
+    return fetch(url.toString(), {
+      cache: 'no-store',
+      ...init,
+      headers,
+      signal: ctrl.signal
+    }).finally(() => clearTimeout(t));
   }
 
   function setText(id, text) {
@@ -90,153 +72,118 @@
   }
 
   function normaliseFromPayload(data) {
-    let artist = '';
-    let title  = '';
-
+    let artist = '', title = '';
     if (data && typeof data === 'object') {
-      // Common shape: { artist, title }
       if (data.artist || data.title) {
         artist = String(data.artist || '').trim();
         title  = String(data.title  || '').trim();
-      }
-      // Alternative shape: { nowPlaying: "Artist - Title" }
-      else if (typeof data.nowPlaying === 'string') {
+      } else if (typeof data.nowPlaying === 'string') {
         const s = data.nowPlaying;
         const i = s.indexOf(' - ');
-        if (i > 0) {
-          artist = s.slice(0, i).trim();
-          title  = s.slice(i + 3).trim();
-        }
-      }
-      // PlayIt ALT/Fixed modes sometimes provide { source, artist, title }
-      else if (data.source && (data.artist || data.title)) {
+        if (i > 0) { artist = s.slice(0, i).trim(); title = s.slice(i + 3).trim(); }
+      } else if (data.source && (data.artist || data.title)) {
         artist = String(data.artist || '').trim();
         title  = String(data.title  || '').trim();
       }
     }
-
     return { artist, title };
   }
 
-  // ---- Now Playing ---------------------------------------------------------
-  async function fetchNowPlaying() {
+  // ---- Fetchers ------------------------------------------------------------
+  async function doNowPlaying() {
     try {
-      // Primary
-      let data = await fetchJSON(`${NOWPLAYING_PRIMARY}?ts=${Date.now()}`);
-      let { artist, title } = normaliseFromPayload(data);
+      let res = await abortableFetch(NOWPLAYING_PRIMARY);
+      if (!res.ok) throw new Error('NP primary ' + res.status);
+      let json = await res.json();
+      let { artist, title } = normaliseFromPayload(json);
 
-      // Fallback JSON
       if (!artist && !title) {
         try {
-          data = await fetchJSON(`${NOWPLAYING_FALLBACK}?ts=${Date.now()}`, { timeoutMs: 5000 });
-          ({ artist, title } = normaliseFromPayload(data));
-        } catch {
-          // ignore
-        }
+          res = await abortableFetch(NOWPLAYING_FALLBACK, { timeout: 6000 });
+          if (res.ok) {
+            json = await res.json();
+            ({ artist, title } = normaliseFromPayload(json));
+          }
+        } catch {}
       }
 
       if (artist || title) {
         updateNowPlaying(artist, title);
       }
+      failNP = 0;
     } catch (e) {
-      // Keep previous values
-      // console.debug('[NP] refresh failed:', e);
+      failNP++;
+      // console.debug('[NP] fail', e);
+    } finally {
+      // schedule next
+      clearTimeout(schedulerNP);
+      schedulerNP = setTimeout(doNowPlaying, nextDelay(failNP));
     }
   }
 
-  // ---- Recently Played -----------------------------------------------------
   function injectRecentHTML(html) {
     const el = document.getElementById(RECENT_CONTAINER_ID);
-    if (!el) return;
-    // Accept either raw HTML or JSON string containing HTML; we just inject the string.
-    // If your endpoint returns JSON with a property (e.g., {html:"..."}), adapt here.
-    el.innerHTML = html;
+    if (el && typeof html === 'string' && html.length) {
+      el.innerHTML = html;
+    }
   }
 
-  async function fetchRecentFromGitHub() {
-    // Try HTML endpoint first
+  async function doRecent() {
     try {
-      const html = await fetchTEXT(`${RECENT_HTML_ENDPOINT}?ts=${Date.now()}`, { timeoutMs: 6000 });
-      if (html && html.length) {
-        injectRecentHTML(html);
-        return;
+      // Try HTML first
+      let res = await abortableFetch(RECENT_HTML_ENDPOINT, { timeout: 8000 });
+      if (res.ok) {
+        const html = await res.text();
+        if (html && html.length) {
+          injectRecentHTML(html);
+          failRECENT = 0;
+        } else {
+          throw new Error('RECENT empty html');
+        }
+      } else {
+        throw new Error('RECENT html ' + res.status);
       }
     } catch {
-      // fall through
-    }
-
-    // Then try JSON (stringified HTML)
-    try {
-      const maybeJSON = await fetchJSON(`${RECENT_JSON_ENDPOINT}?ts=${Date.now()}`, { timeoutMs: 6000 });
-      if (typeof maybeJSON === 'string') {
-        injectRecentHTML(maybeJSON);
-      } else if (maybeJSON && typeof maybeJSON.html === 'string') {
-        injectRecentHTML(maybeJSON.html);
+      try {
+        // Fallback to JSON
+        const resJ = await abortableFetch(RECENT_JSON_ENDPOINT, { timeout: 8000 });
+        if (resJ.ok) {
+          const maybeJSON = await resJ.json();
+          if (typeof maybeJSON === 'string') injectRecentHTML(maybeJSON);
+          else if (maybeJSON && typeof maybeJSON.html === 'string') injectRecentHTML(maybeJSON.html);
+        }
+        failRECENT = 0;
+      } catch (e2) {
+        failRECENT++;
+        // console.debug('[RECENT] fail', e2);
       }
-    } catch (e) {
-      // console.debug('[RECENT] refresh failed:', e);
+    } finally {
+      clearTimeout(schedulerRECENT);
+      schedulerRECENT = setTimeout(doRecent, nextDelay(failRECENT));
     }
   }
 
-  // ---- Interval Control ----------------------------------------------------
-  function startIntervals() {
-    if (started) return;
-    started = true;
-
-    // Immediate refresh
-    fetchNowPlaying();
-    fetchRecentFromGitHub();
-
-    // Set up polling
-    if (!nowPlayingInterval) {
-      nowPlayingInterval = setInterval(fetchNowPlaying, REFRESH_MS);
-    }
-    if (!recentInterval) {
-      recentInterval = setInterval(fetchRecentFromGitHub, REFRESH_MS);
-    }
+  // ---- Lifecycle hooks -----------------------------------------------------
+  function kick() {
+    clearTimeout(schedulerNP); clearTimeout(schedulerRECENT);
+    doNowPlaying();
+    // stagger recent slightly to avoid same-moment fetches on constrained radios
+    setTimeout(doRecent, 500);
   }
 
-  function stopIntervals() {
-    started = false;
-    if (nowPlayingInterval) {
-      clearInterval(nowPlayingInterval);
-      nowPlayingInterval = null;
-    }
-    if (recentInterval) {
-      clearInterval(recentInterval);
-      recentInterval = null;
-    }
+  // Kick on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', kick, { once: true });
+  } else {
+    kick();
   }
 
-  // ---- Visibility Handling -------------------------------------------------
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') {
-      // Refresh immediately when returning to tab
-      fetchNowPlaying();
-      fetchRecentFromGitHub();
-      startIntervals();
-    } else {
-      // Pause while hidden to save battery/network
-      stopIntervals();
-    }
-  });
+  // Fire again on pageshow (iOS bfcache), on focus, and when back online
+  window.addEventListener('pageshow', kick);
+  window.addEventListener('focus', kick);
+  window.addEventListener('online', kick);
 
-  // ---- Auto-start when DOM is ready ---------------------------------------
-  function onReady(fn) {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', fn, { once: true });
-    } else {
-      fn();
-    }
-  }
+  // Expose minimal API
+  window.erRefreshNow = kick;
 
-  onReady(() => {
-    startIntervals();
-  });
-
-  // ---- Export public API ---------------------------------------------------
-  window.fetchNowPlaying = fetchNowPlaying;
-  window.fetchRecentFromGitHub = fetchRecentFromGitHub;
-  window.startIntervals = startIntervals;
-  window.stopIntervals = stopIntervals;
 })();
