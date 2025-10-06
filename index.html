@@ -6035,8 +6035,6 @@ try {
     }
     // Show progress bar while a valid track is playing
     try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
-// If FIXED, make sure the bar is visible immediately
-try { if (__np_src === 'FIXED') { const prog2 = document.getElementById('np-progress'); if (prog2) prog2.style.display='block'; } } catch(e) {}
 // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
@@ -6046,19 +6044,16 @@ if (window._npActiveKey !== trackKey) {
   window._npActiveKey = trackKey;
   try { hardResetBar(); } catch(e){}
   window._npLastTiming = { startMs, endMs };
+
   // === One-shot wake right after expected end ===
-  try {
-    // if a prior wake is armed, clear it
-    if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; }
-  } catch(e) {}
+  try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
   try {
     const eta = endMs - Date.now();
-    // ignore absurd times (>1h) and past items
     if (eta > 0 && eta < 3600*1000) {
       window._npWake = setTimeout(() => {
         window._npWake = null;
         try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500); // nudge beyond boundary to avoid overlap
+      }, eta + 500);
     }
   } catch(e) {}
 
@@ -6086,19 +6081,16 @@ try {
 } else {
   // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
   window._npLastTiming = { startMs, endMs };
+
   // === One-shot wake right after expected end ===
-  try {
-    // if a prior wake is armed, clear it
-    if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; }
-  } catch(e) {}
+  try { if (window._npWake) { clearTimeout(window._npWake); window._npWake = null; } } catch(e) {}
   try {
     const eta = endMs - Date.now();
-    // ignore absurd times (>1h) and past items
     if (eta > 0 && eta < 3600*1000) {
       window._npWake = setTimeout(() => {
         window._npWake = null;
         try { fetchNowPlaying(); } catch(e){}
-      }, eta + 500); // nudge beyond boundary to avoid overlap
+      }, eta + 500);
     }
   } catch(e) {}
 
@@ -6143,9 +6135,9 @@ if (remaining > 0) {
         if (window._npTimer) { clearInterval(window._npTimer); window._npTimer = null; }
 
         // Grace window before showing fallback to avoid micro-flash between sweepers and next track
-        const GRACE_MS = 500;
+        const GRACE_MS = 2500;
         const graceUntil = Date.now() + GRACE_MS;
-        const pollDelay = 200;
+        const pollDelay = 400;
         let _gracePoll;
         const _pollForNew = async () => {
           try {
@@ -6194,8 +6186,6 @@ if (remaining > 0) {
     console.error('Error fetching now playing:', err);
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
-
-  finally { __npBusy = false; }
 }
 
 
