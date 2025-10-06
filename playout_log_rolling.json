@@ -50920,5 +50920,44 @@
     "Full Duration (mins)": 3.28,
     "Start ISO": "2025-10-06T17:21:56Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-06T17:00:00Z",
+    "Scheduled Time": "18:25",
+    "Displayed Time": "18:25",
+    "Artist": "Jonas Brothers",
+    "Title": "Waffle House",
+    "Duration (s)": 135,
+    "Full Duration (s)": 145,
+    "Duration (mins)": 2.25,
+    "Full Duration (mins)": 2.42,
+    "Start ISO": "2025-10-06T17:25:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-06T17:00:00Z",
+    "Scheduled Time": "18:32",
+    "Displayed Time": "18:32",
+    "Artist": "Franz Ferdinand",
+    "Title": "Build It Up",
+    "Duration (s)": 176,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.05,
+    "Start ISO": "2025-10-06T17:32:27Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-06T17:00:00Z",
+    "Scheduled Time": "18:35",
+    "Displayed Time": "18:35",
+    "Artist": "Anne-Marie",
+    "Title": "Depressed",
+    "Duration (s)": 130,
+    "Full Duration (s)": 139,
+    "Duration (mins)": 2.17,
+    "Full Duration (mins)": 2.32,
+    "Start ISO": "2025-10-06T17:35:23Z",
+    "Source": "PLAYIT"
   }
 ]
