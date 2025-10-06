@@ -14030,8 +14030,15 @@ function stopIntervals() {
 // === End interval manager ===
 </script>
 
+
 <script src="/artwork-unified.js?v=20250929"></script>
 <script src="/artwork-ios-patch.js?v=20250929-1104"></script>
+<script>
+  // Extra mobile-friendly resume hooks
+  window.addEventListener('pageshow', () => { try { startIntervals(); fetchRecentFromGitHub(); } catch(e){} }, { passive: true });
+  window.addEventListener('pagehide', () => { try { stopIntervals(); } catch(e){} }, { passive: true });
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
