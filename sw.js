@@ -1,7 +1,7 @@
 // Essential Radio — Service Worker (dynamic-safe)
-// v3 — ignore cross-origin; never intercept /api/metadata; safe static caching only
+// v4 — stricter dynamic bypass for NP/Recent; same‑origin only
 
-const STATIC_CACHE = 'essential-radio-static-v3'; // bump to force update
+const STATIC_CACHE = 'essential-radio-static-v4'; // bump to force update
 const STATIC_ASSETS = [
   '/', '/index.html',
   // Add your core CSS/JS/fonts here for fast startup, e.g.:
@@ -25,18 +25,36 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+function isSameOrigin(url) {
+  return url.origin === self.location.origin;
+}
+
+// Treat these as *always dynamic* — never serve from cache.
+function isDynamicPath(pathname) {
+  // Common API endpoints
+  if (pathname.startsWith('/api/latestTrack')) return true;
+  if (pathname.startsWith('/api/metadata')) return true;
+
+  // Player JSON/HTML that changes frequently
+  if (pathname.startsWith('/player/recently-played')) return true; // .html or .json
+  if (pathname.startsWith('/player/latestTrack.json')) return true;
+  if (pathname.startsWith('/player/playout_log_rolling.json')) return true;
+
+  // Generic guard: any JSON under /player/ that looks like live data
+  if (pathname.startsWith('/player/') && pathname.endsWith('.json')) return true;
+
+  // Heuristic catch‑all for live metadata/artwork/track paths
+  if (/(now|np|current|metadata|artwork|cover|track)/i.test(pathname)) return true;
+
+  return false;
+}
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
 
-  // NEW: Only handle SAME-ORIGIN requests. Do not touch GitHub or any third party.
-  if (url.origin !== self.location.origin) return;
-
-  // Bypass Mixcloud API and widgets entirely (same-origin guard above keeps cross-origin out anyway)
-  if (url.hostname.endsWith("mixcloud.com")) {
-    event.respondWith(fetch(req, { cache: "no-store" }).catch(() => fetch(req)));
-    return;
-  }
+  // Only handle SAME-ORIGIN requests
+  if (!isSameOrigin(url)) return;
 
   // 1) Don't touch non-GET requests
   if (req.method !== 'GET') return;
@@ -45,19 +63,11 @@ self.addEventListener('fetch', (event) => {
   const isAudio = /\.(m3u8|aac|mp3|ogg)$/i.test(url.pathname);
   if (req.headers.get('range') || isAudio) return;
 
-  // NEW: Never intercept your metadata API (let it hit the network fresh)
-  if (url.pathname.startsWith('/api/metadata')) return;
-
-  // 3) Bypass cache for dynamic now-playing endpoints & JSON-like paths (same-origin only)
-  const accept = req.headers.get('accept') || '';
-  const isJSON = accept.includes('application/json') || url.pathname.endsWith('.json');
-
-  const looksDynamicPath =
-    /now|np|current|metadata|artwork|cover|track/i.test(url.pathname) ||
-    /latestTrack\.json|playout_log_rolling\.json/i.test(url.pathname); // NEW guard
-
-  if (isJSON || looksDynamicPath) {
-    event.respondWith(fetch(req, { cache: 'no-store' }).catch(() => caches.match(req)));
+  // 3) Always bypass cache for dynamic endpoints
+  if (isDynamicPath(url.pathname)) {
+    event.respondWith(
+      fetch(req, { cache: 'no-store' }).catch(() => caches.match(req))
+    );
     return;
   }
 
