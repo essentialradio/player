@@ -1,153 +1,112 @@
-// pages/api/latestTrack.js (ULTRA-SAFE, Node runtime)
-export const config = { runtime: 'nodejs' };
+// pages/api/latestTrack.js
 
-function toIsoZ(input) {
-  try {
-    if (!input) return new Date().toISOString();
-    const s = String(input);
-    if (s.endsWith('Z')) return s;
-    const d = new Date(s);
-    return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
-  } catch { return new Date().toISOString(); }
+function isValidFixed(x = {}) {
+  const start = x.startTime || x.start;
+  const d = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
+  const src = String(x.source || "").toUpperCase();
+  return !!start && Number.isFinite(d) && d > 0 && src === "FIXED";
 }
-
-function coerceDuration(rawDuration, source) {
-  const n = Number(rawDuration);
-  if (Number.isFinite(n) && n > 0) return Math.floor(n);
-  const altDur = Number(process.env.ALT_DEFAULT_DURATION || 3600);
-  const defDur = Number(process.env.DEFAULT_DURATION || 180);
-  return String(source || '').toUpperCase() === 'ALT' ? altDur : defDur;
+function isValidTimed(x = {}) {
+  const start = x.startTime || x.start;
+  const d = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
+  const src = String(x.source || "").toUpperCase();
+  return !!start && Number.isFinite(d) && d > 0 && (src === "PLAYIT" || src === "FIXED");
 }
-
-function normalizeLatest(raw) {
-  try {
-    const src = String(raw?.source || '').toUpperCase();
-    const startIso = toIsoZ(raw?.startTime || raw?.start || new Date().toISOString());
-    const duration = coerceDuration(raw?.duration, src);
-    const out = {
-      artist: String(raw?.artist || ''),
-      title: String(raw?.title || ''),
-      source: src || 'ALT',
-      duration,
-      startTime: startIso,
-      start: startIso,
-      indeterminate: false,
-    };
-    out.endTime = new Date(Date.parse(startIso) + duration * 1000).toISOString();
-    return out;
-  } catch {
-    return { artist:'', title:'', source:'ALT', duration:3600,
-      startTime: new Date().toISOString(), start: new Date().toISOString(),
-      endTime: new Date(Date.now()+3600e3).toISOString(), indeterminate:false };
-  }
+function normalize(x = {}) {
+  const start = x.startTime || x.start || null;
+  const d = Number.isFinite(x.duration) ? x.duration : Number(x.duration ?? NaN);
+  const dur = Number.isFinite(d) ? d : null;
+  const src = String(x.source || "").toUpperCase();
+  return {
+    artist: x.artist || "",
+    title:  x.title  || "",
+    startTime: start,
+    duration: dur,
+    source: src || "ALT",
+    indeterminate: !(start && Number.isFinite(dur) && dur > 0 && (src === "PLAYIT" || src === "FIXED")),
+  };
 }
-
-function decodeEntities(s='') {
-  return s
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
-}
-
-function stripTags(s='') { return s.replace(/<[^>]*>/g, ''); }
-
-function parseAlt7html(text='') {
-  try {
-    const raw = decodeEntities(stripTags(String(text || ''))).replace(/\r/g, '').trim();
-    const line = raw.split('\n').map(x => x.trim()).filter(Boolean).pop() || '';
-    const parts = line.split(',');
-    const trackField = parts.length >= 7 ? parts.slice(6).join(',').trim() : (parts.pop() || '').trim();
-    let artist = '', title = '';
-    const sep1 = trackField.indexOf(' - ');
-    const sep2 = trackField.indexOf(' – ');
-    const idx = sep1 >= 0 ? sep1 : sep2;
-    if (idx >= 0) {
-      artist = trackField.slice(0, idx).trim();
-      title  = trackField.slice(idx + 3).trim();
-    } else {
-      title = trackField.trim();
-    }
-    if (!artist && !title) return null;
-    return { artist, title, source: 'ALT', duration: null, startTime: null, indeterminate: true };
-  } catch { return null; }
-}
-
-async function fetchText(url) {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return await res.text();
-}
-
-async function fetchJson(url) {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return await res.json();
-}
-
-async function readPrimaryLatest() {
-  // 1) External JSON
-  const url = process.env.LATEST_TRACK_URL;
-  if (url) {
-    try { return await fetchJson(url); }
-    catch { /* fall through */ }
-  }
-
-  // 2) Bundled file
-  try {
-    const path = require('path');
-    const fs = require('fs');
-    const candidates = [
-      path.join(process.cwd(), 'public', 'latestTrack.json'),
-      path.join(process.cwd(), 'latestTrack.json'),
-    ];
-    for (const p of candidates) {
-      if (fs.existsSync(p)) {
-        const raw = fs.readFileSync(p, 'utf8').replace(/^\uFEFF/, '');
-        return JSON.parse(raw);
-      }
-    }
-  } catch { /* ignore */ }
-
-  // 3) Placeholder
-  return { artist:'', title:'', source:'', duration:null, startTime:null, indeterminate:true };
-}
-
-async function maybeFetchAlt(current) {
-  try {
-    const src = String(current?.source || '').toUpperCase();
-    const hasNames = Boolean(current?.artist) || Boolean(current?.title);
-    // Only augment when current is ALT or names are blank
-    if (src !== 'ALT' && hasNames) return current;
-    const altUrl = process.env.ALT_7HTML_URL;
-    if (!altUrl) return current;
-    const text = await fetchText(altUrl);
-    const parsed = parseAlt7html(text);
-    return parsed ? { ...current, ...parsed, source:'ALT' } : current;
-  } catch { return current; }
+function fallbackALT() {
+  return { artist:"", title:"", startTime:null, duration:null, source:"ALT", indeterminate:true };
 }
 
 export default async function handler(req, res) {
-  try {
-    let primary = await readPrimaryLatest();
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Cache-Control", "no-store");
 
-    // Guard: if someone misconfigured LATEST_TRACK_URL to point at 7.html (HTML),
-    // try to parse it rather than crash.
-    if (!primary || (typeof primary === 'string') || (primary && primary.html)) {
-      try {
-        const txt = typeof primary === 'string' ? primary : '';
-        const parsed = parseAlt7html(txt);
-        if (parsed) primary = parsed;
-      } catch { /* ignore */ }
+  const debugMode =
+    (req.query && (req.query.debug === "1" || req.query.debug === "true")) ||
+    (typeof req.url === "string" && /\bdebug=(1|true)\b/i.test(req.url));
+
+  const debug = { from: "fallback", steps: [], env: {
+    LATEST_JSON_URL: process.env.LATEST_JSON_URL || null,
+    KV_REST_API_URL: !!process.env.KV_REST_API_URL,
+    KV_REST_API_TOKEN: !!process.env.KV_REST_API_TOKEN,
+  } };
+
+  try {
+    // --- 1) FILE FIRST (with a safe default) ---
+    const base =
+      (process.env.LATEST_JSON_URL && process.env.LATEST_JSON_URL.trim()) ||
+      "https://player-green.vercel.app/latestTrack.json"; // default so we can't fail on a missing env
+
+    let fromFile = null;
+    try {
+      const bust = Math.floor(Date.now() / 10000);
+      const url = `${base}${base.includes("?") ? "&" : "?"}v=${bust}`;
+      const r = await fetch(url, { cache: "no-store" });
+      debug.steps.push({ stage: "file-fetch", url, status: r.status });
+      if (r.ok) fromFile = await r.json();
+    } catch (e) {
+      debug.steps.push({ stage: "file-fetch", error: String(e) });
     }
 
-    const merged = await maybeFetchAlt(primary);
-    const obj = normalizeLatest(merged);
-    res.setHeader('Cache-Control', 'no-store, must-revalidate');
-    res.status(200).json(obj);
+    if (fromFile && isValidFixed(fromFile)) {
+      debug.from = "file(FIXED)";
+      const out = normalize(fromFile);
+      if (debugMode) out.debug = debug;
+      return res.status(200).json(out);
+    }
+
+    // --- 2) REDIS (only if creds exist) ---
+    let fromRedis = null;
+    const url = process.env.KV_REST_API_URL?.trim();
+    const token = process.env.KV_REST_API_TOKEN?.trim();
+    if (url && token) {
+      try {
+        const { Redis } = await import("@upstash/redis");
+        const redis = new Redis({ url, token });
+        const val = await redis.get("nowPlaying");
+        fromRedis = typeof val === "string" ? JSON.parse(val) : (val || null);
+        debug.steps.push({ stage: "redis-get", ok: true, hasValue: !!fromRedis });
+      } catch (e) {
+        debug.steps.push({ stage: "redis-get", error: String(e) });
+      }
+    } else {
+      debug.steps.push({ stage: "redis-get", error: "KV creds not set" });
+    }
+
+    if (fromRedis && isValidTimed(fromRedis)) {
+      debug.from = "redis";
+      const out = normalize(fromRedis);
+      if (debugMode) out.debug = debug;
+      return res.status(200).json(out);
+    }
+
+    // --- 3) Otherwise return the file (even if not FIXED), or fallback ---
+    if (fromFile) {
+      debug.from = "file";
+      const out = normalize(fromFile);
+      if (debugMode) out.debug = debug;
+      return res.status(200).json(out);
+    }
+
+    const out = fallbackALT();
+    if (debugMode) out.debug = debug;
+    return res.status(200).json(out);
   } catch (e) {
-    console.error('[latestTrack] fatal:', e);
-    res.status(200).json(normalizeLatest({}));
+    const out = fallbackALT();
+    if (debugMode) out.debug = { ...debug, error: String(e) };
+    return res.status(200).json(out);
   }
 }
