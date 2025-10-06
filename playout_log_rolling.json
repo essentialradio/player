@@ -51323,5 +51323,31 @@
     "Full Duration (mins)": 4.05,
     "Start ISO": "2025-10-06T19:43:14Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-06T19:00:00Z",
+    "Scheduled Time": "20:47",
+    "Displayed Time": "20:47",
+    "Artist": "Whitney Houston",
+    "Title": "I'm Every Woman",
+    "Duration (s)": 270,
+    "Full Duration (s)": 286,
+    "Duration (mins)": 4.5,
+    "Full Duration (mins)": 4.77,
+    "Start ISO": "2025-10-06T19:47:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-06T19:00:00Z",
+    "Scheduled Time": "20:51",
+    "Displayed Time": "20:51",
+    "Artist": "Maroon 5",
+    "Title": "Payphone",
+    "Duration (s)": 214,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.72,
+    "Start ISO": "2025-10-06T19:51:41Z",
+    "Source": "PLAYIT"
   }
 ]
