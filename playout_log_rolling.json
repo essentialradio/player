@@ -51226,5 +51226,31 @@
     "Full Duration (mins)": 2.77,
     "Start ISO": "2025-10-07T13:09:53Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T13:00:00Z",
+    "Scheduled Time": "14:12",
+    "Displayed Time": "14:12",
+    "Artist": "Ne-Yo",
+    "Title": "Let Me Love You",
+    "Duration (s)": 240,
+    "Full Duration (s)": 254,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.23,
+    "Start ISO": "2025-10-07T13:12:38Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T13:00:00Z",
+    "Scheduled Time": "14:16",
+    "Displayed Time": "14:16",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Espresso",
+    "Duration (s)": 167,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.92,
+    "Start ISO": "2025-10-07T13:16:44Z",
+    "Source": "PLAYIT"
   }
 ]
