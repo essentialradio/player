@@ -51699,5 +51699,31 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-10-07T21:26:57Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T21:00:00Z",
+    "Scheduled Time": "22:30",
+    "Displayed Time": "22:30",
+    "Artist": "Sam Smith",
+    "Title": "Too Good at Goodbyes",
+    "Duration (s)": 197,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-10-07T21:30:36Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T21:00:00Z",
+    "Scheduled Time": "22:33",
+    "Displayed Time": "22:33",
+    "Artist": "Pink",
+    "Title": "Please Don't Leave Me",
+    "Duration (s)": 218,
+    "Full Duration (s)": 233,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.88,
+    "Start ISO": "2025-10-07T21:33:53Z",
+    "Source": "PLAYIT"
   }
 ]
