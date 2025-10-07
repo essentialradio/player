@@ -52714,5 +52714,31 @@
     "Full Duration (mins)": 3.1,
     "Start ISO": "2025-10-07T03:30:12Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T03:00:00Z",
+    "Scheduled Time": "04:33",
+    "Displayed Time": "04:33",
+    "Artist": "Shaboozey",
+    "Title": "A Bar Song (Tipsy)",
+    "Duration (s)": 163,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.85,
+    "Start ISO": "2025-10-07T03:33:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T03:00:00Z",
+    "Scheduled Time": "04:35",
+    "Displayed Time": "04:35",
+    "Artist": "Ed Sheeran",
+    "Title": "Sapphire",
+    "Duration (s)": 169,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.98,
+    "Start ISO": "2025-10-07T03:35:52Z",
+    "Source": "PLAYIT"
   }
 ]
