@@ -51621,5 +51621,31 @@
     "Full Duration (mins)": 3.83,
     "Start ISO": "2025-10-07T20:55:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T21:00:00Z",
+    "Scheduled Time": "22:01",
+    "Displayed Time": "22:01",
+    "Artist": "Mariah Carey",
+    "Title": "Without You",
+    "Duration (s)": 199,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-10-07T21:01:56Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T21:00:00Z",
+    "Scheduled Time": "22:05",
+    "Displayed Time": "22:05",
+    "Artist": "George Michael & Elton John",
+    "Title": "Don't Let the Sun Go Down on Me",
+    "Duration (s)": 332,
+    "Full Duration (s)": 349,
+    "Duration (mins)": 5.53,
+    "Full Duration (mins)": 5.82,
+    "Start ISO": "2025-10-07T21:05:15Z",
+    "Source": "PLAYIT"
   }
 ]
