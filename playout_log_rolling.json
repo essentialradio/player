@@ -51790,5 +51790,31 @@
     "Full Duration (mins)": 3.47,
     "Start ISO": "2025-10-07T22:02:00Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T22:00:00Z",
+    "Scheduled Time": "23:05",
+    "Displayed Time": "23:05",
+    "Artist": "Spice Girls",
+    "Title": "Viva Forever",
+    "Duration (s)": 241,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.02,
+    "Full Duration (mins)": 4.2,
+    "Start ISO": "2025-10-07T22:05:29Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-07T22:00:00Z",
+    "Scheduled Time": "23:09",
+    "Displayed Time": "23:09",
+    "Artist": "Enrique Iglesias",
+    "Title": "Hero",
+    "Duration (s)": 237,
+    "Full Duration (s)": 253,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.22,
+    "Start ISO": "2025-10-07T22:09:30Z",
+    "Source": "PLAYIT"
   }
 ]
