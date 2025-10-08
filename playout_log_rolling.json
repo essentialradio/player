@@ -52375,5 +52375,31 @@
     "Full Duration (mins)": 3.35,
     "Start ISO": "2025-10-08T01:17:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-08T01:00:00Z",
+    "Scheduled Time": "02:24",
+    "Displayed Time": "02:24",
+    "Artist": "Myles Smith",
+    "Title": "Gold",
+    "Duration (s)": 159,
+    "Full Duration (s)": 164,
+    "Duration (mins)": 2.65,
+    "Full Duration (mins)": 2.73,
+    "Start ISO": "2025-10-08T01:24:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-08T01:00:00Z",
+    "Scheduled Time": "02:26",
+    "Displayed Time": "02:26",
+    "Artist": "Miley Cyrus",
+    "Title": "Flowers",
+    "Duration (s)": 190,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 3.33,
+    "Start ISO": "2025-10-08T01:26:54Z",
+    "Source": "PLAYIT"
   }
 ]
