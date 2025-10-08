@@ -6038,7 +6038,7 @@ if (window._npActiveKey !== trackKey) {
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
     try {
       if (window.applyArtwork) {
-        window.applyArtwork({ artist, title });
+        window.applyArtwork({ artist, title, startMs });
       } else if (typeof fetchArtwork === 'function') {
         fetchArtwork(`${artist} - ${title}`);
       }
@@ -6170,8 +6170,8 @@ if (remaining > 0) {
 }
 
     async function fetchArtwork(trackName) {
-      artworkImg.src = 'Essential Radio Logo.png';
-      artworkImg.classList.remove('loaded', 'fallback');
+      // Keep current art on screen; only swap when new art is ready
+      artworkImg.classList.remove('fallback');
       try {
         // Use unified artwork proxy to look up this track
         const res = await fetch(`/api/artwork?q=${encodeURIComponent(trackName)}&_=${Date.now()}`, { cache: 'no-store' });
@@ -6184,7 +6184,8 @@ if (remaining > 0) {
             artworkCache[trackName] = url;
             // Cache-bust the URL to ensure browsers repaint new art
             const bust = url.includes('?') ? '&' : '?';
-            artworkImg.src = `${url}${bust}ts=${Date.now()}`;
+            const token = (window._npLastTiming && window._npLastTiming.startMs) || Date.now();
+            artworkImg.src = `${url}${bust}v=${token}`;
             return;
           }
         }

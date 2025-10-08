@@ -24,6 +24,8 @@
   var lastURL  = null;
   var lastSwapAt = 0;
   var lastEndAt = 0;
+  var currentToken = 0; try { window.__IOS_ARTWORK_TOKEN = window.__IOS_ARTWORK_TOKEN || 0; } catch(e) {}
+
   var busy = false;
 
   function $(sel){ return document.querySelector(sel); }
@@ -131,7 +133,8 @@
     img.classList.remove('fallback');
     const _on = () => { img.classList.add('loaded'); img.removeEventListener('load', _on); };
     img.addEventListener('load', _on);
-    var busted = url + (url.indexOf('?') === -1 ? '?' : '&') + '_=' + Date.now();
+    var tok = (window.__IOS_ARTWORK_TOKEN || currentToken || 0) || 0;
+    var busted = url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + encodeURIComponent(tok);
     requestAnimationFrame(function(){ img.src = busted; });
     if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); }
   // Safety: if load event is missed, ensure loaded state applies
@@ -192,6 +195,12 @@
         // Refresh end time
         var end = parseEnd(meta.startTime, meta.duration);
         if (end) lastEndAt = end;
+        // Set a stable token for this play so we don't keep reloading the same image on iOS
+        try {
+          currentToken = Date.parse(meta.startTime) || lastEndAt || 0;
+          window.__IOS_ARTWORK_TOKEN = currentToken;
+        } catch(e) {}
+
 
         // Same track? nothing to do
         if (sameMeta(meta, lastMeta)) return null;

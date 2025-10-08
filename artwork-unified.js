@@ -4,6 +4,8 @@
  * same artwork source across desktop and mobile.
  */
 (function () {
+  // Track the last artwork applied so we don't repeatedly reload the same image
+  window.__UNIFIED_LAST_KEY = window.__UNIFIED_LAST_KEY || null;
   /**
    * Fetch the artwork URL for a given artist and title using the server-side proxy.
    * @param {string} artist
@@ -36,15 +38,21 @@ async function applyArtwork(meta) {
     const img = document.getElementById('artwork');
     if (!img) return;
 
-    // Ensure any fallback blur is dropped immediately
-    img.classList.remove('fallback');
-    // Clear fallback immediately so blur doesn't persist into next track
-    img.classList.remove('fallback');
+    // Compute a stable key for this *exact* play of the track.
+    // Prefer a provided startMs, then anything the page tracks, then artist+title.
+    const startMs =
+      (meta.startMs != null ? Number(meta.startMs) : NaN);
+    const timingStart = (window._npLastTiming && Number(window._npLastTiming.startMs)) || NaN;
+    const keyParts = [meta.artist, meta.title];
+    if (!Number.isNaN(startMs)) keyParts.push(String(startMs));
+    else if (!Number.isNaN(timingStart)) keyParts.push(String(timingStart));
+    const key = keyParts.join("||").toLowerCase();
 
-    // Build URL
+    // If we've already applied artwork for this key, do nothing (prevents blinking).
+    if (img.__unifiedKey === key) return;
+
+    // Get the artwork URL once
     const url = await getArtworkURL(meta.artist, meta.title);
-
-    // If unified lookup failed, fall back to page helper if present
     if (!url) {
       try {
         if (typeof fetchArtwork === 'function') {
@@ -59,7 +67,18 @@ async function applyArtwork(meta) {
       return;
     }
 
-    // Bind handlers once
+    // Prepare stable cache-buster token so the URL stays constant for the duration of *this play*
+    let token = !Number.isNaN(startMs) ? startMs : (!Number.isNaN(timingStart) ? timingStart : 0);
+    if (!token) {
+      // Fallback: deterministic hash from "artist||title" so it stays stable during a poll cycle
+      const raw = (meta.artist + '||' + meta.title).toLowerCase();
+      let h=0; for (let i=0;i<raw.length;i++){ h=((h<<5)-h) + raw.charCodeAt(i); h|=0; }
+      token = Math.abs(h);
+    }
+    const bust = url.includes('?') ? '&' : '?';
+    const finalURL = `${url}${bust}v=${encodeURIComponent(token)}`;
+
+    // Lazily bind once
     if (!img.__boundUnified) {
       img.addEventListener('load', () => {
         img.classList.add('loaded');
@@ -73,18 +92,25 @@ async function applyArtwork(meta) {
       img.__boundUnified = true;
     }
 
-    // Trigger load with cache-bust
-    const bust = url.includes('?') ? '&' : '?';
-    img.classList.remove('loaded');
-    img.src = `${url}${bust}ts=${Date.now()}`;
+    // Preload first to avoid a flash, then swap
+    await new Promise((resolve) => {
+      const pre = new Image();
+      try { pre.decoding = 'async'; } catch {}
+      pre.onload = () => resolve(true);
+      pre.onerror = () => resolve(false);
+      pre.src = finalURL;
+      if (pre.complete && pre.naturalWidth > 0) resolve(true);
+    });
 
-    
-    // Safety: if the load event is missed (race/cached), force 'loaded' shortly after
-    setTimeout(() => { if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); img.classList.remove('fallback'); } }, 500);
-// If image was instantly available from cache, 'load' may not fire
-    if (img.complete && img.naturalWidth > 0) {
-      img.classList.add('loaded');
+    // Only swap if key changed during async
+    if (img.__unifiedKey !== key) {
       img.classList.remove('fallback');
+      // Keep 'loaded' until the swap so we don't blink
+      const on = () => { img.classList.add('loaded'); img.removeEventListener('load', on); };
+      img.addEventListener('load', on);
+      img.src = finalURL;
+      img.__unifiedKey = key;
+      window.__UNIFIED_LAST_KEY = key;
     }
 }
 
