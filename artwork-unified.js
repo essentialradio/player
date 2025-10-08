@@ -93,24 +93,37 @@ async function applyArtwork(meta) {
   window.applyArtwork = applyArtwork;
 })();
 
-// NP Refresh beside LIVE placer
+// NP Refresh top-right icon-only placer
 (function() {
-  // Create (or reuse) the refresh button and attach handler
-  function getOrMakeBtn() {
+  function getBtn() {
     var btn = document.getElementById('np-refresh-btn');
     if (!btn) {
       btn = document.createElement('button');
       btn.id = 'np-refresh-btn';
       btn.type = 'button';
-      btn.textContent = 'Refresh';
-      // Minimal inline style to ensure visibility even under strict CSP
-      btn.style.padding = '0.35rem 0.6rem';
-      btn.style.marginLeft = '0.4rem';
-      btn.style.borderRadius = '9999px';
+      btn.setAttribute('aria-label', 'Refresh now playing');
+      btn.title = 'Refresh';
+      // Base style – keep minimal for CSP
+      btn.style.position = 'absolute';
+      btn.style.top = '6px';
+      btn.style.right = '6px';
+      btn.style.width = '28px';
+      btn.style.height = '28px';
+      btn.style.padding = '0';
+      btn.style.display = 'inline-flex';
+      btn.style.alignItems = 'center';
+      btn.style.justifyContent = 'center';
       btn.style.border = '0';
+      btn.style.borderRadius = '9999px';
       btn.style.background = 'rgba(0,0,0,0.75)';
       btn.style.color = '#fff';
       btn.style.cursor = 'pointer';
+    }
+    // Make it icon-only
+    if (!btn.__iconized) {
+      btn.__iconized = true;
+      btn.textContent = '';
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 6V3L8 7l4 4V8a5 5 0 1 1-3.54 8.54l-1.42 1.42A7 7 0 1 0 12 6z"/></svg>';
     }
     if (!btn.__bound) {
       btn.__bound = true;
@@ -132,52 +145,35 @@ async function applyArtwork(meta) {
     return btn;
   }
 
-  function placeBesideLive() {
-    try {
-      var host = document.getElementById('now-playing');
-      if (!host) return false;
-      var live = host.querySelector('.live-indicator');
-      if (!live) return false;
-      var btn = getOrMakeBtn();
-      if (btn.previousSibling !== live && btn !== live.nextSibling) {
-        // Insert right after the LIVE span
-        if (live.parentNode) live.parentNode.insertBefore(btn, live.nextSibling);
-      }
-      return true;
-    } catch(e) { return false; }
-  }
-
-  function fallbackPlace() {
-    var art = document.getElementById('artwork');
-    if (art && art.parentElement) {
-      art.parentElement.appendChild(getOrMakeBtn());
-      return true;
+  function placeTopRight() {
+    var host = document.getElementById('now-playing-card');
+    if (!host) {
+      // Try parent of now-playing as a fallback
+      var np = document.getElementById('now-playing');
+      if (np && np.parentElement) host = np.parentElement;
     }
-    return false;
-  }
-
-  function ensurePlaced() {
-    if (!placeBesideLive()) {
-      fallbackPlace();
+    if (!host) return false;
+    // Ensure host is positioning context
+    var cs = window.getComputedStyle(host);
+    if (!cs || (cs.position !== 'relative' && cs.position !== 'absolute' && cs.position !== 'fixed')) {
+      try { host.style.position = 'relative'; } catch(e){}
     }
+    var btn = getBtn();
+    if (btn.parentElement !== host) host.appendChild(btn);
+    return true;
   }
 
-  // Run once on load
+  function ensure() { placeTopRight(); }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ensurePlaced);
+    document.addEventListener('DOMContentLoaded', ensure);
   } else {
-    ensurePlaced();
+    ensure();
   }
 
-  // Observe Now Playing box for changes and re-place button when it updates
-  var obsTarget = document.getElementById('now-playing') || document.body;
+  // Observe for changes and re-place
   try {
-    var pending = false;
-    var mo = new MutationObserver(function() {
-      if (pending) return;
-      pending = true;
-      requestAnimationFrame(function(){ pending = false; ensurePlaced(); });
-    });
-    mo.observe(obsTarget, { childList: true, subtree: true });
-  } catch(e) {}
+    var mo = new MutationObserver(function() { ensure(); });
+    mo.observe(document.body, { childList: true, subtree: true });
+  } catch(e){}
 })();
