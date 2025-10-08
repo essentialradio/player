@@ -53896,5 +53896,31 @@
     "Full Duration (mins)": 2.98,
     "Start ISO": "2025-10-08T09:43:24Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-08T09:00:00Z",
+    "Scheduled Time": "10:46",
+    "Displayed Time": "10:46",
+    "Artist": "David Gray",
+    "Title": "Babylon",
+    "Duration (s)": 201,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.52,
+    "Start ISO": "2025-10-08T09:46:19Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-08T09:00:00Z",
+    "Scheduled Time": "10:49",
+    "Displayed Time": "10:49",
+    "Artist": "Sam Smith & Normani",
+    "Title": "Dancing With a Stranger",
+    "Duration (s)": 163,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.85,
+    "Start ISO": "2025-10-08T09:49:40Z",
+    "Source": "PLAYIT"
   }
 ]
