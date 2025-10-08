@@ -111,6 +111,7 @@ async function applyArtwork(meta) {
       wrap.style.alignItems = 'center';
       wrap.style.gap = '6px';
       wrap.style.pointerEvents = 'auto';
+      wrap.style.zIndex = '9999';
       // no background so it floats cleanly
     }
     return wrap;
@@ -137,7 +138,30 @@ async function applyArtwork(meta) {
       btn.style.color = '#111';
       btn.style.cursor = 'pointer';
       btn.style.boxShadow = '0 1px 2px rgba(0,0,0,.45), 0 0 0 2px rgba(0,0,0,.55)';
-      btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 6V3L8 7l4 4V8a5 5 0 1 1-3.54 8.54l-1.42 1.42A7 7 0 1 0 12 6z"/></svg>';
+      btn.style.touchAction = 'manipulation';
+      btn.style.webkitTapHighlightColor = 'transparent';
+
+      // Build SVG icon safely for iOS
+      try {
+        var svgNS = 'http://www.w3.org/2000/svg';
+        var svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('width', '16');
+        svg.setAttribute('height', '16');
+        svg.setAttribute('aria-hidden', 'true');
+        var path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('fill', 'currentColor');
+        path.setAttribute('d', 'M12 6V3L8 7l4 4V8a5 5 0 1 1-3.54 8.54l-1.42 1.42A7 7 0 1 0 12 6z');
+        svg.appendChild(path);
+        btn.textContent = '';
+        btn.appendChild(svg);
+      } catch(e) {
+        // Fallback emoji icon if SVG creation is blocked
+        btn.textContent = '↻';
+        btn.style.fontSize = '14px';
+        btn.style.fontWeight = '700';
+        btn.style.lineHeight = '1';
+      }
     }
     if (!btn.__bound) {
       btn.__bound = true;
