@@ -230,7 +230,78 @@ async function applyArtwork(meta) {
     return true;
   }
 
-  function ensure() { placeTopRight(); }
+
+  // Variant control: mobile = text-only button ("Refresh"); desktop = icon + small label
+  function isMobileish() {
+    try {
+      return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (window.innerWidth && window.innerWidth <= 640);
+    } catch(e) { return true; }
+  }
+
+  function ensureSVGIcon(btn) {
+    // Create SVG if missing
+    if (!btn) return;
+    if (btn.querySelector && btn.querySelector('svg')) return;
+    try {
+      var svgNS = 'http://www.w3.org/2000/svg';
+      var svg = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('width', '16');
+      svg.setAttribute('height', '16');
+      svg.setAttribute('aria-hidden', 'true');
+      var path = document.createElementNS(svgNS, 'path');
+      path.setAttribute('fill', 'currentColor');
+      path.setAttribute('d', 'M12 6V3L8 7l4 4V8a5 5 0 1 1-3.54 8.54l-1.42 1.42A7 7 0 1 0 12 6z');
+      svg.appendChild(path);
+      btn.textContent = '';
+      btn.appendChild(svg);
+    } catch(e) {
+      btn.textContent = '↻';
+      btn.style.fontSize = '14px';
+      btn.style.fontWeight = '700';
+    }
+  }
+
+  function applyVariant() {
+    try {
+      var wrap = document.getElementById('np-refresh-wrap');
+      var btn = document.getElementById('np-refresh-btn');
+      var lab = document.getElementById('np-refresh-label');
+
+      if (!wrap || !btn) return;
+
+      if (isMobileish()) {
+        // Mobile: text-only button, hide the separate label
+        if (lab) lab.style.display = 'none';
+        btn.textContent = 'Refresh';
+        // Remove any SVG children
+        try {
+          var svgs = btn.querySelectorAll ? btn.querySelectorAll('svg') : [];
+          svgs.forEach(function(n){ n.remove(); });
+        } catch(e) {}
+        // Mobile sizing
+        btn.style.width = 'auto';
+        btn.style.height = '28px';
+        btn.style.padding = '2px 8px';
+        btn.style.fontSize = '12px';
+        btn.style.fontWeight = '600';
+        btn.style.background = 'var(--brand, #fed351)';
+        btn.style.color = '#111';
+      } else {
+        // Desktop: icon + small label visible
+        if (lab) lab.style.display = '';
+        ensureSVGIcon(btn);
+        btn.style.width = '32px';
+        btn.style.height = '32px';
+        btn.style.padding = '0';
+        btn.style.fontSize = '';
+        btn.style.fontWeight = '';
+        btn.style.background = 'var(--brand, #fed351)';
+        btn.style.color = '#111';
+      }
+    } catch(e) {}
+  }
+  function ensure() { placeTopRight(); applyVariant(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', ensure);
@@ -242,4 +313,10 @@ async function applyArtwork(meta) {
     var mo = new MutationObserver(function() { ensure(); });
     mo.observe(document.body, { childList: true, subtree: true });
   } catch(e){}
+
+  // Update variant on viewport changes
+  try {
+    window.addEventListener('resize', applyVariant, { passive: true });
+    window.addEventListener('orientationchange', applyVariant, { passive: true });
+  } catch(e) {}
 })();
