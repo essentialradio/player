@@ -93,8 +93,29 @@ async function applyArtwork(meta) {
   window.applyArtwork = applyArtwork;
 })();
 
-// NP Refresh top-right icon-only placer
+// 
+
+
+// NP Refresh top-right icon + label placer (bold button)
 (function() {
+  function getWrap() {
+    var wrap = document.getElementById('np-refresh-wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.id = 'np-refresh-wrap';
+      // absolute in top-right of the Now Playing card
+      wrap.style.position = 'absolute';
+      wrap.style.top = '6px';
+      wrap.style.right = '6px';
+      wrap.style.display = 'inline-flex';
+      wrap.style.alignItems = 'center';
+      wrap.style.gap = '6px';
+      wrap.style.pointerEvents = 'auto';
+      // no background so it floats cleanly
+    }
+    return wrap;
+  }
+
   function getBtn() {
     var btn = document.getElementById('np-refresh-btn');
     if (!btn) {
@@ -103,26 +124,19 @@ async function applyArtwork(meta) {
       btn.type = 'button';
       btn.setAttribute('aria-label', 'Refresh now playing');
       btn.title = 'Refresh';
-      // Base style – keep minimal for CSP
-      btn.style.position = 'absolute';
-      btn.style.top = '6px';
-      btn.style.right = '6px';
-      btn.style.width = '28px';
-      btn.style.height = '28px';
+      // Bold visual
+      btn.style.width = '32px';
+      btn.style.height = '32px';
       btn.style.padding = '0';
       btn.style.display = 'inline-flex';
       btn.style.alignItems = 'center';
       btn.style.justifyContent = 'center';
       btn.style.border = '0';
       btn.style.borderRadius = '9999px';
-      btn.style.background = 'rgba(0,0,0,0.75)';
-      btn.style.color = '#fff';
+      btn.style.background = 'var(--brand, #fed351)';
+      btn.style.color = '#111';
       btn.style.cursor = 'pointer';
-    }
-    // Make it icon-only
-    if (!btn.__iconized) {
-      btn.__iconized = true;
-      btn.textContent = '';
+      btn.style.boxShadow = '0 1px 2px rgba(0,0,0,.45), 0 0 0 2px rgba(0,0,0,.55)';
       btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 6V3L8 7l4 4V8a5 5 0 1 1-3.54 8.54l-1.42 1.42A7 7 0 1 0 12 6z"/></svg>';
     }
     if (!btn.__bound) {
@@ -145,21 +159,50 @@ async function applyArtwork(meta) {
     return btn;
   }
 
+  function getLabel() {
+    var lab = document.getElementById('np-refresh-label');
+    if (!lab) {
+      lab = document.createElement('span');
+      lab.id = 'np-refresh-label';
+      lab.textContent = 'Refresh';
+      lab.style.fontSize = '11px';
+      lab.style.lineHeight = '1';
+      lab.style.color = '#fff';
+      lab.style.opacity = '0.95';
+      lab.style.userSelect = 'none';
+      // Slight text-shadow for legibility on light artwork headers
+      lab.style.textShadow = '0 1px 2px rgba(0,0,0,.6)';
+    }
+    return lab;
+  }
+
   function placeTopRight() {
     var host = document.getElementById('now-playing-card');
     if (!host) {
-      // Try parent of now-playing as a fallback
+      // Try parent of 'now-playing' as a fallback
       var np = document.getElementById('now-playing');
       if (np && np.parentElement) host = np.parentElement;
     }
     if (!host) return false;
-    // Ensure host is positioning context
+
+    // Ensure host is a positioning context
     var cs = window.getComputedStyle(host);
     if (!cs || (cs.position !== 'relative' && cs.position !== 'absolute' && cs.position !== 'fixed')) {
       try { host.style.position = 'relative'; } catch(e){}
     }
+
+    var wrap = getWrap();
     var btn = getBtn();
-    if (btn.parentElement !== host) host.appendChild(btn);
+    var lab = getLabel();
+
+    // Compose wrap content
+    if (wrap.firstChild !== btn) {
+      wrap.innerHTML = '';
+      wrap.appendChild(btn);
+      wrap.appendChild(lab);
+    }
+
+    if (wrap.parentElement !== host) host.appendChild(wrap);
     return true;
   }
 
@@ -171,7 +214,6 @@ async function applyArtwork(meta) {
     ensure();
   }
 
-  // Observe for changes and re-place
   try {
     var mo = new MutationObserver(function() { ensure(); });
     mo.observe(document.body, { childList: true, subtree: true });
