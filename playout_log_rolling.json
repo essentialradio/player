@@ -52453,5 +52453,18 @@
     "Full Duration (mins)": 3.75,
     "Start ISO": "2025-10-08T01:44:04Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-08T01:00:00Z",
+    "Scheduled Time": "02:47",
+    "Displayed Time": "02:47",
+    "Artist": "Oasis",
+    "Title": "Whatever",
+    "Duration (s)": 352,
+    "Full Duration (s)": 361,
+    "Duration (mins)": 5.87,
+    "Full Duration (mins)": 6.02,
+    "Start ISO": "2025-10-08T01:47:50Z",
+    "Source": "PLAYIT"
   }
 ]
