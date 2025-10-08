@@ -4,8 +4,6 @@
  * same artwork source across desktop and mobile.
  */
 (function () {
-  // Track the last artwork applied so we don't repeatedly reload the same image
-  window.__UNIFIED_LAST_KEY = window.__UNIFIED_LAST_KEY || null;
   /**
    * Fetch the artwork URL for a given artist and title using the server-side proxy.
    * @param {string} artist
@@ -38,21 +36,15 @@ async function applyArtwork(meta) {
     const img = document.getElementById('artwork');
     if (!img) return;
 
-    // Compute a stable key for this *exact* play of the track.
-    // Prefer a provided startMs, then anything the page tracks, then artist+title.
-    const startMs =
-      (meta.startMs != null ? Number(meta.startMs) : NaN);
-    const timingStart = (window._npLastTiming && Number(window._npLastTiming.startMs)) || NaN;
-    const keyParts = [meta.artist, meta.title];
-    if (!Number.isNaN(startMs)) keyParts.push(String(startMs));
-    else if (!Number.isNaN(timingStart)) keyParts.push(String(timingStart));
-    const key = keyParts.join("||").toLowerCase();
+    // Ensure any fallback blur is dropped immediately
+    img.classList.remove('fallback');
+    // Clear fallback immediately so blur doesn't persist into next track
+    img.classList.remove('fallback');
 
-    // If we've already applied artwork for this key, do nothing (prevents blinking).
-    if (img.__unifiedKey === key) return;
-
-    // Get the artwork URL once
+    // Build URL
     const url = await getArtworkURL(meta.artist, meta.title);
+
+    // If unified lookup failed, fall back to page helper if present
     if (!url) {
       try {
         if (typeof fetchArtwork === 'function') {
@@ -67,18 +59,7 @@ async function applyArtwork(meta) {
       return;
     }
 
-    // Prepare stable cache-buster token so the URL stays constant for the duration of *this play*
-    let token = !Number.isNaN(startMs) ? startMs : (!Number.isNaN(timingStart) ? timingStart : 0);
-    if (!token) {
-      // Fallback: deterministic hash from "artist||title" so it stays stable during a poll cycle
-      const raw = (meta.artist + '||' + meta.title).toLowerCase();
-      let h=0; for (let i=0;i<raw.length;i++){ h=((h<<5)-h) + raw.charCodeAt(i); h|=0; }
-      token = Math.abs(h);
-    }
-    const bust = url.includes('?') ? '&' : '?';
-    const finalURL = `${url}${bust}v=${encodeURIComponent(token)}`;
-
-    // Lazily bind once
+    // Bind handlers once
     if (!img.__boundUnified) {
       img.addEventListener('load', () => {
         img.classList.add('loaded');
@@ -92,29 +73,111 @@ async function applyArtwork(meta) {
       img.__boundUnified = true;
     }
 
-    // Preload first to avoid a flash, then swap
-    await new Promise((resolve) => {
-      const pre = new Image();
-      try { pre.decoding = 'async'; } catch {}
-      pre.onload = () => resolve(true);
-      pre.onerror = () => resolve(false);
-      pre.src = finalURL;
-      if (pre.complete && pre.naturalWidth > 0) resolve(true);
-    });
+    // Trigger load with cache-bust
+    const bust = url.includes('?') ? '&' : '?';
+    img.classList.remove('loaded');
+    img.src = `${url}${bust}ts=${Date.now()}`;
 
-    // Only swap if key changed during async
-    if (img.__unifiedKey !== key) {
+    
+    // Safety: if the load event is missed (race/cached), force 'loaded' shortly after
+    setTimeout(() => { if (img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); img.classList.remove('fallback'); } }, 500);
+// If image was instantly available from cache, 'load' may not fire
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('loaded');
       img.classList.remove('fallback');
-      // Keep 'loaded' until the swap so we don't blink
-      const on = () => { img.classList.add('loaded'); img.removeEventListener('load', on); };
-      img.addEventListener('load', on);
-      img.src = finalURL;
-      img.__unifiedKey = key;
-      window.__UNIFIED_LAST_KEY = key;
     }
 }
 
   // Expose helpers globally
   window.getArtworkURL = getArtworkURL;
   window.applyArtwork = applyArtwork;
+})();
+
+// NP Refresh beside LIVE placer
+(function() {
+  // Create (or reuse) the refresh button and attach handler
+  function getOrMakeBtn() {
+    var btn = document.getElementById('np-refresh-btn');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'np-refresh-btn';
+      btn.type = 'button';
+      btn.textContent = 'Refresh';
+      // Minimal inline style to ensure visibility even under strict CSP
+      btn.style.padding = '0.35rem 0.6rem';
+      btn.style.marginLeft = '0.4rem';
+      btn.style.borderRadius = '9999px';
+      btn.style.border = '0';
+      btn.style.background = 'rgba(0,0,0,0.75)';
+      btn.style.color = '#fff';
+      btn.style.cursor = 'pointer';
+    }
+    if (!btn.__bound) {
+      btn.__bound = true;
+      btn.addEventListener('click', async function() {
+        try {
+          var img = document.getElementById('artwork');
+          if (img) img.__unifiedKey = null;
+          window.__UNIFIED_LAST_KEY = null;
+          window._npLastTiming = null;
+        } catch(e){}
+        if (typeof window.fetchNowPlaying === 'function') {
+          await window.fetchNowPlaying();
+        }
+        if (typeof window.fetchRecentlyPlayed === 'function') {
+          try { await window.fetchRecentlyPlayed(); } catch(e){}
+        }
+      });
+    }
+    return btn;
+  }
+
+  function placeBesideLive() {
+    try {
+      var host = document.getElementById('now-playing');
+      if (!host) return false;
+      var live = host.querySelector('.live-indicator');
+      if (!live) return false;
+      var btn = getOrMakeBtn();
+      if (btn.previousSibling !== live && btn !== live.nextSibling) {
+        // Insert right after the LIVE span
+        if (live.parentNode) live.parentNode.insertBefore(btn, live.nextSibling);
+      }
+      return true;
+    } catch(e) { return false; }
+  }
+
+  function fallbackPlace() {
+    var art = document.getElementById('artwork');
+    if (art && art.parentElement) {
+      art.parentElement.appendChild(getOrMakeBtn());
+      return true;
+    }
+    return false;
+  }
+
+  function ensurePlaced() {
+    if (!placeBesideLive()) {
+      fallbackPlace();
+    }
+  }
+
+  // Run once on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensurePlaced);
+  } else {
+    ensurePlaced();
+  }
+
+  // Observe Now Playing box for changes and re-place button when it updates
+  var obsTarget = document.getElementById('now-playing') || document.body;
+  try {
+    var pending = false;
+    var mo = new MutationObserver(function() {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function(){ pending = false; ensurePlaced(); });
+    });
+    mo.observe(obsTarget, { childList: true, subtree: true });
+  } catch(e) {}
 })();
