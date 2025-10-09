@@ -51788,5 +51788,31 @@
     "Full Duration (mins)": 3.07,
     "Start ISO": "2025-10-09T17:20:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-09T17:00:00Z",
+    "Scheduled Time": "18:23",
+    "Displayed Time": "18:23",
+    "Artist": "Lizzo",
+    "Title": "About Damn Time",
+    "Duration (s)": 180,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-10-09T17:23:03Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-09T17:00:00Z",
+    "Scheduled Time": "18:26",
+    "Displayed Time": "18:26",
+    "Artist": "Sammy Virji & Chris Lake",
+    "Title": "925",
+    "Duration (s)": 157,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.82,
+    "Start ISO": "2025-10-09T17:26:04Z",
+    "Source": "PLAYIT"
   }
 ]
