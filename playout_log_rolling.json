@@ -52061,5 +52061,31 @@
     "Full Duration (mins)": 3.78,
     "Start ISO": "2025-10-09T18:48:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-09T18:00:00Z",
+    "Scheduled Time": "19:51",
+    "Displayed Time": "19:51",
+    "Artist": "Beck",
+    "Title": "Loser",
+    "Duration (s)": 220,
+    "Full Duration (s)": 236,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.93,
+    "Start ISO": "2025-10-09T18:51:43Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-09T18:00:00Z",
+    "Scheduled Time": "19:55",
+    "Displayed Time": "19:55",
+    "Artist": "The Feeling",
+    "Title": "Without You",
+    "Duration (s)": 199,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.55,
+    "Start ISO": "2025-10-09T18:55:30Z",
+    "Source": "PLAYIT"
   }
 ]
