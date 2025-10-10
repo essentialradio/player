@@ -1,3 +1,4 @@
+Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),Duration (mins),Full Duration (mins)
 2025-09-26T17:00:00Z,18:01,,Lewis Capaldi,Something In The Heavens,192,198,3,3
 2025-09-26T17:00:00Z,18:04,,Ella Henderson,Me and You,159,168,3,3
 2025-09-26T17:00:00Z,18:07,,Calum Scott & Whitney Houston,I Wanna Dance With Somebody (Who Loves Me),205,218,3,4
@@ -4139,7 +4140,7 @@
 2025-10-10T15:00:00Z,16:08,16:08,Olivia Rodrigo,Vampire,211,220,3.52,3.67
 2025-10-10T15:00:00Z,16:12,16:12,Lady Gaga,Bad Romance,222,240,3.7,4.0
 2025-10-10T15:00:00Z,16:16,16:16,Taylor Swift,You Need To Calm Down,160,171,2.67,2.85
-2025-10-10T16:00:00Z,17:03,17:03,Frank Sinatra,My Way,231,274,3.85,4.57
-2025-10-10T16:00:00Z,17:07,17:07,Sugababes,Hole in the Head,201,212,3.35,3.53
-2025-10-10T16:00:00Z,17:10,17:10,Corona,Try Me Out,194,209,3.23,3.48
-2025-10-10T16:00:00Z,17:14,17:14,Los Del Rio,Macarena,215,223,3.58,3.72
+2025-10-10T16:00:00Z,17:03,,Frank Sinatra,My Way,231,274,4,5
+2025-10-10T16:00:00Z,17:07,,Sugababes,Hole in the Head,201,212,3,4
+2025-10-10T16:00:00Z,17:10,,Corona,Try Me Out,194,209,3,3
+2025-10-10T16:00:00Z,17:14,,Los Del Rio,Macarena,215,223,4,4
