@@ -51500,53 +51500,45 @@
   {
     "Hour": "2025-10-10T16:00:00Z",
     "Scheduled Time": "17:03",
-    "Displayed Time": "17:03",
+    "Displayed Time": "",
     "Artist": "Frank Sinatra",
     "Title": "My Way",
     "Duration (s)": 231,
     "Full Duration (s)": 274,
-    "Duration (mins)": 3.85,
-    "Full Duration (mins)": 4.57,
-    "Start ISO": "2025-10-10T16:03:15Z",
-    "Source": "PLAYIT"
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 5
   },
   {
     "Hour": "2025-10-10T16:00:00Z",
     "Scheduled Time": "17:07",
-    "Displayed Time": "17:07",
+    "Displayed Time": "",
     "Artist": "Sugababes",
     "Title": "Hole in the Head",
     "Duration (s)": 201,
     "Full Duration (s)": 212,
-    "Duration (mins)": 3.35,
-    "Full Duration (mins)": 3.53,
-    "Start ISO": "2025-10-10T16:07:09Z",
-    "Source": "PLAYIT"
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 4
   },
   {
     "Hour": "2025-10-10T16:00:00Z",
     "Scheduled Time": "17:10",
-    "Displayed Time": "17:10",
+    "Displayed Time": "",
     "Artist": "Corona",
     "Title": "Try Me Out",
     "Duration (s)": 194,
     "Full Duration (s)": 209,
-    "Duration (mins)": 3.23,
-    "Full Duration (mins)": 3.48,
-    "Start ISO": "2025-10-10T16:10:35Z",
-    "Source": "PLAYIT"
+    "Duration (mins)": 3,
+    "Full Duration (mins)": 3
   },
   {
     "Hour": "2025-10-10T16:00:00Z",
     "Scheduled Time": "17:14",
-    "Displayed Time": "17:14",
+    "Displayed Time": "",
     "Artist": "Los Del Rio",
     "Title": "Macarena",
     "Duration (s)": 215,
     "Full Duration (s)": 223,
-    "Duration (mins)": 3.58,
-    "Full Duration (mins)": 3.72,
-    "Start ISO": "2025-10-10T16:14:12Z",
-    "Source": "PLAYIT"
+    "Duration (mins)": 4,
+    "Full Duration (mins)": 4
   }
 ]
