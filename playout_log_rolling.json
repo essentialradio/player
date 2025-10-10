@@ -55285,5 +55285,18 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-10-10T12:35:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-10T12:00:00Z",
+    "Scheduled Time": "13:39",
+    "Displayed Time": "13:39",
+    "Artist": "Gigi Perez",
+    "Title": "Sailor Song",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-10-10T12:39:10Z",
+    "Source": "PLAYIT"
   }
 ]
