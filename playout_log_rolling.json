@@ -55402,5 +55402,18 @@
     "Full Duration (mins)": 3.8,
     "Start ISO": "2025-10-10T13:12:13Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-10T13:00:00Z",
+    "Scheduled Time": "14:18",
+    "Displayed Time": "14:18",
+    "Artist": "Taylor Swift",
+    "Title": "Look What You Made Me Do",
+    "Duration (s)": 208,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-10-10T13:18:12Z",
+    "Source": "PLAYIT"
   }
 ]
