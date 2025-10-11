@@ -7356,14 +7356,7 @@ function closeAllModals() {
   toggleLogoVisibility();
 }
 
-function openModal(id) {
-  closeAllModals();
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
-    document.body.classList.add('modal-open');
-  }
+
   toggleLogoVisibility();
 }
 
@@ -7378,13 +7371,7 @@ function openPresenterModal(presenterId) {
   toggleLogoVisibility();
 }
 
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-    if (id === 'presentersModal') {
-      document.body.classList.remove('modal-open');
-    }
+
   }
   toggleLogoVisibility();
 }
@@ -7475,34 +7462,10 @@ function closePresenterModal(presenterId) {
   }
 
   // Public: open a base modal by id (About, Schedule, Requests, News, Travel, Local, Playlist, Listen, Search, Contact, Presenters, etc.)
-  function openModal(id){
-    const modal = document.getElementById(id);
-    if (!modal) return;
-
-    // If we open a base modal, close all other base modals and all presenter modals
-    closeAllPresenterModals();
-    closeAllBaseModals();
-
-    // Show this one
-    modal.style.display = 'block';
-    modal.classList.add('active');
-
-    // Close burger if needed
-    closeBurger();
-
-    // Track body state
-    setBodyModalState();
-  }
+  
 
   // Public: close a base modal by id
-  function closeModal(id){
-    const modal = document.getElementById(id);
-    if (!modal) return;
-
-    // If we're closing the presentersModal, also close any presenter profile modals
-    if (id === 'presentersModal') {
-      closeAllPresenterModals();
-    }
+  
     modal.style.display = 'none';
     modal.classList.remove('active');
     setBodyModalState();
@@ -7668,7 +7631,7 @@ async function fetchRNHNews() {
     document.getElementById('rnh-news-list').innerHTML = top2.map(item => `
       <div style="margin-bottom:18px;">
         <a href="${item.link}" target="_blank" style="color:#fff;font-size:1em;font-weight:600;text-decoration:none;">
-          ${item.title}
+          ${escapeHTML(item.title)}
         </a>
         <div style="color:#fed351;font-size:0.97em;font-weight:400;margin:2px 0 0 0;">
           ${item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-GB", { day:'numeric', month:'short' }) : ""}
@@ -7779,93 +7742,6 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   } else {
     init();
   }
-})();
-</script><script>
-(function(){
-  function applyTheme(t){
-    var root = document.documentElement;
-    root.setAttribute('data-theme', t);
-    try { localStorage.setItem('theme', t); } catch(e){}
-    var btns = document.querySelectorAll('#themeToggleBtn');
-    btns.forEach(function(btn){
-      var lab = btn.querySelector('.mode-label');
-      var emo = btn.querySelector('.mode-emoji');
-      if (lab) lab.textContent = (t === 'light') ? 'Dark' : 'Light';
-      if (emo) emo.textContent = (t === 'light') ? '🌙' : '☀️';
-      btn.setAttribute('aria-pressed', t === 'dark');
-      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
-    });
-  }
-  function init(){
-    var saved = null; try { saved = localStorage.getItem('theme'); } catch(e){}
-    var current = saved || document.documentElement.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    applyTheme(current);
-    document.addEventListener('click', function(e){
-      var btn = e.target.closest && e.target.closest('#themeToggleBtn');
-      if (!btn) return;
-      e.preventDefault();
-      var next = (document.documentElement.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-      applyTheme(next);
-    }, true);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-})();
-</script><script id="theme-mode-script">
-(function(){
-  const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
-  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-  const initial = saved || (prefersLight ? 'light' : 'dark');
-  root.setAttribute('data-theme', initial);
-
-  function nextLabel(theme){ return theme === 'light' ? 'Dark' : 'Light'; }
-  function setLabels(theme){
-    const btn = document.getElementById('themeToggleBtn');
-    if (!btn) return;
-    const lab = btn.querySelector('.mode-label');
-    if (lab) lab.textContent = nextLabel(theme);
-    const emo = btn.querySelector('.mode-emoji');
-    if (emo) emo.textContent = (theme === 'light') ? '🌙' : '☀️';
-    btn.title = theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
-  }
-  function setTheme(t){
-    root.setAttribute('data-theme', t);
-    localStorage.setItem('theme', t);
-    setLabels(t);
-  }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    const current = root.getAttribute('data-theme') || initial;
-    setTheme(current);
-    const btn = document.getElementById('themeToggleBtn');
-    if (btn) {
-      btn.addEventListener('click', function(){
-        const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-        setTheme(next);
-      });
-    }
-  });
-})();
-</script><script id="theme-toggle-mover">
-(function(){
-  function placeThemeBtn(){
-    const btn = document.getElementById('themeToggleBtn');
-    const nav = document.querySelector('.navbar');
-    if(!btn) return;
-    if (window.innerWidth > 750) {
-      if (nav && btn.parentElement !== nav){
-        nav.appendChild(btn);
-        btn.classList.remove('mobile-fixed');
-      }
-    } else {
-      if (btn.parentElement !== document.body){
-        document.body.appendChild(btn);
-      }
-      btn.classList.add('mobile-fixed');
-    }
-  }
-  window.addEventListener('resize', placeThemeBtn);
-  window.addEventListener('DOMContentLoaded', placeThemeBtn);
 })();
 </script>
 <!-- Enhancements JS: marquee, live highlight, share -->
@@ -8791,86 +8667,7 @@ const liveBox = document.querySelector(".live-indicator");
   }
   .er-install-btn:focus { outline: 2px solid #000; outline-offset: 2px; }
 </style>
-<script>
-(function(){
-  // Register service worker if supported
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    });
-  }
 
-  let deferredPrompt = null;
-
-  function createInstallButton() {
-    const btn = document.createElement('button');
-    btn.id = 'install-btn';
-    btn.className = 'er-install-btn';
-    btn.type = 'button';
-    btn.textContent = 'Install app';
-    btn.title = 'Install Essential Radio';
-    btn.setAttribute('aria-label', 'Install Essential Radio');
-    btn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      try {
-        const { outcome } = await deferredPrompt.userChoice;
-        // console.log('Install choice:', outcome);
-      } catch(e){}
-      deferredPrompt = null;
-      btn.style.display = 'none';
-    });
-    return btn;
-  }
-
-  function placeNextToToggle(btn){
-    const ids = ['theme-toggle','dark-toggle','darkModeToggle','mode-toggle','toggle-theme'];
-    let toggle = null;
-    for (const id of ids) {
-      toggle = document.getElementById(id);
-      if (toggle) break;
-    }
-    // Fallback: try a button with data attribute or icon class likely used for theme
-    if (!toggle) toggle = document.querySelector('[data-theme-toggle], .theme-toggle, .dark-toggle');
-
-    if (toggle && toggle.parentElement) {
-      // Insert after the toggle button
-      if (toggle.nextSibling) {
-        toggle.parentElement.insertBefore(btn, toggle.nextSibling);
-      } else {
-        toggle.parentElement.appendChild(btn);
-      }
-      return true;
-    }
-    // If we couldn't find it, add to body top-right as fallback
-    btn.style.position = 'fixed';
-    btn.style.top = '10px';
-    btn.style.right = '10px';
-    document.body.appendChild(btn);
-    return false;
-  }
-
-  const installBtn = createInstallButton();
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    // Insert the button the first time we become eligible
-    if (!installBtn.isConnected) placeNextToToggle(installBtn);
-    installBtn.style.display = '';
-  });
-
-  window.addEventListener('appinstalled', () => {
-    deferredPrompt = null;
-    if (installBtn) installBtn.style.display = 'none';
-  });
-
-  // If already installed, hide button if shown
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    installBtn.style.display = 'none';
-  }
-})();
-</script>
 <script>
 (function(){
   // If the native prompt event never fires (iOS), show a hint after a short delay.
@@ -9581,119 +9378,7 @@ if ('serviceWorker' in navigator) {
 <div id="mobileNowText" title="Now Playing">Artist – Title</div>
 </div>
 </div>
-<script id="mobile-mini-player-script">
-(function () {
-  const $ = (sel, root=document) => root.querySelector(sel);
 
-  const mobileBar  = $('#mobileNowBar');
-  const mobileBtn  = $('#mobilePlayBtn');
-  const mobileText = $('#mobileNowText');
-  const mainToggle = $('#play-toggle');
-  const playerBox  = $('#player-box') || $('.left-panel');
-
-  function clickMain() { if (mainToggle) mainToggle.click(); }
-  if (mobileBtn) mobileBtn.addEventListener('click', clickMain);
-
-  function setIcon(isPlaying) {
-    if (!mobileBtn) return;
-    mobileBtn.textContent = isPlaying ? '❚❚' : '▷';
-    mobileBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
-  }
-
-  const audioEl = document.querySelector('audio');
-  if (audioEl) {
-    setIcon(!audioEl.paused);
-    audioEl.addEventListener('play',  () => setIcon(true));
-    audioEl.addEventListener('pause', () => setIcon(false));
-  } else if (mainToggle) {
-    const mo = new MutationObserver(() => {
-      const pressed = (mainToggle.getAttribute('aria-pressed') === 'true'
-                    || mainToggle.dataset.state === 'playing'
-                    || mainToggle.classList.contains('playing'));
-      setIcon(!!pressed);
-    });
-    mo.observe(mainToggle, { attributes: true, attributeFilter: ['aria-pressed','data-state','class'] });
-  }
-
-  function updateMini(artist, title) {
-    if (!mobileText) return;
-    const a = (artist || '').replace(/\s+on\s+Essential\s+Radio\s*$/i,'').trim();
-    const t = (title  || '').replace(/\s+on\s+Essential\s+Radio\s*$/i,'').trim();
-    const line = (a && t) ? `${a} – ${t}` : (a || t || 'Essential Radio');
-    mobileText.textContent = line;
-    mobileText.title = line;
-  }
-
-  function readFromNowPlayingBlock(){
-    const np = document.getElementById('now-playing');
-    if (!np) return {artist:'', title:''};
-    const text = (np.textContent || '').replace(/\s+/g,' ').trim();
-    const m = text.match(/^(?:Now Playing:)?\s*(?:LIVE\s*)?(.*)\s+by\s+(.*)$/i);
-    if (m) return { title: m[1].trim(), artist: m[2].trim() };
-    if (text.includes('–')) {
-      const idx = text.indexOf('–');
-      return { artist: text.slice(0, idx).trim(), title: text.slice(idx+1).trim() };
-    }
-    if (text.includes('-')) {
-      const idx = text.indexOf('-');
-      return { artist: text.slice(0, idx).trim(), title: text.slice(idx+1).trim() };
-    }
-    return {artist:'', title:''};
-  }
-
-  function scrapeNowPlaying() {
-    let r = readFromNowPlayingBlock();
-    if (r.title || r.artist) { updateMini(r.artist, r.title); return; }
-
-    const titleSel  = ['#npTitle', '.np-title', '.track-title', '#nowPlayingTitle', '#now-playing-card .track-title'];
-    const artistSel = ['#npArtist', '.np-artist', '.track-artist', '#nowPlayingArtist', '#now-playing-card .track-artist'];
-    const pick = (list) => {
-      for (const s of list) {
-        const el = document.querySelector(s);
-        if (el && el.textContent.trim()) return el.textContent.trim();
-      }
-      return '';
-    };
-    const title = pick(titleSel);
-    const artist = pick(artistSel);
-    if (title || artist) { updateMini(artist, title); return; }
-
-    const card = document.getElementById('now-playing-card');
-    if (card) {
-      const t = card.getAttribute('data-song-title') || (card.dataset && card.dataset.songTitle) || '';
-      const a = card.getAttribute('data-song-artist') || (card.dataset && card.dataset.songArtist) || '';
-      if (t || a) { updateMini(a, t); return; }
-    }
-
-    updateMini('', '');
-  }
-
-  scrapeNowPlaying();
-  const interval = setInterval(scrapeNowPlaying, 8000);
-
-  const np = document.getElementById('now-playing') || document.getElementById('now-playing-card');
-  if (np && 'MutationObserver' in window) {
-    const moNP = new MutationObserver(scrapeNowPlaying);
-    moNP.observe(np, { childList: true, subtree: true, characterData: true, attributes: true });
-  }
-
-  window.addEventListener('essential:nowplaying:update', scrapeNowPlaying);
-  window.addEventListener('np:update', (ev) => {
-    const d = ev.detail || {}; updateMini(d.artist, d.title);
-  });
-
-  if (playerBox && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      const visible = entries[0].isIntersecting;
-      if (!mobileBar) return;
-      mobileBar.style.opacity = visible ? '0' : '1';
-      mobileBar.style.pointerEvents = visible ? 'none' : 'auto';
-      mobileBar.style.transform = visible ? 'translateY(8px)' : 'translateY(0)';
-    }, { threshold: 0.2 });
-    io.observe(playerBox);
-  }
-})();
-</script>
 <script id="wire-refresh-yellow-both">
 (function(){
   async function unifiedRefresh(){
@@ -10154,6 +9839,28 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+<script>
+(function(){
+  function hostEndsWith(h, suffix){
+    if (!h || !suffix) return false;
+    return h === suffix || (h.endsWith("." + suffix));
+  }
+  window.safeMixcloud = function(u){
+    try {
+      if (typeof u !== "string") return "";
+      var a = document.createElement("a");
+      a.href = u;
+      var host = (a.hostname || "").toLowerCase();
+      var prot = (a.protocol || "").toLowerCase();
+      var ok = (prot === "https:") && (host === "www.mixcloud.com" || hostEndsWith(host, "mixcloud.com"));
+      return ok ? u : "";
+    } catch(e){
+      return "";
+    }
+  };
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
