@@ -1,10 +1,9 @@
-
 /*!
- * Essential Radio - nowplaying.js
+ * Essential Radio - nowplaying.js (ALT-patched)
  * Handles schedule-based FIXED periods and ALT/MAIN source labelling,
  * plus robust iTunes (music-only) artwork fetching with caching.
  *
- * v1.0.0
+ * v1.0.1 (ALT fallback to latestTrack.json for display)
  */
 
 (function (global) {
@@ -12,16 +11,15 @@
 
   const DEFAULTS = {
     scheduleUrl: 'https://player-green.vercel.app/schedule.json',
+    latestUrl: '/latestTrack.json',
 
-latestUrl: '/latestTrack.json',
+    // Progress selectors
+    progressSel: '[data-progress]',
+    progressFillSel: '[data-progress-fill]',
 
-// Progress selectors
-progressSel: '[data-progress]',
-progressFillSel: '[data-progress-fill]',
-
-// Progress timings
-progressUpdateMs: 1000,       // repaint the bar every second
-fallbackRefreshMs: 15000,     // how often to refetch latest if timing unknown
+    // Progress timings
+    progressUpdateMs: 1000,       // repaint the bar every second
+    fallbackRefreshMs: 15000,     // how often to refetch latest if timing unknown
 
     // Selectors
     showTitleSel: '#showTitle',
@@ -42,10 +40,9 @@ fallbackRefreshMs: 15000,     // how often to refetch latest if timing unknown
 
   const state = {
     schedule: [],
-
-latest: null,
-tickTimer: null,
-refreshTimer: null,
+    latest: null,
+    tickTimer: null,
+    refreshTimer: null,
 
     artworkCache: Object.create(null),
     lastFixedKey: '',
@@ -149,103 +146,102 @@ refreshTimer: null,
     return '';
   }
 
-  
-// --- Progress helpers ------------------------------------------------------
+  // --- Progress helpers ----------------------------------------------------
 
-function qsa(sel){ return sel ? Array.from(document.querySelectorAll(sel)) : []; }
+  function qsa(sel){ return sel ? Array.from(document.querySelectorAll(sel)) : []; }
 
-function computePct(item){
-  if (!item) return 0;
-  const startMs = Date.parse(item.startTime || item.start || 0) || 0;
-  const endMs = item.endTime ? Date.parse(item.endTime) : (startMs + ((item.duration || 0) * 1000));
-  const span = Math.max(1, endMs - startMs);
-  let pct = ((Date.now() - startMs) / span) * 100;
-  if (!Number.isFinite(pct)) pct = 0;
-  return Math.min(100, Math.max(0, pct));
-}
-
-function shouldShowProgress(item){
-  if (!item) return false;
-  const src = String(item.source || '').toUpperCase();
-  const ind = item.indeterminate === true;
-  // Hide only for ALT or explicit indeterminate
-  return src !== 'ALT' && !ind;
-}
-
-function renderProgress(cfg, item, instant=false){
-  const els = qsa(cfg.progressSel);
-  const fills = qsa(cfg.progressFillSel);
-  if (!els.length || !fills.length) return;
-
-  const show = shouldShowProgress(item);
-  els.forEach(el => el.toggleAttribute('hidden', !show));
-  if (!show) return;
-
-  const pct = computePct(item);
-  fills.forEach(fill => {
-    if (instant) fill.style.transition = 'none';
-    fill.style.width = pct + '%';
-    if (instant) requestAnimationFrame(() => { fill.style.transition = ''; });
-  });
-}
-
-async function loadLatest(cfg){
-  try{
-    const r = await fetch(cfg.latestUrl, { cache: 'no-store' });
-    state.latest = await r.json();
-    return state.latest;
-  }catch(e){
-    console.warn('[nowplaying] latest fetch failed', e);
-    return null;
+  function computePct(item){
+    if (!item) return 0;
+    const startMs = Date.parse(item.startTime || item.start || 0) || 0;
+    const endMs = item.endTime ? Date.parse(item.endTime) : (startMs + ((item.duration || 0) * 1000));
+    const span = Math.max(1, endMs - startMs);
+    let pct = ((Date.now() - startMs) / span) * 100;
+    if (!Number.isFinite(pct)) pct = 0;
+    return Math.min(100, Math.max(0, pct));
   }
-}
 
-function nextRefreshDelay(cfg, item){
-  if (!item) return cfg.fallbackRefreshMs;
-  const src = String(item.source || '').toUpperCase();
-  if (src === 'ALT') return cfg.fallbackRefreshMs; // avoid hammering
-  const startMs = Date.parse(item.startTime || item.start || 0) || 0;
-  const endMs = item.endTime ? Date.parse(item.endTime) : (startMs + ((item.duration || 0) * 1000));
-  const now = Date.now();
-  if (!endMs || endMs <= now) return 2000; // boundary soon or passed
-  return Math.max(2000, Math.min(30000, (endMs - now) + 500)); // ~0.5s after boundary
-}
+  function shouldShowProgress(item){
+    if (!item) return false;
+    const src = String(item.source || '').toUpperCase();
+    const ind = item.indeterminate === true;
+    // Hide only for ALT or explicit indeterminate
+    return src !== 'ALT' && !ind;
+  }
 
-function startProgressLoops(cfg){
-  // Initial fetch + instant paint
-  loadLatest(cfg).then(()=>{
-    renderProgress(cfg, state.latest, /*instant*/true);
-    scheduleLatestRefresh(cfg, state.latest);
-  });
+  function renderProgress(cfg, item, instant=false){
+    const els = qsa(cfg.progressSel);
+    const fills = qsa(cfg.progressFillSel);
+    if (!els.length || !fills.length) return;
 
-  // 1s repaint loop
-  if (state.tickTimer) clearInterval(state.tickTimer);
-  state.tickTimer = setInterval(() => {
-    renderProgress(cfg, state.latest);
-  }, cfg.progressUpdateMs);
+    const show = shouldShowProgress(item);
+    els.forEach(el => el.toggleAttribute('hidden', !show));
+    if (!show) return;
 
-  // Refresh again when tab becomes visible
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden){
-      loadLatest(cfg).then(()=>{
-        renderProgress(cfg, state.latest, /*instant*/true);
-        scheduleLatestRefresh(cfg, state.latest);
-      });
+    const pct = computePct(item);
+    fills.forEach(fill => {
+      if (instant) fill.style.transition = 'none';
+      fill.style.width = pct + '%';
+      if (instant) requestAnimationFrame(() => { fill.style.transition = ''; });
+    });
+  }
+
+  async function loadLatest(cfg){
+    try{
+      const r = await fetch(cfg.latestUrl, { cache: 'no-store' });
+      state.latest = await r.json();
+      return state.latest;
+    }catch(e){
+      console.warn('[nowplaying] latest fetch failed', e);
+      return null;
     }
-  });
-}
+  }
 
-function scheduleLatestRefresh(cfg, item){
-  if (state.refreshTimer) clearTimeout(state.refreshTimer);
-  const delay = nextRefreshDelay(cfg, item);
-  state.refreshTimer = setTimeout(async () => {
-    await loadLatest(cfg);
-    renderProgress(cfg, state.latest, /*instant*/true);
-    scheduleLatestRefresh(cfg, state.latest);
-  }, delay);
-}
+  function nextRefreshDelay(cfg, item){
+    if (!item) return cfg.fallbackRefreshMs;
+    const src = String(item.source || '').toUpperCase();
+    if (src === 'ALT') return cfg.fallbackRefreshMs; // avoid hammering
+    const startMs = Date.parse(item.startTime || item.start || 0) || 0;
+    const endMs = item.endTime ? Date.parse(item.endTime) : (startMs + ((item.duration || 0) * 1000));
+    const now = Date.now();
+    if (!endMs || endMs <= now) return 2000; // boundary soon or passed
+    return Math.max(2000, Math.min(30000, (endMs - now) + 500)); // ~0.5s after boundary
+  }
 
-// --- Core logic ----------------------------------------------------------
+  function startProgressLoops(cfg){
+    // Initial fetch + instant paint
+    loadLatest(cfg).then(()=>{
+      renderProgress(cfg, state.latest, /*instant*/true);
+      scheduleLatestRefresh(cfg, state.latest);
+    });
+
+    // 1s repaint loop
+    if (state.tickTimer) clearInterval(state.tickTimer);
+    state.tickTimer = setInterval(() => {
+      renderProgress(cfg, state.latest);
+    }, cfg.progressUpdateMs);
+
+    // Refresh again when tab becomes visible
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden){
+        loadLatest(cfg).then(()=>{
+          renderProgress(cfg, state.latest, /*instant*/true);
+          scheduleLatestRefresh(cfg, state.latest);
+        });
+      }
+    });
+  }
+
+  function scheduleLatestRefresh(cfg, item){
+    if (state.refreshTimer) clearTimeout(state.refreshTimer);
+    const delay = nextRefreshDelay(cfg, item);
+    state.refreshTimer = setTimeout(async () => {
+      await loadLatest(cfg);
+      renderProgress(cfg, state.latest, /*instant*/true);
+      scheduleLatestRefresh(cfg, state.latest);
+    }, delay);
+  }
+
+  // --- Core logic ----------------------------------------------------------
 
   async function loadSchedule(url) {
     const res = await fetch(url, { cache: 'no-store' });
@@ -288,12 +284,33 @@ function scheduleLatestRefresh(cfg, item){
         }
         if (statusEl) text(statusEl, 'fixed slot');
       } else {
-        // Not fixed: generic branding
-        text(showEl, 'More music soon');
-        text(djEl, '');
-        text(srcEl, (state.latest && state.latest.source) ? String(state.latest.source).toUpperCase() : 'MAIN');
+        // --- Not fixed: show current track from latestTrack.json ---
+        const latest = state.latest || {};
+        // Prefer schedule source if entry exists (ALT window without fixed)
+        const src = (cur && cur.source)
+          ? String(cur.source).toUpperCase()
+          : (String(latest.source || '').toUpperCase() || 'MAIN');
+
+        const artist = latest.artist || '';
+        const title = latest.title || '';
+
+        // If ALT, show ALT track/title; otherwise generic fallback
+        const displayTitle = (src === 'ALT')
+          ? (title || 'Alternative Source')
+          : (title || 'More music soon');
+
+        text(showEl, displayTitle);
+        text(djEl, artist);
+        text(srcEl, src);
+
+        // Optional artwork lookup for ALT / MAIN songs
+        if (artImg && (artist || title)) {
+          const art = await getTrackArtwork(`${artist} ${title}`.trim(), cfg.region, cfg.appVersion);
+          if (art) setSrc(artImg, art);
+        }
+
         state.lastFixedKey = '';
-        if (statusEl) text(statusEl, 'non-fixed slot');
+        if (statusEl) text(statusEl, src === 'ALT' ? 'ALT source' : 'non-fixed slot');
       }
     } catch (e) {
       console.warn('[nowplaying] tick error', e);
