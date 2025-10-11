@@ -54785,5 +54785,18 @@
     "Full Duration (mins)": 4.0,
     "Start ISO": "2025-10-11T11:56:57Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-11T12:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "Daft Punk",
+    "Title": "Around the World",
+    "Duration (s)": null,
+    "Full Duration (s)": null,
+    "Duration (mins)": null,
+    "Full Duration (mins)": null,
+    "Start ISO": "2025-10-11T12:00:01Z",
+    "Source": "ALT"
   }
 ]
