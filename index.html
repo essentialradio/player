@@ -10159,10 +10159,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 (function(){
   const LINE_SEL = '#now-playing';
-  const POLL_MS = 15000;
 
-  // Candidate selectors for the existing PLAYIT "live" badge
+  // Include the site's dynamic badge class
   const LIVE_BADGE_SELECTORS = [
+    '.live-indicator',
     '#live',
     '.live-badge',
     '.badge-live',
@@ -10174,6 +10174,11 @@ document.addEventListener('DOMContentLoaded', function () {
     '[data-live-badge]'
   ];
 
+  const POLL_MS = 1000; // keep ALT enforced
+
+  let primaryBadge = null;
+  let originalBadge = null; // { html, display }
+
   function findExistingLiveBadges(){
     const nodes = [];
     for (const sel of LIVE_BADGE_SELECTORS){
@@ -10182,62 +10187,73 @@ document.addEventListener('DOMContentLoaded', function () {
     return nodes;
   }
 
-  // The primary badge we will control (prefer an existing one if present)
-  let primaryBadge = null;
-  let originalBadgeState = null; // {text, display}
-
   function pickPrimaryBadge(){
     if (primaryBadge && document.contains(primaryBadge)) return primaryBadge;
     const candidates = findExistingLiveBadges();
     if (candidates.length){
       primaryBadge = candidates[0];
-      // Cache original content/visibility once
-      if (!originalBadgeState){
-        originalBadgeState = {
-          text: primaryBadge.textContent,
-          display: primaryBadge.style.display || ''
-        };
+      if (!originalBadge){
+        originalBadge = { html: primaryBadge.innerHTML, display: primaryBadge.style.display || '' };
       }
       return primaryBadge;
     }
-    // If none exists, create a minimal one next to the line
-    const line = document.querySelector(LINE_SEL);
-    if (!line) return null;
-    const span = document.createElement('span');
-    span.id = 'npAltLiveBadge';
-    span.style.marginLeft = '.5rem';
-    // Mild default look; will be hidden if a proper badge exists later
-    span.textContent = 'Now Playing Live';
-    line.insertAdjacentElement('afterend', span);
-    primaryBadge = span;
-    if (!originalBadgeState){
-      originalBadgeState = { text: span.textContent, display: '' };
-    }
-    return primaryBadge;
+    return null;
   }
 
-  function showPrimaryBadgeWith(text){
-    const b = pickPrimaryBadge();
-    if (!b) return;
-    if (typeof text === 'string' && text) b.textContent = text;
-    b.style.display = ''; // show
-    // Hide all *other* live badges to avoid duplicates
-    const others = findExistingLiveBadges().filter(n => n !== b);
+  function setBadgeTextPreserveDot(badge, text){
+    if (!badge) return;
+    // If there is an existing element that looks like a dot/icon, keep it and only change the label
+    const firstEl = badge.firstElementChild;
+    // Try to find an existing label span to re-use
+    let label = badge.querySelector('[data-label]') || badge.querySelector('.label') || badge.querySelector('.text') || null;
+
+    if (!label){
+      // If there's only one child and it looks like the dot, create a label span after it
+      if (firstEl && firstEl !== badge){
+        label = document.createElement('span');
+        label.setAttribute('data-label', '1');
+        label.style.marginLeft = '0.4rem';
+        badge.appendChild(label);
+      }
+    }
+
+    if (label){
+      if (label.textContent !== text) label.textContent = text;
+      return;
+    }
+
+    // No structured children: prefer to preserve first element child (dot) and replace the rest with our text node
+    if (firstEl){
+      // Remove any following siblings that are text or elements used as old labels
+      let n = firstEl.nextSibling;
+      while (n){
+        const next = n.nextSibling;
+        if (n.nodeType === Node.TEXT_NODE || (n.nodeType === Node.ELEMENT_NODE)){
+          badge.removeChild(n);
+        }
+        n = next;
+      }
+      const tn = document.createTextNode(' ' + text);
+      badge.appendChild(tn);
+      return;
+    }
+
+    // Fallback: just set text
+    badge.textContent = text;
+  }
+
+  function hideOtherBadges(except){
+    const others = findExistingLiveBadges().filter(n => n !== except);
     for (const n of others){ n.style.display = 'none'; }
   }
 
   function restoreBadges(){
-    // Restore original primary badge content/visibility if we had one
-    if (primaryBadge && originalBadgeState){
-      primaryBadge.textContent = originalBadgeState.text;
-      primaryBadge.style.display = originalBadgeState.display;
+    if (primaryBadge && originalBadge){
+      primaryBadge.innerHTML = originalBadge.html;
+      primaryBadge.style.display = originalBadge.display;
     }
-    // Re-show any other badges we hid
     const others = findExistingLiveBadges().filter(n => n !== primaryBadge);
-    for (const n of others){
-      // Only restore if we hid it; if site logic hid it, we leave it
-      if (n.style && n.style.display === 'none') n.style.display = '';
-    }
+    for (const n of others){ if (n.style && n.style.display === 'none') n.style.display = ''; }
   }
 
   function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
@@ -10250,28 +10266,45 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch(e){ return null; }
   }
 
+  let altActive = false;
+
   async function tick(){
     try{
       const line = document.querySelector(LINE_SEL);
-      if (!line) return;
       const j = await getLatest();
-      if (!j){ restoreBadges(); return; }
+      if (!j){ if (altActive) { restoreBadges(); altActive = false; } return; }
 
       const isALT = String(j.source || '').toUpperCase() === 'ALT';
       const text = combo(j.artist, j.title);
 
       if (isALT && text){
-        // Fill text if needed
-        const cur = (line.textContent || '').trim();
-        if (!cur || cur !== text){ line.textContent = text; }
-        // Reuse the existing PLAYIT badge (exact same styling) and show it with our text
-        showPrimaryBadgeWith('Now Playing Live');
+        altActive = true;
+
+        // Keep the line text enforced to prevent "More music soon" from other scripts
+        if (line){
+          const cur = (line.textContent || '').trim();
+          if (cur !== text) line.textContent = text;
+          line.dataset.altLock = '1';
+        }
+
+        // Use the site's live badge element (same styles), inject our label and hide duplicates
+        const badge = pickPrimaryBadge();
+        if (badge){
+          setBadgeTextPreserveDot(badge, 'Now Playing Live');
+          badge.style.display = '';
+          hideOtherBadges(badge);
+          badge.dataset.altLock = '1';
+        }
       } else {
-        // Not ALT: restore the site's normal live badge behaviour
-        restoreBadges();
+        if (altActive){
+          restoreBadges();
+          if (line && line.dataset) delete line.dataset.altLock;
+          if (primaryBadge && primaryBadge.dataset) delete primaryBadge.dataset.altLock;
+          altActive = false;
+        }
       }
     }catch(_){
-      restoreBadges();
+      if (altActive){ restoreBadges(); altActive = false; }
     }
   }
 
