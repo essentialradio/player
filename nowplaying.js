@@ -1,8 +1,9 @@
 /*!
- * Essential Radio - nowplaying.js (ALT+FIXED patched)
- * v1.0.2
- * - ALT: fallback to latestTrack.json in non-fixed slots
- * - FIXED: suppress PlayIt/cart info; force 'FIXED' source; hide progress
+ * Essential Radio - nowplaying.js (STRICT FIXED)
+ * v1.0.3
+ * - Never surface PlayIt/latest artist/title in FIXED.
+ * - Detect FIXED if schedule marks fixed:true OR latest.source === 'FIXED'.
+ * - ALT handling unchanged from prior patch.
  */
 
 (function (global) {
@@ -17,8 +18,8 @@
     progressFillSel: '[data-progress-fill]',
 
     // Progress timings
-    progressUpdateMs: 1000,       // repaint the bar every second
-    fallbackRefreshMs: 15000,     // how often to refetch latest if timing unknown
+    progressUpdateMs: 1000,
+    fallbackRefreshMs: 15000,
 
     // Selectors
     showTitleSel: '#showTitle',
@@ -37,8 +38,8 @@
     appVersion: '',
 
     // Behaviour
-    hideProgressInFixed: true,           // hide progress bar in fixed windows
-    showMainTrackInNonFixed: true        // show PlayIt track in non-fixed MAIN
+    hideProgressInFixed: true,
+    showMainTrackInNonFixed: true
   };
 
   const state = {
@@ -62,27 +63,21 @@
   function safeJSON(res) { return res.ok ? res.json() : Promise.reject(new Error(res.status)); }
 
   function localTimeParts(d) {
-    return {
-      dow: d.getDay(), // 0=Sun..6=Sat
-      h: d.getHours(),
-      m: d.getMinutes()
-    };
+    return { dow: d.getDay(), h: d.getHours(), m: d.getMinutes() };
   }
 
-  const DAY_MAP = {
-    'sun': 0, 'mon': 1, 'tue': 2, 'wed': 3, 'thu': 4, 'fri': 5, 'sat': 6
-  };
+  const DAY_MAP = { 'sun':0,'mon':1,'tue':2,'wed':3,'thu':4,'fri':5,'sat':6 };
 
   function parseTimeHM(str) {
     const m = /^(\d{1,2}):(\d{2})$/.exec(str || '');
     if (!m) return null;
-    return { h: Math.min(23, parseInt(m[1], 10)), m: Math.min(59, parseInt(m[2], 10)) };
+    return { h: Math.min(23, parseInt(m[1],10)), m: Math.min(59, parseInt(m[2],10)) };
   }
 
   function timeToMinutes(h, m) { return h * 60 + m; }
 
   function matchDay(entryDays, nowDow) {
-    if (!entryDays || !entryDays.length) return true; // no filter
+    if (!entryDays || !entryDays.length) return true;
     return entryDays.some(d => {
       if (typeof d === 'number') return d === nowDow;
       const k = String(d).trim().slice(0,3).toLowerCase();
@@ -91,13 +86,11 @@
   }
 
   function inWindow(now, startHM, endHM) {
-    // Handles cross-midnight, inclusive of start, exclusive of end
     const n = timeToMinutes(now.h, now.m);
     const s = timeToMinutes(startHM.h, startHM.m);
     const e = timeToMinutes(endHM.h, endHM.m);
-    if (s === e) return false; // zero-length
+    if (s === e) return false;
     if (s < e) return n >= s && n < e;
-    // cross-midnight case
     return n >= s || n < e;
   }
 
@@ -118,9 +111,7 @@
 
   function findCurrentEntry(schedule) {
     const now = localTimeParts(new Date());
-    return schedule.find(e =>
-      matchDay(e.days, now.dow) && inWindow(now, e.startHM, e.endHM)
-    ) || null;
+    return schedule.find(e => matchDay(e.days, now.dow) && inWindow(now, e.startHM, e.endHM)) || null;
   }
 
   // --- Artwork (iTunes, music-only) ---------------------------------------
@@ -133,17 +124,13 @@
       const url = `https://itunes.apple.com/search?media=music&entity=musicTrack&country=${encodeURIComponent(region)}&limit=5&term=${encodeURIComponent(query)}${appVersion ? `&v=${encodeURIComponent(appVersion)}` : ''}`;
       const res = await fetch(url);
       const d = await res.json();
-      const hit = (d.results || []).find(r =>
-        (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100
-      );
+      const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
       if (hit) {
         const hi = hit.artworkUrl100.replace('100x100','300x300');
         state.artworkCache[query] = hi;
         return hi;
       }
-    } catch (e) {
-      console.warn('[nowplaying] artwork fetch failed', e);
-    }
+    } catch (e) { console.warn('[nowplaying] artwork fetch failed', e); }
     return '';
   }
 
@@ -187,7 +174,9 @@
   async function loadLatest(cfg){
     try{
       const r = await fetch(cfg.latestUrl, { cache: 'no-store' });
-      state.latest = await r.json();
+      const j = await r.json();
+      // If backend marks FIXED, keep it but DO NOT use its artist/title in tick() rendering.
+      state.latest = j;
       return state.latest;
     }catch(e){
       console.warn('[nowplaying] latest fetch failed', e);
@@ -248,6 +237,13 @@
     return normalised;
   }
 
+  function detectFixed(cur, latest){
+    // Fixed if schedule says so OR backend says so
+    if (cur && cur.fixed) return true;
+    if (latest && String(latest.source || '').toUpperCase() === 'FIXED') return true;
+    return false;
+  }
+
   async function tick(cfg) {
     const showEl = qs(cfg.showTitleSel);
     const djEl = qs(cfg.presenterSel);
@@ -262,50 +258,51 @@
       }
 
       const cur = findCurrentEntry(state.schedule);
+      const latest = state.latest || {};
+      const fixedNow = detectFixed(cur, latest);
+      state.isFixed = fixedNow;
 
-      if (cur && cur.fixed) {
-        state.isFixed = true;
-
-        text(showEl, cur.title || 'On Air');
-        text(djEl, cur.presenter || '');
+      if (fixedNow) {
+        // STRICT: never use latest artist/title in fixed
+        const title = (cur && cur.title) ? cur.title : 'On Air';
+        const presenter = (cur && cur.presenter) ? cur.presenter : '';
+        text(showEl, title);
+        text(djEl, presenter);
         text(srcEl, 'FIXED');
 
-        const key = cur.title + '|' + cur.presenter;
+        const key = title + '|' + presenter;
         if (key !== state.lastFixedKey) {
           state.lastFixedKey = key;
-          if (artImg) {
-            const art = await getTrackArtwork(cur.title, cfg.region, cfg.appVersion);
+          if (artImg && title) {
+            const art = await getTrackArtwork(title, cfg.region, cfg.appVersion);
             if (art) setSrc(artImg, art);
           }
         }
         if (statusEl) text(statusEl, 'fixed slot');
-      } else {
-        state.isFixed = false;
-
-        const latest = state.latest || {};
-        const srcFromSched = (cur && cur.source) ? String(cur.source).toUpperCase() : '';
-        const src = srcFromSched || (String(latest.source || '').toUpperCase() || 'MAIN');
-
-        const artist = latest.artist || '';
-        const title = latest.title || '';
-
-        const showMain = cfg.showMainTrackInNonFixed !== false;
-        const displayTitle = (src === 'ALT')
-          ? (title || 'Alternative Source')
-          : (showMain && title ? title : 'More music soon');
-
-        text(showEl, displayTitle);
-        text(djEl, showMain ? artist : '');
-        text(srcEl, src || 'MAIN');
-
-        if (artImg && (artist || title) && (src === 'ALT' || showMain)) {
-          const art = await getTrackArtwork(`${artist} ${title}`.trim(), cfg.region, cfg.appVersion);
-          if (art) setSrc(artImg, art);
-        }
-
-        state.lastFixedKey = '';
-        if (statusEl) text(statusEl, src === 'ALT' ? 'ALT source' : 'non-fixed slot');
+        return; // exit early so nothing else can overwrite
       }
+
+      // --- Non-fixed path ---
+      const srcFromSched = (cur && cur.source) ? String(cur.source).toUpperCase() : '';
+      const src = srcFromSched || (String(latest.source || '').toUpperCase() || 'MAIN');
+      const artist = latest.artist || '';
+      const title = latest.title || '';
+      const showMain = cfg.showMainTrackInNonFixed !== false;
+      const displayTitle = (src === 'ALT')
+        ? (title || 'Alternative Source')
+        : (showMain && title ? title : 'More music soon');
+
+      text(showEl, displayTitle);
+      text(djEl, showMain ? artist : '');
+      text(srcEl, src || 'MAIN');
+
+      if (artImg && (artist || title) && (src === 'ALT' || showMain)) {
+        const art = await getTrackArtwork(`${artist} ${title}`.trim(), cfg.region, cfg.appVersion);
+        if (art) setSrc(artImg, art);
+      }
+
+      state.lastFixedKey = '';
+      if (statusEl) text(statusEl, src === 'ALT' ? 'ALT source' : 'non-fixed slot');
     } catch (e) {
       console.warn('[nowplaying] tick error', e);
       if (statusEl) text(statusEl, 'error');
