@@ -51660,6 +51660,19 @@
   },
   {
     "Hour": "2025-10-12T15:00:00Z",
+    "Scheduled Time": "15:59",
+    "Displayed Time": "15:59",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 3591,
+    "Full Duration (s)": 3591,
+    "Duration (mins)": 59.85,
+    "Full Duration (mins)": 59.85,
+    "Start ISO": "2025-10-12T14:59:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-12T15:00:00Z",
     "Scheduled Time": "16:59",
     "Displayed Time": "16:59",
     "Artist": "Taylor Swift & Sabrina Carpenter",
@@ -51668,7 +51681,7 @@
     "Full Duration (s)": 180,
     "Duration (mins)": 3.0,
     "Full Duration (mins)": 3.0,
-    "Start ISO": "2025-10-12T16:59:19+01:00",
+    "Start ISO": "2025-10-12T16:59:33+01:00",
     "Source": "ALT"
   }
 ]
