@@ -51686,15 +51686,15 @@
   },
   {
     "Hour": "2025-10-12T16:00:00Z",
-    "Scheduled Time": "17:31",
-    "Displayed Time": "17:31",
+    "Scheduled Time": "17:33",
+    "Displayed Time": "17:33",
     "Artist": "Bonnie Tyler",
     "Title": "Holding Out for a Hero",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
-    "Start ISO": "2025-10-12T16:31:58Z",
+    "Duration (s)": 180,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-10-12T17:33:49+01:00",
     "Source": "ALT"
   }
 ]
