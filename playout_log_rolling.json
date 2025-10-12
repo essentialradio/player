@@ -51505,5 +51505,31 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-10-12T18:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-12T19:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Essential Radio",
+    "Title": "The Mr Rocks Show with Kevin McCallum",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-10-12T18:00:00Z",
+    "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-12T20:00:00Z",
+    "Scheduled Time": "21:00",
+    "Displayed Time": "21:00",
+    "Artist": "Essential Radio",
+    "Title": "The Pluggin' Baby Radio Show with Emma Scott",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-10-12T20:00:00Z",
+    "Source": "FIXED"
   }
 ]
