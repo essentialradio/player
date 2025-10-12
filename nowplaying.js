@@ -1,5 +1,5 @@
 /*!
- * Essential Radio - nowplaying.js (v1.1.1 - flash resistant, mapped selectors)
+ * Essential Radio - nowplaying.js (v1.1.2 - ALT shows Artist - Title, flash resistant, mapped selectors)
  *
  * - Maps to your DOM: #currentShow, #now-playing, #artwork
  * - Strict FIXED: never show cart info; clears track line
@@ -146,12 +146,19 @@
     const src = srcFromSched || (String(latest.source || '').toUpperCase() || 'MAIN');
     const artist = latest.artist || '';
     const title = latest.title || '';
+    const combo = artist && title ? `${artist} - ${title}` : (title || artist || '');
 
-    const showMain = cfg.showMainTrackInNonFixed !== false;
-    const newTrack = (src === 'ALT')
-      ? (title || state.lastShownTrack || '')
-      : (showMain && title ? title : (state.lastShownTrack || 'More music soon'));
+    // Build display string
+    let newTrack = '';
+    if (src === 'ALT') {
+      // ALT should show Artist - Title when available
+      newTrack = combo || state.lastShownTrack || '';
+    } else {
+      const showMain = cfg.showMainTrackInNonFixed !== false;
+      newTrack = showMain && combo ? combo : (state.lastShownTrack || 'More music soon');
+    }
 
+    // Update DOM only when changed (prevents flicker)
     if (newTrack){
       if (newTrack !== state.lastShownTrack){
         text(trackEl, newTrack);
@@ -168,8 +175,10 @@
     }
     if (srcEl) text(srcEl, src);
 
-    if (artImg && (artist || title) && (src === 'ALT' || showMain)){
-      const art = await itunesArt(`${artist} ${title}`.trim(), 'GB', '');
+    // Artwork: use the same combined search string
+    const showMain = cfg.showMainTrackInNonFixed !== false;
+    if (artImg && combo && (src === 'ALT' || showMain)){
+      const art = await itunesArt(combo, 'GB', '');
       if (art) setSrc(artImg, art);
     }
   }
