@@ -5991,7 +5991,8 @@ group.forEach(show => {
           try {
             const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
-            if (j && j.artist && j.title && j.duration && j.startTime) {
+            const __isALT = String((j && j.source) || '').toUpperCase() === 'ALT';
+              if (j && j.artist && j.title && (__isALT || (j.duration && j.startTime))) {
               clearInterval(window._npBreakPoll); window._npBreakPoll = null;
               // Force a refresh regardless of last key to break out of a stuck state
               try { await fetchNowPlaying(); } catch(e){}
@@ -6016,8 +6017,16 @@ async function fetchNowPlaying() {
     const latest = await latestRes.json();
 
     // Validate payload
-    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
-      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+    const isALT = String((latest && latest.source) || '').toUpperCase() === 'ALT';
+      if (!latest || !latest.artist || !latest.title) {
+        if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+        return;
+      }
+      if (!isALT && (!latest.startTime || !latest.duration)) {
+        if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+        return;
+      }
+if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
 
@@ -6103,8 +6112,10 @@ if (remaining > 0) {
           try {
             const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
-            const newKey = (j && j.artist && j.title && j.startTime)
-              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}` : null;
+            const __ALT = String((j && j.source) || '').toUpperCase() === 'ALT';
+            const newKey = (j && j.artist && j.title)
+              ? `${j.artist}||${j.title}||${__ALT ? (j.source||'ALT') : new Date(j.startTime).getTime()}`
+              : null;
             if (newKey && newKey !== window._npLastKey) { fetchNowPlaying(); return; }
           } catch(e){}
           if (Date.now() >= graceUntil) {
@@ -6124,8 +6135,9 @@ if (remaining > 0) {
           try {
             const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
             const j = await r.json();
-            const newKey = (j && j.artist && j.title && j.startTime)
-              ? `${j.artist}||${j.title}||${new Date(j.startTime).getTime()}`
+            const __ALT = String((j && j.source) || '').toUpperCase() === 'ALT';
+            const newKey = (j && j.artist && j.title)
+              ? `${j.artist}||${j.title}||${__ALT ? (j.source||'ALT') : new Date(j.startTime).getTime()}`
               : null;
             if (newKey && newKey !== window._npLastKey) {
               clearInterval(window._npPollTimer);
