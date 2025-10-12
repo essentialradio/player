@@ -10156,48 +10156,88 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <!-- ALT adapter (non-invasive) -->
-<style>
-/* ALT live badge (only used if your theme doesn't already provide one) */
-.np-live-badge{display:inline-flex;align-items:center;gap:.45rem;margin-left:.6rem;font-weight:600;font-size:.9rem;}
-.np-live-badge .np-dot{width:.6rem;height:.6rem;border-radius:50%;background:#e02424;display:inline-block;box-shadow:0 0 0 2px rgba(224,36,36,.15);}
-@media (prefers-reduced-motion:no-preference){
-  .np-live-badge .np-dot{animation:npPulse 1.8s ease-in-out infinite;}
-  @keyframes npPulse{0%{box-shadow:0 0 0 0 rgba(224,36,36,.45)}70%{box-shadow:0 0 0 8px rgba(224,36,36,0)}100%{box-shadow:0 0 0 0 rgba(224,36,36,0)}}
-}
-</style>
 <script>
 (function(){
   const LINE_SEL = '#now-playing';
   const POLL_MS = 15000;
-  const BADGE_ID = 'npAltLiveBadge';
 
-  function ensureBadge(target){
-    if (!target) return null;
-    let badge = document.getElementById(BADGE_ID);
-    if (!badge){
-      badge = document.createElement('span');
-      badge.id = BADGE_ID;
-      badge.className = 'np-live-badge';
-      const dot = document.createElement('span');
-      dot.className = 'np-dot';
-      const txt = document.createElement('span');
-      txt.textContent = 'Now Playing Live';
-      badge.appendChild(dot);
-      badge.appendChild(txt);
-      // Place right after the line element
-      target.insertAdjacentElement('afterend', badge);
+  // Candidate selectors for the existing PLAYIT "live" badge
+  const LIVE_BADGE_SELECTORS = [
+    '#live',
+    '.live-badge',
+    '.badge-live',
+    '.now-playing-live',
+    '.np-live',
+    '.player-live',
+    '.live-now',
+    '.current-live',
+    '[data-live-badge]'
+  ];
+
+  function findExistingLiveBadges(){
+    const nodes = [];
+    for (const sel of LIVE_BADGE_SELECTORS){
+      document.querySelectorAll(sel).forEach(n => { if (!nodes.includes(n)) nodes.push(n); });
     }
-    return badge;
+    return nodes;
   }
 
-  function hideBadge(){
-    const b = document.getElementById(BADGE_ID);
-    if (b) b.style.display = 'none';
+  // The primary badge we will control (prefer an existing one if present)
+  let primaryBadge = null;
+  let originalBadgeState = null; // {text, display}
+
+  function pickPrimaryBadge(){
+    if (primaryBadge && document.contains(primaryBadge)) return primaryBadge;
+    const candidates = findExistingLiveBadges();
+    if (candidates.length){
+      primaryBadge = candidates[0];
+      // Cache original content/visibility once
+      if (!originalBadgeState){
+        originalBadgeState = {
+          text: primaryBadge.textContent,
+          display: primaryBadge.style.display || ''
+        };
+      }
+      return primaryBadge;
+    }
+    // If none exists, create a minimal one next to the line
+    const line = document.querySelector(LINE_SEL);
+    if (!line) return null;
+    const span = document.createElement('span');
+    span.id = 'npAltLiveBadge';
+    span.style.marginLeft = '.5rem';
+    // Mild default look; will be hidden if a proper badge exists later
+    span.textContent = 'Now Playing Live';
+    line.insertAdjacentElement('afterend', span);
+    primaryBadge = span;
+    if (!originalBadgeState){
+      originalBadgeState = { text: span.textContent, display: '' };
+    }
+    return primaryBadge;
   }
 
-  function showBadge(){
-    const b = document.getElementById(BADGE_ID);
-    if (b) b.style.display = '';
+  function showPrimaryBadgeWith(text){
+    const b = pickPrimaryBadge();
+    if (!b) return;
+    if (typeof text === 'string' && text) b.textContent = text;
+    b.style.display = ''; // show
+    // Hide all *other* live badges to avoid duplicates
+    const others = findExistingLiveBadges().filter(n => n !== b);
+    for (const n of others){ n.style.display = 'none'; }
+  }
+
+  function restoreBadges(){
+    // Restore original primary badge content/visibility if we had one
+    if (primaryBadge && originalBadgeState){
+      primaryBadge.textContent = originalBadgeState.text;
+      primaryBadge.style.display = originalBadgeState.display;
+    }
+    // Re-show any other badges we hid
+    const others = findExistingLiveBadges().filter(n => n !== primaryBadge);
+    for (const n of others){
+      // Only restore if we hid it; if site logic hid it, we leave it
+      if (n.style && n.style.display === 'none') n.style.display = '';
+    }
   }
 
   function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
@@ -10215,25 +10255,24 @@ document.addEventListener('DOMContentLoaded', function () {
       const line = document.querySelector(LINE_SEL);
       if (!line) return;
       const j = await getLatest();
-      if (!j) { hideBadge(); return; }
+      if (!j){ restoreBadges(); return; }
 
       const isALT = String(j.source || '').toUpperCase() === 'ALT';
       const text = combo(j.artist, j.title);
 
       if (isALT && text){
-        // Fill the line if needed
+        // Fill text if needed
         const cur = (line.textContent || '').trim();
-        if (!cur || cur !== text){
-          line.textContent = text;
-        }
-        // Ensure/Show the live badge (ALT parity with PLAYIT)
-        const badge = ensureBadge(line);
-        if (badge) showBadge();
+        if (!cur || cur !== text){ line.textContent = text; }
+        // Reuse the existing PLAYIT badge (exact same styling) and show it with our text
+        showPrimaryBadgeWith('Now Playing Live');
       } else {
-        // Not ALT or no text: keep hands-off and hide our badge (PLAYIT likely has its own)
-        hideBadge();
+        // Not ALT: restore the site's normal live badge behaviour
+        restoreBadges();
       }
-    }catch(_){ hideBadge(); }
+    }catch(_){
+      restoreBadges();
+    }
   }
 
   tick();
