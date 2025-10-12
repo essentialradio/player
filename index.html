@@ -10453,6 +10453,146 @@ document.addEventListener('DOMContentLoaded', function () {
   }, true);
 })();
 </script>
+<script>
+(() => {
+  const LINE_SEL = '#now-playing';
+  const BADGE_SEL = '.live-indicator'; // the real PLAYIT badge
+  const POLL_MS   = 800;
+
+  let altActive = false;
+  let desiredLine = '';
+  let lineObserver = null;
+
+  // Store the exact PLAYIT badge HTML here once PLAYIT renders it
+  if (!window.__PLAYIT_BADGE_HTML__) window.__PLAYIT_BADGE_HTML__ = null;
+
+  const same = (a,b) => String(a||'').trim() === String(b||'').trim();
+  const combo = (a,t) => {
+    a = (a||'').trim(); t = (t||'').trim();
+    return a && t ? a + ' - ' + t : (a || t || '');
+  };
+
+  function getLine(){ return document.querySelector(LINE_SEL); }
+  function getBadge(){ return document.querySelector(BADGE_SEL); }
+
+  function capturePlayitBadge(){
+    const b = getBadge();
+    if (b && !window.__PLAYIT_BADGE_HTML__) {
+      // Keep the exact markup PLAYIT produced (dot, spacing, spans, everything)
+      window.__PLAYIT_BADGE_HTML__ = b.innerHTML;
+    }
+  }
+
+  function setBadgeLabelToNowPlayingLive(badge){
+    if (!badge) return;
+    // Use the stored PLAYIT template as the base so it *looks identical*
+    if (window.__PLAYIT_BADGE_HTML__) badge.innerHTML = window.__PLAYIT_BADGE_HTML__;
+
+    const dot = badge.querySelector('.dot'); // PLAYIT’s dot class per your CSS
+    // Find a likely label node
+    let label =
+      badge.querySelector('[data-label]') ||
+      badge.querySelector('.label') ||
+      badge.querySelector('.text')  ||
+      badge.querySelector('.name')  ||
+      null;
+
+    if (!label) {
+      // If no label element, prefer a text node after the dot, else create a span
+      if (dot) {
+        // ensure a single text node after the dot
+        if (!dot.nextSibling) {
+          dot.insertAdjacentText('afterend', ' Now Playing Live');
+        } else {
+          // replace the first text node after the dot, remove extras
+          let n = dot.nextSibling, replaced = false;
+          while (n) {
+            const next = n.nextSibling;
+            if (n.nodeType === Node.TEXT_NODE && !replaced) {
+              n.nodeValue = ' Now Playing Live';
+              replaced = true;
+              // remove any extra siblings after first text for cleanliness
+              while (n.nextSibling) n.nextSibling.remove();
+              break;
+            }
+            n = next;
+          }
+          if (!replaced) {
+            const span = document.createElement('span');
+            span.textContent = 'Now Playing Live';
+            span.style.marginLeft = '0.4rem';
+            dot.insertAdjacentElement('afterend', span);
+          }
+        }
+      } else {
+        badge.textContent = 'Now Playing Live';
+      }
+    } else {
+      if (!same(label.textContent, 'Now Playing Live')) label.textContent = 'Now Playing Live';
+    }
+
+    badge.style.display = ''; // ensure visible
+  }
+
+  function lockLineWhileALT(){
+    const el = getLine();
+    if (!el) return;
+    if (!same(el.textContent, desiredLine)) el.textContent = desiredLine;
+    if (!lineObserver) {
+      lineObserver = new MutationObserver(() => {
+        if (altActive) {
+          if (!same(el.textContent, desiredLine)) el.textContent = desiredLine;
+        }
+      });
+      lineObserver.observe(el, { childList:true, characterData:true, subtree:true });
+    }
+  }
+
+  async function fetchLatest(){
+    try {
+      const r = await fetch('/api/latestTrack?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return null;
+      return r.json();
+    } catch { return null; }
+  }
+
+  async function tick(){
+    // Always try to capture PLAYIT template when we’re not in ALT
+    if (!altActive) capturePlayitBadge();
+
+    const j = await fetchLatest();
+    const isALT = j && String(j.source || '').toUpperCase() === 'ALT';
+    const text = j ? combo(j.artist, j.title) : '';
+
+    if (isALT && text) {
+      altActive = true;
+      desiredLine = text;
+      lockLineWhileALT();
+
+      const badge = getBadge();
+      // If PLAYIT template hasn't been captured yet, try again next tick
+      if (badge) setBadgeLabelToNowPlayingLive(badge);
+    } else {
+      // Leaving ALT: stop enforcing, restore normal behaviour
+      altActive = false;
+      desiredLine = '';
+      if (lineObserver) { lineObserver.disconnect(); lineObserver = null; }
+      // No changes to the badge here — your PLAYIT script will keep it as-is
+      // Keep capturing whenever PLAYIT is visible so the template stays up to date
+      capturePlayitBadge();
+    }
+  }
+
+  tick();
+  setInterval(tick, POLL_MS);
+
+  // Bonus: if the badge is injected later, capture it as soon as it appears
+  const mo = new MutationObserver(() => {
+    if (!window.__PLAYIT_BADGE_HTML__) capturePlayitBadge();
+  });
+  mo.observe(document.documentElement, { childList:true, subtree:true });
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
