@@ -10155,88 +10155,76 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<!-- ALT adapter (non-invasive, deterministic badge control) -->
+
+<!-- ALT adapter (strict .live-indicator + anti-flash) -->
 <script>
 (function(){
   const LINE_SEL = '#now-playing';
-  const BADGE_SELECTORS = ['.live-indicator', '#live', '.live-badge', '.badge-live', '.now-playing-live', '.player-live'];
-  const ENFORCE_MS = 500; // keep ALT enforced, faster to beat other updaters
-  let altActive = false;
-  let badgeEl = null;
-  let original = null; // { html, display }
+  const BADGE_SEL = '.live-indicator'; // use the site's real badge only
+  const ENFORCE_MS = 1000;
 
-  function $(sel){ return document.querySelector(sel); }
-  function pickBadge(){
-    if (badgeEl && document.contains(badgeEl)) return badgeEl;
-    for (const s of BADGE_SELECTORS){
-      const el = $(s);
-      if (el){ badgeEl = el; break; }
-    }
-    if (badgeEl && !original){
-      original = { html: badgeEl.innerHTML, display: badgeEl.style.display || '' };
-    }
-    return badgeEl;
-  }
+  let altActive = false;
+  let desiredText = '';
+  let mo = null;
 
   function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
+  function sameText(a,b){ return String(a||'').trim() === String(b||'').trim(); }
+  function isFallback(s){ return /more\s+music\s+soon/i.test(String(s||'')); }
 
-  function setBadgeTextPreserveDot(el, text){
-    if (!el) return;
-    // Try to preserve a leading dot/icon element
-    const first = el.firstElementChild;
-    // Find an existing label we can reuse
-    let label = el.querySelector('[data-alt-label]') ||
-                el.querySelector('.label') ||
-                el.querySelector('.text') ||
-                el.querySelector('.name') ||
-                el.querySelector('[data-label]') ||
-                null;
+  function getBadge(){ return document.querySelector(BADGE_SEL); }
+  function getLine(){ return document.querySelector(LINE_SEL); }
 
+  function setBadgeNowPlayingLive(){
+    const badge = getBadge();
+    if (!badge) return;
+    const first = badge.firstElementChild;
+    // look for an existing label span near the dot
+    let label = badge.querySelector('[data-alt-label]') ||
+                badge.querySelector('.label') || badge.querySelector('.text') ||
+                badge.querySelector('.name') || null;
     if (!label){
-      // Create our own label span right after the first child (dot/icon) if present
       label = document.createElement('span');
-      label.setAttribute('data-alt-label', '1');
+      label.setAttribute('data-alt-label','1');
       label.style.marginLeft = first ? '0.4rem' : '0';
       if (first){
-        // Remove everything after first to avoid duplicate texts
+        // remove any siblings after first to avoid duplicate labels
         while (first.nextSibling) first.nextSibling.remove();
         first.insertAdjacentElement('afterend', label);
       } else {
-        // No children: just append
-        el.textContent = '';
-        el.appendChild(label);
+        badge.textContent = '';
+        badge.appendChild(label);
       }
     } else if (!label.hasAttribute('data-alt-label')) {
-      // Mark the found label so we can distinguish ours
-      label.setAttribute('data-alt-label', '1');
+      label.setAttribute('data-alt-label','1');
     }
-
-    if (label.textContent !== text) label.textContent = text;
+    if (!sameText(label.textContent, 'Now Playing Live')){
+      label.textContent = 'Now Playing Live';
+    }
+    // Ensure badge is visible
+    badge.style.display = '';
   }
 
-  function hideOtherBadges(except){
-    const nodes = [];
-    for (const s of BADGE_SELECTORS){
-      document.querySelectorAll(s).forEach(n => { if (!nodes.includes(n)) nodes.push(n); });
-    }
-    for (const n of nodes){
-      if (n !== except) n.style.display = 'none';
+  function lockLineText(){
+    const el = getLine();
+    if (!el) return;
+    if (!sameText(el.textContent, desiredText)){
+      el.textContent = desiredText;
     }
   }
 
-  function restoreBadges(){
-    if (badgeEl && original){
-      badgeEl.innerHTML = original.html;
-      badgeEl.style.display = original.display;
-    }
-    // Re-show any hidden badges
-    const nodes = [];
-    for (const s of BADGE_SELECTORS){
-      document.querySelectorAll(s).forEach(n => { if (!nodes.includes(n)) nodes.push(n); });
-    }
-    for (const n of nodes){
-      if (n !== badgeEl && n.style && n.style.display === 'none') n.style.display = '';
-    }
+  function startObserver(){
+    const el = getLine();
+    if (!el || mo) return;
+    mo = new MutationObserver((mutations)=>{
+      if (!altActive) return;
+      // Any change to the line while ALT is active: enforce text
+      lockLineText();
+    });
+    mo.observe(el, { characterData: true, childList: true, subtree: true });
+  }
+
+  function stopObserver(){
+    if (mo){ try{ mo.disconnect(); }catch(_){ } mo = null; }
   }
 
   async function getLatest(){
@@ -10248,46 +10236,30 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   async function tick(){
-    try{
-      const latest = await getLatest();
-      const isALT = latest && String(latest.source || '').toUpperCase() === 'ALT';
-      const text = latest ? combo(latest.artist, latest.title) : '';
+    const latest = await getLatest();
+    const isALT = latest && String(latest.source || '').toUpperCase() === 'ALT';
+    const text = latest ? combo(latest.artist, latest.title) : '';
 
-      const line = document.querySelector(LINE_SEL);
-
-      if (isALT && text){
-        // Lock line text so it doesn't flip back
-        if (line){
-          const cur = (line.textContent || '').trim();
-          if (cur !== text) line.textContent = text;
-        }
-        // Ensure badge exists and inject our text into the existing badge
-        const b = pickBadge();
-        if (b){
-          setBadgeTextPreserveDot(b, 'Now Playing Live');
-          b.style.display = '';
-          hideOtherBadges(b);
-        }
-        altActive = true;
-      } else {
-        if (altActive){
-          restoreBadges();
-          altActive = false;
-        }
-      }
-    }catch(e){
-      if (altActive){
-        restoreBadges();
-        altActive = false;
-      }
+    if (isALT && text){
+      desiredText = text;
+      altActive = true;
+      setBadgeNowPlayingLive();
+      lockLineText();
+      startObserver();
+    } else {
+      // Leaving ALT: stop enforcing and let the page behave as usual
+      altActive = false;
+      desiredText = '';
+      stopObserver();
     }
   }
 
-  // Kick off & enforce
+  // Kick off
   tick();
   setInterval(tick, ENFORCE_MS);
 })();
 </script>
+
 
 
 <!-- Defensive shim for undefined globals & safe interval clears -->
