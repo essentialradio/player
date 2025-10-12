@@ -10158,7 +10158,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-<!-- ALT adapter (real .live-indicator badge + anti-flash) -->
+
+<!-- ALT adapter (clone PLAYIT badge exactly; anti-flash on line) -->
 <script>
 (function(){
   const LINE_SEL = '#now-playing';
@@ -10168,49 +10169,93 @@ document.addEventListener('DOMContentLoaded', function () {
   let altActive = false;
   let desiredText = '';
   let mo = null;
+  let templateHTML = null; // exact PLAYIT badge HTML
+  let badgeEl = null;
 
-  function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
   function sameText(a,b){ return String(a||'').trim() === String(b||'').trim(); }
+  function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
 
   function getLine(){ return document.querySelector(LINE_SEL); }
-  function getBadge(){ return document.querySelector(BADGE_SEL); }
-
-  function ensureDot(badge){
-    let dot = badge.querySelector('.dot');
-    if (!dot){
-      dot = document.createElement('span');
-      dot.className = 'dot';
-      badge.insertBefore(dot, badge.firstChild);
-    }
-    return dot;
+  function getBadge(){
+    if (badgeEl && document.contains(badgeEl)) return badgeEl;
+    badgeEl = document.querySelector(BADGE_SEL);
+    return badgeEl;
   }
-  function ensureLabel(badge){
-    let label = badge.querySelector('[data-alt-label]') ||
-                badge.querySelector('.label') || badge.querySelector('.text') ||
-                badge.querySelector('.name') || null;
-    if (!label || !label.hasAttribute('data-alt-label')){
-      if (!label){
-        label = document.createElement('span');
-        label.setAttribute('data-alt-label','1');
-        // place after dot if present
-        const dot = badge.querySelector('.dot');
-        if (dot) dot.insertAdjacentElement('afterend', label);
-        else badge.appendChild(label);
-      }else{
-        // reuse existing label element but mark it so we can update it
-        label.setAttribute('data-alt-label','1');
+
+  function captureTemplate(){
+    const b = getBadge();
+    if (!b) return;
+    if (templateHTML == null){
+      templateHTML = b.innerHTML; // exact current structure/styles from PLAYIT
+    }
+  }
+
+  function setLabelToNowPlayingLive(b){
+    if (!b) return;
+    // After resetting to template, try to find a text-bearing node after the dot
+    const dot = b.querySelector('.dot');
+    // Strategy 1: find an existing element likely to be the label
+    let label = b.querySelector('[data-label]') || b.querySelector('.label') || b.querySelector('.text') || b.querySelector('.name') || null;
+    if (!label){
+      // Strategy 2: if there's a text node after .dot, rewrite it
+      if (dot){
+        // ensure a text node after dot
+        if (!dot.nextSibling){
+          dot.insertAdjacentText('afterend', ' Now Playing Live');
+          return;
+        } else {
+          // replace all text nodes after dot with our label
+          let replaced = false;
+          let n = dot.nextSibling;
+          while (n){
+            const next = n.nextSibling;
+            if (n.nodeType === Node.TEXT_NODE){
+              n.nodeValue = ' Now Playing Live';
+              replaced = true;
+              // remove any extra siblings after first text
+              while (n.nextSibling) n.nextSibling.remove();
+              break;
+            }
+            n = next;
+          }
+          if (replaced) return;
+          // else create a span label after dot
+          const span = document.createElement('span');
+          span.textContent = 'Now Playing Live';
+          span.style.marginLeft = '0.4rem';
+          dot.insertAdjacentElement('afterend', span);
+          return;
+        }
       }
+      // Strategy 3: no dot — just set the whole text
+      b.textContent = 'Now Playing Live';
+      return;
+    } else {
+      // Reuse existing label element
+      if (!sameText(label.textContent, 'Now Playing Live')) label.textContent = 'Now Playing Live';
     }
-    if (!sameText(label.textContent, 'Now Playing Live')) label.textContent = 'Now Playing Live';
-    return label;
   }
 
-  function setBadgeNowPlayingLive(){
-    const badge = getBadge();
-    if (!badge) return;
-    ensureDot(badge);
-    ensureLabel(badge);
-    badge.style.display = '';
+  function applyAltBadge(){
+    const b = getBadge();
+    if (!b) return;
+    if (templateHTML != null){
+      b.innerHTML = templateHTML; // make it look EXACTLY like PLAYIT
+    } else {
+      // If we haven't captured yet, capture now (even if we're in ALT)
+      templateHTML = b.innerHTML;
+    }
+    setLabelToNowPlayingLive(b);
+    b.style.display = '';
+  }
+
+  function restoreBadge(){
+    const b = getBadge();
+    if (!b) return;
+    if (templateHTML != null){
+      b.innerHTML = templateHTML; // restore original
+      b.style.display = '';
+    }
   }
 
   function lockLineText(){
@@ -10244,6 +10289,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   async function tick(){
+    // Always try to capture the PLAYIT template when not in ALT
+    const b = getBadge();
+    if (b && !altActive && templateHTML == null){
+      captureTemplate();
+    }
+
     const latest = await getLatest();
     const isALT = latest && String(latest.source || '').toUpperCase() === 'ALT';
     const text = latest ? combo(latest.artist, latest.title) : '';
@@ -10251,13 +10302,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isALT && text){
       desiredText = text;
       altActive = true;
-      setBadgeNowPlayingLive();
-      lockLineText();
+      applyAltBadge();   // make badge look exactly like PLAYIT + "Now Playing Live"
+      lockLineText();    // stop "More music soon" flicker
       startObserver();
     } else {
+      if (altActive){
+        restoreBadge();  // put badge back to original PLAYIT structure
+      }
       altActive = false;
       desiredText = '';
       stopObserver();
+      // Keep capturing PLAYIT HTML as the ground truth whenever possible
+      captureTemplate();
     }
   }
 
@@ -10265,6 +10321,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setInterval(tick, ENFORCE_MS);
 })();
 </script>
+
 
 
 
