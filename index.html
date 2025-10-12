@@ -10154,6 +10154,41 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+<!-- ALT adapter (non-invasive) -->
+<script>
+(function(){
+  const LINE_SEL = '#now-playing';
+  const POLL_MS = 15000;
+  function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
+  async function getLatest(){
+    try{
+      const r = await fetch('/api/latestTrack?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch(e){ return null; }
+  }
+  async function tick(){
+    try{
+      const el = document.querySelector(LINE_SEL);
+      if (!el) return;
+      const j = await getLatest();
+      if (!j) return;
+      const isALT = String(j.source || '').toUpperCase() === 'ALT';
+      const text = combo(j.artist, j.title);
+      if (isALT && text){
+        const cur = (el.textContent || '').trim();
+        if (!cur || cur !== text){
+          el.textContent = text;
+        }
+      }
+    }catch(_){}
+  }
+  tick();
+  setInterval(tick, POLL_MS);
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
