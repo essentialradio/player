@@ -1,10 +1,10 @@
 {
-  "artist": "Ricky Martin",
-  "title": "Livin' La Vida Loca",
-  "startTime": "2025-10-12T07:22:17Z",
-  "start": "2025-10-12T07:22:17Z",
-  "duration": 236,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-10-12T07:26:13Z"
+  "endTime": "2025-10-12T08:00:00Z",
+  "artist": "Dr Hilary Jones",
+  "title": "The Dr Hilary Show",
+  "startTime": "2025-10-12T07:30:00Z",
+  "start": "2025-10-12T07:30:00Z",
+  "duration": 1800,
+  "source": "FIXED",
+  "indeterminate": false
 }
