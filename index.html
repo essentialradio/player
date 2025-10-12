@@ -10156,11 +10156,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-<!-- ALT adapter (strict .live-indicator + anti-flash) -->
+
+<!-- ALT adapter (proximity-based badge targeting + anti-flash) -->
 <script>
 (function(){
   const LINE_SEL = '#now-playing';
-  const BADGE_SEL = '.live-indicator'; // use the site's real badge only
   const ENFORCE_MS = 1000;
 
   let altActive = false;
@@ -10169,16 +10169,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
   function sameText(a,b){ return String(a||'').trim() === String(b||'').trim(); }
-  function isFallback(s){ return /more\s+music\s+soon/i.test(String(s||'')); }
 
-  function getBadge(){ return document.querySelector(BADGE_SEL); }
   function getLine(){ return document.querySelector(LINE_SEL); }
 
-  function setBadgeNowPlayingLive(){
-    const badge = getBadge();
+  // Rank candidate badges by DOM proximity to #now-playing and visibility
+  function findBestBadge(){
+    const line = getLine();
+    if (!line) return null;
+
+    const candidates = Array.from(document.querySelectorAll(
+      // broad net for site variants
+      '.live-indicator, #live, .live-badge, .badge-live, .now-playing-live, .player-live, .live-now, .current-live, [aria-live], [class*="live"]'
+    )).filter(el => el instanceof HTMLElement);
+
+    if (!candidates.length) return null;
+
+    function isVisible(el){
+      const s = getComputedStyle(el);
+      return s && s.display !== 'none' && s.visibility !== 'hidden';
+    }
+
+    function distance(el){
+      // count ancestor steps from line to a common ancestor, then to el
+      let steps = 0;
+      let a = line;
+      const seen = new Set();
+      while (a){
+        seen.add(a);
+        a = a.parentElement;
+      }
+      a = el;
+      let up = 0;
+      while (a && !seen.has(a)){
+        a = a.parentElement;
+        up++;
+      }
+      // prefer elements that share a close ancestor and are on-screen
+      return up + (isVisible(el) ? 0 : 1000);
+    }
+
+    candidates.sort((x,y) => distance(x) - distance(y));
+    return candidates[0] || null;
+  }
+
+  function setBadgeNowPlayingLive(badge){
     if (!badge) return;
     const first = badge.firstElementChild;
-    // look for an existing label span near the dot
+    // Prefer a dedicated label node to avoid clobbering the dot/icon
     let label = badge.querySelector('[data-alt-label]') ||
                 badge.querySelector('.label') || badge.querySelector('.text') ||
                 badge.querySelector('.name') || null;
@@ -10187,7 +10224,6 @@ document.addEventListener('DOMContentLoaded', function () {
       label.setAttribute('data-alt-label','1');
       label.style.marginLeft = first ? '0.4rem' : '0';
       if (first){
-        // remove any siblings after first to avoid duplicate labels
         while (first.nextSibling) first.nextSibling.remove();
         first.insertAdjacentElement('afterend', label);
       } else {
@@ -10200,7 +10236,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!sameText(label.textContent, 'Now Playing Live')){
       label.textContent = 'Now Playing Live';
     }
-    // Ensure badge is visible
     badge.style.display = '';
   }
 
@@ -10215,9 +10250,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function startObserver(){
     const el = getLine();
     if (!el || mo) return;
-    mo = new MutationObserver((mutations)=>{
+    mo = new MutationObserver(()=>{
       if (!altActive) return;
-      // Any change to the line while ALT is active: enforce text
       lockLineText();
     });
     mo.observe(el, { characterData: true, childList: true, subtree: true });
@@ -10243,22 +10277,22 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isALT && text){
       desiredText = text;
       altActive = true;
-      setBadgeNowPlayingLive();
+      const badge = findBestBadge();
+      if (badge) setBadgeNowPlayingLive(badge);
       lockLineText();
       startObserver();
     } else {
-      // Leaving ALT: stop enforcing and let the page behave as usual
       altActive = false;
       desiredText = '';
       stopObserver();
     }
   }
 
-  // Kick off
   tick();
   setInterval(tick, ENFORCE_MS);
 })();
 </script>
+
 
 
 
