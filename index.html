@@ -10156,11 +10156,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <!-- ALT adapter (non-invasive) -->
+<style>
+/* ALT live badge (only used if your theme doesn't already provide one) */
+.np-live-badge{display:inline-flex;align-items:center;gap:.45rem;margin-left:.6rem;font-weight:600;font-size:.9rem;}
+.np-live-badge .np-dot{width:.6rem;height:.6rem;border-radius:50%;background:#e02424;display:inline-block;box-shadow:0 0 0 2px rgba(224,36,36,.15);}
+@media (prefers-reduced-motion:no-preference){
+  .np-live-badge .np-dot{animation:npPulse 1.8s ease-in-out infinite;}
+  @keyframes npPulse{0%{box-shadow:0 0 0 0 rgba(224,36,36,.45)}70%{box-shadow:0 0 0 8px rgba(224,36,36,0)}100%{box-shadow:0 0 0 0 rgba(224,36,36,0)}}
+}
+</style>
 <script>
 (function(){
   const LINE_SEL = '#now-playing';
   const POLL_MS = 15000;
+  const BADGE_ID = 'npAltLiveBadge';
+
+  function ensureBadge(target){
+    if (!target) return null;
+    let badge = document.getElementById(BADGE_ID);
+    if (!badge){
+      badge = document.createElement('span');
+      badge.id = BADGE_ID;
+      badge.className = 'np-live-badge';
+      const dot = document.createElement('span');
+      dot.className = 'np-dot';
+      const txt = document.createElement('span');
+      txt.textContent = 'Now Playing Live';
+      badge.appendChild(dot);
+      badge.appendChild(txt);
+      // Place right after the line element
+      target.insertAdjacentElement('afterend', badge);
+    }
+    return badge;
+  }
+
+  function hideBadge(){
+    const b = document.getElementById(BADGE_ID);
+    if (b) b.style.display = 'none';
+  }
+
+  function showBadge(){
+    const b = document.getElementById(BADGE_ID);
+    if (b) b.style.display = '';
+  }
+
   function combo(a,t){ a=(a||'').trim(); t=(t||'').trim(); return a && t ? a+' - '+t : (a||t||''); }
+
   async function getLatest(){
     try{
       const r = await fetch('/api/latestTrack?t=' + Date.now(), { cache: 'no-store' });
@@ -10168,22 +10209,33 @@ document.addEventListener('DOMContentLoaded', function () {
       return await r.json();
     } catch(e){ return null; }
   }
+
   async function tick(){
     try{
-      const el = document.querySelector(LINE_SEL);
-      if (!el) return;
+      const line = document.querySelector(LINE_SEL);
+      if (!line) return;
       const j = await getLatest();
-      if (!j) return;
+      if (!j) { hideBadge(); return; }
+
       const isALT = String(j.source || '').toUpperCase() === 'ALT';
       const text = combo(j.artist, j.title);
+
       if (isALT && text){
-        const cur = (el.textContent || '').trim();
+        // Fill the line if needed
+        const cur = (line.textContent || '').trim();
         if (!cur || cur !== text){
-          el.textContent = text;
+          line.textContent = text;
         }
+        // Ensure/Show the live badge (ALT parity with PLAYIT)
+        const badge = ensureBadge(line);
+        if (badge) showBadge();
+      } else {
+        // Not ALT or no text: keep hands-off and hide our badge (PLAYIT likely has its own)
+        hideBadge();
       }
-    }catch(_){}
+    }catch(_){ hideBadge(); }
   }
+
   tick();
   setInterval(tick, POLL_MS);
 })();
