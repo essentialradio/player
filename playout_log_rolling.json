@@ -51798,5 +51798,18 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-10-12T11:01:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-12T11:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "Queen",
+    "Title": "Don't Stop Me Now",
+    "Duration (s)": 198,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-10-12T11:05:32Z",
+    "Source": "PLAYIT"
   }
 ]
