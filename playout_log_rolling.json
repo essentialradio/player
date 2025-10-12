@@ -51461,12 +51461,15 @@
     "Displayed Time": "14:00",
     "Artist": "Olly Murs",
     "Title": "Wrapped Up",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
+    "Duration (s)": 42,
+    "Full Duration (s)": 42,
+    "Duration (mins)": 0.7,
+    "Full Duration (mins)": 0.7,
     "Start ISO": "2025-10-12T13:00:00Z",
-    "Source": "ALT"
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-12T13:00:42Z",
+    "Actual Duration (s)": 42,
+    "Actual Duration (mins)": 0.7
   },
   {
     "Hour": "2025-10-12T13:00:00Z",
@@ -51474,12 +51477,15 @@
     "Displayed Time": "14:00",
     "Artist": "Spencer James",
     "Title": "Airplay 40",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
+    "Duration (s)": 14,
+    "Full Duration (s)": 14,
+    "Duration (mins)": 0.23,
+    "Full Duration (mins)": 0.23,
     "Start ISO": "2025-10-12T13:00:42Z",
-    "Source": "ALT"
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-12T13:00:56Z",
+    "Actual Duration (s)": 14,
+    "Actual Duration (mins)": 0.23
   },
   {
     "Hour": "2025-10-12T13:00:00Z",
@@ -51487,12 +51493,15 @@
     "Displayed Time": "14:00",
     "Artist": "Chappell Roan",
     "Title": "The Subway (Clean)",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
+    "Duration (s)": 444,
+    "Full Duration (s)": 444,
+    "Duration (mins)": 7.4,
+    "Full Duration (mins)": 7.4,
     "Start ISO": "2025-10-12T13:00:56Z",
-    "Source": "ALT"
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-12T13:08:20Z",
+    "Actual Duration (s)": 444,
+    "Actual Duration (mins)": 7.4
   },
   {
     "Hour": "2025-10-12T13:00:00Z",
@@ -51500,12 +51509,15 @@
     "Displayed Time": "14:08",
     "Artist": "Teddy Swims",
     "Title": "God Went Crazy",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
+    "Duration (s)": 182,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 3.03,
+    "Full Duration (mins)": 3.03,
     "Start ISO": "2025-10-12T13:08:20Z",
-    "Source": "ALT"
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-12T13:11:22Z",
+    "Actual Duration (s)": 182,
+    "Actual Duration (mins)": 3.03
   },
   {
     "Hour": "2025-10-12T13:00:00Z",
