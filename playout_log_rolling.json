@@ -51532,5 +51532,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-10-12T20:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-12T22:00:00Z",
+    "Scheduled Time": "23:00",
+    "Displayed Time": "23:00",
+    "Artist": "Essential Radio",
+    "Title": "The Country Mile with Dave Watkins",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-10-12T22:00:00Z",
+    "Source": "FIXED"
   }
 ]
