@@ -1,9 +1,8 @@
 /*!
- * Essential Radio - nowplaying.js (ALT-patched)
- * Handles schedule-based FIXED periods and ALT/MAIN source labelling,
- * plus robust iTunes (music-only) artwork fetching with caching.
- *
- * v1.0.1 (ALT fallback to latestTrack.json for display)
+ * Essential Radio - nowplaying.js (ALT+FIXED patched)
+ * v1.0.2
+ * - ALT: fallback to latestTrack.json in non-fixed slots
+ * - FIXED: suppress PlayIt/cart info; force 'FIXED' source; hide progress
  */
 
 (function (global) {
@@ -35,7 +34,11 @@
     region: 'GB',
 
     // Version string for cache-busting (optional)
-    appVersion: ''
+    appVersion: '',
+
+    // Behaviour
+    hideProgressInFixed: true,           // hide progress bar in fixed windows
+    showMainTrackInNonFixed: true        // show PlayIt track in non-fixed MAIN
   };
 
   const state = {
@@ -46,17 +49,17 @@
 
     artworkCache: Object.create(null),
     lastFixedKey: '',
+    isFixed: false,
     timer: null
   };
 
   // --- Utilities -----------------------------------------------------------
 
   function qs(sel) { return sel ? document.querySelector(sel) : null; }
+  function qsa(sel){ return sel ? Array.from(document.querySelectorAll(sel)) : []; }
   function text(el, s) { if (el) el.textContent = s || ''; }
   function setSrc(img, url) { if (img && url) img.src = url; }
   function safeJSON(res) { return res.ok ? res.json() : Promise.reject(new Error(res.status)); }
-
-  function pad2(n) { return String(n).padStart(2, '0'); }
 
   function localTimeParts(d) {
     return {
@@ -71,7 +74,6 @@
   };
 
   function parseTimeHM(str) {
-    // "19:00" -> {h:19,m:0}
     const m = /^(\d{1,2}):(\d{2})$/.exec(str || '');
     if (!m) return null;
     return { h: Math.min(23, parseInt(m[1], 10)), m: Math.min(59, parseInt(m[2], 10)) };
@@ -100,7 +102,6 @@
   }
 
   function normaliseEntry(e) {
-    // Accept flexible fields: 'presenter' or 'dj', 'source' defaults to 'MAIN'
     const start = parseTimeHM(e.start);
     const end = parseTimeHM(e.end);
     if (!start || !end) return null;
@@ -148,8 +149,6 @@
 
   // --- Progress helpers ----------------------------------------------------
 
-  function qsa(sel){ return sel ? Array.from(document.querySelectorAll(sel)) : []; }
-
   function computePct(item){
     if (!item) return 0;
     const startMs = Date.parse(item.startTime || item.start || 0) || 0;
@@ -160,11 +159,11 @@
     return Math.min(100, Math.max(0, pct));
   }
 
-  function shouldShowProgress(item){
+  function shouldShowProgress(cfg, item){
     if (!item) return false;
+    if (cfg.hideProgressInFixed && state.isFixed) return false;
     const src = String(item.source || '').toUpperCase();
     const ind = item.indeterminate === true;
-    // Hide only for ALT or explicit indeterminate
     return src !== 'ALT' && !ind;
   }
 
@@ -173,7 +172,7 @@
     const fills = qsa(cfg.progressFillSel);
     if (!els.length || !fills.length) return;
 
-    const show = shouldShowProgress(item);
+    const show = shouldShowProgress(cfg, item);
     els.forEach(el => el.toggleAttribute('hidden', !show));
     if (!show) return;
 
@@ -199,28 +198,25 @@
   function nextRefreshDelay(cfg, item){
     if (!item) return cfg.fallbackRefreshMs;
     const src = String(item.source || '').toUpperCase();
-    if (src === 'ALT') return cfg.fallbackRefreshMs; // avoid hammering
+    if (src === 'ALT') return cfg.fallbackRefreshMs;
     const startMs = Date.parse(item.startTime || item.start || 0) || 0;
     const endMs = item.endTime ? Date.parse(item.endTime) : (startMs + ((item.duration || 0) * 1000));
     const now = Date.now();
-    if (!endMs || endMs <= now) return 2000; // boundary soon or passed
-    return Math.max(2000, Math.min(30000, (endMs - now) + 500)); // ~0.5s after boundary
+    if (!endMs || endMs <= now) return 2000;
+    return Math.max(2000, Math.min(30000, (endMs - now) + 500));
   }
 
   function startProgressLoops(cfg){
-    // Initial fetch + instant paint
     loadLatest(cfg).then(()=>{
       renderProgress(cfg, state.latest, /*instant*/true);
       scheduleLatestRefresh(cfg, state.latest);
     });
 
-    // 1s repaint loop
     if (state.tickTimer) clearInterval(state.tickTimer);
     state.tickTimer = setInterval(() => {
       renderProgress(cfg, state.latest);
     }, cfg.progressUpdateMs);
 
-    // Refresh again when tab becomes visible
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden){
         loadLatest(cfg).then(()=>{
@@ -260,7 +256,6 @@
     const statusEl = qs(cfg.statusSel);
 
     try {
-      // Lazy-load schedule on first run or every 15 minutes
       if (!state._loadedAt || (Date.now() - state._loadedAt) > 15 * 60 * 1000) {
         await loadSchedule(cfg.scheduleUrl);
         state._loadedAt = Date.now();
@@ -269,14 +264,15 @@
       const cur = findCurrentEntry(state.schedule);
 
       if (cur && cur.fixed) {
-        // Fixed: show show title/presenter and source label
+        state.isFixed = true;
+
         text(showEl, cur.title || 'On Air');
         text(djEl, cur.presenter || '');
-        text(srcEl, (state.latest && state.latest.source) ? String(state.latest.source).toUpperCase() : cur.source);
+        text(srcEl, 'FIXED');
+
         const key = cur.title + '|' + cur.presenter;
         if (key !== state.lastFixedKey) {
           state.lastFixedKey = key;
-          // Optional: fetch artwork by show title to dress the page
           if (artImg) {
             const art = await getTrackArtwork(cur.title, cfg.region, cfg.appVersion);
             if (art) setSrc(artImg, art);
@@ -284,27 +280,25 @@
         }
         if (statusEl) text(statusEl, 'fixed slot');
       } else {
-        // --- Not fixed: show current track from latestTrack.json ---
+        state.isFixed = false;
+
         const latest = state.latest || {};
-        // Prefer schedule source if entry exists (ALT window without fixed)
-        const src = (cur && cur.source)
-          ? String(cur.source).toUpperCase()
-          : (String(latest.source || '').toUpperCase() || 'MAIN');
+        const srcFromSched = (cur && cur.source) ? String(cur.source).toUpperCase() : '';
+        const src = srcFromSched || (String(latest.source || '').toUpperCase() || 'MAIN');
 
         const artist = latest.artist || '';
         const title = latest.title || '';
 
-        // If ALT, show ALT track/title; otherwise generic fallback
+        const showMain = cfg.showMainTrackInNonFixed !== false;
         const displayTitle = (src === 'ALT')
           ? (title || 'Alternative Source')
-          : (title || 'More music soon');
+          : (showMain && title ? title : 'More music soon');
 
         text(showEl, displayTitle);
-        text(djEl, artist);
-        text(srcEl, src);
+        text(djEl, showMain ? artist : '');
+        text(srcEl, src || 'MAIN');
 
-        // Optional artwork lookup for ALT / MAIN songs
-        if (artImg && (artist || title)) {
+        if (artImg && (artist || title) && (src === 'ALT' || showMain)) {
           const art = await getTrackArtwork(`${artist} ${title}`.trim(), cfg.region, cfg.appVersion);
           if (art) setSrc(artImg, art);
         }
@@ -320,16 +314,13 @@
 
   function startLoop(cfg) {
     if (state.timer) clearInterval(state.timer);
-    tick(cfg); // run immediately
+    tick(cfg);
     state.timer = setInterval(() => tick(cfg), cfg.refreshMs);
   }
-
-  // --- Public API ----------------------------------------------------------
 
   const NowPlaying = {
     init(options) {
       const cfg = Object.assign({}, DEFAULTS, options || {});
-      // Save version globally if provided
       if (cfg.appVersion) {
         try { window.APP_VERSION = String(cfg.appVersion); } catch {}
       }
@@ -339,7 +330,6 @@
     }
   };
 
-  // UMD-ish export
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = NowPlaying;
   } else {
