@@ -52059,5 +52059,18 @@
     "Full Duration (mins)": 4.05,
     "Start ISO": "2025-10-12T01:23:15Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-12T01:00:00Z",
+    "Scheduled Time": "02:27",
+    "Displayed Time": "02:27",
+    "Artist": "One Direction",
+    "Title": "Best Song Ever",
+    "Duration (s)": 183,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.38,
+    "Start ISO": "2025-10-12T01:27:16Z",
+    "Source": "PLAYIT"
   }
 ]
