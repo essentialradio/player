@@ -51460,5 +51460,31 @@
     "Full Duration (mins)": 3.75,
     "Start ISO": "2025-10-12T09:05:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-12T09:00:00Z",
+    "Scheduled Time": "10:09",
+    "Displayed Time": "10:09",
+    "Artist": "Robin S",
+    "Title": "Show Me Love",
+    "Duration (s)": 188,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.33,
+    "Start ISO": "2025-10-12T09:09:08Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-12T09:00:00Z",
+    "Scheduled Time": "10:12",
+    "Displayed Time": "10:12",
+    "Artist": "The Beatles",
+    "Title": "A Hard Day's Night",
+    "Duration (s)": 141,
+    "Full Duration (s)": 149,
+    "Duration (mins)": 2.35,
+    "Full Duration (mins)": 2.48,
+    "Start ISO": "2025-10-12T09:12:23Z",
+    "Source": "PLAYIT"
   }
 ]
