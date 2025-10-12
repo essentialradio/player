@@ -10268,7 +10268,7 @@ document.addEventListener('DOMContentLoaded', function () {
           b.style.display = '';
           hideOtherBadges(b);
         }
-        altActive = True;
+        altActive = true;
       } else {
         if (altActive){
           restoreBadges();
@@ -10286,6 +10286,39 @@ document.addEventListener('DOMContentLoaded', function () {
   // Kick off & enforce
   tick();
   setInterval(tick, ENFORCE_MS);
+})();
+</script>
+
+
+<!-- Defensive shim for undefined globals & safe interval clears -->
+<script>
+(function(){
+  // Ensure globals exist so clearInterval calls don't throw
+  window.nowPlayingInterval = window.nowPlayingInterval || null;
+  window.recentlyPlayedInterval = window.recentlyPlayedInterval || null;
+  window.progressInterval = window.progressInterval || null;
+
+  // If a global stopIntervals exists, wrap it so it never throws
+  try{
+    const origStop = window.stopIntervals;
+    window.stopIntervals = function(){
+      try{
+        if (window.nowPlayingInterval) { clearInterval(window.nowPlayingInterval); window.nowPlayingInterval = null; }
+        if (window.recentlyPlayedInterval) { clearInterval(window.recentlyPlayedInterval); window.recentlyPlayedInterval = null; }
+        if (window.progressInterval) { clearInterval(window.progressInterval); window.progressInterval = null; }
+        if (typeof origStop === 'function') { try{ origStop(); }catch(e){} }
+      }catch(e){ /* swallow */ }
+    };
+  }catch(e){
+    // Define a no-op if stopIntervals was missing
+    window.stopIntervals = function(){
+      try{
+        if (window.nowPlayingInterval) { clearInterval(window.nowPlayingInterval); window.nowPlayingInterval = null; }
+        if (window.recentlyPlayedInterval) { clearInterval(window.recentlyPlayedInterval); window.recentlyPlayedInterval = null; }
+        if (window.progressInterval) { clearInterval(window.progressInterval); window.progressInterval = null; }
+      }catch(_){}
+    };
+  }
 })();
 </script>
 
