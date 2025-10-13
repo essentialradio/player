@@ -51571,5 +51571,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-10-12T23:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-13T01:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 142,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.37,
+    "Full Duration (mins)": 2.38,
+    "Start ISO": "2025-10-13T01:01:46Z",
+    "Source": "PLAYIT"
   }
 ]
