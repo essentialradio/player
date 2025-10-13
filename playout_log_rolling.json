@@ -51583,5 +51583,31 @@
     "Full Duration (mins)": 3.82,
     "Start ISO": "2025-10-13T14:05:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T14:00:00Z",
+    "Scheduled Time": "15:09",
+    "Displayed Time": "15:09",
+    "Artist": "Meghan Trainor",
+    "Title": "Made You Look",
+    "Duration (s)": 128,
+    "Full Duration (s)": 134,
+    "Duration (mins)": 2.13,
+    "Full Duration (mins)": 2.23,
+    "Start ISO": "2025-10-13T14:09:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T14:00:00Z",
+    "Scheduled Time": "15:14",
+    "Displayed Time": "15:14",
+    "Artist": "Andreas Johnson",
+    "Title": "Glorious",
+    "Duration (s)": 185,
+    "Full Duration (s)": 193,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.22,
+    "Start ISO": "2025-10-13T14:14:33Z",
+    "Source": "PLAYIT"
   }
 ]
