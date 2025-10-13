@@ -52441,5 +52441,44 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-10-13T18:48:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T18:00:00Z",
+    "Scheduled Time": "19:51",
+    "Displayed Time": "19:51",
+    "Artist": "Texas ft Paul Buchanan",
+    "Title": "Sleep",
+    "Duration (s)": 204,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.55,
+    "Start ISO": "2025-10-13T18:51:30Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T18:00:00Z",
+    "Scheduled Time": "19:54",
+    "Displayed Time": "19:54",
+    "Artist": "Simply Red",
+    "Title": "Stars",
+    "Duration (s)": 236,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 3.93,
+    "Full Duration (mins)": 4.1,
+    "Start ISO": "2025-10-13T18:54:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T19:00:00Z",
+    "Scheduled Time": "20:01",
+    "Displayed Time": "20:01",
+    "Artist": "Zoe",
+    "Title": "Sunshine on a Rainy Day",
+    "Duration (s)": 229,
+    "Full Duration (s)": 241,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.02,
+    "Start ISO": "2025-10-13T19:01:53Z",
+    "Source": "PLAYIT"
   }
 ]
