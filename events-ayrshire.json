@@ -459,6 +459,39 @@
       "link": "https://www.staffnews.north-ayrshire.gov.uk/book-now-latest-nasa-events-2025-2/",
       "source": "North Ayrshire Council",
       "recurring": true
+    },
+    {
+      "title": "Pumpkin Picking Weekend \u2013 Geilsland Estate",
+      "start_date": "2025-10-25",
+      "end_date": "2025-10-26",
+      "venue": "Geilsland Estate",
+      "town": "Beith",
+      "desc": "Family pumpkin picking event with crafts, hay-maze, and food stalls.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council",
+      "recurring": false
+    },
+    {
+      "title": "Whitlees Fireworks Night Celebrations",
+      "start_date": "2025-11-02",
+      "end_date": "2025-11-02",
+      "venue": "Whitlees Community Centre & Stanley Park",
+      "town": "Ardrossan",
+      "desc": "Community fireworks night with rides and refreshments in Ardrossan.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council",
+      "recurring": true
+    },
+    {
+      "title": "Parent & Toddler Drop-In \u2013 Largs Library",
+      "start_date": "2025-10-06",
+      "end_date": "2025-10-06",
+      "venue": "Largs Library",
+      "town": "Largs",
+      "desc": "Weekly Monday morning drop-in session for parents and toddlers with stories and playtime.",
+      "link": "https://www.facebook.com/northayrshireofficial/",
+      "source": "North Ayrshire Council",
+      "recurring": true
     }
   ],
   "south": [
@@ -1091,6 +1124,61 @@
       "link": "https://www.ayr-racecourse.co.uk/events-occasions/festive-day-dancin/",
       "source": "Ayr Racecourse",
       "recurring": false
+    },
+    {
+      "title": "The Wandering Witches of Culzean",
+      "start_date": "2025-10-13",
+      "end_date": "2025-11-16",
+      "venue": "Culzean Castle & Country Park",
+      "town": "Maybole",
+      "desc": "Seasonal theatrical family trail through Culzean Castle\u2019s grounds featuring witches and legends.",
+      "link": "https://connectsouthayrshire.org/events.php",
+      "source": "Connect South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Kids October Camp 2025 \u2013 Prestwick Tennis",
+      "start_date": "2025-10-13",
+      "end_date": "2025-10-17",
+      "venue": "Prestwick Tennis & Fitness Club",
+      "town": "Prestwick",
+      "desc": "Week-long tennis and activity camp for children during October school holidays.",
+      "link": "https://connectsouthayrshire.org/events.php",
+      "source": "Connect South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Halloween Crafts at Girvan Library",
+      "start_date": "2025-11-01",
+      "end_date": "2025-11-01",
+      "venue": "Girvan Library",
+      "town": "Girvan",
+      "desc": "Spooky craft-making afternoon for families at Girvan Library.",
+      "link": "https://destinationsouthayrshire.co.uk/events/family-events/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Myths & Legends Workshop with ZooLab \u2013 Alloway Library",
+      "start_date": "2025-10-26",
+      "end_date": "2025-10-26",
+      "venue": "Alloway Library",
+      "town": "Alloway",
+      "desc": "Interactive storytelling and animal encounter session exploring Scottish myths and legends.",
+      "link": "https://destinationsouthayrshire.co.uk/events/family-events/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Annual Ayr Christmas Light Switch On",
+      "start_date": "2025-11-16",
+      "end_date": "2025-11-16",
+      "venue": "Ayr Town Centre",
+      "town": "Ayr",
+      "desc": "Festive light switch-on celebration with music, stalls, and family entertainment in Ayr town centre.",
+      "link": "https://www.whatsonayrshire.com/annual-events-festivals",
+      "source": "What\u2019s On Ayrshire",
+      "recurring": true
     }
   ],
   "east": [
