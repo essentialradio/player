@@ -53078,5 +53078,31 @@
     "Full Duration (mins)": 4.22,
     "Start ISO": "2025-10-13T22:31:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T22:00:00Z",
+    "Scheduled Time": "23:39",
+    "Displayed Time": "23:39",
+    "Artist": "Chicago",
+    "Title": "Hard Habit to Break",
+    "Duration (s)": 222,
+    "Full Duration (s)": 241,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 4.02,
+    "Start ISO": "2025-10-13T22:39:36Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T22:00:00Z",
+    "Scheduled Time": "23:43",
+    "Displayed Time": "23:43",
+    "Artist": "Travis",
+    "Title": "Writing To Reach You",
+    "Duration (s)": 204,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-10-13T22:43:24Z",
+    "Source": "PLAYIT"
   }
 ]
