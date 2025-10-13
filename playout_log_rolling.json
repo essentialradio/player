@@ -51726,5 +51726,31 @@
     "Full Duration (mins)": 3.1,
     "Start ISO": "2025-10-13T14:52:03Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T14:00:00Z",
+    "Scheduled Time": "15:55",
+    "Displayed Time": "15:55",
+    "Artist": "Enrique Iglesias",
+    "Title": "Escape",
+    "Duration (s)": 200,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.47,
+    "Start ISO": "2025-10-13T14:55:07Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-13T15:00:00Z",
+    "Scheduled Time": "16:01",
+    "Displayed Time": "16:01",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 175,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.05,
+    "Start ISO": "2025-10-13T15:01:50Z",
+    "Source": "PLAYIT"
   }
 ]
