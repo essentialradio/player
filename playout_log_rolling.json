@@ -53455,5 +53455,31 @@
     "Full Duration (mins)": 3.28,
     "Start ISO": "2025-10-14T00:36:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T00:00:00Z",
+    "Scheduled Time": "01:44",
+    "Displayed Time": "01:44",
+    "Artist": "Jonas Brothers",
+    "Title": "Waffle House",
+    "Duration (s)": 139,
+    "Full Duration (s)": 145,
+    "Duration (mins)": 2.32,
+    "Full Duration (mins)": 2.42,
+    "Start ISO": "2025-10-14T00:44:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T00:00:00Z",
+    "Scheduled Time": "01:46",
+    "Displayed Time": "01:46",
+    "Artist": "Bangles",
+    "Title": "Manic Monday",
+    "Duration (s)": 177,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.07,
+    "Start ISO": "2025-10-14T00:46:24Z",
+    "Source": "PLAYIT"
   }
 ]
