@@ -54950,5 +54950,31 @@
     "Full Duration (mins)": 3.08,
     "Start ISO": "2025-10-14T09:15:30Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T09:00:00Z",
+    "Scheduled Time": "10:19",
+    "Displayed Time": "10:19",
+    "Artist": "Joel Corry & Becky Hill",
+    "Title": "HISTORY",
+    "Duration (s)": 173,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-10-14T09:19:32Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T09:00:00Z",
+    "Scheduled Time": "10:29",
+    "Displayed Time": "10:29",
+    "Artist": "Hozier",
+    "Title": "Too Sweet",
+    "Duration (s)": 246,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-10-14T09:29:17Z",
+    "Source": "PLAYIT"
   }
 ]
