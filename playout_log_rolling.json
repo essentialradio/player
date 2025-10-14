@@ -54742,5 +54742,31 @@
     "Full Duration (mins)": 3.7,
     "Start ISO": "2025-10-14T07:55:40Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T08:00:00Z",
+    "Scheduled Time": "09:03",
+    "Displayed Time": "09:03",
+    "Artist": "Lewis Capaldi",
+    "Title": "Something In The Heavens",
+    "Duration (s)": 192,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-10-14T08:03:22Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T08:00:00Z",
+    "Scheduled Time": "09:06",
+    "Displayed Time": "09:06",
+    "Artist": "David Guetta & Bebe Rexha",
+    "Title": "I'm Good (Blue)",
+    "Duration (s)": 173,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.9,
+    "Start ISO": "2025-10-14T08:06:33Z",
+    "Source": "PLAYIT"
   }
 ]
