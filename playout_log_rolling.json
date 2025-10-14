@@ -53848,5 +53848,31 @@
     "Full Duration (mins)": 3.63,
     "Start ISO": "2025-10-14T23:47:12Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T23:00:00Z",
+    "Scheduled Time": "00:50",
+    "Displayed Time": "00:50",
+    "Artist": "Omi",
+    "Title": "Cheerleader",
+    "Duration (s)": 173,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-10-14T23:50:44Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T23:00:00Z",
+    "Scheduled Time": "00:53",
+    "Displayed Time": "00:53",
+    "Artist": "Daft Punk Feat. Pharrell Williams",
+    "Title": "Get Lucky",
+    "Duration (s)": 232,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.15,
+    "Start ISO": "2025-10-14T23:53:37Z",
+    "Source": "PLAYIT"
   }
 ]
