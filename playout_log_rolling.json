@@ -51638,5 +51638,31 @@
     "Full Duration (mins)": 3.57,
     "Start ISO": "2025-10-14T11:30:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T11:00:00Z",
+    "Scheduled Time": "12:37",
+    "Displayed Time": "12:37",
+    "Artist": "Coldplay",
+    "Title": "Feels Like I'm Falling in Love",
+    "Duration (s)": 220,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.73,
+    "Start ISO": "2025-10-14T11:37:26Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T11:00:00Z",
+    "Scheduled Time": "12:42",
+    "Displayed Time": "12:42",
+    "Artist": "Steps",
+    "Title": "Tragedy",
+    "Duration (s)": 266,
+    "Full Duration (s)": 271,
+    "Duration (mins)": 4.43,
+    "Full Duration (mins)": 4.52,
+    "Start ISO": "2025-10-14T11:42:12Z",
+    "Source": "PLAYIT"
   }
 ]
