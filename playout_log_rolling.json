@@ -54768,5 +54768,31 @@
     "Full Duration (mins)": 2.9,
     "Start ISO": "2025-10-14T08:06:33Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T08:00:00Z",
+    "Scheduled Time": "09:11",
+    "Displayed Time": "09:11",
+    "Artist": "James Morrison",
+    "Title": "Cry Your Tears On Me",
+    "Duration (s)": 218,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-10-14T08:11:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-14T08:00:00Z",
+    "Scheduled Time": "09:14",
+    "Displayed Time": "09:14",
+    "Artist": "Sam Fender",
+    "Title": "Seventeen Going Under",
+    "Duration (s)": 230,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.9,
+    "Start ISO": "2025-10-14T08:14:49Z",
+    "Source": "PLAYIT"
   }
 ]
