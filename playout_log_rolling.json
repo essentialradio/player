@@ -56591,5 +56591,31 @@
     "Full Duration (mins)": 3.63,
     "Start ISO": "2025-10-15T15:08:30Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-15T15:00:00Z",
+    "Scheduled Time": "16:12",
+    "Displayed Time": "16:12",
+    "Artist": "Mika",
+    "Title": "Grace Kelly",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-10-15T15:12:18Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-15T15:00:00Z",
+    "Scheduled Time": "16:15",
+    "Displayed Time": "16:15",
+    "Artist": "David Guetta, Becky Hill & Ella Henderson",
+    "Title": "Crazy What Love Can Do",
+    "Duration (s)": 161,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.8,
+    "Start ISO": "2025-10-15T15:15:09Z",
+    "Source": "PLAYIT"
   }
 ]
