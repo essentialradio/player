@@ -57111,5 +57111,31 @@
     "Full Duration (mins)": 3.1,
     "Start ISO": "2025-10-15T17:54:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-15T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "19:01",
+    "Artist": "Bloc Party",
+    "Title": "Banquet",
+    "Duration (s)": 189,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.25,
+    "Start ISO": "2025-10-15T18:01:56Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-15T18:00:00Z",
+    "Scheduled Time": "19:05",
+    "Displayed Time": "19:05",
+    "Artist": "Lightning Seeds",
+    "Title": "The Life of Riley",
+    "Duration (s)": 235,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.92,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-10-15T18:05:13Z",
+    "Source": "PLAYIT"
   }
 ]
