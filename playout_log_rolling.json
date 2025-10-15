@@ -57995,5 +57995,31 @@
     "Full Duration (mins)": 3.85,
     "Start ISO": "2025-10-15T23:09:21Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-15T23:00:00Z",
+    "Scheduled Time": "00:13",
+    "Displayed Time": "00:13",
+    "Artist": "Naughty Boy Feat. Sam Smith",
+    "Title": "La La La",
+    "Duration (s)": 215,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.68,
+    "Start ISO": "2025-10-15T23:13:19Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-15T23:00:00Z",
+    "Scheduled Time": "00:16",
+    "Displayed Time": "00:16",
+    "Artist": "Sam Fender",
+    "Title": "People Watching",
+    "Duration (s)": 237,
+    "Full Duration (s)": 311,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 5.18,
+    "Start ISO": "2025-10-15T23:16:54Z",
+    "Source": "PLAYIT"
   }
 ]
