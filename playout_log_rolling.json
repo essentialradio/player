@@ -57813,5 +57813,18 @@
     "Full Duration (mins)": 3.5,
     "Start ISO": "2025-10-15T22:05:30Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-15T22:00:00Z",
+    "Scheduled Time": "23:08",
+    "Displayed Time": "23:08",
+    "Artist": "Mario",
+    "Title": "Let Me Love You",
+    "Duration (s)": 224,
+    "Full Duration (s)": 236,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.93,
+    "Start ISO": "2025-10-15T22:08:42Z",
+    "Source": "PLAYIT"
   }
 ]
