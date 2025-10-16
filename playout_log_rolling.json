@@ -61505,5 +61505,31 @@
     "Full Duration (mins)": 3.32,
     "Start ISO": "2025-10-16T18:46:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-16T18:00:00Z",
+    "Scheduled Time": "19:49",
+    "Displayed Time": "19:49",
+    "Artist": "James",
+    "Title": "Laid",
+    "Duration (s)": 147,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.45,
+    "Full Duration (mins)": 2.63,
+    "Start ISO": "2025-10-16T18:49:19Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-16T18:00:00Z",
+    "Scheduled Time": "19:51",
+    "Displayed Time": "19:51",
+    "Artist": "Katy Perry",
+    "Title": "Hot N Cold",
+    "Duration (s)": 210,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-10-16T18:51:49Z",
+    "Source": "PLAYIT"
   }
 ]
