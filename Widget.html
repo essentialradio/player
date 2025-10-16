@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v9 (mobile play visible)</title>
+  <title>Essential Radio Widget – Upgraded v10 (mobile titles wrap)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root{
@@ -85,8 +85,14 @@
     #erw #m-artwork { width: 84px; height: 84px; border-radius: 9px; border: 3px solid #fed351; object-fit: cover; background: #222; opacity: 0; filter: blur(10px) brightness(.9); transition: opacity .4s ease-in-out, filter .4s ease-in-out; }
     #erw #m-artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
     #erw #m-artwork.fallback { filter: blur(5px) brightness(.85); opacity: .85; }
-    #erw .m-title { color: #fed351; font-weight: 700; font-size: var(--fs-sm); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    #erw .m-artist { opacity: 0.95; font-size: var(--fs-xs); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+    /* Ensure text container can shrink and wrap */
+    #erw .m-now > div { min-width: 0; flex: 1; }
+
+    #erw .m-title { color: #fed351; font-weight: 700; font-size: var(--fs-sm);
+      white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; line-height: 1.2; }
+    #erw .m-artist { opacity: 0.95; font-size: var(--fs-xs);
+      white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; line-height: 1.2; }
 
     /* NEW: Mobile controls (play button visible) */
     #erw .m-controls { padding: 0 12px 6px 12px; display: flex; justify-content: center; }
@@ -102,10 +108,14 @@
     #erw .m-cta { text-align: center; }
     #erw .m-cta a { display: inline-block; text-decoration: none; background: linear-gradient(180deg, #fed351, #f2c22a); color: #111; font-weight: 800; padding: 8px 12px; border-radius: 10px; font-size: var(--fs-sm); }
 
+    /* Let recent item titles wrap to two lines on mobile */
     @media (max-width: 700px) {
       #erw .desktop { display: none; }
       #erw .mobile  { display: block; }
       #erw #volume-slider, #erw #mute-toggle { display: none; }
+      #erw .mobile .recent span.info {
+        white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+      }
     }
   </style>
 </head>
@@ -166,7 +176,7 @@
           </div>
         </div>
 
-        <!-- NEW: Mobile play button -->
+        <!-- Mobile play button -->
         <div class="m-controls">
           <button id="m-play-toggle">▶️</button>
         </div>
