@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v8 (restart on resume)</title>
+  <title>Essential Radio Widget – Upgraded v9 (mobile play visible)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root{
@@ -88,6 +88,13 @@
     #erw .m-title { color: #fed351; font-weight: 700; font-size: var(--fs-sm); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
     #erw .m-artist { opacity: 0.95; font-size: var(--fs-xs); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 
+    /* NEW: Mobile controls (play button visible) */
+    #erw .m-controls { padding: 0 12px 6px 12px; display: flex; justify-content: center; }
+    #erw #m-play-toggle {
+      background: #fed351; color: #111; border: none; border-radius: 8px; padding: 8px 16px;
+      font-size: var(--fs-sm); font-weight: 800; cursor: pointer;
+    }
+
     #erw .m-recent { padding: 6px 12px 6px 12px; }
     #erw .m-recent .recent-title { font-size: var(--fs-sm); margin: 0 0 4px 0; }
     #erw .m-aux { padding: 6px 12px 12px 12px; display: grid; gap: 8px; }
@@ -158,6 +165,12 @@
             <div id="m-now-playing-artist" class="m-artist"></div>
           </div>
         </div>
+
+        <!-- NEW: Mobile play button -->
+        <div class="m-controls">
+          <button id="m-play-toggle">▶️</button>
+        </div>
+
         <div class="m-recent">
           <div class="recent-title">Recently Played</div>
           <ul id="m-recent-list" class="recent"></ul>
@@ -202,10 +215,15 @@
     let bustCounter = 0;
 
     const playBtn = document.getElementById('play-toggle');
+    const mPlayBtn = document.getElementById('m-play-toggle');
     const muteBtn = document.getElementById('mute-toggle');
     const volumeSlider = document.getElementById('volume-slider');
 
-    function setPlayingUI(playing) { isPlaying = playing; if (playBtn) playBtn.textContent = playing ? '⏸' : '▶️'; }
+    function setPlayingUI(playing) {
+      isPlaying = playing;
+      if (playBtn) playBtn.textContent = playing ? '⏸' : '▶️';
+      if (mPlayBtn) mPlayBtn.textContent = playing ? '⏸' : '▶️';
+    }
     function syncMuteIcon() {
       if (!muteBtn) return;
       const v = audio.muted ? 0 : audio.volume;
@@ -218,7 +236,6 @@
     }
 
     function startPlayback() {
-      // If user previously paused OR we've connected before, force a fresh connection
       if (userPaused || audio.readyState > 0) {
         freshenStreamSrc();
         audio.load();
@@ -228,7 +245,6 @@
       userPaused = false;
       audio.play().then(() => setPlayingUI(true)).catch(() => {});
     }
-
     function pausePlayback() {
       userPaused = true;
       audio.pause();
@@ -236,6 +252,8 @@
     }
 
     if (playBtn) playBtn.onclick = () => { isPlaying ? pausePlayback() : startPlayback(); };
+    if (mPlayBtn) mPlayBtn.onclick = () => { isPlaying ? pausePlayback() : startPlayback(); };
+
     if (volumeSlider) volumeSlider.oninput = function(){ audio.volume = this.value/100; lastVolume = audio.volume; syncMuteIcon(); };
     if (muteBtn) muteBtn.onclick = () => {
       if (!audio.muted && audio.volume > 0) { audio.muted = true; if (volumeSlider) volumeSlider.value = 0; }
