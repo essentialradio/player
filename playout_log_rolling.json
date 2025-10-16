@@ -59477,5 +59477,31 @@
     "Full Duration (mins)": 3.28,
     "Start ISO": "2025-10-16T07:14:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-16T07:00:00Z",
+    "Scheduled Time": "08:18",
+    "Displayed Time": "08:18",
+    "Artist": "Tom Grennan",
+    "Title": "How Does It Feel",
+    "Duration (s)": 137,
+    "Full Duration (s)": 144,
+    "Duration (mins)": 2.28,
+    "Full Duration (mins)": 2.4,
+    "Start ISO": "2025-10-16T07:18:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-16T07:00:00Z",
+    "Scheduled Time": "08:25",
+    "Displayed Time": "08:25",
+    "Artist": "Lola Young",
+    "Title": "D\u00a3aler",
+    "Duration (s)": 157,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.67,
+    "Start ISO": "2025-10-16T07:25:22Z",
+    "Source": "PLAYIT"
   }
 ]
