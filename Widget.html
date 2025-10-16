@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v5</title>
+  <title>Essential Radio Widget – Upgraded v6 (stable NP)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     #erw, #erw * { box-sizing: border-box; }
     #erw { font-family: 'Inter', sans-serif; color: #fff; }
     #erw .widget-shell { background: #191c29; border-radius: 20px; box-shadow: 0 4px 24px #0005; overflow: hidden; }
 
-    /* ---------------- Desktop ---------------- */
+    /* Desktop */
     #erw .desktop { display: flex; width: 100%; height: 600px; }
     #erw .left {
       width: 260px; min-width: 200px; background: #21233c;
@@ -60,7 +60,7 @@
     #erw .cta { display: inline-block; text-decoration: none; background: linear-gradient(180deg, #fed351, #f2c22a); color: #111; font-weight: 800; padding: 12px 18px; border-radius: 12px; border: 2px solid #11100022; box-shadow: 0 6px 20px rgba(254,211,81, .25); }
     #erw .cta:hover { filter: brightness(1.05); }
 
-    /* ---------------- Mobile layout ---------------- */
+    /* Mobile */
     #erw .mobile { display: none; width: 100%; max-width: 700px; }
     #erw .mobile .card { width: 100%; background: #191c29; border-radius: 20px; }
     #erw .m-header { display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 2px solid #fed35133; }
@@ -164,10 +164,10 @@
   </div>
 
   <script>
-    /* ========== Config ========== */
+    /* ======= Config ======= */
     const RECENT_COUNT = 4;
 
-    /* ========== Helpers ========== */
+    /* ======= Helpers ======= */
     function decodeHtmlEntities(str) {
       if (!str) return "";
       var txt = document.createElement("textarea");
@@ -178,7 +178,7 @@
       for (const e of entries) if (e.isIntersecting) { e.target.classList.add("loaded"); io.unobserve(e.target); }
     }, { threshold: 0.1 });
 
-    /* ========== Audio with *gentle* watchdog ========== */
+    /* ======= Gentle audio watchdog (unchanged from v5) ======= */
     const audio = new Audio("https://streaming06.liveboxstream.uk/proxy/ayrshire/stream");
     audio.preload = "none";
     audio.volume = 0.8;
@@ -223,27 +223,19 @@
     function attemptRestart(reason) {
       const now = Date.now();
       if (userPaused || document.hidden) return;
-      if (now - lastRestartMs < 45_000) return; // backoff
+      if (now - lastRestartMs < 45_000) return;
       lastRestartMs = now;
-      try {
-        audio.pause();
-        audio.load();
-        audio.play().then(() => setPlayingUI(true)).catch(()=>{});
-      } catch {}
+      try { audio.pause(); audio.load(); audio.play().then(() => setPlayingUI(true)).catch(()=>{}); } catch {}
     }
-
     audio.addEventListener('error', () => attemptRestart('error'));
     audio.addEventListener('ended', () => attemptRestart('ended'));
-    // No 'suspend'/'stalled' handlers; rely on progress watchdog instead.
-
     setInterval(() => {
       if (!isPlaying || userPaused) return;
       if (document.hidden) return;
-      // If we haven't had progress for 25s, nudge the stream.
       if (Date.now() - lastProgressMs > 25_000) attemptRestart('no-progress');
     }, 10_000);
 
-    /* ========== Schedule: On Air + Up Next ========== */
+    /* ======= Schedule (unchanged) ======= */
     async function fetchSchedule() { try { const r = await fetch("https://essentialradio.github.io/player/schedule.json"); return await r.json(); } catch { return null; } }
     function minutes(hm){ const [h,m]=hm.split(':').map(Number); return h*60+m; }
     function getCurrentAndNext(schedule){
@@ -271,18 +263,20 @@
       for (const el of pairs){ if(el.t) el.t.textContent = decodeHtmlEntities(upText); if(el.time) el.time.textContent = timeStr ? `${when} • ${timeStr}` : ""; }
     }
 
-    /* ========== Now Playing via /api/latestTrack (index logic) ========== */
+    /* ======= Now Playing (stable diff) ======= */
     const npTitleEls  = [document.getElementById("now-playing"), document.getElementById("m-now-playing")];
     const npArtistEls = [document.getElementById("now-playing-artist"), document.getElementById("m-now-playing-artist")];
     const artworkEls  = [document.getElementById("artwork"), document.getElementById("m-artwork")];
     let trackEndTimeout = null;
-    let _npArtist = '', _npTitle = '';
+    let _npState = { key: null, artist: '', title: '', startMs: 0, endMs: 0 };
 
     function applyArtworkFallback(){
-      for (const img of artworkEls){ if (!img) continue; img.src='Essential Radio Logo.png'; img.classList.remove('loaded'); img.classList.add('fallback'); }
+      for (const img of artworkEls){ if (!img) continue; img.src='Essential Radio Logo.png'; img.classList.remove('loaded'); img.classList.add('fallback'); img.dataset.art = ''; }
     }
-    async function applyArtwork(trackName){
-      for (const img of artworkEls){ if (!img) continue; img.src='Essential Radio Logo.png'; img.classList.remove('loaded','fallback'); }
+    async function setArtworkFor(trackName){
+      // Only reload if the trackName changed
+      if (artworkEls[0]?.dataset.art === trackName && artworkEls[1]?.dataset.art === trackName) return;
+      for (const img of artworkEls){ if (!img) continue; img.classList.remove('loaded','fallback'); }
       try {
         const res = await fetch(`/api/artwork?q=${encodeURIComponent(trackName)}&_=${Date.now()}`, { cache: 'no-store' });
         if (res.ok) {
@@ -293,7 +287,8 @@
               const url = j.url + (j.url.includes('?')?'&':'?') + 'ts=' + Date.now();
               img.onload = () => img.classList.add('loaded');
               img.onerror = applyArtworkFallback;
-              img.src = url;
+              img.dataset.art = trackName;
+              if (img.src !== url) img.src = url;
             }
             return;
           }
@@ -306,7 +301,7 @@
       for (const el of npTitleEls)  { if (el) el.textContent = "More music soon"; }
       for (const el of npArtistEls) { if (el) el.textContent = "on Essential Radio"; }
       document.title = "Essential Radio: More music soon";
-      _npArtist=''; _npTitle='';
+      _npState = { key: null, artist: '', title: '', startMs: 0, endMs: 0 };
       applyArtworkFallback();
     }
 
@@ -314,7 +309,6 @@
       try {
         const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
         const latest = await r.json();
-
         if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) { showMoreMusicSoon(); return; }
 
         const artist = decodeHtmlEntities(latest.artist);
@@ -322,23 +316,35 @@
         const startMs = new Date(latest.startTime).getTime();
         const endMs   = startMs + latest.duration * 1000;
 
+        // Treat as unchanged if same artist/title and start within 5s
+        const newKey = (artist + '|' + title).toLowerCase();
+        const unchanged = (_npState.key === newKey) && (Math.abs(startMs - _npState.startMs) <= 5000);
+
         if (Date.now() > endMs) { showMoreMusicSoon(); return; }
 
-        _npArtist = artist; _npTitle = title;
-
-        for (const el of npTitleEls)  { if (el) el.textContent = title; }
-        for (const el of npArtistEls) { if (el) el.textContent = artist ? `by ${artist}` : ""; }
-        document.title = `Essential Radio: ${artist} – ${title}`;
-        applyArtwork(`${artist} - ${title}`);
-
-        if (trackEndTimeout) clearTimeout(trackEndTimeout);
-        trackEndTimeout = setTimeout(() => { showMoreMusicSoon(); }, Math.max(0, endMs - Date.now()));
+        if (!unchanged) {
+          // Update UI only on genuine changes
+          for (const el of npTitleEls)  { if (el) el.textContent = title; }
+          for (const el of npArtistEls) { if (el) el.textContent = artist ? `by ${artist}` : ""; }
+          document.title = `Essential Radio: ${artist} – ${title}`;
+          setArtworkFor(`${artist} - ${title}`);
+          _npState = { key: newKey, artist, title, startMs, endMs };
+          if (trackEndTimeout) clearTimeout(trackEndTimeout);
+          trackEndTimeout = setTimeout(() => { showMoreMusicSoon(); }, Math.max(0, endMs - Date.now()));
+        } else {
+          // Keep existing UI; just ensure we have an end timeout
+          if (!_npState.endMs) _npState.endMs = endMs;
+          if (!trackEndTimeout) {
+            trackEndTimeout = setTimeout(() => { showMoreMusicSoon(); }, Math.max(0, _npState.endMs - Date.now()));
+          }
+        }
       } catch (e) {
         showMoreMusicSoon();
       }
     }
 
-    /* ========== Recently Played (4 items, filter current) ========== */
+    /* ======= Recently Played (memoized, 4 items) ======= */
+    let _recentSignature = '';
     async function getTrackArtwork(query){
       try {
         const res = await fetch(`/api/artwork?q=${encodeURIComponent(query)}&_=${Date.now()}`, { cache: 'no-store' });
@@ -354,17 +360,18 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
 
-        let recentItems = data
-          .filter(item => item.Artist && item.Title)
-          .slice(-RECENT_COUNT*2) // take extra then filter
-          .reverse();
-
-        if (_npArtist && _npTitle) {
-          const a = _npArtist.trim().toLowerCase();
-          const t = _npTitle.trim().toLowerCase();
-          recentItems = recentItems.filter(it => (it.Artist||'').trim().toLowerCase() !== a || (it.Title||'').trim().toLowerCase() !== t);
+        let items = data.filter(i => i.Artist && i.Title).slice(-RECENT_COUNT*2).reverse();
+        if (_npState.artist && _npState.title) {
+          const a = _npState.artist.trim().toLowerCase();
+          const t = _npState.title.trim().toLowerCase();
+          items = items.filter(it => (it.Artist||'').trim().toLowerCase() !== a || (it.Title||'').trim().toLowerCase() !== t);
         }
-        recentItems = recentItems.slice(0, RECENT_COUNT);
+        items = items.slice(0, RECENT_COUNT);
+
+        // Build a compact signature to detect changes
+        const sig = items.map(i => `${i.Artist}–${i.Title}@${(i['Displayed Time']||i['Scheduled Time']||'').slice(0,5)}`).join('|');
+        if (sig === _recentSignature) return; // unchanged; skip DOM work
+        _recentSignature = sig;
 
         async function toLI(item){
           const time = (item['Displayed Time'] || item['Scheduled Time'] || item.time || '').slice(0,5);
@@ -379,8 +386,8 @@
         for (const ul of lists){
           if (!ul) continue;
           ul.innerHTML = '';
-          for (const item of recentItems){
-            const li = await toLI(item);
+          for (const it of items){
+            const li = await toLI(it);
             ul.appendChild(li);
           }
         }
@@ -388,13 +395,13 @@
       } catch(e){ /* silent */ }
     }
 
-    /* ========== Kick-off & intervals ========== */
+    /* ======= Kick-off & intervals (slightly slower NP polling) ======= */
     function startIntervals(){
       if (!window._erwIntervalsStarted){
         window._erwIntervalsStarted = true;
         updateScheduleBlocks(); fetchNowPlaying(); fetchRecentFromGitHub();
         setInterval(updateScheduleBlocks, 60_000);
-        setInterval(fetchNowPlaying,      12_000);
+        setInterval(fetchNowPlaying,      15_000); // was 12s; slower to reduce churn
         setInterval(fetchRecentFromGitHub,15_000);
       }
     }
