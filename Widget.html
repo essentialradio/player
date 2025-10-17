@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v11 (auto height under controls)</title>
+  <title>Essential Radio Widget – Upgraded v12 (fit-to-width scaling)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     html, body { height: 100%; overflow: hidden; } /* no internal scrollbars */
@@ -12,16 +12,16 @@
 
     /* Fit wrappers for scaling */
     .fit-wrap { position: relative; width: 100%; overflow: hidden; }
-    .fit-inner { transform-origin: top left; }
+    .fit-inner { transform-origin: top left; width: 100%; }
 
     .widget-shell { background: #191c29; border-radius: 20px; box-shadow: 0 4px 24px #0005; overflow: hidden; }
 
     /* Desktop base (auto height) */
-    .desktop { display: flex; width: 100%; /* height:auto by default */ }
+    .desktop { display: flex; width: 100%; }
     .left {
       width: 260px; min-width: 200px; background: #21233c;
       display: flex; flex-direction: column; align-items: center;
-      padding: 22px 18px 16px 18px; border-right: 2px solid #fed35144; /* removed height:100% */
+      padding: 22px 18px 16px 18px; border-right: 2px solid #fed35144;
     }
     .logo { width: 120px; border-radius: 18px; margin-bottom: 12px; user-select: none; }
     .on-air-label { display: inline-flex; align-items: center; gap: 8px; color: #ff4d4d; font-weight: 700; font-size: 0.98em; margin: 4px 0 2px 0; user-select: none; }
@@ -40,9 +40,9 @@
     #now-playing-artist { font-size: 0.95em; color: #fff; opacity: 0.95;
       display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.15em; max-height:calc(1.15em * 2); }
 
-    .right { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 14px 26px; background: #191c29; /* removed height:100% */ }
+    .right { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 14px 26px; background: #191c29; }
     .right .block { margin-bottom: 12px; }
-    .right .block:last-child { margin-bottom: 0; } /* no space after last block */
+    .right .block:last-child { margin-bottom: 0; }
     .audio-controls { display: flex; gap: 12px; align-items: center; justify-content: center; background: #1c2033; border: 1px solid #262a46; border-radius: 12px; padding: 12px; }
 
     .recent-title { font-size: 1.07em; font-weight: 600; margin: 2px 0 6px 0; color: #fed351; }
@@ -51,7 +51,6 @@
     ul.recent li:last-child { border-bottom: none; }
     ul.recent img.thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 2px solid #fed351; background: #222; opacity: 0; transition: opacity .4s ease-in-out; }
     ul.recent img.thumb.loaded { opacity: 1; }
-    /* 2-line clamp for Recently Played text */
     ul.recent span.info {
       color: #fff; font-size: 0.98em;
       overflow: hidden; white-space: normal;
@@ -70,7 +69,7 @@
     #volume-slider { width: 120px; }
 
     /* Mobile */
-    .mobile { display: none; width: 100%; max-width: 700px; }
+    .mobile { display: none; width: 100%; }
     .mobile .card { width: 100%; background: #191c29; border-radius: 20px; }
     .m-header { display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 2px solid #fed35133; }
     .m-logo { width: 88px; border-radius: 12px; }
@@ -99,7 +98,7 @@
       #volume-slider, #mute-toggle { display: none; }
     }
 
-    /* ====== COMPACT MODE (no fixed height now) ====== */
+    /* COMPACT MODE (unchanged) */
     .compact .left { padding: 18px 14px 12px 14px; }
     .compact #artwork { width: 128px; height: 128px; }
     .compact .right { padding: 18px 18px 12px 20px; }
@@ -114,7 +113,7 @@
   <div id="erw">
     <!-- Desktop (wrapped for auto-scale) -->
     <div class="fit-wrap" id="fit-desktop">
-      <div class="fit-inner">
+      <div class="fit-inner" id="fit-inner-desktop">
         <div class="widget-shell desktop" id="desktop-inner">
           <div class="left">
             <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
@@ -152,7 +151,7 @@
 
     <!-- Mobile (wrapped for auto-scale too) -->
     <div class="fit-wrap" id="fit-mobile">
-      <div class="fit-inner">
+      <div class="fit-inner" id="fit-inner-mobile">
         <div class="widget-shell mobile" id="mobile-inner">
           <div class="card">
             <div class="m-header">
@@ -187,37 +186,57 @@
   </div>
 
   <script>
-    /* ===== Auto-fit height (with compact mode) ===== */
-    function fitToIframe() {
-      const isMobile = getComputedStyle(document.querySelector('#mobile-inner')).display !== 'none';
-      const wrap  = document.getElementById(isMobile ? 'fit-mobile' : 'fit-desktop');
-      const inner = wrap.querySelector('.fit-inner');
-      const card  = wrap.querySelector(isMobile ? '#mobile-inner' : '#desktop-inner');
+    /* ===== Fit-to-iframe with width compensation ===== */
+    function computeScaleFor(wrapId, innerId, cardId) {
+      const wrap  = document.getElementById(wrapId);
+      const inner = document.getElementById(innerId);
+      const card  = document.getElementById(cardId);
 
-      // Reset state to measure natural size
+      // reset
       document.body.classList.remove('compact');
       inner.style.transform = 'none';
+      inner.style.width = '100%';
       wrap.style.height = 'auto';
 
-      const avail = window.innerHeight || document.documentElement.clientHeight;
+      const availH = window.innerHeight || document.documentElement.clientHeight;
 
-      // Measure natural (auto-height desktop)
-      let natural = card.scrollHeight;
+      // 1) measure natural at current width
+      let naturalH = card.scrollHeight;
 
-      // If slightly too tall, try compact mode before scaling
-      if (natural > avail) {
+      // 2) try compact if needed
+      if (naturalH > availH) {
         document.body.classList.add('compact');
-        natural = card.scrollHeight; // remeasure after compact styles
+        naturalH = card.scrollHeight;
       }
 
-      // Compute scale
-      const s = Math.min(1, avail / natural);
+      // initial scale
+      let s = Math.min(1, availH / naturalH);
+      if (s < 1) {
+        // 3) width compensation: expand inner width to maintain full visual width after scaling
+        inner.style.width = (100 / s) + '%';
+
+        // 4) remeasure at compensated width (still no transform)
+        naturalH = card.scrollHeight;
+        s = Math.min(1, availH / naturalH);
+      }
+
+      // apply
       if (s < 1) {
         inner.style.transform = 'scale(' + s + ')';
-        wrap.style.height = Math.ceil(natural * s) + 'px';
+        wrap.style.height = Math.ceil(naturalH * s) + 'px';
       } else {
         inner.style.transform = 'none';
-        wrap.style.height = natural + 'px';
+        inner.style.width = '100%';
+        wrap.style.height = naturalH + 'px';
+      }
+    }
+
+    function fitToIframe() {
+      const isMobile = getComputedStyle(document.querySelector('#mobile-inner')).display !== 'none';
+      if (isMobile) {
+        computeScaleFor('fit-mobile', 'fit-inner-mobile', 'mobile-inner');
+      } else {
+        computeScaleFor('fit-desktop', 'fit-inner-desktop', 'desktop-inner');
       }
     }
 
@@ -228,7 +247,7 @@
     new ResizeObserver(fitToIframe).observe(document.body);
     if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitToIframe); }
 
-    /* ===== Widget logic (unchanged core) ===== */
+    /* ===== Widget logic (unchanged) ===== */
     const RECENT_COUNT = 4;
     const POLL_MS = 15000;
     const END_GRACE_MS = 4000;
@@ -335,7 +354,7 @@
         const title  = decodeHtmlEntities(latest.title);
         const startMs = new Date(latest.startTime).getTime();
         const endMs   = startMs + latest.duration * 1000;
-        if (Date.now() > endMs + END_GRACE_MS) { showMoreMusicSoon(); return; }
+        if (Date.now() > endMs + 4000) { showMoreMusicSoon(); return; }
 
         const key = `${norm(artist)}||${norm(title)}||${startMs}`;
         if (key === npLastKey) return;
@@ -347,7 +366,7 @@
         applyArtwork(`${artist} - ${title}`);
 
         if (trackEndTimeout) clearTimeout(trackEndTimeout);
-        trackEndTimeout = setTimeout(showMoreMusicSoon, Math.max(0, endMs + END_GRACE_MS - Date.now()));
+        trackEndTimeout = setTimeout(showMoreMusicSoon, Math.max(0, endMs + 4000 - Date.now()));
         fitToIframe();
       } catch(e){ if (e && e.name === 'AbortError') return; showMoreMusicSoon(); }
     }
