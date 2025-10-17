@@ -52121,5 +52121,31 @@
     "Full Duration (mins)": 3.47,
     "Start ISO": "2025-10-17T07:26:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-17T07:00:00Z",
+    "Scheduled Time": "08:33",
+    "Displayed Time": "08:33",
+    "Artist": "Mariah Carey",
+    "Title": "Fantasy",
+    "Duration (s)": 239,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.08,
+    "Start ISO": "2025-10-17T07:33:29Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-17T07:00:00Z",
+    "Scheduled Time": "08:37",
+    "Displayed Time": "08:37",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 236,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.93,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-10-17T07:37:28Z",
+    "Source": "PLAYIT"
   }
 ]
