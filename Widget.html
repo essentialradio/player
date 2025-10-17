@@ -3,149 +3,183 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v7 (no CTA)</title>
+  <title>Essential Radio Widget – Upgraded v11 (auto height under controls)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    html, body { height: 100%; overflow: hidden; } /* no internal scrollbars */
     #erw, #erw * { box-sizing: border-box; }
-    #erw { font-family: 'Inter', sans-serif; color: #fff; }
-    #erw .widget-shell { background: #191c29; border-radius: 20px; box-shadow: 0 4px 24px #0005; overflow: hidden; }
+    #erw { font-family: 'Inter', sans-serif; color: #fff; overflow: hidden; }
 
-    /* Desktop */
-    #erw .desktop { display: flex; width: 100%; height: 600px; }
-    #erw .left {
+    /* Fit wrappers for scaling */
+    .fit-wrap { position: relative; width: 100%; overflow: hidden; }
+    .fit-inner { transform-origin: top left; }
+
+    .widget-shell { background: #191c29; border-radius: 20px; box-shadow: 0 4px 24px #0005; overflow: hidden; }
+
+    /* Desktop base (auto height) */
+    .desktop { display: flex; width: 100%; /* height:auto by default */ }
+    .left {
       width: 260px; min-width: 200px; background: #21233c;
       display: flex; flex-direction: column; align-items: center;
-      padding: 22px 18px 18px 18px; border-right: 2px solid #fed35144; height: 100%;
+      padding: 22px 18px 16px 18px; border-right: 2px solid #fed35144; /* removed height:100% */
     }
-    #erw .logo { width: 120px; border-radius: 18px; margin-bottom: 12px; user-select: none; }
-    #erw .on-air-label { display: inline-flex; align-items: center; gap: 8px; color: #ff4d4d; font-weight: 700; font-size: 0.98em; margin: 4px 0 2px 0; user-select: none; }
-    #erw .live-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff4d4d; animation: erw-pulse 1.2s infinite; }
+    .logo { width: 120px; border-radius: 18px; margin-bottom: 12px; user-select: none; }
+    .on-air-label { display: inline-flex; align-items: center; gap: 8px; color: #ff4d4d; font-weight: 700; font-size: 0.98em; margin: 4px 0 2px 0; user-select: none; }
+    .live-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff4d4d; animation: erw-pulse 1.2s infinite; }
     @keyframes erw-pulse { 0%,100%{ opacity: .2; transform: scale(1); } 50%{ opacity: 1; transform: scale(1.4); } }
 
-    #erw #artwork { width: 140px; height: 140px; border-radius: 12px; border: 3px solid #fed351; object-fit: cover; background: #222;
+    #artwork { width: 140px; height: 140px; border-radius: 12px; border: 3px solid #fed351; object-fit: cover; background: #222;
       box-shadow: 0 2px 16px #fed35133; margin: 10px 0 12px 0; opacity: 0; filter: blur(10px) brightness(.9);
       transition: opacity .4s ease-in-out, filter .4s ease-in-out; }
-    #erw #artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
-    #erw #artwork.fallback { filter: blur(5px) brightness(.85); opacity: .85; box-shadow: 0 0 10px rgba(254,211,81,.35); }
+    #artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
+    #artwork.fallback { filter: blur(5px) brightness(.85); opacity: .85; box-shadow: 0 0 10px rgba(254,211,81,.35); }
 
-    #erw .now-playing-info { text-align: center; margin-bottom: 8px; }
-    #erw #now-playing { font-size: 1.06em; font-weight: 700; color: #fed351; margin-bottom: 2px; }
-    #erw #now-playing-artist { font-size: 0.95em; color: #fff; opacity: 0.95; }
+    .now-playing-info { text-align: center; margin-bottom: 8px; }
+    #now-playing { font-size: 1.06em; font-weight: 700; color: #fed351; margin-bottom: 2px;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.15em; max-height:calc(1.15em * 2); }
+    #now-playing-artist { font-size: 0.95em; color: #fff; opacity: 0.95;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.15em; max-height:calc(1.15em * 2); }
 
-    #erw .right { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 24px 26px; background: #191c29; height: 100%; }
-    #erw .right .block { margin-bottom: 12px; }
+    .right { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 14px 26px; background: #191c29; /* removed height:100% */ }
+    .right .block { margin-bottom: 12px; }
+    .right .block:last-child { margin-bottom: 0; } /* no space after last block */
+    .audio-controls { display: flex; gap: 12px; align-items: center; justify-content: center; background: #1c2033; border: 1px solid #262a46; border-radius: 12px; padding: 12px; }
 
-    #erw .recent-title { font-size: 1.07em; font-weight: 600; margin: 2px 0 6px 0; color: #fed351; }
-    #erw ul.recent { list-style: none; margin: 0; padding: 0; width: 100%; }
-    #erw ul.recent li {
-      display: grid; grid-template-columns: 44px 1fr auto; align-items: center;
-      gap: 12px; padding: 10px 0; border-bottom: 1px solid #28284b; font-size: 0.97em;
+    .recent-title { font-size: 1.07em; font-weight: 600; margin: 2px 0 6px 0; color: #fed351; }
+    ul.recent { list-style: none; margin: 0; padding: 0; width: 100%; overflow: visible; }
+    ul.recent li { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #28284b; font-size: 0.97em; }
+    ul.recent li:last-child { border-bottom: none; }
+    ul.recent img.thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 2px solid #fed351; background: #222; opacity: 0; transition: opacity .4s ease-in-out; }
+    ul.recent img.thumb.loaded { opacity: 1; }
+    /* 2-line clamp for Recently Played text */
+    ul.recent span.info {
+      color: #fff; font-size: 0.98em;
+      overflow: hidden; white-space: normal;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+      line-height:1.15em; max-height:calc(1.15em * 2);
     }
-    #erw ul.recent li:last-child { border-bottom: none; }
-    #erw ul.recent img.thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 2px solid #fed351; background: #222; opacity: 0; transition: opacity .4s ease-in-out; }
-    #erw ul.recent img.thumb.loaded { opacity: 1; }
-    #erw ul.recent span.info { color: #fff; font-size: 0.98em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    #erw ul.recent span.time { color: #fed351; font-size: 0.94em; width: 56px; text-align: right; }
+    ul.recent span.time { color: #fed351; font-size: 0.94em; width: 56px; text-align: right; }
 
-    #erw .upnext { display: flex; align-items: center; gap: 10px; background: #21233c; border: 1px solid #2a2e55; border-radius: 12px; padding: 10px 12px; }
-    #erw .upnext .badge { font-weight: 700; color: #111; background: #fed351; border-radius: 999px; padding: 2px 10px; font-size: .86em; }
-    #erw .upnext .text { color: #fff; }
-    #erw .upnext .time { color: #fed351; font-weight: 600; margin-left: auto; }
+    .upnext { display: flex; align-items: center; gap: 10px; background: #21233c; border: 1px solid #2a2e55; border-radius: 12px; padding: 10px 12px; }
+    .upnext .badge { font-weight: 700; color: #111; background: #fed351; border-radius: 999px; padding: 2px 10px; font-size: .86em; }
+    .upnext .text { color: #fff; }
+    .upnext .time { color: #fed351; font-weight: 600; margin-left: auto; }
 
-    #erw .audio-controls { display: flex; gap: 12px; align-items: center; justify-content: center; background: #1c2033; border: 1px solid #262a46; border-radius: 12px; padding: 12px; }
-    #erw #play-toggle, #erw #mute-toggle { background: #fed351; color: #111; border: none; border-radius: 7px; padding: 8px 16px; font-size: 1.03em; font-weight: 700; cursor: pointer; transition: background .2s; }
-    #erw #play-toggle:hover, #erw #mute-toggle:hover { background: #ffe67c; }
-    #erw #volume-slider { width: 120px; }
+    #play-toggle, #mute-toggle { background: #fed351; color: #111; border: none; border-radius: 7px; padding: 8px 16px; font-size: 1.03em; font-weight: 700; cursor: pointer; transition: background .2s; }
+    #play-toggle:hover, #mute-toggle:hover { background: #ffe67c; }
+    #volume-slider { width: 120px; }
 
     /* Mobile */
-    #erw .mobile { display: none; width: 100%; max-width: 700px; }
-    #erw .mobile .card { width: 100%; background: #191c29; border-radius: 20px; }
-    #erw .m-header { display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 2px solid #fed35133; }
-    #erw .m-logo { width: 88px; border-radius: 12px; }
-    #erw .m-onair { margin-left: auto; text-align: right; }
-    #erw .m-onair .label { color: #fed351; font-weight: 700; font-size: 0.95em; }
-    #erw .m-onair #m-currentShow { font-weight: 600; color: #fff; font-size: 0.98em; }
+    .mobile { display: none; width: 100%; max-width: 700px; }
+    .mobile .card { width: 100%; background: #191c29; border-radius: 20px; }
+    .m-header { display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 2px solid #fed35133; }
+    .m-logo { width: 88px; border-radius: 12px; }
+    .m-onair { margin-left: auto; text-align: right; }
+    .m-onair .label { color: #fed351; font-weight: 700; font-size: 0.95em; }
+    .m-onair #m-currentShow { font-weight: 600; color: #fff; font-size: 0.98em; }
 
-    #erw .m-now { display: flex; align-items: center; gap: 12px; padding: 14px; }
-    #erw #m-artwork { width: 96px; height: 96px; border-radius: 10px; border: 3px solid #fed351; object-fit: cover; background: #222; opacity: 0; filter: blur(10px) brightness(.9); transition: opacity .4s ease-in-out, filter .4s ease-in-out; }
-    #erw #m-artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
-    #erw #m-artwork.fallback { filter: blur(5px) brightness(.85); opacity: .85; box-shadow: 0 0 10px rgba(254,211,81,.35); }
-    #erw .m-title { color: #fed351; font-weight: 700; font-size: 1.02em; }
-    #erw .m-artist { opacity: 0.95; }
+    .m-now { display: flex; align-items: center; gap: 12px; padding: 14px; }
+    #m-artwork { width: 96px; height: 96px; border-radius: 10px; border: 3px solid #fed351; object-fit: cover; background: #222; opacity: 0; filter: blur(10px) brightness(.9); transition: opacity .4s ease-in-out, filter .4s ease-in-out; }
+    #m-artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
+    #m-artwork.fallback { filter: blur(5px) brightness(.85); opacity: .85; box-shadow: 0 0 10px rgba(254,211,81,.35); }
+    .m-title, .m-artist {
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+      line-height:1.15em; max-height:calc(1.15em * 2);
+    }
+    .m-title { color: #fed351; font-weight: 700; font-size: 1.02em; }
+    .m-artist { opacity: 0.95; }
 
-    #erw .m-recent { padding: 8px 14px 6px 14px; }
-    #erw .m-aux { padding: 8px 14px 14px 14px; display: grid; gap: 10px; }
-    #erw .m-upnext { border: 1px solid #2a2e55; border-radius: 12px; padding: 10px; background: #21233c; }
+    .m-recent { padding: 8px 14px 6px 14px; }
+    .m-aux { padding: 8px 14px 14px 14px; display: grid; gap: 10px; }
+    .m-upnext { border: 1px solid #2a2e55; border-radius: 12px; padding: 10px; background: #21233c; }
 
     @media (max-width: 700px) {
-      #erw .desktop { display: none; }
-      #erw .mobile  { display: block; }
-      #erw #volume-slider, #erw #mute-toggle { display: none; }
+      .desktop { display: none; }
+      .mobile  { display: block; }
+      #volume-slider, #mute-toggle { display: none; }
     }
+
+    /* ====== COMPACT MODE (no fixed height now) ====== */
+    .compact .left { padding: 18px 14px 12px 14px; }
+    .compact #artwork { width: 128px; height: 128px; }
+    .compact .right { padding: 18px 18px 12px 20px; }
+    .compact .right .block { margin-bottom: 10px; }
+    .compact ul.recent li { padding: 8px 0; }
+    .compact .audio-controls { padding: 10px; }
+    .compact #now-playing { font-size: 1.02em; }
+    .compact #now-playing-artist { font-size: 0.92em; }
   </style>
 </head>
 <body style="margin:0; background: transparent;">
   <div id="erw">
-    <!-- Desktop layout -->
-    <div class="widget-shell desktop">
-      <div class="left">
-        <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
-        <div class="on-air-label"><span class="live-dot"></span>ON AIR NOW</div>
-        <div id="currentShow">Loading…</div>
-        <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="fallback" />
-        <div class="now-playing-info">
-          <div id="now-playing">Loading…</div>
-          <div id="now-playing-artist"></div>
-        </div>
-      </div>
-      <div class="right">
-        <div class="block">
-          <div class="recent-title">Recently Played</div>
-          <ul id="recent-list" class="recent"></ul>
-        </div>
-        <div class="block">
-          <div class="upnext">
-            <span class="badge">Up next</span>
-            <span class="text" id="upnext-text">Loading…</span>
-            <span class="time" id="upnext-time"></span>
+    <!-- Desktop (wrapped for auto-scale) -->
+    <div class="fit-wrap" id="fit-desktop">
+      <div class="fit-inner">
+        <div class="widget-shell desktop" id="desktop-inner">
+          <div class="left">
+            <img src="ERLogo2.png" class="logo" alt="Essential Radio Logo" />
+            <div class="on-air-label"><span class="live-dot"></span>ON AIR NOW</div>
+            <div id="currentShow">Loading…</div>
+            <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="fallback" />
+            <div class="now-playing-info">
+              <div id="now-playing">Loading…</div>
+              <div id="now-playing-artist"></div>
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <div class="audio-controls">
-            <button id="play-toggle">▶️</button>
-            <input id="volume-slider" type="range" min="0" max="100" value="80" />
-            <button id="mute-toggle">🔊</button>
+          <div class="right">
+            <div class="block">
+              <div class="recent-title">Recently Played</div>
+              <ul id="recent-list" class="recent"></ul>
+            </div>
+            <div class="block">
+              <div class="upnext">
+                <span class="badge">Up next</span>
+                <span class="text" id="upnext-text">Loading…</span>
+                <span class="time" id="upnext-time"></span>
+              </div>
+            </div>
+            <div class="block">
+              <div class="audio-controls">
+                <button id="play-toggle">▶️</button>
+                <input id="volume-slider" type="range" min="0" max="100" value="80" />
+                <button id="mute-toggle">🔊</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Mobile layout -->
-    <div class="widget-shell mobile">
-      <div class="card">
-        <div class="m-header">
-          <img src="ERLogo2.png" class="m-logo" alt="Essential Radio" />
-          <div class="m-onair">
-            <div class="label">ON AIR NOW</div>
-            <div id="m-currentShow">Loading…</div>
-          </div>
-        </div>
-        <div class="m-now">
-          <img id="m-artwork" src="Essential Radio Logo.png" alt="Artwork" class="fallback" />
-          <div>
-            <div id="m-now-playing" class="m-title">Loading…</div>
-            <div id="m-now-playing-artist" class="m-artist"></div>
-          </div>
-        </div>
-        <div class="m-recent">
-          <div class="recent-title">Recently Played</div>
-          <ul id="m-recent-list" class="recent"></ul>
-        </div>
-        <div class="m-aux">
-          <div class="m-upnext">
-            <strong>Up next</strong><br/>
-            <span id="m-upnext-text">Loading…</span>
-            <span style="float:right; color:#fed351; font-weight:600;" id="m-upnext-time"></span>
+    <!-- Mobile (wrapped for auto-scale too) -->
+    <div class="fit-wrap" id="fit-mobile">
+      <div class="fit-inner">
+        <div class="widget-shell mobile" id="mobile-inner">
+          <div class="card">
+            <div class="m-header">
+              <img src="ERLogo2.png" class="m-logo" alt="Essential Radio" />
+              <div class="m-onair">
+                <div class="label">ON AIR NOW</div>
+                <div id="m-currentShow">Loading…</div>
+              </div>
+            </div>
+            <div class="m-now">
+              <img id="m-artwork" src="Essential Radio Logo.png" alt="Artwork" class="fallback" />
+              <div>
+                <div id="m-now-playing" class="m-title">Loading…</div>
+                <div id="m-now-playing-artist" class="m-artist"></div>
+              </div>
+            </div>
+            <div class="m-recent">
+              <div class="recent-title">Recently Played</div>
+              <ul id="m-recent-list" class="recent"></ul>
+            </div>
+            <div class="m-aux">
+              <div class="m-upnext">
+                <strong>Up next</strong><br/>
+                <span id="m-upnext-text">Loading…</span>
+                <span style="float:right; color:#fed351; font-weight:600;" id="m-upnext-time"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -153,19 +187,59 @@
   </div>
 
   <script>
-    /* Config */
+    /* ===== Auto-fit height (with compact mode) ===== */
+    function fitToIframe() {
+      const isMobile = getComputedStyle(document.querySelector('#mobile-inner')).display !== 'none';
+      const wrap  = document.getElementById(isMobile ? 'fit-mobile' : 'fit-desktop');
+      const inner = wrap.querySelector('.fit-inner');
+      const card  = wrap.querySelector(isMobile ? '#mobile-inner' : '#desktop-inner');
+
+      // Reset state to measure natural size
+      document.body.classList.remove('compact');
+      inner.style.transform = 'none';
+      wrap.style.height = 'auto';
+
+      const avail = window.innerHeight || document.documentElement.clientHeight;
+
+      // Measure natural (auto-height desktop)
+      let natural = card.scrollHeight;
+
+      // If slightly too tall, try compact mode before scaling
+      if (natural > avail) {
+        document.body.classList.add('compact');
+        natural = card.scrollHeight; // remeasure after compact styles
+      }
+
+      // Compute scale
+      const s = Math.min(1, avail / natural);
+      if (s < 1) {
+        inner.style.transform = 'scale(' + s + ')';
+        wrap.style.height = Math.ceil(natural * s) + 'px';
+      } else {
+        inner.style.transform = 'none';
+        wrap.style.height = natural + 'px';
+      }
+    }
+
+    // Re-fit on load/resize/orientation/font/DOM changes
+    window.addEventListener('load', fitToIframe);
+    window.addEventListener('resize', fitToIframe);
+    window.addEventListener('orientationchange', fitToIframe);
+    new ResizeObserver(fitToIframe).observe(document.body);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitToIframe); }
+
+    /* ===== Widget logic (unchanged core) ===== */
     const RECENT_COUNT = 4;
     const POLL_MS = 15000;
-    const END_GRACE_MS = 4000; // end-time grace to prevent flicker
+    const END_GRACE_MS = 4000;
 
-    /* Helpers */
     const io = new IntersectionObserver(entries => {
       for (const e of entries) if (e.isIntersecting) { e.target.classList.add("loaded"); io.unobserve(e.target); }
     }, { threshold: 0.1 });
     function decodeHtmlEntities(str) { if (!str) return ""; const t=document.createElement("textarea"); t.innerHTML=str; return t.value; }
     const norm = s => (s||"").replace(/[–—]/g,'-').replace(/\s+/g,' ').trim().toLowerCase();
 
-    /* Audio (gentle watchdog) */
+    /* Audio watchdog (gentle) */
     const audio = new Audio("https://streaming06.liveboxstream.uk/proxy/ayrshire/stream");
     audio.preload = "none";
     audio.volume = 0.8;
@@ -186,7 +260,7 @@
     audio.addEventListener('ended', attemptRestart);
     setInterval(()=>{ if(!isPlaying||userPaused||document.hidden) return; if(Date.now()-lastProgressMs>25_000) attemptRestart(); }, 10_000);
 
-    /* Schedule: On Air + Up Next */
+    /* Schedule */
     async function fetchSchedule() { try { const r = await fetch("https://essentialradio.github.io/player/schedule.json"); return await r.json(); } catch { return null; } }
     function minutes(hm){ const [h,m]=hm.split(':').map(Number); return h*60+m; }
     function getCurrentAndNext(schedule){
@@ -212,9 +286,10 @@
       const pairs = [{t:document.getElementById("upnext-text"), time:document.getElementById("upnext-time")},
                      {t:document.getElementById("m-upnext-text"), time:document.getElementById("m-upnext-time")}];
       for (const el of pairs){ if(el.t) el.t.textContent = decodeHtmlEntities(upText); if(el.time) el.time.textContent = timeStr ? `${when} • ${timeStr}` : ""; }
+      fitToIframe();
     }
 
-    /* Now Playing with change-detection */
+    /* Now Playing */
     const npTitleEls  = [document.getElementById("now-playing"), document.getElementById("m-now-playing")];
     const npArtistEls = [document.getElementById("now-playing-artist"), document.getElementById("m-now-playing-artist")];
     const artworkEls  = [document.getElementById("artwork"), document.getElementById("m-artwork")];
@@ -246,6 +321,7 @@
       for (const el of npArtistEls) { if (el) el.textContent = "on Essential Radio"; }
       document.title = "Essential Radio: More music soon";
       applyArtworkFallback();
+      fitToIframe();
     }
     async function fetchNowPlaying(){
       try{
@@ -272,10 +348,11 @@
 
         if (trackEndTimeout) clearTimeout(trackEndTimeout);
         trackEndTimeout = setTimeout(showMoreMusicSoon, Math.max(0, endMs + END_GRACE_MS - Date.now()));
+        fitToIframe();
       } catch(e){ if (e && e.name === 'AbortError') return; showMoreMusicSoon(); }
     }
 
-    /* Recently Played (4 items) */
+    /* Recently Played */
     let recentLastJSON = "";
     async function getTrackArtwork(query){
       try { const res = await fetch(`/api/artwork?q=${encodeURIComponent(query)}&_=${Date.now()}`, { cache: 'no-store' }); if (res.ok) { const d=await res.json(); if (d && d.url) return d.url; } } catch {}
@@ -286,9 +363,9 @@
         const res = await fetch('https://essentialradio.github.io/player/playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw 0;
         const data = await res.json();
-        let items = data.filter(it => it.Artist && it.Title).slice(-RECENT_COUNT*2).reverse();
+        let items = data.filter(it => it.Artist && it.Title).slice(-8).reverse();
         if (npLastKey){ const [aNorm,tNorm] = npLastKey.split('||'); items = items.filter(it => norm(it.Artist)!==aNorm || norm(it.Title)!==tNorm); }
-        items = items.slice(0, RECENT_COUNT);
+        items = items.slice(0, 4);
 
         const compact = JSON.stringify(items.map(it => [it.Artist, it.Title, (it['Displayed Time'] || it['Scheduled Time'] || '').slice(0,5)]));
         if (compact === recentLastJSON) return;
@@ -305,20 +382,21 @@
         const lists=[document.getElementById('recent-list'), document.getElementById('m-recent-list')];
         for (const ul of lists){ if (!ul) continue; ul.innerHTML=''; for (const it of items){ const li=await toLI(it); ul.appendChild(li); } }
         document.querySelectorAll('img.thumb').forEach(img => io.observe(img));
+        fitToIframe();
       } catch {}
     }
 
     /* Boot */
-    function startIntervals(){
-      if (window._erwIntervalsStarted) return;
-      window._erwIntervalsStarted = true;
+    function start(){
+      if (window._erwStarted) return; window._erwStarted = true;
+      (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(fitToIframe);
       updateScheduleBlocks(); fetchNowPlaying(); fetchRecent();
       setInterval(updateScheduleBlocks, 60_000);
       setInterval(fetchNowPlaying,      POLL_MS);
       setInterval(fetchRecent,          15_000);
     }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startIntervals, { once:true });
-    else startIntervals();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once:true });
+    else start();
   </script>
 </body>
 </html>
