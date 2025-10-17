@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v13 (mobile gutters + mobile play)</title>
+  <title>Essential Radio Widget – Upgraded v14 (fresh restart on resume)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     html, body { height: 100%; overflow: hidden; } /* no internal scrollbars */
@@ -12,7 +12,7 @@
 
     /* Fit wrappers for scaling */
     .fit-wrap { position: relative; width: 100%; overflow: hidden; }
-    /* Add side padding ONLY on mobile wrap for comfortable gutters */
+    /* Mobile side gutters for comfortable spacing */
     #fit-mobile { padding: 0 14px; }
     .fit-inner { transform-origin: top left; width: 100%; }
 
@@ -94,7 +94,7 @@
     .m-aux { padding: 8px 14px 10px 14px; display: grid; gap: 10px; }
     .m-upnext { border: 1px solid #2a2e55; border-radius: 12px; padding: 10px; background: #21233c; }
 
-    /* New: Mobile controls */
+    /* Mobile controls */
     .m-controls { display: flex; justify-content: center; padding: 6px 14px 14px 14px; }
     .m-controls button { min-width: 120px; }
 
@@ -266,15 +266,19 @@
     function decodeHtmlEntities(str) { if (!str) return ""; const t=document.createElement("textarea"); t.innerHTML=str; return t.value; }
     const norm = s => (s||"").replace(/[–—]/g,'-').replace(/\s+/g,' ').trim().toLowerCase();
 
-    /* Audio watchdog (gentle) */
-    const audio = new Audio("https://streaming06.liveboxstream.uk/proxy/ayrshire/stream");
+    /* Audio: always restart fresh on resume */
+    const STREAM_BASE = "https://streaming06.liveboxstream.uk/proxy/ayrshire/stream";
+    const audio = new Audio();
     audio.preload = "none";
+    audio.crossOrigin = "anonymous";
     audio.volume = 0.8;
     let isPlaying=false, userPaused=false, lastVolume=0.8, lastProgressMs=Date.now(), lastRestartMs=0;
     const playBtnDesktop = document.getElementById('play-toggle');
     const playBtnMobile  = document.getElementById('m-play-toggle');
     const muteBtn        = document.getElementById('mute-toggle');
     const volumeSlider   = document.getElementById('volume-slider');
+
+    function streamUrl(){ return STREAM_BASE + (STREAM_BASE.includes('?') ? '&' : '?') + 'ts=' + Date.now(); }
 
     function setPlayingUI(p){
       isPlaying=p;
@@ -286,8 +290,25 @@
       const v=audio.muted?0:audio.volume;
       muteBtn.textContent = v===0?'🔇':(v<0.5?'🔈':'🔊');
     }
-    function startPlayback(){ userPaused=false; if(audio.readyState===0) audio.load(); audio.play().then(()=>{ setPlayingUI(true); fitToIframe(); }).catch(()=>{}); }
-    function pausePlayback(){ userPaused=true; audio.pause(); setPlayingUI(false); fitToIframe(); }
+    function loadFreshStream(){
+      try{ audio.pause(); }catch{}
+      try{ audio.removeAttribute('src'); audio.load(); }catch{}
+      audio.src = streamUrl(); // cache-bust to ensure fresh connection
+      audio.load();
+    }
+    function startPlayback(){
+      userPaused=false;
+      loadFreshStream();              // always brand new URL
+      audio.play().then(()=>{ setPlayingUI(true); fitToIframe(); }).catch(()=>{});
+    }
+    function pausePlayback(){
+      userPaused=true;
+      audio.pause();
+      // Clear source so next play starts live (no resume from buffer)
+      try { audio.removeAttribute('src'); audio.load(); } catch {}
+      setPlayingUI(false);
+      fitToIframe();
+    }
 
     if (playBtnDesktop) playBtnDesktop.onclick = ()=>{ isPlaying?pausePlayback():startPlayback(); };
     if (playBtnMobile)  playBtnMobile.onclick  = ()=>{ isPlaying?pausePlayback():startPlayback(); };
@@ -298,10 +319,23 @@
     audio.addEventListener('timeupdate', ()=>{ if(!audio.paused) lastProgressMs=Date.now(); });
     audio.addEventListener('playing', ()=>{ setPlayingUI(true); lastProgressMs=Date.now(); });
     audio.addEventListener('pause',   ()=>{ if(!userPaused) setPlayingUI(false); });
-    function attemptRestart(){ const now=Date.now(); if(userPaused||document.hidden) return; if(now-lastRestartMs<45_000) return; lastRestartMs=now; try{ audio.pause(); audio.load(); audio.play().then(()=>setPlayingUI(true)).catch(()=>{});}catch{} }
+
+    function attemptRestart(){
+      const now=Date.now();
+      if(userPaused||document.hidden) return;
+      if(now-lastRestartMs<45_000) return;
+      lastRestartMs=now;
+      try{
+        loadFreshStream();
+        audio.play().then(()=>setPlayingUI(true)).catch(()=>{});
+      }catch{}
+    }
     audio.addEventListener('error', attemptRestart);
     audio.addEventListener('ended', attemptRestart);
-    setInterval(()=>{ if(!isPlaying||userPaused||document.hidden) return; if(Date.now()-lastProgressMs>25_000) attemptRestart(); }, 10_000);
+    setInterval(()=>{
+      if(!isPlaying||userPaused||document.hidden) return;
+      if(Date.now()-lastProgressMs>25_000) attemptRestart();
+    }, 10_000);
 
     /* Schedule */
     async function fetchSchedule() { try { const r = await fetch("https://essentialradio.github.io/player/schedule.json"); return await r.json(); } catch { return null; } }
@@ -378,7 +412,7 @@
         const title  = decodeHtmlEntities(latest.title);
         const startMs = new Date(latest.startTime).getTime();
         const endMs   = startMs + latest.duration * 1000;
-        if (Date.now() > endMs + 4000) { showMoreMusicSoon(); return; }
+        if (Date.now() > endMs + END_GRACE_MS) { showMoreMusicSoon(); return; }
 
         const key = `${norm(artist)}||${norm(title)}||${startMs}`;
         if (key === npLastKey) return;
@@ -390,7 +424,7 @@
         applyArtwork(`${artist} - ${title}`);
 
         if (trackEndTimeout) clearTimeout(trackEndTimeout);
-        trackEndTimeout = setTimeout(showMoreMusicSoon, Math.max(0, endMs + 4000 - Date.now()));
+        trackEndTimeout = setTimeout(showMoreMusicSoon, Math.max(0, endMs + END_GRACE_MS - Date.now()));
         fitToIframe();
       } catch(e){ if (e && e.name === 'AbortError') return; showMoreMusicSoon(); }
     }
