@@ -1,10 +1,10 @@
 {
-  "artist": "The Shamen",
-  "title": "Ebeneezer Goode",
-  "startTime": "2025-10-17T21:53:10Z",
-  "start": "2025-10-17T21:53:10Z",
-  "duration": 219,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-10-17T21:56:49Z"
+  "endTime": "2025-10-17T23:00:00Z",
+  "artist": "Essential Radio",
+  "title": "On Air",
+  "startTime": "2025-10-17T22:00:00Z",
+  "start": "2025-10-17T22:00:00Z",
+  "duration": 3600,
+  "source": "FIXED",
+  "indeterminate": false
 }
