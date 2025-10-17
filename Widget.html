@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v11 (fit-to-embed)</title>
+  <title>Essential Radio Widget – Upgraded v12 (use empty space)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root{
@@ -15,21 +15,21 @@
     #erw { font-family: 'Inter', sans-serif; color: #fff; font-size: 14px; }
     #erw .widget-shell { background: #191c29; border-radius: 14px; box-shadow: 0 4px 24px #0005; overflow: hidden; }
 
-    /* Desktop baseline tailored for embeds */
-    #erw .desktop { display: flex; width: 100%; height: 480px; } /* <= tighter than before */
+    /* Desktop fills the iframe height */
+    #erw .desktop { display: flex; width: 100%; height: 100vh; }
     #erw .left {
-      width: 230px; min-width: 200px; background: #21233c;
+      width: 240px; min-width: 200px; background: #21233c;
       display: flex; flex-direction: column; align-items: center;
       padding: 14px 12px; border-right: 2px solid #fed35144; height: 100%;
     }
-    #erw .logo { width: 90px; border-radius: 12px; margin-bottom: 6px; user-select: none; }
+    #erw .logo { width: 96px; border-radius: 12px; margin-bottom: 6px; user-select: none; }
     #erw .on-air-label { display: inline-flex; align-items: center; gap: 6px; color: #ff4d4d; font-weight: 700; font-size: var(--fs-sm); margin: 2px 0; user-select: none; }
     #erw .live-dot { width: 9px; height: 9px; border-radius: 50%; background: #ff4d4d; animation: erw-pulse 1.2s infinite; }
     @keyframes erw-pulse { 0%,100%{ opacity: .2; transform: scale(1); } 50%{ opacity: 1; transform: scale(1.25); } }
 
     #erw #artwork {
-      width: 112px; height: 112px; border-radius: 10px; border: 3px solid #fed351; object-fit: cover; background: #222;
-      box-shadow: 0 2px 12px #fed35133; margin: 6px 0; opacity: 0; filter: blur(10px) brightness(.9);
+      width: 116px; height: 116px; border-radius: 10px; border: 3px solid #fed351; object-fit: cover; background: #222;
+      box-shadow: 0 2px 12px #fed35133; margin: 8px 0; opacity: 0; filter: blur(10px) brightness(.9);
       transition: opacity .35s ease-in-out, filter .35s ease-in-out;
     }
     #erw #artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
@@ -39,27 +39,39 @@
     #erw #now-playing { font-size: var(--fs-md); font-weight: 700; color: #fed351; margin-bottom: 2px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 100%; }
     #erw #now-playing-artist { font-size: var(--fs-sm); color: #fff; opacity: 0.95; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 100%; }
 
-    #erw .right { flex: 1; display: flex; flex-direction: column; padding: 12px 14px 12px 16px; background: #191c29; height: 100%; }
-    #erw .right .block { margin-bottom: 8px; }
-    #erw .recent-title { font-size: var(--fs-sm); font-weight: 600; margin: 0 0 2px 0; color: #fed351; }
+    #erw .right {
+      flex: 1; display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 10px;
+      padding: 12px 14px 12px 16px; background: #191c29; height: 100%;
+    }
+    #erw .recent-title, #erw .sched-title { font-size: var(--fs-sm); font-weight: 600; margin: 0 0 4px 0; color: #fed351; }
+    #erw .block { min-height: 0; } /* allow grid rows to shrink */
+    #erw .block-inner { display: contents; }
 
-    /* Recents: 4 rows, ultra-compact */
+    /* Recents: 4 rows */
     #erw ul.recent { list-style: none; margin: 0; padding: 0; width: 100%; }
     #erw ul.recent li {
-      display: grid; grid-template-columns: 34px 1fr auto; align-items: center;
-      gap: 8px; padding: 6px 0; border-bottom: 1px solid #28284b; font-size: var(--fs-sm);
+      display: grid; grid-template-columns: 38px 1fr auto; align-items: center;
+      gap: 10px; padding: 7px 0; border-bottom: 1px solid #28284b; font-size: var(--fs-sm);
     }
     #erw ul.recent li:last-child { border-bottom: none; }
-    #erw ul.recent img.thumb { width: 34px; height: 34px; border-radius: 7px; object-fit: cover; border: 2px solid #fed351; background: #222; opacity: 0; transition: opacity .3s ease-in-out; }
+    #erw ul.recent img.thumb { width: 38px; height: 38px; border-radius: 7px; object-fit: cover; border: 2px solid #fed351; background: #222; opacity: 0; transition: opacity .3s ease-in-out; }
     #erw ul.recent img.thumb.loaded { opacity: 1; }
     #erw ul.recent span.info { color: #fff; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    #erw ul.recent span.time { color: #fed351; font-size: var(--fs-xs); width: 42px; text-align: right; }
+    #erw ul.recent span.time { color: #fed351; font-size: var(--fs-xs); width: 48px; text-align: right; }
 
-    /* Up next: slim single-line */
-    #erw .upnext { display: flex; align-items: center; gap: 6px; border-radius: 8px; padding: 6px 8px; border: 1px solid #2a2e55; background: #21233c; }
+    /* Up next */
+    #erw .upnext { display: flex; align-items: center; gap: 8px; border-radius: 8px; padding: 8px 10px; border: 1px solid #2a2e55; background: #21233c; }
     #erw .upnext .badge { font-weight: 800; color: #111; background: #fed351; border-radius: 999px; padding: 1px 8px; font-size: var(--fs-xs); }
     #erw .upnext .text { color: #fff; font-size: var(--fs-sm); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
     #erw .upnext .time { color: #fed351; font-weight: 600; margin-left: auto; font-size: var(--fs-xs); }
+
+    /* NEW: Today's schedule uses spare space */
+    #erw .schedule { display: flex; flex-direction: column; min-height: 0; }
+    #erw ul#schedule-list { list-style: none; margin: 0; padding: 0; flex: 1; display: grid; grid-auto-rows: minmax(28px, auto); gap: 6px; }
+    #erw ul#schedule-list li { display: grid; grid-template-columns: 70px 1fr; align-items: center; gap: 10px; background: #1c2133; border: 1px solid #262a46; border-radius: 8px; padding: 6px 8px; }
+    #erw ul#schedule-list li .sched-time { color: #fed351; font-size: var(--fs-xs); font-weight: 700; text-align: right; }
+    #erw ul#schedule-list li .sched-name { color: #fff; font-size: var(--fs-sm); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    #erw ul#schedule-list li.now { outline: 2px solid #fed35155; background: #232743; }
 
     .cta-wrap { display: flex; justify-content: center; }
     .cta {
@@ -69,46 +81,12 @@
     }
     .cta:hover { filter: brightness(1.05); }
 
-    #erw .audio-controls { display: flex; gap: 8px; align-items: center; justify-content: center; background: #1c2033; border: 1px solid #262a46; border-radius: 9px; padding: 6px; }
-    #erw #play-toggle, #erw #mute-toggle { background: #fed351; color: #111; border: none; border-radius: 7px; padding: 6px 10px; font-size: var(--fs-sm); font-weight: 700; cursor: pointer; transition: background .2s; }
+    #erw .audio-controls { display: flex; gap: 10px; align-items: center; justify-content: center; background: #1c2033; border: 1px solid #262a46; border-radius: 9px; padding: 8px; }
+    #erw #play-toggle, #erw #mute-toggle { background: #fed351; color: #111; border: none; border-radius: 7px; padding: 6px 12px; font-size: var(--fs-sm); font-weight: 700; cursor: pointer; transition: background .2s; }
     #erw #play-toggle:hover, #erw #mute-toggle:hover { background: #ffe67c; }
-    #erw #volume-slider { width: 90px; }
+    #erw #volume-slider { width: 100px; }
 
-    /* Height-aware tightening for shorter embeds */
-    @media (max-height: 520px) {
-      #erw .desktop { height: 460px; }
-      #erw .left { padding: 12px 10px; }
-      #erw #artwork { width: 104px; height: 104px; margin: 6px 0; }
-      #erw ul.recent li { padding: 5px 0; }
-      #erw ul.recent img.thumb { width: 32px; height: 32px; }
-      #erw .right .block { margin-bottom: 6px; }
-      .cta { padding: 6px 8px; }
-    }
-    @media (max-height: 460px) {
-      #erw .desktop { height: 430px; }
-      #erw #artwork { width: 96px; height: 96px; }
-      #erw .logo { width: 84px; }
-      #erw .on-air-label { font-size: var(--fs-xs); }
-      #erw #now-playing { font-size: var(--fs-sm); }
-      #erw #now-playing-artist { font-size: var(--fs-xs); }
-      #erw ul.recent li { gap: 6px; }
-      #erw .upnext { padding: 5px 6px; }
-      #erw .audio-controls { padding: 5px; }
-    }
-
-
-    @media (max-height: 420px) {
-      #erw .desktop { height: 400px; }
-      #erw #artwork { width: 88px; height: 88px; }
-      #erw ul.recent li { padding: 4px 0; }
-      #erw ul.recent img.thumb { width: 28px; height: 28px; border-width: 1.5px; }
-      #erw .upnext { padding: 4px 6px; }
-      .cta { font-size: var(--fs-xs); padding: 5px 8px; }
-      #erw #play-toggle, #erw #mute-toggle { padding: 5px 8px; }
-      #erw #volume-slider { width: 75px; }
-    }
-
-    /* Mobile (from v10, with wrapping and mobile play) */
+    /* Mobile (same as v10) */
     #erw .mobile { display: none; width: 100%; max-width: 700px; }
     #erw .mobile .card { width: 100%; background: #191c29; border-radius: 14px; }
     #erw .m-header { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 2px solid #fed35133; }
@@ -158,10 +136,12 @@
         </div>
       </div>
       <div class="right">
+        <!-- Recents -->
         <div class="block">
           <div class="recent-title">Recently Played</div>
           <ul id="recent-list" class="recent"></ul>
         </div>
+        <!-- Up next -->
         <div class="block">
           <div class="upnext">
             <span class="badge">Up next</span>
@@ -169,9 +149,16 @@
             <span class="time" id="upnext-time"></span>
           </div>
         </div>
+        <!-- NEW: Today's schedule -->
+        <div class="block schedule">
+          <div class="sched-title">Today’s Schedule</div>
+          <ul id="schedule-list"></ul>
+        </div>
+        <!-- CTA -->
         <div class="block cta-wrap">
           <a class="cta" href="https://essential.radio" target="_blank" rel="noopener">Go to the Essential Radio website</a>
         </div>
+        <!-- Controls -->
         <div class="block">
           <div class="audio-controls">
             <button id="play-toggle">▶️</button>
@@ -307,17 +294,19 @@
     audio.addEventListener('ended', attemptRestart);
     setInterval(() => { if (!isPlaying || userPaused) return; if (document.hidden) return; if (Date.now() - lastProgressMs > 25_000) attemptRestart(); }, 10_000);
 
-    /* ======= Schedule ======= */
+    /* ======= Schedule helpers ======= */
     async function fetchSchedule() { try { const r = await fetch("https://essentialradio.github.io/player/schedule.json"); return await r.json(); } catch { return null; } }
     function minutes(hm){ const [h,m]=hm.split(':').map(Number); return h*60+m; }
+    function fmt(t){ return t; } // hh:mm already
     function getCurrentAndNext(schedule){
       const now = new Date(); const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
       const today = days[now.getDay()]; const shows = schedule?.[today] || []; const nm = now.getHours()*60 + now.getMinutes();
-      let cur=null, next=null;
+      let cur=null, next=null, idx=-1;
       for (let i=0;i<shows.length;i++){ const s=minutes(shows[i].start), e=minutes(shows[i].end||"24:00"); const end=(e===0 && s>0)?1440:e;
-        if(nm>=s && nm<end){ cur=shows[i]; next=shows[i+1]||null; break; } if(nm<s && !next) next=shows[i]; }
+        if(nm>=s && nm<end){ cur=shows[i]; next=shows[i+1]||null; idx=i; break; } if(nm<s && !next) { next=shows[i]; if(idx<0) idx=i-1; }
+      }
       if(!next){ const list = schedule?.[days[(now.getDay()+1)%7]] || []; next=list[0]||null; if(next) next._tomorrow = true; }
-      return {cur,next};
+      return {cur,next, idx};
     }
     function renderShow(el, show){
       if(!el) return;
@@ -325,14 +314,45 @@
       if ((show.title||'').includes(" with ")) { const [t,p]=(show.title||"").split(" with "); el.innerHTML = `<span>${decodeHtmlEntities(t.trim())}</span><br><span style="font-weight:400;font-size:0.9em;opacity:0.9;">with ${decodeHtmlEntities(p.trim())}</span>`; }
       else { el.textContent = decodeHtmlEntities(show.title||show); }
     }
+    function scheduleListForToday(schedule, maxItems=5){
+      const now = new Date(); const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      const today = days[now.getDay()]; const shows = schedule?.[today] || [];
+      const nm = now.getHours()*60 + now.getMinutes();
+      const items = [];
+      for (let i=0;i<shows.length;i++){
+        const s=minutes(shows[i].start), e=minutes(shows[i].end||"24:00"); const end=(e===0 && s>0)?1440:e;
+        if (end > nm) items.push({ ...shows[i], _idx: i, _now: nm>=s && nm<end });
+      }
+      // if fewer than maxItems, add tomorrow's first shows
+      if (items.length < maxItems){
+        const tom = schedule?.[days[(now.getDay()+1)%7]] || [];
+        for (let j=0;j<Math.min(maxItems-items.length, tom.length); j++){ items.push({ ...tom[j], _tomorrow: true, _idx: j }); }
+      }
+      return items.slice(0, maxItems);
+    }
     async function updateScheduleBlocks(){
-      const s = await fetchSchedule(); const {cur,next} = getCurrentAndNext(s||{});
-      renderShow(document.getElementById("currentShow"), cur || {title:"Off Air"});
-      renderShow(document.getElementById("m-currentShow"), cur || {title:"Off Air"});
-      const upText = (next?.title) ? next.title : "More music"; const timeStr = (next?.start)||""; const when = next?._tomorrow?"Tomorrow":"Today";
+      const s = await fetchSchedule(); const g = getCurrentAndNext(s||{});
+      renderShow(document.getElementById("currentShow"), g.cur || {title:"Off Air"});
+      renderShow(document.getElementById("m-currentShow"), g.cur || {title:"Off Air"});
+      const upText = (g.next?.title) ? g.next.title : "More music"; const timeStr = (g.next?.start)||""; const when = g.next?._tomorrow?"Tomorrow":"Today";
       const pairs = [{t:document.getElementById("upnext-text"), time:document.getElementById("upnext-time")},
                      {t:document.getElementById("m-upnext-text"), time:document.getElementById("m-upnext-time")}];
       for (const el of pairs){ if(el.t) el.t.textContent = decodeHtmlEntities(upText); if(el.time) el.time.textContent = timeStr ? `${when} • ${timeStr}` : ""; }
+
+      // Fill today's schedule list (desktop)
+      const list = document.getElementById('schedule-list');
+      if (list){
+        list.innerHTML = '';
+        const items = scheduleListForToday(s||{}, 5);
+        for (const it of items){
+          const li = document.createElement('li');
+          const when = it._tomorrow ? "Tomorrow" : "Today";
+          const label = it.end ? `${fmt(it.start)}–${fmt(it.end)}` : fmt(it.start);
+          li.className = it._now ? 'now' : '';
+          li.innerHTML = `<span class="sched-time">${when} • ${label}</span><span class="sched-name">${decodeHtmlEntities(it.title||'Show')}</span>`;
+          list.appendChild(li);
+        }
+      }
     }
 
     /* ======= Now Playing (stable diff) ======= */
