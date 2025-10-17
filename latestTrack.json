@@ -1,10 +1,10 @@
 {
-  "artist": "Lenny Kravitz",
-  "title": "Fly Away",
-  "startTime": "2025-10-17T13:54:01Z",
-  "start": "2025-10-17T13:54:01Z",
-  "duration": 211,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-10-17T13:57:32Z"
+  "endTime": "2025-10-17T15:00:00Z",
+  "artist": "Essential Radio",
+  "title": "Essential Afternoons",
+  "startTime": "2025-10-17T14:00:00Z",
+  "start": "2025-10-17T14:00:00Z",
+  "duration": 3600,
+  "source": "FIXED",
+  "indeterminate": false
 }

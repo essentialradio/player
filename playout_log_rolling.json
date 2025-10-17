@@ -53252,5 +53252,18 @@
     "Full Duration (mins)": 3.7,
     "Start ISO": "2025-10-17T13:54:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-17T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Essential Radio",
+    "Title": "Essential Afternoons",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-10-17T14:00:00Z",
+    "Source": "FIXED"
   }
 ]
