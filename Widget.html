@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v12 (fit-to-width scaling)</title>
+  <title>Essential Radio Widget – Upgraded v13 (mobile gutters + mobile play)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     html, body { height: 100%; overflow: hidden; } /* no internal scrollbars */
@@ -12,6 +12,8 @@
 
     /* Fit wrappers for scaling */
     .fit-wrap { position: relative; width: 100%; overflow: hidden; }
+    /* Add side padding ONLY on mobile wrap for comfortable gutters */
+    #fit-mobile { padding: 0 14px; }
     .fit-inner { transform-origin: top left; width: 100%; }
 
     .widget-shell { background: #191c29; border-radius: 20px; box-shadow: 0 4px 24px #0005; overflow: hidden; }
@@ -64,8 +66,8 @@
     .upnext .text { color: #fff; }
     .upnext .time { color: #fed351; font-weight: 600; margin-left: auto; }
 
-    #play-toggle, #mute-toggle { background: #fed351; color: #111; border: none; border-radius: 7px; padding: 8px 16px; font-size: 1.03em; font-weight: 700; cursor: pointer; transition: background .2s; }
-    #play-toggle:hover, #mute-toggle:hover { background: #ffe67c; }
+    #play-toggle, #mute-toggle, #m-play-toggle { background: #fed351; color: #111; border: none; border-radius: 7px; padding: 8px 16px; font-size: 1.03em; font-weight: 700; cursor: pointer; transition: background .2s; }
+    #play-toggle:hover, #mute-toggle:hover, #m-play-toggle:hover { background: #ffe67c; }
     #volume-slider { width: 120px; }
 
     /* Mobile */
@@ -89,8 +91,12 @@
     .m-artist { opacity: 0.95; }
 
     .m-recent { padding: 8px 14px 6px 14px; }
-    .m-aux { padding: 8px 14px 14px 14px; display: grid; gap: 10px; }
+    .m-aux { padding: 8px 14px 10px 14px; display: grid; gap: 10px; }
     .m-upnext { border: 1px solid #2a2e55; border-radius: 12px; padding: 10px; background: #21233c; }
+
+    /* New: Mobile controls */
+    .m-controls { display: flex; justify-content: center; padding: 6px 14px 14px 14px; }
+    .m-controls button { min-width: 120px; }
 
     @media (max-width: 700px) {
       .desktop { display: none; }
@@ -98,7 +104,7 @@
       #volume-slider, #mute-toggle { display: none; }
     }
 
-    /* COMPACT MODE (unchanged) */
+    /* COMPACT MODE */
     .compact .left { padding: 18px 14px 12px 14px; }
     .compact #artwork { width: 128px; height: 128px; }
     .compact .right { padding: 18px 18px 12px 20px; }
@@ -179,6 +185,9 @@
                 <span style="float:right; color:#fed351; font-weight:600;" id="m-upnext-time"></span>
               </div>
             </div>
+            <div class="m-controls">
+              <button id="m-play-toggle">▶️</button>
+            </div>
           </div>
         </div>
       </div>
@@ -212,10 +221,9 @@
       // initial scale
       let s = Math.min(1, availH / naturalH);
       if (s < 1) {
-        // 3) width compensation: expand inner width to maintain full visual width after scaling
+        // width compensation to keep visual width full even when scaled
         inner.style.width = (100 / s) + '%';
-
-        // 4) remeasure at compensated width (still no transform)
+        // remeasure
         naturalH = card.scrollHeight;
         s = Math.min(1, availH / naturalH);
       }
@@ -247,7 +255,7 @@
     new ResizeObserver(fitToIframe).observe(document.body);
     if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitToIframe); }
 
-    /* ===== Widget logic (unchanged) ===== */
+    /* ===== Widget logic ===== */
     const RECENT_COUNT = 4;
     const POLL_MS = 15000;
     const END_GRACE_MS = 4000;
@@ -263,14 +271,30 @@
     audio.preload = "none";
     audio.volume = 0.8;
     let isPlaying=false, userPaused=false, lastVolume=0.8, lastProgressMs=Date.now(), lastRestartMs=0;
-    const playBtn=document.getElementById('play-toggle'), muteBtn=document.getElementById('mute-toggle'), volumeSlider=document.getElementById('volume-slider');
-    function setPlayingUI(p){ isPlaying=p; if(playBtn) playBtn.textContent=p?'⏸':'▶️'; }
-    function syncMuteIcon(){ if(!muteBtn) return; const v=audio.muted?0:audio.volume; muteBtn.textContent = v===0?'🔇':(v<0.5?'🔈':'🔊'); }
-    function startPlayback(){ userPaused=false; if(audio.readyState===0) audio.load(); audio.play().then(()=>setPlayingUI(true)).catch(()=>{}); }
-    function pausePlayback(){ userPaused=true; audio.pause(); setPlayingUI(false); }
-    if (playBtn) playBtn.onclick=()=>{ isPlaying?pausePlayback():startPlayback(); };
+    const playBtnDesktop = document.getElementById('play-toggle');
+    const playBtnMobile  = document.getElementById('m-play-toggle');
+    const muteBtn        = document.getElementById('mute-toggle');
+    const volumeSlider   = document.getElementById('volume-slider');
+
+    function setPlayingUI(p){
+      isPlaying=p;
+      if (playBtnDesktop) playBtnDesktop.textContent = p ? '⏸' : '▶️';
+      if (playBtnMobile)  playBtnMobile.textContent  = p ? '⏸' : '▶️';
+    }
+    function syncMuteIcon(){
+      if(!muteBtn) return;
+      const v=audio.muted?0:audio.volume;
+      muteBtn.textContent = v===0?'🔇':(v<0.5?'🔈':'🔊');
+    }
+    function startPlayback(){ userPaused=false; if(audio.readyState===0) audio.load(); audio.play().then(()=>{ setPlayingUI(true); fitToIframe(); }).catch(()=>{}); }
+    function pausePlayback(){ userPaused=true; audio.pause(); setPlayingUI(false); fitToIframe(); }
+
+    if (playBtnDesktop) playBtnDesktop.onclick = ()=>{ isPlaying?pausePlayback():startPlayback(); };
+    if (playBtnMobile)  playBtnMobile.onclick  = ()=>{ isPlaying?pausePlayback():startPlayback(); };
+
     if (volumeSlider) volumeSlider.oninput=function(){ audio.volume=this.value/100; lastVolume=audio.volume; syncMuteIcon(); };
     if (muteBtn) muteBtn.onclick=()=>{ if(!audio.muted && audio.volume>0){ audio.muted=true; if (volumeSlider) volumeSlider.value=0; } else { audio.muted=false; if (volumeSlider) volumeSlider.value=Math.round(lastVolume*100); } syncMuteIcon(); };
+
     audio.addEventListener('timeupdate', ()=>{ if(!audio.paused) lastProgressMs=Date.now(); });
     audio.addEventListener('playing', ()=>{ setPlayingUI(true); lastProgressMs=Date.now(); });
     audio.addEventListener('pause',   ()=>{ if(!userPaused) setPlayingUI(false); });
