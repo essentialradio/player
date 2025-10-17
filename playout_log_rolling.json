@@ -52706,5 +52706,18 @@
     "Full Duration (mins)": 3.05,
     "Start ISO": "2025-10-17T11:01:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-17T11:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "Dodgy",
+    "Title": "Good Enough",
+    "Duration (s)": 225,
+    "Full Duration (s)": 241,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 4.02,
+    "Start ISO": "2025-10-17T11:05:27Z",
+    "Source": "PLAYIT"
   }
 ]
