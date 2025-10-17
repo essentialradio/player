@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Radio Widget – Upgraded v8 (2-line titles, no scroll)</title>
+  <title>Essential Radio Widget – Upgraded v7 (no CTA)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     #erw, #erw * { box-sizing: border-box; }
@@ -29,18 +29,14 @@
     #erw #artwork.fallback { filter: blur(5px) brightness(.85); opacity: .85; box-shadow: 0 0 10px rgba(254,211,81,.35); }
 
     #erw .now-playing-info { text-align: center; margin-bottom: 8px; }
-    #erw #now-playing { font-size: 1.06em; font-weight: 700; color: #fed351; margin-bottom: 2px;
-      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.15em; max-height:calc(1.15em * 2);
-    }
-    #erw #now-playing-artist { font-size: 0.95em; color: #fff; opacity: 0.95;
-      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.15em; max-height:calc(1.15em * 2);
-    }
+    #erw #now-playing { font-size: 1.06em; font-weight: 700; color: #fed351; margin-bottom: 2px; }
+    #erw #now-playing-artist { font-size: 0.95em; color: #fff; opacity: 0.95; }
 
     #erw .right { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 24px 26px; background: #191c29; height: 100%; }
     #erw .right .block { margin-bottom: 12px; }
 
     #erw .recent-title { font-size: 1.07em; font-weight: 600; margin: 2px 0 6px 0; color: #fed351; }
-    #erw ul.recent { list-style: none; margin: 0; padding: 0; width: 100%; overflow: visible; }
+    #erw ul.recent { list-style: none; margin: 0; padding: 0; width: 100%; }
     #erw ul.recent li {
       display: grid; grid-template-columns: 44px 1fr auto; align-items: center;
       gap: 12px; padding: 10px 0; border-bottom: 1px solid #28284b; font-size: 0.97em;
@@ -48,12 +44,7 @@
     #erw ul.recent li:last-child { border-bottom: none; }
     #erw ul.recent img.thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 2px solid #fed351; background: #222; opacity: 0; transition: opacity .4s ease-in-out; }
     #erw ul.recent img.thumb.loaded { opacity: 1; }
-    #erw ul.recent span.info {
-      color: #fff; font-size: 0.98em;
-      overflow: hidden; white-space: normal;
-      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
-      line-height:1.15em; max-height:calc(1.15em * 2);
-    }
+    #erw ul.recent span.info { color: #fff; font-size: 0.98em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
     #erw ul.recent span.time { color: #fed351; font-size: 0.94em; width: 56px; text-align: right; }
 
     #erw .upnext { display: flex; align-items: center; gap: 10px; background: #21233c; border: 1px solid #2a2e55; border-radius: 12px; padding: 10px 12px; }
@@ -79,11 +70,6 @@
     #erw #m-artwork { width: 96px; height: 96px; border-radius: 10px; border: 3px solid #fed351; object-fit: cover; background: #222; opacity: 0; filter: blur(10px) brightness(.9); transition: opacity .4s ease-in-out, filter .4s ease-in-out; }
     #erw #m-artwork.loaded { opacity: 1; filter: blur(0) brightness(1); }
     #erw #m-artwork.fallback { filter: blur(5px) brightness(.85); opacity: .85; box-shadow: 0 0 10px rgba(254,211,81,.35); }
-
-    #erw .m-title, #erw .m-artist {
-      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
-      line-height:1.15em; max-height:calc(1.15em * 2);
-    }
     #erw .m-title { color: #fed351; font-weight: 700; font-size: 1.02em; }
     #erw .m-artist { opacity: 0.95; }
 
@@ -109,7 +95,7 @@
         <img id="artwork" src="Essential Radio Logo.png" alt="Artwork" class="fallback" />
         <div class="now-playing-info">
           <div id="now-playing">Loading…</div>
-          <div id="now-playing-artist"> </div>
+          <div id="now-playing-artist"></div>
         </div>
       </div>
       <div class="right">
