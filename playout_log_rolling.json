@@ -52316,5 +52316,31 @@
     "Full Duration (mins)": 3.52,
     "Start ISO": "2025-10-17T08:34:44Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-17T08:00:00Z",
+    "Scheduled Time": "09:38",
+    "Displayed Time": "09:38",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Tears",
+    "Duration (s)": 155,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.67,
+    "Start ISO": "2025-10-17T08:38:54Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-17T08:00:00Z",
+    "Scheduled Time": "09:41",
+    "Displayed Time": "09:41",
+    "Artist": "Joy Crookes",
+    "Title": "Somebody To You",
+    "Duration (s)": 173,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-10-17T08:41:29Z",
+    "Source": "PLAYIT"
   }
 ]
