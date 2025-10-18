@@ -52777,5 +52777,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-10-17T23:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-18T01:00:00Z",
+    "Scheduled Time": "02:02",
+    "Displayed Time": "02:02",
+    "Artist": "Lady Gaga",
+    "Title": "The Dead Dance",
+    "Duration (s)": 220,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-10-18T01:02:17Z",
+    "Source": "PLAYIT"
   }
 ]
