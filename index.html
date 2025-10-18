@@ -6011,29 +6011,18 @@ let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
 async function fetchNowPlaying() {
-  // Grace windows to avoid flicker / premature fallback
-  const NO_DATA_GRACE_MS = 15000;   // wait before showing 'More music soon' if payload invalid
-  const ENDED_GRACE_MS   = 15000;   // wait after track end before fallback
-
   try {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
 
-    // Validate payload (with grace to avoid flicker)
-    const _hasLatest = !!(latest && latest.artist && latest.title && latest.duration && latest.startTime);
-    if (!_hasLatest) {
-      window._npInvalidSince = window._npInvalidSince || Date.now();
-      if (Date.now() - window._npInvalidSince > NO_DATA_GRACE_MS) {
-        if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
-      }
+    // Validate payload
+    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
-    } else {
-      window._npInvalidSince = null;
     }
 
     const artist = latest.artist;
     const title = latest.title;
-    const src = String(latest.source || "").toUpperCase(); const isShow = (src === "FIXED" || src === "ALT");
     const startMs = new Date(latest.startTime).getTime(); // UTC ms
     const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
@@ -6045,7 +6034,10 @@ async function fetchNowPlaying() {
 
 
     // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
-    if (!isShow && (Date.now() > (endMs + ENDED_GRACE_MS))) { if (typeof showMoreMusicSoon === "function") showMoreMusicSoon(); return; }
+    if (Date.now() > endMs) {
+      if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
+      return;
+    }
     // Show progress bar while a valid track is playing
     try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
 // Track identity (to detect when a NEW track arrives)
@@ -6162,14 +6154,12 @@ if (remaining > 0) {
     const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    let pool = data.filter(it => String(it.Source || '').toUpperCase() === 'PLAYIT' && it.Artist && it.Title);
-    if (!pool.length) { pool = data.filter(it => it.Artist && it.Title); }
-    const recentItems = pool
+    const recentItems = data
       .filter(item => {
         const name = `${item.Artist} - ${item.Title}`;
-        return (songHasEnded || name !== currentTrackID);
+        return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
       })
-      .slice(-4)
+      .slice(-5)
       .reverse();
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
