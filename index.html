@@ -6051,6 +6051,58 @@ if (window._npActiveKey !== trackKey) {
   window._npLastTiming = { startMs, endMs };
   try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch(e){}
   try { startBarAnimation(startMs, endMs); } catch(e){}
+
+    // === Show-aware override (FIXED/ALT) ===
+    try {
+      const src = String((latest && latest.source) || '').toUpperCase();
+      const isShow = (src === 'FIXED' || src === 'ALT');
+
+      if (isShow) {
+        const startMs = Date.parse(latest.startTime || latest.start || new Date().toISOString());
+        const durationMs = (Number(latest.duration) || 3600) * 1000;
+        const endMs = startMs + durationMs;
+
+        // Bar timing guards
+        if (typeof hardResetBar === 'function') { try { hardResetBar(); } catch(e){} }
+        window._npLastTiming = { startMs, endMs };
+        if (typeof startBarAnimation === 'function') { try { startBarAnimation(startMs, endMs); } catch(e){} }
+
+        // Render: On Air Now (program/show)
+        const nowPlaying = document.getElementById('now-playing');
+        const artist = (latest.artist || 'Essential Radio');
+        const title  = (latest.title  || 'On Air');
+
+        if (nowPlaying) {
+          nowPlaying.innerHTML = `
+            <span style="color:#fed351;">On Air Now:</span>
+            <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+            <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
+            <span style="color:white;">${artist}</span>`;
+        }
+
+        // Keep other selectors (if present) in sync
+        const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
+        const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
+        if (titleEl) titleEl.textContent = title;
+        if (artistEl) artistEl.textContent = artist;
+
+        // Avoid artwork lookups for shows; use fallback/logo
+        try {
+          if (typeof applyFallbackImmediate === 'function') applyFallbackImmediate();
+          const prog = document.getElementById('np-progress');
+          if (prog) prog.style.display = 'none';
+          document.title = `Essential Radio: ${title}`;
+        } catch(e){}
+
+        // Expose ID for recent de-dupe
+        window.currentTrackID = `${artist} - ${title}`;
+      }
+    } catch(e) {
+      console.warn('Show-aware override failed', e);
+    }
+    // === End show-aware override ===
+
+
 } else {
   // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
   window._npLastTiming = { startMs, endMs };
@@ -6154,6 +6206,20 @@ if (remaining > 0) {
     const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
+    // Prefer real music playout during shows
+    let pool = data.filter(it =>
+      String((it.Source || '')).toUpperCase() === 'PLAYIT' &&
+      it.Artist && it.Title
+    );
+
+    // Fallback if nothing matched (e.g., fresh hour after restart)
+    if (!pool.length) {
+      pool = data.filter(it => it.Artist && it.Title);
+    }
+
+    // De-dupe safety
+    pool = pool.filter(it => it.Artist && it.Title);
+
     const recentItems = data
       .filter(item => {
         const name = `${item.Artist} - ${item.Title}`;
