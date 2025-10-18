@@ -6154,12 +6154,14 @@ if (remaining > 0) {
     const res = await fetch(`${baseUrl}?_=${Date.now()}`, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const recentItems = data
+    let pool = data.filter(it => String(it.Source || '').toUpperCase() === 'PLAYIT' && it.Artist && it.Title);
+    if (!pool.length) { pool = data.filter(it => it.Artist && it.Title); }
+    const recentItems = pool
       .filter(item => {
         const name = `${item.Artist} - ${item.Title}`;
-        return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
+        return (songHasEnded || name !== currentTrackID);
       })
-      .slice(-5)
+      .slice(-4)
       .reverse();
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
