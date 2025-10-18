@@ -6011,6 +6011,7 @@ let trackEndTimeout = null;
 let trackEndTime = null; // NEW
 
 
+
 async function fetchNowPlaying() {
   try {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
@@ -6019,46 +6020,77 @@ async function fetchNowPlaying() {
     const src = String((latest && latest.source) || '').toUpperCase();
     const isShow = (src === 'FIXED' || src === 'ALT');
 
-    // Extract basic fields, allow missing in show mode
-    let artist = (latest && latest.artist) || (isShow ? 'Essential Radio' : '');
-    let title  = (latest && latest.title)  || (isShow ? 'On Air' : '');
-    let startMs = Date.parse((latest && (latest.startTime || latest.start)) || new Date().toISOString());
+    // Extract fields
+    let artist = (latest && latest.artist) || '';
+    let title  = (latest && latest.title)  || '';
+
+    // Build a stable "base key" for this item that won't change every poll
+    const baseKey = `${src}|${artist}|${title}`;
+
+    // Derive startMs safely; some show payloads omit startTime
+    let rawStart = (latest && (latest.startTime || latest.start)) || null;
+    let startMs = rawStart ? Date.parse(rawStart) : NaN;
+
+    // If startMs is invalid, anchor it per baseKey so it remains stable across polls
+    if (!Number.isFinite(startMs)) {
+      try {
+        const stored = JSON.parse(sessionStorage.getItem('npAnchor') || '{}');
+        if (stored.key === baseKey && Number.isFinite(stored.startMs)) {
+          startMs = stored.startMs;
+        } else {
+          startMs = Date.now();
+          sessionStorage.setItem('npAnchor', JSON.stringify({ key: baseKey, startMs }));
+        }
+      } catch(e) {
+        startMs = Date.now();
+      }
+    } else {
+      // Update anchor when the backend provides a concrete start
+      try { sessionStorage.setItem('npAnchor', JSON.stringify({ key: baseKey, startMs })); } catch {}
+    }
+
+    // Duration handling
     let durationSec = Number((latest && latest.duration));
     if (!durationSec || durationSec <= 0) durationSec = isShow ? 3600 : 180;
     let endMs = startMs + durationSec * 1000;
 
-    // Fallback: if we still don't have artist/title (e.g., API empty), use last PLAYIT from rolling log
+    // If we truly have nothing (no artist & title), try a throttled fallback to log
     if (!artist && !title) {
       try {
-        const res = await fetch('playout_log_rolling.json?_=' + Date.now(), { cache: 'no-store' });
-        if (res.ok) {
-          const log = await res.json();
-          const playit = (log || []).filter(it => String(it.Source || '').toUpperCase() === 'PLAYIT' && it.Artist && it.Title).slice(-1)[0];
-          if (playit) {
-            artist = playit.Artist;
-            title  = playit.Title;
-            startMs = Date.parse(playit["Start ISO"] || new Date().toISOString());
-            const d = Number(playit["Duration (s)"] || playit["Full Duration (s)"] || 180);
-            endMs = startMs + d * 1000;
+        const now = Date.now();
+        if (!window._lastLogFallbackTs || (now - window._lastLogFallbackTs) > 10000) {
+          window._lastLogFallbackTs = now;
+          const res = await fetch('playout_log_rolling.json?_=' + now, { cache: 'no-store' });
+          if (res.ok) {
+            const log = await res.json();
+            const playit = (log || []).filter(it => String(it.Source || '').toUpperCase() === 'PLAYIT' && it.Artist && it.Title).slice(-1)[0];
+            if (playit) {
+              artist = playit.Artist;
+              title  = playit.Title;
+              startMs = Date.parse(playit["Start ISO"] || new Date().toISOString());
+              const d = Number(playit["Duration (s)"] || playit["Full Duration (s)"] || 180);
+              endMs = startMs + d * 1000;
+            }
           }
         }
       } catch {}
     }
 
-    // If still nothing to show, show the holding message and exit
+    // If still nothing meaningful, show the holding message and exit
     if (!artist && !title) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
 
-    // Track identity and progress bar
-    const trackKey = `${artist}||${title}||${startMs}`;
+    // Identity includes the anchored startMs so we only restart bar when content truly changes
+    const trackKey = `${baseKey}|${startMs}`;
+
     if (window._npActiveKey !== trackKey) {
       window._npActiveKey = trackKey;
-      try { if (typeof hardResetBar === 'function') hardResetBar(); } catch(e){}
+      try { if (typeof hardResetBar === 'function') hardResetBar(); } catch{}
       window._npLastTiming = { startMs, endMs };
-      try { if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('npLast', JSON.stringify({ key: trackKey, startMs, endMs })); } catch(e){}
-      try { if (typeof startBarAnimation === 'function') startBarAnimation(startMs, endMs); } catch(e){}
+      try { if (typeof startBarAnimation === 'function') startBarAnimation(startMs, endMs); } catch{}
+      try { if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('npLast', JSON.stringify({ key: trackKey, startMs, endMs })); } catch{}
     } else {
       window._npLastTiming = { startMs, endMs };
     }
@@ -6066,30 +6098,35 @@ async function fetchNowPlaying() {
     // Render Now Playing block
     const nowPlaying = document.getElementById('now-playing');
     if (nowPlaying) {
-      nowPlaying.innerHTML = isShow
-        ? `<span style="color:#fed351;">On Air Now:</span>
-           <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-           <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-           <span style="color:white;">${artist}</span>`
-        : `<span style="color:#fed351;">Now Playing:</span>
-           <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
-           <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
-           <span style="color:white;">by ${artist}</span>`;
+      if (isShow) {
+        const prog = document.getElementById('np-progress');
+        if (prog) prog.style.display = 'none';
+        nowPlaying.innerHTML = `
+          <span style="color:#fed351;">On Air Now:</span>
+          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+          <span style="color:white;font-weight:600;font-size:1.2em;">${title || 'On Air'}</span><br/>
+          <span style="color:white;">${artist || 'Essential Radio'}</span>`;
+      } else {
+        try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch{}
+        nowPlaying.innerHTML = `
+          <span style="color:#fed351;">Now Playing:</span>
+          <span class="live-indicator"><span class="dot"></span>LIVE</span><br/>
+          <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
+          <span style="color:white;">by ${artist}</span>`;
+      }
     }
 
-    // Sync other selectors, if present
+    // Sync optional elements
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
     const artistEl = document.querySelector('#npArtist, #np-artist, #np_artist, #nowPlayingArtist, #nowPlaying .track-artist, #now-playing-card .track-artist');
-    if (titleEl) titleEl.textContent = title;
-    if (artistEl) artistEl.textContent = artist;
+    if (titleEl) titleEl.textContent = title || 'On Air';
+    if (artistEl) artistEl.textContent = artist || 'Essential Radio';
 
-    // Document title + artwork handling
-    try { document.title = isShow ? `Essential Radio: ${title}` : `Essential Radio: ${artist} – ${title}`; } catch {}
+    // Title + artwork
+    try { document.title = isShow ? `Essential Radio: ${title || 'On Air'}` : `Essential Radio: ${artist} – ${title}`; } catch {}
     try {
       if (isShow) {
         if (typeof applyFallbackImmediate === 'function') applyFallbackImmediate();
-        const prog = document.getElementById('np-progress');
-        if (prog) prog.style.display = 'none';
       } else if (window.applyArtwork) {
         window.applyArtwork({ artist, title });
       } else if (typeof fetchArtwork === 'function') {
@@ -6099,12 +6136,13 @@ async function fetchNowPlaying() {
 
     // Expose ID for recent de-dupe
     window.currentTrackID = `${artist} - ${title}`;
+
   } catch (err) {
     console.warn('fetchNowPlaying failed', err);
-    // Last-ditch: fallback to "more music soon"
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
 }
+
  else {
   // Same track; keep existing rAF-driven animation running. Just refresh timing in case of slight skew.
   window._npLastTiming = { startMs, endMs };
