@@ -52325,5 +52325,31 @@
     "Full Duration (mins)": 3.27,
     "Start ISO": "2025-10-19T01:29:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T01:00:00Z",
+    "Scheduled Time": "02:32",
+    "Displayed Time": "02:32",
+    "Artist": "Becky Hill & David Guetta",
+    "Title": "Remember",
+    "Duration (s)": 154,
+    "Full Duration (s)": 161,
+    "Duration (mins)": 2.57,
+    "Full Duration (mins)": 2.68,
+    "Start ISO": "2025-10-19T01:32:21Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T01:00:00Z",
+    "Scheduled Time": "02:35",
+    "Displayed Time": "02:35",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 220,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-10-19T01:35:00Z",
+    "Source": "PLAYIT"
   }
 ]
