@@ -51915,5 +51915,18 @@
     "Full Duration (mins)": 0.5,
     "Start ISO": "2025-10-19T10:20:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T10:00:00Z",
+    "Scheduled Time": "11:20",
+    "Displayed Time": "11:20",
+    "Artist": "U2",
+    "Title": "With or Without You",
+    "Duration (s)": 270,
+    "Full Duration (s)": 292,
+    "Duration (mins)": 4.5,
+    "Full Duration (mins)": 4.87,
+    "Start ISO": "2025-10-19T10:20:39Z",
+    "Source": "PLAYIT"
   }
 ]
