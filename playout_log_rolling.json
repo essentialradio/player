@@ -52177,5 +52177,21 @@
     "Actual End ISO": "2025-10-19T13:14:04Z",
     "Actual Duration (s)": 157,
     "Actual Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-10-19T13:00:00Z",
+    "Scheduled Time": "14:14",
+    "Displayed Time": "14:14",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild (Clean)",
+    "Duration (s)": 309,
+    "Full Duration (s)": 309,
+    "Duration (mins)": 5.15,
+    "Full Duration (mins)": 5.15,
+    "Start ISO": "2025-10-19T13:14:04Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T13:19:13Z",
+    "Actual Duration (s)": 309,
+    "Actual Duration (mins)": 5.15
   }
 ]
