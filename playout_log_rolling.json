@@ -52193,5 +52193,21 @@
     "Actual End ISO": "2025-10-19T13:19:13Z",
     "Actual Duration (s)": 309,
     "Actual Duration (mins)": 5.15
+  },
+  {
+    "Hour": "2025-10-19T13:00:00Z",
+    "Scheduled Time": "14:19",
+    "Displayed Time": "14:19",
+    "Artist": "Zara Larsson",
+    "Title": "Crush",
+    "Duration (s)": 171,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.85,
+    "Start ISO": "2025-10-19T13:19:13Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T13:22:04Z",
+    "Actual Duration (s)": 171,
+    "Actual Duration (mins)": 2.85
   }
 ]
