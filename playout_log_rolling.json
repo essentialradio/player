@@ -53053,5 +53053,31 @@
     "Full Duration (mins)": 4.68,
     "Start ISO": "2025-10-19T05:25:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T05:00:00Z",
+    "Scheduled Time": "06:30",
+    "Displayed Time": "06:30",
+    "Artist": "Biffy Clyro",
+    "Title": "Hunting Season",
+    "Duration (s)": 166,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.92,
+    "Start ISO": "2025-10-19T05:30:19Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T05:00:00Z",
+    "Scheduled Time": "06:33",
+    "Displayed Time": "06:33",
+    "Artist": "Mimi Webb",
+    "Title": "Ghost of You",
+    "Duration (s)": 150,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.5,
+    "Full Duration (mins)": 2.63,
+    "Start ISO": "2025-10-19T05:33:27Z",
+    "Source": "PLAYIT"
   }
 ]
