@@ -6043,7 +6043,8 @@ async function fetchNowPlaying() {
     const startMs = new Date(payload.startTime).getTime(); // UTC ms
     const durationMs = payload.duration * 1000;
     const endMs = startMs + durationMs;
-    const isALT = !!(payload && (payload.indeterminate === true));
+    const _srcRaw = String((payload && (payload.source ?? payload.Source ?? payload.mode ?? payload.Mode ?? payload.Src)) || '').toUpperCase();
+const isALT = (payload && payload.indeterminate === true) || _srcRaw === 'ALT';
     try { document.body.classList.toggle('alt-mode', isALT); } catch(e) {}
 
     // Clear any 'break' polling now that we have a valid, current track.
