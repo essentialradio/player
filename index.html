@@ -10180,6 +10180,57 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+<script>
+// Hide the currently playing track from the "recently played" list.
+(function(){
+  function norm(s){ return (s==null?'':String(s)).trim().replace(/\s+/g,' ').toUpperCase(); }
+  function filterRecentAgainstNowPlaying(){
+    try{
+      var artistEl = document.getElementById('np-artist') || document.getElementById('mobileNpArtist');
+      var titleEl  = document.getElementById('np-title');
+      var list = document.getElementById('recent-list');
+      if(!list) return;
+      // Always reset visibility first so we don't keep things hidden after track changes
+      Array.from(list.children).forEach(function(el){ if (el && el.style) el.style.display = ''; });
+      if(!artistEl || !titleEl) return;
+      var a = norm(artistEl.textContent);
+      var t = norm(titleEl.textContent);
+      if(!a || !t) return;
+      var children = Array.from(list.children);
+      for (var i=0;i<children.length;i++){
+        var row = children[i];
+        var txt = norm(row.textContent);
+        // Match both artist and title tokens within the row
+        if (txt.includes(a) && txt.includes(t)) {
+          row.style.display = 'none';
+          break; // hide only the first matching row
+        }
+      }
+    }catch(e){}
+  }
+  window._filterRecentAgainstNowPlaying = filterRecentAgainstNowPlaying;
+  document.addEventListener('DOMContentLoaded', function(){
+    filterRecentAgainstNowPlaying();
+    var list = document.getElementById('recent-list');
+    if (list && window.MutationObserver) {
+      var mo = new MutationObserver(filterRecentAgainstNowPlaying);
+      mo.observe(list, {childList:true, subtree:false});
+    }
+    var a = document.getElementById('np-artist') || document.getElementById('mobileNpArtist');
+    var t = document.getElementById('np-title');
+    if (a && window.MutationObserver) {
+      var moA = new MutationObserver(filterRecentAgainstNowPlaying);
+      moA.observe(a, {childList:true, subtree:true, characterData:true});
+    }
+    if (t && window.MutationObserver) {
+      var moT = new MutationObserver(filterRecentAgainstNowPlaying);
+      moT.observe(t, {childList:true, subtree:true, characterData:true});
+    }
+  });
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
