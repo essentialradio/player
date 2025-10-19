@@ -52305,5 +52305,21 @@
     "Actual End ISO": "2025-10-19T13:45:17Z",
     "Actual Duration (s)": 157,
     "Actual Duration (mins)": 2.62
+  },
+  {
+    "Hour": "2025-10-19T13:00:00Z",
+    "Scheduled Time": "14:45",
+    "Displayed Time": "14:45",
+    "Artist": "Lorde",
+    "Title": "Shapeshifter",
+    "Duration (s)": 310,
+    "Full Duration (s)": 310,
+    "Duration (mins)": 5.17,
+    "Full Duration (mins)": 5.17,
+    "Start ISO": "2025-10-19T13:45:17Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T13:50:27Z",
+    "Actual Duration (s)": 310,
+    "Actual Duration (mins)": 5.17
   }
 ]
