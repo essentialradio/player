@@ -52097,5 +52097,21 @@
     "Full Duration (mins)": 3.73,
     "Start ISO": "2025-10-19T12:52:28Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "14:00",
+    "Artist": "Beyonce",
+    "Title": "Halo",
+    "Duration (s)": 31,
+    "Full Duration (s)": 31,
+    "Duration (mins)": 0.52,
+    "Full Duration (mins)": 0.52,
+    "Start ISO": "2025-10-19T13:00:02Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T13:00:33Z",
+    "Actual Duration (s)": 31,
+    "Actual Duration (mins)": 0.52
   }
 ]
