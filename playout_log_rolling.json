@@ -52337,5 +52337,21 @@
     "Actual End ISO": "2025-10-19T13:53:36Z",
     "Actual Duration (s)": 189,
     "Actual Duration (mins)": 3.15
+  },
+  {
+    "Hour": "2025-10-19T13:00:00Z",
+    "Scheduled Time": "14:53",
+    "Displayed Time": "14:53",
+    "Artist": "Lola Young",
+    "Title": "Dealer",
+    "Duration (s)": 403,
+    "Full Duration (s)": 403,
+    "Duration (mins)": 6.72,
+    "Full Duration (mins)": 6.72,
+    "Start ISO": "2025-10-19T13:53:36Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T14:00:19Z",
+    "Actual Duration (s)": 403,
+    "Actual Duration (mins)": 6.72
   }
 ]
