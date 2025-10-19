@@ -2867,7 +2867,7 @@ nav + div {
   }
 </style>
 <style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
-const P251019-1417-altdur';
+const P251019-0944';
 </script>
 <script>
 (function() {
@@ -6014,23 +6014,29 @@ async function fetchNowPlaying() {
   try {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
-    // ALT/indeterminate detection
+    // Fallback: if API returns invalid, try static file
     let payload = latest;
-    const isAlt = String((payload && payload.source) || '').toUpperCase().includes('ALT') || !!(payload && payload.indeterminate);
+    if (!payload || !payload.artist || !payload.title || !payload.duration || !payload.startTime) {
+      try {
+        const staticRes = await fetch('/latestTrack.json?_=' + Date.now(), { cache: 'no-store' });
+        const staticJson = await staticRes.json();
+        if (staticJson && staticJson.artist && staticJson.title && staticJson.duration && staticJson.startTime) {
+          payload = staticJson;
+        }
+      } catch (e) {}
+    }
     
 
     // Validate payload
-    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+    if (!latest || !payload.artist || !payload.title || !payload.duration || !payload.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
 
-    
-    const showBar = !isAlt || (isAlt && Number(payload && payload.duration) && Number(payload.duration) !== 3600);
-    const artist = latest.artist;
-    const title = latest.title;
-    const startMs = new Date(latest.startTime).getTime(); // UTC ms
-    const durationMs = latest.duration * 1000;
+    const artist = payload.artist;
+    const title = payload.title;
+    const startMs = new Date(payload.startTime).getTime(); // UTC ms
+    const durationMs = payload.duration * 1000;
     const endMs = startMs + durationMs;
     // Clear any 'break' polling now that we have a valid, current track.
     try {
@@ -6045,13 +6051,13 @@ async function fetchNowPlaying() {
       return;
     }
     // Show progress bar while a valid track is playing
-    try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = showBar ? 'block' : 'none'; } catch(e) {}
+    try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
 // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
 
-// Only (re)start the bar if this is a NEW track and UI should show it.
-if (showBar && window._npActiveKey !== trackKey) {
+// Only (re)start the bar if this is a NEW track.
+if (window._npActiveKey !== trackKey) {
   window._npActiveKey = trackKey;
   try { hardResetBar(); } catch(e){}
   window._npLastTiming = { startMs, endMs };
