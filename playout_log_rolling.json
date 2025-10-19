@@ -51954,5 +51954,18 @@
     "Full Duration (mins)": 3.15,
     "Start ISO": "2025-10-19T12:11:26Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T12:00:00Z",
+    "Scheduled Time": "13:17",
+    "Displayed Time": "13:17",
+    "Artist": "Radio News Hub",
+    "Title": "Advert 1",
+    "Duration (s)": 30,
+    "Full Duration (s)": 30,
+    "Duration (mins)": 0.5,
+    "Full Duration (mins)": 0.5,
+    "Start ISO": "2025-10-19T12:17:41Z",
+    "Source": "PLAYIT"
   }
 ]
