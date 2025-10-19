@@ -52602,5 +52602,31 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-10-19T20:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-19T21:00:00Z",
+    "Scheduled Time": "22:00",
+    "Displayed Time": "22:00",
+    "Artist": "ESSENTIAL NEWS",
+    "Title": "IN & BED - WEBSITE (1 MIN)",
+    "Duration (s)": 12,
+    "Full Duration (s)": 105,
+    "Duration (mins)": 0.2,
+    "Full Duration (mins)": 1.75,
+    "Start ISO": "2025-10-19T21:00:08Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T21:00:00Z",
+    "Scheduled Time": "22:00",
+    "Displayed Time": "22:00",
+    "Artist": "Radio News Hub",
+    "Title": "1 Min News",
+    "Duration (s)": 90,
+    "Full Duration (s)": 91,
+    "Duration (mins)": 1.5,
+    "Full Duration (mins)": 1.52,
+    "Start ISO": "2025-10-19T21:00:20Z",
+    "Source": "PLAYIT"
   }
 ]
