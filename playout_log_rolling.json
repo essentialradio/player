@@ -52058,5 +52058,31 @@
     "Full Duration (mins)": 2.9,
     "Start ISO": "2025-10-19T11:09:43Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T11:00:00Z",
+    "Scheduled Time": "12:12",
+    "Displayed Time": "12:12",
+    "Artist": "Sister Sledge",
+    "Title": "We Are Family",
+    "Duration (s)": 192,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.42,
+    "Start ISO": "2025-10-19T11:12:41Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T11:00:00Z",
+    "Scheduled Time": "12:19",
+    "Displayed Time": "12:19",
+    "Artist": "Radio News Hub",
+    "Title": "Advert 2",
+    "Duration (s)": 29,
+    "Full Duration (s)": 30,
+    "Duration (mins)": 0.48,
+    "Full Duration (mins)": 0.5,
+    "Start ISO": "2025-10-19T11:19:30Z",
+    "Source": "PLAYIT"
   }
 ]
