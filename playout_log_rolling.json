@@ -51772,5 +51772,18 @@
     "Full Duration (mins)": 0.5,
     "Start ISO": "2025-10-19T11:19:30Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T11:00:00Z",
+    "Scheduled Time": "12:20",
+    "Displayed Time": "12:20",
+    "Artist": "Miley Cyrus",
+    "Title": "End Of The World",
+    "Duration (s)": 240,
+    "Full Duration (s)": 250,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.17,
+    "Start ISO": "2025-10-19T11:20:06Z",
+    "Source": "PLAYIT"
   }
 ]
