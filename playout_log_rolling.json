@@ -52369,5 +52369,21 @@
     "Actual End ISO": "2025-10-19T14:00:36Z",
     "Actual Duration (s)": 17,
     "Actual Duration (mins)": 0.28
+  },
+  {
+    "Hour": "2025-10-19T14:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Conan Gray",
+    "Title": "Vodka Cranberry",
+    "Duration (s)": 246,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.1,
+    "Start ISO": "2025-10-19T14:00:36Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T14:04:42Z",
+    "Actual Duration (s)": 246,
+    "Actual Duration (mins)": 4.1
   }
 ]
