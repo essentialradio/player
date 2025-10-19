@@ -52129,5 +52129,21 @@
     "Actual End ISO": "2025-10-19T13:00:50Z",
     "Actual Duration (s)": 17,
     "Actual Duration (mins)": 0.28
+  },
+  {
+    "Hour": "2025-10-19T13:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "14:00",
+    "Artist": "Sabrina Carpenter",
+    "Title": "The Life of a Showgirl",
+    "Duration (s)": 435,
+    "Full Duration (s)": 435,
+    "Duration (mins)": 7.25,
+    "Full Duration (mins)": 7.25,
+    "Start ISO": "2025-10-19T13:00:50Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T13:08:05Z",
+    "Actual Duration (s)": 435,
+    "Actual Duration (mins)": 7.25
   }
 ]
