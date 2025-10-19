@@ -52181,5 +52181,21 @@
     "Actual End ISO": "2025-10-19T14:04:42Z",
     "Actual Duration (s)": 246,
     "Actual Duration (mins)": 4.1
+  },
+  {
+    "Hour": "2025-10-19T14:00:00Z",
+    "Scheduled Time": "15:04",
+    "Displayed Time": "15:04",
+    "Artist": "CEE-LO GREEN",
+    "Title": "Go To Hell",
+    "Duration (s)": 957,
+    "Full Duration (s)": 957,
+    "Duration (mins)": 15.95,
+    "Full Duration (mins)": 15.95,
+    "Start ISO": "2025-10-19T14:04:42Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T14:20:39Z",
+    "Actual Duration (s)": 957,
+    "Actual Duration (mins)": 15.95
   }
 ]
