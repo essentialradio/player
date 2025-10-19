@@ -51993,5 +51993,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-10-19T12:21:21Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T12:00:00Z",
+    "Scheduled Time": "13:24",
+    "Displayed Time": "13:24",
+    "Artist": "Taylor Swift",
+    "Title": "The Fate of Ophelia",
+    "Duration (s)": 218,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-10-19T12:24:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T12:00:00Z",
+    "Scheduled Time": "13:28",
+    "Displayed Time": "13:28",
+    "Artist": "Dido",
+    "Title": "White Flag",
+    "Duration (s)": 209,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.68,
+    "Start ISO": "2025-10-19T12:28:50Z",
+    "Source": "PLAYIT"
   }
 ]
