@@ -52628,5 +52628,31 @@
     "Full Duration (mins)": 1.52,
     "Start ISO": "2025-10-19T21:00:20Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T21:00:00Z",
+    "Scheduled Time": "22:01",
+    "Displayed Time": "22:01",
+    "Artist": "",
+    "Title": "Local Weather",
+    "Duration (s)": 9,
+    "Full Duration (s)": 9,
+    "Duration (mins)": 0.15,
+    "Full Duration (mins)": 0.15,
+    "Start ISO": "2025-10-19T21:01:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T21:00:00Z",
+    "Scheduled Time": "22:01",
+    "Displayed Time": "22:01",
+    "Artist": "",
+    "Title": "Essential Radio Weather Donut (8 seconds)",
+    "Duration (s)": 18,
+    "Full Duration (s)": 20,
+    "Duration (mins)": 0.3,
+    "Full Duration (mins)": 0.33,
+    "Start ISO": "2025-10-19T21:01:50Z",
+    "Source": "PLAYIT"
   }
 ]
