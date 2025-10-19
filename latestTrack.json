@@ -1,12 +1,11 @@
 {
-  "artist": "",
-  "title": "t Get You Out of My Head",
-  "startTime": "2025-10-19T17:59:47Z",
-  "start": "2025-10-19T17:59:47Z",
-  "duration": 3600,
-  "source": "ALT",
-  "indeterminate": true,
-  "endTime": "2025-10-19T18:59:47Z",
-  "altMode": true,
-  "Source": "ALT"
+  "endTime": "2025-10-19T20:00:00Z",
+  "artist": "Kevin McCallum",
+  "title": "The Mr Rocks Show",
+  "startTime": "2025-10-19T18:00:00Z",
+  "start": "2025-10-19T18:00:00Z",
+  "duration": 7200,
+  "source": "FIXED",
+  "indeterminate": false,
+  "altMode": false
 }

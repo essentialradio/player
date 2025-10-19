@@ -52848,5 +52848,44 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-10-19T18:00:00Z",
+    "Scheduled Time": "18:59",
+    "Displayed Time": "18:59",
+    "Artist": "",
+    "Title": "Local Weather",
+    "Duration (s)": 9,
+    "Full Duration (s)": 9,
+    "Duration (mins)": 0.15,
+    "Full Duration (mins)": 0.15,
+    "Start ISO": "2025-10-19T17:59:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T18:00:00Z",
+    "Scheduled Time": "18:59",
+    "Displayed Time": "18:59",
+    "Artist": "",
+    "Title": "Essential Radio Weather Donut (8 seconds)",
+    "Duration (s)": 18,
+    "Full Duration (s)": 20,
+    "Duration (mins)": 0.3,
+    "Full Duration (mins)": 0.33,
+    "Start ISO": "2025-10-19T17:59:52Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-19T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Kevin McCallum",
+    "Title": "The Mr Rocks Show",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-10-19T18:00:00Z",
+    "Source": "FIXED"
   }
 ]
