@@ -1,10 +1,12 @@
 {
   "artist": "Rita Ora",
   "title": "All Natural",
-  "startTime": "2025-10-19T14:57:28Z",
-  "start": "2025-10-19T14:57:28Z",
+  "startTime": "2025-10-19T14:58:19Z",
+  "start": "2025-10-19T14:58:19Z",
   "duration": 3600,
   "source": "ALT",
-  "indeterminate": false,
-  "endTime": "2025-10-19T15:57:28Z"
+  "indeterminate": true,
+  "endTime": "2025-10-19T15:58:19Z",
+  "altMode": true,
+  "Source": "ALT"
 }
