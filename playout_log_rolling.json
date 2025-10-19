@@ -52273,5 +52273,21 @@
     "Actual End ISO": "2025-10-19T13:37:00Z",
     "Actual Duration (s)": 171,
     "Actual Duration (mins)": 2.85
+  },
+  {
+    "Hour": "2025-10-19T13:00:00Z",
+    "Scheduled Time": "14:37",
+    "Displayed Time": "14:37",
+    "Artist": "Justin Bieber",
+    "Title": "SPEED DEMON",
+    "Duration (s)": 340,
+    "Full Duration (s)": 340,
+    "Duration (mins)": 5.67,
+    "Full Duration (mins)": 5.67,
+    "Start ISO": "2025-10-19T13:37:00Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-19T13:42:40Z",
+    "Actual Duration (s)": 340,
+    "Actual Duration (mins)": 5.67
   }
 ]
