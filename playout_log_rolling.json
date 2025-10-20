@@ -52732,5 +52732,31 @@
     "Full Duration (mins)": 4.18,
     "Start ISO": "2025-10-20T11:26:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T11:00:00Z",
+    "Scheduled Time": "12:30",
+    "Displayed Time": "12:30",
+    "Artist": "Sophie Ellis-Bextor",
+    "Title": "Stay On Me",
+    "Duration (s)": 179,
+    "Full Duration (s)": 188,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.13,
+    "Start ISO": "2025-10-20T11:30:15Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T11:00:00Z",
+    "Scheduled Time": "12:37",
+    "Displayed Time": "12:37",
+    "Artist": "Ella Henderson x Alex Warren",
+    "Title": "Carry You Home",
+    "Duration (s)": 158,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.8,
+    "Start ISO": "2025-10-20T11:37:32Z",
+    "Source": "PLAYIT"
   }
 ]
