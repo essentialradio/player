@@ -1,5 +1,5 @@
 
-/*! nowplaying.js (unified: PLAYIT + ALT) — 2025-10-20b */
+/*! nowplaying.js (unified: PLAYIT + ALT) — 2025-10-20c */
 (function(){
   'use strict';
 
@@ -16,6 +16,11 @@
     try { if (window.NP_MORE_SOON_MS != null) return Number(window.NP_MORE_SOON_MS) || 30000; } catch(e){}
     return 30000;
   })();
+  var NP_DEBUG = (function(){
+    try { return !!window.NP_DEBUG; } catch(e){ return false; }
+  })();
+
+  function log(){ if (NP_DEBUG && console && console.log) try { console.log.apply(console, arguments); } catch(e){} }
 
   function $(id){ return document.getElementById(id); }
   function norm(s){ return (s==null ? '' : String(s)).trim().replace(/\s+/g, ' '); }
@@ -75,7 +80,8 @@
       var s = sec % 60;
       lastTxt = m+':'+fmt(s);
       c.textContent = lastTxt;
-      c.style.display = '';
+      c.style.removeProperty('display');
+      c.hidden = false;
     }
     c.setAttribute('data-np-active','1');
     attachObserver();
@@ -123,93 +129,113 @@
   function toMs(x){
     if (x == null) return null;
     if (typeof x === 'number' && isFinite(x)) {
-      if (x > 1e12) return Math.floor(x);
-      if (x > 1e9)  return Math.floor(x);
-      if (x > 1e6)  return Math.floor(x);
-      return Math.floor(x * 1000);
+      if (x > 1e11) return Math.floor(x);   // definitely ms
+      if (x > 3.6e6) return Math.floor(x);  // >1h, almost certainly ms
+      if (x > 1e6)   return Math.floor(x);  // conservative
+      return Math.floor(x * 1000);          // seconds -> ms
     }
     var s = String(x).trim();
-    if (/^\\d+$/.test(s)) {
+    if (/^\d+$/.test(s)) {
       var n = Number(s);
-      if (n > 1e12) return Math.floor(n);
-      if (n > 1e9)  return Math.floor(n);
-      if (n > 1e6)  return Math.floor(n);
-      return Math.floor(n * 1000);
+      if (n > 1e11) return Math.floor(n);
+      if (n > 3.6e6) return Math.floor(n);  // >1h => ms
+      if (n > 1e6)   return Math.floor(n);
+      return Math.floor(n * 1000);          // treat as seconds
     }
     var t = Date.parse(s);
     return isFinite(t) ? t : null;
   }
 
-  function extractTimes(payload){
-    var startMs = null, endMs = null;
-
-    if (payload?.startMs != null || payload?.StartMs != null)
-      startMs = Number(payload.startMs ?? payload.StartMs);
-    if (payload?.endMs != null || payload?.EndMs != null)
-      endMs   = Number(payload.endMs   ?? payload.EndMs);
-
-    if (startMs == null) {
-      startMs = toMs(payload?.['Start ISO'] ?? payload?.startTime ?? payload?.StartTime ?? payload?.startedAt ?? payload?.['Start Time'] ?? payload?.Start);
-    }
-    if (endMs == null) {
-      endMs = toMs(payload?.['End ISO'] ?? payload?.endTime ?? payload?.EndTime ?? payload?.['End Time'] ?? payload?.End);
-    }
-
-    var durationMs = null;
-    if (payload?.durationMs != null || payload?.DurationMs != null) {
-      durationMs = Number(payload.durationMs ?? payload.DurationMs);
-    } else if (payload?.duration != null || payload?.Duration != null) {
-      var d = payload.duration ?? payload.Duration;
-      if (typeof d === 'string' && /^(\\d+):(\\d{2})(?::(\\d{2}))?$/.test(d)) {
-        var parts = d.split(':');
+  function parseDurationMs(d){
+    var ms = null;
+    if (d == null) return null;
+    if (typeof d === 'number' && isFinite(d)) {
+      // Heuristic: if > 3.6e6 it's ms, else seconds
+      ms = (d > 3.6e6) ? Math.floor(d) : Math.floor(d * 1000);
+    } else {
+      var s = String(d).trim();
+      if (/^(\d+):(\d{2})(?::(\d{2}))?$/.test(s)) {
+        var parts = s.split(':');
         var sec = 0;
         if (parts.length === 2) { sec = Number(parts[0])*60 + Number(parts[1]); }
         else if (parts.length === 3) { sec = Number(parts[0])*3600 + Number(parts[1])*60 + Number(parts[2]); }
-        durationMs = sec * 1000;
-      } else {
-        var sec = Number(d);
-        if (isFinite(sec)) durationMs = sec * 1000;
+        ms = sec * 1000;
+      } else if (/^\d+$/.test(s)) {
+        var n = Number(s);
+        // If it's already >= 10 minutes expressed as a number, assume ms
+        ms = (n >= 600000) ? n : n * 1000;
       }
     }
+    return isFinite(ms) ? ms : null;
+  }
 
-    var positionMs = null;
-    if (payload?.positionMs != null || payload?.elapsedMs != null || payload?.progressMs != null) {
-      positionMs = Number(payload.positionMs ?? payload.elapsedMs ?? payload.progressMs);
-    } else if (payload?.position != null || payload?.elapsed != null || payload?.progress != null) {
-      var ps = Number(payload.position ?? payload.elapsed ?? payload.progress);
-      if (isFinite(ps)) positionMs = ps * 1000;
+  function parsePositionMs(p){
+    if (p == null) return null;
+    if (typeof p === 'number' && isFinite(p)) {
+      return (p > 1e6 ? Math.floor(p) : Math.floor(p * 1000));
     }
-
-    var remainingMs = null;
-    if (payload?.remainingMs != null) remainingMs = Number(payload.remainingMs);
-    else if (payload?.remaining != null) {
-      var r = Number(payload.remaining);
-      if (isFinite(r)) remainingMs = r * 1000;
+    var s = String(p).trim();
+    if (/^\d+$/.test(s)) {
+      var n = Number(s);
+      return (n > 1e6 ? n : n * 1000);
     }
+    return null;
+  }
 
+  function extractTimes(payload){
+    var startMs = null, endMs = null;
     var now = Date.now();
-    if (startMs == null && endMs != null && durationMs != null) {
-      startMs = endMs - durationMs;
-    }
-    if (endMs == null && startMs != null && durationMs != null) {
-      endMs = startMs + durationMs;
-    }
-    if (endMs == null && positionMs != null && durationMs != null) {
-      endMs = now + Math.max(0, durationMs - positionMs);
-      if (startMs == null) startMs = now - positionMs;
-    }
-    if (endMs == null && remainingMs != null) {
-      endMs = now + Math.max(0, remainingMs);
+
+    // candidates
+    var cStart = [];
+    var cEnd = [];
+
+    // explicit ms numbers
+    if (payload?.startMs != null || payload?.StartMs != null) cStart.push(Number(payload.startMs ?? payload.StartMs));
+    if (payload?.endMs   != null || payload?.EndMs   != null) cEnd.push(Number(payload.endMs   ?? payload.EndMs));
+
+    // ISO strings
+    var startIso = payload?.['Start ISO'] ?? payload?.startTime ?? payload?.StartTime ?? payload?.startedAt ?? payload?.['Start Time'] ?? payload?.Start;
+    var endIso   = payload?.['End ISO']   ?? payload?.endTime   ?? payload?.EndTime   ?? payload?.['End Time']   ?? payload?.End;
+    if (startIso != null) cStart.push(toMs(startIso));
+    if (endIso   != null) cEnd.push(toMs(endIso));
+
+    // duration/position/remaining
+    var durationMs = parseDurationMs(payload?.durationMs ?? payload?.DurationMs ?? payload?.duration ?? payload?.Duration);
+    var positionMs = parsePositionMs(payload?.positionMs ?? payload?.elapsedMs ?? payload?.progressMs ?? payload?.position ?? payload?.elapsed ?? payload?.progress);
+    var remainingMs = parsePositionMs(payload?.remainingMs ?? payload?.remaining);
+
+    // reduce starts / ends to first valid
+    for (var i=0;i<cStart.length;i++){ if (isFinite(cStart[i])) { startMs = cStart[i]; break; } }
+    for (var j=0;j<cEnd.length;j++){   if (isFinite(cEnd[j]))   { endMs   = cEnd[j];   break; } }
+
+    // derive
+    var e1 = (startMs!=null && durationMs!=null) ? (startMs + durationMs) : null;
+    var e2 = (durationMs!=null && positionMs!=null) ? (now + Math.max(0, durationMs - positionMs)) : null;
+    var e3 = (remainingMs!=null && remainingMs>0) ? (now + remainingMs) : null;
+
+    // choose best end: prefer explicit end, else nearest future among derived
+    var candidates = [];
+    if (isFinite(endMs)) candidates.push(endMs);
+    if (isFinite(e1)) candidates.push(e1);
+    if (isFinite(e2)) candidates.push(e2);
+    if (isFinite(e3)) candidates.push(e3);
+
+    // filter: > now-15s and < now+8h
+    candidates = candidates.filter(function(x){ return x && (x > now - 15000) && (x < now + 8*3600*1000); });
+    if (candidates.length){
+      // pick the smallest > now-15s (soonest finishing)
+      candidates.sort(function(a,b){ return a-b; });
+      endMs = candidates[0];
+      // if we still don't have start, and have duration, back-compute
       if (startMs == null && durationMs != null) startMs = endMs - durationMs;
     }
 
-    if (endMs != null && startMs != null && startMs >= endMs) {
-      startMs = endMs - (durationMs || 0);
-      if (startMs <= 0) startMs = null;
-    }
+    // sanity
+    if (endMs != null && startMs != null && endMs <= startMs){ startMs = null; }
+    log('[NP times]', {startMs:startMs, endMs:endMs, durationMs:durationMs, positionMs:positionMs, remainingMs:remainingMs});
 
-    return { startMs: (isFinite(startMs) ? startMs : null),
-             endMs:   (isFinite(endMs)   ? endMs   : null) };
+    return { startMs: (isFinite(startMs) ? startMs : null), endMs: (isFinite(endMs) ? endMs : null) };
   }
 
   function sameTrackKey(artist, title, startMs){
