@@ -492,6 +492,71 @@
       "link": "https://www.facebook.com/northayrshireofficial/",
       "source": "North Ayrshire Council",
       "recurring": true
+    },
+    {
+      "title": "Saltcoats Christmas Carnival & Lights Switch-On",
+      "start_date": "2025-11-23",
+      "end_date": "2025-11-23",
+      "start_time": "12:00",
+      "end_time": "18:00",
+      "venue": "Countess Street / Town Centre",
+      "town": "Saltcoats",
+      "desc": "Annual Saltcoats festive carnival with light switch-on, stalls and family activities.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council",
+      "recurring": true
+    },
+    {
+      "title": "Scottish Maritime Museum Winter Market",
+      "start_date": "2025-11-28",
+      "end_date": "2025-11-30",
+      "start_time": "16:00",
+      "end_time": "21:00",
+      "venue": "Scottish Maritime Museum (Linthouse Building)",
+      "town": "Irvine",
+      "desc": "Three-day festive market in the Linthouse with 80+ stalls; free entry.",
+      "link": "https://www.scottishmaritimemuseum.org/event/2025-winter-market/",
+      "source": "Scottish Maritime Museum",
+      "recurring": false
+    },
+    {
+      "title": "Arran Festival of Food & Drink 2025",
+      "start_date": "2025-10-24",
+      "end_date": "2025-11-02",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Various venues across Arran",
+      "town": "Isle of Arran",
+      "desc": "Island-wide festival celebrating food and drink with family-friendly activities.",
+      "link": "https://www.arransfoodjourney.com/festival/",
+      "source": "Arran's Food Journey",
+      "recurring": false
+    },
+    {
+      "title": "Arran Christmas Farmers Market (Shiskine)",
+      "start_date": "2025-12-07",
+      "end_date": "2025-12-07",
+      "start_time": "11:00",
+      "end_time": "14:00",
+      "venue": "Bellevue Farm",
+      "town": "Shiskine, Isle of Arran",
+      "desc": "Festive farmers market with local produce and family-friendly stalls.",
+      "link": "https://www.visitscotland.com/info/events/arran-christmas-farmers-market-p3428611",
+      "source": "VisitScotland",
+      "recurring": true
+    },
+    {
+      "title": "Kelburn Haunted Forest \u2013 NIGHTMARE",
+      "start_date": "2025-10-15",
+      "end_date": "2025-11-02",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Kelburn Castle & Estate",
+      "town": "Fairlie",
+      "desc": "Immersive Halloween trail at Kelburn celebrating 15 years of the Haunted Forest.",
+      "link": "https://www.kelburnestate.com/timetable/event/kelburn-haunted-forest-nightmare/",
+      "source": "Kelburn Estate",
+      "recurring": false
     }
   ],
   "south": [
@@ -1179,6 +1244,32 @@
       "link": "https://www.whatsonayrshire.com/annual-events-festivals",
       "source": "What\u2019s On Ayrshire",
       "recurring": true
+    },
+    {
+      "title": "Christmas Shopping Evening \u2013 Robert Burns Birthplace Museum",
+      "start_date": "2025-11-27",
+      "end_date": "2025-11-28",
+      "start_time": "18:00",
+      "end_time": "21:00",
+      "venue": "Robert Burns Birthplace Museum",
+      "town": "Alloway",
+      "desc": "Late-night Christmas shopping with festive offers and family atmosphere.",
+      "link": "https://destinationsouthayrshire.co.uk/christmas/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Dobbies Ayr \u2013 Santa\u2019s Grotto",
+      "start_date": "2025-11-23",
+      "end_date": "2025-12-24",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Dobbies Garden Centre Ayr",
+      "town": "Ayr",
+      "desc": "Meet Santa and enjoy festive activities at Dobbies Ayr throughout the season.",
+      "link": "https://www.visitscotland.com/info/events/festive-santas-grotto-2025-p3416411",
+      "source": "VisitScotland",
+      "recurring": true
     }
   ],
   "east": [
@@ -1370,6 +1461,19 @@
       "town": "Cumnock",
       "desc": "Interactive musical show for families, ages 2\u20117. YOU CHOOSE what happens in each show.",
       "link": "https://eastayrshireleisure.com/events/you-choose/",
+      "source": "East Ayrshire Leisure",
+      "recurring": false
+    },
+    {
+      "title": "Sleeping Beauty \u2013 Family Pantomime",
+      "start_date": "2025-11-28",
+      "end_date": "2025-12-28",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Galleon Centre (Auditorium)",
+      "town": "Kilmarnock",
+      "desc": "Classic family pantomime for the festive season.",
+      "link": "https://eastayrshireleisure.com/events/sleeping-beauty/",
       "source": "East Ayrshire Leisure",
       "recurring": false
     }
