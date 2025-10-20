@@ -4418,6 +4418,7 @@ html[data-theme="light"] #mobileNowBar {
       body.alt-mode #countdown { display: none !important; }
     </style>
     
+<meta name="np-endpoint" content="/latestTrack.json">
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -10152,20 +10153,7 @@ document.addEventListener('visibilitychange', () => {
 <script src="/artwork-unified.js?v=20250929" defer></script>
 <script src="/artwork-ios-patch.js?v=20250929-1104" defer></script>
 
-
-<script>
-  // Bridge: keep legacy callers working
-  window.fetchNowPlaying = function(payload){
-    try {
-      if (window.NowPlaying && typeof window.NowPlaying.updateFromPayload === 'function') {
-        window.NowPlaying.updateFromPayload(payload);
-      }
-    } catch(e){}
-  };
-</script>
-
-<script src="/nowplaying.js?v=20251019"></script>
-<script src="/nowplaying-refresh.js?v=20251019"></script>
+<script src="/nowplaying-refresh.js?v=20251020"></script>
 
 <!-- === Optimizations injected: lazy images & modal a11y (non-breaking) === -->
 <script>
@@ -10184,6 +10172,24 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
+
+
+<script>
+  // Legacy bridge: forward to unified renderer
+  window.fetchNowPlaying = function(payload){
+    try {
+      if (window.NowPlaying && typeof window.NowPlaying.updateFromPayload === 'function') {
+        window.NowPlaying.updateFromPayload(payload);
+      }
+    } catch(e){}
+  };
+</script>
+
+<script src="/nowplaying.js?v=20251020"></script>
+<script src="/nowplaying-refresh.js?v=20251020"></script>
+
+<div id="np-more-soon" style="display:none; font-weight:600; opacity:0.8; margin-top:4px;">More music soon</div>
 
 </body><style>
 /* === Desktop modal centring fix === */
