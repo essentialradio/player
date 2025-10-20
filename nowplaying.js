@@ -1,9 +1,11 @@
 
 /*! nowplaying.js (unified: PLAYIT + ALT)
- * Exposes window.NowPlaying with:
- *  - updateFromPayload(payload)
- *  - filterRecentAgainstNowPlaying()
- *  - helpers to start/stop progress + countdown
+ * - Hides progress + countdown in ALT; shows them in PLAYIT when timings valid
+ * - Suppresses current track from Recently Played (both modes)
+ * - "More music soon" appears in both modes when no artist/title (config delay)
+ * Config:
+ *   window.NP_RECENT_SELECTOR = '#recent-list'    // CSS selector for recent list container
+ *   window.NP_MORE_SOON_MS    = 30000             // delay before showing message (ms)
  */
 (function(){
   'use strict';
@@ -11,6 +13,16 @@
   var rafId = null;
   var tickTimer = null;
   var lastKey = null;
+  var moreSoonTimer = null;
+
+  var RECENT_LIST_SELECTOR = (function(){
+    try { if (window.NP_RECENT_SELECTOR) return String(window.NP_RECENT_SELECTOR); } catch(e){}
+    return '#recent-list';
+  })();
+  var MORE_SOON_MS = (function(){
+    try { if (window.NP_MORE_SOON_MS != null) return Number(window.NP_MORE_SOON_MS) || 30000; } catch(e){}
+    return 30000;
+  })();
 
   function $(id){ return document.getElementById(id); }
   function norm(s){ return (s==null ? '' : String(s)).trim().replace(/\s+/g, ' '); }
@@ -89,24 +101,45 @@
     return { artist: artist, title: title };
   }
 
+  function toMs(x){
+    if (x == null) return null;
+    if (typeof x === 'number' && isFinite(x)) return x;
+    try { return Date.parse(String(x)); } catch(e){ return null; }
+  }
+
   function extractTimes(payload){
-    // Accept ms or ISO; fall back gracefully
+    // Accept many shapes:
     var startMs = null, endMs = null;
-    if (payload?.startMs || payload?.StartMs) startMs = Number(payload.startMs ?? payload.StartMs) || null;
-    if (payload?.endMs || payload?.EndMs)     endMs   = Number(payload.endMs   ?? payload.EndMs)   || null;
 
-    function isoToMs(iso){
-      try { return Date.parse(iso); } catch(e){ return null; }
-    }
-    if (startMs == null && payload?.['Start ISO']) startMs = isoToMs(payload['Start ISO']);
-    if (endMs   == null && payload?.['End ISO'])   endMs   = isoToMs(payload['End ISO']);
+    // numeric ms first
+    if (payload?.startMs != null || payload?.StartMs != null)
+      startMs = Number(payload.startMs ?? payload.StartMs);
+    if (payload?.endMs != null || payload?.EndMs != null)
+      endMs   = Number(payload.endMs   ?? payload.EndMs);
 
-    // Some payloads only expose duration; compute end if start is present
-    if (endMs == null && startMs != null){
-      var dur = Number(payload?.durationMs ?? payload?.DurationMs ?? payload?.duration ?? 0);
-      if (dur > 0) endMs = startMs + dur;
+    // ISO-ish strings
+    if (startMs == null) {
+      startMs = toMs(payload?.['Start ISO'] ?? payload?.startTime ?? payload?.StartTime ?? payload?.startedAt ?? payload?.['Start Time']);
     }
-    return { startMs: startMs, endMs: endMs };
+    if (endMs == null) {
+      endMs = toMs(payload?.['End ISO'] ?? payload?.endTime ?? payload?.EndTime ?? payload?.['End Time']);
+    }
+
+    // compute end from duration if needed
+    var durationMs = null;
+    if (payload?.durationMs != null || payload?.DurationMs != null) {
+      durationMs = Number(payload.durationMs ?? payload.DurationMs);
+    } else if (payload?.duration != null || payload?.Duration != null) {
+      var sec = Number(payload.duration ?? payload.Duration);
+      if (isFinite(sec)) durationMs = sec * 1000;
+    }
+
+    if (endMs == null && startMs != null && durationMs != null) {
+      endMs = startMs + durationMs;
+    }
+
+    return { startMs: (isFinite(startMs) ? startMs : null),
+             endMs:   (isFinite(endMs)   ? endMs   : null) };
   }
 
   function sameTrackKey(artist, title, startMs){
@@ -117,7 +150,7 @@
     try{
       var aEl = $('np-artist') || $('mobileNpArtist');
       var tEl = $('np-title');
-      var list = $('recent-list');
+      var list = document.querySelector(RECENT_LIST_SELECTOR);
       if (!list) return;
       Array.from(list.children).forEach(function(el){ if (el && el.style) el.style.display = ''; });
       if (!aEl || !tEl) return;
@@ -136,6 +169,22 @@
     }catch(e){}
   }
 
+  function setMoreSoonVisible(vis){
+    try {
+      var el = $('np-more-soon');
+      if (!el) return;
+      el.style.display = vis ? '' : 'none';
+    } catch(e){}
+  }
+
+  function scheduleMoreSoon(show){
+    try { if (moreSoonTimer){ clearTimeout(moreSoonTimer); moreSoonTimer = null; } } catch(e){}
+    if (!show) { setMoreSoonVisible(false); return; }
+    moreSoonTimer = setTimeout(function(){
+      setMoreSoonVisible(true);
+    }, MORE_SOON_MS);
+  }
+
   function updateFromPayload(payload){
     var isALT = detectALT(payload);
     document.body.classList.toggle('alt-mode', isALT);
@@ -144,36 +193,47 @@
     var at = renderArtistTitle(payload);
     var times = extractTimes(payload);
 
-    // If track changed, reset timers/progress
+    // If track changed, reset timers/progress and hide "more soon"
     var key = sameTrackKey(at.artist, at.title, times.startMs);
     if (key !== lastKey){
       stopTimers();
       lastKey = key;
+      scheduleMoreSoon(false);
     }
 
     if (isALT){
       // Same refresh loop as PLAYIT, but UI: hide progress + countdown
       stopTimers();
       hardHideProgressAndTime();
+      // ALT: show "More music soon" if there is no artist/title
+      if (!at.artist && !at.title) {
+        scheduleMoreSoon(true);
+      } else {
+        scheduleMoreSoon(false);
+      }
     } else {
       // PLAYIT: show progress + countdown if times are sensible
       var ok = (times.startMs != null && times.endMs != null && times.endMs > times.startMs && Date.now() <= (times.endMs + 6*60*1000));
       if (ok){
         startBar(times.startMs, times.endMs);
         startCountdown(times.endMs);
+        scheduleMoreSoon(false);
       } else {
         stopTimers();
         hardHideProgressAndTime();
+        // If we have no valid timing and there is no artist/title, arm "more soon"
+        if (!at.artist && !at.title){
+          scheduleMoreSoon(true);
+        } else {
+          scheduleMoreSoon(false);
+        }
       }
     }
 
-    // Always run duplicate guard for Recently Played
+    // Always run duplicate guard for Recently Played (both modes)
     try { filterRecentAgainstNowPlaying(); } catch(e){}
   }
 
   // expose
-  window.NowPlaying = {
-    updateFromPayload: updateFromPayload,
-    filterRecentAgainstNowPlaying: filterRecentAgainstNowPlaying
-  };
+  window.NowPlaying = { updateFromPayload, filterRecentAgainstNowPlaying };
 })();
