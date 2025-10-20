@@ -52888,5 +52888,31 @@
     "Full Duration (mins)": 2.9,
     "Start ISO": "2025-10-20T12:21:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T12:00:00Z",
+    "Scheduled Time": "13:24",
+    "Displayed Time": "13:24",
+    "Artist": "Abba",
+    "Title": "Dancing Queen",
+    "Duration (s)": 216,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.8,
+    "Start ISO": "2025-10-20T12:24:03Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T12:00:00Z",
+    "Scheduled Time": "13:27",
+    "Displayed Time": "13:27",
+    "Artist": "Perrie",
+    "Title": "Forget About Us",
+    "Duration (s)": 178,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-10-20T12:27:42Z",
+    "Source": "PLAYIT"
   }
 ]
