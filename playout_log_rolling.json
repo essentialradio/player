@@ -53525,5 +53525,31 @@
     "Full Duration (mins)": 3.45,
     "Start ISO": "2025-10-20T04:43:40Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T04:00:00Z",
+    "Scheduled Time": "05:47",
+    "Displayed Time": "05:47",
+    "Artist": "Rod Stewart",
+    "Title": "Maggie May",
+    "Duration (s)": 297,
+    "Full Duration (s)": 315,
+    "Duration (mins)": 4.95,
+    "Full Duration (mins)": 5.25,
+    "Start ISO": "2025-10-20T04:47:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T04:00:00Z",
+    "Scheduled Time": "05:52",
+    "Displayed Time": "05:52",
+    "Artist": "Shaboozey",
+    "Title": "A Bar Song (Tipsy)",
+    "Duration (s)": 163,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.85,
+    "Start ISO": "2025-10-20T04:52:02Z",
+    "Source": "PLAYIT"
   }
 ]
