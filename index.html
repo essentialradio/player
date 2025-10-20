@@ -2867,7 +2867,7 @@ nav + div {
   }
 </style>
 <style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
-const P251019-0944';
+const APP_VERSION = '20250929-1104';
 </script>
 <script>
 (function() {
@@ -4412,13 +4412,6 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
-
-    <style id="alt-hide-ui">
-      body.alt-mode #np-progress,
-      body.alt-mode #countdown { display: none !important; }
-    </style>
-    
-<meta name="np-endpoint" content="/latestTrack.json">
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -6021,29 +6014,17 @@ async function fetchNowPlaying() {
   try {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
-    // Fallback: if API returns invalid, try static file
-    let payload = latest;
-    if (!payload || !payload.artist || !payload.title || !payload.duration || !payload.startTime) {
-      try {
-        const staticRes = await fetch('/latestTrack.json?_=' + Date.now(), { cache: 'no-store' });
-        const staticJson = await staticRes.json();
-        if (staticJson && staticJson.artist && staticJson.title && staticJson.duration && staticJson.startTime) {
-          payload = staticJson;
-        }
-      } catch (e) {}
-    }
-    
 
     // Validate payload
-    if (!latest || !payload.artist || !payload.title || !payload.duration || !payload.startTime) {
+    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
 
-    const artist = payload.artist;
-    const title = payload.title;
-    const startMs = new Date(payload.startTime).getTime(); // UTC ms
-    const durationMs = payload.duration * 1000;
+    const artist = latest.artist;
+    const title = latest.title;
+    const startMs = new Date(latest.startTime).getTime(); // UTC ms
+    const durationMs = latest.duration * 1000;
     const endMs = startMs + durationMs;
     // Clear any 'break' polling now that we have a valid, current track.
     try {
@@ -10153,7 +10134,7 @@ document.addEventListener('visibilitychange', () => {
 <script src="/artwork-unified.js?v=20250929" defer></script>
 <script src="/artwork-ios-patch.js?v=20250929-1104" defer></script>
 
-<script src="/nowplaying-refresh.js?v=20251020"></script>
+<script src="/nowplaying-refresh.js?v=20251006" defer></script>
 
 <!-- === Optimizations injected: lazy images & modal a11y (non-breaking) === -->
 <script>
@@ -10172,24 +10153,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-
-
-
-<script>
-  // Legacy bridge: forward to unified renderer
-  window.fetchNowPlaying = function(payload){
-    try {
-      if (window.NowPlaying && typeof window.NowPlaying.updateFromPayload === 'function') {
-        window.NowPlaying.updateFromPayload(payload);
-      }
-    } catch(e){}
-  };
-</script>
-
-<script src="/nowplaying.js?v=20251020"></script>
-<script src="/nowplaying-refresh.js?v=20251020"></script>
-
-<div id="np-more-soon" style="display:none; font-weight:600; opacity:0.8; margin-top:4px;">More music soon</div>
 
 </body><style>
 /* === Desktop modal centring fix === */
