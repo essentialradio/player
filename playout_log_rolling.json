@@ -54864,5 +54864,31 @@
     "Full Duration (mins)": 3.63,
     "Start ISO": "2025-10-20T23:26:21Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T23:00:00Z",
+    "Scheduled Time": "00:29",
+    "Displayed Time": "00:29",
+    "Artist": "Calvin Harris, Ellie Goulding",
+    "Title": "Miracle",
+    "Duration (s)": 173,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-10-20T23:29:51Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T23:00:00Z",
+    "Scheduled Time": "00:32",
+    "Displayed Time": "00:32",
+    "Artist": "Katy Perry",
+    "Title": "Roar",
+    "Duration (s)": 216,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.7,
+    "Start ISO": "2025-10-20T23:32:47Z",
+    "Source": "PLAYIT"
   }
 ]
