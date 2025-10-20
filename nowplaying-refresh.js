@@ -1,70 +1,189 @@
 
-/*! nowplaying-refresh.js (unified polling)
- * Uses the same polling cadence for PLAYIT and ALT.
- * Configure endpoint via:
- *   window.NP_ENDPOINT = '/api/latestTrack' (preferred)
- * Fallbacks to '/latestTrack.json' if not set.
- */
-(function(){
+// nowplaying-refresh.mobile-hardened.js
+// Stronger mobile auto-refresh for Now Playing + Recently Played
+// Drop-in replacement for nowplaying-refresh.js
+
+(() => {
   'use strict';
 
-  var ENDPOINT = (function(){
-    try {
-      if (window.NP_ENDPOINT) return String(window.NP_ENDPOINT);
-      var meta = document.querySelector('meta[name="np-endpoint"]');
-      if (meta && meta.content) return String(meta.content);
-    } catch(e){}
-    // sensible fallbacks
-    return '/api/latestTrack';
-  })();
+  // ---- Config --------------------------------------------------------------
+  const NP_IDS = { artist: 'np-artist', title: 'np-title' };
+  const RECENT_CONTAINER_ID = 'recently-played';
 
-  var POLL_MS = (function(){
-    try { if (window.NP_POLL_MS) return Number(window.NP_POLL_MS) || 5000; } catch(e){}
-    return 5000; // 5s default
-  })();
+  // Base refresh cadence
+  const FAST_MS = 12000;   // 12s when visible
+  const SLOW_MS = 30000;   // 30s when hidden (don't *stop* on mobile)
+  const HARD_TIMEOUT = 9000; // per-request timeout
 
-  var timer = null;
-  var inFlight = false;
+  // Endpoints
+  const NOWPLAYING_PRIMARY = '/api/latestTrack';
+  const NOWPLAYING_FALLBACK = '/player/latestTrack.json';
+  const RECENT_HTML_ENDPOINT = '/player/recently-played.html';
+  const RECENT_JSON_ENDPOINT = '/player/recently-played.json';
 
-  async function fetchJSON(url){
-    var res = await fetch(url, {cache:'no-store', headers:{'pragma':'no-cache','cache-control':'no-cache'}});
-    if (!res.ok) throw new Error('HTTP '+res.status);
-    return await res.json();
+  // ---- State ---------------------------------------------------------------
+  let lastArtist = '';
+  let lastTitle = '';
+  let schedulerNP = null;
+  let schedulerRECENT = null;
+  let failNP = 0;
+  let failRECENT = 0;
+
+  // ---- Utils ---------------------------------------------------------------
+  function nextDelay(fails) {
+    // Basic backoff: FAST -> x2 -> cap at 60s
+    const base = (document.visibilityState === 'visible') ? FAST_MS : SLOW_MS;
+    const mult = Math.min(4, Math.max(1, fails + 1));
+    return Math.min(60000, base * mult);
   }
 
-  async function tick(){
-    if (inFlight) return;
-    inFlight = true;
-    try{
-      var payload = await fetchJSON(ENDPOINT);
-      if (window.NowPlaying && typeof window.NowPlaying.updateFromPayload === 'function'){
-        window.NowPlaying.updateFromPayload(payload);
-      }
-    } catch(e){
-      // keep silent; next tick will retry
-      // console.warn('[NowPlaying] tick failed', e);
-    } finally {
-      inFlight = false;
+  function abortableFetch(input, { timeout = HARD_TIMEOUT, ...init } = {}) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), timeout);
+    const headers = new Headers(init.headers || {});
+    // Extra cache busting
+    headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+    headers.set('Pragma', 'no-cache');
+    headers.set('Expires', '0');
+    const url = new URL(typeof input === 'string' ? input : input.url, location.origin);
+    url.searchParams.set('ts', Date.now().toString());
+    return fetch(url.toString(), {
+      cache: 'no-store',
+      ...init,
+      headers,
+      signal: ctrl.signal
+    }).finally(() => clearTimeout(t));
+  }
+
+  function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el && el.textContent !== text) el.textContent = text;
+  }
+
+  function updateNowPlaying(artist, title) {
+    if (artist && artist !== lastArtist) {
+      setText(NP_IDS.artist, artist);
+      lastArtist = artist;
+    }
+    if (title && title !== lastTitle) {
+      setText(NP_IDS.title, title);
+      lastTitle = title;
     }
   }
 
-  function start(){
-    stop();
-    tick(); // fire immediately
-    timer = setInterval(tick, POLL_MS);
+  function normaliseFromPayload(data) {
+    let artist = '', title = '';
+    if (data && typeof data === 'object') {
+      if (data.artist || data.title) {
+        artist = String(data.artist || '').trim();
+        title  = String(data.title  || '').trim();
+      } else if (typeof data.nowPlaying === 'string') {
+        const s = data.nowPlaying;
+        const i = s.indexOf(' - ');
+        if (i > 0) { artist = s.slice(0, i).trim(); title = s.slice(i + 3).trim(); }
+      } else if (data.source && (data.artist || data.title)) {
+        artist = String(data.artist || '').trim();
+        title  = String(data.title  || '').trim();
+      }
+    }
+    return { artist, title };
   }
 
-  function stop(){
-    if (timer){ clearInterval(timer); timer = null; }
+  // ---- Fetchers ------------------------------------------------------------
+  async function doNowPlaying() {
+    try {
+      let res = await abortableFetch(NOWPLAYING_PRIMARY);
+      if (!res.ok) throw new Error('NP primary ' + res.status);
+      let json = await res.json();
+      let { artist, title } = normaliseFromPayload(json);
+
+      if (!artist && !title) {
+        try {
+          res = await abortableFetch(NOWPLAYING_FALLBACK, { timeout: 6000 });
+          if (res.ok) {
+            json = await res.json();
+            ({ artist, title } = normaliseFromPayload(json));
+          }
+        } catch {}
+      }
+
+      if (artist || title) {
+        updateNowPlaying(artist, title);
+      }
+      failNP = 0;
+    } catch (e) {
+      failNP++;
+      // console.debug('[NP] fail', e);
+    } finally {
+      // schedule next
+      clearTimeout(schedulerNP);
+      schedulerNP = setTimeout(doNowPlaying, nextDelay(failNP));
+    }
   }
 
-  // auto start when DOM ready
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', start);
+  function injectRecentHTML(html) {
+    const el = document.getElementById(RECENT_CONTAINER_ID);
+    if (el && typeof html === 'string' && html.length) {
+      el.innerHTML = html;
+    }
+  }
+
+  async function doRecent() {
+    try {
+      // Try HTML first
+      let res = await abortableFetch(RECENT_HTML_ENDPOINT, { timeout: 8000 });
+      if (res.ok) {
+        const html = await res.text();
+        if (html && html.length) {
+          injectRecentHTML(html);
+          failRECENT = 0;
+        } else {
+          throw new Error('RECENT empty html');
+        }
+      } else {
+        throw new Error('RECENT html ' + res.status);
+      }
+    } catch {
+      try {
+        // Fallback to JSON
+        const resJ = await abortableFetch(RECENT_JSON_ENDPOINT, { timeout: 8000 });
+        if (resJ.ok) {
+          const maybeJSON = await resJ.json();
+          if (typeof maybeJSON === 'string') injectRecentHTML(maybeJSON);
+          else if (maybeJSON && typeof maybeJSON.html === 'string') injectRecentHTML(maybeJSON.html);
+        }
+        failRECENT = 0;
+      } catch (e2) {
+        failRECENT++;
+        // console.debug('[RECENT] fail', e2);
+      }
+    } finally {
+      clearTimeout(schedulerRECENT);
+      schedulerRECENT = setTimeout(doRecent, nextDelay(failRECENT));
+    }
+  }
+
+  // ---- Lifecycle hooks -----------------------------------------------------
+  function kick() {
+    clearTimeout(schedulerNP); clearTimeout(schedulerRECENT);
+    doNowPlaying();
+    // stagger recent slightly to avoid same-moment fetches on constrained radios
+    setTimeout(doRecent, 500);
+  }
+
+  // Kick on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', kick, { once: true });
   } else {
-    start();
+    kick();
   }
 
-  // expose controls if needed
-  window.NowPlayingRefresh = { start: start, stop: stop, _tick: tick };
+  // Fire again on pageshow (iOS bfcache), on focus, and when back online
+  window.addEventListener('pageshow', kick);
+  window.addEventListener('focus', kick);
+  window.addEventListener('online', kick);
+
+  // Expose minimal API
+  window.erRefreshNow = kick;
+
 })();
