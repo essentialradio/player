@@ -53772,5 +53772,31 @@
     "Full Duration (mins)": 2.92,
     "Start ISO": "2025-10-20T06:07:56Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T06:00:00Z",
+    "Scheduled Time": "07:10",
+    "Displayed Time": "07:10",
+    "Artist": "Taylor Swift",
+    "Title": "Anti-Hero",
+    "Duration (s)": 197,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-10-20T06:10:53Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-20T06:00:00Z",
+    "Scheduled Time": "07:14",
+    "Displayed Time": "07:14",
+    "Artist": "Rihanna Feat. Jay-Z",
+    "Title": "Umbrella",
+    "Duration (s)": 220,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-10-20T06:14:10Z",
+    "Source": "PLAYIT"
   }
 ]
