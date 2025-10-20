@@ -54,22 +54,45 @@
   function stopTimers(){
     try { if (tickTimer){ clearInterval(tickTimer); tickTimer = null; } } catch(e){}
     try { if (rafId){ cancelAnimationFrame(rafId); rafId = null; } } catch(e){}
+    try { if (typeof window.__np_countdown_cleanup === 'function'){ window.__np_countdown_cleanup(); window.__np_countdown_cleanup = null; } } catch(e){}
   }
 
   function startCountdown(endMs){
     var c = $('countdown');
     if (!c) return;
+    var lastTxt = '';
+    var mo = null;
+    function attachObserver(){
+      if (!window.MutationObserver) return;
+      if (mo) mo.disconnect();
+      mo = new MutationObserver(function(){
+        if (c.getAttribute('data-np-active') === '1' && c.textContent !== lastTxt) {
+          c.textContent = lastTxt;
+        }
+      });
+      mo.observe(c, {childList:true, characterData:true, subtree:true});
+    }
+    function detachObserver(){ try { if (mo) mo.disconnect(); } catch(e){} mo = null; }
+
     function fmt(n){ return n < 10 ? '0'+n : ''+n; }
     function update(){
       var now = Date.now();
       var sec = Math.max(0, Math.floor((endMs - now)/1000));
       var m = Math.floor(sec/60);
       var s = sec % 60;
-      c.textContent = m+':'+fmt(s);
+      lastTxt = m+':'+fmt(s);
+      c.textContent = lastTxt;
       c.style.display = '';
     }
+    c.setAttribute('data-np-active','1');
+    attachObserver();
     update();
     tickTimer = setInterval(update, 1000);
+    // store for stopTimers to clean up
+    window.__np_countdown_cleanup = function(){
+      try { c.removeAttribute('data-np-active'); } catch(e){}
+      detachObserver();
+    };
   }
 
   function startBar(startMs, endMs){
@@ -77,7 +100,10 @@
     if (!prog) return;
     var bar = prog.querySelector('.bar');
     if (!bar) return;
-    prog.style.display = '';
+    // Force visible in PLAYIT
+    prog.style.removeProperty('display');
+    prog.hidden = false;
+    try { prog.style.display = 'block'; } catch(e){}
     function step(){
       var now = Date.now();
       var pct = 0;
@@ -103,8 +129,25 @@
 
   function toMs(x){
     if (x == null) return null;
-    if (typeof x === 'number' && isFinite(x)) return x;
-    try { return Date.parse(String(x)); } catch(e){ return null; }
+    // Numbers: accept ms or seconds
+    if (typeof x === 'number' && isFinite(x)) {
+      if (x > 1e12) return Math.floor(x);              // ms
+      if (x > 1e9)  return Math.floor(x);              // could already be ms
+      if (x > 1e6)  return Math.floor(x);              // conservative
+      return Math.floor(x * 1000);                     // seconds -> ms
+    }
+    var s = String(x).trim();
+    // Numeric string
+    if (/^\d+$/.test(s)) {
+      var n = Number(s);
+      if (n > 1e12) return Math.floor(n);
+      if (n > 1e9)  return Math.floor(n);              // likely ms
+      if (n > 1e6)  return Math.floor(n);
+      return Math.floor(n * 1000);
+    }
+    // ISO date
+    var t = Date.parse(s);
+    return isFinite(t) ? t : null;
   }
 
   function extractTimes(payload){
@@ -213,7 +256,7 @@
       }
     } else {
       // PLAYIT: show progress + countdown if times are sensible
-      var ok = (times.startMs != null && times.endMs != null && times.endMs > times.startMs && Date.now() <= (times.endMs + 6*60*1000));
+      var ok = (times.startMs != null && times.endMs != null && times.endMs > times.startMs && Date.now() >= (times.startMs - 15000) && Date.now() <= (times.endMs + 6*60*1000));
       if (ok){
         startBar(times.startMs, times.endMs);
         startCountdown(times.endMs);
