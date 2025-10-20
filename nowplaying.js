@@ -1,12 +1,5 @@
 
-/*! nowplaying.js (unified: PLAYIT + ALT)
- * - Hides progress + countdown in ALT; shows them in PLAYIT when timings valid
- * - Suppresses current track from Recently Played (both modes)
- * - "More music soon" appears in both modes when no artist/title (config delay)
- * Config:
- *   window.NP_RECENT_SELECTOR = '#recent-list'    // CSS selector for recent list container
- *   window.NP_MORE_SOON_MS    = 30000             // delay before showing message (ms)
- */
+/*! nowplaying.js (unified: PLAYIT + ALT) — 2025-10-20b */
 (function(){
   'use strict';
 
@@ -88,7 +81,6 @@
     attachObserver();
     update();
     tickTimer = setInterval(update, 1000);
-    // store for stopTimers to clean up
     window.__np_countdown_cleanup = function(){
       try { c.removeAttribute('data-np-active'); } catch(e){}
       detachObserver();
@@ -100,7 +92,6 @@
     if (!prog) return;
     var bar = prog.querySelector('.bar');
     if (!bar) return;
-    // Force visible in PLAYIT
     prog.style.removeProperty('display');
     prog.hidden = false;
     try { prog.style.display = 'block'; } catch(e){}
@@ -118,8 +109,10 @@
   }
 
   function renderArtistTitle(payload){
-    var a = $('np-artist') || $('mobileNpArtist');
-    var t = $('np-title');
+    var artistId = (window.NP_ARTIST_ID || 'np-artist');
+    var titleId  = (window.NP_TITLE_ID  || 'np-title');
+    var a = $(artistId);
+    var t = $(titleId);
     var artist = norm(payload?.artist ?? payload?.Artist ?? '');
     var title  = norm(payload?.title ?? payload?.Title ?? '');
     if (a) a.textContent = artist;
@@ -129,56 +122,90 @@
 
   function toMs(x){
     if (x == null) return null;
-    // Numbers: accept ms or seconds
     if (typeof x === 'number' && isFinite(x)) {
-      if (x > 1e12) return Math.floor(x);              // ms
-      if (x > 1e9)  return Math.floor(x);              // could already be ms
-      if (x > 1e6)  return Math.floor(x);              // conservative
-      return Math.floor(x * 1000);                     // seconds -> ms
+      if (x > 1e12) return Math.floor(x);
+      if (x > 1e9)  return Math.floor(x);
+      if (x > 1e6)  return Math.floor(x);
+      return Math.floor(x * 1000);
     }
     var s = String(x).trim();
-    // Numeric string
-    if (/^\d+$/.test(s)) {
+    if (/^\\d+$/.test(s)) {
       var n = Number(s);
       if (n > 1e12) return Math.floor(n);
-      if (n > 1e9)  return Math.floor(n);              // likely ms
+      if (n > 1e9)  return Math.floor(n);
       if (n > 1e6)  return Math.floor(n);
       return Math.floor(n * 1000);
     }
-    // ISO date
     var t = Date.parse(s);
     return isFinite(t) ? t : null;
   }
 
   function extractTimes(payload){
-    // Accept many shapes:
     var startMs = null, endMs = null;
 
-    // numeric ms first
     if (payload?.startMs != null || payload?.StartMs != null)
       startMs = Number(payload.startMs ?? payload.StartMs);
     if (payload?.endMs != null || payload?.EndMs != null)
       endMs   = Number(payload.endMs   ?? payload.EndMs);
 
-    // ISO-ish strings
     if (startMs == null) {
-      startMs = toMs(payload?.['Start ISO'] ?? payload?.startTime ?? payload?.StartTime ?? payload?.startedAt ?? payload?.['Start Time']);
+      startMs = toMs(payload?.['Start ISO'] ?? payload?.startTime ?? payload?.StartTime ?? payload?.startedAt ?? payload?.['Start Time'] ?? payload?.Start);
     }
     if (endMs == null) {
-      endMs = toMs(payload?.['End ISO'] ?? payload?.endTime ?? payload?.EndTime ?? payload?.['End Time']);
+      endMs = toMs(payload?.['End ISO'] ?? payload?.endTime ?? payload?.EndTime ?? payload?.['End Time'] ?? payload?.End);
     }
 
-    // compute end from duration if needed
     var durationMs = null;
     if (payload?.durationMs != null || payload?.DurationMs != null) {
       durationMs = Number(payload.durationMs ?? payload.DurationMs);
     } else if (payload?.duration != null || payload?.Duration != null) {
-      var sec = Number(payload.duration ?? payload.Duration);
-      if (isFinite(sec)) durationMs = sec * 1000;
+      var d = payload.duration ?? payload.Duration;
+      if (typeof d === 'string' && /^(\\d+):(\\d{2})(?::(\\d{2}))?$/.test(d)) {
+        var parts = d.split(':');
+        var sec = 0;
+        if (parts.length === 2) { sec = Number(parts[0])*60 + Number(parts[1]); }
+        else if (parts.length === 3) { sec = Number(parts[0])*3600 + Number(parts[1])*60 + Number(parts[2]); }
+        durationMs = sec * 1000;
+      } else {
+        var sec = Number(d);
+        if (isFinite(sec)) durationMs = sec * 1000;
+      }
     }
 
+    var positionMs = null;
+    if (payload?.positionMs != null || payload?.elapsedMs != null || payload?.progressMs != null) {
+      positionMs = Number(payload.positionMs ?? payload.elapsedMs ?? payload.progressMs);
+    } else if (payload?.position != null || payload?.elapsed != null || payload?.progress != null) {
+      var ps = Number(payload.position ?? payload.elapsed ?? payload.progress);
+      if (isFinite(ps)) positionMs = ps * 1000;
+    }
+
+    var remainingMs = null;
+    if (payload?.remainingMs != null) remainingMs = Number(payload.remainingMs);
+    else if (payload?.remaining != null) {
+      var r = Number(payload.remaining);
+      if (isFinite(r)) remainingMs = r * 1000;
+    }
+
+    var now = Date.now();
+    if (startMs == null && endMs != null && durationMs != null) {
+      startMs = endMs - durationMs;
+    }
     if (endMs == null && startMs != null && durationMs != null) {
       endMs = startMs + durationMs;
+    }
+    if (endMs == null && positionMs != null && durationMs != null) {
+      endMs = now + Math.max(0, durationMs - positionMs);
+      if (startMs == null) startMs = now - positionMs;
+    }
+    if (endMs == null && remainingMs != null) {
+      endMs = now + Math.max(0, remainingMs);
+      if (startMs == null && durationMs != null) startMs = endMs - durationMs;
+    }
+
+    if (endMs != null && startMs != null && startMs >= endMs) {
+      startMs = endMs - (durationMs || 0);
+      if (startMs <= 0) startMs = null;
     }
 
     return { startMs: (isFinite(startMs) ? startMs : null),
@@ -191,8 +218,10 @@
 
   function filterRecentAgainstNowPlaying(){
     try{
-      var aEl = $('np-artist') || $('mobileNpArtist');
-      var tEl = $('np-title');
+      var aId = (window.NP_ARTIST_ID || 'np-artist');
+      var tId = (window.NP_TITLE_ID  || 'np-title');
+      var aEl = $(aId);
+      var tEl = $(tId);
       var list = document.querySelector(RECENT_LIST_SELECTOR);
       if (!list) return;
       Array.from(list.children).forEach(function(el){ if (el && el.style) el.style.display = ''; });
@@ -223,20 +252,16 @@
   function scheduleMoreSoon(show){
     try { if (moreSoonTimer){ clearTimeout(moreSoonTimer); moreSoonTimer = null; } } catch(e){}
     if (!show) { setMoreSoonVisible(false); return; }
-    moreSoonTimer = setTimeout(function(){
-      setMoreSoonVisible(true);
-    }, MORE_SOON_MS);
+    moreSoonTimer = setTimeout(function(){ setMoreSoonVisible(true); }, MORE_SOON_MS);
   }
 
   function updateFromPayload(payload){
     var isALT = detectALT(payload);
     document.body.classList.toggle('alt-mode', isALT);
 
-    // Basic text first so UI feels snappy
     var at = renderArtistTitle(payload);
     var times = extractTimes(payload);
 
-    // If track changed, reset timers/progress and hide "more soon"
     var key = sameTrackKey(at.artist, at.title, times.startMs);
     if (key !== lastKey){
       stopTimers();
@@ -245,17 +270,10 @@
     }
 
     if (isALT){
-      // Same refresh loop as PLAYIT, but UI: hide progress + countdown
       stopTimers();
       hardHideProgressAndTime();
-      // ALT: show "More music soon" if there is no artist/title
-      if (!at.artist && !at.title) {
-        scheduleMoreSoon(true);
-      } else {
-        scheduleMoreSoon(false);
-      }
+      if (!at.artist && !at.title) { scheduleMoreSoon(true); } else { scheduleMoreSoon(false); }
     } else {
-      // PLAYIT: show progress + countdown if times are sensible
       var ok = (times.startMs != null && times.endMs != null && times.endMs > times.startMs && Date.now() >= (times.startMs - 15000) && Date.now() <= (times.endMs + 6*60*1000));
       if (ok){
         startBar(times.startMs, times.endMs);
@@ -264,19 +282,12 @@
       } else {
         stopTimers();
         hardHideProgressAndTime();
-        // If we have no valid timing and there is no artist/title, arm "more soon"
-        if (!at.artist && !at.title){
-          scheduleMoreSoon(true);
-        } else {
-          scheduleMoreSoon(false);
-        }
+        if (!at.artist && !at.title){ scheduleMoreSoon(true); } else { scheduleMoreSoon(false); }
       }
     }
 
-    // Always run duplicate guard for Recently Played (both modes)
     try { filterRecentAgainstNowPlaying(); } catch(e){}
   }
 
-  // expose
-  window.NowPlaying = { updateFromPayload, filterRecentAgainstNowPlaying };
+  window.NowPlaying = { updateFromPayload: updateFromPayload, filterRecentAgainstNowPlaying: filterRecentAgainstNowPlaying };
 })();
