@@ -53109,5 +53109,31 @@
     "Full Duration (mins)": 3.75,
     "Start ISO": "2025-10-21T17:50:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-21T17:00:00Z",
+    "Scheduled Time": "18:53",
+    "Displayed Time": "18:53",
+    "Artist": "Sekou",
+    "Title": "Catching Bodies",
+    "Duration (s)": 179,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-10-21T17:53:50Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-21T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "19:01",
+    "Artist": "Kaiser Chiefs",
+    "Title": "I Predict a Riot",
+    "Duration (s)": 230,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.87,
+    "Start ISO": "2025-10-21T18:01:47Z",
+    "Source": "PLAYIT"
   }
 ]
