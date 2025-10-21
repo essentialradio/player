@@ -56385,5 +56385,31 @@
     "Full Duration (mins)": 2.35,
     "Start ISO": "2025-10-21T08:15:36Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-21T08:00:00Z",
+    "Scheduled Time": "09:17",
+    "Displayed Time": "09:17",
+    "Artist": "Walk the Moon",
+    "Title": "Shut Up + Dance",
+    "Duration (s)": 195,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-10-21T08:17:59Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-21T08:00:00Z",
+    "Scheduled Time": "09:27",
+    "Displayed Time": "09:27",
+    "Artist": "Coldplay",
+    "Title": "Feels Like I'm Falling in Love",
+    "Duration (s)": 221,
+    "Full Duration (s)": 224,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.73,
+    "Start ISO": "2025-10-21T08:27:14Z",
+    "Source": "PLAYIT"
   }
 ]
