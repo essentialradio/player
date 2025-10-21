@@ -52836,5 +52836,31 @@
     "Full Duration (mins)": 2.82,
     "Start ISO": "2025-10-21T22:29:43Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-21T22:00:00Z",
+    "Scheduled Time": "23:32",
+    "Displayed Time": "23:32",
+    "Artist": "Luther Vandross",
+    "Title": "I Really Didn't Mean It",
+    "Duration (s)": 228,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.95,
+    "Start ISO": "2025-10-21T22:32:33Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-21T22:00:00Z",
+    "Scheduled Time": "23:40",
+    "Displayed Time": "23:40",
+    "Artist": "Dina Carroll",
+    "Title": "Escaping",
+    "Duration (s)": 216,
+    "Full Duration (s)": 219,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.65,
+    "Start ISO": "2025-10-21T22:40:37Z",
+    "Source": "PLAYIT"
   }
 ]
