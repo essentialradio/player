@@ -56697,5 +56697,31 @@
     "Full Duration (mins)": 4.03,
     "Start ISO": "2025-10-22T20:41:40Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-22T20:00:00Z",
+    "Scheduled Time": "21:45",
+    "Displayed Time": "21:45",
+    "Artist": "Katy Perry",
+    "Title": "I Kissed A Girl",
+    "Duration (s)": 172,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.87,
+    "Full Duration (mins)": 2.98,
+    "Start ISO": "2025-10-22T20:45:37Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-22T20:00:00Z",
+    "Scheduled Time": "21:48",
+    "Displayed Time": "21:48",
+    "Artist": "Lou Bega",
+    "Title": "Mambo No. 5 (A Little Bit Of...)",
+    "Duration (s)": 208,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-10-22T20:48:37Z",
+    "Source": "PLAYIT"
   }
 ]
