@@ -59492,5 +59492,31 @@
     "Full Duration (mins)": 3.12,
     "Start ISO": "2025-10-23T12:32:08Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T12:00:00Z",
+    "Scheduled Time": "13:35",
+    "Displayed Time": "13:35",
+    "Artist": "Sammy Virji & Chris Lake",
+    "Title": "925",
+    "Duration (s)": 157,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.82,
+    "Start ISO": "2025-10-23T12:35:08Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T12:00:00Z",
+    "Scheduled Time": "13:40",
+    "Displayed Time": "13:40",
+    "Artist": "Olivia Dean",
+    "Title": "Man I Need",
+    "Duration (s)": 177,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.07,
+    "Start ISO": "2025-10-23T12:40:39Z",
+    "Source": "PLAYIT"
   }
 ]
