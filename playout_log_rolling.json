@@ -59089,5 +59089,44 @@
     "Full Duration (mins)": 4.28,
     "Start ISO": "2025-10-23T10:12:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T10:00:00Z",
+    "Scheduled Time": "11:16",
+    "Displayed Time": "11:16",
+    "Artist": "Dido",
+    "Title": "White Flag",
+    "Duration (s)": 207,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.68,
+    "Start ISO": "2025-10-23T10:16:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T10:00:00Z",
+    "Scheduled Time": "11:24",
+    "Displayed Time": "11:24",
+    "Artist": "Nickelback",
+    "Title": "How You Remind Me",
+    "Duration (s)": 209,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.68,
+    "Start ISO": "2025-10-23T10:24:40Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T10:00:00Z",
+    "Scheduled Time": "11:28",
+    "Displayed Time": "11:28",
+    "Artist": "Bon Jovi",
+    "Title": "Livin' on a Prayer",
+    "Duration (s)": 210,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-10-23T10:28:16Z",
+    "Source": "PLAYIT"
   }
 ]
