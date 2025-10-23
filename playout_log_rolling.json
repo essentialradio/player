@@ -59804,5 +59804,31 @@
     "Full Duration (mins)": 3.68,
     "Start ISO": "2025-10-23T14:11:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T14:00:00Z",
+    "Scheduled Time": "15:14",
+    "Displayed Time": "15:14",
+    "Artist": "Post Malone & Morgan Wallen",
+    "Title": "I Had Some Help",
+    "Duration (s)": 168,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-10-23T14:14:54Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T14:00:00Z",
+    "Scheduled Time": "15:22",
+    "Displayed Time": "15:22",
+    "Artist": "Olivia Rodrigo",
+    "Title": "Good 4 U",
+    "Duration (s)": 171,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-10-23T14:22:31Z",
+    "Source": "PLAYIT"
   }
 ]
