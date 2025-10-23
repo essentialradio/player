@@ -59063,5 +59063,31 @@
     "Full Duration (mins)": 3.82,
     "Start ISO": "2025-10-23T10:05:11Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T10:00:00Z",
+    "Scheduled Time": "11:08",
+    "Displayed Time": "11:08",
+    "Artist": "Scissor Sisters",
+    "Title": "Take Your Mama",
+    "Duration (s)": 200,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.48,
+    "Start ISO": "2025-10-23T10:08:43Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T10:00:00Z",
+    "Scheduled Time": "11:12",
+    "Displayed Time": "11:12",
+    "Artist": "Savage Garden",
+    "Title": "To the Moon and Back",
+    "Duration (s)": 237,
+    "Full Duration (s)": 257,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.28,
+    "Start ISO": "2025-10-23T10:12:09Z",
+    "Source": "PLAYIT"
   }
 ]
