@@ -60467,5 +60467,31 @@
     "Full Duration (mins)": 3.77,
     "Start ISO": "2025-10-23T17:53:44Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T18:00:00Z",
+    "Scheduled Time": "19:01",
+    "Displayed Time": "19:01",
+    "Artist": "Busted",
+    "Title": "Crashed The Wedding",
+    "Duration (s)": 158,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.63,
+    "Start ISO": "2025-10-23T18:01:45Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-23T18:00:00Z",
+    "Scheduled Time": "19:04",
+    "Displayed Time": "19:04",
+    "Artist": "R.E.M.",
+    "Title": "Shiny Happy People",
+    "Duration (s)": 217,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-10-23T18:04:30Z",
+    "Source": "PLAYIT"
   }
 ]
