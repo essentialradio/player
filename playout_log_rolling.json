@@ -65428,5 +65428,31 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-10-24T21:01:40Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T21:00:00Z",
+    "Scheduled Time": "22:05",
+    "Displayed Time": "22:05",
+    "Artist": "Artful Dodger & Romina Johnson",
+    "Title": "Movin' Too Fast",
+    "Duration (s)": 228,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.8,
+    "Full Duration (mins)": 3.98,
+    "Start ISO": "2025-10-24T21:05:23Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T21:00:00Z",
+    "Scheduled Time": "22:09",
+    "Displayed Time": "22:09",
+    "Artist": "The Bluebells",
+    "Title": "Young at Heart",
+    "Duration (s)": 184,
+    "Full Duration (s)": 202,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.37,
+    "Start ISO": "2025-10-24T21:09:22Z",
+    "Source": "PLAYIT"
   }
 ]
