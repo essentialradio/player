@@ -62911,5 +62911,31 @@
     "Full Duration (mins)": 3.17,
     "Start ISO": "2025-10-24T07:47:20Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T07:00:00Z",
+    "Scheduled Time": "08:51",
+    "Displayed Time": "08:51",
+    "Artist": "Elton John",
+    "Title": "I'm Still Standing",
+    "Duration (s)": 175,
+    "Full Duration (s)": 181,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.02,
+    "Start ISO": "2025-10-24T07:51:50Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T07:00:00Z",
+    "Scheduled Time": "08:54",
+    "Displayed Time": "08:54",
+    "Artist": "Bodyrockers",
+    "Title": "I Like the Way",
+    "Duration (s)": 196,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-10-24T07:54:46Z",
+    "Source": "PLAYIT"
   }
 ]
