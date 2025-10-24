@@ -61715,5 +61715,31 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-10-24T01:01:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T01:00:00Z",
+    "Scheduled Time": "02:05",
+    "Displayed Time": "02:05",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 138,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.3,
+    "Full Duration (mins)": 2.38,
+    "Start ISO": "2025-10-24T01:05:32Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T01:00:00Z",
+    "Scheduled Time": "02:07",
+    "Displayed Time": "02:07",
+    "Artist": "RAYE",
+    "Title": "Escapism",
+    "Duration (s)": 199,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.42,
+    "Start ISO": "2025-10-24T01:07:56Z",
+    "Source": "PLAYIT"
   }
 ]
