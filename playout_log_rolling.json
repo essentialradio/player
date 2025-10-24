@@ -44531,6 +44531,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-10-19T17:00:00Z",
+    "Scheduled Time": "18:54",
+    "Displayed Time": "18:54",
+    "Artist": "",
+    "Title": "t Get You Out of My Head",
+    "Duration (s)": 432330,
+    "Full Duration (s)": 432330,
+    "Duration (mins)": 7205.5,
+    "Full Duration (mins)": 7205.5,
+    "Start ISO": "2025-10-19T17:54:35Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-24T18:00:05Z",
+    "Actual Duration (s)": 432330,
+    "Actual Duration (mins)": 7205.5
+  },
+  {
     "Hour": "2025-10-19T18:00:00Z",
     "Scheduled Time": "18:59",
     "Displayed Time": "18:59",
@@ -64705,5 +64721,18 @@
     "Full Duration (mins)": 2.78,
     "Start ISO": "2025-10-24T17:54:13Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T18:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Tinashe",
+    "Title": "No Broke Boys",
+    "Start ISO": "2025-10-24T18:00:05Z",
+    "Source": "ALT",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
