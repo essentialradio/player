@@ -63301,5 +63301,31 @@
     "Full Duration (mins)": 3.25,
     "Start ISO": "2025-10-24T10:09:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T10:00:00Z",
+    "Scheduled Time": "11:12",
+    "Displayed Time": "11:12",
+    "Artist": "Jermaine Stewart",
+    "Title": "We Don't Have to Take Our Clothes Off",
+    "Duration (s)": 231,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 4.08,
+    "Start ISO": "2025-10-24T10:12:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T10:00:00Z",
+    "Scheduled Time": "11:16",
+    "Displayed Time": "11:16",
+    "Artist": "Robin S",
+    "Title": "Show Me Love",
+    "Duration (s)": 187,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.33,
+    "Start ISO": "2025-10-24T10:16:54Z",
+    "Source": "PLAYIT"
   }
 ]
