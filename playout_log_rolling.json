@@ -65038,5 +65038,18 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-10-24T19:00:00Z",
+    "Scheduled Time": "20:03",
+    "Displayed Time": "20:03",
+    "Artist": "York",
+    "Title": "O.T.B. (On the Beach)",
+    "Duration (s)": 192,
+    "Full Duration (s)": 196,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.27,
+    "Start ISO": "2025-10-24T19:03:43Z",
+    "Source": "PLAYIT"
   }
 ]
