@@ -63730,5 +63730,31 @@
     "Full Duration (mins)": 3.25,
     "Start ISO": "2025-10-24T12:40:43Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T12:00:00Z",
+    "Scheduled Time": "13:43",
+    "Displayed Time": "13:43",
+    "Artist": "Pink",
+    "Title": "Never Gonna Not Dance Again",
+    "Duration (s)": 214,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-10-24T12:43:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-24T12:00:00Z",
+    "Scheduled Time": "13:47",
+    "Displayed Time": "13:47",
+    "Artist": "Sam Smith & Normani",
+    "Title": "Dancing With a Stranger",
+    "Duration (s)": 164,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.85,
+    "Start ISO": "2025-10-24T12:47:38Z",
+    "Source": "PLAYIT"
   }
 ]
