@@ -65623,5 +65623,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-10-24T22:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-24T22:00:00Z",
+    "Scheduled Time": "23:01",
+    "Displayed Time": "23:01",
+    "Artist": "with Ronny Costello",
+    "Title": "Club Classics Radio Show <32 - 23.10.25>",
+    "Duration (s)": 3450,
+    "Full Duration (s)": 3457,
+    "Duration (mins)": 57.5,
+    "Full Duration (mins)": 57.62,
+    "Start ISO": "2025-10-24T22:01:40Z",
+    "Source": "PLAYIT"
   }
 ]
