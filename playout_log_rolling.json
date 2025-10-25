@@ -65662,5 +65662,18 @@
     "Full Duration (mins)": 59.83,
     "Start ISO": "2025-10-24T22:59:58Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-25T00:00:00Z",
+    "Scheduled Time": "00:00",
+    "Displayed Time": "00:00",
+    "Artist": "Davy Sims",
+    "Title": "Around the World",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-10-24T23:00:00Z",
+    "Source": "FIXED"
   }
 ]
