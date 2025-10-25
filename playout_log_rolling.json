@@ -52597,5 +52597,31 @@
     "Full Duration (mins)": 2.68,
     "Start ISO": "2025-10-25T09:38:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-25T09:00:00Z",
+    "Scheduled Time": "10:45",
+    "Displayed Time": "10:45",
+    "Artist": "Lewis Capaldi",
+    "Title": "Something In The Heavens",
+    "Duration (s)": 192,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-10-25T09:45:09Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-25T09:00:00Z",
+    "Scheduled Time": "10:48",
+    "Displayed Time": "10:48",
+    "Artist": "Blondie",
+    "Title": "Atomic",
+    "Duration (s)": 219,
+    "Full Duration (s)": 227,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.78,
+    "Start ISO": "2025-10-25T09:48:20Z",
+    "Source": "PLAYIT"
   }
 ]
