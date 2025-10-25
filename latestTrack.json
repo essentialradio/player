@@ -1,11 +1,12 @@
 {
   "artist": "R.E.M.",
   "title": "Losing My Religion",
-  "startTime": "2025-10-25T11:55:40Z",
-  "start": "2025-10-25T11:55:40Z",
-  "duration": 260,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-10-25T12:00:00Z",
-  "altMode": false
+  "startTime": "2025-10-25T12:00:06Z",
+  "start": "2025-10-25T12:00:06Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-10-25T13:00:06Z",
+  "altMode": true,
+  "Source": "ALT"
 }

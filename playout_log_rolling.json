@@ -50337,6 +50337,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-10-24T18:00:00Z",
+    "Scheduled Time": "19:57",
+    "Displayed Time": "19:57",
+    "Artist": "Anne-Marie with Tion Wayne",
+    "Title": "Come Over [Paul Woolford Remix]",
+    "Duration (s)": 61337,
+    "Full Duration (s)": 61337,
+    "Duration (mins)": 1022.28,
+    "Full Duration (mins)": 1022.28,
+    "Start ISO": "2025-10-24T18:57:48Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-25T12:00:05Z",
+    "Actual Duration (s)": 61337,
+    "Actual Duration (mins)": 1022.28
+  },
+  {
     "Hour": "2025-10-24T19:00:00Z",
     "Scheduled Time": "20:03",
     "Displayed Time": "20:03",
@@ -53013,5 +53029,18 @@
     "Full Duration (mins)": 4.42,
     "Start ISO": "2025-10-25T11:55:40Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-25T12:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "R.E.M.",
+    "Title": "Losing My Religion",
+    "Start ISO": "2025-10-25T12:00:05Z",
+    "Source": "ALT",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
