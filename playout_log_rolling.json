@@ -52946,5 +52946,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-10-25T16:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-10-25T16:00:00Z",
+    "Scheduled Time": "17:02",
+    "Displayed Time": "17:02",
+    "Artist": "Essential Radio",
+    "Title": "The JanCave 70s Jukebox with Jan Gow",
+    "Duration (s)": 3469,
+    "Full Duration (s)": 3475,
+    "Duration (mins)": 57.82,
+    "Full Duration (mins)": 57.92,
+    "Start ISO": "2025-10-25T16:02:01Z",
+    "Source": "PLAYIT"
   }
 ]
