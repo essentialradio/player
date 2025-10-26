@@ -5,8 +5,22 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Essential Radio Player</title>
+
+<meta name="description" content="Listen live to Essential Radio — the feelgood sound of Ayrshire College. Live player, now playing, schedule, and ways to listen.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Essential Radio Player">
+<meta property="og:description" content="Stream Essential Radio live. See what's playing now and explore the schedule.">
+<meta property="og:image" content="/assets/share/essential-radio-card.jpg">
+<meta property="og:url" content="https://essential.radio/player">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#00818a">
+
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <style>
     /* --- NAVBAR & MODALS ONLY --- */
     @media (max-width: 750px) {
@@ -35,7 +49,6 @@
   background: #ffe67c;
   color: #191c29;
 }
-
 
 .navbar {
       position: fixed;
@@ -246,7 +259,6 @@ body {
   background: #222;
   border-left: 1px solid #333;
 }
-
 
 /* And let wheel / swipe bubble out when you hit the end */
 .right-panel { overscroll-behavior: contain; }
@@ -682,7 +694,6 @@ body {
   margin-bottom: 2px;
 }
 
-
   #now-playing-card {
     font-size: 15px !important;
     padding: 10px 4px !important;
@@ -769,9 +780,7 @@ body {
   box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
 }
 
-
 /* MOBILE TWEAKS */
-
 
 @media (max-width: 768px) {
   .right-panel {
@@ -942,7 +951,6 @@ body.modal-open {
   gap: 12px;
 }
 
-
 /* Banner image */
 .side-banner-img {
   width: 160px;
@@ -1012,7 +1020,6 @@ body.modal-open {
   margin-bottom: 4px;
   display: block;
 }
-
 
 @media (max-width: 768px) {
   .modal {
@@ -1921,8 +1928,6 @@ footer, .footer {
   color: var(--er-text) !important;
   border-top: 1px solid var(--er-border) !important;
 }
-
-
 
 /* === RNH story text to white === */
 #rnh-news-list,
@@ -2862,6 +2867,9 @@ nav + div {
   }
 </style>
 <style id="navbar-offset-fix">body { padding-top: var(--nav-h, 60px); }</style><script>
+const P251019-0944';
+</script>
+<script>
 (function() {
   function setNavOffset(){
     const nav = document.querySelector('.navbar');
@@ -3190,7 +3198,6 @@ border-left: 4px solid var(--brand, #fed351);
   #share-btn { width: 100%; margin-top: 10px; justify-content: center; }
 }
 
-
 /* Share button inside Now Playing card */
 #share-btn {
   display: inline-flex;
@@ -3252,8 +3259,6 @@ border-left: 4px solid var(--brand, #fed351);
     transform: translateX(-50%);
   }
 }
-
-
 
 /* --- Share button inside LIVE box --- */
 .live-indicator #share-btn {
@@ -3334,7 +3339,6 @@ border-left: 4px solid var(--brand, #fed351);
 /* Highlight for the current show inside the Schedule modal */
 .show--current,
 .current-show,
-
 
 /* If the entry already has a highlight class from older CSS, keep it visible */
 .show-entry.current, .show.current, .schedule-item.current { 
@@ -4408,6 +4412,22 @@ html[data-theme="light"] #mobileNowBar {
 }
 
 </style>
+
+<style id="alt-hide-ui">
+  body.alt-mode #np-progress,
+  body.alt-mode #countdown { display: none !important; }
+</style>
+
+<style id="playlist-text-style">
+  #playlistWrap { line-height: 1.6; font-size: 16px; color: var(--text); }
+  .playlist-section { margin: 10px 0 14px; padding: 0; }
+  .playlist-section h3 { margin: 0 0 6px; color: var(--accent); font-size: 1.1em; }
+  .playlist-section ul { list-style: none; margin: 0; padding: 0; }
+  .playlist-section li { padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .playlist-section li:last-child { border-bottom: 0; }
+  .playlist-section .artist { font-weight: 600; }
+  .playlist-section .title { opacity: 0.92; }
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4470,7 +4490,7 @@ html[data-theme="light"] #mobileNowBar {
 <button id="mute-toggle">🔊</button>
 </div>
 <div id="now-playing-card" style="position: relative;">
-<div id="now-playing">Loading current track…</div>
+<div id="now-playing"><span class="label">Now Playing:</span> <strong id="np-title">—</strong> <span>by</span> <strong id="np-artist">—</strong></div>
 <div aria-hidden="true" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" id="np-progress" role="progressbar"><div class="bar"></div></div>
 <!-- mm:ss remaining -->
 <div id="countdown" style="margin-top:6px;font-size:0.95em;color:#ccc;text-align:right;">--:--</div>
@@ -4702,7 +4722,6 @@ html[data-theme="light"] #mobileNowBar {
   return isDay ? 'Bright' : 'Calm';
 }
 
-
   async function update() {
     const [label, lat, lon] = locSel.value.split(',');
     localStorage.wxChoice = locSel.value;
@@ -4919,7 +4938,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <a href="https://www1.ayrshire.ac.uk" rel="noopener" style="text-decoration:none;" target="_blank">
 <img alt="Ayrshire College Logo" src="AC_Logo.png" style="width:130px;max-width:100%;display:block;margin:0 auto 6px auto;"/>
 <span style="color:#fed351;font-weight:700;font-size:1.05em;display:block;">
-      Ayrshire College
+      Ayrshire College Website
     </span>
 </a>
 </div>
@@ -5038,7 +5057,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   box-shadow:0 -1px 0 rgba(255,255,255,.05) inset; /* subtle highlight */
 }
 
-
   @media (max-width: 768px) {
     .strip-container {
       flex-direction: column;
@@ -5077,8 +5095,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 
 </style>
 <!-- MODALS -->
-<div class="modal" id="aboutModal">
-<div class="modal-content">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="aboutModal">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content">
 <span class="close" onclick="closeModal('aboutModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
 <h2 style="margin:0;color:#00818a;font-size:1.55em">About Us</h2>
@@ -5121,9 +5139,9 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </div>
 </div>
 </div>
-<div class="modal" id="requestsModal" style="position:fixed;inset:0;display:none;
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="requestsModal" style="position:fixed;inset:0;display:none;
    z-index:9999">
-<div class="modal-content" style="margin:0;padding:0;border-radius:0;
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="margin:0;padding:0;border-radius:0;
        position:absolute;inset:0;width:100vw;height:100vh;max-width:none;overflow:hidden">
 <span class="close" onclick="closeModal('requestsModal')">×</span>
 <!-- Top bar -->
@@ -5148,8 +5166,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </a>
 </div>
 </div>
-<div class="modal" id="scheduleModal">
-<div class="modal-content" style="max-width:920px;width:95vw">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="scheduleModal">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:920px;width:95vw">
 <span class="close" onclick="closeModal('scheduleModal')">×</span>
 <h2 style="margin-top:0">Programme Schedule</h2>
 <div style="margin-bottom:18px">
@@ -5163,15 +5181,18 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 </div>
 </div>
-<div class="modal" id="playlistModal">
-<div class="modal-content" style="max-width:1000px;width:97vw">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="playlistModal">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:1000px;width:97vw">
 <span class="close" onclick="closeModal('playlistModal')">×</span>
 <h2 style="margin-top:0;color:#00818a">Essential Radio Playlist</h2>
-<img alt="Essential Radio Playlist" class="playlist-image" src="ERPlaylist.png"/>
+<div id="playlistWrap" class="playlist-text">Loading playlist…</div>
+<div style="text-align:right;margin-top:8px">
+  <button id="playlistReloadBtn" type="button">Reload</button>
 </div>
 </div>
-<div class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
-<div class="modal-content" style="max-width:900px;width:97vw">
+</div>
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:900px;width:97vw">
 <span class="close" onclick="closeModal('listenModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
 <h2 style="margin:0;color:#00818a;font-size:1.5em">Listen Again</h2>
@@ -5390,8 +5411,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 }
     </style>
 </div>
-<div class="modal" id="searchModal">
-<div class="modal-content" style="max-width:950px;width:97vw">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="searchModal">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:950px;width:97vw">
 <span class="close" onclick="closeModal('searchModal')">×</span>
 <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
 <h2 style="margin:0;color:#00818a;font-size:1.45em">Song Search</h2>
@@ -5600,9 +5621,9 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </script>
 </div>
 </div>
-<div class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="contactModal" style="position:fixed;inset:0;display:none;
    z-index:9999">
-<div class="modal-content" style="margin:0;padding:0;border-radius:0;
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="margin:0;padding:0;border-radius:0;
        position:absolute;inset:0;width:100vw;height:100vh;max-width:none;overflow:hidden">
 <span class="close" onclick="closeModal('contactModal')">×</span>
 <!-- Top bar -->
@@ -5630,7 +5651,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 </div>
 <div aria-labelledby="localModalTitle" aria-modal="true" class="modal" id="localModal" role="dialog">
-<div class="modal-content" style="max-width:1000px;width:97vw;">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:1000px;width:97vw;">
 <span aria-label="Close" class="close" onclick="closeModal('localModal')">×</span>
 <h2 id="localModalTitle" style="margin-top:18px;color:#00818a;">Local Events</h2>
 <!-- Controls -->
@@ -5657,8 +5678,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     </div>
 </div>
 </div>
-<div class="modal" id="travelModal">
-<div class="modal-content" style="max-width:900px;width:97vw">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="travelModal">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:900px;width:97vw">
 <span class="close" onclick="closeModal('travelModal')">×</span>
 <div style="display:flex;align-items:center;gap:18px;margin-bottom:20px">
 <h2 style="margin:0;color:#00818a;font-size:1.3em">Travel &amp; Transport</h2>
@@ -5675,6 +5696,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Current_Hotspots_Traffic_Scotland.html')">🚦 Current Road Delays &amp; Hotspots</a></li>
 <li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Current_Roadworks_Traffic_Scotland.html')">🚧 Current Roadworks &amp; Closures</a></li>
 <li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Scotrail_Incidents.html')">🚆 ScotRail Live Service Updates</a></li>
+<li><a href="#" onclick="openPopup('https://www.stagecoachbus.com/service-updates')">🚌 Stagecoach West Service Updates</a></li>
 </ul>
 </div>
 <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8">
@@ -5743,7 +5765,6 @@ function renderDayScheduleModal(day, shows) {
   [leftShows, rightShows].forEach((group, i) => {
   const col = document.getElementById(i === 0 ? "modalLeftCol" : "modalRightCol");
 
-
 group.forEach(show => {
   const presenter = show.presenter || {};
   let presenterName = presenter.name || "";
@@ -5770,7 +5791,8 @@ group.forEach(show => {
     "Scott O'Hare": "Scott-OHare.jpg",
 "Tim Graham": "Tim-Graham.jpeg",
     "Bex McNamee": "Bex-Mcnamee.jpg",
-	"Kevin McCallum": "Kevin-Mccallum.jpg"
+	"Kevin McCallum": "Kevin-Mccallum.jpg",
+"Keelin McKenna": "Keelin-Mckenna.jpg"
   };
 
   // ✅ Use override if available, else fall back to slug
@@ -5796,8 +5818,6 @@ group.forEach(show => {
   col.appendChild(entry);
 });
   setTimeout(() => { try { highlightLiveShows(); } catch(e) {} }, 0);
-
-
 
 });
   try { if (typeof highlightLiveShows === "function") highlightLiveShows(); } catch(e) {}
@@ -5894,13 +5914,16 @@ group.forEach(show => {
     const nowPlaying = document.getElementById('now-playing');
     const artworkImg = document.getElementById('artwork');
     const observer = new IntersectionObserver(entries => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          e.target.classList.add('loaded');
-          observer.unobserve(e.target);
-        }
-      }
-    }, { threshold: 0.1 });
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    const img = e.target;
+    const reveal = () => img.classList.add('loaded');
+    const fail   = () => { img.src = 'Essential Radio Logo.png'; img.classList.add('loaded'); };
+    if (img.complete) { if (img.naturalWidth > 0) reveal(); else fail(); }
+    else { img.addEventListener('load', reveal, { once: true }); img.addEventListener('error', fail, { once: true }); }
+    observer.unobserve(img);
+  }
+}, { threshold: 0.1 });
     let isPlaying = false, lastVolume = 1;
     playBtn.addEventListener('click', () => {
       if (!isPlaying) {
@@ -5976,7 +5999,32 @@ group.forEach(show => {
         const prog = document.getElementById('np-progress');
         if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); } cancelAnimationFrame(_npRafId);
       } catch(e) {}
-}
+
+      try {
+        // Start/Reset a short poll while we're in the break state.
+        if (window._npBreakPoll) { clearInterval(window._npBreakPoll); window._npBreakPoll = null; }
+        if (window._npBreakForce) { clearTimeout(window._npBreakForce); window._npBreakForce = null; }
+        window._npBreakSince = Date.now();
+
+        // Poll every 2s for a valid track and force-refresh NP when one is seen.
+        window._npBreakPoll = setInterval(async () => {
+          try {
+            const r = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
+            const j = await r.json();
+            if (j && j.artist && j.title && j.duration && j.startTime) {
+              clearInterval(window._npBreakPoll); window._npBreakPoll = null;
+              // Force a refresh regardless of last key to break out of a stuck state
+              try { await fetchNowPlaying(); } catch(e){}
+            }
+          } catch(e){ /* keep polling */ }
+        }, 2000);
+
+        // Failsafe: after 20s, force a refresh anyway in case the key never changes
+        window._npBreakForce = setTimeout(() => {
+          try { fetchNowPlaying(); } catch(e){}
+        }, 20000);
+      } catch(e) {}
+    }
     let currentTrackID = null;
 let songHasEnded = false;
 let trackEndTimeout = null;
@@ -5986,18 +6034,40 @@ async function fetchNowPlaying() {
   try {
     const latestRes = await fetch('/api/latestTrack?_=' + Date.now(), { cache: 'no-store' });
     const latest = await latestRes.json();
+    // Fallback: if API returns invalid, try static file
+    let payload = latest;
+    if (!payload || !payload.artist || !payload.title || !payload.duration || !payload.startTime) {
+      try {
+        const staticRes = await fetch('/latestTrack.json?_=' + Date.now(), { cache: 'no-store' });
+        const staticJson = await staticRes.json();
+        if (staticJson && staticJson.artist && staticJson.title && staticJson.duration && staticJson.startTime) {
+          payload = staticJson;
+        }
+      } catch (e) {}
+    }
+    
 
     // Validate payload
-    if (!latest || !latest.artist || !latest.title || !latest.duration || !latest.startTime) {
+    if (!latest || !payload.artist || !payload.title || !payload.duration || !payload.startTime) {
       if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
       return;
     }
 
-    const artist = latest.artist;
-    const title = latest.title;
-    const startMs = new Date(latest.startTime).getTime(); // UTC ms
-    const durationMs = latest.duration * 1000;
+    const artist = payload.artist;
+    const title = payload.title;
+    const startMs = new Date(payload.startTime).getTime(); // UTC ms
+    const durationMs = payload.duration * 1000;
     const endMs = startMs + durationMs;
+    const _srcRaw = String((payload && (payload.source ?? payload.Source ?? payload.mode ?? payload.Mode ?? payload.Src)) || '').toUpperCase();
+const isALT = (payload && payload.indeterminate === true) || _srcRaw === 'ALT';
+    try { document.body.classList.toggle('alt-mode', isALT); } catch(e) {}
+
+    // Clear any 'break' polling now that we have a valid, current track.
+    try {
+      if (window._npBreakPoll) { clearInterval(window._npBreakPoll); window._npBreakPoll = null; }
+      if (window._npBreakForce) { clearTimeout(window._npBreakForce); window._npBreakForce = null; }
+    } catch(e) {}
+
 
     // If this track has already ended, treat as a break and show fallback immediately (prevents last-track ghost on refresh).
     if (Date.now() > endMs) {
@@ -6005,7 +6075,7 @@ async function fetchNowPlaying() {
       return;
     }
     // Show progress bar while a valid track is playing
-    try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {}
+    if (!isALT) { try { const prog = document.getElementById('np-progress'); if (prog) prog.style.display = 'block'; } catch(e) {} } else { try { const prog = document.getElementById('np-progress'); if (prog) { prog.style.display = 'none'; const bar = prog.querySelector('.bar'); if (bar) bar.style.width = '0%'; prog.classList.remove('ending-soon'); } } catch(e) {} }
 // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
     window._npLastKey = trackKey;
@@ -6031,9 +6101,15 @@ if (window._npActiveKey !== trackKey) {
         <span style="color:white;font-weight:600;font-size:1.2em;">${title}</span><br/>
         <span style="color:white;">by ${artist}</span>`;
     }
-    // Update document title and artwork (if helper exists)
+    // Update document title and artwork (preferring unified helper if available)
     try { document.title = `Essential Radio: ${artist} – ${title}`; } catch {}
-    try { if (typeof fetchArtwork === 'function') fetchArtwork(`${artist} - ${title}`); } catch {}
+    try {
+      if (window.applyArtwork) {
+        window.applyArtwork({ artist, title });
+      } else if (typeof fetchArtwork === 'function') {
+        fetchArtwork(`${artist} - ${title}`);
+      }
+    } catch {}
 
     // Also support alternate title/artist selectors if present
     const titleEl = document.querySelector('#npTitle, #np-title, #np_title, #nowPlayingTitle, #nowPlaying .track-title, #now-playing-card .track-title');
@@ -6098,17 +6174,20 @@ if (remaining > 0) {
         }, 5000);
       }
     }
-
-    updateCountdown();
-    if (window._npTimer) { clearInterval(window._npTimer); }
-    window._npTimer = setInterval(updateCountdown, 1000);
+    if (!isALT) {
+      updateCountdown();
+      if (window._npTimer) { clearInterval(window._npTimer); }
+      window._npTimer = setInterval(updateCountdown, 1000);
+    } else {
+      try { if (window._npTimer) { clearInterval(window._npTimer); } } catch(e) {}
+      const c = document.getElementById('countdown');
+      if (c) { c.textContent = ''; c.style.display = 'none'; }
+    }
   } catch (err) {
     console.error('Error fetching now playing:', err);
     if (typeof showMoreMusicSoon === 'function') showMoreMusicSoon();
   }
 }
-
-
 
     async function fetchRecentFromGitHub() {
   try {
@@ -6118,14 +6197,14 @@ if (remaining > 0) {
     const data = await res.json();
     const recentItems = data
       .filter(item => {
-        const name = `${item.Artist} – ${item.Title}`;
+        const name = `${item.Artist} - ${item.Title}`;
         return item.Artist && item.Title && (songHasEnded || name !== currentTrackID);
       })
       .slice(-5)
       .reverse();
     const entries = await Promise.all(recentItems.map(async item => {
       const time = item['Scheduled Time'] || item.time || '';
-      const name = `${item.Artist} – ${item.Title}`;
+      const name = `${item.Artist} - ${item.Title}`;
       const art = await getTrackArtwork(name) || 'Essential Radio Logo.png';
       // --- New: Last.fm icon link ---
       const lastfmUrl = `https://www.last.fm/music/${encodeURIComponent(item.Artist.replace(/\s+/g, '+'))}`;
@@ -6141,12 +6220,13 @@ if (remaining > 0) {
               fill="#222"/>
           </svg>
         </a>`;
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const lazyAttr = isIOS ? '' : 'loading="lazy"';
       return `
         <li>
           <span class="time">${time}</span>
           <img src="${art}"
-               alt="Cover for ${name}"
-               loading="lazy" />
+               alt="Cover for ${name}" ${lazyAttr} />
           <span class="info">
             ${name}
             ${lastfmIcon}
@@ -6165,34 +6245,23 @@ if (remaining > 0) {
       artworkImg.src = 'Essential Radio Logo.png';
       artworkImg.classList.remove('loaded', 'fallback');
       try {
-        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(trackName)}&limit=5`);
-        const js = await res.json();
-        const hit = (js.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
-        if (hit?.artworkUrl100) {
-          const url = hit.artworkUrl100.replace('100x100', '300x300');
-          artworkImg.onload = () => artworkImg.classList.add('loaded');
-          artworkImg.onerror = applyFallbackImmediate;
-          artworkCache[trackName] = url;
-          artworkImg.src = url;
-          return;
+        // Use unified artwork proxy to look up this track
+        const res = await fetch(`/api/artwork?q=${encodeURIComponent(trackName)}&_=${Date.now()}`, { cache: 'no-store' });
+        if (res.ok) {
+          const d = await res.json();
+          if (d && d.url) {
+            const url = d.url;
+            artworkImg.onload = () => artworkImg.classList.add('loaded');
+            artworkImg.onerror = applyFallbackImmediate;
+            artworkCache[trackName] = url;
+            // Cache-bust the URL to ensure browsers repaint new art
+            const bust = url.includes('?') ? '&' : '?';
+            artworkImg.src = `${url}${bust}ts=${Date.now()}`;
+            return;
+          }
         }
       } catch {}
-      const safe = trackName
-        .replace(/\s*\(.*?\)/g, '')
-        .replace(/[^a-zA-Z0-9\s-]/g, '')
-        .trim()
-        .replace(/\s+/g, '_');
-      const [artist, title] = safe.split('_-_');
-      const autoUrl = `https://cdn.autopo.st/images/coverart/${artist?.[0]?.toLowerCase()||'a'}/${artist}_${title}.jpg`;
-      try {
-        const head = await fetch(autoUrl, { method: 'HEAD' });
-        if (head.ok) {
-          artworkImg.onload = () => artworkImg.classList.add('loaded');
-          artworkImg.onerror = applyFallbackImmediate;
-          artworkImg.src = autoUrl;
-          return;
-        }
-      } catch {}
+      // If proxy fails or returns nothing, fallback to generic logo
       applyFallbackImmediate();
     }
     function applyFallbackImmediate() {
@@ -6202,44 +6271,68 @@ if (remaining > 0) {
     }
     const artworkCache = {};
     async function getTrackArtwork(query) {
-      if (artworkCache[query]) return artworkCache[query];
-      try {
-        const res = await fetch(`https://itunes.apple.com/search?media=music&entity=song&term=${encodeURIComponent(query)}&limit=5`);
-        const d = await res.json();
-        const hit = (d.results || []).find(r => (r.kind === 'song' || r.wrapperType === 'track') && r.artworkUrl100);
-        if (hit?.artworkUrl100) {
-          return hit.artworkUrl100.replace('100x100', '300x300');
-        }
-      } catch {}
-      return '';
+  // Normalize query: remove brackets, collapse spaces, strip fancy dashes
+  const clean = String(query)
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\s*-\s*/g, ' ')
+    .replace(/\s*\([^\)]*\)/g, ' ')
+    .replace(/\s*\[[^\]]*\]/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  // Use the server-side proxy to resolve artwork for recent items
+  try {
+    const res = await fetch(`/api/artwork?q=${encodeURIComponent(clean)}&_=${Date.now()}`, { cache: 'no-store' });
+    if (res.ok) {
+      const d = await res.json();
+      if (d && d.url) return d.url;
     }
-let nowPlayingInterval = null;
-let recentInterval = null;
-
-function startIntervals() {
-  if (!nowPlayingInterval) nowPlayingInterval = setInterval(fetchNowPlaying, 15000);
-  if (!recentInterval) recentInterval = setInterval(fetchRecentFromGitHub, 15000);
+  } catch {}
+  return '';
 }
 function stopIntervals() {
   clearInterval(nowPlayingInterval); nowPlayingInterval = null;
   clearInterval(recentInterval); recentInterval = null;
 }
 
-// Always fetch once on page load
-fetchNowPlaying();
-fetchRecentFromGitHub();
-startIntervals();
+// Always fetch once on page load (safe to call early)
+try { fetchNowPlaying(); } catch(e){}
+try { fetchRecentFromGitHub(); } catch(e){}
 
-// On tab visibility change, only run when visible
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") {
-    fetchNowPlaying();
-    fetchRecentFromGitHub();
+// Defer interval startup until everything is available
+function safeStartIntervals() {
+  if (typeof startIntervals === 'function') {
     startIntervals();
   } else {
-    stopIntervals();
+    setTimeout(safeStartIntervals, 500);
+  }
+}
+
+// Kick the safe starter once DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', safeStartIntervals, { once: true });
+} else {
+  safeStartIntervals();
+}
+
+// Make visibility handling defensive
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    try { fetchNowPlaying(); } catch(e){}
+    try { fetchRecentFromGitHub(); } catch(e){}
+    if (typeof startIntervals === 'function') startIntervals();
+  } else {
+    if (typeof stopIntervals === 'function') stopIntervals();
   }
 });
+
+// Fallback polling if startIntervals never becomes available
+setTimeout(() => {
+  if (typeof startIntervals !== 'function' && !window.__recentFallback) {
+    window.__recentFallback = setInterval(() => {
+      try { fetchRecentFromGitHub(); } catch(e){}
+    }, 15000);
+  }
+}, 3000);
 
   </script>
 <!-- Removed duplicate show title formatter script -->
@@ -6354,7 +6447,6 @@ function closeAllModals() {
   checkOverlayLogo();
 }
 
-
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
   const isOpen = burgerDropdown.style.display === 'flex';
@@ -6403,7 +6495,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
 
 // ===== EVENT LISTENERS =====
 
@@ -6667,8 +6758,8 @@ function openLivePresenterModal() {
   }
 }
 
-</script><div class="modal presenter-modal" id="presenter-paul-woodland" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</script><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-paul-woodland" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-paul-woodland')">×</span>
 <h2>Paul Woodland</h2>
 <!-- Presenter Image -->
@@ -6680,16 +6771,16 @@ function openLivePresenterModal() {
 <p>After relocating to Scotland in 2011, Paul earned an <strong>HNC in Radio</strong> from Edinburgh College and continued with an <strong>HND in Radio</strong> at City of Glasgow College. He went on to found and run <strong>Scene Radio</strong> – Scotland’s first LGBT+ radio station – until its closure in 2018 following the passing of his partner.</p>
 <p>Since then, Paul has stayed active in radio on a voluntary basis with stations such as <strong>Xpress Radio Scotland</strong>, <strong>The Online Station</strong>, <strong>Irvine Beat</strong> and <strong>UWS Radio</strong>. His passion for broadcasting continues to shine every morning on Essential Radio.</p>
 </div>
-</div><div class="modal presenter-modal" id="presenter-scott-ohare" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-scott-ohare" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-scott-ohare')">×</span>
 <h2>Scott O’Hare</h2>
 <!-- Presenter Image -->
 <img alt="Scott O'Hare" src="Scott-OHare.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
 <p>Oh yes! Scott eases you out of the workday on <strong>Essential Hometime</strong>, with upbeat tunes, campus updates and his trademark dry wit. OHH YESSSSS!!!!</p>
 </div>
-</div><div class="modal presenter-modal" id="presenter-faith-montgomery" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-faith-montgomery" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-faith-montgomery')">×</span>
 <h2>Faith Montgomery</h2>
 <!-- Presenter Image -->
@@ -6709,8 +6800,8 @@ function openLivePresenterModal() {
 <li><strong>TV guilty pleasure:</strong> <em>Coronation Street</em></li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-bex-mcnamee" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-bex-mcnamee" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-bex-mcnamee')">×</span>
 <h2>Bex McNamee</h2>
 <!-- Presenter Image -->
@@ -6730,16 +6821,16 @@ function openLivePresenterModal() {
 <li><strong>TV guilty pleasure:</strong> <em>Barbie: Life in the Dreamhouse</em> – her comfort show</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-finlay-campbell" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-finlay-campbell" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-finlay-campbell')">×</span>
 <h2>Finlay Campbell</h2>
 <img alt="Finlay Campbell" src="Finlay-Campbell.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
 <p>Finlay brings the fun and energy to <strong>Feelgood Lunch</strong> every Sunday and Tuesday. Finlay is passionate about radio, loves The Simpsons and has a knack for picking the perfect tracks to boost your weekend mood.</p>
 <p>Expect a mix of positivity, humour and music that makes you feel great — all delivered with his infectious personality and enthusiasm for broadcasting.</p>
 </div>
-</div><div class="modal presenter-modal" id="presenter-lee-everest" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-lee-everest" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-lee-everest')">×</span>
 <h2>Lee Everest</h2>
 <!-- Presenter Image -->
@@ -6760,8 +6851,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> Watching documentaries and tuning in to other dance shows for inspiration.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-ronny-costello" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-ronny-costello" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-ronny-costello')">×</span>
 <h2>Ronny Costello</h2>
 <!-- Presenter Image -->
@@ -6784,8 +6875,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> DJing, podcasting, or trying not to buy more vinyl.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-david-southway" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-david-southway" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-david-southway')">×</span>
 <h2>David Southway</h2>
 <!-- Presenter Image -->
@@ -6806,8 +6897,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> Researching, scripting and compiling the next visit to the Soul Vaults – a true labour of love.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-davy-sims" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-davy-sims" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-davy-sims')">×</span>
 <h2>Davy Sims</h2>
 <!-- Presenter Image -->
@@ -6829,8 +6920,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> Listening for the World Music Charts, travelling to music events across Europe and spending time in Slovenia whenever he can.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-big-tommy" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-big-tommy" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-big-tommy')">×</span>
 <h2>Big Tommy</h2>
 <!-- Presenter Image -->
@@ -6851,8 +6942,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> Chilling out with good music and great food.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-jan-gow" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-jan-gow" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-jan-gow')">×</span>
 <h2>Jan Gow</h2>
 <!-- Presenter Image -->
@@ -6869,8 +6960,8 @@ function openLivePresenterModal() {
 <li><strong>When she's not on Essential Radio:</strong> Taking photos, digging through retro playlists and wondering why she didn’t keep more 70s flares.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-spencer-james" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-spencer-james" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-spencer-james')">×</span>
 <h2>Spencer James</h2>
 <!-- Presenter Image -->
@@ -6887,8 +6978,8 @@ function openLivePresenterModal() {
 <li><strong>When he’s not on air:</strong> Supporting England rugby, losing golf balls, or experimenting in the kitchen with mixed results.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-dr-hilary-jones" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-dr-hilary-jones" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-dr-hilary-jones')">×</span>
 <h2>Dr Hilary Jones</h2>
 <!-- Presenter Image -->
@@ -6905,8 +6996,8 @@ function openLivePresenterModal() {
 <li><strong>Ask Dr Hilary:</strong> Email <a href="mailto:Ask@drhilaryjones.com">Ask@drhilaryjones.com</a> to have your health questions answered on the show.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-tim-graham" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-tim-graham" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-tim-graham')">×</span>
 <h2>Tim Graham</h2>
 <!-- Presenter Image -->
@@ -6923,8 +7014,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on air:</strong> Updating the chart, scouting new releases and supporting LGBTQ music from behind the scenes.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-stephen-howie" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-stephen-howie" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-stephen-howie')">×</span>
 <h2>Stephen Howie</h2>
 <!-- Presenter Image -->
@@ -6945,8 +7036,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> Far, far too much. Probably still not sitting still.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-bill-grainger" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-bill-grainger" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-bill-grainger')">×</span>
 <h2>Bill Grainger</h2>
 <!-- Presenter Image -->
@@ -6963,8 +7054,8 @@ function openLivePresenterModal() {
 <li><strong>Legacy:</strong> A pioneer who shaped Scotland’s dance culture with passion and pride.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-kevin-mccallum" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-kevin-mccallum" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-kevin-mccallum')">×</span>
 <h2>Kevin McCallum</h2>
 <!-- Presenter Image -->
@@ -6986,8 +7077,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> Family time, live gigs, reviewing new rock releases and summer cricket.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-emma-scott" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-emma-scott" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-emma-scott')">×</span>
 <h2>Emma Scott</h2>
 <!-- Presenter Image -->
@@ -7005,8 +7096,8 @@ function openLivePresenterModal() {
 <li><strong>Catch the show:</strong> Weekly on Essential Radio and stations across the UK.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-dave-watkins" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-dave-watkins" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-dave-watkins')">×</span>
 <h2>Dave Watkins</h2>
 <!-- Presenter Image -->
@@ -7027,8 +7118,8 @@ function openLivePresenterModal() {
 <li><strong>When he's not on Essential Radio:</strong> Working for the NHS, walking on Dartmoor, or spending time with family and music.</li>
 </ul>
 </div>
-</div><div class="modal presenter-modal" id="presenter-brian-woolfson" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-brian-woolfson" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-brian-woolfson')">×</span>
 <h2>Brian Woolfson</h2>
 <!-- Presenter Image -->
@@ -7051,8 +7142,8 @@ function openLivePresenterModal() {
 </ul>
 </div>
 </div>
-<div class="modal presenter-modal" id="presenter-keelin-mckenna" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-keelin-mckenna" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-keelin-mckenna')">×</span>
 <h2>Keelin McKenna</h2>
 <img alt="Keelin McKenna" src="Keelin-Mckenna.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -7060,8 +7151,8 @@ function openLivePresenterModal() {
 <p>Bio coming soon.</p>
 </div>
 </div>
-<div class="modal presenter-modal" id="presenter-holly-nelson" style="z-index: 10001">
-<div class="modal-content" style="max-width:600px;">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-holly-nelson" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-holly-nelson')">×</span>
 <h2>Holly Nelson</h2>
 <img alt="Holly Nelson" src="Holly-Nelson.jpg" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
@@ -7069,8 +7160,8 @@ function openLivePresenterModal() {
 <p>Bio coming soon.</p>
 </div>
 </div>
-<div class="modal presenter-modal" id="presentersModal" style="z-index: 2050">
-<div class="modal-content" style="max-width:1020px;width:95vw;">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presentersModal" style="z-index: 2050">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:1020px;width:95vw;">
 <span class="close" onclick="closeModal('presentersModal')">×</span>
 <h2 style="color:#00818a;margin-top:0;margin-bottom:20px;text-align:center;">Meet the Essential Radio Presenters</h2>
 <div class="presenters-grid">
@@ -7548,8 +7639,8 @@ function closePresenterModal(presenterId) {
   window._syncModalBodyState = setBodyModalState;
 })();
 </script>
-<div class="modal" data-refresh-fn="fetchRNHNews" id="newsModal">
-<div class="modal-content" style="max-width:900px;width:97vw;">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="fetchRNHNews" id="newsModal">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:900px;width:97vw;">
 <span class="close" onclick="closeModal('newsModal')">×</span>
 <div style="display:flex;align-items:center;gap:18px;margin-bottom:24px;">
 <h2 style="margin:0;color:#00818a;font-size:1.35em;">Scottish &amp; National News</h2>
@@ -7589,7 +7680,6 @@ function closePresenterModal(presenterId) {
   color: #111 !important;
   border-color: rgba(0,0,0,0.08) !important;
 }
-
 
 /* Force black text for volume percentage in Now Playing */
 #volume-display {
@@ -7938,7 +8028,6 @@ const liveBox = document.querySelector(".live-indicator");
     .replace(/\s{2,}/g, " ")
     .trim();
 };
-
 
   const buildShareText = () => {
     const t = getNowText();
@@ -8860,7 +8949,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/nowplaying-refresh.js"></script>
+
 <script>
   // --- Auto-refresh when specific modals are open ---
 
@@ -9835,7 +9924,6 @@ document.addEventListener('visibilitychange', () => {
   }
 </style>
 
-
 <script>
 (() => {
   const MS_DAY = 86400000;
@@ -10083,25 +10171,157 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 </script>
+
+<script src="/artwork-unified.js?v=20250929" defer></script>
+<script src="/artwork-ios-patch.js?v=20250929-1104" defer></script>
+
+<script src="/nowplaying-refresh.js?v=20251006" defer></script>
+
+<!-- === Optimizations injected: lazy images & modal a11y (non-breaking) === -->
 <script>
-(function(){const S=q=>document.querySelector(q);
-function badge(){if(S('#artwork-debug'))return;const s=document.createElement('style');s.textContent="#artwork-debug{position:fixed;right:8px;bottom:8px;z-index:99999;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-font-size:12px;line-height:1.2;padding:6px 8px;background:rgba(0,0,0,.7);
-color:#fff;border-radius:6px}#artwork-debug b{color:#7fd87f}";document.head.appendChild(s);const d=document.createElement('div');d.id='artwork-debug';d.textContent='artwork: init';document.body.appendChild(d)}
-function setB(t){const b=S('#artwork-debug');if(b)b.innerHTML='<b>artwork</b>: '+t}
-async function j(u){const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
-function getImg(){let el=S('#artwork');if(!el){el=document.createElement('img');el.id='artwork';el.alt='Cover art';el.style.cssText='display:block;max-width:300px;width:100%;border-radius:12px;object-fit:cover;background:#111';document.body.insertBefore(el,document.body.firstChild)}try{el.loading='eager'}catch{}try{el.decoding='async'}catch{}return el}
-function endAt(i,d){try{const t=Date.parse(i);if(isFinite(t)&&isFinite(d)&&d>0)return t+Math.floor(Number(d)*1000)}catch{}return 0}
-let lastEnd=0,lastURL=null,lastMeta=null;
-async function resolve(m){try{const u=`/api/artwork.js?artist=${encodeURIComponent(m.artist)}&title=${encodeURIComponent(m.title)}&_=${Date.now()}`;const d=await j(u);if(d&&d.url){setB('server');return d.url}}catch(e){}
-try{const q=`${m.title} ${m.artist}`.trim();const u=`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&entity=musicTrack&country=GB&limit=5&_=${Date.now()}`;const d=await j(u);const h=(d.results||[]).find(x=>(x.kind==='song'||x.wrapperType==='track')&&x.artworkUrl100);if(h){setB('itunes');return h.artworkUrl100.replace('100x100','300x300')}}catch(e){}return null}
-function same(a,b){return !!a&&!!b&&a.artist===b.artist&&a.title===b.title}
-async function tick(){try{setB('latest');const L=await j(`/api/latestTrack?_=${Date.now()}`);const a=String(L.artist||'').trim(),t=String(L.title||'').trim(),ind=!!L.indeterminate;const st=L.startTime||L.started||null;const du=L.duration;if(!a||!t){if(lastEnd&&Date.now()>lastEnd+5000){setB('hide');getImg().src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='}else setB('blank-keep');return}if(ind){setB('ind-keep');return}
-const m={artist:a,title:t,start:st,dur:du};const e=endAt(st,du);if(e)lastEnd=e;if(same(m,lastMeta)){setB('same');return}
-setB('resolve');const url=await resolve(m);if(url){getImg().src=url;lastURL=url;lastMeta=m;setB('show')}else{setB('no-url-keep')} }catch(e){setB('error-keep')}}
-function start(){badge();const img=getImg();img.addEventListener('load',()=>img.classList.add('loaded'));img.addEventListener('error',()=>setB('img-error'));tick();setInterval(tick,12000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()})}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();})();
+document.addEventListener('DOMContentLoaded', function () {
+  // Lazy-load all images except key hero elements
+  document.querySelectorAll('img:not(#artwork):not(.logo-overhang)').forEach(function(img){
+    if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
+    if(!img.hasAttribute('decoding')) img.setAttribute('decoding','async');
+  });
+
+  // Ensure .modal elements have a11y attributes even if dynamically injected
+  document.querySelectorAll('.modal').forEach(function(modal){
+    modal.setAttribute('role', modal.getAttribute('role') || 'dialog');
+    modal.setAttribute('aria-modal', modal.getAttribute('aria-modal') || 'true');
+    modal.setAttribute('tabindex', modal.getAttribute('tabindex') || '-1');
+  });
+});
+</script>
+
+
+<script>
+// Hide the currently playing track from the "recently played" list.
+(function(){
+  function norm(s){ return (s==null?'':String(s)).trim().replace(/\s+/g,' ').toUpperCase(); }
+  function filterRecentAgainstNowPlaying(){
+    try{
+      var artistEl = document.getElementById('np-artist') || document.getElementById('mobileNpArtist');
+      var titleEl  = document.getElementById('np-title');
+      var list = document.getElementById('recent-list');
+      if(!list) return;
+      // Always reset visibility first so we don't keep things hidden after track changes
+      Array.from(list.children).forEach(function(el){ if (el && el.style) el.style.display = ''; });
+      if(!artistEl || !titleEl) return;
+      var a = norm(artistEl.textContent);
+      var t = norm(titleEl.textContent);
+      if(!a || !t) return;
+      var children = Array.from(list.children);
+      for (var i=0;i<children.length;i++){
+        var row = children[i];
+        var txt = norm(row.textContent);
+        // Match both artist and title tokens within the row
+        if (txt.includes(a) && txt.includes(t)) {
+          row.style.display = 'none';
+          break; // hide only the first matching row
+        }
+      }
+    }catch(e){}
+  }
+  window._filterRecentAgainstNowPlaying = filterRecentAgainstNowPlaying;
+  document.addEventListener('DOMContentLoaded', function(){
+    filterRecentAgainstNowPlaying();
+    var list = document.getElementById('recent-list');
+    if (list && window.MutationObserver) {
+      var mo = new MutationObserver(filterRecentAgainstNowPlaying);
+      mo.observe(list, {childList:true, subtree:false});
+    }
+    var a = document.getElementById('np-artist') || document.getElementById('mobileNpArtist');
+    var t = document.getElementById('np-title');
+    if (a && window.MutationObserver) {
+      var moA = new MutationObserver(filterRecentAgainstNowPlaying);
+      moA.observe(a, {childList:true, subtree:true, characterData:true});
+    }
+    if (t && window.MutationObserver) {
+      var moT = new MutationObserver(filterRecentAgainstNowPlaying);
+      moT.observe(t, {childList:true, subtree:true, characterData:true});
+    }
+  });
+})();
+</script>
+
+
+<script id="playlist-text-loader">
+(function(){
+  const TXT_URL = 'playlist.txt'; // change if you move the file
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c => (
+      { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]
+    ));
+  }
+
+  function parsePlaylistText(txt){
+    const lines = txt.split(/\r?\n/).map(l => l.trim());
+    const data = { A: [], B: [], C: [] };
+    let section = null;
+    const head = /^([ABC])\s*-\s*List\s*$/i;  // accepts "A- List" or "A-List"
+
+    for (const line of lines){
+      if (!line) continue;
+      const m = line.match(head);
+      if (m){
+        section = m[1].toUpperCase();
+        continue;
+      }
+      if (section && data[section]){
+        data[section].push(line);
+      }
+    }
+    return data;
+  }
+
+  function renderPlaylist(data){
+    const wrap = document.getElementById('playlistWrap');
+    if (!wrap) return;
+    const order = ['A','B','C'];
+    let html = '';
+
+    for (const letter of order){
+      const items = data[letter] || [];
+      if (!items.length) continue;
+      html += `<section class="playlist-section"><h3>${letter}-List</h3><ul>`;
+      html += items.map(row => {
+        const parts = row.split(/\s*-\s*/);
+        if (parts.length >= 2){
+          const artist = escapeHtml(parts.shift());
+          const title  = escapeHtml(parts.join(' - '));
+          return `<li><span class="artist">${artist}</span> - <span class="title">${title}</span></li>`;
+        }
+        return `<li>${escapeHtml(row)}</li>`;
+      }).join('');
+      html += `</ul></section>`;
+    }
+
+    wrap.innerHTML = html || '<p>No playlist entries found.</p>';
+  }
+
+  function loadPlaylist(){
+    const wrap = document.getElementById('playlistWrap');
+    if (wrap) wrap.textContent = 'Loading playlist…';
+    const url = TXT_URL + (TXT_URL.includes('?') ? '&' : '?') + 'v=' + Date.now(); // cache-bust
+    fetch(url)
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(t => renderPlaylist(parsePlaylistText(t)))
+      .catch(err => {
+        if (wrap) wrap.innerHTML =
+          `<p style="color:#b42318">Couldn’t load the playlist. (${escapeHtml(err.message)})</p>
+           <p><a href="${TXT_URL}" target="_blank" rel="noopener">Open playlist.txt</a></p>`;
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    loadPlaylist();
+    const btn = document.getElementById('playlistReloadBtn');
+    if (btn) btn.addEventListener('click', loadPlaylist);
+  });
+})();
 </script>
 </body><style>
 /* === Desktop modal centring fix === */
@@ -10109,11 +10329,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   .modal {
     display: flex;
     align-items: c
-
-
-
-
-
 
 enter;       /* centre vertically */
     justify-content: center;   /* centre horizontally */
@@ -10181,7 +10396,6 @@ enter;       /* centre vertically */
   }
 }
 
-
 .show--current::after, .current-show::after, .show-entry.current::after, .show.current::after, .schedule-item.current::after, .live-now::after {
   content: var(--now-flag, "ON AIR NOW");
   position: absolute;
@@ -10198,6 +10412,15 @@ enter;       /* centre vertically */
   z-index: 2;
   line-height: 1;
   white-space: nowrap;
+}
+/* Center #artwork on mobile (and generally) */
+#artwork{
+  display:block;               /* so margin auto works */
+  margin:0 auto;               /* center in block layout */
+  align-self:center;           /* center if parent is flex */
+  justify-self:center;         /* center if parent is grid */
+  max-width:300px;
+  width:clamp(160px, 60vw, 300px);
 }
 
 </style>
