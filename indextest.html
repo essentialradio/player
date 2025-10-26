@@ -4418,16 +4418,76 @@ html[data-theme="light"] #mobileNowBar {
   body.alt-mode #countdown { display: none !important; }
 </style>
 
+
 <style id="playlist-text-style">
-  #playlistWrap { line-height: 1.6; font-size: 16px; color: var(--text); }
-  .playlist-section { margin: 10px 0 14px; padding: 0; }
-  .playlist-section h3 { margin: 0 0 6px; color: var(--accent); font-size: 1.1em; }
+  :root { --playlist-gap: 16px; }
+  /* Make the playlist modal fullscreen and flex-based */
+  #playlistModal .modal-content {
+    max-width: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg, #0b0f11);
+  }
+  #playlistModal h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--accent, #00818a);
+  }
+  /* Grid layout for A / B / C columns */
+  #playlistWrap {
+    flex: 1 1 auto;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--playlist-gap);
+    padding: 8px 0 4px;
+    color: var(--text, #e8f1f2);
+  }
+  @media (min-width: 700px) {
+    #playlistWrap { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  /* Card styling in site palette */
+  .playlist-section {
+    background: var(--panel, #12161a);
+    border: 1px solid var(--border, #22313a);
+    border-radius: 16px;
+    padding: 14px 14px 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    min-height: 0;
+  }
+  .playlist-section h3 {
+    margin: 0 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border, #22313a);
+    color: var(--accent, #00818a);
+    font-size: 1.1em;
+    letter-spacing: .3px;
+  }
   .playlist-section ul { list-style: none; margin: 0; padding: 0; }
-  .playlist-section li { padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .playlist-section li {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
   .playlist-section li:last-child { border-bottom: 0; }
-  .playlist-section .artist { font-weight: 600; }
-  .playlist-section .title { opacity: 0.92; }
+  .playlist-section .artist { font-weight: 600; color: var(--text, #e8f1f2); }
+  .playlist-section .title { opacity: .92; color: var(--muted, #b9c2c6); }
+  /* Reload button styled to match accent */
+  #playlistReloadBtn {
+    background: var(--accent, #00818a);
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  #playlistReloadBtn:hover { filter: brightness(1.05); }
 </style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5182,7 +5242,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="playlistModal">
-<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:1000px;width:97vw">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:none;width:100vw;height:100vh;margin:0;border-radius:0;display:flex;flex-direction:column;max-width:1000px;width:97vw">
 <span class="close" onclick="closeModal('playlistModal')">×</span>
 <h2 style="margin-top:0;color:#00818a">Essential Radio Playlist</h2>
 <div id="playlistWrap" class="playlist-text">Loading playlist…</div>
