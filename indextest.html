@@ -5329,7 +5329,6 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     <div class="spacer"></div>
     <input id="playlistFilter" type="search" placeholder="Filter artists or titles">
     <button id="playlistReloadBtn" type="button" class="btn">Reload</button>
-    <button id="playlistCopyBtn" type="button" class="btn ghost">Copy</button>
   </div>
 </div>
 <div id="playlistWrap" class="playlist-text grid">Loading playlist…</div>
@@ -10482,16 +10481,6 @@ document.addEventListener('DOMContentLoaded', function () {
       sec.style.display = visible ? '' : 'none';
     });
   }
-
-  function copyPlain(){
-    if (!lastRawText) return;
-    navigator.clipboard.writeText(lastRawText).then(()=>{
-      const btn = document.getElementById('playlistCopyBtn');
-      if (btn){
-        const old = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(()=> btn.textContent = old, 1200);
-      }
     });
   }
 
@@ -10516,24 +10505,31 @@ document.addEventListener('DOMContentLoaded', function () {
     loadPlaylist();
     const btn = document.getElementById('playlistReloadBtn');
     if (btn) btn.addEventListener('click', loadPlaylist);
-    const cpy = document.getElementById('playlistCopyBtn');
-    if (cpy) cpy.addEventListener('click', copyPlain);
-    const filter = document.getElementById('playlistFilter');
+const filter = document.getElementById('playlistFilter');
     if (filter) filter.addEventListener('input', (e)=> applyFilter(e.target.value));
     // Smooth anchor scroll for pills
-    document.querySelectorAll('.pill[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e)=> {
-        const id = a.getAttribute('href').slice(1);
-        const target = document.getElementById(id);
-        if (target){
-          e.preventDefault();
-          target.scrollIntoView({ behavior:'smooth', block:'start' });
-        }
-      });
+    document.addEventListener('DOMContentLoaded', function(){
+    loadPlaylist();
+    const btn = document.getElementById('playlistReloadBtn');
+    if (btn) btn.addEventListener('click', loadPlaylist);
+    const filter = document.getElementById('playlistFilter');
+    if (filter) filter.addEventListener('input', (e)=> applyFilter(e.target.value));
+
+    // Delegated click so it always works, even after reloads
+    const modal = document.getElementById('playlistModal');
+    if (modal) modal.addEventListener('click', function(e){
+      const a = e.target.closest('.pill[href^="#"]');
+      if (!a) return;
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target){
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+        try { history.replaceState(null, '', '#' + id); } catch(_){}
+      }
     });
   });
-})();
-</script>
+})();</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
