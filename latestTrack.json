@@ -1,11 +1,12 @@
 {
   "artist": "Dodgy",
   "title": "Good Enough",
-  "startTime": "2025-10-26T13:54:50Z",
-  "start": "2025-10-26T13:54:50Z",
-  "duration": 228,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-10-26T13:58:38Z",
-  "altMode": false
+  "startTime": "2025-10-26T14:00:04Z",
+  "start": "2025-10-26T14:00:04Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-10-26T15:00:04Z",
+  "altMode": true,
+  "Source": "ALT"
 }
