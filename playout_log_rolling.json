@@ -54701,5 +54701,18 @@
     "Full Duration (mins)": 4.3,
     "Start ISO": "2025-10-26T08:22:33Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-26T08:00:00Z",
+    "Scheduled Time": "08:30",
+    "Displayed Time": "08:30",
+    "Artist": "Dr Hilary Jones",
+    "Title": "The Dr Hilary Show",
+    "Duration (s)": 1800,
+    "Full Duration (s)": 1800,
+    "Duration (mins)": 30.0,
+    "Full Duration (mins)": 30.0,
+    "Start ISO": "2025-10-26T08:30:00Z",
+    "Source": "FIXED"
   }
 ]
