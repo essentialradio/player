@@ -4419,9 +4419,9 @@ html[data-theme="light"] #mobileNowBar {
 </style>
 
 
+
 <style id="playlist-text-style">
-  :root { --playlist-gap: 16px; }
-  /* Make the playlist modal fullscreen and flex-based */
+  :root { --playlist-gap: 18px; }
   #playlistModal .modal-content {
     max-width: none !important;
     width: 100vw !important;
@@ -4430,63 +4430,138 @@ html[data-theme="light"] #mobileNowBar {
     border-radius: 0 !important;
     display: flex;
     flex-direction: column;
-    background: var(--bg, #0b0f11);
+    background:
+      radial-gradient(1200px 600px at 100% -50%, rgba(0,129,138,.15), transparent 60%),
+      radial-gradient(900px 500px at -20% 100%, rgba(255,212,45,.10), transparent 60%),
+      var(--bg, #0b0f11);
+  }
+  #playlistModal .close {
+    background: rgba(0,0,0,.35);
+    border-radius: 10px;
   }
   #playlistModal h2 {
-    margin-top: 0;
-    margin-bottom: 8px;
+    margin: 0;
     color: var(--accent, #00818a);
+    font-size: 1.6em;
+    letter-spacing: .2px;
   }
-  /* Grid layout for A / B / C columns */
-  #playlistWrap {
+  .playlist-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: linear-gradient(180deg, rgba(0,0,0,.35), transparent 85%);
+    backdrop-filter: blur(6px);
+    padding: 18px 8px 8px;
+    border-bottom: 1px solid var(--border, #22313a);
+  }
+  .playlist-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border, #22313a);
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    text-decoration: none;
+    color: var(--text, #e8f1f2);
+    font-weight: 600;
+    transition: transform .12s ease, background .2s ease;
+  }
+  .pill:hover { transform: translateY(-1px); background: rgba(255,255,255,.06); }
+  .badge {
+    min-width: 22px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent, #00818a), #00b8a3);
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+  }
+  .spacer { flex: 1 1 auto; }
+  #playlistFilter {
+    appearance: none;
+    background: rgba(255,255,255,.06);
+    border: 1px solid var(--border, #22313a);
+    color: var(--text, #e8f1f2);
+    padding: 8px 10px;
+    border-radius: 12px;
+    min-width: 220px;
+  }
+  #playlistFilter::placeholder { color: var(--muted, #9fb0b6); }
+  .btn {
+    background: linear-gradient(135deg, var(--accent, #00818a), #00b8a3);
+    color: white;
+    border: 0;
+    border-radius: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,129,138,.25);
+  }
+  .btn:hover { filter: brightness(1.05); }
+  .btn.ghost {
+    background: transparent;
+    color: var(--accent, #00a3ad);
+    border: 1px solid var(--accent, #00818a);
+    box-shadow: none;
+  }
+  #playlistWrap.grid {
     flex: 1 1 auto;
     overflow: auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--playlist-gap);
-    padding: 8px 0 4px;
+    padding: 14px 8px 20px;
     color: var(--text, #e8f1f2);
   }
-  @media (min-width: 700px) {
-    #playlistWrap { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (min-width: 760px) {
+    #playlistWrap.grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
-  /* Card styling in site palette */
   .playlist-section {
-    background: var(--panel, #12161a);
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
     border: 1px solid var(--border, #22313a);
-    border-radius: 16px;
+    border-radius: 18px;
     padding: 14px 14px 6px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    box-shadow: 0 10px 28px rgba(0,0,0,.30);
     min-height: 0;
+    overflow: hidden;
   }
   .playlist-section h3 {
     margin: 0 0 8px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border, #22313a);
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border, #22313a);
     color: var(--accent, #00818a);
-    font-size: 1.1em;
+    font-size: 1.15em;
     letter-spacing: .3px;
   }
   .playlist-section ul { list-style: none; margin: 0; padding: 0; }
   .playlist-section li {
-    padding: 6px 0;
+    padding: 8px 4px;
     border-bottom: 1px solid rgba(255,255,255,.06);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .playlist-section li::before {
+    content: "";
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffd42d, #ffa800 70%);
+    margin-right: 2px;
+    flex: 0 0 8px;
   }
   .playlist-section li:last-child { border-bottom: 0; }
-  .playlist-section .artist { font-weight: 600; color: var(--text, #e8f1f2); }
+  .playlist-section .artist { font-weight: 700; color: var(--text, #e8f1f2); }
   .playlist-section .title { opacity: .92; color: var(--muted, #b9c2c6); }
-  /* Reload button styled to match accent */
-  #playlistReloadBtn {
-    background: var(--accent, #00818a);
-    color: #fff;
-    border: 0;
-    border-radius: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  #playlistReloadBtn:hover { filter: brightness(1.05); }
 </style>
+
 
 </head>
 <body>
@@ -5244,11 +5319,21 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="playlistModal">
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:none;width:100vw;height:100vh;margin:0;border-radius:0;display:flex;flex-direction:column;max-width:1000px;width:97vw">
 <span class="close" onclick="closeModal('playlistModal')">×</span>
-<h2 style="margin-top:0;color:#00818a">Essential Radio Playlist</h2>
-<div id="playlistWrap" class="playlist-text">Loading playlist…</div>
-<div style="text-align:right;margin-top:8px">
-  <button id="playlistReloadBtn" type="button">Reload</button>
+
+<div class="playlist-header">
+  <h2>Essential Radio Playlist</h2>
+  <div class="playlist-actions">
+    <a href="#sec-A" class="pill">A-List <span class="badge" id="countA">0</span></a>
+    <a href="#sec-B" class="pill">B-List <span class="badge" id="countB">0</span></a>
+    <a href="#sec-C" class="pill">C-List <span class="badge" id="countC">0</span></a>
+    <div class="spacer"></div>
+    <input id="playlistFilter" type="search" placeholder="Filter artists or titles">
+    <button id="playlistReloadBtn" type="button" class="btn">Reload</button>
+    <button id="playlistCopyBtn" type="button" class="btn ghost">Copy</button>
+  </div>
 </div>
+<div id="playlistWrap" class="playlist-text grid">Loading playlist…</div>
+
 </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
@@ -10307,9 +10392,12 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
+
 <script id="playlist-text-loader">
 (function(){
   const TXT_URL = 'playlist.txt'; // change if you move the file
+  let lastRawText = '';           // keep original plain text for Copy
+  let lastData = null;            // parsed structure
 
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, c => (
@@ -10337,7 +10425,16 @@ document.addEventListener('DOMContentLoaded', function () {
     return data;
   }
 
+  function updateCounts(data){
+    const a = (data.A||[]).length, b = (data.B||[]).length, c = (data.C||[]).length;
+    const el = id => document.getElementById(id);
+    if (el('countA')) el('countA').textContent = a;
+    if (el('countB')) el('countB').textContent = b;
+    if (el('countC')) el('countC').textContent = c;
+  }
+
   function renderPlaylist(data){
+    lastData = data;
     const wrap = document.getElementById('playlistWrap');
     if (!wrap) return;
     const order = ['A','B','C'];
@@ -10346,20 +10443,56 @@ document.addEventListener('DOMContentLoaded', function () {
     for (const letter of order){
       const items = data[letter] || [];
       if (!items.length) continue;
-      html += `<section class="playlist-section"><h3>${letter}-List</h3><ul>`;
+      html += `<section class="playlist-section" id="sec-${letter}" data-section="${letter}"><h3>${letter}-List</h3><ul>`;
       html += items.map(row => {
         const parts = row.split(/\s*-\s*/);
         if (parts.length >= 2){
           const artist = escapeHtml(parts.shift());
           const title  = escapeHtml(parts.join(' - '));
-          return `<li><span class="artist">${artist}</span> - <span class="title">${title}</span></li>`;
+          return `<li data-text="${artist} ${title}"><span class="artist">${artist}</span> - <span class="title">${title}</span></li>`;
         }
-        return `<li>${escapeHtml(row)}</li>`;
+        const safe = escapeHtml(row);
+        return `<li data-text="${safe}">${safe}</li>`;
       }).join('');
       html += `</ul></section>`;
     }
 
     wrap.innerHTML = html || '<p>No playlist entries found.</p>';
+    updateCounts(data);
+  }
+
+  function applyFilter(q){
+    const wrap = document.getElementById('playlistWrap');
+    const term = (q||'').toLowerCase().trim();
+    const sections = wrap ? wrap.querySelectorAll('.playlist-section') : [];
+    sections.forEach(sec => {
+      const items = sec.querySelectorAll('li');
+      let visible = 0;
+      items.forEach(li => {
+        const t = (li.getAttribute('data-text')||'').toLowerCase();
+        const show = !term || t.includes(term);
+        li.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      // Update counts per section
+      const letter = sec.getAttribute('data-section');
+      const badge = document.getElementById('count'+letter);
+      if (badge) badge.textContent = visible;
+      // Hide whole section if nothing matches term
+      sec.style.display = visible ? '' : 'none';
+    });
+  }
+
+  function copyPlain(){
+    if (!lastRawText) return;
+    navigator.clipboard.writeText(lastRawText).then(()=>{
+      const btn = document.getElementById('playlistCopyBtn');
+      if (btn){
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = old, 1200);
+      }
+    });
   }
 
   function loadPlaylist(){
@@ -10368,7 +10501,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const url = TXT_URL + (TXT_URL.includes('?') ? '&' : '?') + 'v=' + Date.now(); // cache-bust
     fetch(url)
       .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-      .then(t => renderPlaylist(parsePlaylistText(t)))
+      .then(t => {
+        lastRawText = t;
+        renderPlaylist(parsePlaylistText(t));
+      })
       .catch(err => {
         if (wrap) wrap.innerHTML =
           `<p style="color:#b42318">Couldn’t load the playlist. (${escapeHtml(err.message)})</p>
@@ -10380,9 +10516,25 @@ document.addEventListener('DOMContentLoaded', function () {
     loadPlaylist();
     const btn = document.getElementById('playlistReloadBtn');
     if (btn) btn.addEventListener('click', loadPlaylist);
+    const cpy = document.getElementById('playlistCopyBtn');
+    if (cpy) cpy.addEventListener('click', copyPlain);
+    const filter = document.getElementById('playlistFilter');
+    if (filter) filter.addEventListener('input', (e)=> applyFilter(e.target.value));
+    // Smooth anchor scroll for pills
+    document.querySelectorAll('.pill[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e)=> {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior:'smooth', block:'start' });
+        }
+      });
+    });
   });
 })();
 </script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
