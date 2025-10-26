@@ -1,34 +1,5 @@
 [
   {
-    "Hour": "2025-10-12T16:00:00Z",
-    "Scheduled Time": "17:59",
-    "Displayed Time": "17:59",
-    "Artist": "Jennifer Rush",
-    "Title": "The Power of Love",
-    "Duration (s)": null,
-    "Full Duration (s)": null,
-    "Duration (mins)": null,
-    "Full Duration (mins)": null,
-    "Start ISO": "2025-10-12T16:59:48Z",
-    "Source": "ALT"
-  },
-  {
-    "Hour": "2025-10-12T17:00:00Z",
-    "Scheduled Time": "18:45",
-    "Displayed Time": "18:45",
-    "Artist": "Shaggy",
-    "Title": "Boombastic",
-    "Duration (s)": 3600,
-    "Full Duration (s)": 3600,
-    "Duration (mins)": 60.0,
-    "Full Duration (mins)": 60.0,
-    "Start ISO": "2025-10-12T17:45:21Z",
-    "Source": "ALT",
-    "Actual End ISO": null,
-    "Actual Duration (s)": null,
-    "Actual Duration (mins)": null
-  },
-  {
     "Hour": "2025-10-12T18:00:00Z",
     "Scheduled Time": "19:00",
     "Displayed Time": "19:00",
