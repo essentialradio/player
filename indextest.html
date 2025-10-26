@@ -1269,7 +1269,8 @@ body.modal-open {
     border: 1px solid #e6ecf3 !important;
   }
 
-  /* 3) Any title elements that used brand-yellow as text */
+  
+  .pill.active { background: rgba(255,255,255,.10); border-color: var(--accent, #00818a); }/* 3) Any title elements that used brand-yellow as text */
   [data-theme="light"] .recent-title,
   [data-theme="light"] .side-social-title,
   [data-theme="light"] .side-listen-title {
@@ -4421,6 +4422,7 @@ html[data-theme="light"] #mobileNowBar {
 
 
 <style id="playlist-text-style">
+  #playlistModal { z-index: 1001 !important; }
   :root { --playlist-gap: 18px; }
   #playlistModal .modal-content {
     max-width: none !important;
@@ -10394,7 +10396,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <script id="playlist-text-loader">
 (function(){
-  const TXT_URL = 'playlist.txt'; // change if you move the file
+  let TXT_URL = 'playlist.txt'; // default; can be overridden by data attribute
+  function resolvePlaylistURL(){
+    const el = document.getElementById('playlistWrap');
+    if (el && el.dataset && el.dataset.playlistUrl) TXT_URL = el.dataset.playlistUrl;
+  }
+  async function fetchFirst(urls){
+    for (const u of urls){
+      try{
+        const r = await fetch(u, { cache: 'no-store' });
+        if (r.ok) return await r.text();
+      }catch(e){ /* try next */ }
+    }
+    throw new Error('No playlist.txt found at: ' + urls.join(', '));
+  }
   let lastRawText = '';           // keep original plain text for Copy
   let lastData = null;            // parsed structure
 
@@ -10481,15 +10496,26 @@ document.addEventListener('DOMContentLoaded', function () {
       sec.style.display = visible ? '' : 'none';
     });
   }
-    });
-  }
+
+    }
 
   function loadPlaylist(){
+    resolvePlaylistURL();
     const wrap = document.getElementById('playlistWrap');
     if (wrap) wrap.textContent = 'Loading playlist…';
-    const url = TXT_URL + (TXT_URL.includes('?') ? '&' : '?') + 'v=' + Date.now(); // cache-bust
-    fetch(url)
-      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+    const bases = ['', '/', '/data/', '/assets/', '/static/'];
+    const candidates = Array.from(new Set(bases.map(b => (TXT_URL.startsWith('/') ? TXT_URL : (b + TXT_URL)))));
+    fetchFirst(candidates)
+      .then(t => { lastRawText = t; renderPlaylist(parsePlaylistText(t)); })
+      .catch(err => {
+        if (wrap) wrap.innerHTML =
+          `<div style="padding:10px;background:rgba(180,35,24,.1);border:1px solid #b42318;border-radius:8px">
+             <p style="color:#ffd42d;margin:0 0 6px"><strong>Playlist file not found.</strong></p>
+             <p style="margin:0 0 6px;color:#e8f1f2">Tried: <code>${candidates.join(', ')}</code></p>
+             <p style="margin:0;color:#b9c2c6">Place <code>playlist.txt</code> beside <code>index.html</code> or set <code>data-playlist-url</code> on <code>#playlistWrap</code>.</p>
+           </div>`;
+      });
+  })
       .then(t => {
         lastRawText = t;
         renderPlaylist(parsePlaylistText(t));
@@ -10505,31 +10531,31 @@ document.addEventListener('DOMContentLoaded', function () {
     loadPlaylist();
     const btn = document.getElementById('playlistReloadBtn');
     if (btn) btn.addEventListener('click', loadPlaylist);
-const filter = document.getElementById('playlistFilter');
-    if (filter) filter.addEventListener('input', (e)=> applyFilter(e.target.value));
-    // Smooth anchor scroll for pills
-    document.addEventListener('DOMContentLoaded', function(){
-    loadPlaylist();
-    const btn = document.getElementById('playlistReloadBtn');
-    if (btn) btn.addEventListener('click', loadPlaylist);
     const filter = document.getElementById('playlistFilter');
     if (filter) filter.addEventListener('input', (e)=> applyFilter(e.target.value));
-
-    // Delegated click so it always works, even after reloads
-    const modal = document.getElementById('playlistModal');
-    if (modal) modal.addEventListener('click', function(e){
+    // Smooth anchor scroll for pills (delegated, always works, accounts for sticky header)
+    document.addEventListener('click', function(e){
       const a = e.target.closest('.pill[href^="#"]');
       if (!a) return;
-      e.preventDefault();
       const id = a.getAttribute('href').slice(1);
       const target = document.getElementById(id);
-      if (target){
-        target.scrollIntoView({ behavior:'smooth', block:'start' });
-        try { history.replaceState(null, '', '#' + id); } catch(_){}
-      }
+      if (!target) return;
+      e.preventDefault();
+      // active state
+      document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+      a.classList.add('active');
+      // offset for sticky header
+      const header = document.querySelector('.playlist-header');
+      const offset = (header && header.offsetHeight) ? header.offsetHeight + 8 : 8;
+      const y = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     });
   });
-})();</script>
+})();
+</script>
+  });
+})();
+</script>
 
 </body><style>
 /* === Desktop modal centring fix === */
