@@ -54870,5 +54870,18 @@
     "Full Duration (mins)": 3.38,
     "Start ISO": "2025-10-26T09:52:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-26T09:00:00Z",
+    "Scheduled Time": "09:55",
+    "Displayed Time": "09:55",
+    "Artist": "ABC",
+    "Title": "Poison Arrow",
+    "Duration (s)": 195,
+    "Full Duration (s)": 203,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.38,
+    "Start ISO": "2025-10-26T09:55:43Z",
+    "Source": "PLAYIT"
   }
 ]
