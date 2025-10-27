@@ -4506,6 +4506,28 @@ html[data-theme="light"] #mobileNowBar {
     border-color: var(--er-accent, #fed351) !important;
     color: #000 !important;
   }
+
+/* === PATCH: Multi-column layout for single-list (A/B/C) on desktop === */
+@media (min-width: 900px) {
+  #playlistWrap.single-list .playlist-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 12px;
+  }
+  #playlistWrap.single-list .playlist-section > h3 {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;
+  }
+  #playlistWrap.single-list .playlist-section .track + .track {
+    margin-top: 0;
+  }
+}
+@media (min-width: 1400px) {
+  #playlistWrap.single-list .playlist-section {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+}
+/* === END PATCH === */
 </style>
 
 <style id="college-style-min">
@@ -4541,29 +4563,6 @@ html[data-theme="light"] #mobileNowBar {
   .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
   .detail-body p{ margin:0 0 10px 0; white-space:pre-wrap; }
 </style>
-
-<style>
-/* Playlist: multi-column tile layout on desktop for single-list views */
-#playlistWrap.single-list .playlist-section .track-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 10px;
-}
-#playlistWrap.single-list .playlist-section .track + .track { margin-top: 0; }
-
-@media (min-width: 1280px){
-  #playlistWrap.single-list .playlist-section .track-grid {
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
-  }
-}
-
-@media (max-width: 980px){
-  #playlistWrap.single-list .playlist-section .track-grid {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-  }
-}
-</style>
-
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -4596,7 +4595,7 @@ html[data-theme="light"] #mobileNowBar {
 <a href="#" onclick="openModal('newsModal');return false;">News</a>
 <a href="#" onclick="openModal('travelModal');return false;">Travel</a>
 <a href="#" onclick="openModal('localModal');return false;">Local</a>
-<a href="#list=A" onclick="location.hash='list=A'; openModal('playlistModal'); return false;">Playlist</a>
+<a href="#list=ALL" onclick="location.hash='list=ALL'; openModal('playlistModal'); return false;">Playlist</a>
 <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
 <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
 <a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
@@ -5327,7 +5326,9 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         <div class="segmented" role="tablist" aria-label="Filter list">
           <button type="button" class="seg active" data-filter="A" aria-selected="true">A-List</button>
           <button type="button" class="seg" data-filter="B" aria-selected="false">B-List</button>
-          <button type="button" class="seg" data-filter="C" aria-selected="false">C-List</button></div>
+          <button type="button" class="seg" data-filter="C" aria-selected="false">C-List</button>
+          <button type="button" class="seg" data-filter="ALL" aria-selected="false">All</button>
+        </div>
       </div>
 
       <div class="playlist-note">Key: <span class="badge new">NEW</span> = new addition, <span class="move-tag up" aria-hidden="true">▲</span> = promoted, <span class="move-tag down" aria-hidden="true">▼</span> = down.</div>
@@ -10398,7 +10399,9 @@ document.addEventListener('DOMContentLoaded', function () {
     <h2>College Info</h2>
 
     <div class="college-toolbar">
-      <div class="segmented" role="tablist" aria-label="Filter section"><button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
+      <div class="segmented" role="tablist" aria-label="Filter section">
+        <button type="button" class="seg active" data-filter="ALL" aria-selected="true">All</button>
+        <button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
         <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
       </div>
       <div class="toolbar-right">
@@ -10505,9 +10508,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }).join('');
     return `<section class="playlist-section" data-section="${letter}">
       <h3>${label}</h3>
-      <div class="track-grid">
-        ${rows || '<div class="muted">No tracks.</div>'}
-      </div>
+      ${rows || '<div class="muted">No tracks.</div>'}
     </section>`;
   }
 
@@ -10529,13 +10530,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let activeFilter = 'A';
   function applyFilters(){
-    // Force single-list layout and show only the active section
-    wrap.classList.add('single-list');
+    if (activeFilter === 'ALL') wrap.classList.remove('single-list'); else wrap.classList.add('single-list');
     grid.querySelectorAll('.playlist-section').forEach(sec => {
       const letter = sec.getAttribute('data-section');
-      sec.style.display = (letter === activeFilter) ? '' : 'none';
+      sec.style.display = (activeFilter === 'ALL' || letter === activeFilter) ? '' : 'none';
     });
-  })();
+  }
+
+  function attachInteractions(){
+    const segs = wrap.querySelectorAll('.segmented .seg');
+    segs.forEach(btn => btn.addEventListener('click', () => {
+      segs.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-selected', b===btn ? 'true':'false'); });
+      activeFilter = (btn.getAttribute('data-filter') || 'A').toUpperCase();
+      try { history.replaceState(null, '', '#list=' + activeFilter); } catch(e) {}
+      applyFilters();
+    }));
+
+    try {
+      const url = new URL(location.href);
+      const q = (url.searchParams.get('list') || '').toUpperCase();
+      const h = ((location.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
+      const pick = (q || h || 'A');
+      if (['ALL','A','B','C'].includes(pick)){
+        activeFilter = pick;
+        segs.forEach(b => {
+          const on = (b.getAttribute('data-filter') || 'A').toUpperCase() === activeFilter;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+      }
+    } catch(e){}
+    applyFilters();
+  }
+
+  function refreshPlaylist(){
+    const url = PLAYLIST_URL + (PLAYLIST_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
+    grid.textContent = 'Loading…';
+    fetch(url).then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(txt => {
+        const data = parsePlaylist(txt);
+        render(data);
+        attachInteractions();
+        hydrateCovers(data);
+      })
+      .catch(err => {
+        grid.innerHTML = '<p style="color:#ff7d7d">Could not load playlist (' + err.message + ')</p>';
+      });
+  }
+  window.refreshPlaylist = refreshPlaylist;
+  document.addEventListener('DOMContentLoaded', refreshPlaylist);
+})();
 </script>
 
 
