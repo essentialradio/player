@@ -4419,177 +4419,58 @@ html[data-theme="light"] #mobileNowBar {
 </style>
 
 <style id="playlist-text-style">
-  #playlistModal .modal-content {
-    width: 100vw;
-    max-width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
-    border-radius: 0;
-    padding: clamp(12px, 2vw, 28px);
-    display: flex;
-    flex-direction: column;
-    background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
-                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-    background-color: var(--panel, #0f1316);
-    color: var(--text, #e9f1f3);
-  }
-  #playlistModal h2 {
-    margin: 0 0 8px 0;
-    color: var(--accent, #00a0aa);
-    font-size: clamp(18px, 2.6vw, 30px);
-    letter-spacing: 0.2px;
-  }
-  #playlistModal .close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--text, #e9f1f3);
-    opacity: 0.85;
-    cursor: pointer;
-    padding: 4px 10px;
-    border-radius: 10px;
-  }
+  #playlistModal .modal-content { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; padding: clamp(12px, 2vw, 28px); display: flex; flex-direction: column; background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)); background-color: var(--panel, #0f1316); color: var(--text, #e9f1f3); }
+  #playlistModal h2 { margin: 0 0 8px 0; color: var(--accent, #00a0aa); font-size: clamp(18px, 2.6vw, 30px); letter-spacing: 0.2px; }
+  #playlistModal .close { position: absolute; top: 10px; right: 12px; font-size: 28px; line-height: 1; color: var(--text, #e9f1f3); opacity: 0.85; cursor: pointer; padding: 4px 10px; border-radius: 10px; }
   #playlistModal .close:hover { opacity: 1; background: rgba(255,255,255,0.06); }
 
-  .playlist-toolbar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-    align-items: center;
-    padding: 8px 0 12px;
-    border-bottom: 1px solid var(--border, rgba(255,255,255,0.12));
-    margin-bottom: 10px;
-  }
+  .playlist-toolbar { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 8px 0 12px; border-bottom: 1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom: 10px; }
   .toolbar-right { display: flex; gap: 8px; align-items: center; }
   .toolbar-left { display: flex; gap: 10px; align-items: center; }
-  .segmented {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--border, rgba(255,255,255,0.12));
-    padding: 4px;
-    border-radius: 12px;
-    display: inline-flex;
-    gap: 4px;
-  }
-  .segmented .seg {
-    background: transparent;
-    color: var(--text, #e9f1f3);
-    border: 0;
-    border-radius: 10px;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-weight: 600;
-    opacity: 0.85;
-  }
-  .segmented .seg.active {
-    background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18));
-    border: 1px solid rgba(0,160,170,0.45);
-    opacity: 1;
-  }
-  #playlistSearch {
-    appearance: none;
-    border-radius: 10px;
-    border: 1px solid var(--border, rgba(255,255,255,0.14));
-    background: rgba(255,255,255,0.05);
-    color: var(--text, #e9f1f3);
-    padding: 8px 12px;
-    min-width: min(48vw, 360px);
-    outline: none;
-  }
+  .segmented { background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); padding: 4px; border-radius: 12px; display: inline-flex; gap: 4px; }
+  .segmented .seg { background: transparent; color: var(--text, #e9f1f3); border: 0; border-radius: 10px; padding: 6px 10px; cursor: pointer; font-weight: 600; opacity: 0.85; }
+  .segmented .seg.active { background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border: 1px solid rgba(0,160,170,0.45); opacity: 1; }
+  #playlistSearch { appearance: none; border-radius: 10px; border: 1px solid var(--border, rgba(255,255,255,0.14)); background: rgba(255,255,255,0.05); color: var(--text, #e9f1f3); padding: 8px 12px; min-width: min(48vw, 360px); outline: none; }
   #playlistSearch::placeholder { color: rgba(233,241,243,0.55); }
-  .btn {
-    border: 1px solid var(--border, rgba(255,255,255,0.15));
-    background: rgba(255,255,255,0.06);
-    color: var(--text, #e9f1f3);
-    padding: 8px 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-  }
+  .btn { border: 1px solid var(--border, rgba(255,255,255,0.15)); background: rgba(255,255,255,0.06); color: var(--text, #e9f1f3); padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; }
   .btn:hover { background: rgba(255,255,255,0.1); }
 
-  #playlistWrap {
-    flex: 1;
-    overflow: auto;
-    padding: 12px 2px 16px;
-  }
+  .playlist-legend { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 10px 0 12px; font-size: 14px; }
+  .playlist-legend .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .playlist-legend code { background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 6px; }
 
-  #playlistWrap .playlist-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(260px, 1fr));
-    gap: clamp(12px, 2vw, 20px);
-  }
-  @media (max-width: 1020px) {
-    #playlistWrap .playlist-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
-  }
-  @media (max-width: 640px) {
-    #playlistWrap .playlist-grid { grid-template-columns: 1fr; }
-  }
+  #playlistWrap { flex: 1; overflow: auto; padding: 12px 2px 16px; }
 
-  .playlist-section {
-    padding: 12px 14px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border, rgba(255,255,255,0.12));
-    border-radius: 16px;
-    backdrop-filter: blur(4px);
-  }
-  .playlist-section header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18));
-    color: var(--text, #e9f1f3);
-    border: 1px solid rgba(0,160,170,0.45);
-  }
+  #playlistWrap .playlist-grid { display: grid; grid-template-columns: repeat(3, minmax(260px, 1fr)); gap: clamp(12px, 2vw, 20px); }
+  @media (max-width: 1020px) { #playlistWrap .playlist-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
+  @media (max-width: 640px)  { #playlistWrap .playlist-grid { grid-template-columns: 1fr; } }
+
+  .playlist-section { padding: 12px 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border, rgba(255,255,255,0.12)); border-radius: 16px; backdrop-filter: blur(4px); }
+  .playlist-section header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; font-weight: 700; letter-spacing: 0.3px; background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); color: var(--text, #e9f1f3); border: 1px solid rgba(0,160,170,0.45); }
   .badge .dot { width: 8px; height: 8px; border-radius: 999px; background: #00a0aa; box-shadow: 0 0 10px rgba(0,160,170,0.6); }
   .badge.b { background: linear-gradient(180deg, rgba(0,130,255,0.18), rgba(0,130,255,0.12)); border-color: rgba(0,130,255,0.35); }
   .badge.b .dot { background: #3aa0ff; box-shadow: 0 0 10px rgba(58,160,255,0.55); }
   .badge.c { background: linear-gradient(180deg, rgba(180,180,180,0.18), rgba(180,180,180,0.12)); border-color: rgba(180,180,180,0.3); }
   .badge.c .dot { background: #bdbdbd; box-shadow: 0 0 10px rgba(189,189,189,0.5); }
-
   .count { font-size: 12px; opacity: 0.75; }
 
   .playlist-section ul { list-style: none; margin: 0; padding: 0; }
-  .playlist-section li {
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 10px;
-    align-items: baseline;
-  }
+  .playlist-section li { padding: 8px 0; border-bottom: 1px solid var(--border, rgba(255,255,255,0.08)); display: grid; grid-template-columns: 1.1fr 1fr; gap: 10px; align-items: baseline; }
   .playlist-section li:last-child { border-bottom: 0; }
-  .artist { font-weight: 700; letter-spacing: .2px; }
-  .title { opacity: 0.92; }
+  .artist { font-weight: 700; letter-spacing: .2px; display: inline-flex; gap: 8px; align-items: baseline; }
+  .title { opacity: 0.95; }
+  .is-new .artist, .is-new .title { font-weight: 800; }
 
-  .toast {
-    position: fixed;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(15,19,22,0.9);
-    color: #e9f1f3;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.12);
-    pointer-events: none;
-    z-index: 100000;
-    font-weight: 600;
-  }
+  .chip.new { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.3px; color: #0f1316; background: #ffde59; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 1px 8px rgba(255,222,89,0.25); }
+  .trend { font-weight: 900; margin-left: 8px; font-size: 12px; vertical-align: text-top; }
+  .trend.up { color: #4ade80; }
+  .trend.down { color: #ff7d7d; }
+
+  .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(15,19,22,0.9); color: #e9f1f3; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); pointer-events: none; z-index: 100000; font-weight: 600; }
 
   @media print {
-    #playlistModal .close, .playlist-toolbar { display: none !important; }
+    #playlistModal .close, .playlist-toolbar, .playlist-legend { display: none !important; }
     #playlistModal .modal-content { background: #fff; color: #000; }
     .playlist-section { break-inside: avoid; border: 1px solid #ccc; }
   }
@@ -5365,6 +5246,12 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     <button id="playlistReloadBtn" type="button" class="btn">Reload</button>
     <button id="playlistCopyBtn" type="button" class="btn">Copy</button>
   </div>
+</div>
+<div class="playlist-legend" role="note" aria-label="Playlist notes">
+  <span class="chip new">NEW</span> New add this week.
+  <span class="legend-item"><span class="trend up">▲</span> Rising</span>
+  <span class="legend-item"><span class="trend down">▼</span> Falling</span>
+  <span class="muted">Add markers at the end of a line in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>.</span>
 </div>
 
 <div id="playlistWrap" class="playlist-text">Loading playlist…</div>
@@ -10435,15 +10322,16 @@ document.addEventListener('DOMContentLoaded', function () {
       { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]
     ));
   }
-
-  // Split on the FIRST dash that has spaces on both sides (supports -, –, —).
-  // Avoids breaking hyphenated words like 'K-Pop'.
   function splitArtistTitle(row){
     const sep = row.match(/\s+[-–—]\s+/);
     if(!sep) return null;
     const idx = sep.index;
     return [row.slice(0, idx).trim(), row.slice(idx + sep[0].length).trim()];
   }
+  function parseFlags(row){
+    return { isNew:/\*NEW\*/i.test(row), isUp:/\*UP\*/i.test(row), isDown:/\*DOWN\*/i.test(row) };
+  }
+  function stripMarkers(row){ return row.replace(/\s*\*(NEW|UP|DOWN)\*\s*/gi, ' ').trim(); }
 
   function parsePlaylistText(txt){
     const lines = txt.split(/\r?\n/).map(l => l.trim());
@@ -10466,13 +10354,24 @@ document.addEventListener('DOMContentLoaded', function () {
              + `<span class="count">${items.length} track${items.length===1?'':'s'}</span></header>`
              + `<ul>`;
     html += items.map(row => {
-      const pair = splitArtistTitle(row);
+      const flags = parseFlags(row);
+      const base = stripMarkers(row);
+      const pair = splitArtistTitle(base);
       if (pair){
-        const artist = escapeHtml(pair[0]);
-        const title  = escapeHtml(pair[1]);
-        return `<li data-text="${(pair[0] + ' ' + pair[1]).toLowerCase()}"><span class="artist">${artist}</span><span class="title">${title}</span></li>`;
+        const [aRaw, tRaw] = pair;
+        const artist = escapeHtml(aRaw);
+        const title  = escapeHtml(tRaw);
+        const liClass = flags.isNew ? 'is-new' : '';
+        const chip = flags.isNew ? '<span class="chip new">NEW</span> ' : '';
+        const ups  = flags.isUp   ? '<span class="trend up" title="Up this week">▲</span>' : '';
+        const dws  = flags.isDown ? '<span class="trend down" title="Down this week">▼</span>' : '';
+        return `<li class="${liClass}" data-text="${(aRaw + ' ' + tRaw).toLowerCase()}"><span class="artist">${chip}${artist}</span><span class="title">${title}${ups}${dws}</span></li>`;
       }
-      return `<li data-text="${row.toLowerCase()}">${escapeHtml(row)}</li>`;
+      const clean = base;
+      const liClass = /\*NEW\*/i.test(row) ? 'is-new' : '';
+      const ups  = /\*UP\*/i.test(row)   ? '<span class="trend up" title="Up this week">▲</span>' : '';
+      const dws  = /\*DOWN\*/i.test(row) ? '<span class="trend down" title="Down this week">▼</span>' : '';
+      return `<li class="${liClass}" data-text="${clean.toLowerCase()}">${escapeHtml(clean)}${ups}${dws}</li>`;
     }).join('');
     html += `</ul></section>`;
     return html;
@@ -10554,7 +10453,15 @@ document.addEventListener('DOMContentLoaded', function () {
           if (li.style.display === 'none') return;
           const artist = li.querySelector('.artist')?.textContent || '';
           const title  = li.querySelector('.title')?.textContent || '';
-          out += artist && title ? `${artist} - ${title}\n` : (li.textContent.trim() + '\n');
+          const trendUp = li.querySelector('.trend.up') ? ' *UP*' : '';
+          const trendDn = li.querySelector('.trend.down') ? ' *DOWN*' : '';
+          const isNew   = li.classList.contains('is-new') ? ' *NEW*' : '';
+          if (artist && title){
+            const artistClean = artist.replace(/\s*NEW\s*$/,'').trim();
+            out += `${artistClean} - ${title}${isNew}${trendUp}${trendDn}\n`;
+          } else {
+            out += li.textContent.trim() + '\n';
+          }
         });
         out += '\n';
       });
@@ -10573,9 +10480,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => { el.remove(); }, 1800);
   }
 
-  document.addEventListener('DOMContentLoaded', function(){
-    loadPlaylist();
-  });
+  document.addEventListener('DOMContentLoaded', function(){ loadPlaylist(); });
 })();
 </script>
 </body><style>
