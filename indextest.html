@@ -4442,8 +4442,17 @@ html[data-theme="light"] #mobileNowBar {
   #playlistWrap { flex: 1; overflow: auto; padding: 12px 2px 16px; }
 
   #playlistWrap .playlist-grid { display: grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: clamp(12px, 2vw, 20px); }
-  @media (max-width: 1020px) { #playlistWrap .playlist-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
-  @media (max-width: 640px)  { #playlistWrap .playlist-grid { grid-template-columns: 1fr; } }
+
+  #playlistWrap .playlist-grid.single { grid-template-columns: 1fr; }
+
+  @media (max-width: 1020px) { #playlistWrap .playlist-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+
+  #playlistWrap .playlist-grid.single { grid-template-columns: 1fr; }
+ }
+  @media (max-width: 640px)  { #playlistWrap .playlist-grid { grid-template-columns: 1fr; }
+
+  #playlistWrap .playlist-grid.single { grid-template-columns: 1fr; }
+ }
 
   .playlist-section { padding: 12px 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border, rgba(255,255,255,0.12)); border-radius: 16px; backdrop-filter: blur(4px); }
   .playlist-section header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
@@ -5262,8 +5271,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   <span class="chip new">NEW</span> New add this week.
   <span class="legend-item"><span class="trend up">▲</span> Rising</span>
   <span class="legend-item"><span class="trend down">▼</span> Falling</span>
-  <span class="muted">Add markers in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>. Artwork is resolved via <code>/api/artwork</code>.</span>
-</div>
+  </div>
 
 <div id="playlistWrap" class="playlist-text">Loading playlist…</div>
 </div>
@@ -10476,20 +10484,40 @@ document.addEventListener('DOMContentLoaded', function () {
     let activeFilter = 'ALL';
     let showArt = true;
 
+    function 
     function applyFilters(){
       const q = (search?.value || '').trim().toLowerCase();
+      const grid = document.querySelector('#playlistWrap .playlist-grid');
+      let visibleSections = 0;
+
       document.querySelectorAll('.playlist-section').forEach(sec => {
         const letter = sec.getAttribute('data-section');
         const sectionMatch = (activeFilter === 'ALL' || activeFilter === letter);
+
+        // Hide/show entire section based on segmented control
+        sec.style.display = sectionMatch ? '' : 'none';
+        if (!sectionMatch) return;
+
+        // Within the visible section, apply search filtering
         let visibleCount = 0;
         sec.querySelectorAll('li').forEach(li => {
           const txt = li.getAttribute('data-text') || '';
           const hit = !q || txt.includes(q);
           li.style.display = hit ? '' : 'none';
-          const coverWrap = li.querySelector('.cover-wrap');
-          if (coverWrap) coverWrap.style.display = showArt ? '' : 'none';
           if (hit) visibleCount++;
         });
+
+        const countEl = sec.querySelector('.count');
+        if (countEl) countEl.textContent = visibleCount + ' track' + (visibleCount===1?'':'s');
+
+        if (sectionMatch) visibleSections++;
+      });
+
+      if (grid){
+        grid.classList.toggle('single', visibleSections === 1 && activeFilter !== 'ALL');
+      }
+    }
+);
         const countEl = sec.querySelector('.count');
         if (countEl) countEl.textContent = visibleCount + ' track' + (visibleCount===1?'':'s');
         sec.style.display = sectionMatch && visibleCount > 0 ? '' : (sectionMatch ? '' : 'none');
