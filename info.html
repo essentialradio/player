@@ -1,279 +1,229 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>College Info</title>
+  <meta name="color-scheme" content="dark light">
+  <!-- Standalone College Info page built to mirror the modal experience -->
   <style>
     :root{
-      --panel:#0f1316;
-      --text:#e9f1f3;
-      --border:rgba(255,255,255,0.12);
-      --accent:#00818a;
-      --er-accent:#fed351;
+      /* Falls back if your global CSS variables aren't present */
+      --panel: #0f1316;
+      --text: #e9f1f3;
+      --border: rgba(255,255,255,0.12);
+      --accent: #00818a;
+      --er-accent: #fed351; /* house yellow */
     }
     html,body{height:100%;}
     body{
       margin:0;
-      background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
-                  linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
       background-color: var(--panel);
       color: var(--text);
+      -webkit-font-smoothing: antialiased;
       font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-    .page{ min-height:100%; display:flex; flex-direction:column; box-sizing:border-box; padding: clamp(12px, 2vw, 28px); }
-    header{ display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:8px; }
-    h1{ margin:0; font-size:clamp(22px, 2.8vw, 32px); color: var(--accent); }
-    .nav-back{ color: var(--text); text-decoration:none; opacity:.85; border:1px solid var(--border); padding:6px 10px; border-radius:10px; }
-    .nav-back:hover{ opacity:1; background: rgba(255,255,255,.06); }
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+    .info-shell{
+      min-height:100dvh;
+      box-sizing:border-box;
+      padding: clamp(12px, 2vw, 28px);
+      display:flex; flex-direction:column; gap:12px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .topbar{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+    }
+    .title{ margin:0; color: var(--accent); font-size: clamp(20px, 3vw, 32px); }
+    .back{
+      text-decoration:none; color: var(--text);
+      border:1px solid var(--border); padding:6px 10px; border-radius:10px; opacity:0.9;
+    }
+    .back:hover{ opacity:1; background: rgba(255,255,255,0.06); }
 
-    .toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border); margin-bottom:10px; }
+    /* Toolbar: segmented + dropdown only */
+    .college-toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border); margin-bottom:10px; }
     .segmented{ background: rgba(255,255,255,0.06); border: 1px solid var(--border); padding:4px; border-radius:12px; display:inline-flex; gap:4px; }
     .segmented .seg{ background:transparent; color: var(--text); border:0; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700; opacity:0.85; }
     .segmented .seg.active{ background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border:1px solid rgba(0,160,170,0.45); opacity:1; }
-    #pick{ appearance:none; border-radius:10px; border:1px solid var(--border); background: rgba(255,255,255,0.05); color: var(--text); padding:8px 12px; min-width:min(48vw, 420px); outline:none; }
+    #collegeSelect{ appearance:none; border-radius:10px; border:1px solid var(--border); background: rgba(255,255,255,0.05); color: var(--text); padding:8px 12px; min-width:min(48vw, 420px); outline:none; }
 
-    .detail{ flex:1; min-height:0; overflow:auto; padding: 12px 2px 16px; display:flex; flex-direction:column; gap:12px; }
-    .placeholder{ color: rgba(233,241,243,0.7); font-style: italic; }
-    .head{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;}
-    .title{font-size: clamp(18px, 2.4vw, 28px); margin:0; color: var(--text);}
+    /* Full-screen detail area */
+    #collegeWrap{ flex:1; overflow:auto; padding:12px 2px 16px; }
+    .college-detail{ min-height:100%; display:flex; flex-direction:column; gap:12px; }
+    .college-detail .placeholder{ color: rgba(233,241,243,0.7); font-style: italic; }
+    .detail-head{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;}
+    .detail-title{font-size: clamp(18px, 2.4vw, 28px); margin:0; color: var(--text);}
     .date-pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid rgba(0,160,170,0.45); background:linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18));}
     .badge{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid transparent; }
     .badge.internal{ background: rgba(89,210,255,0.18); border-color: rgba(89,210,255,0.35); color:#bfefff; }
     .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
-    .body p{ margin:0 0 10px 0; white-space:pre-wrap; }
-    .muted{ opacity:.75; }
-    footer{ display:flex; gap:8px; align-items:center; justify-content:flex-end; padding-top:8px; border-top:1px solid var(--border); }
-    .btn{ border:1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--text); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
-    .btn:hover{ background: rgba(255,255,255,0.10); }
-    .error{ color:#ff7d7d; }
+
+    /* A11y helpers */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <h1>College Info</h1>
-      <a class="nav-back" href="/" aria-label="Back to home">Home</a>
-    </header>
+  <main class="info-shell" role="main">
+    <div class="topbar">
+      <h1 class="title">College Info</h1>
+      <a class="back" href="/" onclick="if(history.length>1){history.back();return false;}">Back</a>
+    </div>
 
-    <div class="toolbar">
+    <div class="college-toolbar">
       <div class="segmented" role="tablist" aria-label="Filter section">
         <button type="button" class="seg active" data-filter="ALL" aria-selected="true">All</button>
         <button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
         <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
       </div>
-      <div>
-        <label for="pick" class="sr-only">Choose item</label>
-        <select id="pick" aria-label="Choose item"></select>
+      <div class="toolbar-right">
+        <label for="collegeSelect" class="sr-only">Choose item</label>
+        <select id="collegeSelect" aria-label="Choose item"></select>
       </div>
     </div>
 
-    <main id="wrap" class="detail" aria-live="polite">
-      <div class="placeholder">Choose an item from the dropdown to view full details.</div>
-    </main>
-
-    <footer>
-      <button id="copyBtn" class="btn" type="button">Copy</button>
-      <button id="printBtn" class="btn" type="button">Print</button>
-    </footer>
-  </div>
+    <div id="collegeWrap">
+      <article id="collegeDetail" class="college-detail" aria-live="polite">
+        <div class="placeholder">Choose an item from the dropdown to view full details.</div>
+      </article>
+    </div>
+  </main>
 
   <script>
   (function(){
-    // Try common locations relative to this page
-    const CANDIDATES = [
-      'reads.txt',
-      './reads.txt',
-      '/reads.txt',
-      '/assets/reads.txt',
-      '/data/reads.txt'
-    ];
+    // Allow overriding the source file via ?src=... and default filter via ?filter=INTERNAL/EXTERNAL/ALL
+    const qp = new URLSearchParams(location.search);
+    const MASTER_URL = qp.get('src') || 'reads.txt';
+    const defaultFilter = (qp.get('filter') || 'ALL').toUpperCase();
+    const autoSelect = qp.get('autoselect') === '1'; // optional: pick first item automatically
+
+    const selectEl = document.getElementById('collegeSelect');
+    const detailEl = document.getElementById('collegeDetail');
     const segs = document.querySelectorAll('.segmented .seg');
-    const selectEl = document.getElementById('pick');
-    const detailEl = document.getElementById('wrap');
-    const copyBtn = document.getElementById('copyBtn');
-    const printBtn = document.getElementById('printBtn');
 
-    function log(){ try{ console.debug.apply(console, arguments); }catch(e){} }
+    function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
-    function escapeHtml(s){return String(s).replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;','\\'':'&#39;'}[c]));}
-
-    function stripBOM(s){ return s && s.charCodeAt(0) === 0xFEFF ? s.slice(1) : s; }
-
-    // Accepts variations like:
-    // "From - 27/10/25 To - 29/10/25"
-    // "From: 27-10-2025 To: 29-10-2025"
-    // "From 27/10/25 To 29/10/25"
-    // Accept - / . separators; 2 or 4-digit year; any dash symbol
-    const datePart = '(\\d{1,2}[\\/\\.-]\\d{1,2}[\\/\\.-](\\d{2}|\\d{4}))';
-    const fromToRe = new RegExp('^\\s*From\\s*[:\\-\\u2013\\u2014]?\\s*' + datePart + '\\s*To\\s*[:\\-\\u2013\\u2014]?\\s*' + datePart + '\\s*$', 'i');
-    const looseRangeRe = new RegExp('^\\s*' + datePart + '\\s*(?:to|\\-|\\u2013|\\u2014)\\s*' + datePart + '\\s*$', 'i');
-    const sectionRe = /^\\s*\\[\\s*(internal|external)[^\\]]*\\]\\s*$/i;
-
+    // Parse master format:
+    // [Internal] or [External] (optional, persists until changed)
+    // From - dd/mm/yy To - dd/mm/yy
+    // Heading
+    // Body (multiple lines)
+    // <blank line> separates items
     function parseMaster(text){
-      const lines = stripBOM(text || '').split(/\\r?\\n/);
+      const lines = text.split(/\r?\n/);
       let section = 'INTERNAL';
       const items = [];
       let i = 0;
+      const reSection = /^\s*\[(internal|external)\]\s*$/i;
+      const reFromTo = /^\s*From\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*To\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*$/i;
 
-      function nextNonBlank(){
-        while(i < lines.length && /^\\s*$/.test(lines[i])) i++;
-      }
+      function consumeUntilNonBlank(){ while(i < lines.length && /^\s*$/.test(lines[i])) i++; }
 
       while(i < lines.length){
-        // swallow any number of section tags before an entry
-        while(i < lines.length && sectionRe.test(lines[i])){
-          section = lines[i].match(sectionRe)[1].toUpperCase();
-          i++;
-        }
-        nextNonBlank();
-        if (i >= lines.length) break;
-
-        // read date range
-        let m = lines[i].match(fromToRe) || lines[i].match(looseRangeRe);
-        if(!m){
-          // not a valid entry start; skip line
-          i++;
-          continue;
-        }
-        const from = m[1];
-        const to   = m[3];
-        i++;
-
-        // heading
-        nextNonBlank();
-        const title = (lines[i] || '').trim();
-        i++;
-
-        // body until blank or until we hit a new entry header (date range) or a new section line
-        const body = [];
-        while(i < lines.length && !/^\\s*$/.test(lines[i]) && !fromToRe.test(lines[i]) && !looseRangeRe.test(lines[i]) && !sectionRe.test(lines[i])){
-          body.push(lines[i]);
-          i++;
-        }
-
-        items.push({ section, from, to, title, body: body.join('\\n').trim() });
-        // skip blank separators
-        while(i < lines.length && /^\\s*$/.test(lines[i])) i++;
+        while(i < lines.length && reSection.test(lines[i])){ section = lines[i].match(reSection)[1].toUpperCase(); i++; }
+        consumeUntilNonBlank(); if (i >= lines.length) break;
+        const mFT = lines[i].match(reFromTo);
+        if (!mFT){ i++; continue; }
+        const from = mFT[1]; const to = mFT[2]; i++;
+        consumeUntilNonBlank();
+        const title = (lines[i] || '').trim(); i++;
+        const bodyLines = [];
+        while(i < lines.length && !/^\s*$/.test(lines[i]) && !reFromTo.test(lines[i]) && !reSection.test(lines[i])){ bodyLines.push(lines[i]); i++; }
+        items.push({ section, from, to, title, body: bodyLines.join('\n').trim() });
+        while(i < lines.length && /^\s*$/.test(lines[i])) i++;
       }
       return items;
     }
 
-    function fmtRange(it){ return `${it.from} - ${it.to}`; }
+    function fmtRange(it){ return `${it.from} – ${it.to}`; }
 
-    let ALL = [];
+    let ALL_ITEMS = [];
     function populateSelect(mode){
-      const filtered = ALL.filter(it => mode === 'ALL' || it.section === mode);
+      const filtered = ALL_ITEMS.filter(it => mode === 'ALL' || it.section === mode);
       const groups = { INTERNAL: [], EXTERNAL: [] };
-      filtered.forEach(it => groups[it.section || 'INTERNAL'].push(it));
+      filtered.forEach(it => groups[it.section||'INTERNAL'].push(it));
 
-      function opt(it, idx){
+      function optionHTML(it, idx){
         const label = `${fmtRange(it)} · ${it.title}`;
         return `<option value="${idx}">${escapeHtml(label)}</option>`;
       }
 
       let html = '<option value="" selected disabled>Choose an item…</option>';
       if (mode === 'ALL'){
-        if (groups.INTERNAL.length) html += `<optgroup label="Internal">` + groups.INTERNAL.map(it=>opt(it, it._i)).join('') + `</optgroup>`;
-        if (groups.EXTERNAL.length) html += `<optgroup label="External">` + groups.EXTERNAL.map(it=>opt(it, it._i)).join('') + `</optgroup>`;
+        if (groups.INTERNAL.length){ html += `<optgroup label="Internal">` + groups.INTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`; }
+        if (groups.EXTERNAL.length){ html += `<optgroup label="External">` + groups.EXTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`; }
       } else {
-        html += filtered.map(it => opt(it, it._i)).join('');
+        html += filtered.map(it => optionHTML(it, it._i)).join('');
       }
       selectEl.innerHTML = html;
     }
 
-    function render(it){
+    function renderDetail(it){
       if (!it){
         detailEl.innerHTML = '<div class="placeholder">Choose an item from the dropdown to view full details.</div>';
         return;
       }
       const sectBadge = `<span class="badge ${it.section==='INTERNAL'?'internal':'external'}">${it.section.toLowerCase()}</span>`;
       detailEl.innerHTML = `
-        <div class="head">
-          <h2 class="title">${escapeHtml(it.title)}</h2>
+        <div class="detail-head">
+          <h3 class="detail-title">${escapeHtml(it.title)}</h3>
           <span class="date-pill">${escapeHtml(fmtRange(it))}</span>
           ${sectBadge}
         </div>
-        <div class="body">
-          ${it.body ? it.body.split(/\\n/).map(p => `<p>${escapeHtml(p)}</p>`).join('') : '<p class="muted">No extra details.</p>'}
+        <div class="detail-body">
+          ${it.body ? it.body.split(/\n/).map(p => `<p>${escapeHtml(p)}</p>`).join('') : '<p class="muted">No extra details.</p>'}
         </div>
       `;
       detailEl.scrollTop = 0;
-      document.title = it.title + ' – College Info';
     }
 
     function applyMode(mode){
       populateSelect(mode);
-      render(null);
+      renderDetail(null);
     }
 
     function initControls(){
       segs.forEach(btn => btn.addEventListener('click', ()=>{
         segs.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-selected', b===btn ? 'true':'false'); });
         const mode = (btn.dataset.filter || 'ALL').toUpperCase();
-        const url = new URL(location.href);
-        url.searchParams.set('filter', mode);
-        history.replaceState(null, '', url.toString());
         applyMode(mode);
       }));
       selectEl.addEventListener('change', () => {
         const idx = selectEl.value ? parseInt(selectEl.value,10) : NaN;
-        const item = Number.isInteger(idx) ? ALL.find(x => x._i === idx) : null;
-        if (item){
-          const url = new URL(location.href);
-          url.searchParams.set('item', String(idx));
-          history.replaceState(null, '', url.toString());
-        }
-        render(item || null);
+        const item = Number.isInteger(idx) ? ALL_ITEMS.find(x => x._i === idx) : null;
+        renderDetail(item || null);
       });
-      copyBtn?.addEventListener('click', () => {
-        const txt = detailEl.textContent || '';
-        navigator.clipboard.writeText(txt).catch(()=>{});
-      });
-      printBtn?.addEventListener('click', () => window.print());
     }
 
-    async function fetchFirst(urls){
-      for (const u of urls){
-        try{
-          const r = await fetch(u, { cache: 'no-store' });
-          if (!r.ok) { log('[info] fetch failed', u, r.status); continue; }
-          const txt = await r.text();
-          if (txt && txt.trim().length){ log('[info] loaded', u); return { txt, url:u }; }
-        }catch(e){ log('[info] error loading', u, e.message); }
-      }
-      throw new Error('Could not load reads.txt from known locations');
-    }
-
-    function refresh(){
-      return fetchFirst(CANDIDATES).then(({txt, url}) => {
-        const items = parseMaster(txt);
-        items.forEach((it, i)=> it._i = i);
-        ALL = items;
-        log('[info] parsed items', items.length, 'from', url);
-        if (!ALL.length){
-          detailEl.innerHTML = '<p class="error">No entries found in <code>reads.txt</code>. Check the format: <br>[Internal]<br>From - 27/10/25 To - 29/10/25<br>Heading<br>Details... (blank line between items)</p>';
-        }
-        const qp = new URL(location.href).searchParams;
-        const initialMode = (qp.get('filter') || 'ALL').toUpperCase();
-        const initialIdx = parseInt(qp.get('item') || '', 10);
-        segs.forEach(b => {
-          const on = (b.getAttribute('data-filter') || 'ALL').toUpperCase() === initialMode;
-          b.classList.toggle('active', on);
-          b.setAttribute('aria-selected', on ? 'true':'false');
+    function refreshCollege(){
+      const url = MASTER_URL + (MASTER_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
+      return fetch(url)
+        .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(txt => {
+          const items = parseMaster(txt);
+          items.forEach((it, i)=> it._i = i);
+          ALL_ITEMS = items;
+          // initialise with default filter from query param
+          const wanted = ['ALL','INTERNAL','EXTERNAL'].includes(defaultFilter) ? defaultFilter : 'ALL';
+          segs.forEach(b => {
+            const on = (b.getAttribute('data-filter') || 'ALL').toUpperCase() === wanted;
+            b.classList.toggle('active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+          applyMode(wanted);
+          if (autoSelect){
+            const first = document.querySelector('#collegeSelect option[value]:not([value=""])');
+            if (first){ selectEl.value = first.value; selectEl.dispatchEvent(new Event('change')); }
+          }
+        })
+        .catch(err => {
+          detailEl.innerHTML = '<p style="color:#ff7d7d">Could not load the info file (' + err.message + ')</p>';
         });
-        applyMode(['ALL','INTERNAL','EXTERNAL'].includes(initialMode) ? initialMode : 'ALL');
-        if (Number.isInteger(initialIdx) && ALL[initialIdx]){
-          selectEl.value = String(initialIdx);
-          render(ALL[initialIdx]);
-        }
-      }).catch(err => {
-        detailEl.innerHTML = '<p class="error">Could not load <code>reads.txt</code>: ' + escapeHtml(err.message) + '</p>';
-      });
     }
 
-    document.addEventListener('DOMContentLoaded', () => { refresh().then(initControls); });
+    document.addEventListener('DOMContentLoaded', () => { refreshCollege().then(initControls); });
   })();
   </script>
 </body>
