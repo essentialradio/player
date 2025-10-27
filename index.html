@@ -4417,6 +4417,77 @@ html[data-theme="light"] #mobileNowBar {
   body.alt-mode #np-progress,
   body.alt-mode #countdown { display: none !important; }
 </style>
+
+<style id="playlist-text-style">
+  #playlistModal .modal-content { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; padding: clamp(12px, 2vw, 28px); display: flex; flex-direction: column; background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)); background-color: var(--panel, #0f1316); color: var(--text, #e9f1f3); }
+  #playlistModal h2 { margin: 0 0 8px 0; color: var(--accent, #00a0aa); font-size: clamp(18px, 2.6vw, 30px); letter-spacing: 0.2px; }
+  #playlistModal .close { position: absolute; top: 10px; right: 12px; font-size: 28px; line-height: 1; color: var(--text, #e9f1f3); opacity: 0.85; cursor: pointer; padding: 4px 10px; border-radius: 10px; }
+  #playlistModal .close:hover { opacity: 1; background: rgba(255,255,255,0.06); }
+
+  .playlist-toolbar { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 8px 0 12px; border-bottom: 1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom: 10px; }
+  .toolbar-right { display: flex; gap: 8px; align-items: center; }
+  .toolbar-left { display: flex; gap: 10px; align-items: center; }
+  .segmented { background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); padding: 4px; border-radius: 12px; display: inline-flex; gap: 4px; }
+  .segmented .seg { background: transparent; color: var(--text, #e9f1f3); border: 0; border-radius: 10px; padding: 6px 10px; cursor: pointer; font-weight: 600; opacity: 0.85; }
+  .segmented .seg.active { background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border: 1px solid rgba(0,160,170,0.45); opacity: 1; }
+  #playlistSearch { appearance: none; border-radius: 10px; border: 1px solid var(--border, rgba(255,255,255,0.14)); background: rgba(255,255,255,0.05); color: var(--text, #e9f1f3); padding: 8px 12px; min-width: min(48vw, 360px); outline: none; }
+  #playlistSearch::placeholder { color: rgba(233,241,243,0.55); }
+  .btn { border: 1px solid var(--border, rgba(255,255,255,0.15)); background: rgba(255,255,255,0.06); color: var(--text, #e9f1f3); padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+  .btn:hover { background: rgba(255,255,255,0.1); }
+
+  .playlist-legend { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 10px 0 12px; font-size: 14px; }
+  .playlist-legend .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .playlist-legend code { background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 6px; }
+
+  #playlistWrap { flex: 1; overflow: auto; padding: 12px 2px 16px; }
+
+  #playlistWrap .playlist-grid { display: grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: clamp(12px, 2vw, 20px); }
+  @media (max-width: 1020px) { #playlistWrap .playlist-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
+  @media (max-width: 640px)  { #playlistWrap .playlist-grid { grid-template-columns: 1fr; } }
+
+  .playlist-section { padding: 12px 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border, rgba(255,255,255,0.12)); border-radius: 16px; backdrop-filter: blur(4px); }
+  .playlist-section header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; font-weight: 700; letter-spacing: 0.3px; background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); color: var(--text, #e9f1f3); border: 1px solid rgba(0,160,170,0.45); }
+  .badge .dot { width: 8px; height: 8px; border-radius: 999px; background: #00a0aa; box-shadow: 0 0 10px rgba(0,160,170,0.6); }
+  .badge.b { background: linear-gradient(180deg, rgba(0,130,255,0.18), rgba(0,130,255,0.12)); border-color: rgba(0,130,255,0.35); }
+  .badge.b .dot { background: #3aa0ff; box-shadow: 0 0 10px rgba(58,160,255,0.55); }
+  .badge.c { background: linear-gradient(180deg, rgba(180,180,180,0.18), rgba(180,180,180,0.12)); border-color: rgba(180,180,180,0.3); }
+  .badge.c .dot { background: #bdbdbd; box-shadow: 0 0 10px rgba(189,189,189,0.5); }
+  .count { font-size: 12px; opacity: 0.75; }
+
+  .playlist-section ul { list-style: none; margin: 0; padding: 0; }
+  .playlist-section li {
+    padding: 8px 0; border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+    display: grid; grid-template-columns: auto 1.15fr 1fr; gap: 10px; align-items: center;
+  }
+  .playlist-section li:last-child { border-bottom: 0; }
+  .cover-wrap { width: 48px; height: 48px; border-radius: 10px; overflow: hidden; position: relative; background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); }
+  .cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .artist { font-weight: 700; letter-spacing: .2px; display: inline-flex; gap: 8px; align-items: baseline; }
+  .title { opacity: 0.95; }
+  .is-new .artist, .is-new .title { font-weight: 800; }
+
+  .chip.new { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.3px; color: #0f1316; background: #ffde59; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 1px 8px rgba(255,222,89,0.25); }
+  .trend { font-weight: 900; margin-left: 8px; font-size: 12px; vertical-align: text-top; }
+  .trend.up { color: #4ade80; }
+  .trend.down { color: #ff7d7d; }
+
+  .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(15,19,22,0.9); color: #e9f1f3; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); pointer-events: none; z-index: 100000; font-weight: 600; }
+
+  @media (max-width: 420px) {
+    .cover-wrap { width: 40px; height: 40px; border-radius: 8px; }
+    .playlist-section li { grid-template-columns: auto 1fr 1fr; gap: 8px; }
+  }
+
+  @media print {
+    #playlistModal .close, .playlist-toolbar, .playlist-legend { display: none !important; }
+    #playlistModal .modal-content { background: #fff; color: #000; }
+    .playlist-section { break-inside: avoid; border: 1px solid #ccc; }
+  }
+
+  /* Collapse to a single column when a specific list is selected */
+  #playlistWrap.single-list .playlist-grid { grid-template-columns: 1fr !important; }
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5171,10 +5242,32 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="playlistModal">
-<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:1000px;width:97vw">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content">
 <span class="close" onclick="closeModal('playlistModal')">×</span>
 <h2 style="margin-top:0;color:#00818a">Essential Radio Playlist</h2>
-<img alt="Essential Radio Playlist" class="playlist-image" src="ERPlaylist.png"/>
+<div class="playlist-toolbar">
+  <div class="toolbar-left">
+    <div class="segmented" role="tablist" aria-label="Filter list">
+      <button type="button" class="seg" data-filter="ALL" aria-selected="false">All</button>
+      <button type="button" class="seg active" data-filter="A" aria-selected="true">A-List</button>
+      <button type="button" class="seg" data-filter="B">B-List</button>
+      <button type="button" class="seg" data-filter="C">C-List</button>
+    </div>
+  </div>
+  <div class="toolbar-right">
+    <input id="playlistSearch" type="search" placeholder="Search artist or title" aria-label="Search playlist">
+    <button id="playlistArtToggleBtn" type="button" class="btn" aria-pressed="true">Hide art</button>
+    <button id="playlistReloadBtn" type="button" class="btn">Reload</button>
+    <button id="playlistCopyBtn" type="button" class="btn">Copy</button>
+  </div>
+</div>
+<div class="playlist-legend" role="note" aria-label="Playlist notes">
+  <span class="chip new">NEW</span> New add this week.
+  <span class="legend-item"><span class="trend up">▲</span> Rising</span>
+  <span class="legend-item"><span class="trend down">▼</span> Falling</span>
+ </div>
+
+<div id="playlistWrap" class="playlist-text single-list">Loading playlist…</div>
 </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
@@ -10232,6 +10325,290 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
+
+<script id="playlist-text-loader">
+(function(){
+  const TXT_URL = 'playlist.txt';
+  const IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const PLACEHOLDER = 'Essential Radio Logo.png';
+
+  function getInitialList(){
+    try {
+      const url = new URL(location.href);
+      const q = (url.searchParams.get('list') || '').toUpperCase();
+      const h = ((location.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
+      return (q || h || 'A');
+    } catch(e){ return 'A'; }
+  }
+
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function splitArtistTitle(row){
+    const sep = row.match(/\s+[-–—]\s+/);
+    if(!sep) return null;
+    const idx = sep.index;
+    return [row.slice(0, idx).trim(), row.slice(idx + sep[0].length).trim()];
+  }
+  function parseFlags(row){ return { isNew:/\*NEW\*/i.test(row), isUp:/\*UP\*/i.test(row), isDown:/\*DOWN\*/i.test(row) }; }
+  function stripMarkers(row){ return row.replace(/\s*\*(NEW|UP|DOWN)\*\s*/gi, ' ').trim(); }
+
+  const artworkCache = new Map();
+  async function resolveArtwork(artist, title){
+    const query = `${artist} - ${title}`;
+    const key = query.toLowerCase();
+    if (artworkCache.has(key)) return artworkCache.get(key) || '';
+    // Normalise exactly like the site's getTrackArtwork
+    const clean = String(query)
+      .replace(/[\u2013\u2014]/g, '-')
+      .replace(/\s*-\s*/g, ' ')
+      .replace(/[\[\(].*?[\]\)]/g, ' ')   // strip bracketed
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+    try{
+      const res = await fetch(`/api/artwork?q=${encodeURIComponent(clean)}&_=${Date.now()}`, { cache: 'no-store' });
+      if (res.ok){
+        const d = await res.json().catch(()=>null);
+        if (d && d.url){ artworkCache.set(key, d.url); return d.url; }
+      }
+    }catch(e){}
+    artworkCache.set(key, '');
+    return '';
+  }
+
+  function parsePlaylistText(txt){
+    const lines = txt.split(/\r?\n/).map(l => l.trim());
+    const data = { A: [], B: [], C: [] };
+    let section = null;
+    const head = /^([ABC])\s*-\s*List\s*$/i;
+    for (const line of lines){
+      if (!line) continue;
+      const m = line.match(head);
+      if (m){ section = m[1].toUpperCase(); continue; }
+      if (section && data[section]) data[section].push(line);
+    }
+    return data;
+  }
+
+  function buildSection(letter, items){
+    const cls = (letter === 'A' ? '' : letter.toLowerCase());
+    let html = `<section class="playlist-section" data-section="${letter}">`
+             + `<header><span class="badge ${cls}"><span class="dot"></span>${letter}-List</span>`
+             + `<span class="count">${items.length} track${items.length===1?'':'s'}</span></header>`
+             + `<ul>`;
+    html += items.map(row => {
+      const flags = parseFlags(row);
+      const base = stripMarkers(row);
+      const pair = splitArtistTitle(base);
+      if (pair){
+        const [aRaw, tRaw] = pair;
+        const artist = escapeHtml(aRaw);
+        const title  = escapeHtml(tRaw);
+        const liClass = flags.isNew ? 'is-new' : '';
+        const chip = flags.isNew ? '<span class="chip new">NEW</span> ' : '';
+        const ups  = flags.isUp   ? '<span class="trend up" title="Up this week">▲</span>' : '';
+        const dws  = flags.isDown ? '<span class="trend down" title="Down this week">▼</span>' : '';
+        const lazyAttr = IOS ? '' : 'loading="lazy"';
+        return `<li class="${liClass}" data-text="${(aRaw + ' ' + tRaw).toLowerCase()}">
+                  <div class="cover-wrap"><img class="cover" alt="" ${lazyAttr} src="${PLACEHOLDER}" data-artist="${artist}" data-title="${title}"></div>
+                  <span class="artist">${chip}${artist}</span>
+                  <span class="title">${title}${ups}${dws}</span>
+                </li>`;
+      }
+      const clean = base;
+      const liClass = /\*NEW\*/i.test(row) ? 'is-new' : '';
+      const ups  = /\*UP\*/i.test(row)   ? '<span class="trend up" title="Up this week">▲</span>' : '';
+      const dws  = /\*DOWN\*/i.test(row) ? '<span class="trend down" title="Down this week">▼</span>' : '';
+      const lazyAttr = IOS ? '' : 'loading="lazy"';
+      return `<li class="${liClass}" data-text="${clean.toLowerCase()}">
+                <div class="cover-wrap"><img class="cover" alt="" ${lazyAttr} src="${PLACEHOLDER}" data-artist="" data-title=""></div>
+                ${escapeHtml(clean)}${ups}${dws}
+              </li>`;
+    }).join('');
+    html += `</ul></section>`;
+    return html;
+  }
+
+  async function hydrateCovers(root){
+    const wrap = root || document;
+    const imgs = wrap.querySelectorAll('img.cover[data-artist]');
+    for (const img of imgs){
+      const artist = img.getAttribute('data-artist') || '';
+      const title  = img.getAttribute('data-title') || '';
+      if (!artist || !title) continue;
+      const url = await resolveArtwork(artist, title);
+      if (url){
+        img.src = url + (url.includes('?') ? '&' : '?') + 'ts=' + Date.now();
+        img.classList.remove('fallback');
+        img.classList.add('loaded');
+      } else {
+        img.src = PLACEHOLDER;
+        img.classList.remove('loaded');
+        img.classList.add('fallback');
+      }
+      img.removeAttribute('data-artist'); img.removeAttribute('data-title');
+    }
+  }
+
+  function renderPlaylist(data){
+    const wrap = document.getElementById('playlistWrap');
+    if (!wrap) return;
+    const order = ['A','B','C'];
+    let html = '<div class="playlist-grid">';
+    for (const letter of order){
+      const items = data[letter] || [];
+      if (!items.length) continue;
+      html += buildSection(letter, items);
+    }
+    html += '</div>';
+    wrap.innerHTML = html || '<p>No playlist entries found.</p>';
+    
+    // Instant default: A-only (or URL-selected list) to avoid initial flash
+    (function(){
+      const initial = getInitialList();
+      if (initial !== 'ALL'){
+        wrap.classList.add('single-list');
+        wrap.querySelectorAll('.playlist-section').forEach(sec => {
+          const letter = sec.getAttribute('data-section');
+          sec.style.display = (letter === initial) ? '' : 'none';
+        });
+      }
+    })();
+hydrateCovers(wrap);
+    attachInteractions();
+  }
+
+  function loadPlaylist(){
+    const wrap = document.getElementById('playlistWrap');
+    if (wrap) wrap.textContent = 'Loading playlist…';
+    const url = TXT_URL + (TXT_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
+    fetch(url)
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(t => renderPlaylist(parsePlaylistText(t)))
+      .catch(err => {
+        if (wrap) wrap.innerHTML = `<p style="color:#b42318">Couldn’t load the playlist.</p><p><a href="${TXT_URL}" target="_blank" rel="noopener">Open playlist.txt</a></p>`;
+      });
+  }
+
+  function attachInteractions(){
+    const search = document.getElementById('playlistSearch');
+    const segs = document.querySelectorAll('.segmented .seg');
+    const copyBtn = document.getElementById('playlistCopyBtn');
+    const reloadBtn = document.getElementById('playlistReloadBtn');
+    const artToggle = document.getElementById('playlistArtToggleBtn');
+    let activeFilter = 'A';
+    const wrapEl = document.getElementById('playlistWrap');
+
+    function setFilter(letter){
+      activeFilter = (letter || 'ALL').toUpperCase();
+      // Update segmented buttons + ARIA
+      segs.forEach(b => {
+        const on = (b.getAttribute('data-filter') || 'ALL').toUpperCase() === activeFilter;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      // Single column when not ALL
+      if (wrapEl){
+        if (activeFilter === 'ALL') wrapEl.classList.remove('single-list');
+        else wrapEl.classList.add('single-list');
+      }
+      // Update URL (hash) so it can be deep-linked
+      try { history.replaceState(null, '', '#list=' + activeFilter); } catch(e){}
+      applyFilters();
+    }
+
+    // Initialise from ?list= or #list= param
+    (function initFromURL(){
+      try {
+        const url = new URL(location.href);
+        const q = (url.searchParams.get('list') || '').toUpperCase();
+        const h = ((url.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
+        const pick = (q || h || 'A');
+        if (['ALL','A','B','C'].includes(pick)) setFilter(pick);
+      } catch(e){ /* ignore */ }
+    })();
+    let showArt = true;
+
+    function applyFilters(){
+      if (wrapEl){
+        if (activeFilter === 'ALL') wrapEl.classList.remove('single-list');
+        else wrapEl.classList.add('single-list');
+      }
+      const q = (search?.value || '').trim().toLowerCase();
+      document.querySelectorAll('.playlist-section').forEach(sec => {
+        const letter = sec.getAttribute('data-section');
+        const sectionMatch = (activeFilter === 'ALL' || activeFilter === letter);
+        let visibleCount = 0;
+        sec.querySelectorAll('li').forEach(li => {
+          const txt = li.getAttribute('data-text') || '';
+          const hit = !q || txt.includes(q);
+          li.style.display = hit ? '' : 'none';
+          const coverWrap = li.querySelector('.cover-wrap');
+          if (coverWrap) coverWrap.style.display = showArt ? '' : 'none';
+          if (hit) visibleCount++;
+        });
+        const countEl = sec.querySelector('.count');
+        if (countEl) countEl.textContent = visibleCount + ' track' + (visibleCount===1?'':'s');
+        sec.style.display = sectionMatch && visibleCount > 0 ? '' : (sectionMatch ? '' : 'none');
+      });
+    }
+
+    segs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        segs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.getAttribute('data-filter') || 'ALL';
+        applyFilters();
+      });
+    });
+
+    search?.addEventListener('input', applyFilters);
+    reloadBtn?.addEventListener('click', loadPlaylist);
+
+    artToggle?.addEventListener('click', () => {
+      showArt = !showArt;
+      artToggle.setAttribute('aria-pressed', String(showArt));
+      artToggle.textContent = showArt ? 'Hide art' : 'Show art';
+      applyFilters();
+    });
+
+    copyBtn?.addEventListener('click', () => {
+      let out = '';
+      document.querySelectorAll('.playlist-section').forEach(sec => {
+        if (sec.style.display === 'none') return;
+        const letter = sec.getAttribute('data-section');
+        out += `${letter}- List\n`;
+        sec.querySelectorAll('li').forEach(li => {
+          if (li.style.display === 'none') return;
+          const artist = (li.querySelector('.artist')?.textContent || '').replace(/\bNEW\b/i,'');
+          const title  = (li.querySelector('.title')?.textContent || '').replace(/[▲▼]/g,'');
+          const trendUp = li.querySelector('.trend.up') ? ' *UP*' : '';
+          const trendDn = li.querySelector('.trend.down') ? ' *DOWN*' : '';
+          const isNew   = li.classList.contains('is-new') ? ' *NEW*' : '';
+          if (artist && title){ out += `${artist.trim()} - ${title.trim()}${isNew}${trendUp}${trendDn}\n`; }
+          else { out += li.textContent.trim() + '\n'; }
+        });
+        out += '\n';
+      });
+      navigator.clipboard.writeText(out.trim()).then(() => showToast('Copied to clipboard'));
+    });
+
+    applyFilters();
+  }
+
+  function showToast(msg){
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .5s'; }, 1200);
+    setTimeout(() => { el.remove(); }, 1800);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){ loadPlaylist(); });
+})();
+</script>
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
