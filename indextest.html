@@ -10476,7 +10476,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const copyBtn = document.getElementById('playlistCopyBtn');
     const reloadBtn = document.getElementById('playlistReloadBtn');
     const artToggle = document.getElementById('playlistArtToggleBtn');
-    let activeFilter = 'ALL';
+    let activeFilter = 'A';
     const wrapEl = document.getElementById('playlistWrap');
 
     function setFilter(letter){
@@ -10503,7 +10503,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const url = new URL(location.href);
         const q = (url.searchParams.get('list') || '').toUpperCase();
         const h = ((url.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
-        const pick = (q || h || 'ALL');
+        const pick = (q || h || 'A');
         if (['ALL','A','B','C'].includes(pick)) setFilter(pick);
       } catch(e){ /* ignore */ }
     })();
