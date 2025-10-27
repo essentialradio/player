@@ -4445,6 +4445,12 @@ html[data-theme="light"] #mobileNowBar {
   @media (max-width: 1100px){ .playlist-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
   @media (max-width: 680px){ .playlist-grid{ grid-template-columns: 1fr; } }
   #playlistWrap.single-list .playlist-grid { grid-template-columns: 1fr !important; }
+  /* Desktop: always show multi-column A/B/C and hide segmented tabs */
+  @media (min-width: 769px){
+    #playlistWrap .segmented { display: none !important; }
+    #playlistWrap.single-list .playlist-grid { grid-template-columns: repeat(3, minmax(280px, 1fr)) !important; }
+  }
+
 
   .playlist-section{ border:1px solid var(--border, rgba(255,255,255,0.12)); border-radius:14px; padding:12px; background: rgba(255,255,255,0.03); }
   .playlist-section h3{ margin:0 0 10px 0; font-size:16px; letter-spacing:.3px; color:#7bdff2; }
@@ -4541,27 +4547,6 @@ html[data-theme="light"] #mobileNowBar {
   .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
   .detail-body p{ margin:0 0 10px 0; white-space:pre-wrap; }
 </style>
-
-<!-- PATCH: playlist modal desktop full-width & multi-columns; hide All tab on desktop -->
-<style>
-@media (min-width: 1024px) {
-  /* Make the playlist modal almost full-screen on desktop */
-  #playlistModal .modal-content {
-    width: 96vw !important;
-    max-width: 96vw !important;
-    max-height: 95vh !important;
-  }
-  /* Hide the segmented control/toolbars on desktop (A/B/C shown together anyway) */
-  #playlistModal .playlist-toolbar {
-    display: none !important;
-  }
-  /* If an 'ALL' tab remains in markup, hide it on desktop */
-  #playlistModal .segmented .seg[data-filter="ALL"] {
-    display: none !important;
-  }
-}
-</style>
-
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5326,8 +5311,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
           <button type="button" class="seg active" data-filter="A" aria-selected="true">A-List</button>
           <button type="button" class="seg" data-filter="B" aria-selected="false">B-List</button>
           <button type="button" class="seg" data-filter="C" aria-selected="false">C-List</button>
-          <button type="button" class="seg" data-filter="ALL" aria-selected="false">All</button>
-        </div>
+</div>
       </div>
 
       <div class="playlist-note">Key: <span class="badge new">NEW</span> = new addition, <span class="move-tag up" aria-hidden="true">▲</span> = promoted, <span class="move-tag down" aria-hidden="true">▼</span> = down.</div>
@@ -10399,8 +10383,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <div class="college-toolbar">
       <div class="segmented" role="tablist" aria-label="Filter section">
-        <button type="button" class="seg active" data-filter="ALL" aria-selected="true">All</button>
-        <button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
+<button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
         <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
       </div>
       <div class="toolbar-right">
@@ -10529,73 +10512,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let activeFilter = 'A';
   function applyFilters(){
-    if (activeFilter === 'ALL') wrap.classList.remove('single-list'); else wrap.classList.add('single-list');
-    grid.querySelectorAll('.playlist-section').forEach(sec => {
-      const letter = sec.getAttribute('data-section');
-      sec.style.display = (activeFilter === 'ALL' || letter === activeFilter) ? '' : 'none';
-    });
+    const isDesk = window.matchMedia('(min-width: 769px)').matches;
+    if (isDesk){
+      wrap.classList.remove('single-list');
+      grid.querySelectorAll('.playlist-section').forEach(sec => { sec.style.display = ''; });
+    } else {
+      wrap.classList.add('single-list');
+      grid.querySelectorAll('.playlist-section').forEach(sec => {
+        const letter = sec.getAttribute('data-section');
+        sec.style.display = (letter === activeFilter) ? '' : 'none';
+      });
+    }
   }
 
+
+
   function attachInteractions(){
-  const segs = wrap.querySelectorAll('.segmented .seg');
+    const segs = wrap.querySelectorAll('.segmented .seg');
 
-  // Click handlers for mobile/tabbed use
-  segs.forEach(btn => btn.addEventListener('click', () => {
-    segs.forEach(b => { 
-      const on = (b === btn);
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    activeFilter = (btn.getAttribute('data-filter') || 'A').toUpperCase();
-    try { history.replaceState(null, '', '#list=' + activeFilter); } catch(e) {}
-    applyFilters();
-  }));
-
-  // Respect URL/query/hash if present (mobile focused)
-  try {
-    const url = new URL(location.href);
-    const q = (url.searchParams.get('list') || '').toUpperCase();
-    const h = ((location.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
-    const pick = (q || h || 'A');
-    if (['ALL','A','B','C'].includes(pick)){
-      activeFilter = pick;
-      segs.forEach(b => {
-        const on = (b.getAttribute('data-filter') || 'A').toUpperCase() === activeFilter;
+    // Clicks (mobile only — segmented is hidden on desktop via CSS)
+    segs.forEach(btn => btn.addEventListener('click', () => {
+      segs.forEach(b => { 
+        const on = (b === btn);
         b.classList.toggle('active', on);
         b.setAttribute('aria-selected', on ? 'true' : 'false');
       });
-    }
-  } catch(e){}
-
-  // Desktop = always show ALL sections in multi-column grid
-  const mq = window.matchMedia('(min-width: 1024px)');
-  function syncLayout(){
-    if (mq.matches){
-      // Full, multi-column view
-      activeFilter = 'ALL';
-    } else {
-      // Mobile default back to A if we were on ALL
-      if (!['A','B','C'].includes(activeFilter)) activeFilter = 'A';
-    }
-    applyFilters();
-  }
-  if (mq.addEventListener) mq.addEventListener('change', syncLayout);
-  else mq.addListener(syncLayout);
-
-  syncLayout(); // run once now
-}
-);
       activeFilter = (btn.getAttribute('data-filter') || 'A').toUpperCase();
       try { history.replaceState(null, '', '#list=' + activeFilter); } catch(e) {}
       applyFilters();
     }));
 
+    // Start from URL param/hash (A/B/C only)
     try {
       const url = new URL(location.href);
       const q = (url.searchParams.get('list') || '').toUpperCase();
-      const h = ((location.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
+      const h = ((location.hash.match(/list=(A|B|C)/i) || [,''])[1] || '').toUpperCase();
       const pick = (q || h || 'A');
-      if (['ALL','A','B','C'].includes(pick)){
+      if (['A','B','C'].includes(pick)){
         activeFilter = pick;
         segs.forEach(b => {
           const on = (b.getAttribute('data-filter') || 'A').toUpperCase() === activeFilter;
@@ -10604,8 +10557,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
     } catch(e){}
+
+    window.addEventListener('resize', applyFilters, { passive:true });
     applyFilters();
   }
+
+
 
   function refreshPlaylist(){
     const url = PLAYLIST_URL + (PLAYLIST_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
