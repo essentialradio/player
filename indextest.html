@@ -4418,46 +4418,12 @@ html[data-theme="light"] #mobileNowBar {
   body.alt-mode #countdown { display: none !important; }
 </style>
 
-<style id="college-style">
-  #collegeModal .modal-content{
-    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
-    border-radius: 0; padding: clamp(12px, 2vw, 28px); display: flex; flex-direction: column;
-    background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
-                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-    background-color: var(--panel, #0f1316); color: var(--text, #e9f1f3);
-  }
-  #collegeModal h2{ margin:0 0 8px 0; color:#00818a; }
-  #collegeModal .close{ position:absolute; top:10px; right:12px; font-size:28px; line-height:1; color:var(--text,#e9f1f3); opacity:0.85; cursor:pointer; padding:4px 10px; border-radius:10px; }
-  #collegeModal .close:hover{ opacity:1; background:rgba(255,255,255,0.06); }
-  #collegeWrap{ flex:1; overflow:auto; padding:12px 2px 16px; }
-  .college-toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom:10px; }
-  .college-toolbar .toolbar-right{ display:flex; gap:8px; align-items:center; }
-  #collegeSearch{ appearance:none; border-radius:10px; border:1px solid var(--border, rgba(255,255,255,0.14)); background: rgba(255,255,255,0.05); color: var(--text, #e9f1f3); padding:8px 12px; min-width:min(48vw, 360px); outline:none; }
-  #collegeSearch::placeholder{ color: rgba(233,241,243,0.55); }
-  .btn{ border:1px solid var(--border, rgba(255,255,255,0.15)); background: rgba(255,255,255,0.06); color: var(--text, #e9f1f3); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
-  .btn:hover{ background: rgba(255,255,255,0.1); }
-  .segmented{ background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); padding:4px; border-radius:12px; display:inline-flex; gap:4px; }
-  .segmented .seg{ background:transparent; color: var(--text, #e9f1f3); border:0; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700; opacity:0.85; }
-  .segmented .seg.active{ background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border:1px solid rgba(0,160,170,0.45); opacity:1; }
-  .college-grid{ display:grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: clamp(12px, 2vw, 20px); }
-  @media (max-width: 1100px){ .college-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
-  @media (max-width: 680px){ .college-grid{ grid-template-columns: 1fr; } }
-  .card{ background: rgba(255,255,255,0.03); border:1px solid var(--border, rgba(255,255,255,0.12)); border-radius:16px; padding:12px 14px; display:flex; flex-direction:column; gap:10px; backdrop-filter:blur(4px); }
-  .card header{ display:flex; align-items:center; justify-content:space-between; margin:0; padding:0; background:transparent; border:0; }
-  .badge{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid transparent; }
-  .badge.internal{ background: rgba(89,210,255,0.18); border-color: rgba(89,210,255,0.35); color:#bfefff; }
-  .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
-  .expire{ font-size:12px; opacity:0.8; }
-  .card h3{ margin:0; font-size:18px; }
-  .card .body p{ margin:0 0 8px 0; white-space:pre-wrap; }
-  .muted{ opacity:0.7; }
-  .hidden{ display:none !important; }
-  .chips{ display:flex; gap:6px; flex-wrap:wrap; }
-  .chip{ font-size:11px; border:1px solid var(--border, rgba(255,255,255,0.12)); border-radius:999px; padding:2px 8px; opacity:0.85; }
-  .legend{ color: rgba(233,241,243,0.75); font-size: 13px; margin: 6px 0 10px; }
-</style>
+
+
+
 
 <style id="college-style-min">
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   #collegeModal .modal-content{
     width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
     border-radius: 0; padding: clamp(12px, 2vw, 28px);
@@ -4472,14 +4438,12 @@ html[data-theme="light"] #mobileNowBar {
   #collegeModal .close{ position:absolute; top:10px; right:12px; font-size:28px; line-height:1; color:var(--text,#e9f1f3); opacity:0.85; cursor:pointer; padding:4px 10px; border-radius:10px; }
   #collegeModal .close:hover{ opacity:1; background:rgba(255,255,255,0.06); }
 
-  /* Toolbar: segmented + dropdown only */
   .college-toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom:10px; }
   .segmented{ background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); padding:4px; border-radius:12px; display:inline-flex; gap:4px; }
   .segmented .seg{ background:transparent; color: var(--text, #e9f1f3); border:0; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700; opacity:0.85; }
   .segmented .seg.active{ background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border:1px solid rgba(0,160,170,0.45); opacity:1; }
   #collegeSelect{ appearance:none; border-radius:10px; border:1px solid var(--border, rgba(255,255,255,0.14)); background: rgba(255,255,255,0.05); color: var(--text, #e9f1f3); padding:8px 12px; min-width:min(48vw, 420px); outline:none; }
 
-  /* Full-screen detail area */
   #collegeWrap{ flex:1; overflow:auto; padding:12px 2px 16px; }
   .college-detail{ min-height:100%; display:flex; flex-direction:column; gap:12px; }
   .college-detail .placeholder{ color: rgba(233,241,243,0.7); font-style: italic; }
@@ -10321,10 +10285,17 @@ document.addEventListener('DOMContentLoaded', function () {
         <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
       </div>
       <div class="toolbar-right">
-        <input id="collegeSearch" type="search" placeholder="Search titles and text…" aria-label="Search" />
-        <button id="collegeCopyBtn" class="btn">Copy</button>
-        <button id="collegePrintBtn" class="btn">Print</button>
+        <label for="collegeSelect" class="sr-only">Choose item</label>
+        <select id="collegeSelect" aria-label="Choose item"></select>
       </div>
+    </div>
+
+    <div id="collegeWrap">
+      <article id="collegeDetail" class="college-detail" aria-live="polite">
+        <div class="placeholder">Choose an item from the dropdown to view full details.</div>
+      </article>
+    </div>
+</div>
     </div>
 
     <div class="legend">Tip: edit <code>reads.txt</code> and refresh — headings starting with <code>#</code> become cards. Lines like <em>(read until 6 June)</em> are detected and shown on each card.</div>
@@ -10337,6 +10308,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+
 <script id="college-loader-min">
 (function(){
   const MASTER_URL = 'reads.txt';
@@ -10346,12 +10319,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
-  // Parse master format:
-  // [Internal] or [External] (optional, persists until changed)
-  // From - dd/mm/yy To - dd/mm/yy
-  // Heading
-  // Body (multiple lines)
-  // <blank line> separates items
   function parseMaster(text){
     const lines = text.split(/\r?\n/);
     let section = 'INTERNAL';
@@ -10359,7 +10326,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let i = 0;
     const reSection = /^\s*\[(internal|external)\]\s*$/i;
     const reFromTo = /^\s*From\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*To\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*$/i;
-
     function consumeUntilNonBlank(){ while(i < lines.length && /^\s*$/.test(lines[i])) i++; }
 
     while(i < lines.length){
