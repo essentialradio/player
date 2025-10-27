@@ -5,78 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>College Info</title>
   <style>
+    /* --- Minimal theme fallbacks (will inherit your site's variables if linked) --- */
     :root{
-      /* Fallback theme tokens (will be overridden by site CSS if present) */
-      --panel: #0f1316;
-      --text: #e9f1f3;
-      --border: rgba(255,255,255,0.12);
-      --er-accent: #fed351; /* house yellow */
-      --accent: #00818a;
+      --panel:#0f1316;
+      --text:#e9f1f3;
+      --border:rgba(255,255,255,0.12);
+      --accent:#00818a;
+      --er-accent:#fed351; /* house yellow */
     }
-    html, body { height: 100%; }
+    html,body{height:100%;}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
+                  linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      background-color: var(--panel);
       color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
-        var(--panel);
+      font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-    .wrap{
+    .page{
       min-height:100%;
       display:flex;
       flex-direction:column;
-      padding: clamp(12px, 2vw, 28px);
       box-sizing:border-box;
+      padding: clamp(12px, 2vw, 28px);
     }
     header{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; margin-bottom:10px;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      margin-bottom:8px;
     }
-    .brand{ display:flex; align-items:center; gap:10px; }
-    .brand h1{ margin:0; font-size: clamp(18px, 2.6vw, 28px); color: var(--accent); }
-    .brand small{ color: rgba(233,241,243,0.7); }
-    .btn-link{
-      color: var(--text); text-decoration:none;
-      border:1px solid var(--border);
+    h1{ margin:0; font-size:clamp(22px, 2.8vw, 32px); color: var(--accent); }
+    .nav-back{
+      color: var(--text); text-decoration:none; opacity:.85; border:1px solid var(--border);
       padding:6px 10px; border-radius:10px;
-      background: rgba(255,255,255,0.06);
     }
-    .btn-link:hover{ background: rgba(255,255,255,0.1); }
-    .toolbar{
-      display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center;
-      padding: 8px 0 12px; border-bottom:1px solid var(--border); margin-bottom:10px;
-    }
+    .nav-back:hover{ opacity:1; background: rgba(255,255,255,.06); }
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+    /* Toolbar - segmented + dropdown */
+    .toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border); margin-bottom:10px; }
     .segmented{ background: rgba(255,255,255,0.06); border: 1px solid var(--border); padding:4px; border-radius:12px; display:inline-flex; gap:4px; }
     .segmented .seg{ background:transparent; color: var(--text); border:0; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700; opacity:0.85; }
     .segmented .seg.active{ background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border:1px solid rgba(0,160,170,0.45); opacity:1; }
-    #collegeSelect{ appearance:none; border-radius:10px; border:1px solid var(--border); background: rgba(255,255,255,0.05); color: var(--text); padding:8px 12px; min-width:min(48vw, 420px); outline:none; }
+    #pick{ appearance:none; border-radius:10px; border:1px solid var(--border); background: rgba(255,255,255,0.05); color: var(--text); padding:8px 12px; min-width:min(48vw, 420px); outline:none; }
 
-    main{ flex:1; overflow:auto; padding:12px 2px 16px; }
-    .detail{ min-height:100%; display:flex; flex-direction:column; gap:12px; }
+    /* Full screen detail */
+    .detail{ flex:1; min-height:0; overflow:auto; padding: 12px 2px 16px; display:flex; flex-direction:column; gap:12px; }
     .placeholder{ color: rgba(233,241,243,0.7); font-style: italic; }
-    .detail-head{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;}
-    .detail-title{font-size: clamp(18px, 2.4vw, 28px); margin:0; color: var(--text);}
+    .head{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;}
+    .title{font-size: clamp(18px, 2.4vw, 28px); margin:0; color: var(--text);}
     .date-pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid rgba(0,160,170,0.45); background:linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18));}
     .badge{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid transparent; }
     .badge.internal{ background: rgba(89,210,255,0.18); border-color: rgba(89,210,255,0.35); color:#bfefff; }
     .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
-    .detail-body p{ margin:0 0 10px 0; white-space:pre-wrap; }
-    footer{ padding-top:10px; border-top:1px solid var(--border); color: rgba(233,241,243,0.65); font-size: 13px; }
+    .body p{ margin:0 0 10px 0; white-space:pre-wrap; }
+    .muted{ opacity:.75; }
+    footer{ display:flex; gap:8px; align-items:center; justify-content:flex-end; padding-top:8px; border-top:1px solid var(--border); }
+    .btn{ border:1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--text); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
+    .btn:hover{ background: rgba(255,255,255,0.10); }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="page">
     <header>
-      <div class="brand">
-        <h1>College Info</h1>
-        <small>Standalone page</small>
-      </div>
-      <nav>
-        <a class="btn-link" href="/" aria-label="Back to site">← Back</a>
-        <a class="btn-link" href="#" id="printBtn" aria-label="Print">Print</a>
-      </nav>
+      <h1>College Info</h1>
+      <a class="nav-back" href="/" aria-label="Back to home">Home</a>
     </header>
 
     <div class="toolbar">
@@ -85,32 +77,32 @@
         <button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
         <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
       </div>
-      <div class="toolbar-right">
-        <label for="collegeSelect" class="sr-only">Choose item</label>
-        <select id="collegeSelect" aria-label="Choose item"></select>
+      <div>
+        <label for="pick" class="sr-only">Choose item</label>
+        <select id="pick" aria-label="Choose item"></select>
       </div>
     </div>
 
-    <main>
-      <article id="detail" class="detail" aria-live="polite">
-        <div class="placeholder">Choose an item from the dropdown to view full details.</div>
-      </article>
+    <main id="wrap" class="detail" aria-live="polite">
+      <div class="placeholder">Choose an item from the dropdown to view full details.</div>
     </main>
 
     <footer>
-      Tip: this page reads <code>reads.txt</code> from the same folder. Put it beside <code>info.html</code> and publish both.
+      <button id="copyBtn" class="btn" type="button">Copy</button>
+      <button id="printBtn" class="btn" type="button">Print</button>
     </footer>
   </div>
 
   <script>
   (function(){
-    const MASTER_URL = 'reads.txt';
-    const selectEl = document.getElementById('collegeSelect');
-    const detailEl = document.getElementById('detail');
+    const MASTER_URL = 'reads.txt'; // place reads.txt next to this file, or change this path
     const segs = document.querySelectorAll('.segmented .seg');
+    const selectEl = document.getElementById('pick');
+    const detailEl = document.getElementById('wrap');
+    const copyBtn = document.getElementById('copyBtn');
     const printBtn = document.getElementById('printBtn');
 
-    function escapeHtml(s){return String(s).replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]));}
+    function escapeHtml(s){return String(s).replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;','\\'':'&#39;'}[c]));}
 
     // Parse master format:
     // [Internal] or [External] (optional, persists until changed)
@@ -144,115 +136,112 @@
       return items;
     }
 
-    function fmtRange(it){ return `${it.from} – ${it.to}`; }
+    function fmtRange(it){ return `${it.from} - ${it.to}`; }
 
-    let ALL_ITEMS = [];
+    let ALL = [];
     function populateSelect(mode){
-      const filtered = ALL_ITEMS.filter(it => mode === 'ALL' || it.section === mode);
+      const filtered = ALL.filter(it => mode === 'ALL' || it.section === mode);
       const groups = { INTERNAL: [], EXTERNAL: [] };
-      filtered.forEach(it => groups[it.section||'INTERNAL'].push(it));
+      filtered.forEach(it => groups[it.section || 'INTERNAL'].push(it));
 
-      function optionHTML(it, idx){
+      function opt(it, idx){
         const label = `${fmtRange(it)} · ${it.title}`;
         return `<option value="${idx}">${escapeHtml(label)}</option>`;
       }
 
       let html = '<option value="" selected disabled>Choose an item…</option>';
       if (mode === 'ALL'){
-        if (groups.INTERNAL.length){ html += `<optgroup label="Internal">` + groups.INTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`; }
-        if (groups.EXTERNAL.length){ html += `<optgroup label="External">` + groups.EXTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`; }
+        if (groups.INTERNAL.length) html += `<optgroup label="Internal">` + groups.INTERNAL.map(it=>opt(it, it._i)).join('') + `</optgroup>`;
+        if (groups.EXTERNAL.length) html += `<optgroup label="External">` + groups.EXTERNAL.map(it=>opt(it, it._i)).join('') + `</optgroup>`;
       } else {
-        html += filtered.map(it => optionHTML(it, it._i)).join('');
+        html += filtered.map(it => opt(it, it._i)).join('');
       }
       selectEl.innerHTML = html;
     }
 
-    function renderDetail(it){
+    function render(it){
       if (!it){
         detailEl.innerHTML = '<div class="placeholder">Choose an item from the dropdown to view full details.</div>';
         return;
       }
       const sectBadge = `<span class="badge ${it.section==='INTERNAL'?'internal':'external'}">${it.section.toLowerCase()}</span>`;
       detailEl.innerHTML = `
-        <div class="detail-head">
-          <h2 class="detail-title">${escapeHtml(it.title)}</h2>
+        <div class="head">
+          <h2 class="title">${escapeHtml(it.title)}</h2>
           <span class="date-pill">${escapeHtml(fmtRange(it))}</span>
           ${sectBadge}
         </div>
-        <div class="detail-body">
-          ${it.body ? it.body.split(/\\n/).map(p => `<p>${escapeHtml(p)}</p>`).join('') : '<p class="placeholder">No extra details.</p>'}
+        <div class="body">
+          ${it.body ? it.body.split(/\\n/).map(p => `<p>${escapeHtml(p)}</p>`).join('') : '<p class="muted">No extra details.</p>'}
         </div>
       `;
+      // scroll to top
       detailEl.scrollTop = 0;
+      document.title = it.title + ' – College Info';
     }
 
     function applyMode(mode){
       populateSelect(mode);
-      renderDetail(null);
+      render(null);
     }
 
     function initControls(){
       segs.forEach(btn => btn.addEventListener('click', ()=>{
         segs.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-selected', b===btn ? 'true':'false'); });
         const mode = (btn.dataset.filter || 'ALL').toUpperCase();
+        const url = new URL(location.href);
+        url.searchParams.set('filter', mode);
+        history.replaceState(null, '', url.toString());
         applyMode(mode);
       }));
       selectEl.addEventListener('change', () => {
         const idx = selectEl.value ? parseInt(selectEl.value,10) : NaN;
-        const item = Number.isInteger(idx) ? ALL_ITEMS.find(x => x._i === idx) : null;
-        renderDetail(item || null);
+        const item = Number.isInteger(idx) ? ALL.find(x => x._i === idx) : null;
+        if (item){
+          const url = new URL(location.href);
+          url.searchParams.set('item', String(idx));
+          history.replaceState(null, '', url.toString());
+        }
+        render(item || null);
       });
-      if (printBtn) printBtn.addEventListener('click', () => window.print());
-
-      // Deep-link: ?mode=INTERNAL|EXTERNAL|ALL & i=3 (index) OR ?title=My%20Heading
-      try {
-        const url = new URL(location.href);
-        const mode = (url.searchParams.get('mode') || 'ALL').toUpperCase();
-        if (['ALL','INTERNAL','EXTERNAL'].includes(mode)){
-          segs.forEach(b => {
-            const on = (b.getAttribute('data-filter') || 'ALL').toUpperCase() == mode;
-            b.classList.toggle('active', on);
-            b.setAttribute('aria-selected', on ? 'true' : 'false');
-          });
-        }
-        applyMode(mode);
-
-        const pickIdx = url.searchParams.get('i');
-        const pickTitle = url.searchParams.get('title');
-        if (pickIdx !== null){
-          // wait one task so select is populated
-          setTimeout(() => {
-            selectEl.value = String(pickIdx);
-            selectEl.dispatchEvent(new Event('change'));
-          }, 0);
-        } else if (pickTitle){
-          setTimeout(() => {
-            const idx = ALL_ITEMS.findIndex(it => (it.title||'').toLowerCase() === decodeURIComponent(pickTitle).toLowerCase());
-            if (idx >= 0){
-              selectEl.value = String(idx);
-              selectEl.dispatchEvent(new Event('change'));
-            }
-          }, 0);
-        }
-      } catch(e){}
+      copyBtn?.addEventListener('click', () => {
+        const txt = detailEl.textContent || '';
+        navigator.clipboard.writeText(txt).catch(()=>{});
+      });
+      printBtn?.addEventListener('click', () => window.print());
     }
 
     function refresh(){
       const url = MASTER_URL + (MASTER_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
-      fetch(url).then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-                .then(txt => {
-                  const items = parseMaster(txt);
-                  items.forEach((it, i)=> it._i = i);
-                  ALL_ITEMS = items;
-                  // initialise controls after we have data so deep-links work
-                  initControls();
-                })
-                .catch(err => {
-                  detailEl.innerHTML = '<p style="color:#ff7d7d">Could not load reads.txt (' + err.message + ')</p>';
-                });
+      return fetch(url)
+        .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(txt => {
+          const items = parseMaster(txt);
+          items.forEach((it, i)=> it._i = i);
+          ALL = items;
+          // start with query params if present
+          const qp = new URL(location.href).searchParams;
+          const initialMode = (qp.get('filter') || 'ALL').toUpperCase();
+          const initialIdx = parseInt(qp.get('item') || '', 10);
+          // Toggle segmented UI to match initialMode
+          segs.forEach(b => {
+            const on = (b.getAttribute('data-filter') || 'ALL').toUpperCase() === initialMode;
+            b.classList.toggle('active', on);
+            b.setAttribute('aria-selected', on ? 'true':'false');
+          });
+          applyMode(['ALL','INTERNAL','EXTERNAL'].includes(initialMode) ? initialMode : 'ALL');
+          // Preselect item if valid
+          if (Number.isInteger(initialIdx) && ALL[initialIdx]){
+            selectEl.value = String(initialIdx);
+            render(ALL[initialIdx]);
+          }
+        })
+        .catch(err => {
+          detailEl.innerHTML = '<p style="color:#ff7d7d">Could not load reads.txt (' + err.message + ')</p>';
+        });
     }
 
-    document.addEventListener('DOMContentLoaded', refresh);
+    document.addEventListener('DOMContentLoaded', () => { refresh().then(initControls); });
   })();
   </script>
 </body>
