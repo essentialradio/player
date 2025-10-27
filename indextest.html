@@ -4541,6 +4541,27 @@ html[data-theme="light"] #mobileNowBar {
   .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
   .detail-body p{ margin:0 0 10px 0; white-space:pre-wrap; }
 </style>
+
+<!-- PATCH: playlist modal desktop full-width & multi-columns; hide All tab on desktop -->
+<style>
+@media (min-width: 1024px) {
+  /* Make the playlist modal almost full-screen on desktop */
+  #playlistModal .modal-content {
+    width: 96vw !important;
+    max-width: 96vw !important;
+    max-height: 95vh !important;
+  }
+  /* Hide the segmented control/toolbars on desktop (A/B/C shown together anyway) */
+  #playlistModal .playlist-toolbar {
+    display: none !important;
+  }
+  /* If an 'ALL' tab remains in markup, hide it on desktop */
+  #playlistModal .segmented .seg[data-filter="ALL"] {
+    display: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -10516,9 +10537,54 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function attachInteractions(){
-    const segs = wrap.querySelectorAll('.segmented .seg');
-    segs.forEach(btn => btn.addEventListener('click', () => {
-      segs.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-selected', b===btn ? 'true':'false'); });
+  const segs = wrap.querySelectorAll('.segmented .seg');
+
+  // Click handlers for mobile/tabbed use
+  segs.forEach(btn => btn.addEventListener('click', () => {
+    segs.forEach(b => { 
+      const on = (b === btn);
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    activeFilter = (btn.getAttribute('data-filter') || 'A').toUpperCase();
+    try { history.replaceState(null, '', '#list=' + activeFilter); } catch(e) {}
+    applyFilters();
+  }));
+
+  // Respect URL/query/hash if present (mobile focused)
+  try {
+    const url = new URL(location.href);
+    const q = (url.searchParams.get('list') || '').toUpperCase();
+    const h = ((location.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
+    const pick = (q || h || 'A');
+    if (['ALL','A','B','C'].includes(pick)){
+      activeFilter = pick;
+      segs.forEach(b => {
+        const on = (b.getAttribute('data-filter') || 'A').toUpperCase() === activeFilter;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+  } catch(e){}
+
+  // Desktop = always show ALL sections in multi-column grid
+  const mq = window.matchMedia('(min-width: 1024px)');
+  function syncLayout(){
+    if (mq.matches){
+      // Full, multi-column view
+      activeFilter = 'ALL';
+    } else {
+      // Mobile default back to A if we were on ALL
+      if (!['A','B','C'].includes(activeFilter)) activeFilter = 'A';
+    }
+    applyFilters();
+  }
+  if (mq.addEventListener) mq.addEventListener('change', syncLayout);
+  else mq.addListener(syncLayout);
+
+  syncLayout(); // run once now
+}
+);
       activeFilter = (btn.getAttribute('data-filter') || 'A').toUpperCase();
       try { history.replaceState(null, '', '#list=' + activeFilter); } catch(e) {}
       applyFilters();
