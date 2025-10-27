@@ -4479,6 +4479,33 @@ html[data-theme="light"] #mobileNowBar {
     border-color: rgba(255, 209, 102, 0.75);
     color: #1a1a1a;
   }
+
+  :root {
+    --success: #1fa97a;
+    /* keep existing --danger from site if present */
+  }
+  .move{ display:flex; align-items:center; justify-content:flex-end; gap:6px; }
+  .move-tag{
+    font-size:14px; font-weight:900; letter-spacing:.2px;
+    padding:2px 10px; border-radius:10px; border:1px solid transparent; line-height:1.2;
+    min-width: 40px; text-align:center;
+  }
+  .move-tag.up{
+    background: var(--success, #1fa97a);
+    border-color: color-mix(in oklab, var(--success, #1fa97a) 85%, black);
+    color: #041b11;
+  }
+  .move-tag.down{
+    background: var(--danger, #b42318);
+    border-color: color-mix(in oklab, var(--danger, #b42318) 85%, black);
+    color: #fff5f4;
+  }
+  /* NEW pill in house yellow */
+  .badge.new{
+    background: var(--er-accent, #fed351) !important;
+    border-color: var(--er-accent, #fed351) !important;
+    color: #000 !important;
+  }
 </style>
 
 <style id="college-style-min">
@@ -5286,7 +5313,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         </div>
       </div>
 
-      <div class="playlist-note">Key: <span class="badge new">NEW</span> = new addition, <span class="move-tag up">UP</span> = promoted, <span class="move-tag down">DOWN</span> = down.</div>
+      <div class="playlist-note">Key: <span class="badge new">NEW</span> = new addition, <span class="move-tag up" aria-hidden="true">▲</span> = promoted, <span class="move-tag down" aria-hidden="true">▼</span> = down.</div>
 
       <div class="playlist-grid" id="playlistGrid"></div>
     </div>
@@ -10451,7 +10478,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const id = `trk-${letter}-${i}`;
       const boldOn = t.flags.hasNew ? ['<strong>','</strong>'] : ['',''];
       const badge = t.flags.hasNew ? '<span class="badge new">NEW</span>' : '';
-      const arrow = t.flags.hasUp ? '<span class="move-tag up" aria-label="Up">UP</span>' : (t.flags.hasDown ? '<span class="move-tag down" aria-label="Down">DOWN</span>' : '');
+      const arrow = t.flags.hasUp ? '<span class="move-tag up" aria-label="Up">▲</span>' : (t.flags.hasDown ? '<span class="move-tag down" aria-label="Down">▼</span>' : '');
       return `<div class="track" id="${id}">
         <img class="cover" alt="" src="${PLACEHOLDER}" ${isiOS ? '' : 'loading="lazy"'} />
         <div class="meta">
