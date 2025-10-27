@@ -4418,9 +4418,84 @@ html[data-theme="light"] #mobileNowBar {
   body.alt-mode #countdown { display: none !important; }
 </style>
 
+<style id="college-style">
+  #collegeModal .modal-content{
+    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
+    border-radius: 0; padding: clamp(12px, 2vw, 28px); display: flex; flex-direction: column;
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
+                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    background-color: var(--panel, #0f1316); color: var(--text, #e9f1f3);
+  }
+  #collegeModal h2{ margin:0 0 8px 0; color:#00818a; }
+  #collegeModal .close{ position:absolute; top:10px; right:12px; font-size:28px; line-height:1; color:var(--text,#e9f1f3); opacity:0.85; cursor:pointer; padding:4px 10px; border-radius:10px; }
+  #collegeModal .close:hover{ opacity:1; background:rgba(255,255,255,0.06); }
+  #collegeWrap{ flex:1; overflow:auto; padding:12px 2px 16px; }
+  .college-toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom:10px; }
+  .college-toolbar .toolbar-right{ display:flex; gap:8px; align-items:center; }
+  #collegeSearch{ appearance:none; border-radius:10px; border:1px solid var(--border, rgba(255,255,255,0.14)); background: rgba(255,255,255,0.05); color: var(--text, #e9f1f3); padding:8px 12px; min-width:min(48vw, 360px); outline:none; }
+  #collegeSearch::placeholder{ color: rgba(233,241,243,0.55); }
+  .btn{ border:1px solid var(--border, rgba(255,255,255,0.15)); background: rgba(255,255,255,0.06); color: var(--text, #e9f1f3); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
+  .btn:hover{ background: rgba(255,255,255,0.1); }
+  .segmented{ background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); padding:4px; border-radius:12px; display:inline-flex; gap:4px; }
+  .segmented .seg{ background:transparent; color: var(--text, #e9f1f3); border:0; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700; opacity:0.85; }
+  .segmented .seg.active{ background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border:1px solid rgba(0,160,170,0.45); opacity:1; }
+  .college-grid{ display:grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: clamp(12px, 2vw, 20px); }
+  @media (max-width: 1100px){ .college-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
+  @media (max-width: 680px){ .college-grid{ grid-template-columns: 1fr; } }
+  .card{ background: rgba(255,255,255,0.03); border:1px solid var(--border, rgba(255,255,255,0.12)); border-radius:16px; padding:12px 14px; display:flex; flex-direction:column; gap:10px; backdrop-filter:blur(4px); }
+  .card header{ display:flex; align-items:center; justify-content:space-between; margin:0; padding:0; background:transparent; border:0; }
+  .badge{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid transparent; }
+  .badge.internal{ background: rgba(89,210,255,0.18); border-color: rgba(89,210,255,0.35); color:#bfefff; }
+  .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
+  .expire{ font-size:12px; opacity:0.8; }
+  .card h3{ margin:0; font-size:18px; }
+  .card .body p{ margin:0 0 8px 0; white-space:pre-wrap; }
+  .muted{ opacity:0.7; }
+  .hidden{ display:none !important; }
+  .chips{ display:flex; gap:6px; flex-wrap:wrap; }
+  .chip{ font-size:11px; border:1px solid var(--border, rgba(255,255,255,0.12)); border-radius:999px; padding:2px 8px; opacity:0.85; }
+  .legend{ color: rgba(233,241,243,0.75); font-size: 13px; margin: 6px 0 10px; }
+</style>
 
+<style id="playlist-text-style">
+  #playlistModal .modal-content{
+    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
+    border-radius: 0; padding: clamp(12px, 2vw, 28px);
+    display:flex; flex-direction:column;
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
+                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    background-color: var(--panel, #0f1316);
+    color: var(--text, #e9f1f3);
+  }
+  #playlistModal h2{margin:0 0 8px 0; color:#00818a;}
+  #playlistModal .close{position:absolute; top:10px; right:12px; font-size:28px; line-height:1; color:var(--text,#e9f1f3); opacity:0.85; cursor:pointer; padding:4px 10px; border-radius:10px;}
+  #playlistModal .close:hover{opacity:1; background:rgba(255,255,255,0.06);}
 
+  #playlistWrap{flex:1; overflow:auto; padding:8px 2px 16px;}
+  .playlist-toolbar{display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding:8px 0 12px; border-bottom:1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom:10px;}
+  .segmented{ background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); padding:4px; border-radius:12px; display:inline-flex; gap:4px; }
+  .segmented .seg{ background:transparent; color: var(--text, #e9f1f3); border:0; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700; opacity:0.85; }
+  .segmented .seg.active{ background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border:1px solid rgba(0,160,170,0.45); opacity:1; }
 
+  .playlist-note{ font-size:13px; color:rgba(233,241,243,0.75); margin-top:6px; }
+  .playlist-grid{ display:grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: clamp(10px, 2vw, 16px); }
+  @media (max-width: 1100px){ .playlist-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
+  @media (max-width: 680px){ .playlist-grid{ grid-template-columns: 1fr; } }
+  #playlistWrap.single-list .playlist-grid { grid-template-columns: 1fr !important; }
+
+  .playlist-section{ border:1px solid var(--border, rgba(255,255,255,0.12)); border-radius:14px; padding:12px; background: rgba(255,255,255,0.03); }
+  .playlist-section h3{ margin:0 0 10px 0; font-size:16px; letter-spacing:.3px; color:#7bdff2; }
+  .track{ display:grid; grid-template-columns: 56px 1fr auto; gap:10px; align-items:center; padding:8px; border-radius:10px; }
+  .track + .track{ margin-top:6px; }
+  .track:hover{ background: rgba(255,255,255,0.05); }
+  .cover{ width:56px; height:56px; border-radius:8px; object-fit:cover; border:1px solid var(--border, rgba(255,255,255,0.12)); }
+  .meta{ display:flex; flex-direction:column; gap:2px; }
+  .artist{ font-weight:700; }
+  .title{ opacity:0.9; }
+  .badge{ font-size:11px; border:1px solid rgba(0,160,170,0.45); border-radius:999px; padding:2px 8px; margin-left:8px; background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); font-weight:800; letter-spacing:.2px; }
+  .arrow{ font-size:18px; opacity:0.9; }
+  .muted{ opacity:0.7; }
+</style>
 
 <style id="college-style-min">
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
@@ -4478,6 +4553,8 @@ html[data-theme="light"] #mobileNowBar {
 <a class="menu-link" href="#" onclick="openModalAndCloseBurger('searchModal');return false;">Song Search</a>
 <a class="menu-link" href="#" onclick="openModalAndCloseBurger('contactModal');return false;">Contact Us</a>
 </div> <!-- CLOSES INNER MENU WRAPPER -->
+
+<a href="#" onclick="openModal('collegeModal');return false;">College Info</a>
 </div> <!-- CLOSES burgerDropdown -->
 <!-- DESKTOP NAVIGATION -->
 <nav class="navbar" role="navigation"><!-- Inserted Theme Toggle -->
@@ -5210,12 +5287,26 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 </div>
 </div>
 </div>
-<div tabindex="-1" aria-modal="true" role="dialog" class="modal" id="playlistModal">
-<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:1000px;width:97vw">
-<span class="close" onclick="closeModal('playlistModal')">×</span>
-<h2 style="margin-top:0;color:#00818a">Essential Radio Playlist</h2>
-<img alt="Essential Radio Playlist" class="playlist-image" src="ERPlaylist.png"/>
-</div>
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshPlaylist" id="playlistModal">
+  <div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" data-title="Playlist">
+    <span class="close" onclick="closeModal('playlistModal')">×</span>
+    <h2>Playlist</h2>
+
+    <div id="playlistWrap" class="single-list">
+      <div class="playlist-toolbar">
+        <div class="segmented" role="tablist" aria-label="Filter list">
+          <button type="button" class="seg active" data-filter="A" aria-selected="true">A-List</button>
+          <button type="button" class="seg" data-filter="B" aria-selected="false">B-List</button>
+          <button type="button" class="seg" data-filter="C" aria-selected="false">C-List</button>
+          <button type="button" class="seg" data-filter="ALL" aria-selected="false">All</button>
+        </div>
+      </div>
+
+      <div class="playlist-note">Key: <span class="badge">NEW</span> = new addition (artist & title in bold), <span class="arrow">↑</span> = promoted, <span class="arrow">↓</span> = down.</div>
+
+      <div class="playlist-grid" id="playlistGrid"></div>
+    </div>
+  </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:900px;width:97vw">
@@ -10285,17 +10376,10 @@ document.addEventListener('DOMContentLoaded', function () {
         <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
       </div>
       <div class="toolbar-right">
-        <label for="collegeSelect" class="sr-only">Choose item</label>
-        <select id="collegeSelect" aria-label="Choose item"></select>
+        <input id="collegeSearch" type="search" placeholder="Search titles and text…" aria-label="Search" />
+        <button id="collegeCopyBtn" class="btn">Copy</button>
+        <button id="collegePrintBtn" class="btn">Print</button>
       </div>
-    </div>
-
-    <div id="collegeWrap">
-      <article id="collegeDetail" class="college-detail" aria-live="polite">
-        <div class="placeholder">Choose an item from the dropdown to view full details.</div>
-      </article>
-    </div>
-</div>
     </div>
 
     <div class="legend">Tip: edit <code>reads.txt</code> and refresh — headings starting with <code>#</code> become cards. Lines like <em>(read until 6 June)</em> are detected and shown on each card.</div>
@@ -10307,6 +10391,160 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 
 
+
+
+<script id="playlist-text-loader">
+(function(){
+  const PLAYLIST_URL = 'playlist.txt';
+  const wrap = document.getElementById('playlistWrap');
+  const grid = document.getElementById('playlistGrid');
+  const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const PLACEHOLDER = 'Essential Radio Logo.png';
+  const artCache = new Map();
+
+  function normaliseQuery(s){
+    return String(s||'')
+      .replace(/[\u2013\u2014]/g, '-')
+      .replace(/\s+\[[^\]]*\]/g, '')
+      .replace(/\s+\([^)]*\)/g, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  }
+
+  async function getArtwork(artist, title){
+    const key = artist + ' — ' + title;
+    if (artCache.has(key)) return artCache.get(key);
+    const q = encodeURIComponent(normaliseQuery(artist + ' - ' + title));
+    try{
+      const r = await fetch('/api/artwork?q=' + q, { cache: 'no-store' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const { url } = await r.json();
+      const finalUrl = url || PLACEHOLDER;
+      artCache.set(key, finalUrl);
+      return finalUrl;
+    }catch(e){
+      artCache.set(key, PLACEHOLDER);
+      return PLACEHOLDER;
+    }
+  }
+
+  function parsePlaylist(text){
+    const lines = text.split(/\r?\n/);
+    let section = 'A';
+    const sections = { A: [], B: [], C: [] };
+    function push(line){
+      const raw = line.trim();
+      if (!raw) return;
+      const hasNew = /\*NEW\*/i.test(raw);
+      const hasUp = /\*UP\*/i.test(raw);
+      const hasDown = /\*DOWN\*/i.test(raw);
+      const cleaned = raw.replace(/\*(NEW|UP|DOWN)\*/gi, '').trim();
+      let artist = cleaned, title = '';
+      const idx = cleaned.lastIndexOf(' - ');
+      if (idx !== -1){ artist = cleaned.slice(0, idx).trim(); title = cleaned.slice(idx + 3).trim(); }
+      sections[section].push({ artist, title, flags: { hasNew, hasUp, hasDown } });
+    }
+    for (let i=0;i<lines.length;i++){
+      const l = lines[i].trim();
+      if (/^A\s*-\s*List/i.test(l)) { section = 'A'; continue; }
+      if (/^B\s*-\s*List/i.test(l)) { section = 'B'; continue; }
+      if (/^C\s*-\s*List/i.test(l)) { section = 'C'; continue; }
+      push(l);
+    }
+    return sections;
+  }
+
+  function sectionHTML(letter, items){
+    const label = letter + '-List';
+    const rows = items.map((t, i) => {
+      const id = `trk-${letter}-${i}`;
+      const boldOn = t.flags.hasNew ? ['<strong>','</strong>'] : ['',''];
+      const badge = t.flags.hasNew ? '<span class="badge">NEW</span>' : '';
+      const arrow = t.flags.hasUp ? '<span class="arrow" aria-label="Up">↑</span>' : (t.flags.hasDown ? '<span class="arrow" aria-label="Down">↓</span>' : '');
+      return `<div class="track" id="${id}">
+        <img class="cover" alt="" src="${PLACEHOLDER}" ${isiOS ? '' : 'loading="lazy"'} />
+        <div class="meta">
+          <div class="artist">${boldOn[0]}${t.artist}${boldOn[1]} ${badge}</div>
+          <div class="title">${boldOn[0]}${t.title}${boldOn[1]}</div>
+        </div>
+        <div class="move">${arrow}</div>
+      </div>`;
+    }).join('');
+    return `<section class="playlist-section" data-section="${letter}">
+      <h3>${label}</h3>
+      ${rows || '<div class="muted">No tracks.</div>'}
+    </section>`;
+  }
+
+  function render(sections){
+    grid.innerHTML = ['A','B','C'].map(l => sectionHTML(l, sections[l])).join('');
+  }
+
+  async function hydrateCovers(sections){
+    for (const l of ['A','B','C']){
+      for (let i=0; i<sections[l].length; i++){
+        const t = sections[l][i];
+        const img = document.getElementById(`trk-${l}-${i}`)?.querySelector('img.cover');
+        if (!img) continue;
+        const url = await getArtwork(t.artist, t.title);
+        img.src = url || PLACEHOLDER;
+      }
+    }
+  }
+
+  let activeFilter = 'A';
+  function applyFilters(){
+    if (activeFilter === 'ALL') wrap.classList.remove('single-list'); else wrap.classList.add('single-list');
+    grid.querySelectorAll('.playlist-section').forEach(sec => {
+      const letter = sec.getAttribute('data-section');
+      sec.style.display = (activeFilter === 'ALL' || letter === activeFilter) ? '' : 'none';
+    });
+  }
+
+  function attachInteractions(){
+    const segs = wrap.querySelectorAll('.segmented .seg');
+    segs.forEach(btn => btn.addEventListener('click', () => {
+      segs.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-selected', b===btn ? 'true':'false'); });
+      activeFilter = (btn.getAttribute('data-filter') || 'A').toUpperCase();
+      try { history.replaceState(null, '', '#list=' + activeFilter); } catch(e) {}
+      applyFilters();
+    }));
+
+    try {
+      const url = new URL(location.href);
+      const q = (url.searchParams.get('list') || '').toUpperCase();
+      const h = ((location.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
+      const pick = (q || h || 'A');
+      if (['ALL','A','B','C'].includes(pick)){
+        activeFilter = pick;
+        segs.forEach(b => {
+          const on = (b.getAttribute('data-filter') || 'A').toUpperCase() === activeFilter;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+      }
+    } catch(e){}
+    applyFilters();
+  }
+
+  function refreshPlaylist(){
+    const url = PLAYLIST_URL + (PLAYLIST_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
+    grid.textContent = 'Loading…';
+    fetch(url).then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(txt => {
+        const data = parsePlaylist(txt);
+        render(data);
+        attachInteractions();
+        hydrateCovers(data);
+      })
+      .catch(err => {
+        grid.innerHTML = '<p style="color:#ff7d7d">Could not load playlist (' + err.message + ')</p>';
+      });
+  }
+  window.refreshPlaylist = refreshPlaylist;
+  document.addEventListener('DOMContentLoaded', refreshPlaylist);
+})();
+</script>
 
 
 
@@ -10326,6 +10564,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let i = 0;
     const reSection = /^\s*\[(internal|external)\]\s*$/i;
     const reFromTo = /^\s*From\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*To\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*$/i;
+
     function consumeUntilNonBlank(){ while(i < lines.length && /^\s*$/.test(lines[i])) i++; }
 
     while(i < lines.length){
@@ -10423,6 +10662,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('DOMContentLoaded', () => { refreshCollege().then(initControls); });
 })();
 </script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
