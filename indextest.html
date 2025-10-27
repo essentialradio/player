@@ -4573,7 +4573,7 @@ html[data-theme="light"] #mobileNowBar {
 <a href="#" onclick="openModal('newsModal');return false;">News</a>
 <a href="#" onclick="openModal('travelModal');return false;">Travel</a>
 <a href="#" onclick="openModal('localModal');return false;">Local</a>
-<a href="#" onclick="openModal('playlistModal');return false;">Playlist</a>
+<a href="#list=ALL" onclick="location.hash='list=ALL'; openModal('playlistModal'); return false;">Playlist</a>
 <a href="#" onclick="openModal('listenModal');return false;">Listen Again</a>
 <a href="#" onclick="openModal('searchModal');return false;">Song Search</a>
 <a href="#" onclick="openModal('contactModal');return false;">Contact Us</a>
@@ -5302,10 +5302,10 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
     <div id="playlistWrap" class="single-list">
       <div class="playlist-toolbar">
         <div class="segmented" role="tablist" aria-label="Filter list">
-          <button type="button" class="seg active" data-filter="A" aria-selected="false">A-List</button>
+          <button type="button" class="seg active" data-filter="A" aria-selected="true">A-List</button>
           <button type="button" class="seg" data-filter="B" aria-selected="false">B-List</button>
           <button type="button" class="seg" data-filter="C" aria-selected="false">C-List</button>
-          <button type="button" class="seg" data-filter="ALL" aria-selected="true">All</button>
+          <button type="button" class="seg" data-filter="ALL" aria-selected="false">All</button>
         </div>
       </div>
 
