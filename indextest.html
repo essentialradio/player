@@ -4419,13 +4419,7 @@ html[data-theme="light"] #mobileNowBar {
 </style>
 
 <style id="playlist-text-style">
-  #playlistModal .modal-content {
-    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0;
-    padding: clamp(12px, 2vw, 28px); display: flex; flex-direction: column;
-    background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
-                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-    background-color: var(--panel, #0f1316); color: var(--text, #e9f1f3);
-  }
+  #playlistModal .modal-content { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; padding: clamp(12px, 2vw, 28px); display: flex; flex-direction: column; background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)); background-color: var(--panel, #0f1316); color: var(--text, #e9f1f3); }
   #playlistModal h2 { margin: 0 0 8px 0; color: var(--accent, #00a0aa); font-size: clamp(18px, 2.6vw, 30px); letter-spacing: 0.2px; }
   #playlistModal .close { position: absolute; top: 10px; right: 12px; font-size: 28px; line-height: 1; color: var(--text, #e9f1f3); opacity: 0.85; cursor: pointer; padding: 4px 10px; border-radius: 10px; }
   #playlistModal .close:hover { opacity: 1; background: rgba(255,255,255,0.06); }
@@ -5268,7 +5262,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   <span class="chip new">NEW</span> New add this week.
   <span class="legend-item"><span class="trend up">▲</span> Rising</span>
   <span class="legend-item"><span class="trend down">▼</span> Falling</span>
-  <span class="muted">Add markers at the end of a line in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>. Cover art uses your <em>artwork-unified</em> / iOS patch hooks.</span>
+  <span class="muted">Add markers in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>. Artwork is resolved via <code>/api/artwork</code>.</span>
 </div>
 
 <div id="playlistWrap" class="playlist-text">Loading playlist…</div>
@@ -10333,36 +10327,43 @@ document.addEventListener('DOMContentLoaded', function () {
 <script id="playlist-text-loader">
 (function(){
   const TXT_URL = 'playlist.txt';
-
-  // ==== Artwork Unified hooks/config ====
-  const ART = {
-    // If you have global functions, set them here or leave as null:
-    unifiedFn: (window.getUnifiedArtwork || (window.ArtworkUnified && window.ArtworkUnified.lookup)) || null,
-    iosPatchFn: (window.applyIOSArtworkPatch || null),
-    // Or point to your endpoints returning {url: "https://..."}
-    UNIFIED_ENDPOINT: '/artwork-unified',
-    IOS_PATCH_ENDPOINT: '/artwork-ios-patch',
-    cache: new Map(),
-    placeholder: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
-  };
+  const IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const PLACEHOLDER = 'Essential Radio Logo.png';
 
   function escapeHtml(s){
-    return String(s).replace(/[&<>"']/g, c => (
-      { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]
-    ));
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
-
   function splitArtistTitle(row){
     const sep = row.match(/\s+[-–—]\s+/);
     if(!sep) return null;
     const idx = sep.index;
     return [row.slice(0, idx).trim(), row.slice(idx + sep[0].length).trim()];
   }
-
-  function parseFlags(row){
-    return { isNew:/\*NEW\*/i.test(row), isUp:/\*UP\*/i.test(row), isDown:/\*DOWN\*/i.test(row) };
-  }
+  function parseFlags(row){ return { isNew:/\*NEW\*/i.test(row), isUp:/\*UP\*/i.test(row), isDown:/\*DOWN\*/i.test(row) }; }
   function stripMarkers(row){ return row.replace(/\s*\*(NEW|UP|DOWN)\*\s*/gi, ' ').trim(); }
+
+  const artworkCache = new Map();
+  async function resolveArtwork(artist, title){
+    const query = `${artist} - ${title}`;
+    const key = query.toLowerCase();
+    if (artworkCache.has(key)) return artworkCache.get(key) || '';
+    // Normalise exactly like the site's getTrackArtwork
+    const clean = String(query)
+      .replace(/[\u2013\u2014]/g, '-')
+      .replace(/\s*-\s*/g, ' ')
+      .replace(/[\[\(].*?[\]\)]/g, ' ')   // strip bracketed
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+    try{
+      const res = await fetch(`/api/artwork?q=${encodeURIComponent(clean)}&_=${Date.now()}`, { cache: 'no-store' });
+      if (res.ok){
+        const d = await res.json().catch(()=>null);
+        if (d && d.url){ artworkCache.set(key, d.url); return d.url; }
+      }
+    }catch(e){}
+    artworkCache.set(key, '');
+    return '';
+  }
 
   function parsePlaylistText(txt){
     const lines = txt.split(/\r?\n/).map(l => l.trim());
@@ -10396,10 +10397,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const chip = flags.isNew ? '<span class="chip new">NEW</span> ' : '';
         const ups  = flags.isUp   ? '<span class="trend up" title="Up this week">▲</span>' : '';
         const dws  = flags.isDown ? '<span class="trend down" title="Down this week">▼</span>' : '';
-        // item with cover slot
+        const lazyAttr = IOS ? '' : 'loading="lazy"';
         return `<li class="${liClass}" data-text="${(aRaw + ' ' + tRaw).toLowerCase()}">
-                  <div class="cover-wrap"><img class="cover" alt="" loading="lazy"
-                       src="${ART.placeholder}" data-artist="${artist}" data-title="${title}"></div>
+                  <div class="cover-wrap"><img class="cover" alt="" ${lazyAttr} src="${PLACEHOLDER}" data-artist="${artist}" data-title="${title}"></div>
                   <span class="artist">${chip}${artist}</span>
                   <span class="title">${title}${ups}${dws}</span>
                 </li>`;
@@ -10408,8 +10408,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const liClass = /\*NEW\*/i.test(row) ? 'is-new' : '';
       const ups  = /\*UP\*/i.test(row)   ? '<span class="trend up" title="Up this week">▲</span>' : '';
       const dws  = /\*DOWN\*/i.test(row) ? '<span class="trend down" title="Down this week">▼</span>' : '';
+      const lazyAttr = IOS ? '' : 'loading="lazy"';
       return `<li class="${liClass}" data-text="${clean.toLowerCase()}">
-                <div class="cover-wrap"><img class="cover" alt="" loading="lazy" src="${ART.placeholder}" data-artist="" data-title=""></div>
+                <div class="cover-wrap"><img class="cover" alt="" ${lazyAttr} src="${PLACEHOLDER}" data-artist="" data-title=""></div>
                 ${escapeHtml(clean)}${ups}${dws}
               </li>`;
     }).join('');
@@ -10417,73 +10418,25 @@ document.addEventListener('DOMContentLoaded', function () {
     return html;
   }
 
-  async function resolveArtwork(artist, title){
-    const key = (artist + ' - ' + title).toLowerCase();
-    if (ART.cache.has(key)) return ART.cache.get(key);
-    // 1) Hook function
-    try{
-      if (ART.unifiedFn){
-        const url = await Promise.resolve(ART.unifiedFn(artist, title));
-        if (url){ ART.cache.set(key, url); return url; }
+  async function hydrateCovers(root){
+    const wrap = root || document;
+    const imgs = wrap.querySelectorAll('img.cover[data-artist]');
+    for (const img of imgs){
+      const artist = img.getAttribute('data-artist') || '';
+      const title  = img.getAttribute('data-title') || '';
+      if (!artist || !title) continue;
+      const url = await resolveArtwork(artist, title);
+      if (url){
+        img.src = url + (url.includes('?') ? '&' : '?') + 'ts=' + Date.now();
+        img.classList.remove('fallback');
+        img.classList.add('loaded');
+      } else {
+        img.src = PLACEHOLDER;
+        img.classList.remove('loaded');
+        img.classList.add('fallback');
       }
-    }catch(e){ /* ignore */ }
-    // 2) Unified endpoint
-    try{
-      if (ART.UNIFIED_ENDPOINT){
-        const u = ART.UNIFIED_ENDPOINT + `?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`;
-        const r = await fetch(u, {cache:'force-cache'});
-        if (r.ok){
-          const data = await r.json().catch(()=>null);
-          if (data && data.url){ ART.cache.set(key, data.url); return data.url; }
-        }
-      }
-    }catch(e){ /* ignore */ }
-    // 3) iOS patch (optional pattern: returns patched URL)
-    try{
-      if (ART.iosPatchFn){
-        const patched = await Promise.resolve(ART.iosPatchFn(artist, title));
-        if (patched){ ART.cache.set(key, patched); return patched; }
-      } else if (ART.IOS_PATCH_ENDPOINT){
-        const u = ART.IOS_PATCH_ENDPOINT + `?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`;
-        const r = await fetch(u, {cache:'force-cache'});
-        if (r.ok){
-          const data = await r.json().catch(()=>null);
-          if (data && data.url){ ART.cache.set(key, data.url); return data.url; }
-        }
-      }
-    }catch(e){ /* ignore */ }
-    ART.cache.set(key, null);
-    return null;
-  }
-
-  function hydrateCovers(root){
-    const holder = root || document;
-    const items = holder.querySelectorAll('img.cover[data-artist]');
-    const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries, obs) => {
-      entries.forEach(async entry => {
-        if (!entry.isIntersecting) return;
-        const img = entry.target;
-        obs.unobserve(img);
-        const artist = img.getAttribute('data-artist') || '';
-        const title  = img.getAttribute('data-title') || '';
-        if (!artist || !title) return;
-        const url = await resolveArtwork(artist, title);
-        if (url){ img.src = url; img.removeAttribute('data-artist'); img.removeAttribute('data-title'); }
-      });
-    }, { root: document.getElementById('playlistWrap') || null, rootMargin: '100px' }) : null;
-
-    items.forEach(img => {
-      if (io) io.observe(img);
-      else {
-        // Fallback: load immediately
-        (async () => {
-          const artist = img.getAttribute('data-artist') || '';
-          const title  = img.getAttribute('data-title') || '';
-          const url = await resolveArtwork(artist, title);
-          if (url){ img.src = url; img.removeAttribute('data-artist'); img.removeAttribute('data-title'); }
-        })();
-      }
-    });
+      img.removeAttribute('data-artist'); img.removeAttribute('data-title');
+    }
   }
 
   function renderPlaylist(data){
@@ -10510,9 +10463,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
       .then(t => renderPlaylist(parsePlaylistText(t)))
       .catch(err => {
-        if (wrap) wrap.innerHTML =
-          `<p style="color:#b42318">Couldn’t load the playlist. (${escapeHtml(err.message)})</p>
-           <p><a href="${TXT_URL}" target="_blank" rel="noopener">Open playlist.txt</a></p>`;
+        if (wrap) wrap.innerHTML = `<p style="color:#b42318">Couldn’t load the playlist.</p><p><a href="${TXT_URL}" target="_blank" rel="noopener">Open playlist.txt</a></p>`;
       });
   }
 
@@ -10535,7 +10486,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const txt = li.getAttribute('data-text') || '';
           const hit = !q || txt.includes(q);
           li.style.display = hit ? '' : 'none';
-          const coverWrap = li.querySelector('.cover-wrap'); 
+          const coverWrap = li.querySelector('.cover-wrap');
           if (coverWrap) coverWrap.style.display = showArt ? '' : 'none';
           if (hit) visibleCount++;
         });
@@ -10572,12 +10523,12 @@ document.addEventListener('DOMContentLoaded', function () {
         out += `${letter}- List\n`;
         sec.querySelectorAll('li').forEach(li => {
           if (li.style.display === 'none') return;
-          const artist = li.querySelector('.artist')?.textContent.replace(/\bNEW\b/i,'').trim() || '';
-          const title  = li.querySelector('.title')?.textContent.replace(/[▲▼]/g,'').trim() || '';
+          const artist = (li.querySelector('.artist')?.textContent || '').replace(/\bNEW\b/i,'');
+          const title  = (li.querySelector('.title')?.textContent || '').replace(/[▲▼]/g,'');
           const trendUp = li.querySelector('.trend.up') ? ' *UP*' : '';
           const trendDn = li.querySelector('.trend.down') ? ' *DOWN*' : '';
           const isNew   = li.classList.contains('is-new') ? ' *NEW*' : '';
-          if (artist && title){ out += `${artist} - ${title}${isNew}${trendUp}${trendDn}\n`; }
+          if (artist && title){ out += `${artist.trim()} - ${title.trim()}${isNew}${trendUp}${trendDn}\n`; }
           else { out += li.textContent.trim() + '\n'; }
         });
         out += '\n';
