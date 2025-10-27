@@ -4457,12 +4457,31 @@ html[data-theme="light"] #mobileNowBar {
   .legend{ color: rgba(233,241,243,0.75); font-size: 13px; margin: 6px 0 10px; }
 </style>
 
-<style id="college-style-dropdown">
-  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-  #collegeModal .college-toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom:10px; }
-  #collegeModal .toolbar-right{ display:flex; gap:8px; align-items:center; }
+<style id="college-style-min">
+  #collegeModal .modal-content{
+    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
+    border-radius: 0; padding: clamp(12px, 2vw, 28px);
+    display: flex; flex-direction: column;
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
+                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    background-color: var(--panel, #0f1316);
+    color: var(--text, #e9f1f3);
+    box-sizing: border-box;
+  }
+  #collegeModal h2{ margin:0 0 8px 0; color:#00818a; }
+  #collegeModal .close{ position:absolute; top:10px; right:12px; font-size:28px; line-height:1; color:var(--text,#e9f1f3); opacity:0.85; cursor:pointer; padding:4px 10px; border-radius:10px; }
+  #collegeModal .close:hover{ opacity:1; background:rgba(255,255,255,0.06); }
+
+  /* Toolbar: segmented + dropdown only */
+  .college-toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom:10px; }
+  .segmented{ background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); padding:4px; border-radius:12px; display:inline-flex; gap:4px; }
+  .segmented .seg{ background:transparent; color: var(--text, #e9f1f3); border:0; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700; opacity:0.85; }
+  .segmented .seg.active{ background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); border:1px solid rgba(0,160,170,0.45); opacity:1; }
   #collegeSelect{ appearance:none; border-radius:10px; border:1px solid var(--border, rgba(255,255,255,0.14)); background: rgba(255,255,255,0.05); color: var(--text, #e9f1f3); padding:8px 12px; min-width:min(48vw, 420px); outline:none; }
-  .college-detail{ flex:1; min-height:0; overflow:auto; padding: 12px 2px 16px; display:flex; flex-direction:column; gap:12px; }
+
+  /* Full-screen detail area */
+  #collegeWrap{ flex:1; overflow:auto; padding:12px 2px 16px; }
+  .college-detail{ min-height:100%; display:flex; flex-direction:column; gap:12px; }
   .college-detail .placeholder{ color: rgba(233,241,243,0.7); font-style: italic; }
   .detail-head{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;}
   .detail-title{font-size: clamp(18px, 2.4vw, 28px); margin:0; color: var(--text, #e9f1f3);}
@@ -10308,41 +10327,22 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
-    <div class="legend">Tip: edit <code>reads.txt</code> with blocks like:<br><code>[Internal]</code><br><code>From - 27/10/25 To - 29/10/25</code><br><code>Heading</code><br><code>Details...</code><br><em>(blank line between items)</em>.</div>
+    <div class="legend">Tip: edit <code>reads.txt</code> and refresh — headings starting with <code>#</code> become cards. Lines like <em>(read until 6 June)</em> are detected and shown on each card.</div>
 
-    
-<div id="collegeWrap">
-  <div class="college-toolbar" style="margin-top:8px">
-    <div class="segmented" role="tablist" aria-label="Filter section">
-      <button type="button" class="seg active" data-filter="ALL" aria-selected="true">All</button>
-      <button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
-      <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
+    <div id="collegeWrap">
+      <div id="collegeGrid" class="college-grid" aria-live="polite">Loading…</div>
     </div>
-    <div class="toolbar-right">
-      <label for="collegeSelect" class="sr-only">Choose item</label>
-      <select id="collegeSelect" aria-label="Choose item"></select>
-      <button id="collegeCopyBtn" class="btn" type="button">Copy</button>
-      <button id="collegePrintBtn" class="btn" type="button">Print</button>
-    </div>
-  </div>
-
-  <article id="collegeDetail" class="college-detail" aria-live="polite">
-    <div class="placeholder">Choose an item from the dropdown to view full details.</div>
-  </article>
-</div>
-
   </div>
 </div>
 
 
-<script id="college-loader">
+
+<script id="college-loader-min">
 (function(){
-  const MASTER_URL = 'reads.txt'; // master file
+  const MASTER_URL = 'reads.txt';
   const selectEl = document.getElementById('collegeSelect');
   const detailEl = document.getElementById('collegeDetail');
   const segs = document.querySelectorAll('#collegeModal .segmented .seg');
-  const copyBtn = document.getElementById('collegeCopyBtn');
-  const printBtn = document.getElementById('collegePrintBtn');
 
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
@@ -10360,30 +10360,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const reSection = /^\s*\[(internal|external)\]\s*$/i;
     const reFromTo = /^\s*From\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*To\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*$/i;
 
-    function consumeUntilNonBlank(){
-      while(i < lines.length && /^\s*$/.test(lines[i])) i++;
-    }
+    function consumeUntilNonBlank(){ while(i < lines.length && /^\s*$/.test(lines[i])) i++; }
 
     while(i < lines.length){
-      while(i < lines.length && reSection.test(lines[i])){
-        section = lines[i].match(reSection)[1].toUpperCase();
-        i++;
-      }
-      consumeUntilNonBlank();
-      if (i >= lines.length) break;
-
+      while(i < lines.length && reSection.test(lines[i])){ section = lines[i].match(reSection)[1].toUpperCase(); i++; }
+      consumeUntilNonBlank(); if (i >= lines.length) break;
       const mFT = lines[i].match(reFromTo);
       if (!mFT){ i++; continue; }
-      const from = mFT[1]; const to = mFT[2];
-      i++;
+      const from = mFT[1]; const to = mFT[2]; i++;
       consumeUntilNonBlank();
-      const title = (lines[i] || '').trim();
-      i++;
+      const title = (lines[i] || '').trim(); i++;
       const bodyLines = [];
-      while(i < lines.length && !/^\s*$/.test(lines[i]) && !reFromTo.test(lines[i]) && !reSection.test(lines[i])){
-        bodyLines.push(lines[i]);
-        i++;
-      }
+      while(i < lines.length && !/^\s*$/.test(lines[i]) && !reFromTo.test(lines[i]) && !reSection.test(lines[i])){ bodyLines.push(lines[i]); i++; }
       items.push({ section, from, to, title, body: bodyLines.join('\n').trim() });
       while(i < lines.length && /^\s*$/.test(lines[i])) i++;
     }
@@ -10392,8 +10380,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function fmtRange(it){ return `${it.from} – ${it.to}`; }
 
-  function populateSelect(items, mode){
-    const filtered = items.filter(it => mode === 'ALL' || it.section === mode);
+  let ALL_ITEMS = [];
+  function populateSelect(mode){
+    const filtered = ALL_ITEMS.filter(it => mode === 'ALL' || it.section === mode);
     const groups = { INTERNAL: [], EXTERNAL: [] };
     filtered.forEach(it => groups[it.section||'INTERNAL'].push(it));
 
@@ -10402,18 +10391,14 @@ document.addEventListener('DOMContentLoaded', function () {
       return `<option value="${idx}">${escapeHtml(label)}</option>`;
     }
 
-    let html = '';
+    let html = '<option value="" selected disabled>Choose an item…</option>';
     if (mode === 'ALL'){
-      if (groups.INTERNAL.length){
-        html += `<optgroup label="Internal">` + groups.INTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`;
-      }
-      if (groups.EXTERNAL.length){
-        html += `<optgroup label="External">` + groups.EXTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`;
-      }
-    }else{
-      html = filtered.map(it => optionHTML(it, it._i)).join('');
+      if (groups.INTERNAL.length){ html += `<optgroup label="Internal">` + groups.INTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`; }
+      if (groups.EXTERNAL.length){ html += `<optgroup label="External">` + groups.EXTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`; }
+    } else {
+      html += filtered.map(it => optionHTML(it, it._i)).join('');
     }
-    selectEl.innerHTML = `<option value="" selected disabled>Choose an item…</option>` + html;
+    selectEl.innerHTML = html;
   }
 
   function renderDetail(it){
@@ -10435,9 +10420,8 @@ document.addEventListener('DOMContentLoaded', function () {
     detailEl.scrollTop = 0;
   }
 
-  let ALL_ITEMS = [];
   function applyMode(mode){
-    populateSelect(ALL_ITEMS, mode);
+    populateSelect(mode);
     renderDetail(null);
   }
 
@@ -10452,11 +10436,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const item = Number.isInteger(idx) ? ALL_ITEMS.find(x => x._i === idx) : null;
       renderDetail(item || null);
     });
-    if (copyBtn) copyBtn.addEventListener('click', () => {
-      const txt = detailEl.textContent || '';
-      navigator.clipboard.writeText(txt).catch(()=>{});
-    });
-    if (printBtn) printBtn.addEventListener('click', () => window.print());
   }
 
   function refreshCollege(){
@@ -10468,7 +10447,6 @@ document.addEventListener('DOMContentLoaded', function () {
         items.forEach((it, i)=> it._i = i);
         ALL_ITEMS = items;
         applyMode('ALL');
-        renderDetail(null);
       })
       .catch(err => {
         detailEl.innerHTML = '<p style="color:#ff7d7d">Could not load reads.txt (' + err.message + ')</p>';
@@ -10479,7 +10457,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('DOMContentLoaded', () => { refreshCollege().then(initControls); });
 })();
 </script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
