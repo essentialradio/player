@@ -4458,6 +4458,27 @@ html[data-theme="light"] #mobileNowBar {
   .badge{ font-size:11px; border:1px solid rgba(0,160,170,0.45); border-radius:999px; padding:2px 8px; margin-left:8px; background: linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18)); font-weight:800; letter-spacing:.2px; }
   .arrow{ font-size:18px; opacity:0.9; }
   .muted{ opacity:0.7; }
+
+  /* Movement tags */
+  .move{ display:flex; align-items:center; justify-content:flex-end; gap:6px; }
+  .move-tag{ font-size:12px; font-weight:800; letter-spacing:.2px; padding:4px 10px; border-radius:999px; border:1px solid transparent; }
+  .move-tag.up{ 
+    background: linear-gradient(180deg, rgba(46, 204, 113, 0.25), rgba(46, 204, 113, 0.18));
+    border-color: rgba(39, 174, 96, 0.55);
+    color: #c5f7d5;
+  }
+  .move-tag.down{ 
+    background: linear-gradient(180deg, rgba(231, 76, 60, 0.25), rgba(231, 76, 60, 0.18));
+    border-color: rgba(192, 57, 43, 0.55);
+    color: #ffd3d0;
+  }
+
+  /* NEW pill in house yellow */
+  .badge.new{
+    background: linear-gradient(180deg, rgba(255, 209, 102, 0.35), rgba(255, 209, 102, 0.24));
+    border-color: rgba(255, 209, 102, 0.75);
+    color: #1a1a1a;
+  }
 </style>
 
 <style id="college-style-min">
@@ -5265,7 +5286,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         </div>
       </div>
 
-      <div class="playlist-note">Key: <span class="badge">NEW</span> = new addition (artist & title in bold), <span class="arrow">↑</span> = promoted, <span class="arrow">↓</span> = down.</div>
+      <div class="playlist-note">Key: <span class="badge new">NEW</span> = new addition, <span class="move-tag up">UP</span> = promoted, <span class="move-tag down">DOWN</span> = down.</div>
 
       <div class="playlist-grid" id="playlistGrid"></div>
     </div>
@@ -10429,8 +10450,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const rows = items.map((t, i) => {
       const id = `trk-${letter}-${i}`;
       const boldOn = t.flags.hasNew ? ['<strong>','</strong>'] : ['',''];
-      const badge = t.flags.hasNew ? '<span class="badge">NEW</span>' : '';
-      const arrow = t.flags.hasUp ? '<span class="arrow" aria-label="Up">↑</span>' : (t.flags.hasDown ? '<span class="arrow" aria-label="Down">↓</span>' : '');
+      const badge = t.flags.hasNew ? '<span class="badge new">NEW</span>' : '';
+      const arrow = t.flags.hasUp ? '<span class="move-tag up" aria-label="Up">UP</span>' : (t.flags.hasDown ? '<span class="move-tag down" aria-label="Down">DOWN</span>' : '');
       return `<div class="track" id="${id}">
         <img class="cover" alt="" src="${PLACEHOLDER}" ${isiOS ? '' : 'loading="lazy"'} />
         <div class="meta">
