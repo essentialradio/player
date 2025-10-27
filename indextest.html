@@ -4429,25 +4429,6 @@ html[data-theme="light"] #mobileNowBar {
                 linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
     background-color: var(--panel, #0f1316);
     color: var(--text, #e9f1f3);
-	/* Stack UP / DOWN / NEW on separate lines on mobile */
-@media (max-width: 680px){
-  /* Put the arrow row under the text */
-  #playlistModal .track{
-    grid-template-columns: 56px 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "cover meta"
-      "cover move";
-    align-items: start;
-  }
-  #playlistModal .track .cover{ grid-area: cover; }
-  #playlistModal .track .meta{ grid-area: meta; }
-  #playlistModal .track .move{ grid-area: move; justify-content: flex-start; margin-top: 4px; }
-
-  /* Make NEW drop under the artist on its own line */
-  #playlistModal .track .artist .badge{ display: block; margin-top: 2px; }
-}
-
   }
   #playlistModal h2{margin:0 0 8px 0; color:#00818a;}
   #playlistModal .close{position:absolute; top:10px; right:12px; font-size:28px; line-height:1; color:var(--text,#e9f1f3); opacity:0.85; cursor:pointer; padding:4px 10px; border-radius:10px;}
@@ -4545,6 +4526,14 @@ html[data-theme="light"] #mobileNowBar {
   #playlistWrap.single-list .playlist-section {
     grid-template-columns: repeat(3, minmax(300px, 1fr));
   }
+}
+/* === END PATCH === */
+
+/* === PATCH: Playlist key layout (inline desktop, stacked mobile) === */
+#playlistModal .playlist-note { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#playlistModal .playlist-note .key-item { display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 640px){
+  #playlistModal .playlist-note { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
 /* === END PATCH === */
 </style>
@@ -5350,11 +5339,11 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         </div>
       </div>
 
-     <div class="playlist-note">
+      <div class="playlist-note">
   Key:
-  <span class="mobile-br"><br></span><span class="badge new">NEW</span> = new addition
-  <span class="mobile-br"><br></span><span class="move-tag up" aria-hidden="true">▲</span> = promoted
-  <span class="mobile-br"><br></span><span class="move-tag down" aria-hidden="true">▼</span> = down
+  <span class="key-item"><span class="badge new">NEW</span> = new addition</span>
+  <span class="key-item"><span class="move-tag up" aria-hidden="true">▲</span> = promoted</span>
+  <span class="key-item"><span class="move-tag down" aria-hidden="true">▼</span> = down</span>
 </div>
 
       <div class="playlist-grid" id="playlistGrid"></div>
