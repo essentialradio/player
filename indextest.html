@@ -4456,6 +4456,22 @@ html[data-theme="light"] #mobileNowBar {
   .chip{ font-size:11px; border:1px solid var(--border, rgba(255,255,255,0.12)); border-radius:999px; padding:2px 8px; opacity:0.85; }
   .legend{ color: rgba(233,241,243,0.75); font-size: 13px; margin: 6px 0 10px; }
 </style>
+
+<style id="college-style-dropdown">
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  #collegeModal .college-toolbar{ display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center; padding: 8px 0 12px; border-bottom:1px solid var(--border, rgba(255,255,255,0.12)); margin-bottom:10px; }
+  #collegeModal .toolbar-right{ display:flex; gap:8px; align-items:center; }
+  #collegeSelect{ appearance:none; border-radius:10px; border:1px solid var(--border, rgba(255,255,255,0.14)); background: rgba(255,255,255,0.05); color: var(--text, #e9f1f3); padding:8px 12px; min-width:min(48vw, 420px); outline:none; }
+  .college-detail{ flex:1; min-height:0; overflow:auto; padding: 12px 2px 16px; display:flex; flex-direction:column; gap:12px; }
+  .college-detail .placeholder{ color: rgba(233,241,243,0.7); font-style: italic; }
+  .detail-head{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;}
+  .detail-title{font-size: clamp(18px, 2.4vw, 28px); margin:0; color: var(--text, #e9f1f3);}
+  .date-pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid rgba(0,160,170,0.45); background:linear-gradient(180deg, rgba(0,160,170,0.25), rgba(0,160,170,0.18));}
+  .badge{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:800; letter-spacing:.3px; border:1px solid transparent; }
+  .badge.internal{ background: rgba(89,210,255,0.18); border-color: rgba(89,210,255,0.35); color:#bfefff; }
+  .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
+  .detail-body p{ margin:0 0 10px 0; white-space:pre-wrap; }
+</style>
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -10292,136 +10308,178 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
-    <div class="legend">Tip: edit <code>reads.txt</code> and refresh — headings starting with <code>#</code> become cards. Lines like <em>(read until 6 June)</em> are detected and shown on each card.</div>
+    <div class="legend">Tip: edit <code>reads.txt</code> with blocks like:<br><code>[Internal]</code><br><code>From - 27/10/25 To - 29/10/25</code><br><code>Heading</code><br><code>Details...</code><br><em>(blank line between items)</em>.</div>
 
-    <div id="collegeWrap">
-      <div id="collegeGrid" class="college-grid" aria-live="polite">Loading…</div>
+    
+<div id="collegeWrap">
+  <div class="college-toolbar" style="margin-top:8px">
+    <div class="segmented" role="tablist" aria-label="Filter section">
+      <button type="button" class="seg active" data-filter="ALL" aria-selected="true">All</button>
+      <button type="button" class="seg" data-filter="INTERNAL" aria-selected="false">Internal</button>
+      <button type="button" class="seg" data-filter="EXTERNAL" aria-selected="false">External</button>
     </div>
+    <div class="toolbar-right">
+      <label for="collegeSelect" class="sr-only">Choose item</label>
+      <select id="collegeSelect" aria-label="Choose item"></select>
+      <button id="collegeCopyBtn" class="btn" type="button">Copy</button>
+      <button id="collegePrintBtn" class="btn" type="button">Print</button>
+    </div>
+  </div>
+
+  <article id="collegeDetail" class="college-detail" aria-live="polite">
+    <div class="placeholder">Choose an item from the dropdown to view full details.</div>
+  </article>
+</div>
+
   </div>
 </div>
 
+
 <script id="college-loader">
 (function(){
-  const READS_URL = 'reads.txt';
-  const grid = document.getElementById('collegeGrid');
-  const q = document.getElementById('collegeSearch');
+  const MASTER_URL = 'reads.txt'; // master file
+  const selectEl = document.getElementById('collegeSelect');
+  const detailEl = document.getElementById('collegeDetail');
   const segs = document.querySelectorAll('#collegeModal .segmented .seg');
   const copyBtn = document.getElementById('collegeCopyBtn');
   const printBtn = document.getElementById('collegePrintBtn');
 
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
-  function parseReads(text){
+  // Parse master format:
+  // [Internal] or [External] (optional, persists until changed)
+  // From - dd/mm/yy To - dd/mm/yy
+  // Heading
+  // Body (multiple lines)
+  // <blank line> separates items
+  function parseMaster(text){
     const lines = text.split(/\r?\n/);
     let section = 'INTERNAL';
     const items = [];
-    let current = null;
+    let i = 0;
+    const reSection = /^\s*\[(internal|external)\]\s*$/i;
+    const reFromTo = /^\s*From\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*To\s*-\s*(\d{1,2}\/\d{1,2}\/\d{2,4})\s*$/i;
 
-    const isSection = l => /^\s*\[(internal|external)\]\s*$/i.test(l);
-    const getSection = l => (l.match(/\[(internal|external)\]/i)||[])[1]?.toUpperCase();
-    const isHeading = l => /^\s*#\s+/.test(l);
-    const headingText = l => l.replace(/^\s*#\s+/, '').trim();
-    const isBlank = l => /^\s*$/.test(l);
-
-    function startItem(title){
-      current = { section, title: title.trim(), body: [], expires:null };
-      items.push(current);
+    function consumeUntilNonBlank(){
+      while(i < lines.length && /^\s*$/.test(lines[i])) i++;
     }
 
-    function finalize(){
-      if (!current) return;
-      const joined = current.body.join('\n');
-      const m = joined.match(/\(\s*read\s+until\s+([^\)]+)\)/i);
-      if (m){ current.expires = m[1].trim(); }
-      current.body = joined.replace(/\n{3,}/g,'\n\n').trim();
-      current = null;
-    }
+    while(i < lines.length){
+      while(i < lines.length && reSection.test(lines[i])){
+        section = lines[i].match(reSection)[1].toUpperCase();
+        i++;
+      }
+      consumeUntilNonBlank();
+      if (i >= lines.length) break;
 
-    for (let i=0;i<lines.length;i++){
-      const raw = lines[i];
-      if (isSection(raw)){ finalize(); section = getSection(raw) || section; continue; }
-      if (isHeading(raw)){ finalize(); startItem(headingText(raw)); continue; }
-      if (isBlank(raw)){ if (current) current.body.push(''); continue; }
-      if (!current){ startItem(raw); } else { current.body.push(raw); }
+      const mFT = lines[i].match(reFromTo);
+      if (!mFT){ i++; continue; }
+      const from = mFT[1]; const to = mFT[2];
+      i++;
+      consumeUntilNonBlank();
+      const title = (lines[i] || '').trim();
+      i++;
+      const bodyLines = [];
+      while(i < lines.length && !/^\s*$/.test(lines[i]) && !reFromTo.test(lines[i]) && !reSection.test(lines[i])){
+        bodyLines.push(lines[i]);
+        i++;
+      }
+      items.push({ section, from, to, title, body: bodyLines.join('\n').trim() });
+      while(i < lines.length && /^\s*$/.test(lines[i])) i++;
     }
-    finalize();
     return items;
   }
 
-  function cardHTML(it){
-    const badgeClass = it.section === 'INTERNAL' ? 'internal' : 'external';
-    const expire = it.expires ? `<span class="expire">Read until: ${escapeHtml(it.expires)}</span>` : '';
-    const paras = (it.body||'').split(/\n/).map(p => p.trim() ? `<p>${escapeHtml(p)}</p>` : '<p class="muted">&nbsp;</p>').join('');
-    const chips = [];
-    if (/\bapply\b/i.test(it.body)) chips.push('Apply');
-    if (/\bemail\b/i.test(it.body)) chips.push('Email');
-    if (/\bvisit\b|http/i.test(it.body)) chips.push('Link');
-    if (/\bFREE\b/i.test(it.body)) chips.push('Free');
-    const chipsHtml = chips.map(c=>`<span class="chip">${c}</span>`).join('');
-    return `<article class="card" data-section="${it.section}" data-text="${(it.title + ' ' + (it.body||'')).toLowerCase()}">
-      <header><span class="badge ${badgeClass}">${it.section.toLowerCase()}</span><div class="chips">${chipsHtml}</div></header>
-      <h3>${escapeHtml(it.title)}</h3>
-      <div class="body">${paras}</div>
-      ${expire ? `<div class="expire">${expire}</div>` : ''}
-    </article>`;
+  function fmtRange(it){ return `${it.from} – ${it.to}`; }
+
+  function populateSelect(items, mode){
+    const filtered = items.filter(it => mode === 'ALL' || it.section === mode);
+    const groups = { INTERNAL: [], EXTERNAL: [] };
+    filtered.forEach(it => groups[it.section||'INTERNAL'].push(it));
+
+    function optionHTML(it, idx){
+      const label = `${fmtRange(it)} · ${it.title}`;
+      return `<option value="${idx}">${escapeHtml(label)}</option>`;
+    }
+
+    let html = '';
+    if (mode === 'ALL'){
+      if (groups.INTERNAL.length){
+        html += `<optgroup label="Internal">` + groups.INTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`;
+      }
+      if (groups.EXTERNAL.length){
+        html += `<optgroup label="External">` + groups.EXTERNAL.map(it=>optionHTML(it, it._i)).join('') + `</optgroup>`;
+      }
+    }else{
+      html = filtered.map(it => optionHTML(it, it._i)).join('');
+    }
+    selectEl.innerHTML = `<option value="" selected disabled>Choose an item…</option>` + html;
   }
 
-  function render(items){
-    grid.innerHTML = items.map(cardHTML).join('') || '<p class="muted">No items found.</p>';
+  function renderDetail(it){
+    if (!it){
+      detailEl.innerHTML = '<div class="placeholder">Choose an item from the dropdown to view full details.</div>';
+      return;
+    }
+    const sectBadge = `<span class="badge ${it.section==='INTERNAL'?'internal':'external'}">${it.section.toLowerCase()}</span>`;
+    detailEl.innerHTML = `
+      <div class="detail-head">
+        <h3 class="detail-title">${escapeHtml(it.title)}</h3>
+        <span class="date-pill">${escapeHtml(fmtRange(it))}</span>
+        ${sectBadge}
+      </div>
+      <div class="detail-body">
+        ${it.body ? it.body.split(/\n/).map(p => `<p>${escapeHtml(p)}</p>`).join('') : '<p class="muted">No extra details.</p>'}
+      </div>
+    `;
+    detailEl.scrollTop = 0;
   }
 
-  function applyFilters(){
-    const needle = (q.value||'').trim().toLowerCase();
-    const modeBtn = Array.from(segs).find(b => b.classList.contains('active'));
-    const mode = (modeBtn?.dataset.filter || 'ALL').toUpperCase();
-    grid.querySelectorAll('.card').forEach(card => {
-      const text = card.getAttribute('data-text') || '';
-      const sect = card.getAttribute('data-section') || 'INTERNAL';
-      const hit = (!needle || text.includes(needle)) && (mode === 'ALL' || sect === mode);
-      card.classList.toggle('hidden', !hit);
-    });
-  }
-
-  function showToast(msg){
-    const t = document.createElement('div'); t.className='toast'; t.textContent = msg; document.body.appendChild(t);
-    setTimeout(()=>{t.style.opacity='0'; t.style.transition='opacity .4s';}, 1200);
-    setTimeout(()=>t.remove(), 1800);
-  }
-
-  function copyVisible(){
-    const out = [];
-    const modeBtn = Array.from(segs).find(b => b.classList.contains('active'));
-    const mode = (modeBtn?.dataset.filter || 'ALL').toUpperCase();
-    out.push(`College Info — ${mode}`);
-    grid.querySelectorAll('.card:not(.hidden)').forEach(card => {
-      const title = card.querySelector('h3')?.textContent || '';
-      const body = Array.from(card.querySelectorAll('.body p')).map(p=>p.textContent).join('\n');
-      out.push(`- ${title}\n${body}`);
-    });
-    navigator.clipboard.writeText(out.join('\n\n')).then(()=>showToast('Copied visible items'));
+  let ALL_ITEMS = [];
+  function applyMode(mode){
+    populateSelect(ALL_ITEMS, mode);
+    renderDetail(null);
   }
 
   function initControls(){
     segs.forEach(btn => btn.addEventListener('click', ()=>{
       segs.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-selected', b===btn ? 'true':'false'); });
-      applyFilters();
+      const mode = (btn.dataset.filter || 'ALL').toUpperCase();
+      applyMode(mode);
     }));
-    q.addEventListener('input', applyFilters);
-    copyBtn.addEventListener('click', copyVisible);
-    printBtn.addEventListener('click', ()=>window.print());
+    selectEl.addEventListener('change', () => {
+      const idx = selectEl.value ? parseInt(selectEl.value,10) : NaN;
+      const item = Number.isInteger(idx) ? ALL_ITEMS.find(x => x._i === idx) : null;
+      renderDetail(item || null);
+    });
+    if (copyBtn) copyBtn.addEventListener('click', () => {
+      const txt = detailEl.textContent || '';
+      navigator.clipboard.writeText(txt).catch(()=>{});
+    });
+    if (printBtn) printBtn.addEventListener('click', () => window.print());
   }
 
   function refreshCollege(){
-    const url = READS_URL + (READS_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
-    grid.textContent = 'Loading…';
-    fetch(url).then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-              .then(txt => { render(parseReads(txt)); applyFilters(); initControls(); })
-              .catch(err => { grid.innerHTML = '<p style="color:#ff7d7d">Could not load reads.txt (' + err.message + ')</p>'; });
+    const url = MASTER_URL + (MASTER_URL.includes('?') ? '&' : '?') + 'v=' + Date.now();
+    return fetch(url)
+      .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(txt => {
+        const items = parseMaster(txt);
+        items.forEach((it, i)=> it._i = i);
+        ALL_ITEMS = items;
+        applyMode('ALL');
+        renderDetail(null);
+      })
+      .catch(err => {
+        detailEl.innerHTML = '<p style="color:#ff7d7d">Could not load reads.txt (' + err.message + ')</p>';
+      });
   }
+
   window.refreshCollege = refreshCollege;
-  document.addEventListener('DOMContentLoaded', refreshCollege);
+  document.addEventListener('DOMContentLoaded', () => { refreshCollege().then(initControls); });
 })();
 </script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
