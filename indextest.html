@@ -4542,7 +4542,7 @@ html[data-theme="light"] #mobileNowBar {
   .detail-body p{ margin:0 0 10px 0; white-space:pre-wrap; }
 </style>
 
-<!-- PATCH v2: playlist modal desktop full-width & multi-columns; hide All tab on desktop; key items on separate lines -->
+<!-- PATCH: playlist modal desktop full-width & multi-columns; hide All tab on desktop -->
 <style>
 @media (min-width: 1024px) {
   /* Make the playlist modal almost full-screen on desktop */
@@ -4559,17 +4559,6 @@ html[data-theme="light"] #mobileNowBar {
   #playlistModal .segmented .seg[data-filter="ALL"] {
     display: none !important;
   }
-}
-
-/* Ensure key items in each track are on separate lines */
-#playlistModal .track .artist,
-#playlistModal .track .title,
-#playlistModal .track .flags {
-  display: block;
-}
-#playlistModal .track .flags .badge {
-  display: inline-block;
-  margin-top: 4px;
 }
 </style>
 
@@ -10510,9 +10499,8 @@ document.addEventListener('DOMContentLoaded', function () {
       return `<div class="track" id="${id}">
         <img class="cover" alt="" src="${PLACEHOLDER}" ${isiOS ? '' : 'loading="lazy"'} />
         <div class="meta">
-          <div class="artist">${boldOn[0]}${t.artist}${boldOn[1]}</div>
+          <div class="artist">${boldOn[0]}${t.artist}${boldOn[1]} ${badge}</div>
           <div class="title">${boldOn[0]}${t.title}${boldOn[1]}</div>
-          <div class="flags">${badge}</div>
         </div>
         <div class="move">${arrow}</div>
       </div>`;
