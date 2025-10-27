@@ -4418,8 +4418,6 @@ html[data-theme="light"] #mobileNowBar {
   body.alt-mode #countdown { display: none !important; }
 </style>
 
-
-
 <style id="playlist-text-style">
   #playlistModal .modal-content {
     width: 100vw;
@@ -4560,10 +4558,7 @@ html[data-theme="light"] #mobileNowBar {
   .badge.c { background: linear-gradient(180deg, rgba(180,180,180,0.18), rgba(180,180,180,0.12)); border-color: rgba(180,180,180,0.3); }
   .badge.c .dot { background: #bdbdbd; box-shadow: 0 0 10px rgba(189,189,189,0.5); }
 
-  .count {
-    font-size: 12px;
-    opacity: 0.75;
-  }
+  .count { font-size: 12px; opacity: 0.75; }
 
   .playlist-section ul { list-style: none; margin: 0; padding: 0; }
   .playlist-section li {
@@ -4577,8 +4572,6 @@ html[data-theme="light"] #mobileNowBar {
   .playlist-section li:last-child { border-bottom: 0; }
   .artist { font-weight: 700; letter-spacing: .2px; }
   .title { opacity: 0.92; }
-
-  .muted { opacity: 0.6; }
 
   .toast {
     position: fixed;
@@ -4601,8 +4594,6 @@ html[data-theme="light"] #mobileNowBar {
     .playlist-section { break-inside: avoid; border: 1px solid #ccc; }
   }
 </style>
-
-
 </head>
 <body>
 <!-- BURGER MENU (mobile only) -->
@@ -5360,10 +5351,23 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal-content">
 <span class="close" onclick="closeModal('playlistModal')">×</span>
 <h2 style="margin-top:0;color:#00818a">Essential Radio Playlist</h2>
-<div id="playlistWrap" class="playlist-text">Loading playlist…</div>
-<div style="text-align:right;margin-top:8px">
-  <button id="playlistReloadBtn" type="button">Reload</button>
+<div class="playlist-toolbar">
+  <div class="toolbar-left">
+    <div class="segmented" role="tablist" aria-label="Filter list">
+      <button type="button" class="seg active" data-filter="ALL" aria-selected="true">All</button>
+      <button type="button" class="seg" data-filter="A">A-List</button>
+      <button type="button" class="seg" data-filter="B">B-List</button>
+      <button type="button" class="seg" data-filter="C">C-List</button>
+    </div>
+  </div>
+  <div class="toolbar-right">
+    <input id="playlistSearch" type="search" placeholder="Search artist or title" aria-label="Search playlist">
+    <button id="playlistReloadBtn" type="button" class="btn">Reload</button>
+    <button id="playlistCopyBtn" type="button" class="btn">Copy</button>
+  </div>
 </div>
+
+<div id="playlistWrap" class="playlist-text">Loading playlist…</div>
 </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
@@ -10422,7 +10426,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-
 <script id="playlist-text-loader">
 (function(){
   const TXT_URL = 'playlist.txt';
@@ -10433,22 +10436,25 @@ document.addEventListener('DOMContentLoaded', function () {
     ));
   }
 
+  // Split on the FIRST dash that has spaces on both sides (supports -, –, —).
+  // Avoids breaking hyphenated words like 'K-Pop'.
+  function splitArtistTitle(row){
+    const sep = row.match(/\s+[-–—]\s+/);
+    if(!sep) return null;
+    const idx = sep.index;
+    return [row.slice(0, idx).trim(), row.slice(idx + sep[0].length).trim()];
+  }
+
   function parsePlaylistText(txt){
     const lines = txt.split(/\r?\n/).map(l => l.trim());
     const data = { A: [], B: [], C: [] };
     let section = null;
     const head = /^([ABC])\s*-\s*List\s*$/i;
-
     for (const line of lines){
       if (!line) continue;
       const m = line.match(head);
-      if (m){
-        section = m[1].toUpperCase();
-        continue;
-      }
-      if (section && data[section]){
-        data[section].push(line);
-      }
+      if (m){ section = m[1].toUpperCase(); continue; }
+      if (section && data[section]) data[section].push(line);
     }
     return data;
   }
@@ -10460,11 +10466,11 @@ document.addEventListener('DOMContentLoaded', function () {
              + `<span class="count">${items.length} track${items.length===1?'':'s'}</span></header>`
              + `<ul>`;
     html += items.map(row => {
-      const parts = row.split(/\s*-\s*/);
-      if (parts.length >= 2){
-        const artist = escapeHtml(parts.shift());
-        const title  = escapeHtml(parts.join(' - '));
-        return `<li data-text="${(artist + ' ' + title).toLowerCase()}"><span class="artist">${artist}</span><span class="title">${title}</span></li>`;
+      const pair = splitArtistTitle(row);
+      if (pair){
+        const artist = escapeHtml(pair[0]);
+        const title  = escapeHtml(pair[1]);
+        return `<li data-text="${(pair[0] + ' ' + pair[1]).toLowerCase()}"><span class="artist">${artist}</span><span class="title">${title}</span></li>`;
       }
       return `<li data-text="${row.toLowerCase()}">${escapeHtml(row)}</li>`;
     }).join('');
@@ -10572,7 +10578,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 </script>
-
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
