@@ -5248,8 +5248,8 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <div class="playlist-toolbar">
   <div class="toolbar-left">
     <div class="segmented" role="tablist" aria-label="Filter list">
-      <button type="button" class="seg active" data-filter="ALL" aria-selected="true">All</button>
-      <button type="button" class="seg" data-filter="A">A-List</button>
+      <button type="button" class="seg" data-filter="ALL" aria-selected="false">All</button>
+      <button type="button" class="seg active" data-filter="A" aria-selected="true">A-List</button>
       <button type="button" class="seg" data-filter="B">B-List</button>
       <button type="button" class="seg" data-filter="C">C-List</button>
     </div>
@@ -5268,7 +5268,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   <span class="muted">Add markers in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>. Artwork is resolved via <code>/api/artwork</code>.</span>
 </div>
 
-<div id="playlistWrap" class="playlist-text">Loading playlist…</div>
+<div id="playlistWrap" class="playlist-text" class="single-list">Loading playlist…</div>
 </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
