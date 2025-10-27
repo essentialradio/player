@@ -4506,6 +4506,36 @@ html[data-theme="light"] #mobileNowBar {
     border-color: var(--er-accent, #fed351) !important;
     color: #000 !important;
   }
+
+/* === PATCH: Multi-column layout for single-list (A/B/C) on desktop === */
+@media (min-width: 900px) {
+  #playlistWrap.single-list .playlist-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 12px;
+  }
+  #playlistWrap.single-list .playlist-section > h3 {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;
+  }
+  #playlistWrap.single-list .playlist-section .track + .track {
+    margin-top: 0;
+  }
+}
+@media (min-width: 1400px) {
+  #playlistWrap.single-list .playlist-section {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+}
+/* === END PATCH === */
+
+/* === PATCH: Playlist key layout (inline desktop, stacked mobile) === */
+#playlistModal .playlist-note { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#playlistModal .playlist-note .key-item { display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 640px){
+  #playlistModal .playlist-note { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+/* === END PATCH === */
 </style>
 
 <style id="college-style-min">
@@ -5309,7 +5339,12 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
         </div>
       </div>
 
-      <div class="playlist-note">Key: <span class="badge new">NEW</span> = new addition, <span class="move-tag up" aria-hidden="true">▲</span> = promoted, <span class="move-tag down" aria-hidden="true">▼</span> = down.</div>
+      <div class="playlist-note">
+  Key:
+  <span class="key-item"><span class="badge new">NEW</span> = new addition</span>
+  <span class="key-item"><span class="move-tag up" aria-hidden="true">▲</span> = promoted</span>
+  <span class="key-item"><span class="move-tag down" aria-hidden="true">▼</span> = down</span>
+</div>
 
       <div class="playlist-grid" id="playlistGrid"></div>
     </div>
