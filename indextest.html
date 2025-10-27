@@ -5268,7 +5268,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   <span class="muted">Add markers in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>. Artwork is resolved via <code>/api/artwork</code>.</span>
 </div>
 
-<div id="playlistWrap" class="playlist-text" class="single-list">Loading playlist…</div>
+<div id="playlistWrap" class="playlist-text single-list">Loading playlist…</div>
 </div>
 </div>
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal" data-refresh-fn="refreshListenAgain" id="listenModal">
@@ -10333,6 +10333,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const PLACEHOLDER = 'Essential Radio Logo.png';
 
+  function getInitialList(){
+    try {
+      const url = new URL(location.href);
+      const q = (url.searchParams.get('list') || '').toUpperCase();
+      const h = ((location.hash.match(/list=(ALL|A|B|C)/i) || [,''])[1] || '').toUpperCase();
+      return (q || h || 'A');
+    } catch(e){ return 'A'; }
+  }
+
+
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
@@ -10454,7 +10464,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     html += '</div>';
     wrap.innerHTML = html || '<p>No playlist entries found.</p>';
-    hydrateCovers(wrap);
+    
+    // Instant default: A-only (or URL-selected list) to avoid initial flash
+    (function(){
+      const initial = getInitialList();
+      if (initial !== 'ALL'){
+        wrap.classList.add('single-list');
+        wrap.querySelectorAll('.playlist-section').forEach(sec => {
+          const letter = sec.getAttribute('data-section');
+          sec.style.display = (letter === initial) ? '' : 'none';
+        });
+      }
+    })();
+hydrateCovers(wrap);
     attachInteractions();
   }
 
