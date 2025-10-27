@@ -4420,13 +4420,11 @@ html[data-theme="light"] #mobileNowBar {
 
 <style id="playlist-text-style">
   #playlistModal .modal-content {
-    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
-    border-radius: 0; padding: clamp(12px, 2vw, 28px);
-    display: flex; flex-direction: column;
+    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0;
+    padding: clamp(12px, 2vw, 28px); display: flex; flex-direction: column;
     background: radial-gradient(1200px 600px at 80% -10%, rgba(0,161,170,0.15), transparent 60%),
                 linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-    background-color: var(--panel, #0f1316);
-    color: var(--text, #e9f1f3);
+    background-color: var(--panel, #0f1316); color: var(--text, #e9f1f3);
   }
   #playlistModal h2 { margin: 0 0 8px 0; color: var(--accent, #00a0aa); font-size: clamp(18px, 2.6vw, 30px); letter-spacing: 0.2px; }
   #playlistModal .close { position: absolute; top: 10px; right: 12px; font-size: 28px; line-height: 1; color: var(--text, #e9f1f3); opacity: 0.85; cursor: pointer; padding: 4px 10px; border-radius: 10px; }
@@ -4448,8 +4446,9 @@ html[data-theme="light"] #mobileNowBar {
   .playlist-legend code { background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 6px; }
 
   #playlistWrap { flex: 1; overflow: auto; padding: 12px 2px 16px; }
-  #playlistWrap .playlist-grid { display: grid; grid-template-columns: repeat(3, minmax(320px, 1fr)); gap: clamp(12px, 2vw, 20px); }
-  @media (max-width: 1100px) { #playlistWrap .playlist-grid { grid-template-columns: repeat(2, minmax(300px, 1fr)); } }
+
+  #playlistWrap .playlist-grid { display: grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: clamp(12px, 2vw, 20px); }
+  @media (max-width: 1020px) { #playlistWrap .playlist-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); } }
   @media (max-width: 640px)  { #playlistWrap .playlist-grid { grid-template-columns: 1fr; } }
 
   .playlist-section { padding: 12px 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border, rgba(255,255,255,0.12)); border-radius: 16px; backdrop-filter: blur(4px); }
@@ -4465,31 +4464,26 @@ html[data-theme="light"] #mobileNowBar {
   .playlist-section ul { list-style: none; margin: 0; padding: 0; }
   .playlist-section li {
     padding: 8px 0; border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
-    display: grid; grid-template-columns: 52px 1.2fr 1fr; gap: 12px; align-items: center;
+    display: grid; grid-template-columns: auto 1.15fr 1fr; gap: 10px; align-items: center;
   }
   .playlist-section li:last-child { border-bottom: 0; }
-
-  /* Artwork */
-  .artwrap { width: 44px; height: 44px; border-radius: 10px; overflow: hidden; position: relative;
-             background: rgba(255,255,255,0.04); border: 1px solid var(--border, rgba(255,255,255,0.12)); display: grid; place-items: center; }
-  .artwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .artwrap .art-fallback { font-weight: 800; font-size: 12px; opacity: 0.75; }
-  .artwrap.loading::after {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    animation: shimmer 1.2s infinite;
-  }
-  @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-
+  .cover-wrap { width: 48px; height: 48px; border-radius: 10px; overflow: hidden; position: relative; background: rgba(255,255,255,0.06); border: 1px solid var(--border, rgba(255,255,255,0.12)); }
+  .cover { width: 100%; height: 100%; object-fit: cover; display: block; }
   .artist { font-weight: 700; letter-spacing: .2px; display: inline-flex; gap: 8px; align-items: baseline; }
   .title { opacity: 0.95; }
   .is-new .artist, .is-new .title { font-weight: 800; }
 
   .chip.new { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.3px; color: #0f1316; background: #ffde59; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 1px 8px rgba(255,222,89,0.25); }
   .trend { font-weight: 900; margin-left: 8px; font-size: 12px; vertical-align: text-top; }
-  .trend.up { color: #4ade80; } .trend.down { color: #ff7d7d; }
+  .trend.up { color: #4ade80; }
+  .trend.down { color: #ff7d7d; }
 
   .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(15,19,22,0.9); color: #e9f1f3; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); pointer-events: none; z-index: 100000; font-weight: 600; }
+
+  @media (max-width: 420px) {
+    .cover-wrap { width: 40px; height: 40px; border-radius: 8px; }
+    .playlist-section li { grid-template-columns: auto 1fr 1fr; gap: 8px; }
+  }
 
   @media print {
     #playlistModal .close, .playlist-toolbar, .playlist-legend { display: none !important; }
@@ -5265,6 +5259,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   </div>
   <div class="toolbar-right">
     <input id="playlistSearch" type="search" placeholder="Search artist or title" aria-label="Search playlist">
+    <button id="playlistArtToggleBtn" type="button" class="btn" aria-pressed="true">Hide art</button>
     <button id="playlistReloadBtn" type="button" class="btn">Reload</button>
     <button id="playlistCopyBtn" type="button" class="btn">Copy</button>
   </div>
@@ -5273,7 +5268,7 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
   <span class="chip new">NEW</span> New add this week.
   <span class="legend-item"><span class="trend up">▲</span> Rising</span>
   <span class="legend-item"><span class="trend down">▼</span> Falling</span>
-  <span class="muted">Add markers at the end of a line in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>.</span>
+  <span class="muted">Add markers at the end of a line in <code>playlist.txt</code>: <strong>*NEW*</strong>, <strong>*UP*</strong>, or <strong>*DOWN*</strong>. Cover art uses your <em>artwork-unified</em> / iOS patch hooks.</span>
 </div>
 
 <div id="playlistWrap" class="playlist-text">Loading playlist…</div>
@@ -10339,9 +10334,17 @@ document.addEventListener('DOMContentLoaded', function () {
 (function(){
   const TXT_URL = 'playlist.txt';
 
-  // Optional hooks: if you include your existing scripts, these will be used.
-  // <script src="artwork-unified.js"></script>
-  // <script src="artwork-ios-patch.js"></script>
+  // ==== Artwork Unified hooks/config ====
+  const ART = {
+    // If you have global functions, set them here or leave as null:
+    unifiedFn: (window.getUnifiedArtwork || (window.ArtworkUnified && window.ArtworkUnified.lookup)) || null,
+    iosPatchFn: (window.applyIOSArtworkPatch || null),
+    // Or point to your endpoints returning {url: "https://..."}
+    UNIFIED_ENDPOINT: '/artwork-unified',
+    IOS_PATCH_ENDPOINT: '/artwork-ios-patch',
+    cache: new Map(),
+    placeholder: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
+  };
 
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, c => (
@@ -10349,7 +10352,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ));
   }
 
-  // Split on the FIRST spaced dash (supports -, –, —). Avoids breaking 'K-Pop'.
   function splitArtistTitle(row){
     const sep = row.match(/\s+[-–—]\s+/);
     if(!sep) return null;
@@ -10357,43 +10359,10 @@ document.addEventListener('DOMContentLoaded', function () {
     return [row.slice(0, idx).trim(), row.slice(idx + sep[0].length).trim()];
   }
 
-  // Marker helpers
-  function parseFlags(row){ return { isNew:/\*NEW\*/i.test(row), isUp:/\*UP\*/i.test(row), isDown:/\*DOWN\*/i.test(row) }; }
+  function parseFlags(row){
+    return { isNew:/\*NEW\*/i.test(row), isUp:/\*UP\*/i.test(row), isDown:/\*DOWN\*/i.test(row) };
+  }
   function stripMarkers(row){ return row.replace(/\s*\*(NEW|UP|DOWN)\*\s*/gi, ' ').trim(); }
-
-  // ARTWORK RESOLUTION
-  const artCache = new Map();
-  async function resolveArtwork(artist, title){
-    const key = (artist + ' - ' + title).toLowerCase();
-    if (artCache.has(key)) return artCache.get(key);
-
-    let url = null;
-    try {
-      // 1) Preferred: a global unifier (adjust names to match your file)
-      if (window.artworkUnified?.getUrl) {
-        url = await window.artworkUnified.getUrl(artist, title);
-      } else if (window.getUnifiedArtworkUrl) {
-        url = await window.getUnifiedArtworkUrl(artist, title);
-      } else if (window.resolveUnifiedArtwork) {
-        url = await window.resolveUnifiedArtwork(artist, title);
-      }
-      // 2) Fallback: conventional endpoint you may already expose
-      if (!url) {
-        const q = new URLSearchParams({ artist, title }).toString();
-        url = '/artwork-unified?' + q; // Adjust to your actual endpoint if different
-      }
-    } catch (e) {
-      url = null;
-    }
-    artCache.set(key, url);
-    return url;
-  }
-
-  function initials(a, t){
-    const pick = (s) => (s||'').trim().split(/\s+/).map(x => x[0]||'').join('').slice(0,3).toUpperCase();
-    const x = (pick(a) + pick(t)).slice(0,3);
-    return x || '♪';
-  }
 
   function parsePlaylistText(txt){
     const lines = txt.split(/\r?\n/).map(l => l.trim());
@@ -10415,33 +10384,32 @@ document.addEventListener('DOMContentLoaded', function () {
              + `<header><span class="badge ${cls}"><span class="dot"></span>${letter}-List</span>`
              + `<span class="count">${items.length} track${items.length===1?'':'s'}</span></header>`
              + `<ul>`;
-    html += items.map((row, idx) => {
+    html += items.map(row => {
       const flags = parseFlags(row);
       const base = stripMarkers(row);
       const pair = splitArtistTitle(base);
       if (pair){
         const [aRaw, tRaw] = pair;
-        const artistEsc = escapeHtml(aRaw);
-        const titleEsc  = escapeHtml(tRaw);
+        const artist = escapeHtml(aRaw);
+        const title  = escapeHtml(tRaw);
         const liClass = flags.isNew ? 'is-new' : '';
         const chip = flags.isNew ? '<span class="chip new">NEW</span> ' : '';
         const ups  = flags.isUp   ? '<span class="trend up" title="Up this week">▲</span>' : '';
         const dws  = flags.isDown ? '<span class="trend down" title="Down this week">▼</span>' : '';
-        const key  = (aRaw + ' - ' + tRaw).toLowerCase().replace(/[^a-z0-9]+/g,'-');
-        const init = initials(aRaw, tRaw);
+        // item with cover slot
         return `<li class="${liClass}" data-text="${(aRaw + ' ' + tRaw).toLowerCase()}">
-                  <span class="artwrap loading"><img class="art" alt="" loading="lazy" data-artist="${escapeHtml(aRaw)}" data-title="${escapeHtml(tRaw)}"><span class="art-fallback">${init}</span></span>
-                  <span class="artist">${chip}${artistEsc}</span>
-                  <span class="title">${titleEsc}${ups}${dws}</span>
+                  <div class="cover-wrap"><img class="cover" alt="" loading="lazy"
+                       src="${ART.placeholder}" data-artist="${artist}" data-title="${title}"></div>
+                  <span class="artist">${chip}${artist}</span>
+                  <span class="title">${title}${ups}${dws}</span>
                 </li>`;
       }
       const clean = base;
       const liClass = /\*NEW\*/i.test(row) ? 'is-new' : '';
       const ups  = /\*UP\*/i.test(row)   ? '<span class="trend up" title="Up this week">▲</span>' : '';
       const dws  = /\*DOWN\*/i.test(row) ? '<span class="trend down" title="Down this week">▼</span>' : '';
-      const init = initials('', clean);
       return `<li class="${liClass}" data-text="${clean.toLowerCase()}">
-                <span class="artwrap loading"><img class="art" alt="" loading="lazy" data-artist="" data-title="${escapeHtml(clean)}"><span class="art-fallback">${init}</span></span>
+                <div class="cover-wrap"><img class="cover" alt="" loading="lazy" src="${ART.placeholder}" data-artist="" data-title=""></div>
                 ${escapeHtml(clean)}${ups}${dws}
               </li>`;
     }).join('');
@@ -10449,27 +10417,73 @@ document.addEventListener('DOMContentLoaded', function () {
     return html;
   }
 
-  async function hydrateArtworks(){
-    const nodes = Array.from(document.querySelectorAll('#playlistWrap img.art[data-title]'));
-    await Promise.all(nodes.map(async (img) => {
-      const artwrap = img.closest('.artwrap');
-      const artist = img.getAttribute('data-artist') || '';
-      const title  = img.getAttribute('data-title') || '';
-      try{
-        // Give iOS patch (if any) a chance to prep the environment
-        if (window.applyIOSArtworkPatch) { try{ window.applyIOSArtworkPatch(); }catch(e){} }
-        const url = await resolveArtwork(artist, title);
-        if (url){
-          img.src = url;
-          img.addEventListener('load', () => artwrap?.classList.remove('loading'), { once: true });
-          img.addEventListener('error', () => artwrap?.classList.remove('loading'), { once: true });
-        } else {
-          artwrap?.classList.remove('loading');
-        }
-      } catch(e){
-        artwrap?.classList.remove('loading');
+  async function resolveArtwork(artist, title){
+    const key = (artist + ' - ' + title).toLowerCase();
+    if (ART.cache.has(key)) return ART.cache.get(key);
+    // 1) Hook function
+    try{
+      if (ART.unifiedFn){
+        const url = await Promise.resolve(ART.unifiedFn(artist, title));
+        if (url){ ART.cache.set(key, url); return url; }
       }
-    }));
+    }catch(e){ /* ignore */ }
+    // 2) Unified endpoint
+    try{
+      if (ART.UNIFIED_ENDPOINT){
+        const u = ART.UNIFIED_ENDPOINT + `?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`;
+        const r = await fetch(u, {cache:'force-cache'});
+        if (r.ok){
+          const data = await r.json().catch(()=>null);
+          if (data && data.url){ ART.cache.set(key, data.url); return data.url; }
+        }
+      }
+    }catch(e){ /* ignore */ }
+    // 3) iOS patch (optional pattern: returns patched URL)
+    try{
+      if (ART.iosPatchFn){
+        const patched = await Promise.resolve(ART.iosPatchFn(artist, title));
+        if (patched){ ART.cache.set(key, patched); return patched; }
+      } else if (ART.IOS_PATCH_ENDPOINT){
+        const u = ART.IOS_PATCH_ENDPOINT + `?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`;
+        const r = await fetch(u, {cache:'force-cache'});
+        if (r.ok){
+          const data = await r.json().catch(()=>null);
+          if (data && data.url){ ART.cache.set(key, data.url); return data.url; }
+        }
+      }
+    }catch(e){ /* ignore */ }
+    ART.cache.set(key, null);
+    return null;
+  }
+
+  function hydrateCovers(root){
+    const holder = root || document;
+    const items = holder.querySelectorAll('img.cover[data-artist]');
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries, obs) => {
+      entries.forEach(async entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        obs.unobserve(img);
+        const artist = img.getAttribute('data-artist') || '';
+        const title  = img.getAttribute('data-title') || '';
+        if (!artist || !title) return;
+        const url = await resolveArtwork(artist, title);
+        if (url){ img.src = url; img.removeAttribute('data-artist'); img.removeAttribute('data-title'); }
+      });
+    }, { root: document.getElementById('playlistWrap') || null, rootMargin: '100px' }) : null;
+
+    items.forEach(img => {
+      if (io) io.observe(img);
+      else {
+        // Fallback: load immediately
+        (async () => {
+          const artist = img.getAttribute('data-artist') || '';
+          const title  = img.getAttribute('data-title') || '';
+          const url = await resolveArtwork(artist, title);
+          if (url){ img.src = url; img.removeAttribute('data-artist'); img.removeAttribute('data-title'); }
+        })();
+      }
+    });
   }
 
   function renderPlaylist(data){
@@ -10484,8 +10498,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     html += '</div>';
     wrap.innerHTML = html || '<p>No playlist entries found.</p>';
+    hydrateCovers(wrap);
     attachInteractions();
-    hydrateArtworks();
   }
 
   function loadPlaylist(){
@@ -10507,7 +10521,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const segs = document.querySelectorAll('.segmented .seg');
     const copyBtn = document.getElementById('playlistCopyBtn');
     const reloadBtn = document.getElementById('playlistReloadBtn');
+    const artToggle = document.getElementById('playlistArtToggleBtn');
     let activeFilter = 'ALL';
+    let showArt = true;
 
     function applyFilters(){
       const q = (search?.value || '').trim().toLowerCase();
@@ -10519,6 +10535,8 @@ document.addEventListener('DOMContentLoaded', function () {
           const txt = li.getAttribute('data-text') || '';
           const hit = !q || txt.includes(q);
           li.style.display = hit ? '' : 'none';
+          const coverWrap = li.querySelector('.cover-wrap'); 
+          if (coverWrap) coverWrap.style.display = showArt ? '' : 'none';
           if (hit) visibleCount++;
         });
         const countEl = sec.querySelector('.count');
@@ -10539,6 +10557,13 @@ document.addEventListener('DOMContentLoaded', function () {
     search?.addEventListener('input', applyFilters);
     reloadBtn?.addEventListener('click', loadPlaylist);
 
+    artToggle?.addEventListener('click', () => {
+      showArt = !showArt;
+      artToggle.setAttribute('aria-pressed', String(showArt));
+      artToggle.textContent = showArt ? 'Hide art' : 'Show art';
+      applyFilters();
+    });
+
     copyBtn?.addEventListener('click', () => {
       let out = '';
       document.querySelectorAll('.playlist-section').forEach(sec => {
@@ -10547,16 +10572,13 @@ document.addEventListener('DOMContentLoaded', function () {
         out += `${letter}- List\n`;
         sec.querySelectorAll('li').forEach(li => {
           if (li.style.display === 'none') return;
-          const artist = li.querySelector('.artist')?.textContent.replace(/\s*NEW\s*/,'').trim() || '';
-          const title  = li.querySelector('.title')?.childNodes[0]?.textContent?.trim() || li.querySelector('.title')?.textContent?.trim() || '';
+          const artist = li.querySelector('.artist')?.textContent.replace(/\bNEW\b/i,'').trim() || '';
+          const title  = li.querySelector('.title')?.textContent.replace(/[▲▼]/g,'').trim() || '';
           const trendUp = li.querySelector('.trend.up') ? ' *UP*' : '';
           const trendDn = li.querySelector('.trend.down') ? ' *DOWN*' : '';
           const isNew   = li.classList.contains('is-new') ? ' *NEW*' : '';
-          if (artist && title){
-            out += `${artist} - ${title}${isNew}${trendUp}${trendDn}\n`;
-          } else {
-            out += (li.getAttribute('data-text') || '').trim() + '\n';
-          }
+          if (artist && title){ out += `${artist} - ${title}${isNew}${trendUp}${trendDn}\n`; }
+          else { out += li.textContent.trim() + '\n'; }
         });
         out += '\n';
       });
