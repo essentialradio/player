@@ -58323,5 +58323,31 @@
     "Full Duration (mins)": 3.53,
     "Start ISO": "2025-10-28T09:35:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T09:00:00Z",
+    "Scheduled Time": "09:40",
+    "Displayed Time": "09:40",
+    "Artist": "Lewis Capaldi",
+    "Title": "Something In The Heavens",
+    "Duration (s)": 192,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-10-28T09:40:22Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T09:00:00Z",
+    "Scheduled Time": "09:43",
+    "Displayed Time": "09:43",
+    "Artist": "Joy Crookes",
+    "Title": "Somebody To You",
+    "Duration (s)": 173,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-10-28T09:43:41Z",
+    "Source": "PLAYIT"
   }
 ]
