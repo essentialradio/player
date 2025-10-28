@@ -59090,5 +59090,31 @@
     "Full Duration (mins)": 3.95,
     "Start ISO": "2025-10-28T14:09:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T14:00:00Z",
+    "Scheduled Time": "14:12",
+    "Displayed Time": "14:12",
+    "Artist": "Linkin Park",
+    "Title": "In The End",
+    "Duration (s)": 201,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.35,
+    "Full Duration (mins)": 3.57,
+    "Start ISO": "2025-10-28T14:12:56Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T14:00:00Z",
+    "Scheduled Time": "14:16",
+    "Displayed Time": "14:16",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Espresso",
+    "Duration (s)": 171,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.85,
+    "Full Duration (mins)": 2.92,
+    "Start ISO": "2025-10-28T14:16:19Z",
+    "Source": "PLAYIT"
   }
 ]
