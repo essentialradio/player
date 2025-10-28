@@ -57686,5 +57686,18 @@
     "Full Duration (mins)": 2.83,
     "Start ISO": "2025-10-28T05:42:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T05:00:00Z",
+    "Scheduled Time": "05:45",
+    "Displayed Time": "05:45",
+    "Artist": "Aerosmith",
+    "Title": "I Don't Want to Miss a Thing",
+    "Duration (s)": 245,
+    "Full Duration (s)": 268,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.47,
+    "Start ISO": "2025-10-28T05:45:31Z",
+    "Source": "PLAYIT"
   }
 ]
