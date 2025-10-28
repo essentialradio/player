@@ -58739,5 +58739,31 @@
     "Full Duration (mins)": 4.8,
     "Start ISO": "2025-10-28T12:12:52Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T12:00:00Z",
+    "Scheduled Time": "12:22",
+    "Displayed Time": "12:22",
+    "Artist": "Beyonce",
+    "Title": "BREAK MY SOUL",
+    "Duration (s)": 158,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-10-28T12:22:07Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T12:00:00Z",
+    "Scheduled Time": "12:25",
+    "Displayed Time": "12:25",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 158,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.63,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-10-28T12:25:03Z",
+    "Source": "PLAYIT"
   }
 ]
