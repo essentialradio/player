@@ -58284,5 +58284,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-10-28T09:18:02Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T09:00:00Z",
+    "Scheduled Time": "09:27",
+    "Displayed Time": "09:27",
+    "Artist": "Hozier",
+    "Title": "Too Sweet",
+    "Duration (s)": 246,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-10-28T09:27:45Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T09:00:00Z",
+    "Scheduled Time": "09:31",
+    "Displayed Time": "09:31",
+    "Artist": "Sam Fender & Olivia Dean",
+    "Title": "Rein Me In",
+    "Duration (s)": 236,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.93,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-10-28T09:31:52Z",
+    "Source": "PLAYIT"
   }
 ]
