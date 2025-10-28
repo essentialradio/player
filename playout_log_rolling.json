@@ -58674,5 +58674,31 @@
     "Full Duration (mins)": 3.65,
     "Start ISO": "2025-10-28T11:50:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T11:00:00Z",
+    "Scheduled Time": "11:53",
+    "Displayed Time": "11:53",
+    "Artist": "Mika",
+    "Title": "Grace Kelly",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-10-28T11:53:59Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T12:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "12:02",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway",
+    "Duration (s)": 242,
+    "Full Duration (s)": 252,
+    "Duration (mins)": 4.03,
+    "Full Duration (mins)": 4.2,
+    "Start ISO": "2025-10-28T12:02:14Z",
+    "Source": "PLAYIT"
   }
 ]
