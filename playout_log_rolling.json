@@ -57647,5 +57647,31 @@
     "Full Duration (mins)": 2.78,
     "Start ISO": "2025-10-28T05:28:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T05:00:00Z",
+    "Scheduled Time": "05:31",
+    "Displayed Time": "05:31",
+    "Artist": "The Script",
+    "Title": "Breakeven",
+    "Duration (s)": 218,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.8,
+    "Start ISO": "2025-10-28T05:31:37Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-28T05:00:00Z",
+    "Scheduled Time": "05:35",
+    "Displayed Time": "05:35",
+    "Artist": "Olivia Dean",
+    "Title": "Man I Need",
+    "Duration (s)": 176,
+    "Full Duration (s)": 184,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.07,
+    "Start ISO": "2025-10-28T05:35:22Z",
+    "Source": "PLAYIT"
   }
 ]
