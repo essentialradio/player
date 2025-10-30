@@ -54501,5 +54501,18 @@
     "Full Duration (mins)": 3.62,
     "Start ISO": "2025-10-30T23:01:54Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-30T23:00:00Z",
+    "Scheduled Time": "23:05",
+    "Displayed Time": "23:05",
+    "Artist": "ABC",
+    "Title": "The Look of Love",
+    "Duration (s)": 204,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.48,
+    "Start ISO": "2025-10-30T23:05:28Z",
+    "Source": "PLAYIT"
   }
 ]
