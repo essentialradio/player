@@ -53916,5 +53916,31 @@
     "Full Duration (mins)": 3.33,
     "Start ISO": "2025-10-30T19:19:53Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-30T19:00:00Z",
+    "Scheduled Time": "19:23",
+    "Displayed Time": "19:23",
+    "Artist": "Opus III",
+    "Title": "It's a Fine Day",
+    "Duration (s)": 199,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.57,
+    "Start ISO": "2025-10-30T19:23:09Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-30T19:00:00Z",
+    "Scheduled Time": "19:47",
+    "Displayed Time": "19:47",
+    "Artist": "Avril Lavigne",
+    "Title": "I'm With You",
+    "Duration (s)": 214,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.7,
+    "Start ISO": "2025-10-30T19:47:13Z",
+    "Source": "PLAYIT"
   }
 ]
