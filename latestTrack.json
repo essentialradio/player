@@ -1,11 +1,11 @@
 {
-  "artist": "Eminem",
-  "title": "Houdini",
-  "startTime": "2025-10-31T22:55:10Z",
-  "start": "2025-10-31T22:55:10Z",
-  "duration": 219,
-  "source": "PLAYIT",
+  "endTime": "2025-11-01T00:00:00Z",
+  "artist": "Essential Radio",
+  "title": "On Air",
+  "startTime": "2025-10-31T23:00:00Z",
+  "start": "2025-10-31T23:00:00Z",
+  "duration": 3600,
+  "source": "FIXED",
   "indeterminate": false,
-  "endTime": "2025-10-31T22:58:49Z",
   "altMode": false
 }
