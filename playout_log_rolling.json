@@ -56763,5 +56763,18 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-10-31T12:10:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-31T12:00:00Z",
+    "Scheduled Time": "12:13",
+    "Displayed Time": "12:13",
+    "Artist": "Taylor Swift",
+    "Title": "Shake It Off",
+    "Duration (s)": 214,
+    "Full Duration (s)": 219,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.65,
+    "Start ISO": "2025-10-31T12:13:57Z",
+    "Source": "PLAYIT"
   }
 ]
