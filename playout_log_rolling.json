@@ -58097,5 +58097,21 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-10-31T19:00:00Z",
+    "Scheduled Time": "19:58",
+    "Displayed Time": "19:58",
+    "Artist": "VASSY & Saint Rock",
+    "Title": "Sum Like It Hot",
+    "Duration (s)": 111,
+    "Full Duration (s)": 111,
+    "Duration (mins)": 1.85,
+    "Full Duration (mins)": 1.85,
+    "Start ISO": "2025-10-31T19:58:11Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-10-31T20:00:02Z",
+    "Actual Duration (s)": 111,
+    "Actual Duration (mins)": 1.85
   }
 ]
