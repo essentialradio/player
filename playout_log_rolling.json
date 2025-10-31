@@ -56750,5 +56750,18 @@
     "Full Duration (mins)": 4.05,
     "Start ISO": "2025-10-31T12:05:52Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-31T12:00:00Z",
+    "Scheduled Time": "12:10",
+    "Displayed Time": "12:10",
+    "Artist": "Olivia Rodrigo",
+    "Title": "Vampire",
+    "Duration (s)": 217,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-10-31T12:10:10Z",
+    "Source": "PLAYIT"
   }
 ]
