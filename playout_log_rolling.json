@@ -57764,5 +57764,18 @@
     "Full Duration (mins)": 3.13,
     "Start ISO": "2025-10-31T18:54:53Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-31T19:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Shakira",
+    "Title": "She Wolf",
+    "Start ISO": "2025-10-31T19:00:09Z",
+    "Source": "ALT",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
