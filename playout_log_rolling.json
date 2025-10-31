@@ -58269,5 +58269,31 @@
     "Full Duration (mins)": 3.18,
     "Start ISO": "2025-10-31T20:46:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-31T20:00:00Z",
+    "Scheduled Time": "20:49",
+    "Displayed Time": "20:49",
+    "Artist": "Rihanna",
+    "Title": "Disturbia",
+    "Duration (s)": 231,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 3.92,
+    "Start ISO": "2025-10-31T20:49:21Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-10-31T20:00:00Z",
+    "Scheduled Time": "20:53",
+    "Displayed Time": "20:53",
+    "Artist": "AC/DC",
+    "Title": "Highway to Hell",
+    "Duration (s)": 205,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.47,
+    "Start ISO": "2025-10-31T20:53:22Z",
+    "Source": "PLAYIT"
   }
 ]
