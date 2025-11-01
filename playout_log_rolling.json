@@ -55981,5 +55981,18 @@
     "Full Duration (mins)": 3.57,
     "Start ISO": "2025-11-01T10:20:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T10:00:00Z",
+    "Scheduled Time": "10:23",
+    "Displayed Time": "10:23",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 160,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-11-01T10:23:40Z",
+    "Source": "PLAYIT"
   }
 ]
