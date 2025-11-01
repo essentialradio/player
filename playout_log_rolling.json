@@ -55331,5 +55331,31 @@
     "Full Duration (mins)": 2.7,
     "Start ISO": "2025-11-01T06:43:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T06:00:00Z",
+    "Scheduled Time": "06:45",
+    "Displayed Time": "06:45",
+    "Artist": "Primal Scream",
+    "Title": "Rocks",
+    "Duration (s)": 200,
+    "Full Duration (s)": 206,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.43,
+    "Start ISO": "2025-11-01T06:45:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T06:00:00Z",
+    "Scheduled Time": "06:49",
+    "Displayed Time": "06:49",
+    "Artist": "Ella Henderson x Alex Warren",
+    "Title": "Carry You Home",
+    "Duration (s)": 160,
+    "Full Duration (s)": 168,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.8,
+    "Start ISO": "2025-11-01T06:49:17Z",
+    "Source": "PLAYIT"
   }
 ]
