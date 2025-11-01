@@ -55760,5 +55760,31 @@
     "Full Duration (mins)": 3.12,
     "Start ISO": "2025-11-01T09:01:33Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T09:00:00Z",
+    "Scheduled Time": "09:05",
+    "Displayed Time": "09:05",
+    "Artist": "Teddy Swims",
+    "Title": "The Door",
+    "Duration (s)": 210,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.55,
+    "Start ISO": "2025-11-01T09:05:10Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T09:00:00Z",
+    "Scheduled Time": "09:08",
+    "Displayed Time": "09:08",
+    "Artist": "Tones and I",
+    "Title": "Dance Monkey",
+    "Duration (s)": 206,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.48,
+    "Start ISO": "2025-11-01T09:08:50Z",
+    "Source": "PLAYIT"
   }
 ]
