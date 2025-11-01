@@ -55929,5 +55929,18 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-11-01T10:01:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T10:00:00Z",
+    "Scheduled Time": "10:05",
+    "Displayed Time": "10:05",
+    "Artist": "Kelly Clarkson",
+    "Title": "My Life Would Suck Without You",
+    "Duration (s)": 210,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-11-01T10:05:46Z",
+    "Source": "PLAYIT"
   }
 ]
