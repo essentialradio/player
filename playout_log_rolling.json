@@ -57241,5 +57241,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-11-01T18:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-01T18:00:00Z",
+    "Scheduled Time": "18:03",
+    "Displayed Time": "18:03",
+    "Artist": "Essential Radio",
+    "Title": "The LGBTQ Music Chart with Tim Graham",
+    "Duration (s)": 1188,
+    "Full Duration (s)": 1193,
+    "Duration (mins)": 19.8,
+    "Full Duration (mins)": 19.88,
+    "Start ISO": "2025-11-01T18:03:21Z",
+    "Source": "PLAYIT"
   }
 ]
