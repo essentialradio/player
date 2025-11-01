@@ -54616,5 +54616,31 @@
     "Full Duration (mins)": 4.3,
     "Start ISO": "2025-11-01T02:51:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T02:00:00Z",
+    "Scheduled Time": "02:55",
+    "Displayed Time": "02:55",
+    "Artist": "Addison Rae",
+    "Title": "Diet Pepsi",
+    "Duration (s)": 157,
+    "Full Duration (s)": 170,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.83,
+    "Start ISO": "2025-11-01T02:55:20Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T03:00:00Z",
+    "Scheduled Time": "03:01",
+    "Displayed Time": "03:01",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Tears",
+    "Duration (s)": 155,
+    "Full Duration (s)": 160,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.67,
+    "Start ISO": "2025-11-01T03:01:51Z",
+    "Source": "PLAYIT"
   }
 ]
