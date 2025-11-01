@@ -57199,5 +57199,34 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-01T16:00:00Z",
+    "Scheduled Time": "16:45",
+    "Displayed Time": "16:45",
+    "Artist": "4.45PM SMM",
+    "Title": "FREEMASONS IN THE CLUB MEGAMIX",
+    "Duration (s)": 863,
+    "Full Duration (s)": 863,
+    "Duration (mins)": 14.38,
+    "Full Duration (mins)": 14.38,
+    "Start ISO": "2025-11-01T16:45:43Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-01T17:00:06Z",
+    "Actual Duration (s)": 863,
+    "Actual Duration (mins)": 14.38
+  },
+  {
+    "Hour": "2025-11-01T17:00:00Z",
+    "Scheduled Time": "17:00",
+    "Displayed Time": "17:00",
+    "Artist": "Jan Gow",
+    "Title": "The Jan Cave 70s Jukebox",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-11-01T17:00:00Z",
+    "Source": "FIXED"
   }
 ]
