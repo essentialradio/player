@@ -55630,5 +55630,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-11-01T08:21:32Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T08:00:00Z",
+    "Scheduled Time": "08:24",
+    "Displayed Time": "08:24",
+    "Artist": "Dermot Kennedy",
+    "Title": "Kiss Me",
+    "Duration (s)": 212,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-11-01T08:24:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T08:00:00Z",
+    "Scheduled Time": "08:28",
+    "Displayed Time": "08:28",
+    "Artist": "The Weeknd",
+    "Title": "Save Your Tears",
+    "Duration (s)": 206,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-01T08:28:27Z",
+    "Source": "PLAYIT"
   }
 ]
