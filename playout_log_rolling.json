@@ -57319,5 +57319,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-11-01T19:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-01T20:00:00Z",
+    "Scheduled Time": "20:00",
+    "Displayed Time": "20:00",
+    "Artist": "Essential Radio",
+    "Title": "Grooveline with Stephen Howie",
+    "Duration (s)": 3479,
+    "Full Duration (s)": 3480,
+    "Duration (mins)": 57.98,
+    "Full Duration (mins)": 58.0,
+    "Start ISO": "2025-11-01T20:00:17Z",
+    "Source": "PLAYIT"
   }
 ]
