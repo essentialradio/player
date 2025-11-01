@@ -1,11 +1,12 @@
 {
   "artist": "Atomic Kitten ft Kool & The Gang",
   "title": "Ladies Night",
-  "startTime": "2025-11-01T12:57:01Z",
-  "start": "2025-11-01T12:57:01Z",
-  "duration": 180,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-01T13:00:01Z",
-  "altMode": false
+  "startTime": "2025-11-01T13:00:06Z",
+  "start": "2025-11-01T13:00:06Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-01T14:00:06Z",
+  "altMode": true,
+  "Source": "ALT"
 }
