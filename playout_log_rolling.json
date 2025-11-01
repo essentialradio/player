@@ -57306,5 +57306,18 @@
     "Full Duration (mins)": 58.0,
     "Start ISO": "2025-11-01T19:02:00Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-01T20:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Stephen Howie",
+    "Title": "Grooveline",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-11-01T19:00:00Z",
+    "Source": "FIXED"
   }
 ]
