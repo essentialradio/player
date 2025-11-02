@@ -58866,5 +58866,31 @@
     "Full Duration (mins)": 2.73,
     "Start ISO": "2025-11-02T10:14:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T10:00:00Z",
+    "Scheduled Time": "10:21",
+    "Displayed Time": "10:21",
+    "Artist": "Billy Ocean",
+    "Title": "Loverboy",
+    "Duration (s)": 230,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 4.12,
+    "Start ISO": "2025-11-02T10:21:18Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T10:00:00Z",
+    "Scheduled Time": "10:25",
+    "Displayed Time": "10:25",
+    "Artist": "Dawn Penn",
+    "Title": "You Don't Love Me (No, No, No)",
+    "Duration (s)": 183,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.33,
+    "Start ISO": "2025-11-02T10:25:14Z",
+    "Source": "PLAYIT"
   }
 ]
