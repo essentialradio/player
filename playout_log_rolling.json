@@ -58216,5 +58216,31 @@
     "Full Duration (mins)": 4.3,
     "Start ISO": "2025-11-02T05:24:11Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T05:00:00Z",
+    "Scheduled Time": "05:28",
+    "Displayed Time": "05:28",
+    "Artist": "Pink",
+    "Title": "So What",
+    "Duration (s)": 211,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.58,
+    "Start ISO": "2025-11-02T05:28:24Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T05:00:00Z",
+    "Scheduled Time": "05:32",
+    "Displayed Time": "05:32",
+    "Artist": "BLACKPINK",
+    "Title": "Jump",
+    "Duration (s)": 160,
+    "Full Duration (s)": 167,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.78,
+    "Start ISO": "2025-11-02T05:32:03Z",
+    "Source": "PLAYIT"
   }
 ]
