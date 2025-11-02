@@ -204,7 +204,22 @@
 
 <script>
 (function(){
-  const TXT_PATHS = ['../playlist.txt', '/playlist.txt'];
+  // Try a wide set of likely paths for the player deployment structure.
+  const TXT_PATHS = [
+    // page/ -> ../playlist.txt (original)
+    '../playlist.txt',
+    // page/ -> ../../playlist.txt (if page ended up nested deeper)
+    '../../playlist.txt',
+    // same folder (if copied side-by-side)
+    './playlist.txt',
+    'playlist.txt',
+    // site root variants
+    '/playlist.txt',
+    '/player/playlist.txt',
+    '/player/../playlist.txt',
+    '/essential.radio/playlist.txt'
+  ];
+
   const ENDPOINTS = [
     '/api/playlist',
     '/api/playlist.json',
@@ -229,6 +244,7 @@
 
   let playlist = null;
   let activeTab = 'A';
+  let dataSource = '';
 
   function pickHash(){
     const h = (location.hash||'').replace('#','').toUpperCase();
@@ -256,7 +272,6 @@
     return map;
   }
 
-  // --- Marker extraction for lines like "*NEW*Artist - Title" ---
   function extractMarkersAndClean(str){
     const markers = [];
     let s = str.trim();
@@ -271,7 +286,6 @@
     return {clean: s, markers};
   }
 
-  // --- Plain text parsing helpers ---
   function parsePlainText(txt){
     return (
       parseIniSections(txt) ||
@@ -292,7 +306,7 @@
     let seen = false;
 
     for(let raw of lines){
-      const l = raw.trim();
+      const l = raw.replace(/\uFEFF/g,'').trim(); // strip BOM if present
       if(!l || l.startsWith('#') || l.startsWith(';') || l.startsWith('//')) continue;
       const sec = l.match(/^\[(A|B|C)\]\s*$/i) || l.match(/^(A\s*-\s*List|B\s*-\s*List|C\s*-\s*List)\s*$/i);
       if(sec){
@@ -433,7 +447,7 @@
         if(res.ok){
           const text = await res.text();
           const parsed = parsePlainText(text);
-          if(parsed) return parsed;
+          if(parsed){ dataSource = p; return parsed; }
         }
       }catch(e){ /* continue */ }
     }
@@ -446,6 +460,7 @@
         const res = await fetch(u, {cache:'no-store'});
         if(res.ok){
           const js = await res.json();
+          dataSource = u;
           return normaliseFromJSON(js||{});
         }
       }catch(e){ /* continue */ }
@@ -461,7 +476,8 @@
       .filter(t => !q || (t.artist + ' ' + t.title).toLowerCase().includes(q));
 
     panelTitle.textContent = titleForTab(activeTab);
-    panelMeta.textContent = list.length ? list.length + ' tracks' : '';
+    const src = dataSource ? ` • Source: ${dataSource}` : '';
+    panelMeta.textContent = (list.length ? list.length + ' tracks' : '') + src;
     grid.innerHTML = '';
 
     if(list.length===0){
@@ -554,6 +570,7 @@
     state.textContent = 'Loading playlist…';
     state.classList.remove('hidden');
     grid.classList.add('hidden');
+    dataSource = '';
     const fromTxt = await fetchTxt(TXT_PATHS);
     if(fromTxt){
       playlist = fromTxt;
@@ -567,6 +584,7 @@
           B:[{artist:'Sample Band', title:'Next Up', year:'2025', tags:[{k:'UP'}]}],
           C:[{artist:'Indie Duo', title:'Late Night', year:'2024', tags:[{k:'DOWN'}]}]
         };
+        dataSource = '(sample)';
         console.warn('Falling back to sample data');
       }
     }
