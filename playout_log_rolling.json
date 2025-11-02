@@ -54189,5 +54189,35 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-02T15:00:00Z",
+    "Scheduled Time": "15:40",
+    "Displayed Time": "15:40",
+    "Artist": "Lewis Capaldi",
+    "Title": "Something In The Heavens",
+    "Duration (s)": 1889,
+    "Full Duration (s)": 1889,
+    "Duration (mins)": 31.48,
+    "Full Duration (mins)": 31.48,
+    "Start ISO": "2025-11-02T15:40:28Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-02T16:11:57Z",
+    "Actual Duration (s)": 1889,
+    "Actual Duration (mins)": 31.48
+  },
+  {
+    "Hour": "2025-11-02T16:00:00Z",
+    "Scheduled Time": "16:11",
+    "Displayed Time": "16:11",
+    "Artist": "Ed Sheeran",
+    "Title": "Camera",
+    "Start ISO": "2025-11-02T16:11:57Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-02T16:11:57Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
