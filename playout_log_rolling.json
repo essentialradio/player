@@ -58905,5 +58905,31 @@
     "Full Duration (mins)": 3.52,
     "Start ISO": "2025-11-02T10:28:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T10:00:00Z",
+    "Scheduled Time": "10:33",
+    "Displayed Time": "10:33",
+    "Artist": "Foreigner",
+    "Title": "Cold as Ice",
+    "Duration (s)": 187,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-11-02T10:33:15Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T10:00:00Z",
+    "Scheduled Time": "10:36",
+    "Displayed Time": "10:36",
+    "Artist": "New Order",
+    "Title": "Blue Monday '88",
+    "Duration (s)": 232,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.12,
+    "Start ISO": "2025-11-02T10:36:23Z",
+    "Source": "PLAYIT"
   }
 ]
