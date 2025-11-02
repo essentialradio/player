@@ -1,11 +1,12 @@
 {
   "artist": "Erasure",
   "title": "A Little Respect",
-  "startTime": "2025-11-02T13:54:30Z",
-  "start": "2025-11-02T13:54:30Z",
-  "duration": 200,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-02T13:57:50Z",
-  "altMode": false
+  "startTime": "2025-11-02T14:00:10Z",
+  "start": "2025-11-02T14:00:10Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-02T15:00:10Z",
+  "altMode": true,
+  "Source": "ALT"
 }
