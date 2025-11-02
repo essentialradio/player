@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Essential Radio - Playlist</title>
+  <meta name="description" content="Explore Essential Radio's current playlist: A-List, B-List and C-List.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Essential Radio - Playlist">
+  <meta property="og:description" content="See what's on rotation at Essential Radio right now.">
+  <meta property="og:image" content="/assets/share/essential-radio-card.jpg">
+  <meta property="og:url" content="https://essential.radio/playlist">
+  <meta name="theme-color" content="#00818a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#fed351;     /* yellow */
+      --accent:#00818a;    /* teal */
+      --danger:#e0322f;
+      --up:#00a56a;
+      --down:#b53c00;
+      --new:#7e1974;
+      --bg-grad-1:#00818a;
+      --bg-grad-2:#7e1974;
+      --text:#f7f8fb;
+      --panel:#101215;
+      --panel-2:#171a1f;
+      --border:#272c33;
+      --muted:#c8d1dc;
+    }
+    [data-theme="light"]{
+      --bg-grad-1:#ffffff;
+      --bg-grad-2:#f4f7fb;
+      --text:#0b1220;
+      --panel:#ffffff;
+      --panel-2:#f7f9fc;
+      --border:#e6ecf3;
+      --muted:#6a778a;
+      --accent:#0b6b73;
+      --brand:#c89d00;
+      --up:#0b6b73;
+      --down:#8a4d0b;
+      --new:#7e1974;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      background:linear-gradient(135deg,var(--bg-grad-1),var(--bg-grad-2));
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px 16px 48px 16px;
+    }
+    header.hero{
+      display:flex; align-items:center; gap:16px;
+      margin:8px 0 18px 0;
+    }
+    .logo{
+      width:56px; height:56px; border-radius:14px;
+      background:var(--panel-2);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);
+      border:1px solid var(--border);
+      user-select:none; pointer-events:none;
+      font-weight:800; color:var(--accent);
+    }
+    h1{ font-size:1.8rem; line-height:1.1; margin:0; }
+    .sub{ color:var(--muted); margin-top:4px; font-size:.98rem; }
+    /* Toolbar */
+    .toolbar{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+      background:var(--panel); border:1px solid var(--border);
+      border-radius:14px; padding:10px 12px; margin:8px 0 16px 0;
+      box-shadow:0 6px 18px rgba(0,0,0,.10);
+    }
+    .search{
+      display:flex; align-items:center; gap:8px; flex:1 1 280px;
+      background:var(--panel-2); border:1px solid var(--border);
+      padding:8px 10px; border-radius:10px;
+    }
+    .search input{
+      background:transparent; border:0; outline:0; color:var(--text);
+      width:100%; font-size:0.98rem;
+    }
+    .btn{
+      appearance:none; border:1px solid rgba(0,0,0,.06);
+      background:var(--brand); color:#111; font-weight:700;
+      padding:10px 14px; border-radius:10px; cursor:pointer;
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
+      box-shadow:0 3px 12px rgba(0,0,0,.12);
+      white-space:nowrap;
+    }
+    .btn:hover{ filter:brightness(.97) }
+    .btn:active{ transform:scale(.98) }
+    .btn.secondary{ background:var(--accent); color:#fff; border-color:rgba(0,0,0,.08); }
+    /* Tabs */
+    .tabs{ display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 0 0; }
+    .tab{
+      background:var(--panel); border:1px solid var(--border);
+      color:var(--text); padding:8px 12px; border-radius:10px;
+      cursor:pointer; font-weight:700; font-size:.98rem;
+      transition:background .15s ease, color .15s ease, transform .15s ease;
+      user-select:none;
+    }
+    .tab[aria-selected="true"]{ background:var(--accent); color:#fff; }
+    /* Panels mimic modal card style */
+    .panel{
+      background:var(--panel); border:1px solid var(--border);
+      border-radius:16px; padding:18px 16px;
+      margin-top:14px; box-shadow:0 6px 18px rgba(0,0,0,.12);
+    }
+    .panel h2{ margin:0 0 6px 0; color:var(--accent); font-size:1.2rem; }
+    .meta-line{ color:var(--muted); font-size:.9rem; margin-bottom:6px; }
+    .grid{ display:grid; gap:10px; grid-template-columns:repeat(3,1fr); }
+    @media (max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr) } }
+    @media (max-width:560px){ .grid{ grid-template-columns:1fr } }
+    .song{
+      display:flex; gap:10px; align-items:flex-start;
+      background:var(--panel-2); border:1px solid var(--border);
+      border-radius:12px; padding:12px;
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .song:hover{ transform:translateY(-1px); box-shadow:0 10px 16px rgba(0,0,0,.10) }
+    .cover{
+      width:52px; height:52px; border-radius:8px; object-fit:cover;
+      border:2px solid var(--brand); background:#0001; flex-shrink:0;
+    }
+    .song h3{ font-size:1.02rem; margin:0 0 2px 0; line-height:1.2; color:var(--text); }
+    .artist{ color:var(--muted); font-size:.95rem }
+    .tags{ display:flex; gap:6px; flex-wrap:wrap; margin-top:6px }
+    .tag{
+      background:var(--brand); color:#111; border:1px solid rgba(0,0,0,.08);
+      padding:4px 8px; border-radius:999px; font-weight:700; font-size:.75rem;
+    }
+    .tag-new{ background:var(--new); color:#fff; }
+    .tag-up{ background:var(--up); color:#fff; }
+    .tag-down{ background:var(--down); color:#fff; }
+    .note{ color:var(--muted); font-size:.85rem; margin-top:6px }
+    .hidden{ display:none !important }
+    footer{ margin-top:24px; color:var(--muted); font-size:.9rem; text-align:center; }
+    .helper{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:8px; color:var(--muted); }
+    .copy-wrap{ display:flex; gap:8px; align-items:center; }
+    .kbd{
+      font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace;
+      background:var(--panel-2); border:1px solid var(--border); color:var(--text);
+      padding:2px 6px; border-radius:6px; font-size:.85rem;
+    }
+    .state{
+      padding:14px; border-radius:10px; background:var(--panel-2);
+      border:1px solid var(--border); color:var(--muted); text-align:center;
+    }
+    a{ color:var(--accent) }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="logo">ER</div>
+      <div>
+        <h1>Essential Radio Playlist</h1>
+        <div class="sub">Live rotation - A, B and C Lists</div>
+      </div>
+    </header>
+
+    <section class="toolbar" role="region" aria-label="Playlist controls">
+      <div class="search" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="q" type="search" placeholder="Search artist or title">
+      </div>
+      <div class="copy-wrap">
+        <button class="btn" id="copyBtn">Copy visible as text</button>
+        <button class="btn secondary" id="refreshBtn">Refresh</button>
+      </div>
+      <div class="helper">
+        Deep link to tabs: <span class="kbd">#A</span>, <span class="kbd">#B</span>, <span class="kbd">#C</span>.
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Playlist tabs">
+        <button class="tab" role="tab" data-tab="A" aria-selected="true">A-List</button>
+        <button class="tab" role="tab" data-tab="B" aria-selected="false">B-List</button>
+        <button class="tab" role="tab" data-tab="C" aria-selected="false">C-List</button>
+      </nav>
+    </section>
+
+    <section id="content">
+      <div class="panel">
+        <h2 id="panelTitle">A-List</h2>
+        <div class="meta-line" id="panelMeta"></div>
+        <div class="state" id="state">Loading playlist…</div>
+        <div class="grid hidden" id="grid"></div>
+      </div>
+    </section>
+
+    <footer>Essential Radio • essential.radio/playlist</footer>
+  </div>
+
+<script>
+(function(){
+  const TXT_PATHS = ['../playlist.txt', '/playlist.txt'];
+  const ENDPOINTS = [
+    '/api/playlist',
+    '/api/playlist.json',
+    'https://player-green.vercel.app/api/playlist'
+  ];
+
+  const imgFallback = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="8" fill="%23f4f7fb"/>
+      <path d="M22 42h20v2H22zM22 20h4v22h-4zM38 22h4v20h-4z" fill="%230b6b73"/>
+    </svg>
+  `);
+
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+  const grid = $('#grid');
+  const state = $('#state');
+  const panelTitle = $('#panelTitle');
+  const panelMeta = $('#panelMeta');
+  const search = $('#q');
+
+  let playlist = null;
+  let activeTab = 'A';
+
+  function pickHash(){
+    const h = (location.hash||'').replace('#','').toUpperCase();
+    if(['A','B','C'].includes(h)) return h;
+    return 'A';
+  }
+
+  function normaliseFromJSON(data){
+    const map = {
+      A: data.A || data.AList || data.aList || data.a || [],
+      B: data.B || data.BList || data.bList || data.b || [],
+      C: data.C || data.CList || data.cList || data.c || []
+    };
+    for(const key of Object.keys(map)){
+      map[key] = (map[key]||[]).map(t => ({
+        artist: t.artist || t.Artist || '',
+        title: t.title || t.Title || '',
+        art: t.art || t.image || t.cover || '',
+        notes: t.notes || t.note || '',
+        year: t.year || t.Year || '',
+        added: t.added || t.dateAdded || t.Added || '',
+        tags: t.tags || t.category ? [t.category] : (t.Tags || [])
+      }));
+    }
+    return map;
+  }
+
+  // --- Marker extraction for lines like "*NEW*Artist - Title" ---
+  function extractMarkersAndClean(str){
+    const markers = [];
+    let s = str.trim();
+    const rx = /^\*(\w{2,10})\*\s*/i;
+    while(true){
+      const m = s.match(rx);
+      if(!m) break;
+      const word = m[1].toUpperCase();
+      if(['NEW','UP','DOWN'].includes(word)) markers.push(word);
+      s = s.slice(m[0].length);
+    }
+    return {clean: s, markers};
+  }
+
+  // --- Plain text parsing helpers ---
+  function parsePlainText(txt){
+    return (
+      parseIniSections(txt) ||
+      parseCsv(txt) ||
+      parsePrefixedLines(txt) ||
+      null
+    );
+  }
+
+  function cleanLines(txt){
+    return txt.split(/\r?\n/).map(l => l.trim()).filter(l => l.length && !l.startsWith('#') && !l.startsWith('//') && !l.startsWith(';'));
+  }
+
+  function parseIniSections(txt){
+    const lines = txt.split(/\r?\n/);
+    let current = null;
+    const out = {A:[],B:[],C:[]};
+    let seen = false;
+
+    for(let raw of lines){
+      const l = raw.trim();
+      if(!l || l.startsWith('#') || l.startsWith(';') || l.startsWith('//')) continue;
+      const sec = l.match(/^\[(A|B|C)\]\s*$/i) || l.match(/^(A\s*-\s*List|B\s*-\s*List|C\s*-\s*List)\s*$/i);
+      if(sec){
+        const key = (sec[1] ? sec[1] : l[0]).toUpperCase();
+        current = key;
+        seen = true;
+        continue;
+      }
+      if(!current) continue;
+      const t = lineToTrack(l);
+      if(t) out[current].push(t);
+    }
+    return seen ? out : null;
+  }
+
+  function parseCsv(txt){
+    const rows = csvToRows(txt);
+    if(rows.length < 2) return null;
+    const headers = rows[0].map(h => h.trim().toLowerCase());
+    const catIdx = headers.findIndex(h => /cat|category|list/.test(h));
+    const artIdx = headers.findIndex(h => h === 'artist');
+    const titIdx = headers.findIndex(h => h === 'title' || h === 'song' || h === 'track');
+    const yearIdx = headers.findIndex(h => h === 'year');
+    const notesIdx = headers.findIndex(h => /note/.test(h));
+    const addedIdx = headers.findIndex(h => /added|dateadded/.test(h));
+    if(catIdx < 0 || artIdx < 0 || titIdx < 0) return null;
+
+    const out = {A:[],B:[],C:[]};
+    for(let i=1;i<rows.length;i++){
+      const r = rows[i];
+      const cat = (r[catIdx]||'').toString().trim().toUpperCase();
+      if(!['A','B','C','A-LIST','B-LIST','C-LIST'].includes(cat)) continue;
+      const key = cat.startsWith('A') ? 'A' : cat.startsWith('B') ? 'B' : 'C';
+      const {clean, markers} = extractMarkersAndClean((r[artIdx]||'').toString());
+      const t = {
+        artist: clean,
+        title: (r[titIdx]||'').toString().trim(),
+        year: yearIdx>=0 ? (r[yearIdx]||'').toString().trim() : '',
+        notes: notesIdx>=0 ? (r[notesIdx]||'').toString().trim() : '',
+        added: addedIdx>=0 ? (r[addedIdx]||'').toString().trim() : '',
+        art: '',
+        tags: markers.map(m => ({k:m}))
+      };
+      if(t.artist || t.title) out[key].push(t);
+    }
+    const populated = out.A.length + out.B.length + out.C.length;
+    return populated ? out : null;
+  }
+
+  function csvToRows(txt){
+    const rows = [];
+    let row = [];
+    let field = '';
+    let inQuotes = false;
+    for(let i=0;i<txt.length;i++){
+      const ch = txt[i];
+      if(inQuotes){
+        if(ch === '"'){
+          if(txt[i+1] === '"'){ field += '"'; i++; }
+          else { inQuotes = false; }
+        } else {
+          field += ch;
+        }
+      } else {
+        if(ch === '"'){ inQuotes = true; }
+        else if(ch === ','){ row.push(field); field=''; }
+        else if(ch === '\n'){ row.push(field); rows.push(row); row=[]; field=''; }
+        else if(ch === '\r'){ /* ignore */ }
+        else { field += ch; }
+      }
+    }
+    row.push(field);
+    rows.push(row);
+    return rows.filter(r => r.some(x => (x||'').toString().trim().length));
+  }
+
+  function parsePrefixedLines(txt){
+    const lines = cleanLines(txt);
+    const out = {A:[],B:[],C:[]};
+    let any = false;
+    for(const l of lines){
+      let m;
+      if((m = l.match(/^([ABCabc])\s*\|\s*([^|]+)\|\s*([^|]+)(?:\|\s*([^|]*))?(?:\|\s*(.*))?$/))){
+        const key = m[1].toUpperCase();
+        const {clean, markers} = extractMarkersAndClean(m[2]);
+        out[key].push(track(clean, m[3], m[4], m[5], markers));
+        any = true;
+      } else if((m = l.match(/^([ABCabc])\s*[:\-]\s*(.+?)\s*[-–]\s*(.+)$/))){
+        const key = m[1].toUpperCase();
+        const {clean, markers} = extractMarkersAndClean(m[2]);
+        out[key].push(track(clean, m[3], '', '', markers));
+        any = true;
+      } else if((m = l.match(/^([ABCabc])\s+(.+?)\s*[-–]\s*(.+)$/))){
+        const key = m[1].toUpperCase();
+        const {clean, markers} = extractMarkersAndClean(m[2]);
+        out[key].push(track(clean, m[3], '', '', markers));
+        any = true;
+      }
+    }
+    return any ? out : null;
+  }
+
+  function track(artist, title, year='', notes='', markers=[]){
+    return {
+      artist: (artist||'').trim(),
+      title: (title||'').trim(),
+      year: (year||'').trim(),
+      notes: (notes||'').trim(),
+      art:'', added:'',
+      tags: (markers||[]).map(m => ({k:m}))
+    };
+  }
+
+  function lineToTrack(line){
+    const {clean, markers} = extractMarkersAndClean(line);
+    const pipe = clean.split('|').map(s => s.trim());
+    const first = pipe[0] || '';
+    let artist = '', title = '';
+    const dash = first.split(/\s[-–—]\s/);
+    if(dash.length >= 2){
+      artist = dash[0].trim();
+      title = dash.slice(1).join(' - ').trim();
+    }else{
+      const comma = first.split(',');
+      if(comma.length>=2){ artist = comma[0].trim(); title = comma.slice(1).join(',').trim(); }
+      else { title = first.trim(); }
+    }
+    const year = pipe[1]||'';
+    const notes = pipe[2]||'';
+    if(!artist && !title) return null;
+    return track(artist, title, year, notes, markers);
+  }
+
+  async function fetchTxt(paths){
+    for(const p of paths){
+      try{
+        const res = await fetch(p, {cache:'no-store'});
+        if(res.ok){
+          const text = await res.text();
+          const parsed = parsePlainText(text);
+          if(parsed) return parsed;
+        }
+      }catch(e){ /* continue */ }
+    }
+    return null;
+  }
+
+  async function fetchJson(urls){
+    for(const u of urls){
+      try{
+        const res = await fetch(u, {cache:'no-store'});
+        if(res.ok){
+          const js = await res.json();
+          return normaliseFromJSON(js||{});
+        }
+      }catch(e){ /* continue */ }
+    }
+    return null;
+  }
+
+  function titleForTab(tab){ return tab + '-List'; }
+
+  function render(){
+    const q = (search.value||'').trim().toLowerCase();
+    const list = (playlist?.[activeTab] || [])
+      .filter(t => !q || (t.artist + ' ' + t.title).toLowerCase().includes(q));
+
+    panelTitle.textContent = titleForTab(activeTab);
+    panelMeta.textContent = list.length ? list.length + ' tracks' : '';
+    grid.innerHTML = '';
+
+    if(list.length===0){
+      grid.classList.add('hidden');
+      state.textContent = q ? 'No results for your search.' : 'No tracks found in this list.';
+      state.classList.remove('hidden');
+      return;
+    }
+
+    state.classList.add('hidden');
+    grid.classList.remove('hidden');
+
+    const frag = document.createDocumentFragment();
+    list.forEach(t => {
+      const markers = (t.tags||[]).map(x => x.k).filter(Boolean);
+      const markerTags = markers.map(m => {
+        const cls = m==='NEW' ? 'tag-new' : m==='UP' ? 'tag-up' : m==='DOWN' ? 'tag-down' : '';
+        return `<span class="tag ${cls}">${m}</span>`;
+      }).join('');
+
+      const otherTags = (t.tags||[]).filter(x => !x.k).map(x => String(x));
+      const otherTagEls = otherTags.map(x => `<span class="tag">${escapeHtml(x)}</span>`).join('');
+
+      const yearTag = t.year ? `<span class="tag">${escapeHtml(String(t.year))}</span>` : '';
+      const addedTag = t.added ? `<span class="tag">Added ${escapeHtml(String(t.added))}</span>` : '';
+
+      const tagsHtml = markerTags + yearTag + addedTag + otherTagEls;
+
+      const card = document.createElement('article');
+      card.className = 'song';
+      card.innerHTML = `
+        <img class="cover" loading="lazy" src="${t.art||imgFallback}" onerror="this.src='${imgFallback}'" alt="">
+        <div class="info">
+          <h3>${escapeHtml(t.title)}</h3>
+          <div class="artist">${escapeHtml(t.artist)}</div>
+          <div class="tags">${tagsHtml}</div>
+          ${t.notes ? `<div class="note">${escapeHtml(t.notes)}</div>` : ''}
+        </div>
+      `;
+      frag.appendChild(card);
+    });
+    grid.appendChild(frag);
+  }
+
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  }
+
+  function switchTab(tab, pushHash=true){
+    activeTab = tab;
+    $$('.tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab===tab)));
+    if(pushHash) location.hash = tab;
+    render();
+  }
+
+  function copyVisible(){
+    const q = (search.value||'').trim().toLowerCase();
+    const list = (playlist?.[activeTab] || [])
+      .filter(t => !q || (t.artist + ' ' + t.title).toLowerCase().includes(q));
+    const title = titleForTab(activeTab);
+    const lines = [`${title} (${list.length})`, '']
+      .concat(list.map(t => {
+        const markers = (t.tags||[]).map(x => x.k).filter(Boolean);
+        const prefix = markers.length ? `*${markers.join('*')}* ` : '';
+        return `- ${prefix}${t.artist} - ${t.title}`;
+      }));
+    navigator.clipboard.writeText(lines.join('\n')).then(() => {
+      flashBtn('#copyBtn');
+    }).catch(() => {
+      alert('Copied text:\n\n' + lines.join('\n'));
+    });
+  }
+
+  function flashBtn(sel){
+    const el = document.querySelector(sel);
+    if(!el) return;
+    const original = el.textContent;
+    el.textContent = 'Copied!';
+    setTimeout(() => { el.textContent = original; }, 1100);
+  }
+
+  // Events
+  $$('.tab').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+  $('#copyBtn').addEventListener('click', copyVisible);
+  $('#refreshBtn').addEventListener('click', async () => { await init(true); });
+  search.addEventListener('input', render);
+  window.addEventListener('hashchange', () => switchTab(pickHash(), false));
+
+  async function init(force=false){
+    state.textContent = 'Loading playlist…';
+    state.classList.remove('hidden');
+    grid.classList.add('hidden');
+    const fromTxt = await fetchTxt(TXT_PATHS);
+    if(fromTxt){
+      playlist = fromTxt;
+    } else {
+      const fromJson = await fetchJson(ENDPOINTS);
+      if(fromJson){
+        playlist = fromJson;
+      } else {
+        playlist = {
+          A:[{artist:'Example Artist', title:'Brand New', year:'2025', added:'Nov', notes:'Sample entry', tags:[{k:'NEW'}]}],
+          B:[{artist:'Sample Band', title:'Next Up', year:'2025', tags:[{k:'UP'}]}],
+          C:[{artist:'Indie Duo', title:'Late Night', year:'2024', tags:[{k:'DOWN'}]}]
+        };
+        console.warn('Falling back to sample data');
+      }
+    }
+    switchTab(pickHash(), false);
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
