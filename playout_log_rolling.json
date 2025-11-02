@@ -58814,5 +58814,18 @@
     "Full Duration (mins)": 30.0,
     "Start ISO": "2025-11-02T08:30:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-02T10:00:00Z",
+    "Scheduled Time": "10:04",
+    "Displayed Time": "10:04",
+    "Artist": "Phil Collins",
+    "Title": "You Can't Hurry Love",
+    "Duration (s)": 164,
+    "Full Duration (s)": 172,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.87,
+    "Start ISO": "2025-11-02T10:04:33Z",
+    "Source": "PLAYIT"
   }
 ]
