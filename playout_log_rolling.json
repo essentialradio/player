@@ -54441,5 +54441,35 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-02T14:00:00Z",
+    "Scheduled Time": "14:53",
+    "Displayed Time": "14:53",
+    "Artist": "Cat Burns",
+    "Title": "Lavender",
+    "Duration (s)": 422,
+    "Full Duration (s)": 422,
+    "Duration (mins)": 7.03,
+    "Full Duration (mins)": 7.03,
+    "Start ISO": "2025-11-02T14:53:04Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-02T15:00:06Z",
+    "Actual Duration (s)": 422,
+    "Actual Duration (mins)": 7.03
+  },
+  {
+    "Hour": "2025-11-02T15:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-02T15:00:06Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-02T15:00:06Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
