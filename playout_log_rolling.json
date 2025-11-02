@@ -58723,5 +58723,31 @@
     "Full Duration (mins)": 3.75,
     "Start ISO": "2025-11-02T08:05:38Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T08:00:00Z",
+    "Scheduled Time": "08:09",
+    "Displayed Time": "08:09",
+    "Artist": "Green Day",
+    "Title": "American Idiot",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-11-02T08:09:14Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-02T08:00:00Z",
+    "Scheduled Time": "08:12",
+    "Displayed Time": "08:12",
+    "Artist": "PinkPantheress",
+    "Title": "Boy's A Liar",
+    "Duration (s)": 126,
+    "Full Duration (s)": 131,
+    "Duration (mins)": 2.1,
+    "Full Duration (mins)": 2.18,
+    "Start ISO": "2025-11-02T08:12:05Z",
+    "Source": "PLAYIT"
   }
 ]
