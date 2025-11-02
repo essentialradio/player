@@ -51399,5 +51399,34 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-02T18:00:00Z",
+    "Scheduled Time": "18:58",
+    "Displayed Time": "18:58",
+    "Artist": "Spice Girls",
+    "Title": "Say You'll Be There",
+    "Duration (s)": 111,
+    "Full Duration (s)": 111,
+    "Duration (mins)": 1.85,
+    "Full Duration (mins)": 1.85,
+    "Start ISO": "2025-11-02T18:58:19Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-02T19:00:10Z",
+    "Actual Duration (s)": 111,
+    "Actual Duration (mins)": 1.85
+  },
+  {
+    "Hour": "2025-11-02T19:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Kevin McCallum",
+    "Title": "The Mr Rocks Show",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-11-02T19:00:00Z",
+    "Source": "FIXED"
   }
 ]

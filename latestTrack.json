@@ -1,12 +1,11 @@
 {
-  "artist": "Spice Girls",
-  "title": "Say You'll Be There",
-  "startTime": "2025-11-02T18:59:57Z",
-  "start": "2025-11-02T18:59:57Z",
-  "duration": 3600,
-  "source": "ALT",
-  "indeterminate": true,
-  "endTime": "2025-11-02T19:59:57Z",
-  "altMode": true,
-  "Source": "ALT"
+  "endTime": "2025-11-02T21:00:00Z",
+  "artist": "Kevin McCallum",
+  "title": "The Mr Rocks Show",
+  "startTime": "2025-11-02T19:00:00Z",
+  "start": "2025-11-02T19:00:00Z",
+  "duration": 7200,
+  "source": "FIXED",
+  "indeterminate": false,
+  "altMode": false
 }
