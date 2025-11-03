@@ -557,6 +557,58 @@
       "link": "https://www.kelburnestate.com/timetable/event/kelburn-haunted-forest-nightmare/",
       "source": "Kelburn Estate",
       "recurring": false
+    },
+    {
+      "title": "Saltcoats Christmas Carnival",
+      "start_date": "2025-11-23",
+      "end_date": "2025-11-23",
+      "start_time": "10:00",
+      "end_time": null,
+      "venue": "Countess Street",
+      "town": "Saltcoats",
+      "desc": "Annual Christmas light switch-on and street carnival with stalls and children\u2019s rides.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council \u2013 What's On",
+      "recurring": true
+    },
+    {
+      "title": "Stevenston Christmas Light Switch-On",
+      "start_date": "2025-11-28",
+      "end_date": "2025-11-28",
+      "start_time": "16:00",
+      "end_time": null,
+      "venue": "Stevenston Cross",
+      "town": "Stevenston",
+      "desc": "Annual festive procession and Christmas light switch-on with music, food and fun.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council \u2013 What's On",
+      "recurring": true
+    },
+    {
+      "title": "Torch and Tinsel Parade, Dalry",
+      "start_date": "2025-11-28",
+      "end_date": "2025-11-28",
+      "start_time": "18:00",
+      "end_time": null,
+      "venue": "Main Street",
+      "town": "Dalry",
+      "desc": "Torch and tinsel parade with Santa\u2019s grotto and festive light switch-on for Dalry.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council \u2013 What's On",
+      "recurring": true
+    },
+    {
+      "title": "Kilwinning Christmas Gala",
+      "start_date": "2025-11-29",
+      "end_date": "2025-11-29",
+      "start_time": "12:00",
+      "end_time": null,
+      "venue": "Main Street",
+      "town": "Kilwinning",
+      "desc": "Christmas light switch-on in Kilwinning with children\u2019s rides, stalls and Santa\u2019s grotto.",
+      "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
+      "source": "North Ayrshire Council \u2013 What's On",
+      "recurring": true
     }
   ],
   "south": [
@@ -1270,6 +1322,123 @@
       "link": "https://www.visitscotland.com/info/events/festive-santas-grotto-2025-p3416411",
       "source": "VisitScotland",
       "recurring": true
+    },
+    {
+      "title": "Wintertainment at Troon Library",
+      "start_date": "2025-11-16",
+      "end_date": "2025-11-16",
+      "start_time": "12:00",
+      "end_time": "16:00",
+      "venue": "Troon Library, Troon Municipal Buildings, 8 South Beach",
+      "town": "Troon",
+      "desc": "Library Wintertainment celebrations with Christmas stories, family crafts, book sale and stalls. Free, drop-in and suitable for families.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/wintertainment-at-troon-library/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Victorian Christmas Fair",
+      "start_date": "2025-11-29",
+      "end_date": "2025-11-29",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "venue": "Cutty Sark Centre, 40 High Street",
+      "town": "Ayr",
+      "desc": "Victorian-themed Christmas fair from Cunninghame, Kyle & Carrick Rotary Club \u2013 stalls, live music, games, Santa 11am\u20132pm, Victorian horse and carriage, and festive refreshments. Suitable for all ages.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/victorian-christmas-fair/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Halloween at Rozelle: Mat o\u2019 Shanter Exhibition",
+      "start_date": "2025-10-03",
+      "end_date": "2025-11-16",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Rozelle House",
+      "town": "Ayr",
+      "desc": "Free exhibition at Rozelle inspired by Tam o\u2019 Shanter, running through to mid-November and suitable for families who enjoy spooky stories and art.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/halloween-at-rozelle-mat-o-shanter/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "The Starlight Exhibition",
+      "start_date": "2025-10-28",
+      "end_date": "2025-11-09",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Rozelle (see listing)",
+      "town": "Ayr",
+      "desc": "Free exhibition featuring night-sky and Dunure Castle photography, good for a short family visit.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/the-starlight-exhibition/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Burns Squared \u2013 Art Exhibition",
+      "start_date": "2025-11-01",
+      "end_date": "2025-11-30",
+      "start_time": "12:00",
+      "end_time": "16:00",
+      "venue": "Robert Burns Birthplace Museum",
+      "town": "Alloway",
+      "desc": "Free exhibition inspired by the work of Robert Burns, with over 50 artists \u2013 good for families looking for a cultural hour indoors.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/burns-squared/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Crochet with Isabelle at Prestwick Library",
+      "start_date": "2025-10-06",
+      "end_date": "2025-11-24",
+      "start_time": "17:00",
+      "end_time": "18:30",
+      "venue": "Prestwick Library",
+      "town": "Prestwick",
+      "desc": "Free weekly crochet group at Prestwick Library (Mondays), suitable for older children/teens and adults learning crafts together.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/crochet-with-isabelle-at-prestwick-library/",
+      "source": "Destination South Ayrshire",
+      "recurring": true
+    },
+    {
+      "title": "Creative Writing Workshop with Simon Lamb",
+      "start_date": "2025-10-24",
+      "end_date": "2025-11-14",
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "venue": "Robert Burns Birthplace Museum",
+      "town": "Alloway",
+      "desc": "Free creative writing workshops with poet and author Simon Lamb \u2013 suitable for young people and adults interested in writing.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/creative-writing-workshop-with-simon-lamb/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "Christmas at Culzean",
+      "start_date": "2025-12-06",
+      "end_date": "2025-12-14",
+      "start_time": "11:00",
+      "end_time": "16:00",
+      "venue": "Culzean Castle and Country Park",
+      "town": "Maybole",
+      "desc": "Festive days at Culzean with decorated castle, gardens, deer park and gift shop offers on 6, 7, 13 & 14 December. Standard NTS admission; members free.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/christmas-at-culzean/",
+      "source": "Destination South Ayrshire / National Trust for Scotland",
+      "recurring": false
+    },
+    {
+      "title": "Hogmanay Celebration at The Clocktower",
+      "start_date": "2025-12-31",
+      "end_date": "2025-12-31",
+      "start_time": "18:30",
+      "end_time": null,
+      "venue": "The Clocktower, 1 Gibbsyard, Auchincruive Estate",
+      "town": "Ayr",
+      "desc": "Family-friendly Hogmanay event in a festive marquee with live DJs and music all night, counting down to 2026 together.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/hogmanay-celebration-at-the-clocktower/",
+      "source": "Destination South Ayrshire / Clocktower Events",
+      "recurring": false
     }
   ],
   "east": [
@@ -1657,6 +1826,19 @@
       "desc": "Family pantomime (multiple performances Nov\u2013Dec).",
       "link": "https://tickets.eastayrshireleisure.com/eastayrshireleisuretrust/website/EventList.aspx?MonthSelect=202511&SortBy=Name&resize=true",
       "source": "East Ayrshire Leisure \u2013 Tickets",
+      "recurring": false
+    },
+    {
+      "title": "Maist Haunted Chill-Marnock Special",
+      "start_date": "2025-11-15",
+      "end_date": "2025-11-15",
+      "start_time": "19:00",
+      "end_time": null,
+      "venue": "The Galleon Centre",
+      "town": "Kilmarnock",
+      "desc": "East Ayrshire Youth Theatre\u2019s final show of 2025 \u2013 a spooky, fun family production following Yvette Shielding and her film crew in the town of Chill-Marnock.",
+      "link": "https://eastayrshireleisure.com/events/maist-haunted-chill-marnock-special/",
+      "source": "East Ayrshire Leisure",
       "recurring": false
     }
   ]
