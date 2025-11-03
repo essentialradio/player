@@ -51287,5 +51287,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-11-03T00:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-03T01:00:00Z",
+    "Scheduled Time": "01:01",
+    "Displayed Time": "01:01",
+    "Artist": "Essential Radio",
+    "Title": "Soul Vaults with David Southway",
+    "Duration (s)": 3405,
+    "Full Duration (s)": 3411,
+    "Duration (mins)": 56.75,
+    "Full Duration (mins)": 56.85,
+    "Start ISO": "2025-11-03T01:01:51Z",
+    "Source": "PLAYIT"
   }
 ]
