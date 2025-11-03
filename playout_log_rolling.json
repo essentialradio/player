@@ -51690,5 +51690,18 @@
     "Full Duration (mins)": 3.12,
     "Start ISO": "2025-11-03T04:02:04Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-03T04:00:00Z",
+    "Scheduled Time": "04:05",
+    "Displayed Time": "04:05",
+    "Artist": "Myles Smith",
+    "Title": "Stargazing",
+    "Duration (s)": 162,
+    "Full Duration (s)": 173,
+    "Duration (mins)": 2.7,
+    "Full Duration (mins)": 2.88,
+    "Start ISO": "2025-11-03T04:05:41Z",
+    "Source": "PLAYIT"
   }
 ]
