@@ -53653,5 +53653,31 @@
     "Full Duration (mins)": 3.88,
     "Start ISO": "2025-11-03T15:11:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-03T15:00:00Z",
+    "Scheduled Time": "15:15",
+    "Displayed Time": "15:15",
+    "Artist": "Miley Cyrus",
+    "Title": "Flowers",
+    "Duration (s)": 186,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 3.33,
+    "Start ISO": "2025-11-03T15:15:27Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-03T15:00:00Z",
+    "Scheduled Time": "15:22",
+    "Displayed Time": "15:22",
+    "Artist": "Sia",
+    "Title": "Cheap Thrills",
+    "Duration (s)": 198,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.52,
+    "Start ISO": "2025-11-03T15:22:54Z",
+    "Source": "PLAYIT"
   }
 ]
