@@ -54901,5 +54901,18 @@
     "Full Duration (mins)": 4.2,
     "Start ISO": "2025-11-03T22:06:03Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-03T22:00:00Z",
+    "Scheduled Time": "22:10",
+    "Displayed Time": "22:10",
+    "Artist": "Del Amitri",
+    "Title": "Nothing Ever Happens",
+    "Duration (s)": 220,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.83,
+    "Start ISO": "2025-11-03T22:10:06Z",
+    "Source": "PLAYIT"
   }
 ]
