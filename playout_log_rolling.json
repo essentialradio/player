@@ -55434,5 +55434,18 @@
     "Full Duration (mins)": 4.0,
     "Start ISO": "2025-11-04T01:11:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-04T01:00:00Z",
+    "Scheduled Time": "01:15",
+    "Displayed Time": "01:15",
+    "Artist": "Lizzo",
+    "Title": "2 Be Loved (Am I Ready)",
+    "Duration (s)": 180,
+    "Full Duration (s)": 188,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.13,
+    "Start ISO": "2025-11-04T01:15:28Z",
+    "Source": "PLAYIT"
   }
 ]
