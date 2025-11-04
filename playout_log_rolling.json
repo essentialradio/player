@@ -59100,5 +59100,18 @@
     "Full Duration (mins)": 4.28,
     "Start ISO": "2025-11-04T22:01:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-04T22:00:00Z",
+    "Scheduled Time": "22:05",
+    "Displayed Time": "22:05",
+    "Artist": "Adele",
+    "Title": "Hello",
+    "Duration (s)": 155,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.7,
+    "Start ISO": "2025-11-04T22:05:48Z",
+    "Source": "PLAYIT"
   }
 ]
