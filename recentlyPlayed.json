@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Myles Smith",
-    "title": "Gold",
-    "startTime": "2025-11-04T18:54:10Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Kings of Leon",
     "title": "Sex on Fire",
     "startTime": "2025-11-04T19:01:42Z",
@@ -117,6 +111,12 @@
     "artist": "Paramore",
     "title": "Misery Business",
     "startTime": "2025-11-04T20:19:04Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Erasure",
+    "title": "Love to Hate You",
+    "startTime": "2025-11-04T20:22:20Z",
     "source": "PLAYIT"
   }
 ]
