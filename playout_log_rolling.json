@@ -56357,5 +56357,31 @@
     "Full Duration (mins)": 2.95,
     "Start ISO": "2025-11-04T06:15:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-04T06:00:00Z",
+    "Scheduled Time": "06:22",
+    "Displayed Time": "06:22",
+    "Artist": "Callum Beattie",
+    "Title": "Two Pretenders",
+    "Duration (s)": 209,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.55,
+    "Start ISO": "2025-11-04T06:22:17Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-04T06:00:00Z",
+    "Scheduled Time": "06:25",
+    "Displayed Time": "06:25",
+    "Artist": "No Doubt",
+    "Title": "It's My Life",
+    "Duration (s)": 225,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-11-04T06:25:53Z",
+    "Source": "PLAYIT"
   }
 ]
