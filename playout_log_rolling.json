@@ -61206,5 +61206,31 @@
     "Full Duration (mins)": 3.88,
     "Start ISO": "2025-11-05T09:55:20Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T10:00:00Z",
+    "Scheduled Time": "10:02",
+    "Displayed Time": "10:02",
+    "Artist": "Lewis Capaldi",
+    "Title": "Something In The Heavens",
+    "Duration (s)": 192,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-11-05T10:02:17Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T10:00:00Z",
+    "Scheduled Time": "10:10",
+    "Displayed Time": "10:10",
+    "Artist": "Dermot Kennedy",
+    "Title": "Kiss Me",
+    "Duration (s)": 218,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-11-05T10:10:24Z",
+    "Source": "PLAYIT"
   }
 ]
