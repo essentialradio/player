@@ -60413,5 +60413,31 @@
     "Full Duration (mins)": 5.25,
     "Start ISO": "2025-11-05T05:11:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T05:00:00Z",
+    "Scheduled Time": "05:16",
+    "Displayed Time": "05:16",
+    "Artist": "Beyonce",
+    "Title": "BREAK MY SOUL",
+    "Duration (s)": 161,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-11-05T05:16:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T05:00:00Z",
+    "Scheduled Time": "05:23",
+    "Displayed Time": "05:23",
+    "Artist": "Essential Radio Jingle",
+    "Title": "Love Music Love College V2",
+    "Duration (s)": 14,
+    "Full Duration (s)": 20,
+    "Duration (mins)": 0.23,
+    "Full Duration (mins)": 0.33,
+    "Start ISO": "2025-11-05T05:23:28Z",
+    "Source": "PLAYIT"
   }
 ]
