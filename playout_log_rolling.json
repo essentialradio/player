@@ -60530,5 +60530,31 @@
     "Full Duration (mins)": 3.22,
     "Start ISO": "2025-11-05T05:46:38Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T05:00:00Z",
+    "Scheduled Time": "05:49",
+    "Displayed Time": "05:49",
+    "Artist": "Jax Jones, Calum Scott",
+    "Title": "Whistle",
+    "Duration (s)": 178,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-11-05T05:49:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T05:00:00Z",
+    "Scheduled Time": "05:52",
+    "Displayed Time": "05:52",
+    "Artist": "Europe",
+    "Title": "The Final Countdown",
+    "Duration (s)": 232,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-11-05T05:52:55Z",
+    "Source": "PLAYIT"
   }
 ]
