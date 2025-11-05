@@ -59438,5 +59438,31 @@
     "Full Duration (mins)": 4.05,
     "Start ISO": "2025-11-05T00:05:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T00:00:00Z",
+    "Scheduled Time": "00:09",
+    "Displayed Time": "00:09",
+    "Artist": "Mimi Webb",
+    "Title": "Ghost of You",
+    "Duration (s)": 150,
+    "Full Duration (s)": 158,
+    "Duration (mins)": 2.5,
+    "Full Duration (mins)": 2.63,
+    "Start ISO": "2025-11-05T00:09:37Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T00:00:00Z",
+    "Scheduled Time": "00:12",
+    "Displayed Time": "00:12",
+    "Artist": "The Script",
+    "Title": "For the First Time",
+    "Duration (s)": 237,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-11-05T00:12:34Z",
+    "Source": "PLAYIT"
   }
 ]
