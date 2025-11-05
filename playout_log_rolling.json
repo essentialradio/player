@@ -61258,5 +61258,18 @@
     "Full Duration (mins)": 4.0,
     "Start ISO": "2025-11-05T10:23:27Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-05T10:00:00Z",
+    "Scheduled Time": "10:28",
+    "Displayed Time": "10:28",
+    "Artist": "Simon & Garfunkel",
+    "Title": "The Sound of Silence",
+    "Duration (s)": 165,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 2.75,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-11-05T10:28:43Z",
+    "Source": "PLAYIT"
   }
 ]
