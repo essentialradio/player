@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Sara Bareilles",
-    "title": "Love Song",
-    "startTime": "2025-11-05T23:09:44Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Guns 'N' Roses",
     "title": "Live And Let Die",
     "startTime": "2025-11-05T23:13:30Z",
@@ -117,6 +111,12 @@
     "artist": "Katy Perry",
     "title": "Teenage Dream",
     "startTime": "2025-11-06T00:31:17Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Chappell Roan",
+    "title": "The Subway",
+    "startTime": "2025-11-06T00:34:52Z",
     "source": "PLAYIT"
   }
 ]
