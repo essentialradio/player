@@ -53505,5 +53505,44 @@
     "Full Duration (mins)": 3.15,
     "Start ISO": "2025-11-06T09:31:24Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T09:00:00Z",
+    "Scheduled Time": "09:34",
+    "Displayed Time": "09:34",
+    "Artist": "McFly",
+    "Title": "Obviously",
+    "Duration (s)": 187,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.2,
+    "Start ISO": "2025-11-06T09:34:34Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T09:00:00Z",
+    "Scheduled Time": "09:38",
+    "Displayed Time": "09:38",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-11-06T09:38:51Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T09:00:00Z",
+    "Scheduled Time": "09:42",
+    "Displayed Time": "09:42",
+    "Artist": "Kenny G",
+    "Title": "Songbird",
+    "Duration (s)": 289,
+    "Full Duration (s)": 301,
+    "Duration (mins)": 4.82,
+    "Full Duration (mins)": 5.02,
+    "Start ISO": "2025-11-06T09:42:08Z",
+    "Source": "PLAYIT"
   }
 ]
