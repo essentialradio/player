@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Taylor Swift",
-    "title": "Cruel Summer",
-    "startTime": "2025-11-06T07:11:17Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Mary J Blige",
     "title": "Family Affair",
     "startTime": "2025-11-06T07:14:13Z",
@@ -117,6 +111,12 @@
     "artist": "Tate McRae",
     "title": "Just Keep Watching",
     "startTime": "2025-11-06T08:43:09Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Camila Cabello & Ed Sheeran",
+    "title": "Bam Bam",
+    "startTime": "2025-11-06T08:50:22Z",
     "source": "PLAYIT"
   }
 ]
