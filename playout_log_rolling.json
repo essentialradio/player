@@ -51837,5 +51837,31 @@
     "Full Duration (mins)": 4.0,
     "Start ISO": "2025-11-06T23:45:37Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T23:00:00Z",
+    "Scheduled Time": "23:49",
+    "Displayed Time": "23:49",
+    "Artist": "Michael Jackson",
+    "Title": "Heal the World",
+    "Duration (s)": 248,
+    "Full Duration (s)": 273,
+    "Duration (mins)": 4.13,
+    "Full Duration (mins)": 4.55,
+    "Start ISO": "2025-11-06T23:49:27Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T23:00:00Z",
+    "Scheduled Time": "23:53",
+    "Displayed Time": "23:53",
+    "Artist": "Eurythmics",
+    "Title": "Here Comes the Rain Again",
+    "Duration (s)": 273,
+    "Full Duration (s)": 292,
+    "Duration (mins)": 4.55,
+    "Full Duration (mins)": 4.87,
+    "Start ISO": "2025-11-06T23:53:35Z",
+    "Source": "PLAYIT"
   }
 ]
