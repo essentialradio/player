@@ -53063,5 +53063,31 @@
     "Full Duration (mins)": 2.85,
     "Start ISO": "2025-11-06T06:45:22Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T06:00:00Z",
+    "Scheduled Time": "06:48",
+    "Displayed Time": "06:48",
+    "Artist": "Wham!",
+    "Title": "Freedom",
+    "Duration (s)": 284,
+    "Full Duration (s)": 303,
+    "Duration (mins)": 4.73,
+    "Full Duration (mins)": 5.05,
+    "Start ISO": "2025-11-06T06:48:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T06:00:00Z",
+    "Scheduled Time": "06:52",
+    "Displayed Time": "06:52",
+    "Artist": "Beyonce",
+    "Title": "BREAK MY SOUL",
+    "Duration (s)": 156,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.6,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-11-06T06:52:50Z",
+    "Source": "PLAYIT"
   }
 ]
