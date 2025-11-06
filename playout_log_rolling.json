@@ -53856,5 +53856,31 @@
     "Full Duration (mins)": 3.48,
     "Start ISO": "2025-11-06T11:43:43Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T11:00:00Z",
+    "Scheduled Time": "11:46",
+    "Displayed Time": "11:46",
+    "Artist": "Baccara",
+    "Title": "Yes Sir, I Can Boogie",
+    "Duration (s)": 256,
+    "Full Duration (s)": 274,
+    "Duration (mins)": 4.27,
+    "Full Duration (mins)": 4.57,
+    "Start ISO": "2025-11-06T11:46:58Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-06T11:00:00Z",
+    "Scheduled Time": "11:51",
+    "Displayed Time": "11:51",
+    "Artist": "Eagle-Eye Cherry",
+    "Title": "Save Tonight",
+    "Duration (s)": 212,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.83,
+    "Start ISO": "2025-11-06T11:51:21Z",
+    "Source": "PLAYIT"
   }
 ]
