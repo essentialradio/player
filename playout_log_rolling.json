@@ -52643,5 +52643,18 @@
     "Full Duration (mins)": 3.75,
     "Start ISO": "2025-11-07T04:01:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-07T04:00:00Z",
+    "Scheduled Time": "04:05",
+    "Displayed Time": "04:05",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 176,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.12,
+    "Start ISO": "2025-11-07T04:05:56Z",
+    "Source": "PLAYIT"
   }
 ]
