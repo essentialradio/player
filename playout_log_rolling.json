@@ -55661,5 +55661,18 @@
     "Actual End ISO": "2025-11-07T20:00:00Z",
     "Actual Duration (s)": 69,
     "Actual Duration (mins)": 1.15
+  },
+  {
+    "Hour": "2025-11-07T20:00:00Z",
+    "Scheduled Time": "20:03",
+    "Displayed Time": "20:03",
+    "Artist": "Jennifer Lopez",
+    "Title": "Play",
+    "Duration (s)": 196,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.27,
+    "Full Duration (mins)": 3.28,
+    "Start ISO": "2025-11-07T20:03:31Z",
+    "Source": "PLAYIT"
   }
 ]
