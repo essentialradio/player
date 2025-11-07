@@ -55645,5 +55645,21 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-07T19:00:00Z",
+    "Scheduled Time": "19:58",
+    "Displayed Time": "19:58",
+    "Artist": "New Spectrum",
+    "Title": "We're Alright",
+    "Duration (s)": 69,
+    "Full Duration (s)": 69,
+    "Duration (mins)": 1.15,
+    "Full Duration (mins)": 1.15,
+    "Start ISO": "2025-11-07T19:58:51Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-07T20:00:00Z",
+    "Actual Duration (s)": 69,
+    "Actual Duration (mins)": 1.15
   }
 ]
