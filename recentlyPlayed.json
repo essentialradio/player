@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Adele",
-    "title": "Rolling in the Deep",
-    "startTime": "2025-11-07T00:30:56Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Coldplay",
     "title": "Higher Power",
     "startTime": "2025-11-07T00:34:35Z",
@@ -117,6 +111,12 @@
     "artist": "David Guetta & Bebe Rexha",
     "title": "I'm Good (Blue)",
     "startTime": "2025-11-07T01:48:05Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Ava Max",
+    "title": "Sweet but Psycho",
+    "startTime": "2025-11-07T01:51:01Z",
     "source": "PLAYIT"
   }
 ]
