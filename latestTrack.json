@@ -1,11 +1,12 @@
 {
   "artist": "Coldplay X BTS",
   "title": "My Universe",
-  "startTime": "2025-11-07T18:55:25Z",
-  "start": "2025-11-07T18:55:25Z",
-  "duration": 184,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-07T18:58:29Z",
-  "altMode": false
+  "startTime": "2025-11-07T19:00:10Z",
+  "start": "2025-11-07T19:00:10Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-07T20:00:10Z",
+  "altMode": true,
+  "Source": "ALT"
 }
