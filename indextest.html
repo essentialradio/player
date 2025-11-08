@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Essential Radio Player</title>
+<title>Essential Radio</title>
 
 <meta name="description" content="Listen live to Essential Radio — the feelgood sound of Ayrshire College. Live player, now playing, schedule, and ways to listen.">
 <meta property="og:type" content="website">
@@ -4664,57 +4664,69 @@ html[data-theme="light"] #mobileNowBar {
             color:#f5f5f5;border-radius:18px;padding:16px;box-shadow:0 6px 32px #0007;
             border:1px solid #252e42;max-width:100%;text-align:center;margin-bottom:18px;
             transition:background 0.3s,box-shadow 0.3s;">
-<!-- Heading (desktop = one line, mobile = two lines) -->
-<h3 class="wxHeading">
+  <!-- Heading (desktop = one line, mobile = two lines) -->
+  <h3 class="wxHeading">
     Ayrshire Weather
     <span class="mobBreak"><br/></span>
-<span class="sub">– select a location</span>
-</h3>
-<!-- ♻︎ LOCAL HEADING STYLES – stay inside the widget -->
-<style>
+    <span class="sub">- select a location</span>
+  </h3>
+
+  <!-- Local heading styles -->
+  <style>
     /* desktop / tablet */
     #wxWrap .wxHeading{
-      font-size:1.15em;font-weight:600;margin:0 0 10px 0;color:#fed351;letter-spacing:.3px}
-    #wxWrap .wxHeading .sub{font-weight:400;font-style:italic;color:#bbb}
-    #wxWrap .mobBreak{display:none}
+      font-size:1.15em;font-weight:600;margin:0 0 10px 0;color:#fed351;letter-spacing:.3px;
+    }
+    #wxWrap .wxHeading .sub{
+      font-weight:400;font-style:italic;color:#bbb;
+    }
+    #wxWrap .mobBreak{display:none;}
 
-    /* mobile ≤500 px */
+    /* mobile <=500 px */
     @media(max-width:500px){
-      #wxWrap .wxHeading{font-size:1.05em}
-      #wxWrap .wxHeading .sub{font-size:.9em}
-      #wxWrap .mobBreak{display:inline}
+      #wxWrap .wxHeading{font-size:1.05em;}
+      #wxWrap .wxHeading .sub{font-size:.9em;}
+      #wxWrap .mobBreak{display:inline;}
     }
   </style>
-<!-- Location selector -->
-<div style="margin-bottom:7px;">
-<select id="locSel" style="background:#222;color:#fed351;border:1px solid #444;
-                   border-radius:6px;padding:4px 10px;font-weight:bold;">
-<option value="Kilmarnock,55.6118,-4.4955">Kilmarnock</option>
-<option value="Kilwinning,55.6558,-4.7057">Kilwinning</option>
-<option value="Ayr,55.4586,-4.6292">Ayr</option>
-</select>
-</div>
-<!-- …rest of the widget remains unchanged… -->
-<div style="display:flex;justify-content:space-between;align-items:center;
+
+  <!-- Location selector -->
+  <div style="margin-bottom:7px;">
+    <select id="locSel" style="background:#222;color:#fed351;border:1px solid #444;
+                     border-radius:6px;padding:4px 10px;font-weight:bold;">
+      <option value="Kilmarnock,55.6118,-4.4955">Kilmarnock</option>
+      <option value="Kilwinning,55.6558,-4.7057">Kilwinning</option>
+      <option value="Ayr,55.4586,-4.6292">Ayr</option>
+    </select>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;
               border-bottom:1px solid #2224;margin-bottom:10px;padding-bottom:7px;">
-<div id="wxNow" style="text-align:left;font-size:1em;"></div>
-<button id="toggleBtn" style="background:#fed351;color:#191c29;font-weight:600;border:none;
-                   border-radius:6px;padding:3px 10px;font-size:0.8em;cursor:pointer;
-                   box-shadow:0 1px 4px rgba(0,0,0,0.3);transition:all 0.18s;">
+    <div id="wxNow"
+         style="text-align:left;font-size:1em;"
+         aria-live="polite"></div>
+    <button id="toggleBtn" style="background:#fed351;color:#191c29;font-weight:600;border:none;
+                       border-radius:6px;padding:3px 10px;font-size:0.8em;cursor:pointer;
+                       box-shadow:0 1px 4px rgba(0,0,0,0.3);transition:all 0.18s;">
       5-day ▸
     </button>
-</div>
-<!-- Hourly (2-row layout) -->
-<div id="hrWrap" style="display:grid;grid-template-rows:auto auto;gap:4px;
+  </div>
+
+  <!-- Hourly (2-row layout) -->
+  <div id="hrWrap" style="display:grid;grid-template-rows:auto auto;gap:4px;
                           white-space:nowrap;font-size:0.82em;
                           padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
-<!-- Daily (2-row layout) -->
-<div id="dyWrap" style="display:none;grid-template-rows:auto auto;gap:4px;
+
+  <!-- Daily (2-row layout) -->
+  <div id="dyWrap" style="display:none;grid-template-rows:auto auto;gap:4px;
                           white-space:nowrap;font-size:0.82em;
                           padding:6px 0;transition:opacity 0.35s, transform 0.3s;opacity:1;"></div>
-<div id="wxAlert" style="color:#ff6969;font-size:0.85em;margin-top:5px;"></div>
+
+  <div id="wxAlert" style="color:#ff6969;font-size:0.85em;margin-top:5px;"></div>
 </div>
+
 <hr class="weather-divider"/>
+
 <style>
   .weather-divider {
     border: 0;
@@ -4732,19 +4744,19 @@ html[data-theme="light"] #mobileNowBar {
 
   /* Default: no horizontal scroll = no vertical stall */
   #hrWrap, #dyWrap {
-    overflow-x: hidden;      /* nothing to drag */
-    touch-action: pan-y;     /* vertical only   */
+    overflow-x: hidden;
+    touch-action: pan-y;
     overscroll-behavior: auto;
   }
 
-  /* Phones (≤500 px) get sideways strips */
+  /* Phones (<=500 px) get sideways strips */
   @media (max-width: 500px) {
     #hrWrap, #dyWrap {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-x;           /* claim horizontal drags */
+      touch-action: pan-x;
       overscroll-behavior-x: contain;
-      overscroll-behavior-y: auto;   /* let vertical bubble out */
+      overscroll-behavior-y: auto;
     }
   }
 
@@ -4753,8 +4765,6 @@ html[data-theme="light"] #mobileNowBar {
     overscroll-behavior: auto !important;
     -webkit-overflow-scrolling: touch;
   }
-
-  /* ========== OTHER EXISTING STYLES (unchanged) ========== */
 
   #toggleBtn:hover {
     background: #ffe67c !important;
@@ -4767,7 +4777,7 @@ html[data-theme="light"] #mobileNowBar {
   #hrWrap, #dyWrap {
     transition: opacity 0.35s, transform 0.3s;
     opacity: 1;
-    scroll-snap-type: x mandatory;   /* keep snap if you like */
+    scroll-snap-type: x mandatory;
   }
 
   #hrWrap[style*="display: none"],
@@ -4784,15 +4794,6 @@ html[data-theme="light"] #mobileNowBar {
     transform: scale(1.16) rotate(-8deg);
   }
 
-  @media (max-width: 500px) {
-    #toggleBtn {
-      font-size: 0.72em !important;
-      padding: 2px 6px !important;
-      border-radius: 5px !important;
-    }
-    #wxWrap h3 { font-size: 1em !important; }
-  }
-
   #dyWrap > div > div {
     width: 20% !important;
     min-width: 0 !important;
@@ -4800,7 +4801,6 @@ html[data-theme="light"] #mobileNowBar {
     box-sizing: border-box;
   }
 
-  /* “chance of rain” sub-line */
   .wxRainNote {
     font-size: 90%;
     font-style: italic;
@@ -4808,9 +4808,14 @@ html[data-theme="light"] #mobileNowBar {
   }
   @media (max-width: 500px) {
     .wxRainNote { text-align: right; width: 100%; }
+    #wxNow {
+      font-size: 0.9em !important;
+      line-height: 1.25;
+    }
   }
 </style>
-<!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL) === -->
+
+<!-- === ESSENTIAL WEATHER WIDGET SCRIPT (FULL, CLEANED) === -->
 <script>
 (() => {
   const KEY = 'e4a309c7e76f09b85a2ff7d34305505f';
@@ -4828,151 +4833,182 @@ html[data-theme="light"] #mobileNowBar {
   if (localStorage.wxChoice) locSel.value = localStorage.wxChoice;
 
   function phrase(desc, isDay, temp = null, pop = null) {
-  const now = new Date();
-  const hr = now.getHours();
-  const darkHours = (hr < 9 || hr >= 21); // Met Office guidance
+    desc = (desc || '').toLowerCase();
 
-  desc = desc.toLowerCase();
+    // Suppress bright/sunny wording at night
+    if (!isDay && /(sun|sunshine|mostly sunny|sunny intervals|bright)/.test(desc)) {
+      return 'Clear';
+    }
 
-  // Suppress sunshine at night or early morning
-  if (darkHours && /(sun|sunshine|mostly sunny|sunny intervals)/.test(desc)) {
-    return 'Clear';
+    if (desc.includes('thunder')) return 'Thunderstorm';
+    if (desc.includes('snow') && (!temp || temp < 5)) return 'Snow';
+    if (desc.includes('snow') && temp && temp >= 5) return 'Showers';
+
+    if (desc.includes('rain') || desc.includes('drizzle')) {
+      if (pop !== null && pop < 30) {
+        return isDay ? 'Chance of showers' : 'Possible showers';
+      }
+      return 'Rain';
+    }
+
+    if (desc.includes('fog'))   return 'Foggy';
+    if (desc.includes('mist'))  return 'Misty';
+    if (desc.includes('haze'))  return 'Hazy';
+    if (desc.includes('smoke')) return 'Smoky';
+
+    // Sunshine / cloud logic
+    if (desc === 'clear sky')              return isDay ? 'Sunny' : 'Clear';
+    if (desc.includes('few clouds'))       return isDay ? 'Bright with sun' : 'Mainly clear';
+    if (desc.includes('scattered clouds')) return isDay ? 'Bright spells' : 'Some cloud';
+    if (desc.includes('broken clouds'))    return isDay ? 'Bright intervals' : 'Cloudy';
+    if (desc.includes('overcast'))         return 'Overcast';
+
+    // Any other "bright" at night becomes clear
+    if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
+
+    // Fallbacks
+    return isDay ? 'Bright' : 'Calm';
   }
-
-  if (desc.includes('thunder')) return 'Thunderstorm';
-  if (desc.includes('snow') && (!temp || temp < 5)) return 'Snow';
-  if (desc.includes('snow') && temp && temp >= 5) return 'Showers';
-  if (desc.includes('rain') || desc.includes('drizzle')) {
-    if (pop !== null && pop < 30) return isDay ? 'Chance of showers' : 'Possible showers';
-    return 'Rain';
-  }
-  if (desc.includes('fog'))   return 'Foggy';
-  if (desc.includes('mist'))  return 'Misty';
-  if (desc.includes('haze'))  return 'Hazy';
-  if (desc.includes('smoke')) return 'Smoky';
-
-  // Sunshine logic (strict)
-  if (desc === 'clear sky')              return isDay ? 'Sunny' : 'Clear';
-  if (desc.includes('few clouds'))       return isDay ? 'Bright with sun' : 'Mainly clear';
-  if (desc.includes('scattered clouds')) return isDay ? 'Bright spells' : 'Some cloud';
-  if (desc.includes('broken clouds'))    return isDay ? 'Bright intervals' : 'Cloudy';
-  if (desc.includes('overcast'))         return 'Overcast';
-
-  // Catch unhandled bright cases
-  if (!isDay && (desc.includes('sun') || desc.includes('bright'))) return 'Clear';
-
-  // Fallbacks
-  return isDay ? 'Bright' : 'Calm';
-}
 
   async function update() {
-    const [label, lat, lon] = locSel.value.split(',');
-    localStorage.wxChoice = locSel.value;
+    const value = locSel.value || '';
+    const [label, lat, lon] = value.split(',');
+    localStorage.wxChoice = value;
 
     try {
-      const d = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`)
-                       .then(r => r.json());
+      const res = await fetch(
+        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`
+      );
+      const d = await res.json();
+
+      // Basic guards for missing data
+      if (!d || !d.current || !Array.isArray(d.hourly) || d.hourly.length < 2 ||
+          !Array.isArray(d.daily) || d.daily.length < 2) {
+        wxNow.textContent = 'Weather unavailable';
+        hrWrap.innerHTML = '';
+        dyWrap.innerHTML = '';
+        alertBox.textContent = '';
+        return;
+      }
 
       // ==== CURRENT CONDITIONS ====
-const cur  = d.current,
-      nxt  = d.hourly[1],
-      // Determine whether to treat the current conditions as "day" or "night".
-      //
-      // The original code based the "day" flag on astronomical sunrise and sunset
-      // times (plus/minus one hour).  This meant that in mid‑summer the code
-      // would switch to using daytime descriptions (e.g. "Sunny intervals") as
-      // soon as an hour after sunrise, which can be as early as 6 AM in the UK.
-      // However, the Met Office defines the daytime period for its public
-      // forecast symbols as running from 09:00 until 21:00, and the nighttime
-      // period from 21:00 until 09:00【480738903751570†L369-L371】.  To avoid
-      // seeing daytime phrases like "sunny intervals" before 9 AM, we instead
-      // base the day/night decision on the local clock hour.
-      day  = (() => {
-        const hour = new Date(cur.dt * 1000).getHours();
-        return hour >= 9 && hour < 21;
-      })(),
-      pop  = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null,
-      desc = phrase(cur.weather[0].description, day, cur.temp, pop),
-      tmp  = Math.round(cur.temp);
+      const cur = d.current;
+      const nxt = d.hourly[1];
 
-// Only show % if desc doesn’t already include “rain / showers”
-const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
+      // Day or night: use sunrise/sunset, with 09-21 fallback
+      const day = (() => {
+        const { sunrise, sunset, dt } = cur;
+        if (typeof sunrise !== 'number' || typeof sunset !== 'number') {
+          const hourLocal = new Date(dt * 1000).getHours();
+          return hourLocal >= 9 && hourLocal < 21;
+        }
+        return dt >= sunrise && dt < sunset;
+      })();
 
-// Build the summary line (keeps “• 80 % rain” on one line)
-wxNow.innerHTML =
-  `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
-  (showPop
-     ? `<br><span class="wxRainNote">☔&nbsp;${pop}% chance of rain</span>`
-     : '');
-    
-      // HOURLY STRIP
+      const pop  = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null;
+      const desc = phrase(cur.weather && cur.weather[0] && cur.weather[0].description,
+                          day,
+                          cur.temp,
+                          pop);
+      const tmp  = Math.round(cur.temp);
+
+      // Only show % if desc does not already include "rain / showers"
+      const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
+
+      // Summary line
+      wxNow.innerHTML =
+        `<span style="color:#fed351;font-weight:bold">${desc}</span>, ${tmp}°C` +
+        (showPop
+          ? `<br><span class="wxRainNote">☔&nbsp;${pop}% chance of rain</span>`
+          : '');
+
+      // ==== HOURLY STRIP ====
       hrWrap.innerHTML = '';
       let times = '', details = '';
-      d.hourly.slice(1, 6).forEach(h => {
-        const t = new Date(h.dt * 1e3).getHours().toString().padStart(2,'0') + ':00';
-        const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
-        times   += `<div style="flex:1;text-align:center;min-width:60px;">${t}</div>`;
-details += `<div style="flex:1;text-align:center;min-width:60px;">
-              <img src="${icon}" width="20" class="forecast-icon"><br>${Math.round(h.temp)}°
-            </div>`;
 
+      d.hourly.slice(1, 6).forEach(h => {
+        const t = new Date(h.dt * 1000).getHours().toString().padStart(2, '0') + ':00';
+        const icon = `https://openweathermap.org/img/wn/${h.weather[0].icon}.png`;
+
+        times += `<div style="flex:1;text-align:center;min-width:60px;">${t}</div>`;
+        details += `<div style="flex:1;text-align:center;min-width:60px;">
+                      <img src="${icon}" width="20" class="forecast-icon" alt="">
+                      <br>${Math.round(h.temp)}°
+                    </div>`;
       });
-      hrWrap.innerHTML = `<div style="display:flex;">${times}</div><div style="display:flex;">${details}</div>`;
+
+      hrWrap.innerHTML =
+        `<div style="display:flex;">${times}</div>` +
+        `<div style="display:flex;">${details}</div>`;
       hrWrap.style.display = show5 ? 'none' : 'grid';
 
-      // DAILY STRIP
+      // ==== DAILY STRIP ====
       dyWrap.innerHTML = '';
       let days = '', temps = '';
+
       d.daily.slice(1, 6).forEach(dd => {
-        const wd   = new Date(dd.dt * 1e3).toLocaleDateString('en-GB', {weekday:'short'});
+        const wd   = new Date(dd.dt * 1000)
+          .toLocaleDateString('en-GB', { weekday:'short' });
         const icon = `https://openweathermap.org/img/wn/${dd.weather[0].icon}.png`;
+
         days  += `<div style="text-align:center;">${wd}</div>`;
         temps += `<div style="text-align:center;">
-                    <img src="${icon}" width="20" class="forecast-icon"><br>
-                    ${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
+                    <img src="${icon}" width="20" class="forecast-icon" alt="">
+                    <br>${Math.round(dd.temp.max)}°/${Math.round(dd.temp.min)}°
                   </div>`;
       });
-      dyWrap.innerHTML = `<div style="display:flex;">${days}</div><div style="display:flex;">${temps}</div>`;
+
+      dyWrap.innerHTML =
+        `<div style="display:flex;">${days}</div>` +
+        `<div style="display:flex;">${temps}</div>`;
       dyWrap.style.display = show5 ? 'grid' : 'none';
 
-      // ALERTS
+      // ==== ALERTS ====
       if (d.alerts && d.alerts.length) {
-        const now = Math.floor(Date.now()/1000);
+        const now = Math.floor(Date.now() / 1000);
         const valid = d.alerts.find(a => !a.end || a.end > now);
         alertBox.textContent = valid ? `⚠ ${valid.event}` : '';
       } else {
         alertBox.textContent = '';
       }
 
-    } catch(e) {
+    } catch (e) {
       console.error('Weather fetch error', e);
       wxNow.textContent = 'Weather unavailable';
+      hrWrap.innerHTML = '';
+      dyWrap.innerHTML = '';
+      alertBox.textContent = '';
     }
   }
 
   function swapView() {
     hrWrap.style.opacity = '0';
     dyWrap.style.opacity = '0';
+
     setTimeout(() => {
       show5 = !show5;
       localStorage.wxView = show5 ? '5' : 'hr';
-      hrWrap.style.display = show5 ? 'none':'grid';
-      dyWrap.style.display = show5 ? 'grid':'none';
+
+      hrWrap.style.display = show5 ? 'none' : 'grid';
+      dyWrap.style.display = show5 ? 'grid' : 'none';
       tBtn.textContent = show5 ? 'Hourly ▶' : '5-day ▸';
+
       setTimeout(() => {
-        hrWrap.style.opacity = show5 ? '0':'1';
-        dyWrap.style.opacity = show5 ? '1':'0';
-      },20);
-    },180);
+        hrWrap.style.opacity = show5 ? '0' : '1';
+        dyWrap.style.opacity = show5 ? '1' : '0';
+      }, 20);
+    }, 180);
   }
 
-  tBtn  .addEventListener('click', swapView);
+  tBtn.addEventListener('click', swapView);
   locSel.addEventListener('change', update);
   update();
   setInterval(update, 900000);
 })();
 </script>
 <!-- === END WEATHER WIDGET SCRIPT === -->
+
+
 <!-- Recently Played fills the rest of the panel -->
 <div class="recently-played-container" style="flex:1;display:flex;flex-direction:column;min-height:0;">
 <div class="recent-title" style="color:#fed351;font-size:1.1em;margin-bottom:7px;">Recently Played</div>
@@ -5850,12 +5886,40 @@ details += `<div style="flex:1;text-align:center;min-width:60px;">
 <span style="color:#fed351">Tip:</span> Click or tap the links below to open travel pages in a popup window.
       </p>
 <ul class="travel-links" style="margin:0;padding-left:18px;list-style:disc">
-<li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Current_Combined_Travel_Report.html')">🗺️ Combined Travel Report (All Modes)</a></li>
-<li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Current_Incidents_Traffic_Scotland.html')">🚨 Current Incidents &amp; Queues</a></li>
-<li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Current_Hotspots_Traffic_Scotland.html')">🚦 Current Road Delays &amp; Hotspots</a></li>
-<li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Current_Roadworks_Traffic_Scotland.html')">🚧 Current Roadworks &amp; Closures</a></li>
-<li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Scotrail_Incidents.html')">🚆 ScotRail Live Service Updates</a></li>
-<li><a href="#" onclick="openPopup('https://www.stagecoachbus.com/service-updates')">🚌 Stagecoach West Service Updates</a></li>
+<!-- Single top link -->
+<ul style="margin:0 0 16px 0; padding:0; list-style:none;">
+  <li><a href="#" onclick="openPopup('https://travel-ac.vercel.app/Current_Combined_Travel_Report.html')">🗺️ Latest Travel Report for Ayrshire</a></li>
+</ul>
+
+
+<ul class="travel-list">
+  <li>
+    <a href="#" onclick="openPopup('https://travel-ac.vercel.app/Scotrail_Incidents.html')">🚆 ScotRail Live Service Updates</a>
+  </li>
+  <li>
+    <a href="#" onclick="openPopup('https://www.stagecoachbus.com/service-updates')">🚌 Stagecoach West Service Updates</a>
+  </li>
+</ul>
+
+<style>
+  .travel-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .travel-list li + li {
+    margin-top: 8px;
+  }
+  .travel-list a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  .travel-list a:hover,
+  .travel-list a:focus {
+    text-decoration: underline;
+  }
+</style>
+
 </ul>
 </div>
 <div style="margin-top:18px;text-align:center;color:#888;font-size:14px;opacity:0.8">
@@ -5951,6 +6015,7 @@ group.forEach(show => {
 "Tim Graham": "Tim-Graham.jpeg",
     "Bex McNamee": "Bex-Mcnamee.jpg",
 	"Kevin McCallum": "Kevin-Mccallum.jpg",
+"Connor Strachan": "Connor-Strachan.JPG",
 "Keelin McKenna": "Keelin-Mckenna.jpg"
   };
 
@@ -6578,34 +6643,6 @@ function checkOverlayLogo() {
   }
 }
 
-function openModal(id) {
-  // Close all modals first
-  document.querySelectorAll('.modal').forEach(function(modal) {
-    modal.style.display = 'none';
-  });
-  // Then open the requested modal
-  document.getElementById(id).style.display = 'block';
-  document.body.classList.add('modal-open');
-  checkOverlayLogo();
-}
-
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-  // Only remove modal-open if no modals are open
-  if (![...document.querySelectorAll('.modal')].some(m => m.style.display === 'block')) {
-    document.body.classList.remove('modal-open');
-  }
-  checkOverlayLogo();
-}
-
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(function(modal) {
-    modal.style.display = 'none';
-  });
-  document.body.classList.remove('modal-open');
-  checkOverlayLogo();
-}
-
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
   const isOpen = burgerDropdown.style.display === 'flex';
@@ -6678,17 +6715,6 @@ window.addEventListener('keydown', function(e) {
     closeAllModals();
   }
 });
-document.addEventListener('visibilitychange', () => {
-  if (!document.hidden) {
-    fetchNowPlaying();
-    fetchRecentFromGitHub();
-  }
-});
-window.addEventListener('focus', () => {
-  fetchNowPlaying();
-  fetchRecentFromGitHub();
-});
-
 // === Now Playing Manual Refresh ===
 // Attach click event to refresh button to manually refresh now playing information and the recent track list
 document.getElementById('refresh-now-playing')?.addEventListener('click', () => {
@@ -6988,6 +7014,15 @@ function openLivePresenterModal() {
 <p>Finlay brings the fun and energy to <strong>Feelgood Lunch</strong> every Sunday and Tuesday. Finlay is passionate about radio, loves The Simpsons and has a knack for picking the perfect tracks to boost your weekend mood.</p>
 <p>Expect a mix of positivity, humour and music that makes you feel great — all delivered with his infectious personality and enthusiasm for broadcasting.</p>
 </div>
+
+</div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-connor-strachan" style="z-index: 10001">
+<div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
+<span class="close" onclick="closePresenterModal('presenter-connor-strachan')">×</span>
+<h2>Connor Strachan</h2>
+<img alt="Connor Strachan" src="Connor-Strachan.JPG" style="width:100%;max-width:220px;margin-bottom:15px;border-radius:12px;"/>
+<p>Join Connor every Thursday afternoon from 2-4pm. More info coming soon.</p>
+</div>
+
 </div><div tabindex="-1" aria-modal="true" role="dialog" class="modal presenter-modal" id="presenter-lee-everest" style="z-index: 10001">
 <div tabindex="-1" aria-modal="true" role="dialog" class="modal-content" style="max-width:600px;">
 <span class="close" onclick="closePresenterModal('presenter-lee-everest')">×</span>
@@ -7359,6 +7394,11 @@ function openLivePresenterModal() {
 <h3>Finlay Campbell</h3>
 <p>Feelgood Lunch</p>
 </a>
+<a class="presenter-card" href="#" onclick="openPresenterModal('presenter-connor-strachan');return false;">
+<img alt="Connor Strachan" src="Connor-Strachan.JPG"/>
+<h3>Connor Strachan</h3>
+<p>Essential Afternoons (Thursday)</p>
+</a>
 <a class="presenter-card" href="#" onclick="openPresenterModal('presenter-david-southway');return false;">
 <img alt="David Southway" src="David-Southway.jpg"/>
 <h3>David Southway</h3>
@@ -7539,62 +7579,13 @@ function openLivePresenterModal() {
 <script>
 function toggleLogoVisibility() {
   const logo = document.querySelector('.logo-container');
-  const anyModalOpen = [...document.querySelectorAll('.modal')].some(
-    m => m.style.display === 'block'
+  if (!logo) return;
+  const anyModalOpen = [...document.querySelectorAll('.modal')].some(m =>
+    m.style.display === 'block' ||
+    m.style.display === 'flex' ||
+    (m.classList && m.classList.contains('active'))
   );
-  if (logo) logo.style.display = anyModalOpen ? 'none' : 'block';
-}
-
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(modal => {
-    if (modal.id !== 'presentersModal') {
-      modal.style.display = 'none';
-    }
-  });
-  const presentersOpen = document.getElementById('presentersModal')?.style.display === 'block';
-  if (!presentersOpen) document.body.classList.remove('modal-open');
-  toggleLogoVisibility();
-}
-
-function openModal(id) {
-  closeAllModals();
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
-    document.body.classList.add('modal-open');
-  }
-  toggleLogoVisibility();
-}
-
-function openPresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = '9999';
-    modal.style.position = 'fixed';
-    document.body.classList.add('modal-open');
-  }
-  toggleLogoVisibility();
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-    if (id === 'presentersModal') {
-      document.body.classList.remove('modal-open');
-    }
-  }
-  toggleLogoVisibility();
-}
-
-function closePresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'none';
-  }
-  toggleLogoVisibility();
+  logo.style.display = anyModalOpen ? 'none' : 'block';
 }
 </script>
 <script>
@@ -10044,6 +10035,8 @@ document.addEventListener('visibilitychange', () => {
       if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
     }
   });
+
+  window.closeAllModals = closeAllModals;
 })();
 </script>
 
@@ -10427,16 +10420,12 @@ document.addEventListener('DOMContentLoaded', function () {
       <article id="collegeDetail" class="college-detail" aria-live="polite">
         <div class="placeholder">Choose an item from the dropdown to view full details.</div>
       </article>
-    </div>
-    </div>
-    </div>
-
     
-
-    <div id="collegeWrap">
-      <div id="collegeGrid" class="college-grid" aria-live="polite">Loading…</div>
+      <div id="collegeGrid" class="college-grid" aria-live="polite"></div>
     </div>
-  </div>
+    </div>
+    </div>
+</div>
 </div>
 
 
