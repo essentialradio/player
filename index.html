@@ -6643,34 +6643,6 @@ function checkOverlayLogo() {
   }
 }
 
-function openModal(id) {
-  // Close all modals first
-  document.querySelectorAll('.modal').forEach(function(modal) {
-    modal.style.display = 'none';
-  });
-  // Then open the requested modal
-  document.getElementById(id).style.display = 'block';
-  document.body.classList.add('modal-open');
-  checkOverlayLogo();
-}
-
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-  // Only remove modal-open if no modals are open
-  if (![...document.querySelectorAll('.modal')].some(m => m.style.display === 'block')) {
-    document.body.classList.remove('modal-open');
-  }
-  checkOverlayLogo();
-}
-
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(function(modal) {
-    modal.style.display = 'none';
-  });
-  document.body.classList.remove('modal-open');
-  checkOverlayLogo();
-}
-
 function toggleBurgerMenu() {
   const burgerDropdown = document.getElementById('burgerDropdown');
   const isOpen = burgerDropdown.style.display === 'flex';
@@ -6743,17 +6715,6 @@ window.addEventListener('keydown', function(e) {
     closeAllModals();
   }
 });
-document.addEventListener('visibilitychange', () => {
-  if (!document.hidden) {
-    fetchNowPlaying();
-    fetchRecentFromGitHub();
-  }
-});
-window.addEventListener('focus', () => {
-  fetchNowPlaying();
-  fetchRecentFromGitHub();
-});
-
 // === Now Playing Manual Refresh ===
 // Attach click event to refresh button to manually refresh now playing information and the recent track list
 document.getElementById('refresh-now-playing')?.addEventListener('click', () => {
@@ -6929,26 +6890,6 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
     }
   }, 1500);
 });
-</script><script>
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-}
-
-function openPresenterModal(modalId) {
-  closeAllModals();
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.style.display = 'block';
-
-    if (modalId === 'requestsModal') {
-      const iframe = modal.querySelector('iframe');
-      if (iframe) {
-        const src = iframe.getAttribute('src');
-        iframe.setAttribute('src', src);
-      }
-    }
-  }
-}
 </script><script>
 function openLivePresenterModal() {
   // Try to get the presenter from the structured element first
@@ -7618,62 +7559,13 @@ function openLivePresenterModal() {
 <script>
 function toggleLogoVisibility() {
   const logo = document.querySelector('.logo-container');
-  const anyModalOpen = [...document.querySelectorAll('.modal')].some(
-    m => m.style.display === 'block'
+  if (!logo) return;
+  const anyModalOpen = [...document.querySelectorAll('.modal')].some(m =>
+    m.style.display === 'block' ||
+    m.style.display === 'flex' ||
+    (m.classList && m.classList.contains('active'))
   );
-  if (logo) logo.style.display = anyModalOpen ? 'none' : 'block';
-}
-
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(modal => {
-    if (modal.id !== 'presentersModal') {
-      modal.style.display = 'none';
-    }
-  });
-  const presentersOpen = document.getElementById('presentersModal')?.style.display === 'block';
-  if (!presentersOpen) document.body.classList.remove('modal-open');
-  toggleLogoVisibility();
-}
-
-function openModal(id) {
-  closeAllModals();
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = id === 'requestsModal' ? '2500' : '2000';
-    document.body.classList.add('modal-open');
-  }
-  toggleLogoVisibility();
-}
-
-function openPresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'block';
-    modal.style.zIndex = '9999';
-    modal.style.position = 'fixed';
-    document.body.classList.add('modal-open');
-  }
-  toggleLogoVisibility();
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-    if (id === 'presentersModal') {
-      document.body.classList.remove('modal-open');
-    }
-  }
-  toggleLogoVisibility();
-}
-
-function closePresenterModal(presenterId) {
-  const modal = document.getElementById(presenterId);
-  if (modal) {
-    modal.style.display = 'none';
-  }
-  toggleLogoVisibility();
+  logo.style.display = anyModalOpen ? 'none' : 'block';
 }
 </script>
 <script>
@@ -7821,46 +7713,11 @@ function closePresenterModal(presenterId) {
     openModal(id);
   }
 
-  // Allow ON AIR NOW box to open the live presenter's modal (if present)
-  function openLivePresenterModal(){
-    // Try to find a slug from text like "with Stephen Howie"
-    const el = document.querySelector('#currentShow .presenter-name') || document.querySelector('#currentShow');
-    if (!el) return;
-
-    const raw = (el.textContent || '').trim();
-    if (!raw) return;
-
-    // Expect ids like "presenter-stephen-howie"
-    const slug = raw
-      .toLowerCase()
-      .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g,'')
-      .replace(/[^a-z0-9]+/g, '-');
-
-    const candidateIds = [
-      `presenter-${slug}`,                 // e.g. presenter-stephen-howie
-      `presenter-${slug.replace(/^with-/, '')}`, // if "with " is included
-      `presenter-${slug.replace(/^with-/, '').replace(/^and-/, '')}`,
-    ];
-
-    for (const id of candidateIds) {
-      const modal = document.getElementById(id);
-      if (modal) {
-        openPresenterModal(id);
-        return;
-      }
-    }
-    // Fallback: ensure Presenters modal is open if no specific match
-    if (document.getElementById('presentersModal')) {
-      openModal('presentersModal');
-    }
-  }
-
   // Expose on window to override any earlier definitions
   window.openModal = openModal;
   window.closeModal = closeModal;
   window.openPresenterModal = openPresenterModal;
   window.closePresenterModal = closePresenterModal;
-  window.openLivePresenterModal = openLivePresenterModal;
   window.openModalAndCloseBurger = openModalAndCloseBurger;
 })();
 </script>
@@ -8022,72 +7879,6 @@ document.addEventListener("DOMContentLoaded", fetchScottishNews);
   }catch(e){
     wrap.innerHTML = '<div style="color:#fed351;">Unable to load news stories at the moment.</div>';
   }
-})();
-</script><script>
-(function(){
-  function applyTheme(t){
-    var root = document.documentElement;
-    root.setAttribute('data-theme', t);
-    try { localStorage.setItem('theme', t); } catch(e){}
-    var btn = document.getElementById('themeToggleBtn');
-    if (btn){
-      var lab = btn.querySelector('.mode-label');
-      var emo = btn.querySelector('.mode-emoji');
-      if (lab) lab.textContent = (t === 'light') ? 'Dark' : 'Light';
-      if (emo) emo.textContent = (t === 'light') ? '🌙' : '☀️';
-      btn.setAttribute('aria-pressed', t === 'dark');
-      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
-    }
-  }
-  function init(){
-    var btn = document.getElementById('themeToggleBtn');
-    if (!btn) return;
-    // set initial from html[data-theme] or storage
-    var root = document.documentElement;
-    var saved = null; try { saved = localStorage.getItem('theme'); } catch(e){}
-    var current = saved || root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    applyTheme(current);
-    btn.onclick = function(e){
-      e.preventDefault();
-      var next = (document.documentElement.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-      applyTheme(next);
-    };
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
-</script><script>
-(function(){
-  function applyTheme(t){
-    var root = document.documentElement;
-    root.setAttribute('data-theme', t);
-    try { localStorage.setItem('theme', t); } catch(e){}
-    var btns = document.querySelectorAll('#themeToggleBtn');
-    btns.forEach(function(btn){
-      var lab = btn.querySelector('.mode-label');
-      var emo = btn.querySelector('.mode-emoji');
-      if (lab) lab.textContent = (t === 'light') ? 'Dark' : 'Light';
-      if (emo) emo.textContent = (t === 'light') ? '🌙' : '☀️';
-      btn.setAttribute('aria-pressed', t === 'dark');
-      btn.title = (t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
-    });
-  }
-  function init(){
-    var saved = null; try { saved = localStorage.getItem('theme'); } catch(e){}
-    var current = saved || document.documentElement.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    applyTheme(current);
-    document.addEventListener('click', function(e){
-      var btn = e.target.closest && e.target.closest('#themeToggleBtn');
-      if (!btn) return;
-      e.preventDefault();
-      var next = (document.documentElement.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-      applyTheme(next);
-    }, true);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script><script id="theme-mode-script">
 (function(){
@@ -10123,6 +9914,8 @@ document.addEventListener('visibilitychange', () => {
       if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
     }
   });
+
+  window.closeAllModals = closeAllModals;
 })();
 </script>
 
@@ -10793,6 +10586,36 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('DOMContentLoaded', () => { refreshCollege().then(initControls); });
 })();
 </script>
+<script id="requests-modal-refresh">
+(function(){
+  function reloadRequestsIframe(id){
+    if (id !== 'requestsModal') return;
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    const iframe = modal.querySelector('iframe');
+    if (!iframe) return;
+    const src = iframe.getAttribute('src');
+    if (src) iframe.setAttribute('src', src);
+  }
+
+  const originalOpenModal = window.openModal;
+  window.openModal = function(id){
+    if (typeof originalOpenModal === 'function') {
+      originalOpenModal(id);
+    }
+    reloadRequestsIframe(id);
+  };
+
+  const originalOpenPresenterModal = window.openPresenterModal;
+  window.openPresenterModal = function(id){
+    if (typeof originalOpenPresenterModal === 'function') {
+      originalOpenPresenterModal(id);
+    }
+    reloadRequestsIframe(id);
+  };
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
