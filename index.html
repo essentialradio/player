@@ -4874,26 +4874,29 @@ html[data-theme="light"] #mobileNowBar {
                        .then(r => r.json());
 
       // ==== CURRENT CONDITIONS ====
+// ==== CURRENT CONDITIONS ====
 const cur  = d.current,
       nxt  = d.hourly[1],
       // Determine whether to treat the current conditions as "day" or "night".
       //
-      // The original code based the "day" flag on astronomical sunrise and sunset
-      // times (plus/minus one hour).  This meant that in mid‑summer the code
-      // would switch to using daytime descriptions (e.g. "Sunny intervals") as
-      // soon as an hour after sunrise, which can be as early as 6 AM in the UK.
-      // However, the Met Office defines the daytime period for its public
-      // forecast symbols as running from 09:00 until 21:00, and the nighttime
-      // period from 21:00 until 09:00【480738903751570†L369-L371】.  To avoid
-      // seeing daytime phrases like "sunny intervals" before 9 AM, we instead
-      // base the day/night decision on the local clock hour.
+      // Now use the actual sunrise/sunset from OpenWeather so we don't get
+      // "Bright intervals" after dark or before dawn.
       day  = (() => {
-        const hour = new Date(cur.dt * 1000).getHours();
-        return hour >= 9 && hour < 21;
+        const { sunrise, sunset, dt } = cur;
+
+        // If for any reason sunrise/sunset are missing, fall back to 09–21.
+        if (typeof sunrise !== 'number' || typeof sunset !== 'number') {
+          const hourLocal = new Date(dt * 1000).getHours();
+          return hourLocal >= 9 && hourLocal < 21;
+        }
+
+        // Treat it as "day" only between sunrise and sunset.
+        return dt >= sunrise && dt < sunset;
       })(),
       pop  = nxt && typeof nxt.pop === 'number' ? Math.round(nxt.pop * 100) : null,
       desc = phrase(cur.weather[0].description, day, cur.temp, pop),
       tmp  = Math.round(cur.temp);
+
 
 // Only show % if desc doesn’t already include “rain / showers”
 const showPop = pop !== null && pop >= 30 && !/rain|showers/i.test(desc);
