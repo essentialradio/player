@@ -1,11 +1,5 @@
 [
   {
-    "artist": "don mclean",
-    "title": "american pie",
-    "startTime": "2025-11-08T15:51:36Z",
-    "source": "ALT"
-  },
-  {
     "artist": "04",
     "title": "SMM STING DRY",
     "startTime": "2025-11-08T15:55:35Z",
@@ -117,6 +111,12 @@
     "artist": "Tim Graham",
     "title": "The LGBTQ Music Chart",
     "startTime": "2025-11-08T18:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Stephen Howie",
+    "title": "Grooveline",
+    "startTime": "2025-11-08T19:00:00Z",
     "source": "FIXED"
   }
 ]
