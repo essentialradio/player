@@ -59111,5 +59111,34 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-08T16:00:00Z",
+    "Scheduled Time": "16:45",
+    "Displayed Time": "16:45",
+    "Artist": "4.45PM SMM",
+    "Title": "ESSENTIAL DANCEFLOOR ANTHEMS MEGAMIX",
+    "Duration (s)": 868,
+    "Full Duration (s)": 868,
+    "Duration (mins)": 14.47,
+    "Full Duration (mins)": 14.47,
+    "Start ISO": "2025-11-08T16:45:37Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-08T17:00:05Z",
+    "Actual Duration (s)": 868,
+    "Actual Duration (mins)": 14.47
+  },
+  {
+    "Hour": "2025-11-08T17:00:00Z",
+    "Scheduled Time": "17:00",
+    "Displayed Time": "17:00",
+    "Artist": "Jan Gow",
+    "Title": "The Jan Cave 70s Jukebox",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-11-08T17:00:00Z",
+    "Source": "FIXED"
   }
 ]
