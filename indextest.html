@@ -6891,26 +6891,6 @@ document.getElementById('refresh-now-playing')?.addEventListener('click', () => 
   }, 1500);
 });
 </script><script>
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-}
-
-function openPresenterModal(modalId) {
-  closeAllModals();
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.style.display = 'block';
-
-    if (modalId === 'requestsModal') {
-      const iframe = modal.querySelector('iframe');
-      if (iframe) {
-        const src = iframe.getAttribute('src');
-        iframe.setAttribute('src', src);
-      }
-    }
-  }
-}
-</script><script>
 function openLivePresenterModal() {
   // Try to get the presenter from the structured element first
   let presenterName = '';
@@ -7733,46 +7713,11 @@ function toggleLogoVisibility() {
     openModal(id);
   }
 
-  // Allow ON AIR NOW box to open the live presenter's modal (if present)
-  function openLivePresenterModal(){
-    // Try to find a slug from text like "with Stephen Howie"
-    const el = document.querySelector('#currentShow .presenter-name') || document.querySelector('#currentShow');
-    if (!el) return;
-
-    const raw = (el.textContent || '').trim();
-    if (!raw) return;
-
-    // Expect ids like "presenter-stephen-howie"
-    const slug = raw
-      .toLowerCase()
-      .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g,'')
-      .replace(/[^a-z0-9]+/g, '-');
-
-    const candidateIds = [
-      `presenter-${slug}`,                 // e.g. presenter-stephen-howie
-      `presenter-${slug.replace(/^with-/, '')}`, // if "with " is included
-      `presenter-${slug.replace(/^with-/, '').replace(/^and-/, '')}`,
-    ];
-
-    for (const id of candidateIds) {
-      const modal = document.getElementById(id);
-      if (modal) {
-        openPresenterModal(id);
-        return;
-      }
-    }
-    // Fallback: ensure Presenters modal is open if no specific match
-    if (document.getElementById('presentersModal')) {
-      openModal('presentersModal');
-    }
-  }
-
   // Expose on window to override any earlier definitions
   window.openModal = openModal;
   window.closeModal = closeModal;
   window.openPresenterModal = openPresenterModal;
   window.closePresenterModal = closePresenterModal;
-  window.openLivePresenterModal = openLivePresenterModal;
   window.openModalAndCloseBurger = openModalAndCloseBurger;
 })();
 </script>
@@ -10046,37 +9991,44 @@ document.addEventListener('visibilitychange', () => {
 
   // ========= Modal highlighter =========
   function highlightLiveShows() {
-    const container = document.querySelector('#modalDaySchedule');
-    if (!container) return;
+    const container = document.querySelector('#modalDaySchedule')<script id="global-modal-close-helpers">
+(function(){
+  function closeAllModals(){
+    document.querySelectorAll('.modal').forEach(function(m){
+      m.style.display = 'none';
+      m.classList && m.classList.remove('active');
+    });
+    document.body.classList.remove('modal-open');
+    if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
+  }
+  // Backdrop click closes any open modal
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.classList && e.target.classList.contains('modal')) {
+      closeAllModals();
+    }
+  }, true);
+  // ESC closes
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { closeAllModals(); }
+  });
+  // Close button inside a modal
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.close');
+    if (!btn) return;
+    var modal = btn.closest('.modal');
+    if (modal){
+      modal.style.display = 'none';
+      modal.classList && modal.classList.remove('active');
+      if (!document.querySelector('.modal.active')) {
+        document.body.classList.remove('modal-open');
+      }
+      if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
+    }
+  });
 
-    // treat the container as a day-card if it already is one
-    const dayCards = container.matches('.day-card')
-      ? [container]
-      : container.querySelectorAll('.day-card');
-
-    // clear any prior state within modal
-    container.querySelectorAll('.live-now, .current, .current-show, .show--current')
-      .forEach(el => el.classList.remove('live-now','current','current-show','show--current'));
-
-    const now = new Date();
-    const today = todayName().toLowerCase();
-
-    dayCards.forEach(dayCard => {
-      const heading = (dayCard.querySelector('h2, h3')?.textContent || '').trim().toLowerCase();
-      const isToday = heading.includes(today);
-
-      dayCard.querySelectorAll('.show-entry').forEach(entry => {
-        const t = entry.querySelector('time')?.textContent || entry.textContent;
-        const range = parseRange(t);
-        if (!range || !isToday) return;
-
-        let start = nextByClock(now, range.start);
-        let end   = nextByClock(now, range.end);
-        if (end <= start) end = new Date(end.getTime() + MS_DAY);
-
-        if (now >= start && now < end) {
-          entry.classList.add('live-now');
-          try { entry.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch {}
+  window.closeAllModals = closeAllModals;
+})();
+</script>ch {}
           entry.setAttribute('aria-live', 'polite');
           entry.setAttribute('aria-label', 'On air now');
         }
@@ -10641,6 +10593,36 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('DOMContentLoaded', () => { refreshCollege().then(initControls); });
 })();
 </script>
+<script id="requests-modal-refresh">
+(function(){
+  function reloadRequestsIframe(id){
+    if (id !== 'requestsModal') return;
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    const iframe = modal.querySelector('iframe');
+    if (!iframe) return;
+    const src = iframe.getAttribute('src');
+    if (src) iframe.setAttribute('src', src);
+  }
+
+  const originalOpenModal = window.openModal;
+  window.openModal = function(id){
+    if (typeof originalOpenModal === 'function') {
+      originalOpenModal(id);
+    }
+    reloadRequestsIframe(id);
+  };
+
+  const originalOpenPresenterModal = window.openPresenterModal;
+  window.openPresenterModal = function(id){
+    if (typeof originalOpenPresenterModal === 'function') {
+      originalOpenPresenterModal(id);
+    }
+    reloadRequestsIframe(id);
+  };
+})();
+</script>
+
 </body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
