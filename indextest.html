@@ -9991,44 +9991,37 @@ document.addEventListener('visibilitychange', () => {
 
   // ========= Modal highlighter =========
   function highlightLiveShows() {
-    const container = document.querySelector('#modalDaySchedule')<script id="global-modal-close-helpers">
-(function(){
-  function closeAllModals(){
-    document.querySelectorAll('.modal').forEach(function(m){
-      m.style.display = 'none';
-      m.classList && m.classList.remove('active');
-    });
-    document.body.classList.remove('modal-open');
-    if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
-  }
-  // Backdrop click closes any open modal
-  document.addEventListener('click', function(e){
-    if (e.target && e.target.classList && e.target.classList.contains('modal')) {
-      closeAllModals();
-    }
-  }, true);
-  // ESC closes
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') { closeAllModals(); }
-  });
-  // Close button inside a modal
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest && e.target.closest('.close');
-    if (!btn) return;
-    var modal = btn.closest('.modal');
-    if (modal){
-      modal.style.display = 'none';
-      modal.classList && modal.classList.remove('active');
-      if (!document.querySelector('.modal.active')) {
-        document.body.classList.remove('modal-open');
-      }
-      if (typeof toggleLogoVisibility === 'function') toggleLogoVisibility();
-    }
-  });
+    const container = document.querySelector('#modalDaySchedule');
+    if (!container) return;
 
-  window.closeAllModals = closeAllModals;
-})();
-</script>ch {}
+    // treat the container as a day-card if it already is one
+    const dayCards = container.matches('.day-card')
+      ? [container]
+      : container.querySelectorAll('.day-card');
+
+    // clear any prior state within modal
+    container.querySelectorAll('.live-now, .current, .current-show, .show--current')
+      .forEach(el => el.classList.remove('live-now','current','current-show','show--current'));
+
+    const now = new Date();
+    const today = todayName().toLowerCase();
+
+    dayCards.forEach(dayCard => {
+      const heading = (dayCard.querySelector('h2, h3')?.textContent || '').trim().toLowerCase();
+      const isToday = heading.includes(today);
+
+      dayCard.querySelectorAll('.show-entry').forEach(entry => {
+        const t = entry.querySelector('time')?.textContent || entry.textContent;
+        const range = parseRange(t);
+        if (!range || !isToday) return;
+
+        let start = nextByClock(now, range.start);
+        let end   = nextByClock(now, range.end);
+        if (end <= start) end = new Date(end.getTime() + MS_DAY);
+
+        if (now >= start && now < end) {
+          entry.classList.add('live-now');
+          try { entry.style.setProperty('--now-flag', '"ON AIR NOW"'); } catch {}
           entry.setAttribute('aria-live', 'polite');
           entry.setAttribute('aria-label', 'On air now');
         }
