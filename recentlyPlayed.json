@@ -1,11 +1,5 @@
 [
   {
-    "artist": "lindsey de paul",
-    "title": "sugar me",
-    "startTime": "2025-11-08T15:48:07Z",
-    "source": "ALT"
-  },
-  {
     "artist": "don mclean",
     "title": "american pie",
     "startTime": "2025-11-08T15:51:36Z",
@@ -118,5 +112,11 @@
     "title": "The JanCave 70s Jukebox with Jan Gow",
     "startTime": "2025-11-08T17:02:01Z",
     "source": "PLAYIT"
+  },
+  {
+    "artist": "Tim Graham",
+    "title": "The LGBTQ Music Chart",
+    "startTime": "2025-11-08T18:00:00Z",
+    "source": "FIXED"
   }
 ]
