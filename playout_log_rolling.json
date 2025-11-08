@@ -56285,5 +56285,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-11-08T00:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-08T02:00:00Z",
+    "Scheduled Time": "02:03",
+    "Displayed Time": "02:03",
+    "Artist": "Lewis Capaldi",
+    "Title": "Something In The Heavens",
+    "Duration (s)": 192,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-11-08T02:03:01Z",
+    "Source": "PLAYIT"
   }
 ]
