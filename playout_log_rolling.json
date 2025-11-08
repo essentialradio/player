@@ -57949,5 +57949,31 @@
     "Full Duration (mins)": 2.62,
     "Start ISO": "2025-11-08T11:05:24Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-08T11:00:00Z",
+    "Scheduled Time": "11:07",
+    "Displayed Time": "11:07",
+    "Artist": "Dermot Kennedy",
+    "Title": "Kiss Me",
+    "Duration (s)": 218,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-11-08T11:07:59Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-08T11:00:00Z",
+    "Scheduled Time": "11:12",
+    "Displayed Time": "11:12",
+    "Artist": "Mabel",
+    "Title": "Don't Call Me Up",
+    "Duration (s)": 175,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 2.98,
+    "Start ISO": "2025-11-08T11:12:05Z",
+    "Source": "PLAYIT"
   }
 ]
