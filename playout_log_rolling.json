@@ -58287,5 +58287,19 @@
     "Full Duration (mins)": 7.43,
     "Start ISO": "2025-11-08T12:53:37Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-08T13:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "Oasis",
+    "Title": "Champagne Supernova",
+    "Start ISO": "2025-11-08T13:00:09Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-08T13:00:09Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
