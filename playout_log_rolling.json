@@ -54306,5 +54306,44 @@
     "Full Duration (mins)": 3.9,
     "Start ISO": "2025-11-09T11:21:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-09T11:00:00Z",
+    "Scheduled Time": "11:25",
+    "Displayed Time": "11:25",
+    "Artist": "Marmalade",
+    "Title": "Ob-La-Di, Ob-La-Da",
+    "Duration (s)": 178,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-11-09T11:25:37Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-09T11:00:00Z",
+    "Scheduled Time": "11:28",
+    "Displayed Time": "11:28",
+    "Artist": "The Verve",
+    "Title": "Bitter Sweet Symphony",
+    "Duration (s)": 263,
+    "Full Duration (s)": 276,
+    "Duration (mins)": 4.38,
+    "Full Duration (mins)": 4.6,
+    "Start ISO": "2025-11-09T11:28:38Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-09T11:00:00Z",
+    "Scheduled Time": "11:33",
+    "Displayed Time": "11:33",
+    "Artist": "Chaka Khan",
+    "Title": "I'm Every Woman",
+    "Duration (s)": 237,
+    "Full Duration (s)": 242,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.03,
+    "Start ISO": "2025-11-09T11:33:01Z",
+    "Source": "PLAYIT"
   }
 ]
