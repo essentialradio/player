@@ -1,5 +1,17 @@
 [
   {
+    "artist": "Essential Radio",
+    "title": "Essential Classic Hits",
+    "startTime": "2025-11-09T09:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Bonnie Tyler",
+    "title": "Holding Out for a Hero",
+    "startTime": "2025-11-09T09:03:10Z",
+    "source": "PLAYIT"
+  },
+  {
     "artist": "Meat Loaf",
     "title": "You Took the Words Right Out of My Mouth (Hot Summer Night)",
     "startTime": "2025-11-09T09:07:23Z",
@@ -105,18 +117,6 @@
     "artist": "Marmalade",
     "title": "Ob-La-Di, Ob-La-Da",
     "startTime": "2025-11-09T11:25:37Z",
-    "source": "PLAYIT"
-  },
-  {
-    "artist": "The Verve",
-    "title": "Bitter Sweet Symphony",
-    "startTime": "2025-11-09T11:28:37Z",
-    "source": "PLAYIT"
-  },
-  {
-    "artist": "Chaka Khan",
-    "title": "I'm Every Woman",
-    "startTime": "2025-11-09T11:33:00Z",
     "source": "PLAYIT"
   }
 ]
