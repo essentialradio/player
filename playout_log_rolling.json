@@ -55951,5 +55951,34 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-09T18:00:00Z",
+    "Scheduled Time": "18:54",
+    "Displayed Time": "18:54",
+    "Artist": "Cher",
+    "Title": "Believe",
+    "Duration (s)": 335,
+    "Full Duration (s)": 335,
+    "Duration (mins)": 5.58,
+    "Full Duration (mins)": 5.58,
+    "Start ISO": "2025-11-09T18:54:34Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-09T19:00:09Z",
+    "Actual Duration (s)": 335,
+    "Actual Duration (mins)": 5.58
+  },
+  {
+    "Hour": "2025-11-09T19:00:00Z",
+    "Scheduled Time": "19:00",
+    "Displayed Time": "19:00",
+    "Artist": "Kevin McCallum",
+    "Title": "The Mr Rocks Show",
+    "Duration (s)": 7200,
+    "Full Duration (s)": 7200,
+    "Duration (mins)": 120.0,
+    "Full Duration (mins)": 120.0,
+    "Start ISO": "2025-11-09T19:00:00Z",
+    "Source": "FIXED"
   }
 ]
