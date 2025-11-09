@@ -1,11 +1,5 @@
 [
   {
-    "artist": "electric light orchestra",
-    "title": "10538 overture",
-    "startTime": "2025-11-08T16:02:36Z",
-    "source": "ALT"
-  },
-  {
     "artist": "the hollies",
     "title": "long cool woman (in a black dress)",
     "startTime": "2025-11-08T16:07:58Z",
@@ -117,6 +111,12 @@
     "artist": "Big Tommy",
     "title": "Big Fat Party Anthems",
     "startTime": "2025-11-08T21:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Bill Grainger",
+    "title": "Fire Island Hi-NRG",
+    "startTime": "2025-11-09T00:00:00Z",
     "source": "FIXED"
   }
 ]
