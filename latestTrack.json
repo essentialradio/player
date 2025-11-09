@@ -1,11 +1,12 @@
 {
   "artist": "Dua Lipa",
   "title": "Don't Start Now",
-  "startTime": "2025-11-09T13:53:09Z",
-  "start": "2025-11-09T13:53:09Z",
-  "duration": 178,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-09T13:56:07Z",
-  "altMode": false
+  "startTime": "2025-11-09T14:00:02Z",
+  "start": "2025-11-09T14:00:02Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-09T15:00:02Z",
+  "altMode": true,
+  "Source": "ALT"
 }
