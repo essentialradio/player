@@ -54999,5 +54999,35 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-09T14:00:00Z",
+    "Scheduled Time": "14:52",
+    "Displayed Time": "14:52",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 474,
+    "Full Duration (s)": 474,
+    "Duration (mins)": 7.9,
+    "Full Duration (mins)": 7.9,
+    "Start ISO": "2025-11-09T14:52:10Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-09T15:00:04Z",
+    "Actual Duration (s)": 474,
+    "Actual Duration (mins)": 7.9
+  },
+  {
+    "Hour": "2025-11-09T15:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-09T15:00:04Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-09T15:00:04Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
