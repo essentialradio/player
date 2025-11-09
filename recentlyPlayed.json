@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Essential Radio",
-    "title": "Essential Classic Hits",
-    "startTime": "2025-11-09T09:00:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "Bonnie Tyler",
     "title": "Holding Out for a Hero",
     "startTime": "2025-11-09T09:03:10Z",
@@ -117,6 +111,12 @@
     "artist": "Joan Armatrading",
     "title": "Drop the Pilot",
     "startTime": "2025-11-09T10:26:00Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Smokey Robinson & The Miracles",
+    "title": "The Tears of a Clown",
+    "startTime": "2025-11-09T10:31:15Z",
     "source": "PLAYIT"
   }
 ]
