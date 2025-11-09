@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Dr Hilary Jones",
-    "title": "The Dr Hilary Show",
-    "startTime": "2025-11-09T08:30:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "Essential Radio",
     "title": "Essential Classic Hits",
     "startTime": "2025-11-09T09:00:00Z",
@@ -117,6 +111,12 @@
     "artist": "Black Box Recorder",
     "title": "The Facts of Life",
     "startTime": "2025-11-09T10:22:53Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Joan Armatrading",
+    "title": "Drop the Pilot",
+    "startTime": "2025-11-09T10:26:00Z",
     "source": "PLAYIT"
   }
 ]
