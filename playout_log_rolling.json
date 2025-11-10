@@ -53352,5 +53352,18 @@
     "Full Duration (mins)": 4.45,
     "Start ISO": "2025-11-10T08:53:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-10T08:00:00Z",
+    "Scheduled Time": "08:58",
+    "Displayed Time": "08:58",
+    "Artist": "Bill Withers",
+    "Title": "Ain't No Sunshine",
+    "Duration (s)": 111,
+    "Full Duration (s)": 123,
+    "Duration (mins)": 1.85,
+    "Full Duration (mins)": 2.05,
+    "Start ISO": "2025-11-10T08:58:06Z",
+    "Source": "PLAYIT"
   }
 ]
