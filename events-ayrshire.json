@@ -1827,6 +1827,97 @@
       "link": "https://eastayrshireleisure.com/events/maist-haunted-chill-marnock-special/",
       "source": "East Ayrshire Leisure",
       "recurring": false
+    },
+    {
+      "title": "Dean Castle Tour",
+      "start_date": "2025-02-23",
+      "end_date": "2026-03-20",
+      "start_time": "12:00",
+      "end_time": null,
+      "venue": "Dean Castle",
+      "town": "Kilmarnock",
+      "desc": "Guided tour of historic Dean Castle running throughout 2025\u201326, suitable for families, with heritage interpretation and access to restored interiors.",
+      "link": "https://eastayrshireleisure.com/events/dean-castle-tour/",
+      "source": "East Ayrshire Leisure",
+      "recurring": true
+    },
+    {
+      "title": "Discovering Malky McCormick",
+      "start_date": "2025-04-15",
+      "end_date": "2026-04-30",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Dick Institute",
+      "town": "Kilmarnock",
+      "desc": "Free family-friendly exhibition at the Dick Institute exploring the work of Ayrshire-based cartoonist Malky McCormick, with interactive art station, trail and gameshow-style activities.",
+      "link": "https://eastayrshireleisure.com/events/discovering-malky-mccormick/",
+      "source": "East Ayrshire Leisure",
+      "recurring": false
+    },
+    {
+      "title": "Cartoon and Caricature Art Classes",
+      "start_date": "2025-09-04",
+      "end_date": "2025-11-22",
+      "start_time": null,
+      "end_time": null,
+      "venue": "Dick Institute",
+      "town": "Kilmarnock",
+      "desc": "Free cartoon and caricature art class series for kids, teens and adults at the Dick Institute, running weekly in autumn 2025 and culminating in a student exhibition.",
+      "link": "https://eastayrshireleisure.com/events/cartoon-and-caricature-art-classes/",
+      "source": "East Ayrshire Leisure",
+      "recurring": true
+    },
+    {
+      "title": "Kilmarnock Christmas Festival",
+      "start_date": "2025-11-30",
+      "end_date": "2025-11-30",
+      "start_time": "13:30",
+      "end_time": "18:00",
+      "venue": "Kilmarnock Town Centre",
+      "town": "Kilmarnock",
+      "desc": "Afternoon Christmas festival with live music, stalls, kids\u2019 activities and a Christmas parade from Howard Park, finishing with the town centre lights switch-on at 5pm.",
+      "link": "https://eastayrshireleisure.com/events/kilmarnock-christmas-festival/",
+      "source": "East Ayrshire Leisure",
+      "recurring": false
+    },
+    {
+      "title": "Cinderella \u2013 New Cumnock Pantomime",
+      "start_date": "2025-11-29",
+      "end_date": "2025-11-29",
+      "start_time": "17:00",
+      "end_time": null,
+      "venue": "New Cumnock Town Hall",
+      "town": "New Cumnock",
+      "desc": "Community pantomime performance of Cinderella by New Cumnock Events Group at New Cumnock Town Hall, followed by the village Christmas lights switch-on.",
+      "link": "https://www.datathistle.com/event/2844940-cinderella/",
+      "source": "New Cumnock Events Group / DataThistle",
+      "recurring": false
+    },
+    {
+      "title": "Alice in Wonderland \u2013 CAMPS Perform MT Pantomime",
+      "start_date": "2025-12-03",
+      "end_date": "2025-12-06",
+      "start_time": "19:00",
+      "end_time": null,
+      "venue": "Cumnock Town Hall",
+      "town": "Cumnock",
+      "desc": "CAMPS Perform MT\u2019s annual family pantomime \u2018Alice in Wonderland\u2019 at Cumnock Town Hall, with evening shows 3\u20135 December and a Saturday matinee on 6 December.",
+      "link": "https://www.visitscotland.com/info/events/camps-perform-mt-alice-in-wonderland-the-pantomime-p3430141",
+      "source": "CAMPS Perform MT / VisitScotland",
+      "recurring": false
+    },
+    {
+      "title": "Christmas Market & Tree Festival \u2013 Holy Trinity Kilmarnock",
+      "start_date": "2025-12-13",
+      "end_date": "2025-12-13",
+      "start_time": "13:00",
+      "end_time": "16:00",
+      "venue": "Holy Trinity Episcopal Church",
+      "town": "Kilmarnock",
+      "desc": "Indoor Christmas market and decorated tree festival at Holy Trinity Episcopal Church in Kilmarnock, with stalls, refreshments and family activities.",
+      "link": "https://allevents.in/kilmarnock/christmas-market-and-tree-festival-2025/200028778557800",
+      "source": "Holy Trinity Episcopal Church / AllEvents",
+      "recurring": false
     }
   ]
 }
