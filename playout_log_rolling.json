@@ -54015,5 +54015,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-11-10T13:04:03Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-10T13:00:00Z",
+    "Scheduled Time": "13:08",
+    "Displayed Time": "13:08",
+    "Artist": "Sam Fender & Elton John",
+    "Title": "Talk To You",
+    "Duration (s)": 304,
+    "Full Duration (s)": 317,
+    "Duration (mins)": 5.07,
+    "Full Duration (mins)": 5.28,
+    "Start ISO": "2025-11-10T13:08:02Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-10T13:00:00Z",
+    "Scheduled Time": "13:13",
+    "Displayed Time": "13:13",
+    "Artist": "Paul Russell",
+    "Title": "Lil Boo Thang",
+    "Duration (s)": 113,
+    "Full Duration (s)": 114,
+    "Duration (mins)": 1.88,
+    "Full Duration (mins)": 1.9,
+    "Start ISO": "2025-11-10T13:13:44Z",
+    "Source": "PLAYIT"
   }
 ]
