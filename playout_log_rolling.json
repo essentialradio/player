@@ -54691,5 +54691,18 @@
     "Full Duration (mins)": 4.3,
     "Start ISO": "2025-11-11T04:05:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-11T04:00:00Z",
+    "Scheduled Time": "04:09",
+    "Displayed Time": "04:09",
+    "Artist": "Ed Sheeran",
+    "Title": "Bad Habits",
+    "Duration (s)": 222,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.85,
+    "Start ISO": "2025-11-11T04:09:27Z",
+    "Source": "PLAYIT"
   }
 ]
