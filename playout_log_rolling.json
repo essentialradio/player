@@ -60099,5 +60099,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-11-12T11:08:33Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T11:00:00Z",
+    "Scheduled Time": "11:11",
+    "Displayed Time": "11:11",
+    "Artist": "A-Ha",
+    "Title": "Take on Me",
+    "Duration (s)": 205,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-12T11:11:30Z",
+    "Source": "PLAYIT"
   }
 ]
