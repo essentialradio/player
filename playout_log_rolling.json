@@ -58539,5 +58539,18 @@
     "Full Duration (mins)": 3.45,
     "Start ISO": "2025-11-12T02:07:39Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T02:00:00Z",
+    "Scheduled Time": "02:11",
+    "Displayed Time": "02:11",
+    "Artist": "Billy Joel",
+    "Title": "Uptown Girl",
+    "Duration (s)": 181,
+    "Full Duration (s)": 196,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.27,
+    "Start ISO": "2025-11-12T02:11:18Z",
+    "Source": "PLAYIT"
   }
 ]
