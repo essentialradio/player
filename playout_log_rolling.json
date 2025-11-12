@@ -60255,5 +60255,18 @@
     "Full Duration (mins)": 3.17,
     "Start ISO": "2025-11-12T12:02:06Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T12:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "Perrie",
+    "Title": "Rocket Scientist",
+    "Duration (s)": 198,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 3.3,
+    "Full Duration (mins)": 3.45,
+    "Start ISO": "2025-11-12T12:05:13Z",
+    "Source": "PLAYIT"
   }
 ]
