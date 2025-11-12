@@ -60125,5 +60125,18 @@
     "Full Duration (mins)": 2.73,
     "Start ISO": "2025-11-12T11:14:56Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T11:00:00Z",
+    "Scheduled Time": "11:22",
+    "Displayed Time": "11:22",
+    "Artist": "ZZ Top",
+    "Title": "Gimme All Your Lovin'",
+    "Duration (s)": 231,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 3.98,
+    "Start ISO": "2025-11-12T11:22:43Z",
+    "Source": "PLAYIT"
   }
 ]
