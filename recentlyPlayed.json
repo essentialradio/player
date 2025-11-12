@@ -1,11 +1,5 @@
 [
   {
-    "artist": "A-Ha",
-    "title": "Take on Me",
-    "startTime": "2025-11-12T11:11:30Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "The La's",
     "title": "There She Goes",
     "startTime": "2025-11-12T11:14:56Z",
@@ -117,6 +111,12 @@
     "artist": "Miley Cyrus",
     "title": "Flowers",
     "startTime": "2025-11-12T12:36:51Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Lady Gaga",
+    "title": "The Dead Dance",
+    "startTime": "2025-11-12T12:41:12Z",
     "source": "PLAYIT"
   }
 ]
