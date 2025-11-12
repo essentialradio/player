@@ -58292,5 +58292,31 @@
     "Full Duration (mins)": 4.12,
     "Start ISO": "2025-11-12T00:46:39Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T00:00:00Z",
+    "Scheduled Time": "00:50",
+    "Displayed Time": "00:50",
+    "Artist": "Addison Rae",
+    "Title": "Fame Is A Gun",
+    "Duration (s)": 179,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.05,
+    "Start ISO": "2025-11-12T00:50:16Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T00:00:00Z",
+    "Scheduled Time": "00:53",
+    "Displayed Time": "00:53",
+    "Artist": "Eve Feat. Gwen Stefani",
+    "Title": "Let Me Blow Ya Mind",
+    "Duration (s)": 213,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.72,
+    "Start ISO": "2025-11-12T00:53:16Z",
+    "Source": "PLAYIT"
   }
 ]
