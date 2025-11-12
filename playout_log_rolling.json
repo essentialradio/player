@@ -59280,5 +59280,18 @@
     "Full Duration (mins)": 3.03,
     "Start ISO": "2025-11-12T06:08:08Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T06:00:00Z",
+    "Scheduled Time": "06:10",
+    "Displayed Time": "06:10",
+    "Artist": "U2",
+    "Title": "Beautiful Day",
+    "Duration (s)": 235,
+    "Full Duration (s)": 248,
+    "Duration (mins)": 3.92,
+    "Full Duration (mins)": 4.13,
+    "Start ISO": "2025-11-12T06:10:58Z",
+    "Source": "PLAYIT"
   }
 ]
