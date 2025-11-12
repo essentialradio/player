@@ -59605,5 +59605,31 @@
     "Full Duration (mins)": 3.77,
     "Start ISO": "2025-11-12T08:05:22Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T08:00:00Z",
+    "Scheduled Time": "08:10",
+    "Displayed Time": "08:10",
+    "Artist": "The Weeknd",
+    "Title": "Save Your Tears",
+    "Duration (s)": 212,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-12T08:10:35Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T08:00:00Z",
+    "Scheduled Time": "08:14",
+    "Displayed Time": "08:14",
+    "Artist": "Cee-Lo Green",
+    "Title": "Forget You",
+    "Duration (s)": 219,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.65,
+    "Full Duration (mins)": 3.7,
+    "Start ISO": "2025-11-12T08:14:07Z",
+    "Source": "PLAYIT"
   }
 ]
