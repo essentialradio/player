@@ -59995,5 +59995,18 @@
     "Full Duration (mins)": 3.08,
     "Start ISO": "2025-11-12T10:30:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-12T10:00:00Z",
+    "Scheduled Time": "10:33",
+    "Displayed Time": "10:33",
+    "Artist": "Michael Jackson",
+    "Title": "Billie Jean",
+    "Duration (s)": 287,
+    "Full Duration (s)": 295,
+    "Duration (mins)": 4.78,
+    "Full Duration (mins)": 4.92,
+    "Start ISO": "2025-11-12T10:33:18Z",
+    "Source": "PLAYIT"
   }
 ]
