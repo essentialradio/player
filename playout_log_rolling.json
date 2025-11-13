@@ -64532,5 +64532,31 @@
     "Full Duration (mins)": 3.2,
     "Start ISO": "2025-11-13T12:20:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-13T12:00:00Z",
+    "Scheduled Time": "12:23",
+    "Displayed Time": "12:23",
+    "Artist": "Olivia Dean",
+    "Title": "So Easy (To Fall In Love)",
+    "Duration (s)": 160,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.67,
+    "Full Duration (mins)": 2.82,
+    "Start ISO": "2025-11-13T12:23:17Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-13T12:00:00Z",
+    "Scheduled Time": "12:26",
+    "Displayed Time": "12:26",
+    "Artist": "Ella Henderson",
+    "Title": "Ghost",
+    "Duration (s)": 205,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-13T12:26:35Z",
+    "Source": "PLAYIT"
   }
 ]
