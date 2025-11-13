@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Diana Ross",
-    "title": "Chain Reaction",
-    "startTime": "2025-11-13T01:10:48Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Meghan Trainor",
     "title": "Made You Look",
     "startTime": "2025-11-13T01:14:14Z",
@@ -117,6 +111,12 @@
     "artist": "BLACKPINK",
     "title": "Jump",
     "startTime": "2025-11-13T02:25:34Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Noah Kahan",
+    "title": "Stick Season",
+    "startTime": "2025-11-13T02:28:18Z",
     "source": "PLAYIT"
   }
 ]
