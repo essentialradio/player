@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Perrie",
-    "title": "Rocket Scientist",
-    "startTime": "2025-11-13T16:19:03Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Enrique Iglesias",
     "title": "Escape",
     "startTime": "2025-11-13T16:22:47Z",
@@ -117,6 +111,12 @@
     "artist": "Chappell Roan",
     "title": "Hot To Go!",
     "startTime": "2025-11-13T17:45:02Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Paul Simon",
+    "title": "You Can Call Me Al",
+    "startTime": "2025-11-13T17:48:23Z",
     "source": "PLAYIT"
   }
 ]
