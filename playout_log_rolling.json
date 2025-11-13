@@ -63544,5 +63544,18 @@
     "Full Duration (mins)": 2.5,
     "Start ISO": "2025-11-13T06:08:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-13T06:00:00Z",
+    "Scheduled Time": "06:11",
+    "Displayed Time": "06:11",
+    "Artist": "The Script",
+    "Title": "For the First Time",
+    "Duration (s)": 237,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-11-13T06:11:16Z",
+    "Source": "PLAYIT"
   }
 ]
