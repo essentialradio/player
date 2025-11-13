@@ -64363,5 +64363,18 @@
     "Full Duration (mins)": 3.57,
     "Start ISO": "2025-11-13T11:17:03Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-13T11:00:00Z",
+    "Scheduled Time": "11:25",
+    "Displayed Time": "11:25",
+    "Artist": "Green Day",
+    "Title": "American Idiot",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-11-13T11:25:25Z",
+    "Source": "PLAYIT"
   }
 ]
