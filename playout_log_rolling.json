@@ -70183,5 +70183,21 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-14T19:00:00Z",
+    "Scheduled Time": "19:58",
+    "Displayed Time": "19:58",
+    "Artist": "CamelPhat & Nadia Ali",
+    "Title": "Endlessly <Quick>",
+    "Duration (s)": 85,
+    "Full Duration (s)": 85,
+    "Duration (mins)": 1.42,
+    "Full Duration (mins)": 1.42,
+    "Start ISO": "2025-11-14T19:58:44Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-14T20:00:09Z",
+    "Actual Duration (s)": 85,
+    "Actual Duration (mins)": 1.42
   }
 ]
