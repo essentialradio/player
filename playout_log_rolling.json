@@ -70797,5 +70797,18 @@
     "Full Duration (mins)": 3.95,
     "Start ISO": "2025-11-14T22:54:37Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-14T23:00:00Z",
+    "Scheduled Time": "23:00",
+    "Displayed Time": "23:00",
+    "Artist": "Essential Radio",
+    "Title": "On Air",
+    "Duration (s)": 3540,
+    "Full Duration (s)": 3540,
+    "Duration (mins)": 59.0,
+    "Full Duration (mins)": 59.0,
+    "Start ISO": "2025-11-14T23:00:00Z",
+    "Source": "FIXED"
   }
 ]
