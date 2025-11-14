@@ -1,11 +1,12 @@
 {
   "artist": "Perrie",
   "title": "Rocket Scientist",
-  "startTime": "2025-11-14T18:53:27Z",
-  "start": "2025-11-14T18:53:27Z",
-  "duration": 201,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-14T18:56:48Z",
-  "altMode": false
+  "startTime": "2025-11-14T19:00:10Z",
+  "start": "2025-11-14T19:00:10Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-14T20:00:10Z",
+  "altMode": true,
+  "Source": "ALT"
 }
