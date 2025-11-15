@@ -72656,5 +72656,18 @@
     "Full Duration (mins)": 3.7,
     "Start ISO": "2025-11-15T11:51:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-15T11:00:00Z",
+    "Scheduled Time": "11:55",
+    "Displayed Time": "11:55",
+    "Artist": "Rick Astley",
+    "Title": "Together Forever",
+    "Duration (s)": 190,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.17,
+    "Full Duration (mins)": 3.42,
+    "Start ISO": "2025-11-15T11:55:03Z",
+    "Source": "PLAYIT"
   }
 ]
