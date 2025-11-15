@@ -72851,5 +72851,19 @@
     "Full Duration (mins)": 3.12,
     "Start ISO": "2025-11-15T12:57:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-15T13:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "The Rembrandts",
+    "Title": "I'll Be There for You",
+    "Start ISO": "2025-11-15T13:00:00Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-15T13:00:00Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
