@@ -71161,5 +71161,18 @@
     "Full Duration (mins)": 3.82,
     "Start ISO": "2025-11-15T03:50:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-15T03:00:00Z",
+    "Scheduled Time": "03:54",
+    "Displayed Time": "03:54",
+    "Artist": "Gayle",
+    "Title": "ABCDEF",
+    "Duration (s)": 150,
+    "Full Duration (s)": 152,
+    "Duration (mins)": 2.5,
+    "Full Duration (mins)": 2.53,
+    "Start ISO": "2025-11-15T03:54:19Z",
+    "Source": "PLAYIT"
   }
 ]
