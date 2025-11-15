@@ -73627,5 +73627,34 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-15T16:00:00Z",
+    "Scheduled Time": "16:46",
+    "Displayed Time": "16:46",
+    "Artist": "4.45PM SMM",
+    "Title": "DANCE NATION MEGAMIX",
+    "Duration (s)": 826,
+    "Full Duration (s)": 826,
+    "Duration (mins)": 13.77,
+    "Full Duration (mins)": 13.77,
+    "Start ISO": "2025-11-15T16:46:26Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-15T17:00:12Z",
+    "Actual Duration (s)": 826,
+    "Actual Duration (mins)": 13.77
+  },
+  {
+    "Hour": "2025-11-15T17:00:00Z",
+    "Scheduled Time": "17:00",
+    "Displayed Time": "17:00",
+    "Artist": "Jan Gow",
+    "Title": "The Jan Cave 70s Jukebox",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-11-15T17:00:00Z",
+    "Source": "FIXED"
   }
 ]
