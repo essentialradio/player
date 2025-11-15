@@ -1,10 +1,11 @@
 {
-  "endTime": "2025-11-15T19:00:00Z",
-  "artist": "Tim Graham",
-  "title": "The LGBTQ Music Chart",
-  "startTime": "2025-11-15T18:00:00Z",
-  "start": "2025-11-15T18:00:00Z",
-  "duration": 3600,
+  "endTime": "2025-11-15T21:00:00Z",
+  "artist": "Stephen Howie",
+  "title": "Grooveline",
+  "startTime": "2025-11-15T19:00:00Z",
+  "start": "2025-11-15T19:00:00Z",
+  "duration": 7200,
   "source": "FIXED",
-  "indeterminate": false
+  "indeterminate": false,
+  "altMode": false
 }

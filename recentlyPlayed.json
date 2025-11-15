@@ -1,12 +1,6 @@
 [
   {
     "artist": "1000 Original Hits 1982",
-    "title": "02 - Roxy Music - More Than This",
-    "startTime": "2025-11-15T15:44:37Z",
-    "source": "ALT"
-  },
-  {
-    "artist": "1000 Original Hits 1982",
     "title": "01 - The Culture Club - Do You Really Want To Hurt Me",
     "startTime": "2025-11-15T15:48:39Z",
     "source": "ALT"
@@ -119,6 +113,12 @@
     "artist": "Tim Graham",
     "title": "The LGBTQ Music Chart",
     "startTime": "2025-11-15T18:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Stephen Howie",
+    "title": "Grooveline",
+    "startTime": "2025-11-15T19:00:00Z",
     "source": "FIXED"
   }
 ]
