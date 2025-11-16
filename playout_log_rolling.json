@@ -54795,5 +54795,35 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-11-16T16:52:15Z",
     "Source": "ALT"
+  },
+  {
+    "Hour": "2025-11-16T17:00:00Z",
+    "Scheduled Time": "17:25",
+    "Displayed Time": "17:25",
+    "Artist": "Hilary Duff",
+    "Title": "Wake Up",
+    "Duration (s)": 324,
+    "Full Duration (s)": 324,
+    "Duration (mins)": 5.4,
+    "Full Duration (mins)": 5.4,
+    "Start ISO": "2025-11-16T17:25:28Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-16T17:30:52Z",
+    "Actual Duration (s)": 324,
+    "Actual Duration (mins)": 5.4
+  },
+  {
+    "Hour": "2025-11-16T17:00:00Z",
+    "Scheduled Time": "17:30",
+    "Displayed Time": "17:30",
+    "Artist": "Robbie Williams",
+    "Title": "Tripping",
+    "Start ISO": "2025-11-16T17:30:52Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-16T17:30:52Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
