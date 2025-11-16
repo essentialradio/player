@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Taylor Swift & Sabrina Carpenter",
-    "title": "The Life of a Showgirl",
-    "startTime": "2025-11-16T16:03:22Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Saja Boys",
     "title": "Golden (Soundtrack From The Netflix Film 'KPop Demon Hunters')",
     "startTime": "2025-11-16T16:06:52Z",
@@ -136,6 +129,13 @@
     "artist": "Westlife",
     "title": "You Raise Me Up",
     "startTime": "2025-11-16T18:00:34Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Westlife",
+    "title": "You Raise Me Up",
+    "startTime": "2025-11-16T18:00:50Z",
     "source": "ALT",
     "live": true
   }
