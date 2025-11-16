@@ -54707,6 +54707,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-11-16T14:00:00Z",
+    "Scheduled Time": "14:53",
+    "Displayed Time": "14:53",
+    "Artist": "Madison Beer",
+    "Title": "bittersweet",
+    "Duration (s)": 436,
+    "Full Duration (s)": 436,
+    "Duration (mins)": 7.27,
+    "Full Duration (mins)": 7.27,
+    "Start ISO": "2025-11-16T14:53:23Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-16T15:00:39Z",
+    "Actual Duration (s)": 436,
+    "Actual Duration (mins)": 7.27
+  },
+  {
     "Hour": "2025-11-16T15:00:00Z",
     "Scheduled Time": "15:00",
     "Displayed Time": "15:00",
@@ -54729,6 +54745,20 @@
     "Start ISO": "2025-11-16T15:00:26Z",
     "Source": "ALT",
     "Last Seen": "2025-11-16T15:00:26Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-16T15:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-16T15:00:39Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-16T15:00:39Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
