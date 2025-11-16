@@ -54627,6 +54627,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-11-16T17:00:00Z",
+    "Scheduled Time": "17:56",
+    "Displayed Time": "17:56",
+    "Artist": "Westlife",
+    "Title": "You Raise Me Up",
+    "Duration (s)": 302,
+    "Full Duration (s)": 302,
+    "Duration (mins)": 5.03,
+    "Full Duration (mins)": 5.03,
+    "Start ISO": "2025-11-16T17:56:09Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-16T18:01:11Z",
+    "Actual Duration (s)": 302,
+    "Actual Duration (mins)": 5.03
+  },
+  {
     "Hour": "2025-11-16T18:00:00Z",
     "Scheduled Time": "18:00",
     "Displayed Time": "18:00",
@@ -54649,6 +54665,20 @@
     "Start ISO": "2025-11-16T18:00:50Z",
     "Source": "ALT",
     "Last Seen": "2025-11-16T18:00:50Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-16T18:00:00Z",
+    "Scheduled Time": "18:01",
+    "Displayed Time": "18:01",
+    "Artist": "Aerosmith",
+    "Title": "Cryin'",
+    "Start ISO": "2025-11-16T18:01:11Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-16T18:01:11Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
