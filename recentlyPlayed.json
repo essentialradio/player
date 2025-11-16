@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Shaggy",
-    "title": "It Wasn't Me",
-    "startTime": "2025-11-16T13:46:48Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Rizzle Kicks",
     "title": "Vice",
     "startTime": "2025-11-16T13:50:43Z",
@@ -133,6 +127,13 @@
     "artist": "Madison Beer",
     "title": "bittersweet",
     "startTime": "2025-11-16T15:00:12Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Madison Beer",
+    "title": "bittersweet",
+    "startTime": "2025-11-16T15:00:26Z",
     "source": "ALT",
     "live": true
   }
