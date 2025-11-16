@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Dr Hilary Jones",
-    "title": "The Dr Hilary Show",
-    "startTime": "2025-11-16T08:30:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "Healthspan",
     "title": "The Dr Hilary Show",
     "startTime": "2025-11-16T08:32:17Z",
@@ -117,6 +111,12 @@
     "artist": "Earth, Wind & Fire with the Emotions",
     "title": "Boogie Wonderland",
     "startTime": "2025-11-16T11:01:39Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Cyndi Lauper",
+    "title": "Time After Time",
+    "startTime": "2025-11-16T11:05:13Z",
     "source": "PLAYIT"
   }
 ]
