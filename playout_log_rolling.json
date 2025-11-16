@@ -55888,5 +55888,18 @@
     "Full Duration (mins)": 30.0,
     "Start ISO": "2025-11-16T08:30:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-16T08:00:00Z",
+    "Scheduled Time": "08:32",
+    "Displayed Time": "08:32",
+    "Artist": "Healthspan",
+    "Title": "The Dr Hilary Show",
+    "Duration (s)": 967,
+    "Full Duration (s)": 998,
+    "Duration (mins)": 16.12,
+    "Full Duration (mins)": 16.63,
+    "Start ISO": "2025-11-16T08:32:17Z",
+    "Source": "PLAYIT"
   }
 ]
