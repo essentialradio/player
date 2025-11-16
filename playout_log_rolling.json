@@ -54258,5 +54258,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-11-16T09:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-16T10:00:00Z",
+    "Scheduled Time": "10:01",
+    "Displayed Time": "10:01",
+    "Artist": "Michael Sembello",
+    "Title": "Maniac",
+    "Duration (s)": 237,
+    "Full Duration (s)": 254,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.23,
+    "Start ISO": "2025-11-16T10:01:34Z",
+    "Source": "PLAYIT"
   }
 ]
