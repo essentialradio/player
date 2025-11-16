@@ -54865,5 +54865,21 @@
     "Actual End ISO": "2025-11-16T15:31:45Z",
     "Actual Duration (s)": 319,
     "Actual Duration (mins)": 5.32
+  },
+  {
+    "Hour": "2025-11-16T15:00:00Z",
+    "Scheduled Time": "15:31",
+    "Displayed Time": "15:31",
+    "Artist": "Selena Gomez",
+    "Title": "In The Dark",
+    "Duration (s)": 178,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-11-16T15:31:45Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-16T15:34:43Z",
+    "Actual Duration (s)": 178,
+    "Actual Duration (mins)": 2.97
   }
 ]
