@@ -54801,5 +54801,21 @@
     "Actual End ISO": "2025-11-16T15:15:01Z",
     "Actual Duration (s)": 232,
     "Actual Duration (mins)": 3.87
+  },
+  {
+    "Hour": "2025-11-16T15:00:00Z",
+    "Scheduled Time": "15:15",
+    "Displayed Time": "15:15",
+    "Artist": "Lauren Spencer Smith",
+    "Title": "Thick Skin",
+    "Duration (s)": 245,
+    "Full Duration (s)": 245,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.08,
+    "Start ISO": "2025-11-16T15:15:01Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-16T15:19:06Z",
+    "Actual Duration (s)": 245,
+    "Actual Duration (mins)": 4.08
   }
 ]
