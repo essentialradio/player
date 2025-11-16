@@ -1,12 +1,11 @@
 {
-  "artist": "Meat Loaf",
-  "title": "I'd Do Anything for Love (But I Won't Do That)",
-  "startTime": "2025-11-16T18:52:52Z",
-  "start": "2025-11-16T18:52:52Z",
-  "duration": 3600,
-  "source": "ALT",
-  "indeterminate": true,
-  "endTime": "2025-11-16T19:52:52Z",
-  "altMode": true,
-  "Source": "ALT"
+  "endTime": "2025-11-16T21:00:00Z",
+  "artist": "Brian Woolfson",
+  "title": "Retro Charts (2005 & 1993)",
+  "startTime": "2025-11-16T19:00:00Z",
+  "start": "2025-11-16T19:00:00Z",
+  "duration": 7200,
+  "source": "FIXED",
+  "indeterminate": false,
+  "altMode": false
 }
