@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Calum Scott & Whitney Houston",
-    "title": "I Wanna Dance With Somebody (Who Loves Me)",
-    "startTime": "2025-11-16T16:28:11Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Sam Fender & Elton John",
     "title": "Talk To You (Clean)",
     "startTime": "2025-11-16T16:31:41Z",
@@ -135,6 +128,13 @@
     "artist": "Urban Cookie Collective",
     "title": "Feels Like Heaven",
     "startTime": "2025-11-16T18:21:05Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Time Frequency",
+    "title": "Real Love '93",
+    "startTime": "2025-11-16T18:24:32Z",
     "source": "ALT",
     "live": true
   }
