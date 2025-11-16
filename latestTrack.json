@@ -1,11 +1,12 @@
 {
   "artist": "James Blunt",
   "title": "Same Mistake",
-  "startTime": "2025-11-16T13:54:13Z",
-  "start": "2025-11-16T13:54:13Z",
-  "duration": 279,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-16T13:58:52Z",
-  "altMode": false
+  "startTime": "2025-11-16T14:00:05Z",
+  "start": "2025-11-16T14:00:05Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-16T15:00:05Z",
+  "altMode": true,
+  "Source": "ALT"
 }
