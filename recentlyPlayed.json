@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Perrie",
-    "title": "Rocket Scientist",
-    "startTime": "2025-11-16T13:02:00Z",
-    "source": ""
-  },
-  {
     "artist": "Olivia Dean",
     "title": "Man I Need",
     "startTime": "2025-11-16T13:06:00Z",
@@ -118,6 +112,13 @@
     "artist": "Bryan Adams",
     "title": "Please Forgive Me",
     "startTime": "2025-11-16T18:46:47Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Meat Loaf",
+    "title": "I'd Do Anything for Love (But I Won't Do That)",
+    "startTime": "2025-11-16T18:52:52Z",
     "source": "ALT",
     "live": true
   }
