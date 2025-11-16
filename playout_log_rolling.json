@@ -54785,5 +54785,21 @@
     "Actual End ISO": "2025-11-16T15:11:09Z",
     "Actual Duration (s)": 178,
     "Actual Duration (mins)": 2.97
+  },
+  {
+    "Hour": "2025-11-16T15:00:00Z",
+    "Scheduled Time": "15:11",
+    "Displayed Time": "15:11",
+    "Artist": "LADY_GAGA",
+    "Title": "The Dead Dance",
+    "Duration (s)": 232,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 3.87,
+    "Start ISO": "2025-11-16T15:11:09Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-16T15:15:01Z",
+    "Actual Duration (s)": 232,
+    "Actual Duration (mins)": 3.87
   }
 ]
