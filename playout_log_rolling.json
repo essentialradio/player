@@ -54977,5 +54977,21 @@
     "Actual End ISO": "2025-11-16T16:00:05Z",
     "Actual Duration (s)": 354,
     "Actual Duration (mins)": 5.9
+  },
+  {
+    "Hour": "2025-11-16T16:00:00Z",
+    "Scheduled Time": "16:00",
+    "Displayed Time": "16:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Duration (s)": 27,
+    "Full Duration (s)": 27,
+    "Duration (mins)": 0.45,
+    "Full Duration (mins)": 0.45,
+    "Start ISO": "2025-11-16T16:00:05Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-16T16:00:32Z",
+    "Actual Duration (s)": 27,
+    "Actual Duration (mins)": 0.45
   }
 ]
