@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Chappell Roan",
-    "title": "The Subway (Clean)",
-    "startTime": "2025-11-16T15:46:58Z",
-    "source": "ALT"
-  },
-  {
     "artist": "Zara Larsson",
     "title": "Blue Moon",
     "startTime": "2025-11-16T15:51:15Z",
@@ -132,6 +126,13 @@
     "artist": "Gorillaz",
     "title": "Dare",
     "startTime": "2025-11-16T17:06:47Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Daniel Powter",
+    "title": "Bad Day",
+    "startTime": "2025-11-16T17:10:57Z",
     "source": "ALT",
     "live": true
   }
