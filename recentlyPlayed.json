@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Michael Sembello",
-    "title": "Maniac",
-    "startTime": "2025-11-16T10:01:34Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Althea and Donna",
     "title": "Uptown Top Ranking",
     "startTime": "2025-11-16T10:05:36Z",
@@ -117,6 +111,12 @@
     "artist": "Queen",
     "title": "We Will Rock You",
     "startTime": "2025-11-16T11:28:18Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Terence Trent D'arby",
+    "title": "Wishing Well",
+    "startTime": "2025-11-16T11:31:25Z",
     "source": "PLAYIT"
   }
 ]
