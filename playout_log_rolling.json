@@ -51368,5 +51368,18 @@
     "Full Duration (mins)": 2.5,
     "Start ISO": "2025-11-17T10:10:15Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-17T10:00:00Z",
+    "Scheduled Time": "10:17",
+    "Displayed Time": "10:17",
+    "Artist": "Ed Sheeran",
+    "Title": "Lego House",
+    "Duration (s)": 180,
+    "Full Duration (s)": 191,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.18,
+    "Start ISO": "2025-11-17T10:17:43Z",
+    "Source": "PLAYIT"
   }
 ]
