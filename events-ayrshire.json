@@ -596,6 +596,84 @@
       "link": "https://www.north-ayrshire.gov.uk/whats-on-in-north-ayrshire",
       "source": "North Ayrshire Council \u2013 What's On",
       "recurring": true
+    },
+    {
+      "title": "The Wee Mermaid panto",
+      "start_date": "2025-12-04",
+      "end_date": "2025-12-07",
+      "start_time": "unknown",
+      "end_time": "unknown",
+      "venue": "Barrfields Theatre, Vikingar!",
+      "town": "Largs",
+      "desc": "Family pantomime from Largs Players with a Scottish twist, running across the first weekend in December.",
+      "link": "https://ayrshireandarran.com/event/the-wee-mermaid/",
+      "source": "Ayrshire & Arran / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "The Tumbling Paddies",
+      "start_date": "2025-12-12",
+      "end_date": "2025-12-12",
+      "start_time": "19:30",
+      "end_time": "unknown",
+      "venue": "Barrfields Theatre, Vikingar!",
+      "town": "Largs",
+      "desc": "Six-piece Irish band mixing country, trad and pop in a high-energy live show.",
+      "link": "https://ayrshireandarran.com/event/the-tumbling-paddies/",
+      "source": "Ayrshire & Arran / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "Bada Bingo feat Andy Whitby",
+      "start_date": "2025-12-06",
+      "end_date": "2025-12-06",
+      "start_time": "21:15",
+      "end_time": "unknown",
+      "venue": "Buzz Bingo",
+      "town": "Irvine",
+      "desc": "Loud, late-night bingo party with Bounce legend Andy Whitby on the decks.",
+      "link": "https://ayrshireandarran.com/event/bada-bingo-feat-andy-whitby-irvine/",
+      "source": "Ayrshire & Arran / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "Carols and Classics winter concert",
+      "start_date": "2025-12-12",
+      "end_date": "2025-12-12",
+      "start_time": "unknown",
+      "end_time": "unknown",
+      "venue": "Greenwood Academy",
+      "town": "Dreghorn, Irvine",
+      "desc": "Festive concert of Christmas carols and seasonal favourites from Dreghorn Musical Society.",
+      "link": "https://discover.events.com/gb/scotland/dreghorn/e/leisure/carols-classics-greenwood-academy-455126757",
+      "source": "VisitScotland / Events.com",
+      "recurring": false
+    },
+    {
+      "title": "Over 30s Day Disco for Largs Youth Theatre",
+      "start_date": "2026-01-17",
+      "end_date": "2026-01-17",
+      "start_time": "unknown",
+      "end_time": "unknown",
+      "venue": "TBC (fundraiser for Largs Youth Theatre)",
+      "town": "Largs",
+      "desc": "Afternoon fundraiser with Atlantic Disco playing club hits through the decades in aid of Largs Youth Theatre.",
+      "link": "https://ayrshireandarran.com/events/",
+      "source": "Ayrshire & Arran / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "Cracklin Rosie \u2013 The Neil Diamond Tribute Show",
+      "start_date": "2026-01-17",
+      "end_date": "2026-01-17",
+      "start_time": "unknown",
+      "end_time": "unknown",
+      "venue": "Venue TBC (Cumbrae)",
+      "town": "Isle of Cumbrae",
+      "desc": "Live band tribute to Neil Diamond featuring all the big hits, part of The Coig events calendar.",
+      "link": "https://ayrshireandarran.com/events/",
+      "source": "Ayrshire & Arran / The Coig",
+      "recurring": false
     }
   ],
   "south": [
@@ -1426,6 +1504,97 @@
       "link": "https://destinationsouthayrshire.co.uk/whats-on/hogmanay-celebration-at-the-clocktower/",
       "source": "Destination South Ayrshire / Clocktower Events",
       "recurring": false
+    },
+    {
+      "title": "Reclaim the Night march",
+      "start_date": "2025-11-25",
+      "end_date": "2025-11-25",
+      "start_time": "17:30",
+      "end_time": "unknown",
+      "venue": "Ayr town centre (start point tbc)",
+      "town": "Ayr",
+      "desc": "Evening march through Ayr organised by the South Ayrshire Violence Against Women and Girls partnership.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
+    },
+    {
+      "title": "WinterStorm rock festival",
+      "start_date": "2025-11-27",
+      "end_date": "2025-11-29",
+      "start_time": "12:00",
+      "end_time": "23:30",
+      "venue": "Troon Concert Hall",
+      "town": "Troon",
+      "desc": "Three-day WinterStorm rock festival on the seafront with classic rock, metal and blues across multiple stages.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/jai-ving-home-for-christmas/#winterstorm",
+      "source": "Destination South Ayrshire / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "The Runrig Experience \u2013 After the 'Storm'",
+      "start_date": "2025-11-30",
+      "end_date": "2025-11-30",
+      "start_time": "19:00",
+      "end_time": "unknown",
+      "venue": "Troon Concert Hall",
+      "town": "Troon",
+      "desc": "Runrig tribute show rounding off the WinterStorm weekend at Troon Concert Hall.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/jai-ving-home-for-christmas/#runrig",
+      "source": "Destination South Ayrshire / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "Desperados \u2013 Eagles tribute",
+      "start_date": "2025-12-19",
+      "end_date": "2025-12-19",
+      "start_time": "19:00",
+      "end_time": "unknown",
+      "venue": "Troon Concert Hall",
+      "town": "Troon",
+      "desc": "Desperados bring a full two-hour set of Eagles classics plus solo hits from Don Henley and Joe Walsh.",
+      "link": "https://ayrshireandarran.com/event/desperados/",
+      "source": "Ayrshire & Arran / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "Nashville Country Experience",
+      "start_date": "2025-12-20",
+      "end_date": "2025-12-20",
+      "start_time": "20:00",
+      "end_time": "unknown",
+      "venue": "Troon Concert Hall",
+      "town": "Troon",
+      "desc": "Top UK country show with full live band bringing a night of Nashville-style hits.",
+      "link": "https://www.visitscotland.com/info/events/nashville-country-experience-p3460061",
+      "source": "VisitScotland / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "Abbamania Christmas Party Night",
+      "start_date": "2025-12-27",
+      "end_date": "2025-12-27",
+      "start_time": "19:30",
+      "end_time": "unknown",
+      "venue": "Troon Concert Hall",
+      "town": "Troon",
+      "desc": "ABBAMANIA tribute show with two hours of ABBA hits and a few festive extras.",
+      "link": "https://ayrshireandarran.com/event/abbamania-troon-concert-hall/",
+      "source": "Ayrshire & Arran / The Coig",
+      "recurring": false
+    },
+    {
+      "title": "Jai-ving Home for Christmas with Jai McDowall",
+      "start_date": "2025-12-22",
+      "end_date": "2025-12-23",
+      "start_time": "19:30",
+      "end_time": "unknown",
+      "venue": "Ayr Town Hall",
+      "town": "Ayr",
+      "desc": "Britain\u2019s Got Talent winner Jai McDowall with a live band performing Christmas classics and big ballads.",
+      "link": "https://destinationsouthayrshire.co.uk/whats-on/jai-ving-home-for-christmas/",
+      "source": "Destination South Ayrshire",
+      "recurring": false
     }
   ],
   "east": [
@@ -1904,6 +2073,19 @@
       "desc": "Indoor Christmas market and decorated tree festival at Holy Trinity Episcopal Church in Kilmarnock, with stalls, refreshments and family activities.",
       "link": "https://allevents.in/kilmarnock/christmas-market-and-tree-festival-2025/200028778557800",
       "source": "Holy Trinity Episcopal Church / AllEvents",
+      "recurring": false
+    },
+    {
+      "title": "Gary Meikle \u2013 Neurospicy",
+      "start_date": "2025-11-22",
+      "end_date": "2025-11-22",
+      "start_time": "unknown",
+      "end_time": "unknown",
+      "venue": "Stewarton Area Centre",
+      "town": "Stewarton",
+      "desc": "Stand-up show from Scottish comedian Gary Meikle as part of his Neurospicy tour.",
+      "link": "https://eastayrshireleisure.com/whats-on/",
+      "source": "East Ayrshire Leisure / What's On snippet",
       "recurring": false
     }
   ]
