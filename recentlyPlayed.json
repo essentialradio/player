@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Essential Radio",
-    "title": "On Air",
-    "startTime": "2025-11-16T00:00:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "David Southway",
     "title": "Soul Vaults",
     "startTime": "2025-11-17T00:00:00Z",
@@ -117,6 +111,12 @@
     "artist": "Paloma Faith",
     "title": "Make Your Own Kind of Music",
     "startTime": "2025-11-17T03:11:28Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Chappell Roan",
+    "title": "Good Luck, Babe!",
+    "startTime": "2025-11-17T03:14:01Z",
     "source": "PLAYIT"
   }
 ]
