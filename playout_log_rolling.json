@@ -53253,5 +53253,31 @@
     "Full Duration (mins)": 4.17,
     "Start ISO": "2025-11-17T21:05:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-17T21:00:00Z",
+    "Scheduled Time": "21:09",
+    "Displayed Time": "21:09",
+    "Artist": "Counting Crows ft Vanessa Carlton",
+    "Title": "Big Yellow Taxi",
+    "Duration (s)": 209,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-17T21:09:22Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-17T21:00:00Z",
+    "Scheduled Time": "21:12",
+    "Displayed Time": "21:12",
+    "Artist": "EMF",
+    "Title": "Unbelievable",
+    "Duration (s)": 206,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.5,
+    "Start ISO": "2025-11-17T21:12:59Z",
+    "Source": "PLAYIT"
   }
 ]
