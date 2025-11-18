@@ -5689,11 +5689,15 @@ async function fetchNowPlaying() {
 
     // Only (re)start the bar if this is a NEW track.
     if (window._npActiveKey !== trackKey) {
+      const hadActive = typeof window._npActiveKey !== 'undefined' && window._npActiveKey !== null;
       window._npActiveKey = trackKey;
       try { hardResetBar(); } catch (e) {}
       window._npLastTiming = { startMs, endMs };
       try { sessionStorage.setItem('npLast', JSON.stringify({ key: window._npLastKey, startMs, endMs })); } catch (e) {}
       try { startBarAnimation(startMs, endMs); } catch (e) {}
+      if (hadActive) {
+        try { notifyNowTrackChanged(); } catch (e) {}
+      }
     } else {
       // Same track; keep existing animation but refresh timing
       window._npLastTiming = { startMs, endMs };
@@ -5901,6 +5905,9 @@ async function fetchNowPlaying() {
 
 // === NEXT TRACK ("Coming up") ===
 let nextInterval = null;
+let nextLockedKey = null;
+let nextCanAdvance = true;
+let nextLastShownText = '';
 
 async function fetchNextTrack() {
   try {
@@ -5921,12 +5928,47 @@ async function fetchNextTrack() {
       return;
     }
 
-    textEl.textContent = `${title} by ${artist}`;
+    const candidateKey = `${artist}||${title}`;
+    const candidateText = `'${title}' by ${artist}`;
+
+    if (!nextLockedKey) {
+      // First time this page load: lock immediately
+      nextLockedKey = candidateKey;
+      nextLastShownText = candidateText;
+      nextCanAdvance = false;
+    } else if (nextCanAdvance && candidateKey !== nextLockedKey) {
+      // Allowed to advance because Now Playing has moved on
+      nextLockedKey = candidateKey;
+      nextLastShownText = candidateText;
+      nextCanAdvance = false;
+    }
+
+    const toShow = nextLastShownText || candidateText;
+    textEl.textContent = toShow;
     wrap.style.display = 'block';
   } catch (e) {
     const wrap = document.getElementById('next-up');
     if (wrap) wrap.style.display = 'none';
   }
+}
+
+function notifyNowTrackChanged() {
+  // Called from fetchNowPlaying when a NEW track is detected
+  // 1) Allow the next-track pointer to move on
+  nextCanAdvance = true;
+
+  // 2) Immediately clear the current "Coming up" so that
+  //    when a song jumps into the player it no longer appears
+  //    as the next song, even if nextTrack.json hasn't updated yet.
+  try {
+    const wrap = document.getElementById('next-up');
+    if (wrap) wrap.style.display = 'none';
+  } catch (e) {}
+
+  // 3) Reset stored next-track state; the next fetchNextTrack()
+  //    call will lock in the new upcoming song.
+  nextLockedKey = null;
+  nextLastShownText = '';
 }
 
 function startNextAuto() {
