@@ -5932,7 +5932,7 @@ async function fetchNextTrack() {
     }
 
     const candidateKey = `${artist}||${title}`;
-    const candidateText = `'${title}' by ${artist}`;
+    const candidateText = `${title} by ${artist}`;
 
     // We only want "Coming up" to move on WHEN Now Playing has actually changed.
     // fetchNowPlaying() updates window._npCurrentKey whenever a new track is detected.
