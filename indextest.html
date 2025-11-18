@@ -5929,7 +5929,7 @@ async function fetchNextTrack() {
     }
 
     const candidateKey = `${artist}||${title}`;
-    const candidateText = `'${title}' by ${artist}`;
+    const candidateText = `${title} by ${artist}`;
 
     if (!nextLockedKey) {
       // First time this page load: lock immediately
