@@ -52092,5 +52092,31 @@
     "Full Duration (mins)": 3.25,
     "Start ISO": "2025-11-18T17:07:44Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-18T17:00:00Z",
+    "Scheduled Time": "17:11",
+    "Displayed Time": "17:11",
+    "Artist": "Kylie Minogue",
+    "Title": "In Your Eyes",
+    "Duration (s)": 188,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-11-18T17:11:03Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-18T17:00:00Z",
+    "Scheduled Time": "17:14",
+    "Displayed Time": "17:14",
+    "Artist": "Dua Lipa",
+    "Title": "Houdini",
+    "Duration (s)": 175,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.92,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-11-18T17:14:11Z",
+    "Source": "PLAYIT"
   }
 ]
