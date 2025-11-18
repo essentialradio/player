@@ -5929,7 +5929,7 @@ async function fetchNextTrack() {
     }
 
     const candidateKey = `${artist}||${title}`;
-    const candidateText = `${title} by ${artist}`;
+    const candidateText = `'${title}' by ${artist}`;
 
     if (!nextLockedKey) {
       // First time this page load: lock immediately
@@ -5969,6 +5969,12 @@ function notifyNowTrackChanged() {
   //    call will lock in the new upcoming song.
   nextLockedKey = null;
   nextLastShownText = '';
+
+  // 4) Immediately poll nextTrack.json so the new "Coming up"
+  //    appears as soon as the song hits the player.
+  try {
+    fetchNextTrack();
+  } catch (e) {}
 }
 
 function startNextAuto() {
