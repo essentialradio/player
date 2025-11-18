@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Billy Joel",
-    "title": "Uptown Girl",
-    "startTime": "2025-11-18T10:49:28Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Dr Alban",
     "title": "It's My Life",
     "startTime": "2025-11-18T10:52:34Z",
@@ -117,6 +111,12 @@
     "artist": "Perrie",
     "title": "Forget About Us",
     "startTime": "2025-11-18T12:19:49Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Cat Burns",
+    "title": "There's Just Something About Her",
+    "startTime": "2025-11-18T12:23:11Z",
     "source": "PLAYIT"
   }
 ]
