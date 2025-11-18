@@ -5685,7 +5685,9 @@ async function fetchNowPlaying() {
 
     // Track identity (to detect when a NEW track arrives)
     const trackKey = `${artist}||${title}||${startMs}`;
+    const simpleKey = `${artist}||${title}`;
     window._npLastKey = trackKey;
+    window._npCurrentSongKey = simpleKey;
 
     // Only (re)start the bar if this is a NEW track.
     if (window._npActiveKey !== trackKey) {
@@ -5930,6 +5932,16 @@ async function fetchNextTrack() {
 
     const candidateKey = `${artist}||${title}`;
     const candidateText = `'${title}' by ${artist}`;
+
+    // If this "next" is actually the current now-playing track,
+    // don't show it at all – wait until the backend moves on.
+    try {
+      const nowKey = window._npCurrentSongKey || null;
+      if (nowKey && nowKey === candidateKey) {
+        wrap.style.display = 'none';
+        return;
+      }
+    } catch (e) {}
 
     if (!nextLockedKey) {
       // First time this page load: lock immediately
