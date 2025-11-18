@@ -5921,7 +5921,7 @@ async function fetchNextTrack() {
       return;
     }
 
-    textEl.textContent = `${artist} - ${title}`;
+    textEl.textContent = `${title} by ${artist}`;
     wrap.style.display = 'block';
   } catch (e) {
     const wrap = document.getElementById('next-up');
