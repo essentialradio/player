@@ -5970,8 +5970,8 @@ function notifyNowTrackChanged() {
   nextLockedKey = null;
   nextLastShownText = '';
 
-  // 4) Immediately poll nextTrack.json so the new "Coming up"
-  //    appears as soon as the song hits the player.
+  // 4) Immediately repoll /nextTrack.json so the new "Coming up"
+  //    appears as soon as the new song hits the player.
   try {
     fetchNextTrack();
   } catch (e) {}
