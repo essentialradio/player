@@ -5932,7 +5932,7 @@ async function fetchNextTrack() {
     }
 
     const candidateKey = `${artist}||${title}`;
-    const candidateText = `${title} by ${artist}`;
+    const candidateText = `'${title}' by ${artist}`;
 
     // We only want "Coming up" to move on WHEN Now Playing has actually changed.
     // fetchNowPlaying() updates window._npCurrentKey whenever a new track is detected.
@@ -5955,7 +5955,21 @@ async function fetchNextTrack() {
 
 function notifyNowTrackChanged() {
   // Called from fetchNowPlaying when a NEW track is detected
+  // 1) Allow the next-track pointer to move on
   nextCanAdvance = true;
+
+  // 2) Immediately clear the current "Coming up" so that
+  //    when a song jumps into the player it no longer appears
+  //    as the next song, even if nextTrack.json hasn't updated yet.
+  try {
+    const wrap = document.getElementById('next-up');
+    if (wrap) wrap.style.display = 'none';
+  } catch (e) {}
+
+  // Reset stored next-track state; the next fetchNextTrack()
+  // call will lock in the new upcoming song.
+  nextLockedKey = null;
+  nextLastShownText = '';
 }
 
 function startNextAuto() {
