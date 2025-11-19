@@ -51381,5 +51381,31 @@
     "Full Duration (mins)": 4.3,
     "Start ISO": "2025-11-19T01:01:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-19T01:00:00Z",
+    "Scheduled Time": "01:06",
+    "Displayed Time": "01:06",
+    "Artist": "Lady Gaga",
+    "Title": "The Dead Dance",
+    "Duration (s)": 218,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-11-19T01:06:35Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-19T01:00:00Z",
+    "Scheduled Time": "01:10",
+    "Displayed Time": "01:10",
+    "Artist": "Sam Fender",
+    "Title": "Seventeen Going Under",
+    "Duration (s)": 229,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 3.9,
+    "Start ISO": "2025-11-19T01:10:19Z",
+    "Source": "PLAYIT"
   }
 ]
