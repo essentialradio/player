@@ -57413,5 +57413,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-11-20T11:33:34Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T11:00:00Z",
+    "Scheduled Time": "11:36",
+    "Displayed Time": "11:36",
+    "Artist": "Gnarls Barkley",
+    "Title": "Crazy",
+    "Duration (s)": 169,
+    "Full Duration (s)": 180,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 3.0,
+    "Start ISO": "2025-11-20T11:36:56Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T11:00:00Z",
+    "Scheduled Time": "11:43",
+    "Displayed Time": "11:43",
+    "Artist": "The Calling",
+    "Title": "Wherever You Will Go",
+    "Duration (s)": 194,
+    "Full Duration (s)": 208,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.47,
+    "Start ISO": "2025-11-20T11:43:48Z",
+    "Source": "PLAYIT"
   }
 ]
