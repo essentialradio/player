@@ -52061,5 +52061,31 @@
     "Full Duration (mins)": 3.87,
     "Start ISO": "2025-11-20T17:27:40Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T17:00:00Z",
+    "Scheduled Time": "17:34",
+    "Displayed Time": "17:34",
+    "Artist": "Gracie Abrams",
+    "Title": "That's So True",
+    "Duration (s)": 156,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.6,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-11-20T17:34:35Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T17:00:00Z",
+    "Scheduled Time": "17:37",
+    "Displayed Time": "17:37",
+    "Artist": "Myles Smith",
+    "Title": "Stay (If You Wanna Dance)",
+    "Duration (s)": 177,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-11-20T17:37:17Z",
+    "Source": "PLAYIT"
   }
 ]
