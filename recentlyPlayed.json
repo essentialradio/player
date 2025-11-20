@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Eric Clapton",
-    "title": "Tears in Heaven",
-    "startTime": "2025-11-19T22:54:36Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Richard Marx",
     "title": "Right Here Waiting",
     "startTime": "2025-11-19T23:01:59Z",
@@ -117,6 +111,12 @@
     "artist": "The Weeknd",
     "title": "Blinding Lights",
     "startTime": "2025-11-20T00:23:43Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Wham!",
+    "title": "Freedom",
+    "startTime": "2025-11-20T00:27:00Z",
     "source": "PLAYIT"
   }
 ]
