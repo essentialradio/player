@@ -56217,5 +56217,31 @@
     "Full Duration (mins)": 2.62,
     "Start ISO": "2025-11-20T04:24:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T04:00:00Z",
+    "Scheduled Time": "04:27",
+    "Displayed Time": "04:27",
+    "Artist": "Jax Jones ft MNEK",
+    "Title": "Where Did You Go?",
+    "Duration (s)": 174,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-11-20T04:27:02Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T04:00:00Z",
+    "Scheduled Time": "04:30",
+    "Displayed Time": "04:30",
+    "Artist": "Meghan Trainor",
+    "Title": "Made You Look",
+    "Duration (s)": 132,
+    "Full Duration (s)": 134,
+    "Duration (mins)": 2.2,
+    "Full Duration (mins)": 2.23,
+    "Start ISO": "2025-11-20T04:30:00Z",
+    "Source": "PLAYIT"
   }
 ]
