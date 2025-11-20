@@ -56659,5 +56659,31 @@
     "Full Duration (mins)": 4.8,
     "Start ISO": "2025-11-20T06:48:53Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T06:00:00Z",
+    "Scheduled Time": "06:53",
+    "Displayed Time": "06:53",
+    "Artist": "Dua Lipa",
+    "Title": "Levitating",
+    "Duration (s)": 195,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.4,
+    "Start ISO": "2025-11-20T06:53:21Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-20T07:00:00Z",
+    "Scheduled Time": "07:04",
+    "Displayed Time": "07:04",
+    "Artist": "Ed Sheeran",
+    "Title": "Camera",
+    "Duration (s)": 211,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-20T07:04:19Z",
+    "Source": "PLAYIT"
   }
 ]
