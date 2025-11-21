@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Sophie Ellis-Bextor",
-    "title": "Stay On Me",
-    "startTime": "2025-11-21T18:51:10Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Benson Boone",
     "title": "Sorry I'm Here For Someone Else",
     "startTime": "2025-11-21T18:54:17Z",
@@ -134,6 +128,13 @@
     "artist": "Lenny Kravitz",
     "title": "Let It Ride (Solardo Remix)",
     "startTime": "2025-11-21T19:50:00Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Noir & Haze with Meduza",
+    "title": "Around",
+    "startTime": "2025-11-21T19:53:16Z",
     "source": "ALT",
     "live": true
   }
