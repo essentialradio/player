@@ -51763,5 +51763,31 @@
     "Full Duration (mins)": 4.32,
     "Start ISO": "2025-11-21T03:54:18Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-21T04:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "04:01",
+    "Artist": "Lady Gaga",
+    "Title": "The Dead Dance",
+    "Duration (s)": 220,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-11-21T04:01:39Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-21T04:00:00Z",
+    "Scheduled Time": "04:05",
+    "Displayed Time": "04:05",
+    "Artist": "Benson Boone",
+    "Title": "Mystical Magical",
+    "Duration (s)": 157,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-11-21T04:05:49Z",
+    "Source": "PLAYIT"
   }
 ]
