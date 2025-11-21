@@ -54553,5 +54553,21 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-21T19:00:00Z",
+    "Scheduled Time": "19:59",
+    "Displayed Time": "19:59",
+    "Artist": "Gummy DJ",
+    "Title": "Ha Ha Ha The Diskotape",
+    "Duration (s)": 56,
+    "Full Duration (s)": 56,
+    "Duration (mins)": 0.93,
+    "Full Duration (mins)": 0.93,
+    "Start ISO": "2025-11-21T19:59:08Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-21T20:00:04Z",
+    "Actual Duration (s)": 56,
+    "Actual Duration (mins)": 0.93
   }
 ]
