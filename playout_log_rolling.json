@@ -54569,5 +54569,18 @@
     "Actual End ISO": "2025-11-21T20:00:04Z",
     "Actual Duration (s)": 56,
     "Actual Duration (mins)": 0.93
+  },
+  {
+    "Hour": "2025-11-21T20:00:00Z",
+    "Scheduled Time": "20:03",
+    "Displayed Time": "20:03",
+    "Artist": "Kelly Rowland",
+    "Title": "Work",
+    "Duration (s)": 186,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 3.1,
+    "Full Duration (mins)": 3.15,
+    "Start ISO": "2025-11-21T20:03:12Z",
+    "Source": "PLAYIT"
   }
 ]
