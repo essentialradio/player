@@ -53440,5 +53440,44 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-11-21T13:40:24Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-21T13:00:00Z",
+    "Scheduled Time": "13:43",
+    "Displayed Time": "13:43",
+    "Artist": "MK ft Chrystal",
+    "Title": "Dior",
+    "Duration (s)": 161,
+    "Full Duration (s)": 169,
+    "Duration (mins)": 2.68,
+    "Full Duration (mins)": 2.82,
+    "Start ISO": "2025-11-21T13:43:33Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-21T13:00:00Z",
+    "Scheduled Time": "13:46",
+    "Displayed Time": "13:46",
+    "Artist": "The Killers",
+    "Title": "Human",
+    "Duration (s)": 233,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.88,
+    "Full Duration (mins)": 4.15,
+    "Start ISO": "2025-11-21T13:46:22Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-21T13:00:00Z",
+    "Scheduled Time": "13:50",
+    "Displayed Time": "13:50",
+    "Artist": "Dua Lipa",
+    "Title": "Levitating",
+    "Duration (s)": 195,
+    "Full Duration (s)": 204,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.4,
+    "Start ISO": "2025-11-21T13:50:19Z",
+    "Source": "PLAYIT"
   }
 ]
