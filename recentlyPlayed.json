@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Lady Gaga",
-    "title": "The Dead Dance",
-    "startTime": "2025-11-21T18:47:23Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Sophie Ellis-Bextor",
     "title": "Stay On Me",
     "startTime": "2025-11-21T18:51:10Z",
@@ -133,6 +127,13 @@
     "artist": "MK & Chrystal",
     "title": "Dior (Jordan Peak Remix)",
     "startTime": "2025-11-21T19:47:16Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Lenny Kravitz",
+    "title": "Let It Ride (Solardo Remix)",
+    "startTime": "2025-11-21T19:50:00Z",
     "source": "ALT",
     "live": true
   }
