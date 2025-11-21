@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Duke & Jones",
-    "title": "Lucid",
-    "startTime": "2025-11-21T19:56:21Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Gummy DJ",
     "title": "Ha Ha Ha The Diskotape",
     "startTime": "2025-11-21T19:59:08Z",
@@ -119,6 +112,12 @@
     "artist": "Sash!",
     "title": "Encore Une Fois",
     "startTime": "2025-11-21T21:04:14Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Gibson Brothers",
+    "title": "Cuba",
+    "startTime": "2025-11-21T21:07:58Z",
     "source": "PLAYIT"
   }
 ]
