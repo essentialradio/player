@@ -52855,5 +52855,31 @@
     "Full Duration (mins)": 2.57,
     "Start ISO": "2025-11-21T10:18:20Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-21T10:00:00Z",
+    "Scheduled Time": "10:27",
+    "Displayed Time": "10:27",
+    "Artist": "Dasha",
+    "Title": "Austin (Boots Stop Workin')",
+    "Duration (s)": 167,
+    "Full Duration (s)": 172,
+    "Duration (mins)": 2.78,
+    "Full Duration (mins)": 2.87,
+    "Start ISO": "2025-11-21T10:27:23Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-21T10:00:00Z",
+    "Scheduled Time": "10:30",
+    "Displayed Time": "10:30",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-11-21T10:30:10Z",
+    "Source": "PLAYIT"
   }
 ]
