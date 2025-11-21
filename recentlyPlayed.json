@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Lizzo",
-    "title": "2 Be Loved (Am I Ready)",
-    "startTime": "2025-11-21T18:25:56Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Caity Baser",
     "title": "Running From Myself",
     "startTime": "2025-11-21T18:29:05Z",
@@ -127,6 +121,13 @@
     "artist": "Fisher & bbyclose",
     "title": "Blackberries <Extended>",
     "startTime": "2025-11-21T19:28:22Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "KC Lights & Lapsley",
+    "title": "Better Times",
+    "startTime": "2025-11-21T19:32:09Z",
     "source": "ALT",
     "live": true
   }
