@@ -1,12 +1,5 @@
 [
   {
-    "artist": "carl douglas",
-    "title": "kung fu fighting",
-    "startTime": "2025-11-22T15:31:01Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "pilot",
     "title": "magic",
     "startTime": "2025-11-22T15:34:08Z",
@@ -127,6 +120,12 @@
     "artist": "Big Tommy",
     "title": "Big Fat Party Anthems",
     "startTime": "2025-11-22T21:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Essential Radio",
+    "title": "On Air",
+    "startTime": "2025-11-22T00:00:00Z",
     "source": "FIXED"
   }
 ]
