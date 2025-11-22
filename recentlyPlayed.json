@@ -1,12 +1,5 @@
 [
   {
-    "artist": "timmy thomas",
-    "title": "why can't we live together",
-    "startTime": "2025-11-22T15:17:23Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "hot chocolate",
     "title": "brother louie",
     "startTime": "2025-11-22T15:22:05Z",
@@ -136,6 +129,13 @@
     "artist": "george mccrae",
     "title": "rock your baby",
     "startTime": "2025-11-22T16:01:12Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "george mccrae",
+    "title": "rock your baby",
+    "startTime": "2025-11-22T16:01:26Z",
     "source": "ALT",
     "live": true
   }
