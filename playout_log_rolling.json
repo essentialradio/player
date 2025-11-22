@@ -55219,5 +55219,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-11-22T00:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-11-22T01:00:00Z",
+    "Scheduled Time": "01:00",
+    "Displayed Time": "01:00",
+    "Artist": "Essential Radio",
+    "Title": "Around the World with Davy Sims",
+    "Duration (s)": 3588,
+    "Full Duration (s)": 3590,
+    "Duration (mins)": 59.8,
+    "Full Duration (mins)": 59.83,
+    "Start ISO": "2025-11-22T01:00:21Z",
+    "Source": "PLAYIT"
   }
 ]
