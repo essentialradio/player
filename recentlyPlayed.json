@@ -1,12 +1,5 @@
 [
   {
-    "artist": "leo sayer",
-    "title": "the show must go on",
-    "startTime": "2025-11-22T15:14:39Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "timmy thomas",
     "title": "why can't we live together",
     "startTime": "2025-11-22T15:17:23Z",
@@ -136,6 +129,13 @@
     "artist": "george mccrae",
     "title": "rock your baby",
     "startTime": "2025-11-22T16:00:58Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "george mccrae",
+    "title": "rock your baby",
+    "startTime": "2025-11-22T16:01:12Z",
     "source": "ALT",
     "live": true
   }
