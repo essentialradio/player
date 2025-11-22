@@ -55284,5 +55284,31 @@
     "Full Duration (mins)": 3.32,
     "Start ISO": "2025-11-22T02:13:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-22T02:00:00Z",
+    "Scheduled Time": "02:16",
+    "Displayed Time": "02:16",
+    "Artist": "Taylor Swift",
+    "Title": "I Knew You Were Trouble",
+    "Duration (s)": 214,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-11-22T02:16:44Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-22T02:00:00Z",
+    "Scheduled Time": "02:24",
+    "Displayed Time": "02:24",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 180,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.12,
+    "Start ISO": "2025-11-22T02:24:52Z",
+    "Source": "PLAYIT"
   }
 ]
