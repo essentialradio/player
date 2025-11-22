@@ -1,19 +1,5 @@
 [
   {
-    "artist": "SMM",
-    "title": "SMOKEY MOUNTAINS",
-    "startTime": "2025-11-22T15:14:25Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "leo sayer",
-    "title": "the show must go on",
-    "startTime": "2025-11-22T15:14:39Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "timmy thomas",
     "title": "why can't we live together",
     "startTime": "2025-11-22T15:17:23Z",
@@ -130,8 +116,20 @@
     "source": "FIXED"
   },
   {
+    "artist": "Essential Radio",
+    "title": "The JanCave 70s Jukebox with Jan Gow",
+    "startTime": "2025-11-22T17:02:02Z",
+    "source": "PLAYIT"
+  },
+  {
     "artist": "Jan Gow",
     "title": "The Jan Cave 70s Jukebox",
+    "startTime": "2025-11-22T18:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Tim Graham",
+    "title": "The LGBTQ Music Chart",
     "startTime": "2025-11-22T18:00:00Z",
     "source": "FIXED"
   }
