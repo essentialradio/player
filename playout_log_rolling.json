@@ -55245,5 +55245,18 @@
     "Full Duration (mins)": 3.75,
     "Start ISO": "2025-11-22T02:02:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-22T02:00:00Z",
+    "Scheduled Time": "02:06",
+    "Displayed Time": "02:06",
+    "Artist": "Chappell Roan",
+    "Title": "Hot To Go!",
+    "Duration (s)": 181,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.08,
+    "Start ISO": "2025-11-22T02:06:33Z",
+    "Source": "PLAYIT"
   }
 ]
