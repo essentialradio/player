@@ -1,12 +1,5 @@
 [
   {
-    "artist": "mud",
-    "title": "dyna-mite",
-    "startTime": "2025-11-22T15:08:54Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "new york city",
     "title": "i'm doin' fine now",
     "startTime": "2025-11-22T15:11:48Z",
@@ -136,6 +129,13 @@
     "artist": "george mccrae",
     "title": "rock your baby",
     "startTime": "2025-11-22T16:00:16Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "george mccrae",
+    "title": "rock your baby",
+    "startTime": "2025-11-22T16:00:30Z",
     "source": "ALT",
     "live": true
   }
