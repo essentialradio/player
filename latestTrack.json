@@ -1,12 +1,11 @@
 {
-  "artist": "4.45PM SMM",
-  "title": "THE ONE THAT GOT AWAY MEGAMIX",
-  "startTime": "2025-11-22T16:45:35Z",
-  "start": "2025-11-22T16:45:35Z",
+  "endTime": "2025-11-22T18:00:00Z",
+  "artist": "Big Tommy",
+  "title": "The Saturday Music Marathon",
+  "startTime": "2025-11-22T17:00:00Z",
+  "start": "2025-11-22T17:00:00Z",
   "duration": 3600,
-  "source": "ALT",
-  "indeterminate": true,
-  "endTime": "2025-11-22T17:45:35Z",
-  "altMode": true,
-  "Source": "ALT"
+  "source": "FIXED",
+  "indeterminate": false,
+  "altMode": false
 }
