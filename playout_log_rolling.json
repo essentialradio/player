@@ -55687,5 +55687,18 @@
     "Full Duration (mins)": 2.97,
     "Start ISO": "2025-11-22T04:23:00Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-22T04:00:00Z",
+    "Scheduled Time": "04:25",
+    "Displayed Time": "04:25",
+    "Artist": "Eurythmics",
+    "Title": "Sweet Dreams (Are Made of This)",
+    "Duration (s)": 200,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-22T04:25:59Z",
+    "Source": "PLAYIT"
   }
 ]
