@@ -1,12 +1,5 @@
 [
   {
-    "artist": "suzi quatro",
-    "title": "can the can",
-    "startTime": "2025-11-22T15:05:27Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "mud",
     "title": "dyna-mite",
     "startTime": "2025-11-22T15:08:54Z",
@@ -136,6 +129,13 @@
     "artist": "george mccrae",
     "title": "rock your baby",
     "startTime": "2025-11-22T16:00:02Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "george mccrae",
+    "title": "rock your baby",
+    "startTime": "2025-11-22T16:00:16Z",
     "source": "ALT",
     "live": true
   }
