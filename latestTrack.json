@@ -1,11 +1,12 @@
 {
   "artist": "Lemar",
   "title": "Tick Tock",
-  "startTime": "2025-11-22T12:57:19Z",
-  "start": "2025-11-22T12:57:19Z",
-  "duration": 187,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-22T13:00:26Z",
-  "altMode": false
+  "startTime": "2025-11-22T13:00:01Z",
+  "start": "2025-11-22T13:00:01Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-22T14:00:01Z",
+  "altMode": true,
+  "Source": "ALT"
 }
