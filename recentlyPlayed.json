@@ -1,12 +1,5 @@
 [
   {
-    "artist": "hot chocolate",
-    "title": "brother louie",
-    "startTime": "2025-11-22T15:22:05Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "disco tex & the sex",
     "title": "o-lettes - get dancing",
     "startTime": "2025-11-22T15:26:58Z",
@@ -136,6 +129,13 @@
     "artist": "george mccrae",
     "title": "rock your baby",
     "startTime": "2025-11-22T16:01:26Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "george mccrae",
+    "title": "rock your baby",
+    "startTime": "2025-11-22T16:01:40Z",
     "source": "ALT",
     "live": true
   }
