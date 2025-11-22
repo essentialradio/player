@@ -1,12 +1,5 @@
 [
   {
-    "artist": "1.30PM SMM",
-    "title": "PARTY THRU THE DECADES MEGAMIX",
-    "startTime": "2025-11-22T13:30:35Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "1.45PM SMM",
     "title": "DR HOOK FEATURED ARTIST",
     "startTime": "2025-11-22T13:45:40Z",
@@ -134,6 +127,13 @@
     "artist": "SMM",
     "title": "SMOKEY MOUNTAINS",
     "startTime": "2025-11-22T15:14:25Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "leo sayer",
+    "title": "the show must go on",
+    "startTime": "2025-11-22T15:14:39Z",
     "source": "ALT",
     "live": true
   }
