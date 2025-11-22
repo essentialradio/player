@@ -56753,5 +56753,31 @@
     "Full Duration (mins)": 3.23,
     "Start ISO": "2025-11-22T10:19:57Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-22T10:00:00Z",
+    "Scheduled Time": "10:23",
+    "Displayed Time": "10:23",
+    "Artist": "Cat Burns",
+    "Title": "There's Just Something About Her",
+    "Duration (s)": 185,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.2,
+    "Start ISO": "2025-11-22T10:23:10Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-22T10:00:00Z",
+    "Scheduled Time": "10:26",
+    "Displayed Time": "10:26",
+    "Artist": "Pixie Lott",
+    "Title": "All About Tonight",
+    "Duration (s)": 173,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.08,
+    "Start ISO": "2025-11-22T10:26:14Z",
+    "Source": "PLAYIT"
   }
 ]
