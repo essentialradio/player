@@ -57786,6 +57786,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-11-22T15:00:00Z",
+    "Scheduled Time": "15:56",
+    "Displayed Time": "15:56",
+    "Artist": "george mccrae",
+    "Title": "rock your baby",
+    "Duration (s)": 324,
+    "Full Duration (s)": 324,
+    "Duration (mins)": 5.4,
+    "Full Duration (mins)": 5.4,
+    "Start ISO": "2025-11-22T15:56:45Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-22T16:02:09Z",
+    "Actual Duration (s)": 324,
+    "Actual Duration (mins)": 5.4
+  },
+  {
     "Hour": "2025-11-22T16:00:00Z",
     "Scheduled Time": "16:00",
     "Displayed Time": "16:00",
@@ -57906,6 +57922,20 @@
     "Start ISO": "2025-11-22T16:01:55Z",
     "Source": "ALT",
     "Last Seen": "2025-11-22T16:01:55Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-22T16:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "16:02",
+    "Artist": "SMM",
+    "Title": "STU RADIO BINGO 2 WET",
+    "Start ISO": "2025-11-22T16:02:09Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-22T16:02:09Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
