@@ -1,12 +1,5 @@
 [
   {
-    "artist": "SMM",
-    "title": "SMOKEY MOUNTAINS",
-    "startTime": "2025-11-22T15:14:25Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "leo sayer",
     "title": "the show must go on",
     "startTime": "2025-11-22T15:14:39Z",
@@ -136,6 +129,13 @@
     "artist": "george mccrae",
     "title": "rock your baby",
     "startTime": "2025-11-22T16:00:44Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "george mccrae",
+    "title": "rock your baby",
+    "startTime": "2025-11-22T16:00:58Z",
     "source": "ALT",
     "live": true
   }
