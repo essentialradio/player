@@ -61483,5 +61483,19 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-23T17:00:00Z",
+    "Scheduled Time": "17:31",
+    "Displayed Time": "17:31",
+    "Artist": "Dan Hartman",
+    "Title": "Instant Replay",
+    "Start ISO": "2025-11-23T17:31:55Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T17:31:55Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
