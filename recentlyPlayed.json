@@ -1,11 +1,5 @@
 [
   {
-    "artist": "SZA X Justin Timberlake",
-    "title": "The Other Side",
-    "startTime": "2025-11-23T12:40:57Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Coldplay",
     "title": "Feels Like I'm Falling in Love",
     "startTime": "2025-11-23T12:44:12Z",
@@ -117,6 +111,13 @@
     "artist": "Spencer James",
     "title": "Airplay 40",
     "startTime": "2025-11-23T14:00:09Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "The Fate of Ophelia",
+    "startTime": "2025-11-23T14:00:23Z",
     "source": "ALT",
     "live": true
   }
