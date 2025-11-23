@@ -1,8 +1,13 @@
+
 {
   "rewrites": [
     {
       "source": "/request",
       "destination": "http://85.234.135.238:8085/request"
+    },
+    {
+      "source": "/api/track_suggest",
+      "destination": "http://85.234.135.238:8085/api/track_suggest"
     }
   ]
 }
