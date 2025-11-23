@@ -61805,5 +61805,19 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-23T18:00:00Z",
+    "Scheduled Time": "18:03",
+    "Displayed Time": "18:03",
+    "Artist": "The Boomtown Rats",
+    "Title": "Rat Trap",
+    "Start ISO": "2025-11-23T18:03:43Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T18:03:43Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]

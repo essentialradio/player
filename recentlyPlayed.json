@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Showaddywaddy",
-    "title": "Pretty Little Angel Eyes",
-    "startTime": "2025-11-23T17:42:33Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Rod Stewart",
     "title": "Da Ya Think I'm Sexy?",
     "startTime": "2025-11-23T17:45:50Z",
@@ -136,6 +129,13 @@
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
     "startTime": "2025-11-23T18:03:29Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Boomtown Rats",
+    "title": "Rat Trap",
+    "startTime": "2025-11-23T18:03:43Z",
     "source": "ALT",
     "live": true
   }
