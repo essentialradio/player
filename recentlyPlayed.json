@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Elton John",
-    "title": "Part-Time Love",
-    "startTime": "2025-11-23T17:10:05Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Donna Summer",
     "title": "Macarthur Park",
     "startTime": "2025-11-23T17:13:31Z",
@@ -136,6 +129,13 @@
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
     "startTime": "2025-11-23T18:01:21Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Boomtown Rats",
+    "title": "Rat Trap",
+    "startTime": "2025-11-23T18:01:35Z",
     "source": "ALT",
     "live": true
   }
