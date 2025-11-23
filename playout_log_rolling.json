@@ -60091,5 +60091,19 @@
     "Full Duration (mins)": 3.98,
     "Start ISO": "2025-11-23T13:51:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-23T14:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "14:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-23T14:00:09Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T14:00:09Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]

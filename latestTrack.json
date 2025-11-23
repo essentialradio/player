@@ -1,11 +1,12 @@
 {
-  "artist": "La Bouche",
-  "title": "Be My Lover",
-  "startTime": "2025-11-23T13:51:47Z",
-  "start": "2025-11-23T13:51:47Z",
-  "duration": 235,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-23T13:55:42Z",
-  "altMode": false
+  "artist": "Spencer James",
+  "title": "Airplay 40",
+  "startTime": "2025-11-23T14:00:09Z",
+  "start": "2025-11-23T14:00:09Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-23T15:00:09Z",
+  "altMode": true,
+  "Source": "ALT"
 }
