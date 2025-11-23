@@ -60315,5 +60315,35 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-23T14:00:00Z",
+    "Scheduled Time": "14:53",
+    "Displayed Time": "14:53",
+    "Artist": "marshmello & Hudson Westbrook",
+    "Title": "Better Man Than Me",
+    "Duration (s)": 421,
+    "Full Duration (s)": 421,
+    "Duration (mins)": 7.02,
+    "Full Duration (mins)": 7.02,
+    "Start ISO": "2025-11-23T14:53:09Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-23T15:00:10Z",
+    "Actual Duration (s)": 421,
+    "Actual Duration (mins)": 7.02
+  },
+  {
+    "Hour": "2025-11-23T15:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-23T15:00:10Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T15:00:10Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
