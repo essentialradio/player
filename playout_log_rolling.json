@@ -59493,5 +59493,31 @@
     "Full Duration (mins)": 3.95,
     "Start ISO": "2025-11-23T10:35:23Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-23T10:00:00Z",
+    "Scheduled Time": "10:43",
+    "Displayed Time": "10:43",
+    "Artist": "Culture Club",
+    "Title": "Do You Really Want to Hurt Me",
+    "Duration (s)": 251,
+    "Full Duration (s)": 261,
+    "Duration (mins)": 4.18,
+    "Full Duration (mins)": 4.35,
+    "Start ISO": "2025-11-23T10:43:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-23T10:00:00Z",
+    "Scheduled Time": "10:47",
+    "Displayed Time": "10:47",
+    "Artist": "Curtis Stigers",
+    "Title": "I Wonder Why",
+    "Duration (s)": 246,
+    "Full Duration (s)": 266,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.43,
+    "Start ISO": "2025-11-23T10:47:27Z",
+    "Source": "PLAYIT"
   }
 ]
