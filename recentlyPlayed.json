@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Queen",
-    "title": "Bicycle Race",
-    "startTime": "2025-11-23T17:24:49Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Blondie",
     "title": "Hanging on the Telephone",
     "startTime": "2025-11-23T17:28:27Z",
@@ -136,6 +129,13 @@
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
     "startTime": "2025-11-23T18:02:18Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Boomtown Rats",
+    "title": "Rat Trap",
+    "startTime": "2025-11-23T18:02:32Z",
     "source": "ALT",
     "live": true
   }
