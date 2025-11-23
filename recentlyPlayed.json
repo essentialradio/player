@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Duran Duran",
-    "title": "The Reflex",
-    "startTime": "2025-11-23T05:47:09Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Miley Cyrus",
     "title": "Flowers",
     "startTime": "2025-11-23T05:51:21Z",
@@ -117,6 +111,12 @@
     "artist": "Addison Rae",
     "title": "Fame Is A Gun",
     "startTime": "2025-11-23T07:05:05Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Opalite",
+    "startTime": "2025-11-23T07:08:08Z",
     "source": "PLAYIT"
   }
 ]

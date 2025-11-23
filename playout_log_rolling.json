@@ -59090,5 +59090,18 @@
     "Full Duration (mins)": 3.05,
     "Start ISO": "2025-11-23T07:05:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-23T07:00:00Z",
+    "Scheduled Time": "07:08",
+    "Displayed Time": "07:08",
+    "Artist": "Taylor Swift",
+    "Title": "Opalite",
+    "Duration (s)": 224,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.92,
+    "Start ISO": "2025-11-23T07:08:08Z",
+    "Source": "PLAYIT"
   }
 ]
