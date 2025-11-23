@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Chic",
-    "title": "Le Freak",
-    "startTime": "2025-11-23T17:05:54Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Elton John",
     "title": "Part-Time Love",
     "startTime": "2025-11-23T17:10:05Z",
@@ -136,6 +129,13 @@
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
     "startTime": "2025-11-23T18:01:06Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Boomtown Rats",
+    "title": "Rat Trap",
+    "startTime": "2025-11-23T18:01:21Z",
     "source": "ALT",
     "live": true
   }
