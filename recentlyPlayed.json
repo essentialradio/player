@@ -2,13 +2,6 @@
   {
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
-    "startTime": "2025-11-23T18:00:10Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "The Boomtown Rats",
-    "title": "Rat Trap",
     "startTime": "2025-11-23T18:00:24Z",
     "source": "ALT",
     "live": true
@@ -136,6 +129,13 @@
     "artist": "Barry Manilow",
     "title": "I Wanna Do It With You",
     "startTime": "2025-11-23T18:08:15Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Donna Summer",
+    "title": "State of Independence",
+    "startTime": "2025-11-23T18:11:31Z",
     "source": "ALT",
     "live": true
   }
