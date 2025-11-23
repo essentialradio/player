@@ -2,13 +2,6 @@
   {
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
-    "startTime": "2025-11-23T18:00:38Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "The Boomtown Rats",
-    "title": "Rat Trap",
     "startTime": "2025-11-23T18:00:52Z",
     "source": "ALT",
     "live": true
@@ -136,6 +129,13 @@
     "artist": "Duran Duran",
     "title": "Rio",
     "startTime": "2025-11-23T18:15:52Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Blancmange",
+    "title": "Living on the Ceiling",
+    "startTime": "2025-11-23T18:20:06Z",
     "source": "ALT",
     "live": true
   }
