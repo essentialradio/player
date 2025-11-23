@@ -1,12 +1,5 @@
 [
   {
-    "artist": "pilot",
-    "title": "magic",
-    "startTime": "2025-11-22T15:34:08Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "mud",
     "title": "tiger feet",
     "startTime": "2025-11-22T15:37:03Z",
@@ -126,6 +119,12 @@
     "artist": "Essential Radio",
     "title": "On Air",
     "startTime": "2025-11-22T00:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Bill Grainger",
+    "title": "Fire Island Hi-NRG",
+    "startTime": "2025-11-23T00:00:00Z",
     "source": "FIXED"
   }
 ]
