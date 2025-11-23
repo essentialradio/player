@@ -1,12 +1,5 @@
 [
   {
-    "artist": "00",
-    "title": "SMM YOU DONT KNOW WET",
-    "startTime": "2025-11-22T15:46:31Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "sweet sensation",
     "title": "sad sweet dreamer",
     "startTime": "2025-11-22T15:46:45Z",
@@ -122,6 +115,12 @@
     "artist": "Queen",
     "title": "A Kind of Magic",
     "startTime": "2025-11-23T01:12:25Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Blank Space (Taylor's Version)",
+    "startTime": "2025-11-23T01:16:31Z",
     "source": "PLAYIT"
   }
 ]
