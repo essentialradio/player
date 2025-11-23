@@ -1,11 +1,5 @@
 [
   {
-    "artist": "The Righteous Brothers",
-    "title": "Unchained Melody",
-    "startTime": "2025-11-23T11:55:43Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Taylor Swift",
     "title": "The Fate of Ophelia",
     "startTime": "2025-11-23T12:02:19Z",
@@ -117,6 +111,12 @@
     "artist": "Red Hot Chili Peppers",
     "title": "By the Way",
     "startTime": "2025-11-23T13:12:57Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Dua Lipa",
+    "title": "Houdini",
+    "startTime": "2025-11-23T13:20:36Z",
     "source": "PLAYIT"
   }
 ]
