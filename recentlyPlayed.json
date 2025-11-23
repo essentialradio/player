@@ -1,17 +1,9 @@
 [
   {
-    "artist": "Olivia Newton‐John",
-    "title": "Hopelessly Devoted to You",
-    "startTime": "2025-11-23T17:53:48Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
     "startTime": "2025-11-23T17:58:41Z",
-    "source": "ALT",
-    "live": true
+    "source": "ALT"
   },
   {
     "artist": "The Boomtown Rats",
@@ -136,6 +128,13 @@
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
     "startTime": "2025-11-23T18:04:12Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Kids From 'Fame'",
+    "title": "Starmaker",
+    "startTime": "2025-11-23T18:04:26Z",
     "source": "ALT",
     "live": true
   }
