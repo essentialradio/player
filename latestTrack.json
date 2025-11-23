@@ -1,12 +1,11 @@
 {
-  "artist": "Eddy Grant",
-  "title": "I Don't Wanna Dance",
-  "startTime": "2025-11-23T18:58:23Z",
-  "start": "2025-11-23T18:58:23Z",
-  "duration": 3600,
-  "source": "ALT",
-  "indeterminate": true,
-  "endTime": "2025-11-23T19:58:23Z",
-  "altMode": true,
-  "Source": "ALT"
+  "endTime": "2025-11-23T21:00:00Z",
+  "artist": "Brian Woolfson",
+  "title": "Retro Charts (1978 & 1982)",
+  "startTime": "2025-11-23T19:00:00Z",
+  "start": "2025-11-23T19:00:00Z",
+  "duration": 7200,
+  "source": "FIXED",
+  "indeterminate": false,
+  "altMode": false
 }
