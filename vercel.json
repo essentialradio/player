@@ -1,3 +1,8 @@
 {
-  "version": 2
+  "rewrites": [
+    {
+      "source": "/request",
+      "destination": "http://85.234.135.238:8085/request"
+    }
+  ]
 }
