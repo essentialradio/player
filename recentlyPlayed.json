@@ -2,13 +2,6 @@
   {
     "artist": "U2",
     "title": "Walk On",
-    "startTime": "2025-11-23T16:02:08Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "U2",
-    "title": "Walk On",
     "startTime": "2025-11-23T16:02:23Z",
     "source": "ALT",
     "live": true
@@ -136,6 +129,13 @@
     "artist": "Ed Sheeran",
     "title": "Camera",
     "startTime": "2025-11-23T16:45:28Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "The Fate of Ophelia",
+    "startTime": "2025-11-23T16:49:27Z",
     "source": "ALT",
     "live": true
   }
