@@ -1,11 +1,5 @@
 [
   {
-    "artist": "David Guetta/Teddy Swims/Tones and I",
-    "title": "Gone Gone Gone",
-    "startTime": "2025-11-23T13:02:04Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "RAYE",
     "title": "Where Is My Husband!",
     "startTime": "2025-11-23T13:06:04Z",
@@ -122,6 +116,13 @@
     "artist": "LADY_GAGA",
     "title": "The Dead Dance",
     "startTime": "2025-11-23T14:18:31Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Cat Burns",
+    "title": "Lavender",
+    "startTime": "2025-11-23T14:23:25Z",
     "source": "ALT",
     "live": true
   }
