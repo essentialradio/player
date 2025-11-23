@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Madison Beer",
-    "title": "bittersweet",
-    "startTime": "2025-11-23T15:15:50Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Selena Gomez",
     "title": "In The Dark",
     "startTime": "2025-11-23T15:20:42Z",
@@ -136,6 +129,13 @@
     "artist": "U2",
     "title": "Walk On",
     "startTime": "2025-11-23T16:01:40Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "U2",
+    "title": "Walk On",
+    "startTime": "2025-11-23T16:01:54Z",
     "source": "ALT",
     "live": true
   }
