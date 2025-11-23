@@ -61455,5 +61455,19 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-23T17:00:00Z",
+    "Scheduled Time": "17:24",
+    "Displayed Time": "17:24",
+    "Artist": "Queen",
+    "Title": "Bicycle Race",
+    "Start ISO": "2025-11-23T17:24:49Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T17:24:49Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
