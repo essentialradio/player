@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Chic",
-    "title": "Le Freak",
-    "startTime": "2025-11-23T17:05:54Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Elton John",
     "title": "Part-Time Love",
     "startTime": "2025-11-23T17:10:05Z",
@@ -131,6 +124,12 @@
   {
     "artist": "Kevin McCallum",
     "title": "The Mr Rocks Show",
+    "startTime": "2025-11-23T21:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Emma Scott",
+    "title": "The Pluggin' Baby Radio Show",
     "startTime": "2025-11-23T21:00:00Z",
     "source": "FIXED"
   }
