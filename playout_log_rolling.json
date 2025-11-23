@@ -61399,5 +61399,19 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-23T17:00:00Z",
+    "Scheduled Time": "17:10",
+    "Displayed Time": "17:10",
+    "Artist": "Elton John",
+    "Title": "Part-Time Love",
+    "Start ISO": "2025-11-23T17:10:05Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T17:10:05Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
