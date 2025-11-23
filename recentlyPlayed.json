@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Taylor Swift & Sabrina Carpenter",
-    "title": "The Life of a Showgirl",
-    "startTime": "2025-11-23T15:38:22Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Charlie Puth",
     "title": "Changes",
     "startTime": "2025-11-23T15:43:46Z",
@@ -136,6 +129,13 @@
     "artist": "U2",
     "title": "Walk On",
     "startTime": "2025-11-23T16:03:05Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "U2",
+    "title": "Walk On",
+    "startTime": "2025-11-23T16:03:19Z",
     "source": "ALT",
     "live": true
   }
