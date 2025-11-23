@@ -60571,6 +60571,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-11-23T15:00:00Z",
+    "Scheduled Time": "15:59",
+    "Displayed Time": "15:59",
+    "Artist": "U2",
+    "Title": "Walk On",
+    "Duration (s)": 263,
+    "Full Duration (s)": 263,
+    "Duration (mins)": 4.38,
+    "Full Duration (mins)": 4.38,
+    "Start ISO": "2025-11-23T15:59:25Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-23T16:03:48Z",
+    "Actual Duration (s)": 263,
+    "Actual Duration (mins)": 4.38
+  },
+  {
     "Hour": "2025-11-23T16:00:00Z",
     "Scheduled Time": "16:00",
     "Displayed Time": "16:00",
@@ -60789,6 +60805,20 @@
     "Start ISO": "2025-11-23T16:03:34Z",
     "Source": "ALT",
     "Last Seen": "2025-11-23T16:03:34Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-23T16:00:00Z",
+    "Scheduled Time": "16:03",
+    "Displayed Time": "16:03",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-23T16:03:48Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T16:03:48Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
