@@ -59805,5 +59805,31 @@
     "Full Duration (mins)": 3.88,
     "Start ISO": "2025-11-23T12:24:34Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-23T12:00:00Z",
+    "Scheduled Time": "12:28",
+    "Displayed Time": "12:28",
+    "Artist": "Chappell Roan",
+    "Title": "Good Luck, Babe!",
+    "Duration (s)": 206,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-11-23T12:28:18Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-23T12:00:00Z",
+    "Scheduled Time": "12:34",
+    "Displayed Time": "12:34",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 216,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-11-23T12:34:06Z",
+    "Source": "PLAYIT"
   }
 ]
