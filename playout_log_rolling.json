@@ -61905,5 +61905,19 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-23T18:00:00Z",
+    "Scheduled Time": "18:15",
+    "Displayed Time": "18:15",
+    "Artist": "Duran Duran",
+    "Title": "Rio",
+    "Start ISO": "2025-11-23T18:15:52Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-23T18:15:52Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
