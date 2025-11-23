@@ -1,12 +1,5 @@
 [
   {
-    "artist": "John Travolta & Olivia Newton‐John",
-    "title": "Summer Nights",
-    "startTime": "2025-11-23T17:35:34Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Frankie Miller",
     "title": "Darlin'",
     "startTime": "2025-11-23T17:39:38Z",
@@ -136,6 +129,13 @@
     "artist": "The Boomtown Rats",
     "title": "Rat Trap",
     "startTime": "2025-11-23T18:03:01Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Boomtown Rats",
+    "title": "Rat Trap",
+    "startTime": "2025-11-23T18:03:15Z",
     "source": "ALT",
     "live": true
   }
