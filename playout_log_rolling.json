@@ -64240,5 +64240,31 @@
     "Full Duration (mins)": 2.78,
     "Start ISO": "2025-11-24T16:45:08Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T16:00:00Z",
+    "Scheduled Time": "16:47",
+    "Displayed Time": "16:47",
+    "Artist": "Bruce Springsteen",
+    "Title": "Dancing in the Dark",
+    "Duration (s)": 221,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-11-24T16:47:54Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T16:00:00Z",
+    "Scheduled Time": "16:51",
+    "Displayed Time": "16:51",
+    "Artist": "Joel Corry & Becky Hill",
+    "Title": "HISTORY",
+    "Duration (s)": 168,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-11-24T16:51:50Z",
+    "Source": "PLAYIT"
   }
 ]
