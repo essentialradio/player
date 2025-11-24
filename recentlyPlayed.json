@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Fleetwood Mac",
-    "title": "Everywhere",
-    "startTime": "2025-11-24T11:13:55Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "The Cure",
     "title": "Friday I'm in Love",
     "startTime": "2025-11-24T11:17:28Z",
@@ -117,6 +111,12 @@
     "artist": "Ed Sheeran",
     "title": "Bad Habits",
     "startTime": "2025-11-24T12:45:43Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Cyndi Lauper",
+    "title": "Girls Just Want to Have Fun",
+    "startTime": "2025-11-24T12:49:52Z",
     "source": "PLAYIT"
   }
 ]
