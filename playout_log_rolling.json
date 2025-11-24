@@ -65306,5 +65306,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-11-24T22:53:21Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T23:00:00Z",
+    "Scheduled Time": "23:02",
+    "Displayed Time": "23:02",
+    "Artist": "Culture Club",
+    "Title": "Time (Clock of the Heart)",
+    "Duration (s)": 199,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 3.32,
+    "Full Duration (mins)": 3.72,
+    "Start ISO": "2025-11-24T23:02:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T23:00:00Z",
+    "Scheduled Time": "23:05",
+    "Displayed Time": "23:05",
+    "Artist": "Wet Wet Wet",
+    "Title": "Somewhere Somehow",
+    "Duration (s)": 210,
+    "Full Duration (s)": 231,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.85,
+    "Start ISO": "2025-11-24T23:05:31Z",
+    "Source": "PLAYIT"
   }
 ]
