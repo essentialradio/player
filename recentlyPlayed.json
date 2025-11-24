@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Lewis Capaldi",
-    "title": "Something In The Heavens",
-    "startTime": "2025-11-24T16:01:53Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Taylor Swift",
     "title": "Cruel Summer",
     "startTime": "2025-11-24T16:05:31Z",
@@ -117,6 +111,12 @@
     "artist": "Amy Winehouse",
     "title": "Rehab",
     "startTime": "2025-11-24T17:23:42Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Cher",
+    "title": "The Shoop Shoop Song (It's in His Kiss)",
+    "startTime": "2025-11-24T17:27:17Z",
     "source": "PLAYIT"
   }
 ]
