@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Dubstar",
-    "title": "Stars",
-    "startTime": "2025-11-24T20:55:00Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Daft Punk",
     "title": "One More Time",
     "startTime": "2025-11-24T21:01:57Z",
@@ -117,6 +111,12 @@
     "artist": "Adele",
     "title": "Chasing Pavements",
     "startTime": "2025-11-24T22:24:26Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "U2",
+    "title": "One",
+    "startTime": "2025-11-24T22:28:02Z",
     "source": "PLAYIT"
   }
 ]
