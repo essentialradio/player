@@ -1,12 +1,5 @@
 [
   {
-    "artist": "The Cars",
-    "title": "My Best Friend’s Girl",
-    "startTime": "2025-11-23T17:49:50Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Olivia Newton‐John",
     "title": "Hopelessly Devoted to You",
     "startTime": "2025-11-23T17:53:48Z",
@@ -120,6 +113,12 @@
     "artist": "Amy Macdonald",
     "title": "I'm Done (Games That You Play)",
     "startTime": "2025-11-24T02:29:56Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Cruel Summer",
+    "startTime": "2025-11-24T02:33:02Z",
     "source": "PLAYIT"
   }
 ]
