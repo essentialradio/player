@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Dan Hartman",
-    "title": "Instant Replay",
-    "startTime": "2025-11-23T17:31:55Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "John Travolta & Olivia Newton‐John",
     "title": "Summer Nights",
     "startTime": "2025-11-23T17:35:34Z",
@@ -125,6 +118,12 @@
     "artist": "Benson Boone",
     "title": "Beautiful Things",
     "startTime": "2025-11-24T02:09:35Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Bruno Mars",
+    "title": "The Lazy Song",
+    "startTime": "2025-11-24T02:12:58Z",
     "source": "PLAYIT"
   }
 ]
