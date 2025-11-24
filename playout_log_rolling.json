@@ -63382,5 +63382,44 @@
     "Full Duration (mins)": 4.15,
     "Start ISO": "2025-11-24T11:53:00Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T12:00:00Z",
+    "Scheduled Time": "12:02",
+    "Displayed Time": "12:02",
+    "Artist": "Myles Smith",
+    "Title": "Nice To Meet You",
+    "Duration (s)": 169,
+    "Full Duration (s)": 176,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.93,
+    "Start ISO": "2025-11-24T12:02:13Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T12:00:00Z",
+    "Scheduled Time": "12:05",
+    "Displayed Time": "12:05",
+    "Artist": "Perrie",
+    "Title": "Rocket Scientist",
+    "Duration (s)": 200,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.45,
+    "Start ISO": "2025-11-24T12:05:34Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T12:00:00Z",
+    "Scheduled Time": "12:09",
+    "Displayed Time": "12:09",
+    "Artist": "David Guetta & Bebe Rexha",
+    "Title": "I'm Good (Blue)",
+    "Duration (s)": 170,
+    "Full Duration (s)": 174,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.9,
+    "Start ISO": "2025-11-24T12:09:23Z",
+    "Source": "PLAYIT"
   }
 ]
