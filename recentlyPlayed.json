@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Heatwave",
-    "title": "Always and Forever",
-    "startTime": "2025-11-23T17:17:31Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "The Jacksons",
     "title": "Blame It on the Boogie",
     "startTime": "2025-11-23T17:20:39Z",
@@ -129,6 +122,12 @@
     "artist": "Essential Radio",
     "title": "On Air",
     "startTime": "2025-11-23T00:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "David Southway",
+    "title": "Soul Vaults",
+    "startTime": "2025-11-24T00:00:00Z",
     "source": "FIXED"
   }
 ]
