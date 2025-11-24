@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Roxy Music",
-    "title": "Avalon",
-    "startTime": "2025-11-24T22:20:22Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Adele",
     "title": "Chasing Pavements",
     "startTime": "2025-11-24T22:24:26Z",
@@ -117,6 +111,12 @@
     "artist": "Styx",
     "title": "Babe",
     "startTime": "2025-11-24T23:51:01Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Eurythmics",
+    "title": "Who's That Girl?",
+    "startTime": "2025-11-24T23:54:49Z",
     "source": "PLAYIT"
   }
 ]
