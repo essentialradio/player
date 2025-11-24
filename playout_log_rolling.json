@@ -65046,5 +65046,18 @@
     "Full Duration (mins)": 3.42,
     "Start ISO": "2025-11-24T21:20:00Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T21:00:00Z",
+    "Scheduled Time": "21:23",
+    "Displayed Time": "21:23",
+    "Artist": "Metallica",
+    "Title": "Nothing Else Matters",
+    "Duration (s)": 281,
+    "Full Duration (s)": 303,
+    "Duration (mins)": 4.68,
+    "Full Duration (mins)": 5.05,
+    "Start ISO": "2025-11-24T21:23:16Z",
+    "Source": "PLAYIT"
   }
 ]
