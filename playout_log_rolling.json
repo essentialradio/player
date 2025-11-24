@@ -62433,5 +62433,31 @@
     "Full Duration (mins)": 3.08,
     "Start ISO": "2025-11-24T05:50:37Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T05:00:00Z",
+    "Scheduled Time": "05:53",
+    "Displayed Time": "05:53",
+    "Artist": "The Script",
+    "Title": "The Last Time",
+    "Duration (s)": 191,
+    "Full Duration (s)": 196,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.27,
+    "Start ISO": "2025-11-24T05:53:38Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T06:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "06:01",
+    "Artist": "Ed Sheeran",
+    "Title": "Camera",
+    "Duration (s)": 211,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.52,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-24T06:01:35Z",
+    "Source": "PLAYIT"
   }
 ]
