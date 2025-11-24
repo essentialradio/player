@@ -62225,5 +62225,31 @@
     "Full Duration (mins)": 3.05,
     "Start ISO": "2025-11-24T04:44:46Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T04:00:00Z",
+    "Scheduled Time": "04:47",
+    "Displayed Time": "04:47",
+    "Artist": "Jax Jones, Calum Scott",
+    "Title": "Whistle",
+    "Duration (s)": 173,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-11-24T04:47:40Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-24T04:00:00Z",
+    "Scheduled Time": "04:50",
+    "Displayed Time": "04:50",
+    "Artist": "Bananarama",
+    "Title": "Love in the First Degree",
+    "Duration (s)": 195,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.45,
+    "Start ISO": "2025-11-24T04:50:37Z",
+    "Source": "PLAYIT"
   }
 ]
