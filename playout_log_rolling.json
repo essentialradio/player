@@ -67295,5 +67295,31 @@
     "Full Duration (mins)": 2.95,
     "Start ISO": "2025-11-25T10:15:15Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-25T10:00:00Z",
+    "Scheduled Time": "10:24",
+    "Displayed Time": "10:24",
+    "Artist": "Hozier",
+    "Title": "Too Sweet",
+    "Duration (s)": 246,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-11-25T10:24:10Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-25T10:00:00Z",
+    "Scheduled Time": "10:28",
+    "Displayed Time": "10:28",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-11-25T10:28:16Z",
+    "Source": "PLAYIT"
   }
 ]
