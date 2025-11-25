@@ -69427,5 +69427,31 @@
     "Full Duration (mins)": 3.9,
     "Start ISO": "2025-11-25T22:29:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-25T22:00:00Z",
+    "Scheduled Time": "22:33",
+    "Displayed Time": "22:33",
+    "Artist": "George Michael",
+    "Title": "Praying For Time",
+    "Duration (s)": 268,
+    "Full Duration (s)": 281,
+    "Duration (mins)": 4.47,
+    "Full Duration (mins)": 4.68,
+    "Start ISO": "2025-11-25T22:33:31Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-25T22:00:00Z",
+    "Scheduled Time": "22:42",
+    "Displayed Time": "22:42",
+    "Artist": "Cher",
+    "Title": "Just Like Jesse James",
+    "Duration (s)": 232,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.87,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-11-25T22:42:28Z",
+    "Source": "PLAYIT"
   }
 ]
