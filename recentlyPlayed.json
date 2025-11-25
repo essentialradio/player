@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Europe",
-    "title": "The Final Countdown",
-    "startTime": "2025-11-25T11:06:13Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Arctic Monkeys",
     "title": "I Bet You Look Good on the Dancefloor",
     "startTime": "2025-11-25T11:10:10Z",
@@ -117,6 +111,12 @@
     "artist": "JADE",
     "title": "Unconditional",
     "startTime": "2025-11-25T12:28:38Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Cruel Summer",
+    "startTime": "2025-11-25T12:36:01Z",
     "source": "PLAYIT"
   }
 ]
