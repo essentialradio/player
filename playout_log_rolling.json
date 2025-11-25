@@ -68478,5 +68478,31 @@
     "Full Duration (mins)": 3.4,
     "Start ISO": "2025-11-25T16:55:33Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-25T17:00:00Z",
+    "Scheduled Time": "17:03",
+    "Displayed Time": "17:03",
+    "Artist": "Wet Leg",
+    "Title": "Catch These Fists",
+    "Duration (s)": 179,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.15,
+    "Start ISO": "2025-11-25T17:03:34Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-25T17:00:00Z",
+    "Scheduled Time": "17:07",
+    "Displayed Time": "17:07",
+    "Artist": "Taylor Swift",
+    "Title": "The Fate of Ophelia",
+    "Duration (s)": 215,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-11-25T17:07:09Z",
+    "Source": "PLAYIT"
   }
 ]
