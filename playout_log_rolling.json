@@ -67373,5 +67373,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-11-25T10:43:14Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-25T10:00:00Z",
+    "Scheduled Time": "10:50",
+    "Displayed Time": "10:50",
+    "Artist": "The Police",
+    "Title": "Don't Stand So Close to Me",
+    "Duration (s)": 202,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.37,
+    "Full Duration (mins)": 3.92,
+    "Start ISO": "2025-11-25T10:50:16Z",
+    "Source": "PLAYIT"
   }
 ]
