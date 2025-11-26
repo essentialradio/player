@@ -2004,6 +2004,16 @@ body { background: linear-gradient(135deg, #00818a, #7e1974) !important; }
   color: var(--er-text) !important;
 }
 :root[data-theme="light"] .recent-title { color: var(--er-heading) !important; }
+</style><style id="airsleigh-side-card-theme">
+:root[data-theme="light"] .side-airsleigh-card {
+  background: #f6f8fc !important;
+  border-color: #e6ecf3 !important;
+}
+:root[data-theme="light"] .side-airsleigh-card,
+:root[data-theme="light"] .side-airsleigh-card * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
 </style><style id="bigger-icons-in-circles">
 /* === Enlarge icons within yellow circles (social + tiles) === */
 /* Social buttons: keep circle size, scale SVG up inside */
@@ -4424,8 +4434,8 @@ html[data-theme="light"] #mobileNowBar {
   .badge.external{ background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.45); color:#ffe6a6; }
   .detail-body p{ margin:0 0 10px 0; white-space:pre-wrap; }
 </style></head><body><div id="burgerMenuBtn" onclick="toggleBurgerMenu()" style="display:none;"><span class="burger-bar"></span><span class="burger-bar"></span><span class="burger-bar"></span></div><div id="burgerDropdown" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);z-index:2000;flex-direction:column;align-items:center;justify-content:flex-start; padding-top:28px;"><div class="rnh-date" style="width:92vw;max-width:430px;margin:0 auto;display:flex;flex-direction:column;gap:10px;"><a class="menu-link" href="#" onclick="openModalAndCloseBurger('aboutModal');return false;">About Us</a><a class="menu-link hour-nav prev-hour hour-nav next-hour" href="#" onclick="openModalAndCloseBurger('presentersModal');return false;">Presenters</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('scheduleModal');return false;">Schedule</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('requestsModal');return false;">Requests</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('newsModal');return false;">News</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('travelModal');return false;">Travel</a>
-<a class="menu-link" href="#" onclick="openModalAndCloseBurger('airsleighModal');return false;">Airsleigh 40</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('localModal');return false;">Local</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('playlistModal');return false;">Playlist</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('listenModal');return false;">Listen Again</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('searchModal');return false;">Song Search</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('contactModal');return false;">Contact Us</a></div></div><nav class="navbar" role="navigation"><a href="#" onclick="openModal('aboutModal');return false;">About Us</a><a href="#" onclick="openModal('presentersModal');return false;">Presenters</a><a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a><a href="#" onclick="openModal('requestsModal');return false;">Requests</a><a href="#" onclick="openModal('newsModal');return false;">News</a><a href="#" onclick="openModal('travelModal');return false;">Travel</a>
-<a href="#" onclick="openModal('airsleighModal');return false;">Airsleigh 40</a><a href="#" onclick="openModal('localModal');return false;">Local</a><a href="#list=ALL" onclick="location.hash='list=ALL'; openModal('playlistModal'); return false;">Playlist</a><a href="#" onclick="openModal('listenModal');return false;">Listen Again</a><a href="#" onclick="openModal('searchModal');return false;">Song Search</a><a href="#" onclick="openModal('contactModal');return false;">Contact Us</a><button class="theme-navbtn" id="themeToggleBtn"><span class="mode-emoji">☀️</span><span class="mode-label">Light</span></button></nav><div class="header-spacer"></div><div style="width:100%;display:flex;justify-content:center;"><div class="player-wrapper"><img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png"/><div class="strip-container three-panel"><div class="strip-topbar"></div><div class="left-panel"><div id="onAirNow" style="text-align:right"><span class="pulsing-label">ON AIR NOW</span><span id="currentShow" style="font-weight:600">Loading…</span></div><div id="player-box"><audio id="stream" preload="none"><source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg"/></audio><button id="play-toggle">▶️ Play Essential Radio</button><div id="volume-container"><label for="volume-slider">Volume:</label><input id="volume-slider" max="100" min="0" type="range" value="100"/><span id="volume-display">100%</span><button id="mute-toggle">🔊</button></div><div id="now-playing-card" style="position: relative;"><div id="now-playing"><span class="label">Now Playing:</span><strong id="np-title">—</strong><span>by</span><strong id="np-artist">—</strong></div><div aria-hidden="true" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" id="np-progress" role="progressbar"><div class="bar"></div></div><div id="countdown" style="margin-top:6px;font-size:0.95em;color:#ccc;text-align:right;">--:--</div>
+<a class="menu-link" href="https://embed.airplay40.com/airsleigh40-2025/" target="_blank" rel="noopener" >Airsleigh 40</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('localModal');return false;">Local</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('playlistModal');return false;">Playlist</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('listenModal');return false;">Listen Again</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('searchModal');return false;">Song Search</a><a class="menu-link" href="#" onclick="openModalAndCloseBurger('contactModal');return false;">Contact Us</a></div></div><nav class="navbar" role="navigation"><a href="#" onclick="openModal('aboutModal');return false;">About Us</a><a href="#" onclick="openModal('presentersModal');return false;">Presenters</a><a href="#" onclick="openModal('scheduleModal');return false;">Schedule</a><a href="#" onclick="openModal('requestsModal');return false;">Requests</a><a href="#" onclick="openModal('newsModal');return false;">News</a><a href="#" onclick="openModal('travelModal');return false;">Travel</a>
+<a href="https://embed.airplay40.com/airsleigh40-2025/" target="_blank" rel="noopener" >Airsleigh 40</a><a href="#" onclick="openModal('localModal');return false;">Local</a><a href="#list=ALL" onclick="location.hash='list=ALL'; openModal('playlistModal'); return false;">Playlist</a><a href="#" onclick="openModal('listenModal');return false;">Listen Again</a><a href="#" onclick="openModal('searchModal');return false;">Song Search</a><a href="#" onclick="openModal('contactModal');return false;">Contact Us</a><button class="theme-navbtn" id="themeToggleBtn"><span class="mode-emoji">☀️</span><span class="mode-label">Light</span></button></nav><div class="header-spacer"></div><div style="width:100%;display:flex;justify-content:center;"><div class="player-wrapper"><img alt="Essential Radio Logo" class="logo-overhang" src="ERLogo2.png"/><div class="strip-container three-panel"><div class="strip-topbar"></div><div class="left-panel"><div id="onAirNow" style="text-align:right"><span class="pulsing-label">ON AIR NOW</span><span id="currentShow" style="font-weight:600">Loading…</span></div><div id="player-box"><audio id="stream" preload="none"><source src="https://streaming06.liveboxstream.uk/proxy/ayrshire/stream" type="audio/mpeg"/></audio><button id="play-toggle">▶️ Play Essential Radio</button><div id="volume-container"><label for="volume-slider">Volume:</label><input id="volume-slider" max="100" min="0" type="range" value="100"/><span id="volume-display">100%</span><button id="mute-toggle">🔊</button></div><div id="now-playing-card" style="position: relative;"><div id="now-playing"><span class="label">Now Playing:</span><strong id="np-title">—</strong><span>by</span><strong id="np-artist">—</strong></div><div aria-hidden="true" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" id="np-progress" role="progressbar"><div class="bar"></div></div><div id="countdown" style="margin-top:6px;font-size:0.95em;color:#ccc;text-align:right;">--:--</div>
 <div id="next-up" style="margin-top:6px;font-size:0.9em;color:#ccc;text-align:left;display:none;">
   <span style="color:#fed351;">Coming up:</span>
   <span id="next-up-text">Even more great music!</span>
@@ -4727,21 +4737,19 @@ html[data-theme="light"] #mobileNowBar {
     <div>
       <div style="font-size:0.9em;font-weight:700;color:#fed351;letter-spacing:.06em;text-transform:uppercase;">Airsleigh 40</div>
       <div style="font-size:0.8em;color:#ddd;margin-top:1px;line-height:1.4;">
-        The big festive Top 40 from Airplay 40 &amp; Essential Radio.
+        Vote for your favourite Christmas songs in the official festive chart.
       </div>
     </div>
   </div>
   <div style="font-size:0.78em;color:#ccc;line-height:1.5;margin-bottom:6px;">
-    Tap below to vote for your favourite Christmas song.
+    Opens in a new tab so you can scroll and vote in full.
   </div>
-  <button type="button"
-          onclick="openModal('airsleighModal')"
-          style="width:100%;margin-top:2px;padding:7px 9px;border-radius:8px;border:0;
-                 background:#fed351;color:#111;font-size:0.86em;font-weight:650;
-                 cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
-                 box-shadow:0 2px 6px rgba(0,0,0,0.65);">
+  <a href="https://embed.airplay40.com/airsleigh40-2025/"
+     target="_blank"
+     rel="noopener"
+     style="display:inline-flex;align-items:center;justify-content:center;width:100%;margin-top:2px;padding:7px 9px;border-radius:8px;border:0;text-decoration:none;background:#fed351;color:#111 !important;-webkit-text-fill-color:#111 !important;font-size:0.86em;font-weight:650;box-shadow:0 2px 6px rgba(0,0,0,0.65);">
     Open Airsleigh 40
-  </button>
+  </a>
 </div>
 <div class="side-social"><div class="side-social-title">Follow Essential Radio</div><div class="side-social-row"><a aria-label="Facebook" class="side-social-btn" href="https://facebook.com/ERadioAyrshire" rel="noopener" target="_blank" title="Facebook"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M24 12A12 12 0 1 0 10.9 23.9v-8.4H8V12h2.9V9.6c0-2.9 1.8-4.5 4.4-4.5 1.2 0 2.4.1 2.7.1v3h-1.9c-1.5 0-1.8.7-1.8 1.7V12H18l-.4 3.5h-2.6v8.4A12 12 0 0 0 24 12z"></path></svg></a><a aria-label="X (Twitter)" class="side-social-btn" href="https://x.com/ERadioAyrshire" rel="noopener" target="_blank" title="X (Twitter)"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M18.24 2h3.36l-7.51 8.74L22 22h-6.86l-4.73-6.83L4.88 22H1.52l7.51-8.74L2 2h6.98l4.38 6.3L18.24 2z"></path></svg></a><a aria-label="Instagram" class="side-social-btn" href="https://instagram.com/ERadioAyrshire" rel="noopener" target="_blank" title="Instagram"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" ry="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4.6"></circle><circle cx="17.5" cy="6.5" r="1.3"></circle></svg></a></div></div><div class="side-listen"><div class="side-listen-title">Additional Ways to Listen</div><div class="listen-group"><div class="listen-group-title">On your smart speaker</div><div class="tile-row"><a aria-label="Open Essential Radio Alexa Skill" class="tile" href="https://www.amazon.co.uk/REL-MEDIA-Essential-Radio/dp/B0BZPTK8ZF" rel="noopener" target="_blank"><span class="tile-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 4.4 3.6 8 8 8h.2c.3 2.2 1.3 3.7 3.4 4-1.1-.9-1.8-2.2-1.8-3.7 3.8-1 6.2-4.5 6.2-8.3a8 8 0 0 0-8-8z"></path></svg></span><span class="tile-caption">Alexa</span></a></div></div><div class="listen-group"><div class="listen-group-title">Download the official apps for Apple and Android</div><div class="tile-row"><a aria-label="Open Essential Radio on the Apple App Store" class="tile" href="https://apps.apple.com/gb/app/essential-radio/id6478086650" rel="noopener" target="_blank"><span class="tile-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M16.3 13.2c0-2 1.8-3 1.8-3-.9-1.3-2.3-1.5-2.8-1.5-1.2 0-2.1.8-2.7.8-.6 0-1.4-.8-2.4-.8-1.2 0-2.4.7-3.1 1.9-1.4 2.3-.4 5.7 1 7.7.7 1 1.6 2.1 2.7 2.1 1-.1 1.4-.6 2.5-.6 1 0 1.4.6 2.5.6 1.1 0 1.9-1 2.6-2 0 0-.9-.4-1.4-1.4-.4-.9-.7-2-.7-2.8zM14 5.2c.5-.7.8-1.6.7-2.4-.8.1-1.6.6-2.1 1.3-.4.6-.8 1.5-.7 2.3.9.1 1.7-.4 2.1-1.2z"></path></svg></span><span class="tile-caption">Apple</span></a><a aria-label="Open Essential Radio on Google Play" class="tile" href="https://play.google.com/store/apps/details?id=com.codewai.radios.uk.essential&amp;hl=en-US" rel="noopener" target="_blank"><span class="tile-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 2.8v18.4c0 .5.5.8.9.6l12-6.8c.5-.3.5-1 0-1.2L3.9 2.2c-.4-.2-.9.1-.9.6z"></path></svg></span><span class="tile-caption">Android</span></a></div></div><div class="listen-group"><div class="listen-group-title">Get the My Ayrshire College app</div><div class="tile-row"><a aria-label="Open My Ayrshire College on the Apple App Store" class="tile" href="https://apps.apple.com/gb/app/my-ayrshire-college/id1521950988" rel="noopener" target="_blank"><span class="tile-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5zM6 11v4.5c0 1.7 3 3.5 6 3.5s6-1.8 6-3.5V11l-6 3-6-3z"></path></svg></span><span class="tile-caption">Apple</span></a><a aria-label="Open My Ayrshire College on Google Play" class="tile" href="https://play.google.com/store/apps/details?id=cloud.myday.ayrshire" rel="noopener" target="_blank"><span class="tile-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5zM6 11v4.5c0 1.7 3.5 3.5 6 3.5s6-1.8 6-3.5V11l-6 3-6-3z"></path></svg></span><span class="tile-caption">Android</span></a></div></div></div><div id="rnh-news-hub" style="margin-top:14px;"><div style="color:#fed351;font-weight:700;font-size:1.1em;margin-bottom:14px;">Latest News from Radio News Hub</div><div id="rnh-news-list"><div style="color:#bbb;font-size:1em;">Loading headlines…</div></div></div><div id="ayrshire-college-logo" style="margin-top:20px;text-align:center;"><a href="https://www1.ayrshire.ac.uk" rel="noopener" style="text-decoration:none;" target="_blank"><img alt="Ayrshire College Logo" src="AC_Logo.png" style="width:130px;max-width:100%;display:block;margin:0 auto 6px auto;"/><span style="color:#fed351;font-weight:700;font-size:1.05em;display:block;"> Ayrshire College Website </span></a></div><style>
   .strip-container {
@@ -9501,22 +9509,7 @@ document.addEventListener('DOMContentLoaded', function () {
     reloadRequestsIframe(id);
   };
 })();
-</script><iframe
-      src="https://embed.airplay40.com/airsleigh40-2025/"
-      style="border:0;width:100%;height:80vh;display:block;"
-      name="airplay40"
-      loading="lazy"
-      scrolling="yes"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-      allowfullscreen>
-    </iframe>
-</div>
-
-</div>
-
-</body><style>
+</script></body><style>
 /* === Desktop modal centring fix === */
 @media (min-width: 769px) {
   .modal {
