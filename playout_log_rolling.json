@@ -71104,5 +71104,18 @@
     "Full Duration (mins)": 3.6,
     "Start ISO": "2025-11-26T08:05:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T08:00:00Z",
+    "Scheduled Time": "08:09",
+    "Displayed Time": "08:09",
+    "Artist": "Lizzo",
+    "Title": "About Damn Time",
+    "Duration (s)": 185,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.08,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-11-26T08:09:59Z",
+    "Source": "PLAYIT"
   }
 ]
