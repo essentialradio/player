@@ -69986,5 +69986,31 @@
     "Full Duration (mins)": 4.73,
     "Start ISO": "2025-11-26T01:42:49Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T01:00:00Z",
+    "Scheduled Time": "01:46",
+    "Displayed Time": "01:46",
+    "Artist": "The Communards",
+    "Title": "Don't Leave Me This Way",
+    "Duration (s)": 256,
+    "Full Duration (s)": 265,
+    "Duration (mins)": 4.27,
+    "Full Duration (mins)": 4.42,
+    "Start ISO": "2025-11-26T01:46:02Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T01:00:00Z",
+    "Scheduled Time": "01:50",
+    "Displayed Time": "01:50",
+    "Artist": "George Ezra",
+    "Title": "Green Green Grass",
+    "Duration (s)": 163,
+    "Full Duration (s)": 166,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.77,
+    "Start ISO": "2025-11-26T01:50:19Z",
+    "Source": "PLAYIT"
   }
 ]
