@@ -70623,5 +70623,31 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-11-26T05:08:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T05:00:00Z",
+    "Scheduled Time": "05:11",
+    "Displayed Time": "05:11",
+    "Artist": "Irene Cara",
+    "Title": "Flashdance...What a Feeling",
+    "Duration (s)": 223,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 3.92,
+    "Start ISO": "2025-11-26T05:11:36Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T05:00:00Z",
+    "Scheduled Time": "05:15",
+    "Displayed Time": "05:15",
+    "Artist": "James Hype ft Miguel",
+    "Title": "Ferrari",
+    "Duration (s)": 178,
+    "Full Duration (s)": 186,
+    "Duration (mins)": 2.97,
+    "Full Duration (mins)": 3.1,
+    "Start ISO": "2025-11-26T05:15:19Z",
+    "Source": "PLAYIT"
   }
 ]
