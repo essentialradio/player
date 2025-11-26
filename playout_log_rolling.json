@@ -73288,5 +73288,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-11-26T20:41:32Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T20:00:00Z",
+    "Scheduled Time": "20:44",
+    "Displayed Time": "20:44",
+    "Artist": "Culture Beat",
+    "Title": "Mr Vain",
+    "Duration (s)": 245,
+    "Full Duration (s)": 256,
+    "Duration (mins)": 4.08,
+    "Full Duration (mins)": 4.27,
+    "Start ISO": "2025-11-26T20:44:58Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T20:00:00Z",
+    "Scheduled Time": "20:49",
+    "Displayed Time": "20:49",
+    "Artist": "Counting Crows ft Vanessa Carlton",
+    "Title": "Big Yellow Taxi",
+    "Duration (s)": 204,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-26T20:49:03Z",
+    "Source": "PLAYIT"
   }
 ]
