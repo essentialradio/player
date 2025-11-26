@@ -72456,5 +72456,31 @@
     "Full Duration (mins)": 3.1,
     "Start ISO": "2025-11-26T16:02:10Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T16:00:00Z",
+    "Scheduled Time": "16:05",
+    "Displayed Time": "16:05",
+    "Artist": "Post Malone & Morgan Wallen",
+    "Title": "I Had Some Help",
+    "Duration (s)": 168,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-11-26T16:05:43Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T16:00:00Z",
+    "Scheduled Time": "16:08",
+    "Displayed Time": "16:08",
+    "Artist": "David Guetta/Teddy Swims/Tones and I",
+    "Title": "Gone Gone Gone",
+    "Duration (s)": 188,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-11-26T16:08:59Z",
+    "Source": "PLAYIT"
   }
 ]
