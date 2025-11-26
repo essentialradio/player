@@ -72924,5 +72924,31 @@
     "Full Duration (mins)": 2.95,
     "Start ISO": "2025-11-26T18:35:26Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T18:00:00Z",
+    "Scheduled Time": "18:42",
+    "Displayed Time": "18:42",
+    "Artist": "Chappell Roan",
+    "Title": "Pink Pony Club",
+    "Duration (s)": 247,
+    "Full Duration (s)": 258,
+    "Duration (mins)": 4.12,
+    "Full Duration (mins)": 4.3,
+    "Start ISO": "2025-11-26T18:42:11Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T18:00:00Z",
+    "Scheduled Time": "18:46",
+    "Displayed Time": "18:46",
+    "Artist": "Ed Sheeran",
+    "Title": "Camera",
+    "Duration (s)": 209,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-11-26T18:46:18Z",
+    "Source": "PLAYIT"
   }
 ]
