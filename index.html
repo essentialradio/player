@@ -9506,7 +9506,15 @@ document.addEventListener('DOMContentLoaded', function () {
        aria-modal="true"
        role="dialog"
        class="modal-content"
-       style="max-width:900px;width:97vw;max-height:90vh;display:flex;flex-direction:column;">
+       style="
+         max-width:900px;
+         width:97vw;
+         height:80vh;           /* <- fixed modal height */
+         margin:3vh auto;       /* <- override the 8% margin */
+         display:flex;
+         flex-direction:column;
+         padding:20px 16px;
+       ">
 
     <span class="close" onclick="closeModal('airsleighModal')">×</span>
 
@@ -9514,12 +9522,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <h2 style="margin:0;color:#00818a;font-size:1.3em">Airsleigh 40</h2>
     </div>
 
-    <p style="font-size:15px;line-height:1.6;margin:0 0 10px 0;color:#eee;">
-      Countdown the biggest festive hits with the official Airsleigh 40 chart,
-      powered by Airplay 40 and Essential Radio.
-    </p>
-
-    <!-- This wrapper fills the rest of the modal -->
+    <!-- iframe fills all remaining space -->
     <div style="border-radius:10px;overflow:hidden;background:#000;flex:1;min-height:0;">
       <iframe
         src="https://embed.airplay40.com/airsleigh40-2025/"
