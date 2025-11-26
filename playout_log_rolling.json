@@ -72326,5 +72326,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-11-26T15:14:28Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T15:00:00Z",
+    "Scheduled Time": "15:22",
+    "Displayed Time": "15:22",
+    "Artist": "Avicii",
+    "Title": "Levels",
+    "Duration (s)": 189,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.15,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-11-26T15:22:32Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-26T15:00:00Z",
+    "Scheduled Time": "15:25",
+    "Displayed Time": "15:25",
+    "Artist": "Rema ft Selena Gomez",
+    "Title": "Calm Down",
+    "Duration (s)": 230,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.98,
+    "Start ISO": "2025-11-26T15:25:41Z",
+    "Source": "PLAYIT"
   }
 ]
