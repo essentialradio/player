@@ -7,7 +7,7 @@
     },
     {
       "source": "/api/track_suggest",
-      "destination": "http://85.234.135.238:8085/api/track_suggest"
+      "destination": "http://85.234.135.238:5003/api/track_suggest"
     }
   ]
 }
