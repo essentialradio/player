@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Duran Duran",
-    "title": "Ordinary World",
-    "startTime": "2025-11-26T22:24:11Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Prince and the Revolution",
     "title": "Purple Rain",
     "startTime": "2025-11-26T22:28:39Z",
@@ -117,6 +111,12 @@
     "artist": "Chappell Roan",
     "title": "The Subway",
     "startTime": "2025-11-27T00:01:53Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Lewis Capaldi",
+    "title": "Survive",
+    "startTime": "2025-11-27T00:06:29Z",
     "source": "PLAYIT"
   }
 ]
