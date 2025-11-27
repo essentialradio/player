@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Ace of Base",
-    "title": "The Sign",
-    "startTime": "2025-11-27T10:35:14Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Simple Minds",
     "title": "Don't You (Forget About Me)",
     "startTime": "2025-11-27T10:39:16Z",
@@ -117,6 +111,12 @@
     "artist": "Lady Gaga & Bruno Mars",
     "title": "Die With A Smile",
     "startTime": "2025-11-27T12:09:32Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Shake It Off",
+    "startTime": "2025-11-27T12:13:34Z",
     "source": "PLAYIT"
   }
 ]
