@@ -60268,5 +60268,21 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-28T19:00:00Z",
+    "Scheduled Time": "19:58",
+    "Displayed Time": "19:58",
+    "Artist": "twocolors",
+    "Title": "Chemical",
+    "Duration (s)": 122,
+    "Full Duration (s)": 122,
+    "Duration (mins)": 2.03,
+    "Full Duration (mins)": 2.03,
+    "Start ISO": "2025-11-28T19:58:02Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-28T20:00:04Z",
+    "Actual Duration (s)": 122,
+    "Actual Duration (mins)": 2.03
   }
 ]
