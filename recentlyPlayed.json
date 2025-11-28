@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Tommy Vee & Mauro Ferrucci with Keller",
-    "title": "Inside At Night",
-    "startTime": "2025-11-28T19:52:31Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Beth",
     "title": "The Party",
     "startTime": "2025-11-28T19:55:15Z",
@@ -120,6 +113,12 @@
     "artist": "Jennifer Lopez",
     "title": "Jenny From the Block",
     "startTime": "2025-11-28T21:01:36Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Barbara Tucker",
+    "title": "Everybody Dance (The Horn Song)",
+    "startTime": "2025-11-28T21:04:31Z",
     "source": "PLAYIT"
   }
 ]
