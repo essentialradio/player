@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Myles Smith",
-    "title": "Stay (If You Wanna Dance)",
-    "startTime": "2025-11-28T18:22:01Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Michael Buble",
     "title": "Holly Jolly Christmas",
     "startTime": "2025-11-28T18:25:07Z",
@@ -126,6 +120,13 @@
     "artist": "Zurra",
     "title": "No Rules",
     "startTime": "2025-11-28T19:22:25Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Jamis & Ekko",
+    "title": "Thirst <Extended>",
+    "startTime": "2025-11-28T19:25:21Z",
     "source": "ALT",
     "live": true
   }
