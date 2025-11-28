@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Lola Young",
-    "title": "D£aler",
-    "startTime": "2025-11-28T18:15:04Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Myles Smith",
     "title": "Stay (If You Wanna Dance)",
     "startTime": "2025-11-28T18:22:01Z",
@@ -125,6 +119,13 @@
     "artist": "Lee Everest",
     "title": "Ready for the Weekend",
     "startTime": "2025-11-28T19:22:11Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Zurra",
+    "title": "No Rules",
+    "startTime": "2025-11-28T19:22:25Z",
     "source": "ALT",
     "live": true
   }
