@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Michael Buble",
-    "title": "Holly Jolly Christmas",
-    "startTime": "2025-11-28T18:25:07Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Katy Perry",
     "title": "bandaids",
     "startTime": "2025-11-28T18:27:02Z",
@@ -127,6 +121,13 @@
     "artist": "Jamis & Ekko",
     "title": "Thirst <Extended>",
     "startTime": "2025-11-28T19:25:21Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Aluna & MK",
+    "title": "Kiss It Better",
+    "startTime": "2025-11-28T19:29:11Z",
     "source": "ALT",
     "live": true
   }
