@@ -1,11 +1,5 @@
 [
   {
-    "artist": "JADE",
-    "title": "Unconditional",
-    "startTime": "2025-11-28T18:33:01Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Taylor Swift",
     "title": "Anti-Hero",
     "startTime": "2025-11-28T18:36:29Z",
@@ -130,6 +124,13 @@
     "artist": "Bandit & Belfort",
     "title": "Jenny (Heaven Can You Hear Me)",
     "startTime": "2025-11-28T19:36:55Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "The Good Men & THEMBA with Khenya",
+    "title": "Give It Up",
+    "startTime": "2025-11-28T19:41:42Z",
     "source": "ALT",
     "live": true
   }
