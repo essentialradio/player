@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Beth",
-    "title": "The Party",
-    "startTime": "2025-11-28T19:55:15Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "twocolors",
     "title": "Chemical",
     "startTime": "2025-11-28T19:58:02Z",
@@ -119,6 +112,12 @@
     "artist": "Barbara Tucker",
     "title": "Everybody Dance (The Horn Song)",
     "startTime": "2025-11-28T21:04:31Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Peaches & Herb",
+    "title": "Shake Your Groove Thing",
+    "startTime": "2025-11-28T21:08:16Z",
     "source": "PLAYIT"
   }
 ]
