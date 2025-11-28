@@ -1,18 +1,5 @@
 [
   {
-    "artist": "Sam Ryder",
-    "title": "Better Man",
-    "startTime": "2025-11-28T18:53:39Z",
-    "source": "PLAYIT"
-  },
-  {
-    "artist": "Sam Ryder",
-    "title": "Better Man",
-    "startTime": "2025-11-28T19:00:05Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Lee Everest",
     "title": "Ready for the Weekend",
     "startTime": "2025-11-28T19:01:56Z",
@@ -135,6 +122,20 @@
     "artist": "Tommy Vee & Mauro Ferrucci with Keller",
     "title": "Inside At Night",
     "startTime": "2025-11-28T19:52:31Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Beth",
+    "title": "The Party",
+    "startTime": "2025-11-28T19:55:15Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "twocolors",
+    "title": "Chemical",
+    "startTime": "2025-11-28T19:58:02Z",
     "source": "ALT",
     "live": true
   }
