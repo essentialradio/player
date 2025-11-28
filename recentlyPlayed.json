@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Blue Adonis",
-    "title": "Disco Cop",
-    "startTime": "2025-11-28T17:36:59Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Smash Mouth",
     "title": "All Star",
     "startTime": "2025-11-28T17:44:44Z",
@@ -118,5 +112,12 @@
     "title": "Better Man",
     "startTime": "2025-11-28T18:53:39Z",
     "source": "PLAYIT"
+  },
+  {
+    "artist": "Sam Ryder",
+    "title": "Better Man",
+    "startTime": "2025-11-28T19:00:05Z",
+    "source": "ALT",
+    "live": true
   }
 ]
