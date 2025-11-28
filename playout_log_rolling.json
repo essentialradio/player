@@ -58570,5 +58570,31 @@
     "Full Duration (mins)": 3.45,
     "Start ISO": "2025-11-28T09:35:46Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-28T09:00:00Z",
+    "Scheduled Time": "09:46",
+    "Displayed Time": "09:46",
+    "Artist": "Taylor Swift",
+    "Title": "I Knew You Were Trouble",
+    "Duration (s)": 216,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.6,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-11-28T09:46:38Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-28T09:00:00Z",
+    "Scheduled Time": "09:55",
+    "Displayed Time": "09:55",
+    "Artist": "Stardust",
+    "Title": "Music Sounds Better With You",
+    "Duration (s)": 251,
+    "Full Duration (s)": 262,
+    "Duration (mins)": 4.18,
+    "Full Duration (mins)": 4.37,
+    "Start ISO": "2025-11-28T09:55:20Z",
+    "Source": "PLAYIT"
   }
 ]
