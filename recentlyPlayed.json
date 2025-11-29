@@ -1,19 +1,5 @@
 [
   {
-    "artist": "1000 Original Hits 1986",
-    "title": "01 - Sly Fox - Let's Go All The Way",
-    "startTime": "2025-11-29T15:28:11Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "02",
-    "title": "SMM GREAT MUSIC 1 WET",
-    "startTime": "2025-11-29T15:32:00Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "1000 Original Hits 1983",
     "title": "02 - KC & The Sunshine Band - Give It Up",
     "startTime": "2025-11-29T15:32:14Z",
@@ -68,6 +54,12 @@
     "startTime": "2025-11-29T15:56:14Z",
     "source": "ALT",
     "live": true
+  },
+  {
+    "artist": "1000 Original Hits 1985",
+    "title": "05 - Midge Ure - If I Was",
+    "startTime": "2025-11-29T15:56:14Z",
+    "source": "ALT"
   },
   {
     "artist": "1000 Original Hits 1985",
@@ -136,6 +128,13 @@
     "artist": "1000 Original Hits 1985",
     "title": "05 - Midge Ure - If I Was",
     "startTime": "2025-11-29T16:02:09Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "SMM",
+    "title": "STU RADIO BINGO 2 WET",
+    "startTime": "2025-11-29T16:02:23Z",
     "source": "ALT",
     "live": true
   }

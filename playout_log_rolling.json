@@ -55340,6 +55340,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-11-29T15:00:00Z",
+    "Scheduled Time": "15:56",
+    "Displayed Time": "15:56",
+    "Artist": "1000 Original Hits 1985",
+    "Title": "05 - Midge Ure - If I Was",
+    "Duration (s)": 369,
+    "Full Duration (s)": 369,
+    "Duration (mins)": 6.15,
+    "Full Duration (mins)": 6.15,
+    "Start ISO": "2025-11-29T15:56:14Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-29T16:02:23Z",
+    "Actual Duration (s)": 369,
+    "Actual Duration (mins)": 6.15
+  },
+  {
     "Hour": "2025-11-29T16:00:00Z",
     "Scheduled Time": "16:00",
     "Displayed Time": "16:00",
@@ -55474,6 +55490,20 @@
     "Start ISO": "2025-11-29T16:02:09Z",
     "Source": "ALT",
     "Last Seen": "2025-11-29T16:02:09Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-29T16:00:00Z",
+    "Scheduled Time": "16:02",
+    "Displayed Time": "16:02",
+    "Artist": "SMM",
+    "Title": "STU RADIO BINGO 2 WET",
+    "Start ISO": "2025-11-29T16:02:23Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-29T16:02:23Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
