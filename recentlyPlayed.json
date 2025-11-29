@@ -1,12 +1,5 @@
 [
   {
-    "artist": "MAUREEN",
-    "title": "THE SMM JINGLE WET",
-    "startTime": "2025-11-29T15:14:17Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "1000 Original Hits 1985",
     "title": "14 - The Colourfield - Thinking Of You",
     "startTime": "2025-11-29T15:14:31Z",
@@ -131,6 +124,12 @@
   {
     "artist": "Tim Graham",
     "title": "The LGBTQ Music Chart",
+    "startTime": "2025-11-29T19:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Stephen Howie",
+    "title": "Grooveline",
     "startTime": "2025-11-29T19:00:00Z",
     "source": "FIXED"
   }
