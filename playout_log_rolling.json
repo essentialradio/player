@@ -54348,5 +54348,31 @@
     "Full Duration (mins)": 4.2,
     "Start ISO": "2025-11-29T10:22:43Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-29T10:00:00Z",
+    "Scheduled Time": "10:26",
+    "Displayed Time": "10:26",
+    "Artist": "Kevin Lyttle",
+    "Title": "Turn Me On",
+    "Duration (s)": 183,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.05,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-11-29T10:26:45Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-29T10:00:00Z",
+    "Scheduled Time": "10:31",
+    "Displayed Time": "10:31",
+    "Artist": "Harry Styles",
+    "Title": "Adore You",
+    "Duration (s)": 204,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 3.4,
+    "Full Duration (mins)": 3.45,
+    "Start ISO": "2025-11-29T10:31:30Z",
+    "Source": "PLAYIT"
   }
 ]
