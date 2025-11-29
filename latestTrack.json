@@ -1,11 +1,12 @@
 {
   "artist": "LeAnn Rimes",
   "title": "Life Goes On",
-  "startTime": "2025-11-29T12:56:51Z",
-  "start": "2025-11-29T12:56:51Z",
-  "duration": 189,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-29T13:00:00Z",
-  "altMode": false
+  "startTime": "2025-11-29T13:00:08Z",
+  "start": "2025-11-29T13:00:08Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-29T14:00:08Z",
+  "altMode": true,
+  "Source": "ALT"
 }
