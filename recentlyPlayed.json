@@ -1,12 +1,5 @@
 [
   {
-    "artist": "1000 Original Hits 1983",
-    "title": "02 - KC & The Sunshine Band - Give It Up",
-    "startTime": "2025-11-29T15:32:14Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "1000 Original Hits 1984",
     "title": "09 - Alvin Stardust - I Feel Like Buddy Holly",
     "startTime": "2025-11-29T15:36:02Z",
@@ -135,6 +128,13 @@
     "artist": "SMM",
     "title": "STU RADIO BINGO 2 WET",
     "startTime": "2025-11-29T16:02:23Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "1000 Original Hits 1986",
+    "title": "10 - Katrina & The Waves - Sun Street",
+    "startTime": "2025-11-29T16:02:37Z",
     "source": "ALT",
     "live": true
   }
