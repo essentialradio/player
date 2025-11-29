@@ -1,12 +1,5 @@
 [
   {
-    "artist": "SMM",
-    "title": "STU RADIO BINGO 1 WET",
-    "startTime": "2025-11-29T15:05:08Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "1000 Original Hits 1984",
     "title": "08 - Tracey Ullman - Sunglasses",
     "startTime": "2025-11-29T15:05:33Z",
@@ -136,6 +129,13 @@
     "artist": "1000 Original Hits 1985",
     "title": "05 - Midge Ure - If I Was",
     "startTime": "2025-11-29T16:00:02Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "1000 Original Hits 1985",
+    "title": "05 - Midge Ure - If I Was",
+    "startTime": "2025-11-29T16:00:16Z",
     "source": "ALT",
     "live": true
   }
