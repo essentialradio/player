@@ -1,13 +1,6 @@
 [
   {
     "artist": "1000 Original Hits 1984",
-    "title": "09 - Alvin Stardust - I Feel Like Buddy Holly",
-    "startTime": "2025-11-29T15:36:02Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "1000 Original Hits 1984",
     "title": "01 - Ultravox - Dancing With Tears In My Eyes",
     "startTime": "2025-11-29T15:39:51Z",
     "source": "ALT",
@@ -135,6 +128,13 @@
     "artist": "1000 Original Hits 1986",
     "title": "10 - Katrina & The Waves - Sun Street",
     "startTime": "2025-11-29T16:02:37Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "1000 Original Hits 1986",
+    "title": "11 - Robbie Nevil - C'est La Vie",
+    "startTime": "2025-11-29T16:05:42Z",
     "source": "ALT",
     "live": true
   }
