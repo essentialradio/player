@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Teddy Swims",
-    "title": "Lose Control",
-    "startTime": "2025-11-30T12:46:40Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Anastacia",
     "title": "Why'd You Lie To Me",
     "startTime": "2025-11-30T12:50:38Z",
@@ -119,6 +113,13 @@
     "artist": "Cat Burns",
     "title": "Lavender",
     "startTime": "2025-11-30T14:07:28Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "LADY_GAGA",
+    "title": "The Dead Dance",
+    "startTime": "2025-11-30T14:10:24Z",
     "source": "ALT",
     "live": true
   }
