@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Whitesnake",
-    "title": "Here I Go Again",
-    "startTime": "2025-11-30T17:31:16Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Bill Medley & Jennifer Warnes",
     "title": "(I've Had) The Time of My Life",
     "startTime": "2025-11-30T17:35:46Z",
@@ -135,6 +128,13 @@
     "artist": "Louise",
     "title": "Let's Go Round Again",
     "startTime": "2025-11-30T18:23:14Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Barbra Streisand & Celine Dion",
+    "title": "Tell Him",
+    "startTime": "2025-11-30T18:29:01Z",
     "source": "ALT",
     "live": true
   }
