@@ -57883,6 +57883,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-11-30T14:00:00Z",
+    "Scheduled Time": "14:52",
+    "Displayed Time": "14:52",
+    "Artist": "Chappell Roan",
+    "Title": "The Subway (Clean)",
+    "Duration (s)": 489,
+    "Full Duration (s)": 489,
+    "Duration (mins)": 8.15,
+    "Full Duration (mins)": 8.15,
+    "Start ISO": "2025-11-30T14:52:21Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-30T15:00:30Z",
+    "Actual Duration (s)": 489,
+    "Actual Duration (mins)": 8.15
+  },
+  {
     "Hour": "2025-11-30T15:00:00Z",
     "Scheduled Time": "15:00",
     "Displayed Time": "15:00",
@@ -57905,6 +57921,20 @@
     "Start ISO": "2025-11-30T15:00:16Z",
     "Source": "ALT",
     "Last Seen": "2025-11-30T15:00:16Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-30T15:00:00Z",
+    "Scheduled Time": "15:00",
+    "Displayed Time": "15:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-30T15:00:30Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-30T15:00:30Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
