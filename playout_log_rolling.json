@@ -58729,6 +58729,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-11-30T17:00:00Z",
+    "Scheduled Time": "17:56",
+    "Displayed Time": "17:56",
+    "Artist": "T'Pau",
+    "Title": "China in Your Hand",
+    "Duration (s)": 277,
+    "Full Duration (s)": 277,
+    "Duration (mins)": 4.62,
+    "Full Duration (mins)": 4.62,
+    "Start ISO": "2025-11-30T17:56:37Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-30T18:01:14Z",
+    "Actual Duration (s)": 277,
+    "Actual Duration (mins)": 4.62
+  },
+  {
     "Hour": "2025-11-30T18:00:00Z",
     "Scheduled Time": "18:00",
     "Displayed Time": "18:00",
@@ -58793,6 +58809,20 @@
     "Start ISO": "2025-11-30T18:01:00Z",
     "Source": "ALT",
     "Last Seen": "2025-11-30T18:01:00Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-30T18:00:00Z",
+    "Scheduled Time": "18:01",
+    "Displayed Time": "18:01",
+    "Artist": "Spice Girls",
+    "Title": "Spice Up Your Life",
+    "Start ISO": "2025-11-30T18:01:14Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-30T18:01:14Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
