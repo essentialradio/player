@@ -55877,5 +55877,31 @@
     "Full Duration (mins)": 2.02,
     "Start ISO": "2025-11-30T03:08:59Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-30T03:00:00Z",
+    "Scheduled Time": "03:11",
+    "Displayed Time": "03:11",
+    "Artist": "Nickelback",
+    "Title": "How You Remind Me",
+    "Duration (s)": 214,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.57,
+    "Full Duration (mins)": 3.68,
+    "Start ISO": "2025-11-30T03:11:24Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-11-30T03:00:00Z",
+    "Scheduled Time": "03:15",
+    "Displayed Time": "03:15",
+    "Artist": "Post Malone & Morgan Wallen",
+    "Title": "I Had Some Help",
+    "Duration (s)": 173,
+    "Full Duration (s)": 178,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.97,
+    "Start ISO": "2025-11-30T03:15:02Z",
+    "Source": "PLAYIT"
   }
 ]
