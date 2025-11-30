@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Katy Perry",
-    "title": "bandaids",
-    "startTime": "2025-11-30T15:15:34Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Taylor Swift & Sabrina Carpenter",
     "title": "The Life of a Showgirl",
     "startTime": "2025-11-30T15:20:25Z",
@@ -135,6 +128,13 @@
     "artist": "Teddy Swims",
     "title": "You've Got Another Thing Coming (From the Netflix series 'Nobody Wants This' Season 2)",
     "startTime": "2025-11-30T16:23:06Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Charli XCX",
+    "title": "Chains Of Love",
+    "startTime": "2025-11-30T16:26:00Z",
     "source": "ALT",
     "live": true
   }
