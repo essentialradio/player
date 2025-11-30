@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/login",
-      "destination": "http://85.234.135.238:5000/login"
+      "destination": "http://85.234.135.238:5000/login?next=/"
     },
 {
       "source": "/request",
