@@ -58149,5 +58149,35 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-30T15:00:00Z",
+    "Scheduled Time": "15:54",
+    "Displayed Time": "15:54",
+    "Artist": "Sigala x Leigh-Anne x Jonita Gandhi",
+    "Title": "Hello (Radio Edit)",
+    "Duration (s)": 355,
+    "Full Duration (s)": 355,
+    "Duration (mins)": 5.92,
+    "Full Duration (mins)": 5.92,
+    "Start ISO": "2025-11-30T15:54:05Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-11-30T16:00:00Z",
+    "Actual Duration (s)": 355,
+    "Actual Duration (mins)": 5.92
+  },
+  {
+    "Hour": "2025-11-30T16:00:00Z",
+    "Scheduled Time": "16:00",
+    "Displayed Time": "16:00",
+    "Artist": "Spencer James",
+    "Title": "Airplay 40",
+    "Start ISO": "2025-11-30T16:00:00Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-30T16:00:00Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
