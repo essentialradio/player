@@ -2,6 +2,10 @@
 {
   "rewrites": [
     {
+      "source": "/login",
+      "destination": "http://85.234.135.238:5000/login"
+    },
+{
       "source": "/request",
       "destination": "http://85.234.135.238:5003/request"
     },
