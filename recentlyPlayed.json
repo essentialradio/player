@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Dr Hilary Jones",
-    "title": "The Dr Hilary Show",
-    "startTime": "2025-11-30T09:00:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "Essential Radio",
     "title": "The Week in Holyrood with Charles Fletcher",
     "startTime": "2025-11-30T09:02:06Z",
@@ -117,6 +111,12 @@
     "artist": "Biffy Clyro",
     "title": "Mountains",
     "startTime": "2025-11-30T11:07:14Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Lulu",
+    "title": "Independence",
+    "startTime": "2025-11-30T11:10:31Z",
     "source": "PLAYIT"
   }
 ]
