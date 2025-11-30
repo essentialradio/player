@@ -1,12 +1,5 @@
 [
   {
-    "artist": "The Housemartins",
-    "title": "Build",
-    "startTime": "2025-11-30T17:05:32Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Bananarama",
     "title": "Love in the First Degree",
     "startTime": "2025-11-30T17:10:24Z",
@@ -130,6 +123,12 @@
     "artist": "Emma Scott",
     "title": "The Pluggin' Baby Radio Show",
     "startTime": "2025-11-30T23:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Essential Radio",
+    "title": "On Air",
+    "startTime": "2025-11-30T00:00:00Z",
     "source": "FIXED"
   }
 ]
