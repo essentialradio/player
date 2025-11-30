@@ -1,11 +1,5 @@
 [
   {
-    "artist": "CHVRCHES",
-    "title": "Recover",
-    "startTime": "2025-11-30T13:39:48Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Sophie Ellis-Bextor",
     "title": "Stay On Me",
     "startTime": "2025-11-30T13:43:46Z",
@@ -131,6 +125,13 @@
     "artist": "Chappell Roan",
     "title": "The Subway (Clean)",
     "startTime": "2025-11-30T14:52:21Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Chappell Roan",
+    "title": "The Subway (Clean)",
+    "startTime": "2025-11-30T15:00:02Z",
     "source": "ALT",
     "live": true
   }
