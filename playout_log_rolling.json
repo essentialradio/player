@@ -58869,5 +58869,19 @@
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
     "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-11-30T18:00:00Z",
+    "Scheduled Time": "18:15",
+    "Displayed Time": "18:15",
+    "Artist": "Hot Chocolate",
+    "Title": "You Sexy Thing",
+    "Start ISO": "2025-11-30T18:15:26Z",
+    "Source": "ALT",
+    "Last Seen": "2025-11-30T18:15:26Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
