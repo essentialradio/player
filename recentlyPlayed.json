@@ -1,17 +1,5 @@
 [
   {
-    "artist": "Post Malone & Morgan Wallen",
-    "title": "I Had Some Help",
-    "startTime": "2025-11-30T12:33:13Z",
-    "source": "PLAYIT"
-  },
-  {
-    "artist": "Ed Sheeran",
-    "title": "Sapphire",
-    "startTime": "2025-11-30T12:36:50Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Pharrell Williams",
     "title": "Happy",
     "startTime": "2025-11-30T12:39:49Z",
@@ -118,5 +106,18 @@
     "title": "One Love",
     "startTime": "2025-11-30T13:49:01Z",
     "source": "PLAYIT"
+  },
+  {
+    "artist": "Coldplay",
+    "title": "Christmas Lights",
+    "startTime": "2025-11-30T13:52:31Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Coldplay",
+    "title": "Christmas Lights",
+    "startTime": "2025-11-30T14:00:11Z",
+    "source": "ALT",
+    "live": true
   }
 ]

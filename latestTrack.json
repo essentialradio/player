@@ -1,11 +1,12 @@
 {
   "artist": "Coldplay",
   "title": "Christmas Lights",
-  "startTime": "2025-11-30T13:52:31Z",
-  "start": "2025-11-30T13:52:31Z",
-  "duration": 230,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-11-30T13:56:21Z",
-  "altMode": false
+  "startTime": "2025-11-30T14:00:11Z",
+  "start": "2025-11-30T14:00:11Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-11-30T15:00:11Z",
+  "altMode": true,
+  "Source": "ALT"
 }
