@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Sophie Ellis-Bextor",
-    "title": "Stay On Me",
-    "startTime": "2025-11-30T13:43:46Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Del Amitri",
     "title": "Roll to Me",
     "startTime": "2025-11-30T13:46:50Z",
@@ -132,6 +126,13 @@
     "artist": "Chappell Roan",
     "title": "The Subway (Clean)",
     "startTime": "2025-11-30T15:00:02Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Chappell Roan",
+    "title": "The Subway (Clean)",
+    "startTime": "2025-11-30T15:00:16Z",
     "source": "ALT",
     "live": true
   }
