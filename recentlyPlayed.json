@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Bill Medley & Jennifer Warnes",
-    "title": "(I've Had) The Time of My Life",
-    "startTime": "2025-11-30T17:35:46Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Whitney Houston",
     "title": "So Emotional",
     "startTime": "2025-11-30T17:39:14Z",
@@ -135,6 +128,13 @@
     "artist": "Barbra Streisand & Celine Dion",
     "title": "Tell Him",
     "startTime": "2025-11-30T18:29:01Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Lutricia McNeal",
+    "title": "Ain't That Just the Way",
+    "startTime": "2025-11-30T18:34:04Z",
     "source": "ALT",
     "live": true
   }
