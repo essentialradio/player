@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Amy Macdonald",
-    "title": "Can You Hear Me",
-    "startTime": "2025-11-30T12:43:08Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Teddy Swims",
     "title": "Lose Control",
     "startTime": "2025-11-30T12:46:40Z",
@@ -118,6 +112,13 @@
     "artist": "Raye",
     "title": "WHERE IS MY HUSBAND?",
     "startTime": "2025-11-30T14:00:57Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Cat Burns",
+    "title": "Lavender",
+    "startTime": "2025-11-30T14:07:28Z",
     "source": "ALT",
     "live": true
   }
