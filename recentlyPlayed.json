@@ -1,13 +1,6 @@
 [
   {
     "artist": "1000 Original Hits 1985",
-    "title": "02 - Feargal Sharkey - A Good Heart",
-    "startTime": "2025-11-29T15:51:50Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "1000 Original Hits 1985",
     "title": "05 - Midge Ure - If I Was",
     "startTime": "2025-11-29T15:56:14Z",
     "source": "ALT",
@@ -119,6 +112,12 @@
     "artist": "Taylor Swift",
     "title": "I Knew You Were Trouble",
     "startTime": "2025-11-30T01:30:12Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Christina Aguilera",
+    "title": "Fighter",
+    "startTime": "2025-11-30T01:33:42Z",
     "source": "PLAYIT"
   }
 ]
