@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Meghan Trainor",
-    "title": "Jingle Bells",
-    "startTime": "2025-12-01T18:46:05Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "George Ezra",
     "title": "White Christmas",
     "startTime": "2025-12-01T18:48:19Z",
@@ -117,6 +111,12 @@
     "artist": "Will Smith",
     "title": "Miami",
     "startTime": "2025-12-01T20:04:55Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Duran Duran",
+    "title": "(Reach up for The) Sunrise",
+    "startTime": "2025-12-01T20:08:07Z",
     "source": "PLAYIT"
   }
 ]
