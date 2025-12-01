@@ -55871,5 +55871,31 @@
     "Full Duration (mins)": 4.32,
     "Start ISO": "2025-12-01T15:25:13Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T15:00:00Z",
+    "Scheduled Time": "15:29",
+    "Displayed Time": "15:29",
+    "Artist": "sombr",
+    "Title": "12 To 12",
+    "Duration (s)": 223,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-12-01T15:29:13Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T15:00:00Z",
+    "Scheduled Time": "15:33",
+    "Displayed Time": "15:33",
+    "Artist": "The Killers",
+    "Title": "Human",
+    "Duration (s)": 233,
+    "Full Duration (s)": 249,
+    "Duration (mins)": 3.88,
+    "Full Duration (mins)": 4.15,
+    "Start ISO": "2025-12-01T15:33:18Z",
+    "Source": "PLAYIT"
   }
 ]
