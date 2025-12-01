@@ -55026,5 +55026,18 @@
     "Full Duration (mins)": 3.1,
     "Start ISO": "2025-12-01T10:55:00Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T11:00:00Z",
+    "Scheduled Time": "11:02",
+    "Displayed Time": "11:02",
+    "Artist": "The Waitresses",
+    "Title": "Christmas Wrapping",
+    "Duration (s)": 224,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.95,
+    "Start ISO": "2025-12-01T11:02:28Z",
+    "Source": "PLAYIT"
   }
 ]
