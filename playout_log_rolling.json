@@ -54103,5 +54103,31 @@
     "Full Duration (mins)": 3.77,
     "Start ISO": "2025-12-01T05:26:42Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T05:00:00Z",
+    "Scheduled Time": "05:30",
+    "Displayed Time": "05:30",
+    "Artist": "Charli XCX",
+    "Title": "Chains of Love",
+    "Duration (s)": 163,
+    "Full Duration (s)": 170,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 2.83,
+    "Start ISO": "2025-12-01T05:30:17Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T05:00:00Z",
+    "Scheduled Time": "05:33",
+    "Displayed Time": "05:33",
+    "Artist": "Taylor Swift",
+    "Title": "Anti-Hero",
+    "Duration (s)": 191,
+    "Full Duration (s)": 201,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.35,
+    "Start ISO": "2025-12-01T05:33:08Z",
+    "Source": "PLAYIT"
   }
 ]
