@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Lady Gaga",
-    "title": "The Dead Dance",
-    "startTime": "2025-12-01T10:01:58Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Chappell Roan",
     "title": "Pink Pony Club",
     "startTime": "2025-12-01T10:05:38Z",
@@ -117,6 +111,12 @@
     "artist": "Dean Martin",
     "title": "Let It Snow! Let It Snow! Let It Snow!",
     "startTime": "2025-12-01T11:26:38Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Elton John",
+    "title": "Step Into Christmas",
+    "startTime": "2025-12-01T11:28:27Z",
     "source": "PLAYIT"
   }
 ]
