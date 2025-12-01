@@ -54077,5 +54077,18 @@
     "Full Duration (mins)": 3.6,
     "Start ISO": "2025-12-01T05:15:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T05:00:00Z",
+    "Scheduled Time": "05:23",
+    "Displayed Time": "05:23",
+    "Artist": "Callum Beattie",
+    "Title": "Two Pretenders",
+    "Duration (s)": 203,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.55,
+    "Start ISO": "2025-12-01T05:23:15Z",
+    "Source": "PLAYIT"
   }
 ]
