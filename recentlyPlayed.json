@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Essential Radio",
-    "title": "On Air",
-    "startTime": "2025-11-30T00:00:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "David Southway",
     "title": "Soul Vaults",
     "startTime": "2025-12-01T00:00:00Z",
@@ -117,6 +111,12 @@
     "artist": "Florence + the Machine",
     "title": "Dog Days Are Over",
     "startTime": "2025-12-01T03:11:51Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Miley Cyrus",
+    "title": "Flowers",
+    "startTime": "2025-12-01T03:15:32Z",
     "source": "PLAYIT"
   }
 ]
