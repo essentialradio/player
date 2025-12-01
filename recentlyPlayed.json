@@ -1,11 +1,5 @@
 [
   {
-    "artist": "OneRepublic",
-    "title": "Dear Santa",
-    "startTime": "2025-12-01T18:28:32Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Elton John",
     "title": "Step Into Christmas",
     "startTime": "2025-12-01T18:31:24Z",
@@ -117,6 +111,12 @@
     "artist": "Vanessa Carlton",
     "title": "A Thousand Miles",
     "startTime": "2025-12-01T19:48:24Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Erasure",
+    "title": "Love to Hate You",
+    "startTime": "2025-12-01T19:52:16Z",
     "source": "PLAYIT"
   }
 ]
