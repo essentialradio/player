@@ -56612,5 +56612,31 @@
     "Full Duration (mins)": 5.0,
     "Start ISO": "2025-12-01T19:23:24Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T19:00:00Z",
+    "Scheduled Time": "19:28",
+    "Displayed Time": "19:28",
+    "Artist": "Nickelback",
+    "Title": "Rockstar",
+    "Duration (s)": 240,
+    "Full Duration (s)": 251,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.18,
+    "Start ISO": "2025-12-01T19:28:06Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T19:00:00Z",
+    "Scheduled Time": "19:32",
+    "Displayed Time": "19:32",
+    "Artist": "The Stone Roses",
+    "Title": "Love Spreads",
+    "Duration (s)": 286,
+    "Full Duration (s)": 296,
+    "Duration (mins)": 4.77,
+    "Full Duration (mins)": 4.93,
+    "Start ISO": "2025-12-01T19:32:06Z",
+    "Source": "PLAYIT"
   }
 ]
