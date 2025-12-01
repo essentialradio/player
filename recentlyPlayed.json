@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Justin Bieber",
-    "title": "Mistletoe",
-    "startTime": "2025-12-01T03:36:27Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "David Guetta & Bebe Rexha",
     "title": "I'm Good (Blue)",
     "startTime": "2025-12-01T03:43:53Z",
@@ -117,6 +111,12 @@
     "artist": "The Pointer Sisters",
     "title": "I'm So Excited",
     "startTime": "2025-12-01T04:54:58Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Lady Gaga",
+    "title": "The Dead Dance",
+    "startTime": "2025-12-01T05:01:33Z",
     "source": "PLAYIT"
   }
 ]
