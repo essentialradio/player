@@ -1,12 +1,5 @@
 [
   {
-    "artist": "The Communards",
-    "title": "Never Can Say Goodbye",
-    "startTime": "2025-11-30T17:43:23Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Rick Astley",
     "title": "Whenever You Need Somebody",
     "startTime": "2025-11-30T17:47:12Z",
@@ -121,6 +114,12 @@
     "artist": "Little Mix",
     "title": "Touch",
     "startTime": "2025-12-01T02:26:01Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Charli XCX",
+    "title": "Chains of Love",
+    "startTime": "2025-12-01T02:29:26Z",
     "source": "PLAYIT"
   }
 ]
