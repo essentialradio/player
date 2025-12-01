@@ -54350,5 +54350,18 @@
     "Full Duration (mins)": 2.5,
     "Start ISO": "2025-12-01T06:46:05Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T06:00:00Z",
+    "Scheduled Time": "06:48",
+    "Displayed Time": "06:48",
+    "Artist": "Bonnie Tyler",
+    "Title": "Holding Out for a Hero",
+    "Duration (s)": 240,
+    "Full Duration (s)": 261,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.35,
+    "Start ISO": "2025-12-01T06:48:30Z",
+    "Source": "PLAYIT"
   }
 ]
