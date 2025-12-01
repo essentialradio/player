@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Bananarama",
-    "title": "Love in the First Degree",
-    "startTime": "2025-11-30T17:10:24Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "The Bee Gees",
     "title": "You Win Again",
     "startTime": "2025-11-30T17:13:32Z",
@@ -129,6 +122,12 @@
     "artist": "Essential Radio",
     "title": "On Air",
     "startTime": "2025-11-30T00:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "David Southway",
+    "title": "Soul Vaults",
+    "startTime": "2025-12-01T00:00:00Z",
     "source": "FIXED"
   }
 ]
