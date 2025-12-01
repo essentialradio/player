@@ -56599,5 +56599,18 @@
     "Full Duration (mins)": 2.73,
     "Start ISO": "2025-12-01T19:20:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T19:00:00Z",
+    "Scheduled Time": "19:23",
+    "Displayed Time": "19:23",
+    "Artist": "Lisa Stansfield",
+    "Title": "Someday (I'm Coming Back)",
+    "Duration (s)": 278,
+    "Full Duration (s)": 300,
+    "Duration (mins)": 4.63,
+    "Full Duration (mins)": 5.0,
+    "Start ISO": "2025-12-01T19:23:24Z",
+    "Source": "PLAYIT"
   }
 ]
