@@ -53453,5 +53453,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-12-01T00:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-12-01T02:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Shakin' Stevens",
+    "Title": "Merry Christmas Everyone",
+    "Duration (s)": 217,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-12-01T02:01:34Z",
+    "Source": "PLAYIT"
   }
 ]
