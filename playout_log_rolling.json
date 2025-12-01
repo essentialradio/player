@@ -54623,5 +54623,31 @@
     "Full Duration (mins)": 2.62,
     "Start ISO": "2025-12-01T08:23:35Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T08:00:00Z",
+    "Scheduled Time": "08:29",
+    "Displayed Time": "08:29",
+    "Artist": "David Guetta/Teddy Swims/Tones and I",
+    "Title": "Gone Gone Gone",
+    "Duration (s)": 194,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.23,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-12-01T08:29:20Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T08:00:00Z",
+    "Scheduled Time": "08:32",
+    "Displayed Time": "08:32",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-12-01T08:32:33Z",
+    "Source": "PLAYIT"
   }
 ]
