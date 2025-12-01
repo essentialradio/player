@@ -55234,5 +55234,18 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-12-01T12:02:15Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T12:00:00Z",
+    "Scheduled Time": "12:06",
+    "Displayed Time": "12:06",
+    "Artist": "Sam Ryder",
+    "Title": "Better Man",
+    "Duration (s)": 176,
+    "Full Duration (s)": 183,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.05,
+    "Start ISO": "2025-12-01T12:06:18Z",
+    "Source": "PLAYIT"
   }
 ]
