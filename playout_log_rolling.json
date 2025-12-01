@@ -54714,5 +54714,31 @@
     "Full Duration (mins)": 2.02,
     "Start ISO": "2025-12-01T09:06:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T09:00:00Z",
+    "Scheduled Time": "09:10",
+    "Displayed Time": "09:10",
+    "Artist": "Demi Lovato",
+    "Title": "Here All Night",
+    "Duration (s)": 174,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-12-01T09:10:03Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-01T09:00:00Z",
+    "Scheduled Time": "09:12",
+    "Displayed Time": "09:12",
+    "Artist": "Tom Grennan",
+    "Title": "All These Nights",
+    "Duration (s)": 151,
+    "Full Duration (s)": 154,
+    "Duration (mins)": 2.52,
+    "Full Duration (mins)": 2.57,
+    "Start ISO": "2025-12-01T09:12:56Z",
+    "Source": "PLAYIT"
   }
 ]
