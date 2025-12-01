@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Bill Medley & Jennifer Warnes",
-    "title": "(I've Had) The Time of My Life",
-    "startTime": "2025-11-30T17:35:46Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Whitney Houston",
     "title": "So Emotional",
     "startTime": "2025-11-30T17:39:14Z",
@@ -123,6 +116,12 @@
     "artist": "Lizzo",
     "title": "2 Be Loved (Am I Ready)",
     "startTime": "2025-12-01T02:15:12Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Alex Warren",
+    "title": "Eternity",
+    "startTime": "2025-12-01T02:22:52Z",
     "source": "PLAYIT"
   }
 ]
