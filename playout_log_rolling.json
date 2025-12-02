@@ -60213,5 +60213,31 @@
     "Full Duration (mins)": 3.67,
     "Start ISO": "2025-12-02T15:43:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T15:00:00Z",
+    "Scheduled Time": "15:46",
+    "Displayed Time": "15:46",
+    "Artist": "S Club 7",
+    "Title": "Bring It All Back",
+    "Duration (s)": 200,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-12-02T15:46:41Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T15:00:00Z",
+    "Scheduled Time": "15:50",
+    "Displayed Time": "15:50",
+    "Artist": "Taylor Swift",
+    "Title": "I Knew You Were Trouble",
+    "Duration (s)": 213,
+    "Full Duration (s)": 218,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.63,
+    "Start ISO": "2025-12-02T15:50:03Z",
+    "Source": "PLAYIT"
   }
 ]
