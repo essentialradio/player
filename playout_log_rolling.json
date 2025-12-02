@@ -57769,5 +57769,31 @@
     "Full Duration (mins)": 2.62,
     "Start ISO": "2025-12-02T02:01:48Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T02:00:00Z",
+    "Scheduled Time": "02:04",
+    "Displayed Time": "02:04",
+    "Artist": "Michael Buble",
+    "Title": "It's Beginning to Look a Lot Like Christmas",
+    "Duration (s)": 163,
+    "Full Duration (s)": 207,
+    "Duration (mins)": 2.72,
+    "Full Duration (mins)": 3.45,
+    "Start ISO": "2025-12-02T02:04:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T02:00:00Z",
+    "Scheduled Time": "02:07",
+    "Displayed Time": "02:07",
+    "Artist": "Tom Grennan",
+    "Title": "All These Nights",
+    "Duration (s)": 148,
+    "Full Duration (s)": 154,
+    "Duration (mins)": 2.47,
+    "Full Duration (mins)": 2.57,
+    "Start ISO": "2025-12-02T02:07:38Z",
+    "Source": "PLAYIT"
   }
 ]
