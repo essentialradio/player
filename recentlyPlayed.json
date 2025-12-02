@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Taylor Swift",
-    "title": "I Knew You Were Trouble",
-    "startTime": "2025-12-02T15:50:03Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Rose Royce",
     "title": "Car Wash",
     "startTime": "2025-12-02T15:53:36Z",
@@ -117,6 +111,12 @@
     "artist": "Jax Jones, Calum Scott",
     "title": "Whistle",
     "startTime": "2025-12-02T17:21:30Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "No Doubt",
+    "title": "It's My Life",
+    "startTime": "2025-12-02T17:24:53Z",
     "source": "PLAYIT"
   }
 ]
