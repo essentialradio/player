@@ -60785,5 +60785,18 @@
     "Full Duration (mins)": 3.5,
     "Start ISO": "2025-12-02T19:01:40Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T19:00:00Z",
+    "Scheduled Time": "19:05",
+    "Displayed Time": "19:05",
+    "Artist": "Bob Marley & The Wailers",
+    "Title": "Iron Lion Zion",
+    "Duration (s)": 177,
+    "Full Duration (s)": 202,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.37,
+    "Start ISO": "2025-12-02T19:05:16Z",
+    "Source": "PLAYIT"
   }
 ]
