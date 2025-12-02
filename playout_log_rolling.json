@@ -61461,5 +61461,44 @@
     "Full Duration (mins)": 3.83,
     "Start ISO": "2025-12-02T22:54:13Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T23:00:00Z",
+    "Scheduled Time": "23:03",
+    "Displayed Time": "23:03",
+    "Artist": "East 17 ft Gabrielle",
+    "Title": "If You Ever",
+    "Duration (s)": 237,
+    "Full Duration (s)": 255,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.25,
+    "Start ISO": "2025-12-02T23:03:20Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T23:00:00Z",
+    "Scheduled Time": "23:07",
+    "Displayed Time": "23:07",
+    "Artist": "The Blow Monkeys",
+    "Title": "It Doesn't Have to Be This Way",
+    "Duration (s)": 235,
+    "Full Duration (s)": 243,
+    "Duration (mins)": 3.92,
+    "Full Duration (mins)": 4.05,
+    "Start ISO": "2025-12-02T23:07:22Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T23:00:00Z",
+    "Scheduled Time": "23:11",
+    "Displayed Time": "23:11",
+    "Artist": "Lucie Silvas",
+    "Title": "What You're Made Of",
+    "Duration (s)": 243,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 4.05,
+    "Full Duration (mins)": 4.12,
+    "Start ISO": "2025-12-02T23:11:24Z",
+    "Source": "PLAYIT"
   }
 ]
