@@ -57652,5 +57652,18 @@
     "Full Duration (mins)": 4.33,
     "Start ISO": "2025-12-02T01:23:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T01:00:00Z",
+    "Scheduled Time": "01:27",
+    "Displayed Time": "01:27",
+    "Artist": "Katy Perry",
+    "Title": "bandaids",
+    "Duration (s)": 179,
+    "Full Duration (s)": 189,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.15,
+    "Start ISO": "2025-12-02T01:27:57Z",
+    "Source": "PLAYIT"
   }
 ]
