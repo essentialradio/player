@@ -61578,5 +61578,18 @@
     "Full Duration (mins)": 2.92,
     "Start ISO": "2025-12-02T23:42:30Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-02T23:00:00Z",
+    "Scheduled Time": "23:45",
+    "Displayed Time": "23:45",
+    "Artist": "Alanis Morissette",
+    "Title": "Ironic",
+    "Duration (s)": 213,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.55,
+    "Full Duration (mins)": 3.8,
+    "Start ISO": "2025-12-02T23:45:18Z",
+    "Source": "PLAYIT"
   }
 ]
