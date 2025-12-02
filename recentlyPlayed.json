@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Queen",
-    "title": "We Will Rock You",
-    "startTime": "2025-12-02T10:29:02Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Def Leppard",
     "title": "Pour Some Sugar on Me",
     "startTime": "2025-12-02T10:32:13Z",
@@ -117,6 +111,12 @@
     "artist": "Andy Williams",
     "title": "It's the Most Wonderful Time of the Year",
     "startTime": "2025-12-02T11:51:08Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Lady Gaga",
+    "title": "White Christmas",
+    "startTime": "2025-12-02T11:53:35Z",
     "source": "PLAYIT"
   }
 ]
