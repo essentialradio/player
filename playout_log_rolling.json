@@ -65192,5 +65192,18 @@
     "Full Duration (mins)": 3.6,
     "Start ISO": "2025-12-03T19:55:25Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T20:00:00Z",
+    "Scheduled Time": "20:01",
+    "Displayed Time": "20:01",
+    "Artist": "Gorillaz",
+    "Title": "Dare",
+    "Duration (s)": 210,
+    "Full Duration (s)": 212,
+    "Duration (mins)": 3.5,
+    "Full Duration (mins)": 3.53,
+    "Start ISO": "2025-12-03T20:01:53Z",
+    "Source": "PLAYIT"
   }
 ]
