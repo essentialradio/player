@@ -65725,5 +65725,31 @@
     "Full Duration (mins)": 3.68,
     "Start ISO": "2025-12-03T22:51:45Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T22:00:00Z",
+    "Scheduled Time": "22:55",
+    "Displayed Time": "22:55",
+    "Artist": "Joyce Sims",
+    "Title": "Come Into My Life",
+    "Duration (s)": 212,
+    "Full Duration (s)": 228,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.8,
+    "Start ISO": "2025-12-03T22:55:22Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T23:00:00Z",
+    "Scheduled Time": "23:02",
+    "Displayed Time": "23:02",
+    "Artist": "Massive Attack",
+    "Title": "Unfinished Sympathy",
+    "Duration (s)": 265,
+    "Full Duration (s)": 273,
+    "Duration (mins)": 4.42,
+    "Full Duration (mins)": 4.55,
+    "Start ISO": "2025-12-03T23:02:00Z",
+    "Source": "PLAYIT"
   }
 ]
