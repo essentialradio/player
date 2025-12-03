@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Michael Jackson",
-    "title": "She's Out of My Life",
-    "startTime": "2025-12-03T09:55:32Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Lewis Capaldi",
     "title": "Survive",
     "startTime": "2025-12-03T10:02:18Z",
@@ -117,6 +111,12 @@
     "artist": "Dean Martin",
     "title": "Let It Snow! Let It Snow! Let It Snow!",
     "startTime": "2025-12-03T11:24:03Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Elton John",
+    "title": "Step Into Christmas",
+    "startTime": "2025-12-03T11:25:53Z",
     "source": "PLAYIT"
   }
 ]
