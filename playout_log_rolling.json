@@ -62514,5 +62514,18 @@
     "Full Duration (mins)": 3.03,
     "Start ISO": "2025-12-03T04:43:02Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T04:00:00Z",
+    "Scheduled Time": "04:45",
+    "Displayed Time": "04:45",
+    "Artist": "ABC",
+    "Title": "All of My Heart",
+    "Duration (s)": 229,
+    "Full Duration (s)": 240,
+    "Duration (mins)": 3.82,
+    "Full Duration (mins)": 4.0,
+    "Start ISO": "2025-12-03T04:45:56Z",
+    "Source": "PLAYIT"
   }
 ]
