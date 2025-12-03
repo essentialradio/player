@@ -63073,5 +63073,31 @@
     "Full Duration (mins)": 3.42,
     "Start ISO": "2025-12-03T07:47:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T07:00:00Z",
+    "Scheduled Time": "07:50",
+    "Displayed Time": "07:50",
+    "Artist": "The Pogues featuring Kirsty MacColl",
+    "Title": "Fairytale Of New York",
+    "Duration (s)": 259,
+    "Full Duration (s)": 265,
+    "Duration (mins)": 4.32,
+    "Full Duration (mins)": 4.42,
+    "Start ISO": "2025-12-03T07:50:34Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T07:00:00Z",
+    "Scheduled Time": "07:54",
+    "Displayed Time": "07:54",
+    "Artist": "The Human League",
+    "Title": "Tell Me When",
+    "Duration (s)": 265,
+    "Full Duration (s)": 270,
+    "Duration (mins)": 4.42,
+    "Full Duration (mins)": 4.5,
+    "Start ISO": "2025-12-03T07:54:53Z",
+    "Source": "PLAYIT"
   }
 ]
