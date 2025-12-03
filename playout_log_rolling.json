@@ -65296,5 +65296,18 @@
     "Full Duration (mins)": 3.5,
     "Start ISO": "2025-12-03T20:27:30Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T20:00:00Z",
+    "Scheduled Time": "20:30",
+    "Displayed Time": "20:30",
+    "Artist": "Atomic Kitten",
+    "Title": "The Last Goodbye",
+    "Duration (s)": 180,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-12-03T20:30:50Z",
+    "Source": "PLAYIT"
   }
 ]
