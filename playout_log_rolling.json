@@ -64971,5 +64971,31 @@
     "Full Duration (mins)": 3.72,
     "Start ISO": "2025-12-03T18:43:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T18:00:00Z",
+    "Scheduled Time": "18:47",
+    "Displayed Time": "18:47",
+    "Artist": "Mariah Carey",
+    "Title": "Oh! Santa",
+    "Duration (s)": 197,
+    "Full Duration (s)": 211,
+    "Duration (mins)": 3.28,
+    "Full Duration (mins)": 3.52,
+    "Start ISO": "2025-12-03T18:47:13Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T18:00:00Z",
+    "Scheduled Time": "18:50",
+    "Displayed Time": "18:50",
+    "Artist": "Jorja Smith",
+    "Title": "Stay Another Day",
+    "Duration (s)": 152,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.7,
+    "Start ISO": "2025-12-03T18:50:32Z",
+    "Source": "PLAYIT"
   }
 ]
