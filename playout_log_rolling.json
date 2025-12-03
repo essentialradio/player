@@ -65062,5 +65062,31 @@
     "Full Duration (mins)": 4.23,
     "Start ISO": "2025-12-03T19:12:18Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T19:00:00Z",
+    "Scheduled Time": "19:19",
+    "Displayed Time": "19:19",
+    "Artist": "Chumbawamba",
+    "Title": "Tubthumping",
+    "Duration (s)": 200,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.33,
+    "Full Duration (mins)": 3.55,
+    "Start ISO": "2025-12-03T19:19:28Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-03T19:00:00Z",
+    "Scheduled Time": "19:22",
+    "Displayed Time": "19:22",
+    "Artist": "John Newman",
+    "Title": "Love Me Again",
+    "Duration (s)": 207,
+    "Full Duration (s)": 215,
+    "Duration (mins)": 3.45,
+    "Full Duration (mins)": 3.58,
+    "Start ISO": "2025-12-03T19:22:48Z",
+    "Source": "PLAYIT"
   }
 ]
