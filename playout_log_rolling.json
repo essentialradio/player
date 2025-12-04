@@ -66609,5 +66609,31 @@
     "Full Duration (mins)": 2.98,
     "Start ISO": "2025-12-04T03:32:46Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-04T03:00:00Z",
+    "Scheduled Time": "03:40",
+    "Displayed Time": "03:40",
+    "Artist": "Dermot Kennedy",
+    "Title": "Kiss Me",
+    "Duration (s)": 212,
+    "Full Duration (s)": 229,
+    "Duration (mins)": 3.53,
+    "Full Duration (mins)": 3.82,
+    "Start ISO": "2025-12-04T03:40:02Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-04T03:00:00Z",
+    "Scheduled Time": "03:43",
+    "Displayed Time": "03:43",
+    "Artist": "A Flock Of Seagulls",
+    "Title": "Wishing (If I Had A Photograph Of You)",
+    "Duration (s)": 238,
+    "Full Duration (s)": 253,
+    "Duration (mins)": 3.97,
+    "Full Duration (mins)": 4.22,
+    "Start ISO": "2025-12-04T03:43:40Z",
+    "Source": "PLAYIT"
   }
 ]
