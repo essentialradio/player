@@ -66960,5 +66960,31 @@
     "Full Duration (mins)": 4.1,
     "Start ISO": "2025-12-04T05:26:23Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-04T05:00:00Z",
+    "Scheduled Time": "05:30",
+    "Displayed Time": "05:30",
+    "Artist": "Brooke Combe",
+    "Title": "How Can I Tell You? (To Love Me More)",
+    "Duration (s)": 179,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 2.98,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-12-04T05:30:20Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-04T05:00:00Z",
+    "Scheduled Time": "05:33",
+    "Displayed Time": "05:33",
+    "Artist": "Chappell Roan",
+    "Title": "Hot To Go!",
+    "Duration (s)": 177,
+    "Full Duration (s)": 185,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.08,
+    "Start ISO": "2025-12-04T05:33:24Z",
+    "Source": "PLAYIT"
   }
 ]
