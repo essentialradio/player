@@ -69456,5 +69456,31 @@
     "Full Duration (mins)": 2.72,
     "Start ISO": "2025-12-04T19:28:06Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-04T19:00:00Z",
+    "Scheduled Time": "19:30",
+    "Displayed Time": "19:30",
+    "Artist": "Simply Red",
+    "Title": "Stars",
+    "Duration (s)": 243,
+    "Full Duration (s)": 246,
+    "Duration (mins)": 4.05,
+    "Full Duration (mins)": 4.1,
+    "Start ISO": "2025-12-04T19:30:41Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-04T19:00:00Z",
+    "Scheduled Time": "19:34",
+    "Displayed Time": "19:34",
+    "Artist": "Orson",
+    "Title": "Ain't No Party",
+    "Duration (s)": 191,
+    "Full Duration (s)": 198,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.3,
+    "Start ISO": "2025-12-04T19:34:49Z",
+    "Source": "PLAYIT"
   }
 ]
