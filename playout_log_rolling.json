@@ -67103,5 +67103,18 @@
     "Full Duration (mins)": 2.5,
     "Start ISO": "2025-12-04T06:08:27Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-04T06:00:00Z",
+    "Scheduled Time": "06:10",
+    "Displayed Time": "06:10",
+    "Artist": "Mabel",
+    "Title": "Don't Call Me Up",
+    "Duration (s)": 170,
+    "Full Duration (s)": 179,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 2.98,
+    "Start ISO": "2025-12-04T06:10:56Z",
+    "Source": "PLAYIT"
   }
 ]
