@@ -1,11 +1,5 @@
 [
   {
-    "artist": "The Jackson 5",
-    "title": "Santa Claus Is Coming to Town",
-    "startTime": "2025-12-05T18:32:58Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Wizzard",
     "title": "I Wish It Could Be Christmas Everyday",
     "startTime": "2025-12-05T18:39:20Z",
@@ -130,6 +124,13 @@
     "artist": "Raaban & Hypaton with Too Many Lefthands",
     "title": "Last Forever",
     "startTime": "2025-12-05T19:35:52Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Bebe Rexha",
+    "title": "Chase It (Mmm Da Da Da) <Quick Hitter>",
+    "startTime": "2025-12-05T19:39:12Z",
     "source": "ALT",
     "live": true
   }
