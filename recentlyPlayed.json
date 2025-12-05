@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Girls Aloud",
-    "title": "Not Tonight Santa",
-    "startTime": "2025-12-05T18:03:59Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Robbie Williams & Nicole Kidman",
     "title": "Somethin' Stupid",
     "startTime": "2025-12-05T18:06:33Z",
@@ -122,6 +116,13 @@
     "artist": "Mike Mago",
     "title": "Dangerous Behaviour (VIP Mix)",
     "startTime": "2025-12-05T19:12:29Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Kx5 & AR/CO",
+    "title": "Bright Lights",
+    "startTime": "2025-12-05T19:15:37Z",
     "source": "ALT",
     "live": true
   }
