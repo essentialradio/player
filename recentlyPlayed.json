@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Supersister",
-    "title": "Coffee",
-    "startTime": "2025-12-05T17:55:01Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "U2",
     "title": "Christmas (Baby Please Come Home)",
     "startTime": "2025-12-05T18:01:51Z",
@@ -120,6 +114,13 @@
     "artist": "Casso & Sacha",
     "title": "Guest List",
     "startTime": "2025-12-05T19:06:11Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Body Ocean",
+    "title": "What Would It Profit",
+    "startTime": "2025-12-05T19:08:37Z",
     "source": "ALT",
     "live": true
   }
