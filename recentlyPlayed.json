@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Perrie",
-    "title": "Rocket Scientist",
-    "startTime": "2025-12-05T03:08:48Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Europe",
     "title": "The Final Countdown",
     "startTime": "2025-12-05T03:12:20Z",
@@ -117,6 +111,12 @@
     "artist": "BLACKPINK",
     "title": "Jump",
     "startTime": "2025-12-05T04:28:36Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Dua Lipa",
+    "title": "Houdini",
+    "startTime": "2025-12-05T04:31:12Z",
     "source": "PLAYIT"
   }
 ]
