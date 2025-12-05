@@ -72576,5 +72576,31 @@
     "Full Duration (mins)": 2.67,
     "Start ISO": "2025-12-05T13:07:47Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-05T13:00:00Z",
+    "Scheduled Time": "13:10",
+    "Displayed Time": "13:10",
+    "Artist": "Sam Fender",
+    "Title": "Seventeen Going Under",
+    "Duration (s)": 224,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.9,
+    "Start ISO": "2025-12-05T13:10:35Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-05T13:00:00Z",
+    "Scheduled Time": "13:14",
+    "Displayed Time": "13:14",
+    "Artist": "Kaiser Chiefs",
+    "Title": "I Predict a Riot",
+    "Duration (s)": 224,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.87,
+    "Start ISO": "2025-12-05T13:14:24Z",
+    "Source": "PLAYIT"
   }
 ]
