@@ -74265,5 +74265,31 @@
     "Full Duration (mins)": 3.43,
     "Start ISO": "2025-12-05T22:19:29Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-05T22:00:00Z",
+    "Scheduled Time": "22:26",
+    "Displayed Time": "22:26",
+    "Artist": "Eiffel 65",
+    "Title": "Blue (Da Ba Dee)",
+    "Duration (s)": 203,
+    "Full Duration (s)": 210,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.5,
+    "Start ISO": "2025-12-05T22:26:12Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-05T22:00:00Z",
+    "Scheduled Time": "22:29",
+    "Displayed Time": "22:29",
+    "Artist": "The Adventures Of Stevie V & PAWSA",
+    "Title": "Dirty Cash (Money Talks)",
+    "Duration (s)": 218,
+    "Full Duration (s)": 221,
+    "Duration (mins)": 3.63,
+    "Full Duration (mins)": 3.68,
+    "Start ISO": "2025-12-05T22:29:35Z",
+    "Source": "PLAYIT"
   }
 ]
