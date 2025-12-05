@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Cat Burns",
-    "title": "There's Just Something About Her",
-    "startTime": "2025-12-05T05:01:54Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Taylor Swift",
     "title": "The Fate of Ophelia",
     "startTime": "2025-12-05T05:05:34Z",
@@ -117,6 +111,12 @@
     "artist": "Gracie Abrams",
     "title": "That's So True",
     "startTime": "2025-12-05T06:22:39Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Beyonce",
+    "title": "Crazy in Love",
+    "startTime": "2025-12-05T06:25:15Z",
     "source": "PLAYIT"
   }
 ]
