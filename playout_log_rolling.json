@@ -73356,5 +73356,18 @@
     "Full Duration (mins)": 3.02,
     "Start ISO": "2025-12-05T18:20:00Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-05T18:00:00Z",
+    "Scheduled Time": "18:22",
+    "Displayed Time": "18:22",
+    "Artist": "Andy Williams",
+    "Title": "It's the Most Wonderful Time of the Year",
+    "Duration (s)": 143,
+    "Full Duration (s)": 151,
+    "Duration (mins)": 2.38,
+    "Full Duration (mins)": 2.52,
+    "Start ISO": "2025-12-05T18:22:52Z",
+    "Source": "PLAYIT"
   }
 ]
