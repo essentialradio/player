@@ -1,11 +1,5 @@
 [
   {
-    "artist": "V, Park Hyo Shin",
-    "title": "Winter Ahead",
-    "startTime": "2025-12-05T18:43:47Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Destiny's Child",
     "title": "Little Drummer Boy",
     "startTime": "2025-12-05T18:47:30Z",
@@ -132,6 +126,13 @@
     "artist": "ManyFew",
     "title": "Love You (One More Chance)",
     "startTime": "2025-12-05T19:41:05Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Lee Everest",
+    "title": "Ready for the Weekend",
+    "startTime": "2025-12-05T19:44:13Z",
     "source": "ALT",
     "live": true
   }
