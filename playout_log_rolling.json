@@ -71926,5 +71926,31 @@
     "Full Duration (mins)": 2.95,
     "Start ISO": "2025-12-05T09:17:11Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-05T09:00:00Z",
+    "Scheduled Time": "09:25",
+    "Displayed Time": "09:25",
+    "Artist": "PinkPantheress",
+    "Title": "Illegal",
+    "Duration (s)": 149,
+    "Full Duration (s)": 150,
+    "Duration (mins)": 2.48,
+    "Full Duration (mins)": 2.5,
+    "Start ISO": "2025-12-05T09:25:08Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-05T09:00:00Z",
+    "Scheduled Time": "09:27",
+    "Displayed Time": "09:27",
+    "Artist": "Tate McRae",
+    "Title": "Just Keep Watching",
+    "Duration (s)": 142,
+    "Full Duration (s)": 143,
+    "Duration (mins)": 2.37,
+    "Full Duration (mins)": 2.38,
+    "Start ISO": "2025-12-05T09:27:37Z",
+    "Source": "PLAYIT"
   }
 ]
