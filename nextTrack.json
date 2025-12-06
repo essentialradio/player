@@ -1,11 +1,11 @@
 {
-  "artist": "Adele",
-  "title": "Rolling in the Deep",
-  "startTime": "2025-12-06T06:54:16Z",
-  "duration": 218,
-  "source": "PLAYIT",
-  "start": "2025-12-06T06:54:16Z",
-  "endTime": "2025-12-06T06:57:54Z",
+  "artist": "",
+  "title": "Even more great music!",
+  "startTime": "2025-12-06T06:54:00Z",
+  "duration": 180,
+  "source": "FALLBACK",
+  "start": "2025-12-06T06:54:00Z",
+  "endTime": "2025-12-06T06:57:00Z",
   "indeterminate": false,
   "altMode": false
 }
