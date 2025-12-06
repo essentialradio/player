@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Sam Fender & Elton John",
-    "title": "Talk To You",
-    "startTime": "2025-12-06T11:33:48Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Lizzo",
     "title": "2 Be Loved (Am I Ready)",
     "startTime": "2025-12-06T11:43:09Z",
@@ -117,6 +111,13 @@
     "artist": "Eurythmics",
     "title": "There Must Be an Angel (Playing With My Heart)",
     "startTime": "2025-12-06T13:00:02Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Harold Faltermeyer",
+    "title": "Axel F",
+    "startTime": "2025-12-06T13:00:28Z",
     "source": "ALT",
     "live": true
   }
