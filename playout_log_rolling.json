@@ -76423,5 +76423,19 @@
     "Full Duration (mins)": 4.68,
     "Start ISO": "2025-12-06T12:55:31Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-06T13:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "Eurythmics",
+    "Title": "There Must Be an Angel (Playing With My Heart)",
+    "Start ISO": "2025-12-06T13:00:02Z",
+    "Source": "ALT",
+    "Last Seen": "2025-12-06T13:00:02Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]

@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Sia",
-    "title": "Snowman",
-    "startTime": "2025-12-06T11:31:03Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Sam Fender & Elton John",
     "title": "Talk To You",
     "startTime": "2025-12-06T11:33:48Z",
@@ -118,5 +112,12 @@
     "title": "There Must Be an Angel (Playing With My Heart)",
     "startTime": "2025-12-06T12:55:31Z",
     "source": "PLAYIT"
+  },
+  {
+    "artist": "Eurythmics",
+    "title": "There Must Be an Angel (Playing With My Heart)",
+    "startTime": "2025-12-06T13:00:02Z",
+    "source": "ALT",
+    "live": true
   }
 ]
