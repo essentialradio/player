@@ -74785,5 +74785,31 @@
     "Full Duration (mins)": 4.28,
     "Start ISO": "2025-12-06T03:54:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-06T04:00:00Z",
+    "Scheduled Time": "04:01",
+    "Displayed Time": "04:01",
+    "Artist": "Alex Warren",
+    "Title": "Eternity",
+    "Duration (s)": 187,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-12-06T04:01:57Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-06T04:00:00Z",
+    "Scheduled Time": "04:05",
+    "Displayed Time": "04:05",
+    "Artist": "Olivia Dean",
+    "Title": "The Christmas Song",
+    "Duration (s)": 168,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.92,
+    "Start ISO": "2025-12-06T04:05:32Z",
+    "Source": "PLAYIT"
   }
 ]
