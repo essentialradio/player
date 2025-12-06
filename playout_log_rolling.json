@@ -53124,6 +53124,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-12-06T13:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "1PM SMM",
+    "Title": "JUKEBOX LIVE - GUESS THE LINK",
+    "Duration (s)": 31918,
+    "Full Duration (s)": 31918,
+    "Duration (mins)": 531.97,
+    "Full Duration (mins)": 531.97,
+    "Start ISO": "2025-12-06T13:00:43Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-12-06T21:52:41Z",
+    "Actual Duration (s)": 31918,
+    "Actual Duration (mins)": 531.97
+  },
+  {
     "Hour": "2025-12-06T14:00:00Z",
     "Scheduled Time": "14:00",
     "Displayed Time": "14:00",
@@ -53551,5 +53567,18 @@
     "Full Duration (mins)": 59.95,
     "Start ISO": "2025-12-06T17:02:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-06T21:00:00Z",
+    "Scheduled Time": "21:00",
+    "Displayed Time": "21:00",
+    "Artist": "Big Tommy",
+    "Title": "Big Fat Party Anthems",
+    "Duration (s)": 10740,
+    "Full Duration (s)": 10740,
+    "Duration (mins)": 179.0,
+    "Full Duration (mins)": 179.0,
+    "Start ISO": "2025-12-06T21:00:00Z",
+    "Source": "FIXED"
   }
 ]
