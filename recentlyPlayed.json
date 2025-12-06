@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Davy Sims",
-    "title": "Around the World",
-    "startTime": "2025-12-06T00:00:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "Kylie Minogue",
     "title": "XMAS",
     "startTime": "2025-12-06T02:02:13Z",
@@ -117,6 +111,12 @@
     "artist": "Frank Sinatra",
     "title": "Have Yourself a Merry Little Christmas",
     "startTime": "2025-12-06T03:23:21Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "The Script Featuring Will.I.Am",
+    "title": "Hall of Fame",
+    "startTime": "2025-12-06T03:27:13Z",
     "source": "PLAYIT"
   }
 ]
