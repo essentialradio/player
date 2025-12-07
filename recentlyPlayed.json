@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Johnny Mathis",
-    "title": "When a Child Is Born (Soleado)",
-    "startTime": "2025-12-07T17:16:33Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Rod Stewart",
     "title": "Get Back",
     "startTime": "2025-12-07T17:20:24Z",
@@ -136,6 +129,13 @@
     "artist": "Showaddywaddy",
     "title": "Under the Moon of Love",
     "startTime": "2025-12-07T18:02:17Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Showaddywaddy",
+    "title": "Under the Moon of Love",
+    "startTime": "2025-12-07T18:02:31Z",
     "source": "ALT",
     "live": true
   }
