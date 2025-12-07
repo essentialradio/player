@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Rod Stewart",
-    "title": "Get Back",
-    "startTime": "2025-12-07T17:20:24Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Elton John",
     "title": "Sorry Seems to Be the Hardest Word",
     "startTime": "2025-12-07T17:24:37Z",
@@ -136,6 +129,13 @@
     "artist": "Showaddywaddy",
     "title": "Under the Moon of Love",
     "startTime": "2025-12-07T18:02:31Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Showaddywaddy",
+    "title": "Under the Moon of Love",
+    "startTime": "2025-12-07T18:02:45Z",
     "source": "ALT",
     "live": true
   }
