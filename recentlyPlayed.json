@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Dr Hilary Jones",
-    "title": "The Dr Hilary Show",
-    "startTime": "2025-12-07T09:00:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "Essential Radio",
     "title": "The Week in Holyrood with Charles Fletcher",
     "startTime": "2025-12-07T09:01:36Z",
@@ -117,6 +111,12 @@
     "artist": "Billy Joel",
     "title": "We Didn't Start the Fire",
     "startTime": "2025-12-07T11:20:51Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Michael Bolton",
+    "title": "White Christmas",
+    "startTime": "2025-12-07T11:24:57Z",
     "source": "PLAYIT"
   }
 ]
