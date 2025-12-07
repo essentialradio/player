@@ -54987,15 +54987,28 @@
   },
   {
     "Hour": "2025-12-07T08:00:00Z",
-    "Scheduled Time": "08:30",
-    "Displayed Time": "08:30",
+    "Scheduled Time": "09:00",
+    "Displayed Time": "09:00",
     "Artist": "Dr Hilary Jones",
     "Title": "The Dr Hilary Show",
-    "Duration (s)": 1800,
-    "Full Duration (s)": 1800,
-    "Duration (mins)": 30.0,
-    "Full Duration (mins)": 30.0,
-    "Start ISO": "2025-12-07T08:30:00Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-12-07T09:00:00Z",
+    "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-12-07T09:00:00Z",
+    "Scheduled Time": "09:00",
+    "Displayed Time": "09:00",
+    "Artist": "Charles Fletcher",
+    "Title": "The Week in Holyrood",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0,
+    "Start ISO": "2025-12-07T09:00:00Z",
     "Source": "FIXED"
   }
 ]
