@@ -1,24 +1,9 @@
 Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),Duration (mins),Full Duration (mins)
-2025-11-23T20:00:00Z,20:00,20:00,Britney Spears,Sometimes,225,235,3.75,3.92
-2025-11-23T20:00:00Z,20:04,20:04,Bobby McFerrin,"Don't Worry, Be Happy",224,234,3.73,3.9
-2025-11-23T20:00:00Z,20:08,20:08,Eric Carmen,All By Myself,263,272,4.38,4.53
-2025-11-23T20:00:00Z,20:12,20:12,Five,Don't Want To Let You Go,207,215,3.45,3.58
-2025-11-23T20:00:00Z,20:16,20:16,Shed Seven,Disco Down,227,231,3.78,3.85
-2025-11-23T20:00:00Z,20:20,20:20,Pat Benatar,Love Is a Battlefield,237,246,3.95,4.1
-2025-11-23T20:00:00Z,20:24,20:24,Deniece Williams,Free,165,172,2.75,2.87
-2025-11-23T20:00:00Z,20:27,20:27,Fatboy Slim,"Right Here, Right Now",228,236,3.8,3.93
-2025-11-23T20:00:00Z,20:31,20:31,Lionel Richie,All Night Long (All Night),238,258,3.97,4.3
-2025-11-23T20:00:00Z,20:35,20:35,Billie Jo Spears,What I've Got in Mind,159,163,2.65,2.72
-2025-11-23T20:00:00Z,20:38,20:38,Dawn Penn,"You Don't Love Me (No, No, No)",188,200,3.13,3.33
-2025-11-23T20:00:00Z,20:41,20:41,RUN-DMC,It's Tricky,182,185,3.03,3.08
-2025-11-23T20:00:00Z,20:44,20:44,Neil Diamond,America,241,260,4.02,4.33
-2025-11-23T20:00:00Z,20:49,20:49,Joan Osborne,One of Us,251,258,4.18,4.3
-2025-11-23T20:00:00Z,20:53,20:53,Kim Wilde,You Keep Me Hangin' On,238,243,3.97,4.05
-2025-11-23T20:00:00Z,20:57,20:57,The Chi-Lites,Have You Seen Her,212,217,3.53,3.62
-2025-11-23T20:00:00Z,21:00,21:00,,<missing track>,180,180,3.0,3.0
-2025-11-23T20:00:00Z,21:00,21:00,,<missing track>,180,180,3.0,3.0
-2025-11-23T21:00:00Z,22:02,22:02,Anastacia,One Day In Your Life,194,208,3.23,3.47
-2025-11-23T22:00:00Z,23:03,23:03,Scouting for Girls,It's Not About You,197,202,3.28,3.37
+2025-11-23T20:00:00Z,21:00,21:00,Kevin McCallum,The Mr Rocks Show,7200,7200,120.0,120.0
+2025-11-23T21:00:00Z,21:00,21:00,Emma Scott,The Pluggin' Baby Radio Show,7200,7200,120.0,120.0
+2025-11-23T22:00:00Z,23:00,23:00,Emma Scott,The Pluggin' Baby Radio Show,3540,3540,59.0,59.0
+2025-11-23T23:00:00Z,00:00,00:00,Essential Radio,On Air,7200,7200,120.0,120.0
+2025-11-24T00:00:00Z,00:00,00:00,David Southway,Soul Vaults,7200,7200,120.0,120.0
 2025-11-24T02:00:00Z,02:01,02:01,Myles Smith,Nice To Meet You,172,176,2.87,2.93
 2025-11-24T02:00:00Z,02:05,02:05,Chappell Roan,Pink Pony Club,248,258,4.13,4.3
 2025-11-24T02:00:00Z,02:09,02:09,Benson Boone,Beautiful Things,174,180,2.9,3.0
@@ -33,9 +18,8 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-24T02:00:00Z,02:46,02:46,Elton John,Your Song,232,240,3.87,4.0
 2025-11-24T02:00:00Z,02:50,02:50,Sabrina Carpenter,Manchild,200,214,3.33,3.57
 2025-11-24T02:00:00Z,02:54,02:54,Marshmello Ft. Chvrches,Here With Me,151,156,2.52,2.6
-2025-11-24T02:00:00Z,02:59,02:59,,<missing track>,180,180,3.0,3.0
 2025-11-24T03:00:00Z,03:01,03:01,Callum Beattie,Two Pretenders,209,213,3.48,3.55
-2025-11-24T03:00:00Z,03:05,03:05,Ed Sheeran,Sapphire,170,179,2.83,2.98
+2025-11-24T03:00:00Z,03:06,03:06,Ed Sheeran,Sapphire,170,179,2.83,2.98
 2025-11-24T03:00:00Z,03:08,03:08,Jess Glynne,Don't Be So Hard on Yourself,204,212,3.4,3.53
 2025-11-24T03:00:00Z,03:12,03:12,Emeli Sande,Next to Me,188,195,3.13,3.25
 2025-11-24T03:00:00Z,03:15,03:15,Sam Fender,People Watching,232,311,3.87,5.18
@@ -258,7 +242,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-24T19:00:00Z,19:45,19:45,Toploader,Dancing in the Moonlight (Stargate Mix),195,214,3.25,3.57
 2025-11-24T19:00:00Z,19:49,19:49,Seal,Crazy,247,269,4.12,4.48
 2025-11-24T19:00:00Z,19:53,19:53,Black Eyed Peas,Don't Phunk With My Heart,232,240,3.87,4.0
-2025-11-24T19:00:00Z,19:57,19:57,The Verve,Bitter Sweet Symphony,255,276,4.25,4.6
 2025-11-24T20:00:00Z,20:03,20:03,The La's,There She Goes,156,164,2.6,2.73
 2025-11-24T20:00:00Z,20:06,20:06,Alicia Keys,No One,228,240,3.8,4.0
 2025-11-24T20:00:00Z,20:10,20:10,Faithless,Insomnia,200,211,3.33,3.52
@@ -276,7 +259,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-24T21:00:00Z,21:05,21:05,Republica,Ready to Go,211,218,3.52,3.63
 2025-11-24T21:00:00Z,21:09,21:09,Kelis,Trick Me,189,203,3.15,3.38
 2025-11-24T21:00:00Z,21:12,21:12,Reef,Place Your Hands,208,219,3.47,3.65
-2025-11-24T21:00:00Z,21:19,21:19,Blue,One Love,196,205,3.27,3.42
+2025-11-24T21:00:00Z,21:20,21:20,Blue,One Love,196,205,3.27,3.42
 2025-11-24T21:00:00Z,21:23,21:23,Metallica,Nothing Else Matters,281,303,4.68,5.05
 2025-11-24T21:00:00Z,21:28,21:28,The Rasmus,In The Shadows,228,246,3.8,4.1
 2025-11-24T21:00:00Z,21:31,21:31,M People,Moving on Up,202,213,3.37,3.55
@@ -285,7 +268,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-24T21:00:00Z,21:46,21:46,The Fratellis,Chelsea Dagger,206,215,3.43,3.58
 2025-11-24T21:00:00Z,21:49,21:49,Supergrass,Moving,251,266,4.18,4.43
 2025-11-24T21:00:00Z,21:53,21:53,Orson,Ain't No Party,186,198,3.1,3.3
-2025-11-24T21:00:00Z,21:57,21:57,MC Hammer,U Can't Touch This,241,254,4.02,4.23
 2025-11-24T22:00:00Z,22:03,22:03,Tracy Chapman,Baby Can I Hold You,189,193,3.15,3.22
 2025-11-24T22:00:00Z,22:06,22:06,The Pointer Sisters,Slow Hand,196,208,3.27,3.47
 2025-11-24T22:00:00Z,22:09,22:09,Billie Eilish,Ocean Eyes,190,200,3.17,3.33
@@ -422,7 +404,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-25T07:00:00Z,07:35,07:35,Blondie,Heart of Glass,195,204,3.25,3.4
 2025-11-25T07:00:00Z,07:50,07:50,Nectar Woode,When The Rain Stops,184,185,3.07,3.08
 2025-11-25T07:00:00Z,07:53,07:53,The Killers,All These Things That I've Done,218,226,3.63,3.77
-2025-11-25T07:00:00Z,07:57,07:57,Bangles,Walk Like an Egyptian,191,204,3.18,3.4
 2025-11-25T08:00:00Z,08:02,08:02,Gracie Abrams,That's So True,160,166,2.67,2.77
 2025-11-25T08:00:00Z,08:05,08:05,Calvin Harris & Jessie Reyez,Ocean,213,219,3.55,3.65
 2025-11-25T08:00:00Z,08:10,08:10,Miley Cyrus,End Of The World,246,250,4.1,4.17
@@ -439,11 +420,11 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-25T09:00:00Z,09:07,09:07,Taylor Swift,Anti-Hero,197,201,3.28,3.35
 2025-11-25T09:00:00Z,09:13,09:13,Tate McRae,Just Keep Watching,142,143,2.37,2.38
 2025-11-25T09:00:00Z,09:15,09:15,Meghan Trainor,Made You Look,132,134,2.2,2.23
-2025-11-25T09:00:00Z,09:17,09:17,Pitbull ft Kesha,Timber,200,203,3.33,3.38
+2025-11-25T09:00:00Z,09:18,09:18,Pitbull ft Kesha,Timber,200,203,3.33,3.38
 2025-11-25T09:00:00Z,09:27,09:27,Lady Gaga & Bruno Mars,Die With A Smile,245,252,4.08,4.2
 2025-11-25T09:00:00Z,09:31,09:31,Benson Boone,Mystical Magical,162,166,2.7,2.77
 2025-11-25T09:00:00Z,09:34,09:34,Dexys Midnight Runners & the Emerald Express,Come on Eileen,234,244,3.9,4.07
-2025-11-25T09:00:00Z,09:38,09:38,Sabrina Carpenter,Tears,155,160,2.58,2.67
+2025-11-25T09:00:00Z,09:39,09:39,Sabrina Carpenter,Tears,155,160,2.58,2.67
 2025-11-25T09:00:00Z,09:42,09:42,Marshmello & Jonas Brothers,Leave Before You Love Me,152,155,2.53,2.58
 2025-11-25T09:00:00Z,09:44,09:44,BLACKPINK,Jump,161,167,2.68,2.78
 2025-11-25T09:00:00Z,09:52,09:52,JADE,Angel Of My Dreams,194,198,3.23,3.3
@@ -455,7 +436,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-25T10:00:00Z,10:24,10:24,Hozier,Too Sweet,246,251,4.1,4.18
 2025-11-25T10:00:00Z,10:28,10:28,Alex Warren,Eternity,187,190,3.12,3.17
 2025-11-25T10:00:00Z,10:31,10:31,Duran Duran,Hungry Like the Wolf,199,205,3.32,3.42
-2025-11-25T10:00:00Z,10:34,10:34,Lighthouse Family,Lifted,239,250,3.98,4.17
+2025-11-25T10:00:00Z,10:36,10:36,Lighthouse Family,Lifted,239,250,3.98,4.17
 2025-11-25T10:00:00Z,10:40,10:40,Cat Burns,There's Just Something About Her,190,192,3.17,3.2
 2025-11-25T10:00:00Z,10:43,10:43,Gnarls Barkley,Crazy,174,180,2.9,3.0
 2025-11-25T10:00:00Z,10:50,10:50,The Police,Don't Stand So Close to Me,202,235,3.37,3.92
@@ -584,7 +565,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-25T19:00:00Z,19:45,19:45,JLS,Everybody in Love,187,200,3.12,3.33
 2025-11-25T19:00:00Z,19:49,19:49,Eternal ft Bebe Winans,I Wanna Be the Only One,204,216,3.4,3.6
 2025-11-25T19:00:00Z,19:52,19:52,Texas,Getaway,211,224,3.52,3.73
-2025-11-25T19:00:00Z,19:56,19:56,Oasis,Champagne Supernova,431,446,7.18,7.43
 2025-11-25T20:00:00Z,20:05,20:05,U2,Beautiful Day,242,248,4.03,4.13
 2025-11-25T20:00:00Z,20:09,20:09,Bob Marley & The Wailers,Iron Lion Zion,181,202,3.02,3.37
 2025-11-25T20:00:00Z,20:12,20:12,Beverley Knight,Shoulda Woulda Coulda,205,215,3.42,3.58
@@ -760,11 +740,11 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-26T09:00:00Z,09:06,09:06,Dermot Kennedy,Kiss Me,218,229,3.63,3.82
 2025-11-26T09:00:00Z,09:12,09:12,Gracie Abrams,That's So True,160,166,2.67,2.77
 2025-11-26T09:00:00Z,09:15,09:15,Sabrina Carpenter,Taste,153,157,2.55,2.62
-2025-11-26T09:00:00Z,09:18,09:18,Olly Murs,Troublemaker,182,173,3.03,2.88
+2025-11-26T09:00:00Z,09:18,09:18,Olly Murs,Troublemaker,181,173,3.02,2.88
 2025-11-26T09:00:00Z,09:27,09:27,Pink,Never Gonna Not Dance Again,220,226,3.67,3.77
 2025-11-26T09:00:00Z,09:31,09:31,KATSEYE,Gabriela,192,197,3.2,3.28
 2025-11-26T09:00:00Z,09:34,09:34,Beyonce,Single Ladies (Put a Ring on It),190,192,3.17,3.2
-2025-11-26T09:00:00Z,09:37,09:37,Sade,No Ordinary Love,231,239,3.85,3.98
+2025-11-26T09:00:00Z,09:39,09:39,Sade,No Ordinary Love,231,239,3.85,3.98
 2025-11-26T09:00:00Z,09:43,09:43,Olivia Rodrigo,Good 4 U,176,178,2.93,2.97
 2025-11-26T09:00:00Z,09:51,09:51,Harry Styles,Adore You,204,207,3.4,3.45
 2025-11-26T09:00:00Z,09:55,09:55,New Order,Blue Monday '88,239,247,3.98,4.12
@@ -992,7 +972,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-27T02:00:00Z,02:51,02:51,Nicole Scherzinger,Don't Hold Your Breath,181,193,3.02,3.22
 2025-11-27T02:00:00Z,02:54,02:54,Bloc Party,Banquet,184,195,3.07,3.25
 2025-11-27T03:00:00Z,03:01,03:01,Sam Fender & Olivia Dean,Rein Me In,236,243,3.93,4.05
-2025-11-27T03:00:00Z,03:05,03:05,Taylor Swift,The Fate of Ophelia,219,226,3.65,3.77
+2025-11-27T03:00:00Z,03:06,03:06,Taylor Swift,The Fate of Ophelia,219,226,3.65,3.77
 2025-11-27T03:00:00Z,03:09,03:09,Portugal. The Man,Feel It Still,157,162,2.62,2.7
 2025-11-27T03:00:00Z,03:12,03:12,Thomas Headon,Georgia,171,174,2.85,2.9
 2025-11-27T03:00:00Z,03:15,03:15,Anne-Marie ft Shania Twain,Unhealthy,144,150,2.4,2.5
@@ -1081,20 +1061,20 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-27T09:00:00Z,09:27,09:27,Dasha,Austin (Boots Stop Workin'),167,172,2.78,2.87
 2025-11-27T09:00:00Z,09:30,09:30,Taylor Swift,Opalite,231,235,3.85,3.92
 2025-11-27T09:00:00Z,09:34,09:34,Craig David,7 Days,223,229,3.72,3.82
-2025-11-27T09:00:00Z,09:37,09:37,RAYE,Where Is My Husband!,193,197,3.22,3.28
+2025-11-27T09:00:00Z,09:38,09:38,RAYE,Where Is My Husband!,193,197,3.22,3.28
 2025-11-27T09:00:00Z,09:42,09:42,Sigala ft Talia Mar,Stay the Night,170,171,2.83,2.85
 2025-11-27T09:00:00Z,09:45,09:45,Katy Perry,bandaids,185,189,3.08,3.15
 2025-11-27T09:00:00Z,09:53,09:53,Perrie,Forget About Us,184,186,3.07,3.1
 2025-11-27T09:00:00Z,09:56,09:56,Electric Light Orchestra,Livin' Thing,203,212,3.38,3.53
 2025-11-27T10:00:00Z,10:02,10:02,Sabrina Carpenter,Tears,155,160,2.58,2.67
 2025-11-27T10:00:00Z,10:05,10:05,Katie Melua,The Closest Thing to Crazy,247,250,4.12,4.17
-2025-11-27T10:00:00Z,10:09,10:09,Lola Young,Messy,196,284,3.27,4.73
+2025-11-27T10:00:00Z,10:11,10:11,Lola Young,Messy,196,284,3.27,4.73
 2025-11-27T10:00:00Z,10:14,10:14,Calum Scott,Dancing on My Own (Tiesto Remix),219,224,3.65,3.73
 2025-11-27T10:00:00Z,10:18,10:18,Elton John & Dua Lipa,Cold Heart,190,192,3.17,3.2
 2025-11-27T10:00:00Z,10:27,10:27,Hozier,Too Sweet,246,251,4.1,4.18
 2025-11-27T10:00:00Z,10:31,10:31,Calvin Harris & Jessie Reyez,Ocean,213,219,3.55,3.65
 2025-11-27T10:00:00Z,10:35,10:35,Ace of Base,The Sign,186,188,3.1,3.13
-2025-11-27T10:00:00Z,10:38,10:38,Simple Minds,Don't You (Forget About Me),252,257,4.2,4.28
+2025-11-27T10:00:00Z,10:39,10:39,Simple Minds,Don't You (Forget About Me),252,257,4.2,4.28
 2025-11-27T10:00:00Z,10:43,10:43,The Streets,Dry Your Eyes,183,192,3.05,3.2
 2025-11-27T10:00:00Z,10:46,10:46,JLS,Beat Again,193,195,3.22,3.25
 2025-11-27T10:00:00Z,10:53,10:53,Manic Street Preachers,A Design for Life,254,258,4.23,4.3
@@ -1155,7 +1135,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-27T14:00:00Z,14:53,14:53,Sophie Ellis-Bextor,Murder on the Dancefloor,199,212,3.32,3.53
 2025-11-27T15:00:00Z,15:02,15:02,Olivia Dean,Man I Need,176,184,2.93,3.07
 2025-11-27T15:00:00Z,15:05,15:05,Sienna Spiro,Die On This Hill,204,217,3.4,3.62
-2025-11-27T15:00:00Z,15:09,15:09,Calvin Harris & Rag'N'Bone Man,Lovers In A Past Life,151,161,2.52,2.68
+2025-11-27T15:00:00Z,15:08,15:08,Calvin Harris & Rag'N'Bone Man,Lovers In A Past Life,151,161,2.52,2.68
 2025-11-27T15:00:00Z,15:11,15:11,Train,"Hey, Soul Sister",203,217,3.38,3.62
 2025-11-27T15:00:00Z,15:18,15:18,Miley Cyrus,Used To Be Young,180,191,3.0,3.18
 2025-11-27T15:00:00Z,15:21,15:21,Nectar Woode,When The Rain Stops,179,185,2.98,3.08
@@ -1292,7 +1272,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T00:00:00Z,00:50,00:50,Culture Club,Do You Really Want to Hurt Me,251,261,4.18,4.35
 2025-11-28T00:00:00Z,00:54,00:54,Florence + the Machine,You've Got the Love,152,167,2.53,2.78
 2025-11-28T01:00:00Z,01:01,01:01,Olivia Dean,So Easy (To Fall In Love),165,169,2.75,2.82
-2025-11-28T01:00:00Z,01:04,01:04,Lola Young,D£aler,155,160,2.58,2.67
+2025-11-28T01:00:00Z,01:05,01:05,Lola Young,D£aler,155,160,2.58,2.67
 2025-11-28T01:00:00Z,01:07,01:07,Dua Lipa,Houdini,178,186,2.97,3.1
 2025-11-28T01:00:00Z,01:10,01:10,Sonique,It Feels So Good,217,231,3.62,3.85
 2025-11-28T01:00:00Z,01:14,01:14,Tom Grennan,All These Nights,149,154,2.48,2.57
@@ -1380,7 +1360,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T06:00:00Z,06:54,06:54,Jonas Brothers,Waffle House,135,145,2.25,2.42
 2025-11-28T07:00:00Z,07:03,07:03,Myles Smith,Stay (If You Wanna Dance),182,186,3.03,3.1
 2025-11-28T07:00:00Z,07:06,07:06,Demi Lovato,Here All Night,174,177,2.9,2.95
-2025-11-28T07:00:00Z,07:09,07:09,Ella Henderson x Alex Warren,Carry You Home,163,168,2.72,2.8
+2025-11-28T07:00:00Z,07:10,07:10,Ella Henderson x Alex Warren,Carry You Home,163,168,2.72,2.8
 2025-11-28T07:00:00Z,07:12,07:12,Nelly Furtado,Maneater,188,190,3.13,3.17
 2025-11-28T07:00:00Z,07:15,07:15,Lola Young,One Thing,206,208,3.43,3.47
 2025-11-28T07:00:00Z,07:25,07:25,Lost Frequencies ft Calum Scott,Where Are You Now,146,148,2.43,2.47
@@ -1388,18 +1368,17 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T07:00:00Z,07:33,07:33,Dua Lipa,Dance The Night,172,177,2.87,2.95
 2025-11-28T07:00:00Z,07:36,07:36,Bill Medley & Jennifer Warnes,(I've Had) The Time of My Life,271,288,4.52,4.8
 2025-11-28T07:00:00Z,07:47,07:47,Gracie Abrams,That's So True,160,166,2.67,2.77
-2025-11-28T07:00:00Z,07:50,07:50,Tom Grennan,Don't Break The Heart,208,209,3.47,3.48
-2025-11-28T07:00:00Z,07:56,07:56,Spice Girls,Say You'll Be There,205,227,3.42,3.78
+2025-11-28T07:00:00Z,07:53,07:53,Tom Grennan,Don't Break The Heart,208,209,3.47,3.48
 2025-11-28T08:00:00Z,08:02,08:02,Tate McRae,Just Keep Watching,142,143,2.37,2.38
 2025-11-28T08:00:00Z,08:05,08:05,Michael Buble,It's Beginning to Look a Lot Like Christmas,166,207,2.77,3.45
 2025-11-28T08:00:00Z,08:09,08:09,Mimi Webb,Red Flags,139,142,2.32,2.37
 2025-11-28T08:00:00Z,08:12,08:12,Daft Punk Feat. Pharrell Williams,Get Lucky,239,249,3.98,4.15
 2025-11-28T08:00:00Z,08:16,08:16,Pink,Never Gonna Not Dance Again,220,226,3.67,3.77
-2025-11-28T08:00:00Z,08:25,08:25,Benson Boone,Mystical Magical,162,166,2.7,2.77
+2025-11-28T08:00:00Z,08:29,08:29,Benson Boone,Mystical Magical,162,166,2.7,2.77
 2025-11-28T08:00:00Z,08:35,08:35,Perrie,Rocket Scientist,204,207,3.4,3.45
 2025-11-28T08:00:00Z,08:38,08:38,Livin' Joy,Dreamer,212,219,3.53,3.65
 2025-11-28T08:00:00Z,08:43,08:43,Calvin Harris & Jessie Reyez,Ocean,213,219,3.55,3.65
-2025-11-28T08:00:00Z,08:52,08:52,BINI,Sweet Tooth,176,181,2.93,3.02
+2025-11-28T08:00:00Z,08:53,08:53,BINI,Sweet Tooth,176,181,2.93,3.02
 2025-11-28T08:00:00Z,08:56,08:56,The Specials,Ghost Town,216,220,3.6,3.67
 2025-11-28T09:00:00Z,09:03,09:03,Sam Fender & Elton John,Talk To You,306,317,5.1,5.28
 2025-11-28T09:00:00Z,09:08,09:08,Coldplay,Feels Like I'm Falling in Love,221,224,3.68,3.73
@@ -1411,13 +1390,13 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T09:00:00Z,09:46,09:46,Taylor Swift,I Knew You Were Trouble,216,218,3.6,3.63
 2025-11-28T09:00:00Z,09:55,09:55,Stardust,Music Sounds Better With You,251,262,4.18,4.37
 2025-11-28T10:00:00Z,10:01,10:01,Shakin' Stevens,Merry Christmas Everyone,217,220,3.62,3.67
-2025-11-28T10:00:00Z,10:05,10:05,Lola Young,D£aler,157,160,2.62,2.67
+2025-11-28T10:00:00Z,10:11,10:11,Lola Young,D£aler,157,160,2.62,2.67
 2025-11-28T10:00:00Z,10:15,10:15,Sabrina Carpenter,Manchild,201,214,3.35,3.57
 2025-11-28T10:00:00Z,10:19,10:19,Rihanna,Only Girl (In the World),231,236,3.85,3.93
 2025-11-28T10:00:00Z,10:23,10:23,Portugal. The Man,Feel It Still,158,162,2.63,2.7
 2025-11-28T10:00:00Z,10:31,10:31,Deacon Blue,Dignity,225,241,3.75,4.02
 2025-11-28T10:00:00Z,10:35,10:35,KATSEYE,Gabriela,192,197,3.2,3.28
-2025-11-28T10:00:00Z,10:38,10:38,Black Eyed Peas,I Gotta Feeling,242,246,4.03,4.1
+2025-11-28T10:00:00Z,10:39,10:39,Black Eyed Peas,I Gotta Feeling,242,246,4.03,4.1
 2025-11-28T10:00:00Z,10:43,10:43,Electric Light Orchestra,Mr Blue Sky,297,304,4.95,5.07
 2025-11-28T10:00:00Z,10:53,10:53,Adele,Someone Like You,278,285,4.63,4.75
 2025-11-28T11:00:00Z,11:02,11:02,,4Ward 2Gether,1456,1456,24.27,24.27
@@ -1471,7 +1450,8 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T14:00:00Z,14:48,14:48,Robbie Williams,Let Me Entertain You,214,224,3.57,3.73
 2025-11-28T14:00:00Z,14:51,14:51,Rag'N'Bone Man,Human,193,199,3.22,3.32
 2025-11-28T14:00:00Z,14:55,14:55,MC Sar & The Real McCoy,Another Night,232,236,3.87,3.93
-2025-11-28T15:00:00Z,15:02,15:02,Essential Radio,The Week in Holyrood with Charles Fletcher,3401,3420,56.68,57.0
+2025-11-28T14:00:00Z,15:00,15:00,Faith Montgomery,Feelgood Lunch,3600,3600,60.0,60.0
+2025-11-28T15:00:00Z,15:02,15:02,Essential Radio,The Week in Holyrood with Charles Fletcher,3398,3421,56.63,57.02
 2025-11-28T16:00:00Z,16:01,16:01,Lady Gaga,The Dead Dance,216,229,3.6,3.82
 2025-11-28T16:00:00Z,16:06,16:06,Noah Kahan,Stick Season,172,182,2.87,3.03
 2025-11-28T16:00:00Z,16:09,16:09,Tate McRae,Just Keep Watching,140,143,2.33,2.38
@@ -1515,9 +1495,28 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T18:00:00Z,18:47,18:47,RAYE,Where Is My Husband!,189,197,3.15,3.28
 2025-11-28T18:00:00Z,18:50,18:50,Brooke Combe,How Can I Tell You? (To Love Me More),181,190,3.02,3.17
 2025-11-28T18:00:00Z,18:53,18:53,Sam Ryder,Better Man,178,183,2.97,3.05
-2025-11-28T19:00:00Z,19:01,19:01,Lee Everest,Ready for the Weekend,1381,1385,23.02,23.08
-2025-11-28T19:00:00Z,19:22,19:22,Lee Everest,Ready for the Weekend,1237,1241,20.62,20.68
-2025-11-28T19:00:00Z,19:45,19:45,Lee Everest,Ready for the Weekend,863,865,14.38,14.42
+2025-11-28T19:00:00Z,19:00,19:00,Sam Ryder,Better Man,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:01,19:01,Lee Everest,Ready for the Weekend,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:02,19:02,DVBBS & Abi Flynn,Move A Little Closer,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:05,19:05,Novodisc,Never Knew,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:08,19:08,Deadmou5 & Wolfgang Gartner,Animal Rights,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:10,19:10,Obskur & Omar+,Serious <Extended>,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:14,19:14,Martin Garrix & DubVision with Shaun Farrugia,Wherever You Are,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:17,19:17,Tony Dark Eyes,Push <Extended>,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:22,19:22,Lee Everest,Ready for the Weekend,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:22,19:22,Zurra,No Rules,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:25,19:25,Jamis & Ekko,Thirst <Extended>,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:29,19:29,Aluna & MK,Kiss It Better,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:33,19:33,Sonny Fodera & Jazzy,All This Time (In Paraell Remix) <Extended>,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:36,19:36,Bandit & Belfort,Jenny (Heaven Can You Hear Me),3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:41,19:41,The Good Men & THEMBA with Khenya,Give It Up,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:45,19:45,Lee Everest,Ready for the Weekend,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:45,19:45,Calvin Harris & Jessie Reyez,Ocean,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:49,19:49,Control Alt Delete & Don Diablo,Pony <Extended>,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:52,19:52,Tommy Vee & Mauro Ferrucci with Keller,Inside At Night,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:55,19:55,Beth,The Party,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:58,19:58,twocolors,Chemical,3600,3600,60.0,60.0
+2025-11-28T19:00:00Z,19:58,19:58,twocolors,Chemical,122,122,2.03,2.03
 2025-11-28T20:00:00Z,20:02,20:02,Richard X Vs Liberty X,Being Nobody,108,217,1.8,3.62
 2025-11-28T20:00:00Z,20:04,20:04,Adamski Feat. Seal,Killer,241,251,4.02,4.18
 2025-11-28T20:00:00Z,20:08,20:08,Hall & Oates,Kiss on My List,212,231,3.53,3.85
@@ -1543,8 +1542,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T21:00:00Z,21:28,21:28,Years & Years ft Galantis,Sweet Talker,168,177,2.8,2.95
 2025-11-28T21:00:00Z,21:31,21:31,Amii Stewart,Light My Fire,216,234,3.6,3.9
 2025-11-28T21:00:00Z,21:35,21:35,Loveland,Let the Music (Lift You Up),195,206,3.25,3.43
-2025-11-28T21:00:00Z,21:38,21:38,Kaiser Chiefs,I Predict a Riot,224,232,3.73,3.87
-2025-11-28T21:00:00Z,21:54,21:54,La Bouche,Be My Lover,230,239,3.83,3.98
 2025-11-28T22:00:00Z,22:01,22:01,Pixie Lott,All About Tonight,178,185,2.97,3.08
 2025-11-28T22:00:00Z,22:04,22:04,Deee-Lite,Groove Is in the Heart,219,226,3.65,3.77
 2025-11-28T22:00:00Z,22:08,22:08,The Bee Gees,You Should Be Dancing,234,255,3.9,4.25
@@ -1560,9 +1557,9 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-28T22:00:00Z,22:47,22:47,Joel Corry,Be Alright,147,156,2.45,2.6
 2025-11-28T22:00:00Z,22:49,22:49,Layo & Bushwacka,Love Story (Vs Finally),205,214,3.42,3.57
 2025-11-28T22:00:00Z,22:53,22:53,Todd Terry Feat. Martha Wash & Jocelyn Brown,Something Goin' On,200,210,3.33,3.5
-2025-11-28T23:00:00Z,23:02,23:02,with Ronny Costello,Club Classics Radio Show <38 - 04.12.25>,3478,3480,57.97,58.0
-2025-11-29T00:00:00Z,00:00,00:00,Essential Radio,Around the World with Davy Sims,3586,3590,59.77,59.83
-2025-11-29T01:00:00Z,01:00,01:00,Essential Radio,Around the World with Davy Sims,3588,3590,59.8,59.83
+2025-11-28T23:00:00Z,00:00,00:00,Essential Radio,On Air,7200,7200,120.0,120.0
+2025-11-29T00:00:00Z,00:00,00:00,Davy Sims,Around the World,7200,7200,120.0,120.0
+2025-11-29T01:00:00Z,01:00,01:00,Essential Radio,Around the World with Davy Sims,3587,3590,59.78,59.83
 2025-11-29T02:00:00Z,02:02,02:02,Band Aid,Do They Know It's Christmas?,216,223,3.6,3.72
 2025-11-29T02:00:00Z,02:06,02:06,Jax Jones ft MNEK,Where Did You Go?,170,178,2.83,2.97
 2025-11-29T02:00:00Z,02:09,02:09,Perrie,Rocket Scientist,198,207,3.3,3.45
@@ -1602,7 +1599,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-29T04:00:00Z,04:31,04:31,Avicii,Levels,186,201,3.1,3.35
 2025-11-29T04:00:00Z,04:34,04:34,Ed Sheeran,Camera,205,216,3.42,3.6
 2025-11-29T04:00:00Z,04:41,04:41,Taylor Swift,Anti-Hero,191,201,3.18,3.35
-2025-11-29T04:00:00Z,04:44,04:44,UB40,(I Can't Help) Falling in Love With You,166,203,2.77,3.38
+2025-11-29T04:00:00Z,04:45,04:45,UB40,(I Can't Help) Falling in Love With You,166,203,2.77,3.38
 2025-11-29T04:00:00Z,04:47,04:47,The Pogues featuring Kirsty MacColl,Fairytale Of New York,252,265,4.2,4.42
 2025-11-29T04:00:00Z,04:52,04:52,Franz Ferdinand,Take Me Out,195,204,3.25,3.4
 2025-11-29T04:00:00Z,04:55,04:55,The Wombats,Let's Dance To Joy Division,175,182,2.92,3.03
@@ -1717,105 +1714,53 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-29T12:00:00Z,12:50,12:50,Clean Bandit Feat. Zara Larsson,Symphony,169,175,2.82,2.92
 2025-11-29T12:00:00Z,12:53,12:53,Blondie,Heart of Glass,191,204,3.18,3.4
 2025-11-29T12:00:00Z,12:56,12:56,LeAnn Rimes,Life Goes On,189,206,3.15,3.43
-2025-11-29T13:00:00Z,13:00,13:00,Anastacia,Made For Lovin' You,191,213,3.18,3.55
-2025-11-29T13:00:00Z,13:03,13:03,Steps,One For Sorrow,244,252,4.07,4.2
-2025-11-29T13:00:00Z,13:07,13:07,Five,Don't Want To Let You Go,207,215,3.45,3.58
-2025-11-29T13:00:00Z,13:11,13:11,Status Quo,In The Army Now,206,212,3.43,3.53
-2025-11-29T13:00:00Z,13:14,13:14,Steve Harley & Cockney Rebel,Make Me Smile (Come up and See Me),228,236,3.8,3.93
-2025-11-29T13:00:00Z,13:18,13:18,Sunset Strippers,Falling Stars,194,198,3.23,3.3
-2025-11-29T13:00:00Z,13:22,13:22,Toni Braxton,Unbreak My Heart (Remix),265,267,4.42,4.45
-2025-11-29T13:00:00Z,13:26,13:26,The Feeling,Never Be Lonely,209,210,3.48,3.5
-2025-11-29T13:00:00Z,13:29,13:29,Lisa Stansfield,All Around the World,258,267,4.3,4.45
-2025-11-29T13:00:00Z,13:34,13:34,The Cars,My Best Friend's Girl,212,221,3.53,3.68
-2025-11-29T13:00:00Z,13:38,13:38,Texas ft Paul Buchanan,Sleep,210,213,3.5,3.55
-2025-11-29T13:00:00Z,13:41,13:41,Fatboy Slim,"Right Here, Right Now",228,236,3.8,3.93
-2025-11-29T13:00:00Z,13:45,13:45,Red Hot Chili Peppers,Road Trippin',200,202,3.33,3.37
-2025-11-29T13:00:00Z,13:48,13:48,Fine Young Cannibals,She Drives Me Crazy,207,211,3.45,3.52
-2025-11-29T13:00:00Z,13:52,13:52,Al Green,Tired of Being Alone,163,168,2.72,2.8
-2025-11-29T13:00:00Z,13:55,13:55,The Beta Band,Dry The Rain,358,367,5.97,6.12
-2025-11-29T14:00:00Z,14:00,14:00,The Corrs,Would You Be Happier,197,206,3.28,3.43
-2025-11-29T14:00:00Z,14:03,14:03,Pras Michel feat. ODB & Mya,Ghetto Supastar (That Is What You Are),190,195,3.17,3.25
-2025-11-29T14:00:00Z,14:06,14:06,Mutya Buena,Real Girl,203,204,3.38,3.4
-2025-11-29T14:00:00Z,14:09,14:09,Yazoo,Don't Go,167,177,2.78,2.95
-2025-11-29T14:00:00Z,14:12,14:12,Rod Stewart,Young Turks,289,301,4.82,5.02
-2025-11-29T14:00:00Z,14:17,14:17,Orson,Ain't No Party,191,198,3.18,3.3
-2025-11-29T14:00:00Z,14:20,14:20,Billie,Because We Want To,217,228,3.62,3.8
-2025-11-29T14:00:00Z,14:24,14:24,Lucie Silvas,Breathe In,216,226,3.6,3.77
-2025-11-29T14:00:00Z,14:28,14:28,Belinda Carlisle,Circle In The Sand,213,218,3.55,3.63
-2025-11-29T14:00:00Z,14:31,14:31,The Righteous Brothers,Unchained Melody,213,219,3.55,3.65
-2025-11-29T14:00:00Z,14:35,14:35,Bob Sinclar Feat. Steve Edwards,"World, Hold On (Children of the Sky)",196,195,3.27,3.25
-2025-11-29T14:00:00Z,14:38,14:38,Weezer,Buddy Holly,158,160,2.63,2.67
-2025-11-29T14:00:00Z,14:41,14:41,Manic Street Preachers,So Why So Sad?,222,227,3.7,3.78
-2025-11-29T14:00:00Z,14:44,14:44,Laura Branigan,Gloria,225,231,3.75,3.85
-2025-11-29T14:00:00Z,14:48,14:48,Suzi Quatro,Can the Can,208,214,3.47,3.57
-2025-11-29T14:00:00Z,14:52,14:52,James Blunt,Same Mistake,288,298,4.8,4.97
-2025-11-29T14:00:00Z,14:57,14:57,Freak Power,"Turn on, Tune in, Cop Out",252,259,4.2,4.32
-2025-11-29T15:00:00Z,15:00,15:00,Brian McFadden,Irish Son,252,258,4.2,4.3
-2025-11-29T15:00:00Z,15:04,15:04,Dawn Penn,"You Don't Love Me (No, No, No)",188,200,3.13,3.33
-2025-11-29T15:00:00Z,15:07,15:07,McFly,I'll Be OK,181,202,3.02,3.37
-2025-11-29T15:00:00Z,15:10,15:10,A Flock Of Seagulls,Wishing (If I Had A Photograph Of You),245,253,4.08,4.22
-2025-11-29T15:00:00Z,15:14,15:14,Carpenters,Only Yesterday,210,226,3.5,3.77
-2025-11-29T15:00:00Z,15:18,15:18,Lemar,Tick Tock,193,199,3.22,3.32
-2025-11-29T15:00:00Z,15:21,15:21,New Order,Regret,238,248,3.97,4.13
-2025-11-29T15:00:00Z,15:25,15:25,Atomic Kitten,It's OK,194,199,3.23,3.32
-2025-11-29T15:00:00Z,15:28,15:28,Billy Idol,Rebel Yell,220,223,3.67,3.72
-2025-11-29T15:00:00Z,15:32,15:32,10cc,Life Is A Minestrone,274,279,4.57,4.65
-2025-11-29T15:00:00Z,15:37,15:37,Kula Shaker,Tattva,259,263,4.32,4.38
-2025-11-29T15:00:00Z,15:41,15:41,Bob Marley & The Wailers,Could You Be Loved,222,234,3.7,3.9
-2025-11-29T15:00:00Z,15:45,15:45,England Dan & John Ford Coley,I'd Really Love to See You Tonight,147,158,2.45,2.63
-2025-11-29T15:00:00Z,15:48,15:48,Lenny Kravitz,Fly Away,218,222,3.63,3.7
-2025-11-29T15:00:00Z,15:51,15:51,Alphaville,Forever Young,211,217,3.52,3.62
-2025-11-29T15:00:00Z,15:55,15:55,Donna Summer,Love's Unkind,266,273,4.43,4.55
-2025-11-29T16:00:00Z,16:00,16:00,TLC,Unpretty,241,249,4.02,4.15
-2025-11-29T16:00:00Z,16:04,16:04,INXS,New Sensation,218,224,3.63,3.73
-2025-11-29T16:00:00Z,16:08,16:08,Alice Cooper,Schools Out,207,207,3.45,3.45
-2025-11-29T16:00:00Z,16:11,16:11,Lightning Seeds,The Life of Riley,237,243,3.95,4.05
-2025-11-29T16:00:00Z,16:15,16:15,Billy Joel,We Didn't Start the Fire,253,268,4.22,4.47
-2025-11-29T16:00:00Z,16:19,16:19,Joe Jackson,It's Different for Girls,208,219,3.47,3.65
-2025-11-29T16:00:00Z,16:23,16:23,Ronan Keating,If Tomorrow Never Comes,206,217,3.43,3.62
-2025-11-29T16:00:00Z,16:27,16:27,Alanis Morissette,Head Over Feet,251,265,4.18,4.42
-2025-11-29T16:00:00Z,16:31,16:31,RUN-DMC,It's Tricky,182,185,3.03,3.08
-2025-11-29T16:00:00Z,16:34,16:34,David Essex,Hold Me Close,219,231,3.65,3.85
-2025-11-29T16:00:00Z,16:38,16:38,Deep Blue Something,Breakfast at Tiffany's,248,257,4.13,4.28
-2025-11-29T16:00:00Z,16:42,16:42,Lionel Richie,Dancing on the Ceiling,256,261,4.27,4.35
-2025-11-29T16:00:00Z,16:46,16:46,The Police,Can't Stand Losing You,153,158,2.55,2.63
-2025-11-29T16:00:00Z,16:49,16:49,Cast,Alright,208,216,3.47,3.6
-2025-11-29T16:00:00Z,16:52,16:52,Razorlight,In the Morning,216,217,3.6,3.62
-2025-11-29T16:00:00Z,16:56,16:56,Abba,Super Trouper,245,253,4.08,4.22
-2025-11-29T17:00:00Z,17:02,17:02,Essential Radio,The JanCave 70s Jukebox with Jan Gow,3585,3597,59.75,59.95
-2025-11-29T22:00:00Z,22:00,22:00,Natasha Bedingfield,I Wanna Have Your Babies,207,217,3.45,3.62
-2025-11-29T22:00:00Z,22:03,22:03,Gabrielle,Rise,207,232,3.45,3.87
-2025-11-29T22:00:00Z,22:07,22:07,Cher,If I Could Turn Back Time,225,237,3.75,3.95
-2025-11-29T22:00:00Z,22:11,22:11,Yvonne Elliman,If I Can't Have You,171,177,2.85,2.95
-2025-11-29T22:00:00Z,22:14,22:14,Zoe,Sunshine on a Rainy Day,229,241,3.82,4.02
-2025-11-29T22:00:00Z,22:18,22:18,Huey Lewis & The News,Stuck With You,257,267,4.28,4.45
-2025-11-29T22:00:00Z,22:22,22:22,Thin Lizzy,The Boys Are Back in Town,182,187,3.03,3.12
-2025-11-29T22:00:00Z,22:25,22:25,Brandy with Monica,The Boy Is Mine,239,240,3.98,4.0
-2025-11-29T22:00:00Z,22:29,22:29,ZZ Top,Gimme All Your Lovin',235,239,3.92,3.98
-2025-11-29T22:00:00Z,22:33,22:33,Tom Robinson Band,2-4-6-8 Motorway,190,198,3.17,3.3
-2025-11-29T22:00:00Z,22:37,22:37,Wannadies,You and Me Song,164,171,2.73,2.85
-2025-11-29T22:00:00Z,22:40,22:40,The Cure,Close to Me,211,214,3.52,3.57
-2025-11-29T22:00:00Z,22:43,22:43,Gerry Rafferty,Get It Right Next Time,268,282,4.47,4.7
-2025-11-29T22:00:00Z,22:48,22:48,Foo Fighters,Learn to Fly,232,235,3.87,3.92
-2025-11-29T22:00:00Z,22:52,22:52,Tina Turner,Typical Male,245,252,4.08,4.2
-2025-11-29T22:00:00Z,22:56,22:56,Matthews Southern Comfort,Woodstock,262,268,4.37,4.47
-2025-11-29T23:00:00Z,23:00,23:00,Chesney Hawkes,The One and Only,215,221,3.58,3.68
-2025-11-29T23:00:00Z,23:03,23:03,Aztec Camera,Somewhere in My Heart,227,242,3.78,4.03
-2025-11-29T23:00:00Z,23:07,23:07,The Sugarhill Gang,Rapper's Delight,234,238,3.9,3.97
-2025-11-29T23:00:00Z,23:12,23:12,Lighthouse Family,Ocean Drive,222,231,3.7,3.85
-2025-11-29T23:00:00Z,23:15,23:15,De La Soul,Me Myself and I,201,203,3.35,3.38
-2025-11-29T23:00:00Z,23:19,23:19,The Sweet,Wig Wam Bam,176,182,2.93,3.03
-2025-11-29T23:00:00Z,23:22,23:22,Warren G & Nate Dogg,Regulate,226,232,3.77,3.87
-2025-11-29T23:00:00Z,23:26,23:26,T'Pau,Heart and Soul,231,255,3.85,4.25
-2025-11-29T23:00:00Z,23:30,23:30,Sheila & B Devotion,Spacer,208,214,3.47,3.57
-2025-11-29T23:00:00Z,23:33,23:33,Len,Steal My Sunshine,203,213,3.38,3.55
-2025-11-29T23:00:00Z,23:37,23:37,Madness,Baggy Trousers,154,168,2.57,2.8
-2025-11-29T23:00:00Z,23:39,23:39,Blue Oyster Cult,(Don't Fear) The Reaper,219,231,3.65,3.85
-2025-11-29T23:00:00Z,23:43,23:43,Usher,You Make Me Wanna...,210,220,3.5,3.67
-2025-11-29T23:00:00Z,23:46,23:46,Tears for Fears,Sowing the Seeds of Love,227,238,3.78,3.97
-2025-11-29T23:00:00Z,23:50,23:50,Gallagher & Lyle,Heart On My Sleeve,188,198,3.13,3.3
-2025-11-29T23:00:00Z,23:54,23:54,Crash Test Dummies,Mmm Mmm Mmm Mmm,216,221,3.6,3.68
-2025-11-29T23:00:00Z,23:57,23:57,Joy Division,Love Will Tear Us Apart,186,191,3.1,3.18
+2025-11-29T13:00:00Z,13:00,13:00,LeAnn Rimes,Life Goes On,3600,3600,60.0,60.0
+2025-11-29T13:00:00Z,13:00,13:00,Big Tommy,The Saturday Music Marathon,3600,3600,60.0,60.0
+2025-11-29T13:00:00Z,13:00,13:00,1PM SMM,JUKEBOX LIVE - GUESS THE LINK,3600,3600,60.0,60.0
+2025-11-29T13:00:00Z,13:20,13:20,1.20PM SMM,MTWCS - ROSE ROYCE & HALL & OATES,3600,3600,60.0,60.0
+2025-11-29T13:00:00Z,13:30,13:30,1.30PM SMM,ATLANTIC & TAMLA MOTOWN MEGAMIX,3600,3600,60.0,60.0
+2025-11-29T13:00:00Z,13:45,13:45,08,PLAYING NOTHING WET,3600,3600,60.0,60.0
+2025-11-29T13:00:00Z,13:45,13:45,1.45PM SMM,BOB DYLAN FEATURED ARTIST,3600,3600,60.0,60.0
+2025-11-29T13:00:00Z,13:45,13:45,1.45PM SMM,BOB DYLAN FEATURED ARTIST,885,885,14.75,14.75
+2025-11-29T14:00:00Z,14:00,14:00,1.45PM SMM,BOB DYLAN FEATURED ARTIST,3600,3600,60.0,60.0
+2025-11-29T14:00:00Z,14:00,14:00,1.45PM SMM,BOB DYLAN FEATURED ARTIST,3600,3600,60.0,60.0
+2025-11-29T14:00:00Z,14:00,14:00,2PM SMM,DISCO STUS DOUBLE DECKS,3600,3600,60.0,60.0
+2025-11-29T14:00:00Z,14:15,14:15,2.15PM SMM,ASHES TO ASHES MEGAMIX,3600,3600,60.0,60.0
+2025-11-29T14:00:00Z,14:30,14:30,2.30PM SMM,BILL GRAINGERS FIRE ISLAND HI NRG,3600,3600,60.0,60.0
+2025-11-29T14:00:00Z,14:51,14:51,2.50PM SMM,FERDINAND RENNIES DOUBLE PLAY,3600,3600,60.0,60.0
+2025-11-29T14:00:00Z,14:51,14:51,2.50PM SMM,FERDINAND RENNIES DOUBLE PLAY,555,555,9.25,9.25
+2025-11-29T15:00:00Z,15:00,15:00,2.50PM SMM,FERDINAND RENNIES DOUBLE PLAY,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:00,15:00,2.50PM SMM,FERDINAND RENNIES DOUBLE PLAY,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:00,15:00,235d,SCOTLANDIA GUS BACKING BED,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:05,15:05,SMM,STU RADIO BINGO 1 WET,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:05,15:05,1000 Original Hits 1984,08 - Tracey Ullman - Sunglasses,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:08,15:08,1000 Original Hits 1983,18 - Fun Boy Three - Our Lips Are Sealed,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:11,15:11,1000 Original Hits 1983,13 - The Beat - Can't Get Used To Losing You,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:14,15:14,MAUREEN,THE SMM JINGLE WET,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:14,15:14,1000 Original Hits 1985,14 - The Colourfield - Thinking Of You,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:17,15:17,1000 Original Hits 1983,11 - Kim Wilde - Love blonde,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:21,15:21,1000 Original Hits 1983,05 - Kajagoogoo - Too Shy,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:24,15:24,1000 Original Hits 1985,07 - Marillion - Kayleigh,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:28,15:28,1000 Original Hits 1986,01 - Sly Fox - Let's Go All The Way,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:31,15:31,02,SMM GREAT MUSIC 1 WET,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:32,15:32,1000 Original Hits 1983,02 - KC & The Sunshine Band - Give It Up,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:36,15:36,1000 Original Hits 1984,09 - Alvin Stardust - I Feel Like Buddy Holly,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:39,15:39,1000 Original Hits 1984,01 - Ultravox - Dancing With Tears In My Eyes,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:43,15:43,1000 Original Hits 1986,05 - Paul Hardcastle - Don't Waste My Time,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:48,15:48,03,SMM GREAT MUSIC 2 WET,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:48,15:48,1000 Original Hits 1985,18 - Baltimora - Tarzan Boy,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:51,15:51,1000 Original Hits 1985,02 - Feargal Sharkey - A Good Heart,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:56,15:56,1000 Original Hits 1985,05 - Midge Ure - If I Was,3600,3600,60.0,60.0
+2025-11-29T15:00:00Z,15:56,15:56,1000 Original Hits 1985,05 - Midge Ure - If I Was,369,369,6.15,6.15
+2025-11-29T16:00:00Z,16:45,16:45,4.45PM SMM,1988 T0 1992 HOUSE MEGAMIX,853,853,14.22,14.22
+2025-11-29T16:00:00Z,17:00,17:00,Big Tommy,The Saturday Music Marathon,3600,3600,60.0,60.0
+2025-11-29T17:00:00Z,18:00,18:00,Jan Gow,The Jan Cave 70s Jukebox,3600,3600,60.0,60.0
+2025-11-29T18:00:00Z,19:00,19:00,Tim Graham,The LGBTQ Music Chart,7200,7200,120.0,120.0
+2025-11-29T19:00:00Z,19:00,19:00,Stephen Howie,Grooveline,7200,7200,120.0,120.0
+2025-11-29T20:00:00Z,21:00,21:00,Stephen Howie,Grooveline,10740,10740,179.0,179.0
+2025-11-29T21:00:00Z,21:00,21:00,Big Tommy,Big Fat Party Anthems,10740,10740,179.0,179.0
+2025-11-29T22:00:00Z,21:00,21:00,Big Tommy,Big Fat Party Anthems,10740,10740,179.0,179.0
+2025-11-29T23:00:00Z,00:00,00:00,Essential Radio,On Air,3600,3600,60.0,60.0
 2025-11-30T01:00:00Z,01:02,01:02,Ed Sheeran,Sapphire,174,179,2.9,2.98
 2025-11-30T01:00:00Z,01:05,01:05,Kelly Clarkson,Underneath the Tree,211,227,3.52,3.78
 2025-11-30T01:00:00Z,01:09,01:09,Demi Lovato,Here All Night,169,177,2.82,2.95
@@ -1923,9 +1868,9 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-30T08:00:00Z,08:19,08:19,Myles Smith,Nice To Meet You,171,176,2.85,2.93
 2025-11-30T08:00:00Z,08:22,08:22,Def Leppard,Animal,240,247,4.0,4.12
 2025-11-30T08:00:00Z,08:26,08:26,Amy Winehouse,Back to Black,236,240,3.93,4.0
-2025-11-30T08:00:00Z,08:32,08:32,Healthspan,The Dr Hilary Show,1629,1680,27.15,28.0
-2025-11-30T08:00:00Z,09:01,09:01,Ben Folds,Landed,257,269,4.28,4.48
-2025-11-30T09:00:00Z,09:02,09:02,Essential Radio,The Week in Holyrood with Charles Fletcher,3401,3420,56.68,57.0
+2025-11-30T08:00:00Z,08:32,08:32,Healthspan,The Dr Hilary Show,1578,1627,26.3,27.12
+2025-11-30T08:00:00Z,09:00,09:00,Dr Hilary Jones,The Dr Hilary Show,3600,3600,60.0,60.0
+2025-11-30T09:00:00Z,09:02,09:02,Essential Radio,The Week in Holyrood with Charles Fletcher,3398,3421,56.63,57.02
 2025-11-30T10:00:00Z,10:01,10:01,The Bluebells,Young at Heart,184,202,3.07,3.37
 2025-11-30T10:00:00Z,10:05,10:05,Big Country,One Great Thing,233,240,3.88,4.0
 2025-11-30T10:00:00Z,10:09,10:09,Gerry Cinnamon,Belter,178,194,2.97,3.23
@@ -1942,7 +1887,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-30T10:00:00Z,10:47,10:47,Stevie McCrorie,Lost Stars,188,197,3.13,3.28
 2025-11-30T10:00:00Z,10:51,10:51,Simple Minds,Promised You a Miracle,220,239,3.67,3.98
 2025-11-30T10:00:00Z,10:54,10:54,Frankie Miller,Caledonia,201,213,3.35,3.55
-2025-11-30T10:00:00Z,10:58,10:58,The Supernaturals,Lazy Lover,180,188,3.0,3.13
 2025-11-30T11:00:00Z,11:03,11:03,Danny Wilson,Mary's Prayer,218,228,3.63,3.8
 2025-11-30T11:00:00Z,11:07,11:07,Biffy Clyro,Mountains,192,201,3.2,3.35
 2025-11-30T11:00:00Z,11:10,11:10,Lulu,Independence,233,255,3.88,4.25
@@ -1986,25 +1930,90 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-11-30T13:00:00Z,13:46,13:46,Del Amitri,Roll to Me,123,130,2.05,2.17
 2025-11-30T13:00:00Z,13:49,13:49,Blue,One Love,202,205,3.37,3.42
 2025-11-30T13:00:00Z,13:52,13:52,Coldplay,Christmas Lights,230,242,3.83,4.03
-2025-11-30T14:00:00Z,14:00,14:00,Spencer James,Airplay 40,3542,3543,59.03,59.05
-2025-11-30T15:00:00Z,15:00,15:00,Spencer James,Airplay 40,3478,3480,57.97,58.0
-2025-11-30T16:00:00Z,16:00,16:00,Spencer James,Airplay 40,3589,3590,59.82,59.83
-2025-11-30T17:00:00Z,18:00,18:00,Blazin' Squad,We Just Be Dreamin',205,208,3.42,3.47
-2025-11-30T19:00:00Z,19:00,19:00,Essential Radio,The Mr Rocks Show with Kevin McCallum,7188,7193,119.8,119.88
-2025-11-30T20:00:00Z,20:00,20:00,James,Getting Away With It (All Messed Up),244,250,4.07,4.17
-2025-11-30T20:00:00Z,20:04,20:04,Olive,You're Not Alone,245,254,4.08,4.23
-2025-11-30T20:00:00Z,20:08,20:08,De La Soul,Me Myself and I,201,203,3.35,3.38
-2025-11-30T20:00:00Z,20:11,20:11,The Nolans,I'm in the Mood for Dancing,190,197,3.17,3.28
-2025-11-30T20:00:00Z,20:15,20:15,Emma Bunton,Take My Breath Away,213,223,3.55,3.72
-2025-11-30T20:00:00Z,20:18,20:18,Supergrass,Moving,259,266,4.32,4.43
-2025-11-30T20:00:00Z,20:22,20:22,David Bowie,Let's Dance,234,249,3.9,4.15
-2025-11-30T20:00:00Z,20:26,20:26,Hot Chocolate,So You Win Again,254,260,4.23,4.33
-2025-11-30T20:00:00Z,20:31,20:31,Scouting for Girls,Famous,152,156,2.53,2.6
-2025-11-30T20:00:00Z,20:34,20:34,Natalie Imbruglia,Wishing I Was There,236,246,3.93,4.1
-2025-11-30T20:00:00Z,20:37,20:37,U2,Walk On,238,251,3.97,4.18
-2025-11-30T20:00:00Z,20:41,20:41,Cameo,Word Up,253,257,4.22,4.28
-2025-11-30T20:00:00Z,20:46,20:46,T.Rex,Ride A White Swan,126,130,2.1,2.17
-2025-11-30T20:00:00Z,20:48,20:48,Black Eyed Peas,Don't Phunk With My Heart,239,240,3.98,4.0
+2025-11-30T14:00:00Z,14:00,14:00,Coldplay,Christmas Lights,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:00,14:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:07,14:07,Cat Burns,Lavender,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:10,14:10,LADY_GAGA,The Dead Dance,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:14,14:14,SIENNA SPIRO,Die On This Hill,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:19,14:19,Robbie Williams,Pretty Face,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:23,14:23,marshmello & Hudson Westbrook,Better Man Than Me,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:25,14:25,Lola Young,SPIDERS,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:30,14:30,Ed Sheeran,Symmetry,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:33,14:33,Melanie C,Sweat,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:36,14:36,Pink Pantheress,Stateside,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:41,14:41,Robyn,Dopamine,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:45,14:45,JISOO & Zayn,EYES CLOSED,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:49,14:49,Selena Gomez,In The Dark,3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:52,14:52,Chappell Roan,The Subway (Clean),3600,3600,60.0,60.0
+2025-11-30T14:00:00Z,14:52,14:52,Chappell Roan,The Subway (Clean),489,489,8.15,8.15
+2025-11-30T15:00:00Z,15:00,15:00,Chappell Roan,The Subway (Clean),3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:00,15:00,Chappell Roan,The Subway (Clean),3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:00,15:00,Spencer James,Airplay 40,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:00,15:00,Morgan Wallen,Graveyard Whistling,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:04,15:04,Madison Beer,bittersweet,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:09,15:09,Zara Larsson,Blue Moon,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:11,15:11,Olivia Dean,Man I Need,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:15,15:15,Katy Perry,bandaids,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:20,15:20,Taylor Swift & Sabrina Carpenter,The Life of a Showgirl,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:24,15:24,Olly Murs,Run This Town,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:28,15:28,Lewis Capaldi,Something In The Heavens,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:32,15:32,Saja Boys,Golden (Soundtrack From The Netflix Film 'KPop Demon Hunters'),3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:35,15:35,Charlie Puth,Changes,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:39,15:39,Mumford & Sons & Hozier,Rubber Band Man,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:44,15:44,Teddy Swims & Tones & I,Gone Gone Gone (Radio Edit),3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:48,15:48,Olivia Dean,A Couple Minutes,3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:51,15:51,Anne-Marie,Depressed (Clean),3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:54,15:54,Sigala x Leigh-Anne x Jonita Gandhi,Hello (Radio Edit),3600,3600,60.0,60.0
+2025-11-30T15:00:00Z,15:54,15:54,Sigala x Leigh-Anne x Jonita Gandhi,Hello (Radio Edit),355,355,5.92,5.92
+2025-11-30T16:00:00Z,16:00,16:00,Spencer James,Airplay 40,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:00,16:00,Lily Allen,West End Girl,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:02,16:02,Lewis Capaldi,Almost,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:06,16:06,Louis Tomlinson,Lemonade,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:09,16:09,Sabrina Carpenter,House Tour,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:12,16:12,Ravyn Lenae,Love Me Not,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:16,16:16,Sam Fender & Elton John,Talk To You (Clean),3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:23,16:23,Teddy Swims,You've Got Another Thing Coming (From the Netflix series 'Nobody Wants This' Season 2),3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:26,16:26,Charli XCX,Chains Of Love,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:29,16:29,Myles Smith,Stay (If You Wanna Dance),3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:32,16:32,Calum Scott & Whitney Houston,I Wanna Dance With Somebody (Who Loves Me),3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:35,16:35,Ed Sheeran,Camera,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:41,16:41,Taylor Swift,The Fate of Ophelia,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:45,16:45,Taylor Swift,Opalite,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:52,16:52,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T16:00:00Z,16:52,16:52,Raye,WHERE IS MY HUSBAND?,594,594,9.9,9.9
+2025-11-30T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:02,17:02,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:02,17:02,Shakin' Stevens,What Do You Want To Make Those Eyes At Me For,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:05,17:05,The Housemartins,Build,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:10,17:10,Bananarama,Love in the First Degree,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:13,17:13,The Bee Gees,You Win Again,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:17,17:17,Donna Summer,Dinner with Gershwin,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:21,17:21,Maxi Priest,Some Guys Have All the Luck,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:25,17:25,The Proclaimers,Letter From America,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:31,17:31,Whitesnake,Here I Go Again,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:35,17:35,Bill Medley & Jennifer Warnes,(I've Had) The Time of My Life,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:39,17:39,Whitney Houston,So Emotional,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:43,17:43,The Communards,Never Can Say Goodbye,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:47,17:47,Rick Astley,Whenever You Need Somebody,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:51,17:51,George Harrison,Got My Mind Set on You,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:56,17:56,T'Pau,China in Your Hand,3600,3600,60.0,60.0
+2025-11-30T17:00:00Z,17:56,17:56,T'Pau,China in Your Hand,277,277,4.62,4.62
+2025-11-30T18:00:00Z,18:55,18:55,Various Artists,Perfect Day,275,275,4.58,4.58
+2025-11-30T18:00:00Z,19:00,19:00,Brian Woolfson,Retro Charts (1987 & 1997),7200,7200,120.0,120.0
+2025-11-30T19:00:00Z,19:00,19:00,Kevin McCallum,The Mr Rocks Show,7200,7200,120.0,120.0
+2025-11-30T20:00:00Z,21:00,21:00,Kevin McCallum,The Mr Rocks Show,7200,7200,120.0,120.0
+2025-11-30T21:00:00Z,21:00,21:00,Emma Scott,The Pluggin' Baby Radio Show,7200,7200,120.0,120.0
+2025-11-30T22:00:00Z,23:00,23:00,Emma Scott,The Pluggin' Baby Radio Show,3540,3540,59.0,59.0
+2025-11-30T23:00:00Z,00:00,00:00,Essential Radio,On Air,7200,7200,120.0,120.0
+2025-12-01T00:00:00Z,00:00,00:00,David Southway,Soul Vaults,7200,7200,120.0,120.0
 2025-12-01T02:00:00Z,02:01,02:01,Shakin' Stevens,Merry Christmas Everyone,217,220,3.62,3.67
 2025-12-01T02:00:00Z,02:05,02:05,Tate McRae,Just Keep Watching,141,143,2.35,2.38
 2025-12-01T02:00:00Z,02:08,02:08,Coldplay,Feels Like I'm Falling in Love,219,224,3.65,3.73
@@ -2106,7 +2115,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-01T09:00:00Z,09:12,09:12,Tom Grennan,All These Nights,151,154,2.52,2.57
 2025-12-01T09:00:00Z,09:15,09:15,Take That ft Lulu,Relight My Fire,236,250,3.93,4.17
 2025-12-01T09:00:00Z,09:25,09:25,Coldplay,Feels Like I'm Falling in Love,221,224,3.68,3.73
-2025-12-01T09:00:00Z,09:29,09:29,Darlene Love,Marshmallow World,142,144,2.37,2.4
+2025-12-01T09:00:00Z,09:30,09:30,Darlene Love,Marshmallow World,142,144,2.37,2.4
 2025-12-01T09:00:00Z,09:32,09:32,Sienna Spiro,Die On This Hill,210,217,3.5,3.62
 2025-12-01T09:00:00Z,09:36,09:36,Train,"Hey, Soul Sister",209,217,3.48,3.62
 2025-12-01T09:00:00Z,09:40,09:40,Olivia Dean,So Easy (To Fall In Love),165,169,2.75,2.82
@@ -2159,7 +2168,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-01T13:00:00Z,13:12,13:12,Jess Glynne,Hold My Hand,216,227,3.6,3.78
 2025-12-01T13:00:00Z,13:16,13:16,Mary Mary,Shackles (Praise You),177,197,2.95,3.28
 2025-12-01T13:00:00Z,13:23,13:23,Tom Grennan,How Does It Feel,133,144,2.22,2.4
-2025-12-01T13:00:00Z,13:25,13:25,Dodgy,Good Enough,222,241,3.7,4.02
+2025-12-01T13:00:00Z,13:26,13:26,Dodgy,Good Enough,222,241,3.7,4.02
 2025-12-01T13:00:00Z,13:29,13:29,Becky Hill & David Guetta,Remember,151,161,2.52,2.68
 2025-12-01T13:00:00Z,13:32,13:32,Benson Boone,Mystical Magical,157,166,2.62,2.77
 2025-12-01T13:00:00Z,13:35,13:35,Sekou,Catching Bodies,174,186,2.9,3.1
@@ -2251,7 +2260,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-01T19:00:00Z,19:28,19:28,Nickelback,Rockstar,240,251,4.0,4.18
 2025-12-01T19:00:00Z,19:32,19:32,The Stone Roses,Love Spreads,286,296,4.77,4.93
 2025-12-01T19:00:00Z,19:41,19:41,Alphabeat,10.000 Nights,201,208,3.35,3.47
-2025-12-01T19:00:00Z,19:44,19:44,TLC,No Scrubs,204,246,3.4,4.1
+2025-12-01T19:00:00Z,19:45,19:45,TLC,No Scrubs,204,246,3.4,4.1
 2025-12-01T19:00:00Z,19:48,19:48,Vanessa Carlton,A Thousand Miles,226,236,3.77,3.93
 2025-12-01T19:00:00Z,19:52,19:52,Erasure,Love to Hate You,218,236,3.63,3.93
 2025-12-01T19:00:00Z,19:56,19:56,LeAnn Rimes,Can't Fight the Moonlight,204,215,3.4,3.58
@@ -2349,10 +2358,10 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-02T02:00:00Z,02:41,02:41,Dasha,Austin (Boots Stop Workin'),163,172,2.72,2.87
 2025-12-02T02:00:00Z,02:44,02:44,Squeeze,Tempted,219,239,3.65,3.98
 2025-12-02T02:00:00Z,02:47,02:47,Meghan Trainor,Made You Look,129,134,2.15,2.23
-2025-12-02T02:00:00Z,02:49,02:49,Daft Punk Feat. Pharrell Williams,Get Lucky,234,249,3.9,4.15
+2025-12-02T02:00:00Z,02:50,02:50,Daft Punk Feat. Pharrell Williams,Get Lucky,234,249,3.9,4.15
 2025-12-02T02:00:00Z,02:53,02:53,Taio Cruz,Higher,176,188,2.93,3.13
 2025-12-02T03:00:00Z,03:01,03:01,Lewis Capaldi,The Day That I Die,169,175,2.82,2.92
-2025-12-02T03:00:00Z,03:04,03:04,Hozier,Too Sweet,239,251,3.98,4.18
+2025-12-02T03:00:00Z,03:05,03:05,Hozier,Too Sweet,239,251,3.98,4.18
 2025-12-02T03:00:00Z,03:09,03:09,Myles Smith,Nice To Meet You,167,176,2.78,2.93
 2025-12-02T03:00:00Z,03:12,03:12,Sheryl Crow,All I Wanna Do,235,249,3.92,4.15
 2025-12-02T03:00:00Z,03:16,03:16,"Calvin Harris, Ellie Goulding",Miracle,171,186,2.85,3.1
@@ -2438,8 +2447,8 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-02T09:00:00Z,09:25,09:25,Ariana Grande,Santa Tell Me,201,202,3.35,3.37
 2025-12-02T09:00:00Z,09:29,09:29,Lola Young,D£aler,157,160,2.62,2.67
 2025-12-02T09:00:00Z,09:31,09:31,Blur,Country House,222,238,3.7,3.97
-2025-12-02T09:00:00Z,09:35,09:35,Sabrina Carpenter,Tears,155,160,2.58,2.67
-2025-12-02T09:00:00Z,09:39,09:39,Cliff Richard,Mistletoe & Wine,226,234,3.77,3.9
+2025-12-02T09:00:00Z,09:36,09:36,Sabrina Carpenter,Tears,155,160,2.58,2.67
+2025-12-02T09:00:00Z,09:40,09:40,Cliff Richard,Mistletoe & Wine,226,234,3.77,3.9
 2025-12-02T09:00:00Z,09:43,09:43,Amy Macdonald,I'm Done (Games That You Play),180,184,3.0,3.07
 2025-12-02T09:00:00Z,09:52,09:52,Olivia Rodrigo,Good 4 U,176,178,2.93,2.97
 2025-12-02T09:00:00Z,09:56,09:56,Fleetwood Mac,Go Your Own Way,211,217,3.52,3.62
@@ -2450,7 +2459,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-02T10:00:00Z,10:22,10:22,Dasha,Austin (Boots Stop Workin'),167,172,2.78,2.87
 2025-12-02T10:00:00Z,10:25,10:25,RAYE,Where Is My Husband!,193,197,3.22,3.28
 2025-12-02T10:00:00Z,10:29,10:29,Queen,We Will Rock You,120,121,2.0,2.02
-2025-12-02T10:00:00Z,10:31,10:31,Def Leppard,Pour Some Sugar on Me,289,293,4.82,4.88
+2025-12-02T10:00:00Z,10:32,10:32,Def Leppard,Pour Some Sugar on Me,289,293,4.82,4.88
 2025-12-02T10:00:00Z,10:37,10:37,Nelly Furtado,I'm Like a Bird,230,245,3.83,4.08
 2025-12-02T10:00:00Z,10:40,10:40,Britney Spears,...Baby One More Time,208,211,3.47,3.52
 2025-12-02T10:00:00Z,10:49,10:49,Sister Sledge,Lost in Music,211,225,3.52,3.75
@@ -2614,7 +2623,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-02T22:00:00Z,22:06,22:06,Patrick Swayze Feat. Wendy Fraser,She's Like the Wind,218,233,3.63,3.88
 2025-12-02T22:00:00Z,22:10,22:10,Tina Arena,Heaven Help My Heart,234,250,3.9,4.17
 2025-12-02T22:00:00Z,22:14,22:14,Lady A,Need You Now,221,236,3.68,3.93
-2025-12-02T22:00:00Z,22:22,22:22,Lighthouse Family,High,273,275,4.55,4.58
 2025-12-02T22:00:00Z,22:26,22:26,Ben Folds Five,Brick,259,272,4.32,4.53
 2025-12-02T22:00:00Z,22:31,22:31,The Eagles,Please Come Home for Christmas,152,171,2.53,2.85
 2025-12-02T22:00:00Z,22:33,22:33,Youssou N'Dour ft Neneh Cherry,7 Seconds,226,253,3.77,4.22
@@ -2634,7 +2642,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-02T23:00:00Z,23:45,23:45,Alanis Morissette,Ironic,213,228,3.55,3.8
 2025-12-02T23:00:00Z,23:48,23:48,Boyz II Men,I'll Make Love to You,224,240,3.73,4.0
 2025-12-02T23:00:00Z,23:52,23:52,Five Star,Rain or Shine,223,236,3.72,3.93
-2025-12-03T00:00:00Z,00:01,00:01,Mariah Carey,All I Want for Christmas Is You,227,242,3.78,4.03
+2025-12-03T00:00:00Z,00:02,00:02,Mariah Carey,All I Want for Christmas Is You,227,242,3.78,4.03
 2025-12-03T00:00:00Z,00:06,00:06,Cat Burns,There's Just Something About Her,186,192,3.1,3.2
 2025-12-03T00:00:00Z,00:09,00:09,Shaboozey,A Bar Song (Tipsy),164,171,2.73,2.85
 2025-12-03T00:00:00Z,00:12,00:12,Jennifer Lopez,On the Floor,210,220,3.5,3.67
@@ -2775,11 +2783,11 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-03T10:00:00Z,10:05,10:05,Gracie Abrams,That's So True,160,166,2.67,2.77
 2025-12-03T10:00:00Z,10:09,10:09,Anne-Marie ft Shania Twain,Unhealthy,145,150,2.42,2.5
 2025-12-03T10:00:00Z,10:12,10:12,Kylie Minogue,In Your Eyes,193,199,3.22,3.32
-2025-12-03T10:00:00Z,10:15,10:15,"Jax Jones, Calum Scott",Whistle,178,182,2.97,3.03
+2025-12-03T10:00:00Z,10:16,10:16,"Jax Jones, Calum Scott",Whistle,178,182,2.97,3.03
 2025-12-03T10:00:00Z,10:26,10:26,Hozier,Too Sweet,246,251,4.1,4.18
 2025-12-03T10:00:00Z,10:30,10:30,Slade,Merry Xmas Everybody,219,224,3.65,3.73
 2025-12-03T10:00:00Z,10:34,10:34,U2,With or Without You,278,292,4.63,4.87
-2025-12-03T10:00:00Z,10:38,10:38,Brotherhood of Man,Figaro,164,175,2.73,2.92
+2025-12-03T10:00:00Z,10:39,10:39,Brotherhood of Man,Figaro,164,175,2.73,2.92
 2025-12-03T10:00:00Z,10:42,10:42,Daniel Bedingfield,I Can't Read You,241,245,4.02,4.08
 2025-12-03T10:00:00Z,10:50,10:50,Huey Lewis & the News,The Power of Love,223,230,3.72,3.83
 2025-12-03T10:00:00Z,10:54,10:54,Caity Baser,Running From Myself,154,157,2.57,2.62
@@ -3091,7 +3099,6 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-04T08:00:00Z,08:46,08:46,Harry Styles,Adore You,204,207,3.4,3.45
 2025-12-04T08:00:00Z,08:50,08:50,Yazz & the Plastic Population,The Only Way Is Up,232,242,3.87,4.03
 2025-12-04T08:00:00Z,08:54,08:54,Stevie Wonder,Happy Birthday,343,354,5.72,5.9
-2025-12-04T08:00:00Z,08:56,08:56,Stevie Wonder,Happy Birthday,343,354,5.72,5.9
 2025-12-04T09:00:00Z,09:05,09:05,Ed Sheeran,Camera,211,216,3.52,3.6
 2025-12-04T09:00:00Z,09:09,09:09,sombr,12 To 12,230,243,3.83,4.05
 2025-12-04T09:00:00Z,09:15,09:15,Taylor Swift,Blank Space (Taylor's Version),230,232,3.83,3.87
@@ -3099,7 +3106,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-04T09:00:00Z,09:28,09:28,Sam Ryder,You're Christmas To Me,198,214,3.3,3.57
 2025-12-04T09:00:00Z,09:31,09:31,Louis Tomlinson,Lemonade,156,159,2.6,2.65
 2025-12-04T09:00:00Z,09:34,09:34,Lewis Capaldi,Something In The Heavens,192,198,3.2,3.3
-2025-12-04T09:00:00Z,09:37,09:37,Marshmello & Jonas Brothers,Leave Before You Love Me,152,155,2.53,2.58
+2025-12-04T09:00:00Z,09:38,09:38,Marshmello & Jonas Brothers,Leave Before You Love Me,152,155,2.53,2.58
 2025-12-04T09:00:00Z,09:41,09:41,BLACKPINK,Jump,161,167,2.68,2.78
 2025-12-04T09:00:00Z,09:49,09:49,Tom Grennan,All These Nights,151,154,2.52,2.57
 2025-12-04T09:00:00Z,09:51,09:51,Oasis,Champagne Supernova,444,446,7.4,7.43
@@ -3111,9 +3118,9 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-04T10:00:00Z,10:25,10:25,Sam Fender,People Watching,238,311,3.97,5.18
 2025-12-04T10:00:00Z,10:28,10:28,Sabrina Carpenter,Tears,155,160,2.58,2.67
 2025-12-04T10:00:00Z,10:31,10:31,Jess Glynne,Hold My Hand,223,227,3.72,3.78
-2025-12-04T10:00:00Z,10:35,10:35,Adamski Feat. Seal,Killer,248,251,4.13,4.18
+2025-12-04T10:00:00Z,10:36,10:36,Adamski Feat. Seal,Killer,248,251,4.13,4.18
 2025-12-04T10:00:00Z,10:40,10:40,Rasmussen (ESC,2018 - Denmark - 9th) - Higher Ground,176,182,2.93,3.03
-2025-12-04T10:00:00Z,10:43,10:43,Demi Lovato,Here All Night,174,177,2.9,2.95
+2025-12-04T10:00:00Z,10:44,10:44,Demi Lovato,Here All Night,174,177,2.9,2.95
 2025-12-04T10:00:00Z,10:50,10:50,Toto,Africa,247,259,4.12,4.32
 2025-12-04T10:00:00Z,10:54,10:54,Sammy Virji & Chris Lake,925,162,169,2.7,2.82
 2025-12-04T11:00:00Z,11:01,11:01,Train,Shake up Christmas,193,212,3.22,3.53
@@ -3435,7 +3442,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-05T09:00:00Z,09:38,09:38,The Kid LAROI ft Justin Bieber,STAY,136,141,2.27,2.35
 2025-12-05T09:00:00Z,09:40,09:40,Sammy Virji & Chris Lake,925,162,169,2.7,2.82
 2025-12-05T09:00:00Z,09:48,09:48,Tom Grennan,Don't Break The Heart,208,209,3.47,3.48
-2025-12-05T09:00:00Z,09:51,09:51,Madonna,Like a Prayer,315,324,5.25,5.4
+2025-12-05T09:00:00Z,09:53,09:53,Madonna,Like a Prayer,315,324,5.25,5.4
 2025-12-05T10:00:00Z,10:02,10:02,Olivia Dean,So Easy (To Fall In Love),165,169,2.75,2.82
 2025-12-05T10:00:00Z,10:04,10:04,Callum Beattie,Two Pretenders,209,213,3.48,3.55
 2025-12-05T10:00:00Z,10:09,10:09,Taylor Swift,Anti-Hero,197,201,3.28,3.35
@@ -3444,7 +3451,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-05T10:00:00Z,10:24,10:24,Chappell Roan,"Good Luck, Babe!",210,218,3.5,3.63
 2025-12-05T10:00:00Z,10:28,10:28,Chris Rea,Driving Home for Christmas,231,243,3.85,4.05
 2025-12-05T10:00:00Z,10:32,10:32,Bon Jovi,Keep the Faith,257,274,4.28,4.57
-2025-12-05T10:00:00Z,10:36,10:36,Joel Corry & MNEK,Head & Heart,164,166,2.73,2.77
+2025-12-05T10:00:00Z,10:42,10:42,Joel Corry & MNEK,Head & Heart,164,166,2.73,2.77
 2025-12-05T10:00:00Z,10:45,10:45,Sabrina Carpenter,Busy Woman,182,187,3.03,3.12
 2025-12-05T10:00:00Z,10:52,10:52,Bonnie Tyler,Holding Out for a Hero,248,261,4.13,4.35
 2025-12-05T11:00:00Z,11:01,11:01,Ed Sheeran & Elton John,Merry Christmas,198,209,3.3,3.48
@@ -3505,6 +3512,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-05T14:00:00Z,14:46,14:46,Post Malone & Morgan Wallen,I Had Some Help,170,178,2.83,2.97
 2025-12-05T14:00:00Z,14:49,14:49,N-Trance,Set You Free,237,250,3.95,4.17
 2025-12-05T14:00:00Z,14:53,14:53,Olly Murs,Thinking Of Me,203,205,3.38,3.42
+2025-12-05T14:00:00Z,15:00,15:00,Faith Montgomery,Feelgood Lunch,3600,3600,60.0,60.0
 2025-12-05T15:00:00Z,15:01,15:01,Essential Radio,The Week in Holyrood with Charles Fletcher,3401,3420,56.68,57.0
 2025-12-05T16:00:00Z,16:01,16:01,Taylor Swift,The Fate of Ophelia,215,226,3.58,3.77
 2025-12-05T16:00:00Z,16:05,16:05,Sophie Ellis-Bextor,(Christmas) Time,206,214,3.43,3.57
@@ -3546,9 +3554,29 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-05T18:00:00Z,18:47,18:47,Destiny's Child,Little Drummer Boy,201,215,3.35,3.58
 2025-12-05T18:00:00Z,18:50,18:50,Michael Buble,It's Beginning to Look a Lot Like Christmas,161,207,2.68,3.45
 2025-12-05T18:00:00Z,18:53,18:53,Bryan Adams,Christmas Time,234,243,3.9,4.05
-2025-12-05T19:00:00Z,19:01,19:01,Lee Everest,Ready for the Weekend,1381,1385,23.02,23.08
-2025-12-05T19:00:00Z,19:22,19:22,Lee Everest,Ready for the Weekend,1237,1241,20.62,20.68
-2025-12-05T19:00:00Z,19:44,19:44,Lee Everest,Ready for the Weekend,863,865,14.38,14.42
+2025-12-05T19:00:00Z,19:00,19:00,Bryan Adams,Christmas Time,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:02,19:02,Lee Everest,Ready for the Weekend,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:03,19:03,Yes Boone,All I Really Want,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:06,19:06,Casso & Sacha,Guest List,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:08,19:08,Body Ocean,What Would It Profit,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:12,19:12,Mike Mago,Dangerous Behaviour (VIP Mix),3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:15,19:15,Kx5 & AR/CO,Bright Lights,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:18,19:18,Ed Sheeran,Azizam (Navos Remix),3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:23,19:23,Lee Everest,Ready for the Weekend,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:23,19:23,STIRLING & Dan Diamond,I Got Bad Habits,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:26,19:26,Liquidfive & Charming Horses,Heart <Extended>,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:29,19:29,Jess Bays & TCTS,Going Next,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:32,19:32,CORY,I Like Your Body <Extended>,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:35,19:35,Raaban & Hypaton with Too Many Lefthands,Last Forever,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:39,19:39,Bebe Rexha,Chase It (Mmm Da Da Da) <Quick Hitter>,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:41,19:41,ManyFew,Love You (One More Chance),3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:44,19:44,Lee Everest,Ready for the Weekend,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:44,19:44,Calvin Harris & Jessie Reyez,Ocean (Emily Nash Remix),3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:47,19:47,Eskei83 & Dynamite MC,Number One DJ <Extended>,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:50,19:50,Becky Hill & Self Esteem,True Colours,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:54,19:54,Silk,I Need U,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:57,19:57,Papa Zeus & Justin Jesso,They Don't Know Me,3600,3600,60.0,60.0
+2025-12-05T19:00:00Z,19:57,19:57,Papa Zeus & Justin Jesso,They Don't Know Me,123,123,2.05,2.05
 2025-12-05T20:00:00Z,20:02,20:02,Sweet Female Attitude,Flowers (Supa-Flyas Mix),212,216,3.53,3.6
 2025-12-05T20:00:00Z,20:06,20:06,Grace,Not Over Yet,242,258,4.03,4.3
 2025-12-05T20:00:00Z,20:10,20:10,Sharon Redd,Can You Handle It,220,237,3.67,3.95
@@ -3594,8 +3622,10 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-05T22:00:00Z,22:47,22:47,"Sammy Virji, Spice, Flowdan",Match My Mood,170,172,2.83,2.87
 2025-12-05T22:00:00Z,22:50,22:50,Safri Duo,Played-A-Live (The Bongo Song),173,183,2.88,3.05
 2025-12-05T22:00:00Z,22:52,22:52,System F,Out of the Blue,231,235,3.85,3.92
+2025-12-05T23:00:00Z,00:00,00:00,Essential Radio,On Air,7200,7200,120.0,120.0
 2025-12-05T23:00:00Z,23:02,23:02,with Ronny Costello,Club Classics Radio Show <38 - 04.12.25>,3478,3480,57.97,58.0
 2025-12-06T00:00:00Z,00:00,00:00,Essential Radio,Around the World with Davy Sims,3586,3590,59.77,59.83
+2025-12-06T00:00:00Z,00:00,00:00,Davy Sims,Around the World,7200,7200,120.0,120.0
 2025-12-06T01:00:00Z,01:00,01:00,Essential Radio,Around the World with Davy Sims,3588,3590,59.8,59.83
 2025-12-06T02:00:00Z,02:02,02:02,Kylie Minogue,XMAS,192,196,3.2,3.27
 2025-12-06T02:00:00Z,02:06,02:06,Sabrina Carpenter,Manchild,198,214,3.3,3.57
@@ -3750,22 +3780,10 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-06T12:00:00Z,12:48,12:48,Boney M,Mary's Boy Child / Oh My Lord,233,242,3.88,4.03
 2025-12-06T12:00:00Z,12:52,12:52,Sophie Ellis-Bextor,Murder on the Dancefloor,201,212,3.35,3.53
 2025-12-06T12:00:00Z,12:55,12:55,Eurythmics,There Must Be an Angel (Playing With My Heart),269,281,4.48,4.68
-2025-12-06T13:00:00Z,13:00,13:00,Ronan Keating,I Love It When We Do,214,227,3.57,3.78
-2025-12-06T13:00:00Z,13:03,13:03,Dawn Penn,"You Don't Love Me (No, No, No)",188,200,3.13,3.33
-2025-12-06T13:00:00Z,13:07,13:07,Manic Street Preachers,So Why So Sad?,222,227,3.7,3.78
-2025-12-06T13:00:00Z,13:10,13:10,Pet Shop Boys,Always on My Mind,222,235,3.7,3.92
-2025-12-06T13:00:00Z,13:14,13:14,Eric Carmen,All By Myself,263,272,4.38,4.53
-2025-12-06T13:00:00Z,13:19,13:19,The Feeling,Rose,193,210,3.22,3.5
-2025-12-06T13:00:00Z,13:22,13:22,Lenny Kravitz,Fly Away,218,222,3.63,3.7
-2025-12-06T13:00:00Z,13:26,13:26,Texas ft Paul Buchanan,Sleep,210,213,3.5,3.55
-2025-12-06T13:00:00Z,13:29,13:29,Status Quo,In The Army Now,206,212,3.43,3.53
-2025-12-06T13:00:00Z,13:32,13:32,Carpenters,Top Of The World,159,177,2.65,2.95
-2025-12-06T13:00:00Z,13:36,13:36,Atomic Kitten,It's OK,194,199,3.23,3.32
-2025-12-06T13:00:00Z,13:39,13:39,Garbage,Stupid Girl,257,257,4.28,4.28
-2025-12-06T13:00:00Z,13:43,13:43,Snow Patrol,Spitting Games,198,203,3.3,3.38
-2025-12-06T13:00:00Z,13:46,13:46,Bobby McFerrin,"Don't Worry, Be Happy",224,234,3.73,3.9
-2025-12-06T13:00:00Z,13:50,13:50,Edwin Starr,Contact,205,211,3.42,3.52
-2025-12-06T13:00:00Z,13:54,13:54,The Beta Band,Dry The Rain,358,367,5.97,6.12
+2025-12-06T13:00:00Z,13:00,13:00,Eurythmics,There Must Be an Angel (Playing With My Heart),3600,3600,60.0,60.0
+2025-12-06T13:00:00Z,13:00,13:00,Harold Faltermeyer,Axel F,3600,3600,60.0,60.0
+2025-12-06T13:00:00Z,13:00,13:00,1PM SMM,JUKEBOX LIVE - GUESS THE LINK,3600,3600,60.0,60.0
+2025-12-06T13:00:00Z,13:00,13:00,1PM SMM,JUKEBOX LIVE - GUESS THE LINK,31918,31918,531.97,531.97
 2025-12-06T14:00:00Z,14:00,14:00,Brian McFadden,Irish Son,252,258,4.2,4.3
 2025-12-06T14:00:00Z,14:04,14:04,Deep Blue Something,Breakfast at Tiffany's,248,257,4.13,4.28
 2025-12-06T14:00:00Z,14:08,14:08,Natasha Bedingfield,I Bruise Easily,218,223,3.63,3.72
@@ -3816,39 +3834,9 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-06T16:00:00Z,16:54,16:54,Laura Branigan,Gloria,225,231,3.75,3.85
 2025-12-06T16:00:00Z,16:58,16:58,Frantique,Strut Your Funky Stuff,211,217,3.52,3.62
 2025-12-06T17:00:00Z,17:02,17:02,Essential Radio,The JanCave 70s Jukebox with Jan Gow,3585,3597,59.75,59.95
-2025-12-06T22:00:00Z,22:00,22:00,The Corrs,Give Me A Reason,202,206,3.37,3.43
-2025-12-06T22:00:00Z,22:03,22:03,Toni Braxton,Unbreak My Heart (Remix),265,267,4.42,4.45
-2025-12-06T22:00:00Z,22:08,22:08,Savage Garden,Hold Me,229,240,3.82,4.0
-2025-12-06T22:00:00Z,22:12,22:12,Belinda Carlisle,Leave a Light On,242,255,4.03,4.25
-2025-12-06T22:00:00Z,22:16,22:16,Rod Stewart,I Don't Want to Talk About It,255,262,4.25,4.37
-2025-12-06T22:00:00Z,22:20,22:20,Moloko,The Time Is Now,214,217,3.57,3.62
-2025-12-06T22:00:00Z,22:24,22:24,Toto,Rosanna,248,253,4.13,4.22
-2025-12-06T22:00:00Z,22:28,22:28,Third World,Now That We Found Love,220,224,3.67,3.73
-2025-12-06T22:00:00Z,22:32,22:32,Gin Blossoms,Hey Jealousy,225,232,3.75,3.87
-2025-12-06T22:00:00Z,22:36,22:36,Robert Palmer,Addicted to Love,231,234,3.85,3.9
-2025-12-06T22:00:00Z,22:40,22:40,T.Rex,I Love to Boogie,123,135,2.05,2.25
-2025-12-06T22:00:00Z,22:42,22:42,R.E.M.,Shiny Happy People,219,225,3.65,3.75
-2025-12-06T22:00:00Z,22:46,22:46,Bob Marley & The Wailers,Could You Be Loved,222,234,3.7,3.9
-2025-12-06T22:00:00Z,22:50,22:50,Stevie Wonder,You Are the Sunshine of My Life,161,172,2.68,2.87
-2025-12-06T22:00:00Z,22:53,22:53,Will Smith,Men in Black,220,227,3.67,3.78
-2025-12-06T22:00:00Z,22:56,22:56,Fine Young Cannibals,She Drives Me Crazy,207,211,3.45,3.52
-2025-12-06T23:00:00Z,23:00,23:00,Freak Power,"Turn on, Tune in, Cop Out",252,259,4.2,4.32
-2025-12-06T23:00:00Z,23:04,23:04,Kate Bush,Running Up That Hill,205,215,3.42,3.58
-2025-12-06T23:00:00Z,23:07,23:07,Dr Hook,A Little Bit More,166,170,2.77,2.83
-2025-12-06T23:00:00Z,23:10,23:10,The Vengaboys,We Like to Party (The Vengabus),219,222,3.65,3.7
-2025-12-06T23:00:00Z,23:14,23:14,Nena,99 Red Balloons,225,230,3.75,3.83
-2025-12-06T23:00:00Z,23:18,23:18,Supertramp,Breakfast in America,155,163,2.58,2.72
-2025-12-06T23:00:00Z,23:21,23:21,Basement Jaxx,Red Alert,212,215,3.53,3.58
-2025-12-06T23:00:00Z,23:24,23:24,Erasure,Sometimes,209,216,3.48,3.6
-2025-12-06T23:00:00Z,23:28,23:28,Labelle,Lady Marmalade,231,233,3.85,3.88
-2025-12-06T23:00:00Z,23:32,23:32,Weezer,Buddy Holly,158,160,2.63,2.67
-2025-12-06T23:00:00Z,23:35,23:35,Big Country,Look Away,261,265,4.35,4.42
-2025-12-06T23:00:00Z,23:39,23:39,Evelyn 'Champagne' King,Shame,167,174,2.78,2.9
-2025-12-06T23:00:00Z,23:42,23:42,Westlife,Flying Without Wings,212,216,3.53,3.6
-2025-12-06T23:00:00Z,23:46,23:46,Duran Duran,Girls On Film,201,207,3.35,3.45
-2025-12-06T23:00:00Z,23:49,23:49,Ace,How Long,190,202,3.17,3.37
-2025-12-06T23:00:00Z,23:53,23:53,Eagle-Eye Cherry,Save Tonight,218,230,3.63,3.83
-2025-12-06T23:00:00Z,23:56,23:56,INXS,New Sensation,218,224,3.63,3.73
+2025-12-06T21:00:00Z,21:00,21:00,Big Tommy,Big Fat Party Anthems,10740,10740,179.0,179.0
+2025-12-06T22:00:00Z,21:00,21:00,Big Tommy,Big Fat Party Anthems,10740,10740,179.0,179.0
+2025-12-06T23:00:00Z,00:00,00:00,Essential Radio,On Air,3600,3600,60.0,60.0
 2025-12-07T01:00:00Z,01:02,01:02,Ed Sheeran & Elton John,Merry Christmas,203,209,3.38,3.48
 2025-12-07T01:00:00Z,01:06,01:06,Ella Henderson x Alex Warren,Carry You Home,158,168,2.63,2.8
 2025-12-07T01:00:00Z,01:08,01:08,Chappell Roan,The Subway,238,252,3.97,4.2
@@ -3955,7 +3943,7 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-07T08:00:00Z,08:21,08:21,The Waitresses,Christmas Wrapping,224,237,3.73,3.95
 2025-12-07T08:00:00Z,08:25,08:25,Sia,Chandelier,204,216,3.4,3.6
 2025-12-07T08:00:00Z,08:30,08:30,Healthspan,The Dr Hilary Show,1629,1680,27.15,28.0
-2025-12-07T08:00:00Z,09:00,09:00,Enrique Iglesias,Maybe,190,192,3.17,3.2
+2025-12-07T08:00:00Z,09:00,09:00,Dr Hilary Jones,The Dr Hilary Show,3600,3600,60.0,60.0
 2025-12-07T09:00:00Z,09:01,09:01,Essential Radio,The Week in Holyrood with Charles Fletcher,3401,3420,56.68,57.0
 2025-12-07T10:00:00Z,10:01,10:01,Tears for Fears,Head Over Heels,252,259,4.2,4.32
 2025-12-07T10:00:00Z,10:06,10:06,Neil Diamond,America,234,260,3.9,4.33
@@ -4013,7 +4001,105 @@ Hour,Scheduled Time,Displayed Time,Artist,Title,Duration (s),Full Duration (s),D
 2025-12-07T13:00:00Z,13:45,13:45,Mark Ronson ft Amy Winehouse,Valerie,207,217,3.45,3.62
 2025-12-07T13:00:00Z,13:50,13:50,Chris Rea,Driving Home for Christmas,224,243,3.73,4.05
 2025-12-07T13:00:00Z,13:54,13:54,Cornershop,Brimful of Asha (Norman Cook Remix),230,242,3.83,4.03
-2025-12-07T14:00:00Z,14:00,14:00,Spencer James,Airplay 40,3542,3543,59.03,59.05
-2025-12-07T15:00:00Z,15:00,15:00,Spencer James,Airplay 40,3478,3480,57.97,58.0
-2025-12-07T15:00:00Z,15:59,15:59,Armand Van Helden,My My My,179,184,2.98,3.07
-2025-12-07T16:00:00Z,16:02,16:02,Spencer James,Airplay 40,3589,3590,59.82,59.83
+2025-12-07T14:00:00Z,14:00,14:00,Cornershop,Brimful of Asha (Norman Cook Remix),3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:00,14:00,Spencer James,Airplay 40,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:00,14:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:06,14:06,Lola Young,SPIDERS,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:11,14:11,Chappell Roan,The Subway (Clean),3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:15,14:15,marshmello & Hudson Westbrook,Better Man Than Me,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:19,14:19,Zara Larsson,Blue Moon,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:22,14:22,Joel Corry x Galantis x Izzy Bizu,Stay A Little Longer (Radio Edit),3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:24,14:24,JISOO & Zayn,EYES CLOSED,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:28,14:28,Meghan Trainor,Gifts for Me,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:31,14:31,Morgan Wallen,Graveyard Whistling,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:34,14:34,SIENNA SPIRO,Die On This Hill,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:40,14:40,Madison Beer,bittersweet,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:43,14:43,Olly Murs,Run This Town,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:48,14:48,Lewis Capaldi,Something In The Heavens,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:51,14:51,Taylor Swift & Sabrina Carpenter,The Life of a Showgirl,3600,3600,60.0,60.0
+2025-12-07T14:00:00Z,14:51,14:51,Taylor Swift & Sabrina Carpenter,The Life of a Showgirl,500,500,8.33,8.33
+2025-12-07T15:00:00Z,15:00,15:00,Spencer James,Airplay 40,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:00,15:00,Olivia Dean,Man I Need,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:03,15:03,Mumford & Sons & Hozier,Rubber Band Man,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:07,15:07,Robyn,Dopamine,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:10,15:10,Lily Allen,West End Girl,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:13,15:13,Rag'n'Bone Man,Time To Love,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:18,15:18,Charlie Puth,Changes,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:22,15:22,Anne-Marie,Depressed (Clean),3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:24,15:24,Saja Boys,Golden (Soundtrack From The Netflix Film 'KPop Demon Hunters'),3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:28,15:28,Teddy Swims & Tones & I,Gone Gone Gone (Radio Edit),3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:32,15:32,Louis Tomlinson,Lemonade,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:35,15:35,Kylie Minogue,XMAS,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:41,15:41,Katy Perry,bandaids,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:44,15:44,Lewis Capaldi,The Day That I Die,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:47,15:47,Sigala x Leigh-Anne x Jonita Gandhi,Hello (Radio Edit),3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:50,15:50,Teddy Swims,You've Got Another Thing Coming (From the Netflix series 'Nobody Wants This' Season 2),3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:53,15:53,Lewis Capaldi,Almost,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:59,15:59,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T15:00:00Z,15:59,15:59,Armand Van Helden,My My My,196,196,3.27,3.27
+2025-12-07T16:00:00Z,16:00,16:00,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:00,16:00,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:00,16:00,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:00,16:00,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:01,16:01,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:01,16:01,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:01,16:01,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:01,16:01,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:01,16:01,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:02,16:02,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:02,16:02,Armand Van Helden,My My My,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:02,16:02,Spencer James,Airplay 40,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:02,16:02,Charli XCX,Chains Of Love,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:05,16:05,Ravyn Lenae,Love Me Not,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:10,16:10,Sabrina Carpenter,House Tour,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:13,16:13,Calum Scott & Whitney Houston,I Wanna Dance With Somebody (Who Loves Me),3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:16,16:16,Sam Fender & Elton John,Talk To You (Clean),3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:23,16:23,Taylor Swift,The Fate of Ophelia,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:27,16:27,Ed Sheeran,Symmetry,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:31,16:31,Labrinth,Where Love Lives (Featured on the John Lewis Christmas advert 2025),3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:34,16:34,Olivia Dean,A Couple Minutes,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:38,16:38,Myles Smith,Stay (If You Wanna Dance),3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:44,16:44,Ed Sheeran,Camera,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:48,16:48,Taylor Swift,Opalite,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:54,16:54,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T16:00:00Z,16:54,16:54,Raye,WHERE IS MY HUSBAND?,601,601,10.02,10.02
+2025-12-07T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:00,17:00,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:01,17:01,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:02,17:02,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:02,17:02,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:02,17:02,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:02,17:02,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:03,17:03,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:03,17:03,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:03,17:03,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:03,17:03,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:03,17:03,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:04,17:04,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:04,17:04,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:04,17:04,Raye,WHERE IS MY HUSBAND?,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:04,17:04,Wild Cherry,Play That Funky Music,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:08,17:08,Mud,Lean On Me,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:12,17:12,Neil Diamond,Beautiful Noise,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:16,17:16,Johnny Mathis,When a Child Is Born (Soleado),3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:20,17:20,Rod Stewart,Get Back,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:24,17:24,Elton John,Sorry Seems to Be the Hardest Word,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:28,17:28,Pussycat,Mississippi,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:32,17:32,Bonnie Tyler,Lost in France,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:37,17:37,,Money,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:40,17:40,Electric Light Orchestra,Livin' Thing,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:44,17:44,Queen,Somebody to Love,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:49,17:49,Leo Sayer,You Make Me Feel Like Dancing,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:53,17:53,Chicago,If You Leave Me Now,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:59,17:59,Showaddywaddy,Under the Moon of Love,3600,3600,60.0,60.0
+2025-12-07T17:00:00Z,17:59,17:59,Showaddywaddy,Under the Moon of Love,231,231,3.85,3.85
+2025-12-07T18:00:00Z,18:55,18:55,Cliff Richard,The Millennium Prayer,252,252,4.2,4.2
+2025-12-07T18:00:00Z,19:00,19:00,Brian Woolfson,Retro Charts (1976 & 1999),7200,7200,120.0,120.0
+2025-12-07T19:00:00Z,19:00,19:00,Kevin McCallum,The Mr Rocks Show,7200,7200,120.0,120.0
