@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Neil Diamond",
-    "title": "Beautiful Noise",
-    "startTime": "2025-12-07T17:12:56Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Johnny Mathis",
     "title": "When a Child Is Born (Soleado)",
     "startTime": "2025-12-07T17:16:33Z",
@@ -136,6 +129,13 @@
     "artist": "Showaddywaddy",
     "title": "Under the Moon of Love",
     "startTime": "2025-12-07T18:02:02Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Showaddywaddy",
+    "title": "Under the Moon of Love",
+    "startTime": "2025-12-07T18:02:17Z",
     "source": "ALT",
     "live": true
   }
