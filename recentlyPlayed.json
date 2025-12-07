@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Raye",
-    "title": "WHERE IS MY HUSBAND?",
-    "startTime": "2025-12-07T17:04:33Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Wild Cherry",
     "title": "Play That Funky Music",
     "startTime": "2025-12-07T17:04:46Z",
@@ -124,6 +117,12 @@
   {
     "artist": "Kevin McCallum",
     "title": "The Mr Rocks Show",
+    "startTime": "2025-12-07T21:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Emma Scott",
+    "title": "The Pluggin' Baby Radio Show",
     "startTime": "2025-12-07T21:00:00Z",
     "source": "FIXED"
   },
