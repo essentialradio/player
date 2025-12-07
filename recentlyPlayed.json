@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Wild Cherry",
-    "title": "Play That Funky Music",
-    "startTime": "2025-12-07T17:04:46Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Mud",
     "title": "Lean On Me",
     "startTime": "2025-12-07T17:08:35Z",
@@ -129,6 +122,12 @@
   {
     "artist": "Emma Scott",
     "title": "The Pluggin' Baby Radio Show",
+    "startTime": "2025-12-07T23:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Dave Watkins",
+    "title": "The Country Mile",
     "startTime": "2025-12-07T23:00:00Z",
     "source": "FIXED"
   }
