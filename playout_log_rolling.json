@@ -53606,5 +53606,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-12-06T00:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-12-07T01:00:00Z",
+    "Scheduled Time": "01:02",
+    "Displayed Time": "01:02",
+    "Artist": "Ed Sheeran & Elton John",
+    "Title": "Merry Christmas",
+    "Duration (s)": 203,
+    "Full Duration (s)": 209,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.48,
+    "Start ISO": "2025-12-07T01:02:15Z",
+    "Source": "PLAYIT"
   }
 ]
