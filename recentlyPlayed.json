@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Zoe",
-    "title": "Sunshine on a Rainy Day",
-    "startTime": "2025-12-07T12:54:52Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "KPop Demon Hunters",
     "title": "Golden",
     "startTime": "2025-12-07T13:01:50Z",
@@ -120,6 +114,13 @@
     "artist": "Lola Young",
     "title": "SPIDERS",
     "startTime": "2025-12-07T14:06:55Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Chappell Roan",
+    "title": "The Subway (Clean)",
+    "startTime": "2025-12-07T14:11:15Z",
     "source": "ALT",
     "live": true
   }
