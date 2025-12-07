@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Carpenters",
-    "title": "Merry Christmas Darling",
-    "startTime": "2025-12-07T10:33:13Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Eurythmics",
     "title": "Sweet Dreams (Are Made of This)",
     "startTime": "2025-12-07T10:36:15Z",
@@ -117,6 +111,12 @@
     "artist": "Lady Gaga",
     "title": "The Dead Dance",
     "startTime": "2025-12-07T12:01:56Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Opalite",
+    "startTime": "2025-12-07T12:06:23Z",
     "source": "PLAYIT"
   }
 ]
