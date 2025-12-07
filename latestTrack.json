@@ -1,11 +1,12 @@
 {
   "artist": "Cornershop",
   "title": "Brimful of Asha (Norman Cook Remix)",
-  "startTime": "2025-12-07T13:54:08Z",
-  "start": "2025-12-07T13:54:08Z",
-  "duration": 230,
-  "source": "PLAYIT",
-  "indeterminate": false,
-  "endTime": "2025-12-07T13:57:58Z",
-  "altMode": false
+  "startTime": "2025-12-07T14:00:06Z",
+  "start": "2025-12-07T14:00:06Z",
+  "duration": 3600,
+  "source": "ALT",
+  "indeterminate": true,
+  "endTime": "2025-12-07T15:00:06Z",
+  "altMode": true,
+  "Source": "ALT"
 }
