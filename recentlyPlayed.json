@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Coldplay",
-    "title": "Christmas Lights",
-    "startTime": "2025-12-08T06:15:38Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Cat Burns",
     "title": "There's Just Something About Her",
     "startTime": "2025-12-08T06:23:54Z",
@@ -117,6 +111,12 @@
     "artist": "Olly Murs",
     "title": "Dance With Me Tonight",
     "startTime": "2025-12-08T07:49:37Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Brenda Lee",
+    "title": "Rockin' Around the Christmas Tree",
+    "startTime": "2025-12-08T07:52:42Z",
     "source": "PLAYIT"
   }
 ]
