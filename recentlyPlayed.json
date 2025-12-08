@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Ariana Grande",
-    "title": "Santa Tell Me",
-    "startTime": "2025-12-08T16:50:05Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Bloc Party",
     "title": "Banquet",
     "startTime": "2025-12-08T16:53:25Z",
@@ -117,6 +111,12 @@
     "artist": "Jose Feliciano",
     "title": "Feliz Navidad",
     "startTime": "2025-12-08T18:23:07Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Meghan Trainor",
+    "title": "Rockin' Around The Christmas Tree",
+    "startTime": "2025-12-08T18:26:08Z",
     "source": "PLAYIT"
   }
 ]
