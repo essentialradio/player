@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Eurythmics",
-    "title": "Winter Wonderland",
-    "startTime": "2025-12-08T18:32:07Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Kylie Minogue",
     "title": "Every Day's Like Christmas",
     "startTime": "2025-12-08T18:35:27Z",
@@ -117,6 +111,12 @@
     "artist": "Mariah Carey",
     "title": "All I Want for Christmas Is You",
     "startTime": "2025-12-08T19:55:39Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Green Day",
+    "title": "American Idiot",
+    "startTime": "2025-12-08T20:01:49Z",
     "source": "PLAYIT"
   }
 ]
