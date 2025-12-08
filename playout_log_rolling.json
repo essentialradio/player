@@ -56730,5 +56730,31 @@
     "Full Duration (mins)": 4.03,
     "Start ISO": "2025-12-08T19:55:39Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-08T20:00:00Z",
+    "Scheduled Time": "20:01",
+    "Displayed Time": "20:01",
+    "Artist": "Green Day",
+    "Title": "American Idiot",
+    "Duration (s)": 173,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.88,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-12-08T20:01:49Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-08T20:00:00Z",
+    "Scheduled Time": "20:04",
+    "Displayed Time": "20:04",
+    "Artist": "Cliff Richard",
+    "Title": "Saviour's Day",
+    "Duration (s)": 271,
+    "Full Duration (s)": 286,
+    "Duration (mins)": 4.52,
+    "Full Duration (mins)": 4.77,
+    "Start ISO": "2025-12-08T20:04:42Z",
+    "Source": "PLAYIT"
   }
 ]
