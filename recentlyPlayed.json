@@ -1,5 +1,12 @@
 [
   {
+    "artist": "Neil Diamond",
+    "title": "Beautiful Noise",
+    "startTime": "2025-12-07T17:12:56Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
     "artist": "Johnny Mathis",
     "title": "When a Child Is Born (Soleado)",
     "startTime": "2025-12-07T17:16:33Z",
@@ -115,12 +122,6 @@
     "artist": "Essential Radio",
     "title": "On Air",
     "startTime": "2025-12-07T00:00:00Z",
-    "source": "FIXED"
-  },
-  {
-    "artist": "David Southway",
-    "title": "Soul Vaults",
-    "startTime": "2025-12-08T00:00:00Z",
     "source": "FIXED"
   },
   {
