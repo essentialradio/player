@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Dire Straits",
-    "title": "Money for Nothing",
-    "startTime": "2025-12-08T16:45:48Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Ariana Grande",
     "title": "Santa Tell Me",
     "startTime": "2025-12-08T16:50:05Z",
@@ -117,6 +111,12 @@
     "artist": "Bon Jovi",
     "title": "Please Come Home for Christmas",
     "startTime": "2025-12-08T18:15:33Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Jose Feliciano",
+    "title": "Feliz Navidad",
+    "startTime": "2025-12-08T18:23:07Z",
     "source": "PLAYIT"
   }
 ]
