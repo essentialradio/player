@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Essential Radio",
-    "title": "On Air",
-    "startTime": "2025-12-07T00:00:00Z",
-    "source": "FIXED"
-  },
-  {
     "artist": "David Southway",
     "title": "Soul Vaults",
     "startTime": "2025-12-08T00:00:00Z",
@@ -117,6 +111,12 @@
     "artist": "Lady Gaga & Bruno Mars",
     "title": "Die With A Smile",
     "startTime": "2025-12-08T03:13:55Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Michael Buble",
+    "title": "Holly Jolly Christmas",
+    "startTime": "2025-12-08T03:22:16Z",
     "source": "PLAYIT"
   }
 ]
