@@ -1,12 +1,5 @@
 [
   {
-    "artist": "Leo Sayer",
-    "title": "You Make Me Feel Like Dancing",
-    "startTime": "2025-12-07T17:49:32Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "Chicago",
     "title": "If You Leave Me Now",
     "startTime": "2025-12-07T17:53:33Z",
@@ -120,6 +113,12 @@
     "artist": "Dua Lipa",
     "title": "Houdini",
     "startTime": "2025-12-08T02:34:14Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Justin Bieber",
+    "title": "Mistletoe",
+    "startTime": "2025-12-08T02:37:16Z",
     "source": "PLAYIT"
   }
 ]
