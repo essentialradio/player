@@ -53662,5 +53662,18 @@
     "Full Duration (mins)": 120.0,
     "Start ISO": "2025-12-08T00:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-12-08T02:00:00Z",
+    "Scheduled Time": "02:01",
+    "Displayed Time": "02:01",
+    "Artist": "Taylor Swift",
+    "Title": "The Fate of Ophelia",
+    "Duration (s)": 222,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-12-08T02:01:56Z",
+    "Source": "PLAYIT"
   }
 ]
