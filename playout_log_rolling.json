@@ -56626,5 +56626,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-12-08T19:22:18Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-08T19:00:00Z",
+    "Scheduled Time": "19:25",
+    "Displayed Time": "19:25",
+    "Artist": "Queen",
+    "Title": "A Winter's Tale",
+    "Duration (s)": 217,
+    "Full Duration (s)": 232,
+    "Duration (mins)": 3.62,
+    "Full Duration (mins)": 3.87,
+    "Start ISO": "2025-12-08T19:25:17Z",
+    "Source": "PLAYIT"
   }
 ]
