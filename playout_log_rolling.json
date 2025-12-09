@@ -54728,5 +54728,31 @@
     "Full Duration (mins)": 3.62,
     "Start ISO": "2025-12-09T04:05:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T04:00:00Z",
+    "Scheduled Time": "04:08",
+    "Displayed Time": "04:08",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Manchild",
+    "Duration (s)": 195,
+    "Full Duration (s)": 214,
+    "Duration (mins)": 3.25,
+    "Full Duration (mins)": 3.57,
+    "Start ISO": "2025-12-09T04:08:40Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T04:00:00Z",
+    "Scheduled Time": "04:12",
+    "Displayed Time": "04:12",
+    "Artist": "Madonna",
+    "Title": "Music",
+    "Duration (s)": 206,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.43,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-12-09T04:12:17Z",
+    "Source": "PLAYIT"
   }
 ]
