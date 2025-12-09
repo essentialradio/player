@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Katy Perry",
-    "title": "Last Friday Night (T.G.I.F)",
-    "startTime": "2025-12-09T09:56:05Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Elton John",
     "title": "Step Into Christmas",
     "startTime": "2025-12-09T10:02:20Z",
@@ -117,6 +111,12 @@
     "artist": "Dean Martin",
     "title": "Let It Snow! Let It Snow! Let It Snow!",
     "startTime": "2025-12-09T11:28:26Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Billy Mack",
+    "title": "Christmas is All Around",
+    "startTime": "2025-12-09T11:30:18Z",
     "source": "PLAYIT"
   }
 ]
