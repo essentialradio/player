@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Pink",
-    "title": "Blow Me One Last Kiss",
-    "startTime": "2025-12-09T08:12:04Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Shaboozey",
     "title": "A Bar Song (Tipsy)",
     "startTime": "2025-12-09T08:15:56Z",
@@ -117,6 +111,12 @@
     "artist": "Katy Perry",
     "title": "Last Friday Night (T.G.I.F)",
     "startTime": "2025-12-09T09:56:05Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Elton John",
+    "title": "Step Into Christmas",
+    "startTime": "2025-12-09T10:02:20Z",
     "source": "PLAYIT"
   }
 ]
