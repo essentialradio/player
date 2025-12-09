@@ -54897,5 +54897,31 @@
     "Full Duration (mins)": 3.77,
     "Start ISO": "2025-12-09T04:54:52Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T05:00:00Z",
+    "Scheduled Time": "05:01",
+    "Displayed Time": "05:01",
+    "Artist": "Taylor Swift",
+    "Title": "Opalite",
+    "Duration (s)": 231,
+    "Full Duration (s)": 235,
+    "Duration (mins)": 3.85,
+    "Full Duration (mins)": 3.92,
+    "Start ISO": "2025-12-09T05:01:47Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T05:00:00Z",
+    "Scheduled Time": "05:06",
+    "Displayed Time": "05:06",
+    "Artist": "Meghan Trainor",
+    "Title": "Made You Look",
+    "Duration (s)": 128,
+    "Full Duration (s)": 134,
+    "Duration (mins)": 2.13,
+    "Full Duration (mins)": 2.23,
+    "Start ISO": "2025-12-09T05:06:06Z",
+    "Source": "PLAYIT"
   }
 ]
