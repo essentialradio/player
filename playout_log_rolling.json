@@ -53363,5 +53363,70 @@
     "Full Duration (mins)": 3.43,
     "Start ISO": "2025-12-09T19:13:16Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T19:00:00Z",
+    "Scheduled Time": "19:20",
+    "Displayed Time": "19:20",
+    "Artist": "McFly",
+    "Title": "Obviously",
+    "Duration (s)": 181,
+    "Full Duration (s)": 192,
+    "Duration (mins)": 3.02,
+    "Full Duration (mins)": 3.2,
+    "Start ISO": "2025-12-09T19:20:15Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T19:00:00Z",
+    "Scheduled Time": "19:23",
+    "Displayed Time": "19:23",
+    "Artist": "Mumford & Sons",
+    "Title": "Winter Winds",
+    "Duration (s)": 208,
+    "Full Duration (s)": 220,
+    "Duration (mins)": 3.47,
+    "Full Duration (mins)": 3.67,
+    "Start ISO": "2025-12-09T19:23:25Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T19:00:00Z",
+    "Scheduled Time": "19:26",
+    "Displayed Time": "19:26",
+    "Artist": "Shawn Mendes",
+    "Title": "There's Nothing Holdin' Me Back",
+    "Duration (s)": 192,
+    "Full Duration (s)": 199,
+    "Duration (mins)": 3.2,
+    "Full Duration (mins)": 3.32,
+    "Start ISO": "2025-12-09T19:26:54Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T19:00:00Z",
+    "Scheduled Time": "19:30",
+    "Displayed Time": "19:30",
+    "Artist": "Red Hot Chili Peppers",
+    "Title": "Under the Bridge",
+    "Duration (s)": 257,
+    "Full Duration (s)": 273,
+    "Duration (mins)": 4.28,
+    "Full Duration (mins)": 4.55,
+    "Start ISO": "2025-12-09T19:30:05Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T19:00:00Z",
+    "Scheduled Time": "19:34",
+    "Displayed Time": "19:34",
+    "Artist": "Kaiser Chiefs",
+    "Title": "Everything is Average Nowadays",
+    "Duration (s)": 155,
+    "Full Duration (s)": 162,
+    "Duration (mins)": 2.58,
+    "Full Duration (mins)": 2.7,
+    "Start ISO": "2025-12-09T19:34:29Z",
+    "Source": "PLAYIT"
   }
 ]
