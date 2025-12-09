@@ -55963,5 +55963,31 @@
     "Full Duration (mins)": 1.92,
     "Start ISO": "2025-12-09T11:28:26Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T11:00:00Z",
+    "Scheduled Time": "11:30",
+    "Displayed Time": "11:30",
+    "Artist": "Billy Mack",
+    "Title": "Christmas is All Around",
+    "Duration (s)": 220,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.67,
+    "Full Duration (mins)": 3.83,
+    "Start ISO": "2025-12-09T11:30:18Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T11:00:00Z",
+    "Scheduled Time": "11:34",
+    "Displayed Time": "11:34",
+    "Artist": "East 17",
+    "Title": "Stay Another Day",
+    "Duration (s)": 262,
+    "Full Duration (s)": 267,
+    "Duration (mins)": 4.37,
+    "Full Duration (mins)": 4.45,
+    "Start ISO": "2025-12-09T11:34:05Z",
+    "Source": "PLAYIT"
   }
 ]
