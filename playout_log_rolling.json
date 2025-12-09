@@ -56496,5 +56496,31 @@
     "Full Duration (mins)": 3.45,
     "Start ISO": "2025-12-09T14:24:20Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T14:00:00Z",
+    "Scheduled Time": "14:27",
+    "Displayed Time": "14:27",
+    "Artist": "Tears for Fears",
+    "Title": "Everybody Wants to Rule the World",
+    "Duration (s)": 237,
+    "Full Duration (s)": 254,
+    "Duration (mins)": 3.95,
+    "Full Duration (mins)": 4.23,
+    "Start ISO": "2025-12-09T14:27:52Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T14:00:00Z",
+    "Scheduled Time": "14:31",
+    "Displayed Time": "14:31",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 180,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 3.0,
+    "Full Duration (mins)": 3.12,
+    "Start ISO": "2025-12-09T14:31:49Z",
+    "Source": "PLAYIT"
   }
 ]
