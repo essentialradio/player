@@ -53727,5 +53727,18 @@
     "Full Duration (mins)": 4.0,
     "Start ISO": "2025-12-09T21:12:57Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-09T21:00:00Z",
+    "Scheduled Time": "21:20",
+    "Displayed Time": "21:20",
+    "Artist": "Green Day",
+    "Title": "Boulevard of Broken Dreams",
+    "Duration (s)": 250,
+    "Full Duration (s)": 262,
+    "Duration (mins)": 4.17,
+    "Full Duration (mins)": 4.37,
+    "Start ISO": "2025-12-09T21:20:29Z",
+    "Source": "PLAYIT"
   }
 ]
