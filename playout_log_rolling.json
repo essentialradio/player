@@ -56275,5 +56275,31 @@
     "Full Duration (mins)": 3.27,
     "Start ISO": "2025-12-10T17:06:57Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T17:00:00Z",
+    "Scheduled Time": "17:10",
+    "Displayed Time": "17:10",
+    "Artist": "Modjo",
+    "Title": "Lady (Hear Me Tonight)",
+    "Duration (s)": 209,
+    "Full Duration (s)": 222,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.7,
+    "Start ISO": "2025-12-10T17:10:23Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T17:00:00Z",
+    "Scheduled Time": "17:13",
+    "Displayed Time": "17:13",
+    "Artist": "Tom Grennan",
+    "Title": "How Does It Feel",
+    "Duration (s)": 133,
+    "Full Duration (s)": 144,
+    "Duration (mins)": 2.22,
+    "Full Duration (mins)": 2.4,
+    "Start ISO": "2025-12-10T17:13:56Z",
+    "Source": "PLAYIT"
   }
 ]
