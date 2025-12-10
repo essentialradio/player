@@ -54377,5 +54377,31 @@
     "Full Duration (mins)": 3.55,
     "Start ISO": "2025-12-10T05:49:55Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T05:00:00Z",
+    "Scheduled Time": "05:53",
+    "Displayed Time": "05:53",
+    "Artist": "Alanis Morissette",
+    "Title": "Hand in My Pocket",
+    "Duration (s)": 209,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-12-10T05:53:20Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T06:00:00Z",
+    "Scheduled Time": "06:01",
+    "Displayed Time": "06:01",
+    "Artist": "Lewis Capaldi",
+    "Title": "Survive",
+    "Duration (s)": 221,
+    "Full Duration (s)": 225,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.75,
+    "Start ISO": "2025-12-10T06:01:50Z",
+    "Source": "PLAYIT"
   }
 ]
