@@ -54507,5 +54507,31 @@
     "Full Duration (mins)": 3.08,
     "Start ISO": "2025-12-10T06:36:59Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T06:00:00Z",
+    "Scheduled Time": "06:44",
+    "Displayed Time": "06:44",
+    "Artist": "Band Aid",
+    "Title": "Do They Know It's Christmas?",
+    "Duration (s)": 209,
+    "Full Duration (s)": 223,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.72,
+    "Start ISO": "2025-12-10T06:44:08Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T06:00:00Z",
+    "Scheduled Time": "06:47",
+    "Displayed Time": "06:47",
+    "Artist": "Noah Kahan",
+    "Title": "Stick Season",
+    "Duration (s)": 170,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.83,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-12-10T06:47:42Z",
+    "Source": "PLAYIT"
   }
 ]
