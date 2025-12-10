@@ -54780,5 +54780,18 @@
     "Full Duration (mins)": 3.0,
     "Start ISO": "2025-12-10T08:14:27Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T08:00:00Z",
+    "Scheduled Time": "08:17",
+    "Displayed Time": "08:17",
+    "Artist": "Shaboozey",
+    "Title": "A Bar Song (Tipsy)",
+    "Duration (s)": 168,
+    "Full Duration (s)": 171,
+    "Duration (mins)": 2.8,
+    "Full Duration (mins)": 2.85,
+    "Start ISO": "2025-12-10T08:17:30Z",
+    "Source": "PLAYIT"
   }
 ]
