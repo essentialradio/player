@@ -57315,5 +57315,18 @@
     "Full Duration (mins)": 4.13,
     "Start ISO": "2025-12-10T23:05:48Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T23:00:00Z",
+    "Scheduled Time": "23:09",
+    "Displayed Time": "23:09",
+    "Artist": "Joe Jackson",
+    "Title": "Steppin' Out",
+    "Duration (s)": 240,
+    "Full Duration (s)": 265,
+    "Duration (mins)": 4.0,
+    "Full Duration (mins)": 4.42,
+    "Start ISO": "2025-12-10T23:09:54Z",
+    "Source": "PLAYIT"
   }
 ]
