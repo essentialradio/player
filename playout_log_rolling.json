@@ -57224,5 +57224,18 @@
     "Full Duration (mins)": 4.0,
     "Start ISO": "2025-12-10T22:31:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T22:00:00Z",
+    "Scheduled Time": "22:39",
+    "Displayed Time": "22:39",
+    "Artist": "Joe Cocker",
+    "Title": "The Simple Things",
+    "Duration (s)": 246,
+    "Full Duration (s)": 267,
+    "Duration (mins)": 4.1,
+    "Full Duration (mins)": 4.45,
+    "Start ISO": "2025-12-10T22:39:34Z",
+    "Source": "PLAYIT"
   }
 ]
