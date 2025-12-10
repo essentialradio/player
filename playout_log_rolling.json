@@ -55430,5 +55430,18 @@
     "Full Duration (mins)": 3.98,
     "Start ISO": "2025-12-10T12:12:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T12:00:00Z",
+    "Scheduled Time": "12:20",
+    "Displayed Time": "12:20",
+    "Artist": "Coldplay",
+    "Title": "Christmas Lights",
+    "Duration (s)": 223,
+    "Full Duration (s)": 242,
+    "Duration (mins)": 3.72,
+    "Full Duration (mins)": 4.03,
+    "Start ISO": "2025-12-10T12:20:26Z",
+    "Source": "PLAYIT"
   }
 ]
