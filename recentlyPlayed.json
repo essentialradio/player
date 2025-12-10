@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Depeche Mode",
-    "title": "Enjoy the Silence",
-    "startTime": "2025-12-10T08:34:50Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Ed Sheeran & Elton John",
     "title": "Merry Christmas",
     "startTime": "2025-12-10T08:40:07Z",
@@ -117,6 +111,12 @@
     "artist": "Queen",
     "title": "I Want to Break Free",
     "startTime": "2025-12-10T10:06:09Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Cruel Summer",
+    "startTime": "2025-12-10T10:11:52Z",
     "source": "PLAYIT"
   }
 ]
