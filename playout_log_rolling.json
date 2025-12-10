@@ -57133,5 +57133,18 @@
     "Full Duration (mins)": 3.6,
     "Start ISO": "2025-12-10T22:02:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-10T22:00:00Z",
+    "Scheduled Time": "22:05",
+    "Displayed Time": "22:05",
+    "Artist": "The Temptations",
+    "Title": "Silent Night",
+    "Duration (s)": 136,
+    "Full Duration (s)": 142,
+    "Duration (mins)": 2.27,
+    "Full Duration (mins)": 2.37,
+    "Start ISO": "2025-12-10T22:05:45Z",
+    "Source": "PLAYIT"
   }
 ]
