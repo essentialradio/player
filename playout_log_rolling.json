@@ -61020,5 +61020,44 @@
     "Full Duration (mins)": 3.5,
     "Start ISO": "2025-12-11T20:22:07Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T20:00:00Z",
+    "Scheduled Time": "20:25",
+    "Displayed Time": "20:25",
+    "Artist": "Mariah Carey",
+    "Title": "Santa Claus is Comin' To Town",
+    "Duration (s)": 188,
+    "Full Duration (s)": 205,
+    "Duration (mins)": 3.13,
+    "Full Duration (mins)": 3.42,
+    "Start ISO": "2025-12-11T20:25:28Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T20:00:00Z",
+    "Scheduled Time": "20:28",
+    "Displayed Time": "20:28",
+    "Artist": "Bloc Party",
+    "Title": "Banquet",
+    "Duration (s)": 184,
+    "Full Duration (s)": 195,
+    "Duration (mins)": 3.07,
+    "Full Duration (mins)": 3.25,
+    "Start ISO": "2025-12-11T20:28:45Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T20:00:00Z",
+    "Scheduled Time": "20:31",
+    "Displayed Time": "20:31",
+    "Artist": "La Bouche",
+    "Title": "Be My Lover",
+    "Duration (s)": 230,
+    "Full Duration (s)": 239,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.98,
+    "Start ISO": "2025-12-11T20:31:56Z",
+    "Source": "PLAYIT"
   }
 ]
