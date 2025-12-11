@@ -57861,5 +57861,31 @@
     "Full Duration (mins)": 3.98,
     "Start ISO": "2025-12-11T02:08:12Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T02:00:00Z",
+    "Scheduled Time": "02:12",
+    "Displayed Time": "02:12",
+    "Artist": "Gwen Stefani",
+    "Title": "What You Waiting For?",
+    "Duration (s)": 191,
+    "Full Duration (s)": 200,
+    "Duration (mins)": 3.18,
+    "Full Duration (mins)": 3.33,
+    "Start ISO": "2025-12-11T02:12:44Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T02:00:00Z",
+    "Scheduled Time": "02:15",
+    "Displayed Time": "02:15",
+    "Artist": "Jax Jones, Calum Scott",
+    "Title": "Whistle",
+    "Duration (s)": 174,
+    "Full Duration (s)": 182,
+    "Duration (mins)": 2.9,
+    "Full Duration (mins)": 3.03,
+    "Start ISO": "2025-12-11T02:15:57Z",
+    "Source": "PLAYIT"
   }
 ]
