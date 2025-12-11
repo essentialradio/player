@@ -60539,5 +60539,31 @@
     "Full Duration (mins)": 4.03,
     "Start ISO": "2025-12-11T17:33:32Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T17:00:00Z",
+    "Scheduled Time": "17:37",
+    "Displayed Time": "17:37",
+    "Artist": "Lewis Capaldi",
+    "Title": "The Day That I Die",
+    "Duration (s)": 164,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.92,
+    "Start ISO": "2025-12-11T17:37:16Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T17:00:00Z",
+    "Scheduled Time": "17:44",
+    "Displayed Time": "17:44",
+    "Artist": "Tom Grennan",
+    "Title": "How Does It Feel",
+    "Duration (s)": 133,
+    "Full Duration (s)": 144,
+    "Duration (mins)": 2.22,
+    "Full Duration (mins)": 2.4,
+    "Start ISO": "2025-12-11T17:44:01Z",
+    "Source": "PLAYIT"
   }
 ]
