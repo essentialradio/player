@@ -58602,5 +58602,31 @@
     "Full Duration (mins)": 3.3,
     "Start ISO": "2025-12-11T06:10:09Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T06:00:00Z",
+    "Scheduled Time": "06:13",
+    "Displayed Time": "06:13",
+    "Artist": "Florence + the Machine",
+    "Title": "You've Got the Love",
+    "Duration (s)": 152,
+    "Full Duration (s)": 167,
+    "Duration (mins)": 2.53,
+    "Full Duration (mins)": 2.78,
+    "Start ISO": "2025-12-11T06:13:25Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T06:00:00Z",
+    "Scheduled Time": "06:15",
+    "Displayed Time": "06:15",
+    "Artist": "The Kid LAROI ft Justin Bieber",
+    "Title": "STAY",
+    "Duration (s)": 132,
+    "Full Duration (s)": 141,
+    "Duration (mins)": 2.2,
+    "Full Duration (mins)": 2.35,
+    "Start ISO": "2025-12-11T06:15:58Z",
+    "Source": "PLAYIT"
   }
 ]
