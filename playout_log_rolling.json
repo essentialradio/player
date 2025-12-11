@@ -57679,5 +57679,18 @@
     "Full Duration (mins)": 4.03,
     "Start ISO": "2025-12-11T01:12:34Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T01:00:00Z",
+    "Scheduled Time": "01:16",
+    "Displayed Time": "01:16",
+    "Artist": "The Jackson 5",
+    "Title": "Santa Claus Is Coming to Town",
+    "Duration (s)": 132,
+    "Full Duration (s)": 146,
+    "Duration (mins)": 2.2,
+    "Full Duration (mins)": 2.43,
+    "Start ISO": "2025-12-11T01:16:28Z",
+    "Source": "PLAYIT"
   }
 ]
