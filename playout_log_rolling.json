@@ -58082,5 +58082,18 @@
     "Full Duration (mins)": 3.6,
     "Start ISO": "2025-12-11T03:22:01Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T03:00:00Z",
+    "Scheduled Time": "03:25",
+    "Displayed Time": "03:25",
+    "Artist": "Electric Light Orchestra",
+    "Title": "Mr Blue Sky",
+    "Duration (s)": 292,
+    "Full Duration (s)": 304,
+    "Duration (mins)": 4.87,
+    "Full Duration (mins)": 5.07,
+    "Start ISO": "2025-12-11T03:25:30Z",
+    "Source": "PLAYIT"
   }
 ]
