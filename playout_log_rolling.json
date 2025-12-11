@@ -59733,5 +59733,31 @@
     "Full Duration (mins)": 2.65,
     "Start ISO": "2025-12-11T13:03:54Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T13:00:00Z",
+    "Scheduled Time": "13:07",
+    "Displayed Time": "13:07",
+    "Artist": "RAYE",
+    "Title": "Where Is My Husband!",
+    "Duration (s)": 187,
+    "Full Duration (s)": 197,
+    "Duration (mins)": 3.12,
+    "Full Duration (mins)": 3.28,
+    "Start ISO": "2025-12-11T13:07:01Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T13:00:00Z",
+    "Scheduled Time": "13:10",
+    "Displayed Time": "13:10",
+    "Artist": "The Waitresses",
+    "Title": "Christmas Wrapping",
+    "Duration (s)": 224,
+    "Full Duration (s)": 237,
+    "Duration (mins)": 3.73,
+    "Full Duration (mins)": 3.95,
+    "Start ISO": "2025-12-11T13:10:18Z",
+    "Source": "PLAYIT"
   }
 ]
