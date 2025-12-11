@@ -60955,5 +60955,31 @@
     "Full Duration (mins)": 3.85,
     "Start ISO": "2025-12-11T20:01:58Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T20:00:00Z",
+    "Scheduled Time": "20:05",
+    "Displayed Time": "20:05",
+    "Artist": "Kasabian",
+    "Title": "Club Foot",
+    "Duration (s)": 164,
+    "Full Duration (s)": 172,
+    "Duration (mins)": 2.73,
+    "Full Duration (mins)": 2.87,
+    "Start ISO": "2025-12-11T20:05:44Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T20:00:00Z",
+    "Scheduled Time": "20:08",
+    "Displayed Time": "20:08",
+    "Artist": "Pentatonix",
+    "Title": "What Christmas Means To Me",
+    "Duration (s)": 166,
+    "Full Duration (s)": 175,
+    "Duration (mins)": 2.77,
+    "Full Duration (mins)": 2.92,
+    "Start ISO": "2025-12-11T20:08:35Z",
+    "Source": "PLAYIT"
   }
 ]
