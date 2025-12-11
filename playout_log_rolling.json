@@ -58862,5 +58862,31 @@
     "Full Duration (mins)": 3.68,
     "Start ISO": "2025-12-11T07:37:44Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T07:00:00Z",
+    "Scheduled Time": "07:47",
+    "Displayed Time": "07:47",
+    "Artist": "Callum Beattie",
+    "Title": "Two Pretenders",
+    "Duration (s)": 209,
+    "Full Duration (s)": 213,
+    "Duration (mins)": 3.48,
+    "Full Duration (mins)": 3.55,
+    "Start ISO": "2025-12-11T07:47:58Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-11T07:00:00Z",
+    "Scheduled Time": "07:51",
+    "Displayed Time": "07:51",
+    "Artist": "Take That",
+    "Title": "These Days",
+    "Duration (s)": 225,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.75,
+    "Full Duration (mins)": 3.83,
+    "Start ISO": "2025-12-11T07:51:34Z",
+    "Source": "PLAYIT"
   }
 ]
