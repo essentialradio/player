@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Band Aid",
-    "title": "Do They Know It's Christmas?",
-    "startTime": "2025-12-12T18:23:07Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Stevie Wonder",
     "title": "What Christmas Means to Me",
     "startTime": "2025-12-12T18:26:44Z",
@@ -127,6 +121,13 @@
     "artist": "Bad Intentions",
     "title": "Ibiza Vibes",
     "startTime": "2025-12-12T19:29:11Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Sigma & Kovic",
+    "title": "Strong (VIP Remix)",
+    "startTime": "2025-12-12T19:32:18Z",
     "source": "ALT",
     "live": true
   }
