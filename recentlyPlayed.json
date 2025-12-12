@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Status Quo",
-    "title": "It's Christmas Time",
-    "startTime": "2025-12-12T17:34:17Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Gouryella",
     "title": "Gouryella",
     "startTime": "2025-12-12T17:38:19Z",
@@ -117,6 +111,13 @@
     "artist": "Luther Vandross",
     "title": "Every Year Every Christmas",
     "startTime": "2025-12-12T19:00:11Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Lee Everest",
+    "title": "Ready for the Weekend",
+    "startTime": "2025-12-12T19:01:51Z",
     "source": "ALT",
     "live": true
   }
