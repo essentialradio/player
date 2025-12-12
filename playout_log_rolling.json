@@ -55378,5 +55378,31 @@
     "Full Duration (mins)": 4.23,
     "Start ISO": "2025-12-12T10:40:03Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-12T10:00:00Z",
+    "Scheduled Time": "10:44",
+    "Displayed Time": "10:44",
+    "Artist": "The Darkness",
+    "Title": "Christmas Time (Don't Let the Bells End)",
+    "Duration (s)": 203,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.38,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-12-12T10:44:17Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-12T10:00:00Z",
+    "Scheduled Time": "10:51",
+    "Displayed Time": "10:51",
+    "Artist": "New Order",
+    "Title": "Blue Monday '88",
+    "Duration (s)": 239,
+    "Full Duration (s)": 247,
+    "Duration (mins)": 3.98,
+    "Full Duration (mins)": 4.12,
+    "Start ISO": "2025-12-12T10:51:42Z",
+    "Source": "PLAYIT"
   }
 ]
