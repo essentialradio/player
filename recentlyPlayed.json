@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Katy Perry",
-    "title": "Cozy Little Christmas",
-    "startTime": "2025-12-12T00:23:59Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Taylor Swift",
     "title": "Blank Space (Taylor's Version)",
     "startTime": "2025-12-12T00:26:56Z",
@@ -117,6 +111,12 @@
     "artist": "Jax Jones, Calum Scott",
     "title": "Whistle",
     "startTime": "2025-12-12T01:39:44Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Spandau Ballet",
+    "title": "Gold",
+    "startTime": "2025-12-12T01:42:39Z",
     "source": "PLAYIT"
   }
 ]
