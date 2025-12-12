@@ -56184,5 +56184,18 @@
     "Full Duration (mins)": 60.0,
     "Start ISO": "2025-12-12T15:00:00Z",
     "Source": "FIXED"
+  },
+  {
+    "Hour": "2025-12-12T15:00:00Z",
+    "Scheduled Time": "15:02",
+    "Displayed Time": "15:02",
+    "Artist": "Essential Radio",
+    "Title": "The Week in Holyrood with Charles Fletcher",
+    "Duration (s)": 3397,
+    "Full Duration (s)": 3420,
+    "Duration (mins)": 56.62,
+    "Full Duration (mins)": 57.0,
+    "Start ISO": "2025-12-12T15:02:00Z",
+    "Source": "PLAYIT"
   }
 ]
