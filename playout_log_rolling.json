@@ -57443,5 +57443,18 @@
     "Full Duration (mins)": 3.5,
     "Start ISO": "2025-12-12T22:15:04Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-12T22:00:00Z",
+    "Scheduled Time": "22:18",
+    "Displayed Time": "22:18",
+    "Artist": "Gonzalez",
+    "Title": "Haven't Stopped Dancing Yet",
+    "Duration (s)": 222,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.7,
+    "Full Duration (mins)": 3.9,
+    "Start ISO": "2025-12-12T22:18:21Z",
+    "Source": "PLAYIT"
   }
 ]
