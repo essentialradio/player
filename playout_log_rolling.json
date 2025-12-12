@@ -55313,5 +55313,18 @@
     "Full Duration (mins)": 3.7,
     "Start ISO": "2025-12-12T10:15:03Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-12T10:00:00Z",
+    "Scheduled Time": "10:18",
+    "Displayed Time": "10:18",
+    "Artist": "Sam Fender",
+    "Title": "Seventeen Going Under",
+    "Duration (s)": 230,
+    "Full Duration (s)": 234,
+    "Duration (mins)": 3.83,
+    "Full Duration (mins)": 3.9,
+    "Start ISO": "2025-12-12T10:18:50Z",
+    "Source": "PLAYIT"
   }
 ]
