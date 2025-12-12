@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Sophie Ellis-Bextor",
-    "title": "(Christmas) Time",
-    "startTime": "2025-12-12T18:29:01Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Sam Ryder",
     "title": "You're Christmas To Me",
     "startTime": "2025-12-12T18:32:33Z",
@@ -129,6 +123,13 @@
     "artist": "Eliza Rose & Oppidan",
     "title": "Too Slow (All Night) <Extended>",
     "startTime": "2025-12-12T19:35:35Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "A7S & David Guetta with Wizkid",
+    "title": "Lighter",
+    "startTime": "2025-12-12T19:39:24Z",
     "source": "ALT",
     "live": true
   }
