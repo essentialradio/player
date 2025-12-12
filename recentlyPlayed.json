@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Ed Sheeran & Elton John",
-    "title": "Merry Christmas",
-    "startTime": "2025-12-12T18:12:28Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Demi Lovato",
     "title": "Wonderful Christmastime",
     "startTime": "2025-12-12T18:15:52Z",
@@ -125,6 +119,13 @@
     "artist": "Lee Everest",
     "title": "Ready for the Weekend",
     "startTime": "2025-12-12T19:25:28Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Belters Only & Jane",
+    "title": "Tunnel Vision",
+    "startTime": "2025-12-12T19:25:42Z",
     "source": "ALT",
     "live": true
   }
