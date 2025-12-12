@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Cher",
-    "title": "DJ Play A Christmas Song",
-    "startTime": "2025-12-12T11:36:42Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Mariah Carey",
     "title": "All I Want for Christmas Is You",
     "startTime": "2025-12-12T11:43:27Z",
@@ -117,6 +111,12 @@
     "artist": "Sabrina Carpenter",
     "title": "Busy Woman",
     "startTime": "2025-12-12T13:03:56Z",
+    "source": "PLAYIT"
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "The Fate of Ophelia",
+    "startTime": "2025-12-12T13:07:23Z",
     "source": "PLAYIT"
   }
 ]

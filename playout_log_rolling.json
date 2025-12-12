@@ -55781,5 +55781,31 @@
     "Full Duration (mins)": 4.18,
     "Start ISO": "2025-12-12T12:54:12Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-12T13:00:00Z",
+    "Scheduled Time": "13:03",
+    "Displayed Time": "13:03",
+    "Artist": "Sabrina Carpenter",
+    "Title": "Busy Woman",
+    "Duration (s)": 176,
+    "Full Duration (s)": 187,
+    "Duration (mins)": 2.93,
+    "Full Duration (mins)": 3.12,
+    "Start ISO": "2025-12-12T13:03:56Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-12T13:00:00Z",
+    "Scheduled Time": "13:07",
+    "Displayed Time": "13:07",
+    "Artist": "Taylor Swift",
+    "Title": "The Fate of Ophelia",
+    "Duration (s)": 215,
+    "Full Duration (s)": 226,
+    "Duration (mins)": 3.58,
+    "Full Duration (mins)": 3.77,
+    "Start ISO": "2025-12-12T13:07:23Z",
+    "Source": "PLAYIT"
   }
 ]
