@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Gary Barlow",
-    "title": "It's The Most Wonderful Time Of The Year",
-    "startTime": "2025-12-12T18:48:36Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Luther Vandross",
     "title": "Every Year Every Christmas",
     "startTime": "2025-12-12T18:51:37Z",
@@ -134,6 +128,13 @@
     "artist": "Jodie Harsh",
     "title": "Kiss It Better",
     "startTime": "2025-12-12T19:49:16Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Sonny Fodera & Dom Dolla",
+    "title": "Moving Blind",
+    "startTime": "2025-12-12T19:52:26Z",
     "source": "ALT",
     "live": true
   }
