@@ -1,12 +1,5 @@
 [
   {
-    "artist": "2PM SMM",
-    "title": "DISCO STUS DOUBLE DECKS",
-    "startTime": "2025-12-13T14:00:45Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "228",
     "title": "RAB C SALAD WET",
     "startTime": "2025-12-13T14:15:07Z",
@@ -135,6 +128,13 @@
     "artist": "1000 Original Hits 1978",
     "title": "18 - Lene Lovich - Lucky Number",
     "startTime": "2025-12-13T15:33:50Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "1000 Original Hits 1979",
+    "title": "05 - The Knack - My Sharona",
+    "startTime": "2025-12-13T15:36:36Z",
     "source": "ALT",
     "live": true
   }
