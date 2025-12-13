@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Kelly Clarkson",
-    "title": "Underneath the Tree",
-    "startTime": "2025-12-12T21:47:22Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "The Black Eyed Peas",
     "title": "Boom Boom Pow",
     "startTime": "2025-12-12T21:51:00Z",
@@ -118,5 +112,11 @@
     "title": "Around the World",
     "startTime": "2025-12-13T00:00:00Z",
     "source": "FIXED"
+  },
+  {
+    "artist": "Ed Sheeran & Elton John",
+    "title": "Merry Christmas",
+    "startTime": "2025-12-13T02:02:25Z",
+    "source": "PLAYIT"
   }
 ]
