@@ -1,19 +1,5 @@
 [
   {
-    "artist": "SMM",
-    "title": "STU RADIO BINGO 1 WET",
-    "startTime": "2025-12-13T15:05:07Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "1000 Original Hits 1977",
-    "title": "05 - The Stranglers - No More Heroes",
-    "startTime": "2025-12-13T15:05:33Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
     "artist": "1000 Original Hits 1978",
     "title": "08 - Racey - Lay Your Love On Me",
     "startTime": "2025-12-13T15:09:01Z",
@@ -130,8 +116,20 @@
     "source": "FIXED"
   },
   {
+    "artist": "Essential Radio",
+    "title": "The JanCave 70s Jukebox with Jan Gow",
+    "startTime": "2025-12-13T17:02:01Z",
+    "source": "PLAYIT"
+  },
+  {
     "artist": "Jan Gow",
     "title": "The Jan Cave 70s Jukebox",
+    "startTime": "2025-12-13T18:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Tim Graham",
+    "title": "The LGBTQ Music Chart",
     "startTime": "2025-12-13T18:00:00Z",
     "source": "FIXED"
   }
