@@ -59497,5 +59497,31 @@
     "Full Duration (mins)": 3.9,
     "Start ISO": "2025-12-13T12:12:46Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-13T12:00:00Z",
+    "Scheduled Time": "12:20",
+    "Displayed Time": "12:20",
+    "Artist": "CMAT",
+    "Title": "Take A Sexy Picture Of Me",
+    "Duration (s)": 221,
+    "Full Duration (s)": 230,
+    "Duration (mins)": 3.68,
+    "Full Duration (mins)": 3.83,
+    "Start ISO": "2025-12-13T12:20:55Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-13T12:00:00Z",
+    "Scheduled Time": "12:24",
+    "Displayed Time": "12:24",
+    "Artist": "Ed Sheeran",
+    "Title": "Camera",
+    "Duration (s)": 205,
+    "Full Duration (s)": 216,
+    "Duration (mins)": 3.42,
+    "Full Duration (mins)": 3.6,
+    "Start ISO": "2025-12-13T12:24:36Z",
+    "Source": "PLAYIT"
   }
 ]
