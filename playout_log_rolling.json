@@ -59726,6 +59726,22 @@
     "Full Duration (mins)": 60.0
   },
   {
+    "Hour": "2025-12-13T13:00:00Z",
+    "Scheduled Time": "13:45",
+    "Displayed Time": "13:45",
+    "Artist": "1.45PM SMM",
+    "Title": "MIKE & THE MECHANICS FEATURED ARTIST",
+    "Duration (s)": 909,
+    "Full Duration (s)": 909,
+    "Duration (mins)": 15.15,
+    "Full Duration (mins)": 15.15,
+    "Start ISO": "2025-12-13T13:45:36Z",
+    "Source": "ALT",
+    "Actual End ISO": "2025-12-13T14:00:45Z",
+    "Actual Duration (s)": 909,
+    "Actual Duration (mins)": 15.15
+  },
+  {
     "Hour": "2025-12-13T14:00:00Z",
     "Scheduled Time": "14:00",
     "Displayed Time": "14:00",
@@ -59762,6 +59778,20 @@
     "Start ISO": "2025-12-13T14:00:30Z",
     "Source": "ALT",
     "Last Seen": "2025-12-13T14:00:30Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
+  },
+  {
+    "Hour": "2025-12-13T14:00:00Z",
+    "Scheduled Time": "14:00",
+    "Displayed Time": "14:00",
+    "Artist": "2PM SMM",
+    "Title": "DISCO STUS DOUBLE DECKS",
+    "Start ISO": "2025-12-13T14:00:45Z",
+    "Source": "ALT",
+    "Last Seen": "2025-12-13T14:00:45Z",
     "Duration (s)": 3600,
     "Full Duration (s)": 3600,
     "Duration (mins)": 60.0,
