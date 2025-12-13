@@ -1,13 +1,6 @@
 [
   {
     "artist": "1000 Original Hits 1978",
-    "title": "10 - Hot Chocolate - Every 1's A Winner",
-    "startTime": "2025-12-13T15:16:09Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "1000 Original Hits 1978",
     "title": "12 - The Tavares - More Than A Woman",
     "startTime": "2025-12-13T15:19:52Z",
     "source": "ALT",
@@ -128,6 +121,12 @@
   {
     "artist": "Stephen Howie",
     "title": "Grooveline",
+    "startTime": "2025-12-13T21:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Big Tommy",
+    "title": "Big Fat Party Anthems",
     "startTime": "2025-12-13T21:00:00Z",
     "source": "FIXED"
   }
