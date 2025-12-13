@@ -1,13 +1,6 @@
 [
   {
     "artist": "1000 Original Hits 1978",
-    "title": "08 - Racey - Lay Your Love On Me",
-    "startTime": "2025-12-13T15:09:01Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "1000 Original Hits 1978",
     "title": "09 - Marshall Hain - Dancing In The City",
     "startTime": "2025-12-13T15:12:09Z",
     "source": "ALT",
@@ -130,6 +123,12 @@
   {
     "artist": "Tim Graham",
     "title": "The LGBTQ Music Chart",
+    "startTime": "2025-12-13T19:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Stephen Howie",
+    "title": "Grooveline",
     "startTime": "2025-12-13T19:00:00Z",
     "source": "FIXED"
   }
