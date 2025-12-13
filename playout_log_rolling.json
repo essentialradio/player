@@ -58626,5 +58626,31 @@
     "Full Duration (mins)": 4.3,
     "Start ISO": "2025-12-13T07:26:48Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-13T07:00:00Z",
+    "Scheduled Time": "07:31",
+    "Displayed Time": "07:31",
+    "Artist": "Demi Lovato",
+    "Title": "Here All Night",
+    "Duration (s)": 169,
+    "Full Duration (s)": 177,
+    "Duration (mins)": 2.82,
+    "Full Duration (mins)": 2.95,
+    "Start ISO": "2025-12-13T07:31:01Z",
+    "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-13T07:00:00Z",
+    "Scheduled Time": "07:34",
+    "Displayed Time": "07:34",
+    "Artist": "Maroon 5",
+    "Title": "Memories",
+    "Duration (s)": 177,
+    "Full Duration (s)": 190,
+    "Duration (mins)": 2.95,
+    "Full Duration (mins)": 3.17,
+    "Start ISO": "2025-12-13T07:34:19Z",
+    "Source": "PLAYIT"
   }
 ]
