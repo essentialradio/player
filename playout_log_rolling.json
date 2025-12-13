@@ -59640,5 +59640,19 @@
     "Full Duration (mins)": 2.85,
     "Start ISO": "2025-12-13T12:57:52Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-13T13:00:00Z",
+    "Scheduled Time": "13:00",
+    "Displayed Time": "13:00",
+    "Artist": "Wannadies",
+    "Title": "You and Me Song",
+    "Start ISO": "2025-12-13T13:00:09Z",
+    "Source": "ALT",
+    "Last Seen": "2025-12-13T13:00:09Z",
+    "Duration (s)": 3600,
+    "Full Duration (s)": 3600,
+    "Duration (mins)": 60.0,
+    "Full Duration (mins)": 60.0
   }
 ]
