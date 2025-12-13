@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Katy Perry",
-    "title": "Last Friday Night (T.G.I.F)",
-    "startTime": "2025-12-13T11:50:35Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Paul Simon",
     "title": "You Can Call Me Al",
     "startTime": "2025-12-13T11:54:17Z",
@@ -119,6 +113,13 @@
     "artist": "1PM SMM",
     "title": "JUKEBOX LIVE - GUESS THE LINK",
     "startTime": "2025-12-13T13:00:38Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "1.20PM SMM",
+    "title": "MTWCS - AMY GRANT & ROXETTE",
+    "startTime": "2025-12-13T13:20:38Z",
     "source": "ALT",
     "live": true
   }
