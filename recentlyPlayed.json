@@ -1,11 +1,5 @@
 [
   {
-    "artist": "Clock",
-    "title": "Everybody",
-    "startTime": "2025-12-12T21:43:54Z",
-    "source": "PLAYIT"
-  },
-  {
     "artist": "Kelly Clarkson",
     "title": "Underneath the Tree",
     "startTime": "2025-12-12T21:47:22Z",
@@ -117,6 +111,12 @@
     "artist": "Essential Radio",
     "title": "On Air",
     "startTime": "2025-12-12T00:00:00Z",
+    "source": "FIXED"
+  },
+  {
+    "artist": "Davy Sims",
+    "title": "Around the World",
+    "startTime": "2025-12-13T00:00:00Z",
     "source": "FIXED"
   }
 ]
