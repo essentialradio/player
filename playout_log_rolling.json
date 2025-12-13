@@ -59575,5 +59575,18 @@
     "Full Duration (mins)": 3.05,
     "Start ISO": "2025-12-13T12:42:22Z",
     "Source": "PLAYIT"
+  },
+  {
+    "Hour": "2025-12-13T12:00:00Z",
+    "Scheduled Time": "12:45",
+    "Displayed Time": "12:45",
+    "Artist": "Addison Rae",
+    "Title": "Diet Pepsi",
+    "Duration (s)": 157,
+    "Full Duration (s)": 170,
+    "Duration (mins)": 2.62,
+    "Full Duration (mins)": 2.83,
+    "Start ISO": "2025-12-13T12:45:24Z",
+    "Source": "PLAYIT"
   }
 ]
