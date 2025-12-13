@@ -2,13 +2,6 @@
   {
     "artist": "1000 Original Hits 1978",
     "title": "03 - Gerry Rafferty - Baker Street",
-    "startTime": "2025-12-13T16:01:02Z",
-    "source": "ALT",
-    "live": true
-  },
-  {
-    "artist": "1000 Original Hits 1978",
-    "title": "03 - Gerry Rafferty - Baker Street",
     "startTime": "2025-12-13T16:01:16Z",
     "source": "ALT",
     "live": true
@@ -136,6 +129,13 @@
     "artist": "1000 Original Hits 1979",
     "title": "03 - Racey - Some Girls",
     "startTime": "2025-12-13T16:10:51Z",
+    "source": "ALT",
+    "live": true
+  },
+  {
+    "artist": "Racey",
+    "title": "Some girls",
+    "startTime": "2025-12-13T16:11:17Z",
     "source": "ALT",
     "live": true
   }
